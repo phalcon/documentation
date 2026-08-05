@@ -11,9 +11,10 @@ hide:
 ## Cache\AbstractCache
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/AbstractCache.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/AbstractCache.php){ .src-btn }
 
 This component offers caching capabilities for your application.
+Phalcon\Cache implements PSR-16.
 
 Event layering: cache operations can emit `cache:*` events from two layers.
 This facade fires `cache:before*`/`cache:after*` around each operation, and
@@ -31,7 +32,7 @@ multi-key `cache:*Multiple` events).
 
 </div>
 
-__Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Exception\InvalidArgumentException` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Traversable`
+__Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Cache\Exception\InvalidArgumentException` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Traversable`
 { .api-uses }
 
 ### Method Summary
@@ -44,7 +45,8 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 </a>
 <a class="api-item" href="#cacheabstractcache-get">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$default</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-getadapter">
@@ -53,23 +55,11 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <code class="sig"><span class="sf">getAdapter</span>()</code>
 <span class="desc">Returns the current adapter</span>
 </a>
-<a class="api-item" href="#cacheabstractcache-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Get the event manager</span>
-</a>
 <a class="api-item" href="#cacheabstractcache-set">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">DateInterval|int|null</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists data in the cache, uniquely referenced by a key with an</span>
-</a>
-<a class="api-item" href="#cacheabstractcache-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the event manager</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-checkkey">
 <code class="vis vis-protected">protected</code>
@@ -98,19 +88,18 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <a class="api-item" href="#cacheabstractcache-dodeletemultiple">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">doDeleteMultiple</span>( <span class="st">mixed</span> <span class="sv">$keys</span> )</code>
+<code class="sig"><span class="sf">doDeleteMultiple</span>( <span class="st">iterable</span> <span class="sv">$keys</span> )</code>
 <span class="desc">Deletes multiple cache items in a single operation.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-doget">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">doGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">doGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$default</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-dogetmultiple">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">doGetMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">iterable</code>
+<code class="sig"><span class="sf">doGetMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$default</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Obtains multiple cache items by their unique keys.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-dohas">
@@ -122,13 +111,13 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <a class="api-item" href="#cacheabstractcache-doset">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">DateInterval|int|null</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists data in the cache, uniquely referenced by a key with an optional</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-dosetmultiple">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">doSetMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">doSetMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-fire">
@@ -152,19 +141,12 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sv">$adapter</span></code>
-<span class="desc">The adapter</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-<span class="desc">Event Manager</span>
 </div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 4</div>
 
 #### `__construct()` { #cacheabstractcache-__construct }
 
@@ -179,8 +161,8 @@ Constructor.
 ```php
 abstract public function get(
     string $key,
-    mixed $defaultValue = null
-);
+    mixed $default = null
+): mixed;
 ```
 
 Fetches a value from the cache.
@@ -193,34 +175,18 @@ public function getAdapter(): AdapterInterface;
 
 Returns the current adapter
 
-#### `getEventsManager()` { #cacheabstractcache-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Get the event manager
-
 #### `set()` { #cacheabstractcache-set }
 
 ```php
 abstract public function set(
     string $key,
     mixed $value,
-    mixed $ttl = null
+    DateInterval|int|null $ttl = null
 ): bool;
 ```
 
 Persists data in the cache, uniquely referenced by a key with an
 optional expiration TTL time.
-
-#### `setEventsManager()` { #cacheabstractcache-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the event manager
 
 <div class="api-group">Protected · 12</div>
 
@@ -259,7 +225,7 @@ Delete an item from the cache by its unique key.
 #### `doDeleteMultiple()` { #cacheabstractcache-dodeletemultiple }
 
 ```php
-protected function doDeleteMultiple( mixed $keys ): bool;
+protected function doDeleteMultiple( iterable $keys ): bool;
 ```
 
 Deletes multiple cache items in a single operation.
@@ -269,8 +235,8 @@ Deletes multiple cache items in a single operation.
 ```php
 protected function doGet(
     string $key,
-    mixed $defaultValue = null
-): mixed;
+    mixed $default = null
+);
 ```
 
 Fetches a value from the cache.
@@ -279,9 +245,9 @@ Fetches a value from the cache.
 
 ```php
 protected function doGetMultiple(
-    mixed $keys,
-    mixed $defaultValue = null
-): array;
+    iterable $keys,
+    mixed $default = null
+): iterable;
 ```
 
 Obtains multiple cache items by their unique keys.
@@ -300,7 +266,7 @@ Determines whether an item is present in the cache.
 protected function doSet(
     string $key,
     mixed $value,
-    mixed $ttl = null
+    DateInterval|int|null $ttl = null
 ): bool;
 ```
 
@@ -311,7 +277,7 @@ expiration TTL time.
 
 ```php
 protected function doSetMultiple(
-    mixed $values,
+    iterable $values,
     mixed $ttl = null
 ): bool;
 ```
@@ -341,19 +307,17 @@ Returns the exception class that will be used for exceptions thrown
 ## Cache\AdapterFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/AdapterFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/AdapterFactory.php){ .src-btn }
 
 Factory to create Cache adapters
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
-        - **`Phalcon\Cache\AdapterFactory`**
+- **`Phalcon\Cache\AdapterFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory`
+__Uses__ `Exception` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu` · `Phalcon\Cache\Adapter\Libmemcached` · `Phalcon\Cache\Adapter\Memory` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Adapter\RedisCluster` · `Phalcon\Cache\Adapter\Stream` · `Phalcon\Cache\Adapter\Weak` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Traits\Factory\FactoryTrait`
 { .api-uses }
 
 ### Method Summary
@@ -361,7 +325,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Exception\Ex
 <div class="api-list">
 <a class="api-item" href="#cacheadapterfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$serializerFactory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">AdapterFactory constructor.</span>
 </a>
 <a class="api-item" href="#cacheadapterfactory-newinstance">
@@ -401,7 +365,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Exception\Ex
 
 ```php
 public function __construct(
-    SerializerFactory $factory,
+    SerializerFactory $serializerFactory,
     array $services = []
 );
 ```
@@ -439,7 +403,7 @@ Returns the available adapters
 ## Cache\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/AdapterInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Adapter/AdapterInterface.php){ .src-btn }
 
 Interface for Phalcon\Cache adapters
 
@@ -457,7 +421,7 @@ __Uses__ `Phalcon\Storage\Adapter\AdapterInterface`
 ## Cache\Adapter\Apcu
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/Apcu.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Adapter/Apcu.php){ .src-btn }
 
 Apcu adapter
 
@@ -479,6 +443,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Ap
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -486,7 +451,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Ap
 ## Cache\Adapter\Libmemcached
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/Libmemcached.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Adapter/Libmemcached.php){ .src-btn }
 
 Libmemcached adapter
 
@@ -508,6 +473,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Li
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -515,7 +481,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Li
 ## Cache\Adapter\Memory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/Memory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Adapter/Memory.php){ .src-btn }
 
 Memory adapter
 
@@ -537,6 +503,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Me
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -544,7 +511,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Me
 ## Cache\Adapter\Redis
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/Redis.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Adapter/Redis.php){ .src-btn }
 
 Redis adapter
 
@@ -566,6 +533,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Re
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -573,7 +541,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Re
 ## Cache\Adapter\RedisCluster
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/RedisCluster.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Adapter/RedisCluster.php){ .src-btn }
 
 RedisCluster adapter
 
@@ -596,6 +564,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Re
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -603,7 +572,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Re
 ## Cache\Adapter\Stream
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/Stream.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Adapter/Stream.php){ .src-btn }
 
 Stream adapter
 
@@ -625,6 +594,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\St
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -632,9 +602,9 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\St
 ## Cache\Adapter\Weak
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/Weak.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Adapter/Weak.php){ .src-btn }
 
-WeakCache implementation based on WeakReference
+Weak adapter
 
 <div class="api-tree" markdown>
 
@@ -654,6 +624,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\We
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -661,9 +632,12 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\We
 ## Cache\Cache
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Cache.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Cache.php){ .src-btn }
 
 This component offers caching capabilities for your application.
+Phalcon\Cache implements PSR-16.
+
+@property AdapterInterface $adapter
 
 <div class="api-tree" markdown>
 
@@ -693,17 +667,19 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <a class="api-item" href="#cachecache-deletemultiple">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">mixed</span> <span class="sv">$keys</span> )</code>
+<code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">iterable</span> <span class="sv">$keys</span> )</code>
 <span class="desc">Deletes multiple cache items in a single operation.</span>
 </a>
 <a class="api-item" href="#cachecache-get">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$default</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
 <a class="api-item" href="#cachecache-getmultiple">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">getMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">iterable</code>
+<code class="sig"><span class="sf">getMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$default</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Obtains multiple cache items by their unique keys.</span>
 </a>
 <a class="api-item" href="#cachecache-has">
@@ -715,13 +691,13 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <a class="api-item" href="#cachecache-set">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">DateInterval|int|null</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists data in the cache, uniquely referenced by a key with an optional</span>
 </a>
 <a class="api-item" href="#cachecache-setmultiple">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">setMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">setMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">DateInterval|int|null</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</span>
 </a>
 <a class="api-item" href="#cachecache-getexceptionclass">
@@ -755,7 +731,7 @@ Delete an item from the cache by its unique key.
 #### `deleteMultiple()` { #cachecache-deletemultiple }
 
 ```php
-public function deleteMultiple( mixed $keys ): bool;
+public function deleteMultiple( iterable $keys ): bool;
 ```
 
 Deletes multiple cache items in a single operation.
@@ -765,8 +741,8 @@ Deletes multiple cache items in a single operation.
 ```php
 public function get(
     string $key,
-    mixed $defaultValue = null
-);
+    mixed $default = null
+): mixed;
 ```
 
 Fetches a value from the cache.
@@ -775,9 +751,9 @@ Fetches a value from the cache.
 
 ```php
 public function getMultiple(
-    mixed $keys,
-    mixed $defaultValue = null
-);
+    iterable $keys,
+    mixed $default = null
+): iterable;
 ```
 
 Obtains multiple cache items by their unique keys.
@@ -790,13 +766,19 @@ public function has( string $key ): bool;
 
 Determines whether an item is present in the cache.
 
+NOTE: It is recommended that has() is only to be used for cache warming
+type purposes and not to be used within your live applications
+operations for get/set, as this method is subject to a race condition
+where your has() will return true and immediately after, another script
+can remove it making the state of your app out of date.
+
 #### `set()` { #cachecache-set }
 
 ```php
 public function set(
     string $key,
     mixed $value,
-    mixed $ttl = null
+    DateInterval|int|null $ttl = null
 ): bool;
 ```
 
@@ -807,8 +789,8 @@ expiration TTL time.
 
 ```php
 public function setMultiple(
-    mixed $values,
-    mixed $ttl = null
+    iterable $values,
+    DateInterval|int|null $ttl = null
 ): bool;
 ```
 
@@ -828,18 +810,19 @@ Returns the exception class that will be used for exceptions thrown
 ## Cache\CacheFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/CacheFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/CacheFactory.php){ .src-btn }
 
 Creates a new Cache class
 
+@property AdapterFactory $adapterFactory;
+
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - **`Phalcon\Cache\CacheFactory`**
+- **`Phalcon\Cache\CacheFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Cache` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractConfigFactory`
+__Uses__ `Exception` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Support\Exception` · `Phalcon\Support\Traits\ConfigTrait`
 { .api-uses }
 
 ### Method Summary
@@ -847,13 +830,13 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Cache` · `P
 <div class="api-list">
 <a class="api-item" href="#cachecachefactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory</span> <span class="sv">$factory</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory</span> <span class="sv">$adapterFactory</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#cachecachefactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">CacheInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#cachecachefactory-newinstance">
@@ -866,6 +849,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Cache` · `P
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 </div>
 
@@ -886,7 +870,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Cache` · `P
 #### `__construct()` { #cachecachefactory-__construct }
 
 ```php
-public function __construct( AdapterFactory $factory );
+public function __construct( AdapterFactory $adapterFactory );
 ```
 
 Constructor
@@ -894,7 +878,7 @@ Constructor
 #### `load()` { #cachecachefactory-load }
 
 ```php
-public function load( mixed $config ): CacheInterface;
+public function load( array|ConfigInterface $config ): CacheInterface;
 ```
 
 Factory to create an instance from a Config object
@@ -918,11 +902,13 @@ Constructs a new Cache instance.
 protected function getExceptionClass(): string;
 ```
 
+Returns the exception class for the factory
+
 
 ## Cache\CacheInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/CacheInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/CacheInterface.php){ .src-btn }
 
 Interface for Phalcon\Cache\Cache
 
@@ -940,7 +926,7 @@ __Uses__ `Phalcon\Contracts\Cache\Cache`
 ## Cache\Exception\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Exception/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Exception/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Cache will use this class
 
@@ -955,9 +941,9 @@ Exceptions thrown in Phalcon\Cache will use this class
 ## Cache\Exception\InvalidArgumentException
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Exception/InvalidArgumentException.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cache/Exception/InvalidArgumentException.php){ .src-btn }
 
-Exceptions thrown in Phalcon\Cache will use this class
+Exceptions thrown in Phalcon\Cache for invalid arguments will use this class
 
 <div class="api-tree" markdown>
 

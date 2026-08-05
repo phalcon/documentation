@@ -8,10 +8,1436 @@ hide:
     All classes are prefixed with `Phalcon`
 
 
+## Contracts\ADR\Action
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Action.php){ .src-btn }
+
+Marker contract for a per-endpoint Action. An Action is a Handler:
+`__invoke(request): response`.
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\ADR\Handler`](#contractsadrhandler)
+    - **`Phalcon\Contracts\ADR\Action`**
+
+</div>
+
+
+## Contracts\ADR\Application
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Application.php){ .src-btn }
+
+Handles a request end to end: routes it, dispatches the Action and returns
+the response, routing any error through the error responder.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Application`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrapplication-handle">
+<code class="vis vis-public">public</code>
+<code class="ret">ResponseInterface</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">AttributeRequest</span> <span class="sv">$request</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `handle()` { #contractsadrapplication-handle }
+
+```php
+public function handle( AttributeRequest $request ): ResponseInterface;
+```
+
+
+## Contracts\ADR\Dispatcher
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Dispatcher.php){ .src-btn }
+
+Resolves an Action by class name, builds the middleware pipeline around it and
+runs it to produce a response.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Dispatcher`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrdispatcher-dispatch">
+<code class="vis vis-public">public</code>
+<code class="ret">ResponseInterface</code>
+<code class="sig"><span class="sf">dispatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$actionClass</span>,</span><span class="prm"><span class="st">AttributeRequest</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$routeMiddleware</span><span class="sm"> = []</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `dispatch()` { #contractsadrdispatcher-dispatch }
+
+```php
+public function dispatch(
+    string $actionClass,
+    AttributeRequest $request,
+    array $routeMiddleware = []
+): ResponseInterface;
+```
+
+
+## Contracts\ADR\Emitter\Emitter
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Emitter/Emitter.php){ .src-btn }
+
+Sends a response to the client. Called by the front controller only.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Emitter\Emitter`**
+
+</div>
+
+__Uses__ `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadremitteremitter-emit">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">emit</span>( <span class="st">ResponseInterface</span> <span class="sv">$response</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `emit()` { #contractsadremitteremitter-emit }
+
+```php
+public function emit( ResponseInterface $response ): void;
+```
+
+
+## Contracts\ADR\Exceptions\ADRThrowable
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Exceptions/ADRThrowable.php){ .src-btn }
+
+Base throwable contract for the ADR component. Every ADR exception implements
+it, so callers can catch all ADR errors with a single type.
+
+<div class="api-tree" markdown>
+
+- `\Throwable`
+    - **`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`**
+
+</div>
+
+__Uses__ `Throwable`
+{ .api-uses }
+
+
+## Contracts\ADR\Handler
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Handler.php){ .src-btn }
+
+Receives the request and returns a response. The terminal handler in the
+pipeline is the Action.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Handler`**
+    - [`Phalcon\Contracts\ADR\Action`](#contractsadraction)
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrhandler-__invoke">
+<code class="vis vis-public">public</code>
+<code class="ret">ResponseInterface</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">AttributeRequest</span> <span class="sv">$request</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__invoke()` { #contractsadrhandler-__invoke }
+
+```php
+public function __invoke( AttributeRequest $request ): ResponseInterface;
+```
+
+
+## Contracts\ADR\Middleware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Middleware.php){ .src-btn }
+
+Wraps the handler chain. Middleware may pass the request through to the next
+handler, decorate the response, short-circuit by returning its own response,
+or throw to route through the error responder.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Middleware`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrmiddleware-__invoke">
+<code class="vis vis-public">public</code>
+<code class="ret">ResponseInterface</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">AttributeRequest</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">Handler</span> <span class="sv">$next</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__invoke()` { #contractsadrmiddleware-__invoke }
+
+```php
+public function __invoke(
+    AttributeRequest $request,
+    Handler $next
+): ResponseInterface;
+```
+
+
+## Contracts\ADR\Payload\Payload
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Payload/Payload.php){ .src-btn }
+
+Contract for the immutable payload produced by the domain layer.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Payload\Payload`**
+
+</div>
+
+__Uses__ `Throwable`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrpayloadpayload-getexception">
+<code class="vis vis-public">public</code>
+<code class="ret">Throwable|null</code>
+<code class="sig"><span class="sf">getException</span>()</code>
+<span class="desc">Gets the exception thrown in the domain layer, if any.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-getextras">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getExtras</span>()</code>
+<span class="desc">Gets the arbitrary extra domain information.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-getinput">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getInput</span>()</code>
+<span class="desc">Gets the domain input.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-getmessages">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
+<span class="desc">Gets the domain messages.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-getresult">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getResult</span>()</code>
+<span class="desc">Gets the domain result.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-getstatus">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getStatus</span>()</code>
+<span class="desc">Gets the payload status.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withexception">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withException</span>( <span class="st">Throwable</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Returns a copy of the payload with the given exception.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withextras">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withExtras</span>( <span class="st">mixed</span> <span class="sv">$extras</span> )</code>
+<span class="desc">Returns a copy of the payload with the given extras.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withinput">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withInput</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
+<span class="desc">Returns a copy of the payload with the given input.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withmessages">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
+<span class="desc">Returns a copy of the payload with the given messages.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withresult">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withResult</span>( <span class="st">mixed</span> <span class="sv">$result</span> )</code>
+<span class="desc">Returns a copy of the payload with the given result.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withstatus">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withStatus</span>( <span class="st">mixed</span> <span class="sv">$status</span> )</code>
+<span class="desc">Returns a copy of the payload with the given status.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 12</div>
+
+#### `getException()` { #contractsadrpayloadpayload-getexception }
+
+```php
+public function getException(): Throwable|null;
+```
+
+Gets the exception thrown in the domain layer, if any.
+
+#### `getExtras()` { #contractsadrpayloadpayload-getextras }
+
+```php
+public function getExtras(): mixed;
+```
+
+Gets the arbitrary extra domain information.
+
+#### `getInput()` { #contractsadrpayloadpayload-getinput }
+
+```php
+public function getInput(): mixed;
+```
+
+Gets the domain input.
+
+#### `getMessages()` { #contractsadrpayloadpayload-getmessages }
+
+```php
+public function getMessages(): mixed;
+```
+
+Gets the domain messages.
+
+#### `getResult()` { #contractsadrpayloadpayload-getresult }
+
+```php
+public function getResult(): mixed;
+```
+
+Gets the domain result.
+
+#### `getStatus()` { #contractsadrpayloadpayload-getstatus }
+
+```php
+public function getStatus(): mixed;
+```
+
+Gets the payload status.
+
+#### `withException()` { #contractsadrpayloadpayload-withexception }
+
+```php
+public function withException( Throwable $exception ): Payload;
+```
+
+Returns a copy of the payload with the given exception.
+
+#### `withExtras()` { #contractsadrpayloadpayload-withextras }
+
+```php
+public function withExtras( mixed $extras ): Payload;
+```
+
+Returns a copy of the payload with the given extras.
+
+#### `withInput()` { #contractsadrpayloadpayload-withinput }
+
+```php
+public function withInput( mixed $input ): Payload;
+```
+
+Returns a copy of the payload with the given input.
+
+#### `withMessages()` { #contractsadrpayloadpayload-withmessages }
+
+```php
+public function withMessages( mixed $messages ): Payload;
+```
+
+Returns a copy of the payload with the given messages.
+
+#### `withResult()` { #contractsadrpayloadpayload-withresult }
+
+```php
+public function withResult( mixed $result ): Payload;
+```
+
+Returns a copy of the payload with the given result.
+
+#### `withStatus()` { #contractsadrpayloadpayload-withstatus }
+
+```php
+public function withStatus( mixed $status ): Payload;
+```
+
+Returns a copy of the payload with the given status.
+
+
+## Contracts\ADR\Responder\Formatter\Formatter
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Responder/Formatter/Formatter.php){ .src-btn }
+
+Renders a payload into a string for a given content type.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\ADR\Payload\Payload`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrresponderformatterformatter-accepts">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">accepts</span>( <span class="st">string</span> <span class="sv">$acceptHeader</span> )</code>
+<span class="desc">Whether this formatter can satisfy the given <code>Accept</code> header.</span>
+</a>
+<a class="api-item" href="#contractsadrresponderformatterformatter-contenttype">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">contentType</span>()</code>
+<span class="desc">The content type this formatter produces.</span>
+</a>
+<a class="api-item" href="#contractsadrresponderformatterformatter-format">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">format</span>( <span class="st">Payload</span> <span class="sv">$payload</span> )</code>
+<span class="desc">Renders the payload into a string.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+#### `accepts()` { #contractsadrresponderformatterformatter-accepts }
+
+```php
+public function accepts( string $acceptHeader ): bool;
+```
+
+Whether this formatter can satisfy the given `Accept` header.
+
+#### `contentType()` { #contractsadrresponderformatterformatter-contenttype }
+
+```php
+public function contentType(): string;
+```
+
+The content type this formatter produces.
+
+#### `format()` { #contractsadrresponderformatterformatter-format }
+
+```php
+public function format( Payload $payload ): string;
+```
+
+Renders the payload into a string.
+
+
+## Contracts\ADR\Responder\Responder
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Responder/Responder.php){ .src-btn }
+
+Turns a payload into an HTTP response. The only layer that speaks HTTP.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Responder\Responder`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrresponderresponder-__invoke">
+<code class="vis vis-public">public</code>
+<code class="ret">ResponseInterface</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">ResponseInterface</span> <span class="sv">$response</span>,</span><span class="prm"><span class="st">Payload</span> <span class="sv">$payload</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__invoke()` { #contractsadrresponderresponder-__invoke }
+
+```php
+public function __invoke(
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
+): ResponseInterface;
+```
+
+
+## Contracts\ADR\Router\AttributeFilter
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Router/AttributeFilter.php){ .src-btn }
+
+Validates, casts and converts a router match's positional tail segments into
+named request attributes, driven by the matched Action's optional static
+`params()` declaration.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Router\AttributeFilter`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrrouterattributefilter-filter">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">filter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$actionClass</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `filter()` { #contractsadrrouterattributefilter-filter }
+
+```php
+public function filter(
+    string $actionClass,
+    array $attributes
+): array;
+```
+
+
+## Contracts\ADR\Router\Router
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Router/Router.php){ .src-btn }
+
+Maps a request to an Action by convention: the HTTP method and the static
+path segments identify the class; trailing segments become positional
+request attributes. No route table.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Router\Router`**
+
+</div>
+
+__Uses__ `Phalcon\Http\RequestInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrrouterrouter-candidatesfor">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">candidatesFor</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span></span>)</code>
+<span class="desc">Every Action class this router would try for the given method and path,</span>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-classfor">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">classFor</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span></span>)</code>
+<span class="desc">The class this convention names for a fully static path, derived without</span>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-match">
+<code class="vis vis-public">public</code>
+<code class="ret">RouterMatch|null</code>
+<code class="sig"><span class="sf">match</span>( <span class="st">RequestInterface</span> <span class="sv">$request</span> )</code>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-methodfor">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">methodFor</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+<span class="desc">The HTTP method the given Action class answers, uppercased, or null when</span>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-pathfor">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">pathFor</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+<span class="desc">The canonical static path the given Action class answers, or null when</span>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-setactiondirectory">
+<code class="vis vis-public">public</code>
+<code class="ret">Router</code>
+<code class="sig"><span class="sf">setActionDirectory</span>( <span class="st">string</span> <span class="sv">$actionDirectory</span> )</code>
+<span class="desc">The filesystem root that backs the base namespace. The router uses it to</span>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-setbasenamespace">
+<code class="vis vis-public">public</code>
+<code class="ret">Router</code>
+<code class="sig"><span class="sf">setBaseNamespace</span>( <span class="st">string</span> <span class="sv">$baseNamespace</span> )</code>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-setmiddlewaremap">
+<code class="vis vis-public">public</code>
+<code class="ret">Router</code>
+<code class="sig"><span class="sf">setMiddlewareMap</span>( <span class="st">array</span> <span class="sv">$middlewareMap</span> )</code>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-setwordseparator">
+<code class="vis vis-public">public</code>
+<code class="ret">Router</code>
+<code class="sig"><span class="sf">setWordSeparator</span>( <span class="st">string</span> <span class="sv">$wordSeparator</span> )</code>
+<span class="desc">The single delimiter between words in a path segment. Applied</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 9</div>
+
+#### `candidatesFor()` { #contractsadrrouterrouter-candidatesfor }
+
+```php
+public function candidatesFor(
+    string $method,
+    string $path
+): array;
+```
+
+Every Action class this router would try for the given method and path,
+in the order it tries them. The first that exists wins at match time.
+Namespace descent consults the filesystem, so the list depends on the
+action directory.
+
+#### `classFor()` { #contractsadrrouterrouter-classfor }
+
+```php
+public function classFor(
+    string $method,
+    string $path
+): string;
+```
+
+The class this convention names for a fully static path, derived without
+consulting the filesystem - the exact inverse of pathFor().
+
+For tooling that needs the name before the code exists: generators,
+linters, documentation and "no action found; expected X" diagnostics.
+Pass the static prefix only; placeholders are the caller's concern.
+
+#### `match()` { #contractsadrrouterrouter-match }
+
+```php
+public function match( RequestInterface $request ): RouterMatch|null;
+```
+
+#### `methodFor()` { #contractsadrrouterrouter-methodfor }
+
+```php
+public function methodFor( string $className ): string|null;
+```
+
+The HTTP method the given Action class answers, uppercased, or null when
+the class is not one this convention would have produced.
+
+The counterpart to pathFor(): same argument, same null semantics, so a
+caller that accepts one answer accepts the other. Together they are the
+whole inverse of classFor().
+
+#### `pathFor()` { #contractsadrrouterrouter-pathfor }
+
+```php
+public function pathFor( string $className ): string|null;
+```
+
+The canonical static path the given Action class answers, or null when
+the class is not derivable from the base namespace. Positional
+attributes are not part of the canonical path.
+
+#### `setActionDirectory()` { #contractsadrrouterrouter-setactiondirectory }
+
+```php
+public function setActionDirectory( string $actionDirectory ): Router;
+```
+
+The filesystem root that backs the base namespace. The router uses it to
+decide whether a path segment names a sub-namespace.
+
+#### `setBaseNamespace()` { #contractsadrrouterrouter-setbasenamespace }
+
+```php
+public function setBaseNamespace( string $baseNamespace ): Router;
+```
+
+#### `setMiddlewareMap()` { #contractsadrrouterrouter-setmiddlewaremap }
+
+```php
+public function setMiddlewareMap( array $middlewareMap ): Router;
+```
+
+#### `setWordSeparator()` { #contractsadrrouterrouter-setwordseparator }
+
+```php
+public function setWordSeparator( string $wordSeparator ): Router;
+```
+
+The single delimiter between words in a path segment. Applied
+symmetrically when deriving a class name from a path and a path from a
+class name. Any other character is literal.
+
+
+## Contracts\ADR\Router\RouterMatch
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Router/RouterMatch.php){ .src-btn }
+
+The result of matching a request against the router: the Action class, the
+extracted route attributes, the route's middleware and its optional name.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Router\RouterMatch`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrrouterroutermatch-getaction">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getAction</span>()</code>
+</a>
+<a class="api-item" href="#contractsadrrouterroutermatch-getattributes">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
+</a>
+<a class="api-item" href="#contractsadrrouterroutermatch-getmiddleware">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getMiddleware</span>()</code>
+</a>
+<a class="api-item" href="#contractsadrrouterroutermatch-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `getAction()` { #contractsadrrouterroutermatch-getaction }
+
+```php
+public function getAction(): string;
+```
+
+#### `getAttributes()` { #contractsadrrouterroutermatch-getattributes }
+
+```php
+public function getAttributes(): array;
+```
+
+#### `getMiddleware()` { #contractsadrrouterroutermatch-getmiddleware }
+
+```php
+public function getMiddleware(): array;
+```
+
+#### `getName()` { #contractsadrrouterroutermatch-getname }
+
+```php
+public function getName(): string|null;
+```
+
+
+## Contracts\Acl\Adapter\Adapter
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/Adapter/Adapter.php){ .src-btn }
+
+Canonical contract for Phalcon\Acl adapters
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\Adapter\Adapter`**
+    - [`Phalcon\Acl\Adapter\AdapterInterface`](phalcon_acl.md#acladapteradapterinterface)
+
+</div>
+
+__Uses__ `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsacladapteradapter-addcomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addComponent</span>(<span class="prm"><span class="st">ComponentInterface|string</span> <span class="sv">$componentObject</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Adds a component to the ACL list</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-addcomponentaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Adds access to components</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-addinherit">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addInherit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">array|RoleInterface|string</span> <span class="sv">$roleToInherit</span></span>)</code>
+<span class="desc">Add a role which inherits from an existing role</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-addrole">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addRole</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleObject</span>,</span><span class="prm"><span class="st">array|RoleInterface|string|null</span> <span class="sv">$accessInherits</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Adds a role to the ACL list. The second parameter lets to inherit access</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-allow">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">allow</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$function</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Allow access to a role on a component. You can use <code>*</code> as wildcard</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-deny">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">deny</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$function</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Deny access to a role on a component. You can use <code>*</code> as wildcard</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-dropcomponentaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">dropComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Removes access from a component</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getactiveaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getActiveAccess</span>()</code>
+<span class="desc">Returns the access which the list is checking if a role can access it</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getactivecomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getActiveComponent</span>()</code>
+<span class="desc">Returns the component which the list is checking if some role can access</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getactiverole">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getActiveRole</span>()</code>
+<span class="desc">Returns the role which the list is checking if it&#039;s allowed to certain</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getcomponents">
+<code class="vis vis-public">public</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sf">getComponents</span>()</code>
+<span class="desc">Return an array with every component registered in the list</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getDefaultAction</span>()</code>
+<span class="desc">Returns the default action</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getinheritedroles">
+<code class="vis vis-public">public</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sf">getInheritedRoles</span>( <span class="st">string</span> <span class="sv">$roleName</span><span class="sm"> = &quot;&quot;</span> )</code>
+<span class="desc">Returns the inherited roles for a passed role name. If no role name</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getnoargumentsdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getNoArgumentsDefaultAction</span>()</code>
+<span class="desc">Returns the default ACL access level for no arguments provided in</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getroles">
+<code class="vis vis-public">public</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sf">getRoles</span>()</code>
+<span class="desc">Return an array with every role registered in the list</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-isallowed">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Check whether a role is allowed to access an action from a component</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-iscomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isComponent</span>( <span class="st">string</span> <span class="sv">$componentName</span> )</code>
+<span class="desc">Check whether a component exists in the components list</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-isrole">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isRole</span>( <span class="st">string</span> <span class="sv">$roleName</span> )</code>
+<span class="desc">Check whether role exist in the roles list</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-setdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
+<span class="desc">Sets the default access level</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-setnoargumentsdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setNoArgumentsDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
+<span class="desc">Sets the default access level (Phalcon\Acl\Enum::ALLOW or</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 20</div>
+
+#### `addComponent()` { #contractsacladapteradapter-addcomponent }
+
+```php
+public function addComponent(
+    ComponentInterface|string $componentObject,
+    array|string $accessList
+): bool;
+```
+
+Adds a component to the ACL list
+
+Access names can be a particular action, for instance `search`, `update`
+`delete` etc. or a list of them.
+
+#### `addComponentAccess()` { #contractsacladapteradapter-addcomponentaccess }
+
+```php
+public function addComponentAccess(
+    string $componentName,
+    mixed $accessList
+): bool;
+```
+
+Adds access to components
+
+#### `addInherit()` { #contractsacladapteradapter-addinherit }
+
+```php
+public function addInherit(
+    string $roleName,
+    array|RoleInterface|string $roleToInherit
+): bool;
+```
+
+Add a role which inherits from an existing role
+
+#### `addRole()` { #contractsacladapteradapter-addrole }
+
+```php
+public function addRole(
+    mixed $roleObject,
+    array|RoleInterface|string|null $accessInherits = null
+): bool;
+```
+
+Adds a role to the ACL list. The second parameter lets to inherit access
+from an existing role
+
+#### `allow()` { #contractsacladapteradapter-allow }
+
+```php
+public function allow(
+    string $roleName,
+    string $componentName,
+    array|string $access,
+    callable|null $function = null
+): void;
+```
+
+Allow access to a role on a component. You can use `*` as wildcard
+
+#### `deny()` { #contractsacladapteradapter-deny }
+
+```php
+public function deny(
+    string $roleName,
+    string $componentName,
+    array|string $access,
+    callable|null $function = null
+): void;
+```
+
+Deny access to a role on a component. You can use `*` as wildcard
+
+#### `dropComponentAccess()` { #contractsacladapteradapter-dropcomponentaccess }
+
+```php
+public function dropComponentAccess(
+    string $componentName,
+    array|string $accessList
+): void;
+```
+
+Removes access from a component
+
+#### `getActiveAccess()` { #contractsacladapteradapter-getactiveaccess }
+
+```php
+public function getActiveAccess(): string|null;
+```
+
+Returns the access which the list is checking if a role can access it
+
+#### `getActiveComponent()` { #contractsacladapteradapter-getactivecomponent }
+
+```php
+public function getActiveComponent(): string|null;
+```
+
+Returns the component which the list is checking if some role can access
+it
+
+#### `getActiveRole()` { #contractsacladapteradapter-getactiverole }
+
+```php
+public function getActiveRole(): string|null;
+```
+
+Returns the role which the list is checking if it's allowed to certain
+component/access
+
+#### `getComponents()` { #contractsacladapteradapter-getcomponents }
+
+```php
+public function getComponents(): array|null;
+```
+
+Return an array with every component registered in the list
+
+#### `getDefaultAction()` { #contractsacladapteradapter-getdefaultaction }
+
+```php
+public function getDefaultAction(): int;
+```
+
+Returns the default action
+
+#### `getInheritedRoles()` { #contractsacladapteradapter-getinheritedroles }
+
+```php
+public function getInheritedRoles( string $roleName = "" ): array|null;
+```
+
+Returns the inherited roles for a passed role name. If no role name
+has been specified it will return the whole array. If the role has not
+been found it returns an empty array
+
+#### `getNoArgumentsDefaultAction()` { #contractsacladapteradapter-getnoargumentsdefaultaction }
+
+```php
+public function getNoArgumentsDefaultAction(): int;
+```
+
+Returns the default ACL access level for no arguments provided in
+`isAllowed` action if a `function` (callable) exists for `accessKey`
+
+#### `getRoles()` { #contractsacladapteradapter-getroles }
+
+```php
+public function getRoles(): array|null;
+```
+
+Return an array with every role registered in the list
+
+#### `isAllowed()` { #contractsacladapteradapter-isallowed }
+
+```php
+public function isAllowed(
+    mixed $roleName,
+    mixed $componentName,
+    string $access,
+    array|null $parameters = null
+): bool;
+```
+
+Check whether a role is allowed to access an action from a component
+
+#### `isComponent()` { #contractsacladapteradapter-iscomponent }
+
+```php
+public function isComponent( string $componentName ): bool;
+```
+
+Check whether a component exists in the components list
+
+#### `isRole()` { #contractsacladapteradapter-isrole }
+
+```php
+public function isRole( string $roleName ): bool;
+```
+
+Check whether role exist in the roles list
+
+#### `setDefaultAction()` { #contractsacladapteradapter-setdefaultaction }
+
+```php
+public function setDefaultAction( int $defaultAccess ): void;
+```
+
+Sets the default access level
+(Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+
+#### `setNoArgumentsDefaultAction()` { #contractsacladapteradapter-setnoargumentsdefaultaction }
+
+```php
+public function setNoArgumentsDefaultAction( int $defaultAccess ): void;
+```
+
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or
+Phalcon\Acl\Enum::DENY) for no arguments provided in isAllowed action if
+there exists func for accessKey
+
+
+## Contracts\Acl\Adapter\Persistable
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/Adapter/Persistable.php){ .src-btn }
+
+Contract for ACL adapters that persist their policy to a backing store as a
+whole-policy snapshot (coarse granularity).
+
+NOTE: callable (closure) rules registered via allow()/deny() are NOT
+persisted - closures are not serializable. Re-register them in code after
+load(). The static rule set and role inheritance are persisted in full.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\Adapter\Persistable`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsacladapterpersistable-load">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">load</span>()</code>
+<span class="desc">Loads the policy snapshot from the backing store, replacing current</span>
+</a>
+<a class="api-item" href="#contractsacladapterpersistable-save">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">save</span>()</code>
+<span class="desc">Persists the current policy snapshot to the backing store.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 2</div>
+
+#### `load()` { #contractsacladapterpersistable-load }
+
+```php
+public function load(): bool;
+```
+
+Loads the policy snapshot from the backing store, replacing current
+in-memory state. Returns false if no snapshot was found.
+
+#### `save()` { #contractsacladapterpersistable-save }
+
+```php
+public function save(): bool;
+```
+
+Persists the current policy snapshot to the backing store.
+
+
+## Contracts\Acl\Component
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/Component.php){ .src-btn }
+
+Canonical contract for an ACL component entity.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\Component`**
+    - [`Phalcon\Acl\ComponentInterface`](phalcon_acl.md#aclcomponentinterface)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsaclcomponent-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+<span class="desc">Magic method __toString</span>
+</a>
+<a class="api-item" href="#contractsaclcomponent-getdescription">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
+<span class="desc">Returns component description</span>
+</a>
+<a class="api-item" href="#contractsaclcomponent-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+<span class="desc">Returns the component name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+#### `__toString()` { #contractsaclcomponent-__tostring }
+
+```php
+public function __toString(): string;
+```
+
+Magic method __toString
+
+#### `getDescription()` { #contractsaclcomponent-getdescription }
+
+```php
+public function getDescription(): string|null;
+```
+
+Returns component description
+
+#### `getName()` { #contractsaclcomponent-getname }
+
+```php
+public function getName(): string;
+```
+
+Returns the component name
+
+
+## Contracts\Acl\ComponentAware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/ComponentAware.php){ .src-btn }
+
+Canonical contract for ACL component-aware objects.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\ComponentAware`**
+    - [`Phalcon\Acl\ComponentAwareInterface`](phalcon_acl.md#aclcomponentawareinterface)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsaclcomponentaware-getcomponentname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getComponentName</span>()</code>
+<span class="desc">Returns component name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getComponentName()` { #contractsaclcomponentaware-getcomponentname }
+
+```php
+public function getComponentName(): string;
+```
+
+Returns component name
+
+
+## Contracts\Acl\Role
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/Role.php){ .src-btn }
+
+Canonical contract for an ACL role entity.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\Role`**
+    - [`Phalcon\Acl\RoleInterface`](phalcon_acl.md#aclroleinterface)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsaclrole-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+<span class="desc">Magic method __toString</span>
+</a>
+<a class="api-item" href="#contractsaclrole-getdescription">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
+<span class="desc">Returns role description</span>
+</a>
+<a class="api-item" href="#contractsaclrole-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+<span class="desc">Returns the role name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+#### `__toString()` { #contractsaclrole-__tostring }
+
+```php
+public function __toString(): string;
+```
+
+Magic method __toString
+
+#### `getDescription()` { #contractsaclrole-getdescription }
+
+```php
+public function getDescription(): string|null;
+```
+
+Returns role description
+
+#### `getName()` { #contractsaclrole-getname }
+
+```php
+public function getName(): string;
+```
+
+Returns the role name
+
+
+## Contracts\Acl\RoleAware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/RoleAware.php){ .src-btn }
+
+Canonical contract for ACL role-aware objects.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\RoleAware`**
+    - [`Phalcon\Acl\RoleAwareInterface`](phalcon_acl.md#aclroleawareinterface)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsaclroleaware-getrolename">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getRoleName</span>()</code>
+<span class="desc">Returns role name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getRoleName()` { #contractsaclroleaware-getrolename }
+
+```php
+public function getRoleName(): string;
+```
+
+Returns role name
+
+
 ## Contracts\Assets\Asset
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Assets/Asset.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Assets/Asset.php){ .src-btn }
 
 Canonical contract for Phalcon\Assets\Asset.
 
@@ -137,7 +1563,7 @@ Sets the asset's type.
 ## Contracts\Assets\Filter
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Assets/Filter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Assets/Filter.php){ .src-btn }
 
 Canonical contract for Phalcon\Assets filters (Cssmin, Jsmin, None, and
 custom user filters).
@@ -176,7 +1602,7 @@ Filters the content returning a string with the filtered content
 ## Contracts\Auth\Access\Access
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Access/Access.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Access/Access.php){ .src-btn }
 
 Access gates are Specifications: policies that decide whether the current
 identity may run the given action. The enforcement point passes the
@@ -296,7 +1722,7 @@ for an unlisted action they return opposite answers to the same call.
 ## Contracts\Auth\Adapter\Adapter
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Adapter/Adapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Adapter/Adapter.php){ .src-btn }
 
 Authentication adapter contract.
 
@@ -334,7 +1760,7 @@ __Uses__ `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Secu
 <a class="api-item" href="#contractsauthadapteradapter-retrievebyid">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">retrieveById</span>( <span class="st">int|string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Find a user by their unique identifier.</span>
 </a>
 <a class="api-item" href="#contractsauthadapteradapter-validatecredentials">
@@ -375,7 +1801,7 @@ Returns null if no user matches.
 #### `retrieveById()` { #contractsauthadapteradapter-retrievebyid }
 
 ```php
-public function retrieveById( mixed $id ): AuthUser|null;
+public function retrieveById( int|string $id ): AuthUser|null;
 ```
 
 Find a user by their unique identifier.
@@ -397,7 +1823,7 @@ Implementations typically verify the password hash held under the
 ## Contracts\Auth\Adapter\AdapterConfig
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Adapter/AdapterConfig.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Adapter/AdapterConfig.php){ .src-btn }
 
 Authentication adapter configuration contract.
 
@@ -438,7 +1864,7 @@ Returns the user-model class name to hydrate, if configured.
 ## Contracts\Auth\Adapter\RememberAdapter
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Adapter/RememberAdapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Adapter/RememberAdapter.php){ .src-btn }
 
 Capability extension implemented by adapters that support remember-me.
 
@@ -464,7 +1890,7 @@ __Uses__ `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberTo
 <a class="api-item" href="#contractsauthadapterrememberadapter-retrievebytoken">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveByToken</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">retrieveByToken</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Retrieve a user by the remember-me cookie payload.</span>
 </a>
 </div>
@@ -485,9 +1911,9 @@ Create and persist a new remember token for the user.
 
 ```php
 public function retrieveByToken(
-    mixed $id,
+    int|string $id,
     string $token,
-    string $userAgent = null
+    string|null $userAgent = null
 ): AuthUser|null;
 ```
 
@@ -497,7 +1923,7 @@ Retrieve a user by the remember-me cookie payload.
 ## Contracts\Auth\AuthRemember
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/AuthRemember.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/AuthRemember.php){ .src-btn }
 
 Implemented by authenticatable models that support remember-me tokens.
 This is intentionally separate from AuthUser so that adapters which do
@@ -515,7 +1941,7 @@ not support remember-me are not forced to implement it.
 <a class="api-item" href="#contractsauthauthremember-createremembertoken">
 <code class="vis vis-public">public</code>
 <code class="ret">RememberToken</code>
-<code class="sig"><span class="sf">createRememberToken</span>(<span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">createRememberToken</span>(<span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists a new remember token for the user.</span>
 </a>
 <a class="api-item" href="#contractsauthauthremember-getremembertoken">
@@ -535,7 +1961,7 @@ not support remember-me are not forced to implement it.
 ```php
 public function createRememberToken(
     string $token,
-    string $userAgent = null
+    string|null $userAgent = null
 ): RememberToken;
 ```
 
@@ -554,7 +1980,7 @@ or null if not found.
 ## Contracts\Auth\AuthUser
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/AuthUser.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/AuthUser.php){ .src-btn }
 
 Implemented by user models that can be authenticated.
 
@@ -608,7 +2034,7 @@ Returns the hashed password for the authenticatable user.
 ## Contracts\Auth\Guard\BasicAuth
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Guard/BasicAuth.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Guard/BasicAuth.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -630,7 +2056,7 @@ __Uses__ `Phalcon\Contracts\Auth\AuthUser`
 </a>
 <a class="api-item" href="#contractsauthguardbasicauth-oncebasic">
 <code class="vis vis-public">public</code>
-<code class="ret">false|AuthUser</code>
+<code class="ret">AuthUser|false</code>
 <code class="sig"><span class="sf">onceBasic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;email&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$extraConditions</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Like basic() but does not persist; returns the resolved user on success</span>
 </a>
@@ -657,7 +2083,7 @@ Authenticate against HTTP Basic credentials. Returns true on success.
 public function onceBasic(
     string $field = "email",
     array $extraConditions = []
-): false|AuthUser;
+): AuthUser|false;
 ```
 
 Like basic() but does not persist; returns the resolved user on success
@@ -667,7 +2093,7 @@ or false on failure.
 ## Contracts\Auth\Guard\Guard
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Guard/Guard.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Guard/Guard.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -830,7 +2256,7 @@ Validates the given credentials without logging in.
 ## Contracts\Auth\Guard\GuardConfig
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Guard/GuardConfig.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Guard/GuardConfig.php){ .src-btn }
 
 Authentication guard configuration contract.
 
@@ -849,7 +2275,7 @@ AbstractGuard can accept any guard config uniformly.
 ## Contracts\Auth\Guard\GuardStateful
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Guard/GuardStateful.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Guard/GuardStateful.php){ .src-btn }
 
 Implemented by guards backed by persistent state (sessions/cookies).
 
@@ -878,8 +2304,8 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Aut
 </a>
 <a class="api-item" href="#contractsauthguardguardstateful-loginbyid">
 <code class="vis vis-public">public</code>
-<code class="ret">false|AuthUser</code>
-<code class="sig"><span class="sf">loginById</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
+<code class="ret">AuthUser|false</code>
+<code class="sig"><span class="sf">loginById</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Logs in the user identified by $id. Returns the resolved user on</span>
 </a>
 <a class="api-item" href="#contractsauthguardguardstateful-logout">
@@ -923,9 +2349,9 @@ public function login(
 
 ```php
 public function loginById(
-    mixed $id,
+    int|string $id,
     bool $remember = false
-): false|AuthUser;
+): AuthUser|false;
 ```
 
 Logs in the user identified by $id. Returns the resolved user on
@@ -947,7 +2373,7 @@ public function viaRemember(): bool;
 ## Contracts\Auth\Manager
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Manager.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Manager.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1018,7 +2444,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Access\Access` · `
 <a class="api-item" href="#contractsauthmanager-guard">
 <code class="vis vis-public">public</code>
 <code class="ret">Guard</code>
-<code class="sig"><span class="sf">guard</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">guard</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the named guard, or the default guard when $name is null.</span>
 </a>
 <a class="api-item" href="#contractsauthmanager-id">
@@ -1153,7 +2579,7 @@ public function getGuards(): array;
 #### `guard()` { #contractsauthmanager-guard }
 
 ```php
-public function guard( string $name = null ): Guard;
+public function guard( string|null $name = null ): Guard;
 ```
 
 Returns the named guard, or the default guard when $name is null.
@@ -1216,7 +2642,7 @@ logging in.
 ## Contracts\Auth\RememberToken
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/RememberToken.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/RememberToken.php){ .src-btn }
 
 A persisted remember-me token row.
 
@@ -1281,7 +2707,7 @@ Returns the user agent associated with this token, if any.
 ## Contracts\Cache\Cache
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Cache/Cache.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Cache/Cache.php){ .src-btn }
 
 Canonical contract for Phalcon\Cache\Cache.
 
@@ -1313,17 +2739,19 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Exception\InvalidArgumentException`
 <a class="api-item" href="#contractscachecache-deletemultiple">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">mixed</span> <span class="sv">$keys</span> )</code>
+<code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">iterable</span> <span class="sv">$keys</span> )</code>
 <span class="desc">Deletes multiple cache items in a single operation.</span>
 </a>
 <a class="api-item" href="#contractscachecache-get">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$default</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
 <a class="api-item" href="#contractscachecache-getmultiple">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">getMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">iterable</code>
+<code class="sig"><span class="sf">getMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$default</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Obtains multiple cache items by their unique keys.</span>
 </a>
 <a class="api-item" href="#contractscachecache-has">
@@ -1335,13 +2763,13 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Exception\InvalidArgumentException`
 <a class="api-item" href="#contractscachecache-set">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">DateInterval|int|null</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists data in the cache, uniquely referenced by a key with an optional</span>
 </a>
 <a class="api-item" href="#contractscachecache-setmultiple">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">setMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">setMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">DateInterval|int|null</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</span>
 </a>
 </div>
@@ -1369,7 +2797,7 @@ Delete an item from the cache by its unique key.
 #### `deleteMultiple()` { #contractscachecache-deletemultiple }
 
 ```php
-public function deleteMultiple( mixed $keys ): bool;
+public function deleteMultiple( iterable $keys ): bool;
 ```
 
 Deletes multiple cache items in a single operation.
@@ -1379,8 +2807,8 @@ Deletes multiple cache items in a single operation.
 ```php
 public function get(
     string $key,
-    mixed $defaultValue = null
-);
+    mixed $default = null
+): mixed;
 ```
 
 Fetches a value from the cache.
@@ -1389,9 +2817,9 @@ Fetches a value from the cache.
 
 ```php
 public function getMultiple(
-    mixed $keys,
-    mixed $defaultValue = null
-);
+    iterable $keys,
+    mixed $default = null
+): iterable;
 ```
 
 Obtains multiple cache items by their unique keys.
@@ -1410,7 +2838,7 @@ Determines whether an item is present in the cache.
 public function set(
     string $key,
     mixed $value,
-    mixed $ttl = null
+    DateInterval|int|null $ttl = null
 ): bool;
 ```
 
@@ -1421,8 +2849,8 @@ expiration TTL time.
 
 ```php
 public function setMultiple(
-    mixed $values,
-    mixed $ttl = null
+    iterable $values,
+    DateInterval|int|null $ttl = null
 ): bool;
 ```
 
@@ -1432,7 +2860,7 @@ Persists a set of key => value pairs in the cache, with an optional TTL.
 ## Contracts\Cli\Dispatcher
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Cli/Dispatcher.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Cli/Dispatcher.php){ .src-btn }
 
 Canonical contract for Phalcon\Cli\Dispatcher.
 
@@ -1452,13 +2880,13 @@ __Uses__ `Phalcon\Cli\TaskInterface` · `Phalcon\Contracts\Dispatcher\Dispatcher
 <div class="api-list">
 <a class="api-item" href="#contractsclidispatcher-getactivetask">
 <code class="vis vis-public">public</code>
-<code class="ret">TaskInterface</code>
+<code class="ret">TaskInterface|null</code>
 <code class="sig"><span class="sf">getActiveTask</span>()</code>
 <span class="desc">Returns the active task in the dispatcher</span>
 </a>
 <a class="api-item" href="#contractsclidispatcher-getlasttask">
 <code class="vis vis-public">public</code>
-<code class="ret">TaskInterface</code>
+<code class="ret">TaskInterface|null</code>
 <code class="sig"><span class="sf">getLastTask</span>()</code>
 <span class="desc">Returns the latest dispatched controller</span>
 </a>
@@ -1513,7 +2941,7 @@ __Uses__ `Phalcon\Cli\TaskInterface` · `Phalcon\Contracts\Dispatcher\Dispatcher
 #### `getActiveTask()` { #contractsclidispatcher-getactivetask }
 
 ```php
-public function getActiveTask(): TaskInterface;
+public function getActiveTask(): TaskInterface|null;
 ```
 
 Returns the active task in the dispatcher
@@ -1521,7 +2949,7 @@ Returns the active task in the dispatcher
 #### `getLastTask()` { #contractsclidispatcher-getlasttask }
 
 ```php
-public function getLastTask(): TaskInterface;
+public function getLastTask(): TaskInterface|null;
 ```
 
 Returns the latest dispatched controller
@@ -1586,7 +3014,7 @@ Sets the default task suffix
 ## Contracts\Container\Ioc\IocContainer
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Ioc/IocContainer.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Ioc/IocContainer.php){ .src-btn }
 
 [_IocContainer_][] affords obtaining services by name.
 
@@ -1665,7 +3093,7 @@ Is the container able to return an instance of the `$serviceName`?
 ## Contracts\Container\Ioc\IocContainerFactory
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Ioc/IocContainerFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Ioc/IocContainerFactory.php){ .src-btn }
 
 [_IocContainerFactory_][] affords obtaining a new instance of
 [_IocContainer_][].
@@ -1711,7 +3139,7 @@ Returns a new instance of [_IocContainer_][].
 ## Contracts\Container\Ioc\IocThrowable
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Ioc/IocThrowable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Ioc/IocThrowable.php){ .src-btn }
 
 [_IocThrowable_][] extends [_Throwable_][] to mark an [_Exception_][] as
 IOC-related.
@@ -1720,7 +3148,7 @@ It adds no class members.
 
 <div class="api-tree" markdown>
 
-- `Throwable`
+- `\Throwable`
     - **`Phalcon\Contracts\Container\Ioc\IocThrowable`**
         - [`Phalcon\Container\Exceptions\ContainerThrowable`](phalcon_container.md#containerexceptionscontainerthrowable)
 
@@ -1733,7 +3161,7 @@ __Uses__ `Throwable`
 ## Contracts\Container\Ioc\IocTypeAliases
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Ioc/IocTypeAliases.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Ioc/IocTypeAliases.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1745,7 +3173,7 @@ __Uses__ `Throwable`
 ## Contracts\Container\Resolver\ReflectionMethodResolver
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Resolver/ReflectionMethodResolver.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Resolver/ReflectionMethodResolver.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1784,7 +3212,7 @@ public function resolveMethod(
 ## Contracts\Container\Resolver\ReflectionParameterResolver
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Resolver/ReflectionParameterResolver.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Resolver/ReflectionParameterResolver.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1823,7 +3251,7 @@ public function resolveParameter(
 ## Contracts\Container\Resolver\Resolvable
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Resolver/Resolvable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Resolver/Resolvable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1858,7 +3286,7 @@ public function resolve( IocContainer $ioc ): mixed;
 ## Contracts\Container\Resolver\ResolverService
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Resolver/ResolverService.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Resolver/ResolverService.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1867,7 +3295,7 @@ public function resolve( IocContainer $ioc ): mixed;
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod` · `ReflectionParameter` · `ReflectionType`
+__Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod` · `ReflectionType`
 { .api-uses }
 
 ### Method Summary
@@ -1968,11 +3396,11 @@ public function resolveType(
 ## Contracts\Container\Resolver\ResolverThrowable
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Resolver/ResolverThrowable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Resolver/ResolverThrowable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `Throwable`
+- `\Throwable`
     - **`Phalcon\Contracts\Container\Resolver\ResolverThrowable`**
 
 </div>
@@ -1984,7 +3412,7 @@ __Uses__ `Throwable`
 ## Contracts\Container\Service\Collection
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Service/Collection.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Collection.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2361,7 +3789,7 @@ public function unsetParameter( string $name ): void;
 ## Contracts\Container\Service\Definition
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Service/Definition.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Definition.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2569,10 +3997,91 @@ public function unsetFactory(): static;
 ```
 
 
+## Contracts\Container\Service\Enumerable
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Enumerable.php){ .src-btn }
+
+Optional capability contract for a container that can report the services it
+holds. Callers detect support with `instanceof`.
+
+Deliberately separate from Collection rather than a member of it. Collection
+mirrors the service-interop surface, which has no notion of enumeration, and
+adding a member to a published interface breaks every implementor. A second,
+narrow interface states the capability without touching the first.
+
+Carries no interop attribution because nothing here is copied: enumeration is
+Phalcon's own addition.
+
+Tooling that reports on a container type-hints this instead of the concrete
+Container, so it depends on a published contract rather than on an
+implementation detail that is free to change.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Container\Service\Enumerable`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractscontainerserviceenumerable-getservicenames">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getServiceNames</span>()</code>
+<span class="desc">Returns the names of every registered service definition. Names that</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getServiceNames()` { #contractscontainerserviceenumerable-getservicenames }
+
+```php
+public function getServiceNames(): array;
+```
+
+Returns the names of every registered service definition. Names that
+only exist as an alias, a pre-set instance or a parameter are not
+included.
+
+
+## Contracts\Container\Service\Lifetime
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Lifetime.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Container\Service\Lifetime`**
+
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">SCOPED</span><span class="sm"> = &quot;SCOPED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">SINGLETON</span><span class="sm"> = &quot;SINGLETON&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">TRANSIENT</span><span class="sm"> = &quot;TRANSIENT&quot;</span></code>
+</div>
+</div>
+
+
 ## Contracts\Container\Service\Provider
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Service/Provider.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Provider.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2604,11 +4113,11 @@ public function provide( Collection $services ): void;
 ## Contracts\Container\Service\Throwable
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Service/Throwable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Throwable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `PhpThrowable`
+- `\Throwable`
     - **`Phalcon\Contracts\Container\Service\Throwable`**
 
 </div>
@@ -2620,7 +4129,7 @@ __Uses__ `Throwable`
 ## Contracts\Db\Adapter\Adapter
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Db/Adapter/Adapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Adapter/Adapter.php){ .src-btn }
 
 Canonical contract for Phalcon\Db adapters.
 
@@ -2717,31 +4226,31 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 <a class="api-item" href="#contractsdbadapteradapter-createview">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a view</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Deletes data from a table using custom RDBMS SQL syntax</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-describecolumns">
 <code class="vis vis-public">public</code>
-<code class="ret">ColumnInterface[]</code>
-<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an array of Phalcon\Db\Column objects describing a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-describeindexes">
 <code class="vis vis-public">public</code>
-<code class="ret">IndexInterface[]</code>
-<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table indexes</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-describereferences">
 <code class="vis vis-public">public</code>
-<code class="ret">ReferenceInterface[]</code>
-<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table references</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-dropcolumn">
@@ -2771,25 +4280,25 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 <a class="api-item" href="#contractsdbadapteradapter-droptable">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">dropTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">dropTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Drops a table from a schema/database</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-dropview">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Drops a view</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-escapeidentifier">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">escapeIdentifier</span>( <span class="st">mixed</span> <span class="sv">$identifier</span> )</code>
+<code class="sig"><span class="sf">escapeIdentifier</span>( <span class="st">array|float|int|string</span> <span class="sv">$identifier</span> )</code>
 <span class="desc">Escapes a column/table/schema name</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-escapestring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">escapeString</span>( <span class="st">string</span> <span class="sv">$str</span> )</code>
+<code class="sig"><span class="sf">escapeString</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 <span class="desc">Escapes a value to avoid SQL injections</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-execute">
@@ -2806,13 +4315,13 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-fetchcolumn">
 <code class="vis vis-public">public</code>
-<code class="ret">string|bool</code>
-<code class="sig"><span class="sf">fetchColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$column</span><span class="sm"> = 0</span></span>)</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">fetchColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int|string</span> <span class="sv">$column</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Returns the n&#039;th field of first row in a SQL query result</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-fetchone">
 <code class="vis vis-public">public</code>
-<code class="ret">array</code>
+<code class="ret">array|bool</code>
 <code class="sig"><span class="sf">fetchOne</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$fetchMode</span><span class="sm"> = 2</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the first row in a SQL query result</span>
 </a>
@@ -2820,7 +4329,7 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">forUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-<span class="desc">Returns a SQL modified with a FOR UPDATE clause. The optional <code>modifier</code></span>
+<span class="desc">Returns a SQL modified with a FOR UPDATE clause</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getcolumndefinition">
 <code class="vis vis-public">public</code>
@@ -2831,7 +4340,7 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 <a class="api-item" href="#contractsdbadapteradapter-getcolumnlist">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getColumnList</span>( <span class="st">mixed</span> <span class="sv">$columnList</span> )</code>
+<code class="sig"><span class="sf">getColumnList</span>( <span class="st">array</span> <span class="sv">$columnList</span> )</code>
 <span class="desc">Gets a list of columns</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getconnectionid">
@@ -2915,13 +4424,13 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 <a class="api-item" href="#contractsdbadapteradapter-insert">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">insert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">insert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$fields</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Inserts data into a table using custom RDBMS SQL syntax</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-insertasdict">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">insertAsDict</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">insertAsDict</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Inserts data into a table using custom RBDM SQL syntax</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-isnestedtransactionswithsavepoints">
@@ -2938,37 +4447,37 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-lastinsertid">
 <code class="vis vis-public">public</code>
-<code class="ret">string|bool</code>
-<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="ret">bool|string</code>
+<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns insert id for the auto_increment column inserted in the last SQL</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$number</span></span>)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array|int</span> <span class="sv">$number</span></span>)</code>
 <span class="desc">Appends a LIMIT clause to sqlQuery argument</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-listtables">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">listTables</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">listTables</span>( <span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all tables on a database</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-listviews">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">listViews</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">listViews</span>( <span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all views on a database</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-modifycolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface|null</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Modifies a table column based on a definition</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-query">
 <code class="vis vis-public">public</code>
-<code class="ret">ResultInterface|bool</code>
+<code class="ret">bool|ResultInterface</code>
 <code class="sig"><span class="sf">query</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlStatement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sends SQL statements to the database server returning the success state.</span>
 </a>
@@ -2993,14 +4502,14 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 <a class="api-item" href="#contractsdbadapteradapter-setnestedtransactionswithsavepoints">
 <code class="vis vis-public">public</code>
 <code class="ret">\Phalcon\Db\Adapter\AdapterInterface</code>
-<code class="sig"><span class="sf">setNestedTransactionsWithSavepoints</span>( <span class="st">bool</span> <span class="sv">$nestedTransactionsWithSavepoints</span> )</code>
+<code class="sig"><span class="sf">setNestedTransactionsWithSavepoints</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
 <span class="desc">Set if nested transactions should use savepoints</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-sharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-<span class="desc">Returns a SQL modified with a shared-lock clause. See the dialect&#039;s</span>
+<span class="desc">Returns a SQL modified with a LOCK IN SHARE MODE clause</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-supportsequences">
 <code class="vis vis-public">public</code>
@@ -3017,25 +4526,25 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 <a class="api-item" href="#contractsdbadapteradapter-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-tableoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets creation options from a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$whereCondition</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Updates data on a table using custom RDBMS SQL syntax</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-updateasdict">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">updateAsDict</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">updateAsDict</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$whereCondition</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Updates data on a table using custom RBDM SQL syntax</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-useexplicitidvalue">
@@ -3047,7 +4556,7 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 <a class="api-item" href="#contractsdbadapteradapter-viewexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.view</span>
 </a>
 </div>
@@ -3173,7 +4682,7 @@ Creates a table
 public function createView(
     string $viewName,
     array $definition,
-    string $schemaName = null
+    string|null $schemaName = null
 ): bool;
 ```
 
@@ -3183,8 +4692,8 @@ Creates a view
 
 ```php
 public function delete(
-    mixed $table,
-    string $whereCondition = null,
+    array|string $tableName,
+    string|null $whereCondition = null,
     array $placeholders = [],
     array $dataTypes = []
 ): bool;
@@ -3196,9 +4705,9 @@ Deletes data from a table using custom RDBMS SQL syntax
 
 ```php
 public function describeColumns(
-    string $table,
-    string $schema = null
-): ColumnInterface[];
+    string $tableName,
+    string|null $schemaName = null
+): array;
 ```
 
 Returns an array of Phalcon\Db\Column objects describing a table
@@ -3207,9 +4716,9 @@ Returns an array of Phalcon\Db\Column objects describing a table
 
 ```php
 public function describeIndexes(
-    string $table,
-    string $schema = null
-): IndexInterface[];
+    string $tableName,
+    string|null $schemaName = null
+): array;
 ```
 
 Lists table indexes
@@ -3218,9 +4727,9 @@ Lists table indexes
 
 ```php
 public function describeReferences(
-    string $table,
-    string $schema = null
-): ReferenceInterface[];
+    string $tableName,
+    string|null $schemaName = null
+): array;
 ```
 
 Lists table references
@@ -3277,7 +4786,7 @@ Drops primary key from a table
 ```php
 public function dropTable(
     string $tableName,
-    string $schemaName = null,
+    string|null $schemaName = null,
     bool $ifExists = true
 ): bool;
 ```
@@ -3289,7 +4798,7 @@ Drops a table from a schema/database
 ```php
 public function dropView(
     string $viewName,
-    string $schemaName = null,
+    string|null $schemaName = null,
     bool $ifExists = true
 ): bool;
 ```
@@ -3299,7 +4808,7 @@ Drops a view
 #### `escapeIdentifier()` { #contractsdbadapteradapter-escapeidentifier }
 
 ```php
-public function escapeIdentifier( mixed $identifier ): string;
+public function escapeIdentifier( array|float|int|string $identifier ): string;
 ```
 
 Escapes a column/table/schema name
@@ -3307,7 +4816,7 @@ Escapes a column/table/schema name
 #### `escapeString()` { #contractsdbadapteradapter-escapestring }
 
 ```php
-public function escapeString( string $str ): string;
+public function escapeString( string $input ): string;
 ```
 
 Escapes a value to avoid SQL injections
@@ -3345,23 +4854,23 @@ Dumps the complete result of a query into an array
 public function fetchColumn(
     string $sqlQuery,
     array $placeholders = [],
-    mixed $column = 0
-): string|bool;
+    int|string $column = 0
+): mixed;
 ```
 
 Returns the n'th field of first row in a SQL query result
 
 ```php
-// Getting count of robots
-$robotsCount = $connection->fetchColumn("SELECT COUNT(*) FROM robots");
-print_r($robotsCount);
+// Getting count of invoices
+$invoicesCount = $connection->fetchColumn("SELECT COUNT(*) FROM co_invoices");
+print_r($invoicesCount);
 
-// Getting name of last edited robot
-$robot = $connection->fetchColumn(
-    "SELECT id, name FROM robots ORDER BY modified DESC",
+// Getting the title of the last created invoice
+$invoice = $connection->fetchColumn(
+    "SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC",
     1
 );
-print_r($robot);
+print_r($invoice);
 ```
 
 #### `fetchOne()` { #contractsdbadapteradapter-fetchone }
@@ -3372,7 +4881,7 @@ public function fetchOne(
     int $fetchMode = 2,
     array $bindParams = [],
     array $bindTypes = []
-): array;
+): array|bool;
 ```
 
 Returns the first row in a SQL query result
@@ -3386,9 +4895,7 @@ public function forUpdate(
 ): string;
 ```
 
-Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
-appends a row-lock disposition keyword - pass `Dialect::LOCK_NOWAIT`
-or `Dialect::LOCK_SKIP_LOCKED` (or leave as `Dialect::LOCK_NONE`).
+Returns a SQL modified with a FOR UPDATE clause
 
 #### `getColumnDefinition()` { #contractsdbadapteradapter-getcolumndefinition }
 
@@ -3401,7 +4908,7 @@ Returns the SQL column definition from a column
 #### `getColumnList()` { #contractsdbadapteradapter-getcolumnlist }
 
 ```php
-public function getColumnList( mixed $columnList ): string;
+public function getColumnList( array $columnList ): string;
 ```
 
 Gets a list of columns
@@ -3432,21 +4939,19 @@ Returns the default value to make the RBDM use the default value declared
 in the table definition
 
 ```php
-// Inserting a new robot with a valid default value for the column 'year'
+// Inserting a new invoice with a valid default value for the column 'inv_total'
 $success = $connection->insert(
-    "robots",
+    "co_invoices",
     [
-        "Astro Boy",
+        "Test Invoice",
         $connection->getDefaultValue()
     ],
     [
-        "name",
-        "year",
+        "inv_title",
+        "inv_total",
     ]
 );
 ```
-
-@todo Return NULL if this is not supported by the adapter
 
 #### `getDescriptor()` { #contractsdbadapteradapter-getdescriptor }
 
@@ -3532,10 +5037,10 @@ Returns type of database system the adapter is used for
 
 ```php
 public function insert(
-    string $table,
+    string $tableName,
     array $values,
-    mixed $fields = null,
-    mixed $dataTypes = null
+    array|null $fields = null,
+    array $dataTypes = []
 ): bool;
 ```
 
@@ -3545,26 +5050,26 @@ Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
 public function insertAsDict(
-    string $table,
-    mixed $data,
-    mixed $dataTypes = null
+    string $tableName,
+    array $data,
+    array $dataTypes = []
 ): bool;
 ```
 
 Inserts data into a table using custom RBDM SQL syntax
 
 ```php
-// Inserting a new robot
+// Inserting a new invoice
 $success = $connection->insertAsDict(
-    "robots",
+    "co_invoices",
     [
-        "name" => "Astro Boy",
-        "year" => 1952,
+        "inv_title" => "Test Invoice",
+        "inv_total" => 100,
     ]
 );
 
 // Next SQL sentence is sent to the database system
-INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+INSERT INTO `co_invoices` (`inv_title`, `inv_total`) VALUES ("Test Invoice", 100);
 ```
 
 #### `isNestedTransactionsWithSavepoints()` { #contractsdbadapteradapter-isnestedtransactionswithsavepoints }
@@ -3586,7 +5091,7 @@ Checks whether connection is under database transaction
 #### `lastInsertId()` { #contractsdbadapteradapter-lastinsertid }
 
 ```php
-public function lastInsertId( string $name = null ): string|bool;
+public function lastInsertId( string|null $name = null ): bool|string;
 ```
 
 Returns insert id for the auto_increment column inserted in the last SQL
@@ -3597,7 +5102,7 @@ statement
 ```php
 public function limit(
     string $sqlQuery,
-    mixed $number
+    array|int $number
 ): string;
 ```
 
@@ -3606,7 +5111,7 @@ Appends a LIMIT clause to sqlQuery argument
 #### `listTables()` { #contractsdbadapteradapter-listtables }
 
 ```php
-public function listTables( string $schemaName = null ): array;
+public function listTables( string|null $schemaName = null ): array;
 ```
 
 List all tables on a database
@@ -3614,7 +5119,7 @@ List all tables on a database
 #### `listViews()` { #contractsdbadapteradapter-listviews }
 
 ```php
-public function listViews( string $schemaName = null ): array;
+public function listViews( string|null $schemaName = null ): array;
 ```
 
 List all views on a database
@@ -3626,7 +5131,7 @@ public function modifyColumn(
     string $tableName,
     string $schemaName,
     ColumnInterface $column,
-    ColumnInterface $currentColumn = null
+    ColumnInterface|null $currentColumn = null
 ): bool;
 ```
 
@@ -3639,7 +5144,7 @@ public function query(
     string $sqlStatement,
     array $bindParams = [],
     array $bindTypes = []
-): ResultInterface|bool;
+): bool|ResultInterface;
 ```
 
 Sends SQL statements to the database server returning the success state.
@@ -3673,7 +5178,7 @@ Rollbacks given savepoint
 #### `setNestedTransactionsWithSavepoints()` { #contractsdbadapteradapter-setnestedtransactionswithsavepoints }
 
 ```php
-public function setNestedTransactionsWithSavepoints( bool $nestedTransactionsWithSavepoints ): \Phalcon\Db\Adapter\AdapterInterface;
+public function setNestedTransactionsWithSavepoints( bool $flag ): \Phalcon\Db\Adapter\AdapterInterface;
 ```
 
 Set if nested transactions should use savepoints
@@ -3687,10 +5192,7 @@ public function sharedLock(
 ): string;
 ```
 
-Returns a SQL modified with a shared-lock clause. See the dialect's
-`sharedLock()` for per-engine semantics. The optional `modifier` is
-passed straight through (use `Dialect::LOCK_NOWAIT` /
-`Dialect::LOCK_SKIP_LOCKED` for PostgreSQL).
+Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 #### `supportSequences()` { #contractsdbadapteradapter-supportsequences }
 
@@ -3714,7 +5216,7 @@ SQLite does not support the DEFAULT keyword
 ```php
 public function tableExists(
     string $tableName,
-    string $schemaName = null
+    string|null $schemaName = null
 ): bool;
 ```
 
@@ -3725,7 +5227,7 @@ Generates SQL checking for the existence of a schema.table
 ```php
 public function tableOptions(
     string $tableName,
-    string $schemaName = null
+    string|null $schemaName = null
 ): array;
 ```
 
@@ -3735,11 +5237,11 @@ Gets creation options from a table
 
 ```php
 public function update(
-    string $table,
-    mixed $fields,
-    mixed $values,
-    mixed $whereCondition = null,
-    mixed $dataTypes = null
+    string $tableName,
+    array $fields,
+    array $values,
+    array|string $whereCondition = [],
+    array $dataTypes = []
 ): bool;
 ```
 
@@ -3749,10 +5251,10 @@ Updates data on a table using custom RDBMS SQL syntax
 
 ```php
 public function updateAsDict(
-    string $table,
-    mixed $data,
-    mixed $whereCondition = null,
-    mixed $dataTypes = null
+    string $tableName,
+    array $data,
+    array|string $whereCondition = [],
+    array $dataTypes = []
 ): bool;
 ```
 
@@ -3760,17 +5262,17 @@ Updates data on a table using custom RBDM SQL syntax
 Another, more convenient syntax
 
 ```php
-// Updating existing robot
+// Updating existing invoice
 $success = $connection->updateAsDict(
-    "robots",
+    "co_invoices",
     [
-        "name" => "New Astro Boy",
+        "inv_title" => "New Test Invoice",
     ],
-    "id = 101"
+    "inv_id = 101"
 );
 
 // Next SQL sentence is sent to the database system
-UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
+UPDATE `co_invoices` SET `inv_title` = "New Test Invoice" WHERE inv_id = 101
 ```
 
 #### `useExplicitIdValue()` { #contractsdbadapteradapter-useexplicitidvalue }
@@ -3787,7 +5289,7 @@ columns
 ```php
 public function viewExists(
     string $viewName,
-    string $schemaName = null
+    string|null $schemaName = null
 ): bool;
 ```
 
@@ -3797,7 +5299,7 @@ Generates SQL checking for the existence of a schema.view
 ## Contracts\Db\Check
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Db/Check.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Check.php){ .src-btn }
 
 Canonical contract for Phalcon\Db\Check.
 
@@ -3851,7 +5353,7 @@ prefix in that case.
 ## Contracts\Db\Column
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Db/Column.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Column.php){ .src-btn }
 
 Canonical contract for Phalcon\Db\Column.
 
@@ -3924,7 +5426,7 @@ Canonical contract for Phalcon\Db\Column.
 </a>
 <a class="api-item" href="#contractsdbcolumn-gettypevalues">
 <code class="vis vis-public">public</code>
-<code class="ret">array|string|int</code>
+<code class="ret">array|int|string</code>
 <code class="sig"><span class="sf">getTypeValues</span>()</code>
 <span class="desc">Returns column type values</span>
 </a>
@@ -3944,7 +5446,7 @@ Canonical contract for Phalcon\Db\Column.
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isFirst</span>()</code>
-<span class="desc">Check whether column have first position in table</span>
+<span class="desc">Check whether the column is the first in table</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-isnotnull">
 <code class="vis vis-public">public</code>
@@ -3956,7 +5458,7 @@ Canonical contract for Phalcon\Db\Column.
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isNumeric</span>()</code>
-<span class="desc">Check whether column have an numeric type</span>
+<span class="desc">Check whether column have a numeric type</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-isprimary">
 <code class="vis vis-public">public</code>
@@ -4043,7 +5545,7 @@ Returns column type reference
 #### `getTypeValues()` { #contractsdbcolumn-gettypevalues }
 
 ```php
-public function getTypeValues(): array|string|int;
+public function getTypeValues(): array|int|string;
 ```
 
 Returns column type values
@@ -4070,7 +5572,7 @@ Auto-Increment
 public function isFirst(): bool;
 ```
 
-Check whether column have first position in table
+Check whether the column is the first in table
 
 #### `isNotNull()` { #contractsdbcolumn-isnotnull }
 
@@ -4086,7 +5588,7 @@ Not null
 public function isNumeric(): bool;
 ```
 
-Check whether column have an numeric type
+Check whether column have a numeric type
 
 #### `isPrimary()` { #contractsdbcolumn-isprimary }
 
@@ -4108,7 +5610,7 @@ Returns true if number column is unsigned
 ## Contracts\Db\Dialect
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Db/Dialect.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Dialect.php){ .src-btn }
 
 Canonical contract for Phalcon\Db dialects.
 
@@ -4130,7 +5632,7 @@ Canonical contract for Phalcon\Db dialects.
 
 </div>
 
-__Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
+__Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
 { .api-uses }
 
 ### Method Summary
@@ -4175,25 +5677,25 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon
 <a class="api-item" href="#contractsdbdialect-createview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to create a view</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-describecolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to describe a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-describeindexes">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to query indexes on a table.</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-describereferences">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to query foreign keys on a table.</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-dropcolumn">
@@ -4229,14 +5731,14 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon
 <a class="api-item" href="#contractsdbdialect-dropview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a view</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">forUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-<span class="desc">Returns a SQL modified with a FOR UPDATE clause. The optional <code>modifier</code></span>
+<span class="desc">Returns a SQL modified with a FOR UPDATE clause</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-getcolumndefinition">
 <code class="vis vis-public">public</code>
@@ -4259,30 +5761,30 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon
 <a class="api-item" href="#contractsdbdialect-getsqlexpression">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getSqlExpression</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">getSqlExpression</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Transforms an intermediate representation for an expression into a</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$number</span></span>)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array|int</span> <span class="sv">$number</span></span>)</code>
 <span class="desc">Generates the SQL for LIMIT clause</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-listtables">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">listTables</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">listTables</span>( <span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all tables in database</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-modifycolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface|null</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to modify a column in a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-registercustomfunction">
 <code class="vis vis-public">public</code>
-<code class="ret">\Phalcon\Db\Dialect</code>
+<code class="ret">DbDialect</code>
 <code class="sig"><span class="sf">registerCustomFunction</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$customFunction</span></span>)</code>
 <span class="desc">Registers custom SQL functions</span>
 </a>
@@ -4308,7 +5810,7 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-<span class="desc">Returns a SQL modified with a shared-lock clause. MySQL emits</span>
+<span class="desc">Returns a SQL modified with a LOCK IN SHARE MODE clause</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-supportsreleasesavepoints">
 <code class="vis vis-public">public</code>
@@ -4325,19 +5827,19 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon
 <a class="api-item" href="#contractsdbdialect-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-tableoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates the SQL to describe the table creation options</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-viewexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.view</span>
 </a>
 </div>
@@ -4353,17 +5855,12 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon
 <div class="api-item">
 <code class="ret">string</code>
 <code class="sig"><span class="sc">LOCK_NOWAIT</span><span class="sm"> = &quot;NOWAIT&quot;</span></code>
-<span class="desc">Append <code>NOWAIT</code> to the <code>FOR UPDATE</code> clause - the query fails immediately
-if a row it needs is locked instead of blocking. MySQL 8.0+ and
-PostgreSQL 9.5+ recognize this. SQLite has no row-level locking and
-silently ignores the modifier.</span>
+<span class="desc">Append <code>NOWAIT</code> to the <code>FOR UPDATE</code> clause.</span>
 </div>
 <div class="api-item">
 <code class="ret">string</code>
 <code class="sig"><span class="sc">LOCK_SKIP_LOCKED</span><span class="sm"> = &quot;SKIP LOCKED&quot;</span></code>
-<span class="desc">Append <code>SKIP LOCKED</code> to the <code>FOR UPDATE</code> clause - the query returns
-rows that are not currently locked and silently skips ones that are.
-MySQL 8.0+ and PostgreSQL 9.5+ recognize this. SQLite ignores it.</span>
+<span class="desc">Append <code>SKIP LOCKED</code> to the <code>FOR UPDATE</code> clause.</span>
 </div>
 </div>
 
@@ -4445,7 +5942,7 @@ Generates SQL to create a table
 public function createView(
     string $viewName,
     array $definition,
-    string $schemaName = null
+    string|null $schemaName = null
 ): string;
 ```
 
@@ -4455,8 +5952,8 @@ Generates SQL to create a view
 
 ```php
 public function describeColumns(
-    string $table,
-    string $schema = null
+    string $tableName,
+    string|null $schemaName = null
 ): string;
 ```
 
@@ -4466,8 +5963,8 @@ Generates SQL to describe a table
 
 ```php
 public function describeIndexes(
-    string $table,
-    string $schema = null
+    string $tableName,
+    string|null $schemaName = null
 ): string;
 ```
 
@@ -4481,8 +5978,8 @@ column name.
 
 ```php
 public function describeReferences(
-    string $table,
-    string $schema = null
+    string $tableName,
+    string|null $schemaName = null
 ): string;
 ```
 
@@ -4557,7 +6054,7 @@ Generates SQL to drop a table
 ```php
 public function dropView(
     string $viewName,
-    string $schemaName = null,
+    string|null $schemaName = null,
     bool $ifExists = true
 ): string;
 ```
@@ -4573,9 +6070,7 @@ public function forUpdate(
 ): string;
 ```
 
-Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
-appends a row-lock disposition keyword - pass `Dialect::LOCK_NOWAIT`
-or `Dialect::LOCK_SKIP_LOCKED` (or leave as `Dialect::LOCK_NONE`).
+Returns a SQL modified with a FOR UPDATE clause
 
 #### `getColumnDefinition()` { #contractsdbdialect-getcolumndefinition }
 
@@ -4606,7 +6101,7 @@ Returns registered functions
 ```php
 public function getSqlExpression(
     array $expression,
-    string $escapeChar = null,
+    string $escapeChar = "",
     array $bindCounts = []
 ): string;
 ```
@@ -4619,7 +6114,7 @@ database system valid expression
 ```php
 public function limit(
     string $sqlQuery,
-    mixed $number
+    array|int $number
 ): string;
 ```
 
@@ -4628,7 +6123,7 @@ Generates the SQL for LIMIT clause
 #### `listTables()` { #contractsdbdialect-listtables }
 
 ```php
-public function listTables( string $schemaName = null ): string;
+public function listTables( string|null $schemaName = null ): string;
 ```
 
 List all tables in database
@@ -4640,7 +6135,7 @@ public function modifyColumn(
     string $tableName,
     string $schemaName,
     ColumnInterface $column,
-    ColumnInterface $currentColumn = null
+    ColumnInterface|null $currentColumn = null
 ): string;
 ```
 
@@ -4652,7 +6147,7 @@ Generates SQL to modify a column in a table
 public function registerCustomFunction(
     string $name,
     callable $customFunction
-): \Phalcon\Db\Dialect;
+): DbDialect;
 ```
 
 Registers custom SQL functions
@@ -4690,12 +6185,7 @@ public function sharedLock(
 ): string;
 ```
 
-Returns a SQL modified with a shared-lock clause. MySQL emits
-`LOCK IN SHARE MODE`; PostgreSQL emits `FOR SHARE`; SQLite returns the
-original query unchanged. The optional `modifier` appends a row-lock
-disposition keyword (`Dialect::LOCK_NOWAIT` / `Dialect::LOCK_SKIP_LOCKED`)
-for PostgreSQL - MySQL's legacy `LOCK IN SHARE MODE` does not support
-modifiers, so non-empty values are silently ignored on MySQL.
+Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 #### `supportsReleaseSavepoints()` { #contractsdbdialect-supportsreleasesavepoints }
 
@@ -4718,7 +6208,7 @@ Checks whether the platform supports savepoints
 ```php
 public function tableExists(
     string $tableName,
-    string $schemaName = null
+    string|null $schemaName = null
 ): string;
 ```
 
@@ -4728,8 +6218,8 @@ Generates SQL checking for the existence of a schema.table
 
 ```php
 public function tableOptions(
-    string $table,
-    string $schema = null
+    string $tableName,
+    string|null $schemaName = null
 ): string;
 ```
 
@@ -4740,7 +6230,7 @@ Generates the SQL to describe the table creation options
 ```php
 public function viewExists(
     string $viewName,
-    string $schemaName = null
+    string|null $schemaName = null
 ): string;
 ```
 
@@ -4750,7 +6240,7 @@ Generates SQL checking for the existence of a schema.view
 ## Contracts\Db\Geometry\Geometry
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Db/Geometry/Geometry.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Geometry/Geometry.php){ .src-btn }
 
 Canonical contract for Phalcon\Db\Geometry value objects.
 
@@ -4816,7 +6306,7 @@ Renders the geometry as a Well-Known Text (WKT) string.
 ## Contracts\Db\Index
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Db/Index.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Index.php){ .src-btn }
 
 Canonical contract for Phalcon\Db\Index.
 
@@ -4890,9 +6380,9 @@ Gets the index type
 ## Contracts\Db\Reference
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Db/Reference.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Reference.php){ .src-btn }
 
-Canonical contract for Phalcon\Db\Reference.
+Interface for Phalcon\Db\Reference
 
 <div class="api-tree" markdown>
 
@@ -5026,7 +6516,7 @@ Gets the schema where referenced table is
 ## Contracts\Db\Result
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Db/Result.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Result.php){ .src-btn }
 
 Canonical contract for Phalcon\Db result objects.
 
@@ -5036,6 +6526,9 @@ Canonical contract for Phalcon\Db result objects.
     - [`Phalcon\Db\ResultInterface`](phalcon_db.md#dbresultinterface)
 
 </div>
+
+__Uses__ `PDOStatement`
+{ .api-uses }
 
 ### Method Summary
 
@@ -5071,7 +6564,7 @@ Canonical contract for Phalcon\Db result objects.
 </a>
 <a class="api-item" href="#contractsdbresult-getinternalresult">
 <code class="vis vis-public">public</code>
-<code class="ret">\PDOStatement</code>
+<code class="ret">PDOStatement</code>
 <code class="sig"><span class="sf">getInternalResult</span>()</code>
 <span class="desc">Gets the internal PDO result object</span>
 </a>
@@ -5145,7 +6638,7 @@ flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 #### `getInternalResult()` { #contractsdbresult-getinternalresult }
 
 ```php
-public function getInternalResult(): \PDOStatement;
+public function getInternalResult(): PDOStatement;
 ```
 
 Gets the internal PDO result object
@@ -5170,7 +6663,7 @@ Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 ## Contracts\Dispatcher\Dispatcher
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Dispatcher/Dispatcher.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Dispatcher/Dispatcher.php){ .src-btn }
 
 Canonical contract for Phalcon\Dispatcher\AbstractDispatcher.
 
@@ -5193,7 +6686,6 @@ are scheduled to be removed in the next major version in favor of their
 <div class="api-list">
 <a class="api-item" href="#contractsdispatcherdispatcher-dispatch">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|bool</code>
 <code class="sig"><span class="sf">dispatch</span>()</code>
 <span class="desc">Dispatches a handle action taking into account the routing parameters</span>
 </a>
@@ -5224,13 +6716,13 @@ are scheduled to be removed in the next major version in favor of their
 <a class="api-item" href="#contractsdispatcherdispatcher-getparam">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#contractsdispatcherdispatcher-getparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#contractsdispatcherdispatcher-getparameters">
@@ -5254,7 +6746,7 @@ are scheduled to be removed in the next major version in favor of their
 <a class="api-item" href="#contractsdispatcherdispatcher-hasparam">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">hasParam</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
+<code class="sig"><span class="sf">hasParam</span>( <span class="st">int|string</span> <span class="sv">$param</span> )</code>
 <span class="desc">Check if a param exists</span>
 </a>
 <a class="api-item" href="#contractsdispatcherdispatcher-isfinished">
@@ -5296,7 +6788,7 @@ are scheduled to be removed in the next major version in favor of their
 <a class="api-item" href="#contractsdispatcherdispatcher-setmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string|null</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the module name which the application belongs to</span>
 </a>
 <a class="api-item" href="#contractsdispatcherdispatcher-setnamespacename">
@@ -5308,13 +6800,13 @@ are scheduled to be removed in the next major version in favor of their
 <a class="api-item" href="#contractsdispatcherdispatcher-setparam">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#contractsdispatcherdispatcher-setparams">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setParams</span>( <span class="st">array</span> <span class="sv">$params</span> )</code>
+<code class="sig"><span class="sf">setParams</span>( <span class="st">array</span> <span class="sv">$parameters</span> )</code>
 <span class="desc">Sets action params to be dispatched</span>
 </a>
 </div>
@@ -5326,7 +6818,7 @@ are scheduled to be removed in the next major version in favor of their
 #### `dispatch()` { #contractsdispatcherdispatcher-dispatch }
 
 ```php
-public function dispatch(): mixed|bool;
+public function dispatch();
 ```
 
 Dispatches a handle action taking into account the routing parameters
@@ -5367,22 +6859,23 @@ Gets the default handler suffix
 
 ```php
 public function getParam(
-    mixed $param,
-    mixed $filters = null
+    int|string $param,
+    array|string|null $filters = null
 ): mixed;
 ```
 
 Gets a param by its name or numeric index
 
-Note: This signature omits the `defaultValue` argument the implementation
-accepts; the two will be aligned in the next major version.
+Note: This signature omits the `$defaultValue` argument the
+implementation accepts; the two will be aligned in the next major
+version.
 
 #### `getParameter()` { #contractsdispatcherdispatcher-getparameter }
 
 ```php
 public function getParameter(
-    mixed $param,
-    mixed $filters = null
+    int|string $param,
+    array|string|null $filters = null
 ): mixed;
 ```
 
@@ -5415,7 +6908,7 @@ Returns value returned by the latest dispatched action
 #### `hasParam()` { #contractsdispatcherdispatcher-hasparam }
 
 ```php
-public function hasParam( mixed $param ): bool;
+public function hasParam( int|string $param ): bool;
 ```
 
 Check if a param exists
@@ -5472,7 +6965,7 @@ Sets the default suffix for the handler
 #### `setModuleName()` { #contractsdispatcherdispatcher-setmodulename }
 
 ```php
-public function setModuleName( string $moduleName = null ): void;
+public function setModuleName( string|null $moduleName = null ): void;
 ```
 
 Sets the module name which the application belongs to
@@ -5489,7 +6982,7 @@ Sets the namespace which the controller belongs to
 
 ```php
 public function setParam(
-    mixed $param,
+    int|string $param,
     mixed $value
 ): void;
 ```
@@ -5499,7 +6992,7 @@ Set a param by its name or numeric index
 #### `setParams()` { #contractsdispatcherdispatcher-setparams }
 
 ```php
-public function setParams( array $params ): void;
+public function setParams( array $parameters ): void;
 ```
 
 Sets action params to be dispatched
@@ -5508,7 +7001,7 @@ Sets action params to be dispatched
 ## Contracts\Domain\Payload\Payload
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Domain/Payload/Payload.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Domain/Payload/Payload.php){ .src-btn }
 
 Canonical combined read/write contract for a domain payload.
 
@@ -5534,7 +7027,7 @@ capability it needs, even though the concrete payload implements both.
 ## Contracts\Domain\Payload\Readable
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Domain/Payload/Readable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Domain/Payload/Readable.php){ .src-btn }
 
 Canonical read-only contract for a domain payload.
 
@@ -5654,7 +7147,7 @@ Status values are drawn from the `Status` vocabulary.
 ## Contracts\Domain\Payload\Writeable
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Domain/Payload/Writeable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Domain/Payload/Writeable.php){ .src-btn }
 
 Canonical write-only contract for a domain payload.
 
@@ -5773,7 +7266,7 @@ Status values are drawn from the `Status` vocabulary.
 ## Contracts\Encryption\Crypt\Crypt
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Encryption/Crypt/Crypt.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Crypt/Crypt.php){ .src-btn }
 
 Canonical contract for Phalcon\Encryption\Crypt.
 
@@ -5803,25 +7296,25 @@ operations.
 <a class="api-item" href="#contractsencryptioncryptcrypt-decrypt">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">decrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">decrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Decrypts a text</span>
 </a>
 <a class="api-item" href="#contractsencryptioncryptcrypt-decryptbase64">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">decryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">decryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Decrypt a text that is coded as a base64 string</span>
 </a>
 <a class="api-item" href="#contractsencryptioncryptcrypt-encrypt">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">encrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">encrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Encrypts a text</span>
 </a>
 <a class="api-item" href="#contractsencryptioncryptcrypt-encryptbase64">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">encryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">encryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Encrypts a text returning the result as a base64 string</span>
 </a>
 <a class="api-item" href="#contractsencryptioncryptcrypt-getauthdata">
@@ -5913,7 +7406,7 @@ operations.
 ```php
 public function decrypt(
     string $input,
-    string $key = null
+    string|null $key = null
 ): string;
 ```
 
@@ -5924,7 +7417,7 @@ Decrypts a text
 ```php
 public function decryptBase64(
     string $input,
-    string $key = null
+    string|null $key = null
 ): string;
 ```
 
@@ -5935,7 +7428,7 @@ Decrypt a text that is coded as a base64 string
 ```php
 public function encrypt(
     string $input,
-    string $key = null
+    string|null $key = null
 ): string;
 ```
 
@@ -5946,7 +7439,7 @@ Encrypts a text
 ```php
 public function encryptBase64(
     string $input,
-    string $key = null
+    string|null $key = null
 ): string;
 ```
 
@@ -6060,7 +7553,7 @@ Sets if the calculating message digest must be used.
 ## Contracts\Encryption\Crypt\Padding\Pad
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Encryption/Crypt/Padding/Pad.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Crypt/Padding/Pad.php){ .src-btn }
 
 Canonical contract for Phalcon\Encryption\Crypt\Padding strategies.
 
@@ -6116,7 +7609,7 @@ public function unpad(
 ## Contracts\Encryption\Security\CryptoUtils
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Encryption/Security/CryptoUtils.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/CryptoUtils.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -6201,7 +7694,7 @@ public function setRandomBytes( int $randomBytes ): Security;
 ## Contracts\Encryption\Security\CsrfProtection
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Encryption/Security/CsrfProtection.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/CsrfProtection.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -6215,7 +7708,7 @@ public function setRandomBytes( int $randomBytes ): Security;
 <a class="api-item" href="#contractsencryptionsecuritycsrfprotection-checktoken">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">checkToken</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tokenKey</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$tokenValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$destroyIfValid</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">checkToken</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$tokenKey</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$tokenValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$destroyIfValid</span><span class="sm"> = true</span></span>)</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritycsrfprotection-destroytoken">
 <code class="vis vis-public">public</code>
@@ -6252,8 +7745,8 @@ public function setRandomBytes( int $randomBytes ): Security;
 
 ```php
 public function checkToken(
-    string $tokenKey = null,
-    mixed $tokenValue = null,
+    string|null $tokenKey = null,
+    string|null $tokenValue = null,
     bool $destroyIfValid = true
 ): bool;
 ```
@@ -6292,7 +7785,7 @@ public function getTokenKey(): string|null;
 ## Contracts\Encryption\Security\JWT\Signer\Signer
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Encryption/Security/JWT/Signer/Signer.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/JWT/Signer/Signer.php){ .src-btn }
 
 Canonical contract for JWT Signer classes
 
@@ -6379,7 +7872,7 @@ Verify a passed source with a payload and passphrase
 ## Contracts\Encryption\Security\PasswordSecurity
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Encryption/Security/PasswordSecurity.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/PasswordSecurity.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -6495,7 +7988,7 @@ public function setWorkFactor( int $workFactor ): Security;
 ## Contracts\Encryption\Security\Security
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Encryption/Security/Security.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/Security.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -6508,7 +8001,7 @@ public function setWorkFactor( int $workFactor ): Security;
 ## Contracts\Encryption\Security\Uuid\NodeProvider
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Encryption/Security/Uuid/NodeProvider.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/Uuid/NodeProvider.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -6541,7 +8034,7 @@ public function getNode(): string;
 ## Contracts\Encryption\Security\Uuid\TimeBasedUuid
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Encryption/Security/Uuid/TimeBasedUuid.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/Uuid/TimeBasedUuid.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -6550,12 +8043,15 @@ public function getNode(): string;
 
 </div>
 
+__Uses__ `DateTimeImmutable`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
 <a class="api-item" href="#contractsencryptionsecurityuuidtimebaseduuid-getdatetime">
 <code class="vis vis-public">public</code>
-<code class="ret">\DateTimeImmutable</code>
+<code class="ret">DateTimeImmutable</code>
 <code class="sig"><span class="sf">getDateTime</span>()</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecurityuuidtimebaseduuid-getnode">
@@ -6572,7 +8068,7 @@ public function getNode(): string;
 #### `getDateTime()` { #contractsencryptionsecurityuuidtimebaseduuid-getdatetime }
 
 ```php
-public function getDateTime(): \DateTimeImmutable;
+public function getDateTime(): DateTimeImmutable;
 ```
 
 #### `getNode()` { #contractsencryptionsecurityuuidtimebaseduuid-getnode }
@@ -6585,7 +8081,7 @@ public function getNode(): string;
 ## Contracts\Encryption\Security\Uuid\Uuid
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Encryption/Security/Uuid/Uuid.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/Uuid/Uuid.php){ .src-btn }
 
 Canonical marker contract for UUID version adapters.
 
@@ -6620,10 +8116,59 @@ Also carries the standard RFC 4122 namespace UUIDs as constants.
 </div>
 
 
+## Contracts\Events\Enumerable
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/Enumerable.php){ .src-btn }
+
+Optional capability contract for an events manager that can report every
+attached listener in one call. Callers detect support with `instanceof`.
+
+Deliberately separate from Manager rather than a member of it: adding a
+member to a published interface breaks every implementor, so a second,
+narrow interface states the capability without touching the first.
+
+Tooling that reports on an events manager type-hints this instead of the
+concrete Manager, so it depends on a published contract rather than on an
+implementation detail that is free to change.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Events\Enumerable`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractseventsenumerable-getlistenermap">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getListenerMap</span>()</code>
+<span class="desc">Returns every event type that currently has at least one listener,</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getListenerMap()` { #contractseventsenumerable-getlistenermap }
+
+```php
+public function getListenerMap(): array;
+```
+
+Returns every event type that currently has at least one listener,
+mapped to that type's listeners. Types contributed by subscribers are
+included, because addSubscriber() attaches through the regular listener
+pipeline.
+
+
 ## Contracts\Events\Event
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Events/Event.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/Event.php){ .src-btn }
 
 Canonical contract for Phalcon\Events\Event.
 
@@ -6745,7 +8290,7 @@ Stops the event preventing propagation
 ## Contracts\Events\EventsAware
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Events/EventsAware.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/EventsAware.php){ .src-btn }
 
 Canonical contract for Phalcon\Events\EventsAwareInterface. Implemented by
 components that accept an events manager and dispatch through it.
@@ -6806,7 +8351,7 @@ Sets the events manager
 ## Contracts\Events\Manager
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Events/Manager.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/Manager.php){ .src-btn }
 
 Canonical contract for Phalcon\Events\Manager.
 
@@ -6824,7 +8369,7 @@ Canonical contract for Phalcon\Events\Manager.
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">addSubscriber</span>( <span class="st">Subscriber</span> <span class="sv">$subscriber</span> )</code>
-<span class="desc">Registers an event subscriber. The subscriber&#039;s getSubscribedEvents()</span>
+<span class="desc">Registers an event subscriber.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-areprioritiesenabled">
 <code class="vis vis-public">public</code>
@@ -6835,7 +8380,7 @@ Canonical contract for Phalcon\Events\Manager.
 <a class="api-item" href="#contractseventsmanager-attach">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">attach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$priority</span><span class="sm"> = self::DEFAULT_PRIORITY</span></span>)</code>
+<code class="sig"><span class="sf">attach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">callable|object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$priority</span><span class="sm"> = self::DEFAULT_PRIORITY</span></span>)</code>
 <span class="desc">Attach a listener to the events manager.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-clearsubscribers">
@@ -6853,14 +8398,14 @@ Canonical contract for Phalcon\Events\Manager.
 <a class="api-item" href="#contractseventsmanager-detach">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">detach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
+<code class="sig"><span class="sf">detach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">callable|object</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Detach a listener from the events manager.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-detachall">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">detachAll</span>( <span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
-<span class="desc">Removes all listeners - globally or for a single event type.</span>
+<code class="sig"><span class="sf">detachAll</span>( <span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
+<span class="desc">Removes all listeners -- globally or for a single event type.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-enablepriorities">
 <code class="vis vis-public">public</code>
@@ -6870,6 +8415,7 @@ Canonical contract for Phalcon\Events\Manager.
 </a>
 <a class="api-item" href="#contractseventsmanager-fire">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Fires an event, notifying the active listeners.</span>
 </a>
@@ -6913,7 +8459,7 @@ Canonical contract for Phalcon\Events\Manager.
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">removeSubscriber</span>( <span class="st">Subscriber</span> <span class="sv">$subscriber</span> )</code>
-<span class="desc">Removes a previously registered subscriber. Detaches every listener the</span>
+<span class="desc">Removes a previously registered subscriber.</span>
 </a>
 </div>
 
@@ -6936,9 +8482,7 @@ Canonical contract for Phalcon\Events\Manager.
 public function addSubscriber( Subscriber $subscriber ): void;
 ```
 
-Registers an event subscriber. The subscriber's getSubscribedEvents()
-map is parsed and each entry is attached through the regular listener
-pipeline.
+Registers an event subscriber.
 
 #### `arePrioritiesEnabled()` { #contractseventsmanager-areprioritiesenabled }
 
@@ -6953,7 +8497,7 @@ Returns whether priority ordering is currently enabled.
 ```php
 public function attach(
     string $eventType,
-    mixed $handler,
+    callable|object $handler,
     int $priority = self::DEFAULT_PRIORITY
 ): void;
 ```
@@ -6967,7 +8511,7 @@ public function clearSubscribers(): void;
 ```
 
 Removes every registered subscriber and detaches each listener they
-contributed. Listeners attached via attach() are untouched.
+contributed.
 
 #### `collectResponses()` { #contractseventsmanager-collectresponses }
 
@@ -6982,7 +8526,7 @@ Toggle response collection on/off.
 ```php
 public function detach(
     string $eventType,
-    mixed $handler
+    callable|object $handler
 ): void;
 ```
 
@@ -6991,10 +8535,10 @@ Detach a listener from the events manager.
 #### `detachAll()` { #contractseventsmanager-detachall }
 
 ```php
-public function detachAll( string $type = null ): void;
+public function detachAll( string|null $type = null ): void;
 ```
 
-Removes all listeners - globally or for a single event type.
+Removes all listeners -- globally or for a single event type.
 
 #### `enablePriorities()` { #contractseventsmanager-enablepriorities }
 
@@ -7012,7 +8556,7 @@ public function fire(
     object $source,
     mixed $data = null,
     bool $cancelable = true
-);
+): mixed;
 ```
 
 Fires an event, notifying the active listeners.
@@ -7071,19 +8615,15 @@ Returns true when the given handler is an object or callable.
 public function removeSubscriber( Subscriber $subscriber ): void;
 ```
 
-Removes a previously registered subscriber. Detaches every listener the
-subscriber declared via getSubscribedEvents(). Idempotent.
+Removes a previously registered subscriber.
 
 
 ## Contracts\Events\Stoppable
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Events/Stoppable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/Stoppable.php){ .src-btn }
 
-Phalcon's local mirror of PSR-14 StoppableEventInterface. Identical shape;
-not extended from the PSR interface because the Zephir extension cannot
-reference Composer-loaded interfaces at build time. A separate bridge
-package exposes a PSR-14 adapter.
+Phalcon's local mirror of PSR-14 StoppableEventInterface.
 
 <div class="api-tree" markdown>
 
@@ -7119,7 +8659,7 @@ listeners.
 ## Contracts\Events\Subscriber
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Events/Subscriber.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/Subscriber.php){ .src-btn }
 
 Contract for event subscriber classes. A subscriber declares the events it
 wants to listen to via a static map; Events\Manager parses the map and
@@ -7134,15 +8674,6 @@ Accepted value shapes per event key:
       ['methodName2', priority],
   ]
 
-Keys can be either a Phalcon event string (e.g. "db:beforeQuery") or a
-fully qualified event class name.
-
-Wildcard subscriptions: Phalcon's manager fires both the prefix queue and
-the full-name queue (e.g. "db" is fired before "db:beforeQuery"). To
-subscribe to every event of a component, use the prefix as the key:
-
-  'db' => 'onAnyDbEvent'   // fires for db:beforeQuery, db:afterQuery, ...
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Contracts\Events\Subscriber`**
@@ -7156,7 +8687,7 @@ subscribe to every event of a component, use the prefix as the key:
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getSubscribedEvents</span>()</code>
-<span class="desc">Returns a map of event name =&gt; listener config. Called once per</span>
+<span class="desc">Returns a map of event name =&gt; listener config.</span>
 </a>
 </div>
 
@@ -7170,14 +8701,13 @@ subscribe to every event of a component, use the prefix as the key:
 public static function getSubscribedEvents(): array;
 ```
 
-Returns a map of event name => listener config. Called once per
-Manager::addSubscriber() / removeSubscriber() call.
+Returns a map of event name => listener config.
 
 
 ## Contracts\Filter\Sanitizer
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Filter/Sanitizer.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Filter/Sanitizer.php){ .src-btn }
 
 The contract for sanitizers registered in Phalcon\Filter\Filter.
 
@@ -7206,7 +8736,7 @@ Phalcon\Filter\Filter::sanitize(), not of the sanitizer.
 ## Contracts\Flash\Flash
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Flash/Flash.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Flash/Flash.php){ .src-btn }
 
 Canonical contract for Phalcon\Flash messengers.
 
@@ -7314,7 +8844,7 @@ Shows a HTML warning message
 ## Contracts\Forms\Schema
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Forms/Schema.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Forms/Schema.php){ .src-btn }
 
 Contract for objects that supply a normalized list of form element
 definitions. Implementations may source the definitions from a PHP array,
@@ -7362,10 +8892,123 @@ public function load(): array;
 Returns an ordered list of normalized element definitions.
 
 
+## Contracts\Front\FrontController
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Front/FrontController.php){ .src-btn }
+
+[_FrontController_][] affords an entry point into the outermost presentation
+layer in any execution context (HTTP, CLI, etc.).
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Front\FrontController`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsfrontfrontcontroller-run">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">run</span>()</code>
+<span class="desc">Runs the front controller.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `run()` { #contractsfrontfrontcontroller-run }
+
+```php
+public function run(): int;
+```
+
+Runs the front controller.
+
+- Directives:
+
+    - Implementations MUST report success by returning an integer `0`.
+
+    - Implementations MUST report non-success by returning an integer
+      between `1` and `254` (inclusive).
+
+    - Implementations MUST gracefully handle all [_Throwable_][]s.
+
+    - Implementations MUST NOT [`exit()`][], [`die()`][], or otherwise
+      avoid returning.
+
+- Notes:
+
+    - **The return value is intended as an exit status code.** Exit
+      status codes may be received initially by the in-process logic
+      that invoked `run()` (bootstrap scripts, test harnesses, etc.),
+      and may ultimately be received by a parent process (shell,
+      supervisor, init system, CI runner, monitoring tool, or similar)
+      via [`exit()`][]. Whether or not the exit status is consumed by the
+      calling code or parent process depends on the execution
+      environment: php-fpm and mod_php typically have no consumer,
+      whereas worker loops, supervised long-running processes, runtime
+      layers, and CI harnesses do.
+
+    - **"Success" and "non-success" are context-dependent.** In an HTTP
+      context, "success" typically means that the request was processed
+      and a response was emitted regardless of the HTTP status code,
+      whereas "non-success" may indicate that a [_Throwable_][] had to be
+      handled by the _FrontController_ itself. In a command line context,
+      "success" typically means that the command completed without
+      errors, whereas "non-success" may be one of several error
+      conditions (cf. the [`sysexits.h`][] conventions where applicable).
+
+    - **The exit status code `255` is reserved by PHP itself.** Cf.
+      [`exit()`][]: "Exit codes should be in the range 0 to 254, the exit
+      code 255 is reserved by PHP and should not be used."
+
+    - **Handle all possible exceptions.** The logic calling the front
+      controller should not have to deal with any exceptions bubbling up
+      from it.
+
+    - **Graceful handling means returning, not exiting.** A "graceful"
+      handler catches the [_Throwable_][], turns it into a non-success
+      exit status, and returns that status from `run()` rather than
+      calling [`exit()`][].
+
+    - **Return the exit status; leave termination to the caller.** The
+      value of an exit status code comes from letting the caller decide
+      what to do with it: a worker loop, queue worker, or test harness
+      needs `run()` to hand control back so it can continue, retry, or
+      assert on the result. An implementation that calls [`exit()`][]
+      inside `run()` prevents those uses, terminating the process before
+      the caller regains control.
+
+
+## Contracts\Front\FrontTypeAliases
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Front/FrontTypeAliases.php){ .src-btn }
+
+[_FrontTypeAliases_][] provides custom PHPStan types to aid static analysis.
+
+- ```
+  front_exit_status_int int<0,254>
+  ```
+    - An `int` exit status code: `0` for success, `1` to `254` for
+      non-success. The value `255` is reserved by PHP itself.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Front\FrontTypeAliases`**
+
+</div>
+
+
 ## Contracts\Html\Helper\Input\SelectData
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Html/Helper/Input/SelectData.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Html/Helper/Input/SelectData.php){ .src-btn }
 
 Interface for SELECT option data providers.
 
@@ -7417,10 +9060,56 @@ public function getOptions(): array;
 ```
 
 
+## Contracts\Http\AttributeRequest
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Http/AttributeRequest.php){ .src-btn }
+
+Extends the request contract with the native attribute bag.
+
+`getAttributes()` already exists on the concrete `Phalcon\Http\Request`; this
+interface exposes it as a contract without touching `RequestInterface`
+(adding a method there would break userland implementers). It lets consumers
+type against the attribute-bearing request without depending on the concrete.
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Http\RequestInterface`](phalcon_http.md#httprequestinterface)
+    - **`Phalcon\Contracts\Http\AttributeRequest`**
+
+</div>
+
+__Uses__ `Phalcon\Http\RequestInterface` · `Phalcon\Http\Request\Bag\AttributeBag`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractshttpattributerequest-getattributes">
+<code class="vis vis-public">public</code>
+<code class="ret">AttributeBag</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
+<span class="desc">Returns the request attribute bag.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getAttributes()` { #contractshttpattributerequest-getattributes }
+
+```php
+public function getAttributes(): AttributeBag;
+```
+
+Returns the request attribute bag.
+
+
 ## Contracts\Logger\Adapter\Adapter
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Logger/Adapter/Adapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Logger/Adapter/Adapter.php){ .src-btn }
 
 Canonical contract for Phalcon\Logger adapters.
 
@@ -7574,7 +9263,7 @@ Sets the message formatter
 ## Contracts\Logger\Formatter\Formatter
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Logger/Formatter/Formatter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Logger/Formatter/Formatter.php){ .src-btn }
 
 Canonical contract for Phalcon\Logger formatters.
 
@@ -7615,7 +9304,7 @@ Applies a format to an item
 ## Contracts\Logger\Logger
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Logger/Logger.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Logger/Logger.php){ .src-btn }
 
 Canonical contract for Phalcon\Logger\Logger.
 
@@ -7883,7 +9572,7 @@ that are not necessarily wrong.
 ## Contracts\Messages\Messages
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Messages/Messages.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Messages/Messages.php){ .src-btn }
 
 Canonical contract for Phalcon\Messages\Messages.
 
@@ -7894,8 +9583,8 @@ during iteration (`foreach`), which walks the integer sequence only.
 
 <div class="api-tree" markdown>
 
-- `ArrayAccess`
-    - **`Phalcon\Contracts\Messages\Messages`** - extends `ArrayAccess`, `Countable`, `Iterator`
+- `\ArrayAccess`
+    - **`Phalcon\Contracts\Messages\Messages`** - extends `\ArrayAccess`, `\Countable`, `\Iterator`
 
 </div>
 
@@ -7956,7 +9645,7 @@ Filters the message collection by field name
 ## Contracts\Mvc\Dispatcher
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Mvc/Dispatcher.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Mvc/Dispatcher.php){ .src-btn }
 
 Canonical contract for Phalcon\Mvc\Dispatcher.
 
@@ -8068,7 +9757,7 @@ Sets the default controller name
 ## Contracts\Mvc\Model\Relation\CacheKeyProvider
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Mvc/Model/Relation/CacheKeyProvider.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Mvc/Model/Relation/CacheKeyProvider.php){ .src-btn }
 
 Interface for models that provide a custom unique key for the reusable
 records cache in the Model Manager. Implement this interface when the
@@ -8110,7 +9799,7 @@ use as the key in the reusable records cache.
 ## Contracts\Paginator\Adapter
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Paginator/Adapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Paginator/Adapter.php){ .src-btn }
 
 Interface for Phalcon\Paginator adapters
 
@@ -8190,7 +9879,7 @@ Set current rows limit
 ## Contracts\Paginator\Repository
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Paginator/Repository.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Paginator/Repository.php){ .src-btn }
 
 Interface for the repository of current state
 Phalcon\Paginator\AdapterInterface::paginate()
@@ -8424,10 +10113,1037 @@ public function setProperties( array $properties ): Repository;
 Sets values for properties of the repository
 
 
+## Contracts\Queue\ConnectionFactory
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/ConnectionFactory.php){ .src-btn }
+
+Builds a Context: the entry point of every adapter.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\ConnectionFactory`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueconnectionfactory-createcontext">
+<code class="vis vis-public">public</code>
+<code class="ret">Context</code>
+<code class="sig"><span class="sf">createContext</span>()</code>
+<span class="desc">Creates a context (a session/connection to the transport).</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `createContext()` { #contractsqueueconnectionfactory-createcontext }
+
+```php
+public function createContext(): Context;
+```
+
+Creates a context (a session/connection to the transport).
+
+
+## Contracts\Queue\Consumer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Consumer.php){ .src-btn }
+
+Receives messages from a single queue.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Consumer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueconsumer-acknowledge">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">acknowledge</span>( <span class="st">Message</span> <span class="sv">$message</span> )</code>
+<span class="desc">Acknowledges the message; the transport may then discard it.</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-getqueue">
+<code class="vis vis-public">public</code>
+<code class="ret">Queue</code>
+<code class="sig"><span class="sf">getQueue</span>()</code>
+<span class="desc">Returns the queue this consumer reads from.</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-receive">
+<code class="vis vis-public">public</code>
+<code class="ret">Message|null</code>
+<code class="sig"><span class="sf">receive</span>( <span class="st">int</span> <span class="sv">$timeout</span><span class="sm"> = 0</span> )</code>
+<span class="desc">Receives a message, blocking up to timeout milliseconds (0 = block</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-receivenowait">
+<code class="vis vis-public">public</code>
+<code class="ret">Message|null</code>
+<code class="sig"><span class="sf">receiveNoWait</span>()</code>
+<span class="desc">Receives a message without blocking, or null when none is ready.</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-reject">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">reject</span>(<span class="prm"><span class="st">Message</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$requeue</span><span class="sm"> = false</span></span>)</code>
+<span class="desc">Rejects the message. When requeue is true the transport redelivers it.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 5</div>
+
+#### `acknowledge()` { #contractsqueueconsumer-acknowledge }
+
+```php
+public function acknowledge( Message $message ): void;
+```
+
+Acknowledges the message; the transport may then discard it.
+
+#### `getQueue()` { #contractsqueueconsumer-getqueue }
+
+```php
+public function getQueue(): Queue;
+```
+
+Returns the queue this consumer reads from.
+
+#### `receive()` { #contractsqueueconsumer-receive }
+
+```php
+public function receive( int $timeout = 0 ): Message|null;
+```
+
+Receives a message, blocking up to timeout milliseconds (0 = block
+until one is available). Returns null when none arrives in time.
+
+#### `receiveNoWait()` { #contractsqueueconsumer-receivenowait }
+
+```php
+public function receiveNoWait(): Message|null;
+```
+
+Receives a message without blocking, or null when none is ready.
+
+#### `reject()` { #contractsqueueconsumer-reject }
+
+```php
+public function reject(
+    Message $message,
+    bool $requeue = false
+): void;
+```
+
+Rejects the message. When requeue is true the transport redelivers it.
+
+
+## Contracts\Queue\Context
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Context.php){ .src-btn }
+
+A session with the transport. Factory for messages, destinations,
+producers and consumers.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Context`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuecontext-close">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">close</span>()</code>
+<span class="desc">Closes the context and releases its resources.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createconsumer">
+<code class="vis vis-public">public</code>
+<code class="ret">Consumer</code>
+<code class="sig"><span class="sf">createConsumer</span>( <span class="st">Destination</span> <span class="sv">$destination</span> )</code>
+<span class="desc">Creates a consumer for the given destination.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createmessage">
+<code class="vis vis-public">public</code>
+<code class="ret">Message</code>
+<code class="sig"><span class="sf">createMessage</span>(<span class="prm"><span class="st">string</span> <span class="sv">$body</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$properties</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$headers</span><span class="sm"> = []</span></span>)</code>
+<span class="desc">Creates a message with an optional body, properties and headers.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createproducer">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">createProducer</span>()</code>
+<span class="desc">Creates a producer.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createqueue">
+<code class="vis vis-public">public</code>
+<code class="ret">Queue</code>
+<code class="sig"><span class="sf">createQueue</span>( <span class="st">string</span> <span class="sv">$queueName</span> )</code>
+<span class="desc">Creates a queue destination by name.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createsubscriptionconsumer">
+<code class="vis vis-public">public</code>
+<code class="ret">SubscriptionConsumer</code>
+<code class="sig"><span class="sf">createSubscriptionConsumer</span>()</code>
+<span class="desc">Creates a subscription consumer for consuming from several queues.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createtemporaryqueue">
+<code class="vis vis-public">public</code>
+<code class="ret">Queue</code>
+<code class="sig"><span class="sf">createTemporaryQueue</span>()</code>
+<span class="desc">Creates a temporary queue tied to the lifetime of the context.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createtopic">
+<code class="vis vis-public">public</code>
+<code class="ret">Topic</code>
+<code class="sig"><span class="sf">createTopic</span>( <span class="st">string</span> <span class="sv">$topicName</span> )</code>
+<span class="desc">Creates a topic destination by name.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-purgequeue">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">purgeQueue</span>( <span class="st">Queue</span> <span class="sv">$queue</span> )</code>
+<span class="desc">Removes all messages from the given queue.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 9</div>
+
+#### `close()` { #contractsqueuecontext-close }
+
+```php
+public function close(): void;
+```
+
+Closes the context and releases its resources.
+
+#### `createConsumer()` { #contractsqueuecontext-createconsumer }
+
+```php
+public function createConsumer( Destination $destination ): Consumer;
+```
+
+Creates a consumer for the given destination.
+
+#### `createMessage()` { #contractsqueuecontext-createmessage }
+
+```php
+public function createMessage(
+    string $body = "",
+    array $properties = [],
+    array $headers = []
+): Message;
+```
+
+Creates a message with an optional body, properties and headers.
+
+#### `createProducer()` { #contractsqueuecontext-createproducer }
+
+```php
+public function createProducer(): Producer;
+```
+
+Creates a producer.
+
+#### `createQueue()` { #contractsqueuecontext-createqueue }
+
+```php
+public function createQueue( string $queueName ): Queue;
+```
+
+Creates a queue destination by name.
+
+#### `createSubscriptionConsumer()` { #contractsqueuecontext-createsubscriptionconsumer }
+
+```php
+public function createSubscriptionConsumer(): SubscriptionConsumer;
+```
+
+Creates a subscription consumer for consuming from several queues.
+
+#### `createTemporaryQueue()` { #contractsqueuecontext-createtemporaryqueue }
+
+```php
+public function createTemporaryQueue(): Queue;
+```
+
+Creates a temporary queue tied to the lifetime of the context.
+
+#### `createTopic()` { #contractsqueuecontext-createtopic }
+
+```php
+public function createTopic( string $topicName ): Topic;
+```
+
+Creates a topic destination by name.
+
+#### `purgeQueue()` { #contractsqueuecontext-purgequeue }
+
+```php
+public function purgeQueue( Queue $queue ): void;
+```
+
+Removes all messages from the given queue.
+
+
+## Contracts\Queue\Destination
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Destination.php){ .src-btn }
+
+Marker interface for a message destination: a Queue or a Topic.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Destination`**
+    - [`Phalcon\Contracts\Queue\Queue`](#contractsqueuequeue)
+    - [`Phalcon\Contracts\Queue\Topic`](#contractsqueuetopic)
+
+</div>
+
+
+## Contracts\Queue\Inspectable
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Inspectable.php){ .src-btn }
+
+Optional capability contract for a transport that can report statistics for
+a queue (for example ready, delayed and buried job counts). Callers detect
+support with `instanceof`.
+
+The array returned by getStats() is ADAPTER-NATIVE: its keys and their
+semantics are defined by the implementing adapter and are NOT guaranteed to
+be uniform across adapters. It is an inspection surface, not a portable or
+normalized schema. Each implementation documents the exact keys it returns.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Inspectable`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueinspectable-getstats">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getStats</span>( <span class="st">Queue</span> <span class="sv">$queue</span> )</code>
+<span class="desc">Returns statistics for the given queue.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getStats()` { #contractsqueueinspectable-getstats }
+
+```php
+public function getStats( Queue $queue ): array;
+```
+
+Returns statistics for the given queue.
+
+
+## Contracts\Queue\Message
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Message.php){ .src-btn }
+
+A message exchanged through the transport. Carries a body, application
+properties, transport headers and the standard messaging metadata.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Message`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuemessage-getbody">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getBody</span>()</code>
+<span class="desc">Returns the message body.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getcorrelationid">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getCorrelationId</span>()</code>
+<span class="desc">Returns the correlation id used to correlate request/reply messages.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getheader">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns a single header value, or the default when it is not set.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getheaders">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getHeaders</span>()</code>
+<span class="desc">Returns all transport headers.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getmessageid">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getMessageId</span>()</code>
+<span class="desc">Returns the message id.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getproperties">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getProperties</span>()</code>
+<span class="desc">Returns all application properties.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getproperty">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns a single property value, or the default when it is not set.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getreplyto">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getReplyTo</span>()</code>
+<span class="desc">Returns the reply-to destination name.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-gettimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getTimestamp</span>()</code>
+<span class="desc">Returns the timestamp (in milliseconds) or null when it is not set.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-isredelivered">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isRedelivered</span>()</code>
+<span class="desc">Whether the message has been redelivered.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setbody">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setBody</span>( <span class="st">string</span> <span class="sv">$body</span> )</code>
+<span class="desc">Sets the message body.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setcorrelationid">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setCorrelationId</span>( <span class="st">string</span> <span class="sv">$correlationId</span> )</code>
+<span class="desc">Sets the correlation id.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setheader">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Sets a single transport header.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setheaders">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setHeaders</span>( <span class="st">array</span> <span class="sv">$headers</span> )</code>
+<span class="desc">Replaces all transport headers.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setmessageid">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setMessageId</span>( <span class="st">string</span> <span class="sv">$messageId</span> )</code>
+<span class="desc">Sets the message id.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setproperties">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setProperties</span>( <span class="st">array</span> <span class="sv">$properties</span> )</code>
+<span class="desc">Replaces all application properties.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setproperty">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Sets a single application property.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setredelivered">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setRedelivered</span>( <span class="st">bool</span> <span class="sv">$redelivered</span> )</code>
+<span class="desc">Marks the message as redelivered.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setreplyto">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setReplyTo</span>( <span class="st">string</span> <span class="sv">$replyTo</span> )</code>
+<span class="desc">Sets the reply-to destination name.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-settimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setTimestamp</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
+<span class="desc">Sets the timestamp (in milliseconds).</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 20</div>
+
+#### `getBody()` { #contractsqueuemessage-getbody }
+
+```php
+public function getBody(): string;
+```
+
+Returns the message body.
+
+#### `getCorrelationId()` { #contractsqueuemessage-getcorrelationid }
+
+```php
+public function getCorrelationId(): string|null;
+```
+
+Returns the correlation id used to correlate request/reply messages.
+
+#### `getHeader()` { #contractsqueuemessage-getheader }
+
+```php
+public function getHeader(
+    string $name,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns a single header value, or the default when it is not set.
+
+#### `getHeaders()` { #contractsqueuemessage-getheaders }
+
+```php
+public function getHeaders(): array;
+```
+
+Returns all transport headers.
+
+#### `getMessageId()` { #contractsqueuemessage-getmessageid }
+
+```php
+public function getMessageId(): string|null;
+```
+
+Returns the message id.
+
+#### `getProperties()` { #contractsqueuemessage-getproperties }
+
+```php
+public function getProperties(): array;
+```
+
+Returns all application properties.
+
+#### `getProperty()` { #contractsqueuemessage-getproperty }
+
+```php
+public function getProperty(
+    string $name,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns a single property value, or the default when it is not set.
+
+#### `getReplyTo()` { #contractsqueuemessage-getreplyto }
+
+```php
+public function getReplyTo(): string|null;
+```
+
+Returns the reply-to destination name.
+
+#### `getTimestamp()` { #contractsqueuemessage-gettimestamp }
+
+```php
+public function getTimestamp(): int|null;
+```
+
+Returns the timestamp (in milliseconds) or null when it is not set.
+
+#### `isRedelivered()` { #contractsqueuemessage-isredelivered }
+
+```php
+public function isRedelivered(): bool;
+```
+
+Whether the message has been redelivered.
+
+#### `setBody()` { #contractsqueuemessage-setbody }
+
+```php
+public function setBody( string $body ): void;
+```
+
+Sets the message body.
+
+#### `setCorrelationId()` { #contractsqueuemessage-setcorrelationid }
+
+```php
+public function setCorrelationId( string $correlationId ): void;
+```
+
+Sets the correlation id.
+
+#### `setHeader()` { #contractsqueuemessage-setheader }
+
+```php
+public function setHeader(
+    string $name,
+    mixed $value
+): void;
+```
+
+Sets a single transport header.
+
+#### `setHeaders()` { #contractsqueuemessage-setheaders }
+
+```php
+public function setHeaders( array $headers ): void;
+```
+
+Replaces all transport headers.
+
+#### `setMessageId()` { #contractsqueuemessage-setmessageid }
+
+```php
+public function setMessageId( string $messageId ): void;
+```
+
+Sets the message id.
+
+#### `setProperties()` { #contractsqueuemessage-setproperties }
+
+```php
+public function setProperties( array $properties ): void;
+```
+
+Replaces all application properties.
+
+#### `setProperty()` { #contractsqueuemessage-setproperty }
+
+```php
+public function setProperty(
+    string $name,
+    mixed $value
+): void;
+```
+
+Sets a single application property.
+
+#### `setRedelivered()` { #contractsqueuemessage-setredelivered }
+
+```php
+public function setRedelivered( bool $redelivered ): void;
+```
+
+Marks the message as redelivered.
+
+#### `setReplyTo()` { #contractsqueuemessage-setreplyto }
+
+```php
+public function setReplyTo( string $replyTo ): void;
+```
+
+Sets the reply-to destination name.
+
+#### `setTimestamp()` { #contractsqueuemessage-settimestamp }
+
+```php
+public function setTimestamp( int $timestamp ): void;
+```
+
+Sets the timestamp (in milliseconds).
+
+
+## Contracts\Queue\Processor
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Processor.php){ .src-btn }
+
+Processes a single message. The return value tells the consumer what to
+do next: acknowledge, reject, or requeue.
+
+The literal constant values are kept compatible with the wider interop
+ecosystem.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Processor`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueprocessor-process">
+<code class="vis vis-public">public</code>
+<code class="ret">object|string</code>
+<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">Message</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">Context</span> <span class="sv">$context</span></span>)</code>
+<span class="desc">Processes the message and returns one of the ACK / REJECT / REQUEUE</span>
+</a>
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">ACK</span><span class="sm"> = &quot;enqueue.ack&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">REJECT</span><span class="sm"> = &quot;enqueue.reject&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">REQUEUE</span><span class="sm"> = &quot;enqueue.requeue&quot;</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `process()` { #contractsqueueprocessor-process }
+
+```php
+public function process(
+    Message $message,
+    Context $context
+): object|string;
+```
+
+Processes the message and returns one of the ACK / REJECT / REQUEUE
+constants, or an object whose string form is one of those values.
+
+
+## Contracts\Queue\Producer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Producer.php){ .src-btn }
+
+Sends messages to a destination.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Producer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueproducer-getdeliverydelay">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getDeliveryDelay</span>()</code>
+<span class="desc">Returns the delivery delay (in milliseconds) or null when not set.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-getpriority">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getPriority</span>()</code>
+<span class="desc">Returns the message priority or null when not set.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-gettimetolive">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getTimeToLive</span>()</code>
+<span class="desc">Returns the time to live (in milliseconds) or null when not set.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-send">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">send</span>(<span class="prm"><span class="st">Destination</span> <span class="sv">$destination</span>,</span><span class="prm"><span class="st">Message</span> <span class="sv">$message</span></span>)</code>
+<span class="desc">Sends a message to the given destination.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-setdeliverydelay">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">setDeliveryDelay</span>( <span class="st">mixed</span> <span class="sv">$deliveryDelay</span><span class="sm"> = null</span> )</code>
+<span class="desc">Sets the delivery delay (in milliseconds). Null clears it.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-setpriority">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">setPriority</span>( <span class="st">mixed</span> <span class="sv">$priority</span><span class="sm"> = null</span> )</code>
+<span class="desc">Sets the message priority. Null clears it.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-settimetolive">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">setTimeToLive</span>( <span class="st">mixed</span> <span class="sv">$timeToLive</span><span class="sm"> = null</span> )</code>
+<span class="desc">Sets the time to live (in milliseconds). Null clears it.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 7</div>
+
+#### `getDeliveryDelay()` { #contractsqueueproducer-getdeliverydelay }
+
+```php
+public function getDeliveryDelay(): int|null;
+```
+
+Returns the delivery delay (in milliseconds) or null when not set.
+
+#### `getPriority()` { #contractsqueueproducer-getpriority }
+
+```php
+public function getPriority(): int|null;
+```
+
+Returns the message priority or null when not set.
+
+#### `getTimeToLive()` { #contractsqueueproducer-gettimetolive }
+
+```php
+public function getTimeToLive(): int|null;
+```
+
+Returns the time to live (in milliseconds) or null when not set.
+
+#### `send()` { #contractsqueueproducer-send }
+
+```php
+public function send(
+    Destination $destination,
+    Message $message
+): void;
+```
+
+Sends a message to the given destination.
+
+#### `setDeliveryDelay()` { #contractsqueueproducer-setdeliverydelay }
+
+```php
+public function setDeliveryDelay( mixed $deliveryDelay = null ): Producer;
+```
+
+Sets the delivery delay (in milliseconds). Null clears it.
+
+#### `setPriority()` { #contractsqueueproducer-setpriority }
+
+```php
+public function setPriority( mixed $priority = null ): Producer;
+```
+
+Sets the message priority. Null clears it.
+
+#### `setTimeToLive()` { #contractsqueueproducer-settimetolive }
+
+```php
+public function setTimeToLive( mixed $timeToLive = null ): Producer;
+```
+
+Sets the time to live (in milliseconds). Null clears it.
+
+
+## Contracts\Queue\Queue
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Queue.php){ .src-btn }
+
+A queue destination (point-to-point).
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
+    - **`Phalcon\Contracts\Queue\Queue`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuequeue-getqueuename">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getQueueName</span>()</code>
+<span class="desc">Returns the queue name.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getQueueName()` { #contractsqueuequeue-getqueuename }
+
+```php
+public function getQueueName(): string;
+```
+
+Returns the queue name.
+
+
+## Contracts\Queue\SubscriptionConsumer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/SubscriptionConsumer.php){ .src-btn }
+
+Consumes from several queues at once, dispatching each message to the
+callback registered for its consumer.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\SubscriptionConsumer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-consume">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">consume</span>( <span class="st">int</span> <span class="sv">$timeout</span><span class="sm"> = 0</span> )</code>
+<span class="desc">Starts consuming, blocking up to timeout milliseconds (0 = block</span>
+</a>
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-subscribe">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">subscribe</span>(<span class="prm"><span class="st">Consumer</span> <span class="sv">$consumer</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callback</span></span>)</code>
+<span class="desc">Subscribes a consumer; the callback receives each delivered message.</span>
+</a>
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-unsubscribe">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">unsubscribe</span>( <span class="st">Consumer</span> <span class="sv">$consumer</span> )</code>
+<span class="desc">Removes a previously subscribed consumer.</span>
+</a>
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-unsubscribeall">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">unsubscribeAll</span>()</code>
+<span class="desc">Removes every subscribed consumer.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `consume()` { #contractsqueuesubscriptionconsumer-consume }
+
+```php
+public function consume( int $timeout = 0 ): void;
+```
+
+Starts consuming, blocking up to timeout milliseconds (0 = block
+until a message is available).
+
+#### `subscribe()` { #contractsqueuesubscriptionconsumer-subscribe }
+
+```php
+public function subscribe(
+    Consumer $consumer,
+    callable $callback
+): void;
+```
+
+Subscribes a consumer; the callback receives each delivered message.
+
+#### `unsubscribe()` { #contractsqueuesubscriptionconsumer-unsubscribe }
+
+```php
+public function unsubscribe( Consumer $consumer ): void;
+```
+
+Removes a previously subscribed consumer.
+
+#### `unsubscribeAll()` { #contractsqueuesubscriptionconsumer-unsubscribeall }
+
+```php
+public function unsubscribeAll(): void;
+```
+
+Removes every subscribed consumer.
+
+
+## Contracts\Queue\Topic
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Topic.php){ .src-btn }
+
+A topic destination (publish/subscribe).
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
+    - **`Phalcon\Contracts\Queue\Topic`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuetopic-gettopicname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getTopicName</span>()</code>
+<span class="desc">Returns the topic name.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getTopicName()` { #contractsqueuetopic-gettopicname }
+
+```php
+public function getTopicName(): string;
+```
+
+Returns the topic name.
+
+
+## Contracts\Queue\VisibilityAware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/VisibilityAware.php){ .src-btn }
+
+Marker contract for a consumer that supports a visibility timeout
+(for example Beanstalk TTR or an SQS visibility timeout). Callers detect
+support with `instanceof`. It carries no behavior and commits to no class
+shape.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\VisibilityAware`**
+
+</div>
+
+
 ## Contracts\Support\Collection
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Support/Collection.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Support/Collection.php){ .src-btn }
 
 Canonical contract for Phalcon\Support\Collection.
 
@@ -8436,8 +11152,8 @@ Canonical contract for Phalcon\Support\Collection.
 
 <div class="api-tree" markdown>
 
-- `ArrayAccess`
-    - **`Phalcon\Contracts\Support\Collection`** - extends `ArrayAccess`, `IteratorAggregate`
+- `\ArrayAccess`
+    - **`Phalcon\Contracts\Support\Collection`** - extends `\ArrayAccess`, `\IteratorAggregate`
         - [`Phalcon\Support\Collection\CollectionInterface`](phalcon_support.md#supportcollectioncollectioninterface)
 
 </div>
@@ -8501,7 +11217,7 @@ __Uses__ `ArrayAccess` · `IteratorAggregate`
 <a class="api-item" href="#contractssupportcollection-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an element from the collection.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-getkeys">
@@ -8585,7 +11301,7 @@ __Uses__ `ArrayAccess` · `IteratorAggregate`
 <a class="api-item" href="#contractssupportcollection-sort">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">sort</span>(<span class="prm"><span class="st">callable</span> <span class="sv">$callback</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$order</span><span class="sm"> = 4</span></span>)</code>
+<code class="sig"><span class="sf">sort</span>(<span class="prm"><span class="st">callable|null</span> <span class="sv">$callback</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$order</span><span class="sm"> = SORT_ASC</span></span>)</code>
 <span class="desc">Returns a new collection sorted by value, preserving keys.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-toarray">
@@ -8692,7 +11408,7 @@ Returns the first value in the collection or null when empty.
 public function get(
     string $element,
     mixed $defaultValue = null,
-    string $cast = null
+    string|null $cast = null
 ): mixed;
 ```
 
@@ -8812,8 +11528,8 @@ Stores an element in the collection.
 
 ```php
 public function sort(
-    callable $callback = null,
-    int $order = 4
+    callable|null $callback = null,
+    int $order = SORT_ASC
 ): static;
 ```
 
@@ -8854,3 +11570,188 @@ public function where(
 
 Returns a new collection containing only the items whose
 `propertyOrMethod` strictly equals `$value`.
+
+
+## Contracts\Support\Debug\Renderer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Support/Debug/Renderer.php){ .src-btn }
+
+Canonical contract for Phalcon\Support\Debug renderers. Turns an
+ExceptionReport into output.
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\Support\Debug\TemplateAware`](#contractssupportdebugtemplateaware)
+    - **`Phalcon\Contracts\Support\Debug\Renderer`**
+
+</div>
+
+__Uses__ `Phalcon\Support\Debug\Report\ExceptionReport`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractssupportdebugrenderer-getcsssources">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getCssSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
+<span class="desc">Returns the CSS sources block for the given base URI.</span>
+</a>
+<a class="api-item" href="#contractssupportdebugrenderer-getjssources">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getJsSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
+<span class="desc">Returns the JavaScript sources block for the given base URI.</span>
+</a>
+<a class="api-item" href="#contractssupportdebugrenderer-getversion">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getVersion</span>()</code>
+<span class="desc">Returns the framework version block.</span>
+</a>
+<a class="api-item" href="#contractssupportdebugrenderer-render">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">render</span>( <span class="st">ExceptionReport</span> <span class="sv">$report</span> )</code>
+<span class="desc">Renders the report.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `getCssSources()` { #contractssupportdebugrenderer-getcsssources }
+
+```php
+public function getCssSources( string $uri ): string;
+```
+
+Returns the CSS sources block for the given base URI.
+
+#### `getJsSources()` { #contractssupportdebugrenderer-getjssources }
+
+```php
+public function getJsSources( string $uri ): string;
+```
+
+Returns the JavaScript sources block for the given base URI.
+
+#### `getVersion()` { #contractssupportdebugrenderer-getversion }
+
+```php
+public function getVersion(): string;
+```
+
+Returns the framework version block.
+
+#### `render()` { #contractssupportdebugrenderer-render }
+
+```php
+public function render( ExceptionReport $report ): string;
+```
+
+Renders the report.
+
+
+## Contracts\Support\Debug\TemplateAware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Support/Debug/TemplateAware.php){ .src-btn }
+
+Canonical contract for components that render through named, overridable
+template strings.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Support\Debug\TemplateAware`**
+    - [`Phalcon\Contracts\Support\Debug\Renderer`](#contractssupportdebugrenderer)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractssupportdebugtemplateaware-gettemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+<span class="desc">Returns the template for the given name (override if set, default</span>
+</a>
+<a class="api-item" href="#contractssupportdebugtemplateaware-settemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setTemplate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$template</span></span>)</code>
+<span class="desc">Overrides the template for the given name.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 2</div>
+
+#### `getTemplate()` { #contractssupportdebugtemplateaware-gettemplate }
+
+```php
+public function getTemplate( string $name ): string;
+```
+
+Returns the template for the given name (override if set, default
+otherwise).
+
+#### `setTemplate()` { #contractssupportdebugtemplateaware-settemplate }
+
+```php
+public function setTemplate(
+    string $name,
+    string $template
+): static;
+```
+
+Overrides the template for the given name.
+
+
+## Contracts\View\Renderer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/View/Renderer.php){ .src-btn }
+
+Renders a template with the given data and returns the result as a string.
+
+A neutral abstraction: it is not tied to MVC, to ADR, or to any particular
+template engine. `Phalcon\Mvc\View\Simple` satisfies it out of the box, and
+userland engines only need this one method to become a drop-in renderer.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\View\Renderer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsviewrenderer-render">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
+<span class="desc">Renders the template and returns the output.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `render()` { #contractsviewrenderer-render }
+
+```php
+public function render(
+    string $path,
+    array $params = []
+): string;
+```
+
+Renders the template and returns the output.

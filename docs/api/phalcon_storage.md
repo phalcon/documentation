@@ -11,17 +11,19 @@ hide:
 ## Storage\AdapterFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/AdapterFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/AdapterFactory.php){ .src-btn }
+
+Class AdapterFactory
+
+@property SerializerFactory $serializerFactory
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
-        - **`Phalcon\Storage\AdapterFactory`**
+- **`Phalcon\Storage\AdapterFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Adapter\AdapterInterface`
+__Uses__ `Exception` · `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Apcu` · `Phalcon\Storage\Adapter\Libmemcached` · `Phalcon\Storage\Adapter\Memory` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Adapter\RedisCluster` · `Phalcon\Storage\Adapter\Stream` · `Phalcon\Storage\Adapter\Weak` · `Phalcon\Traits\Factory\FactoryTrait`
 { .api-uses }
 
 ### Method Summary
@@ -97,7 +99,7 @@ Returns the available adapters
 ## Storage\Adapter\AbstractAdapter
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/AbstractAdapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Adapter/AbstractAdapter.php){ .src-btn }
 
 Class AbstractAdapter
 
@@ -123,7 +125,7 @@ Class AbstractAdapter
 
 </div>
 
-__Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Exception` · `Phalcon\Support\Helper\Arr\Get`
+__Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 { .api-uses }
 
 ### Method Summary
@@ -137,7 +139,7 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-decrement">
 <code class="vis vis-public">public</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">decrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Decrements a stored number</span>
 </a>
@@ -151,7 +153,7 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">array</span> <span class="sv">$keys</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
+<span class="desc">Deletes multiple data from the adapter</span>
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-get">
 <code class="vis vis-public">public</code>
@@ -170,12 +172,6 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getDefaultSerializer</span>()</code>
 <span class="desc">Name of the default serializer class</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Get the event manager</span>
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-getkeys">
 <code class="vis vis-public">public</code>
@@ -197,7 +193,7 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-getserializer">
 <code class="vis vis-public">public</code>
-<code class="ret">SerializerInterface</code>
+<code class="ret">SerializerInterface|null</code>
 <code class="sig"><span class="sf">getSerializer</span>()</code>
 <span class="desc">Get the serializer</span>
 </a>
@@ -209,7 +205,7 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-increment">
 <code class="vis vis-public">public</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">increment</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Increments a stored number</span>
 </a>
@@ -224,20 +220,14 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setDefaultSerializer</span>( <span class="st">string</span> <span class="sv">$serializer</span> )</code>
 </a>
-<a class="api-item" href="#storageadapterabstractadapter-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the event manager</span>
-</a>
 <a class="api-item" href="#storageadapterabstractadapter-__construct">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$serializerFactory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">AbstractAdapter constructor.</span>
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-dodecrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Decrements a stored number</span>
 </a>
@@ -251,7 +241,7 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doDeleteMultiple</span>( <span class="st">array</span> <span class="sv">$keys</span> )</code>
-<span class="desc">Deletes multiple keys from the adapter</span>
+<span class="desc">Deletes multiple data from the adapter</span>
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-doget">
 <code class="vis vis-protected">protected</code>
@@ -271,7 +261,7 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-doincrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Increments a stored number</span>
 </a>
@@ -280,18 +270,6 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-fire">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span></span>)</code>
-<span class="desc">Trigger an event for the eventsManager.</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getarrval">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Reads an element from an array, optionally casting it. Delegates to the</span>
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-getfilteredkeys">
 <code class="vis vis-protected">protected</code>
@@ -359,12 +337,6 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-<span class="desc">Event Manager</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$lifetime</span><span class="sm"> = 3600</span></code>
 <span class="desc">Name of the default TTL (time to live)</span>
@@ -389,7 +361,6 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 <code class="vis vis-protected">protected</code>
 <code class="ret">SerializerFactory</code>
 <code class="sig"><span class="sv">$serializerFactory</span></code>
-<span class="desc">Serializer Factory</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -404,7 +375,7 @@ text (e.g. session ids).</span>
 
 ### Methods
 
-<div class="api-group">Public · 17</div>
+<div class="api-group">Public · 15</div>
 
 #### `clear()` { #storageadapterabstractadapter-clear }
 
@@ -420,7 +391,7 @@ Flushes/clears the cache
 public function decrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Decrements a stored number
@@ -439,7 +410,7 @@ Deletes data from the adapter
 public function deleteMultiple( array $keys ): bool;
 ```
 
-Deletes data from the adapter
+Deletes multiple data from the adapter
 
 #### `get()` { #storageadapterabstractadapter-get }
 
@@ -468,14 +439,6 @@ public function getDefaultSerializer(): string;
 
 Name of the default serializer class
 
-#### `getEventsManager()` { #storageadapterabstractadapter-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Get the event manager
-
 #### `getKeys()` { #storageadapterabstractadapter-getkeys }
 
 ```php
@@ -503,7 +466,7 @@ Returns the prefix
 #### `getSerializer()` { #storageadapterabstractadapter-getserializer }
 
 ```php
-public function getSerializer(): SerializerInterface;
+public function getSerializer(): SerializerInterface|null;
 ```
 
 Get the serializer
@@ -522,7 +485,7 @@ Checks if an element exists in the cache
 public function increment(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Increments a stored number
@@ -549,21 +512,13 @@ the `setForever()` method.
 public function setDefaultSerializer( string $serializer ): void;
 ```
 
-#### `setEventsManager()` { #storageadapterabstractadapter-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the event manager
-
-<div class="api-group">Protected · 18</div>
+<div class="api-group">Protected · 16</div>
 
 #### `__construct()` { #storageadapterabstractadapter-__construct }
 
 ```php
 protected function __construct(
-    SerializerFactory $factory,
+    SerializerFactory $serializerFactory,
     array $options = []
 );
 ```
@@ -576,7 +531,7 @@ AbstractAdapter constructor.
 abstract protected function doDecrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Decrements a stored number
@@ -595,7 +550,7 @@ Deletes data from the adapter
 protected function doDeleteMultiple( array $keys ): bool;
 ```
 
-Deletes multiple keys from the adapter
+Deletes multiple data from the adapter
 
 #### `doGet()` { #storageadapterabstractadapter-doget }
 
@@ -626,7 +581,7 @@ Checks if an element exists in the cache
 abstract protected function doIncrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Increments a stored number
@@ -646,33 +601,6 @@ then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
-
-#### `fire()` { #storageadapterabstractadapter-fire }
-
-```php
-protected function fire(
-    string $eventName,
-    mixed $keys
-): void;
-```
-
-Trigger an event for the eventsManager.
-
-#### `getArrVal()` { #storageadapterabstractadapter-getarrval }
-
-```php
-protected function getArrVal(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null,
-    string $cast = null
-): mixed;
-```
-
-Reads an element from an array, optionally casting it. Delegates to the
-canonical Support\Helper\Arr\Get helper.
-
-@todo Remove this wrapper when we get traits
 
 #### `getFilteredKeys()` { #storageadapterabstractadapter-getfilteredkeys }
 
@@ -742,18 +670,19 @@ Initializes the serializer
 ## Storage\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/AdapterInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Adapter/AdapterInterface.php){ .src-btn }
 
 Interface for Phalcon\Logger adapters
 
 <div class="api-tree" markdown>
 
 - **`Phalcon\Storage\Adapter\AdapterInterface`**
+    - [`Phalcon\Annotations\Adapter\AdapterInterface`](phalcon_annotations.md#annotationsadapteradapterinterface)
     - [`Phalcon\Cache\Adapter\AdapterInterface`](phalcon_cache.md#cacheadapteradapterinterface)
 
 </div>
 
-__Uses__ `Phalcon\Storage\Serializer\SerializerInterface`
+__Uses__ `DateInterval`
 { .api-uses }
 
 ### Method Summary
@@ -767,7 +696,7 @@ __Uses__ `Phalcon\Storage\Serializer\SerializerInterface`
 </a>
 <a class="api-item" href="#storageadapteradapterinterface-decrement">
 <code class="vis vis-public">public</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">decrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Decrements a stored number</span>
 </a>
@@ -793,7 +722,7 @@ __Uses__ `Phalcon\Storage\Serializer\SerializerInterface`
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getAdapter</span>()</code>
-<span class="desc">Returns the already connected adapter or connects to the backend</span>
+<span class="desc">Returns the adapter - connects to the storage if not connected</span>
 </a>
 <a class="api-item" href="#storageadapteradapterinterface-getkeys">
 <code class="vis vis-public">public</code>
@@ -815,7 +744,7 @@ __Uses__ `Phalcon\Storage\Serializer\SerializerInterface`
 </a>
 <a class="api-item" href="#storageadapteradapterinterface-increment">
 <code class="vis vis-public">public</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">increment</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Increments a stored number</span>
 </a>
@@ -828,8 +757,8 @@ __Uses__ `Phalcon\Storage\Serializer\SerializerInterface`
 <a class="api-item" href="#storageadapteradapterinterface-setforever">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Stores data in the adapter forever. The key needs to manually deleted</span>
+<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<span class="desc">Stores data in the adapter forever. The key needs to be manually deleted</span>
 </a>
 </div>
 
@@ -851,7 +780,7 @@ Flushes/clears the cache
 public function decrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Decrements a stored number
@@ -889,8 +818,7 @@ Reads data from the adapter
 public function getAdapter(): mixed;
 ```
 
-Returns the already connected adapter or connects to the backend
-server(s)
+Returns the adapter - connects to the storage if not connected
 
 #### `getKeys()` { #storageadapteradapterinterface-getkeys }
 
@@ -922,7 +850,7 @@ Checks if an element exists in the cache
 public function increment(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Increments a stored number
@@ -948,18 +876,18 @@ the `setForever()` method.
 ```php
 public function setForever(
     string $key,
-    mixed $value
+    mixed $data
 ): bool;
 ```
 
-Stores data in the adapter forever. The key needs to manually deleted
+Stores data in the adapter forever. The key needs to be manually deleted
 from the adapter.
 
 
 ## Storage\Adapter\Apcu
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Apcu.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Adapter/Apcu.php){ .src-btn }
 
 Apcu adapter
 
@@ -974,11 +902,12 @@ Capabilities:
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Apcu`**
+        - [`Phalcon\Annotations\Adapter\Apcu`](phalcon_annotations.md#annotationsadapterapcu)
         - [`Phalcon\Cache\Adapter\Apcu`](phalcon_cache.md#cacheadapterapcu)
 
 </div>
 
-__Uses__ `APCUIterator` · `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
+__Uses__ `APCUIterator` · `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Traits\Php\ApcuTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1004,12 +933,12 @@ __Uses__ `APCUIterator` · `DateInterval` · `Exception` · `Phalcon\Storage\Ser
 <a class="api-item" href="#storageadapterapcu-setforever">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Stores data in the adapter forever. The key needs to manually deleted</span>
 </a>
 <a class="api-item" href="#storageadapterapcu-dodecrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Decrements a stored number</span>
 </a>
@@ -1017,7 +946,7 @@ __Uses__ `APCUIterator` · `DateInterval` · `Exception` · `Phalcon\Storage\Ser
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
+<span class="desc">Reads data from the adapter</span>
 </a>
 <a class="api-item" href="#storageadapterapcu-dodeletemultiple">
 <code class="vis vis-protected">protected</code>
@@ -1027,6 +956,7 @@ __Uses__ `APCUIterator` · `DateInterval` · `Exception` · `Phalcon\Storage\Ser
 </a>
 <a class="api-item" href="#storageadapterapcu-dogetdata">
 <code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">doGetData</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 <a class="api-item" href="#storageadapterapcu-dohas">
@@ -1037,7 +967,7 @@ __Uses__ `APCUIterator` · `DateInterval` · `Exception` · `Phalcon\Storage\Ser
 </a>
 <a class="api-item" href="#storageadapterapcu-doincrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Increments a stored number</span>
 </a>
@@ -1046,42 +976,6 @@ __Uses__ `APCUIterator` · `DateInterval` · `Exception` · `Phalcon\Storage\Ser
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcudec">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|int</code>
-<code class="sig"><span class="sf">phpApcuDec</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$step</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">@todo Remove the below once we get traits</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcudelete">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|array</code>
-<code class="sig"><span class="sf">phpApcuDelete</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcuexists">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|array</code>
-<code class="sig"><span class="sf">phpApcuExists</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcufetch">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">phpApcuFetch</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcuinc">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|int</code>
-<code class="sig"><span class="sf">phpApcuInc</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$step</span><span class="sm"> = 1</span></span>)</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcuiterator">
-<code class="vis vis-protected">protected</code>
-<code class="ret">APCUIterator|bool</code>
-<code class="sig"><span class="sf">phpApcuIterator</span>( <span class="st">string</span> <span class="sv">$pattern</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcustore">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|array</code>
-<code class="sig"><span class="sf">phpApcuStore</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$ttl</span><span class="sm"> = 0</span></span>)</code>
 </a>
 </div>
 
@@ -1131,14 +1025,14 @@ Stores data in the adapter
 ```php
 public function setForever(
     string $key,
-    mixed $value
+    mixed $data
 ): bool;
 ```
 
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
 
-<div class="api-group">Protected · 14</div>
+<div class="api-group">Protected · 7</div>
 
 #### `doDecrement()` { #storageadapterapcu-dodecrement }
 
@@ -1146,7 +1040,7 @@ from the adapter.
 protected function doDecrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Decrements a stored number
@@ -1157,7 +1051,7 @@ Decrements a stored number
 protected function doDelete( string $key ): bool;
 ```
 
-Deletes data from the adapter
+Reads data from the adapter
 
 #### `doDeleteMultiple()` { #storageadapterapcu-dodeletemultiple }
 
@@ -1170,7 +1064,7 @@ Deletes multiple keys from APCu in a single call
 #### `doGetData()` { #storageadapterapcu-dogetdata }
 
 ```php
-protected function doGetData( string $key );
+protected function doGetData( string $key ): mixed;
 ```
 
 #### `doHas()` { #storageadapterapcu-dohas }
@@ -1187,7 +1081,7 @@ Checks if an element exists in the cache
 protected function doIncrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Increments a stored number
@@ -1208,65 +1102,11 @@ is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
 
-#### `phpApcuDec()` { #storageadapterapcu-phpapcudec }
-
-```php
-protected function phpApcuDec(
-    mixed $key,
-    int $step = 1
-): bool|int;
-```
-
-@todo Remove the below once we get traits
-
-#### `phpApcuDelete()` { #storageadapterapcu-phpapcudelete }
-
-```php
-protected function phpApcuDelete( mixed $key ): bool|array;
-```
-
-#### `phpApcuExists()` { #storageadapterapcu-phpapcuexists }
-
-```php
-protected function phpApcuExists( mixed $key ): bool|array;
-```
-
-#### `phpApcuFetch()` { #storageadapterapcu-phpapcufetch }
-
-```php
-protected function phpApcuFetch( mixed $key ): mixed;
-```
-
-#### `phpApcuInc()` { #storageadapterapcu-phpapcuinc }
-
-```php
-protected function phpApcuInc(
-    mixed $key,
-    int $step = 1
-): bool|int;
-```
-
-#### `phpApcuIterator()` { #storageadapterapcu-phpapcuiterator }
-
-```php
-protected function phpApcuIterator( string $pattern ): APCUIterator|bool;
-```
-
-#### `phpApcuStore()` { #storageadapterapcu-phpapcustore }
-
-```php
-protected function phpApcuStore(
-    mixed $key,
-    mixed $payload,
-    int $ttl = 0
-): bool|array;
-```
-
 
 ## Storage\Adapter\Libmemcached
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Libmemcached.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Adapter/Libmemcached.php){ .src-btn }
 
 Libmemcached adapter
 
@@ -1280,11 +1120,12 @@ Capabilities:
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Libmemcached`**
+        - [`Phalcon\Annotations\Adapter\Libmemcached`](phalcon_annotations.md#annotationsadapterlibmemcached)
         - [`Phalcon\Cache\Adapter\Libmemcached`](phalcon_cache.md#cacheadapterlibmemcached)
 
 </div>
 
-__Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
+__Uses__ `DateInterval` · `Exception` · `Memcached` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
 { .api-uses }
 
 ### Method Summary
@@ -1316,12 +1157,12 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalco
 <a class="api-item" href="#storageadapterlibmemcached-setforever">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Stores data in the adapter forever. The key needs to manually deleted</span>
+<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<span class="desc">Stores data in the adapter forever. The key needs to be manually deleted</span>
 </a>
 <a class="api-item" href="#storageadapterlibmemcached-dodecrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Decrements a stored number</span>
 </a>
@@ -1329,7 +1170,7 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalco
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
+<span class="desc">Reads data from the adapter</span>
 </a>
 <a class="api-item" href="#storageadapterlibmemcached-dodeletemultiple">
 <code class="vis vis-protected">protected</code>
@@ -1345,7 +1186,7 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalco
 </a>
 <a class="api-item" href="#storageadapterlibmemcached-doincrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Increments a stored number</span>
 </a>
@@ -1412,11 +1253,11 @@ Stores data in the adapter
 ```php
 public function setForever(
     string $key,
-    mixed $value
+    mixed $data
 ): bool;
 ```
 
-Stores data in the adapter forever. The key needs to manually deleted
+Stores data in the adapter forever. The key needs to be manually deleted
 from the adapter.
 
 <div class="api-group">Protected · 6</div>
@@ -1427,7 +1268,7 @@ from the adapter.
 protected function doDecrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Decrements a stored number
@@ -1438,7 +1279,7 @@ Decrements a stored number
 protected function doDelete( string $key ): bool;
 ```
 
-Deletes data from the adapter
+Reads data from the adapter
 
 #### `doDeleteMultiple()` { #storageadapterlibmemcached-dodeletemultiple }
 
@@ -1462,7 +1303,7 @@ Checks if an element exists in the cache
 protected function doIncrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Increments a stored number
@@ -1487,7 +1328,7 @@ the `setForever()` method.
 ## Storage\Adapter\Memory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Memory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Adapter/Memory.php){ .src-btn }
 
 Memory adapter
 
@@ -1505,11 +1346,12 @@ Capabilities:
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Memory`**
+        - [`Phalcon\Annotations\Adapter\Memory`](phalcon_annotations.md#annotationsadaptermemory)
         - [`Phalcon\Cache\Adapter\Memory`](phalcon_cache.md#cacheadaptermemory)
 
 </div>
 
-__Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
+__Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory`
 { .api-uses }
 
 ### Method Summary
@@ -1541,7 +1383,7 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` ·
 <a class="api-item" href="#storageadaptermemory-setforever">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Stores data in the adapter forever. The key needs to manually deleted</span>
 </a>
 <a class="api-item" href="#storageadaptermemory-setmaxitems">
@@ -1552,7 +1394,7 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` ·
 </a>
 <a class="api-item" href="#storageadaptermemory-dodecrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Decrements a stored number</span>
 </a>
@@ -1564,6 +1406,7 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` ·
 </a>
 <a class="api-item" href="#storageadaptermemory-dogetdata">
 <code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">doGetData</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 <a class="api-item" href="#storageadaptermemory-dohas">
@@ -1574,7 +1417,7 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` ·
 </a>
 <a class="api-item" href="#storageadaptermemory-doincrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Increments a stored number</span>
 </a>
@@ -1648,7 +1491,7 @@ Returns the configured store cap (0 = unlimited). See setMaxItems().
 ```php
 public function setForever(
     string $key,
-    mixed $value
+    mixed $data
 ): bool;
 ```
 
@@ -1674,7 +1517,7 @@ entry is evicted FIFO before a new key is stored.
 protected function doDecrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Decrements a stored number
@@ -1690,7 +1533,7 @@ Deletes data from the adapter
 #### `doGetData()` { #storageadaptermemory-dogetdata }
 
 ```php
-protected function doGetData( string $key );
+protected function doGetData( string $key ): mixed;
 ```
 
 #### `doHas()` { #storageadaptermemory-dohas }
@@ -1707,7 +1550,7 @@ Checks if an element exists in the cache
 protected function doIncrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Increments a stored number
@@ -1732,7 +1575,7 @@ the `setForever()` method.
 ## Storage\Adapter\Redis
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Redis.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Adapter/Redis.php){ .src-btn }
 
 Redis adapter
 
@@ -1743,18 +1586,17 @@ Capabilities:
   serializers change the bytes at rest and are not interchangeable with
   Phalcon-side serializers.
 
-@property array $options
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Redis`**
+        - [`Phalcon\Annotations\Adapter\Redis`](phalcon_annotations.md#annotationsadapterredis)
         - [`Phalcon\Cache\Adapter\Redis`](phalcon_cache.md#cacheadapterredis)
         - [`Phalcon\Storage\Adapter\RedisCluster`](#storageadapterrediscluster)
 
 </div>
 
-__Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\AuthenticationFailed` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\DatabaseSelectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
+__Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\AuthenticationFailed` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\DatabaseSelectionFailed` · `Phalcon\Storage\SerializerFactory` · `Redis` · `RedisException`
 { .api-uses }
 
 ### Method Summary
@@ -1781,17 +1623,17 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalco
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Stores data in the adapter</span>
+<span class="desc">Returns all the keys stored</span>
 </a>
 <a class="api-item" href="#storageadapterredis-setforever">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Stores data in the adapter forever. The key needs to manually deleted</span>
 </a>
 <a class="api-item" href="#storageadapterredis-dodecrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Decrements a stored number</span>
 </a>
@@ -1799,7 +1641,7 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalco
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
+<span class="desc">Reads data from the adapter</span>
 </a>
 <a class="api-item" href="#storageadapterredis-dodeletemultiple">
 <code class="vis vis-protected">protected</code>
@@ -1815,7 +1657,7 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalco
 </a>
 <a class="api-item" href="#storageadapterredis-doincrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Increments a stored number</span>
 </a>
@@ -1824,6 +1666,11 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalco
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
+</a>
+<a class="api-item" href="#storageadapterredis-getdefaultoptions">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getDefaultOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 </a>
 </div>
 
@@ -1875,21 +1722,25 @@ server(s)
 public function getKeys( string $prefix = "" ): array;
 ```
 
-Stores data in the adapter
+Returns all the keys stored
+
+SCAN replaces the blocking KEYS command. SCAN_NOPREFIX keeps the prefix
+handling explicit: the physical prefix is matched and returned unchanged,
+so getFilteredKeys() sees exactly what KEYS produced.
 
 #### `setForever()` { #storageadapterredis-setforever }
 
 ```php
 public function setForever(
     string $key,
-    mixed $value
+    mixed $data
 ): bool;
 ```
 
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
 
-<div class="api-group">Protected · 6</div>
+<div class="api-group">Protected · 7</div>
 
 #### `doDecrement()` { #storageadapterredis-dodecrement }
 
@@ -1897,7 +1748,7 @@ from the adapter.
 protected function doDecrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Decrements a stored number
@@ -1908,7 +1759,7 @@ Decrements a stored number
 protected function doDelete( string $key ): bool;
 ```
 
-Deletes data from the adapter
+Reads data from the adapter
 
 #### `doDeleteMultiple()` { #storageadapterredis-dodeletemultiple }
 
@@ -1932,7 +1783,7 @@ Checks if an element exists in the cache
 protected function doIncrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Increments a stored number
@@ -1953,11 +1804,17 @@ is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
 
+#### `getDefaultOptions()` { #storageadapterredis-getdefaultoptions }
+
+```php
+protected function getDefaultOptions( array $options ): array;
+```
+
 
 ## Storage\Adapter\RedisCluster
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/RedisCluster.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Adapter/RedisCluster.php){ .src-btn }
 
 RedisCluster adapter
 
@@ -1978,7 +1835,7 @@ Capabilities (in addition to Redis):
 
 </div>
 
-__Uses__ `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storage\SerializerFactory`
+__Uses__ `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Redis` · `RedisCluster` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -1987,7 +1844,7 @@ __Uses__ `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storag
 <a class="api-item" href="#storageadapterrediscluster-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">You can create and connect to a cluster either by passing it one or more</span>
+<span class="desc">You can create and connect to a cluster either by passing it one or more &#039;seed&#039; nodes, or by defining</span>
 </a>
 <a class="api-item" href="#storageadapterrediscluster-clear">
 <code class="vis vis-public">public</code>
@@ -2006,6 +1863,11 @@ __Uses__ `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storag
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
 <span class="desc">Returns all the keys stored</span>
+</a>
+<a class="api-item" href="#storageadapterrediscluster-getdefaultoptions">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getDefaultOptions</span>( <span class="st">mixed</span> <span class="sv">$options</span> )</code>
 </a>
 </div>
 
@@ -2032,11 +1894,10 @@ public function __construct(
 );
 ```
 
-You can create and connect to a cluster either by passing it one or more
-'seed' nodes, or by defining these in redis.ini as a 'named' cluster.
+You can create and connect to a cluster either by passing it one or more 'seed' nodes, or by defining
+these in redis.ini as a 'named' cluster.
 
-If you are connecting with the cluster by offering a name, that is
-configured in redis.ini:
+If you are connecting with the cluster by offering a name, that is configured in redis.ini:
 
      ```
      # In redis.ini
@@ -2048,15 +1909,13 @@ configured in redis.ini:
 you can use `$options = ["name" => "mycluster"]`.
 
 If you don't have cluster seeds configured in your redis.ini,
-you should pass hosts as an array,
-eg. `$options = ["hosts" => ["a-host:7000", "b-host:7001"]]`.
+you should pass hosts as an array, eg. `$options = ["hosts" => ["a-host:7000", "b-host:7001"]]`.
 
-You can provide authentication data offering a string `user=password`
-or array `["user" => "name", "password" => "secret"]`.
+You can provide authentication data offering a string `user=password` or
+array `["user" => "name", "password" => "secret"]`.
 
-The `timeout` is the amount of time library will wait when connecting
-or writing to the cluster. `readTimeout` is the amount of time library
-will wait for a result from the cluster.
+The `timeout` is the amount of time library will wait when connecting or writing to the cluster
+`readTimeout` is the amount of time library will wait for a result from the cluster.
 
 The `context` is an array of values used for ssl/tls stream context
 options eg `["verify_peer" => 0, "local_cert" => "file:///path/to/cert.pem"]`
@@ -2076,7 +1935,7 @@ public function getAdapter(): mixed;
 ```
 
 Returns the already connected adapter or connects to the Redis
-Cluster server(s)
+server(s)
 
 #### `getKeys()` { #storageadapterrediscluster-getkeys }
 
@@ -2090,11 +1949,19 @@ RedisCluster::scan() iterates one node at a time, so the blocking KEYS
 command is retained here (phpredis routes it across the masters). The
 per-node SCAN migration is left to the storage redesign.
 
+<div class="api-group">Protected · 1</div>
+
+#### `getDefaultOptions()` { #storageadapterrediscluster-getdefaultoptions }
+
+```php
+protected function getDefaultOptions( mixed $options ): array;
+```
+
 
 ## Storage\Adapter\Stream
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Stream.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Adapter/Stream.php){ .src-btn }
 
 Stream adapter
 
@@ -2104,18 +1971,16 @@ Capabilities:
 - getKeys(): recursive directory traversal; cost grows with the entry count.
 - Serializers: Phalcon-side only.
 
-@property string $storageDir
-@property array  $options
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Stream`**
+        - [`Phalcon\Annotations\Adapter\Stream`](phalcon_annotations.md#annotationsadapterstream)
         - [`Phalcon\Cache\Adapter\Stream`](phalcon_cache.md#cacheadapterstream)
 
 </div>
 
-__Uses__ `DateInterval` · `FilesystemIterator` · `Iterator` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator`
+__Uses__ `DateInterval` · `Exception` · `FilesystemIterator` · `Iterator` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator`
 { .api-uses }
 
 ### Method Summary
@@ -2141,12 +2006,12 @@ __Uses__ `DateInterval` · `FilesystemIterator` · `Iterator` · `Phalcon\Storag
 <a class="api-item" href="#storageadapterstream-setforever">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Stores data in the adapter forever. The key needs to manually deleted</span>
 </a>
 <a class="api-item" href="#storageadapterstream-dodecrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Decrements a stored number</span>
 </a>
@@ -2154,7 +2019,7 @@ __Uses__ `DateInterval` · `FilesystemIterator` · `Iterator` · `Phalcon\Storag
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
+<span class="desc">Reads data from the adapter</span>
 </a>
 <a class="api-item" href="#storageadapterstream-doget">
 <code class="vis vis-protected">protected</code>
@@ -2170,7 +2035,7 @@ __Uses__ `DateInterval` · `FilesystemIterator` · `Iterator` · `Phalcon\Storag
 </a>
 <a class="api-item" href="#storageadapterstream-doincrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Increments a stored number</span>
 </a>
@@ -2179,32 +2044,6 @@ __Uses__ `DateInterval` · `FilesystemIterator` · `Iterator` · `Phalcon\Storag
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-<a class="api-item" href="#storageadapterstream-phpfileexists">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpFileExists</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-<span class="desc">@todo Remove the methods below when we get traits</span>
-</a>
-<a class="api-item" href="#storageadapterstream-phpfilegetcontents">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|bool</code>
-<code class="sig"><span class="sf">phpFileGetContents</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterstream-phpfileputcontents">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
-<code class="sig"><span class="sf">phpFilePutContents</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$context</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#storageadapterstream-phpfopen">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">phpFopen</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span></span>)</code>
-</a>
-<a class="api-item" href="#storageadapterstream-phpunlink">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpUnlink</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
 </a>
 </div>
 
@@ -2259,14 +2098,14 @@ Stores data in the adapter
 ```php
 public function setForever(
     string $key,
-    mixed $value
+    mixed $data
 ): bool;
 ```
 
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
 
-<div class="api-group">Protected · 11</div>
+<div class="api-group">Protected · 6</div>
 
 #### `doDecrement()` { #storageadapterstream-dodecrement }
 
@@ -2274,7 +2113,7 @@ from the adapter.
 protected function doDecrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Decrements a stored number
@@ -2285,7 +2124,7 @@ Decrements a stored number
 protected function doDelete( string $key ): bool;
 ```
 
-Deletes data from the adapter
+Reads data from the adapter
 
 #### `doGet()` { #storageadapterstream-doget }
 
@@ -2312,7 +2151,7 @@ Checks if an element exists in the cache and is not expired
 protected function doIncrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
 Increments a stored number
@@ -2333,51 +2172,298 @@ is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
 
-#### `phpFileExists()` { #storageadapterstream-phpfileexists }
+
+## Storage\Adapter\Traits\ActionTrait
+
+<span class="badge badge--trait">Trait</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Adapter/Traits/ActionTrait.php){ .src-btn }
+
+Trait for the `do*` methods
+
+@method bool             has(string $key)
+@method AdapterInterface getAdapter()
+
+@property string                   $defaultSerializer
+@property int                      $lifetime
+@property string                   $prefix
+@property SerializerInterface|null $serializer;
+@property SerializerFactory        $serializerFactory
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Storage\Adapter\Traits\ActionTrait`**
+
+</div>
+
+__Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Storage\Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#storageadaptertraitsactiontrait-dodeletemultiple">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">doDeleteMultiple</span>( <span class="st">iterable</span> <span class="sv">$keys</span> )</code>
+<span class="desc">Delete multiple keys.</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-dogetmultiple">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">doGetMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Get multiple keys. Returns an array success, false on failure. Raises</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-dosetmultiple">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">doSetMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">DateInterval|int|null</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Sets multiple keys. Returns true on success, false on failure.</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-dodecrement">
+<code class="vis vis-protected">protected</code>
+<code class="ret">false|int</code>
+<code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
+<span class="desc">Decrements a stored number</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-dodelete">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<span class="desc">Deletes data from the adapter. This just checks the key and is called</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-doget">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">doGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-dogetdata">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">doGetData</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-dohas">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">doHas</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<span class="desc">Checks if an element exists in the cache</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-doincrement">
+<code class="vis vis-protected">protected</code>
+<code class="ret">false|int</code>
+<code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
+<span class="desc">Increments a stored number</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-doset">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">DateInterval|int|null</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-getfilteredkeys">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getFilteredKeys</span>(<span class="prm"><span class="st">array</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
+<span class="desc">Filters the keys array based on global and passed prefix</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-getprefixedkey">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getPrefixedKey</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
+<span class="desc">Returns the key requested, prefixed</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-getserializeddata">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getSerializedData</span>( <span class="st">mixed</span> <span class="sv">$content</span> )</code>
+<span class="desc">Returns serialized data</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-getttl">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getTtl</span>( <span class="st">mixed</span> <span class="sv">$ttl</span> )</code>
+<span class="desc">Calculates the TTL for a cache item</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-getunserializeddata">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getUnserializedData</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns unserialized data</span>
+</a>
+<a class="api-item" href="#storageadaptertraitsactiontrait-initserializer">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">initSerializer</span>()</code>
+<span class="desc">Initializes the serializer</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+#### `doDeleteMultiple()` { #storageadaptertraitsactiontrait-dodeletemultiple }
 
 ```php
-protected function phpFileExists( string $filename ): bool;
+public function doDeleteMultiple( iterable $keys ): bool;
 ```
 
-@todo Remove the methods below when we get traits
+Delete multiple keys.
 
-#### `phpFileGetContents()` { #storageadapterstream-phpfilegetcontents }
+#### `doGetMultiple()` { #storageadaptertraitsactiontrait-dogetmultiple }
 
 ```php
-protected function phpFileGetContents( string $filename ): string|bool;
+public function doGetMultiple(
+    iterable $keys,
+    mixed $defaultValue = null
+): array;
 ```
 
-#### `phpFilePutContents()` { #storageadapterstream-phpfileputcontents }
+Get multiple keys. Returns an array success, false on failure. Raises
+an EventsException if the event cannot be processed, and an Exception if
+any of the keys have wrong names.
+
+#### `doSetMultiple()` { #storageadaptertraitsactiontrait-dosetmultiple }
 
 ```php
-protected function phpFilePutContents(
-    string $filename,
-    mixed $data,
-    int $flags = 0,
-    mixed $context = null
-): int|bool;
+public function doSetMultiple(
+    iterable $values,
+    DateInterval|int|null $ttl = null
+): bool;
 ```
 
-#### `phpFopen()` { #storageadapterstream-phpfopen }
+Sets multiple keys. Returns true on success, false on failure.
+
+<div class="api-group">Protected · 13</div>
+
+#### `doDecrement()` { #storageadaptertraitsactiontrait-dodecrement }
 
 ```php
-protected function phpFopen(
-    string $filename,
-    string $mode
+protected function doDecrement(
+    string $key,
+    int $value = 1
+): false|int;
+```
+
+Decrements a stored number
+
+#### `doDelete()` { #storageadaptertraitsactiontrait-dodelete }
+
+```php
+protected function doDelete( string $key ): bool;
+```
+
+Deletes data from the adapter. This just checks the key and is called
+from the children
+
+#### `doGet()` { #storageadaptertraitsactiontrait-doget }
+
+```php
+protected function doGet(
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
-#### `phpUnlink()` { #storageadapterstream-phpunlink }
+#### `doGetData()` { #storageadaptertraitsactiontrait-dogetdata }
 
 ```php
-protected function phpUnlink( string $filename ): bool;
+protected function doGetData( string $key ): mixed;
 ```
+
+#### `doHas()` { #storageadaptertraitsactiontrait-dohas }
+
+```php
+abstract protected function doHas( string $key ): bool;
+```
+
+Checks if an element exists in the cache
+
+#### `doIncrement()` { #storageadaptertraitsactiontrait-doincrement }
+
+```php
+abstract protected function doIncrement(
+    string $key,
+    int $value = 1
+): false|int;
+```
+
+Increments a stored number
+
+#### `doSet()` { #storageadaptertraitsactiontrait-doset }
+
+```php
+abstract protected function doSet(
+    string $key,
+    mixed $value,
+    DateInterval|int|null $ttl = null
+): bool;
+```
+
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+then the default TTL will be used, as set in this adapter. If the TTL
+is `0` or a negative number, a `delete()` will be issued, since this
+item has expired. If you need to set this key forever, you should use
+the `setForever()` method.
+
+#### `getFilteredKeys()` { #storageadaptertraitsactiontrait-getfilteredkeys }
+
+```php
+protected function getFilteredKeys(
+    array $keys,
+    string $prefix
+): array;
+```
+
+Filters the keys array based on global and passed prefix
+
+#### `getPrefixedKey()` { #storageadaptertraitsactiontrait-getprefixedkey }
+
+```php
+protected function getPrefixedKey( mixed $key ): string;
+```
+
+Returns the key requested, prefixed
+
+#### `getSerializedData()` { #storageadaptertraitsactiontrait-getserializeddata }
+
+```php
+protected function getSerializedData( mixed $content ): mixed;
+```
+
+Returns serialized data
+
+#### `getTtl()` { #storageadaptertraitsactiontrait-getttl }
+
+```php
+protected function getTtl( mixed $ttl ): int;
+```
+
+Calculates the TTL for a cache item
+
+#### `getUnserializedData()` { #storageadaptertraitsactiontrait-getunserializeddata }
+
+```php
+protected function getUnserializedData(
+    mixed $content,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns unserialized data
+
+#### `initSerializer()` { #storageadaptertraitsactiontrait-initserializer }
+
+```php
+protected function initSerializer(): void;
+```
+
+Initializes the serializer
 
 
 ## Storage\Adapter\Weak
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Weak.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Adapter/Weak.php){ .src-btn }
 
 Weak Adapter
 
@@ -2392,11 +2478,12 @@ Capabilities:
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Weak`**
+        - [`Phalcon\Annotations\Adapter\Weak`](phalcon_annotations.md#annotationsadapterweak)
         - [`Phalcon\Cache\Adapter\Weak`](phalcon_cache.md#cacheadapterweak)
 
 </div>
 
-__Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Exception`
+__Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` · `WeakReference`
 { .api-uses }
 
 ### Method Summary
@@ -2423,19 +2510,19 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` ·
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setDefaultSerializer</span>( <span class="st">string</span> <span class="sv">$serializer</span> )</code>
-<span class="desc">will never set a serializer, WeakReference cannot be serialized</span>
+<span class="desc">Will never set a serializer, WeakReference cannot be serialized</span>
 </a>
 <a class="api-item" href="#storageadapterweak-setforever">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">For compatiblity only, there is no Forever with WeakReference.</span>
 </a>
 <a class="api-item" href="#storageadapterweak-dodecrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Decrements a stored number - not supported for WeakReference</span>
+<span class="desc">Decrements a stored number</span>
 </a>
 <a class="api-item" href="#storageadapterweak-dodelete">
 <code class="vis vis-protected">protected</code>
@@ -2457,9 +2544,9 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` ·
 </a>
 <a class="api-item" href="#storageadapterweak-doincrement">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Increments a stored number - not supported for WeakReference</span>
+<span class="desc">Increments a stored number</span>
 </a>
 <a class="api-item" href="#storageadapterweak-doset">
 <code class="vis vis-protected">protected</code>
@@ -2474,7 +2561,7 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` ·
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int|null</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$fetching</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -2526,14 +2613,14 @@ Stores data in the adapter
 public function setDefaultSerializer( string $serializer ): void;
 ```
 
-will never set a serializer, WeakReference cannot be serialized
+Will never set a serializer, WeakReference cannot be serialized
 
 #### `setForever()` { #storageadapterweak-setforever }
 
 ```php
 public function setForever(
     string $key,
-    mixed $value
+    mixed $data
 ): bool;
 ```
 
@@ -2547,10 +2634,10 @@ For compatiblity only, there is no Forever with WeakReference.
 protected function doDecrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
-Decrements a stored number - not supported for WeakReference
+Decrements a stored number
 
 #### `doDelete()` { #storageadapterweak-dodelete }
 
@@ -2585,10 +2672,10 @@ Checks if an element exists in the cache
 protected function doIncrement(
     string $key,
     int $value = 1
-): int|bool;
+): false|int;
 ```
 
-Increments a stored number - not supported for WeakReference
+Increments a stored number
 
 #### `doSet()` { #storageadapterweak-doset }
 
@@ -2610,7 +2697,7 @@ the `setForever()` method.
 ## Storage\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Exception.php){ .src-btn }
 
 Phalcon\Storage\Exception
 
@@ -2633,7 +2720,7 @@ Exceptions thrown in Phalcon\Storage will use this class
 ## Storage\Exceptions\AuthenticationFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/AuthenticationFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Exceptions/AuthenticationFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2669,7 +2756,7 @@ public function __construct();
 ## Storage\Exceptions\ClusterConnectionFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/ClusterConnectionFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Exceptions/ClusterConnectionFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2686,7 +2773,7 @@ __Uses__ `Phalcon\Storage\Exception`
 ## Storage\Exceptions\ConnectionFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/ConnectionFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Exceptions/ConnectionFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2703,7 +2790,7 @@ __Uses__ `Phalcon\Storage\Exception`
 ## Storage\Exceptions\DatabaseSelectionFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/DatabaseSelectionFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Exceptions/DatabaseSelectionFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2739,7 +2826,7 @@ public function __construct();
 ## Storage\Exceptions\InvalidConfiguration
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/InvalidConfiguration.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Exceptions/InvalidConfiguration.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2756,7 +2843,7 @@ __Uses__ `Phalcon\Storage\Exception`
 ## Storage\Exceptions\StorageError
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/StorageError.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Exceptions/StorageError.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2773,17 +2860,15 @@ __Uses__ `Phalcon\Storage\Exception`
 ## Storage\SerializerFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/SerializerFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/SerializerFactory.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
-        - **`Phalcon\Storage\SerializerFactory`**
+- **`Phalcon\Storage\SerializerFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Serializer\SerializerInterface`
+__Uses__ `Exception` · `Phalcon\Storage\Serializer\Base64` · `Phalcon\Storage\Serializer\Igbinary` · `Phalcon\Storage\Serializer\Json` · `Phalcon\Storage\Serializer\MemcachedIgbinary` · `Phalcon\Storage\Serializer\MemcachedJson` · `Phalcon\Storage\Serializer\MemcachedPhp` · `Phalcon\Storage\Serializer\Msgpack` · `Phalcon\Storage\Serializer\None` · `Phalcon\Storage\Serializer\Php` · `Phalcon\Storage\Serializer\RedisIgbinary` · `Phalcon\Storage\Serializer\RedisJson` · `Phalcon\Storage\Serializer\RedisMsgpack` · `Phalcon\Storage\Serializer\RedisNone` · `Phalcon\Storage\Serializer\RedisPhp` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Traits\Factory\FactoryTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2850,7 +2935,7 @@ Returns the available adapters
 ## Storage\Serializer\AbstractSerializer
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/AbstractSerializer.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/AbstractSerializer.php){ .src-btn }
 
 @property mixed $data
 @property bool  $isSuccess
@@ -2988,7 +3073,7 @@ If this returns true, then the data is returned as is
 ## Storage\Serializer\Base64
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Base64.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/Base64.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2997,7 +3082,7 @@ If this returns true, then the data is returned as is
 
 </div>
 
-__Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput`
+__Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · `Phalcon\Traits\Php\Base64Trait`
 { .api-uses }
 
 ### Method Summary
@@ -3005,7 +3090,7 @@ __Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `P
 <div class="api-list">
 <a class="api-item" href="#storageserializerbase64-serialize">
 <code class="vis vis-public">public</code>
-<code class="ret">string</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">serialize</span>()</code>
 <span class="desc">Serializes data</span>
 </a>
@@ -3014,11 +3099,6 @@ __Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `P
 <code class="ret">void</code>
 <code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
 <span class="desc">Unserializes data</span>
-</a>
-<a class="api-item" href="#storageserializerbase64-phpbase64decode">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpBase64Decode</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strict</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Wrapper for base64_decode</span>
 </a>
 </div>
 
@@ -3029,7 +3109,7 @@ __Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `P
 #### `serialize()` { #storageserializerbase64-serialize }
 
 ```php
-public function serialize(): string;
+public function serialize(): mixed;
 ```
 
 Serializes data
@@ -3044,24 +3124,11 @@ Unserializes data
 
 @retrun void
 
-<div class="api-group">Protected · 1</div>
-
-#### `phpBase64Decode()` { #storageserializerbase64-phpbase64decode }
-
-```php
-protected function phpBase64Decode(
-    string $input,
-    bool $strict = false
-);
-```
-
-Wrapper for base64_decode
-
 
 ## Storage\Serializer\Exceptions\InvalidSerializationInput
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Exceptions/InvalidSerializationInput.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/Exceptions/InvalidSerializationInput.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3069,6 +3136,9 @@ Wrapper for base64_decode
     - **`Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput`**
 
 </div>
+
+__Uses__ `InvalidArgumentException`
+{ .api-uses }
 
 ### Method Summary
 
@@ -3093,7 +3163,7 @@ public function __construct();
 ## Storage\Serializer\Exceptions\InvalidUnserializationInput
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Exceptions/InvalidUnserializationInput.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/Exceptions/InvalidUnserializationInput.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3101,6 +3171,9 @@ public function __construct();
     - **`Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput`**
 
 </div>
+
+__Uses__ `InvalidArgumentException`
+{ .api-uses }
 
 ### Method Summary
 
@@ -3125,7 +3198,7 @@ public function __construct();
 ## Storage\Serializer\Igbinary
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Igbinary.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/Igbinary.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3134,6 +3207,9 @@ public function __construct();
         - [`Phalcon\Storage\Serializer\Msgpack`](#storageserializermsgpack)
 
 </div>
+
+__Uses__ `Phalcon\Traits\Php\IgbinaryTrait`
+{ .api-uses }
 
 ### Method Summary
 
@@ -3161,12 +3237,6 @@ public function __construct();
 <code class="sig"><span class="sf">doUnserialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Unserialize</span>
 </a>
-<a class="api-item" href="#storageserializerigbinary-phpigbinaryserialize">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">phpIgbinarySerialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
-<span class="desc">Wrapper for <code>igbinary_serialize</code></span>
-</a>
 </div>
 
 ### Methods
@@ -3189,7 +3259,7 @@ public function unserialize( mixed $data ): void;
 
 Unserializes data
 
-<div class="api-group">Protected · 3</div>
+<div class="api-group">Protected · 2</div>
 
 #### `doSerialize()` { #storageserializerigbinary-doserialize }
 
@@ -3207,19 +3277,11 @@ protected function doUnserialize( mixed $value );
 
 Unserialize
 
-#### `phpIgbinarySerialize()` { #storageserializerigbinary-phpigbinaryserialize }
-
-```php
-protected function phpIgbinarySerialize( mixed $value ): string|null;
-```
-
-Wrapper for `igbinary_serialize`
-
 
 ## Storage\Serializer\Json
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Json.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/Json.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3228,7 +3290,7 @@ Wrapper for `igbinary_serialize`
 
 </div>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode`
+__Uses__ `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode`
 { .api-uses }
 
 ### Method Summary
@@ -3285,7 +3347,7 @@ Unserializes data
 ## Storage\Serializer\MemcachedIgbinary
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/MemcachedIgbinary.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/MemcachedIgbinary.php){ .src-btn }
 
 Serializer using the built-in Memcached 'igbinary' serializer
 
@@ -3301,7 +3363,7 @@ Serializer using the built-in Memcached 'igbinary' serializer
 ## Storage\Serializer\MemcachedJson
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/MemcachedJson.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/MemcachedJson.php){ .src-btn }
 
 Serializer using the built-in Memcached 'json' serializer
 
@@ -3317,7 +3379,7 @@ Serializer using the built-in Memcached 'json' serializer
 ## Storage\Serializer\MemcachedPhp
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/MemcachedPhp.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/MemcachedPhp.php){ .src-btn }
 
 Serializer using the built-in Memcached 'php' serializer
 
@@ -3333,7 +3395,7 @@ Serializer using the built-in Memcached 'php' serializer
 ## Storage\Serializer\Msgpack
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Msgpack.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/Msgpack.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3342,6 +3404,9 @@ Serializer using the built-in Memcached 'php' serializer
         - **`Phalcon\Storage\Serializer\Msgpack`**
 
 </div>
+
+__Uses__ `Phalcon\Traits\Php\MsgpackTrait`
+{ .api-uses }
 
 ### Method Summary
 
@@ -3380,7 +3445,7 @@ protected function doUnserialize( mixed $value );
 ## Storage\Serializer\None
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/None.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/None.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3440,7 +3505,7 @@ Unserializes data
 ## Storage\Serializer\Php
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Php.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/Php.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3449,7 +3514,7 @@ Unserializes data
 
 </div>
 
-__Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput`
+__Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · `Phalcon\Traits\Php\SerializeTrait`
 { .api-uses }
 
 ### Method Summary
@@ -3493,7 +3558,7 @@ Unserializes data
 ## Storage\Serializer\RedisIgbinary
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/RedisIgbinary.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/RedisIgbinary.php){ .src-btn }
 
 Serializer using the built-in Redis 'igbinary' serializer
 
@@ -3509,7 +3574,7 @@ Serializer using the built-in Redis 'igbinary' serializer
 ## Storage\Serializer\RedisJson
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/RedisJson.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/RedisJson.php){ .src-btn }
 
 Serializer using the built-in Redis 'json' serializer
 
@@ -3525,7 +3590,7 @@ Serializer using the built-in Redis 'json' serializer
 ## Storage\Serializer\RedisMsgpack
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/RedisMsgpack.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/RedisMsgpack.php){ .src-btn }
 
 Serializer using the built-in Redis 'msgpack' serializer
 
@@ -3541,7 +3606,7 @@ Serializer using the built-in Redis 'msgpack' serializer
 ## Storage\Serializer\RedisNone
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/RedisNone.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/RedisNone.php){ .src-btn }
 
 Serializer using the built-in Redis 'none' serializer
 
@@ -3557,7 +3622,7 @@ Serializer using the built-in Redis 'none' serializer
 ## Storage\Serializer\RedisPhp
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/RedisPhp.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/RedisPhp.php){ .src-btn }
 
 Serializer using the built-in Redis 'php' serializer
 
@@ -3573,7 +3638,7 @@ Serializer using the built-in Redis 'php' serializer
 ## Storage\Serializer\SerializerInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/SerializerInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Storage/Serializer/SerializerInterface.php){ .src-btn }
 
 <div class="api-tree" markdown>
 

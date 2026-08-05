@@ -11,7 +11,7 @@ hide:
 ## DataMapper\Pdo\Connection
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Connection.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Connection.php){ .src-btn }
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
@@ -23,7 +23,7 @@ methods
 
 </div>
 
-__Uses__ `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+__Uses__ `PDO` · `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -31,7 +31,7 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\Data
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoconnection-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$dsn</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$username</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$password</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$queries</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">ProfilerInterface</span> <span class="sv">$profiler</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$dsn</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$username</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$password</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$queries</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">ProfilerInterface|null</span> <span class="sv">$profiler</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnection-__debuginfo">
@@ -73,11 +73,11 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\Data
 ```php
 public function __construct(
     string $dsn,
-    string $username = null,
-    string $password = null,
+    string|null $username = null,
+    string|null $password = null,
     array $options = [],
     array $queries = [],
-    ProfilerInterface $profiler = null
+    ProfilerInterface|null $profiler = null
 );
 ```
 
@@ -114,7 +114,7 @@ Disconnects from the database.
 ## DataMapper\Pdo\ConnectionLocator
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/ConnectionLocator.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/ConnectionLocator.php){ .src-btn }
 
 Manages Connection instances for default, read, and write connections.
 
@@ -293,7 +293,7 @@ Returns a connection by name.
 ## DataMapper\Pdo\ConnectionLocatorInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/ConnectionLocatorInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/ConnectionLocatorInterface.php){ .src-btn }
 
 Locates PDO connections for default, read, and write databases.
 
@@ -413,7 +413,7 @@ Sets a write connection registry entry by name.
 ## DataMapper\Pdo\Connection\AbstractConnection
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Connection/AbstractConnection.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Connection/AbstractConnection.php){ .src-btn }
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
@@ -426,7 +426,7 @@ methods
 
 </div>
 
-__Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+__Uses__ `BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -434,7 +434,7 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-__call">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
+<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Proxies to PDO methods created for specific drivers; in particular,</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-begintransaction">
@@ -460,6 +460,12 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <code class="ret">void</code>
 <code class="sig"><span class="sf">disconnect</span>()</code>
 <span class="desc">Disconnects from the database.</span>
+</a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-ensureconnection">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">ensureConnection</span>()</code>
+<span class="desc">Ensures the connection is alive, reconnecting in place if it is not.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-errorcode">
 <code class="vis vis-public">public</code>
@@ -506,7 +512,7 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchgroup">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">fetchGroup</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = \PDO::FETCH_ASSOC</span></span>)</code>
+<code class="sig"><span class="sf">fetchGroup</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = PDO::FETCH_ASSOC</span></span>)</code>
 <span class="desc">Fetches multiple from the database as an associative array. The first</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchobject">
@@ -540,15 +546,20 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getadapter">
 <code class="vis vis-public">public</code>
-<code class="ret">\PDO</code>
+<code class="ret">PDO</code>
 <code class="sig"><span class="sf">getAdapter</span>()</code>
 <span class="desc">Return the inner PDO (if any)</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getattribute">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getAttribute</span>( <span class="st">int</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Retrieve a database connection attribute</span>
+</a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-getautoreconnect">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">getAutoReconnect</span>()</code>
+<span class="desc">Returns whether transparent auto-reconnect is enabled.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getavailabledrivers">
 <code class="vis vis-public">public</code>
@@ -589,31 +600,37 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-lastinsertid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the last inserted autoincrement sequence value. If the profiler</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-perform">
 <code class="vis vis-public">public</code>
-<code class="ret">\PDOStatement</code>
+<code class="ret">PDOStatement</code>
 <code class="sig"><span class="sf">perform</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Performs a query with bound values and returns the resulting</span>
 </a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-ping">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">ping</span>()</code>
+<span class="desc">Checks whether the underlying connection is still alive by issuing a</span>
+</a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-prepare">
 <code class="vis vis-public">public</code>
-<code class="ret">\PDOStatement|bool</code>
+<code class="ret">bool|PDOStatement</code>
 <code class="sig"><span class="sf">prepare</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Prepares an SQL statement for execution.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-query">
 <code class="vis vis-public">public</code>
-<code class="ret">\PDOStatement|bool</code>
+<code class="ret">bool|PDOStatement</code>
 <code class="sig"><span class="sf">query</span>( <span class="st">string</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Queries the database and returns a PDOStatement. If the profiler is</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-quote">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">quote</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = \PDO::PARAM_STR</span></span>)</code>
+<code class="sig"><span class="sf">quote</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = PDO::PARAM_STR</span></span>)</code>
 <span class="desc">Quotes a value for use in an SQL statement. This differs from</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-rollback">
@@ -628,6 +645,12 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <code class="sig"><span class="sf">setAttribute</span>(<span class="prm"><span class="st">int</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a database connection attribute</span>
 </a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-setautoreconnect">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setAutoReconnect</span>( <span class="st">bool</span> <span class="sv">$autoReconnect</span> )</code>
+<span class="desc">Enables or disables transparent auto-reconnect on a lost connection.</span>
+</a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-setprofiler">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
@@ -640,10 +663,16 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <code class="sig"><span class="sf">fetchData</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Helper method to get data from PDO based on the method passed</span>
 </a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-isconnectionerror">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isConnectionError</span>( <span class="st">Throwable</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Recognizes a lost (&quot;gone away&quot;) connection. Detection is driver-agnostic:</span>
+</a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-performbind">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">performBind</span>(<span class="prm"><span class="st">\PDOStatement</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span></span>)</code>
+<code class="sig"><span class="sf">performBind</span>(<span class="prm"><span class="st">PDOStatement</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Bind a value using the proper PDO::PARAM_* type.</span>
 </a>
 </div>
@@ -653,7 +682,14 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">\PDO</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$autoReconnect</span><span class="sm"> = false</span></code>
+<span class="desc">Whether to transparently reconnect and retry once when a statement fails
+because the connection was lost. Opt-in; off by default.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">PDO|null</code>
 <code class="sig"><span class="sv">$pdo</span></code>
 </div>
 <div class="api-item">
@@ -661,17 +697,25 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <code class="ret">ProfilerInterface</code>
 <code class="sig"><span class="sv">$profiler</span></code>
 </div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$transactionLevel</span><span class="sm"> = 0</span></code>
+<span class="desc">Current transaction nesting level. Tracked locally rather than via
+PDO::inTransaction() because some drivers report a broken connection as
+being &quot;in transaction&quot;.</span>
+</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 34</div>
+<div class="api-group">Public · 38</div>
 
 #### `__call()` { #datamapperpdoconnectionabstractconnection-__call }
 
 ```php
 public function __call(
-    mixed $name,
+    string $name,
     array $arguments
 );
 ```
@@ -712,6 +756,16 @@ abstract public function disconnect(): void;
 ```
 
 Disconnects from the database.
+
+#### `ensureConnection()` { #datamapperpdoconnectionabstractconnection-ensureconnection }
+
+```php
+public function ensureConnection(): void;
+```
+
+Ensures the connection is alive, reconnecting in place if it is not.
+disconnect() is required first because connect() is idempotent and will
+not rebuild a dead-but-present handle.
 
 #### `errorCode()` { #datamapperpdoconnectionabstractconnection-errorcode }
 
@@ -796,7 +850,7 @@ Fetches a column of rows as a sequential array (default first one).
 public function fetchGroup(
     string $statement,
     array $values = [],
-    int $flags = \PDO::FETCH_ASSOC
+    int $flags = PDO::FETCH_ASSOC
 ): array;
 ```
 
@@ -880,7 +934,7 @@ Fetches the very first value (i.e., first column of the first row).
 #### `getAdapter()` { #datamapperpdoconnectionabstractconnection-getadapter }
 
 ```php
-public function getAdapter(): \PDO;
+public function getAdapter(): PDO;
 ```
 
 Return the inner PDO (if any)
@@ -888,10 +942,18 @@ Return the inner PDO (if any)
 #### `getAttribute()` { #datamapperpdoconnectionabstractconnection-getattribute }
 
 ```php
-public function getAttribute( int $attribute ): mixed;
+public function getAttribute( int $attribute );
 ```
 
 Retrieve a database connection attribute
+
+#### `getAutoReconnect()` { #datamapperpdoconnectionabstractconnection-getautoreconnect }
+
+```php
+public function getAutoReconnect(): bool;
+```
+
+Returns whether transparent auto-reconnect is enabled.
 
 #### `getAvailableDrivers()` { #datamapperpdoconnectionabstractconnection-getavailabledrivers }
 
@@ -946,7 +1008,7 @@ Is the PDO connection active?
 #### `lastInsertId()` { #datamapperpdoconnectionabstractconnection-lastinsertid }
 
 ```php
-public function lastInsertId( string $name = null ): string;
+public function lastInsertId( string|null $name = null ): string;
 ```
 
 Returns the last inserted autoincrement sequence value. If the profiler
@@ -958,7 +1020,7 @@ is enabled, the operation will be recorded.
 public function perform(
     string $statement,
     array $values = []
-): \PDOStatement;
+): PDOStatement;
 ```
 
 Performs a query with bound values and returns the resulting
@@ -966,13 +1028,22 @@ PDOStatement; array values will be passed through `quote()` and their
 respective placeholders will be replaced in the query string. If the
 profiler is enabled, the operation will be recorded.
 
+#### `ping()` { #datamapperpdoconnectionabstractconnection-ping }
+
+```php
+public function ping(): bool;
+```
+
+Checks whether the underlying connection is still alive by issuing a
+trivial query. Returns false if there is no handle or the probe fails.
+
 #### `prepare()` { #datamapperpdoconnectionabstractconnection-prepare }
 
 ```php
 public function prepare(
     string $statement,
     array $options = []
-): \PDOStatement|bool;
+): bool|PDOStatement;
 ```
 
 Prepares an SQL statement for execution.
@@ -980,7 +1051,7 @@ Prepares an SQL statement for execution.
 #### `query()` { #datamapperpdoconnectionabstractconnection-query }
 
 ```php
-public function query( string $statement ): \PDOStatement|bool;
+public function query( string $statement ): bool|PDOStatement;
 ```
 
 Queries the database and returns a PDOStatement. If the profiler is
@@ -991,7 +1062,7 @@ enabled, the operation will be recorded.
 ```php
 public function quote(
     mixed $value,
-    int $type = \PDO::PARAM_STR
+    int $type = PDO::PARAM_STR
 ): string;
 ```
 
@@ -1019,6 +1090,14 @@ public function setAttribute(
 
 Set a database connection attribute
 
+#### `setAutoReconnect()` { #datamapperpdoconnectionabstractconnection-setautoreconnect }
+
+```php
+public function setAutoReconnect( bool $autoReconnect ): static;
+```
+
+Enables or disables transparent auto-reconnect on a lost connection.
+
 #### `setProfiler()` { #datamapperpdoconnectionabstractconnection-setprofiler }
 
 ```php
@@ -1027,7 +1106,7 @@ public function setProfiler( ProfilerInterface $profiler ): static;
 
 Sets the Profiler instance.
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 3</div>
 
 #### `fetchData()` { #datamapperpdoconnectionabstractconnection-fetchdata }
 
@@ -1042,11 +1121,22 @@ protected function fetchData(
 
 Helper method to get data from PDO based on the method passed
 
+#### `isConnectionError()` { #datamapperpdoconnectionabstractconnection-isconnectionerror }
+
+```php
+protected function isConnectionError( Throwable $exception ): bool;
+```
+
+Recognizes a lost ("gone away") connection. Detection is driver-agnostic:
+the driver name is not queried because the underlying connection may be
+dead by this point. The MySQL error codes and PostgreSQL SQLSTATEs do not
+overlap, so all known signatures are checked unconditionally.
+
 #### `performBind()` { #datamapperpdoconnectionabstractconnection-performbind }
 
 ```php
 protected function performBind(
-    \PDOStatement $statement,
+    PDOStatement $statement,
     mixed $name,
     mixed $arguments
 ): void;
@@ -1058,7 +1148,7 @@ Bind a value using the proper PDO::PARAM_* type.
 ## DataMapper\Pdo\Connection\ConnectionInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Connection/ConnectionInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Connection/ConnectionInterface.php){ .src-btn }
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
@@ -1070,7 +1160,7 @@ methods
 
 </div>
 
-__Uses__ `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+__Uses__ `PDO` · `PDOStatement` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1115,7 +1205,7 @@ __Uses__ `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchgroup">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">fetchGroup</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = \PDO::FETCH_ASSOC</span></span>)</code>
+<code class="sig"><span class="sf">fetchGroup</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = PDO::FETCH_ASSOC</span></span>)</code>
 <span class="desc">Fetches multiple from the database as an associative array. The first</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchobject">
@@ -1144,13 +1234,12 @@ __Uses__ `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchvalue">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
 <code class="sig"><span class="sf">fetchValue</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches the very first value (i.e., first column of the first row).</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-getadapter">
 <code class="vis vis-public">public</code>
-<code class="ret">\PDO</code>
+<code class="ret">PDO</code>
 <code class="sig"><span class="sf">getAdapter</span>()</code>
 <span class="desc">Return the inner PDO (if any)</span>
 </a>
@@ -1168,7 +1257,7 @@ __Uses__ `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-perform">
 <code class="vis vis-public">public</code>
-<code class="ret">\PDOStatement</code>
+<code class="ret">PDOStatement</code>
 <code class="sig"><span class="sf">perform</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Performs a query with bound values and returns the resulting</span>
 </a>
@@ -1257,7 +1346,7 @@ Fetches a column of rows as a sequential array (default first one).
 public function fetchGroup(
     string $statement,
     array $values = [],
-    int $flags = \PDO::FETCH_ASSOC
+    int $flags = PDO::FETCH_ASSOC
 ): array;
 ```
 
@@ -1333,7 +1422,7 @@ the key, second column is the value).
 public function fetchValue(
     string $statement,
     array $values = []
-): mixed;
+);
 ```
 
 Fetches the very first value (i.e., first column of the first row).
@@ -1341,7 +1430,7 @@ Fetches the very first value (i.e., first column of the first row).
 #### `getAdapter()` { #datamapperpdoconnectionconnectioninterface-getadapter }
 
 ```php
-public function getAdapter(): \PDO;
+public function getAdapter(): PDO;
 ```
 
 Return the inner PDO (if any)
@@ -1368,7 +1457,7 @@ Is the PDO connection active?
 public function perform(
     string $statement,
     array $values = []
-): \PDOStatement;
+): PDOStatement;
 ```
 
 Performs a query with bound values and returns the resulting
@@ -1388,7 +1477,7 @@ Sets the Profiler instance.
 ## DataMapper\Pdo\Connection\Decorated
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Connection/Decorated.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Connection/Decorated.php){ .src-btn }
 
 Decorates an existing PDO instance with the extended methods.
 
@@ -1399,7 +1488,7 @@ Decorates an existing PDO instance with the extended methods.
 
 </div>
 
-__Uses__ `Phalcon\DataMapper\Pdo\Exception\CannotDisconnect` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+__Uses__ `PDO` · `Phalcon\DataMapper\Pdo\Exception\CannotDisconnect` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1407,7 +1496,7 @@ __Uses__ `Phalcon\DataMapper\Pdo\Exception\CannotDisconnect` · `Phalcon\DataMap
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoconnectiondecorated-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">\PDO</span> <span class="sv">$pdo</span>,</span><span class="prm"><span class="st">ProfilerInterface</span> <span class="sv">$profiler</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">PDO</span> <span class="sv">$pdo</span>,</span><span class="prm"><span class="st">ProfilerInterface|null</span> <span class="sv">$profiler</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectiondecorated-connect">
@@ -1432,8 +1521,8 @@ __Uses__ `Phalcon\DataMapper\Pdo\Exception\CannotDisconnect` · `Phalcon\DataMap
 
 ```php
 public function __construct(
-    \PDO $pdo,
-    ProfilerInterface $profiler = null
+    PDO $pdo,
+    ProfilerInterface|null $profiler = null
 );
 ```
 
@@ -1462,7 +1551,7 @@ Disconnects from the database; disallowed with decorated PDO connections.
 ## DataMapper\Pdo\Connection\PdoInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Connection/PdoInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Connection/PdoInterface.php){ .src-btn }
 
 An interface to the native PDO object.
 
@@ -1472,6 +1561,9 @@ An interface to the native PDO object.
     - [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface)
 
 </div>
+
+__Uses__ `PDO` · `PDOStatement`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1490,7 +1582,7 @@ An interface to the native PDO object.
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-errorcode">
 <code class="vis vis-public">public</code>
-<code class="ret">null|string</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sf">errorCode</span>()</code>
 <span class="desc">Gets the most recent error code.</span>
 </a>
@@ -1508,7 +1600,6 @@ An interface to the native PDO object.
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-getattribute">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getAttribute</span>( <span class="st">int</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Retrieve a database connection attribute</span>
 </a>
@@ -1527,25 +1618,25 @@ An interface to the native PDO object.
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-lastinsertid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the last inserted autoincrement sequence value. If the profiler</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-prepare">
 <code class="vis vis-public">public</code>
-<code class="ret">\PDOStatement|bool</code>
+<code class="ret">bool|PDOStatement</code>
 <code class="sig"><span class="sf">prepare</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Prepares an SQL statement for execution.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-query">
 <code class="vis vis-public">public</code>
-<code class="ret">\PDOStatement|bool</code>
+<code class="ret">bool|PDOStatement</code>
 <code class="sig"><span class="sf">query</span>( <span class="st">string</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Queries the database and returns a PDOStatement. If the profiler is</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-quote">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">quote</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = \PDO::PARAM_STR</span></span>)</code>
+<code class="sig"><span class="sf">quote</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = PDO::PARAM_STR</span></span>)</code>
 <span class="desc">Quotes a value for use in an SQL statement. This differs from</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-rollback">
@@ -1587,7 +1678,7 @@ operation will be recorded.
 #### `errorCode()` { #datamapperpdoconnectionpdointerface-errorcode }
 
 ```php
-public function errorCode(): null|string;
+public function errorCode(): string|null;
 ```
 
 Gets the most recent error code.
@@ -1612,7 +1703,7 @@ the profiler is enabled, the operation will be recorded.
 #### `getAttribute()` { #datamapperpdoconnectionpdointerface-getattribute }
 
 ```php
-public function getAttribute( int $attribute ): mixed;
+public function getAttribute( int $attribute );
 ```
 
 Retrieve a database connection attribute
@@ -1638,7 +1729,7 @@ will be recorded.
 #### `lastInsertId()` { #datamapperpdoconnectionpdointerface-lastinsertid }
 
 ```php
-public function lastInsertId( string $name = null ): string;
+public function lastInsertId( string|null $name = null ): string;
 ```
 
 Returns the last inserted autoincrement sequence value. If the profiler
@@ -1650,7 +1741,7 @@ is enabled, the operation will be recorded.
 public function prepare(
     string $statement,
     array $options = []
-): \PDOStatement|bool;
+): bool|PDOStatement;
 ```
 
 Prepares an SQL statement for execution.
@@ -1658,7 +1749,7 @@ Prepares an SQL statement for execution.
 #### `query()` { #datamapperpdoconnectionpdointerface-query }
 
 ```php
-public function query( string $statement ): \PDOStatement|bool;
+public function query( string $statement ): bool|PDOStatement;
 ```
 
 Queries the database and returns a PDOStatement. If the profiler is
@@ -1669,7 +1760,7 @@ enabled, the operation will be recorded.
 ```php
 public function quote(
     mixed $value,
-    int $type = \PDO::PARAM_STR
+    int $type = PDO::PARAM_STR
 ): string;
 ```
 
@@ -1701,7 +1792,7 @@ Set a database connection attribute
 ## DataMapper\Pdo\Exception\CannotDisconnect
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/CannotDisconnect.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Exception/CannotDisconnect.php){ .src-btn }
 
 ExtendedPdo could not disconnect; e.g., because its PDO connection was
 created externally and then injected.
@@ -1718,7 +1809,7 @@ created externally and then injected.
 ## DataMapper\Pdo\Exception\ConnectionNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/ConnectionNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Exception/ConnectionNotFound.php){ .src-btn }
 
 Locator could not find a named connection.
 
@@ -1734,11 +1825,11 @@ Locator could not find a named connection.
 ## DataMapper\Pdo\Exception\DriverNotSupported
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/DriverNotSupported.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Exception/DriverNotSupported.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `InvalidArgumentException`
+- `\InvalidArgumentException`
     - **`Phalcon\DataMapper\Pdo\Exception\DriverNotSupported`**
 
 </div>
@@ -1769,7 +1860,7 @@ public function __construct( string $driver );
 ## DataMapper\Pdo\Exception\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Exception/Exception.php){ .src-btn }
 
 Base Exception class
 
@@ -1786,11 +1877,11 @@ Base Exception class
 ## DataMapper\Pdo\Exception\UnknownDriverMethod
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/UnknownDriverMethod.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Exception/UnknownDriverMethod.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BadMethodCallException`
+- `\BadMethodCallException`
     - **`Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod`**
 
 </div>
@@ -1821,11 +1912,11 @@ public function __construct( string $message );
 ## DataMapper\Pdo\Exception\UnknownQueryMethod
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/UnknownQueryMethod.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Exception/UnknownQueryMethod.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BadMethodCallException`
+- `\BadMethodCallException`
     - **`Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`**
 
 </div>
@@ -1856,7 +1947,7 @@ public function __construct( string $method );
 ## DataMapper\Pdo\Profiler\MemoryLogger
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Profiler/MemoryLogger.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Profiler/MemoryLogger.php){ .src-btn }
 
 A memory-based logger.
 
@@ -1866,7 +1957,7 @@ A memory-based logger.
 
 </div>
 
-__Uses__ `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Enum` · `Phalcon\Logger\LoggerInterface`
+__Uses__ `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Enum` · `Phalcon\Logger\LoggerInterface` · `Stringable`
 { .api-uses }
 
 ### Method Summary
@@ -1875,27 +1966,27 @@ __Uses__ `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\No
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-alert">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">alert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">alert</span>(<span class="prm"><span class="st">string|Stringable</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-critical">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">critical</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">critical</span>(<span class="prm"><span class="st">string|Stringable</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-debug">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">debug</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">debug</span>(<span class="prm"><span class="st">string|Stringable</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-emergency">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">emergency</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">emergency</span>(<span class="prm"><span class="st">string|Stringable</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-error">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">error</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">error</span>(<span class="prm"><span class="st">string|Stringable</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-getadapter">
 <code class="vis vis-public">public</code>
@@ -1930,28 +2021,28 @@ __Uses__ `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\No
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-info">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">info</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">info</span>(<span class="prm"><span class="st">string|Stringable</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-log">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">log</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$level</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">log</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$level</span>,</span><span class="prm"><span class="st">string|Stringable</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Logs a message.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-notice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">notice</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">notice</span>(<span class="prm"><span class="st">string|Stringable</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-trace">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">trace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">trace</span>(<span class="prm"><span class="st">string|Stringable</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-warning">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">warning</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">warning</span>(<span class="prm"><span class="st">string|Stringable</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 </div>
 
@@ -1973,7 +2064,7 @@ __Uses__ `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\No
 
 ```php
 public function alert(
-    string $message,
+    string|Stringable $message,
     array $context = []
 ): void;
 ```
@@ -1982,7 +2073,7 @@ public function alert(
 
 ```php
 public function critical(
-    string $message,
+    string|Stringable $message,
     array $context = []
 ): void;
 ```
@@ -1991,7 +2082,7 @@ public function critical(
 
 ```php
 public function debug(
-    string $message,
+    string|Stringable $message,
     array $context = []
 ): void;
 ```
@@ -2000,7 +2091,7 @@ public function debug(
 
 ```php
 public function emergency(
-    string $message,
+    string|Stringable $message,
     array $context = []
 ): void;
 ```
@@ -2009,7 +2100,7 @@ public function emergency(
 
 ```php
 public function error(
-    string $message,
+    string|Stringable $message,
     array $context = []
 ): void;
 ```
@@ -2058,7 +2149,7 @@ Returns the name of the logger
 
 ```php
 public function info(
-    string $message,
+    string|Stringable $message,
     array $context = []
 ): void;
 ```
@@ -2068,7 +2159,7 @@ public function info(
 ```php
 public function log(
     mixed $level,
-    string $message,
+    string|Stringable $message,
     array $context = []
 ): void;
 ```
@@ -2079,7 +2170,7 @@ Logs a message.
 
 ```php
 public function notice(
-    string $message,
+    string|Stringable $message,
     array $context = []
 ): void;
 ```
@@ -2088,7 +2179,7 @@ public function notice(
 
 ```php
 public function trace(
-    string $message,
+    string|Stringable $message,
     array $context = []
 ): void;
 ```
@@ -2097,7 +2188,7 @@ public function trace(
 
 ```php
 public function warning(
-    string $message,
+    string|Stringable $message,
     array $context = []
 ): void;
 ```
@@ -2106,7 +2197,7 @@ public function warning(
 ## DataMapper\Pdo\Profiler\Profiler
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Profiler/Profiler.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Profiler/Profiler.php){ .src-btn }
 
 Sends query profiles to a logger.
 
@@ -2124,13 +2215,13 @@ __Uses__ `Phalcon\DataMapper\Pdo\Exception\Exception` · `Phalcon\Logger\Enum` �
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoprofilerprofiler-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">LoggerInterface</span> <span class="sv">$logger</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">LoggerInterface|null</span> <span class="sv">$logger</span><span class="sm"> = null</span> )</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-finish">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">finish</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">finish</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$statement</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Finishes and logs a profile entry.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-getlogformat">
@@ -2220,7 +2311,7 @@ __Uses__ `Phalcon\DataMapper\Pdo\Exception\Exception` · `Phalcon\Logger\Enum` �
 #### `__construct()` { #datamapperpdoprofilerprofiler-__construct }
 
 ```php
-public function __construct( LoggerInterface $logger = null );
+public function __construct( LoggerInterface|null $logger = null );
 ```
 
 Constructor.
@@ -2229,7 +2320,7 @@ Constructor.
 
 ```php
 public function finish(
-    string $statement = null,
+    string|null $statement = null,
     array $values = []
 ): void;
 ```
@@ -2304,7 +2395,7 @@ Starts a profile entry.
 ## DataMapper\Pdo\Profiler\ProfilerInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Profiler/ProfilerInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Profiler/ProfilerInterface.php){ .src-btn }
 
 Interface to send query profiles to a logger.
 
@@ -2323,7 +2414,7 @@ __Uses__ `Phalcon\Logger\LoggerInterface`
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-finish">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">finish</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">finish</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$statement</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Finishes and logs a profile entry.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-getlogformat">
@@ -2384,7 +2475,7 @@ __Uses__ `Phalcon\Logger\LoggerInterface`
 
 ```php
 public function finish(
-    string $statement = null,
+    string|null $statement = null,
     array $values = []
 ): void;
 ```
@@ -2459,7 +2550,7 @@ Starts a profile entry.
 ## DataMapper\Query\AbstractConditions
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Query/AbstractConditions.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Query/AbstractConditions.php){ .src-btn }
 
 Class AbstractConditions
 
@@ -2753,7 +2844,7 @@ Processes a value (array or string) and merges it with the store
 ## DataMapper\Query\AbstractQuery
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Query/AbstractQuery.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Query/AbstractQuery.php){ .src-btn }
 
 Class AbstractQuery
 
@@ -2765,7 +2856,7 @@ Class AbstractQuery
 
 </div>
 
-__Uses__ `Phalcon\DataMapper\Pdo\Connection`
+__Uses__ `PDO` · `Phalcon\DataMapper\Pdo\Connection`
 { .api-uses }
 
 ### Method Summary
@@ -2814,7 +2905,7 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 <a class="api-item" href="#datamapperqueryabstractquery-quoteidentifier">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">quoteIdentifier</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = \PDO::PARAM_STR</span></span>)</code>
+<code class="sig"><span class="sf">quoteIdentifier</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = PDO::PARAM_STR</span></span>)</code>
 <span class="desc">Quotes the identifier</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-reset">
@@ -2991,7 +3082,7 @@ Performs a statement in the connection
 ```php
 public function quoteIdentifier(
     string $name,
-    int $type = \PDO::PARAM_STR
+    int $type = PDO::PARAM_STR
 ): string;
 ```
 
@@ -3113,7 +3204,7 @@ Indents a collection
 ## DataMapper\Query\Bind
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Query/Bind.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Query/Bind.php){ .src-btn }
 
 Class Bind
 
@@ -3122,6 +3213,9 @@ Class Bind
 - **`Phalcon\DataMapper\Query\Bind`**
 
 </div>
+
+__Uses__ `PDO`
+{ .api-uses }
 
 ### Method Summary
 
@@ -3261,7 +3355,7 @@ Processes an array - if passed as an `inline` parameter
 ## DataMapper\Query\Delete
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Query/Delete.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Query/Delete.php){ .src-btn }
 
 Delete Query
 
@@ -3358,7 +3452,7 @@ Adds the `RETURNING` clause
 ## DataMapper\Query\Insert
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Query/Insert.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Query/Insert.php){ .src-btn }
 
 Insert Query
 
@@ -3395,7 +3489,7 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 <a class="api-item" href="#datamapperqueryinsert-getlastinsertid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getLastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getLastInsertId</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the id of the last inserted record</span>
 </a>
 <a class="api-item" href="#datamapperqueryinsert-getstatement">
@@ -3467,7 +3561,7 @@ Mass sets columns and values for the `INSERT`
 #### `getLastInsertId()` { #datamapperqueryinsert-getlastinsertid }
 
 ```php
-public function getLastInsertId( string $name = null ): string;
+public function getLastInsertId( string|null $name = null ): string;
 ```
 
 Returns the id of the last inserted record
@@ -3517,7 +3611,7 @@ Sets a column = value condition
 ## DataMapper\Query\QueryFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Query/QueryFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Query/QueryFactory.php){ .src-btn }
 
 QueryFactory
 
@@ -3636,7 +3730,7 @@ Create a new Update object
 ## DataMapper\Query\Select
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Query/Select.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Query/Select.php){ .src-btn }
 
 Select Query
 
@@ -3648,7 +3742,7 @@ Select Query
 
 </div>
 
-__Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`
+__Uses__ `Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`
 { .api-uses }
 
 ### Method Summary
@@ -4008,7 +4102,7 @@ Statement builder
 ## DataMapper\Query\Update
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Query/Update.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Query/Update.php){ .src-btn }
 
 Update Query
 

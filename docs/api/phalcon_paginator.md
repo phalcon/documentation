@@ -11,7 +11,7 @@ hide:
 ## Paginator\Adapter\AbstractAdapter
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AbstractAdapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/AbstractAdapter.php){ .src-btn }
 
 Phalcon\Paginator\Adapter\AbstractAdapter
 
@@ -34,7 +34,7 @@ __Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidL
 <a class="api-item" href="#paginatoradapterabstractadapter-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$config</span> )</code>
-<span class="desc">Phalcon\Paginator\Adapter\AbstractAdapter constructor</span>
+<span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#paginatoradapterabstractadapter-getlimit">
 <code class="vis vis-public">public</code>
@@ -63,7 +63,7 @@ __Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidL
 <a class="api-item" href="#paginatoradapterabstractadapter-getrepository">
 <code class="vis vis-protected">protected</code>
 <code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sf">getRepository</span>( <span class="st">array</span> <span class="sv">$properties</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getRepository</span>( <span class="st">array|null</span> <span class="sv">$properties</span><span class="sm"> = null</span> )</code>
 <span class="desc">Gets current repository for pagination</span>
 </a>
 </div>
@@ -75,7 +75,6 @@ __Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidL
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$config</span></code>
-<span class="desc">Configuration of paginator</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -107,7 +106,7 @@ __Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidL
 public function __construct( array $config );
 ```
 
-Phalcon\Paginator\Adapter\AbstractAdapter constructor
+Constructor
 
 #### `getLimit()` { #paginatoradapterabstractadapter-getlimit }
 
@@ -146,7 +145,7 @@ Sets current repository for pagination
 #### `getRepository()` { #paginatoradapterabstractadapter-getrepository }
 
 ```php
-protected function getRepository( array $properties = null ): RepositoryInterface;
+protected function getRepository( array|null $properties = null ): RepositoryInterface;
 ```
 
 Gets current repository for pagination
@@ -155,7 +154,7 @@ Gets current repository for pagination
 ## Paginator\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AdapterInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/AdapterInterface.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -171,9 +170,7 @@ __Uses__ `Phalcon\Contracts\Paginator\Adapter`
 ## Paginator\Adapter\Model
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/Model.zep){ .src-btn }
-
-Phalcon\Paginator\Adapter\Model
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/Model.php){ .src-btn }
 
 This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a
 base.
@@ -183,7 +180,7 @@ use Phalcon\Paginator\Adapter\Model;
 
 $paginator = new Model(
     [
-        "model" => Robots::class,
+        "model" => Invoices::class,
         "limit" => 25,
         "page"  => $currentPage,
     ]
@@ -191,9 +188,9 @@ $paginator = new Model(
 
 $paginator = new Model(
     [
-        "model" => Robots::class,
+        "model" => Invoices::class,
         "parameters" => [
-             "columns" => "id, name"
+             "columns" => "inv_id, inv_title"
         ],
         "limit" => 12,
         "page"  => $currentPage,
@@ -202,13 +199,13 @@ $paginator = new Model(
 
 $paginator = new Model(
     [
-        "model" => Robots::class,
+        "model" => Invoices::class,
         "parameters" => [
-             "type = :type:",
+             "inv_status_flag = :flag:",
              "bind" => [
-                 "type" => "mechanical"
+                 "flag" => 1
              ],
-             "order" => "name"
+             "order" => "inv_title"
         ],
         "limit" => 16,
         "page"  => $currentPage,
@@ -217,8 +214,8 @@ $paginator = new Model(
 
 $paginator = new Model(
     [
-        "model" => Robots::class,
-        "parameters" => "(id % 2) = 0",
+        "model" => Invoices::class,
+        "parameters" => "(inv_id % 2) = 0",
         "limit" => 8,
         "page"  => $currentPage,
     ]
@@ -226,8 +223,8 @@ $paginator = new Model(
 
 $paginator = new Model(
     [
-        "model" => Robots::class,
-        "parameters" => [ "(id % 2) = 0" ],
+        "model" => Invoices::class,
+        "parameters" => [ "(inv_id % 2) = 0" ],
         "limit" => 8,
         "page"  => $currentPage,
     ]
@@ -243,7 +240,7 @@ $paginate = $paginator->paginate();
 
 </div>
 
-__Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
+__Uses__ `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 { .api-uses }
 
 ### Method Summary
@@ -286,9 +283,7 @@ Returns a slice of the resultset to show in the pagination
 ## Paginator\Adapter\NativeArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/NativeArray.zep){ .src-btn }
-
-Phalcon\Paginator\Adapter\NativeArray
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/NativeArray.php){ .src-btn }
 
 Pagination using a PHP array as source of data
 
@@ -347,9 +342,7 @@ Returns a slice of the resultset to show in the pagination
 ## Paginator\Adapter\QueryBuilder
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/QueryBuilder.zep){ .src-btn }
-
-Phalcon\Paginator\Adapter\QueryBuilder
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/QueryBuilder.php){ .src-btn }
 
 Pagination using a PHQL query builder as source of data
 
@@ -357,9 +350,9 @@ Pagination using a PHQL query builder as source of data
 use Phalcon\Paginator\Adapter\QueryBuilder;
 
 $builder = $this->modelsManager->createBuilder()
-                ->columns("id, name")
-                ->from(Robots::class)
-                ->orderBy("name");
+                ->columns("inv_id, inv_title")
+                ->from(Invoices::class)
+                ->orderBy("inv_title");
 
 $paginator = new QueryBuilder(
     [
@@ -425,8 +418,8 @@ __Uses__ `Phalcon\Db\Enum` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Pagi
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|string</code>
-<code class="sig"><span class="sv">$columns</span></code>
+<code class="ret">array|string|null</code>
+<code class="sig"><span class="sv">$columns</span><span class="sm"> = null</span></code>
 <span class="desc">Column list used only for COUNT rewriting when the builder carries a
 HAVING or GROUP BY clause. It supplies the columns for the subquery
 that counts the grouped/having result set and is ignored otherwise.</span>
@@ -486,9 +479,7 @@ Set query builder object
 ## Paginator\Adapter\QueryBuilderCursor
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/QueryBuilderCursor.zep){ .src-btn }
-
-Phalcon\Paginator\Adapter\QueryBuilderCursor
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/QueryBuilderCursor.php){ .src-btn }
 
 Cursor-based (keyset) pagination using a PHQL query builder as source of
 data.
@@ -537,7 +528,7 @@ $page = $paginator->paginate();
 
 </div>
 
-__Uses__ `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\InvalidCursorColumn` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
+__Uses__ `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\InvalidCursorColumn` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 { .api-uses }
 
 ### Method Summary
@@ -635,8 +626,8 @@ public function getCurrentPage(): int;
 
 Get the current page number
 
-Returns the cursor value used for this page cast to int, or 0 for the
-first page. Use getCursor() to retrieve the raw cursor value.
+Returns the cursor value used for this page, or 0 for the first page.
+Use getCursor() to retrieve the raw cursor value.
 
 #### `getCursor()` { #paginatoradapterquerybuildercursor-getcursor }
 
@@ -697,9 +688,7 @@ Set query builder object
 ## Paginator\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exception.zep){ .src-btn }
-
-Phalcon\Paginator\Exception
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Paginator will use this class
 
@@ -721,7 +710,7 @@ Exceptions thrown in Phalcon\Paginator will use this class
 ## Paginator\Exceptions\BuilderModelNotDefined
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/BuilderModelNotDefined.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/BuilderModelNotDefined.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -757,7 +746,7 @@ public function __construct();
 ## Paginator\Exceptions\InvalidBuilderInstance
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidBuilderInstance.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/InvalidBuilderInstance.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -793,7 +782,7 @@ public function __construct();
 ## Paginator\Exceptions\InvalidCursorColumn
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidCursorColumn.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/InvalidCursorColumn.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -829,7 +818,7 @@ public function __construct();
 ## Paginator\Exceptions\InvalidLimit
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidLimit.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/InvalidLimit.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -865,7 +854,7 @@ public function __construct();
 ## Paginator\Exceptions\MissingColumnsForHaving
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/MissingColumnsForHaving.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/MissingColumnsForHaving.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -901,7 +890,7 @@ public function __construct();
 ## Paginator\Exceptions\MissingRequiredParameter
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/MissingRequiredParameter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/MissingRequiredParameter.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -948,7 +937,7 @@ public function getParameter(): string;
 ## Paginator\Exceptions\PaginatorDataNotArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/PaginatorDataNotArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/PaginatorDataNotArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -984,17 +973,15 @@ public function __construct();
 ## Paginator\PaginatorFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/PaginatorFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/PaginatorFactory.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
-        - **`Phalcon\Paginator\PaginatorFactory`**
+- **`Phalcon\Paginator\PaginatorFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor` · `Phalcon\Support\Traits\ConfigTrait` · `Phalcon\Traits\Factory\FactoryTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1008,7 +995,7 @@ __Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\Adapter
 <a class="api-item" href="#paginatorpaginatorfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">array|Config</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#paginatorpaginatorfactory-newinstance">
@@ -1045,7 +1032,7 @@ AdapterFactory constructor.
 #### `load()` { #paginatorpaginatorfactory-load }
 
 ```php
-public function load( mixed $config ): AdapterInterface;
+public function load( array|Config $config ): AdapterInterface;
 ```
 
 Factory to create an instance from a Config object
@@ -1056,9 +1043,9 @@ use Phalcon\Paginator\PaginatorFactory;
 $builder = $this
      ->modelsManager
      ->createBuilder()
-     ->columns("id, name")
-     ->from(Robots::class)
-     ->orderBy("name");
+     ->columns("inv_id, inv_title")
+     ->from(Invoices::class)
+     ->orderBy("inv_title");
 
 $options = [
     "builder" => $builder,
@@ -1101,19 +1088,17 @@ Returns the available adapters
 ## Paginator\Repository
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Repository.zep){ .src-btn }
-
-Phalcon\Paginator\Repository
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Repository.php){ .src-btn }
 
 Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Paginator\Repository`** - implements [`Phalcon\Paginator\RepositoryInterface`](#paginatorrepositoryinterface), `JsonSerializable`
+- **`Phalcon\Paginator\Repository`** - implements [`Phalcon\Paginator\RepositoryInterface`](#paginatorrepositoryinterface), `\JsonSerializable`
 
 </div>
 
-__Uses__ `JsonSerializable`
+__Uses__ `JsonSerializable` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1121,7 +1106,7 @@ __Uses__ `JsonSerializable`
 <div class="api-list">
 <a class="api-item" href="#paginatorrepository-__get">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$property</span> )</code>
 <span class="desc">{@inheritdoc}</span>
 </a>
@@ -1233,7 +1218,7 @@ __Uses__ `JsonSerializable`
 #### `__get()` { #paginatorrepository-__get }
 
 ```php
-public function __get( string $property ): mixed|null;
+public function __get( string $property ): mixed;
 ```
 
 {@inheritdoc}
@@ -1359,7 +1344,7 @@ Resolve alias property name
 ## Paginator\RepositoryInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/RepositoryInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/RepositoryInterface.php){ .src-btn }
 
 <div class="api-tree" markdown>
 

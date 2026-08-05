@@ -121,6 +121,10 @@ extra:
       name: LinkedIn
 
 extra_css:
+  # api.css carries the structure of the generated API pages and belongs with
+  # the generator; extra.css carries this site's own styling, including the
+  # --api-* palette api.css reads. Site last, so it can override.
+  - assets/css/api.css
   - assets/css/extra.css
 
 # Extensions

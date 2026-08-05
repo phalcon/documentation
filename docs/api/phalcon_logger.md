@@ -11,7 +11,7 @@ hide:
 ## Logger\AbstractLogger
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/AbstractLogger.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/AbstractLogger.php){ .src-btn }
 
 Abstract Logger Class
 
@@ -21,11 +21,13 @@ the built in AdapterFactory. A LoggerFactory is also available that allows
 developers to create new instances of the Logger or load them from config
 files (see Phalcon\Config\Config object).
 
+@package Phalcon\Logger
+
 @property AdapterInterface[] $adapters
 @property array              $excluded
 @property int                $logLevel
 @property string             $name
-@property string             $timezone
+@property DateTimeZone       $timezone
 
 <div class="api-tree" markdown>
 
@@ -34,7 +36,7 @@ files (see Phalcon\Config\Config object).
 
 </div>
 
-__Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Exceptions\AdapterNotFound` · `Phalcon\Logger\Exceptions\NoAdaptersConfigured` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
+__Uses__ `DateTimeZone` · `Exception` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Exceptions\AdapterNotFound` · `Phalcon\Logger\Exceptions\NoAdaptersConfigured` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
 { .api-uses }
 
 ### Method Summary
@@ -42,7 +44,7 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 <div class="api-list">
 <a class="api-item" href="#loggerabstractlogger-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone</span> <span class="sv">$timezone</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ClockInterface</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone|null</span> <span class="sv">$timezone</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ClockInterface|null</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-addadapter">
@@ -137,55 +139,6 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 </a>
 </div>
 
-### Constants
-
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">ALERT</span><span class="sm"> = 2</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRITICAL</span><span class="sm"> = 1</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CUSTOM</span><span class="sm"> = 8</span></code>
-<span class="desc">Default threshold and fallback sink. It sits between DEBUG (7) and
-TRACE (9) in the ordering, so the default log level excludes TRACE.
-It is also the fallback for unknown message levels and invalid
-setLogLevel() values.</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">DEBUG</span><span class="sm"> = 7</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">EMERGENCY</span><span class="sm"> = 0</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">ERROR</span><span class="sm"> = 3</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">INFO</span><span class="sm"> = 6</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">NOTICE</span><span class="sm"> = 5</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">TRACE</span><span class="sm"> = 9</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">WARNING</span><span class="sm"> = 4</span></code>
-</div>
-</div>
-
 ### Properties
 
 <div class="api-list">
@@ -210,13 +163,13 @@ setLogLevel() values.</span>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
-<code class="sig"><span class="sv">$logLevel</span><span class="sm"> = 8</span></code>
+<code class="sig"><span class="sv">$logLevel</span><span class="sm"> = Enum::CUSTOM</span></code>
 <span class="desc">Minimum log level for the logger</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$name</span><span class="sm"> = &quot;&quot;</span></code>
+<code class="sig"><span class="sv">$name</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -235,8 +188,8 @@ setLogLevel() values.</span>
 public function __construct(
     string $name,
     array $adapters = [],
-    DateTimeZone $timezone = null,
-    ClockInterface $clock = null
+    DateTimeZone|null $timezone = null,
+    ClockInterface|null $clock = null
 );
 ```
 
@@ -379,19 +332,17 @@ Returns an array of log levels with integer to string conversion
 ## Logger\AdapterFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/AdapterFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/AdapterFactory.php){ .src-btn }
 
 Factory used to create adapters used for Logging
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
-        - **`Phalcon\Logger\AdapterFactory`**
+- **`Phalcon\Logger\AdapterFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Exception`
+__Uses__ `Exception` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog` · `Phalcon\Traits\Factory\FactoryTrait`
 { .api-uses }
 
 ### Method Summary
@@ -465,7 +416,7 @@ Returns the available adapters
 ## Logger\Adapter\AbstractAdapter
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/AbstractAdapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Adapter/AbstractAdapter.php){ .src-btn }
 
 Class AbstractAdapter
 
@@ -473,6 +424,7 @@ Class AbstractAdapter
 @property FormatterInterface $formatter
 @property bool               $inTransaction
 @property array              $queue
+@property int                $queueLimit
 
 <div class="api-tree" markdown>
 
@@ -483,7 +435,7 @@ Class AbstractAdapter
 
 </div>
 
-__Uses__ `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Exceptions\SerializationFailed` · `Phalcon\Logger\Exceptions\TransactionAlreadyActive` · `Phalcon\Logger\Exceptions\TransactionNotActive` · `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Formatter\Line` · `Phalcon\Logger\Item`
+__Uses__ `Phalcon\Logger\Exception` · `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Exceptions\SerializationFailed` · `Phalcon\Logger\Exceptions\TransactionAlreadyActive` · `Phalcon\Logger\Exceptions\TransactionNotActive` · `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Formatter\Line` · `Phalcon\Logger\Item`
 { .api-uses }
 
 ### Method Summary
@@ -510,13 +462,13 @@ __Uses__ `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Ex
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">add</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
-<span class="desc">Adds a message to the queue</span>
+<span class="desc">Add a message to the queue</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-begin">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">begin</span>()</code>
-<span class="desc">Starts a transaction</span>
+<span class="desc">Start a transaction</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-close">
 <code class="vis vis-public">public</code>
@@ -528,12 +480,13 @@ __Uses__ `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Ex
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">commit</span>()</code>
-<span class="desc">Commits the internal transaction</span>
+<span class="desc">Commit the internal transaction</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-getformatter">
 <code class="vis vis-public">public</code>
 <code class="ret">FormatterInterface</code>
 <code class="sig"><span class="sf">getFormatter</span>()</code>
+<span class="desc">Return the formatter used</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-getqueuelimit">
 <code class="vis vis-public">public</code>
@@ -585,7 +538,7 @@ __Uses__ `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Ex
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$defaultFormatter</span><span class="sm"> = &quot;Phalcon\\Logger\\Formatter\\Line&quot;</span></code>
+<code class="sig"><span class="sv">$defaultFormatter</span><span class="sm"> = Line::class</span></code>
 <span class="desc">Name of the default formatter class</span>
 </div>
 <div class="api-item">
@@ -655,7 +608,7 @@ Prevent unserialization
 public function add( Item $item ): AdapterInterface;
 ```
 
-Adds a message to the queue
+Add a message to the queue
 
 #### `begin()` { #loggeradapterabstractadapter-begin }
 
@@ -663,7 +616,7 @@ Adds a message to the queue
 public function begin(): AdapterInterface;
 ```
 
-Starts a transaction
+Start a transaction
 
 #### `close()` { #loggeradapterabstractadapter-close }
 
@@ -679,13 +632,15 @@ Closes the logger
 public function commit(): AdapterInterface;
 ```
 
-Commits the internal transaction
+Commit the internal transaction
 
 #### `getFormatter()` { #loggeradapterabstractadapter-getformatter }
 
 ```php
 public function getFormatter(): FormatterInterface;
 ```
+
+Return the formatter used
 
 #### `getQueueLimit()` { #loggeradapterabstractadapter-getqueuelimit }
 
@@ -752,7 +707,7 @@ Returns the formatted item
 ## Logger\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/AdapterInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Adapter/AdapterInterface.php){ .src-btn }
 
 Phalcon\Logger\AdapterInterface
 
@@ -772,7 +727,7 @@ __Uses__ `Phalcon\Contracts\Logger\Adapter\Adapter`
 ## Logger\Adapter\Exceptions\FileOpenFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Exceptions/FileOpenFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Adapter/Exceptions/FileOpenFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -811,7 +766,7 @@ public function __construct(
 ## Logger\Adapter\Exceptions\InvalidStreamMode
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Exceptions/InvalidStreamMode.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Adapter/Exceptions/InvalidStreamMode.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -847,7 +802,7 @@ public function __construct();
 ## Logger\Adapter\Exceptions\SyslogOpenFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Exceptions/SyslogOpenFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Adapter/Exceptions/SyslogOpenFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -886,7 +841,7 @@ public function __construct(
 ## Logger\Adapter\Noop
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Noop.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Adapter/Noop.php){ .src-btn }
 
 Class Noop
 
@@ -943,7 +898,7 @@ Processes the message i.e. writes it to the file
 ## Logger\Adapter\Stream
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Stream.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Adapter/Stream.php){ .src-btn }
 
 Phalcon\Logger\Adapter\Stream
 
@@ -953,7 +908,7 @@ Adapter to store logs in plain text files
 $logger = new \Phalcon\Logger\Adapter\Stream('app/logs/test.log');
 
 $logger->log('This is a message');
-$logger->log(\Phalcon\Logger\Enum::ERROR, 'This is an error');
+$logger->log(\Phalcon\Logger::ERROR, 'This is an error');
 $logger->error('This is another error');
 
 $logger->close();
@@ -970,7 +925,7 @@ $logger->close();
 
 </div>
 
-__Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode` · `Phalcon\Logger\Item`
+__Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode` · `Phalcon\Logger\Exception` · `Phalcon\Logger\Item` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -999,22 +954,6 @@ __Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\A
 <code class="sig"><span class="sf">process</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Processes the message i.e. writes it to the file</span>
 </a>
-<a class="api-item" href="#loggeradapterstream-phpfclose">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpFclose</span>( <span class="st">mixed</span> <span class="sv">$handle</span> )</code>
-<span class="desc">@todo to be removed when we get traits</span>
-</a>
-<a class="api-item" href="#loggeradapterstream-phpfopen">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFopen</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span></span>)</code>
-<span class="desc">@todo to be removed when we get traits</span>
-</a>
-<a class="api-item" href="#loggeradapterstream-phpfwrite">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFwrite</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handle</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span></span>)</code>
-<span class="desc">@todo to be removed when we get traits</span>
-</a>
 </div>
 
 ### Properties
@@ -1036,7 +975,6 @@ __Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\A
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$name</span></code>
-<span class="desc">Stream name</span>
 </div>
 </div>
 
@@ -1079,43 +1017,11 @@ public function process( Item $item ): void;
 
 Processes the message i.e. writes it to the file
 
-<div class="api-group">Protected · 3</div>
-
-#### `phpFclose()` { #loggeradapterstream-phpfclose }
-
-```php
-protected function phpFclose( mixed $handle ): bool;
-```
-
-@todo to be removed when we get traits
-
-#### `phpFopen()` { #loggeradapterstream-phpfopen }
-
-```php
-protected function phpFopen(
-    string $filename,
-    string $mode
-);
-```
-
-@todo to be removed when we get traits
-
-#### `phpFwrite()` { #loggeradapterstream-phpfwrite }
-
-```php
-protected function phpFwrite(
-    mixed $handle,
-    string $message
-);
-```
-
-@todo to be removed when we get traits
-
 
 ## Logger\Adapter\Syslog
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Syslog.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Adapter/Syslog.php){ .src-btn }
 
 Class Syslog
 
@@ -1174,7 +1080,7 @@ __Uses__ `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$name</span><span class="sm"> = &quot;&quot;</span></code>
+<code class="sig"><span class="sv">$name</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -1239,7 +1145,7 @@ Open connection to system logger
 ## Logger\Enum
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Enum.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Enum.php){ .src-btn }
 
 Log Level Enum constants
 
@@ -1263,6 +1169,10 @@ Log Level Enum constants
 <div class="api-item">
 <code class="ret">int</code>
 <code class="sig"><span class="sc">CUSTOM</span><span class="sm"> = 8</span></code>
+<span class="desc">Default threshold and fallback sink. It sits between DEBUG (7) and
+TRACE (9) in the ordering, so the default log level excludes TRACE.
+It is also the fallback for unknown message levels and invalid
+setLogLevel() values.</span>
 </div>
 <div class="api-item">
 <code class="ret">int</code>
@@ -1298,7 +1208,7 @@ Log Level Enum constants
 ## Logger\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Exception.php){ .src-btn }
 
 Phalcon\Logger\Exception
 
@@ -1324,7 +1234,7 @@ Exceptions thrown in Phalcon\Logger will use this class
 ## Logger\Exceptions\AdapterNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/AdapterNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Exceptions/AdapterNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1360,7 +1270,7 @@ public function __construct( string $name );
 ## Logger\Exceptions\DeserializationFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/DeserializationFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Exceptions/DeserializationFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1396,7 +1306,7 @@ public function __construct();
 ## Logger\Exceptions\NoAdaptersConfigured
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/NoAdaptersConfigured.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Exceptions/NoAdaptersConfigured.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1432,7 +1342,7 @@ public function __construct();
 ## Logger\Exceptions\SerializationFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/SerializationFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Exceptions/SerializationFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1468,7 +1378,7 @@ public function __construct();
 ## Logger\Exceptions\TransactionAlreadyActive
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/TransactionAlreadyActive.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Exceptions/TransactionAlreadyActive.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1504,7 +1414,7 @@ public function __construct();
 ## Logger\Exceptions\TransactionNotActive
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/TransactionNotActive.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Exceptions/TransactionNotActive.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1540,20 +1450,21 @@ public function __construct();
 ## Logger\Formatter\AbstractFormatter
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Formatter/AbstractFormatter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Formatter/AbstractFormatter.php){ .src-btn }
 
 Class AbstractFormatter
 
+@property string $dateFormat
+
 <div class="api-tree" markdown>
 
-- [`Phalcon\Support\Helper\Str\AbstractStr`](phalcon_support.md#supporthelperstrabstractstr)
-    - **`Phalcon\Logger\Formatter\AbstractFormatter`** - implements [`Phalcon\Logger\Formatter\FormatterInterface`](#loggerformatterformatterinterface)
-        - [`Phalcon\Logger\Formatter\Json`](#loggerformatterjson)
-        - [`Phalcon\Logger\Formatter\Line`](#loggerformatterline)
+- **`Phalcon\Logger\Formatter\AbstractFormatter`** - implements [`Phalcon\Logger\Formatter\FormatterInterface`](#loggerformatterformatterinterface)
+    - [`Phalcon\Logger\Formatter\Json`](#loggerformatterjson)
+    - [`Phalcon\Logger\Formatter\Line`](#loggerformatterline)
 
 </div>
 
-__Uses__ `DateTimeImmutable` · `Phalcon\Logger\Item` · `Phalcon\Support\Helper\Str\AbstractStr`
+__Uses__ `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1579,6 +1490,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Logger\Item` · `Phalcon\Support\Helper
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getInterpolatedMessage</span>(<span class="prm"><span class="st">Item</span> <span class="sv">$item</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span></span>)</code>
+<span class="desc">Returns the interpolated message, replacing context placeholders.</span>
 </a>
 </div>
 
@@ -1638,11 +1550,13 @@ protected function getInterpolatedMessage(
 ): string;
 ```
 
+Returns the interpolated message, replacing context placeholders.
+
 
 ## Logger\Formatter\FormatterInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Formatter/FormatterInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Formatter/FormatterInterface.php){ .src-btn }
 
 Phalcon\Logger\FormatterInterface
 
@@ -1662,15 +1576,16 @@ __Uses__ `Phalcon\Contracts\Logger\Formatter\Formatter`
 ## Logger\Formatter\Json
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Formatter/Json.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Formatter/Json.php){ .src-btn }
+
+Phalcon\Logger\Formatter\Json
 
 Formats messages using JSON encoding
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Support\Helper\Str\AbstractStr`](phalcon_support.md#supporthelperstrabstractstr)
-    - [`Phalcon\Logger\Formatter\AbstractFormatter`](#loggerformatterabstractformatter)
-        - **`Phalcon\Logger\Formatter\Json`**
+- [`Phalcon\Logger\Formatter\AbstractFormatter`](#loggerformatterabstractformatter)
+    - **`Phalcon\Logger\Formatter\Json`**
 
 </div>
 
@@ -1721,15 +1636,16 @@ Applies a format to a message before sent it to the internal log
 ## Logger\Formatter\Line
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Formatter/Line.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Formatter/Line.php){ .src-btn }
 
 Class Line
 
+@property string $format
+
 <div class="api-tree" markdown>
 
-- [`Phalcon\Support\Helper\Str\AbstractStr`](phalcon_support.md#supporthelperstrabstractstr)
-    - [`Phalcon\Logger\Formatter\AbstractFormatter`](#loggerformatterabstractformatter)
-        - **`Phalcon\Logger\Formatter\Line`**
+- [`Phalcon\Logger\Formatter\AbstractFormatter`](#loggerformatterabstractformatter)
+    - **`Phalcon\Logger\Formatter\Line`**
 
 </div>
 
@@ -1770,8 +1686,7 @@ __Uses__ `Exception` · `Phalcon\Logger\Item`
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$format</span></code>
-<span class="desc">Format applied to each message</span>
+<code class="sig"><span class="sv">$format</span><span class="sm"> = &quot;[%date%][%level%] %message%&quot;</span></code>
 </div>
 </div>
 
@@ -1820,7 +1735,7 @@ Set the format applied to each message
 ## Logger\Item
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Item.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Item.php){ .src-btn }
 
 Phalcon\Logger\Item
 
@@ -1958,7 +1873,7 @@ public function getMessage(): string;
 ## Logger\Logger
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Logger.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Logger.php){ .src-btn }
 
 Phalcon Logger.
 
@@ -1974,9 +1889,6 @@ from config files (see Phalcon\Config\Config object).
     - **`Phalcon\Logger\Logger`** - implements [`Phalcon\Logger\LoggerInterface`](#loggerloggerinterface)
 
 </div>
-
-__Uses__ `Exception` · `Phalcon\Logger\Exception`
-{ .api-uses }
 
 ### Method Summary
 
@@ -2180,18 +2092,17 @@ that are not necessarily wrong.
 ## Logger\LoggerFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/LoggerFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/LoggerFactory.php){ .src-btn }
 
 Factory creating logger objects
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - **`Phalcon\Logger\LoggerFactory`**
+- **`Phalcon\Logger\LoggerFactory`**
 
 </div>
 
-__Uses__ `DateTimeZone` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractConfigFactory`
+__Uses__ `DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Support\Traits\ConfigTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2210,14 +2121,8 @@ __Uses__ `DateTimeZone` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\
 <a class="api-item" href="#loggerloggerfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">Logger</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone</span> <span class="sv">$timezone</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone|null</span> <span class="sv">$timezone</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a Logger object</span>
-</a>
-<a class="api-item" href="#loggerloggerfactory-getarrval">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">@todo Remove this when we get traits</span>
 </a>
 <a class="api-item" href="#loggerloggerfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
@@ -2244,31 +2149,33 @@ public function load( mixed $config ): Logger;
 
 Factory to create an instance from a Config object
 
+@option string "'name"
+@option array  "adapters"' = {
+@option string "adapter-name" = {
+@option string "adapter"
+@option string "name"
+@option string "options" = {
+@option string "mode" = "ab"
+@option string "option"
+@option string "facility"
+             }
+         }
+     }
+}
+
 #### `newInstance()` { #loggerloggerfactory-newinstance }
 
 ```php
 public function newInstance(
     string $name,
     array $adapters = [],
-    DateTimeZone $timezone = null
+    DateTimeZone|null $timezone = null
 ): Logger;
 ```
 
 Returns a Logger object
 
-<div class="api-group">Protected · 2</div>
-
-#### `getArrVal()` { #loggerloggerfactory-getarrval }
-
-```php
-protected function getArrVal(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null
-): mixed;
-```
-
-@todo Remove this when we get traits
+<div class="api-group">Protected · 1</div>
 
 #### `getExceptionClass()` { #loggerloggerfactory-getexceptionclass }
 
@@ -2280,7 +2187,7 @@ protected function getExceptionClass(): string;
 ## Logger\LoggerInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/LoggerInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/LoggerInterface.php){ .src-btn }
 
 Interface for Phalcon based logger objects.
 

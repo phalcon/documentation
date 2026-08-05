@@ -11,7 +11,7 @@ hide:
 ## Image\Adapter\AbstractAdapter
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/AbstractAdapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Adapter/AbstractAdapter.php){ .src-btn }
 
 All image adapters must use this class
 
@@ -44,7 +44,7 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 <a class="api-item" href="#imageadapterabstractadapter-crop">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">crop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">crop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$offsetX</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$offsetY</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Crop an image to the given size</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-flip">
@@ -103,13 +103,13 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 <a class="api-item" href="#imageadapterabstractadapter-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$extension</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
 <span class="desc">Render the image and return the binary string</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-resize">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">resize</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$master</span><span class="sm"> = Enum::AUTO</span></span>)</code>
+<code class="sig"><span class="sf">resize</span>(<span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$master</span><span class="sm"> = Enum::AUTO</span></span>)</code>
 <span class="desc">Resize the image to the given size</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-rotate">
@@ -121,7 +121,7 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 <a class="api-item" href="#imageadapterabstractadapter-save">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">save</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = -1</span></span>)</code>
+<code class="sig"><span class="sf">save</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Save the image</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-sharpen">
@@ -133,7 +133,7 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 <a class="api-item" href="#imageadapterabstractadapter-text">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">text</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$color</span><span class="sm"> = &quot;000000&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span><span class="sm"> = 12</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">text</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$color</span><span class="sm"> = &quot;000000&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span><span class="sm"> = 12</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a text to an image with a specified opacity</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-watermark">
@@ -207,6 +207,7 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-processsave">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
 <code class="sig"><span class="sf">processSave</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
 <span class="desc">Saves the image to the supplied file path.</span>
 </a>
@@ -219,7 +220,7 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 <a class="api-item" href="#imageadapterabstractadapter-processtext">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Renders text onto the image. The opacity is clamped to 0-100 and the</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-processwatermark">
@@ -305,8 +306,8 @@ Blur image
 public function crop(
     int $width,
     int $height,
-    mixed $offsetX = null,
-    mixed $offsetY = null
+    int|null $offsetX = null,
+    int|null $offsetY = null
 ): AdapterInterface;
 ```
 
@@ -393,7 +394,7 @@ Add a reflection to an image
 
 ```php
 public function render(
-    string $extension = null,
+    string|null $extension = null,
     int $quality = 100
 ): string;
 ```
@@ -404,8 +405,8 @@ Render the image and return the binary string
 
 ```php
 public function resize(
-    int $width = null,
-    int $height = null,
+    int|null $width = null,
+    int|null $height = null,
     int $master = Enum::AUTO
 ): AdapterInterface;
 ```
@@ -424,7 +425,7 @@ Rotate the image by a given amount
 
 ```php
 public function save(
-    string $file = null,
+    string|null $file = null,
     int $quality = -1
 ): AdapterInterface;
 ```
@@ -449,7 +450,7 @@ public function text(
     int $opacity = 100,
     string $color = "000000",
     int $size = 12,
-    string $fontFile = null
+    string|null $fontFile = null
 ): AdapterInterface;
 ```
 
@@ -598,7 +599,7 @@ Rotates the image. The degrees value is already normalized to -180..180.
 abstract protected function processSave(
     string $file,
     int $quality
-);
+): bool;
 ```
 
 Saves the image to the supplied file path.
@@ -623,7 +624,7 @@ abstract protected function processText(
     int $green,
     int $blue,
     int $size,
-    string $fontFile = null
+    string|null $fontFile = null
 ): void;
 ```
 
@@ -649,7 +650,7 @@ its public render() output, so it may be any adapter backend.
 ## Image\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/AdapterInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Adapter/AdapterInterface.php){ .src-btn }
 
 Interface for Phalcon\Image\Adapter classes
 
@@ -680,7 +681,7 @@ __Uses__ `Phalcon\Image\Enum`
 <a class="api-item" href="#imageadapteradapterinterface-crop">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">crop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">crop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$offsetX</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$offsetY</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Crop an image</span>
 </a>
 <a class="api-item" href="#imageadapteradapterinterface-flip">
@@ -720,13 +721,13 @@ __Uses__ `Phalcon\Image\Enum`
 <a class="api-item" href="#imageadapteradapterinterface-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$extension</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
 <span class="desc">Render an image</span>
 </a>
 <a class="api-item" href="#imageadapteradapterinterface-resize">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">resize</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$master</span><span class="sm"> = Enum::AUTO</span></span>)</code>
+<code class="sig"><span class="sf">resize</span>(<span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$master</span><span class="sm"> = Enum::AUTO</span></span>)</code>
 <span class="desc">Resize an image</span>
 </a>
 <a class="api-item" href="#imageadapteradapterinterface-rotate">
@@ -738,7 +739,7 @@ __Uses__ `Phalcon\Image\Enum`
 <a class="api-item" href="#imageadapteradapterinterface-save">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">save</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
+<code class="sig"><span class="sf">save</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
 <span class="desc">Save an image</span>
 </a>
 <a class="api-item" href="#imageadapteradapterinterface-sharpen">
@@ -750,7 +751,7 @@ __Uses__ `Phalcon\Image\Enum`
 <a class="api-item" href="#imageadapteradapterinterface-text">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">text</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$color</span><span class="sm"> = &quot;000000&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span><span class="sm"> = 12</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">text</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$color</span><span class="sm"> = &quot;000000&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span><span class="sm"> = 12</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds text on an image</span>
 </a>
 <a class="api-item" href="#imageadapteradapterinterface-watermark">
@@ -790,8 +791,8 @@ Blur an image
 public function crop(
     int $width,
     int $height,
-    int $offsetX = null,
-    int $offsetY = null
+    int|null $offsetX = null,
+    int|null $offsetY = null
 ): AdapterInterface;
 ```
 
@@ -849,7 +850,7 @@ Reflect an image
 
 ```php
 public function render(
-    string $extension = null,
+    string|null $extension = null,
     int $quality = 100
 ): string;
 ```
@@ -860,8 +861,8 @@ Render an image
 
 ```php
 public function resize(
-    int $width = null,
-    int $height = null,
+    int|null $width = null,
+    int|null $height = null,
     int $master = Enum::AUTO
 ): AdapterInterface;
 ```
@@ -880,7 +881,7 @@ Rotate an image
 
 ```php
 public function save(
-    string $file = null,
+    string|null $file = null,
     int $quality = 100
 ): AdapterInterface;
 ```
@@ -905,7 +906,7 @@ public function text(
     int $opacity = 100,
     string $color = "000000",
     int $size = 12,
-    string $fontFile = null
+    string|null $fontFile = null
 ): AdapterInterface;
 ```
 
@@ -928,7 +929,7 @@ Add a watermark on an image
 ## Image\Adapter\Gd
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/Gd.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Adapter/Gd.php){ .src-btn }
 
 Image manipulation backed by the GD extension.
 
@@ -953,7 +954,7 @@ own scales. Switching the factory backend can change the rendered output.
 
 </div>
 
-__Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\TextRenderingFailed` · `Phalcon\Image\Exceptions\UnsupportedImageType` · `Phalcon\Image\Exceptions\VersionMismatch`
+__Uses__ `GdImage` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\TextRenderingFailed` · `Phalcon\Image\Exceptions\UnsupportedImageType` · `Phalcon\Image\Exceptions\VersionMismatch`
 { .api-uses }
 
 ### Method Summary
@@ -961,7 +962,7 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 <div class="api-list">
 <a class="api-item" href="#imageadaptergd-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Loads an image from a file, or creates a blank canvas.</span>
 </a>
 <a class="api-item" href="#imageadaptergd-__destruct">
@@ -1045,7 +1046,7 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 <a class="api-item" href="#imageadaptergd-processtext">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#imageadaptergd-processwatermark">
 <code class="vis vis-protected">protected</code>
@@ -1063,8 +1064,8 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 ```php
 public function __construct(
     string $file,
-    int $width = null,
-    int $height = null
+    int|null $width = null,
+    int|null $height = null
 );
 ```
 
@@ -1220,7 +1221,7 @@ protected function processText(
     int $green,
     int $blue,
     int $size,
-    string $fontFile = null
+    string|null $fontFile = null
 ): void;
 ```
 
@@ -1239,7 +1240,7 @@ protected function processWatermark(
 ## Image\Adapter\Imagick
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/Imagick.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Adapter/Imagick.php){ .src-btn }
 
 Phalcon\Image\Adapter\Imagick
 
@@ -1282,7 +1283,7 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 <div class="api-list">
 <a class="api-item" href="#imageadapterimagick-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Loads an image from a file, or creates a blank canvas.</span>
 </a>
 <a class="api-item" href="#imageadapterimagick-__destruct">
@@ -1370,7 +1371,7 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 </a>
 <a class="api-item" href="#imageadapterimagick-processsave">
 <code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
+<code class="ret">bool</code>
 <code class="sig"><span class="sf">processSave</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
 <span class="desc">Execute a save.</span>
 </a>
@@ -1383,7 +1384,7 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 <a class="api-item" href="#imageadapterimagick-processtext">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Execute a text</span>
 </a>
 <a class="api-item" href="#imageadapterimagick-processwatermark">
@@ -1392,6 +1393,79 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 <code class="sig"><span class="sf">processWatermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
 <span class="desc">Add Watermark</span>
 </a>
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">ALPHACHANNEL_SET</span><span class="sm"> = 8</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">CHANNEL_ALPHA</span><span class="sm"> = 8</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">COMPOSITE_DISSOLVE</span><span class="sm"> = 28</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">COMPOSITE_DSTIN</span><span class="sm"> = 23</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">COMPOSITE_DSTOUT</span><span class="sm"> = 24</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">COMPOSITE_OVER</span><span class="sm"> = 40</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">COMPOSITE_SRC</span><span class="sm"> = 48</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">COMPRESSION_JPEG</span><span class="sm"> = 8</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">EVALUATE_MULTIPLY</span><span class="sm"> = 7</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">GRAVITY_CENTER</span><span class="sm"> = 5</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">GRAVITY_EAST</span><span class="sm"> = 6</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">GRAVITY_NORTH</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">GRAVITY_NORTHEAST</span><span class="sm"> = 3</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">GRAVITY_SOUTH</span><span class="sm"> = 8</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">GRAVITY_SOUTHEAST</span><span class="sm"> = 9</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">GRAVITY_WEST</span><span class="sm"> = 4</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">IMAGICK_EXTNUM</span><span class="sm"> = 30700</span></code>
+</div>
 </div>
 
 ### Properties
@@ -1413,8 +1487,8 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 ```php
 public function __construct(
     string $file,
-    int $width = null,
-    int $height = null
+    int|null $width = null,
+    int|null $height = null
 );
 ```
 
@@ -1581,7 +1655,7 @@ Execute a rotation.
 protected function processSave(
     string $file,
     int $quality
-): void;
+): bool;
 ```
 
 Execute a save.
@@ -1606,7 +1680,7 @@ protected function processText(
     int $green,
     int $blue,
     int $size,
-    string $fontFile = null
+    string|null $fontFile = null
 ): void;
 ```
 
@@ -1629,7 +1703,7 @@ Add Watermark
 ## Image\Enum
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Enum.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Enum.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1682,7 +1756,7 @@ Add Watermark
 ## Image\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Image will use this class
 
@@ -1709,7 +1783,7 @@ Exceptions thrown in Phalcon\Image will use this class
 ## Image\Exceptions\CompositeFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/CompositeFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/CompositeFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1745,7 +1819,7 @@ public function __construct();
 ## Image\Exceptions\ExtensionNotLoaded
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ExtensionNotLoaded.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/ExtensionNotLoaded.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1781,7 +1855,7 @@ public function __construct( string $extension );
 ## Image\Exceptions\ImageLoadFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ImageLoadFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/ImageLoadFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1817,7 +1891,7 @@ public function __construct( string $file );
 ## Image\Exceptions\InvalidColor
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/InvalidColor.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/InvalidColor.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1853,7 +1927,7 @@ public function __construct( string $color );
 ## Image\Exceptions\MissingDimensions
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingDimensions.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/MissingDimensions.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1889,7 +1963,7 @@ public function __construct();
 ## Image\Exceptions\MissingHeight
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingHeight.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/MissingHeight.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1925,7 +1999,7 @@ public function __construct();
 ## Image\Exceptions\MissingWidth
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingWidth.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/MissingWidth.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1961,7 +2035,7 @@ public function __construct();
 ## Image\Exceptions\ResizeFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ResizeFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/ResizeFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1997,7 +2071,7 @@ public function __construct();
 ## Image\Exceptions\ResourceTypeError
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ResourceTypeError.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/ResourceTypeError.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2033,7 +2107,7 @@ public function __construct();
 ## Image\Exceptions\TextRenderingFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/TextRenderingFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/TextRenderingFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2069,7 +2143,7 @@ public function __construct();
 ## Image\Exceptions\UnsupportedImageType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/UnsupportedImageType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/UnsupportedImageType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2105,7 +2179,7 @@ public function __construct( string $format = "" );
 ## Image\Exceptions\VersionMismatch
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/VersionMismatch.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Exceptions/VersionMismatch.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2141,19 +2215,17 @@ public function __construct( string $version );
 ## Image\ImageFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/ImageFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/ImageFactory.php){ .src-btn }
 
 Factory to create adapters for image manipulation
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
-        - **`Phalcon\Image\ImageFactory`**
+- **`Phalcon\Image\ImageFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface`
+__Uses__ `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick` · `Phalcon\Support\Traits\ConfigTrait` · `Phalcon\Traits\Factory\FactoryTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2167,13 +2239,13 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` �
 <a class="api-item" href="#imageimagefactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#imageimagefactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a new instance</span>
 </a>
 <a class="api-item" href="#imageimagefactory-getexceptionclass">
@@ -2204,7 +2276,7 @@ Constructor
 #### `load()` { #imageimagefactory-load }
 
 ```php
-public function load( mixed $config ): AdapterInterface;
+public function load( array|ConfigInterface $config ): AdapterInterface;
 ```
 
 Factory to create an instance from a Config object
@@ -2215,8 +2287,8 @@ Factory to create an instance from a Config object
 public function newInstance(
     string $name,
     string $file,
-    int $width = null,
-    int $height = null
+    int|null $width = null,
+    int|null $height = null
 ): AdapterInterface;
 ```
 

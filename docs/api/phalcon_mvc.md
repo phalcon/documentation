@@ -11,9 +11,7 @@ hide:
 ## Mvc\Application
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Application.zep){ .src-btn }
-
-Phalcon\Mvc\Application
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Application.php){ .src-btn }
 
 This component encapsulates all the complex operations behind instantiating
 every component needed and integrating it with the rest to allow the MVC
@@ -60,14 +58,14 @@ $application->main();
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - [`Phalcon\Application\AbstractApplication`](phalcon_application.md#applicationabstractapplication)
             - **`Phalcon\Mvc\Application`**
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Application\Exception` · `Phalcon\Mvc\Application\Exceptions\ContainerRequired` · `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` · `Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Mvc\Router\RouteInterface`
+__Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Application\Exception` · `Phalcon\Di\DiInterface` · `Phalcon\Events\Exception` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Application\Exception` · `Phalcon\Mvc\Application\Exceptions\ContainerRequired` · `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` · `Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -75,7 +73,7 @@ __Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Di\D
 <div class="api-list">
 <a class="api-item" href="#mvcapplication-handle">
 <code class="vis vis-public">public</code>
-<code class="ret">ResponseInterface|bool</code>
+<code class="ret">bool|ResponseInterface</code>
 <code class="sig"><span class="sf">handle</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
 <span class="desc">Handles a MVC request</span>
 </a>
@@ -95,7 +93,7 @@ __Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Di\D
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">useImplicitView</span>( <span class="st">bool</span> <span class="sv">$implicitView</span> )</code>
-<span class="desc">By default. The view is implicitly buffering all the output</span>
+<span class="desc">By default, the view is implicitly buffering all the output</span>
 </a>
 </div>
 
@@ -126,7 +124,7 @@ __Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Di\D
 #### `handle()` { #mvcapplication-handle }
 
 ```php
-public function handle( string $uri ): ResponseInterface|bool;
+public function handle( string $uri ): bool|ResponseInterface;
 ```
 
 Handles a MVC request
@@ -153,16 +151,14 @@ Enables or disables sending headers by each request handling
 public function useImplicitView( bool $implicitView ): static;
 ```
 
-By default. The view is implicitly buffering all the output
+By default, the view is implicitly buffering all the output
 You can full disable the view component using this method
 
 
 ## Mvc\Application\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Application/Exception.zep){ .src-btn }
-
-Phalcon\Mvc\Application\Exception
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Application/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Mvc\Application class will use this class
 
@@ -181,7 +177,7 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 ## Mvc\Application\Exceptions\ContainerRequired
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Application/Exceptions/ContainerRequired.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Application/Exceptions/ContainerRequired.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -218,7 +214,7 @@ public function __construct();
 ## Mvc\Application\Exceptions\InvalidModuleDefinition
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Application/Exceptions/InvalidModuleDefinition.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Application/Exceptions/InvalidModuleDefinition.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -237,7 +233,7 @@ __Uses__ `Phalcon\Mvc\Application\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcapplicationexceptionsinvalidmoduledefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$reason</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$reason</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -249,8 +245,8 @@ __Uses__ `Phalcon\Mvc\Application\Exception`
 
 ```php
 public function __construct(
-    string $name = null,
-    string $reason = null
+    string|null $name = null,
+    string|null $reason = null
 );
 ```
 
@@ -258,7 +254,7 @@ public function __construct(
 ## Mvc\Application\Exceptions\ModuleDefinitionPathNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Application/Exceptions/ModuleDefinitionPathNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Application/Exceptions/ModuleDefinitionPathNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -295,9 +291,7 @@ public function __construct( string $path );
 ## Mvc\Controller
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Controller.zep){ .src-btn }
-
-Phalcon\Mvc\Controller
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Controller.php){ .src-btn }
 
 Every application controller should extend this class that encapsulates all
 the controller functionality
@@ -338,13 +332,13 @@ class PeopleController extends \Phalcon\Mvc\Controller
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Mvc\Controller`** - implements [`Phalcon\Mvc\ControllerInterface`](#mvccontrollerinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 
-__Uses__ `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface`
+__Uses__ `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 { .api-uses }
 
 ### Method Summary
@@ -355,29 +349,11 @@ __Uses__ `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Ph
 <code class="sig"><span class="sf">__construct</span>()</code>
 <span class="desc">Phalcon\Mvc\Controller constructor</span>
 </a>
-<a class="api-item" href="#mvccontroller-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
-<a class="api-item" href="#mvccontroller-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
-<a class="api-item" href="#mvccontroller-firemanagerevent">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed|bool</code>
-<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Helper method to fire an event</span>
-</a>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 3</div>
+<div class="api-group">Public · 1</div>
 
 #### `__construct()` { #mvccontroller-__construct }
 
@@ -387,43 +363,11 @@ final public function __construct();
 
 Phalcon\Mvc\Controller constructor
 
-#### `getEventsManager()` { #mvccontroller-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
-
-#### `setEventsManager()` { #mvccontroller-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the events manager
-
-<div class="api-group">Protected · 1</div>
-
-#### `fireManagerEvent()` { #mvccontroller-firemanagerevent }
-
-```php
-protected function fireManagerEvent(
-    string $eventName,
-    mixed $data = null,
-    bool $cancellable = true
-): mixed|bool;
-```
-
-Helper method to fire an event
-
 
 ## Mvc\ControllerInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/ControllerInterface.zep){ .src-btn }
-
-Phalcon\Mvc\ControllerInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/ControllerInterface.php){ .src-btn }
 
 Interface for controller handlers
 
@@ -437,9 +381,7 @@ Interface for controller handlers
 ## Mvc\Controller\BindModelInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Controller/BindModelInterface.zep){ .src-btn }
-
-Phalcon\Mvc\Controller\BindModelInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Controller/BindModelInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Controller
 
@@ -476,7 +418,7 @@ Return the model name associated with this controller
 ## Mvc\Dispatcher
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Dispatcher.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Dispatcher.php){ .src-btn }
 
 Dispatching is the process of taking the request object, extracting the
 module name, controller name, action name, and optional parameters contained
@@ -499,14 +441,14 @@ $controller = $dispatcher->dispatch();
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - [`Phalcon\Dispatcher\AbstractDispatcher`](phalcon_dispatcher.md#dispatcherabstractdispatcher)
             - **`Phalcon\Mvc\Dispatcher`** - implements [`Phalcon\Mvc\DispatcherInterface`](#mvcdispatcherinterface)
 
 </div>
 
-__Uses__ `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Dispatcher\Exception` · `Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`
+__Uses__ `Exception` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Dispatcher\Exception` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Mvc\Dispatcher\Exception` · `Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`
 { .api-uses }
 
 ### Method Summary
@@ -520,7 +462,7 @@ __Uses__ `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInter
 </a>
 <a class="api-item" href="#mvcdispatcher-getactivecontroller">
 <code class="vis vis-public">public</code>
-<code class="ret">ControllerInterface</code>
+<code class="ret">ControllerInterface|null</code>
 <code class="sig"><span class="sf">getActiveController</span>()</code>
 <span class="desc">Returns the active controller in the dispatcher</span>
 </a>
@@ -538,7 +480,7 @@ __Uses__ `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInter
 </a>
 <a class="api-item" href="#mvcdispatcher-getlastcontroller">
 <code class="vis vis-public">public</code>
-<code class="ret">ControllerInterface</code>
+<code class="ret">ControllerInterface|null</code>
 <code class="sig"><span class="sf">getLastController</span>()</code>
 <span class="desc">Returns the latest dispatched controller</span>
 </a>
@@ -568,11 +510,12 @@ __Uses__ `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInter
 </a>
 <a class="api-item" href="#mvcdispatcher-handleexception">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">handleException</span>( <span class="st">\Exception</span> <span class="sv">$exception</span> )</code>
+<code class="sig"><span class="sf">handleException</span>( <span class="st">BaseException</span> <span class="sv">$exception</span> )</code>
 <span class="desc">Handles a user exception</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-throwdispatchexception">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
 <code class="sig"><span class="sf">throwDispatchException</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$exceptionCode</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Throws an internal exception</span>
 </a>
@@ -667,7 +610,7 @@ $this->dispatcher->forward(
 #### `getActiveController()` { #mvcdispatcher-getactivecontroller }
 
 ```php
-public function getActiveController(): ControllerInterface;
+public function getActiveController(): ControllerInterface|null;
 ```
 
 Returns the active controller in the dispatcher
@@ -692,7 +635,7 @@ Gets last dispatched controller name
 #### `getLastController()` { #mvcdispatcher-getlastcontroller }
 
 ```php
-public function getLastController(): ControllerInterface;
+public function getLastController(): ControllerInterface|null;
 ```
 
 Returns the latest dispatched controller
@@ -737,7 +680,7 @@ Sets the default controller name
 #### `handleException()` { #mvcdispatcher-handleexception }
 
 ```php
-protected function handleException( \Exception $exception );
+protected function handleException( BaseException $exception );
 ```
 
 Handles a user exception
@@ -748,7 +691,7 @@ Handles a user exception
 protected function throwDispatchException(
     string $message,
     int $exceptionCode = 0
-);
+): bool;
 ```
 
 Throws an internal exception
@@ -757,9 +700,7 @@ Throws an internal exception
 ## Mvc\DispatcherInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/DispatcherInterface.zep){ .src-btn }
-
-Phalcon\Mvc\DispatcherInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/DispatcherInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Dispatcher
 
@@ -778,9 +719,7 @@ __Uses__ `Phalcon\Contracts\Mvc\Dispatcher`
 ## Mvc\Dispatcher\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Dispatcher/Exception.zep){ .src-btn }
-
-Phalcon\Mvc\Dispatcher\Exception
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Dispatcher/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
@@ -797,7 +736,7 @@ Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 ## Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Dispatcher/Exceptions/ResponseServiceUnavailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Dispatcher/Exceptions/ResponseServiceUnavailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -834,7 +773,7 @@ public function __construct();
 ## Mvc\EntityInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/EntityInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/EntityInterface.php){ .src-btn }
 
 Phalcon\Mvc\EntityInterface
 
@@ -851,12 +790,13 @@ Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
 <div class="api-list">
 <a class="api-item" href="#mvcentityinterface-readattribute">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">readAttribute</span>( <span class="st">string</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Reads an attribute value by its name</span>
 </a>
 <a class="api-item" href="#mvcentityinterface-writeattribute">
 <code class="vis vis-public">public</code>
+<code class="ret">void</code>
 <code class="sig"><span class="sf">writeAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Writes an attribute value by its name</span>
 </a>
@@ -869,7 +809,7 @@ Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
 #### `readAttribute()` { #mvcentityinterface-readattribute }
 
 ```php
-public function readAttribute( string $attribute ): mixed|null;
+public function readAttribute( string $attribute ): mixed;
 ```
 
 Reads an attribute value by its name
@@ -880,20 +820,33 @@ Reads an attribute value by its name
 public function writeAttribute(
     string $attribute,
     mixed $value
-);
+): void;
 ```
 
 Writes an attribute value by its name
 
 
+## Mvc\Event\ApplicationBootEvent
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Event/ApplicationBootEvent.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\Event\ApplicationBootEvent`** - implements [`Phalcon\Events\PsrEventInterface`](phalcon_events.md#eventspsreventinterface)
+
+</div>
+
+__Uses__ `Phalcon\Events\PsrEventInterface`
+{ .api-uses }
+
+
 ## Mvc\Micro
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro.php){ .src-btn }
 
-Phalcon\Mvc\Micro
-
-With Phalcon you can create "Micro-Framework like" applications. By doing
+With Phalcon, you can create "Micro-Framework like" applications. By doing
 this, you only need to write a minimal amount of code to create a PHP
 application. Micro applications are suitable to small applications, APIs and
 prototypes in a practical way.
@@ -913,13 +866,13 @@ $app->handle("/say/welcome/Phalcon");
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Mvc\Micro`** - implements `ArrayAccess`, [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Mvc\Micro`** - implements `\ArrayAccess`, [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 
-__Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Injectable` · `Phalcon\Di\ServiceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Micro\Collection` · `Phalcon\Mvc\Micro\CollectionInterface` · `Phalcon\Mvc\Micro\Exception` · `Phalcon\Mvc\Micro\Exceptions\ContainerRequired` · `Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler` · `Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler` · `Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount` · `Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler` · `Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable` · `Phalcon\Mvc\Micro\LazyLoader` · `Phalcon\Mvc\Micro\MiddlewareInterface` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Throwable`
+__Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Injectable` · `Phalcon\Di\ServiceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Micro\CollectionInterface` · `Phalcon\Mvc\Micro\Exception` · `Phalcon\Mvc\Micro\Exceptions\ContainerRequired` · `Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler` · `Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler` · `Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount` · `Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler` · `Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable` · `Phalcon\Mvc\Micro\LazyLoader` · `Phalcon\Mvc\Micro\MiddlewareInterface` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -927,53 +880,54 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 <div class="api-list">
 <a class="api-item" href="#mvcmicro-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\Micro constructor</span>
 </a>
 <a class="api-item" href="#mvcmicro-after">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">after</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
+<code class="sig"><span class="sf">after</span>( <span class="st">callable|MiddlewareInterface</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Appends an &#039;after&#039; middleware to be called after execute the route</span>
 </a>
 <a class="api-item" href="#mvcmicro-afterbinding">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">afterBinding</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
+<code class="sig"><span class="sf">afterBinding</span>( <span class="st">callable|MiddlewareInterface</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Appends a afterBinding middleware to be called after model binding</span>
 </a>
 <a class="api-item" href="#mvcmicro-before">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">before</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
+<code class="sig"><span class="sf">before</span>( <span class="st">callable|MiddlewareInterface</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Appends a before middleware to be called before execute the route</span>
 </a>
 <a class="api-item" href="#mvcmicro-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">array|callable</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcmicro-error">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">error</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
+<code class="sig"><span class="sf">error</span>( <span class="st">callable</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Sets a handler that will be called when an exception is thrown handling</span>
 </a>
 <a class="api-item" href="#mvcmicro-finish">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">finish</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
+<code class="sig"><span class="sf">finish</span>( <span class="st">callable|MiddlewareInterface</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Appends a &#039;finish&#039; middleware to be called when the request is finished</span>
 </a>
 <a class="api-item" href="#mvcmicro-get">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">array|callable</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcmicro-getactivehandler">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getActiveHandler</span>()</code>
 <span class="desc">Return the handler that will be called for the matched route</span>
 </a>
@@ -982,12 +936,6 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getBoundModels</span>()</code>
 <span class="desc">Returns bound models from binder instance</span>
-</a>
-<a class="api-item" href="#mvcmicro-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvcmicro-gethandlers">
 <code class="vis vis-public">public</code>
@@ -1003,6 +951,7 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 </a>
 <a class="api-item" href="#mvcmicro-getreturnedvalue">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getReturnedValue</span>()</code>
 <span class="desc">Returns the value returned by the executed handler</span>
 </a>
@@ -1024,6 +973,7 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 </a>
 <a class="api-item" href="#mvcmicro-handle">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">handle</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
 <span class="desc">Handle the whole request</span>
 </a>
@@ -1036,13 +986,13 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 <a class="api-item" href="#mvcmicro-head">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
+<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">array|callable</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcmicro-map">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
+<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">array|callable</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler without any HTTP method constraint</span>
 </a>
 <a class="api-item" href="#mvcmicro-mount">
@@ -1054,7 +1004,7 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 <a class="api-item" href="#mvcmicro-notfound">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">notFound</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
+<code class="sig"><span class="sf">notFound</span>( <span class="st">callable</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Sets a handler that will be called when the router does not match any of</span>
 </a>
 <a class="api-item" href="#mvcmicro-offsetexists">
@@ -1084,55 +1034,43 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 <a class="api-item" href="#mvcmicro-options">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
+<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">array|callable</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcmicro-patch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
+<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">array|callable</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcmicro-post">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
+<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">array|callable</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcmicro-put">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
+<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">array|callable</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcmicro-setactivehandler">
 <code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">setActiveHandler</span>( <span class="st">mixed</span> <span class="sv">$activeHandler</span> )</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setActiveHandler</span>( <span class="st">callable</span> <span class="sv">$activeHandler</span> )</code>
 <span class="desc">Sets externally the handler that must be called by the matched route</span>
-</a>
-<a class="api-item" href="#mvcmicro-setdi">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Sets the DependencyInjector container</span>
-</a>
-<a class="api-item" href="#mvcmicro-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#mvcmicro-setmodelbinder">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">setModelBinder</span>(<span class="prm"><span class="st">BinderInterface</span> <span class="sv">$modelBinder</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">setModelBinder</span>(<span class="prm"><span class="st">BinderInterface</span> <span class="sv">$modelBinder</span>,</span><span class="prm"><span class="st">AdapterInterface|string|null</span> <span class="sv">$cache</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets model binder</span>
 </a>
 <a class="api-item" href="#mvcmicro-setresponsehandler">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">setResponseHandler</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
+<code class="sig"><span class="sf">setResponseHandler</span>( <span class="st">callable</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Appends a custom &#039;response&#039; handler to be called instead of the default</span>
 </a>
 <a class="api-item" href="#mvcmicro-setservice">
@@ -1174,18 +1112,8 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">callable|null</code>
 <code class="sig"><span class="sv">$errorHandler</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -1231,12 +1159,12 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 
 ### Methods
 
-<div class="api-group">Public · 38</div>
+<div class="api-group">Public · 35</div>
 
 #### `__construct()` { #mvcmicro-__construct }
 
 ```php
-public function __construct( DiInterface $container = null );
+public function __construct( DiInterface|null $container = null );
 ```
 
 Phalcon\Mvc\Micro constructor
@@ -1244,7 +1172,7 @@ Phalcon\Mvc\Micro constructor
 #### `after()` { #mvcmicro-after }
 
 ```php
-public function after( mixed $handler ): static;
+public function after( callable|MiddlewareInterface $handler ): static;
 ```
 
 Appends an 'after' middleware to be called after execute the route
@@ -1252,7 +1180,7 @@ Appends an 'after' middleware to be called after execute the route
 #### `afterBinding()` { #mvcmicro-afterbinding }
 
 ```php
-public function afterBinding( mixed $handler ): static;
+public function afterBinding( callable|MiddlewareInterface $handler ): static;
 ```
 
 Appends a afterBinding middleware to be called after model binding
@@ -1260,7 +1188,7 @@ Appends a afterBinding middleware to be called after model binding
 #### `before()` { #mvcmicro-before }
 
 ```php
-public function before( mixed $handler ): static;
+public function before( callable|MiddlewareInterface $handler ): static;
 ```
 
 Appends a before middleware to be called before execute the route
@@ -1270,7 +1198,7 @@ Appends a before middleware to be called before execute the route
 ```php
 public function delete(
     string $routePattern,
-    mixed $handler
+    array|callable $handler
 ): RouteInterface;
 ```
 
@@ -1279,7 +1207,7 @@ Maps a route to a handler that only matches if the HTTP method is DELETE
 #### `error()` { #mvcmicro-error }
 
 ```php
-public function error( mixed $handler ): static;
+public function error( callable $handler ): static;
 ```
 
 Sets a handler that will be called when an exception is thrown handling
@@ -1288,7 +1216,7 @@ the route
 #### `finish()` { #mvcmicro-finish }
 
 ```php
-public function finish( mixed $handler ): static;
+public function finish( callable|MiddlewareInterface $handler ): static;
 ```
 
 Appends a 'finish' middleware to be called when the request is finished
@@ -1298,7 +1226,7 @@ Appends a 'finish' middleware to be called when the request is finished
 ```php
 public function get(
     string $routePattern,
-    mixed $handler
+    array|callable $handler
 ): RouteInterface;
 ```
 
@@ -1307,7 +1235,7 @@ Maps a route to a handler that only matches if the HTTP method is GET
 #### `getActiveHandler()` { #mvcmicro-getactivehandler }
 
 ```php
-public function getActiveHandler();
+public function getActiveHandler(): mixed;
 ```
 
 Return the handler that will be called for the matched route
@@ -1319,14 +1247,6 @@ public function getBoundModels(): array;
 ```
 
 Returns bound models from binder instance
-
-#### `getEventsManager()` { #mvcmicro-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
 
 #### `getHandlers()` { #mvcmicro-gethandlers }
 
@@ -1347,7 +1267,7 @@ Gets model binder
 #### `getReturnedValue()` { #mvcmicro-getreturnedvalue }
 
 ```php
-public function getReturnedValue();
+public function getReturnedValue(): mixed;
 ```
 
 Returns the value returned by the executed handler
@@ -1379,7 +1299,7 @@ Obtains a shared service from the DI
 #### `handle()` { #mvcmicro-handle }
 
 ```php
-public function handle( string $uri );
+public function handle( string $uri ): mixed;
 ```
 
 Handle the whole request
@@ -1397,7 +1317,7 @@ Checks if a service is registered in the DI
 ```php
 public function head(
     string $routePattern,
-    mixed $handler
+    array|callable $handler
 ): RouteInterface;
 ```
 
@@ -1408,7 +1328,7 @@ Maps a route to a handler that only matches if the HTTP method is HEAD
 ```php
 public function map(
     string $routePattern,
-    mixed $handler
+    array|callable $handler
 ): RouteInterface;
 ```
 
@@ -1425,7 +1345,7 @@ Mounts a collection of handlers
 #### `notFound()` { #mvcmicro-notfound }
 
 ```php
-public function notFound( mixed $handler ): static;
+public function notFound( callable $handler ): static;
 ```
 
 Sets a handler that will be called when the router does not match any of
@@ -1485,7 +1405,7 @@ syntax
 ```php
 public function options(
     string $routePattern,
-    mixed $handler
+    array|callable $handler
 ): RouteInterface;
 ```
 
@@ -1496,7 +1416,7 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 ```php
 public function patch(
     string $routePattern,
-    mixed $handler
+    array|callable $handler
 ): RouteInterface;
 ```
 
@@ -1507,7 +1427,7 @@ Maps a route to a handler that only matches if the HTTP method is PATCH
 ```php
 public function post(
     string $routePattern,
-    mixed $handler
+    array|callable $handler
 ): RouteInterface;
 ```
 
@@ -1518,7 +1438,7 @@ Maps a route to a handler that only matches if the HTTP method is POST
 ```php
 public function put(
     string $routePattern,
-    mixed $handler
+    array|callable $handler
 ): RouteInterface;
 ```
 
@@ -1527,33 +1447,17 @@ Maps a route to a handler that only matches if the HTTP method is PUT
 #### `setActiveHandler()` { #mvcmicro-setactivehandler }
 
 ```php
-public function setActiveHandler( mixed $activeHandler ): self;
+public function setActiveHandler( callable $activeHandler ): static;
 ```
 
 Sets externally the handler that must be called by the matched route
-
-#### `setDI()` { #mvcmicro-setdi }
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the DependencyInjector container
-
-#### `setEventsManager()` { #mvcmicro-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the events manager
 
 #### `setModelBinder()` { #mvcmicro-setmodelbinder }
 
 ```php
 public function setModelBinder(
     BinderInterface $modelBinder,
-    mixed $cache = null
+    AdapterInterface|string|null $cache = null
 ): static;
 ```
 
@@ -1571,7 +1475,7 @@ $micro->setModelBinder(
 #### `setResponseHandler()` { #mvcmicro-setresponsehandler }
 
 ```php
-public function setResponseHandler( mixed $handler ): static;
+public function setResponseHandler( callable $handler ): static;
 ```
 
 Appends a custom 'response' handler to be called instead of the default
@@ -1602,9 +1506,7 @@ executed
 ## Mvc\Micro\Collection
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Collection.zep){ .src-btn }
-
-Phalcon\Mvc\Micro\Collection
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Collection.php){ .src-btn }
 
 Groups Micro-Mvc handlers as controllers
 
@@ -1617,7 +1519,7 @@ $collection->setHandler(
     new PostsController()
 );
 
-$collection->get("/posts/edit/{id}", "edit");
+$collection->get('/posts/edit/{id}', 'edit');
 
 $app->mount($collection);
 ```
@@ -1634,13 +1536,13 @@ $app->mount($collection);
 <a class="api-item" href="#mvcmicrocollection-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is DELETE.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-get">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is GET.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-gethandler">
@@ -1664,7 +1566,7 @@ $app->mount($collection);
 <a class="api-item" href="#mvcmicrocollection-head">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is HEAD.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-islazy">
@@ -1676,37 +1578,37 @@ $app->mount($collection);
 <a class="api-item" href="#mvcmicrocollection-map">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-mapvia">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">mapVia</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">mapVia</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler via methods.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-options">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-patch">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PATCH.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-post">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is POST.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-put">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PUT.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-sethandler">
@@ -1730,7 +1632,7 @@ $app->mount($collection);
 <a class="api-item" href="#mvcmicrocollection-addmap">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">addMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addMap</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Internal function to add a handler to the group.</span>
 </a>
 </div>
@@ -1769,8 +1671,8 @@ $app->mount($collection);
 ```php
 public function delete(
     string $routePattern,
-    callable $handler,
-    string $name = null
+    callable|string $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1781,8 +1683,8 @@ Maps a route to a handler that only matches if the HTTP method is DELETE.
 ```php
 public function get(
     string $routePattern,
-    callable $handler,
-    string $name = null
+    callable|string $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1817,8 +1719,8 @@ Returns the collection prefix if any
 ```php
 public function head(
     string $routePattern,
-    callable $handler,
-    string $name = null
+    callable|string $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1837,8 +1739,8 @@ Returns if the main handler must be lazy loaded
 ```php
 public function map(
     string $routePattern,
-    callable $handler,
-    string $name = null
+    callable|string $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1849,9 +1751,9 @@ Maps a route to a handler.
 ```php
 public function mapVia(
     string $routePattern,
-    callable $handler,
-    mixed $method,
-    string $name = null
+    callable|string $handler,
+    array|string $method,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1859,10 +1761,10 @@ Maps a route to a handler via methods.
 
 ```php
 $collection->mapVia(
-    "/test",
-    "indexAction",
-    ["POST", "GET"],
-    "test"
+    '/test',
+    'indexAction',
+    ['POST', 'GET'],
+    'test'
 );
 ```
 
@@ -1871,8 +1773,8 @@ $collection->mapVia(
 ```php
 public function options(
     string $routePattern,
-    callable $handler,
-    string $name = null
+    callable|string $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1884,8 +1786,8 @@ OPTIONS.
 ```php
 public function patch(
     string $routePattern,
-    callable $handler,
-    string $name = null
+    callable|string $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1896,8 +1798,8 @@ Maps a route to a handler that only matches if the HTTP method is PATCH.
 ```php
 public function post(
     string $routePattern,
-    callable $handler,
-    string $name = null
+    callable|string $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1908,8 +1810,8 @@ Maps a route to a handler that only matches if the HTTP method is POST.
 ```php
 public function put(
     string $routePattern,
-    callable $handler,
-    string $name = null
+    callable|string $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1948,10 +1850,10 @@ Sets a prefix for all routes added to the collection
 
 ```php
 protected function addMap(
-    mixed $method,
+    array|string $method,
     string $routePattern,
-    callable $handler,
-    string $name = null
+    callable|string $handler,
+    string|null $name = null
 ): void;
 ```
 
@@ -1961,9 +1863,7 @@ Internal function to add a handler to the group.
 ## Mvc\Micro\CollectionInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/CollectionInterface.zep){ .src-btn }
-
-Phalcon\Mvc\Micro\CollectionInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/CollectionInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Micro\Collection
 
@@ -1979,13 +1879,13 @@ Interface for Phalcon\Mvc\Micro\Collection
 <a class="api-item" href="#mvcmicrocollectioninterface-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-gethandler">
@@ -2009,7 +1909,7 @@ Interface for Phalcon\Mvc\Micro\Collection
 <a class="api-item" href="#mvcmicrocollectioninterface-head">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-islazy">
@@ -2021,31 +1921,31 @@ Interface for Phalcon\Mvc\Micro\Collection
 <a class="api-item" href="#mvcmicrocollectioninterface-map">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-options">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-patch">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-post">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-put">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-sethandler">
@@ -2078,7 +1978,7 @@ Interface for Phalcon\Mvc\Micro\Collection
 public function delete(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2090,7 +1990,7 @@ Maps a route to a handler that only matches if the HTTP method is DELETE
 public function get(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2126,7 +2026,7 @@ Returns the collection prefix if any
 public function head(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2146,7 +2046,7 @@ Returns if the main handler must be lazy loaded
 public function map(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2158,7 +2058,7 @@ Maps a route to a handler
 public function options(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2170,7 +2070,7 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 public function patch(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2182,7 +2082,7 @@ Maps a route to a handler that only matches if the HTTP method is PATCH
 public function post(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2194,7 +2094,7 @@ Maps a route to a handler that only matches if the HTTP method is POST
 public function put(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2231,7 +2131,7 @@ Sets a prefix for all routes added to the collection
 ## Mvc\Micro\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Mvc\Micro will use this class
 
@@ -2256,7 +2156,7 @@ Exceptions thrown in Phalcon\Mvc\Micro will use this class
 ## Mvc\Micro\Exceptions\ContainerRequired
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/ContainerRequired.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exceptions/ContainerRequired.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2292,7 +2192,7 @@ public function __construct();
 ## Mvc\Micro\Exceptions\ErrorHandlerNotCallable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/ErrorHandlerNotCallable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exceptions/ErrorHandlerNotCallable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2328,7 +2228,7 @@ public function __construct();
 ## Mvc\Micro\Exceptions\HandlerNotCallable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/HandlerNotCallable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exceptions/HandlerNotCallable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2364,7 +2264,7 @@ public function __construct( string $type );
 ## Mvc\Micro\Exceptions\InvalidRegisteredHandler
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/InvalidRegisteredHandler.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exceptions/InvalidRegisteredHandler.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2400,7 +2300,7 @@ public function __construct();
 ## Mvc\Micro\Exceptions\LazyHandlerNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/LazyHandlerNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exceptions/LazyHandlerNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2436,7 +2336,7 @@ public function __construct( string $definition );
 ## Mvc\Micro\Exceptions\MissingCollectionMainHandler
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/MissingCollectionMainHandler.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exceptions/MissingCollectionMainHandler.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2472,7 +2372,7 @@ public function __construct();
 ## Mvc\Micro\Exceptions\NoHandlersToMount
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/NoHandlersToMount.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exceptions/NoHandlersToMount.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2508,7 +2408,7 @@ public function __construct();
 ## Mvc\Micro\Exceptions\NoMatchedRouteHandler
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/NoMatchedRouteHandler.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exceptions/NoMatchedRouteHandler.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2544,7 +2444,7 @@ public function __construct();
 ## Mvc\Micro\Exceptions\NotFoundHandlerNotCallable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/NotFoundHandlerNotCallable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exceptions/NotFoundHandlerNotCallable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2580,7 +2480,7 @@ public function __construct();
 ## Mvc\Micro\Exceptions\ResponseHandlerNotCallable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/ResponseHandlerNotCallable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/Exceptions/ResponseHandlerNotCallable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2616,9 +2516,7 @@ public function __construct();
 ## Mvc\Micro\LazyLoader
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/LazyLoader.zep){ .src-btn }
-
-Phalcon\Mvc\Micro\LazyLoader
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/LazyLoader.php){ .src-btn }
 
 Lazy-Load of handlers for Mvc\Micro using auto-loading
 
@@ -2641,7 +2539,8 @@ __Uses__ `Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound` · `Phalcon\Mvc\Mode
 </a>
 <a class="api-item" href="#mvcmicrolazyloader-callmethod">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">callMethod</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span>,</span><span class="prm"><span class="st">BinderInterface</span> <span class="sv">$modelBinder</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">callMethod</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span>,</span><span class="prm"><span class="st">BinderInterface|null</span> <span class="sv">$modelBinder</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Calling __call method</span>
 </a>
 <a class="api-item" href="#mvcmicrolazyloader-getdefinition">
@@ -2688,9 +2587,9 @@ Phalcon\Mvc\Micro\LazyLoader constructor
 ```php
 public function callMethod(
     string $method,
-    mixed $arguments,
-    BinderInterface $modelBinder = null
-);
+    array $arguments,
+    BinderInterface|null $modelBinder = null
+): mixed;
 ```
 
 Calling __call method
@@ -2711,7 +2610,7 @@ public function getHandler(): object|null;
 ## Mvc\Micro\MiddlewareInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/MiddlewareInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Micro/MiddlewareInterface.php){ .src-btn }
 
 Allows to implement Phalcon\Mvc\Micro middleware in classes
 
@@ -2750,9 +2649,7 @@ Calls the middleware
 ## Mvc\Model
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model.zep){ .src-btn }
-
-Phalcon\Mvc\Model
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model.php){ .src-btn }
 
 Phalcon\Mvc\Model connects business objects and database tables to create a
 persistable domain model where logic and data are presented in one wrapping.
@@ -2769,22 +2666,22 @@ giving to developers high performance when interacting with databases while
 is also easy to use.
 
 ```php
-$robot = new Robots();
+$invoice = new Invoices();
 
-$robot->type = "mechanical";
-$robot->name = "Astro Boy";
-$robot->year = 1952;
+$invoice->inv_status_flag = "mechanical";
+$invoice->inv_title = "Test Invoice";
+$invoice->inv_total = 1952;
 
-if ($robot->save() === false) {
-    echo "Umh, We can store robots: ";
+if ($invoice->save() === false) {
+    echo "Umh, We can store invoices: ";
 
-    $messages = $robot->getMessages();
+    $messages = $invoice->getMessages();
 
     foreach ($messages as $message) {
         echo $message;
     }
 } else {
-    echo "Great, a new robot was saved successfully!";
+    echo "Great, a new invoice was saved successfully!";
 }
 ```
 
@@ -2807,13 +2704,13 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `Serializable`, `JsonSerializable`
+        - **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\JsonSerializable`
 
 </div>
 
-__Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Enum` · `Phalcon\Db\Geometry\WkbParser` · `Phalcon\Db\RawValue` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\BehaviorInterface` · `Phalcon\Mvc\Model\Criteria` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject` · `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap` · `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey` · `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService` · `Phalcon\Mvc\Model\Exceptions\MethodNotFound` · `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired` · `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible` · `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh` · `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted` · `Phalcon\Mvc\Model\Exceptions\RelationNotDefined` · `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray` · `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled` · `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument` · `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\ValidationFailed` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Settings` · `Serializable`
+__Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Enum` · `Phalcon\Db\Exceptions\InvalidWkb` · `Phalcon\Db\Geometry\WkbParser` · `Phalcon\Db\RawValue` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Logger\LoggerInterface` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model\BehaviorInterface` · `Phalcon\Mvc\Model\Criteria` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Eager\PathTree` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject` · `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap` · `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey` · `Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter` · `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService` · `Phalcon\Mvc\Model\Exceptions\MethodNotFound` · `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired` · `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible` · `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh` · `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted` · `Phalcon\Mvc\Model\Exceptions\RelationNotDefined` · `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray` · `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled` · `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset` · `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled` · `Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Mvc\Model\Row` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\ValidationFailed` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait` · `Phalcon\Traits\Support\Helper\Str\UncamelizeTrait` · `Psr\EventDispatcher\StoppableEventInterface` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -2831,7 +2728,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$modelsManager</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array|null</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface|null</span> <span class="sv">$modelsManager</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model constructor</span>
 </a>
 <a class="api-item" href="#mvcmodel-__get">
@@ -2877,8 +2774,8 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <a class="api-item" href="#mvcmodel-appendmessagesfrom">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">appendMessagesFrom</span>( <span class="st">mixed</span> <span class="sv">$model</span> )</code>
-<span class="desc">**</span>
+<code class="sig"><span class="sf">appendMessagesFrom</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
+<span class="desc">Append messages to this model from another Model.</span>
 </a>
 <a class="api-item" href="#mvcmodel-assign">
 <code class="vis vis-public">public</code>
@@ -2888,7 +2785,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-average">
 <code class="vis vis-public">public</code>
-<code class="ret">double|ResultsetInterface</code>
+<code class="ret">float|ResultsetInterface</code>
 <code class="sig"><span class="sf">average</span>( <span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = []</span> )</code>
 <span class="desc">Returns the average value on a column for a result-set of rows matching</span>
 </a>
@@ -2900,8 +2797,8 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-cloneresultmap">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface</code>
-<code class="sig"><span class="sf">cloneResultMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$base</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$dirtyState</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$keepSnapshots</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">ModelInterface|ResultInterface</code>
+<code class="sig"><span class="sf">cloneResultMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$base</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$dirtyState</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">bool|null</span> <span class="sv">$keepSnapshots</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Assigns values to a model from an array, returning a new model.</span>
 </a>
 <a class="api-item" href="#mvcmodel-cloneresultmaphydrate">
@@ -2947,19 +2844,18 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-findfirst">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
 <code class="sig"><span class="sf">findFirst</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Query the first record that matches the specified conditions</span>
 </a>
 <a class="api-item" href="#mvcmodel-fireevent">
 <code class="vis vis-public">public</code>
-<code class="ret">bool</code>
+<code class="ret">bool|null</code>
 <code class="sig"><span class="sf">fireEvent</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
 <span class="desc">Fires an event, implicitly calls behaviors and listeners in the events</span>
 </a>
 <a class="api-item" href="#mvcmodel-fireeventcancel">
 <code class="vis vis-public">public</code>
-<code class="ret">bool</code>
+<code class="ret">bool|null</code>
 <code class="sig"><span class="sf">fireEventCancel</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
 <span class="desc">Fires an event, implicitly calls behaviors and listeners in the events</span>
 </a>
@@ -2983,8 +2879,8 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-getmessages">
 <code class="vis vis-public">public</code>
-<code class="ret">MessageInterface[]</code>
-<code class="sig"><span class="sf">getMessages</span>( <span class="st">mixed</span> <span class="sv">$filter</span><span class="sm"> = null</span> )</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getMessages</span>( <span class="st">array|string|null</span> <span class="sv">$filter</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns array of validation messages</span>
 </a>
 <a class="api-item" href="#mvcmodel-getmodelsmanager">
@@ -3025,6 +2921,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-getrelated">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getRelated</span>(<span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns related records based on defined relations</span>
 </a>
@@ -3114,12 +3011,12 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <a class="api-item" href="#mvcmodel-query">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">query</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">query</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Create a criteria for a specific model</span>
 </a>
 <a class="api-item" href="#mvcmodel-readattribute">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">readAttribute</span>( <span class="st">string</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Reads an attribute value by its name</span>
 </a>
@@ -3149,7 +3046,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-setdirtystate">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface|bool</code>
+<code class="ret">bool|ModelInterface</code>
 <code class="sig"><span class="sf">setDirtyState</span>( <span class="st">int</span> <span class="sv">$dirtyState</span> )</code>
 <span class="desc">Sets the dirty state of the object using one of the DIRTY_STATE_* constants</span>
 </a>
@@ -3168,6 +3065,12 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setReadConnectionService</span>( <span class="st">string</span> <span class="sv">$connectionService</span> )</code>
 <span class="desc">Sets the DependencyInjection connection service name used to read data</span>
+</a>
+<a class="api-item" href="#mvcmodel-setrelated">
+<code class="vis vis-public">public</code>
+<code class="ret">ModelInterface</code>
+<code class="sig"><span class="sf">setRelated</span>(<span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$records</span></span>)</code>
+<span class="desc">Stores related records in the relation cache, so that a subsequent</span>
 </a>
 <a class="api-item" href="#mvcmodel-setsnapshotdata">
 <code class="vis vis-public">public</code>
@@ -3207,19 +3110,18 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-sum">
 <code class="vis vis-public">public</code>
-<code class="ret">double|ResultsetInterface</code>
+<code class="ret">float|ResultsetInterface</code>
 <code class="sig"><span class="sf">sum</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Calculates the sum on a column for a result-set of rows that match the</span>
 </a>
 <a class="api-item" href="#mvcmodel-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">toArray</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columns</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$useGetter</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">toArray</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columns</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useGetter</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Returns the instance as an array representation</span>
 </a>
 <a class="api-item" href="#mvcmodel-unserialize">
 <code class="vis vis-public">public</code>
-<code class="ret">void</code>
 <code class="sig"><span class="sf">unserialize</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
 <span class="desc">Unserializes the object from a serialized string</span>
 </a>
@@ -3255,6 +3157,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-canceloperation">
 <code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
 <code class="sig"><span class="sf">cancelOperation</span>()</code>
 <span class="desc">Cancel the current operation</span>
 </a>
@@ -3285,14 +3188,20 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <a class="api-item" href="#mvcmodel-dolowinsert">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">doLowInsert</span>(<span class="prm"><span class="st">MetaDataInterface</span> <span class="sv">$metaData</span>,</span><span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$identityField</span></span>)</code>
+<code class="sig"><span class="sf">doLowInsert</span>(<span class="prm"><span class="st">MetaDataInterface</span> <span class="sv">$metaData</span>,</span><span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">bool|string</span> <span class="sv">$identityField</span></span>)</code>
 <span class="desc">Sends a pre-build INSERT SQL statement to the relational database system</span>
 </a>
 <a class="api-item" href="#mvcmodel-dolowupdate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">doLowUpdate</span>(<span class="prm"><span class="st">MetaDataInterface</span> <span class="sv">$metaData</span>,</span><span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$table</span></span>)</code>
+<code class="sig"><span class="sf">doLowUpdate</span>(<span class="prm"><span class="st">MetaDataInterface</span> <span class="sv">$metaData</span>,</span><span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$table</span></span>)</code>
 <span class="desc">Sends a pre-build UPDATE SQL statement to the relational database system</span>
+</a>
+<a class="api-item" href="#mvcmodel-geteventlogger">
+<code class="vis vis-protected">protected</code>
+<code class="ret">LoggerInterface|null</code>
+<code class="sig"><span class="sf">getEventLogger</span>( <span class="st">object|null</span> <span class="sv">$container</span> )</code>
+<span class="desc">Resolves an optional logger from the container. Returns null when</span>
 </a>
 <a class="api-item" href="#mvcmodel-getrelatedrecords">
 <code class="vis vis-protected">protected</code>
@@ -3302,7 +3211,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <a class="api-item" href="#mvcmodel-groupresult">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">groupResult</span>(<span class="prm"><span class="st">string</span> <span class="sv">$functionName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">groupResult</span>(<span class="prm"><span class="st">string</span> <span class="sv">$functionName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generate a PHQL SELECT statement for an aggregate</span>
 </a>
 <a class="api-item" href="#mvcmodel-has">
@@ -3361,7 +3270,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <a class="api-item" href="#mvcmodel-postsaverelatedrecords">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">postSaveRelatedRecords</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$related</span>,</span><span class="prm"><span class="st">CollectionInterface</span> <span class="sv">$visited</span></span>)</code>
+<code class="sig"><span class="sf">postSaveRelatedRecords</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$related</span>,</span><span class="prm"><span class="st">CollectionInterface</span> <span class="sv">$visited</span></span>)</code>
 <span class="desc">Save the related records assigned in the has-one/has-many relations</span>
 </a>
 <a class="api-item" href="#mvcmodel-presave">
@@ -3373,7 +3282,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <a class="api-item" href="#mvcmodel-presaverelatedrecords">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">preSaveRelatedRecords</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$related</span>,</span><span class="prm"><span class="st">CollectionInterface</span> <span class="sv">$visited</span></span>)</code>
+<code class="sig"><span class="sf">preSaveRelatedRecords</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$related</span>,</span><span class="prm"><span class="st">CollectionInterface</span> <span class="sv">$visited</span></span>)</code>
 <span class="desc">Saves related records that must be stored prior to save the master record</span>
 </a>
 <a class="api-item" href="#mvcmodel-setschema">
@@ -3546,7 +3455,7 @@ alias (or &quot;*&quot; wildcard) =&gt; bool. Cleared after each save().</span>
 
 ### Methods
 
-<div class="api-group">Public · 72</div>
+<div class="api-group">Public · 73</div>
 
 #### `__call()` { #mvcmodel-__call }
 
@@ -3574,9 +3483,9 @@ Handles method calls when a static method is not implemented
 
 ```php
 final public function __construct(
-    mixed $data = null,
-    DiInterface $container = null,
-    ManagerInterface $modelsManager = null
+    array|null $data = null,
+    DiInterface|null $container = null,
+    ManagerInterface|null $modelsManager = null
 );
 ```
 
@@ -3638,7 +3547,7 @@ Setups a behavior in a model
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Behavior\Timestampable;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public function initialize()
     {
@@ -3679,13 +3588,13 @@ Appends a customized message on the validation process
 use Phalcon\Mvc\Model;
 use Phalcon\Messages\Message as Message;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public function beforeSave()
     {
         if ($this->name === "Peter") {
             $message = new Message(
-                "Sorry, but a robot cannot be named Peter"
+                "Sorry, but an invoice cannot be named Peter"
             );
 
             $this->appendMessage($message);
@@ -3697,10 +3606,9 @@ class Robots extends Model
 #### `appendMessagesFrom()` { #mvcmodel-appendmessagesfrom }
 
 ```php
-public inline function appendMessagesFrom( mixed $model ): void;
+public function appendMessagesFrom( ModelInterface $model ): void;
 ```
 
-**
 Append messages to this model from another Model.
 
 #### `assign()` { #mvcmodel-assign }
@@ -3716,16 +3624,16 @@ public function assign(
 Assigns values to a model from an array
 
 ```php
-$robot->assign(
+$invoice->assign(
     [
         "type" => "mechanical",
-        "name" => "Astro Boy",
-        "year" => 1952,
+        "name" => "Test Invoice",
+        "inv_total" => 100,
     ]
 );
 
 // Assign by db row, column map needed
-$robot->assign(
+$invoice->assign(
     $dbRow,
     [
         "db_type" => "type",
@@ -3735,23 +3643,24 @@ $robot->assign(
 );
 
 // Allow assign only name and year
-$robot->assign(
+$invoice->assign(
     $_POST,
     [
-        "name",
-        "year",
+        "inv_title",
+        "inv_total",
     ]
 );
 
-// By default assign method will use setters if exist, you can disable it by using ini_set to directly use properties
+// By default assign method will use setters if exist, you can disable
+// it by using ini_set to directly use properties
 
-ini_set("phalcon.orm.disable_assign_setters", true);
+ini_set("orm.disable_assign_setters", true);
 
-$robot->assign(
+$invoice->assign(
     $_POST,
     [
-        "name",
-        "year",
+        "inv_title",
+        "inv_total",
     ]
 );
 ```
@@ -3759,7 +3668,7 @@ $robot->assign(
 #### `average()` { #mvcmodel-average }
 
 ```php
-public static function average( array $parameters = [] ): double|ResultsetInterface;
+public static function average( array $parameters = [] ): float|ResultsetInterface;
 ```
 
 Returns the average value on a column for a result-set of rows matching
@@ -3770,24 +3679,24 @@ instance for when the GROUP condition is used. The results will
 contain the average of each group.
 
 ```php
-// What's the average price of robots?
-$average = Robots::average(
+// What's the average price of invoices?
+$average = Invoices::average(
     [
-        "column" => "price",
+        "column" => "inv_total",
     ]
 );
 
 echo "The average price is ", $average, "\n";
 
-// What's the average price of mechanical robots?
-$average = Robots::average(
+// What's the average price of paid invoices?
+$average = Invoices::average(
     [
-        "type = 'mechanical'",
-        "column" => "price",
+        "inv_status_flag = 1",
+        "column" => "inv_total",
     ]
 );
 
-echo "The average price of mechanical robots is ", $average, "\n";
+echo "The average price of paid invoices is ", $average, "\n";
 ```
 
 #### `cloneResult()` { #mvcmodel-cloneresult }
@@ -3803,12 +3712,12 @@ public static function cloneResult(
 Assigns values to a model from an array returning a new model
 
 ```php
-$robot = Phalcon\Mvc\Model::cloneResult(
-    new Robots(),
+$invoice = Phalcon\Mvc\Model::cloneResult(
+    new Invoices(),
     [
         "type" => "mechanical",
-        "name" => "Astro Boy",
-        "year" => 1952,
+        "name" => "Test Invoice",
+        "inv_total" => 100,
     ]
 );
 ```
@@ -3821,19 +3730,19 @@ public static function cloneResultMap(
     array $data,
     mixed $columnMap,
     int $dirtyState = 0,
-    bool $keepSnapshots = null
-): ModelInterface;
+    bool|null $keepSnapshots = null
+): ModelInterface|ResultInterface;
 ```
 
 Assigns values to a model from an array, returning a new model.
 
 ```php
-$robot = \Phalcon\Mvc\Model::cloneResultMap(
-    new Robots(),
+$invoice = \Phalcon\Mvc\Model::cloneResultMap(
+    new Invoices(),
     [
         "type" => "mechanical",
-        "name" => "Astro Boy",
-        "year" => 1952,
+        "name" => "Test Invoice",
+        "inv_total" => 100,
     ]
 );
 ```
@@ -3863,15 +3772,15 @@ instance for when the GROUP condition is used. The results will
 contain the count of each group.
 
 ```php
-// How many robots are there?
-$number = Robots::count();
+// How many invoices are there?
+$number = Invoices::count();
 
 echo "There are ", $number, "\n";
 
-// How many mechanical robots are there?
-$number = Robots::count("type = 'mechanical'");
+// How many paid invoices are there?
+$number = Invoices::count("inv_status_flag = 1");
 
-echo "There are ", $number, " mechanical robots\n";
+echo "There are ", $number, " paid invoices\n";
 ```
 
 #### `create()` { #mvcmodel-create }
@@ -3885,27 +3794,27 @@ persistence it will throw an exception
 Returning true on success or false otherwise.
 
 ```php
-// Creating a new robot
-$robot = new Robots();
+// Creating a new invoice
+$invoice = new Invoices();
 
-$robot->type = "mechanical";
-$robot->name = "Astro Boy";
-$robot->year = 1952;
+$invoice->inv_status_flag = "mechanical";
+$invoice->inv_title = "Test Invoice";
+$invoice->inv_total = 1952;
 
-$robot->create();
+$invoice->create();
 
 // Passing an array to create
-$robot = new Robots();
+$invoice = new Invoices();
 
-$robot->assign(
+$invoice->assign(
     [
         "type" => "mechanical",
-        "name" => "Astro Boy",
-        "year" => 1952,
+        "name" => "Test Invoice",
+        "inv_total" => 100,
     ]
 );
 
-$robot->create();
+$invoice->create();
 ```
 
 #### `delete()` { #mvcmodel-delete }
@@ -3917,14 +3826,14 @@ public function delete(): bool;
 Deletes a model instance. Returning true on success or false otherwise.
 
 ```php
-$robot = Robots::findFirst("id=100");
+$invoice = Invoices::findFirst("id=100");
 
-$robot->delete();
+$invoice->delete();
 
-$robots = Robots::find("type = 'mechanical'");
+$invoices = Invoices::find("inv_status_flag = 1");
 
-foreach ($robots as $robot) {
-    $robot->delete();
+foreach ($invoices as $invoice) {
+    $invoice->delete();
 }
 ```
 
@@ -3947,7 +3856,7 @@ Returns a simple representation of the object that can be used with
 
 ```php
 var_dump(
-    $robot->dump()
+    $invoice->dump()
 );
 ```
 
@@ -3960,32 +3869,32 @@ public static function find( mixed $parameters = null ): ResultsetInterface;
 Query for a set of records that match the specified conditions
 
 ```php
-// How many robots are there?
-$robots = Robots::find();
+// How many invoices are there?
+$invoices = Invoices::find();
 
-echo "There are ", count($robots), "\n";
+echo "There are ", count($invoices), "\n";
 
-// How many mechanical robots are there?
-$robots = Robots::find(
-    "type = 'mechanical'"
+// How many paid invoices are there?
+$invoices = Invoices::find(
+    "inv_status_flag = 1"
 );
 
-echo "There are ", count($robots), "\n";
+echo "There are ", count($invoices), "\n";
 
-// Get and print virtual robots ordered by name
-$robots = Robots::find(
+// Get and print virtual invoices ordered by name
+$invoices = Invoices::find(
     [
         "type = 'virtual'",
         "order" => "name",
     ]
 );
 
-foreach ($robots as $robot) {
-    echo $robot->name, "\n";
+foreach ($invoices as $invoice) {
+    echo $invoice->inv_title, "\n";
 }
 
-// Get first 100 virtual robots ordered by name
-$robots = Robots::find(
+// Get first 100 virtual invoices ordered by name
+$invoices = Invoices::find(
     [
         "type = 'virtual'",
         "order" => "name",
@@ -3993,8 +3902,8 @@ $robots = Robots::find(
     ]
 );
 
-foreach ($robots as $robot) {
-    echo $robot->name, "\n";
+foreach ($invoices as $invoice) {
+    echo $invoice->inv_title, "\n";
 }
 
 // encapsulate find it into an running transaction esp. useful for application unit-tests
@@ -4003,10 +3912,10 @@ foreach ($robots as $robot) {
 $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction->begin();
 
-$newRobot = new Robot();
-$newRobot->setTransaction($myTransaction);
+$newInvoices = new Invoices();
+$newInvoices->setTransaction($myTransaction);
 
-$newRobot->assign(
+$newInvoices->assign(
     [
         'name' => 'test',
         'type' => 'mechanical',
@@ -4014,23 +3923,23 @@ $newRobot->assign(
     ]
 );
 
-$newRobot->save();
+$newInvoices->save();
 
-$resultInsideTransaction = Robot::find(
+$resultInsideTransaction = Invoices::find(
     [
         'name' => 'test',
         Model::TRANSACTION_INDEX => $myTransaction,
     ]
 );
 
-$resultOutsideTransaction = Robot::find(['name' => 'test']);
+$resultOutsideTransaction = Invoices::find(['name' => 'test']);
 
-foreach ($setInsideTransaction as $robot) {
-    echo $robot->name, "\n";
+foreach ($setInsideTransaction as $invoice) {
+    echo $invoice->inv_title, "\n";
 }
 
-foreach ($setOutsideTransaction as $robot) {
-    echo $robot->name, "\n";
+foreach ($setOutsideTransaction as $invoice) {
+    echo $invoice->inv_title, "\n";
 }
 
 // reverts all not commited changes
@@ -4042,72 +3951,72 @@ $myTransaction1->begin();
 $myTransaction2 = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction2->begin();
 
- // add a new robots
-$firstNewRobot = new Robot();
-$firstNewRobot->setTransaction($myTransaction1);
-$firstNewRobot->assign(
+ // add a new invoices
+$firstNewInvoices = new Invoices();
+$firstNewInvoices->setTransaction($myTransaction1);
+$firstNewInvoices->assign(
     [
-        'name' => 'first-transaction-robot',
+        'name' => 'first-transaction-invoice',
         'type' => 'mechanical',
         'year' => 1944,
     ]
 );
-$firstNewRobot->save();
+$firstNewInvoices->save();
 
-$secondNewRobot = new Robot();
-$secondNewRobot->setTransaction($myTransaction2);
-$secondNewRobot->assign(
+$secondNewInvoices = new Invoices();
+$secondNewInvoices->setTransaction($myTransaction2);
+$secondNewInvoices->assign(
     [
-        'name' => 'second-transaction-robot',
+        'name' => 'second-transaction-invoice',
         'type' => 'fictional',
         'year' => 1984,
     ]
 );
-$secondNewRobot->save();
+$secondNewInvoices->save();
 
-// this transaction will find the robot.
-$resultInFirstTransaction = Robot::find(
+// this transaction will find the invoice.
+$resultInFirstTransaction = Invoices::find(
     [
-        'name'                   => 'first-transaction-robot',
+        'name'                   => 'first-transaction-invoice',
         Model::TRANSACTION_INDEX => $myTransaction1,
     ]
 );
 
-// this transaction won't find the robot.
-$resultInSecondTransaction = Robot::find(
+// this transaction won't find the invoice.
+$resultInSecondTransaction = Invoices::find(
     [
-        'name'                   => 'first-transaction-robot',
+        'name'                   => 'first-transaction-invoice',
         Model::TRANSACTION_INDEX => $myTransaction2,
     ]
 );
 
-// this transaction won't find the robot.
-$resultOutsideAnyExplicitTransaction = Robot::find(
+// this transaction won't find the invoice.
+$resultOutsideAnyExplicitTransaction = Invoices::find(
     [
-        'name' => 'first-transaction-robot',
+        'name' => 'first-transaction-invoice',
     ]
 );
 
-// this transaction won't find the robot.
-$resultInFirstTransaction = Robot::find(
+// this transaction won't find the invoice.
+$resultInFirstTransaction = Invoices::find(
     [
-        'name'                   => 'second-transaction-robot',
+        'name'                   => 'second-transaction-invoice',
         Model::TRANSACTION_INDEX => $myTransaction2,
     ]
 );
 
-// this transaction will find the robot.
-$resultInSecondTransaction = Robot::find(
+// this transaction will find the invoice.
+$resultInSecondTransaction = Invoices::find(
     [
-        'name'                   => 'second-transaction-robot',
+        'name'                   => 'second-transaction-invoice',
         Model::TRANSACTION_INDEX => $myTransaction1,
     ]
 );
 
-// this transaction won't find the robot.
-$resultOutsideAnyExplicitTransaction = Robot::find(
+// this transaction won't find the invoice.
+$resultOutsideAnyExplicitTransaction = Invoices::find(
     [
-        'name' => 'second-transaction-robot',
+        'name' => 'second-transaction-invoice',
     ]
 );
 
@@ -4115,81 +4024,115 @@ $transaction1->rollback();
 $transaction2->rollback();
 ```
 
+@option string "conditions"
+@option string "columns"
+@option array  "bind"
+@option array  "bindTypes"
+@option string "order"
+@option int    "limit"
+@option int    "offset"
+@option string "group"
+@option bool   "for_updated"
+@option bool   "shared_lock"
+@option array  "cache" {
+@option string "lifetime"
+@option string "key"
+     },
+@option ?bool  "hydration"
+}
+
 #### `findFirst()` { #mvcmodel-findfirst }
 
 ```php
-public static function findFirst( mixed $parameters = null ): mixed|null;
+public static function findFirst( mixed $parameters = null );
 ```
 
 Query the first record that matches the specified conditions
 
 ```php
-// What's the first robot in robots table?
-$robot = Robots::findFirst();
+// What's the first invoice in invoices table?
+$invoice = Invoices::findFirst();
 
-echo "The robot name is ", $robot->name;
+echo "The invoice name is ", $invoice->inv_title;
 
-// What's the first mechanical robot in robots table?
-$robot = Robots::findFirst(
-    "type = 'mechanical'"
+// What's the first paid invoice in invoices table?
+$invoice = Invoices::findFirst(
+    "inv_status_flag = 1"
 );
 
-echo "The first mechanical robot name is ", $robot->name;
+echo "The first paid invoice name is ", $invoice->inv_title;
 
-// Get first virtual robot ordered by name
-$robot = Robots::findFirst(
+// Get first virtual invoice ordered by name
+$invoice = Invoices::findFirst(
     [
         "type = 'virtual'",
         "order" => "name",
     ]
 );
 
-echo "The first virtual robot name is ", $robot->name;
+echo "The first virtual invoice name is ", $invoice->inv_title;
 
-// behaviour with transaction
+// behavior with transaction
 $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction->begin();
 
-$newRobot = new Robot();
-$newRobot->setTransaction($myTransaction);
-$newRobot->assign(
+$newInvoices = new Invoices();
+$newInvoices->setTransaction($myTransaction);
+$newInvoices->assign(
     [
         'name' => 'test',
         'type' => 'mechanical',
         'year' => 1944,
     ]
 );
-$newRobot->save();
+$newInvoices->save();
 
-$findsARobot = Robot::findFirst(
+$findsAInvoices = Invoices::findFirst(
     [
         'name'                   => 'test',
         Model::TRANSACTION_INDEX => $myTransaction,
     ]
 );
 
-$doesNotFindARobot = Robot::findFirst(
+$doesNotFindAInvoices = Invoices::findFirst(
     [
         'name' => 'test',
     ]
 );
 
-var_dump($findARobot);
-var_dump($doesNotFindARobot);
+var_dump($findAInvoices);
+var_dump($doesNotFindAInvoices);
 
 $transaction->commit();
 
-$doesFindTheRobotNow = Robot::findFirst(
+$doesFindTheInvoicesNow = Invoices::findFirst(
     [
         'name' => 'test',
     ]
 );
 ```
 
+@option string "conditions"
+@option string "columns"
+@option array  "bind"
+@option array  "bindTypes"
+@option string "order"
+@option int    "limit"
+@option int    "offset"
+@option string "group"
+@option bool   "for_updated"
+@option bool   "shared_lock"
+@option array  "cache" {
+@option string "lifetime"
+@option string "key"
+     },
+@option ?bool  "hydration"
+}
+
 #### `fireEvent()` { #mvcmodel-fireevent }
 
 ```php
-public function fireEvent( string $eventName ): bool;
+public function fireEvent( string $eventName ): bool|null;
 ```
 
 Fires an event, implicitly calls behaviors and listeners in the events
@@ -4198,7 +4141,7 @@ manager are notified
 #### `fireEventCancel()` { #mvcmodel-fireeventcancel }
 
 ```php
-public function fireEventCancel( string $eventName ): bool;
+public function fireEventCancel( string $eventName ): bool|null;
 ```
 
 Fires an event, implicitly calls behaviors and listeners in the events
@@ -4214,13 +4157,13 @@ public function getChangedFields(): array;
 Returns a list of changed values.
 
 ```php
-$robots = Robots::findFirst();
-print_r($robots->getChangedFields()); // []
+$invoices = Invoices::findFirst();
+print_r($invoices->getChangedFields()); // []
 
-$robots->deleted = 'Y';
+$invoices->deleted = 'Y';
 
-$robots->getChangedFields();
-print_r($robots->getChangedFields()); // ["deleted"]
+$invoices->getChangedFields();
+print_r($invoices->getChangedFields()); // ["deleted"]
 ```
 
 #### `getDirtyState()` { #mvcmodel-getdirtystate }
@@ -4243,28 +4186,28 @@ Returns the custom events manager or null if there is no custom events manager
 #### `getMessages()` { #mvcmodel-getmessages }
 
 ```php
-public function getMessages( mixed $filter = null ): MessageInterface[];
+public function getMessages( array|string|null $filter = null ): array;
 ```
 
 Returns array of validation messages
 
 ```php
-$robot = new Robots();
+$invoice = new Invoices();
 
-$robot->type = "mechanical";
-$robot->name = "Astro Boy";
-$robot->year = 1952;
+$invoice->inv_status_flag = "mechanical";
+$invoice->inv_title = "Test Invoice";
+$invoice->inv_total = 1952;
 
-if ($robot->save() === false) {
-    echo "Umh, We can't store robots right now ";
+if ($invoice->save() === false) {
+    echo "Umh, We can't store invoices right now ";
 
-    $messages = $robot->getMessages();
+    $messages = $invoice->getMessages();
 
     foreach ($messages as $message) {
         echo $message;
     }
 } else {
-    echo "Great, a new robot was saved successfully!";
+    echo "Great, a new invoice was saved successfully!";
 }
 ```
 
@@ -4324,7 +4267,7 @@ related the model
 public function getRelated(
     string $alias,
     mixed $arguments = null
-);
+): mixed;
 ```
 
 Returns related records based on defined relations
@@ -4368,16 +4311,16 @@ public function getUpdatedFields(): array;
 Returns a list of updated values.
 
 ```php
-$robots = Robots::findFirst();
-print_r($robots->getChangedFields()); // []
+$invoices = Invoices::findFirst();
+print_r($invoices->getChangedFields()); // []
 
-$robots->deleted = 'Y';
+$invoices->deleted = 'Y';
 
-$robots->getChangedFields();
-print_r($robots->getChangedFields()); // ["deleted"]
-$robots->save();
-print_r($robots->getChangedFields()); // []
-print_r($robots->getUpdatedFields()); // ["deleted"]
+$invoices->getChangedFields();
+print_r($invoices->getChangedFields()); // ["deleted"]
+$invoices->save();
+print_r($invoices->getChangedFields()); // []
+print_r($invoices->getUpdatedFields()); // ["deleted"]
 ```
 
 #### `getWriteConnection()` { #mvcmodel-getwriteconnection }
@@ -4410,19 +4353,19 @@ Check if a specific attribute has changed
 This only works if the model is keeping data snapshots
 
 ```php
-$robot = new Robots();
+$invoice = new Invoices();
 
-$robot->type = "mechanical";
-$robot->name = "Astro Boy";
-$robot->year = 1952;
+$invoice->inv_status_flag = "mechanical";
+$invoice->inv_title = "Test Invoice";
+$invoice->inv_total = 1952;
 
-$robot->create();
+$invoice->create();
 
-$robot->type = "hydraulic";
+$invoice->inv_status_flag = "hydraulic";
 
-$hasChanged = $robot->hasChanged("type"); // returns true
-$hasChanged = $robot->hasChanged(["type", "name"]); // returns true
-$hasChanged = $robot->hasChanged(["type", "name"], true); // returns false
+$hasChanged = $invoice->hasChanged("type"); // returns true
+$hasChanged = $invoice->hasChanged(["type", "name"]); // returns true
+$hasChanged = $invoice->hasChanged(["type", "name"], true); // returns false
 ```
 
 #### `hasSnapshotData()` { #mvcmodel-hassnapshotdata }
@@ -4457,17 +4400,17 @@ Only returns true if the records were previously fetched
 through the model without any additional parameters.
 
 ```php
-$robot = Robots::findFirst();
-var_dump($robot->isRelationshipLoaded('robotsParts')); // false
+$invoice = Invoices::findFirst();
+var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
 
-$robotsParts = $robot->getRobotsParts(['id > 0']);
-var_dump($robot->isRelationshipLoaded('robotsParts')); // false
+$invoicesParts = $invoice->getOrdersProducts(['id > 0']);
+var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
 
-$robotsParts = $robot->getRobotsParts(); // or $robot->robotsParts
-var_dump($robot->isRelationshipLoaded('robotsParts')); // true
+$invoicesParts = $invoice->getOrdersProducts(); // or $invoice->ordersProducts
+var_dump($invoice->isRelationshipLoaded('ordersProducts')); // true
 
-$robot->robotsParts = [new RobotsParts()];
-var_dump($robot->isRelationshipLoaded('robotsParts')); // false
+$invoice->ordersProducts = [new OrdersProducts()];
+var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
 ```
 
 #### `jsonSerialize()` { #mvcmodel-jsonserialize }
@@ -4479,7 +4422,7 @@ public function jsonSerialize(): array;
 Serializes the object for json_encode
 
 ```php
-echo json_encode($robot);
+echo json_encode($invoice);
 ```
 
 #### `maximum()` { #mvcmodel-maximum }
@@ -4492,24 +4435,24 @@ Returns the maximum value of a column for a result-set of rows that match
 the specified conditions
 
 ```php
-// What is the maximum robot id?
-$id = Robots::maximum(
+// What is the maximum invoice id?
+$id = Invoices::maximum(
     [
         "column" => "id",
     ]
 );
 
-echo "The maximum robot id is: ", $id, "\n";
+echo "The maximum invoice id is: ", $id, "\n";
 
-// What is the maximum id of mechanical robots?
-$sum = Robots::maximum(
+// What is the maximum id of paid invoices?
+$sum = Invoices::maximum(
     [
-        "type = 'mechanical'",
+        "inv_status_flag = 1",
         "column" => "id",
     ]
 );
 
-echo "The maximum robot id of mechanical robots is ", $id, "\n";
+echo "The maximum invoice id of paid invoices is ", $id, "\n";
 ```
 
 #### `minimum()` { #mvcmodel-minimum }
@@ -4522,30 +4465,30 @@ Returns the minimum value of a column for a result-set of rows that match
 the specified conditions
 
 ```php
-// What is the minimum robot id?
-$id = Robots::minimum(
+// What is the minimum invoice id?
+$id = Invoices::minimum(
     [
         "column" => "id",
     ]
 );
 
-echo "The minimum robot id is: ", $id;
+echo "The minimum invoice id is: ", $id;
 
-// What is the minimum id of mechanical robots?
-$sum = Robots::minimum(
+// What is the minimum id of paid invoices?
+$sum = Invoices::minimum(
     [
-        "type = 'mechanical'",
+        "inv_status_flag = 1",
         "column" => "id",
     ]
 );
 
-echo "The minimum robot id of mechanical robots is ", $id;
+echo "The minimum invoice id of paid invoices is ", $id;
 ```
 
 #### `query()` { #mvcmodel-query }
 
 ```php
-public static function query( DiInterface $container = null ): CriteriaInterface;
+public static function query( DiInterface|null $container = null ): CriteriaInterface;
 ```
 
 Create a criteria for a specific model
@@ -4553,13 +4496,13 @@ Create a criteria for a specific model
 #### `readAttribute()` { #mvcmodel-readattribute }
 
 ```php
-public function readAttribute( string $attribute ): mixed|null;
+public function readAttribute( string $attribute ): mixed;
 ```
 
 Reads an attribute value by its name
 
 ```php
-echo $robot->readAttribute("name");
+echo $invoice->readAttribute("name");
 ```
 
 #### `refresh()` { #mvcmodel-refresh }
@@ -4580,21 +4523,21 @@ Inserts or updates a model instance. Returning true on success or false
 otherwise.
 
 ```php
-// Creating a new robot
-$robot = new Robots();
+// Creating a new invoice
+$invoice = new Invoices();
 
-$robot->type = "mechanical";
-$robot->name = "Astro Boy";
-$robot->year = 1952;
+$invoice->inv_status_flag = "mechanical";
+$invoice->inv_title = "Test Invoice";
+$invoice->inv_total = 1952;
 
-$robot->save();
+$invoice->save();
 
-// Updating a robot name
-$robot = Robots::findFirst("id = 100");
+// Updating an invoice name
+$invoice = Invoices::findFirst("id = 100");
 
-$robot->name = "Biomass";
+$invoice->inv_title = "Biomass";
 
-$robot->save();
+$invoice->save();
 ```
 
 #### `serialize()` { #mvcmodel-serialize }
@@ -4617,7 +4560,7 @@ Sets the DependencyInjection connection service name
 #### `setDirtyState()` { #mvcmodel-setdirtystate }
 
 ```php
-public function setDirtyState( int $dirtyState ): ModelInterface|bool;
+public function setDirtyState( int $dirtyState ): bool|ModelInterface;
 ```
 
 Sets the dirty state of the object using one of the DIRTY_STATE_* constants
@@ -4650,6 +4593,22 @@ final public function setReadConnectionService( string $connectionService ): voi
 ```
 
 Sets the DependencyInjection connection service name used to read data
+
+#### `setRelated()` { #mvcmodel-setrelated }
+
+```php
+public function setRelated(
+    string $alias,
+    mixed $records
+): ModelInterface;
+```
+
+Stores related records in the relation cache, so that a subsequent
+getRelated() or property access returns them without querying.
+
+This is the write side of the cache getRelated() already reads. It does
+not mark the record dirty: the value lands in `related`, never in
+`dirtyRelated`, so save() is unaffected.
 
 #### `setSnapshotData()` { #mvcmodel-setsnapshotdata }
 
@@ -4711,25 +4670,25 @@ try {
 
     $transaction = $txManager->get();
 
-    $robot = new Robots();
+    $invoice = new Invoices();
 
-    $robot->setTransaction($transaction);
+    $invoice->setTransaction($transaction);
 
-    $robot->name       = "WALL·E";
-    $robot->created_at = date("Y-m-d");
+    $invoice->inv_title       = "WALL·E";
+    $invoice->created_at = date("Y-m-d");
 
-    if ($robot->save() === false) {
-        $transaction->rollback("Can't save robot");
+    if ($invoice->save() === false) {
+        $transaction->rollback("Can't save invoice");
     }
 
-    $robotPart = new RobotParts();
+    $invoicePart = new OrdersProducts();
 
-    $robotPart->setTransaction($transaction);
+    $invoicePart->setTransaction($transaction);
 
-    $robotPart->type = "head";
+    $invoicePart->type = "head";
 
-    if ($robotPart->save() === false) {
-        $transaction->rollback("Robot part cannot be saved");
+    if ($invoicePart->save() === false) {
+        $transaction->rollback("Invoices part cannot be saved");
     }
 
     $transaction->commit();
@@ -4771,31 +4730,31 @@ Skips the current operation forcing a success state
 #### `sum()` { #mvcmodel-sum }
 
 ```php
-public static function sum( mixed $parameters = null ): double|ResultsetInterface;
+public static function sum( mixed $parameters = null ): float|ResultsetInterface;
 ```
 
 Calculates the sum on a column for a result-set of rows that match the
 specified conditions
 
 ```php
-// How much are all robots?
-$sum = Robots::sum(
+// How much are all invoices?
+$sum = Invoices::sum(
     [
-        "column" => "price",
+        "column" => "inv_total",
     ]
 );
 
-echo "The total price of robots is ", $sum, "\n";
+echo "The total price of invoices is ", $sum, "\n";
 
-// How much are mechanical robots?
-$sum = Robots::sum(
+// How much are paid invoices?
+$sum = Invoices::sum(
     [
-        "type = 'mechanical'",
-        "column" => "price",
+        "inv_status_flag = 1",
+        "column" => "inv_total",
     ]
 );
 
-echo "The total price of mechanical robots is  ", $sum, "\n";
+echo "The total price of paid invoices is  ", $sum, "\n";
 ```
 
 #### `toArray()` { #mvcmodel-toarray }
@@ -4803,7 +4762,7 @@ echo "The total price of mechanical robots is  ", $sum, "\n";
 ```php
 public function toArray(
     mixed $columns = null,
-    mixed $useGetter = true
+    bool $useGetter = true
 ): array;
 ```
 
@@ -4811,14 +4770,14 @@ Returns the instance as an array representation
 
 ```php
 print_r(
-    $robot->toArray()
+    $invoice->toArray()
 );
 ```
 
 #### `unserialize()` { #mvcmodel-unserialize }
 
 ```php
-public function unserialize( string $data ): void;
+public function unserialize( string $data );
 ```
 
 Unserializes the object from a serialized string
@@ -4899,10 +4858,10 @@ public function writeAttribute(
 Writes an attribute value by its name
 
 ```php
-$robot->writeAttribute("name", "Rosey");
+$invoice->writeAttribute("name", "Rosey");
 ```
 
-<div class="api-group">Protected · 30</div>
+<div class="api-group">Protected · 31</div>
 
 #### `allowEmptyStringValues()` { #mvcmodel-allowemptystringvalues }
 
@@ -4914,7 +4873,7 @@ Sets a list of attributes that must be skipped from the
 generated UPDATE statement
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
@@ -4941,23 +4900,48 @@ protected function belongsTo(
 Setup a reverse 1-1 or n-1 relation between two models
 
 ```php
-class RobotsParts extends \Phalcon\Mvc\Model
+class OrdersProducts extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
         $this->belongsTo(
-            "robots_id",
-            Robots::class,
+            "oxp_ord_id",
+            Invoices::class,
             "id"
         );
     }
 }
 ```
 
+@option bool   "reusable"
+@option string "alias"
+@option array  "foreignKey" {
+@option string|null "message"
+@option bool        "allowNulls"
+@option string|null "action"
+     }
+@option array params {
+@option string "conditions"
+@option string "columns"
+@option array  "bind"
+@option array  "bindTypes"
+@option string "order"
+@option int    "limit"
+@option int    "offset"
+@option string "group"
+@option bool   "for_updated"
+@option bool   "shared_lock"
+@option array  "cache" {
+@option int    "lifetime"
+@option string "key"
+         }
+@option string "hydration"
+}
+
 #### `cancelOperation()` { #mvcmodel-canceloperation }
 
 ```php
-protected function cancelOperation();
+protected function cancelOperation(): void;
 ```
 
 Cancel the current operation
@@ -5005,8 +4989,8 @@ related records along with freshly added one
 protected function doLowInsert(
     MetaDataInterface $metaData,
     AdapterInterface $connection,
-    mixed $table,
-    mixed $identityField
+    array|string $table,
+    bool|string $identityField
 ): bool;
 ```
 
@@ -5018,11 +5002,22 @@ Sends a pre-build INSERT SQL statement to the relational database system
 protected function doLowUpdate(
     MetaDataInterface $metaData,
     AdapterInterface $connection,
-    mixed $table
+    array|string $table
 ): bool;
 ```
 
 Sends a pre-build UPDATE SQL statement to the relational database system
+
+#### `getEventLogger()` { #mvcmodel-geteventlogger }
+
+```php
+protected function getEventLogger( object|null $container ): LoggerInterface|null;
+```
+
+Resolves an optional logger from the container. Returns null when
+no logger service is registered: logging model-event dispatch errors is
+best-effort and must not abort the operation. The container's get()
+throws on a missing service, so has() is checked first.
 
 #### `getRelatedRecords()` { #mvcmodel-getrelatedrecords }
 
@@ -5043,7 +5038,7 @@ Returns false if the relation is non-existent.
 protected static function groupResult(
     string $functionName,
     string $alias,
-    mixed $parameters = null
+    array|string|null $parameters = null
 ): mixed;
 ```
 
@@ -5074,18 +5069,43 @@ protected function hasMany(
 Setup a 1-n relation between two models
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
         $this->hasMany(
             "id",
-            RobotsParts::class,
-            "robots_id"
+            OrdersProducts::class,
+            "oxp_ord_id"
         );
     }
 }
 ```
+
+@option bool   "reusable"
+@option string "alias"
+@option array  "foreignKey" {
+@option string|null "message"
+@option bool        "allowNulls"
+@option string|null "action"
+     }
+@option array params {
+@option string "conditions"
+@option string "columns"
+@option array  "bind"
+@option array  "bindTypes"
+@option string "order"
+@option int    "limit"
+@option int    "offset"
+@option string "group"
+@option bool   "for_updated"
+@option bool   "shared_lock"
+@option array  "cache" {
+@option int    "lifetime"
+@option string "key"
+         }
+@option string "hydration"
+}
 
 #### `hasManyToMany()` { #mvcmodel-hasmanytomany }
 
@@ -5105,22 +5125,47 @@ Setup an n-n relation between two models, through an intermediate
 relation
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
-        // Setup a many-to-many relation to Parts through RobotsParts
+        // Setup a many-to-many relation to Parts through OrdersProducts
         $this->hasManyToMany(
             "id",
-            RobotsParts::class,
-            "robots_id",
-            "parts_id",
-            Parts::class,
+            OrdersProducts::class,
+            "oxp_ord_id",
+            "oxp_prd_id",
+            Products::class,
             "id",
         );
     }
 }
 ```
+
+@option bool   "reusable"
+@option string "alias"
+@option array  "foreignKey" {
+@option string|null "message"
+@option bool        "allowNulls"
+@option string|null "action"
+     }
+@option array params {
+@option string "conditions"
+@option string "columns"
+@option array  "bind"
+@option array  "bindTypes"
+@option string "order"
+@option int    "limit"
+@option int    "offset"
+@option string "group"
+@option bool   "for_updated"
+@option bool   "shared_lock"
+@option array  "cache" {
+@option int    "lifetime"
+@option string "key"
+         }
+@option string "hydration"
+}
 
 #### `hasOne()` { #mvcmodel-hasone }
 
@@ -5136,18 +5181,43 @@ protected function hasOne(
 Setup a 1-1 relation between two models
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
         $this->hasOne(
             "id",
-            RobotsDescription::class,
-            "robots_id"
+            InvoicesDescription::class,
+            "oxp_ord_id"
         );
     }
 }
 ```
+
+@option bool   "reusable"
+@option string "alias"
+@option array  "foreignKey" {
+@option string|null "message"
+@option bool        "allowNulls"
+@option string|null "action"
+     }
+@option array params {
+@option string "conditions"
+@option string "columns"
+@option array  "bind"
+@option array  "bindTypes"
+@option string "order"
+@option int    "limit"
+@option int    "offset"
+@option string "group"
+@option bool   "for_updated"
+@option bool   "shared_lock"
+@option array  "cache" {
+@option int    "lifetime"
+@option string "key"
+         }
+@option string "hydration"
+}
 
 #### `hasOneThrough()` { #mvcmodel-hasonethrough }
 
@@ -5167,27 +5237,52 @@ Setup a 1-1 relation between two models, through an intermediate
 relation
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
-        // Setup a 1-1 relation to one item from Parts through RobotsParts
+        // Setup a 1-1 relation to one item from Parts through OrdersProducts
         $this->hasOneThrough(
             "id",
-            RobotsParts::class,
-            "robots_id",
-            "parts_id",
-            Parts::class,
+            OrdersProducts::class,
+            "oxp_ord_id",
+            "oxp_prd_id",
+            Products::class,
             "id",
         );
     }
 }
 ```
 
+@option bool   "reusable"
+@option string "alias"
+@option array  "foreignKey" {
+@option string|null "message"
+@option bool        "allowNulls"
+@option string|null "action"
+     }
+@option array params {
+@option string "conditions"
+@option string "columns"
+@option array  "bind"
+@option array  "bindTypes"
+@option string "order"
+@option int    "limit"
+@option int    "offset"
+@option string "group"
+@option bool   "for_updated"
+@option bool   "shared_lock"
+@option array  "cache" {
+@option int    "lifetime"
+@option string "key"
+         }
+@option string "hydration"
+}
+
 #### `invokeFinder()` { #mvcmodel-invokefinder }
 
 ```php
-protected final static function invokeFinder(
+final protected static function invokeFinder(
     string $method,
     array $arguments
 );
@@ -5206,7 +5301,7 @@ Sets if the model must keep the original record snapshot in memory
 ```php
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public function initialize()
     {
@@ -5242,7 +5337,7 @@ Executes internal events after save a record
 ```php
 protected function postSaveRelatedRecords(
     AdapterInterface $connection,
-    mixed $related,
+    array $related,
     CollectionInterface $visited
 ): bool;
 ```
@@ -5266,7 +5361,7 @@ Executes internal hooks before save a record
 ```php
 protected function preSaveRelatedRecords(
     AdapterInterface $connection,
-    mixed $related,
+    array $related,
     CollectionInterface $visited
 ): bool;
 ```
@@ -5299,7 +5394,7 @@ Sets a list of attributes that must be skipped from the
 generated INSERT/UPDATE statement
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
@@ -5322,7 +5417,7 @@ Sets a list of attributes that must be skipped from the
 generated INSERT statement
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
@@ -5345,7 +5440,7 @@ Sets a list of attributes that must be skipped from the
 generated UPDATE statement
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
@@ -5369,7 +5464,7 @@ Sets if a model must use dynamic update instead of the all-field update
 ```php
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public function initialize()
     {
@@ -5418,9 +5513,7 @@ class Subscriptors extends Model
 ## Mvc\ModelInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/ModelInterface.zep){ .src-btn }
-
-Phalcon\Mvc\ModelInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/ModelInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Model
 
@@ -5432,7 +5525,7 @@ Interface for Phalcon\Mvc\Model
 
 </div>
 
-__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\TransactionInterface`
+__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Row` · `Phalcon\Mvc\Model\TransactionInterface`
 { .api-uses }
 
 ### Method Summary
@@ -5452,7 +5545,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 </a>
 <a class="api-item" href="#mvcmodelinterface-average">
 <code class="vis vis-public">public</code>
-<code class="ret">double|ResultsetInterface</code>
+<code class="ret">float|ResultsetInterface</code>
 <code class="sig"><span class="sf">average</span>( <span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = []</span> )</code>
 <span class="desc">Allows to calculate the average value on a column matching the specified</span>
 </a>
@@ -5464,14 +5557,14 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 </a>
 <a class="api-item" href="#mvcmodelinterface-cloneresultmap">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface</code>
+<code class="ret">ModelInterface|ResultInterface</code>
 <code class="sig"><span class="sf">cloneResultMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$base</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$dirtyState</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$keepSnapshots</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Assigns values to a model from an array returning a new model</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-cloneresultmaphydrate">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">cloneResultMapHydrate</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$hydrationMode</span></span>)</code>
-<span class="desc">Returns an hydrated result based on the data and the column map</span>
+<span class="desc">Returns a hydrated result based on the data and the column map</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-count">
 <code class="vis vis-public">public</code>
@@ -5498,19 +5591,18 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 </a>
 <a class="api-item" href="#mvcmodelinterface-findfirst">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
 <code class="sig"><span class="sf">findFirst</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Allows to query the first record that match the specified conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-fireevent">
 <code class="vis vis-public">public</code>
-<code class="ret">bool</code>
+<code class="ret">bool|null</code>
 <code class="sig"><span class="sf">fireEvent</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
 <span class="desc">Fires an event, implicitly calls behaviors and listeners in the events</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-fireeventcancel">
 <code class="vis vis-public">public</code>
-<code class="ret">bool</code>
+<code class="ret">bool|null</code>
 <code class="sig"><span class="sf">fireEventCancel</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
 <span class="desc">Fires an event, implicitly calls behaviors and listeners in the events</span>
 </a>
@@ -5522,7 +5614,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 </a>
 <a class="api-item" href="#mvcmodelinterface-getmessages">
 <code class="vis vis-public">public</code>
-<code class="ret">MessageInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns array of validation messages</span>
 </a>
@@ -5594,7 +5686,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 <a class="api-item" href="#mvcmodelinterface-query">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">query</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">query</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Create a criteria for a specific model</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-refresh">
@@ -5617,7 +5709,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 </a>
 <a class="api-item" href="#mvcmodelinterface-setdirtystate">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface|bool</code>
+<code class="ret">bool|ModelInterface</code>
 <code class="sig"><span class="sf">setDirtyState</span>( <span class="st">int</span> <span class="sv">$dirtyState</span> )</code>
 <span class="desc">Sets the dirty state of the object using one of the DIRTY_STATE_*</span>
 </a>
@@ -5659,7 +5751,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 </a>
 <a class="api-item" href="#mvcmodelinterface-sum">
 <code class="vis vis-public">public</code>
-<code class="ret">double|ResultsetInterface</code>
+<code class="ret">float|ResultsetInterface</code>
 <code class="sig"><span class="sf">sum</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Allows to calculate a sum on a column that match the specified conditions</span>
 </a>
@@ -5704,7 +5796,7 @@ Assigns values to a model from an array
 #### `average()` { #mvcmodelinterface-average }
 
 ```php
-public static function average( array $parameters = [] ): double|ResultsetInterface;
+public static function average( array $parameters = [] ): float|ResultsetInterface;
 ```
 
 Allows to calculate the average value on a column matching the specified
@@ -5731,7 +5823,7 @@ public static function cloneResultMap(
     mixed $columnMap,
     int $dirtyState = 0,
     bool $keepSnapshots = false
-): ModelInterface;
+): ModelInterface|ResultInterface;
 ```
 
 Assigns values to a model from an array returning a new model
@@ -5746,7 +5838,7 @@ public static function cloneResultMapHydrate(
 );
 ```
 
-Returns an hydrated result based on the data and the column map
+Returns a hydrated result based on the data and the column map
 
 #### `count()` { #mvcmodelinterface-count }
 
@@ -5797,19 +5889,21 @@ intended lane:
 #### `findFirst()` { #mvcmodelinterface-findfirst }
 
 ```php
-public static function findFirst( mixed $parameters = null ): mixed|null;
+public static function findFirst( mixed $parameters = null );
 ```
 
 Allows to query the first record that match the specified conditions
 
-TODO: Current method signature must be reviewed in v5. As it must return only ?ModelInterface (it also returns Row).
+TODO: Current method signature must be reviewed in v5.
+      As it must return only ?ModelInterface (it also returns Row).
+
 @see https://github.com/phalcon/cphalcon/issues/15212
 @see https://github.com/phalcon/cphalcon/issues/15883
 
 #### `fireEvent()` { #mvcmodelinterface-fireevent }
 
 ```php
-public function fireEvent( string $eventName ): bool;
+public function fireEvent( string $eventName ): bool|null;
 ```
 
 Fires an event, implicitly calls behaviors and listeners in the events
@@ -5818,7 +5912,7 @@ manager are notified
 #### `fireEventCancel()` { #mvcmodelinterface-fireeventcancel }
 
 ```php
-public function fireEventCancel( string $eventName ): bool;
+public function fireEventCancel( string $eventName ): bool|null;
 ```
 
 Fires an event, implicitly calls behaviors and listeners in the events
@@ -5837,7 +5931,7 @@ in the database or not
 #### `getMessages()` { #mvcmodelinterface-getmessages }
 
 ```php
-public function getMessages(): MessageInterface[];
+public function getMessages(): array;
 ```
 
 Returns array of validation messages
@@ -5939,7 +6033,7 @@ conditions
 #### `query()` { #mvcmodelinterface-query }
 
 ```php
-public static function query( DiInterface $container = null ): CriteriaInterface;
+public static function query( DiInterface|null $container = null ): CriteriaInterface;
 ```
 
 Create a criteria for a specific model
@@ -5972,7 +6066,7 @@ Sets both read/write connection services
 #### `setDirtyState()` { #mvcmodelinterface-setdirtystate }
 
 ```php
-public function setDirtyState( int $dirtyState ): ModelInterface|bool;
+public function setDirtyState( int $dirtyState ): bool|ModelInterface;
 ```
 
 Sets the dirty state of the object using one of the DIRTY_STATE_*
@@ -6037,7 +6131,7 @@ Skips the current operation forcing a success state
 #### `sum()` { #mvcmodelinterface-sum }
 
 ```php
-public static function sum( mixed $parameters = null ): double|ResultsetInterface;
+public static function sum( mixed $parameters = null ): float|ResultsetInterface;
 ```
 
 Allows to calculate a sum on a column that match the specified conditions
@@ -6064,9 +6158,7 @@ Check whether validation process has generated any messages
 ## Mvc\Model\Behavior
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Behavior.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Behavior
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Behavior.php){ .src-btn }
 
 This is an optional base class for ORM behaviors
 
@@ -6101,7 +6193,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 </a>
 <a class="api-item" href="#mvcmodelbehavior-getoptions">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getOptions</span>( <span class="st">string</span> <span class="sv">$eventName</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getOptions</span>( <span class="st">string|null</span> <span class="sv">$eventName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the behavior options related to an event</span>
 </a>
 <a class="api-item" href="#mvcmodelbehavior-musttakeaction">
@@ -6118,7 +6210,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$options</span></code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
@@ -6162,7 +6254,7 @@ This method receives the notifications from the EventsManager
 #### `getOptions()` { #mvcmodelbehavior-getoptions }
 
 ```php
-protected function getOptions( string $eventName = null );
+protected function getOptions( string|null $eventName = null );
 ```
 
 Returns the behavior options related to an event
@@ -6179,9 +6271,7 @@ Checks whether the behavior must take action on certain event
 ## Mvc\Model\BehaviorInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/BehaviorInterface.zep){ .src-btn }
-
-Phalcon\Mvc\Model\BehaviorInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/BehaviorInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Model\Behavior
 
@@ -6240,7 +6330,7 @@ This method receives the notifications from the EventsManager
 ## Mvc\Model\Behavior\Exceptions\MissingRequiredOption
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Behavior/Exceptions/MissingRequiredOption.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Behavior/Exceptions/MissingRequiredOption.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -6276,9 +6366,7 @@ public function __construct( string $option );
 ## Mvc\Model\Behavior\SoftDelete
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Behavior/SoftDelete.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Behavior\SoftDelete
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Behavior/SoftDelete.php){ .src-btn }
 
 Instead of permanently delete a record it marks the record as deleted
 changing the value of a flag column
@@ -6290,7 +6378,7 @@ changing the value of a flag column
 
 </div>
 
-__Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Behavior` · `Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Behavior` · `Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -6322,9 +6410,7 @@ Listens for notifications from the models manager
 ## Mvc\Model\Behavior\Timestampable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Behavior/Timestampable.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Behavior\Timestampable
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Behavior/Timestampable.php){ .src-btn }
 
 Allows to automatically update a model’s attribute saving the datetime when a
 record is created or updated
@@ -6368,11 +6454,9 @@ Listens for notifications from the models manager
 ## Mvc\Model\Binder
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Binder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Binder.php){ .src-btn }
 
-Phalcon\Mvc\Model\Binder
-
-This is an class for binding models into params for handler
+This is a class for binding models into params for handler
 
 <div class="api-tree" markdown>
 
@@ -6380,7 +6464,7 @@ This is an class for binding models into params for handler
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\Controller\BindModelInterface` · `Phalcon\Mvc\Model\Binder\BindableInterface` · `Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable` · `Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn` · `Phalcon\Mvc\Model\Exceptions\MissingMethodName` · `Phalcon\Mvc\Model\Exceptions\MissingModelClassName` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType`
+__Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\Controller\BindModelInterface` · `Phalcon\Mvc\Model\Binder\BindableInterface` · `Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable` · `Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn` · `Phalcon\Mvc\Model\Exceptions\MissingMethodName` · `Phalcon\Mvc\Model\Exceptions\MissingModelClassName` · `ReflectionException` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType`
 { .api-uses }
 
 ### Method Summary
@@ -6388,13 +6472,13 @@ __Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\C
 <div class="api-list">
 <a class="api-item" href="#mvcmodelbinder-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterInterface</span> <span class="sv">$cache</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterInterface|null</span> <span class="sv">$cache</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\Model\Binder constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-bindtohandler">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">bindToHandler</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">bindToHandler</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$methodName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Bind models into params in proper handler</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-getboundmodels">
@@ -6423,7 +6507,6 @@ __Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\C
 </a>
 <a class="api-item" href="#mvcmodelbinder-findboundmodel">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed|bool</code>
 <code class="sig"><span class="sf">findBoundModel</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$paramValue</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 <span class="desc">Find the model by param value.</span>
 </a>
@@ -6453,8 +6536,7 @@ __Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\C
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface|null</code>
-<code class="sig"><span class="sv">$cache</span></code>
-<span class="desc">Cache object used for caching parameters for model binding</span>
+<code class="sig"><span class="sv">$cache</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -6477,7 +6559,7 @@ __Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\C
 #### `__construct()` { #mvcmodelbinder-__construct }
 
 ```php
-public function __construct( AdapterInterface $cache = null );
+public function __construct( AdapterInterface|null $cache = null );
 ```
 
 Phalcon\Mvc\Model\Binder constructor
@@ -6489,7 +6571,7 @@ public function bindToHandler(
     object $handler,
     array $params,
     string $cacheKey,
-    string $methodName = null
+    string|null $methodName = null
 ): array;
 ```
 
@@ -6535,7 +6617,7 @@ Gets cache instance
 protected function findBoundModel(
     mixed $paramValue,
     string $className
-): mixed|bool;
+);
 ```
 
 Find the model by param value.
@@ -6565,7 +6647,7 @@ Get modified params for handler using reflection
 ## Mvc\Model\BinderInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/BinderInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/BinderInterface.php){ .src-btn }
 
 Phalcon\Mvc\Model\BinderInterface
 
@@ -6586,7 +6668,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface`
 <a class="api-item" href="#mvcmodelbinderinterface-bindtohandler">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">bindToHandler</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">bindToHandler</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$methodName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Bind models into params in proper handler</span>
 </a>
 <a class="api-item" href="#mvcmodelbinderinterface-getboundmodels">
@@ -6620,7 +6702,7 @@ public function bindToHandler(
     object $handler,
     array $params,
     string $cacheKey,
-    string $methodName = null
+    string|null $methodName = null
 ): array;
 ```
 
@@ -6654,9 +6736,7 @@ Sets cache instance
 ## Mvc\Model\Binder\BindableInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Binder/BindableInterface.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Binder\BindableInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Binder/BindableInterface.php){ .src-btn }
 
 Interface for bindable classes
 
@@ -6671,7 +6751,7 @@ Interface for bindable classes
 <div class="api-list">
 <a class="api-item" href="#mvcmodelbinderbindableinterface-getmodelname">
 <code class="vis vis-public">public</code>
-<code class="ret">string|array</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getModelName</span>()</code>
 <span class="desc">Return the model name or models names and parameters keys associated with</span>
 </a>
@@ -6684,7 +6764,7 @@ Interface for bindable classes
 #### `getModelName()` { #mvcmodelbinderbindableinterface-getmodelname }
 
 ```php
-public function getModelName(): string|array;
+public function getModelName(): array|string;
 ```
 
 Return the model name or models names and parameters keys associated with
@@ -6694,7 +6774,7 @@ this class
 ## Mvc\Model\Criteria
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Criteria.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Criteria.php){ .src-btn }
 
 This class is used to build the array parameter required by
 Phalcon\Mvc\Model::find() and Phalcon\Mvc\Model::findFirst() using an
@@ -6727,7 +6807,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <a class="api-item" href="#mvcmodelcriteria-andwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">andWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">andWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using an AND operator</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-betweenwhere">
@@ -6757,7 +6837,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <a class="api-item" href="#mvcmodelcriteria-columns">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">columns</span>( <span class="st">mixed</span> <span class="sv">$columns</span> )</code>
+<code class="sig"><span class="sf">columns</span>( <span class="st">array|string</span> <span class="sv">$columns</span> )</code>
 <span class="desc">Sets the columns to be queried. The columns can be either a <code>string</code> or</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-conditions">
@@ -6777,6 +6857,12 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <code class="ret">CriteriaInterface</code>
 <code class="sig"><span class="sf">distinct</span>( <span class="st">mixed</span> <span class="sv">$distinct</span> )</code>
 <span class="desc">Sets SELECT DISTINCT / SELECT ALL flag</span>
+</a>
+<a class="api-item" href="#mvcmodelcriteria-eager">
+<code class="vis vis-public">public</code>
+<code class="ret">Criteria</code>
+<code class="sig"><span class="sf">eager</span>( <span class="st">array</span> <span class="sv">$paths</span> )</code>
+<span class="desc">Pre-loads the named relations when the criteria is executed</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-execute">
 <code class="vis vis-public">public</code>
@@ -6798,7 +6884,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getcolumns">
 <code class="vis vis-public">public</code>
-<code class="ret">string|array|null</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Returns the columns to be queried</span>
 </a>
@@ -6826,7 +6912,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getlimit">
 <code class="vis vis-public">public</code>
-<code class="ret">int|array|null</code>
+<code class="ret">array|int|null</code>
 <code class="sig"><span class="sf">getLimit</span>()</code>
 <span class="desc">Returns the limit parameter in the criteria, which will be</span>
 </a>
@@ -6911,7 +6997,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <a class="api-item" href="#mvcmodelcriteria-orwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">orWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">orWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using an OR operator</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-orderby">
@@ -6947,7 +7033,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <a class="api-item" href="#mvcmodelcriteria-where">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the conditions parameter in the criteria</span>
 </a>
 </div>
@@ -6984,15 +7070,15 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 
 ### Methods
 
-<div class="api-group">Public · 38</div>
+<div class="api-group">Public · 39</div>
 
 #### `andWhere()` { #mvcmodelcriteria-andwhere }
 
 ```php
 public function andWhere(
     string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
+    array|null $bindParams = null,
+    array|null $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -7047,7 +7133,7 @@ This method replaces all previously set cache options
 #### `columns()` { #mvcmodelcriteria-columns }
 
 ```php
-public function columns( mixed $columns ): CriteriaInterface;
+public function columns( array|string $columns ): CriteriaInterface;
 ```
 
 Sets the columns to be queried. The columns can be either a `string` or
@@ -7126,6 +7212,29 @@ public function distinct( mixed $distinct ): CriteriaInterface;
 
 Sets SELECT DISTINCT / SELECT ALL flag
 
+#### `eager()` { #mvcmodelcriteria-eager }
+
+```php
+public function eager( array $paths ): Criteria;
+```
+
+Pre-loads the named relations when the criteria is executed
+
+```php
+$invoices = Invoices::query()
+    ->eager(["customer"])
+    ->where("inv_total > 100")
+    ->execute();
+```
+
+execute() forwards the parameters to Model::find(), which owns the
+loading, so this is a pass-through and takes the same shape: an array of
+dot-delimited relation paths, optionally `path => options`.
+
+Returns the concrete criteria rather than the interface because the
+method is deliberately not part of CriteriaInterface - adding it there
+would break every userland implementation.
+
 #### `execute()` { #mvcmodelcriteria-execute }
 
 ```php
@@ -7158,7 +7267,7 @@ Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
 #### `getColumns()` { #mvcmodelcriteria-getcolumns }
 
 ```php
-public function getColumns(): string|array|null;
+public function getColumns(): array|string|null;
 ```
 
 Returns the columns to be queried
@@ -7198,7 +7307,7 @@ Returns the having clause in the criteria
 #### `getLimit()` { #mvcmodelcriteria-getlimit }
 
 ```php
-public function getLimit(): int|array|null;
+public function getLimit(): array|int|null;
 ```
 
 Returns the limit parameter in the criteria, which will be
@@ -7415,8 +7524,8 @@ $criteria->notInWhere("id", [1, 2, 3]);
 ```php
 public function orWhere(
     string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
+    array|null $bindParams = null,
+    array|null $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -7481,8 +7590,8 @@ Adds the "shared_lock" parameter to the criteria
 ```php
 public function where(
     string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
+    array|null $bindParams = null,
+    array|null $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -7492,9 +7601,7 @@ Sets the conditions parameter in the criteria
 ## Mvc\Model\CriteriaInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/CriteriaInterface.zep){ .src-btn }
-
-Phalcon\Mvc\Model\CriteriaInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/CriteriaInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Model\Criteria
 
@@ -7504,16 +7611,13 @@ Interface for Phalcon\Mvc\Model\Criteria
 
 </div>
 
-__Uses__ `Phalcon\Di\DiInterface`
-{ .api-uses }
-
 ### Method Summary
 
 <div class="api-list">
 <a class="api-item" href="#mvcmodelcriteriainterface-andwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">andWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">andWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using an AND operator</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-betweenwhere">
@@ -7566,7 +7670,7 @@ __Uses__ `Phalcon\Di\DiInterface`
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-getcolumns">
 <code class="vis vis-public">public</code>
-<code class="ret">string|array|null</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Returns the columns to be queried</span>
 </a>
@@ -7588,7 +7692,7 @@ __Uses__ `Phalcon\Di\DiInterface`
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-getlimit">
 <code class="vis vis-public">public</code>
-<code class="ret">int|array|null</code>
+<code class="ret">array|int|null</code>
 <code class="sig"><span class="sf">getLimit</span>()</code>
 <span class="desc">Returns the limit parameter in the criteria, which will be</span>
 </a>
@@ -7667,7 +7771,7 @@ __Uses__ `Phalcon\Di\DiInterface`
 <a class="api-item" href="#mvcmodelcriteriainterface-orwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">orWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">orWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using an OR operator</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-orderby">
@@ -7697,7 +7801,7 @@ __Uses__ `Phalcon\Di\DiInterface`
 <a class="api-item" href="#mvcmodelcriteriainterface-where">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the conditions parameter in the criteria</span>
 </a>
 </div>
@@ -7711,8 +7815,8 @@ __Uses__ `Phalcon\Di\DiInterface`
 ```php
 public function andWhere(
     string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
+    array|null $bindParams = null,
+    array|null $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -7796,7 +7900,7 @@ Sets the "for_update" parameter to the criteria
 #### `getColumns()` { #mvcmodelcriteriainterface-getcolumns }
 
 ```php
-public function getColumns(): string|array|null;
+public function getColumns(): array|string|null;
 ```
 
 Returns the columns to be queried
@@ -7828,7 +7932,7 @@ Returns the having clause in the criteria
 #### `getLimit()` { #mvcmodelcriteriainterface-getlimit }
 
 ```php
-public function getLimit(): int|array|null;
+public function getLimit(): array|int|null;
 ```
 
 Returns the limit parameter in the criteria, which will be
@@ -7914,17 +8018,17 @@ Adds an INNER join to the query
 
 ```php
 $criteria->innerJoin(
-    Robots::class
+    Orders::class
 );
 
 $criteria->innerJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id"
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id"
 );
 
 $criteria->innerJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -7943,8 +8047,8 @@ Adds a LEFT join to the query
 
 ```php
 $criteria->leftJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -7996,8 +8100,8 @@ $criteria->notInWhere("id", [1, 2, 3]);
 ```php
 public function orWhere(
     string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
+    array|null $bindParams = null,
+    array|null $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -8025,8 +8129,8 @@ Adds a RIGHT join to the query
 
 ```php
 $criteria->rightJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -8052,18 +8156,332 @@ Sets the "shared_lock" parameter to the criteria
 ```php
 public function where(
     string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
+    array|null $bindParams = null,
+    array|null $bindTypes = null
 ): CriteriaInterface;
 ```
 
 Sets the conditions parameter in the criteria
 
 
+## Mvc\Model\Eager\Loader
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Eager/Loader.php){ .src-btn }
+
+Loads model relations in bulk - a bounded number of queries per relation
+node rather than one per record - and applies the result to records as they
+are hydrated.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\Model\Eager\Loader`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded` · `Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn` · `Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\Resultset\Simple`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodeleagerloader-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">ManagerInterface</span> <span class="sv">$manager</span> )</code>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-apply">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">apply</span>(<span class="prm"><span class="st">object</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$eagerMap</span></span>)</code>
+<span class="desc">Applies a pre-built eager map to a single record.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-buildkey">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">buildKey</span>( <span class="st">array</span> <span class="sv">$values</span> )</code>
+<span class="desc">Builds the lookup key for a set of key-field values.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-loadresultset">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">loadResultset</span>(<span class="prm"><span class="st">Simple</span> <span class="sv">$resultset</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$tree</span></span>)</code>
+<span class="desc">Loads a relation tree for a root resultset.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-buildmap">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">buildMap</span>(<span class="prm"><span class="st">array</span> <span class="sv">$parents</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$tree</span></span>)</code>
+<span class="desc">Builds one level of the map.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-buildnode">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">buildNode</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parents</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$node</span></span>)</code>
+<span class="desc">Builds a single map node: one query, indexed by the referenced field.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-buildthroughnode">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">buildThroughNode</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parents</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$node</span></span>)</code>
+<span class="desc">Through-relations in two steps rather than a join.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-collectkeys">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">collectKeys</span>(<span class="prm"><span class="st">array</span> <span class="sv">$parents</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
+<span class="desc">Distinct, non-null local key tuples across the parent set.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-fetchreferenced">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Simple</code>
+<code class="sig"><span class="sf">fetchReferenced</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
+<span class="desc">One query per relation node. An empty key set issues none at all -</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-normalizefields">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">normalizeFields</span>( <span class="st">mixed</span> <span class="sv">$fields</span> )</code>
+<span class="desc">Relation fields are declared as a string for a single column and an</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-recordkey">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">recordKey</span>(<span class="prm"><span class="st">object</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$fields</span></span>)</code>
+<span class="desc">Lookup key for an already-hydrated record.</span>
+</a>
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MAX_ROWS_PER_LEVEL</span><span class="sm"> = 100000</span></code>
+<span class="desc">Maximum number of rows a single relation node may return before the load
+is refused. Guards against a to-many hop that follows a to-one hop, which
+can fan out to an entire table.</span>
+</div>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig"><span class="sv">$manager</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `__construct()` { #mvcmodeleagerloader-__construct }
+
+```php
+public function __construct( ManagerInterface $manager );
+```
+
+#### `apply()` { #mvcmodeleagerloader-apply }
+
+```php
+public static function apply(
+    object $record,
+    array $eagerMap
+): void;
+```
+
+Applies a pre-built eager map to a single record.
+
+Shared by Resultset\Simple::current(), which stamps records as they are
+hydrated, and by the loader itself, which stamps instances it retains.
+
+Both Model and Row implement readAttribute(), so key extraction is
+uniform; only the write differs. A Row is what a column-restricted
+select produces, and it has no relation cache.
+
+#### `buildKey()` { #mvcmodeleagerloader-buildkey }
+
+```php
+public static function buildKey( array $values ): string;
+```
+
+Builds the lookup key for a set of key-field values.
+
+Always a string. A single value is cast, which also neutralizes the
+PostgreSQL-integer / MySQL-string mismatch for the same column. Multiple
+values are length-prefixed so ["a|b", "c"] cannot collide with
+["a", "b|c"].
+
+#### `loadResultset()` { #mvcmodeleagerloader-loadresultset }
+
+```php
+public function loadResultset(
+    Simple $resultset,
+    string $modelName,
+    array $tree
+): void;
+```
+
+Loads a relation tree for a root resultset.
+
+The resultset is materialized first: at this point the statement has run
+but no row has been consumed, so fetching every row costs nothing extra
+and gives the key values without a second pass over the cursor.
+
+<div class="api-group">Protected · 7</div>
+
+#### `buildMap()` { #mvcmodeleagerloader-buildmap }
+
+```php
+protected function buildMap(
+    array $parents,
+    string $modelName,
+    array $tree
+): array;
+```
+
+Builds one level of the map.
+
+#### `buildNode()` { #mvcmodeleagerloader-buildnode }
+
+```php
+protected function buildNode(
+    RelationInterface $relation,
+    string $alias,
+    array $parents,
+    array $node
+): array;
+```
+
+Builds a single map node: one query, indexed by the referenced field.
+
+#### `buildThroughNode()` { #mvcmodeleagerloader-buildthroughnode }
+
+```php
+protected function buildThroughNode(
+    RelationInterface $relation,
+    string $alias,
+    array $parents,
+    array $node
+): array;
+```
+
+Through-relations in two steps rather than a join.
+
+Step one fetches (parentKey, referencedKey) pairs from the intermediate
+model; step two fetches the referenced rows for the keys those pairs
+collected. The pairs then attribute referenced rows back to parents
+without a synthetic column in the select list, and without the row
+multiplication an inner join would cause.
+
+#### `collectKeys()` { #mvcmodeleagerloader-collectkeys }
+
+```php
+protected function collectKeys(
+    array $parents,
+    array $fields,
+    string $alias
+): array;
+```
+
+Distinct, non-null local key tuples across the parent set.
+
+#### `fetchReferenced()` { #mvcmodeleagerloader-fetchreferenced }
+
+```php
+protected function fetchReferenced(
+    RelationInterface $relation,
+    string $alias,
+    array $keys,
+    array $options
+): Simple;
+```
+
+One query per relation node. An empty key set issues none at all -
+WHERE IN () is a syntax error and there is nothing to attribute.
+
+#### `normalizeFields()` { #mvcmodeleagerloader-normalizefields }
+
+```php
+protected function normalizeFields( mixed $fields ): array;
+```
+
+Relation fields are declared as a string for a single column and an
+array for a composite key. Normalizing removes that fork everywhere
+downstream.
+
+#### `recordKey()` { #mvcmodeleagerloader-recordkey }
+
+```php
+protected function recordKey(
+    object $record,
+    array $fields
+): string;
+```
+
+Lookup key for an already-hydrated record.
+
+
+## Mvc\Model\Eager\PathTree
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Eager/PathTree.php){ .src-btn }
+
+Turns the `eager` find parameter into a tree.
+
+Elements are either a bare path string or `path => options`. A path implies
+every one of its prefixes and prefixes are merged, so ["customer",
+"customer.country"] and ["customer.country"] produce the same two-node tree.
+The number of queries an eager load costs follows the number of nodes in
+this tree, not the number of elements supplied.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\Model\Eager\PathTree`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exceptions\InvalidEagerPath` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodeleagerpathtree-parse">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">parse</span>( <span class="st">array</span> <span class="sv">$spec</span> )</code>
+</a>
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MAX_DEPTH</span><span class="sm"> = 5</span></code>
+<span class="desc">Longest path accepted. Depth alone is not what makes an eager load
+expensive, but an unbounded path is never intentional.</span>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `parse()` { #mvcmodeleagerpathtree-parse }
+
+```php
+public static function parse( array $spec ): array;
+```
+
+
 ## Mvc\Model\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exception.php){ .src-btn }
 
 Phalcon\Mvc\Model\Exception
 
@@ -8083,6 +8501,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Exceptions\CorruptColumnType`](#mvcmodelexceptionscorruptcolumntype)
         - [`Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`](#mvcmodelexceptionscursorisimmutable)
         - [`Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`](#mvcmodelexceptionsdatatypenotdefined)
+        - [`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`](#mvcmodelexceptionseagerrowlimitexceeded)
         - [`Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`](#mvcmodelexceptionshandlermustimplementbindable)
         - [`Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`](#mvcmodelexceptionsidentitynotincolumnmap)
         - [`Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`](#mvcmodelexceptionsidentitynotintablecolumns)
@@ -8091,6 +8510,8 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`](#mvcmodelexceptionsinvalidconnectionservice)
         - [`Phalcon\Mvc\Model\Exceptions\InvalidContainer`](#mvcmodelexceptionsinvalidcontainer)
         - [`Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`](#mvcmodelexceptionsinvaliddumpresultkey)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`](#mvcmodelexceptionsinvalideagerparameter)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`](#mvcmodelexceptionsinvalideagerpath)
         - [`Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`](#mvcmodelexceptionsinvalidfindparameters)
         - [`Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`](#mvcmodelexceptionsinvalidgetmodelnamereturn)
         - [`Phalcon\Mvc\Model\Exceptions\InvalidModelName`](#mvcmodelexceptionsinvalidmodelname)
@@ -8101,6 +8522,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`](#mvcmodelexceptionsinvalidserializationdata)
         - [`Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`](#mvcmodelexceptionsmanagerormservicesunavailable)
         - [`Phalcon\Mvc\Model\Exceptions\MethodNotFound`](#mvcmodelexceptionsmethodnotfound)
+        - [`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`](#mvcmodelexceptionsmissingeagerkeycolumn)
         - [`Phalcon\Mvc\Model\Exceptions\MissingMethodName`](#mvcmodelexceptionsmissingmethodname)
         - [`Phalcon\Mvc\Model\Exceptions\MissingModelClassName`](#mvcmodelexceptionsmissingmodelclassname)
         - [`Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`](#mvcmodelexceptionsmodelcouldnotload)
@@ -8118,7 +8540,11 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Exceptions\RowIsImmutable`](#mvcmodelexceptionsrowisimmutable)
         - [`Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`](#mvcmodelexceptionssnapshotsdisabled)
         - [`Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`](#mvcmodelexceptionsstaticmethodrequiresoneargument)
+        - [`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`](#mvcmodelexceptionsunknowneagerrelation)
         - [`Phalcon\Mvc\Model\Exceptions\UnknownRelationType`](#mvcmodelexceptionsunknownrelationtype)
+        - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`](#mvcmodelexceptionsunsupportedeagerhydration)
+        - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`](#mvcmodelexceptionsunsupportedeageroption)
+        - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`](#mvcmodelexceptionsunsupportedeagerresultset)
         - [`Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`](#mvcmodelexceptionsupdatesnapshotdisabled)
         - [`Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`](#mvcmodelmetadataexceptionscannotobtaintablecolumns)
         - [`Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`](#mvcmodelmetadataexceptionscolumnmapnotarray)
@@ -8159,6 +8585,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`](#mvcmodelqueryexceptionsinvalidinjectedmetadata)
         - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`](#mvcmodelqueryexceptionsinvalidquerycacheservice)
         - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`](#mvcmodelqueryexceptionsinvalidresultsetclass)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`](#mvcmodelqueryexceptionsinvalidresultsetrowclass)
         - [`Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`](#mvcmodelqueryexceptionsjoinaliasalreadyused)
         - [`Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`](#mvcmodelqueryexceptionsjoinfieldcountmismatch)
         - [`Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`](#mvcmodelqueryexceptionsmissingcachekey)
@@ -8175,6 +8602,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`](#mvcmodelqueryexceptionsrelationshipnotfound)
         - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`](#mvcmodelqueryexceptionsresultsetclassnotfound)
         - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`](#mvcmodelqueryexceptionsresultsetnoncacheable)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`](#mvcmodelqueryexceptionsresultsetrowclassnotfound)
         - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`](#mvcmodelqueryexceptionsunknownbindtype)
         - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`](#mvcmodelqueryexceptionsunknowncolumntype)
         - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`](#mvcmodelqueryexceptionsunknownjointype)
@@ -8193,7 +8621,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 ## Mvc\Model\Exceptions\BelongsToRequiresObject
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/BelongsToRequiresObject.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/BelongsToRequiresObject.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8232,7 +8660,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\BindTypeNotDefined
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/BindTypeNotDefined.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/BindTypeNotDefined.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8271,7 +8699,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\CannotResolveAttribute
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/CannotResolveAttribute.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/CannotResolveAttribute.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8310,7 +8738,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\ColumnNotInMap
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ColumnNotInMap.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/ColumnNotInMap.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8349,7 +8777,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\ColumnNotInTableColumns
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ColumnNotInTableColumns.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/ColumnNotInTableColumns.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8388,7 +8816,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\ColumnNotInTableMap
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ColumnNotInTableMap.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/ColumnNotInTableMap.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8427,7 +8855,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\CorruptColumnType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/CorruptColumnType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/CorruptColumnType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8463,7 +8891,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\CursorIsImmutable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/CursorIsImmutable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/CursorIsImmutable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8499,7 +8927,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\DataTypeNotDefined
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/DataTypeNotDefined.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/DataTypeNotDefined.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8535,10 +8963,50 @@ public function __construct(
 ```
 
 
+## Mvc\Model\Exceptions\EagerRowLimitExceeded
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/EagerRowLimitExceeded.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionseagerrowlimitexceeded-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$rowCount</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$limit</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionseagerrowlimitexceeded-__construct }
+
+```php
+public function __construct(
+    string $modelName,
+    int $rowCount,
+    int $limit
+);
+```
+
+
 ## Mvc\Model\Exceptions\HandlerMustImplementBindable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/HandlerMustImplementBindable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/HandlerMustImplementBindable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8574,7 +9042,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\IdentityNotInColumnMap
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/IdentityNotInColumnMap.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/IdentityNotInColumnMap.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8613,7 +9081,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\IdentityNotInTableColumns
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/IdentityNotInTableColumns.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/IdentityNotInTableColumns.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8652,7 +9120,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\IndexNotInCursor
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/IndexNotInCursor.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/IndexNotInCursor.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8688,7 +9156,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\IndexNotInRow
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/IndexNotInRow.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/IndexNotInRow.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8724,7 +9192,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\InvalidConnectionService
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidConnectionService.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidConnectionService.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8760,7 +9228,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\InvalidContainer
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidContainer.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidContainer.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8796,7 +9264,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\InvalidDumpResultKey
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidDumpResultKey.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidDumpResultKey.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8829,10 +9297,82 @@ public function __construct( string $className );
 ```
 
 
+## Mvc\Model\Exceptions\InvalidEagerParameter
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidEagerParameter.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsinvalideagerparameter-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsinvalideagerparameter-__construct }
+
+```php
+public function __construct();
+```
+
+
+## Mvc\Model\Exceptions\InvalidEagerPath
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidEagerPath.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsinvalideagerpath-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsinvalideagerpath-__construct }
+
+```php
+public function __construct( string $path );
+```
+
+
 ## Mvc\Model\Exceptions\InvalidFindParameters
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidFindParameters.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidFindParameters.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8868,7 +9408,7 @@ public function __construct( string $className );
 ## Mvc\Model\Exceptions\InvalidGetModelNameReturn
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidGetModelNameReturn.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidGetModelNameReturn.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8904,7 +9444,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\InvalidModelName
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidModelName.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidModelName.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8940,7 +9480,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\InvalidModelsManagerService
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidModelsManagerService.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidModelsManagerService.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -8976,7 +9516,7 @@ public function __construct( string $className );
 ## Mvc\Model\Exceptions\InvalidModelsMetadataService
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidModelsMetadataService.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidModelsMetadataService.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9012,7 +9552,7 @@ public function __construct( string $className );
 ## Mvc\Model\Exceptions\InvalidResultsetCacheService
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidResultsetCacheService.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidResultsetCacheService.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9048,7 +9588,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\InvalidReturnedRecord
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidReturnedRecord.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidReturnedRecord.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9084,7 +9624,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\InvalidSerializationData
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidSerializationData.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/InvalidSerializationData.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9120,7 +9660,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\ManagerOrmServicesUnavailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ManagerOrmServicesUnavailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/ManagerOrmServicesUnavailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9156,7 +9696,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\MethodNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/MethodNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/MethodNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9192,10 +9732,49 @@ public function __construct(
 ```
 
 
+## Mvc\Model\Exceptions\MissingEagerKeyColumn
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/MissingEagerKeyColumn.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsmissingeagerkeycolumn-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$column</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsmissingeagerkeycolumn-__construct }
+
+```php
+public function __construct(
+    string $alias,
+    string $column
+);
+```
+
+
 ## Mvc\Model\Exceptions\MissingMethodName
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/MissingMethodName.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/MissingMethodName.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9231,7 +9810,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\MissingModelClassName
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/MissingModelClassName.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/MissingModelClassName.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9267,7 +9846,7 @@ public function __construct( string $paramKey );
 ## Mvc\Model\Exceptions\ModelCouldNotLoad
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ModelCouldNotLoad.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/ModelCouldNotLoad.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9303,7 +9882,7 @@ public function __construct( string $modelName );
 ## Mvc\Model\Exceptions\ModelOrmServicesUnavailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ModelOrmServicesUnavailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/ModelOrmServicesUnavailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9339,7 +9918,7 @@ public function __construct( string $className );
 ## Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/PrimaryKeyAttributeNotSet.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/PrimaryKeyAttributeNotSet.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9378,7 +9957,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\PrimaryKeyRequired
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/PrimaryKeyRequired.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/PrimaryKeyRequired.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9414,7 +9993,7 @@ public function __construct( string $className );
 ## Mvc\Model\Exceptions\PropertyNotAccessible
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/PropertyNotAccessible.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/PropertyNotAccessible.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9453,7 +10032,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\RecordCannotRefresh
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RecordCannotRefresh.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/RecordCannotRefresh.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9489,7 +10068,7 @@ public function __construct( string $className );
 ## Mvc\Model\Exceptions\RecordNotPersisted
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RecordNotPersisted.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/RecordNotPersisted.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9525,7 +10104,7 @@ public function __construct( string $className );
 ## Mvc\Model\Exceptions\ReferencedFieldsMismatch
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ReferencedFieldsMismatch.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/ReferencedFieldsMismatch.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9565,7 +10144,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\RelationAliasMustBeString
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RelationAliasMustBeString.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/RelationAliasMustBeString.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9605,7 +10184,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\RelationNotDefined
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RelationNotDefined.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/RelationNotDefined.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9644,7 +10223,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\RelationRequiresObjectOrArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RelationRequiresObjectOrArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/RelationRequiresObjectOrArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9683,7 +10262,7 @@ public function __construct(
 ## Mvc\Model\Exceptions\ResultsetColumnNotInMap
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ResultsetColumnNotInMap.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/ResultsetColumnNotInMap.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9719,7 +10298,7 @@ public function __construct( string $key );
 ## Mvc\Model\Exceptions\RowIsImmutable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RowIsImmutable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/RowIsImmutable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9755,7 +10334,7 @@ public function __construct();
 ## Mvc\Model\Exceptions\SnapshotsDisabled
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/SnapshotsDisabled.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/SnapshotsDisabled.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9791,7 +10370,7 @@ public function __construct( string $className );
 ## Mvc\Model\Exceptions\StaticMethodRequiresOneArgument
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/StaticMethodRequiresOneArgument.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/StaticMethodRequiresOneArgument.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9827,10 +10406,49 @@ public function __construct(
 ```
 
 
+## Mvc\Model\Exceptions\UnknownEagerRelation
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/UnknownEagerRelation.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsunknowneagerrelation-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsunknowneagerrelation-__construct }
+
+```php
+public function __construct(
+    string $modelName,
+    string $alias
+);
+```
+
+
 ## Mvc\Model\Exceptions\UnknownRelationType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/UnknownRelationType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/UnknownRelationType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9863,10 +10481,118 @@ public function __construct();
 ```
 
 
+## Mvc\Model\Exceptions\UnsupportedEagerHydration
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/UnsupportedEagerHydration.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsunsupportedeagerhydration-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsunsupportedeagerhydration-__construct }
+
+```php
+public function __construct();
+```
+
+
+## Mvc\Model\Exceptions\UnsupportedEagerOption
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/UnsupportedEagerOption.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsunsupportedeageroption-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$option</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsunsupportedeageroption-__construct }
+
+```php
+public function __construct( string $option );
+```
+
+
+## Mvc\Model\Exceptions\UnsupportedEagerResultset
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/UnsupportedEagerResultset.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsunsupportedeagerresultset-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsunsupportedeagerresultset-__construct }
+
+```php
+public function __construct( string $className );
+```
+
+
 ## Mvc\Model\Exceptions\UpdateSnapshotDisabled
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/UpdateSnapshotDisabled.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Exceptions/UpdateSnapshotDisabled.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -9899,12 +10625,90 @@ public function __construct( string $className );
 ```
 
 
+## Mvc\Model\Hydration\CaseInsensitiveColumnMap
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Hydration/CaseInsensitiveColumnMap.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\Model\Hydration\CaseInsensitiveColumnMap`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelhydrationcaseinsensitivecolumnmap-caseinsensitivecolumnmap">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">caseInsensitiveColumnMap</span>(<span class="prm"><span class="st">array</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
+<span class="desc">Attempts to find key case-insensitively</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `caseInsensitiveColumnMap()` { #mvcmodelhydrationcaseinsensitivecolumnmap-caseinsensitivecolumnmap }
+
+```php
+public static function caseInsensitiveColumnMap(
+    array $columnMap,
+    string $key
+): string;
+```
+
+Attempts to find key case-insensitively
+
+
+## Mvc\Model\Hydration\CloneResultMapHydrate
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Hydration/CloneResultMapHydrate.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Support\Settings`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelhydrationcloneresultmaphydrate-cloneresultmaphydrate">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">cloneResultMapHydrate</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$hydrationMode</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$calledClass</span><span class="sm"> = &quot;Phalcon\\Mvc\\Model&quot;</span></span>)</code>
+<span class="desc">Returns an hydrated result based on the data and the column map</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `cloneResultMapHydrate()` { #mvcmodelhydrationcloneresultmaphydrate-cloneresultmaphydrate }
+
+```php
+public static function cloneResultMapHydrate(
+    array $data,
+    mixed $columnMap,
+    int $hydrationMode,
+    string $calledClass = "Phalcon\\Mvc\\Model"
+);
+```
+
+Returns an hydrated result based on the data and the column map
+
+
 ## Mvc\Model\Manager
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Manager.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Manager
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Manager.php){ .src-btn }
 
 This components controls the initialization of models, keeping record of
 relations between the different models of the application.
@@ -9925,7 +10729,7 @@ $di->set(
     }
 );
 
-$robot = new Robots($di);
+$invoice = new Invoices($di);
 ```
 
 <div class="api-tree" markdown>
@@ -9934,7 +10738,7 @@ $robot = new Robots($di);
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidConnectionService` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad` · `Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch` · `Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString` · `Phalcon\Mvc\Model\Exceptions\UnknownRelationType` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionProperty`
+__Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Exception` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidConnectionService` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad` · `Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch` · `Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString` · `Phalcon\Mvc\Model\Exceptions\UnknownRelationType` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Str\UncamelizeTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty`
 { .api-uses }
 
 ### Method Summary
@@ -9990,7 +10794,7 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <a class="api-item" href="#mvcmodelmanager-createbuilder">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">createBuilder</span>( <span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">createBuilder</span>( <span class="st">array|string|null</span> <span class="sv">$params</span><span class="sm"> = null</span> )</code>
 <span class="desc">Creates a Phalcon\Mvc\Model\Query\Builder</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-createquery">
@@ -10002,49 +10806,19 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <a class="api-item" href="#mvcmodelmanager-executequery">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">executeQuery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$phql</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$placeholders</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$types</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">executeQuery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$phql</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$placeholders</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$types</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a Phalcon\Mvc\Model\Query and execute it</span>
-</a>
-<a class="api-item" href="#mvcmodelmanager-existsbelongsto">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">existsBelongsTo</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
-<span class="desc">Checks whether a model has a belongsTo relation with another model</span>
-</a>
-<a class="api-item" href="#mvcmodelmanager-existshasmany">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">existsHasMany</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
-<span class="desc">Checks whether a model has a hasMany relation with another model</span>
-</a>
-<a class="api-item" href="#mvcmodelmanager-existshasmanytomany">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">existsHasManyToMany</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
-<span class="desc">Checks whether a model has a hasManyToMany relation with another model</span>
-</a>
-<a class="api-item" href="#mvcmodelmanager-existshasone">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">existsHasOne</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
-<span class="desc">Checks whether a model has a hasOne relation with another model</span>
-</a>
-<a class="api-item" href="#mvcmodelmanager-existshasonethrough">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">existsHasOneThrough</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
-<span class="desc">Checks whether a model has a hasOneThrough relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getbelongsto">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|array</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getBelongsTo</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets all the belongsTo relations defined in a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getbelongstorecords">
 <code class="vis vis-public">public</code>
-<code class="ret">ResultsetInterface|bool</code>
-<code class="sig"><span class="sf">getBelongsToRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">bool|ResultsetInterface</code>
+<code class="sig"><span class="sf">getBelongsToRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets belongsTo related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getbuilder">
@@ -10065,33 +10839,21 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="sig"><span class="sf">getCustomEventsManager</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns a custom events manager related to a model or null if there is</span>
 </a>
-<a class="api-item" href="#mvcmodelmanager-getdi">
-<code class="vis vis-public">public</code>
-<code class="ret">DiInterface</code>
-<code class="sig"><span class="sf">getDI</span>()</code>
-<span class="desc">Returns the DependencyInjector container</span>
-</a>
-<a class="api-item" href="#mvcmodelmanager-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">EventsManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
 <a class="api-item" href="#mvcmodelmanager-gethasmany">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|array</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getHasMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasMany relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasmanyrecords">
 <code class="vis vis-public">public</code>
-<code class="ret">ResultsetInterface|bool</code>
-<code class="sig"><span class="sf">getHasManyRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">bool|ResultsetInterface</code>
+<code class="sig"><span class="sf">getHasManyRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets hasMany related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasmanytomany">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|array</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getHasManyToMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasManyToMany relations defined on a model</span>
 </a>
@@ -10103,19 +10865,19 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasoneandhasmany">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getHasOneAndHasMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOne relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasonerecords">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface|bool</code>
-<code class="sig"><span class="sf">getHasOneRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">bool|ModelInterface</code>
+<code class="sig"><span class="sf">getHasOneRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets belongsTo related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasonethrough">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|array</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getHasOneThrough</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOneThrough relations defined on a model</span>
 </a>
@@ -10163,24 +10925,24 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 </a>
 <a class="api-item" href="#mvcmodelmanager-getrelationbyalias">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface|bool</code>
+<code class="ret">bool|RelationInterface</code>
 <code class="sig"><span class="sf">getRelationByAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
 <span class="desc">Returns a relation by its alias</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getrelationrecords">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">getRelationRecords</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getRelationRecords</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Helper method to query records based on a relation definition</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getrelations">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getRelations</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 <span class="desc">Query all the relationships defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getrelationsbetween">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|bool</code>
+<code class="ret">array|bool</code>
 <code class="sig"><span class="sf">getRelationsBetween</span>(<span class="prm"><span class="st">string</span> <span class="sv">$first</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$second</span></span>)</code>
 <span class="desc">Query the first relationship defined between two models</span>
 </a>
@@ -10273,8 +11035,15 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="sig"><span class="sf">load</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 <span class="desc">Loads a model throwing an exception if it does not exist</span>
 </a>
+<a class="api-item" href="#mvcmodelmanager-mergefindparameters">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">mergeFindParameters</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$findParamsOne</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$findParamsTwo</span></span>)</code>
+<span class="desc">Merge two arrays of find parameters</span>
+</a>
 <a class="api-item" href="#mvcmodelmanager-missingmethod">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">missingMethod</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Dispatch an event to the listeners and behaviors</span>
 </a>
@@ -10283,11 +11052,23 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="sig"><span class="sf">notifyEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span></span>)</code>
 <span class="desc">Receives events generated in the models and dispatches them to an</span>
 </a>
+<a class="api-item" href="#mvcmodelmanager-registerwrite">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">registerWrite</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
+<span class="desc">Marks the model&#039;s write connection service as written-to for the</span>
+</a>
 <a class="api-item" href="#mvcmodelmanager-removebehavior">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">removeBehavior</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$behaviorClass</span></span>)</code>
 <span class="desc">Removes a behavior from a model</span>
+</a>
+<a class="api-item" href="#mvcmodelmanager-resetconnectionstate">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">resetConnectionState</span>()</code>
+<span class="desc">Clears the per-request sticky write tracking. Call this between</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setconnectionservice">
 <code class="vis vis-public">public</code>
@@ -10300,18 +11081,6 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setCustomEventsManager</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">EventsManagerInterface</span> <span class="sv">$eventsManager</span></span>)</code>
 <span class="desc">Sets a custom events manager for a specific model</span>
-</a>
-<a class="api-item" href="#mvcmodelmanager-setdi">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Sets the DependencyInjector container</span>
-</a>
-<a class="api-item" href="#mvcmodelmanager-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">EventsManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets a global events manager</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setmodelprefix">
 <code class="vis vis-public">public</code>
@@ -10343,6 +11112,12 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="sig"><span class="sf">setReusableRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$records</span></span>)</code>
 <span class="desc">Stores a reusable record in the internal list</span>
 </a>
+<a class="api-item" href="#mvcmodelmanager-setsticky">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setSticky</span>( <span class="st">bool</span> <span class="sv">$sticky</span> )</code>
+<span class="desc">Enables or disables sticky connections. When enabled, once a model has</span>
+</a>
 <a class="api-item" href="#mvcmodelmanager-setwriteconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
@@ -10360,12 +11135,6 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">getConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$connectionServices</span></span>)</code>
 <span class="desc">Returns the connection to read or write data related to a model</span>
-</a>
-<a class="api-item" href="#mvcmodelmanager-mergefindparameters">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">mergeFindParameters</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$findParamsOne</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$findParamsTwo</span></span>)</code>
-<span class="desc">Merge two arrays of find parameters</span>
 </a>
 </div>
 
@@ -10402,24 +11171,22 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$customEventsManager</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$dynamicUpdate</span><span class="sm"> = []</span></code>
-<span class="desc">Does the model use dynamic update, instead of updating all rows?</span>
+<code class="sig"><span class="sv">$dirtyWriteServices</span><span class="sm"> = []</span></code>
+<span class="desc">Write connection services that have been written to during the current
+request cycle. Used by the sticky mechanism to route reads to the write
+connection after a write.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">EventsManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$dynamicUpdate</span><span class="sm"> = []</span></code>
+<span class="desc">Does the model use dynamic update, instead of updating all rows?</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -10525,6 +11292,13 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$sticky</span><span class="sm"> = false</span></code>
+<span class="desc">Whether reads should stick to the write connection after a write has
+occurred during the current request cycle.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$writeConnectionServices</span><span class="sm"> = []</span></code>
 </div>
@@ -10532,7 +11306,7 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 
 ### Methods
 
-<div class="api-group">Public · 70</div>
+<div class="api-group">Public · 65</div>
 
 #### `__destruct()` { #mvcmodelmanager-__destruct }
 
@@ -10640,7 +11414,7 @@ Clears the internal reusable list
 #### `createBuilder()` { #mvcmodelmanager-createbuilder }
 
 ```php
-public function createBuilder( mixed $params = null ): BuilderInterface;
+public function createBuilder( array|string|null $params = null ): BuilderInterface;
 ```
 
 Creates a Phalcon\Mvc\Model\Query\Builder
@@ -10658,99 +11432,44 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 ```php
 public function executeQuery(
     string $phql,
-    mixed $placeholders = null,
-    mixed $types = null
+    array|null $placeholders = null,
+    array|null $types = null
 ): mixed;
 ```
 
 Creates a Phalcon\Mvc\Model\Query and execute it
 
 ```php
-$model = new Robots();
+$model = new Invoices();
 $manager = $model->getModelsManager();
 
 // \Phalcon\Mvc\Model\Resultset\Simple
-$manager->executeQuery('SELECT * FROM Robots');
+$manager->executeQuery('SELECT * FROM Invoices');
 
 // \Phalcon\Mvc\Model\Resultset\Complex
-$manager->executeQuery('SELECT COUNT(type) FROM Robots GROUP BY type');
+$manager->executeQuery('SELECT COUNT(inv_status_flag) FROM Invoices GROUP BY inv_status_flag');
 
 // \Phalcon\Mvc\Model\Query\StatusInterface
-$manager->executeQuery('INSERT INTO Robots (id) VALUES (1)');
+$manager->executeQuery('INSERT INTO Invoices (inv_id) VALUES (1)');
 
 // \Phalcon\Mvc\Model\Query\StatusInterface
-$manager->executeQuery('UPDATE Robots SET id = 0 WHERE id = :id:', ['id' => 1]);
+$manager->executeQuery('UPDATE Invoices SET inv_id = 0 WHERE inv_id = :id:', ['id' => 1]);
 
 // \Phalcon\Mvc\Model\Query\StatusInterface
-$manager->executeQuery('DELETE FROM Robots WHERE id = :id:', ['id' => 1]);
+$manager->executeQuery('DELETE FROM Invoices WHERE inv_id = :id:', ['id' => 1]);
 ```
-
-#### `existsBelongsTo()` { #mvcmodelmanager-existsbelongsto }
-
-```php
-public function existsBelongsTo(
-    string $modelName,
-    string $modelRelation
-): bool;
-```
-
-Checks whether a model has a belongsTo relation with another model
-
-#### `existsHasMany()` { #mvcmodelmanager-existshasmany }
-
-```php
-public function existsHasMany(
-    string $modelName,
-    string $modelRelation
-): bool;
-```
-
-Checks whether a model has a hasMany relation with another model
-
-#### `existsHasManyToMany()` { #mvcmodelmanager-existshasmanytomany }
-
-```php
-public function existsHasManyToMany(
-    string $modelName,
-    string $modelRelation
-): bool;
-```
-
-Checks whether a model has a hasManyToMany relation with another model
-
-#### `existsHasOne()` { #mvcmodelmanager-existshasone }
-
-```php
-public function existsHasOne(
-    string $modelName,
-    string $modelRelation
-): bool;
-```
-
-Checks whether a model has a hasOne relation with another model
-
-#### `existsHasOneThrough()` { #mvcmodelmanager-existshasonethrough }
-
-```php
-public function existsHasOneThrough(
-    string $modelName,
-    string $modelRelation
-): bool;
-```
-
-Checks whether a model has a hasOneThrough relation with another model
 
 #### `getBelongsTo()` { #mvcmodelmanager-getbelongsto }
 
 ```php
-public function getBelongsTo( ModelInterface $model ): RelationInterface[]|array;
+public function getBelongsTo( ModelInterface $model ): array;
 ```
 
 Gets all the belongsTo relations defined in a model
 
 ```php
 $relations = $modelsManager->getBelongsTo(
-    new Robots()
+    new Invoices()
 );
 ```
 
@@ -10762,8 +11481,8 @@ public function getBelongsToRecords(
     string $modelRelation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
-): ResultsetInterface|bool;
+    string|null $method = null
+): bool|ResultsetInterface;
 ```
 
 Gets belongsTo related records from a model
@@ -10797,26 +11516,10 @@ public function getCustomEventsManager( ModelInterface $model ): EventsManagerIn
 Returns a custom events manager related to a model or null if there is
 no related events manager
 
-#### `getDI()` { #mvcmodelmanager-getdi }
-
-```php
-public function getDI(): DiInterface;
-```
-
-Returns the DependencyInjector container
-
-#### `getEventsManager()` { #mvcmodelmanager-geteventsmanager }
-
-```php
-public function getEventsManager(): EventsManagerInterface|null;
-```
-
-Returns the internal event manager
-
 #### `getHasMany()` { #mvcmodelmanager-gethasmany }
 
 ```php
-public function getHasMany( ModelInterface $model ): RelationInterface[]|array;
+public function getHasMany( ModelInterface $model ): array;
 ```
 
 Gets hasMany relations defined on a model
@@ -10829,8 +11532,8 @@ public function getHasManyRecords(
     string $modelRelation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
-): ResultsetInterface|bool;
+    string|null $method = null
+): bool|ResultsetInterface;
 ```
 
 Gets hasMany related records from a model
@@ -10838,7 +11541,7 @@ Gets hasMany related records from a model
 #### `getHasManyToMany()` { #mvcmodelmanager-gethasmanytomany }
 
 ```php
-public function getHasManyToMany( ModelInterface $model ): RelationInterface[]|array;
+public function getHasManyToMany( ModelInterface $model ): array;
 ```
 
 Gets hasManyToMany relations defined on a model
@@ -10854,7 +11557,7 @@ Gets hasOne relations defined on a model
 #### `getHasOneAndHasMany()` { #mvcmodelmanager-gethasoneandhasmany }
 
 ```php
-public function getHasOneAndHasMany( ModelInterface $model ): RelationInterface[];
+public function getHasOneAndHasMany( ModelInterface $model ): array;
 ```
 
 Gets hasOne relations defined on a model
@@ -10867,8 +11570,8 @@ public function getHasOneRecords(
     string $modelRelation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
-): ModelInterface|bool;
+    string|null $method = null
+): bool|ModelInterface;
 ```
 
 Gets belongsTo related records from a model
@@ -10876,7 +11579,7 @@ Gets belongsTo related records from a model
 #### `getHasOneThrough()` { #mvcmodelmanager-gethasonethrough }
 
 ```php
-public function getHasOneThrough( ModelInterface $model ): RelationInterface[]|array;
+public function getHasOneThrough( ModelInterface $model ): array;
 ```
 
 Gets hasOneThrough relations defined on a model
@@ -10943,7 +11646,7 @@ Returns the connection service name used to read data related to a model
 public function getRelationByAlias(
     string $modelName,
     string $alias
-): RelationInterface|bool;
+): bool|RelationInterface;
 ```
 
 Returns a relation by its alias
@@ -10954,8 +11657,8 @@ Returns a relation by its alias
 public function getRelationRecords(
     RelationInterface $relation,
     ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
+    array|string|null $parameters = null,
+    string|null $method = null
 );
 ```
 
@@ -10964,7 +11667,7 @@ Helper method to query records based on a relation definition
 #### `getRelations()` { #mvcmodelmanager-getrelations }
 
 ```php
-public function getRelations( string $modelName ): RelationInterface[];
+public function getRelations( string $modelName ): array;
 ```
 
 Query all the relationships defined on a model
@@ -10975,7 +11678,7 @@ Query all the relationships defined on a model
 public function getRelationsBetween(
     string $first,
     string $second
-): RelationInterface[]|bool;
+): array|bool;
 ```
 
 Query the first relationship defined between two models
@@ -11107,7 +11810,7 @@ Check whether a model property is declared as public.
 
 ```php
 $isPublic = $manager->isVisibleModelProperty(
-    new Robots(),
+    new Invoices(),
     "name"
 );
 ```
@@ -11131,6 +11834,25 @@ public function load( string $modelName ): ModelInterface;
 
 Loads a model throwing an exception if it does not exist
 
+#### `mergeFindParameters()` { #mvcmodelmanager-mergefindparameters }
+
+```php
+final public static function mergeFindParameters(
+    mixed $findParamsOne,
+    mixed $findParamsTwo
+): array;
+```
+
+Merge two arrays of find parameters
+
+The order matters. Conditions coming from key 0 or "conditions" are
+ANDed in argument order; `bind` and `bindTypes` are merged for the
+second argument only and assigned outright for the first. Pass the
+parameters whose bindings must survive as the second argument.
+
+Static because it reads nothing but its arguments, and public so bulk
+loaders can reuse the merge instead of duplicating these semantics.
+
 #### `missingMethod()` { #mvcmodelmanager-missingmethod }
 
 ```php
@@ -11138,7 +11860,7 @@ public function missingMethod(
     ModelInterface $model,
     string $eventName,
     mixed $data
-);
+): mixed;
 ```
 
 Dispatch an event to the listeners and behaviors
@@ -11158,6 +11880,16 @@ Receives events generated in the models and dispatches them to an
 events-manager if available. Notify the behaviors that are listening in
 the model
 
+#### `registerWrite()` { #mvcmodelmanager-registerwrite }
+
+```php
+public function registerWrite( ModelInterface $model ): void;
+```
+
+Marks the model's write connection service as written-to for the
+current request cycle. Used by the sticky mechanism to route
+subsequent reads to the write connection.
+
 #### `removeBehavior()` { #mvcmodelmanager-removebehavior }
 
 ```php
@@ -11168,6 +11900,16 @@ public function removeBehavior(
 ```
 
 Removes a behavior from a model
+
+#### `resetConnectionState()` { #mvcmodelmanager-resetconnectionstate }
+
+```php
+public function resetConnectionState(): void;
+```
+
+Clears the per-request sticky write tracking. Call this between
+requests in long-running runtimes (e.g. Swoole, RoadRunner) where the
+manager instance is reused across requests.
 
 #### `setConnectionService()` { #mvcmodelmanager-setconnectionservice }
 
@@ -11191,22 +11933,6 @@ public function setCustomEventsManager(
 
 Sets a custom events manager for a specific model
 
-#### `setDI()` { #mvcmodelmanager-setdi }
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the DependencyInjector container
-
-#### `setEventsManager()` { #mvcmodelmanager-seteventsmanager }
-
-```php
-public function setEventsManager( EventsManagerInterface $eventsManager ): void;
-```
-
-Sets a global events manager
-
 #### `setModelPrefix()` { #mvcmodelmanager-setmodelprefix }
 
 ```php
@@ -11229,9 +11955,9 @@ $di->set(
     }
 );
 
-$robots = new Robots();
+$invoices = new Invoices();
 
-echo $robots->getSource(); // wp_robots
+echo $invoices->getSource(); // wp_co_invoices
 ```
 
 $param string $prefix
@@ -11281,6 +12007,16 @@ public function setReusableRecords(
 
 Stores a reusable record in the internal list
 
+#### `setSticky()` { #mvcmodelmanager-setsticky }
+
+```php
+public function setSticky( bool $sticky ): void;
+```
+
+Enables or disables sticky connections. When enabled, once a model has
+written to its write connection during the current request cycle, any
+further reads for that write service use the write connection.
+
 #### `setWriteConnectionService()` { #mvcmodelmanager-setwriteconnectionservice }
 
 ```php
@@ -11303,7 +12039,7 @@ public function useDynamicUpdate(
 
 Sets if a model must use dynamic update instead of the all-field update
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 1</div>
 
 #### `getConnection()` { #mvcmodelmanager-getconnection }
 
@@ -11317,24 +12053,11 @@ protected function getConnection(
 Returns the connection to read or write data related to a model
 depending on the connection services.
 
-#### `mergeFindParameters()` { #mvcmodelmanager-mergefindparameters }
-
-```php
-final protected function mergeFindParameters(
-    mixed $findParamsOne,
-    mixed $findParamsTwo
-): array;
-```
-
-Merge two arrays of find parameters
-
 
 ## Mvc\Model\ManagerInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/ManagerInterface.zep){ .src-btn }
-
-Phalcon\Mvc\Model\ManagerInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/ManagerInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Model\Manager
 
@@ -11344,7 +12067,7 @@ Interface for Phalcon\Mvc\Model\Manager
 
 </div>
 
-__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface`
+__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\Resultset\Simple`
 { .api-uses }
 
 ### Method Summary
@@ -11395,7 +12118,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 <a class="api-item" href="#mvcmodelmanagerinterface-createbuilder">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">createBuilder</span>( <span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">createBuilder</span>( <span class="st">array|string|null</span> <span class="sv">$params</span><span class="sm"> = null</span> )</code>
 <span class="desc">Creates a Phalcon\Mvc\Model\Query\Builder</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-createquery">
@@ -11407,19 +12130,19 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 <a class="api-item" href="#mvcmodelmanagerinterface-executequery">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">executeQuery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$phql</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$placeholders</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$types</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">executeQuery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$phql</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$placeholders</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$types</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a Phalcon\Mvc\Model\Query and execute it</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getbelongsto">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|array</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getBelongsTo</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets belongsTo relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getbelongstorecords">
 <code class="vis vis-public">public</code>
-<code class="ret">ResultsetInterface|bool</code>
-<code class="sig"><span class="sf">getBelongsToRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">bool|ResultsetInterface</code>
+<code class="sig"><span class="sf">getBelongsToRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets belongsTo related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getbuilder">
@@ -11430,43 +12153,43 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasmany">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|array</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getHasMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasMany relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasmanyrecords">
 <code class="vis vis-public">public</code>
-<code class="ret">ResultsetInterface|bool</code>
-<code class="sig"><span class="sf">getHasManyRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">bool|ResultsetInterface</code>
+<code class="sig"><span class="sf">getHasManyRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets hasMany related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasmanytomany">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|array</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getHasManyToMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasManyToMany relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasone">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|array</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getHasOne</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOne relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasoneandhasmany">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getHasOneAndHasMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOne relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasonerecords">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface|bool</code>
-<code class="sig"><span class="sf">getHasOneRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="ret">bool|ModelInterface</code>
+<code class="sig"><span class="sf">getHasOneRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets hasOne related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasonethrough">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|array</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getHasOneThrough</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOneThrough relations defined on a model</span>
 </a>
@@ -11508,24 +12231,24 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getrelationbyalias">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface|bool</code>
+<code class="ret">bool|RelationInterface</code>
 <code class="sig"><span class="sf">getRelationByAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
 <span class="desc">Returns a relation by its alias</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getrelationrecords">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">getRelationRecords</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getRelationRecords</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Helper method to query records based on a relation definition</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getrelations">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getRelations</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 <span class="desc">Query all the relationships defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getrelationsbetween">
 <code class="vis vis-public">public</code>
-<code class="ret">RelationInterface[]|bool</code>
+<code class="ret">array|bool</code>
 <code class="sig"><span class="sf">getRelationsBetween</span>(<span class="prm"><span class="st">string</span> <span class="sv">$first</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$second</span></span>)</code>
 <span class="desc">Query the relations between two models</span>
 </a>
@@ -11625,13 +12348,25 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 <a class="api-item" href="#mvcmodelmanagerinterface-notifyevent">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">notifyEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span></span>)</code>
-<span class="desc">Receives events generated in the models and dispatches them to an events-manager if available</span>
+<span class="desc">Receives events generated in the models and dispatches them to an</span>
+</a>
+<a class="api-item" href="#mvcmodelmanagerinterface-registerwrite">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">registerWrite</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
+<span class="desc">Marks the model&#039;s write connection service as written-to for the</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-removebehavior">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">removeBehavior</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$behaviorClass</span></span>)</code>
 <span class="desc">Removes a behavior from a model</span>
+</a>
+<a class="api-item" href="#mvcmodelmanagerinterface-resetconnectionstate">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">resetConnectionState</span>()</code>
+<span class="desc">Clears the per-request sticky write tracking</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-setconnectionservice">
 <code class="vis vis-public">public</code>
@@ -11663,6 +12398,12 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 <code class="sig"><span class="sf">setReusableRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$records</span></span>)</code>
 <span class="desc">Stores a reusable record in the internal list</span>
 </a>
+<a class="api-item" href="#mvcmodelmanagerinterface-setsticky">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setSticky</span>( <span class="st">bool</span> <span class="sv">$sticky</span> )</code>
+<span class="desc">Enables or disables sticky connections</span>
+</a>
 <a class="api-item" href="#mvcmodelmanagerinterface-setwriteconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">setWriteConnectionService</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$connectionService</span></span>)</code>
@@ -11678,7 +12419,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 
 ### Methods
 
-<div class="api-group">Public · 55</div>
+<div class="api-group">Public · 58</div>
 
 #### `addBehavior()` { #mvcmodelmanagerinterface-addbehavior }
 
@@ -11778,7 +12519,7 @@ Clears the internal reusable list
 #### `createBuilder()` { #mvcmodelmanagerinterface-createbuilder }
 
 ```php
-public function createBuilder( mixed $params = null ): BuilderInterface;
+public function createBuilder( array|string|null $params = null ): BuilderInterface;
 ```
 
 Creates a Phalcon\Mvc\Model\Query\Builder
@@ -11796,8 +12537,8 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 ```php
 public function executeQuery(
     string $phql,
-    mixed $placeholders = null,
-    mixed $types = null
+    array|null $placeholders = null,
+    array|null $types = null
 ): mixed;
 ```
 
@@ -11806,7 +12547,7 @@ Creates a Phalcon\Mvc\Model\Query and execute it
 #### `getBelongsTo()` { #mvcmodelmanagerinterface-getbelongsto }
 
 ```php
-public function getBelongsTo( ModelInterface $model ): RelationInterface[]|array;
+public function getBelongsTo( ModelInterface $model ): array;
 ```
 
 Gets belongsTo relations defined on a model
@@ -11818,9 +12559,9 @@ public function getBelongsToRecords(
     string $modelName,
     string $modelRelation,
     ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-): ResultsetInterface|bool;
+    array|string|null $parameters = null,
+    string|null $method = null
+): bool|ResultsetInterface;
 ```
 
 Gets belongsTo related records from a model
@@ -11836,7 +12577,7 @@ Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
 #### `getHasMany()` { #mvcmodelmanagerinterface-gethasmany }
 
 ```php
-public function getHasMany( ModelInterface $model ): RelationInterface[]|array;
+public function getHasMany( ModelInterface $model ): array;
 ```
 
 Gets hasMany relations defined on a model
@@ -11848,9 +12589,9 @@ public function getHasManyRecords(
     string $modelName,
     string $modelRelation,
     ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-): ResultsetInterface|bool;
+    array|string|null $parameters = null,
+    string|null $method = null
+): bool|ResultsetInterface;
 ```
 
 Gets hasMany related records from a model
@@ -11858,7 +12599,7 @@ Gets hasMany related records from a model
 #### `getHasManyToMany()` { #mvcmodelmanagerinterface-gethasmanytomany }
 
 ```php
-public function getHasManyToMany( ModelInterface $model ): RelationInterface[]|array;
+public function getHasManyToMany( ModelInterface $model ): array;
 ```
 
 Gets hasManyToMany relations defined on a model
@@ -11866,7 +12607,7 @@ Gets hasManyToMany relations defined on a model
 #### `getHasOne()` { #mvcmodelmanagerinterface-gethasone }
 
 ```php
-public function getHasOne( ModelInterface $model ): RelationInterface[]|array;
+public function getHasOne( ModelInterface $model ): array;
 ```
 
 Gets hasOne relations defined on a model
@@ -11874,7 +12615,7 @@ Gets hasOne relations defined on a model
 #### `getHasOneAndHasMany()` { #mvcmodelmanagerinterface-gethasoneandhasmany }
 
 ```php
-public function getHasOneAndHasMany( ModelInterface $model ): RelationInterface[];
+public function getHasOneAndHasMany( ModelInterface $model ): array;
 ```
 
 Gets hasOne relations defined on a model
@@ -11886,9 +12627,9 @@ public function getHasOneRecords(
     string $modelName,
     string $modelRelation,
     ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-): ModelInterface|bool;
+    array|string|null $parameters = null,
+    string|null $method = null
+): bool|ModelInterface;
 ```
 
 Gets hasOne related records from a model
@@ -11896,7 +12637,7 @@ Gets hasOne related records from a model
 #### `getHasOneThrough()` { #mvcmodelmanagerinterface-gethasonethrough }
 
 ```php
-public function getHasOneThrough( ModelInterface $model ): RelationInterface[]|array;
+public function getHasOneThrough( ModelInterface $model ): array;
 ```
 
 Gets hasOneThrough relations defined on a model
@@ -11955,7 +12696,7 @@ Returns the connection service name used to read data related to a model
 public function getRelationByAlias(
     string $modelName,
     string $alias
-): RelationInterface|bool;
+): bool|RelationInterface;
 ```
 
 Returns a relation by its alias
@@ -11966,8 +12707,8 @@ Returns a relation by its alias
 public function getRelationRecords(
     RelationInterface $relation,
     ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
+    array|string|null $parameters = null,
+    string|null $method = null
 );
 ```
 
@@ -11976,7 +12717,7 @@ Helper method to query records based on a relation definition
 #### `getRelations()` { #mvcmodelmanagerinterface-getrelations }
 
 ```php
-public function getRelations( string $modelName ): RelationInterface[];
+public function getRelations( string $modelName ): array;
 ```
 
 Query all the relationships defined on a model
@@ -11987,7 +12728,7 @@ Query all the relationships defined on a model
 public function getRelationsBetween(
     string $first,
     string $second
-): RelationInterface[]|bool;
+): array|bool;
 ```
 
 Query the relations between two models
@@ -12119,8 +12860,8 @@ Check whether a model property is declared as public.
 
 ```php
 $isPublic = $manager->isVisibleModelProperty(
-    new Robots(),
-    "name"
+    new Invoices(),
+    "inv_title"
 );
 ```
 
@@ -12166,8 +12907,18 @@ public function notifyEvent(
 );
 ```
 
-Receives events generated in the models and dispatches them to an events-manager if available
-Notify the behaviors that are listening in the model
+Receives events generated in the models and dispatches them to an
+events-manager if available. Notify the behaviors that are listening
+in the model
+
+#### `registerWrite()` { #mvcmodelmanagerinterface-registerwrite }
+
+```php
+public function registerWrite( ModelInterface $model ): void;
+```
+
+Marks the model's write connection service as written-to for the
+current request cycle (sticky connections)
 
 #### `removeBehavior()` { #mvcmodelmanagerinterface-removebehavior }
 
@@ -12179,6 +12930,14 @@ public function removeBehavior(
 ```
 
 Removes a behavior from a model
+
+#### `resetConnectionState()` { #mvcmodelmanagerinterface-resetconnectionstate }
+
+```php
+public function resetConnectionState(): void;
+```
+
+Clears the per-request sticky write tracking
 
 #### `setConnectionService()` { #mvcmodelmanagerinterface-setconnectionservice }
 
@@ -12236,6 +12995,14 @@ public function setReusableRecords(
 
 Stores a reusable record in the internal list
 
+#### `setSticky()` { #mvcmodelmanagerinterface-setsticky }
+
+```php
+public function setSticky( bool $sticky ): void;
+```
+
+Enables or disables sticky connections
+
 #### `setWriteConnectionService()` { #mvcmodelmanagerinterface-setwriteconnectionservice }
 
 ```php
@@ -12262,9 +13029,7 @@ Sets if a model must use dynamic update instead of the all-field update
 ## Mvc\Model\MetaData
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData.zep){ .src-btn }
-
-Phalcon\Mvc\Model\MetaData
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData.php){ .src-btn }
 
 Because Phalcon\Mvc\Model requires meta-data like field names, data types,
 primary keys, etc. This component collect them and store for further
@@ -12277,7 +13042,7 @@ A standard Phalcon\Mvc\Model\MetaData can be used to query model attributes:
 $metaData = new \Phalcon\Mvc\Model\MetaData\Memory();
 
 $attributes = $metaData->getAttributes(
-    new Robots()
+    new Invoices()
 );
 
 print_r($attributes);
@@ -12319,16 +13084,18 @@ is defined:
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\MetaData`** - implements [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface), [`Phalcon\Mvc\Model\MetaDataInterface`](#mvcmodelmetadatainterface)
-    - [`Phalcon\Mvc\Model\MetaData\Apcu`](#mvcmodelmetadataapcu)
-    - [`Phalcon\Mvc\Model\MetaData\Libmemcached`](#mvcmodelmetadatalibmemcached)
-    - [`Phalcon\Mvc\Model\MetaData\Memory`](#mvcmodelmetadatamemory)
-    - [`Phalcon\Mvc\Model\MetaData\Redis`](#mvcmodelmetadataredis)
-    - [`Phalcon\Mvc\Model\MetaData\Stream`](#mvcmodelmetadatastream)
+- `\stdClass`
+    - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
+        - **`Phalcon\Mvc\Model\MetaData`** - implements [`Phalcon\Mvc\Model\MetaDataInterface`](#mvcmodelmetadatainterface)
+            - [`Phalcon\Mvc\Model\MetaData\Apcu`](#mvcmodelmetadataapcu)
+            - [`Phalcon\Mvc\Model\MetaData\Libmemcached`](#mvcmodelmetadatalibmemcached)
+            - [`Phalcon\Mvc\Model\MetaData\Memory`](#mvcmodelmetadatamemory)
+            - [`Phalcon\Mvc\Model\MetaData\Redis`](#mvcmodelmetadataredis)
+            - [`Phalcon\Mvc\Model\MetaData\Stream`](#mvcmodelmetadatastream)
 
 </div>
 
-__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired` · `Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed` · `Phalcon\Mvc\Model\MetaData\Strategy\Introspection` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed` · `Phalcon\Mvc\Model\MetaData\Strategy\Introspection` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface` · `Phalcon\Support\Settings` · `Phalcon\Traits\Php\IniTrait`
 { .api-uses }
 
 ### Method Summary
@@ -12475,7 +13242,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` ·
 <a class="api-item" href="#mvcmodelmetadata-read">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string|null</span> <span class="sv">$key</span> )</code>
 <span class="desc">Reads metadata from the adapter</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-readcolumnmap">
@@ -12498,7 +13265,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` ·
 </a>
 <a class="api-item" href="#mvcmodelmetadata-readmetadataindex">
 <code class="vis vis-public">public</code>
-<code class="ret">array|string|null</code>
+<code class="ret">array|bool|string|null</code>
 <code class="sig"><span class="sf">readMetaDataIndex</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Reads meta-data for certain model</span>
 </a>
@@ -12520,17 +13287,11 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` ·
 <code class="sig"><span class="sf">setAutomaticUpdateAttributes</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Set the attributes that must be ignored from the UPDATE SQL generation</span>
 </a>
-<a class="api-item" href="#mvcmodelmetadata-setdi">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Sets the DependencyInjector container</span>
-</a>
 <a class="api-item" href="#mvcmodelmetadata-setemptystringattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setEmptyStringAttributes</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
-<span class="desc">Set the attributes that allow empty string values</span>
+<span class="desc">Initialize old behavior for compatability</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-setstrategy">
 <code class="vis vis-public">public</code>
@@ -12550,16 +13311,11 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` ·
 <code class="sig"><span class="sf">writeMetaDataIndex</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes meta-data for certain model using a MODEL_* constant</span>
 </a>
-<a class="api-item" href="#mvcmodelmetadata-getarrval">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">@todo Remove this when we get traits</span>
-</a>
 <a class="api-item" href="#mvcmodelmetadata-initialize">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">initialize</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$schema</span></span>)</code>
-<span class="desc">Initialize old behaviour for compatability</span>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">initialize</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$schema</span></span>)</code>
+<span class="desc">Initialize old behavior for compatability</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-initializecolumnmap">
 <code class="vis vis-protected">protected</code>
@@ -12570,7 +13326,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` ·
 <a class="api-item" href="#mvcmodelmetadata-initializemetadata">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">initializeMetaData</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$key</span></span>)</code>
+<code class="sig"><span class="sf">initializeMetaData</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span></span>)</code>
 <span class="desc">Initialize the metadata for certain table</span>
 </a>
 </div>
@@ -12685,7 +13441,7 @@ inside initializeMetaData() after the real schema is loaded.</span>
 
 ### Methods
 
-<div class="api-group">Public · 36</div>
+<div class="api-group">Public · 35</div>
 
 #### `getAdapter()` { #mvcmodelmetadata-getadapter }
 
@@ -12706,7 +13462,7 @@ Returns table attributes names (fields)
 ```php
 print_r(
     $metaData->getAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12720,9 +13476,7 @@ public function getAutomaticCreateAttributes( ModelInterface $model ): array;
 Returns attributes that must be ignored from the INSERT SQL generation
 
 ```php
-print_r(
-    $metaData->getAutomaticCreateAttributes(
-        new Robots()
+print_r(eadColumnMapIndex)
     )
 );
 ```
@@ -12738,7 +13492,7 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 ```php
 print_r(
     $metaData->getAutomaticUpdateAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12754,7 +13508,7 @@ Returns attributes and their bind data types
 ```php
 print_r(
     $metaData->getBindTypes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12770,7 +13524,7 @@ Returns the column map if any
 ```php
 print_r(
     $metaData->getColumnMap(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12778,7 +13532,7 @@ print_r(
 #### `getColumnMapUniqueKey()` { #mvcmodelmetadata-getcolumnmapuniquekey }
 
 ```php
-public final function getColumnMapUniqueKey( ModelInterface $model ): string|null;
+final public function getColumnMapUniqueKey( ModelInterface $model ): string|null;
 ```
 
 Returns a ColumnMap Unique key for meta-data is created using className
@@ -12802,7 +13556,7 @@ Returns attributes and their data types
 ```php
 print_r(
     $metaData->getDataTypes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12818,7 +13572,7 @@ Returns attributes which types are numerical
 ```php
 print_r(
     $metaData->getDataTypesNumeric(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12834,7 +13588,7 @@ Returns attributes (which have default values) and their default values
 ```php
 print_r(
     $metaData->getDefaultValues(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12850,7 +13604,7 @@ Returns attributes allow empty strings
 ```php
 print_r(
     $metaData->getEmptyStringAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12866,7 +13620,7 @@ Returns the name of identity field (if one is present)
 ```php
 print_r(
     $metaData->getIdentityField(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12874,7 +13628,7 @@ print_r(
 #### `getMetaDataUniqueKey()` { #mvcmodelmetadata-getmetadatauniquekey }
 
 ```php
-public final function getMetaDataUniqueKey( ModelInterface $model ): string|null;
+final public function getMetaDataUniqueKey( ModelInterface $model ): string|null;
 ```
 
 Returns a MetaData Unique key for meta-data is created using className
@@ -12901,7 +13655,7 @@ Returns an array of fields which are not part of the primary key
 ```php
 print_r(
     $metaData->getNonPrimaryKeyAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12917,7 +13671,7 @@ Returns an array of not null attributes
 ```php
 print_r(
     $metaData->getNotNullAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12933,7 +13687,7 @@ Returns an array of fields which are part of the primary key
 ```php
 print_r(
     $metaData->getPrimaryKeyAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12949,7 +13703,7 @@ Returns the reverse column map if any
 ```php
 print_r(
     $metaData->getReverseColumnMap(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12976,7 +13730,7 @@ Check if a model has certain attribute
 ```php
 var_dump(
     $metaData->hasAttribute(
-        new Robots(),
+        new Invoices(),
         "name"
     )
 );
@@ -13010,7 +13764,7 @@ Compares if two models are the same in memory
 #### `read()` { #mvcmodelmetadata-read }
 
 ```php
-public function read( mixed $key ): array|null;
+public function read( string|null $key ): array|null;
 ```
 
 Reads metadata from the adapter
@@ -13026,7 +13780,7 @@ Reads the ordered/reversed column map for certain model
 ```php
 print_r(
     $metaData->readColumnMap(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -13045,7 +13799,7 @@ Reads column-map information for certain model using a MODEL_* constant
 ```php
 print_r(
     $metaData->readColumnMapIndex(
-        new Robots(),
+        new Invoices(),
         MetaData::MODELS_REVERSE_COLUMN_MAP
     )
 );
@@ -13062,7 +13816,7 @@ Reads the complete meta-data for certain model
 ```php
 print_r(
     $metaData->readMetaData(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -13073,7 +13827,7 @@ print_r(
 final public function readMetaDataIndex(
     ModelInterface $model,
     int $index
-): array|string|null;
+): array|bool|string|null;
 ```
 
 Reads meta-data for certain model
@@ -13081,7 +13835,7 @@ Reads meta-data for certain model
 ```php
 print_r(
     $metaData->readMetaDataIndex(
-        new Robots(),
+        new Invoices(),
         0
     )
 );
@@ -13112,7 +13866,7 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 ```php
 $metaData->setAutomaticCreateAttributes(
-    new Robots(),
+    new Invoices(),
     [
         "created_at" => true,
     ]
@@ -13132,20 +13886,12 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 
 ```php
 $metaData->setAutomaticUpdateAttributes(
-    new Robots(),
+    new Invoices(),
     [
         "modified_at" => true,
     ]
 );
 ```
-
-#### `setDI()` { #mvcmodelmetadata-setdi }
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the DependencyInjector container
 
 #### `setEmptyStringAttributes()` { #mvcmodelmetadata-setemptystringattributes }
 
@@ -13156,11 +13902,13 @@ public function setEmptyStringAttributes(
 ): void;
 ```
 
+Initialize old behavior for compatability
+
 Set the attributes that allow empty string values
 
 ```php
 $metaData->setEmptyStringAttributes(
-    new Robots(),
+    new Invoices(),
     [
         "name" => true,
     ]
@@ -13201,7 +13949,7 @@ Writes meta-data for certain model using a MODEL_* constant
 ```php
 print_r(
     $metaData->writeColumnMapIndex(
-        new Robots(),
+        new Invoices(),
         MetaData::MODELS_REVERSE_COLUMN_MAP,
         [
             "leName" => "name",
@@ -13210,32 +13958,20 @@ print_r(
 );
 ```
 
-<div class="api-group">Protected · 4</div>
-
-#### `getArrVal()` { #mvcmodelmetadata-getarrval }
-
-```php
-protected function getArrVal(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null
-): mixed;
-```
-
-@todo Remove this when we get traits
+<div class="api-group">Protected · 3</div>
 
 #### `initialize()` { #mvcmodelmetadata-initialize }
 
 ```php
 final protected function initialize(
     ModelInterface $model,
-    mixed $key,
+    string $key,
     mixed $table,
     mixed $schema
-);
+): void;
 ```
 
-Initialize old behaviour for compatability
+Initialize old behavior for compatability
 
 #### `initializeColumnMap()` { #mvcmodelmetadata-initializecolumnmap }
 
@@ -13253,7 +13989,7 @@ Initialize ColumnMap for a certain table
 ```php
 final protected function initializeMetaData(
     ModelInterface $model,
-    mixed $key
+    string|null $key
 ): bool;
 ```
 
@@ -13263,7 +13999,7 @@ Initialize the metadata for certain table
 ## Mvc\Model\MetaDataInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaDataInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaDataInterface.php){ .src-btn }
 
 Phalcon\Mvc\Model\MetaDataInterface
 
@@ -13409,7 +14145,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Strategy\St
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-readmetadataindex">
 <code class="vis vis-public">public</code>
-<code class="ret">array|string|null</code>
+<code class="ret">array|bool|string|null</code>
 <code class="sig"><span class="sf">readMetaDataIndex</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Reads meta-data for certain model using a MODEL_* constant</span>
 </a>
@@ -13636,7 +14372,7 @@ Reads meta-data for certain model
 public function readMetaDataIndex(
     ModelInterface $model,
     int $index
-): array|string|null;
+): array|bool|string|null;
 ```
 
 Reads meta-data for certain model using a MODEL_* constant
@@ -13717,7 +14453,7 @@ Writes meta-data for certain model using a MODEL_* constant
 ## Mvc\Model\MetaData\Apcu
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Apcu.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Apcu.php){ .src-btn }
 
 Phalcon\Mvc\Model\MetaData\Apcu
 
@@ -13738,12 +14474,14 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Apcu(
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-    - **`Phalcon\Mvc\Model\MetaData\Apcu`**
+- `\stdClass`
+    - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
+        - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
+            - **`Phalcon\Mvc\Model\MetaData\Apcu`**
 
 </div>
 
-__Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
+__Uses__ `Exception` · `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 { .api-uses }
 
 ### Method Summary
@@ -13751,7 +14489,7 @@ __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataapcu-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\MetaData\Apcu constructor</span>
 </a>
 </div>
@@ -13765,7 +14503,7 @@ __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 ```php
 public function __construct(
     AdapterFactory $factory,
-    array $options = null
+    array $options = []
 );
 ```
 
@@ -13775,7 +14513,7 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 ## Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/CannotObtainTableColumns.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/CannotObtainTableColumns.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -13814,7 +14552,7 @@ public function __construct(
 ## Mvc\Model\MetaData\Exceptions\ColumnMapNotArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/ColumnMapNotArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/ColumnMapNotArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -13850,7 +14588,7 @@ public function __construct();
 ## Mvc\Model\MetaData\Exceptions\ContainerRequired
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/ContainerRequired.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/ContainerRequired.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -13886,7 +14624,7 @@ public function __construct();
 ## Mvc\Model\MetaData\Exceptions\CorruptedMetaData
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/CorruptedMetaData.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/CorruptedMetaData.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -13922,7 +14660,7 @@ public function __construct();
 ## Mvc\Model\MetaData\Exceptions\InvalidContainer
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/InvalidContainer.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/InvalidContainer.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -13958,7 +14696,7 @@ public function __construct();
 ## Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/InvalidMetaDataForModel.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/InvalidMetaDataForModel.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -13994,7 +14732,7 @@ public function __construct( string $modelName );
 ## Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/MetaDataDirectoryNotWritable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/MetaDataDirectoryNotWritable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -14030,7 +14768,7 @@ public function __construct();
 ## Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/MetaDataStrategyFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/MetaDataStrategyFailed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -14066,7 +14804,7 @@ public function __construct( string $message );
 ## Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/NoAnnotationsForClass.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/NoAnnotationsForClass.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -14102,7 +14840,7 @@ public function __construct( string $className );
 ## Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/NoPropertyAnnotationsForClass.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/NoPropertyAnnotationsForClass.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -14138,7 +14876,7 @@ public function __construct( string $className );
 ## Mvc\Model\MetaData\Exceptions\TableNotInDatabase
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/TableNotInDatabase.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Exceptions/TableNotInDatabase.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -14177,9 +14915,7 @@ public function __construct(
 ## Mvc\Model\MetaData\Libmemcached
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Libmemcached.zep){ .src-btn }
-
-Phalcon\Mvc\Model\MetaData\Libmemcached
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Libmemcached.php){ .src-btn }
 
 Stores model meta-data in the Memcache.
 
@@ -14187,12 +14923,14 @@ By default meta-data is stored for 48 hours (172800 seconds)
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-    - **`Phalcon\Mvc\Model\MetaData\Libmemcached`**
+- `\stdClass`
+    - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
+        - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
+            - **`Phalcon\Mvc\Model\MetaData\Libmemcached`**
 
 </div>
 
-__Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
+__Uses__ `Exception` · `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 { .api-uses }
 
 ### Method Summary
@@ -14238,16 +14976,17 @@ Flush Memcache data and resets internal meta-data in order to regenerate it
 ## Mvc\Model\MetaData\Memory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Memory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Memory.php){ .src-btn }
 
-Phalcon\Mvc\Model\MetaData\Memory
-
-Stores model meta-data in memory. Data will be erased when the request finishes
+Stores model meta-data in memory. Data will be erased when the request
+finishes
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-    - **`Phalcon\Mvc\Model\MetaData\Memory`**
+- `\stdClass`
+    - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
+        - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
+            - **`Phalcon\Mvc\Model\MetaData\Memory`**
 
 </div>
 
@@ -14260,13 +14999,13 @@ __Uses__ `Phalcon\Mvc\Model\MetaData`
 <a class="api-item" href="#mvcmodelmetadatamemory-read">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string|null</span> <span class="sv">$key</span> )</code>
 <span class="desc">Reads the meta-data from temporal memory</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatamemory-write">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span></span>)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes the meta-data to temporal memory</span>
 </a>
 </div>
@@ -14278,7 +15017,7 @@ __Uses__ `Phalcon\Mvc\Model\MetaData`
 #### `read()` { #mvcmodelmetadatamemory-read }
 
 ```php
-public function read( mixed $key ): array|null;
+public function read( string|null $key ): array|null;
 ```
 
 Reads the meta-data from temporal memory
@@ -14287,7 +15026,7 @@ Reads the meta-data from temporal memory
 
 ```php
 public function write(
-    mixed $key,
+    string|null $key,
     array $data
 ): void;
 ```
@@ -14298,7 +15037,7 @@ Writes the meta-data to temporal memory
 ## Mvc\Model\MetaData\Redis
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Redis.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Redis.php){ .src-btn }
 
 Phalcon\Mvc\Model\MetaData\Redis
 
@@ -14322,12 +15061,14 @@ $metaData = new Redis(
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-    - **`Phalcon\Mvc\Model\MetaData\Redis`**
+- `\stdClass`
+    - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
+        - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
+            - **`Phalcon\Mvc\Model\MetaData\Redis`**
 
 </div>
 
-__Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
+__Uses__ `Exception` · `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 { .api-uses }
 
 ### Method Summary
@@ -14373,7 +15114,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 ## Mvc\Model\MetaData\Strategy\Annotations
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Strategy/Annotations.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Strategy/Annotations.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -14381,7 +15122,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 </div>
 
-__Uses__ `Phalcon\Db\Column` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass` · `Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`
+__Uses__ `Phalcon\Annotations\Parser\Collection` · `Phalcon\Db\Column` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass` · `Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`
 { .api-uses }
 
 ### Method Summary
@@ -14408,7 +15149,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelIn
 #### `getColumnMaps()` { #mvcmodelmetadatastrategyannotations-getcolumnmaps }
 
 ```php
-final public function getColumnMaps(
+public function getColumnMaps(
     ModelInterface $model,
     DiInterface $container
 ): array;
@@ -14419,7 +15160,7 @@ Read the model's column map, this can't be inferred
 #### `getMetaData()` { #mvcmodelmetadatastrategyannotations-getmetadata }
 
 ```php
-final public function getMetaData(
+public function getMetaData(
     ModelInterface $model,
     DiInterface $container
 ): array;
@@ -14431,7 +15172,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 ## Mvc\Model\MetaData\Strategy\Introspection
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Strategy/Introspection.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Strategy/Introspection.php){ .src-btn }
 
 Queries the table meta-data in order to introspect the model's metadata
 
@@ -14441,7 +15182,7 @@ Queries the table meta-data in order to introspect the model's metadata
 
 </div>
 
-__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns` · `Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray` · `Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`
+__Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns` · `Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray` · `Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`
 { .api-uses }
 
 ### Method Summary
@@ -14491,7 +15232,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 ## Mvc\Model\MetaData\Strategy\StrategyInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Strategy/StrategyInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Strategy/StrategyInterface.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -14515,7 +15256,7 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface`
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getMetaData</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span></span>)</code>
-<span class="desc">The meta-data is obtained by reading the column descriptions from the database information schema</span>
+<span class="desc">The meta-data is obtained by reading the column descriptions from the</span>
 </a>
 </div>
 
@@ -14534,8 +15275,6 @@ public function getColumnMaps(
 
 Read the model's column map, this can't be inferred
 
-@todo Not implemented
-
 #### `getMetaData()` { #mvcmodelmetadatastrategystrategyinterface-getmetadata }
 
 ```php
@@ -14545,13 +15284,14 @@ public function getMetaData(
 ): array;
 ```
 
-The meta-data is obtained by reading the column descriptions from the database information schema
+The meta-data is obtained by reading the column descriptions from the
+database information schema
 
 
 ## Mvc\Model\MetaData\Stream
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Stream.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/MetaData/Stream.php){ .src-btn }
 
 Phalcon\Mvc\Model\MetaData\Stream
 
@@ -14567,12 +15307,14 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Files(
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-    - **`Phalcon\Mvc\Model\MetaData\Stream`**
+- `\stdClass`
+    - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
+        - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
+            - **`Phalcon\Mvc\Model\MetaData\Stream`**
 
 </div>
 
-__Uses__ `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\FilePathTrait`
 { .api-uses }
 
 ### Method Summary
@@ -14586,13 +15328,13 @@ __Uses__ `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\
 <a class="api-item" href="#mvcmodelmetadatastream-read">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string|null</span> <span class="sv">$key</span> )</code>
 <span class="desc">Reads meta-data from files</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatastream-write">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span></span>)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes the meta-data to files</span>
 </a>
 </div>
@@ -14622,7 +15364,7 @@ Phalcon\Mvc\Model\MetaData\Files constructor
 #### `read()` { #mvcmodelmetadatastream-read }
 
 ```php
-public function read( mixed $key ): array|null;
+public function read( string|null $key ): array|null;
 ```
 
 Reads meta-data from files
@@ -14631,7 +15373,7 @@ Reads meta-data from files
 
 ```php
 public function write(
-    mixed $key,
+    string|null $key,
     array $data
 ): void;
 ```
@@ -14642,9 +15384,7 @@ Writes the meta-data to files
 ## Mvc\Model\Query
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Query
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query.php){ .src-btn }
 
 This class takes a PHQL intermediate representation and executes it.
 
@@ -14672,17 +15412,17 @@ use Phalcon\Mvc\Model\Transaction;
 // $di needs to have the service "db" registered for this to work
 $di = Phalcon\Di\FactoryDefault::getDefault();
 
-$phql = 'SELECT * FROM robot';
+$phql = 'SELECT * FROM Invoices';
 
 $myTransaction = new Transaction($di);
 $myTransaction->begin();
 
-$newRobot = new Robot();
-$newRobot->setTransaction($myTransaction);
-$newRobot->type = "mechanical";
-$newRobot->name = "Astro Boy";
-$newRobot->year = 1952;
-$newRobot->save();
+$newInvoice = new Invoices();
+$newInvoice->setTransaction($myTransaction);
+$newInvoice->inv_status_flag = 1;
+$newInvoice->inv_title = "Test Invoice";
+$newInvoice->inv_total = 100;
+$newInvoice->save();
 
 $queryWithTransaction = new Query($phql, $di);
 $queryWithTransaction->setTransaction($myTransaction);
@@ -14699,7 +15439,7 @@ $resultWithOutEntries = $queryWithTransaction->execute();
 
 </div>
 
-__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation` · `Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders` · `Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray` · `Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst` · `Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias` · `Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue` · `Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass` · `Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed` · `Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey` · `Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager` · `Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems` · `Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded` · `Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias` · `Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing` · `Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement` · `Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing` · `Phalcon\Mvc\Model\Query\Lang` · `Phalcon\Mvc\Model\Query\Status` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Complex` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Support\Settings`
+__Uses__ `PDOException` · `Phalcon\Cache\CacheInterface` · `Phalcon\Cache\Exception\InvalidArgumentException` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\RawValue` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation` · `Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders` · `Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray` · `Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst` · `Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias` · `Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue` · `Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass` · `Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed` · `Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey` · `Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager` · `Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems` · `Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded` · `Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias` · `Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing` · `Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement` · `Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing` · `Phalcon\Mvc\Model\Query\Status` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\Resultset\Complex` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Phql\Parser` · `Phalcon\Phql\Scanner\Opcode` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -14707,7 +15447,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 <div class="api-list">
 <a class="api-item" href="#mvcmodelquery-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$phql</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$phql</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Query constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-cache">
@@ -14724,6 +15464,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 </a>
 <a class="api-item" href="#mvcmodelquery-execute">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">execute</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes a parsed PHQL statement</span>
 </a>
@@ -14741,7 +15482,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 </a>
 <a class="api-item" href="#mvcmodelquery-getcache">
 <code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
+<code class="ret">CacheInterface|null</code>
 <code class="sig"><span class="sf">getCache</span>()</code>
 <span class="desc">Returns the current cache backend instance</span>
 </a>
@@ -14751,17 +15492,17 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 <code class="sig"><span class="sf">getCacheOptions</span>()</code>
 <span class="desc">Returns the current cache options</span>
 </a>
-<a class="api-item" href="#mvcmodelquery-getdi">
-<code class="vis vis-public">public</code>
-<code class="ret">DiInterface</code>
-<code class="sig"><span class="sf">getDI</span>()</code>
-<span class="desc">Returns the dependency injection container</span>
-</a>
 <a class="api-item" href="#mvcmodelquery-getintermediate">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getIntermediate</span>()</code>
 <span class="desc">Returns the intermediate representation of the PHQL statement</span>
+</a>
+<a class="api-item" href="#mvcmodelquery-getresultsetrowclass">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getResultsetRowClass</span>()</code>
+<span class="desc">Returns the class that will be used to hydrate rows that are not mapped</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getsingleresult">
 <code class="vis vis-public">public</code>
@@ -14822,6 +15563,12 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 <code class="sig"><span class="sf">setIntermediate</span>( <span class="st">array</span> <span class="sv">$intermediate</span> )</code>
 <span class="desc">Allows to set the IR to be executed</span>
 </a>
+<a class="api-item" href="#mvcmodelquery-setresultsetrowclass">
+<code class="vis vis-public">public</code>
+<code class="ret">QueryInterface</code>
+<code class="sig"><span class="sf">setResultsetRowClass</span>( <span class="st">string</span> <span class="sv">$resultsetRowClass</span> )</code>
+<span class="desc">Sets the class used to hydrate rows that are not mapped to a model</span>
+</a>
 <a class="api-item" href="#mvcmodelquery-setsharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
@@ -14860,7 +15607,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 </a>
 <a class="api-item" href="#mvcmodelquery-executeselect">
 <code class="vis vis-protected">protected</code>
-<code class="ret">ResultsetInterface|array</code>
+<code class="ret">array|ResultsetInterface</code>
 <code class="sig"><span class="sf">executeSelect</span>(<span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$simulate</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the SELECT intermediate representation producing a</span>
 </a>
@@ -14933,7 +15680,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 <a class="api-item" href="#mvcmodelquery-getorderclause">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">getOrderClause</span>( <span class="st">mixed</span> <span class="sv">$order</span> )</code>
+<code class="sig"><span class="sf">getOrderClause</span>( <span class="st">array|string</span> <span class="sv">$order</span> )</code>
 <span class="desc">Returns a processed order clause for a SELECT statement</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getqualified">
@@ -14945,7 +15692,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 <a class="api-item" href="#mvcmodelquery-getreadconnection">
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">getReadConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">getReadConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$intermediate</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Gets the read connection from the model if there is no transaction set</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getrelatedrecords">
@@ -14963,18 +15710,19 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 <a class="api-item" href="#mvcmodelquery-getsinglejoin">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">getSingleJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$joinType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$joinSource</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelAlias</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$joinAlias</span>,</span><span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span></span>)</code>
+<code class="sig"><span class="sf">getSingleJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$joinType</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$joinSource</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelAlias</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$joinAlias</span>,</span><span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span></span>)</code>
 <span class="desc">Resolves joins involving has-one/belongs-to/has-many relations</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-gettable">
 <code class="vis vis-protected">protected</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getTable</span>(<span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$manager</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$qualifiedName</span></span>)</code>
 <span class="desc">Resolves a table in a SELECT statement checking if the model exists</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getwriteconnection">
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">getWriteConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">getWriteConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$intermediate</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Gets the write connection from the model if there is no transaction</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-preparedelete">
@@ -15050,18 +15798,13 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed|null</code>
+<code class="ret">CacheInterface|null</code>
 <code class="sig"><span class="sv">$cache</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|null</code>
-<code class="sig"><span class="sv">$cacheOptions</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
+<code class="sig"><span class="sv">$cacheOptions</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -15070,22 +15813,22 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$intermediate</span></code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$intermediate</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|null</code>
-<code class="sig"><span class="sv">$internalPhqlCache</span></code>
+<code class="sig"><span class="sv">$internalPhqlCache</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">\Phalcon\Mvc\Model\ManagerInterface|null</code>
+<code class="ret">ManagerInterface|null</code>
 <code class="sig"><span class="sv">$manager</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">\Phalcon\Mvc\Model\MetaDataInterface|null</code>
+<code class="ret">MetaDataInterface|null</code>
 <code class="sig"><span class="sv">$metaData</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -15105,8 +15848,18 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">Parser</code>
+<code class="sig"><span class="sv">$parser</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$phql</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$resultsetRowClass</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -15150,7 +15903,7 @@ transaction instead of this one</span>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int|null</code>
-<code class="sig"><span class="sv">$type</span></code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -15161,14 +15914,14 @@ transaction instead of this one</span>
 
 ### Methods
 
-<div class="api-group">Public · 24</div>
+<div class="api-group">Public · 25</div>
 
 #### `__construct()` { #mvcmodelquery-__construct }
 
 ```php
 public function __construct(
-    string $phql = null,
-    DiInterface $container = null,
+    string|null $phql = null,
+    DiInterface|null $container = null,
     array $options = []
 );
 ```
@@ -15197,7 +15950,7 @@ Destroys the internal PHQL cache
 public function execute(
     array $bindParams = [],
     array $bindTypes = []
-);
+): mixed;
 ```
 
 Executes a parsed PHQL statement
@@ -15221,7 +15974,7 @@ Returns default bind types
 #### `getCache()` { #mvcmodelquery-getcache }
 
 ```php
-public function getCache(): AdapterInterface;
+public function getCache(): CacheInterface|null;
 ```
 
 Returns the current cache backend instance
@@ -15234,14 +15987,6 @@ public function getCacheOptions(): array;
 
 Returns the current cache options
 
-#### `getDI()` { #mvcmodelquery-getdi }
-
-```php
-public function getDI(): DiInterface;
-```
-
-Returns the dependency injection container
-
 #### `getIntermediate()` { #mvcmodelquery-getintermediate }
 
 ```php
@@ -15249,6 +15994,16 @@ public function getIntermediate(): array;
 ```
 
 Returns the intermediate representation of the PHQL statement
+
+#### `getResultsetRowClass()` { #mvcmodelquery-getresultsetrowclass }
+
+```php
+public function getResultsetRowClass(): string;
+```
+
+Returns the class that will be used to hydrate rows that are not mapped
+to a model (custom columns/joins). An empty string means the default
+Phalcon\Mvc\Model\Row is used.
 
 #### `getSingleResult()` { #mvcmodelquery-getsingleresult }
 
@@ -15272,9 +16027,9 @@ and arrays with bound parameters and their types (only works in SELECT statement
 
 ```php
 [
-    'sql' => 'SELECT * FROM parts WHERE robot = :robot',
-    'bind' => ['robot' => 123],
-    'bindTypes => ['robot' => 1] // 1 corresponds to int
+    'sql' => 'SELECT * FROM co_invoices WHERE inv_cst_id = :cst_id',
+    'bind' => ['cst_id' => 123],
+    'bindTypes => ['cst_id' => 1] // 1 corresponds to int
 ]
 ```
 
@@ -15349,6 +16104,16 @@ public function setIntermediate( array $intermediate ): QueryInterface;
 
 Allows to set the IR to be executed
 
+#### `setResultsetRowClass()` { #mvcmodelquery-setresultsetrowclass }
+
+```php
+public function setResultsetRowClass( string $resultsetRowClass ): QueryInterface;
+```
+
+Sets the class used to hydrate rows that are not mapped to a model
+(custom columns/joins). The class must be a subclass of
+Phalcon\Mvc\Model\Row.
+
 #### `setSharedLock()` { #mvcmodelquery-setsharedlock }
 
 ```php
@@ -15418,7 +16183,7 @@ final protected function executeSelect(
     array $bindParams,
     array $bindTypes,
     bool $simulate = false
-): ResultsetInterface|array;
+): array|ResultsetInterface;
 ```
 
 Executes the SELECT intermediate representation producing a
@@ -15533,7 +16298,7 @@ Resolves joins involving many-to-many relations
 #### `getOrderClause()` { #mvcmodelquery-getorderclause }
 
 ```php
-final protected function getOrderClause( mixed $order ): array;
+final protected function getOrderClause( array|string $order ): array;
 ```
 
 Returns a processed order clause for a SELECT statement
@@ -15552,7 +16317,7 @@ expression
 ```php
 protected function getReadConnection(
     ModelInterface $model,
-    array $intermediate = null,
+    array|null $intermediate = null,
     array $bindParams = [],
     array $bindTypes = []
 ): AdapterInterface;
@@ -15588,7 +16353,7 @@ used to determine if the resultset produced is simple or complex
 ```php
 final protected function getSingleJoin(
     string $joinType,
-    mixed $joinSource,
+    string $joinSource,
     string $modelAlias,
     string $joinAlias,
     RelationInterface $relation
@@ -15603,7 +16368,7 @@ Resolves joins involving has-one/belongs-to/has-many relations
 final protected function getTable(
     ManagerInterface $manager,
     array $qualifiedName
-);
+): array|string;
 ```
 
 Resolves a table in a SELECT statement checking if the model exists
@@ -15613,7 +16378,7 @@ Resolves a table in a SELECT statement checking if the model exists
 ```php
 protected function getWriteConnection(
     ModelInterface $model,
-    array $intermediate = null,
+    array|null $intermediate = null,
     array $bindParams = [],
     array $bindTypes = []
 ): AdapterInterface;
@@ -15676,9 +16441,7 @@ would otherwise see the value frozen at first parse. See #17020.
 ## Mvc\Model\QueryInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/QueryInterface.zep){ .src-btn }
-
-Phalcon\Mvc\Model\QueryInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/QueryInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Model\Query
 
@@ -15702,6 +16465,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-execute">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">execute</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes a parsed PHQL statement</span>
 </a>
@@ -15733,19 +16497,19 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getSql</span>()</code>
-<span class="desc">Returns the SQL to be generated by the internal PHQL (only works in SELECT statements)</span>
+<span class="desc">Returns the SQL to be generated by the internal PHQL (only works</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-getuniquerow">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getUniqueRow</span>()</code>
-<span class="desc">Check if the query is programmed to get only the first row in the resultset</span>
+<span class="desc">Check if the query is programmed to get only the first row in</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-parse">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">parse</span>()</code>
-<span class="desc">Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang generating another</span>
+<span class="desc">Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-setbindparams">
 <code class="vis vis-public">public</code>
@@ -15791,7 +16555,7 @@ Sets the cache parameters of the query
 public function execute(
     array $bindParams = [],
     array $bindTypes = []
-);
+): mixed;
 ```
 
 Executes a parsed PHQL statement
@@ -15837,7 +16601,8 @@ Executes the query returning the first result
 public function getSql(): array;
 ```
 
-Returns the SQL to be generated by the internal PHQL (only works in SELECT statements)
+Returns the SQL to be generated by the internal PHQL (only works
+in SELECT statements)
 
 #### `getUniqueRow()` { #mvcmodelqueryinterface-getuniquerow }
 
@@ -15845,7 +16610,8 @@ Returns the SQL to be generated by the internal PHQL (only works in SELECT state
 public function getUniqueRow(): bool;
 ```
 
-Check if the query is programmed to get only the first row in the resultset
+Check if the query is programmed to get only the first row in
+the resultset
 
 #### `parse()` { #mvcmodelqueryinterface-parse }
 
@@ -15853,8 +16619,9 @@ Check if the query is programmed to get only the first row in the resultset
 public function parse(): array;
 ```
 
-Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang generating another
-intermediate representation that could be executed by Phalcon\Mvc\Model\Query
+Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang
+generating another intermediate representation that could be executed
+by Phalcon\Mvc\Model\Query
 
 #### `setBindParams()` { #mvcmodelqueryinterface-setbindparams }
 
@@ -15898,7 +16665,7 @@ Tells to the query if only the first row in the resultset must be returned
 ## Mvc\Model\Query\Builder
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Builder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Builder.php){ .src-btn }
 
 Helps to create PHQL queries using an OO interface
 
@@ -15947,13 +16714,13 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <div class="api-list">
 <a class="api-item" href="#mvcmodelquerybuilder-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array|string|null</span> <span class="sv">$params</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Query\Builder constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-addfrom">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">addFrom</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addFrom</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a model to take part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-andhaving">
@@ -15989,7 +16756,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <a class="api-item" href="#mvcmodelquerybuilder-columns">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">columns</span>( <span class="st">mixed</span> <span class="sv">$columns</span> )</code>
+<code class="sig"><span class="sf">columns</span>( <span class="st">array|string</span> <span class="sv">$columns</span> )</code>
 <span class="desc">Sets the columns to be queried. The columns can be either a <code>string</code> or</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-distinct">
@@ -16024,6 +16791,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getcolumns">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Return the columns to be queried</span>
 </a>
@@ -16041,6 +16809,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getfrom">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getFrom</span>()</code>
 <span class="desc">Return the models who makes part of the query</span>
 </a>
@@ -16069,7 +16838,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getmodels">
 <code class="vis vis-public">public</code>
-<code class="ret">string|array|null</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getModels</span>()</code>
 <span class="desc">Returns the models involved in the query</span>
 </a>
@@ -16081,6 +16850,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getorderby">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getOrderBy</span>()</code>
 <span class="desc">Returns the set ORDER BY clause</span>
 </a>
@@ -16096,8 +16866,15 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <code class="sig"><span class="sf">getQuery</span>()</code>
 <span class="desc">Returns the query built</span>
 </a>
+<a class="api-item" href="#mvcmodelquerybuilder-getresultsetrowclass">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getResultsetRowClass</span>()</code>
+<span class="desc">Returns the class that will be used to hydrate rows that are not mapped</span>
+</a>
 <a class="api-item" href="#mvcmodelquerybuilder-getwhere">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getWhere</span>()</code>
 <span class="desc">Return the conditions for the query</span>
 </a>
@@ -16128,19 +16905,19 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <a class="api-item" href="#mvcmodelquerybuilder-innerjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an INNER join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-join">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an :type: join (by default type - INNER) to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-leftjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a LEFT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-limit">
@@ -16194,13 +16971,13 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <a class="api-item" href="#mvcmodelquerybuilder-orderby">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">orderBy</span>( <span class="st">mixed</span> <span class="sv">$orderBy</span> )</code>
+<code class="sig"><span class="sf">orderBy</span>( <span class="st">array|string|null</span> <span class="sv">$orderBy</span> )</code>
 <span class="desc">Sets an ORDER BY condition clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-rightjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a RIGHT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-setbindparams">
@@ -16220,6 +16997,12 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the DependencyInjector container</span>
+</a>
+<a class="api-item" href="#mvcmodelquerybuilder-setresultsetrowclass">
+<code class="vis vis-public">public</code>
+<code class="ret">BuilderInterface</code>
+<code class="sig"><span class="sf">setResultsetRowClass</span>( <span class="st">string</span> <span class="sv">$resultsetRowClass</span> )</code>
+<span class="desc">Sets the class used to hydrate rows that are not mapped to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-where">
 <code class="vis vis-public">public</code>
@@ -16273,12 +17056,12 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|string|null</code>
+<code class="ret">array|int|string|null</code>
 <code class="sig"><span class="sv">$conditions</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface|null</code>
+<code class="ret">object|null</code>
 <code class="sig"><span class="sv">$container</span></code>
 </div>
 <div class="api-item">
@@ -16293,7 +17076,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array|null</code>
 <code class="sig"><span class="sv">$group</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -16313,13 +17096,13 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|string</code>
-<code class="sig"><span class="sv">$limit</span></code>
+<code class="ret">array|int|string|null</code>
+<code class="sig"><span class="sv">$limit</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|string</code>
-<code class="sig"><span class="sv">$models</span></code>
+<code class="ret">array|string|null</code>
+<code class="sig"><span class="sv">$models</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -16328,8 +17111,13 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|string</code>
-<code class="sig"><span class="sv">$order</span></code>
+<code class="ret">array|string|null</code>
+<code class="sig"><span class="sv">$order</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$resultsetRowClass</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -16340,14 +17128,14 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 
 ### Methods
 
-<div class="api-group">Public · 48</div>
+<div class="api-group">Public · 50</div>
 
 #### `__construct()` { #mvcmodelquerybuilder-__construct }
 
 ```php
 public function __construct(
-    mixed $params = null,
-    DiInterface $container = null
+    array|string|null $params = null,
+    DiInterface|null $container = null
 );
 ```
 
@@ -16358,21 +17146,21 @@ Phalcon\Mvc\Model\Query\Builder constructor
 ```php
 public function addFrom(
     string $model,
-    string $alias = null
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
 Add a model to take part of the query
 
 ```php
-// Load data from models Robots
+// Load data from models Invoices
 $builder->addFrom(
-    Robots::class
+    Invoices::class
 );
 
-// Load data from model 'Robots' using 'r' as alias in PHQL
+// Load data from model 'Invoices' using 'r' as alias in PHQL
 $builder->addFrom(
-    Robots::class,
+    Invoices::class,
     "r"
 );
 ```
@@ -16390,10 +17178,10 @@ public function andHaving(
 Appends a condition to the current HAVING conditions clause using a AND operator
 
 ```php
-$builder->andHaving("SUM(Robots.price) > 0");
+$builder->andHaving("SUM(Invoices.inv_total) > 0");
 
 $builder->andHaving(
-    "SUM(Robots.price) > :sum:",
+    "SUM(Invoices.inv_total) > :sum:",
     [
         "sum" => 100,
     ]
@@ -16446,7 +17234,7 @@ public function betweenHaving(
 Appends a BETWEEN condition to the current HAVING conditions clause
 
 ```php
-$builder->betweenHaving("SUM(Robots.price)", 100.25, 200.50);
+$builder->betweenHaving("SUM(Invoices.inv_total)", 100.25, 200.50);
 ```
 
 #### `betweenWhere()` { #mvcmodelquerybuilder-betweenwhere }
@@ -16469,7 +17257,7 @@ $builder->betweenWhere("price", 100.25, 200.50);
 #### `columns()` { #mvcmodelquerybuilder-columns }
 
 ```php
-public function columns( mixed $columns ): BuilderInterface;
+public function columns( array|string $columns ): BuilderInterface;
 ```
 
 Sets the columns to be queried. The columns can be either a `string` or
@@ -16551,20 +17339,20 @@ Sets the models who makes part of the query
 
 ```php
 $builder->from(
-    Robots::class
+    Invoices::class
 );
 
 $builder->from(
     [
-        Robots::class,
-        RobotsParts::class,
+        Invoices::class,
+        OrdersProducts::class,
     ]
 );
 
 $builder->from(
     [
-        "r"  => Robots::class,
-        "rp" => RobotsParts::class,
+        "r"  => Invoices::class,
+        "rp" => OrdersProducts::class,
     ]
 );
 ```
@@ -16588,7 +17376,7 @@ Returns default bind types
 #### `getColumns()` { #mvcmodelquerybuilder-getcolumns }
 
 ```php
-public function getColumns();
+public function getColumns(): array|string|null;
 ```
 
 Return the columns to be queried
@@ -16612,7 +17400,7 @@ Returns SELECT DISTINCT / SELECT ALL flag
 #### `getFrom()` { #mvcmodelquerybuilder-getfrom }
 
 ```php
-public function getFrom();
+public function getFrom(): array|string|null;
 ```
 
 Return the models who makes part of the query
@@ -16652,7 +17440,7 @@ Returns the current LIMIT clause
 #### `getModels()` { #mvcmodelquerybuilder-getmodels }
 
 ```php
-public function getModels(): string|array|null;
+public function getModels(): array|string|null;
 ```
 
 Returns the models involved in the query
@@ -16668,7 +17456,7 @@ Returns the current OFFSET clause
 #### `getOrderBy()` { #mvcmodelquerybuilder-getorderby }
 
 ```php
-public function getOrderBy();
+public function getOrderBy(): array|string|null;
 ```
 
 Returns the set ORDER BY clause
@@ -16689,10 +17477,20 @@ public function getQuery(): QueryInterface;
 
 Returns the query built
 
+#### `getResultsetRowClass()` { #mvcmodelquerybuilder-getresultsetrowclass }
+
+```php
+public function getResultsetRowClass(): string;
+```
+
+Returns the class that will be used to hydrate rows that are not mapped
+to a model (custom columns/joins). An empty string means the default
+Phalcon\Mvc\Model\Row is used.
+
 #### `getWhere()` { #mvcmodelquerybuilder-getwhere }
 
 ```php
-public function getWhere();
+public function getWhere(): array|string|null;
 ```
 
 Return the conditions for the query
@@ -16708,7 +17506,7 @@ Sets a GROUP BY clause
 ```php
 $builder->groupBy(
     [
-        "Robots.name",
+        "Invoices.inv_title",
     ]
 );
 ```
@@ -16726,10 +17524,10 @@ public function having(
 Sets the HAVING condition clause
 
 ```php
-$builder->having("SUM(Robots.price) > 0");
+$builder->having("SUM(Invoices.inv_total) > 0");
 
 $builder->having(
-    "SUM(Robots.price) > :sum:",
+    "SUM(Invoices.inv_total) > :sum:",
     [
         "sum" => 100,
     ]
@@ -16749,7 +17547,7 @@ public function inHaving(
 Appends an IN condition to the current HAVING conditions clause
 
 ```php
-$builder->inHaving("SUM(Robots.price)", [100, 200]);
+$builder->inHaving("SUM(Invoices.inv_total)", [100, 200]);
 ```
 
 #### `inWhere()` { #mvcmodelquerybuilder-inwhere }
@@ -16776,29 +17574,29 @@ $builder->inWhere(
 ```php
 public function innerJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
 Adds an INNER join to the query
 
 ```php
-// Inner Join model 'Robots' with automatic conditions and alias
+// Inner Join model 'Invoices' with automatic conditions and alias
 $builder->innerJoin(
-    Robots::class
+    Invoices::class
 );
 
-// Inner Join model 'Robots' specifying conditions
+// Inner Join model 'Invoices' specifying conditions
 $builder->innerJoin(
-    Robots::class,
-    "Robots.id = RobotsParts.robots_id"
+    Invoices::class,
+    "Invoices.inv_id = OrdersProducts.oxp_ord_id"
 );
 
-// Inner Join model 'Robots' specifying conditions and alias
+// Inner Join model 'Invoices' specifying conditions and alias
 $builder->innerJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -16808,37 +17606,37 @@ $builder->innerJoin(
 ```php
 public function join(
     string $model,
-    string $conditions = null,
-    string $alias = null,
-    string $type = null
+    string|null $conditions = null,
+    string|null $alias = null,
+    string|null $type = null
 ): BuilderInterface;
 ```
 
 Adds an :type: join (by default type - INNER) to the query
 
 ```php
-// Inner Join model 'Robots' with automatic conditions and alias
+// Inner Join model 'Invoices' with automatic conditions and alias
 $builder->join(
-    Robots::class
+    Invoices::class
 );
 
-// Inner Join model 'Robots' specifying conditions
+// Inner Join model 'Invoices' specifying conditions
 $builder->join(
-    Robots::class,
-    "Robots.id = RobotsParts.robots_id"
+    Invoices::class,
+    "Invoices.inv_id = OrdersProducts.oxp_ord_id"
 );
 
-// Inner Join model 'Robots' specifying conditions and alias
+// Inner Join model 'Invoices' specifying conditions and alias
 $builder->join(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 
-// Left Join model 'Robots' specifying conditions, alias and type of join
+// Left Join model 'Invoices' specifying conditions, alias and type of join
 $builder->join(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
     "r",
     "LEFT"
 );
@@ -16849,8 +17647,8 @@ $builder->join(
 ```php
 public function leftJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -16858,8 +17656,8 @@ Adds a LEFT join to the query
 
 ```php
 $builder->leftJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -16895,7 +17693,7 @@ public function notBetweenHaving(
 Appends a NOT BETWEEN condition to the current HAVING conditions clause
 
 ```php
-$builder->notBetweenHaving("SUM(Robots.price)", 100.25, 200.50);
+$builder->notBetweenHaving("SUM(Invoices.inv_total)", 100.25, 200.50);
 ```
 
 #### `notBetweenWhere()` { #mvcmodelquerybuilder-notbetweenwhere }
@@ -16928,7 +17726,7 @@ public function notInHaving(
 Appends a NOT IN condition to the current HAVING conditions clause
 
 ```php
-$builder->notInHaving("SUM(Robots.price)", [100, 200]);
+$builder->notInHaving("SUM(Invoices.inv_total)", [100, 200]);
 ```
 
 #### `notInWhere()` { #mvcmodelquerybuilder-notinwhere }
@@ -16972,10 +17770,10 @@ public function orHaving(
 Appends a condition to the current HAVING conditions clause using an OR operator
 
 ```php
-$builder->orHaving("SUM(Robots.price) > 0");
+$builder->orHaving("SUM(Invoices.inv_total) > 0");
 
 $builder->orHaving(
-    "SUM(Robots.price) > :sum:",
+    "SUM(Invoices.inv_total) > :sum:",
     [
         "sum" => 100,
     ]
@@ -17009,15 +17807,15 @@ $builder->orWhere(
 #### `orderBy()` { #mvcmodelquerybuilder-orderby }
 
 ```php
-public function orderBy( mixed $orderBy ): BuilderInterface;
+public function orderBy( array|string|null $orderBy ): BuilderInterface;
 ```
 
 Sets an ORDER BY condition clause
 
 ```php
-$builder->orderBy("Robots.name");
-$builder->orderBy(["1", "Robots.name"]);
-$builder->orderBy(["Robots.name DESC"]);
+$builder->orderBy("Invoices.inv_title");
+$builder->orderBy(["1", "Invoices.inv_title"]);
+$builder->orderBy(["Invoices.inv_title DESC"]);
 ```
 
 #### `rightJoin()` { #mvcmodelquerybuilder-rightjoin }
@@ -17025,8 +17823,8 @@ $builder->orderBy(["Robots.name DESC"]);
 ```php
 public function rightJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17034,8 +17832,8 @@ Adds a RIGHT join to the query
 
 ```php
 $builder->rightJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -17069,6 +17867,17 @@ public function setDI( DiInterface $container ): void;
 ```
 
 Sets the DependencyInjector container
+
+#### `setResultsetRowClass()` { #mvcmodelquerybuilder-setresultsetrowclass }
+
+```php
+public function setResultsetRowClass( string $resultsetRowClass ): BuilderInterface;
+```
+
+Sets the class used to hydrate rows that are not mapped to a model
+(custom columns/joins). The class must be a subclass of
+Phalcon\Mvc\Model\Row. Validation is performed by the underlying
+Phalcon\Mvc\Model\Query when the query is built.
 
 #### `where()` { #mvcmodelquerybuilder-where }
 
@@ -17156,7 +17965,7 @@ Appends a NOT IN condition
 ## Mvc\Model\Query\BuilderInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/BuilderInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/BuilderInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Model\Query\Builder
 
@@ -17175,7 +17984,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 <a class="api-item" href="#mvcmodelquerybuilderinterface-addfrom">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">addFrom</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addFrom</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a model to take part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-andwhere">
@@ -17193,7 +18002,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 <a class="api-item" href="#mvcmodelquerybuilderinterface-columns">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">columns</span>( <span class="st">mixed</span> <span class="sv">$columns</span> )</code>
+<code class="sig"><span class="sf">columns</span>( <span class="st">array|string</span> <span class="sv">$columns</span> )</code>
 <span class="desc">Sets the columns to be queried. The columns can be either a <code>string</code> or</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-distinct">
@@ -17211,7 +18020,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 <a class="api-item" href="#mvcmodelquerybuilderinterface-from">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">from</span>( <span class="st">mixed</span> <span class="sv">$models</span> )</code>
+<code class="sig"><span class="sf">from</span>( <span class="st">array|string</span> <span class="sv">$models</span> )</code>
 <span class="desc">Sets the models who makes part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getbindparams">
@@ -17228,6 +18037,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getcolumns">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Return the columns to be queried</span>
 </a>
@@ -17239,6 +18049,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getfrom">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getFrom</span>()</code>
 <span class="desc">Return the models who makes part of the query</span>
 </a>
@@ -17267,7 +18078,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getmodels">
 <code class="vis vis-public">public</code>
-<code class="ret">string|array|null</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getModels</span>()</code>
 <span class="desc">Returns the models involved in the query</span>
 </a>
@@ -17279,6 +18090,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getorderby">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getOrderBy</span>()</code>
 <span class="desc">Return the set ORDER BY clause</span>
 </a>
@@ -17296,6 +18108,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getwhere">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string|null</code>
 <code class="sig"><span class="sf">getWhere</span>()</code>
 <span class="desc">Return the conditions for the query</span>
 </a>
@@ -17320,19 +18133,19 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 <a class="api-item" href="#mvcmodelquerybuilderinterface-innerjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an INNER join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-join">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an :type: join (by default type - INNER) to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-leftjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a LEFT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-limit">
@@ -17368,13 +18181,13 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 <a class="api-item" href="#mvcmodelquerybuilderinterface-orderby">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">orderBy</span>( <span class="st">mixed</span> <span class="sv">$orderBy</span> )</code>
+<code class="sig"><span class="sf">orderBy</span>( <span class="st">array|string</span> <span class="sv">$orderBy</span> )</code>
 <span class="desc">Sets an ORDER BY condition clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-rightjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a RIGHT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-setbindparams">
@@ -17419,7 +18232,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 ```php
 public function addFrom(
     string $model,
-    string $alias = null
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17453,7 +18266,7 @@ Appends a BETWEEN condition to the current conditions
 #### `columns()` { #mvcmodelquerybuilderinterface-columns }
 
 ```php
-public function columns( mixed $columns ): BuilderInterface;
+public function columns( array|string $columns ): BuilderInterface;
 ```
 
 Sets the columns to be queried. The columns can be either a `string` or
@@ -17476,15 +18289,15 @@ $builder->columns("id, name");
 // Array, one column per element
 $builder->columns(
     [
-        "id",
-        "name",
+        "inv_id",
+        "inv_title",
     ]
 );
 
 // Array, named keys. The name of the key acts as an alias (`AS` clause)
 $builder->columns(
     [
-        "name",
+        "inv_title",
         "number" => "COUNT(*)",
     ]
 );
@@ -17527,7 +18340,7 @@ $builder->forUpdate(true);
 #### `from()` { #mvcmodelquerybuilderinterface-from }
 
 ```php
-public function from( mixed $models ): BuilderInterface;
+public function from( array|string $models ): BuilderInterface;
 ```
 
 Sets the models who makes part of the query
@@ -17551,7 +18364,7 @@ Returns default bind types
 #### `getColumns()` { #mvcmodelquerybuilderinterface-getcolumns }
 
 ```php
-public function getColumns();
+public function getColumns(): array|string|null;
 ```
 
 Return the columns to be queried
@@ -17567,7 +18380,7 @@ Returns SELECT DISTINCT / SELECT ALL flag
 #### `getFrom()` { #mvcmodelquerybuilderinterface-getfrom }
 
 ```php
-public function getFrom();
+public function getFrom(): array|string|null;
 ```
 
 Return the models who makes part of the query
@@ -17607,7 +18420,7 @@ Returns the current LIMIT clause
 #### `getModels()` { #mvcmodelquerybuilderinterface-getmodels }
 
 ```php
-public function getModels(): string|array|null;
+public function getModels(): array|string|null;
 ```
 
 Returns the models involved in the query
@@ -17623,7 +18436,7 @@ Returns the current OFFSET clause
 #### `getOrderBy()` { #mvcmodelquerybuilderinterface-getorderby }
 
 ```php
-public function getOrderBy();
+public function getOrderBy(): array|string|null;
 ```
 
 Return the set ORDER BY clause
@@ -17647,7 +18460,7 @@ Returns the query built
 #### `getWhere()` { #mvcmodelquerybuilderinterface-getwhere }
 
 ```php
-public function getWhere();
+public function getWhere(): array|string|null;
 ```
 
 Return the conditions for the query
@@ -17689,8 +18502,8 @@ Appends an IN condition to the current conditions
 ```php
 public function innerJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17701,8 +18514,8 @@ Adds an INNER join to the query
 ```php
 public function join(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17713,8 +18526,8 @@ Adds an :type: join (by default type - INNER) to the query
 ```php
 public function leftJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17779,7 +18592,7 @@ Appends a condition to the current conditions using an OR operator
 #### `orderBy()` { #mvcmodelquerybuilderinterface-orderby }
 
 ```php
-public function orderBy( mixed $orderBy ): BuilderInterface;
+public function orderBy( array|string $orderBy ): BuilderInterface;
 ```
 
 Sets an ORDER BY condition clause
@@ -17789,8 +18602,8 @@ Sets an ORDER BY condition clause
 ```php
 public function rightJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17834,7 +18647,7 @@ Sets conditions for the query
 ## Mvc\Model\Query\Exceptions\AmbiguousColumn
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/AmbiguousColumn.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/AmbiguousColumn.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -17873,7 +18686,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\AmbiguousJoinRelation
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/AmbiguousJoinRelation.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/AmbiguousJoinRelation.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -17913,7 +18726,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/BindParameterNotInPlaceholders.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/BindParameterNotInPlaceholders.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -17949,7 +18762,7 @@ public function __construct( string $wildcard );
 ## Mvc\Model\Query\Exceptions\BindTypeRequiresArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/BindTypeRequiresArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/BindTypeRequiresArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -17985,7 +18798,7 @@ public function __construct( string $name );
 ## Mvc\Model\Query\Exceptions\BindValueRequired
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/BindValueRequired.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/BindValueRequired.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18021,7 +18834,7 @@ public function __construct( string $name );
 ## Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/Builder/BuilderColumnNotInMap.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/Builder/BuilderColumnNotInMap.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18057,7 +18870,7 @@ public function __construct( string $column );
 ## Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/Builder/BuilderConditionInvalid.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/Builder/BuilderConditionInvalid.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18093,7 +18906,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\Builder\ModelRequired
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/Builder/ModelRequired.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/Builder/ModelRequired.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18129,7 +18942,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/Builder/NoPrimaryKey.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/Builder/NoPrimaryKey.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18165,7 +18978,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/Builder/OperatorNotAvailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/Builder/OperatorNotAvailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18201,7 +19014,7 @@ public function __construct( string $operator );
 ## Mvc\Model\Query\Exceptions\ColumnNotInDomain
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ColumnNotInDomain.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/ColumnNotInDomain.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18241,7 +19054,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ColumnNotInSelectedModels.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/ColumnNotInSelectedModels.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18281,7 +19094,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\CorruptedAst
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/CorruptedAst.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/CorruptedAst.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18317,7 +19130,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\CorruptedDeleteAst
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/CorruptedDeleteAst.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/CorruptedDeleteAst.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18353,7 +19166,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\CorruptedInsertAst
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/CorruptedInsertAst.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/CorruptedInsertAst.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18389,7 +19202,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\CorruptedSelectAst
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/CorruptedSelectAst.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/CorruptedSelectAst.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18425,7 +19238,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\CorruptedUpdateAst
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/CorruptedUpdateAst.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/CorruptedUpdateAst.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18461,7 +19274,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/DeleteMultipleNotSupported.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/DeleteMultipleNotSupported.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18497,7 +19310,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\DuplicateAlias
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/DuplicateAlias.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/DuplicateAlias.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18536,7 +19349,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/EmptyArrayPlaceholderValue.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/EmptyArrayPlaceholderValue.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18572,7 +19385,7 @@ public function __construct( string $name );
 ## Mvc\Model\Query\Exceptions\InsertColumnCountMismatch
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InsertColumnCountMismatch.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/InsertColumnCountMismatch.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18608,7 +19421,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\InvalidCachedResultset
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidCachedResultset.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/InvalidCachedResultset.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18644,7 +19457,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\InvalidCachingOptions
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidCachingOptions.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/InvalidCachingOptions.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18680,7 +19493,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\InvalidColumnDefinition
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidColumnDefinition.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/InvalidColumnDefinition.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18716,7 +19529,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\InvalidInjectedManager
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidInjectedManager.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/InvalidInjectedManager.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18752,7 +19565,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\InvalidInjectedMetadata
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidInjectedMetadata.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/InvalidInjectedMetadata.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18788,7 +19601,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\InvalidQueryCacheService
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidQueryCacheService.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/InvalidQueryCacheService.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18824,7 +19637,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\InvalidResultsetClass
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidResultsetClass.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/InvalidResultsetClass.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18857,10 +19670,46 @@ public function __construct( string $className );
 ```
 
 
+## Mvc\Model\Query\Exceptions\InvalidResultsetRowClass
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/InvalidResultsetRowClass.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelqueryexceptionsinvalidresultsetrowclass-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelqueryexceptionsinvalidresultsetrowclass-__construct }
+
+```php
+public function __construct( string $className );
+```
+
+
 ## Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/JoinAliasAlreadyUsed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/JoinAliasAlreadyUsed.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18899,7 +19748,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\JoinFieldCountMismatch
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/JoinFieldCountMismatch.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/JoinFieldCountMismatch.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18939,7 +19788,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\MissingCacheKey
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MissingCacheKey.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/MissingCacheKey.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -18975,7 +19824,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\MissingMetaData
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MissingMetaData.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/MissingMetaData.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19011,7 +19860,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\MissingModelAttribute
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MissingModelAttribute.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/MissingModelAttribute.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19051,7 +19900,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\MissingModelsManager
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MissingModelsManager.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/MissingModelsManager.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19087,7 +19936,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\MixedDatabaseSystems
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MixedDatabaseSystems.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/MixedDatabaseSystems.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19123,7 +19972,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\ModelSourceNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ModelSourceNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/ModelSourceNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19162,7 +20011,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\ModelsListNotLoaded
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ModelsListNotLoaded.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/ModelsListNotLoaded.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19198,7 +20047,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MultipleSqlStatementsNotSupported.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/MultipleSqlStatementsNotSupported.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19234,7 +20083,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\NoModelForAlias
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/NoModelForAlias.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/NoModelForAlias.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19273,7 +20122,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\PhqlColumnNotInMap
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/PhqlColumnNotInMap.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/PhqlColumnNotInMap.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19309,7 +20158,7 @@ public function __construct( string $fieldName );
 ## Mvc\Model\Query\Exceptions\ReadConnectionMissing
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ReadConnectionMissing.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/ReadConnectionMissing.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19345,7 +20194,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\RelationshipNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/RelationshipNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/RelationshipNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19385,7 +20234,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\ResultsetClassNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ResultsetClassNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/ResultsetClassNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19421,7 +20270,7 @@ public function __construct( string $className );
 ## Mvc\Model\Query\Exceptions\ResultsetNonCacheable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ResultsetNonCacheable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/ResultsetNonCacheable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19454,10 +20303,46 @@ public function __construct();
 ```
 
 
+## Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/ResultsetRowClassNotFound.php){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelqueryexceptionsresultsetrowclassnotfound-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelqueryexceptionsresultsetrowclassnotfound-__construct }
+
+```php
+public function __construct( string $className );
+```
+
+
 ## Mvc\Model\Query\Exceptions\UnknownBindType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownBindType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/UnknownBindType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19493,7 +20378,7 @@ public function __construct( string $type );
 ## Mvc\Model\Query\Exceptions\UnknownColumnType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownColumnType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/UnknownColumnType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19529,7 +20414,7 @@ public function __construct( string $type );
 ## Mvc\Model\Query\Exceptions\UnknownJoinType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownJoinType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/UnknownJoinType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19568,7 +20453,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\UnknownModelOrAlias
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownModelOrAlias.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/UnknownModelOrAlias.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19608,7 +20493,7 @@ public function __construct(
 ## Mvc\Model\Query\Exceptions\UnknownPhqlExpression
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownPhqlExpression.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/UnknownPhqlExpression.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19644,7 +20529,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownPhqlExpressionType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/UnknownPhqlExpressionType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19680,7 +20565,7 @@ public function __construct( string $type );
 ## Mvc\Model\Query\Exceptions\UnknownPhqlStatement
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownPhqlStatement.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/UnknownPhqlStatement.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19716,7 +20601,7 @@ public function __construct( string $type );
 ## Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UpdateMultipleNotSupported.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/UpdateMultipleNotSupported.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19752,7 +20637,7 @@ public function __construct();
 ## Mvc\Model\Query\Exceptions\WriteConnectionMissing
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/WriteConnectionMissing.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Exceptions/WriteConnectionMissing.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -19785,65 +20670,10 @@ public function __construct();
 ```
 
 
-## Mvc\Model\Query\Lang
-
-<span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Lang.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Query\Lang
-
-PHQL is implemented as a parser (written in C) that translates syntax in
-that of the target RDBMS. It allows Phalcon to offer a unified SQL language to
-the developer, while internally doing all the work of translating PHQL
-instructions to the most optimal SQL instructions depending on the
-RDBMS type associated with a model.
-
-To achieve the highest performance possible, we wrote a parser that uses
-the same technology as SQLite. This technology provides a small in-memory
-parser with a very low memory footprint that is also thread-safe.
-
-```php
-use Phalcon\Mvc\Model\Query\Lang;
-
-$intermediate = Lang::parsePHQL(
-    "SELECT r.* FROM Robots r LIMIT 10"
-);
-```
-
-<div class="api-tree" markdown>
-
-- **`Phalcon\Mvc\Model\Query\Lang`**
-
-</div>
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#mvcmodelquerylang-parsephql">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">parsePHQL</span>( <span class="st">string</span> <span class="sv">$phql</span> )</code>
-<span class="desc">Parses a PHQL statement returning an intermediate representation (IR)</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 1</div>
-
-#### `parsePHQL()` { #mvcmodelquerylang-parsephql }
-
-```php
-public static function parsePHQL( string $phql ): array;
-```
-
-Parses a PHQL statement returning an intermediate representation (IR)
-
-
 ## Mvc\Model\Query\Status
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Status.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/Status.php){ .src-btn }
 
 This class represents the status returned by a PHQL
 statement like INSERT, UPDATE or DELETE. It offers context
@@ -19851,15 +20681,19 @@ information and the related messages produced by the
 model which finally executes the operations when it fails
 
 ```php
-$phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
+$phql = "UPDATE Invoices
+     SET inv_title = :inv_title:,
+         inv_status_flag = :inv_status_flag:,
+         inv_total = :inv_total:
+     WHERE inv_id = :inv_id:";
 
 $status = $app->modelsManager->executeQuery(
     $phql,
     [
-        "id"   => 100,
-        "name" => "Astroy Boy",
-        "type" => "mechanical",
-        "year" => 1959,
+        "inv_id"          => 100,
+        "inv_title"       => "Test Invoice",
+        "inv_status_flag" => 1,
+        "inv_total"       => 1959,
     ]
 );
 
@@ -19883,12 +20717,12 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelquerystatus-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$success</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$success</span>,</span><span class="prm"><span class="st">ModelInterface|null</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Query\Status</span>
 </a>
 <a class="api-item" href="#mvcmodelquerystatus-getmessages">
 <code class="vis vis-public">public</code>
-<code class="ret">MessageInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the messages produced because of a failed operation</span>
 </a>
@@ -19912,7 +20746,7 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ModelInterface|null</code>
-<code class="sig"><span class="sv">$model</span></code>
+<code class="sig"><span class="sv">$model</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -19930,7 +20764,7 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 ```php
 public function __construct(
     bool $success,
-    ModelInterface $model = null
+    ModelInterface|null $model = null
 );
 ```
 
@@ -19939,7 +20773,7 @@ Phalcon\Mvc\Model\Query\Status
 #### `getMessages()` { #mvcmodelquerystatus-getmessages }
 
 ```php
-public function getMessages(): MessageInterface[];
+public function getMessages(): array;
 ```
 
 Returns the messages produced because of a failed operation
@@ -19964,7 +20798,7 @@ Allows to check if the executed operation was successful
 ## Mvc\Model\Query\StatusInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/StatusInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Query/StatusInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Model\Query\Status
 
@@ -19982,7 +20816,7 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelquerystatusinterface-getmessages">
 <code class="vis vis-public">public</code>
-<code class="ret">MessageInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the messages produced by an operation failed</span>
 </a>
@@ -20007,7 +20841,7 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 #### `getMessages()` { #mvcmodelquerystatusinterface-getmessages }
 
 ```php
-public function getMessages(): MessageInterface[];
+public function getMessages(): array;
 ```
 
 Returns the messages produced by an operation failed
@@ -20032,9 +20866,7 @@ Allows to check if the executed operation was successful
 ## Mvc\Model\Relation
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Relation.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Relation
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Relation.php){ .src-btn }
 
 This class represents a relationship between two models
 
@@ -20049,21 +20881,24 @@ This class represents a relationship between two models
 <div class="api-list">
 <a class="api-item" href="#mvcmodelrelation-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Relation constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getfields">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getFields</span>()</code>
 <span class="desc">Returns the fields</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getforeignkey">
 <code class="vis vis-public">public</code>
+<code class="ret">array|bool|string</code>
 <code class="sig"><span class="sf">getForeignKey</span>()</code>
 <span class="desc">Returns the foreign key configuration</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getintermediatefields">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getIntermediateFields</span>()</code>
 <span class="desc">Gets the intermediate fields for has-*-through relations</span>
 </a>
@@ -20075,11 +20910,13 @@ This class represents a relationship between two models
 </a>
 <a class="api-item" href="#mvcmodelrelation-getintermediatereferencedfields">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getIntermediateReferencedFields</span>()</code>
 <span class="desc">Gets the intermediate referenced fields for has-*-through relations</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getoption">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getOption</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns an option by the specified name</span>
 </a>
@@ -20091,11 +20928,13 @@ This class represents a relationship between two models
 </a>
 <a class="api-item" href="#mvcmodelrelation-getparams">
 <code class="vis vis-public">public</code>
+<code class="ret">array|false</code>
 <code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Returns parameters that must be always used when the related records are obtained</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getreferencedfields">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getReferencedFields</span>()</code>
 <span class="desc">Returns the referenced fields</span>
 </a>
@@ -20131,7 +20970,8 @@ This class represents a relationship between two models
 </a>
 <a class="api-item" href="#mvcmodelrelation-setintermediaterelation">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">setIntermediateRelation</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateReferencedFields</span></span>)</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setIntermediateRelation</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$intermediateReferencedFields</span></span>)</code>
 <span class="desc">Sets the intermediate model data for has-*-through relations</span>
 </a>
 </div>
@@ -20228,8 +21068,8 @@ This class represents a relationship between two models
 public function __construct(
     int $type,
     string $referencedModel,
-    mixed $fields,
-    mixed $referencedFields,
+    array|string $fields,
+    array|string $referencedFields,
     array $options = []
 );
 ```
@@ -20239,7 +21079,7 @@ Phalcon\Mvc\Model\Relation constructor
 #### `getFields()` { #mvcmodelrelation-getfields }
 
 ```php
-public function getFields();
+public function getFields(): array|string;
 ```
 
 Returns the fields
@@ -20247,7 +21087,7 @@ Returns the fields
 #### `getForeignKey()` { #mvcmodelrelation-getforeignkey }
 
 ```php
-public function getForeignKey();
+public function getForeignKey(): array|bool|string;
 ```
 
 Returns the foreign key configuration
@@ -20255,7 +21095,7 @@ Returns the foreign key configuration
 #### `getIntermediateFields()` { #mvcmodelrelation-getintermediatefields }
 
 ```php
-public function getIntermediateFields();
+public function getIntermediateFields(): array|string;
 ```
 
 Gets the intermediate fields for has-*-through relations
@@ -20271,7 +21111,7 @@ Gets the intermediate model for has-*-through relations
 #### `getIntermediateReferencedFields()` { #mvcmodelrelation-getintermediatereferencedfields }
 
 ```php
-public function getIntermediateReferencedFields();
+public function getIntermediateReferencedFields(): array|string;
 ```
 
 Gets the intermediate referenced fields for has-*-through relations
@@ -20279,7 +21119,7 @@ Gets the intermediate referenced fields for has-*-through relations
 #### `getOption()` { #mvcmodelrelation-getoption }
 
 ```php
-public function getOption( string $name );
+public function getOption( string $name ): mixed;
 ```
 
 Returns an option by the specified name
@@ -20296,7 +21136,7 @@ Returns the options
 #### `getParams()` { #mvcmodelrelation-getparams }
 
 ```php
-public function getParams();
+public function getParams(): array|false;
 ```
 
 Returns parameters that must be always used when the related records are obtained
@@ -20304,7 +21144,7 @@ Returns parameters that must be always used when the related records are obtaine
 #### `getReferencedFields()` { #mvcmodelrelation-getreferencedfields }
 
 ```php
-public function getReferencedFields();
+public function getReferencedFields(): array|string;
 ```
 
 Returns the referenced fields
@@ -20353,10 +21193,10 @@ Check whether the relation is a 'many-to-many' relation or not
 
 ```php
 public function setIntermediateRelation(
-    mixed $intermediateFields,
+    array|string $intermediateFields,
     string $intermediateModel,
-    mixed $intermediateReferencedFields
-);
+    array|string $intermediateReferencedFields
+): void;
 ```
 
 Sets the intermediate model data for has-*-through relations
@@ -20365,9 +21205,7 @@ Sets the intermediate model data for has-*-through relations
 ## Mvc\Model\RelationInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/RelationInterface.zep){ .src-btn }
-
-Phalcon\Mvc\Model\RelationInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/RelationInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Model\Relation
 
@@ -20382,16 +21220,19 @@ Interface for Phalcon\Mvc\Model\Relation
 <div class="api-list">
 <a class="api-item" href="#mvcmodelrelationinterface-getfields">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getFields</span>()</code>
 <span class="desc">Returns the fields</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getforeignkey">
 <code class="vis vis-public">public</code>
+<code class="ret">array|bool|string</code>
 <code class="sig"><span class="sf">getForeignKey</span>()</code>
 <span class="desc">Returns the foreign key configuration</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getintermediatefields">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getIntermediateFields</span>()</code>
 <span class="desc">Gets the intermediate fields for has-*-through relations</span>
 </a>
@@ -20403,11 +21244,13 @@ Interface for Phalcon\Mvc\Model\Relation
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getintermediatereferencedfields">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getIntermediateReferencedFields</span>()</code>
 <span class="desc">Gets the intermediate referenced fields for has-*-through relations</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getoption">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getOption</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns an option by the specified name</span>
 </a>
@@ -20419,11 +21262,13 @@ Interface for Phalcon\Mvc\Model\Relation
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getparams">
 <code class="vis vis-public">public</code>
+<code class="ret">array|false</code>
 <code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Returns parameters that must be always used when the related records are obtained</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getreferencedfields">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getReferencedFields</span>()</code>
 <span class="desc">Returns the referenced fields</span>
 </a>
@@ -20449,7 +21294,7 @@ Interface for Phalcon\Mvc\Model\Relation
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isReusable</span>()</code>
-<span class="desc">Check if records returned by getting belongs-to/has-many are implicitly cached during the current request</span>
+<span class="desc">Check if records returned by getting belongs-to/has-many are implicitly</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-isthrough">
 <code class="vis vis-public">public</code>
@@ -20459,7 +21304,7 @@ Interface for Phalcon\Mvc\Model\Relation
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-setintermediaterelation">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">setIntermediateRelation</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateReferencedFields</span></span>)</code>
+<code class="sig"><span class="sf">setIntermediateRelation</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$intermediateReferencedFields</span></span>)</code>
 <span class="desc">Sets the intermediate model data for has-*-through relations</span>
 </a>
 </div>
@@ -20471,7 +21316,7 @@ Interface for Phalcon\Mvc\Model\Relation
 #### `getFields()` { #mvcmodelrelationinterface-getfields }
 
 ```php
-public function getFields();
+public function getFields(): array|string;
 ```
 
 Returns the fields
@@ -20479,7 +21324,7 @@ Returns the fields
 #### `getForeignKey()` { #mvcmodelrelationinterface-getforeignkey }
 
 ```php
-public function getForeignKey();
+public function getForeignKey(): array|bool|string;
 ```
 
 Returns the foreign key configuration
@@ -20487,7 +21332,7 @@ Returns the foreign key configuration
 #### `getIntermediateFields()` { #mvcmodelrelationinterface-getintermediatefields }
 
 ```php
-public function getIntermediateFields();
+public function getIntermediateFields(): array|string;
 ```
 
 Gets the intermediate fields for has-*-through relations
@@ -20503,7 +21348,7 @@ Gets the intermediate model for has-*-through relations
 #### `getIntermediateReferencedFields()` { #mvcmodelrelationinterface-getintermediatereferencedfields }
 
 ```php
-public function getIntermediateReferencedFields();
+public function getIntermediateReferencedFields(): array|string;
 ```
 
 Gets the intermediate referenced fields for has-*-through relations
@@ -20511,7 +21356,7 @@ Gets the intermediate referenced fields for has-*-through relations
 #### `getOption()` { #mvcmodelrelationinterface-getoption }
 
 ```php
-public function getOption( string $name );
+public function getOption( string $name ): mixed;
 ```
 
 Returns an option by the specified name
@@ -20528,7 +21373,7 @@ Returns the options
 #### `getParams()` { #mvcmodelrelationinterface-getparams }
 
 ```php
-public function getParams();
+public function getParams(): array|false;
 ```
 
 Returns parameters that must be always used when the related records are obtained
@@ -20536,7 +21381,7 @@ Returns parameters that must be always used when the related records are obtaine
 #### `getReferencedFields()` { #mvcmodelrelationinterface-getreferencedfields }
 
 ```php
-public function getReferencedFields();
+public function getReferencedFields(): array|string;
 ```
 
 Returns the referenced fields
@@ -20571,7 +21416,8 @@ Check whether the relation act as a foreign key
 public function isReusable(): bool;
 ```
 
-Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
+Check if records returned by getting belongs-to/has-many are implicitly
+cached during the current request
 
 #### `isThrough()` { #mvcmodelrelationinterface-isthrough }
 
@@ -20585,9 +21431,9 @@ Check whether the relation is a 'many-to-many' relation or not
 
 ```php
 public function setIntermediateRelation(
-    mixed $intermediateFields,
+    array|string $intermediateFields,
     string $intermediateModel,
-    mixed $intermediateReferencedFields
+    array|string $intermediateReferencedFields
 );
 ```
 
@@ -20597,7 +21443,7 @@ Sets the intermediate model data for has-*-through relations
 ## Mvc\Model\ResultInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/ResultInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/ResultInterface.php){ .src-btn }
 
 Phalcon\Mvc\Model\ResultInterface
 
@@ -20617,7 +21463,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelresultinterface-setdirtystate">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface|bool</code>
+<code class="ret">bool|ModelInterface</code>
 <code class="sig"><span class="sf">setDirtyState</span>( <span class="st">int</span> <span class="sv">$dirtyState</span> )</code>
 <span class="desc">Sets the object&#039;s state</span>
 </a>
@@ -20630,7 +21476,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 #### `setDirtyState()` { #mvcmodelresultinterface-setdirtystate }
 
 ```php
-public function setDirtyState( int $dirtyState ): ModelInterface|bool;
+public function setDirtyState( int $dirtyState ): bool|ModelInterface;
 ```
 
 Sets the object's state
@@ -20639,61 +21485,60 @@ Sets the object's state
 ## Mvc\Model\Resultset
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Resultset.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Resultset.php){ .src-btn }
 
-Phalcon\Mvc\Model\Resultset
-
-This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption
-Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized
-it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before
-serializing.
+This component allows to Phalcon\Mvc\Model returns large resultsets with
+the minimum memory consumption. Resultsets can be traversed using a standard
+foreach or a while statement. If a resultset is serialized it will dump all
+the rows into a big array. Then unserialize will retrieve the rows as they
+were before serializing.
 
 ```php
 
 // Using a standard foreach
-$robots = Robots::find(
+$invoices = Invoices::find(
     [
-        "type = 'virtual'",
-        "order" => "name",
+        "inv_status_flag = 1",
+        "order" => "inv_title",
     ]
 );
 
-foreach ($robots as robot) {
-    echo robot->name, "\n";
+foreach ($invoices as invoice) {
+    echo invoice->inv_title, "\n";
 }
 
 // Using a while
-$robots = Robots::find(
+$invoices = Invoices::find(
     [
-        "type = 'virtual'",
-        "order" => "name",
+        "inv_status_flag = 1",
+        "order" => "inv_title",
     ]
 );
 
-$robots->rewind();
+$invoices->rewind();
 
-while ($robots->valid()) {
-    $robot = $robots->current();
+while ($invoices->valid()) {
+    $invoice = $invoices->current();
 
-    echo $robot->name, "\n";
+    echo $invoice->inv_title, "\n";
 
-    $robots->next();
+    $invoices->next();
 }
 ```
+
 @template TKey
 @template TValue
 @implements Iterator<TKey, TValue>
-@implements ArrayAccess<TKey, TValue>
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Resultset`** - implements [`Phalcon\Mvc\Model\ResultsetInterface`](#mvcmodelresultsetinterface), `Iterator`, `SeekableIterator`, `Countable`, `ArrayAccess`, `Serializable`, `JsonSerializable`
+- **`Phalcon\Mvc\Model\Resultset`** - implements [`Phalcon\Mvc\Model\ResultsetInterface`](#mvcmodelresultsetinterface), `\Iterator`, `\SeekableIterator`, `\Countable`, `\ArrayAccess`, `\JsonSerializable`
     - [`Phalcon\Mvc\Model\Resultset\Complex`](#mvcmodelresultsetcomplex)
     - [`Phalcon\Mvc\Model\Resultset\Simple`](#mvcmodelresultsetsimple)
 
 </div>
 
-__Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSerializable` · `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Enum` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\CursorIsImmutable` · `Phalcon\Mvc\Model\Exceptions\IndexNotInCursor` · `Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService` · `Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings` · `SeekableIterator` · `Serializable`
+__Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSerializable` · `Phalcon\Db\Enum` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\CursorIsImmutable` · `Phalcon\Mvc\Model\Exceptions\IndexNotInCursor` · `Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService` · `Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord` · `Phalcon\Support\Settings` · `SeekableIterator`
 { .api-uses }
 
 ### Method Summary
@@ -20713,24 +21558,24 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 <a class="api-item" href="#mvcmodelresultset-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>( <span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">delete</span>( <span class="st">Closure|null</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span> )</code>
 <span class="desc">Deletes every record in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-filter">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">filter</span>( <span class="st">callable</span> <span class="sv">$filter</span> )</code>
 <span class="desc">Filters a resultset returning only those the developer requires</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-getcache">
 <code class="vis vis-public">public</code>
-<code class="ret">CacheInterface|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getCache</span>()</code>
 <span class="desc">Returns the associated cache for the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-getfirst">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getFirst</span>()</code>
 <span class="desc">Get first row in the resultset</span>
 </a>
@@ -20742,13 +21587,13 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 </a>
 <a class="api-item" href="#mvcmodelresultset-getlast">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface|null</code>
+<code class="ret">ModelInterface|Row|null</code>
 <code class="sig"><span class="sf">getLast</span>()</code>
 <span class="desc">Get last row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-getmessages">
 <code class="vis vis-public">public</code>
-<code class="ret">MessageInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the error messages produced by a batch operation</span>
 </a>
@@ -20781,6 +21626,12 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 <code class="sig"><span class="sf">key</span>()</code>
 <span class="desc">Gets pointer number of active row in the resultset</span>
 </a>
+<a class="api-item" href="#mvcmodelresultset-materialize">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">materialize</span>()</code>
+<span class="desc">Fetches every remaining row of the underlying cursor into memory,</span>
+</a>
 <a class="api-item" href="#mvcmodelresultset-next">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
@@ -20803,13 +21654,13 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface</span>
+<span class="desc">Resultsets cannot be changed. It has only been implemented to meet the</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
-<span class="desc">Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface</span>
+<span class="desc">Resultsets cannot be changed. It has only been implemented to meet the</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-refresh">
 <code class="vis vis-public">public</code>
@@ -20843,7 +21694,7 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 <a class="api-item" href="#mvcmodelresultset-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">Closure|null</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Updates every record in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-valid">
@@ -20889,13 +21740,16 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">CacheInterface|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$cache</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$count</span><span class="sm"> = 0</span></code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sv">$count</span><span class="sm"> = null</span></code>
+<span class="desc">Number of rows, or null while it has not been worked out yet. Resolved
+lazily by count() - asking the driver up front costs SQLite an extra
+statement on every single result-set.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -20919,8 +21773,8 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">ResultInterface|bool</code>
-<code class="sig"><span class="sv">$result</span></code>
+<code class="ret">bool|ResultInterface</code>
+<code class="sig"><span class="sv">$result</span><span class="sm"> = null</span></code>
 <span class="desc">Phalcon\Db\ResultInterface or false for empty resultset</span>
 </div>
 <div class="api-item">
@@ -20937,7 +21791,7 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 
 ### Methods
 
-<div class="api-group">Public · 26</div>
+<div class="api-group">Public · 27</div>
 
 #### `__construct()` { #mvcmodelresultset-__construct }
 
@@ -20961,7 +21815,7 @@ Counts how many rows are in the resultset
 #### `delete()` { #mvcmodelresultset-delete }
 
 ```php
-public function delete( Closure $conditionCallback = null ): bool;
+public function delete( Closure|null $conditionCallback = null ): bool;
 ```
 
 Deletes every record in the resultset
@@ -20969,16 +21823,16 @@ Deletes every record in the resultset
 #### `filter()` { #mvcmodelresultset-filter }
 
 ```php
-public function filter( callable $filter ): ModelInterface[];
+public function filter( callable $filter ): array;
 ```
 
 Filters a resultset returning only those the developer requires
 
 ```php
-$filtered = $robots->filter(
-    function ($robot) {
-        if ($robot->id < 3) {
-            return $robot;
+$filtered = $invoices->filter(
+    function ($invoice) {
+        if ($invoice->inv_id < 3) {
+            return $invoice;
         }
     }
 );
@@ -20987,7 +21841,7 @@ $filtered = $robots->filter(
 #### `getCache()` { #mvcmodelresultset-getcache }
 
 ```php
-public function getCache(): CacheInterface|null;
+public function getCache(): mixed;
 ```
 
 Returns the associated cache for the resultset
@@ -20995,27 +21849,27 @@ Returns the associated cache for the resultset
 #### `getFirst()` { #mvcmodelresultset-getfirst }
 
 ```php
-public function getFirst(): mixed|null;
+public function getFirst(): mixed;
 ```
 
 Get first row in the resultset
 
 ```php
-$model = new Robots();
+$model = new Invoices();
 $manager = $model->getModelsManager();
 
-// \Robots
-$manager->createQuery('SELECT * FROM Robots')
+// \Invoices
+$manager->createQuery('SELECT * FROM Invoices')
         ->execute()
         ->getFirst();
 
 // \Phalcon\Mvc\Model\Row
-$manager->createQuery('SELECT r.id FROM Robots AS r')
+$manager->createQuery('SELECT r.inv_id FROM Invoices AS r')
         ->execute()
         ->getFirst();
 
 // NULL
-$manager->createQuery('SELECT r.id FROM Robots AS r WHERE r.name = "NON-EXISTENT"')
+$manager->createQuery('SELECT r.inv_id FROM Invoices AS r WHERE r.inv_title = "NON-EXISTENT"')
         ->execute()
         ->getFirst();
 ```
@@ -21031,7 +21885,7 @@ Returns the current hydration mode
 #### `getLast()` { #mvcmodelresultset-getlast }
 
 ```php
-public function getLast(): ModelInterface|null;
+public function getLast(): ModelInterface|Row|null;
 ```
 
 Get last row in the resultset
@@ -21039,7 +21893,7 @@ Get last row in the resultset
 #### `getMessages()` { #mvcmodelresultset-getmessages }
 
 ```php
-public function getMessages(): MessageInterface[];
+public function getMessages(): array;
 ```
 
 Returns the error messages produced by a batch operation
@@ -21076,9 +21930,9 @@ Returns serialised model objects as array for json_encode.
 Calls jsonSerialize on each object if present
 
 ```php
-$robots = Robots::find();
+$invoices = Invoices::find();
 
-echo json_encode($robots);
+echo json_encode($invoices);
 ```
 
 #### `key()` { #mvcmodelresultset-key }
@@ -21088,6 +21942,20 @@ public function key(): int|null;
 ```
 
 Gets pointer number of active row in the resultset
+
+#### `materialize()` { #mvcmodelresultset-materialize }
+
+```php
+public function materialize(): void;
+```
+
+Fetches every remaining row of the underlying cursor into memory,
+turning the resultset into TYPE_RESULT_FULL.
+
+Free when called before the cursor has been advanced: the statement has
+already been executed by Model\Query::executeSelect() and only the row
+the constructor consumed is missing from the cursor, so no re-execution
+takes place. Idempotent.
 
 #### `next()` { #mvcmodelresultset-next }
 
@@ -21122,7 +21990,8 @@ public function offsetSet(
 ): void;
 ```
 
-Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the
+definition of the ArrayAccess interface
 
 #### `offsetUnset()` { #mvcmodelresultset-offsetunset }
 
@@ -21130,7 +21999,8 @@ Resultsets cannot be changed. It has only been implemented to meet the definitio
 public function offsetUnset( mixed $offset ): void;
 ```
 
-Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Resultsets cannot be changed. It has only been implemented to meet the
+definition of the ArrayAccess interface
 
 #### `refresh()` { #mvcmodelresultset-refresh }
 
@@ -21176,7 +22046,7 @@ Set if the resultset is fresh or an old one cached
 ```php
 public function update(
     mixed $data,
-    Closure $conditionCallback = null
+    Closure|null $conditionCallback = null
 ): bool;
 ```
 
@@ -21190,13 +22060,15 @@ public function valid(): bool;
 
 Check whether internal resource has rows to fetch
 
+Driven by the row the cursor is parked on rather than by the count, so
+that a plain traversal never has to ask the driver how many rows there
+are - on SQLite that answer costs a second statement.
+
 
 ## Mvc\Model\ResultsetInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/ResultsetInterface.zep){ .src-btn }
-
-Phalcon\Mvc\Model\ResultsetInterface
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/ResultsetInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Model\Resultset
 
@@ -21215,24 +22087,24 @@ __Uses__ `Closure` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelI
 <a class="api-item" href="#mvcmodelresultsetinterface-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>( <span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">delete</span>( <span class="st">Closure|null</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span> )</code>
 <span class="desc">Deletes every record in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-filter">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">filter</span>( <span class="st">callable</span> <span class="sv">$filter</span> )</code>
 <span class="desc">Filters a resultset returning only those the developer requires</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-getcache">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getCache</span>()</code>
 <span class="desc">Returns the associated cache for the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-getfirst">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getFirst</span>()</code>
 <span class="desc">Get first row in the resultset</span>
 </a>
@@ -21244,13 +22116,13 @@ __Uses__ `Closure` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelI
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-getlast">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface|null</code>
+<code class="ret">ModelInterface|Row|null</code>
 <code class="sig"><span class="sf">getLast</span>()</code>
 <span class="desc">Get last row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-getmessages">
 <code class="vis vis-public">public</code>
-<code class="ret">MessageInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the error messages produced by a batch operation</span>
 </a>
@@ -21264,7 +22136,7 @@ __Uses__ `Closure` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelI
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isFresh</span>()</code>
-<span class="desc">Tell if the resultset if fresh or an old one cached</span>
+<span class="desc">Tell if the resultset is fresh or an old one cached</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-sethydratemode">
 <code class="vis vis-public">public</code>
@@ -21282,12 +22154,12 @@ __Uses__ `Closure` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelI
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">toArray</span>()</code>
-<span class="desc">Returns a complete resultset as an array, if the resultset has a big number of rows</span>
+<span class="desc">Returns a complete resultset as an array, if the resultset has a big</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">Closure|null</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Updates every record in the resultset</span>
 </a>
 </div>
@@ -21299,7 +22171,7 @@ __Uses__ `Closure` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelI
 #### `delete()` { #mvcmodelresultsetinterface-delete }
 
 ```php
-public function delete( Closure $conditionCallback = null ): bool;
+public function delete( Closure|null $conditionCallback = null ): bool;
 ```
 
 Deletes every record in the resultset
@@ -21307,16 +22179,16 @@ Deletes every record in the resultset
 #### `filter()` { #mvcmodelresultsetinterface-filter }
 
 ```php
-public function filter( callable $filter ): ModelInterface[];
+public function filter( callable $filter ): array;
 ```
 
 Filters a resultset returning only those the developer requires
 
 ```php
-$filtered = $robots->filter(
-    function ($robot) {
-        if ($robot->id < 3) {
-            return $robot;
+$filtered = $invoices->filter(
+    function ($invoice) {
+        if ($invoice->inv_id < 3) {
+            return $invoice;
         }
     }
 );
@@ -21325,7 +22197,7 @@ $filtered = $robots->filter(
 #### `getCache()` { #mvcmodelresultsetinterface-getcache }
 
 ```php
-public function getCache(): mixed|null;
+public function getCache(): mixed;
 ```
 
 Returns the associated cache for the resultset
@@ -21333,7 +22205,7 @@ Returns the associated cache for the resultset
 #### `getFirst()` { #mvcmodelresultsetinterface-getfirst }
 
 ```php
-public function getFirst(): mixed|null;
+public function getFirst(): mixed;
 ```
 
 Get first row in the resultset
@@ -21349,7 +22221,7 @@ Returns the current hydration mode
 #### `getLast()` { #mvcmodelresultsetinterface-getlast }
 
 ```php
-public function getLast(): ModelInterface|null;
+public function getLast(): ModelInterface|Row|null;
 ```
 
 Get last row in the resultset
@@ -21357,7 +22229,7 @@ Get last row in the resultset
 #### `getMessages()` { #mvcmodelresultsetinterface-getmessages }
 
 ```php
-public function getMessages(): MessageInterface[];
+public function getMessages(): array;
 ```
 
 Returns the error messages produced by a batch operation
@@ -21376,7 +22248,7 @@ Returns the internal type of data retrieval that the resultset is using
 public function isFresh(): bool;
 ```
 
-Tell if the resultset if fresh or an old one cached
+Tell if the resultset is fresh or an old one cached
 
 #### `setHydrateMode()` { #mvcmodelresultsetinterface-sethydratemode }
 
@@ -21400,15 +22272,15 @@ Set if the resultset is fresh or an old one cached
 public function toArray(): array;
 ```
 
-Returns a complete resultset as an array, if the resultset has a big number of rows
-it could consume more memory than currently it does.
+Returns a complete resultset as an array, if the resultset has a big
+number of rows it could consume more memory than currently it does.
 
 #### `update()` { #mvcmodelresultsetinterface-update }
 
 ```php
 public function update(
     mixed $data,
-    Closure $conditionCallback = null
+    Closure|null $conditionCallback = null
 ): bool;
 ```
 
@@ -21418,9 +22290,7 @@ Updates every record in the resultset
 ## Mvc\Model\Resultset\Complex
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Resultset/Complex.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Resultset\Complex
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Resultset/Complex.php){ .src-btn }
 
 Complex resultsets may include complete objects and scalar values.
 This class builds every complex row as it is required
@@ -21435,7 +22305,7 @@ This class builds every complex row as it is required
 
 </div>
 
-__Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\CorruptColumnType` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings` · `stdClass`
+__Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\CorruptColumnType` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\Row` · `Phalcon\Support\Settings` · `stdClass`
 { .api-uses }
 
 ### Method Summary
@@ -21443,7 +22313,7 @@ __Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 <div class="api-list">
 <a class="api-item" href="#mvcmodelresultsetcomplex-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columnTypes</span>,</span><span class="prm"><span class="st">ResultInterface</span> <span class="sv">$result</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array|null</span> <span class="sv">$columnTypes</span>,</span><span class="prm"><span class="st">ResultInterface|null</span> <span class="sv">$result</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$resultsetRowClass</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Resultset\Complex constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetcomplex-__serialize">
@@ -21478,7 +22348,7 @@ __Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
-<span class="desc">Unserializing a resultset will allow to only works on the rows present in the saved state</span>
+<span class="desc">Unserializing a resultset will allow to only works on the rows present</span>
 </a>
 </div>
 
@@ -21487,7 +22357,7 @@ __Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array|null</code>
 <code class="sig"><span class="sv">$columnTypes</span></code>
 </div>
 <div class="api-item">
@@ -21496,6 +22366,11 @@ __Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 <code class="sig"><span class="sv">$disableHydration</span><span class="sm"> = false</span></code>
 <span class="desc">Unserialised result-set hydrated all rows already. unserialise() sets
 disableHydration to true</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$resultsetRowClass</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 </div>
 
@@ -21507,9 +22382,10 @@ disableHydration to true</span>
 
 ```php
 public function __construct(
-    mixed $columnTypes,
-    ResultInterface $result = null,
-    mixed $cache = null
+    array|null $columnTypes,
+    ResultInterface|null $result = null,
+    mixed $cache = null,
+    string $resultsetRowClass = ""
 );
 ```
 
@@ -21559,21 +22435,17 @@ number of rows it could consume more memory than currently it does.
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializing a resultset will allow to only works on the rows present in the saved state
+Unserializing a resultset will allow to only works on the rows present
+in the saved state
 
 
 ## Mvc\Model\Resultset\Simple
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Resultset/Simple.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Resultset\Simple
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Resultset/Simple.php){ .src-btn }
 
 Simple resultsets only contains a complete objects
 This class builds every complete object as it is required
-
-@template TKey of int
-@template TValue of \Phalcon\Mvc\ModelInterface
 
 <div class="api-tree" markdown>
 
@@ -21582,7 +22454,7 @@ This class builds every complete object as it is required
 
 </div>
 
-__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\Row` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -21615,6 +22487,18 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `
 <code class="sig"><span class="sf">serialize</span>()</code>
 <span class="desc">Serializing a resultset will dump all related rows into a big array</span>
 </a>
+<a class="api-item" href="#mvcmodelresultsetsimple-seteagermap">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setEagerMap</span>( <span class="st">array</span> <span class="sv">$eagerMap</span> )</code>
+<span class="desc">Attaches a pre-loaded relation map, applied to every record as it is</span>
+</a>
+<a class="api-item" href="#mvcmodelresultsetsimple-slicerows">
+<code class="vis vis-public">public</code>
+<code class="ret">Simple</code>
+<code class="sig"><span class="sf">sliceRows</span>( <span class="st">array</span> <span class="sv">$indexes</span> )</code>
+<span class="desc">Builds a new resultset of the same concrete class over the rows at the</span>
+</a>
 <a class="api-item" href="#mvcmodelresultsetsimple-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
@@ -21634,8 +22518,13 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|string</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$columnMap</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$eagerMap</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -21644,14 +22533,14 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">ModelInterface|Row</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$model</span></code>
 </div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 7</div>
+<div class="api-group">Public · 9</div>
 
 #### `__construct()` { #mvcmodelresultsetsimple-__construct }
 
@@ -21695,6 +22584,29 @@ public function serialize(): string;
 
 Serializing a resultset will dump all related rows into a big array
 
+#### `setEagerMap()` { #mvcmodelresultsetsimple-seteagermap }
+
+```php
+public function setEagerMap( array $eagerMap ): void;
+```
+
+Attaches a pre-loaded relation map, applied to every record as it is
+hydrated.
+
+Records in a resultset are transient - seek() clears activeRow on every
+move and current() re-hydrates from the raw row - so hydration is the
+only durable point at which relations can be stamped.
+
+#### `sliceRows()` { #mvcmodelresultsetsimple-slicerows }
+
+```php
+public function sliceRows( array $indexes ): Simple;
+```
+
+Builds a new resultset of the same concrete class over the rows at the
+given positions, preserving the column map, record prototype and
+snapshot behavior of this resultset.
+
 #### `toArray()` { #mvcmodelresultsetsimple-toarray }
 
 ```php
@@ -21719,7 +22631,7 @@ the saved state
 ## Mvc\Model\Row
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Row.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Row.php){ .src-btn }
 
 This component allows Phalcon\Mvc\Model to return rows without an associated entity.
 This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
@@ -21727,11 +22639,11 @@ This objects implements the ArrayAccess interface to allow access the object as 
 <div class="api-tree" markdown>
 
 - `\stdClass`
-    - **`Phalcon\Mvc\Model\Row`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `ArrayAccess`, `JsonSerializable`
+    - **`Phalcon\Mvc\Model\Row`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\ArrayAccess`, `\JsonSerializable`
 
 </div>
 
-__Uses__ `ArrayAccess` · `JsonSerializable` · `Phalcon\Mvc\EntityInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\IndexNotInRow` · `Phalcon\Mvc\Model\Exceptions\RowIsImmutable`
+__Uses__ `ArrayAccess` · `JsonSerializable` · `Phalcon\Mvc\EntityInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\IndexNotInRow` · `Phalcon\Mvc\Model\Exceptions\RowIsImmutable` · `stdClass`
 { .api-uses }
 
 ### Method Summary
@@ -21746,35 +22658,36 @@ __Uses__ `ArrayAccess` · `JsonSerializable` · `Phalcon\Mvc\EntityInterface` ·
 <a class="api-item" href="#mvcmodelrow-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
-<span class="desc">Checks whether offset exists in the row. Returns true when the property</span>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
+<span class="desc">Checks whether offset exists in the row</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-offsetget">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Gets a record in a specific position of the row</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-offsetset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface</span>
+<span class="desc">Rows cannot be changed. It has only been implemented to meet the</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
-<span class="desc">Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface</span>
+<span class="desc">Rows cannot be changed. It has only been implemented to meet the</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-readattribute">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">readAttribute</span>( <span class="st">string</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Reads an attribute value by its name</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-setdirtystate">
 <code class="vis vis-public">public</code>
-<code class="ret">ModelInterface|bool</code>
+<code class="ret">bool|ModelInterface</code>
 <code class="sig"><span class="sf">setDirtyState</span>( <span class="st">int</span> <span class="sv">$dirtyState</span> )</code>
 <span class="desc">Set the current object&#039;s state</span>
 </a>
@@ -21807,17 +22720,15 @@ Serializes the object for json_encode
 #### `offsetExists()` { #mvcmodelrow-offsetexists }
 
 ```php
-public function offsetExists( mixed $index ): bool;
+public function offsetExists( mixed $offset ): bool;
 ```
 
-Checks whether offset exists in the row. Returns true when the property
-is present on the row, regardless of whether its value is null - column
-presence is the contract, not value truthiness.
+Checks whether offset exists in the row
 
 #### `offsetGet()` { #mvcmodelrow-offsetget }
 
 ```php
-public function offsetGet( mixed $index ): mixed;
+public function offsetGet( mixed $offset ): mixed;
 ```
 
 Gets a record in a specific position of the row
@@ -21831,7 +22742,8 @@ public function offsetSet(
 ): void;
 ```
 
-Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Rows cannot be changed. It has only been implemented to meet the
+definition of the ArrayAccess interface
 
 #### `offsetUnset()` { #mvcmodelrow-offsetunset }
 
@@ -21839,24 +22751,25 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 public function offsetUnset( mixed $offset ): void;
 ```
 
-Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Rows cannot be changed. It has only been implemented to meet the
+definition of the ArrayAccess interface
 
 #### `readAttribute()` { #mvcmodelrow-readattribute }
 
 ```php
-public function readAttribute( string $attribute );
+public function readAttribute( string $attribute ): mixed;
 ```
 
 Reads an attribute value by its name
 
 ```php
-echo $robot->readAttribute("name");
+echo $invoice->readAttribute("inv_title");
 ```
 
 #### `setDirtyState()` { #mvcmodelrow-setdirtystate }
 
 ```php
-public function setDirtyState( int $dirtyState ): ModelInterface|bool;
+public function setDirtyState( int $dirtyState ): bool|ModelInterface;
 ```
 
 Set the current object's state
@@ -21881,14 +22794,14 @@ public function writeAttribute(
 Writes an attribute value by its name
 
 ```php
-$robot->writeAttribute("name", "Rosey");
+$invoice->writeAttribute("inv_title", "Test Invoice");
 ```
 
 
 ## Mvc\Model\Transaction
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Transaction.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Transaction.php){ .src-btn }
 
 Transactions are protective blocks where SQL statements are only permanent if
 they can all succeed as one atomic action. Phalcon\Transaction is intended to
@@ -21904,25 +22817,25 @@ try {
 
     $transaction = $manager->get();
 
-    $robot = new Robots();
+    $invoice = new Invoices();
 
-    $robot->setTransaction($transaction);
+    $invoice->setTransaction($transaction);
 
-    $robot->name       = "WALL·E";
-    $robot->created_at = date("Y-m-d");
+    $invoice->inv_title    = "Test Invoice";
+    $invoice->inv_created_at = date("Y-m-d");
 
-    if ($robot->save() === false) {
-        $transaction->rollback("Can't save robot");
+    if ($invoice->save() === false) {
+        $transaction->rollback("Can't save invoice");
     }
 
-    $robotPart = new RobotParts();
+    $product = new Products();
 
-    $robotPart->setTransaction($transaction);
+    $product->setTransaction($transaction);
 
-    $robotPart->type = "head";
+    $product->prd_name = "Widget";
 
-    if ($robotPart->save() === false) {
-        $transaction->rollback("Can't save robot part");
+    if ($product->save() === false) {
+        $transaction->rollback("Can't save product");
     }
 
     $transaction->commit();
@@ -21937,7 +22850,7 @@ try {
 
 </div>
 
-__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\Transaction\Failed` · `Phalcon\Mvc\Model\Transaction\ManagerInterface`
+__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Transaction\Failed` · `Phalcon\Mvc\Model\Transaction\ManagerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -21987,7 +22900,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 <a class="api-item" href="#mvcmodeltransaction-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">rollback</span>(<span class="prm"><span class="st">string</span> <span class="sv">$rollbackMessage</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$rollbackRecord</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">rollback</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$rollbackMessage</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ModelInterface|null</span> <span class="sv">$rollbackRecord</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Rollbacks the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-setisnewtransaction">
@@ -22135,8 +23048,8 @@ Checks whether internal connection is under an active transaction
 
 ```php
 public function rollback(
-    string $rollbackMessage = null,
-    ModelInterface $rollbackRecord = null
+    string|null $rollbackMessage = null,
+    ModelInterface|null $rollbackRecord = null
 ): bool;
 ```
 
@@ -22186,7 +23099,7 @@ Enables throwing exception
 ## Mvc\Model\TransactionInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/TransactionInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/TransactionInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Model\Transaction
 
@@ -22196,7 +23109,7 @@ Interface for Phalcon\Mvc\Model\Transaction
 
 </div>
 
-__Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Transaction\ManagerInterface`
+__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Transaction\ManagerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -22216,7 +23129,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Transaction\ManagerI
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-getconnection">
 <code class="vis vis-public">public</code>
-<code class="ret">\Phalcon\Db\Adapter\AdapterInterface</code>
+<code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">getConnection</span>()</code>
 <span class="desc">Returns connection related to transaction</span>
 </a>
@@ -22241,7 +23154,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Transaction\ManagerI
 <a class="api-item" href="#mvcmodeltransactioninterface-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">rollback</span>(<span class="prm"><span class="st">string</span> <span class="sv">$rollbackMessage</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$rollbackRecord</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">rollback</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$rollbackMessage</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ModelInterface|null</span> <span class="sv">$rollbackRecord</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Rollbacks the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-setisnewtransaction">
@@ -22299,7 +23212,7 @@ Commits the transaction
 #### `getConnection()` { #mvcmodeltransactioninterface-getconnection }
 
 ```php
-public function getConnection(): \Phalcon\Db\Adapter\AdapterInterface;
+public function getConnection(): AdapterInterface;
 ```
 
 Returns connection related to transaction
@@ -22332,8 +23245,8 @@ Checks whether internal connection is under an active transaction
 
 ```php
 public function rollback(
-    string $rollbackMessage = null,
-    ModelInterface $rollbackRecord = null
+    string|null $rollbackMessage = null,
+    ModelInterface|null $rollbackRecord = null
 ): bool;
 ```
 
@@ -22383,9 +23296,7 @@ Enables throwing exception
 ## Mvc\Model\Transaction\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Transaction/Exception.zep){ .src-btn }
-
-Phalcon\Mvc\Model\Transaction\Exception
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Transaction/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 
@@ -22402,7 +23313,7 @@ Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 ## Mvc\Model\Transaction\Failed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Transaction/Failed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Transaction/Failed.php){ .src-btn }
 
 Phalcon\Mvc\Model\Transaction\Failed
 
@@ -22425,8 +23336,8 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodeltransactionfailed-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Phalcon\Mvc\Model\Transaction\Failed constructor</span>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">ModelInterface|null</span> <span class="sv">$record</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionfailed-getrecord">
 <code class="vis vis-public">public</code>
@@ -22461,11 +23372,11 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 ```php
 public function __construct(
     string $message,
-    ModelInterface $record = null
+    ModelInterface|null $record = null
 );
 ```
 
-Phalcon\Mvc\Model\Transaction\Failed constructor
+Constructor
 
 #### `getRecord()` { #mvcmodeltransactionfailed-getrecord }
 
@@ -22487,7 +23398,7 @@ Returns validation record messages which stop the transaction
 ## Mvc\Model\Transaction\Manager
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Transaction/Manager.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Transaction/Manager.php){ .src-btn }
 
 A transaction acts on a single database connection. If you have multiple
 class-specific databases, the transaction will not protect interaction among
@@ -22506,25 +23417,25 @@ try {
 
    $transaction = $transactionManager->get();
 
-   $robot = new Robots();
+   $invoice = new Invoices();
 
-   $robot->setTransaction($transaction);
+   $invoice->setTransaction($transaction);
 
-   $robot->name       = "WALL·E";
-   $robot->created_at = date("Y-m-d");
+   $invoice->inv_title       = "Test Invoice";
+   $invoice->inv_created_at = date("Y-m-d");
 
-   if ($robot->save() === false) {
-       $transaction->rollback("Can't save robot");
+   if ($invoice->save() === false) {
+       $transaction->rollback("Can't save invoice");
    }
 
-   $robotPart = new RobotParts();
+   $product = new Products();
 
-   $robotPart->setTransaction($transaction);
+   $product->setTransaction($transaction);
 
-   $robotPart->type = "head";
+   $product->prd_name = "Widget";
 
-   if ($robotPart->save() === false) {
-       $transaction->rollback("Can't save robot part");
+   if ($product->save() === false) {
+       $transaction->rollback("Can't save product");
    }
 
    $transaction->commit();
@@ -22547,7 +23458,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwa
 <div class="api-list">
 <a class="api-item" href="#mvcmodeltransactionmanager-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">object|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\Model\Transaction\Manager constructor</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-collecttransactions">
@@ -22558,6 +23469,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwa
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-commit">
 <code class="vis vis-public">public</code>
+<code class="ret">void</code>
 <code class="sig"><span class="sf">commit</span>()</code>
 <span class="desc">Commits active transactions within the manager</span>
 </a>
@@ -22569,7 +23481,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwa
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-getdi">
 <code class="vis vis-public">public</code>
-<code class="ret">DiInterface</code>
+<code class="ret">DiInterface|null</code>
 <code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the dependency injection container</span>
 </a>
@@ -22652,8 +23564,8 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwa
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sv">$container</span></code>
+<code class="ret">object|null</code>
+<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -22689,7 +23601,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwa
 #### `__construct()` { #mvcmodeltransactionmanager-__construct }
 
 ```php
-public function __construct( DiInterface $container = null );
+public function __construct( object|null $container = null );
 ```
 
 Phalcon\Mvc\Model\Transaction\Manager constructor
@@ -22705,7 +23617,7 @@ Remove all the transactions from the manager
 #### `commit()` { #mvcmodeltransactionmanager-commit }
 
 ```php
-public function commit();
+public function commit(): void;
 ```
 
 Commits active transactions within the manager
@@ -22722,7 +23634,7 @@ This method registers a shutdown function to rollback active connections
 #### `getDI()` { #mvcmodeltransactionmanager-getdi }
 
 ```php
-public function getDI(): DiInterface;
+public function getDI(): DiInterface|null;
 ```
 
 Returns the dependency injection container
@@ -22832,7 +23744,7 @@ Removes transactions from the TransactionManager
 ## Mvc\Model\Transaction\ManagerInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Transaction/ManagerInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/Transaction/ManagerInterface.php){ .src-btn }
 
 Phalcon\Mvc\Model\Transaction\ManagerInterface
 
@@ -22877,7 +23789,7 @@ __Uses__ `Phalcon\Mvc\Model\TransactionInterface`
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getRollbackPendent</span>()</code>
-<span class="desc">Check if the transaction manager is registering a shutdown function to clean up pendent transactions</span>
+<span class="desc">Check if the transaction manager is registering a shutdown function to</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-has">
 <code class="vis vis-public">public</code>
@@ -22965,7 +23877,8 @@ Returns the database service used to isolate the transaction
 public function getRollbackPendent(): bool;
 ```
 
-Check if the transaction manager is registering a shutdown function to clean up pendent transactions
+Check if the transaction manager is registering a shutdown function to
+clean up pendent transactions
 
 #### `has()` { #mvcmodeltransactionmanagerinterface-has }
 
@@ -23028,7 +23941,7 @@ Set if the transaction manager must register a shutdown function to clean up pen
 ## Mvc\Model\ValidationFailed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/ValidationFailed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Model/ValidationFailed.php){ .src-btn }
 
 Phalcon\Mvc\Model\ValidationFailed
 
@@ -23043,7 +23956,7 @@ Phalcon\Mvc\Model must be set up to have this behavior
 
 </div>
 
-__Uses__ `Phalcon\Messages\Message` · `Phalcon\Mvc\ModelInterface`
+__Uses__ `Phalcon\Mvc\ModelInterface`
 { .api-uses }
 
 ### Method Summary
@@ -23056,7 +23969,7 @@ __Uses__ `Phalcon\Messages\Message` · `Phalcon\Mvc\ModelInterface`
 </a>
 <a class="api-item" href="#mvcmodelvalidationfailed-getmessages">
 <code class="vis vis-public">public</code>
-<code class="ret">Message[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the complete group of messages produced in the validation</span>
 </a>
@@ -23079,7 +23992,7 @@ __Uses__ `Phalcon\Messages\Message` · `Phalcon\Mvc\ModelInterface`
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$validationMessages</span><span class="sm"> = []</span></code>
+<code class="sig"><span class="sv">$validationMessages</span></code>
 </div>
 </div>
 
@@ -23101,7 +24014,7 @@ Phalcon\Mvc\Model\ValidationFailed constructor
 #### `getMessages()` { #mvcmodelvalidationfailed-getmessages }
 
 ```php
-public function getMessages(): Message[];
+public function getMessages(): array;
 ```
 
 Returns the complete group of messages produced in the validation
@@ -23118,7 +24031,7 @@ Returns the model that generated the messages
 ## Mvc\ModuleDefinitionInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/ModuleDefinitionInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/ModuleDefinitionInterface.php){ .src-btn }
 
 This interface must be implemented by class module definitions
 
@@ -23136,7 +24049,7 @@ __Uses__ `Phalcon\Di\DiInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmoduledefinitioninterface-registerautoloaders">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">registerAutoloaders</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">registerAutoloaders</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Registers an autoloader related to the module</span>
 </a>
 <a class="api-item" href="#mvcmoduledefinitioninterface-registerservices">
@@ -23153,7 +24066,7 @@ __Uses__ `Phalcon\Di\DiInterface`
 #### `registerAutoloaders()` { #mvcmoduledefinitioninterface-registerautoloaders }
 
 ```php
-public function registerAutoloaders( DiInterface $container = null );
+public function registerAutoloaders( DiInterface|null $container = null );
 ```
 
 Registers an autoloader related to the module
@@ -23170,9 +24083,7 @@ Registers services related to the module
 ## Mvc\Router
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router.zep){ .src-btn }
-
-Phalcon\Mvc\Router
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router.php){ .src-btn }
 
 Phalcon\Mvc\Router is the standard framework router. Routing is the
 process of taking a URI endpoint (that part of the URI which comes after the
@@ -23201,14 +24112,14 @@ echo $router->getControllerName();
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - **`Phalcon\Mvc\Router`** - implements [`Phalcon\Mvc\RouterInterface`](#mvcrouterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Mvc\Router\Annotations`](#mvcrouterannotations)
 
 </div>
 
-__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInterface` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\RequestInterface` · `Phalcon\Mvc\Router\Exception` · `Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray` · `Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes` · `Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray` · `Phalcon\Mvc\Router\Exceptions\InvalidConfigSource` · `Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths` · `Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition` · `Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey` · `Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey` · `Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable` · `Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod` · `Phalcon\Mvc\Router\Exceptions\WrongPathsKey` · `Phalcon\Mvc\Router\Group` · `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\Route` · `Phalcon\Mvc\Router\RouteInterface`
+__Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInterface` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Http\RequestInterface` · `Phalcon\Mvc\Router\Exception` · `Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray` · `Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes` · `Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray` · `Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition` · `Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey` · `Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey` · `Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod` · `Phalcon\Mvc\Router\Exceptions\WrongPathsKey` · `Phalcon\Mvc\Router\Group` · `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\Route` · `Phalcon\Mvc\Router\RouteInterface`
 { .api-uses }
 
 ### Method Summary
@@ -23222,67 +24133,67 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 <a class="api-item" href="#mvcrouter-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router without any HTTP constraint</span>
 </a>
 <a class="api-item" href="#mvcrouter-addconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is CONNECT</span>
 </a>
 <a class="api-item" href="#mvcrouter-adddelete">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcrouter-addget">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcrouter-addhead">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcrouter-addoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Add a route to the router that only match if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcrouter-addpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcrouter-addpost">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcrouter-addpurge">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PURGE</span>
 </a>
 <a class="api-item" href="#mvcrouter-addput">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcrouter-addtrace">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is TRACE</span>
 </a>
 <a class="api-item" href="#mvcrouter-attach">
@@ -23327,12 +24238,6 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 <code class="sig"><span class="sf">getDefaults</span>()</code>
 <span class="desc">Returns an array of default parameters</span>
 </a>
-<a class="api-item" href="#mvcrouter-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
 <a class="api-item" href="#mvcrouter-getkeyrouteids">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
@@ -23359,7 +24264,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getMethodRoutes</span>()</code>
-<span class="desc">Returns the routes indexed by HTTP method.</span>
+<span class="desc">Returns routes indexed by HTTP method, building the index if needed.</span>
 </a>
 <a class="api-item" href="#mvcrouter-getmodulename">
 <code class="vis vis-public">public</code>
@@ -23387,19 +24292,19 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 </a>
 <a class="api-item" href="#mvcrouter-getroutebyid">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
-<code class="sig"><span class="sf">getRouteById</span>( <span class="st">mixed</span> <span class="sv">$routeId</span> )</code>
+<code class="ret">bool|RouteInterface</code>
+<code class="sig"><span class="sf">getRouteById</span>( <span class="st">int|string</span> <span class="sv">$routeId</span> )</code>
 <span class="desc">Returns a route object by its id</span>
 </a>
 <a class="api-item" href="#mvcrouter-getroutebyname">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
+<code class="ret">bool|RouteInterface</code>
 <code class="sig"><span class="sf">getRouteByName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a route object by its name</span>
 </a>
 <a class="api-item" href="#mvcrouter-getroutes">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Returns all the routes defined in the router</span>
 </a>
@@ -23430,7 +24335,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 <a class="api-item" href="#mvcrouter-loadfromconfig">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">loadFromConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">loadFromConfig</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
 <span class="desc">Loads routes from an array or Phalcon\Config\Config instance.</span>
 </a>
 <a class="api-item" href="#mvcrouter-mount">
@@ -23442,7 +24347,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 <a class="api-item" href="#mvcrouter-notfound">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">notFound</span>( <span class="st">mixed</span> <span class="sv">$paths</span> )</code>
+<code class="sig"><span class="sf">notFound</span>( <span class="st">array|string</span> <span class="sv">$paths</span> )</code>
 <span class="desc">Set a group of paths to be returned when none of the defined routes are</span>
 </a>
 <a class="api-item" href="#mvcrouter-removeextraslashes">
@@ -23480,12 +24385,6 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setDefaults</span>( <span class="st">array</span> <span class="sv">$defaults</span> )</code>
 <span class="desc">Sets an array of default paths. If a route is missing a path the router</span>
-</a>
-<a class="api-item" href="#mvcrouter-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#mvcrouter-setkeyrouteids">
 <code class="vis vis-public">public</code>
@@ -23536,6 +24435,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">rebuildMethodIndex</span>()</code>
+<span class="desc">Rebuilds the HTTP-method index from the current routes array.</span>
 </a>
 </div>
 
@@ -23582,9 +24482,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 method seen on any registered route, the bucket contains the
 method-specific routes followed by the &quot;*&quot; (no-constraint) routes.
 The &quot;*&quot; key itself holds only the no-constraint routes - used when the
-request method has no specific bucket.
-
-Built in rebuildMethodIndex(); consumed by handle() in reverse.</span>
+request method has no specific bucket.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -23592,15 +24490,15 @@ Built in rebuildMethodIndex(); consumed by handle() in reverse.</span>
 <code class="sig"><span class="sv">$combinedRegexByMethod</span><span class="sm"> = []</span></code>
 <span class="desc">Combined PCRE pattern per method bucket (chunked list of strings).
 Each chunk uses (?|...) branch reset and (*:N) mark labels. Built
-only when the bucket meets gating: no hostname routes; standard
-pattern shape.</span>
+only when the bucket has no hostname routes and all patterns are
+the standard <code>#^...$#u</code> shape.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$combinedRegexDisabled</span><span class="sm"> = []</span></code>
 <span class="desc">Boolean per method bucket: true when the combined regex cannot be
-built (hostname route present, exotic pattern shape, etc.).</span>
+built.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -23643,28 +24541,18 @@ candidatesByMethod[method]. One per chunk.
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$hostnameByMethod</span><span class="sm"> = []</span></code>
 <span class="desc">Per-method buckets of routes with hostname constraints, grouped by
-raw hostname string. Routes are referenced by their index into
-candidatesByMethod[method]. Built in rebuildMethodIndex().
-
-Shape: hostnameByMethod[method][hostname] = list of route indices.</span>
+raw hostname string. Routes are referenced by their integer index
+into candidatesByMethod[method].</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$hostnameLessByMethod</span><span class="sm"> = []</span></code>
 <span class="desc">Per-method indices of routes without a hostname constraint, in
-attach order.
-
-Shape: hostnameLessByMethod[method] = list of route indices into
-candidatesByMethod[method].</span>
+attach order.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -23744,7 +24632,7 @@ by the route&#039;s intrinsic id. Replaces the previous per-method-bucket
 replication of metadata arrays. Built once in rebuildMethodIndex().
 
 Shape: routeMeta[routeId] = [
-    &quot;pattern&quot;:     string,        // compiled pattern
+    &quot;pattern&quot;:     string,
     &quot;isRegex&quot;:     bool,
     &quot;hostname&quot;:    string|null,
     &quot;hostRegex&quot;:   string|null,
@@ -23787,7 +24675,7 @@ loop so the regex wins (reverse-iteration semantics).</span>
 
 ### Methods
 
-<div class="api-group">Public · 51</div>
+<div class="api-group">Public · 49</div>
 
 #### `__construct()` { #mvcrouter-__construct }
 
@@ -23802,8 +24690,8 @@ Phalcon\Mvc\Router constructor
 ```php
 public function add(
     string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null,
+    array|string|null $paths = null,
+    array|string|null $httpMethods = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -23834,7 +24722,7 @@ $router->add(
 ```php
 public function addConnect(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -23846,7 +24734,7 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 ```php
 public function addDelete(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -23858,7 +24746,7 @@ Adds a route to the router that only match if the HTTP method is DELETE
 ```php
 public function addGet(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -23870,7 +24758,7 @@ Adds a route to the router that only match if the HTTP method is GET
 ```php
 public function addHead(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -23882,7 +24770,7 @@ Adds a route to the router that only match if the HTTP method is HEAD
 ```php
 public function addOptions(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -23894,7 +24782,7 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 ```php
 public function addPatch(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -23906,7 +24794,7 @@ Adds a route to the router that only match if the HTTP method is PATCH
 ```php
 public function addPost(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -23918,7 +24806,7 @@ Adds a route to the router that only match if the HTTP method is POST
 ```php
 public function addPurge(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -23931,7 +24819,7 @@ Adds a route to the router that only match if the HTTP method is PURGE
 ```php
 public function addPut(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -23943,7 +24831,7 @@ Adds a route to the router that only match if the HTTP method is PUT
 ```php
 public function addTrace(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24033,14 +24921,6 @@ public function getDefaults(): array;
 
 Returns an array of default parameters
 
-#### `getEventsManager()` { #mvcrouter-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
-
 #### `getKeyRouteIds()` { #mvcrouter-getkeyrouteids }
 
 ```php
@@ -24075,8 +24955,8 @@ Returns the sub expressions in the regular expression matched
 public function getMethodRoutes(): array;
 ```
 
-Returns the routes indexed by HTTP method.
-Routes with no HTTP constraint are stored under the "*" key.
+Returns routes indexed by HTTP method, building the index if needed.
+Unconstrained routes are stored under the "*" key.
 
 #### `getModuleName()` { #mvcrouter-getmodulename }
 
@@ -24114,7 +24994,7 @@ This returns '/' if the rewrite information cannot be read
 #### `getRouteById()` { #mvcrouter-getroutebyid }
 
 ```php
-public function getRouteById( mixed $routeId ): RouteInterface|bool;
+public function getRouteById( int|string $routeId ): bool|RouteInterface;
 ```
 
 Returns a route object by its id
@@ -24122,7 +25002,7 @@ Returns a route object by its id
 #### `getRouteByName()` { #mvcrouter-getroutebyname }
 
 ```php
-public function getRouteByName( string $name ): RouteInterface|bool;
+public function getRouteByName( string $name ): bool|RouteInterface;
 ```
 
 Returns a route object by its name
@@ -24130,7 +25010,7 @@ Returns a route object by its name
 #### `getRoutes()` { #mvcrouter-getroutes }
 
 ```php
-public function getRoutes(): RouteInterface[];
+public function getRoutes(): array;
 ```
 
 Returns all the routes defined in the router
@@ -24178,23 +25058,23 @@ every index, and marks the indexes clean so handle() skips rebuild.
 #### `loadFromConfig()` { #mvcrouter-loadfromconfig }
 
 ```php
-public function loadFromConfig( mixed $config ): static;
+public function loadFromConfig( array|ConfigInterface $config ): static;
 ```
 
 Loads routes from an array or Phalcon\Config\Config instance.
 
 ```php
 $router->loadFromConfig(
-     [
-         'routes' => [
-             [
-                 'method'  => 'get',
-                 'pattern' => '/users',
-                 'paths'   => 'Users::index',
-             ],
-         ],
-     ]
- );
+    [
+        'routes' => [
+            [
+                'method'  => 'get',
+                'pattern' => '/users',
+                'paths'   => 'Users::index',
+            ],
+        ],
+    ]
+);
 ```
 
 #### `mount()` { #mvcrouter-mount }
@@ -24208,7 +25088,7 @@ Mounts a group of routes in the router
 #### `notFound()` { #mvcrouter-notfound }
 
 ```php
-public function notFound( mixed $paths ): static;
+public function notFound( array|string $paths ): static;
 ```
 
 Set a group of paths to be returned when none of the defined routes are
@@ -24254,8 +25134,6 @@ public function setDefaultNamespace( string $namespaceName ): static;
 
 Sets the name of the default namespace
 
-@parma string namespaceName
-
 #### `setDefaults()` { #mvcrouter-setdefaults }
 
 ```php
@@ -24274,14 +25152,6 @@ $router->setDefaults(
     ]
 );
 ```
-
-#### `setEventsManager()` { #mvcrouter-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the events manager
 
 #### `setKeyRouteIds()` { #mvcrouter-setkeyrouteids }
 
@@ -24361,11 +25231,14 @@ Builds a Group from a config entry and mounts it. Used by loadFromConfig.
 protected function rebuildMethodIndex(): void;
 ```
 
+Rebuilds the HTTP-method index from the current routes array.
+Routes with no HTTP method constraint are filed under "*".
+
 
 ## Mvc\RouterInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/RouterInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/RouterInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Router
 
@@ -24375,7 +25248,7 @@ Interface for Phalcon\Mvc\Router
 
 </div>
 
-__Uses__ `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterface`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterface`
 { .api-uses }
 
 ### Method Summary
@@ -24384,67 +25257,67 @@ __Uses__ `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterfa
 <a class="api-item" href="#mvcrouterinterface-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router on any HTTP method</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is CONNECT</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-adddelete">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addget">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addhead">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Add a route to the router that only match if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addpost">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addpurge">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PURGE</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addput">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addtrace">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
+<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is TRACE</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-attach">
@@ -24503,19 +25376,19 @@ __Uses__ `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterfa
 </a>
 <a class="api-item" href="#mvcrouterinterface-getroutebyid">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
-<code class="sig"><span class="sf">getRouteById</span>( <span class="st">mixed</span> <span class="sv">$routeId</span> )</code>
+<code class="ret">bool|RouteInterface</code>
+<code class="sig"><span class="sf">getRouteById</span>( <span class="st">int|string</span> <span class="sv">$routeId</span> )</code>
 <span class="desc">Returns a route object by its id</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getroutebyname">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
+<code class="ret">bool|RouteInterface</code>
 <code class="sig"><span class="sf">getRouteByName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a route object by its name</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getroutes">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Return all the routes defined in the router</span>
 </a>
@@ -24528,7 +25401,7 @@ __Uses__ `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterfa
 <a class="api-item" href="#mvcrouterinterface-loadfromconfig">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig"><span class="sf">loadFromConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">loadFromConfig</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
 <span class="desc">Loads routes from an array or Phalcon\Config\Config instance.</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-mount">
@@ -24578,8 +25451,8 @@ __Uses__ `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterfa
 ```php
 public function add(
     string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null,
+    array|string|null $paths = null,
+    array|string|null $httpMethods = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24591,7 +25464,7 @@ Adds a route to the router on any HTTP method
 ```php
 public function addConnect(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24603,7 +25476,7 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 ```php
 public function addDelete(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24615,7 +25488,7 @@ Adds a route to the router that only match if the HTTP method is DELETE
 ```php
 public function addGet(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24627,7 +25500,7 @@ Adds a route to the router that only match if the HTTP method is GET
 ```php
 public function addHead(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24639,7 +25512,7 @@ Adds a route to the router that only match if the HTTP method is HEAD
 ```php
 public function addOptions(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24651,7 +25524,7 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 ```php
 public function addPatch(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24663,7 +25536,7 @@ Adds a route to the router that only match if the HTTP method is PATCH
 ```php
 public function addPost(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24675,7 +25548,7 @@ Adds a route to the router that only match if the HTTP method is POST
 ```php
 public function addPurge(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24688,7 +25561,7 @@ Adds a route to the router that only match if the HTTP method is PURGE
 ```php
 public function addPut(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24700,7 +25573,7 @@ Adds a route to the router that only match if the HTTP method is PUT
 ```php
 public function addTrace(
     string $pattern,
-    mixed $paths = null,
+    array|string|null $paths = null,
     int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
@@ -24785,7 +25658,7 @@ Returns processed extra params
 #### `getRouteById()` { #mvcrouterinterface-getroutebyid }
 
 ```php
-public function getRouteById( mixed $routeId ): RouteInterface|bool;
+public function getRouteById( int|string $routeId ): bool|RouteInterface;
 ```
 
 Returns a route object by its id
@@ -24793,7 +25666,7 @@ Returns a route object by its id
 #### `getRouteByName()` { #mvcrouterinterface-getroutebyname }
 
 ```php
-public function getRouteByName( string $name ): RouteInterface|bool;
+public function getRouteByName( string $name ): bool|RouteInterface;
 ```
 
 Returns a route object by its name
@@ -24801,7 +25674,7 @@ Returns a route object by its name
 #### `getRoutes()` { #mvcrouterinterface-getroutes }
 
 ```php
-public function getRoutes(): RouteInterface[];
+public function getRoutes(): array;
 ```
 
 Return all the routes defined in the router
@@ -24817,7 +25690,7 @@ Handles routing information received from the rewrite engine
 #### `loadFromConfig()` { #mvcrouterinterface-loadfromconfig }
 
 ```php
-public function loadFromConfig( mixed $config ): RouterInterface;
+public function loadFromConfig( array|ConfigInterface $config ): RouterInterface;
 ```
 
 Loads routes from an array or Phalcon\Config\Config instance.
@@ -24874,9 +25747,7 @@ Check if the router matches any of the defined routes
 ## Mvc\Router\Annotations
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Annotations.zep){ .src-btn }
-
-Phalcon\Mvc\Router\Annotations
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Annotations.php){ .src-btn }
 
 A router that reads routes annotations from classes/resources
 
@@ -24889,8 +25760,9 @@ $di->setShared(
         // Use the annotations router
         $router = new Annotations(false);
 
-        // This will do the same as above but only if the handled uri starts with /robots
-        $router->addResource("Robots", "/robots");
+        // This will do the same as above but only if the handled uri
+        // starts with /invoices
+        $router->addResource("Invoices", "/invoices");
 
         return $router;
     }
@@ -24899,14 +25771,14 @@ $di->setShared(
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - [`Phalcon\Mvc\Router`](#mvcrouter)
             - **`Phalcon\Mvc\Router\Annotations`**
 
 </div>
 
-__Uses__ `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable` · `Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`
+__Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Parser\Annotation` · `Phalcon\Annotations\Parser\Exception` · `Phalcon\Di\DiInterface` · `Phalcon\Events\Exception` · `Phalcon\Mvc\Router` · `Phalcon\Traits\Support\Helper\Str\UncamelizeTrait`
 { .api-uses }
 
 ### Method Summary
@@ -24915,17 +25787,18 @@ __Uses__ `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalco
 <a class="api-item" href="#mvcrouterannotations-addmoduleresource">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addModuleResource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$module</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addModuleResource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$module</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$prefix</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a resource to the annotations handler</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-addresource">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addResource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addResource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$prefix</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a resource to the annotations handler</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-getactionpreformatcallback">
 <code class="vis vis-public">public</code>
+<code class="ret">callable|string|null</code>
 <code class="sig"><span class="sf">getActionPreformatCallback</span>()</code>
 </a>
 <a class="api-item" href="#mvcrouterannotations-getresources">
@@ -24948,24 +25821,25 @@ __Uses__ `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalco
 </a>
 <a class="api-item" href="#mvcrouterannotations-processcontrollerannotation">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">processControllerAnnotation</span>(<span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">Annotation</span> <span class="sv">$annotation</span></span>)</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processControllerAnnotation</span>( <span class="st">Annotation</span> <span class="sv">$annotation</span> )</code>
 <span class="desc">Checks for annotations in the controller docblock</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-setactionpreformatcallback">
 <code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">setActionPreformatCallback</span>( <span class="st">mixed</span> <span class="sv">$callback</span><span class="sm"> = null</span> )</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setActionPreformatCallback</span>( <span class="st">callable|string|null</span> <span class="sv">$callback</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the action preformat callback</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-setactionsuffix">
 <code class="vis vis-public">public</code>
-<code class="ret">self</code>
+<code class="ret">static</code>
 <code class="sig"><span class="sf">setActionSuffix</span>( <span class="st">string</span> <span class="sv">$actionSuffix</span> )</code>
 <span class="desc">Changes the action method suffix</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-setcontrollersuffix">
 <code class="vis vis-public">public</code>
-<code class="ret">self</code>
+<code class="ret">static</code>
 <code class="sig"><span class="sf">setControllerSuffix</span>( <span class="st">string</span> <span class="sv">$controllerSuffix</span> )</code>
 <span class="desc">Changes the controller class suffix</span>
 </a>
@@ -24976,28 +25850,33 @@ __Uses__ `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalco
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">callable|string|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$actionPreformatCallback</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed callable|string|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$actionSuffix</span><span class="sm"> = &quot;Action&quot;</span></code>
+<span class="desc">@mixed string</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$controllerSuffix</span><span class="sm"> = &quot;Controller&quot;</span></code>
+<span class="desc">@mixed string</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$handlers</span><span class="sm"> = []</span></code>
+<span class="desc">@mixed array</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$routePrefix</span><span class="sm"> = &quot;&quot;</span></code>
+<span class="desc">@mixed string</span>
 </div>
 </div>
 
@@ -25011,7 +25890,7 @@ __Uses__ `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalco
 public function addModuleResource(
     string $module,
     string $handler,
-    string $prefix = null
+    string|null $prefix = null
 ): static;
 ```
 
@@ -25024,7 +25903,7 @@ The class is located in a module
 ```php
 public function addResource(
     string $handler,
-    string $prefix = null
+    string|null $prefix = null
 ): static;
 ```
 
@@ -25034,7 +25913,7 @@ A resource is a class that contains routing annotations
 #### `getActionPreformatCallback()` { #mvcrouterannotations-getactionpreformatcallback }
 
 ```php
-public function getActionPreformatCallback();
+public function getActionPreformatCallback(): callable|string|null;
 ```
 
 #### `getResources()` { #mvcrouterannotations-getresources }
@@ -25070,10 +25949,7 @@ Checks for annotations in the public methods of the controller
 #### `processControllerAnnotation()` { #mvcrouterannotations-processcontrollerannotation }
 
 ```php
-public function processControllerAnnotation(
-    string $handler,
-    Annotation $annotation
-);
+public function processControllerAnnotation( Annotation $annotation ): void;
 ```
 
 Checks for annotations in the controller docblock
@@ -25081,7 +25957,7 @@ Checks for annotations in the controller docblock
 #### `setActionPreformatCallback()` { #mvcrouterannotations-setactionpreformatcallback }
 
 ```php
-public function setActionPreformatCallback( mixed $callback = null ): self;
+public function setActionPreformatCallback( callable|string|null $callback = null ): static;
 ```
 
 Sets the action preformat callback
@@ -25113,7 +25989,7 @@ $annotationRouter->setActionPreformatCallback();
 #### `setActionSuffix()` { #mvcrouterannotations-setactionsuffix }
 
 ```php
-public function setActionSuffix( string $actionSuffix ): self;
+public function setActionSuffix( string $actionSuffix ): static;
 ```
 
 Changes the action method suffix
@@ -25121,7 +25997,7 @@ Changes the action method suffix
 #### `setControllerSuffix()` { #mvcrouterannotations-setcontrollersuffix }
 
 ```php
-public function setControllerSuffix( string $controllerSuffix ): self;
+public function setControllerSuffix( string $controllerSuffix ): static;
 ```
 
 Changes the controller class suffix
@@ -25130,9 +26006,7 @@ Changes the controller class suffix
 ## Mvc\Router\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exception.zep){ .src-btn }
-
-Phalcon\Mvc\Router\Exception
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Mvc\Router will use this class
 
@@ -25163,7 +26037,7 @@ Exceptions thrown in Phalcon\Mvc\Router will use this class
 ## Mvc\Router\Exceptions\AnnotationsServiceUnavailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/AnnotationsServiceUnavailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/AnnotationsServiceUnavailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25199,7 +26073,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\BeforeMatchNotCallable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/BeforeMatchNotCallable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/BeforeMatchNotCallable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25235,7 +26109,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\ConfigKeyMustBeArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/ConfigKeyMustBeArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/ConfigKeyMustBeArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25271,7 +26145,7 @@ public function __construct( string $key );
 ## Mvc\Router\Exceptions\EmptyGroupOfRoutes
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/EmptyGroupOfRoutes.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/EmptyGroupOfRoutes.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25307,7 +26181,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\GroupRoutesMustBeArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/GroupRoutesMustBeArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/GroupRoutesMustBeArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25343,7 +26217,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\InvalidCallbackParameter
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidCallbackParameter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/InvalidCallbackParameter.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25379,7 +26253,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\InvalidConfigSource
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidConfigSource.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/InvalidConfigSource.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25415,7 +26289,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\InvalidNotFoundPaths
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidNotFoundPaths.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/InvalidNotFoundPaths.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25451,7 +26325,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\InvalidRoutePaths
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidRoutePaths.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/InvalidRoutePaths.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25487,7 +26361,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\InvalidRoutePosition
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidRoutePosition.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/InvalidRoutePosition.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25523,7 +26397,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\InvalidRouterFactoryConfig
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidRouterFactoryConfig.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/InvalidRouterFactoryConfig.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25559,7 +26433,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\MissingGroupRouteKey
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/MissingGroupRouteKey.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/MissingGroupRouteKey.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25595,7 +26469,7 @@ public function __construct( string $key );
 ## Mvc\Router\Exceptions\MissingRouteConfigKey
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/MissingRouteConfigKey.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/MissingRouteConfigKey.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25631,7 +26505,7 @@ public function __construct( string $key );
 ## Mvc\Router\Exceptions\RequestServiceUnavailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/RequestServiceUnavailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/RequestServiceUnavailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25667,7 +26541,7 @@ public function __construct();
 ## Mvc\Router\Exceptions\UnknownHttpMethod
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/UnknownHttpMethod.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/UnknownHttpMethod.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25703,7 +26577,7 @@ public function __construct( string $method );
 ## Mvc\Router\Exceptions\WrongPathsKey
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/WrongPathsKey.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Exceptions/WrongPathsKey.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -25739,7 +26613,7 @@ public function __construct( string $part );
 ## Mvc\Router\Group
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Group.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Group.php){ .src-btn }
 
 Helper class to create a group of routes with common attributes
 
@@ -25803,67 +26677,67 @@ $router->mount($blog);
 <a class="api-item" href="#mvcroutergroup-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router on any HTTP method</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is CONNECT</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-adddelete">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addget">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addhead">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a route to the router that only match if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addpost">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addpurge">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PURGE</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addput">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addtrace">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is TRACE</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-beforematch">
@@ -25904,7 +26778,7 @@ $router->mount($blog);
 </a>
 <a class="api-item" href="#mvcroutergroup-getroutes">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Returns the routes added to the group</span>
 </a>
@@ -25917,7 +26791,7 @@ $router->mount($blog);
 <a class="api-item" href="#mvcroutergroup-setpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface</code>
-<code class="sig"><span class="sf">setPaths</span>( <span class="st">mixed</span> <span class="sv">$paths</span> )</code>
+<code class="sig"><span class="sf">setPaths</span>( <span class="st">array|string</span> <span class="sv">$paths</span> )</code>
 <span class="desc">Set common paths for all the routes in the group</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-setprefix">
@@ -25929,7 +26803,7 @@ $router->mount($blog);
 <a class="api-item" href="#mvcroutergroup-addroute">
 <code class="vis vis-protected">protected</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addRoute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addRoute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route applying the common attributes</span>
 </a>
 </div>
@@ -25939,28 +26813,33 @@ $router->mount($blog);
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">callable|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$beforeMatch</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed $callable|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$hostname</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed string|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|string|null</code>
 <code class="sig"><span class="sv">$paths</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed array|string|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$prefix</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed string|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$routes</span><span class="sm"> = []</span></code>
+<span class="desc">@mixed array</span>
 </div>
 </div>
 
@@ -25981,8 +26860,8 @@ Phalcon\Mvc\Router\Group constructor
 ```php
 public function add(
     string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null
+    array|string|null $paths = null,
+    array|string|null $httpMethods = null
 ): RouteInterface;
 ```
 
@@ -25997,7 +26876,7 @@ $router->add("/about", "About::index");
 ```php
 public function addConnect(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26008,7 +26887,7 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 ```php
 public function addDelete(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26019,7 +26898,7 @@ Adds a route to the router that only match if the HTTP method is DELETE
 ```php
 public function addGet(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26030,7 +26909,7 @@ Adds a route to the router that only match if the HTTP method is GET
 ```php
 public function addHead(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26041,7 +26920,7 @@ Adds a route to the router that only match if the HTTP method is HEAD
 ```php
 public function addOptions(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26052,7 +26931,7 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 ```php
 public function addPatch(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26063,7 +26942,7 @@ Adds a route to the router that only match if the HTTP method is PATCH
 ```php
 public function addPost(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26074,7 +26953,7 @@ Adds a route to the router that only match if the HTTP method is POST
 ```php
 public function addPurge(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26085,7 +26964,7 @@ Adds a route to the router that only match if the HTTP method is PURGE
 ```php
 public function addPut(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26096,7 +26975,7 @@ Adds a route to the router that only match if the HTTP method is PUT
 ```php
 public function addTrace(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26155,7 +27034,7 @@ Returns the common prefix for all the routes
 #### `getRoutes()` { #mvcroutergroup-getroutes }
 
 ```php
-public function getRoutes(): RouteInterface[];
+public function getRoutes(): array;
 ```
 
 Returns the routes added to the group
@@ -26171,7 +27050,7 @@ Set a hostname restriction for all the routes in the group
 #### `setPaths()` { #mvcroutergroup-setpaths }
 
 ```php
-public function setPaths( mixed $paths ): GroupInterface;
+public function setPaths( array|string $paths ): GroupInterface;
 ```
 
 Set common paths for all the routes in the group
@@ -26191,8 +27070,8 @@ Set a common uri prefix for all the routes in this group
 ```php
 protected function addRoute(
     string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null
+    array|string|null $paths = null,
+    array|string|null $httpMethods = null
 ): RouteInterface;
 ```
 
@@ -26202,7 +27081,7 @@ Adds a route applying the common attributes
 ## Mvc\Router\GroupInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/GroupInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/GroupInterface.php){ .src-btn }
 
 ```php
 $router = new \Phalcon\Mvc\Router();
@@ -26259,67 +27138,67 @@ $router->mount($blog);
 <a class="api-item" href="#mvcroutergroupinterface-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router on any HTTP method</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is CONNECT</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-adddelete">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addget">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addhead">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a route to the router that only match if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addpost">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addpurge">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PURGE</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addput">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addtrace">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is TRACE</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-beforematch">
@@ -26360,7 +27239,7 @@ $router->mount($blog);
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-getroutes">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Returns the routes added to the group</span>
 </a>
@@ -26373,7 +27252,7 @@ $router->mount($blog);
 <a class="api-item" href="#mvcroutergroupinterface-setpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface</code>
-<code class="sig"><span class="sf">setPaths</span>( <span class="st">mixed</span> <span class="sv">$paths</span> )</code>
+<code class="sig"><span class="sf">setPaths</span>( <span class="st">array|string</span> <span class="sv">$paths</span> )</code>
 <span class="desc">Set common paths for all the routes in the group</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-setprefix">
@@ -26393,8 +27272,8 @@ $router->mount($blog);
 ```php
 public function add(
     string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null
+    array|string|null $paths = null,
+    array|string|null $httpMethods = null
 ): RouteInterface;
 ```
 
@@ -26409,7 +27288,7 @@ router->add("/about", "About::index");
 ```php
 public function addConnect(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26420,7 +27299,7 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 ```php
 public function addDelete(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26431,7 +27310,7 @@ Adds a route to the router that only match if the HTTP method is DELETE
 ```php
 public function addGet(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26442,7 +27321,7 @@ Adds a route to the router that only match if the HTTP method is GET
 ```php
 public function addHead(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26453,7 +27332,7 @@ Adds a route to the router that only match if the HTTP method is HEAD
 ```php
 public function addOptions(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26464,7 +27343,7 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 ```php
 public function addPatch(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26475,7 +27354,7 @@ Adds a route to the router that only match if the HTTP method is PATCH
 ```php
 public function addPost(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26486,7 +27365,7 @@ Adds a route to the router that only match if the HTTP method is POST
 ```php
 public function addPurge(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26497,7 +27376,7 @@ Adds a route to the router that only match if the HTTP method is PURGE
 ```php
 public function addPut(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26508,7 +27387,7 @@ Adds a route to the router that only match if the HTTP method is PUT
 ```php
 public function addTrace(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): RouteInterface;
 ```
 
@@ -26567,7 +27446,7 @@ Returns the common prefix for all the routes
 #### `getRoutes()` { #mvcroutergroupinterface-getroutes }
 
 ```php
-public function getRoutes(): RouteInterface[];
+public function getRoutes(): array;
 ```
 
 Returns the routes added to the group
@@ -26583,7 +27462,7 @@ Set a hostname restriction for all the routes in the group
 #### `setPaths()` { #mvcroutergroupinterface-setpaths }
 
 ```php
-public function setPaths( mixed $paths ): GroupInterface;
+public function setPaths( array|string $paths ): GroupInterface;
 ```
 
 Set common paths for all the routes in the group
@@ -26600,7 +27479,7 @@ Set a common uri prefix for all the routes in this group
 ## Mvc\Router\Route
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Route.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/Route.php){ .src-btn }
 
 This class represents every route added to the router
 
@@ -26618,7 +27497,7 @@ __Uses__ `Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterroute-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Router\Route constructor</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-beforematch">
@@ -26726,19 +27605,19 @@ __Uses__ `Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
 <a class="api-item" href="#mvcrouterroute-getroutepaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">getRoutePaths</span>( <span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getRoutePaths</span>( <span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns routePaths</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-match">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">match</span>( <span class="st">mixed</span> <span class="sv">$callback</span> )</code>
+<code class="sig"><span class="sf">match</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
 <span class="desc">Allows to set a callback to handle the request directly in the route</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-reconfigure">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Reconfigure the route adding a new pattern and a set of paths</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-reset">
@@ -26762,7 +27641,7 @@ __Uses__ `Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
 <a class="api-item" href="#mvcrouterroute-sethttpmethods">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">setHttpMethods</span>( <span class="st">mixed</span> <span class="sv">$httpMethods</span> )</code>
+<code class="sig"><span class="sf">setHttpMethods</span>( <span class="st">array|string</span> <span class="sv">$httpMethods</span> )</code>
 <span class="desc">Sets a set of HTTP methods that constraint the matching of the route (alias of via)</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-setname">
@@ -26780,7 +27659,7 @@ __Uses__ `Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
 <a class="api-item" href="#mvcrouterroute-via">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">via</span>( <span class="st">mixed</span> <span class="sv">$httpMethods</span> )</code>
+<code class="sig"><span class="sf">via</span>( <span class="st">array|string|null</span> <span class="sv">$httpMethods</span> )</code>
 <span class="desc">Set one or more HTTP methods that constraint the matching of the route</span>
 </a>
 </div>
@@ -26790,71 +27669,85 @@ __Uses__ `Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">callable|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$beforeMatch</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed $callable|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|null|false</code>
+<code class="ret">false|string|null</code>
 <code class="sig"><span class="sv">$compiledHostName</span><span class="sm"> = false</span></code>
 <span class="desc">Cached compiled hostname regex. <code>false</code> means &quot;not yet computed&quot;;
 <code>null</code> means &quot;hostname is literal - use string equality&quot;; any string
-means &quot;use this as the PCRE pattern.&quot;</span>
+means &quot;use this as the PCRE pattern.&quot;
+
+@mixed string|null|false</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$compiledPattern</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed string|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$converters</span><span class="sm"> = []</span></code>
+<span class="desc">@mixed array</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">GroupInterface|null</code>
 <code class="sig"><span class="sv">$group</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed GroupInterface|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$hostname</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed string|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">callable|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$match</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed callable|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|string|null</code>
 <code class="sig"><span class="sv">$methods</span><span class="sm"> = []</span></code>
+<span class="desc">@mixed array|string|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$name</span><span class="sm"> = null</span></code>
+<span class="desc">@mixed string|null</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$paths</span><span class="sm"> = []</span></code>
+<span class="desc">@mixed array</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$pattern</span></code>
+<code class="sig"><span class="sv">$pattern</span><span class="sm"> = &quot;&quot;</span></code>
+<span class="desc">@mixed string</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$routeId</span><span class="sm"> = &quot;&quot;</span></code>
+<span class="desc">@mixed string</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$uniqueId</span><span class="sm"> = 0</span></code>
+<span class="desc">@mixed $int</span>
 </div>
 </div>
 
@@ -26867,8 +27760,8 @@ means &quot;use this as the PCRE pattern.&quot;</span>
 ```php
 public function __construct(
     string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null
+    array|string|null $paths = null,
+    array|string|null $httpMethods = null
 );
 ```
 
@@ -27041,7 +27934,7 @@ Returns the route's id
 #### `getRoutePaths()` { #mvcrouterroute-getroutepaths }
 
 ```php
-public static function getRoutePaths( mixed $paths = null ): array;
+public static function getRoutePaths( array|string|null $paths = null ): array;
 ```
 
 Returns routePaths
@@ -27049,7 +27942,7 @@ Returns routePaths
 #### `match()` { #mvcrouterroute-match }
 
 ```php
-public function match( mixed $callback ): RouteInterface;
+public function match( callable $callback ): RouteInterface;
 ```
 
 Allows to set a callback to handle the request directly in the route
@@ -27070,7 +27963,7 @@ $router->add(
 ```php
 public function reConfigure(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): void;
 ```
 
@@ -27107,7 +28000,7 @@ $route->setHostname("localhost");
 #### `setHttpMethods()` { #mvcrouterroute-sethttpmethods }
 
 ```php
-public function setHttpMethods( mixed $httpMethods ): RouteInterface;
+public function setHttpMethods( array|string $httpMethods ): RouteInterface;
 ```
 
 Sets a set of HTTP methods that constraint the matching of the route (alias of via)
@@ -27153,7 +28046,7 @@ the constructor.
 #### `via()` { #mvcrouterroute-via }
 
 ```php
-public function via( mixed $httpMethods ): RouteInterface;
+public function via( array|string|null $httpMethods ): RouteInterface;
 ```
 
 Set one or more HTTP methods that constraint the matching of the route
@@ -27173,7 +28066,7 @@ $route->via(
 ## Mvc\Router\RouteInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/RouteInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/RouteInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Router\Route
 
@@ -27249,7 +28142,7 @@ Interface for Phalcon\Mvc\Router\Route
 <a class="api-item" href="#mvcrouterrouteinterface-reconfigure">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Reconfigure the route adding a new pattern and a set of paths</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-reset">
@@ -27267,7 +28160,7 @@ Interface for Phalcon\Mvc\Router\Route
 <a class="api-item" href="#mvcrouterrouteinterface-sethttpmethods">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">setHttpMethods</span>( <span class="st">mixed</span> <span class="sv">$httpMethods</span> )</code>
+<code class="sig"><span class="sf">setHttpMethods</span>( <span class="st">array|string</span> <span class="sv">$httpMethods</span> )</code>
 <span class="desc">Sets a set of HTTP methods that constraint the matching of the route</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-setname">
@@ -27285,7 +28178,7 @@ Interface for Phalcon\Mvc\Router\Route
 <a class="api-item" href="#mvcrouterrouteinterface-via">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">via</span>( <span class="st">mixed</span> <span class="sv">$httpMethods</span> )</code>
+<code class="sig"><span class="sf">via</span>( <span class="st">array|string|null</span> <span class="sv">$httpMethods</span> )</code>
 <span class="desc">Set one or more HTTP methods that constraint the matching of the route</span>
 </a>
 </div>
@@ -27382,7 +28275,7 @@ Returns the route's id
 ```php
 public function reConfigure(
     string $pattern,
-    mixed $paths = null
+    array|string|null $paths = null
 ): void;
 ```
 
@@ -27407,7 +28300,7 @@ Sets a hostname restriction to the route
 #### `setHttpMethods()` { #mvcrouterrouteinterface-sethttpmethods }
 
 ```php
-public function setHttpMethods( mixed $httpMethods ): RouteInterface;
+public function setHttpMethods( array|string $httpMethods ): RouteInterface;
 ```
 
 Sets a set of HTTP methods that constraint the matching of the route
@@ -27431,7 +28324,7 @@ Sets the route's id (intended for restoring cached routes)
 #### `via()` { #mvcrouterrouteinterface-via }
 
 ```php
-public function via( mixed $httpMethods ): RouteInterface;
+public function via( array|string|null $httpMethods ): RouteInterface;
 ```
 
 Set one or more HTTP methods that constraint the matching of the route
@@ -27440,7 +28333,7 @@ Set one or more HTTP methods that constraint the matching of the route
 ## Mvc\Router\RouterFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/RouterFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Router/RouterFactory.php){ .src-btn }
 
 Phalcon\Mvc\Router\RouterFactory
 
@@ -27452,9 +28345,9 @@ use Phalcon\Mvc\Router\RouterFactory;
 
 $router = (new RouterFactory())->load(
     [
-        "defaultRoutes" : false,
-        "routes" : [
-            ["method" : "get", "pattern" : "/users", "paths" : "Users::index"]
+        'defaultRoutes' => false,
+        'routes' => [
+            ['method' => 'get', 'pattern' => '/users', 'paths' => 'Users::index']
         ]
     ]
 );
@@ -27466,7 +28359,7 @@ $router = (new RouterFactory())->load(
 
 </div>
 
-__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface`
 { .api-uses }
 
 ### Method Summary
@@ -27475,7 +28368,7 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mv
 <a class="api-item" href="#mvcrouterrouterfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
 <span class="desc">Builds a Router from a config array or ConfigInterface and loads routes.</span>
 </a>
 <a class="api-item" href="#mvcrouterrouterfactory-newinstance">
@@ -27493,7 +28386,7 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mv
 #### `load()` { #mvcrouterrouterfactory-load }
 
 ```php
-public function load( mixed $config ): RouterInterface;
+public function load( array|ConfigInterface $config ): RouterInterface;
 ```
 
 Builds a Router from a config array or ConfigInterface and loads routes.
@@ -27510,7 +28403,7 @@ Returns a bare Router instance.
 ## Mvc\Url
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Url.php){ .src-btn }
 
 This component helps in the generation of: URIs, URLs and Paths
 
@@ -27530,13 +28423,13 @@ echo $url->get(
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - **`Phalcon\Mvc\Url`** - implements [`Phalcon\Mvc\Url\UrlInterface`](#mvcurlurlinterface)
 
 </div>
 
-__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Mvc\Url\Exception` · `Phalcon\Mvc\Url\Exceptions\MissingRouteName` · `Phalcon\Mvc\Url\Exceptions\RouteNotFound` · `Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable` · `Phalcon\Mvc\Url\UrlInterface`
+__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Url\Exception` · `Phalcon\Mvc\Url\Exceptions\MissingRouteName` · `Phalcon\Mvc\Url\Exceptions\RouteNotFound` · `Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable` · `Phalcon\Mvc\Url\UrlInterface`
 { .api-uses }
 
 ### Method Summary
@@ -27544,12 +28437,12 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <div class="api-list">
 <a class="api-item" href="#mvcurl-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">RouterInterface</span> <span class="sv">$router</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">RouterInterface|null</span> <span class="sv">$router</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#mvcurl-get">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$uri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$baseUri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$replaceArgs</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">array|string|null</span> <span class="sv">$uri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool|null</span> <span class="sv">$local</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$baseUri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$replaceArgs</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Generates a URL</span>
 </a>
 <a class="api-item" href="#mvcurl-getbasepath">
@@ -27562,24 +28455,24 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getBaseUri</span>()</code>
-<span class="desc">Returns the prefix for all the generated urls. By default /</span>
+<span class="desc">Returns the prefix for all the generated urls. By default, /</span>
 </a>
 <a class="api-item" href="#mvcurl-getstatic">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getStatic</span>( <span class="st">mixed</span> <span class="sv">$uri</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getStatic</span>( <span class="st">array|string|null</span> <span class="sv">$uri</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates a URL for a static resource</span>
 </a>
 <a class="api-item" href="#mvcurl-getstaticbaseuri">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getStaticBaseUri</span>()</code>
-<span class="desc">Returns the prefix for all the generated static urls. By default /</span>
+<span class="desc">Returns the prefix for all the generated static urls. By default, /</span>
 </a>
 <a class="api-item" href="#mvcurl-path">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">path</span>( <span class="st">string</span> <span class="sv">$path</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">path</span>( <span class="st">string|null</span> <span class="sv">$path</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates a local path</span>
 </a>
 <a class="api-item" href="#mvcurl-setbasepath">
@@ -27607,22 +28500,22 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">null | string</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$basePath</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">null | string</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$baseUri</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">RouterInterface | null</code>
+<code class="ret">RouterInterface|null</code>
 <code class="sig"><span class="sv">$router</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">null | string</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$staticBaseUri</span><span class="sm"> = null</span></code>
 </div>
 </div>
@@ -27634,16 +28527,16 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 #### `__construct()` { #mvcurl-__construct }
 
 ```php
-public function __construct( RouterInterface $router = null );
+public function __construct( RouterInterface|null $router = null );
 ```
 
 #### `get()` { #mvcurl-get }
 
 ```php
 public function get(
-    mixed $uri = null,
+    array|string|null $uri = null,
     mixed $arguments = null,
-    bool $local = null,
+    bool|null $local = null,
     mixed $baseUri = null,
     bool $replaceArgs = false
 ): string;
@@ -27679,17 +28572,6 @@ echo $url->get(
     null,
     false
 );
-
-// Override existing query string keys instead of appending duplicates.
-// Without the fifth argument: "http://example.com?page=1&page=5".
-// With it set to true:        "http://example.com?page=5".
-echo $url->get(
-    "http://example.com?page=1",
-    ["page" => 5],
-    null,
-    null,
-    true
-);
 ```
 
 #### `getBasePath()` { #mvcurl-getbasepath }
@@ -27706,12 +28588,12 @@ Returns the base path
 public function getBaseUri(): string;
 ```
 
-Returns the prefix for all the generated urls. By default /
+Returns the prefix for all the generated urls. By default, /
 
 #### `getStatic()` { #mvcurl-getstatic }
 
 ```php
-public function getStatic( mixed $uri = null ): string;
+public function getStatic( array|string|null $uri = null ): string;
 ```
 
 Generates a URL for a static resource
@@ -27734,12 +28616,12 @@ echo $url->getStatic(
 public function getStaticBaseUri(): string;
 ```
 
-Returns the prefix for all the generated static urls. By default /
+Returns the prefix for all the generated static urls. By default, /
 
 #### `path()` { #mvcurl-path }
 
 ```php
-public function path( string $path = null ): string;
+public function path( string|null $path = null ): string;
 ```
 
 Generates a local path
@@ -27786,9 +28668,7 @@ $url->setStaticBaseUri("/invo/");
 ## Mvc\Url\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url/Exception.zep){ .src-btn }
-
-Phalcon\Mvc\Url\Exception
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Url/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Mvc\Url will use this class
 
@@ -27806,7 +28686,7 @@ Exceptions thrown in Phalcon\Mvc\Url will use this class
 ## Mvc\Url\Exceptions\MissingRouteName
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url/Exceptions/MissingRouteName.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Url/Exceptions/MissingRouteName.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -27842,7 +28722,7 @@ public function __construct();
 ## Mvc\Url\Exceptions\RouteNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url/Exceptions/RouteNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Url/Exceptions/RouteNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -27878,7 +28758,7 @@ public function __construct( string $name );
 ## Mvc\Url\Exceptions\RouterServiceUnavailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url/Exceptions/RouterServiceUnavailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Url/Exceptions/RouterServiceUnavailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -27914,7 +28794,7 @@ public function __construct();
 ## Mvc\Url\UrlInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url/UrlInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/Url/UrlInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\Url\UrlInterface
 
@@ -27930,7 +28810,7 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 <a class="api-item" href="#mvcurlurlinterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$uri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$baseUri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$replaceArgs</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">array|string|null</span> <span class="sv">$uri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array|object|null</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool|null</span> <span class="sv">$local</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$baseUri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$replaceArgs</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Generates a URL</span>
 </a>
 <a class="api-item" href="#mvcurlurlinterface-getbasepath">
@@ -27943,12 +28823,12 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getBaseUri</span>()</code>
-<span class="desc">Returns the prefix for all the generated urls. By default /</span>
+<span class="desc">Returns the prefix for all the generated urls. By default, /</span>
 </a>
 <a class="api-item" href="#mvcurlurlinterface-path">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">path</span>( <span class="st">string</span> <span class="sv">$path</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">path</span>( <span class="st">string|null</span> <span class="sv">$path</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates a local path</span>
 </a>
 <a class="api-item" href="#mvcurlurlinterface-setbasepath">
@@ -27973,9 +28853,9 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 
 ```php
 public function get(
-    mixed $uri = null,
-    mixed $arguments = null,
-    bool $local = null,
+    array|string|null $uri = null,
+    array|object|null $arguments = null,
+    bool|null $local = null,
     mixed $baseUri = null,
     bool $replaceArgs = false
 ): string;
@@ -27997,12 +28877,12 @@ Returns a base path
 public function getBaseUri(): string;
 ```
 
-Returns the prefix for all the generated urls. By default /
+Returns the prefix for all the generated urls. By default, /
 
 #### `path()` { #mvcurlurlinterface-path }
 
 ```php
-public function path( string $path = null ): string;
+public function path( string|null $path = null ): string;
 ```
 
 Generates a local path
@@ -28027,7 +28907,7 @@ Sets a prefix to all the urls generated
 ## Mvc\View
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View.php){ .src-btn }
 
 Phalcon\Mvc\View is a class for working with the "view" portion of the
 model-view-controller pattern. That is, it exists to help keep the view
@@ -28054,13 +28934,13 @@ echo $view->getContent();
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Mvc\View`** - implements [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exception` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\InvalidViewsDirType` · `Phalcon\Mvc\View\Exceptions\ViewNotFound` · `Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable` · `Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`
+__Uses__ `Closure` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exception` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\ViewNotFound` · `Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable` · `Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 { .api-uses }
 
 ### Method Summary
@@ -28073,14 +28953,14 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </a>
 <a class="api-item" href="#mvcview-__get">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$propertyName</span> )</code>
 <span class="desc">Magic method to retrieve a variable passed to the view</span>
 </a>
 <a class="api-item" href="#mvcview-__isset">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Magic method to retrieve if a variable is set in the view</span>
 </a>
 <a class="api-item" href="#mvcview-__set">
@@ -28138,7 +29018,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </a>
 <a class="api-item" href="#mvcview-getactiverenderpath">
 <code class="vis vis-public">public</code>
-<code class="ret">string|array</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getActiveRenderPath</span>()</code>
 <span class="desc">Returns the path (or paths) of the views that are currently rendered</span>
 </a>
@@ -28147,12 +29027,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getBasePath</span>()</code>
 <span class="desc">Gets base path</span>
-</a>
-<a class="api-item" href="#mvcview-getcontent">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getContent</span>()</code>
-<span class="desc">Returns output from another view stage</span>
 </a>
 <a class="api-item" href="#mvcview-getcontrollername">
 <code class="vis vis-public">public</code>
@@ -28164,12 +29038,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getCurrentRenderLevel</span>()</code>
-</a>
-<a class="api-item" href="#mvcview-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvcview-getlayout">
 <code class="vis vis-public">public</code>
@@ -28189,12 +29057,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="sig"><span class="sf">getMainView</span>()</code>
 <span class="desc">Returns the name of the main view</span>
 </a>
-<a class="api-item" href="#mvcview-getparamstoview">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getParamsToView</span>()</code>
-<span class="desc">Returns parameters to views</span>
-</a>
 <a class="api-item" href="#mvcview-getpartial">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -28207,11 +29069,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="sig"><span class="sf">getPartialsDir</span>()</code>
 <span class="desc">Gets the current partials sub-directory</span>
 </a>
-<a class="api-item" href="#mvcview-getregisteredengines">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getRegisteredEngines</span>()</code>
-</a>
 <a class="api-item" href="#mvcview-getrender">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -28223,15 +29080,9 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getRenderLevel</span>()</code>
 </a>
-<a class="api-item" href="#mvcview-getvar">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">getVar</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Returns a parameter previously set in the view</span>
-</a>
 <a class="api-item" href="#mvcview-getviewsdir">
 <code class="vis vis-public">public</code>
-<code class="ret">string|array</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getViewsDir</span>()</code>
 <span class="desc">Gets views directory</span>
 </a>
@@ -28272,7 +29123,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </a>
 <a class="api-item" href="#mvcview-render">
 <code class="vis vis-public">public</code>
-<code class="ret">static|false</code>
+<code class="ret">bool|static</code>
 <code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$controllerName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes render process from dispatching data</span>
 </a>
@@ -28287,18 +29138,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setBasePath</span>( <span class="st">string</span> <span class="sv">$basePath</span> )</code>
 <span class="desc">Sets base path. Depending of your platform, always add a trailing slash</span>
-</a>
-<a class="api-item" href="#mvcview-setcontent">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
-<span class="desc">Externally sets the view content</span>
-</a>
-<a class="api-item" href="#mvcview-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#mvcview-setlayout">
 <code class="vis vis-public">public</code>
@@ -28339,20 +29178,14 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <a class="api-item" href="#mvcview-settemplateafter">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">setTemplateAfter</span>( <span class="st">mixed</span> <span class="sv">$templateAfter</span> )</code>
+<code class="sig"><span class="sf">setTemplateAfter</span>( <span class="st">array|string</span> <span class="sv">$templateAfter</span> )</code>
 <span class="desc">Sets a &quot;template after&quot; controller layout</span>
 </a>
 <a class="api-item" href="#mvcview-settemplatebefore">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">setTemplateBefore</span>( <span class="st">mixed</span> <span class="sv">$templateBefore</span> )</code>
+<code class="sig"><span class="sf">setTemplateBefore</span>( <span class="st">array|string</span> <span class="sv">$templateBefore</span> )</code>
 <span class="desc">Sets a template before the controller layout</span>
-</a>
-<a class="api-item" href="#mvcview-setvar">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setVar</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set a single view parameter</span>
 </a>
 <a class="api-item" href="#mvcview-setvars">
 <code class="vis vis-public">public</code>
@@ -28363,7 +29196,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <a class="api-item" href="#mvcview-setviewsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">setViewsDir</span>( <span class="st">mixed</span> <span class="sv">$viewsDir</span> )</code>
+<code class="sig"><span class="sf">setViewsDir</span>( <span class="st">array|string</span> <span class="sv">$viewsDir</span> )</code>
 <span class="desc">Sets the views directory. Depending of your platform,</span>
 </a>
 <a class="api-item" href="#mvcview-start">
@@ -28391,6 +29224,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </a>
 <a class="api-item" href="#mvcview-isabsolutepath">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
 <code class="sig"><span class="sf">isAbsolutePath</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 <span class="desc">Checks if a path is absolute or not</span>
 </a>
@@ -28448,17 +29282,12 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$activeRenderPaths</span></code>
+<code class="sig"><span class="sv">$activeRenderPaths</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$basePath</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$content</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -28482,13 +29311,8 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|bool</code>
+<code class="ret">array|false</code>
 <code class="sig"><span class="sv">$engines</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -28523,12 +29347,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|null</code>
-<code class="sig"><span class="sv">$pickView</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$registeredEngines</span><span class="sm"> = []</span></code>
+<code class="sig"><span class="sv">$pickView</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -28547,19 +29366,14 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$viewParams</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sv">$viewsDirs</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 53</div>
+<div class="api-group">Public · 45</div>
 
 #### `__construct()` { #mvcview-__construct }
 
@@ -28572,7 +29386,7 @@ Phalcon\Mvc\View constructor
 #### `__get()` { #mvcview-__get }
 
 ```php
-public function __get( string $key ): mixed|null;
+public function __get( string $propertyName ): mixed;
 ```
 
 Magic method to retrieve a variable passed to the view
@@ -28584,7 +29398,7 @@ echo $this->view->products;
 #### `__isset()` { #mvcview-__isset }
 
 ```php
-public function __isset( string $key ): bool;
+public function __isset( string $name ): bool;
 ```
 
 Magic method to retrieve if a variable is set in the view
@@ -28682,7 +29496,7 @@ Gets the name of the action rendered
 #### `getActiveRenderPath()` { #mvcview-getactiverenderpath }
 
 ```php
-public function getActiveRenderPath(): string|array;
+public function getActiveRenderPath(): array|string;
 ```
 
 Returns the path (or paths) of the views that are currently rendered
@@ -28694,14 +29508,6 @@ public function getBasePath(): string;
 ```
 
 Gets base path
-
-#### `getContent()` { #mvcview-getcontent }
-
-```php
-public function getContent(): string;
-```
-
-Returns output from another view stage
 
 #### `getControllerName()` { #mvcview-getcontrollername }
 
@@ -28716,14 +29522,6 @@ Gets the name of the controller rendered
 ```php
 public function getCurrentRenderLevel(): int;
 ```
-
-#### `getEventsManager()` { #mvcview-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
 
 #### `getLayout()` { #mvcview-getlayout }
 
@@ -28748,14 +29546,6 @@ public function getMainView(): string;
 ```
 
 Returns the name of the main view
-
-#### `getParamsToView()` { #mvcview-getparamstoview }
-
-```php
-public function getParamsToView(): array;
-```
-
-Returns parameters to views
 
 #### `getPartial()` { #mvcview-getpartial }
 
@@ -28791,12 +29581,6 @@ public function getPartialsDir(): string;
 
 Gets the current partials sub-directory
 
-#### `getRegisteredEngines()` { #mvcview-getregisteredengines }
-
-```php
-public function getRegisteredEngines(): array;
-```
-
 #### `getRender()` { #mvcview-getrender }
 
 ```php
@@ -28826,18 +29610,10 @@ $template = $this->view->getRender(
 public function getRenderLevel(): int;
 ```
 
-#### `getVar()` { #mvcview-getvar }
-
-```php
-public function getVar( string $key ): mixed|null;
-```
-
-Returns a parameter previously set in the view
-
 #### `getViewsDir()` { #mvcview-getviewsdir }
 
 ```php
-public function getViewsDir(): string|array;
+public function getViewsDir(): array|string;
 ```
 
 Gets views directory
@@ -28945,7 +29721,7 @@ public function render(
     string $controllerName,
     string $actionName,
     array $params = []
-): static|false;
+): bool|static;
 ```
 
 Executes render process from dispatching data
@@ -28975,26 +29751,6 @@ or backslash
 ```php
 $view->setBasePath(__DIR__ . "/");
 ```
-
-#### `setContent()` { #mvcview-setcontent }
-
-```php
-public function setContent( string $content ): static;
-```
-
-Externally sets the view content
-
-```php
-$this->view->setContent("<h1>hello</h1>");
-```
-
-#### `setEventsManager()` { #mvcview-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the events manager
 
 #### `setLayout()` { #mvcview-setlayout }
 
@@ -29084,7 +29840,7 @@ $this->view->setRenderLevel(
 #### `setTemplateAfter()` { #mvcview-settemplateafter }
 
 ```php
-public function setTemplateAfter( mixed $templateAfter ): static;
+public function setTemplateAfter( array|string $templateAfter ): static;
 ```
 
 Sets a "template after" controller layout
@@ -29092,25 +29848,10 @@ Sets a "template after" controller layout
 #### `setTemplateBefore()` { #mvcview-settemplatebefore }
 
 ```php
-public function setTemplateBefore( mixed $templateBefore ): static;
+public function setTemplateBefore( array|string $templateBefore ): static;
 ```
 
 Sets a template before the controller layout
-
-#### `setVar()` { #mvcview-setvar }
-
-```php
-public function setVar(
-    string $key,
-    mixed $value
-): static;
-```
-
-Set a single view parameter
-
-```php
-$this->view->setVar("products", $products);
-```
 
 #### `setVars()` { #mvcview-setvars }
 
@@ -29134,7 +29875,7 @@ $this->view->setVars(
 #### `setViewsDir()` { #mvcview-setviewsdir }
 
 ```php
-public function setViewsDir( mixed $viewsDir ): static;
+public function setViewsDir( array|string $viewsDir ): static;
 ```
 
 Sets the views directory. Depending of your platform,
@@ -29186,7 +29927,7 @@ Gets views directories
 #### `isAbsolutePath()` { #mvcview-isabsolutepath }
 
 ```php
-final protected function isAbsolutePath( string $path );
+final protected function isAbsolutePath( string $path ): bool;
 ```
 
 Checks if a path is absolute or not
@@ -29204,7 +29945,7 @@ Phalcon\Mvc\View\Engine\Php
 ## Mvc\ViewBaseInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/ViewBaseInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/ViewBaseInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
 
@@ -29214,9 +29955,6 @@ Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
     - [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface)
 
 </div>
-
-__Uses__ `Phalcon\Cache\Adapter\AdapterInterface`
-{ .api-uses }
 
 ### Method Summary
 
@@ -29235,7 +29973,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface`
 </a>
 <a class="api-item" href="#mvcviewbaseinterface-getviewsdir">
 <code class="vis vis-public">public</code>
-<code class="ret">string|array</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getViewsDir</span>()</code>
 <span class="desc">Gets views directory</span>
 </a>
@@ -29289,7 +30027,7 @@ Returns parameters to views
 #### `getViewsDir()` { #mvcviewbaseinterface-getviewsdir }
 
 ```php
-public function getViewsDir(): string|array;
+public function getViewsDir(): array|string;
 ```
 
 Gets views directory
@@ -29348,7 +30086,7 @@ slash or backslash
 ## Mvc\ViewInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/ViewInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/ViewInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\View
 
@@ -29395,7 +30133,7 @@ Interface for Phalcon\Mvc\View
 </a>
 <a class="api-item" href="#mvcviewinterface-getactiverenderpath">
 <code class="vis vis-public">public</code>
-<code class="ret">string|array</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">getActiveRenderPath</span>()</code>
 <span class="desc">Returns the path of the view that is currently rendered</span>
 </a>
@@ -29453,7 +30191,7 @@ Interface for Phalcon\Mvc\View
 </a>
 <a class="api-item" href="#mvcviewinterface-render">
 <code class="vis vis-public">public</code>
-<code class="ret">ViewInterface|bool</code>
+<code class="ret">bool|ViewInterface</code>
 <code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$controllerName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes render process from dispatching data</span>
 </a>
@@ -29495,12 +30233,12 @@ Interface for Phalcon\Mvc\View
 </a>
 <a class="api-item" href="#mvcviewinterface-settemplateafter">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">setTemplateAfter</span>( <span class="st">mixed</span> <span class="sv">$templateAfter</span> )</code>
+<code class="sig"><span class="sf">setTemplateAfter</span>( <span class="st">array|string</span> <span class="sv">$templateAfter</span> )</code>
 <span class="desc">Appends template after controller layout</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-settemplatebefore">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">setTemplateBefore</span>( <span class="st">mixed</span> <span class="sv">$templateBefore</span> )</code>
+<code class="sig"><span class="sf">setTemplateBefore</span>( <span class="st">array|string</span> <span class="sv">$templateBefore</span> )</code>
 <span class="desc">Appends template before controller layout</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-start">
@@ -29565,7 +30303,7 @@ Gets the name of the action rendered
 #### `getActiveRenderPath()` { #mvcviewinterface-getactiverenderpath }
 
 ```php
-public function getActiveRenderPath(): string|array;
+public function getActiveRenderPath(): array|string;
 ```
 
 Returns the path of the view that is currently rendered
@@ -29649,7 +30387,7 @@ public function render(
     string $controllerName,
     string $actionName,
     array $params = []
-): ViewInterface|bool;
+): bool|ViewInterface;
 ```
 
 Executes render process from dispatching data
@@ -29720,7 +30458,7 @@ Sets the render level for the view
 #### `setTemplateAfter()` { #mvcviewinterface-settemplateafter }
 
 ```php
-public function setTemplateAfter( mixed $templateAfter );
+public function setTemplateAfter( array|string $templateAfter );
 ```
 
 Appends template after controller layout
@@ -29728,7 +30466,7 @@ Appends template after controller layout
 #### `setTemplateBefore()` { #mvcviewinterface-settemplatebefore }
 
 ```php
-public function setTemplateBefore( mixed $templateBefore );
+public function setTemplateBefore( array|string $templateBefore );
 ```
 
 Appends template before controller layout
@@ -29745,14 +30483,14 @@ Starts rendering process enabling the output buffering
 ## Mvc\View\Engine\AbstractEngine
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/AbstractEngine.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/AbstractEngine.php){ .src-btn }
 
 All the template engine adapters must inherit this class. This provides
 basic interfacing between the engine and the Phalcon\Mvc\View component.
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Mvc\View\Engine\AbstractEngine`** - implements [`Phalcon\Mvc\View\Engine\EngineInterface`](#mvcviewengineengineinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Mvc\View\Engine\Php`](#mvcviewenginephp)
@@ -29760,7 +30498,7 @@ basic interfacing between the engine and the Phalcon\Mvc\View component.
 
 </div>
 
-__Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ViewBaseInterface`
+__Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Mvc\ViewBaseInterface`
 { .api-uses }
 
 ### Method Summary
@@ -29768,7 +30506,7 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\
 <div class="api-list">
 <a class="api-item" href="#mvcviewengineabstractengine-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">ViewBaseInterface</span> <span class="sv">$view</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">ViewBaseInterface</span> <span class="sv">$view</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\View\Engine constructor</span>
 </a>
 <a class="api-item" href="#mvcviewengineabstractengine-getcontent">
@@ -29776,12 +30514,6 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getContent</span>()</code>
 <span class="desc">Returns cached output on another view stage</span>
-</a>
-<a class="api-item" href="#mvcviewengineabstractengine-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvcviewengineabstractengine-getview">
 <code class="vis vis-public">public</code>
@@ -29795,28 +30527,11 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\
 <code class="sig"><span class="sf">partial</span>(<span class="prm"><span class="st">string</span> <span class="sv">$partialPath</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Renders a partial inside another view</span>
 </a>
-<a class="api-item" href="#mvcviewengineabstractengine-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
-<a class="api-item" href="#mvcviewengineabstractengine-firemanagerevent">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed|bool</code>
-<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Helper method to fire an event</span>
-</a>
 </div>
 
 ### Properties
 
 <div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-</div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ViewBaseInterface</code>
@@ -29826,14 +30541,14 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 4</div>
 
 #### `__construct()` { #mvcviewengineabstractengine-__construct }
 
 ```php
 public function __construct(
     ViewBaseInterface $view,
-    DiInterface $container = null
+    DiInterface|null $container = null
 );
 ```
 
@@ -29846,14 +30561,6 @@ public function getContent(): string;
 ```
 
 Returns cached output on another view stage
-
-#### `getEventsManager()` { #mvcviewengineabstractengine-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
 
 #### `getView()` { #mvcviewengineabstractengine-getview }
 
@@ -29874,33 +30581,11 @@ public function partial(
 
 Renders a partial inside another view
 
-#### `setEventsManager()` { #mvcviewengineabstractengine-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the events manager
-
-<div class="api-group">Protected · 1</div>
-
-#### `fireManagerEvent()` { #mvcviewengineabstractengine-firemanagerevent }
-
-```php
-protected function fireManagerEvent(
-    string $eventName,
-    mixed $data = null,
-    bool $cancellable = true
-): mixed|bool;
-```
-
-Helper method to fire an event
-
 
 ## Mvc\View\Engine\EngineInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/EngineInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/EngineInterface.php){ .src-btn }
 
 Interface for Phalcon\Mvc\View engine adapters
 
@@ -29973,13 +30658,13 @@ TODO: Change params to array type
 ## Mvc\View\Engine\Php
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Php.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Php.php){ .src-btn }
 
 Adapter to use PHP itself as templating engine
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
             - **`Phalcon\Mvc\View\Engine\Php`**
@@ -30016,20 +30701,20 @@ Renders a view using the template engine
 ## Mvc\View\Engine\Volt
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt.php){ .src-btn }
 
 Designer friendly and fast template engine for PHP written in Zephir/C
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
             - **`Phalcon\Mvc\View\Engine\Volt`** - implements [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 
-__Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\View\Engine\Volt\Compiler` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired` · `Phalcon\Mvc\View\Exception`
+__Uses__ `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Exception` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\View\Engine\Volt\Compiler` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`
 { .api-uses }
 
 ### Method Summary
@@ -30053,12 +30738,6 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `P
 <code class="sig"><span class="sf">getCompiler</span>()</code>
 <span class="desc">Returns the Volt&#039;s compiler</span>
 </a>
-<a class="api-item" href="#mvcviewenginevolt-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
 <a class="api-item" href="#mvcviewenginevolt-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
@@ -30068,7 +30747,7 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `P
 <a class="api-item" href="#mvcviewenginevolt-isincluded">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">isIncluded</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$haystack</span></span>)</code>
+<code class="sig"><span class="sf">isIncluded</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$haystack</span></span>)</code>
 <span class="desc">Checks if the needle is included in the haystack</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-length">
@@ -30088,19 +30767,15 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `P
 <code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$mustClean</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Renders a view using the template engine</span>
 </a>
-<a class="api-item" href="#mvcviewenginevolt-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
 <a class="api-item" href="#mvcviewenginevolt-setoptions">
 <code class="vis vis-public">public</code>
+<code class="ret">void</code>
 <code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Set Volt&#039;s options</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-slice">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">slice</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$start</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$end</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Extracts a slice from a string/array/traversable object value</span>
 </a>
@@ -30117,13 +30792,8 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `P
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">Compiler</code>
-<code class="sig"><span class="sv">$compiler</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span></code>
+<code class="ret">Compiler|null</code>
+<code class="sig"><span class="sv">$compiler</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -30139,7 +30809,7 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `P
 
 ### Methods
 
-<div class="api-group">Public · 13</div>
+<div class="api-group">Public · 11</div>
 
 #### `callMacro()` { #mvcviewenginevolt-callmacro }
 
@@ -30151,9 +30821,6 @@ public function callMacro(
 ```
 
 Checks if a macro is defined and calls it
-
-@params string name
-@params array arguments
 
 #### `convertEncoding()` { #mvcviewenginevolt-convertencoding }
 
@@ -30175,14 +30842,6 @@ public function getCompiler(): Compiler;
 
 Returns the Volt's compiler
 
-#### `getEventsManager()` { #mvcviewenginevolt-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
-
 #### `getOptions()` { #mvcviewenginevolt-getoptions }
 
 ```php
@@ -30196,7 +30855,7 @@ Return Volt's options
 ```php
 public function isIncluded(
     mixed $needle,
-    mixed $haystack
+    array|string $haystack
 ): bool;
 ```
 
@@ -30217,6 +30876,7 @@ public function preload( mixed $parameters ): string;
 ```
 
 Parses the preload element passed and sets the necessary link headers
+
 @todo find a better way to handle this
 
 #### `render()` { #mvcviewenginevolt-render }
@@ -30231,18 +30891,12 @@ public function render(
 
 Renders a view using the template engine
 
-#### `setEventsManager()` { #mvcviewenginevolt-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the events manager
+TODO: Make params array
 
 #### `setOptions()` { #mvcviewenginevolt-setoptions }
 
 ```php
-public function setOptions( array $options );
+public function setOptions( array $options ): void;
 ```
 
 Set Volt's options
@@ -30254,7 +30908,7 @@ public function slice(
     mixed $value,
     int $start = 0,
     mixed $end = null
-);
+): array|string;
 ```
 
 Extracts a slice from a string/array/traversable object value
@@ -30271,7 +30925,7 @@ Sorts an array
 ## Mvc\View\Engine\Volt\Compiler
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Compiler.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Compiler.php){ .src-btn }
 
 This class reads and compiles Volt templates into PHP plain code
 
@@ -30289,7 +30943,7 @@ require $compiler->getCompiledTemplatePath();
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`
+__Uses__ `Closure` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable` · `Phalcon\Support\Traits\FilePathTrait` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait` · `Phalcon\Volt\Compiler\Opcode` · `Phalcon\Volt\Parser\Parser`
 { .api-uses }
 
 ### Method Summary
@@ -30297,7 +30951,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltcompiler-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">ViewBaseInterface</span> <span class="sv">$view</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">ViewBaseInterface|null</span> <span class="sv">$view</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\View\Engine\Volt\Compiler</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-addextension">
@@ -30326,6 +30980,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compile">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">compile</span>(<span class="prm"><span class="st">string</span> <span class="sv">$templatePath</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Compiles a template into a file applying the compiler options</span>
 </a>
@@ -30357,7 +31012,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">compileEcho</span>( <span class="st">array</span> <span class="sv">$statement</span> )</code>
-<span class="desc">Compiles a <code>{{</code> <code>}}</code> statement returning PHP code</span>
+<span class="desc">Compiles a {% raw %}<code>{{</code> <code>}}</code>{% endraw %} statement returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileelseif">
 <code class="vis vis-public">public</code>
@@ -30367,6 +31022,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compilefile">
 <code class="vis vis-public">public</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sf">compileFile</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$compiledPath</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Compiles a template into a file forcing the destination path</span>
 </a>
@@ -30432,6 +31088,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-fireextensionevent">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">fireExtensionEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fires an event to registered extensions</span>
 </a>
@@ -30446,12 +31103,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getCompiledTemplatePath</span>()</code>
 <span class="desc">Returns the path to the last compiled template</span>
-</a>
-<a class="api-item" href="#mvcviewenginevoltcompiler-getdi">
-<code class="vis vis-public">public</code>
-<code class="ret">DiInterface</code>
-<code class="sig"><span class="sf">getDI</span>()</code>
-<span class="desc">Returns the internal dependency injector</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getextensions">
 <code class="vis vis-public">public</code>
@@ -30507,12 +31158,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 <code class="sig"><span class="sf">resolveTest</span>(<span class="prm"><span class="st">array</span> <span class="sv">$test</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$left</span></span>)</code>
 <span class="desc">Resolves filter intermediate code into a valid PHP expression</span>
 </a>
-<a class="api-item" href="#mvcviewenginevoltcompiler-setdi">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Sets the dependency injector</span>
-</a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-setoption">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
@@ -30539,6 +31184,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getfinalpath">
 <code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sf">getFinalPath</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 <span class="desc">Gets the final path with VIEW</span>
 </a>
@@ -30556,6 +31202,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-statementlistorextends">
 <code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">statementListOrExtends</span>( <span class="st">mixed</span> <span class="sv">$statements</span> )</code>
 <span class="desc">Compiles a block of statements</span>
 </a>
@@ -30577,18 +31224,13 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|null</code>
-<code class="sig"><span class="sv">$blocks</span></code>
+<code class="sig"><span class="sv">$blocks</span><span class="sm"> = null</span></code>
 <span class="desc">TODO: Make array only?</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$compiledTemplatePath</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -30663,24 +31305,29 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">Parser</code>
+<code class="sig"><span class="sv">$parser</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ViewBaseInterface|null</code>
-<code class="sig"><span class="sv">$view</span></code>
+<code class="sig"><span class="sv">$view</span><span class="sm"> = null</span></code>
 </div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 40</div>
+<div class="api-group">Public · 38</div>
 
 #### `__construct()` { #mvcviewenginevoltcompiler-__construct }
 
 ```php
-public function __construct( ViewBaseInterface $view = null );
+public function __construct( ViewBaseInterface|null $view = null );
 ```
 
 Phalcon\Mvc\View\Engine\Volt\Compiler
@@ -30729,7 +31376,7 @@ Resolves attribute reading
 public function compile(
     string $templatePath,
     bool $extendsMode = false
-);
+): mixed;
 ```
 
 Compiles a template into a file applying the compiler options
@@ -30788,7 +31435,7 @@ Compiles a "do" statement returning PHP code
 public function compileEcho( array $statement ): string;
 ```
 
-Compiles a `{{` `}}` statement returning PHP code
+Compiles a {% raw %}`{{` `}}`{% endraw %} statement returning PHP code
 
 #### `compileElseIf()` { #mvcviewenginevoltcompiler-compileelseif }
 
@@ -30805,7 +31452,7 @@ public function compileFile(
     string $path,
     string $compiledPath,
     bool $extendsMode = false
-);
+): array|string;
 ```
 
 Compiles a template into a file forcing the destination path
@@ -30893,7 +31540,6 @@ use Phalcon\Mvc\View\Engine\Volt\Compiler;
 $compiler = new Compiler();
 
 // {% set a = ['first': 1] %}
-
 $source = [
     "type" => 306,
     "assignments" => [
@@ -30945,7 +31591,7 @@ public function compileString(
 Compiles a template into a string
 
 ```php
-echo $compiler->compileString('{{ "hello world" }}');
+echo $compiler->compileString({% raw %}'{{ "hello world" }}'{% endraw %});
 ```
 
 #### `compileSwitch()` { #mvcviewenginevoltcompiler-compileswitch }
@@ -30976,7 +31622,7 @@ Resolves an expression node in an AST volt tree
 final public function fireExtensionEvent(
     string $name,
     array $arguments = []
-);
+): mixed;
 ```
 
 Fires an event to registered extensions
@@ -30999,14 +31645,6 @@ public function getCompiledTemplatePath(): string;
 ```
 
 Returns the path to the last compiled template
-
-#### `getDI()` { #mvcviewenginevoltcompiler-getdi }
-
-```php
-public function getDI(): DiInterface;
-```
-
-Returns the internal dependency injector
 
 #### `getExtensions()` { #mvcviewenginevoltcompiler-getextensions }
 
@@ -31075,7 +31713,7 @@ Parses a Volt template returning its intermediate representation
 
 ```php
 print_r(
-    $compiler->parse("{{ 3 + 2 }}")
+    $compiler->parse("{% raw %}{{ 3 + 2 }}{% endraw %}")
 );
 ```
 
@@ -31089,14 +31727,6 @@ public function resolveTest(
 ```
 
 Resolves filter intermediate code into a valid PHP expression
-
-#### `setDI()` { #mvcviewenginevoltcompiler-setdi }
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the dependency injector
 
 #### `setOption()` { #mvcviewenginevoltcompiler-setoption }
 
@@ -31141,7 +31771,7 @@ Compiles a Volt source code returning a PHP plain version
 #### `getFinalPath()` { #mvcviewenginevoltcompiler-getfinalpath }
 
 ```php
-protected function getFinalPath( string $path );
+protected function getFinalPath( string $path ): string;
 ```
 
 Gets the final path with VIEW
@@ -31171,7 +31801,7 @@ Traverses a statement list compiling each of its nodes
 #### `statementListOrExtends()` { #mvcviewenginevoltcompiler-statementlistorextends }
 
 ```php
-final protected function statementListOrExtends( mixed $statements );
+final protected function statementListOrExtends( mixed $statements ): mixed;
 ```
 
 Compiles a block of statements
@@ -31180,7 +31810,7 @@ Compiles a block of statements
 ## Mvc\View\Engine\Volt\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exception.php){ .src-btn }
 
 Class for exceptions thrown by Phalcon\Mvc\View
 
@@ -31224,7 +31854,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexception-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$statement</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">\Exception</span> <span class="sv">$previous</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$statement</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">BaseException|null</span> <span class="sv">$previous</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#mvcviewenginevoltexception-getstatement">
 <code class="vis vis-public">public</code>
@@ -31255,7 +31885,7 @@ public function __construct(
     string $message = "",
     array $statement = [],
     int $code = 0,
-    \Exception $previous = null
+    BaseException|null $previous = null
 );
 ```
 
@@ -31271,7 +31901,7 @@ Gets currently parsed statement (if any).
 ## Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/CannotOpenCompiledFile.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/CannotOpenCompiledFile.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31308,7 +31938,7 @@ public function __construct( string $path );
 ## Mvc\View\Engine\Volt\Exceptions\CorruptedStatement
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/CorruptedStatement.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/CorruptedStatement.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31345,7 +31975,7 @@ public function __construct();
 ## Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/CorruptedStatementWithData.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/CorruptedStatementWithData.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31382,7 +32012,7 @@ public function __construct( array $statement );
 ## Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidCompilationPrefix.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/InvalidCompilationPrefix.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31419,7 +32049,7 @@ public function __construct();
 ## Mvc\View\Engine\Volt\Exceptions\InvalidExtension
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidExtension.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/InvalidExtension.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31456,7 +32086,7 @@ public function __construct();
 ## Mvc\View\Engine\Volt\Exceptions\InvalidHaystack
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidHaystack.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/InvalidHaystack.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31493,7 +32123,7 @@ public function __construct();
 ## Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidIntermediateRepresentation.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/InvalidIntermediateRepresentation.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31530,7 +32160,7 @@ public function __construct();
 ## Mvc\View\Engine\Volt\Exceptions\InvalidOptionType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidOptionType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/InvalidOptionType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31570,7 +32200,7 @@ public function __construct(
 ## Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidPathClosureReturn.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/InvalidPathClosureReturn.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31607,7 +32237,7 @@ public function __construct();
 ## Mvc\View\Engine\Volt\Exceptions\InvalidPathType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidPathType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/InvalidPathType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31644,7 +32274,7 @@ public function __construct();
 ## Mvc\View\Engine\Volt\Exceptions\InvalidStatement
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidStatement.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/InvalidStatement.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31685,7 +32315,7 @@ public function __construct(
 ## Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidUserFilterDefinition.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/InvalidUserFilterDefinition.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31726,7 +32356,7 @@ public function __construct(
 ## Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidUserFunctionDefinition.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/InvalidUserFunctionDefinition.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31767,7 +32397,7 @@ public function __construct(
 ## Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/MacroAlreadyDefined.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/MacroAlreadyDefined.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31804,7 +32434,7 @@ public function __construct( string $name );
 ## Mvc\View\Engine\Volt\Exceptions\MacroNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/MacroNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/MacroNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31841,7 +32471,7 @@ public function __construct( string $name );
 ## Mvc\View\Engine\Volt\Exceptions\MbstringRequired
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/MbstringRequired.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/MbstringRequired.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31878,7 +32508,7 @@ public function __construct();
 ## Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/TemplateFileNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/TemplateFileNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31915,7 +32545,7 @@ public function __construct( string $path );
 ## Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/TemplateFileNotOpenable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/TemplateFileNotOpenable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31952,7 +32582,7 @@ public function __construct( string $path );
 ## Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/TemplatePathCollision.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/TemplatePathCollision.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -31989,7 +32619,7 @@ public function __construct();
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/UnknownVoltExpression.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/UnknownVoltExpression.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32030,7 +32660,7 @@ public function __construct(
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/UnknownVoltFilter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/UnknownVoltFilter.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32071,7 +32701,7 @@ public function __construct(
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/UnknownVoltFilterType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/UnknownVoltFilterType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32111,7 +32741,7 @@ public function __construct(
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/UnknownVoltStatement.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/UnknownVoltStatement.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32152,7 +32782,7 @@ public function __construct(
 ## Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/VoltDirectoryNotWritable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Engine/Volt/Exceptions/VoltDirectoryNotWritable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32189,9 +32819,7 @@ public function __construct();
 ## Mvc\View\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exception.zep){ .src-btn }
-
-Phalcon\Mvc\View\Exception
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Exception.php){ .src-btn }
 
 Class for exceptions thrown by Phalcon\Mvc\View
 
@@ -32214,7 +32842,7 @@ Class for exceptions thrown by Phalcon\Mvc\View
 ## Mvc\View\Exceptions\InvalidEngineRegistration
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/InvalidEngineRegistration.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Exceptions/InvalidEngineRegistration.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32250,7 +32878,7 @@ public function __construct( string $extension );
 ## Mvc\View\Exceptions\InvalidViewsDirType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/InvalidViewsDirType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Exceptions/InvalidViewsDirType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32286,7 +32914,7 @@ public function __construct();
 ## Mvc\View\Exceptions\SimpleViewNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/SimpleViewNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Exceptions/SimpleViewNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32322,7 +32950,7 @@ public function __construct( string $viewsDirPath );
 ## Mvc\View\Exceptions\SimpleViewServicesUnavailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/SimpleViewServicesUnavailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Exceptions/SimpleViewServicesUnavailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32358,7 +32986,7 @@ public function __construct();
 ## Mvc\View\Exceptions\ViewNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/ViewNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Exceptions/ViewNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32394,7 +33022,7 @@ public function __construct( string $viewPath );
 ## Mvc\View\Exceptions\ViewServicesUnavailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/ViewServicesUnavailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Exceptions/ViewServicesUnavailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32430,7 +33058,7 @@ public function __construct();
 ## Mvc\View\Exceptions\ViewsDirItemMustBeString
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/ViewsDirItemMustBeString.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Exceptions/ViewsDirItemMustBeString.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -32466,7 +33094,7 @@ public function __construct();
 ## Mvc\View\Simple
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Simple.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Simple.php){ .src-btn }
 
 This component allows to render views without hierarchical levels
 
@@ -32494,13 +33122,13 @@ echo $view->render(
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Mvc\View\Simple`** - implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Mvc\View\Simple`** - implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface), [`Phalcon\Contracts\View\Renderer`](phalcon_contracts.md#contractsviewrenderer)
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\EngineInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\SimpleViewNotFound` · `Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`
+__Uses__ `Closure` · `Phalcon\Contracts\View\Renderer` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\EngineInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\SimpleViewNotFound` · `Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 { .api-uses }
 
 ### Method Summary
@@ -32513,8 +33141,8 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </a>
 <a class="api-item" href="#mvcviewsimple-__get">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$propertyName</span> )</code>
 <span class="desc">Magic method to retrieve a variable passed to the view</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-__set">
@@ -32528,35 +33156,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getActiveRenderPath</span>()</code>
 <span class="desc">Returns the path of the view that is currently rendered</span>
-</a>
-<a class="api-item" href="#mvcviewsimple-getcontent">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getContent</span>()</code>
-<span class="desc">Returns output from another view stage</span>
-</a>
-<a class="api-item" href="#mvcviewsimple-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
-<a class="api-item" href="#mvcviewsimple-getparamstoview">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getParamsToView</span>()</code>
-<span class="desc">Returns parameters to views</span>
-</a>
-<a class="api-item" href="#mvcviewsimple-getregisteredengines">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getRegisteredEngines</span>()</code>
-</a>
-<a class="api-item" href="#mvcviewsimple-getvar">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">getVar</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Returns a parameter previously set in the view</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-getviewsdir">
 <code class="vis vis-public">public</code>
@@ -32582,29 +33181,11 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Renders a view</span>
 </a>
-<a class="api-item" href="#mvcviewsimple-setcontent">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
-<span class="desc">Externally sets the view content</span>
-</a>
-<a class="api-item" href="#mvcviewsimple-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
 <a class="api-item" href="#mvcviewsimple-setparamtoview">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setParamToView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Adds parameters to views (alias of setVar)</span>
-</a>
-<a class="api-item" href="#mvcviewsimple-setvar">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setVar</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set a single view parameter</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-setvars">
 <code class="vis vis-public">public</code>
@@ -32642,33 +33223,13 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$content</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">EngineInterface[]|false</code>
 <code class="sig"><span class="sv">$engines</span><span class="sm"> = false</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$registeredEngines</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$viewParams</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -32679,7 +33240,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 
 ### Methods
 
-<div class="api-group">Public · 19</div>
+<div class="api-group">Public · 11</div>
 
 #### `__construct()` { #mvcviewsimple-__construct }
 
@@ -32692,7 +33253,7 @@ Phalcon\Mvc\View\Simple constructor
 #### `__get()` { #mvcviewsimple-__get }
 
 ```php
-public function __get( string $key ): mixed|null;
+public function __get( string $propertyName ): mixed;
 ```
 
 Magic method to retrieve a variable passed to the view
@@ -32723,44 +33284,6 @@ public function getActiveRenderPath(): string;
 ```
 
 Returns the path of the view that is currently rendered
-
-#### `getContent()` { #mvcviewsimple-getcontent }
-
-```php
-public function getContent(): string;
-```
-
-Returns output from another view stage
-
-#### `getEventsManager()` { #mvcviewsimple-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
-
-#### `getParamsToView()` { #mvcviewsimple-getparamstoview }
-
-```php
-public function getParamsToView(): array;
-```
-
-Returns parameters to views
-
-#### `getRegisteredEngines()` { #mvcviewsimple-getregisteredengines }
-
-```php
-public function getRegisteredEngines(): array;
-```
-
-#### `getVar()` { #mvcviewsimple-getvar }
-
-```php
-public function getVar( string $key ): mixed|null;
-```
-
-Returns a parameter previously set in the view
 
 #### `getViewsDir()` { #mvcviewsimple-getviewsdir }
 
@@ -32825,26 +33348,6 @@ public function render(
 
 Renders a view
 
-#### `setContent()` { #mvcviewsimple-setcontent }
-
-```php
-public function setContent( string $content ): static;
-```
-
-Externally sets the view content
-
-```php
-$this->view->setContent("<h1>hello</h1>");
-```
-
-#### `setEventsManager()` { #mvcviewsimple-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the events manager
-
 #### `setParamToView()` { #mvcviewsimple-setparamtoview }
 
 ```php
@@ -32858,21 +33361,6 @@ Adds parameters to views (alias of setVar)
 
 ```php
 $this->view->setParamToView("products", $products);
-```
-
-#### `setVar()` { #mvcviewsimple-setvar }
-
-```php
-public function setVar(
-    string $key,
-    mixed $value
-): static;
-```
-
-Set a single view parameter
-
-```php
-$this->view->setVar("products", $products);
 ```
 
 #### `setVars()` { #mvcviewsimple-setvars }
@@ -32923,3 +33411,145 @@ protected function loadTemplateEngines(): array;
 
 Loads registered template engines, if none are registered it will use
 Phalcon\Mvc\View\Engine\Php
+
+
+## Mvc\View\Traits\ViewParamsTrait
+
+<span class="badge badge--trait">Trait</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Mvc/View/Traits/ViewParamsTrait.php){ .src-btn }
+
+Shared view parameter and content accessors
+
+@todo v7 - inspect the View/Simple interfaces (ViewInterface vs
+      ViewBaseInterface) to see whether these accessors can be unified behind
+      a shared contract
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\View\Traits\ViewParamsTrait`**
+
+</div>
+
+__Used by__ [`Phalcon\Mvc\View`](#mvcview) · [`Phalcon\Mvc\View\Simple`](#mvcviewsimple)
+{ .api-used-by }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-getcontent">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getContent</span>()</code>
+<span class="desc">Returns output from another view stage</span>
+</a>
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-getparamstoview">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getParamsToView</span>()</code>
+<span class="desc">Returns parameters to views</span>
+</a>
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-getregisteredengines">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getRegisteredEngines</span>()</code>
+</a>
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-getvar">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getVar</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<span class="desc">Returns a parameter previously set in the view</span>
+</a>
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-setcontent">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
+<span class="desc">Externally sets the view content</span>
+</a>
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-setvar">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setVar</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Set a single view parameter</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$content</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$registeredEngines</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$viewParams</span><span class="sm"> = []</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 6</div>
+
+#### `getContent()` { #mvcviewtraitsviewparamstrait-getcontent }
+
+```php
+public function getContent(): string;
+```
+
+Returns output from another view stage
+
+#### `getParamsToView()` { #mvcviewtraitsviewparamstrait-getparamstoview }
+
+```php
+public function getParamsToView(): array;
+```
+
+Returns parameters to views
+
+#### `getRegisteredEngines()` { #mvcviewtraitsviewparamstrait-getregisteredengines }
+
+```php
+public function getRegisteredEngines(): array;
+```
+
+#### `getVar()` { #mvcviewtraitsviewparamstrait-getvar }
+
+```php
+public function getVar( string $key ): mixed;
+```
+
+Returns a parameter previously set in the view
+
+#### `setContent()` { #mvcviewtraitsviewparamstrait-setcontent }
+
+```php
+public function setContent( string $content ): static;
+```
+
+Externally sets the view content
+
+```php
+$this->view->setContent("<h1>hello</h1>");
+```
+
+#### `setVar()` { #mvcviewtraitsviewparamstrait-setvar }
+
+```php
+public function setVar(
+    string $key,
+    mixed $value
+): static;
+```
+
+Set a single view parameter
+
+```php
+$this->view->setVar("products", $products);
+```

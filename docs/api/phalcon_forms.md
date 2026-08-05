@@ -11,7 +11,7 @@ hide:
 ## Forms\Element\AbstractElement
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/AbstractElement.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/AbstractElement.php){ .src-btn }
 
 This is a base class for form elements
 
@@ -35,7 +35,7 @@ This is a base class for form elements
 
 </div>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\FormElementNameRequired` · `Phalcon\Forms\Exceptions\InvalidFilterType` · `Phalcon\Forms\Form` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`
+__Uses__ `Phalcon\Di\Di` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\FormElementNameRequired` · `Phalcon\Forms\Exceptions\InvalidFilterType` · `Phalcon\Forms\Form` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`
 { .api-uses }
 
 ### Method Summary
@@ -102,12 +102,13 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterfac
 </a>
 <a class="api-item" href="#formselementabstractelement-getfilters">
 <code class="vis vis-public">public</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getFilters</span>()</code>
 <span class="desc">Returns the element filters</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getform">
 <code class="vis vis-public">public</code>
-<code class="ret">Form</code>
+<code class="ret">Form|null</code>
 <code class="sig"><span class="sf">getForm</span>()</code>
 <span class="desc">Returns the parent form to the element</span>
 </a>
@@ -121,7 +122,7 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterfac
 <code class="vis vis-public">public</code>
 <code class="ret">Messages</code>
 <code class="sig"><span class="sf">getMessages</span>()</code>
-<span class="desc">Returns the messages that belongs to the element</span>
+<span class="desc">Returns the messages that belong to the element. The element needs to</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getname">
 <code class="vis vis-public">public</code>
@@ -149,7 +150,7 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterfac
 </a>
 <a class="api-item" href="#formselementabstractelement-getvalidators">
 <code class="vis vis-public">public</code>
-<code class="ret">ValidatorInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getValidators</span>()</code>
 <span class="desc">Returns the validators registered for the element</span>
 </a>
@@ -198,7 +199,7 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterfac
 <a class="api-item" href="#formselementabstractelement-setfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig"><span class="sf">setFilters</span>( <span class="st">mixed</span> <span class="sv">$filters</span> )</code>
+<code class="sig"><span class="sf">setFilters</span>( <span class="st">array|string</span> <span class="sv">$filters</span> )</code>
 <span class="desc">Sets the element filters</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setform">
@@ -407,7 +408,7 @@ Returns the default value assigned to the element
 #### `getFilters()` { #formselementabstractelement-getfilters }
 
 ```php
-public function getFilters();
+public function getFilters(): array;
 ```
 
 Returns the element filters
@@ -415,7 +416,7 @@ Returns the element filters
 #### `getForm()` { #formselementabstractelement-getform }
 
 ```php
-public function getForm(): Form;
+public function getForm(): Form|null;
 ```
 
 Returns the parent form to the element
@@ -434,8 +435,8 @@ Returns the element label
 public function getMessages(): Messages;
 ```
 
-Returns the messages that belongs to the element
-The element needs to be attached to a form
+Returns the messages that belong to the element. The element needs to
+be attached to a form
 
 #### `getName()` { #formselementabstractelement-getname }
 
@@ -475,7 +476,7 @@ Returns the options for the element
 #### `getValidators()` { #formselementabstractelement-getvalidators }
 
 ```php
-public function getValidators(): ValidatorInterface[];
+public function getValidators(): array;
 ```
 
 Returns the validators registered for the element
@@ -543,7 +544,7 @@ or there is no value available for the element in _POST
 #### `setFilters()` { #formselementabstractelement-setfilters }
 
 ```php
-public function setFilters( mixed $filters ): ElementInterface;
+public function setFilters( array|string $filters ): ElementInterface;
 ```
 
 Sets the element filters
@@ -621,7 +622,7 @@ Returns the tagFactory; throws exception if not present
 ## Forms\Element\Check
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Check.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/Check.php){ .src-btn }
 
 Component INPUT[type=check] for forms
 
@@ -711,7 +712,7 @@ untouched. See cphalcon issue #16982.
 ## Forms\Element\CheckGroup
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/CheckGroup.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/CheckGroup.php){ .src-btn }
 
 Component for a group of INPUT[type=checkbox] elements.
 
@@ -729,9 +730,6 @@ or with per-item attributes:
     - **`Phalcon\Forms\Element\CheckGroup`**
 
 </div>
-
-__Uses__ `Phalcon\Html\TagFactory`
-{ .api-uses }
 
 ### Method Summary
 
@@ -815,7 +813,7 @@ Sets the group options
 ## Forms\Element\Date
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Date.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/Date.php){ .src-btn }
 
 Component INPUT[type=date] for forms
 
@@ -825,9 +823,6 @@ Component INPUT[type=date] for forms
     - **`Phalcon\Forms\Element\Date`**
 
 </div>
-
-__Uses__ `Phalcon\Tag`
-{ .api-uses }
 
 ### Properties
 
@@ -843,7 +838,7 @@ __Uses__ `Phalcon\Tag`
 ## Forms\Element\ElementInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/ElementInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/ElementInterface.php){ .src-btn }
 
 Interface for Phalcon\Forms\Element classes
 
@@ -909,12 +904,13 @@ __Uses__ `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Form` 
 </a>
 <a class="api-item" href="#formselementelementinterface-getfilters">
 <code class="vis vis-public">public</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getFilters</span>()</code>
 <span class="desc">Returns the element&#039;s filters</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getform">
 <code class="vis vis-public">public</code>
-<code class="ret">Form</code>
+<code class="ret">Form|null</code>
 <code class="sig"><span class="sf">getForm</span>()</code>
 <span class="desc">Returns the parent form to the element</span>
 </a>
@@ -928,7 +924,7 @@ __Uses__ `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Form` 
 <code class="vis vis-public">public</code>
 <code class="ret">Messages</code>
 <code class="sig"><span class="sf">getMessages</span>()</code>
-<span class="desc">Returns the messages that belongs to the element</span>
+<span class="desc">Returns the messages that belong to the element. The element needs to</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getname">
 <code class="vis vis-public">public</code>
@@ -950,7 +946,7 @@ __Uses__ `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Form` 
 </a>
 <a class="api-item" href="#formselementelementinterface-getvalidators">
 <code class="vis vis-public">public</code>
-<code class="ret">ValidatorInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getValidators</span>()</code>
 <span class="desc">Returns the validators registered for the element</span>
 </a>
@@ -969,7 +965,7 @@ __Uses__ `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Form` 
 <a class="api-item" href="#formselementelementinterface-label">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">label</span>()</code>
+<code class="sig"><span class="sf">label</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
 <span class="desc">Generate the HTML to label the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-render">
@@ -999,7 +995,7 @@ __Uses__ `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Form` 
 <a class="api-item" href="#formselementelementinterface-setfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig"><span class="sf">setFilters</span>( <span class="st">mixed</span> <span class="sv">$filters</span> )</code>
+<code class="sig"><span class="sf">setFilters</span>( <span class="st">array|string</span> <span class="sv">$filters</span> )</code>
 <span class="desc">Sets the element&#039;s filters</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setform">
@@ -1117,7 +1113,7 @@ Returns the default value assigned to the element
 #### `getFilters()` { #formselementelementinterface-getfilters }
 
 ```php
-public function getFilters();
+public function getFilters(): array;
 ```
 
 Returns the element's filters
@@ -1125,7 +1121,7 @@ Returns the element's filters
 #### `getForm()` { #formselementelementinterface-getform }
 
 ```php
-public function getForm(): Form;
+public function getForm(): Form|null;
 ```
 
 Returns the parent form to the element
@@ -1144,8 +1140,8 @@ Returns the element's label
 public function getMessages(): Messages;
 ```
 
-Returns the messages that belongs to the element
-The element needs to be attached to a form
+Returns the messages that belong to the element. The element needs to
+be attached to a form
 
 #### `getName()` { #formselementelementinterface-getname }
 
@@ -1177,7 +1173,7 @@ Returns the options for the element
 #### `getValidators()` { #formselementelementinterface-getvalidators }
 
 ```php
-public function getValidators(): ValidatorInterface[];
+public function getValidators(): array;
 ```
 
 Returns the validators registered for the element
@@ -1201,7 +1197,7 @@ Checks whether there are messages attached to the element
 #### `label()` { #formselementelementinterface-label }
 
 ```php
-public function label(): string;
+public function label( array $attributes = [] ): string;
 ```
 
 Generate the HTML to label the element
@@ -1245,7 +1241,7 @@ or there is no value available for the element in _POST
 #### `setFilters()` { #formselementelementinterface-setfilters }
 
 ```php
-public function setFilters( mixed $filters ): ElementInterface;
+public function setFilters( array|string $filters ): ElementInterface;
 ```
 
 Sets the element's filters
@@ -1305,7 +1301,7 @@ Sets options for the element
 ## Forms\Element\Email
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Email.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/Email.php){ .src-btn }
 
 Component INPUT[type=email] for forms
 
@@ -1315,9 +1311,6 @@ Component INPUT[type=email] for forms
     - **`Phalcon\Forms\Element\Email`**
 
 </div>
-
-__Uses__ `Phalcon\Tag`
-{ .api-uses }
 
 ### Properties
 
@@ -1333,7 +1326,7 @@ __Uses__ `Phalcon\Tag`
 ## Forms\Element\File
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/File.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/File.php){ .src-btn }
 
 Component INPUT[type=file] for forms
 
@@ -1343,9 +1336,6 @@ Component INPUT[type=file] for forms
     - **`Phalcon\Forms\Element\File`**
 
 </div>
-
-__Uses__ `Phalcon\Tag`
-{ .api-uses }
 
 ### Properties
 
@@ -1361,7 +1351,7 @@ __Uses__ `Phalcon\Tag`
 ## Forms\Element\Hidden
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Hidden.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/Hidden.php){ .src-btn }
 
 Component INPUT[type=hidden] for forms
 
@@ -1371,9 +1361,6 @@ Component INPUT[type=hidden] for forms
     - **`Phalcon\Forms\Element\Hidden`**
 
 </div>
-
-__Uses__ `Phalcon\Tag`
-{ .api-uses }
 
 ### Properties
 
@@ -1389,7 +1376,7 @@ __Uses__ `Phalcon\Tag`
 ## Forms\Element\Numeric
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Numeric.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/Numeric.php){ .src-btn }
 
 Component INPUT[type=number] for forms
 
@@ -1399,9 +1386,6 @@ Component INPUT[type=number] for forms
     - **`Phalcon\Forms\Element\Numeric`**
 
 </div>
-
-__Uses__ `Phalcon\Tag`
-{ .api-uses }
 
 ### Properties
 
@@ -1417,7 +1401,7 @@ __Uses__ `Phalcon\Tag`
 ## Forms\Element\Password
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Password.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/Password.php){ .src-btn }
 
 Component INPUT[type=password] for forms
 
@@ -1427,9 +1411,6 @@ Component INPUT[type=password] for forms
     - **`Phalcon\Forms\Element\Password`**
 
 </div>
-
-__Uses__ `Phalcon\Tag`
-{ .api-uses }
 
 ### Properties
 
@@ -1445,7 +1426,7 @@ __Uses__ `Phalcon\Tag`
 ## Forms\Element\Radio
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Radio.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/Radio.php){ .src-btn }
 
 Component INPUT[type=radio] for forms
 
@@ -1455,9 +1436,6 @@ Component INPUT[type=radio] for forms
     - **`Phalcon\Forms\Element\Radio`**
 
 </div>
-
-__Uses__ `Phalcon\Tag`
-{ .api-uses }
 
 ### Properties
 
@@ -1473,7 +1451,7 @@ __Uses__ `Phalcon\Tag`
 ## Forms\Element\RadioGroup
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/RadioGroup.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/RadioGroup.php){ .src-btn }
 
 Component for a group of INPUT[type=radio] elements.
 
@@ -1488,9 +1466,6 @@ or with per-item attributes:
     - **`Phalcon\Forms\Element\RadioGroup`**
 
 </div>
-
-__Uses__ `Phalcon\Html\TagFactory`
-{ .api-uses }
 
 ### Method Summary
 
@@ -1574,7 +1549,7 @@ Sets the group options
 ## Forms\Element\Select
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Select.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/Select.php){ .src-btn }
 
 Component SELECT (choice) for forms
 
@@ -1593,17 +1568,18 @@ __Uses__ `Phalcon\Tag\Select`
 <div class="api-list">
 <a class="api-item" href="#formselementselect-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$options</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array|object|null</span> <span class="sv">$options</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#formselementselect-addoption">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig"><span class="sf">addOption</span>( <span class="st">mixed</span> <span class="sv">$option</span> )</code>
+<code class="sig"><span class="sf">addOption</span>( <span class="st">array|string</span> <span class="sv">$option</span> )</code>
 <span class="desc">Adds an option to the current options</span>
 </a>
 <a class="api-item" href="#formselementselect-getoptions">
 <code class="vis vis-public">public</code>
+<code class="ret">array|object</code>
 <code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Returns the choices&#039; options</span>
 </a>
@@ -1616,7 +1592,7 @@ __Uses__ `Phalcon\Tag\Select`
 <a class="api-item" href="#formselementselect-setoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig"><span class="sf">setOptions</span>( <span class="st">mixed</span> <span class="sv">$options</span> )</code>
+<code class="sig"><span class="sf">setOptions</span>( <span class="st">array|object</span> <span class="sv">$options</span> )</code>
 <span class="desc">Set the choice&#039;s options</span>
 </a>
 <a class="api-item" href="#formselementselect-prepareattributes">
@@ -1632,7 +1608,7 @@ __Uses__ `Phalcon\Tag\Select`
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">object|array|null</code>
+<code class="ret">array|object|null</code>
 <code class="sig"><span class="sv">$optionsValues</span><span class="sm"> = null</span></code>
 </div>
 </div>
@@ -1646,7 +1622,7 @@ __Uses__ `Phalcon\Tag\Select`
 ```php
 public function __construct(
     string $name,
-    mixed $options = null,
+    array|object|null $options = null,
     array $attributes = []
 );
 ```
@@ -1656,7 +1632,7 @@ Constructor
 #### `addOption()` { #formselementselect-addoption }
 
 ```php
-public function addOption( mixed $option ): ElementInterface;
+public function addOption( array|string $option ): ElementInterface;
 ```
 
 Adds an option to the current options
@@ -1664,7 +1640,7 @@ Adds an option to the current options
 #### `getOptions()` { #formselementselect-getoptions }
 
 ```php
-public function getOptions();
+public function getOptions(): array|object;
 ```
 
 Returns the choices' options
@@ -1680,7 +1656,7 @@ Renders the element widget returning HTML
 #### `setOptions()` { #formselementselect-setoptions }
 
 ```php
-public function setOptions( mixed $options ): ElementInterface;
+public function setOptions( array|object $options ): ElementInterface;
 ```
 
 Set the choice's options
@@ -1700,7 +1676,7 @@ helpers according to the element parameters
 ## Forms\Element\Submit
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Submit.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/Submit.php){ .src-btn }
 
 Component INPUT[type=submit] for forms
 
@@ -1710,9 +1686,6 @@ Component INPUT[type=submit] for forms
     - **`Phalcon\Forms\Element\Submit`**
 
 </div>
-
-__Uses__ `Phalcon\Tag`
-{ .api-uses }
 
 ### Properties
 
@@ -1728,7 +1701,7 @@ __Uses__ `Phalcon\Tag`
 ## Forms\Element\Text
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Text.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/Text.php){ .src-btn }
 
 Component INPUT[type=text] for forms
 
@@ -1739,14 +1712,11 @@ Component INPUT[type=text] for forms
 
 </div>
 
-__Uses__ `Phalcon\Forms\Exception`
-{ .api-uses }
-
 
 ## Forms\Element\TextArea
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/TextArea.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Element/TextArea.php){ .src-btn }
 
 Component TEXTAREA for forms
 
@@ -1756,9 +1726,6 @@ Component TEXTAREA for forms
     - **`Phalcon\Forms\Element\TextArea`**
 
 </div>
-
-__Uses__ `Phalcon\Tag`
-{ .api-uses }
 
 ### Properties
 
@@ -1774,7 +1741,7 @@ __Uses__ `Phalcon\Tag`
 ## Forms\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Forms will use this class
 
@@ -1833,7 +1800,7 @@ public static function usingParameterRequired(): self;
 ## Forms\Exceptions\ElementNotInForm
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/ElementNotInForm.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/ElementNotInForm.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1869,11 +1836,11 @@ public function __construct( string $name );
 ## Forms\Exceptions\FormElementNameRequired
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/FormElementNameRequired.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/FormElementNameRequired.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `InvalidArgumentException`
+- `\InvalidArgumentException`
     - **`Phalcon\Forms\Exceptions\FormElementNameRequired`**
 
 </div>
@@ -1904,7 +1871,7 @@ public function __construct();
 ## Forms\Exceptions\FormNotInLocator
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/FormNotInLocator.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/FormNotInLocator.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1940,7 +1907,7 @@ public function __construct( string $name );
 ## Forms\Exceptions\FormNotRegistered
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/FormNotRegistered.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/FormNotRegistered.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1976,7 +1943,7 @@ public function __construct( string $name );
 ## Forms\Exceptions\InvalidEntity
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/InvalidEntity.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/InvalidEntity.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2012,7 +1979,7 @@ public function __construct();
 ## Forms\Exceptions\InvalidFilterType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/InvalidFilterType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/InvalidFilterType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2048,7 +2015,7 @@ public function __construct();
 ## Forms\Exceptions\InvalidJsonSchema
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/InvalidJsonSchema.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/InvalidJsonSchema.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2084,7 +2051,7 @@ public function __construct( string $detail );
 ## Forms\Exceptions\JsonSchemaNotArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/JsonSchemaNotArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/JsonSchemaNotArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2120,7 +2087,7 @@ public function __construct();
 ## Forms\Exceptions\NoFormElements
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/NoFormElements.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/NoFormElements.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2156,7 +2123,7 @@ public function __construct();
 ## Forms\Exceptions\SchemaEntryMissingKey
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/SchemaEntryMissingKey.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/SchemaEntryMissingKey.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2195,7 +2162,7 @@ public function __construct(
 ## Forms\Exceptions\SchemaEntryNotArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/SchemaEntryNotArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/SchemaEntryNotArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2231,7 +2198,7 @@ public function __construct( int $index );
 ## Forms\Exceptions\UnknownFormElementType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/UnknownFormElementType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/UnknownFormElementType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2267,7 +2234,7 @@ public function __construct( string $type );
 ## Forms\Exceptions\YamlExtensionRequired
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/YamlExtensionRequired.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/YamlExtensionRequired.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2303,7 +2270,7 @@ public function __construct();
 ## Forms\Exceptions\YamlSchemaNotArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/YamlSchemaNotArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Exceptions/YamlSchemaNotArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2339,19 +2306,19 @@ public function __construct();
 ## Forms\Form
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Form.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Form.php){ .src-btn }
 
 This component allows to build forms using an object-oriented interface
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Forms\Form`** - implements `Countable`, `Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](phalcon_html.md#htmlattributesattributesinterface)
+        - **`Phalcon\Forms\Form`** - implements `\Countable`, `\Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](phalcon_html.md#htmlattributesattributesinterface)
 
 </div>
 
-__Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Exceptions\ElementNotInForm` · `Phalcon\Forms\Exceptions\InvalidEntity` · `Phalcon\Forms\Exceptions\NoFormElements` · `Phalcon\Html\Attributes` · `Phalcon\Html\Attributes\AttributesInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\Messages` · `Phalcon\Support\Settings` · `Phalcon\Tag`
+__Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Di\Injectable` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Exceptions\ElementNotInForm` · `Phalcon\Forms\Exceptions\InvalidEntity` · `Phalcon\Forms\Exceptions\NoFormElements` · `Phalcon\Html\Attributes` · `Phalcon\Html\Attributes\AttributesInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\Messages` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2365,19 +2332,19 @@ __Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalc
 <a class="api-item" href="#formsform-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">ElementInterface</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$position</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">ElementInterface</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$position</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an element to the form</span>
 </a>
 <a class="api-item" href="#formsform-bind">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">object|null</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Binds data to the entity</span>
 </a>
 <a class="api-item" href="#formsform-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">clear</span>( <span class="st">mixed</span> <span class="sv">$fields</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">clear</span>( <span class="st">array|string|null</span> <span class="sv">$fields</span><span class="sm"> = null</span> )</code>
 <span class="desc">Clears every element in the form to its default value</span>
 </a>
 <a class="api-item" href="#formsform-count">
@@ -2412,18 +2379,19 @@ __Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalc
 </a>
 <a class="api-item" href="#formsform-getelements">
 <code class="vis vis-public">public</code>
-<code class="ret">ElementInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getElements</span>()</code>
 <span class="desc">Returns the form elements added to the form</span>
 </a>
 <a class="api-item" href="#formsform-getentity">
 <code class="vis vis-public">public</code>
+<code class="ret">object|null</code>
 <code class="sig"><span class="sf">getEntity</span>()</code>
 <span class="desc">Returns the entity related to the model</span>
 </a>
 <a class="api-item" href="#formsform-getfilteredvalue">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getFilteredValue</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets a value from the internal filtered data or calls getValue(name)</span>
 </a>
@@ -2471,7 +2439,7 @@ __Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalc
 </a>
 <a class="api-item" href="#formsform-getvalue">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getValue</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets a value from the internal related entity or from the default value</span>
 </a>
@@ -2496,7 +2464,7 @@ __Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalc
 <a class="api-item" href="#formsform-isvalid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">isValid</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">isValid</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">object|null</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Validates the form</span>
 </a>
 <a class="api-item" href="#formsform-key">
@@ -2556,7 +2524,7 @@ __Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalc
 <a class="api-item" href="#formsform-setentity">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">setEntity</span>( <span class="st">mixed</span> <span class="sv">$entity</span> )</code>
+<code class="sig"><span class="sf">setEntity</span>( <span class="st">object</span> <span class="sv">$entity</span> )</code>
 <span class="desc">Sets the entity related to the model</span>
 </a>
 <a class="api-item" href="#formsform-settagfactory">
@@ -2602,8 +2570,8 @@ __Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalc
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">AttributesInterface|null</code>
-<code class="sig"><span class="sv">$attributes</span><span class="sm"> = null</span></code>
+<code class="ret">Attributes</code>
+<code class="sig"><span class="sv">$attributes</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -2682,8 +2650,8 @@ Phalcon\Forms\Form constructor
 ```php
 public function add(
     ElementInterface $element,
-    string $position = null,
-    bool $type = null
+    string|null $position = null,
+    bool|null $type = null
 ): static;
 ```
 
@@ -2694,7 +2662,7 @@ Adds an element to the form
 ```php
 public function bind(
     array $data,
-    mixed $entity = null,
+    object|null $entity = null,
     array $whitelist = []
 ): static;
 ```
@@ -2704,7 +2672,7 @@ Binds data to the entity
 #### `clear()` { #formsform-clear }
 
 ```php
-public function clear( mixed $fields = null ): static;
+public function clear( array|string|null $fields = null ): static;
 ```
 
 Clears every element in the form to its default value
@@ -2752,7 +2720,7 @@ Get Form attributes collection
 #### `getElements()` { #formsform-getelements }
 
 ```php
-public function getElements(): ElementInterface[];
+public function getElements(): array;
 ```
 
 Returns the form elements added to the form
@@ -2760,7 +2728,7 @@ Returns the form elements added to the form
 #### `getEntity()` { #formsform-getentity }
 
 ```php
-public function getEntity();
+public function getEntity(): object|null;
 ```
 
 Returns the entity related to the model
@@ -2768,7 +2736,7 @@ Returns the entity related to the model
 #### `getFilteredValue()` { #formsform-getfilteredvalue }
 
 ```php
-public function getFilteredValue( string $name ): mixed|null;
+public function getFilteredValue( string $name ): mixed;
 ```
 
 Gets a value from the internal filtered data or calls getValue(name)
@@ -2845,7 +2813,7 @@ return ValidationInterface|null
 #### `getValue()` { #formsform-getvalue }
 
 ```php
-public function getValue( string $name ): mixed|null;
+public function getValue( string $name ): mixed;
 ```
 
 Gets a value from the internal related entity or from the default value
@@ -2878,8 +2846,8 @@ Check if messages were generated for a specific element
 
 ```php
 public function isValid(
-    mixed $data = null,
-    mixed $entity = null,
+    array $data = [],
+    object|null $entity = null,
     array $whitelist = []
 ): bool;
 ```
@@ -2974,7 +2942,7 @@ Set form attributes collection
 #### `setEntity()` { #formsform-setentity }
 
 ```php
-public function setEntity( mixed $entity ): static;
+public function setEntity( object $entity ): static;
 ```
 
 Sets the entity related to the model
@@ -3034,7 +3002,7 @@ Check if the current element in the iterator is valid
 ## Forms\FormsLocator
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/FormsLocator.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/FormsLocator.php){ .src-btn }
 
 A closure-based registry for named forms and element type factories.
 
@@ -3054,7 +3022,7 @@ types with `setElement()`.
 
 </div>
 
-__Uses__ `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · `Phalcon\Forms\Element\Date` · `Phalcon\Forms\Element\Email` · `Phalcon\Forms\Element\File` · `Phalcon\Forms\Element\Hidden` · `Phalcon\Forms\Element\Numeric` · `Phalcon\Forms\Element\Password` · `Phalcon\Forms\Element\Radio` · `Phalcon\Forms\Element\RadioGroup` · `Phalcon\Forms\Element\Select` · `Phalcon\Forms\Element\Submit` · `Phalcon\Forms\Element\Text` · `Phalcon\Forms\Element\TextArea` · `Phalcon\Forms\Exceptions\FormNotInLocator` · `Phalcon\Forms\Exceptions\UnknownFormElementType`
+__Uses__ `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · `Phalcon\Forms\Element\Date` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Element\Email` · `Phalcon\Forms\Element\File` · `Phalcon\Forms\Element\Hidden` · `Phalcon\Forms\Element\Numeric` · `Phalcon\Forms\Element\Password` · `Phalcon\Forms\Element\Radio` · `Phalcon\Forms\Element\RadioGroup` · `Phalcon\Forms\Element\Select` · `Phalcon\Forms\Element\Submit` · `Phalcon\Forms\Element\Text` · `Phalcon\Forms\Element\TextArea` · `Phalcon\Forms\Exceptions\FormNotInLocator` · `Phalcon\Forms\Exceptions\UnknownFormElementType`
 { .api-uses }
 
 ### Method Summary
@@ -3067,11 +3035,12 @@ __Uses__ `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · 
 <a class="api-item" href="#formsformslocator-get">
 <code class="vis vis-public">public</code>
 <code class="ret">Form</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">object|null</span> <span class="sv">$entity</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the named form.</span>
 </a>
 <a class="api-item" href="#formsformslocator-getelement">
 <code class="vis vis-public">public</code>
+<code class="ret">callable</code>
 <code class="sig"><span class="sf">getElement</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Returns the factory callable for the given element type.</span>
 </a>
@@ -3090,13 +3059,13 @@ __Uses__ `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · 
 <a class="api-item" href="#formsformslocator-set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$factory</span></span>)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$factory</span></span>)</code>
 <span class="desc">Registers or replaces a named form factory.</span>
 </a>
 <a class="api-item" href="#formsformslocator-setelement">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setElement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$factory</span></span>)</code>
+<code class="sig"><span class="sf">setElement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$factory</span></span>)</code>
 <span class="desc">Registers or replaces an element type factory.</span>
 </a>
 <a class="api-item" href="#formsformslocator-getdefaultservices">
@@ -3122,7 +3091,7 @@ public function __construct( array $definitions = [] );
 ```php
 public function get(
     string $name,
-    mixed $entity = null
+    object|null $entity = null
 ): Form;
 ```
 
@@ -3134,7 +3103,7 @@ With an entity a fresh form is always produced.
 #### `getElement()` { #formsformslocator-getelement }
 
 ```php
-public function getElement( string $type );
+public function getElement( string $type ): callable;
 ```
 
 Returns the factory callable for the given element type.
@@ -3160,7 +3129,7 @@ Checks whether an element type is registered.
 ```php
 public function set(
     string $name,
-    mixed $factory
+    callable $factory
 ): void;
 ```
 
@@ -3175,7 +3144,7 @@ the next get() call rebuilds from the new factory.
 ```php
 public function setElement(
     string $type,
-    mixed $factory
+    callable $factory
 ): void;
 ```
 
@@ -3200,7 +3169,7 @@ Each value is a callable: fn(string $name, array $options, array $attributes): E
 ## Forms\Loader\ArrayLoader
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Loader/ArrayLoader.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Loader/ArrayLoader.php){ .src-btn }
 
 Supplies form element definitions from a PHP array.
 
@@ -3230,16 +3199,6 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalc
 <code class="ret">void</code>
 <code class="sig"><span class="sf">validateDefinition</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span></span>)</code>
 </a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$definitions</span></code>
-</div>
 </div>
 
 ### Methods
@@ -3273,7 +3232,7 @@ protected function validateDefinition(
 ## Forms\Loader\JsonLoader
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Loader/JsonLoader.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Loader/JsonLoader.php){ .src-btn }
 
 Supplies form element definitions from a JSON string or file.
 
@@ -3286,7 +3245,7 @@ disk first; otherwise the value is treated as a raw JSON string.
 
 </div>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\InvalidJsonSchema` · `Phalcon\Forms\Exceptions\JsonSchemaNotArray` · `Phalcon\Support\Helper\Json\Decode`
+__Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\InvalidJsonSchema` · `Phalcon\Forms\Exceptions\JsonSchemaNotArray` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -3301,20 +3260,6 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Forms\Schema` · `Phal
 <code class="ret">array</code>
 <code class="sig"><span class="sf">load</span>()</code>
 </a>
-<a class="api-item" href="#formsloaderjsonloader-phpfilegetcontents">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFileGetContents</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-</a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$source</span></code>
-</div>
 </div>
 
 ### Methods
@@ -3333,19 +3278,11 @@ public function __construct( string $source );
 public function load(): array;
 ```
 
-<div class="api-group">Protected · 1</div>
-
-#### `phpFileGetContents()` { #formsloaderjsonloader-phpfilegetcontents }
-
-```php
-protected function phpFileGetContents( string $filename );
-```
-
 
 ## Forms\Loader\YamlLoader
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Loader/YamlLoader.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Loader/YamlLoader.php){ .src-btn }
 
 Supplies form element definitions from a YAML string or file.
 
@@ -3360,7 +3297,7 @@ directly; otherwise the value is treated as a raw YAML string.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\YamlExtensionRequired` · `Phalcon\Forms\Exceptions\YamlSchemaNotArray`
+__Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\YamlExtensionRequired` · `Phalcon\Forms\Exceptions\YamlSchemaNotArray` · `Phalcon\Traits\Php\InfoTrait`
 { .api-uses }
 
 ### Method Summary
@@ -3375,16 +3312,6 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalc
 <code class="ret">array</code>
 <code class="sig"><span class="sf">load</span>()</code>
 </a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$source</span></code>
-</div>
 </div>
 
 ### Methods
@@ -3407,7 +3334,7 @@ public function load(): array;
 ## Forms\Manager
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Manager.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Forms/Manager.php){ .src-btn }
 
 Forms Manager
 
@@ -3417,7 +3344,7 @@ Forms Manager
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exceptions\FormNotRegistered` · `Phalcon\Forms\Form`
+__Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exceptions\FormNotRegistered`
 { .api-uses }
 
 ### Method Summary
@@ -3425,13 +3352,13 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exceptions\FormNotRe
 <div class="api-list">
 <a class="api-item" href="#formsmanager-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">FormsLocator</span> <span class="sv">$locator</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">FormsLocator|null</span> <span class="sv">$locator</span><span class="sm"> = null</span> )</code>
 <span class="desc">Manager constructor.</span>
 </a>
 <a class="api-item" href="#formsmanager-create">
 <code class="vis vis-public">public</code>
 <code class="ret">Form</code>
-<code class="sig"><span class="sf">create</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">create</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">object|null</span> <span class="sv">$entity</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a form registering it in the forms manager</span>
 </a>
 <a class="api-item" href="#formsmanager-get">
@@ -3455,7 +3382,7 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exceptions\FormNotRe
 <a class="api-item" href="#formsmanager-loadform">
 <code class="vis vis-public">public</code>
 <code class="ret">Form</code>
-<code class="sig"><span class="sf">loadForm</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">Schema</span> <span class="sv">$schema</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">loadForm</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">Schema</span> <span class="sv">$schema</span>,</span><span class="prm"><span class="st">object|null</span> <span class="sv">$entity</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a form from a Schema source, registers it in the manager,</span>
 </a>
 <a class="api-item" href="#formsmanager-set">
@@ -3471,7 +3398,7 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exceptions\FormNotRe
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, Form&gt;</code>
 <code class="sig"><span class="sv">$forms</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -3488,7 +3415,7 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exceptions\FormNotRe
 #### `__construct()` { #formsmanager-__construct }
 
 ```php
-public function __construct( FormsLocator $locator = null );
+public function __construct( FormsLocator|null $locator = null );
 ```
 
 Manager constructor.
@@ -3498,7 +3425,7 @@ Manager constructor.
 ```php
 public function create(
     string $name,
-    mixed $entity = null
+    object|null $entity = null
 ): Form;
 ```
 
@@ -3534,7 +3461,7 @@ Checks if a form is registered in the forms manager
 public function loadForm(
     string $name,
     Schema $schema,
-    mixed $entity = null
+    object|null $entity = null
 ): Form;
 ```
 

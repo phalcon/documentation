@@ -11,7 +11,7 @@ hide:
 ## Flash\AbstractFlash
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/AbstractFlash.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Flash/AbstractFlash.php){ .src-btn }
 
 Shows HTML notifications related to different circumstances. Classes can be
 stylized using CSS
@@ -27,15 +27,13 @@ Class AbstractFlash
 
 <div class="api-tree" markdown>
 
-- `stdClass`
-    - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Flash\AbstractFlash`** - implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface)
-            - [`Phalcon\Flash\Direct`](#flashdirect)
-            - [`Phalcon\Flash\Session`](#flashsession)
+- **`Phalcon\Flash\AbstractFlash`** - implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
+    - [`Phalcon\Flash\Direct`](#flashdirect)
+    - [`Phalcon\Flash\Session`](#flashsession)
 
 </div>
 
-__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Flash\Exceptions\EscaperServiceUnavailable` · `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Str\Interpolate`
+__Uses__ `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Flash\Exceptions\EscaperServiceUnavailable` · `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray` · `Phalcon\Flash\Traits\FlashGettersTrait` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 { .api-uses }
 
 ### Method Summary
@@ -43,45 +41,14 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\D
 <div class="api-list">
 <a class="api-item" href="#flashabstractflash-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">SessionInterface</span> <span class="sv">$session</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface|null</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">SessionInterface|null</span> <span class="sv">$session</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">AbstractFlash constructor.</span>
-</a>
-<a class="api-item" href="#flashabstractflash-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Clears accumulated messages when implicit flush is disabled</span>
 </a>
 <a class="api-item" href="#flashabstractflash-error">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sf">error</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
 <span class="desc">Shows a HTML error message</span>
-</a>
-<a class="api-item" href="#flashabstractflash-getautoescape">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getAutoescape</span>()</code>
-</a>
-<a class="api-item" href="#flashabstractflash-getautomatichtml">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getAutomaticHtml</span>()</code>
-</a>
-<a class="api-item" href="#flashabstractflash-getcssclasses">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getCssClasses</span>()</code>
-</a>
-<a class="api-item" href="#flashabstractflash-getcssiconclasses">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getCssIconClasses</span>()</code>
-</a>
-<a class="api-item" href="#flashabstractflash-getcustomtemplate">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getCustomTemplate</span>()</code>
 </a>
 <a class="api-item" href="#flashabstractflash-getescaperservice">
 <code class="vis vis-public">public</code>
@@ -163,83 +130,20 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\D
 </a>
 </div>
 
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$autoescape</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$automaticHtml</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$cssClasses</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$cssIconClasses</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$customTemplate</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">EscaperInterface | null</code>
-<code class="sig"><span class="sv">$escaperService</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$implicitFlush</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Interpolate</code>
-<code class="sig"><span class="sv">$interpolator</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$messages</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">SessionInterface|null</code>
-<code class="sig"><span class="sv">$sessionService</span><span class="sm"> = null</span></code>
-</div>
-</div>
-
 ### Methods
 
-<div class="api-group">Public · 21</div>
+<div class="api-group">Public · 15</div>
 
 #### `__construct()` { #flashabstractflash-__construct }
 
 ```php
 public function __construct(
-    EscaperInterface $escaper = null,
-    SessionInterface $session = null
+    EscaperInterface|null $escaper = null,
+    SessionInterface|null $session = null
 );
 ```
 
 AbstractFlash constructor.
-
-#### `clear()` { #flashabstractflash-clear }
-
-```php
-public function clear(): void;
-```
-
-Clears accumulated messages when implicit flush is disabled
 
 #### `error()` { #flashabstractflash-error }
 
@@ -251,36 +155,6 @@ Shows a HTML error message
 
 ```php
 $flash->error("This is an error");
-```
-
-#### `getAutoescape()` { #flashabstractflash-getautoescape }
-
-```php
-public function getAutoescape(): bool;
-```
-
-#### `getAutomaticHtml()` { #flashabstractflash-getautomatichtml }
-
-```php
-public function getAutomaticHtml(): bool;
-```
-
-#### `getCssClasses()` { #flashabstractflash-getcssclasses }
-
-```php
-public function getCssClasses(): array;
-```
-
-#### `getCssIconClasses()` { #flashabstractflash-getcssiconclasses }
-
-```php
-public function getCssIconClasses(): array;
-```
-
-#### `getCustomTemplate()` { #flashabstractflash-getcustomtemplate }
-
-```php
-public function getCustomTemplate(): string;
 ```
 
 #### `getEscaperService()` { #flashabstractflash-getescaperservice }
@@ -420,7 +294,7 @@ $flash->warning("Hey, this is important");
 ## Flash\Direct
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Direct.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Flash/Direct.php){ .src-btn }
 
 Class Direct
 
@@ -428,10 +302,8 @@ Class Direct
 
 <div class="api-tree" markdown>
 
-- `stdClass`
-    - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
-            - **`Phalcon\Flash\Direct`**
+- [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
+    - **`Phalcon\Flash\Direct`**
 
 </div>
 
@@ -479,7 +351,7 @@ Prints the messages accumulated in the flasher
 ## Flash\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Flash/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Flash classes will use this class
 
@@ -497,7 +369,7 @@ Exceptions thrown in Phalcon\Flash classes will use this class
 ## Flash\Exceptions\EscaperServiceUnavailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/EscaperServiceUnavailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Flash/Exceptions/EscaperServiceUnavailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -533,7 +405,7 @@ public function __construct();
 ## Flash\Exceptions\FlashMessageNotStringOrArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/FlashMessageNotStringOrArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Flash/Exceptions/FlashMessageNotStringOrArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -569,7 +441,7 @@ public function __construct();
 ## Flash\Exceptions\SessionServiceUnavailable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/SessionServiceUnavailable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Flash/Exceptions/SessionServiceUnavailable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -605,7 +477,7 @@ public function __construct();
 ## Flash\FlashInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/FlashInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Flash/FlashInterface.php){ .src-btn }
 
 Interface FlashInterface
 
@@ -623,7 +495,7 @@ __Uses__ `Phalcon\Contracts\Flash\Flash`
 ## Flash\Session
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Session.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Flash/Session.php){ .src-btn }
 
 This is an implementation of the Phalcon\Flash\FlashInterface that
 temporarily stores the messages in session, then messages can be printed in
@@ -635,10 +507,8 @@ Class Session
 
 <div class="api-tree" markdown>
 
-- `stdClass`
-    - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
-            - **`Phalcon\Flash\Session`**
+- [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
+    - **`Phalcon\Flash\Session`**
 
 </div>
 
@@ -650,7 +520,7 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\E
 <div class="api-list">
 <a class="api-item" href="#flashsession-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$sessionKey</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface|null</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface|null</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$sessionKey</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Session constructor.</span>
 </a>
 <a class="api-item" href="#flashsession-clear">
@@ -662,7 +532,7 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\E
 <a class="api-item" href="#flashsession-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">getMessages</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$type</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remove</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">getMessages</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remove</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Returns the messages in the session flasher</span>
 </a>
 <a class="api-item" href="#flashsession-getsessionservice">
@@ -674,7 +544,7 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\E
 <a class="api-item" href="#flashsession-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
 <span class="desc">Checks whether there are messages</span>
 </a>
 <a class="api-item" href="#flashsession-message">
@@ -692,7 +562,7 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\E
 <a class="api-item" href="#flashsession-getsessionmessages">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">getSessionMessages</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$remove</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getSessionMessages</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$remove</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the messages stored in session</span>
 </a>
 <a class="api-item" href="#flashsession-setsessionmessages">
@@ -730,9 +600,9 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\E
 
 ```php
 public function __construct(
-    EscaperInterface $escaper = null,
-    ManagerInterface $session = null,
-    string $sessionKey = null
+    EscaperInterface|null $escaper = null,
+    ManagerInterface|null $session = null,
+    string|null $sessionKey = null
 );
 ```
 
@@ -750,7 +620,7 @@ Clear messages in the session messenger
 
 ```php
 public function getMessages(
-    mixed $type = null,
+    string|null $type = null,
     bool $remove = true
 ): array;
 ```
@@ -768,7 +638,7 @@ Returns the Session Service
 #### `has()` { #flashsession-has }
 
 ```php
-public function has( string $type = null ): bool;
+public function has( string|null $type = null ): bool;
 ```
 
 Checks whether there are messages
@@ -799,7 +669,7 @@ Prints the messages in the session flasher
 ```php
 protected function getSessionMessages(
     bool $remove,
-    string $type = null
+    string|null $type = null
 ): array;
 ```
 
@@ -812,3 +682,186 @@ protected function setSessionMessages( array $messages ): array;
 ```
 
 Stores the messages in session
+
+
+## Flash\Traits\FlashGettersTrait
+
+<span class="badge badge--trait">Trait</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Flash/Traits/FlashGettersTrait.php){ .src-btn }
+
+Class AbstractFlash
+
+@package Phalcon\Flash
+
+Shows HTML notifications related to different circumstances. Classes can be
+stylized using CSS
+
+```php
+$flash->success("The record was successfully deleted");
+$flash->error("Cannot open the file");
+```
+@property bool                  $autoescape
+@property bool                  $automaticHtml
+@property array                 $cssClasses
+@property string                $customTemplate
+@property EscaperInterface|null $escaperService
+@property bool                  $implicitFlush
+@property array                 $messages
+@property SessionInterface|null $sessionService
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Flash\Traits\FlashGettersTrait`**
+
+</div>
+
+__Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface`
+{ .api-uses }
+
+__Used by__ [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
+{ .api-used-by }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#flashtraitsflashgetterstrait-clear">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">clear</span>()</code>
+<span class="desc">Clears accumulated messages when implicit flush is disabled</span>
+</a>
+<a class="api-item" href="#flashtraitsflashgetterstrait-getautoescape">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">getAutoescape</span>()</code>
+<span class="desc">Returns the flag that defines whether to automatically escape content or not</span>
+</a>
+<a class="api-item" href="#flashtraitsflashgetterstrait-getautomatichtml">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">getAutomaticHtml</span>()</code>
+<span class="desc">Returns the flag that defines whether to automatically use HTML or not</span>
+</a>
+<a class="api-item" href="#flashtraitsflashgetterstrait-getcssclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getCssClasses</span>()</code>
+<span class="desc">Returns the array of the CSS classes for formatting messages. The key is</span>
+</a>
+<a class="api-item" href="#flashtraitsflashgetterstrait-getcssiconclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getCssIconClasses</span>()</code>
+<span class="desc">Returns the array of the icon CSS classes for formatting messages. The</span>
+</a>
+<a class="api-item" href="#flashtraitsflashgetterstrait-getcustomtemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getCustomTemplate</span>()</code>
+<span class="desc">Returns the custom template for formatting messages</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$autoescape</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$automaticHtml</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$cssClasses</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$cssIconClasses</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$customTemplate</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">EscaperInterface|null</code>
+<code class="sig"><span class="sv">$escaperService</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$implicitFlush</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$messages</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">SessionInterface|null</code>
+<code class="sig"><span class="sv">$sessionService</span><span class="sm"> = null</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 6</div>
+
+#### `clear()` { #flashtraitsflashgetterstrait-clear }
+
+```php
+public function clear(): void;
+```
+
+Clears accumulated messages when implicit flush is disabled
+
+#### `getAutoescape()` { #flashtraitsflashgetterstrait-getautoescape }
+
+```php
+public function getAutoescape(): bool;
+```
+
+Returns the flag that defines whether to automatically escape content or not
+
+#### `getAutomaticHtml()` { #flashtraitsflashgetterstrait-getautomatichtml }
+
+```php
+public function getAutomaticHtml(): bool;
+```
+
+Returns the flag that defines whether to automatically use HTML or not
+
+#### `getCssClasses()` { #flashtraitsflashgetterstrait-getcssclasses }
+
+```php
+public function getCssClasses(): array;
+```
+
+Returns the array of the CSS classes for formatting messages. The key is
+the type of message and the value is the CSS class
+
+#### `getCssIconClasses()` { #flashtraitsflashgetterstrait-getcssiconclasses }
+
+```php
+public function getCssIconClasses(): array;
+```
+
+Returns the array of the icon CSS classes for formatting messages. The
+key is the type of message and the value is the icon CSS class
+
+#### `getCustomTemplate()` { #flashtraitsflashgetterstrait-getcustomtemplate }
+
+```php
+public function getCustomTemplate(): string;
+```
+
+Returns the custom template for formatting messages

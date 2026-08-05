@@ -11,7 +11,7 @@ hide:
 ## Auth\AbstractAuthDispatcherListener
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/AbstractAuthDispatcherListener.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/AbstractAuthDispatcherListener.php){ .src-btn }
 
 Shared enforcement algorithm for the Cli, Mvc and Micro auth listeners.
 The subclass provides the action name and context from its event source,
@@ -45,7 +45,7 @@ __Uses__ `Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Acces
 <a class="api-item" href="#authabstractauthdispatcherlistener-enforce">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">enforce</span>(<span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$forwardHandler</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">enforce</span>(<span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$forwardHandler</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Runs the access check for the given action name. Returns true when</span>
 </a>
 <a class="api-item" href="#authabstractauthdispatcherlistener-getactiontype">
@@ -84,7 +84,7 @@ public function __construct( Manager $manager );
 protected function enforce(
     string $actionName,
     array $context = [],
-    mixed $forwardHandler = null
+    callable|null $forwardHandler = null
 ): bool;
 ```
 
@@ -108,7 +108,7 @@ Returns the kind label used by AccessDenied (e.g. 'task', 'action',
 ## Auth\Access\AbstractAccess
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Access/AbstractAccess.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/AbstractAccess.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -168,12 +168,12 @@ __Uses__ `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Guard
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">list&lt;string&gt;</code>
 <code class="sig"><span class="sv">$exceptActions</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">list&lt;string&gt;</code>
 <code class="sig"><span class="sv">$onlyActions</span><span class="sm"> = []</span></code>
 </div>
 </div>
@@ -236,7 +236,7 @@ Whether the gate's base condition holds for the given identity.
 ## Auth\Access\AccessLocator
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Access/AccessLocator.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/AccessLocator.php){ .src-btn }
 
 Service locator for Phalcon\Auth access gates. Utilizes the container to
 obtain the service. For the Phalcon\Container\Container one can use
@@ -253,7 +253,7 @@ class builder).
 
 </div>
 
-__Uses__ `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Support\AbstractLocator`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Support\AbstractLocator`
 { .api-uses }
 
 ### Method Summary
@@ -324,7 +324,7 @@ protected function getServices(): array;
 ## Auth\Access\Acl
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Access/Acl.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/Acl.php){ .src-btn }
 
 ACL-backed access gate. Checks the authenticated user's role against a
 Phalcon\Acl adapter: the ACL component is taken from the 'handler' context
@@ -347,7 +347,7 @@ other user is rejected with an exception.
 
 </div>
 
-__Uses__ `Phalcon\Acl\Adapter\AdapterInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard`
+__Uses__ `Phalcon\Acl\Adapter\AdapterInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\MissingHandlerContext` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Guard\Guard`
 { .api-uses }
 
 ### Method Summary
@@ -439,7 +439,7 @@ protected function resolveRole( Guard $guard ): string;
 ## Auth\Access\Auth
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Access/Auth.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/Auth.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -475,7 +475,7 @@ protected function allowedIf( Guard $guard ): bool;
 ## Auth\Access\Guest
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Access/Guest.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/Guest.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -511,7 +511,7 @@ protected function allowedIf( Guard $guard ): bool;
 ## Auth\Adapter\AbstractAdapter
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/AbstractAdapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/AbstractAdapter.php){ .src-btn }
 
 @template TConfig of AdapterConfig
 
@@ -551,6 +551,24 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Ada
 <code class="sig"><span class="sf">validateCredentials</span>(<span class="prm"><span class="st">AuthUser</span> <span class="sv">$user</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$credentials</span></span>)</code>
 <span class="desc">Validates the supplied plaintext password against the user&#039;s stored hash.</span>
 </a>
+<a class="api-item" href="#authadapterabstractadapter-burnhash">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">burnHash</span>()</code>
+<span class="desc">Runs a throwaway password verification against a fixed dummy hash so the</span>
+</a>
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">DUMMY_HASH</span><span class="sm"> = &quot;$2y$10$YMmGMSXz.5U3bjjJ2qx45uElzUrlaBiS8L70VaVnmsKYFJVcam8gW&quot;</span></code>
+<span class="desc">Dummy bcrypt hash used to equalize timing on the user-not-found path so
+a failed lookup costs the same as a real password check (prevents
+login-timing user enumeration).</span>
+</div>
 </div>
 
 ### Properties
@@ -610,11 +628,23 @@ Validates the supplied plaintext password against the user's stored hash.
 Concrete adapters share this implementation; if your data source needs
 a different verification strategy, override it.
 
+<div class="api-group">Protected · 1</div>
+
+#### `burnHash()` { #authadapterabstractadapter-burnhash }
+
+```php
+protected function burnHash(): void;
+```
+
+Runs a throwaway password verification against a fixed dummy hash so the
+user-not-found path performs the same hash work as a found path. Call it
+when a credential lookup misses to keep response time constant.
+
 
 ## Auth\Adapter\AbstractArrayAdapter
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/AbstractArrayAdapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/AbstractArrayAdapter.php){ .src-btn }
 
 Common base for adapters whose user records come from an in-memory list
 (Memory and Stream). Subclasses provide the row source via loadUsers();
@@ -648,7 +678,7 @@ __Uses__ `Phalcon\Auth\AuthUser` · `Phalcon\Auth\Exceptions\DoesNotImplement` �
 <a class="api-item" href="#authadapterabstractarrayadapter-retrievebyid">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUserContract|null</code>
-<code class="sig"><span class="sf">retrieveById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">retrieveById</span>( <span class="st">int|string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Default linear-scan implementation. Memory overrides this for an O(1)</span>
 </a>
 <a class="api-item" href="#authadapterabstractarrayadapter-hasidentifyingfield">
@@ -673,7 +703,7 @@ __Uses__ `Phalcon\Auth\AuthUser` · `Phalcon\Auth\Exceptions\DoesNotImplement` �
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">matchesRow</span>(<span class="prm"><span class="st">array</span> <span class="sv">$row</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$credentials</span></span>)</code>
-<span class="desc">Strict per-key match of a row against credentials, skipping &#039;password&#039;.</span>
+<span class="desc">Per-key match of a row against credentials, skipping &#039;password&#039;. Values</span>
 </a>
 </div>
 
@@ -695,7 +725,7 @@ or empty) - protects callers from the silent "first row wins" footgun.
 #### `retrieveById()` { #authadapterabstractarrayadapter-retrievebyid }
 
 ```php
-public function retrieveById( mixed $id ): AuthUserContract|null;
+public function retrieveById( int|string $id ): AuthUserContract|null;
 ```
 
 Default linear-scan implementation. Memory overrides this for an O(1)
@@ -740,13 +770,15 @@ protected function matchesRow(
 ): bool;
 ```
 
-Strict per-key match of a row against credentials, skipping 'password'.
+Per-key match of a row against credentials, skipping 'password'. Values
+are compared as strings so typed row values (e.g. int id, bool active)
+match the string input that arrives from an HTTP request.
 
 
 ## Auth\Adapter\AdapterLocator
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/AdapterLocator.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/AdapterLocator.php){ .src-btn }
 
 Service locator for Phalcon\Auth adapters. Utilizes the container to
 obtain the service. For the Phalcon\Container\Container one can use
@@ -762,7 +794,7 @@ to be used here.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Support\AbstractLocator`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Support\AbstractLocator`
 { .api-uses }
 
 ### Method Summary
@@ -811,7 +843,7 @@ protected function getServices(): array;
 ## Auth\Adapter\Config\AbstractAdapterConfig
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/Config/AbstractAdapterConfig.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/AbstractAdapterConfig.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -822,7 +854,7 @@ protected function getServices(): array;
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\Adapter\AdapterConfig`
+__Uses__ `Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig`
 { .api-uses }
 
 ### Method Summary
@@ -830,46 +862,25 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\AdapterConfig`
 <div class="api-list">
 <a class="api-item" href="#authadapterconfigabstractadapterconfig-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$model</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string|null</span> <span class="sv">$model</span><span class="sm"> = null</span> )</code>
 </a>
-<a class="api-item" href="#authadapterconfigabstractadapterconfig-getmodel">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getModel</span>()</code>
-</a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$model</span><span class="sm"> = null</span></code>
-</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<div class="api-group">Public · 1</div>
 
 #### `__construct()` { #authadapterconfigabstractadapterconfig-__construct }
 
 ```php
-public function __construct( string $model = null );
-```
-
-#### `getModel()` { #authadapterconfigabstractadapterconfig-getmodel }
-
-```php
-public function getModel(): string|null;
+public function __construct( string|null $model = null );
 ```
 
 
 ## Auth\Adapter\Config\MemoryAdapterConfig
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/Config/MemoryAdapterConfig.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/MemoryAdapterConfig.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -883,7 +894,7 @@ public function getModel(): string|null;
 <div class="api-list">
 <a class="api-item" href="#authadapterconfigmemoryadapterconfig-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$users</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$users</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#authadapterconfigmemoryadapterconfig-getusers">
 <code class="vis vis-public">public</code>
@@ -911,7 +922,7 @@ public function getModel(): string|null;
 ```php
 public function __construct(
     array $users = [],
-    string $model = null
+    string|null $model = null
 );
 ```
 
@@ -925,7 +936,7 @@ public function getUsers(): array;
 ## Auth\Adapter\Config\ModelAdapterConfig
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/Config/ModelAdapterConfig.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/ModelAdapterConfig.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -995,7 +1006,7 @@ public function getModel(): string;
 ## Auth\Adapter\Config\StreamAdapterConfig
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/Config/StreamAdapterConfig.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/StreamAdapterConfig.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1012,7 +1023,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 <div class="api-list">
 <a class="api-item" href="#authadapterconfigstreamadapterconfig-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#authadapterconfigstreamadapterconfig-getfile">
 <code class="vis vis-public">public</code>
@@ -1040,7 +1051,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 ```php
 public function __construct(
     string $file,
-    string $model = null
+    string|null $model = null
 );
 ```
 
@@ -1051,10 +1062,57 @@ public function getFile(): string;
 ```
 
 
+## Auth\Adapter\Config\Traits\ModelConfigTrait
+
+<span class="badge badge--trait">Trait</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/Traits/ModelConfigTrait.php){ .src-btn }
+
+Shared model-name state and accessor for auth adapter configurations.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait`**
+
+</div>
+
+__Used by__ [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
+{ .api-used-by }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authadapterconfigtraitsmodelconfigtrait-getmodel">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getModel</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$model</span><span class="sm"> = null</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getModel()` { #authadapterconfigtraitsmodelconfigtrait-getmodel }
+
+```php
+public function getModel(): string|null;
+```
+
+
 ## Auth\Adapter\Memory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/Memory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Memory.php){ .src-btn }
 
 In-memory adapter - useful for tests and small read-only user lists.
 
@@ -1086,7 +1144,7 @@ __Uses__ `Phalcon\Auth\Adapter\Config\MemoryAdapterConfig` · `Phalcon\Auth\Inte
 <a class="api-item" href="#authadaptermemory-retrievebyid">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">retrieveById</span>( <span class="st">int|string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Overridden for O(1) lookup via the id index built in the constructor.</span>
 </a>
 <a class="api-item" href="#authadaptermemory-loadusers">
@@ -1121,7 +1179,7 @@ public static function fromOptions(
 #### `retrieveById()` { #authadaptermemory-retrievebyid }
 
 ```php
-public function retrieveById( mixed $id ): AuthUser|null;
+public function retrieveById( int|string $id ): AuthUser|null;
 ```
 
 Overridden for O(1) lookup via the id index built in the constructor.
@@ -1138,7 +1196,7 @@ protected function loadUsers(): array;
 ## Auth\Adapter\Model
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/Model.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Model.php){ .src-btn }
 
 Phalcon Model-backed adapter.
 
@@ -1181,12 +1239,12 @@ __Uses__ `Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Excep
 <a class="api-item" href="#authadaptermodel-retrievebyid">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">retrieveById</span>( <span class="st">int|string</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#authadaptermodel-retrievebytoken">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveByToken</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">retrieveByToken</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Retrieve a user by the remember-me cookie payload.</span>
 </a>
 </div>
@@ -1232,16 +1290,16 @@ Find a user matching the given credentials (excluding 'password' key).
 #### `retrieveById()` { #authadaptermodel-retrievebyid }
 
 ```php
-public function retrieveById( mixed $id ): AuthUser|null;
+public function retrieveById( int|string $id ): AuthUser|null;
 ```
 
 #### `retrieveByToken()` { #authadaptermodel-retrievebytoken }
 
 ```php
 public function retrieveByToken(
-    mixed $id,
+    int|string $id,
     string $token,
-    string $userAgent = null
+    string|null $userAgent = null
 ): AuthUser|null;
 ```
 
@@ -1251,7 +1309,7 @@ Retrieve a user by the remember-me cookie payload.
 ## Auth\Adapter\Stream
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/Stream.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Stream.php){ .src-btn }
 
 JSON file-backed adapter.
 
@@ -1268,7 +1326,7 @@ The file must contain a JSON array of user records:
 
 </div>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Auth\Adapter\Config\StreamAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\FileCannotRead` · `Phalcon\Auth\Exceptions\FileDoesNotContainJson` · `Phalcon\Auth\Exceptions\FileDoesNotExist` · `Phalcon\Auth\Exceptions\FileNotValidJson` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Support\Helper\Json\Decode`
+__Uses__ `InvalidArgumentException` · `Phalcon\Auth\Adapter\Config\StreamAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\FileCannotRead` · `Phalcon\Auth\Exceptions\FileDoesNotContainJson` · `Phalcon\Auth\Exceptions\FileDoesNotExist` · `Phalcon\Auth\Exceptions\FileNotValidJson` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1288,15 +1346,6 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Auth\Adapter\Config\StreamAdapte
 <code class="ret">array</code>
 <code class="sig"><span class="sf">loadUsers</span>()</code>
 <span class="desc">Loads and decodes the JSON users file. Re-read on every call - if you</span>
-</a>
-<a class="api-item" href="#authadapterstream-phpfileexists">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpFileExists</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-</a>
-<a class="api-item" href="#authadapterstream-phpfilegetcontents">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFileGetContents</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
 </a>
 </div>
 
@@ -1322,7 +1371,7 @@ public static function fromOptions(
 ): static;
 ```
 
-<div class="api-group">Protected · 3</div>
+<div class="api-group">Protected · 1</div>
 
 #### `loadUsers()` { #authadapterstream-loadusers }
 
@@ -1333,23 +1382,11 @@ protected function loadUsers(): array;
 Loads and decodes the JSON users file. Re-read on every call - if you
 need caching, wrap it.
 
-#### `phpFileExists()` { #authadapterstream-phpfileexists }
-
-```php
-protected function phpFileExists( string $filename ): bool;
-```
-
-#### `phpFileGetContents()` { #authadapterstream-phpfilegetcontents }
-
-```php
-protected function phpFileGetContents( string $filename );
-```
-
 
 ## Auth\AuthUser
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/AuthUser.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/AuthUser.php){ .src-btn }
 
 Lightweight value object returned by array-backed adapters (Memory, Stream)
 when no application model class is configured.
@@ -1432,7 +1469,7 @@ Returns the underlying data array.
 ## Auth\Cli\AuthDispatcherListener
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Cli/AuthDispatcherListener.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Cli/AuthDispatcherListener.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1484,7 +1521,7 @@ protected function getActionType(): string;
 ## Auth\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Auth will use this class
 
@@ -1493,13 +1530,23 @@ Exceptions thrown in Phalcon\Auth will use this class
 - `\Exception`
     - **`Phalcon\Auth\Exception`**
         - [`Phalcon\Auth\Exceptions\AccessDenied`](#authexceptionsaccessdenied)
+        - [`Phalcon\Auth\Exceptions\AccessNotRegistered`](#authexceptionsaccessnotregistered)
+        - [`Phalcon\Auth\Exceptions\ActiveAccessRequired`](#authexceptionsactiveaccessrequired)
         - [`Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`](#authexceptionsconfigrequiresnonemptyvalue)
         - [`Phalcon\Auth\Exceptions\DataMustContainIdKey`](#authexceptionsdatamustcontainidkey)
+        - [`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`](#authexceptionsdefaultguardnotregistered)
         - [`Phalcon\Auth\Exceptions\DoesNotImplement`](#authexceptionsdoesnotimplement)
         - [`Phalcon\Auth\Exceptions\FileCannotRead`](#authexceptionsfilecannotread)
         - [`Phalcon\Auth\Exceptions\FileDoesNotContainJson`](#authexceptionsfiledoesnotcontainjson)
         - [`Phalcon\Auth\Exceptions\FileDoesNotExist`](#authexceptionsfiledoesnotexist)
         - [`Phalcon\Auth\Exceptions\FileNotValidJson`](#authexceptionsfilenotvalidjson)
+        - [`Phalcon\Auth\Exceptions\GuardNotDefined`](#authexceptionsguardnotdefined)
+        - [`Phalcon\Auth\Exceptions\MissingHandlerContext`](#authexceptionsmissinghandlercontext)
+        - [`Phalcon\Auth\Exceptions\OptionRequiresArray`](#authexceptionsoptionrequiresarray)
+        - [`Phalcon\Auth\Exceptions\OptionRequiresString`](#authexceptionsoptionrequiresstring)
+        - [`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`](#authexceptionssessionnamesmustdiffer)
+        - [`Phalcon\Auth\Exceptions\UnknownAdapter`](#authexceptionsunknownadapter)
+        - [`Phalcon\Auth\Exceptions\UnknownGuard`](#authexceptionsunknownguard)
 
 </div>
 
@@ -1507,7 +1554,7 @@ Exceptions thrown in Phalcon\Auth will use this class
 ## Auth\Exceptions\AccessDenied
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Exceptions/AccessDenied.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/AccessDenied.php){ .src-btn }
 
 Access denied exception
 
@@ -1545,10 +1592,86 @@ public function __construct(
 ```
 
 
+## Auth\Exceptions\AccessNotRegistered
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/AccessNotRegistered.php){ .src-btn }
+
+Access gate name is not registered
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\AccessNotRegistered`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionsaccessnotregistered-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionsaccessnotregistered-__construct }
+
+```php
+public function __construct( string $name );
+```
+
+
+## Auth\Exceptions\ActiveAccessRequired
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/ActiveAccessRequired.php){ .src-btn }
+
+No active access has been set on the manager
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\ActiveAccessRequired`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionsactiveaccessrequired-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionsactiveaccessrequired-__construct }
+
+```php
+public function __construct();
+```
+
+
 ## Auth\Exceptions\ConfigRequiresNonEmptyValue
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Exceptions/ConfigRequiresNonEmptyValue.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/ConfigRequiresNonEmptyValue.php){ .src-btn }
 
 Config requires non-empty value
 
@@ -1570,11 +1693,17 @@ __Uses__ `Phalcon\Auth\Exception`
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$configName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$configKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 </a>
+<a class="api-item" href="#authexceptionsconfigrequiresnonemptyvalue-assert">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">assert</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$configName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$configKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span><span class="sm"> = &quot;&quot;</span></span>)</code>
+<span class="desc">Throws when the value is an empty string. A null value is treated as</span>
+</a>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<div class="api-group">Public · 2</div>
 
 #### `__construct()` { #authexceptionsconfigrequiresnonemptyvalue-__construct }
 
@@ -1586,11 +1715,27 @@ public function __construct(
 );
 ```
 
+#### `assert()` { #authexceptionsconfigrequiresnonemptyvalue-assert }
+
+```php
+public static function assert(
+    string|null $value,
+    string $configName,
+    string $configKey,
+    string $suffix = ""
+): void;
+```
+
+Throws when the value is an empty string. A null value is treated as
+"not provided" and passes, so optional settings can reuse the same
+guard; callers that require presence reject null earlier. Keeps the
+empty-value check shared by every config class in one place.
+
 
 ## Auth\Exceptions\DataMustContainIdKey
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Exceptions/DataMustContainIdKey.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/DataMustContainIdKey.php){ .src-btn }
 
 AuthUser data must contain "id"
 
@@ -1625,10 +1770,48 @@ public function __construct();
 ```
 
 
+## Auth\Exceptions\DefaultGuardNotRegistered
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/DefaultGuardNotRegistered.php){ .src-btn }
+
+No default guard registered
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionsdefaultguardnotregistered-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionsdefaultguardnotregistered-__construct }
+
+```php
+public function __construct();
+```
+
+
 ## Auth\Exceptions\DoesNotImplement
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Exceptions/DoesNotImplement.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/DoesNotImplement.php){ .src-btn }
 
 Does not implement interface
 
@@ -1650,11 +1833,17 @@ __Uses__ `Phalcon\Auth\Exception`
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
 </a>
+<a class="api-item" href="#authexceptionsdoesnotimplement-assert">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">assert</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$interfaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
+<span class="desc">Throws when value is not an instance of the given interface. Keeps the</span>
+</a>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<div class="api-group">Public · 2</div>
 
 #### `__construct()` { #authexceptionsdoesnotimplement-__construct }
 
@@ -1665,11 +1854,28 @@ public function __construct(
 );
 ```
 
+#### `assert()` { #authexceptionsdoesnotimplement-assert }
+
+```php
+public static function assert(
+    mixed $value,
+    string $interfaceName,
+    string $type,
+    string $name
+): void;
+```
+
+Throws when value is not an instance of the given interface. Keeps the
+"must implement" guard shared across adapters, guards and the manager
+in one place.
+
+@template TExpected of object
+
 
 ## Auth\Exceptions\FileCannotRead
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Exceptions/FileCannotRead.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileCannotRead.php){ .src-btn }
 
 Cannot read file
 
@@ -1707,7 +1913,7 @@ public function __construct( string $path );
 ## Auth\Exceptions\FileDoesNotContainJson
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Exceptions/FileDoesNotContainJson.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileDoesNotContainJson.php){ .src-btn }
 
 File does not contain a JSON array
 
@@ -1745,7 +1951,7 @@ public function __construct( string $path );
 ## Auth\Exceptions\FileDoesNotExist
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Exceptions/FileDoesNotExist.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileDoesNotExist.php){ .src-btn }
 
 File does not exist
 
@@ -1783,7 +1989,7 @@ public function __construct( string $path );
 ## Auth\Exceptions\FileNotValidJson
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Exceptions/FileNotValidJson.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileNotValidJson.php){ .src-btn }
 
 Not a valid JSON
 
@@ -1821,23 +2027,294 @@ public function __construct(
 ```
 
 
+## Auth\Exceptions\GuardNotDefined
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/GuardNotDefined.php){ .src-btn }
+
+Guard name is not defined on the manager
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\GuardNotDefined`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionsguardnotdefined-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionsguardnotdefined-__construct }
+
+```php
+public function __construct( string $name );
+```
+
+
+## Auth\Exceptions\MissingHandlerContext
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/MissingHandlerContext.php){ .src-btn }
+
+The Acl access gate is missing the required 'handler' context key
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\MissingHandlerContext`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionsmissinghandlercontext-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionsmissinghandlercontext-__construct }
+
+```php
+public function __construct();
+```
+
+
+## Auth\Exceptions\OptionRequiresArray
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/OptionRequiresArray.php){ .src-btn }
+
+Option must be a non-empty array
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\OptionRequiresArray`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionsoptionrequiresarray-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$context</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionsoptionrequiresarray-__construct }
+
+```php
+public function __construct(
+    string $context,
+    string $key
+);
+```
+
+
+## Auth\Exceptions\OptionRequiresString
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/OptionRequiresString.php){ .src-btn }
+
+Option must be a non-empty string
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\OptionRequiresString`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionsoptionrequiresstring-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$context</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionsoptionrequiresstring-__construct }
+
+```php
+public function __construct(
+    string $context,
+    string $key
+);
+```
+
+
+## Auth\Exceptions\SessionNamesMustDiffer
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/SessionNamesMustDiffer.php){ .src-btn }
+
+Session guard 'name' and 'rememberName' must differ
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionssessionnamesmustdiffer-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionssessionnamesmustdiffer-__construct }
+
+```php
+public function __construct();
+```
+
+
+## Auth\Exceptions\UnknownAdapter
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/UnknownAdapter.php){ .src-btn }
+
+Unknown auth adapter requested from the factory
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\UnknownAdapter`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionsunknownadapter-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionsunknownadapter-__construct }
+
+```php
+public function __construct( string $name );
+```
+
+
+## Auth\Exceptions\UnknownGuard
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/UnknownGuard.php){ .src-btn }
+
+Unknown auth guard type requested from the factory
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\UnknownGuard`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionsunknownguard-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionsunknownguard-__construct }
+
+```php
+public function __construct( string $type );
+```
+
+
 ## Auth\Guard\AbstractGuard
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Guard/AbstractGuard.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/AbstractGuard.php){ .src-btn }
 
 @template TConfig of GuardConfig
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
-    - **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](phalcon_contracts.md#contractsauthguardguard)
-        - [`Phalcon\Auth\Guard\Session`](#authguardsession)
-        - [`Phalcon\Auth\Guard\Token`](#authguardtoken)
+- **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](phalcon_contracts.md#contractsauthguardguard)
+    - [`Phalcon\Auth\Guard\Session`](#authguardsession)
+    - [`Phalcon\Auth\Guard\Token`](#authguardtoken)
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardConfig` · `Phalcon\Events\AbstractEventsAware`
+__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardConfig` · `Phalcon\Events\Traits\EventsAwareTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1896,7 +2373,7 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Aut
 <a class="api-item" href="#authguardabstractguard-hasvalidcredentials">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">hasValidCredentials</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$user</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$credentials</span></span>)</code>
+<code class="sig"><span class="sf">hasValidCredentials</span>(<span class="prm"><span class="st">AuthUser|null</span> <span class="sv">$user</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$credentials</span></span>)</code>
 <span class="desc">user should be ?AuthUser</span>
 </a>
 </div>
@@ -1916,12 +2393,12 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Aut
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">AuthUser | null</code>
+<code class="ret">AuthUser|null</code>
 <code class="sig"><span class="sv">$lastUserAttempted</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">AuthUser | null</code>
+<code class="ret">AuthUser|null</code>
 <code class="sig"><span class="sv">$user</span><span class="sm"> = null</span></code>
 </div>
 </div>
@@ -2001,7 +2478,7 @@ public function setUser( AuthUser $user ): static;
 
 ```php
 protected function hasValidCredentials(
-    mixed $user,
+    AuthUser|null $user,
     array $credentials
 ): bool;
 ```
@@ -2012,7 +2489,7 @@ user should be ?AuthUser
 ## Auth\Guard\Config\AbstractGuardConfig
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Guard/Config/AbstractGuardConfig.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Config/AbstractGuardConfig.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2029,7 +2506,7 @@ __Uses__ `Phalcon\Contracts\Auth\Guard\GuardConfig`
 ## Auth\Guard\Config\SessionGuardConfig
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Guard/Config/SessionGuardConfig.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Config/SessionGuardConfig.php){ .src-btn }
 
 Configuration for the Session guard. Holds the names under which the
 session key and remember-me cookie are stored. Defaults to 'auth' and
@@ -2044,7 +2521,7 @@ full name explicitly.
 
 </div>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue` · `Phalcon\Auth\Exceptions\SessionNamesMustDiffer`
 { .api-uses }
 
 ### Method Summary
@@ -2052,7 +2529,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 <div class="api-list">
 <a class="api-item" href="#authguardconfigsessionguardconfig-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$suffix</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$rememberName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$rememberTtl</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$suffix</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$rememberName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$rememberTtl</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#authguardconfigsessionguardconfig-getname">
 <code class="vis vis-public">public</code>
@@ -2077,8 +2554,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 <div class="api-item">
 <code class="ret">int</code>
 <code class="sig"><span class="sc">DEFAULT_REMEMBER_TTL</span><span class="sm"> = 31536000</span></code>
-<span class="desc">Default remember-me cookie lifetime,
-in seconds (365 days).</span>
+<span class="desc">Default remember-me cookie lifetime, in seconds (365 days).</span>
 </div>
 </div>
 
@@ -2090,10 +2566,10 @@ in seconds (365 days).</span>
 
 ```php
 public function __construct(
-    string $suffix = null,
-    string $name = null,
-    string $rememberName = null,
-    mixed $rememberTtl = null
+    string|null $suffix = null,
+    string|null $name = null,
+    string|null $rememberName = null,
+    int|null $rememberTtl = null
 );
 ```
 
@@ -2119,7 +2595,7 @@ public function getRememberTtl(): int;
 ## Auth\Guard\Config\TokenGuardConfig
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Guard/Config/TokenGuardConfig.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Config/TokenGuardConfig.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2194,7 +2670,7 @@ public function getStorageKey(): string;
 ## Auth\Guard\GuardLocator
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Guard/GuardLocator.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/GuardLocator.php){ .src-btn }
 
 Service locator for Phalcon\Auth guards. Utilizes the container to obtain
 the service. For Phalcon\Container\Container one can use autowiring; for
@@ -2209,7 +2685,7 @@ Phalcon\Di\Di, register the guards in it before resolution.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Support\AbstractLocator`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Support\AbstractLocator`
 { .api-uses }
 
 ### Method Summary
@@ -2258,19 +2734,18 @@ protected function getServices(): array;
 ## Auth\Guard\Session
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Guard/Session.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Session.php){ .src-btn }
 
 @extends AbstractGuard<SessionGuardConfig>
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
-    - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-        - **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](phalcon_contracts.md#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](phalcon_contracts.md#contractsauthguardbasicauth)
+- [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
+    - **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](phalcon_contracts.md#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](phalcon_contracts.md#contractsauthguardbasicauth)
 
 </div>
 
-__Uses__ `DateTimeImmutable` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
 { .api-uses }
 
 ### Method Summary
@@ -2278,7 +2753,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Except
 <div class="api-list">
 <a class="api-item" href="#authguardsession-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">CookiesInterface</span> <span class="sv">$cookies</span>,</span><span class="prm"><span class="st">SessionManagerInterface</span> <span class="sv">$session</span>,</span><span class="prm"><span class="st">SessionGuardConfig</span> <span class="sv">$config</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ClockInterface</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">CookiesInterface</span> <span class="sv">$cookies</span>,</span><span class="prm"><span class="st">SessionManagerInterface</span> <span class="sv">$session</span>,</span><span class="prm"><span class="st">SessionGuardConfig</span> <span class="sv">$config</span>,</span><span class="prm"><span class="st">ClockInterface|null</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#authguardsession-attempt">
 <code class="vis vis-public">public</code>
@@ -2312,8 +2787,8 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Except
 </a>
 <a class="api-item" href="#authguardsession-loginbyid">
 <code class="vis vis-public">public</code>
-<code class="ret">false|AuthUser</code>
-<code class="sig"><span class="sf">loginById</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
+<code class="ret">AuthUser|false</code>
+<code class="sig"><span class="sf">loginById</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#authguardsession-logout">
 <code class="vis vis-public">public</code>
@@ -2327,7 +2802,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Except
 </a>
 <a class="api-item" href="#authguardsession-oncebasic">
 <code class="vis vis-public">public</code>
-<code class="ret">false|AuthUser</code>
+<code class="ret">AuthUser|false</code>
 <code class="sig"><span class="sf">onceBasic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;email&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$extraConditions</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#authguardsession-user">
@@ -2419,8 +2894,8 @@ public function __construct(
     RequestInterface $request,
     CookiesInterface $cookies,
     SessionManagerInterface $session,
-    SessionGuardConfig $config = null,
-    ClockInterface $clock = null
+    SessionGuardConfig $config,
+    ClockInterface|null $clock = null
 );
 ```
 
@@ -2477,9 +2952,9 @@ public function login(
 
 ```php
 public function loginById(
-    mixed $id,
+    int|string $id,
     bool $remember = false
-): false|AuthUser;
+): AuthUser|false;
 ```
 
 #### `logout()` { #authguardsession-logout }
@@ -2500,7 +2975,7 @@ public function once( array $credentials = [] ): bool;
 public function onceBasic(
     string $field = "email",
     array $extraConditions = []
-): false|AuthUser;
+): AuthUser|false;
 ```
 
 #### `user()` { #authguardsession-user }
@@ -2566,15 +3041,14 @@ protected function userFromRecaller( UserRemember $recaller ): AuthUser|null;
 ## Auth\Guard\Token
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Guard/Token.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Token.php){ .src-btn }
 
 @extends AbstractGuard<TokenGuardConfig>
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
-    - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-        - **`Phalcon\Auth\Guard\Token`**
+- [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
+    - **`Phalcon\Auth\Guard\Token`**
 
 </div>
 
@@ -2677,7 +3151,7 @@ public function validate( array $credentials = [] ): bool;
 ## Auth\Guard\UserRemember
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Guard/UserRemember.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/UserRemember.php){ .src-btn }
 
 Value object representing the contents of a remember-me cookie.
 
@@ -2695,7 +3169,7 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Support\Helper\Json\Decode`
 <div class="api-list">
 <a class="api-item" href="#authguarduserremember-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$payload</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array|string</span> <span class="sv">$payload</span> )</code>
 <span class="desc">Accepts either the raw JSON cookie value (string) or the already</span>
 </a>
 <a class="api-item" href="#authguarduserremember-getid">
@@ -2742,7 +3216,7 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Support\Helper\Json\Decode`
 #### `__construct()` { #authguarduserremember-__construct }
 
 ```php
-public function __construct( mixed $payload );
+public function __construct( array|string $payload );
 ```
 
 Accepts either the raw JSON cookie value (string) or the already
@@ -2771,7 +3245,7 @@ public function getUserAgent(): string;
 ## Auth\Internal\ContainerResolver
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Internal/ContainerResolver.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Internal/ContainerResolver.php){ .src-btn }
 
 Internal single source of truth for resolving services from either the
 new Phalcon\Container\Container or the legacy Phalcon\Di\Di. Not part of
@@ -2791,7 +3265,7 @@ callers and userland catch a single exception family.
 
 </div>
 
-__Uses__ `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception`
+__Uses__ `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `TypeError`
 { .api-uses }
 
 ### Method Summary
@@ -2809,6 +3283,12 @@ __Uses__ `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Containe
 <code class="sig"><span class="sf">requireService</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$candidates</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$context</span></span>)</code>
 <span class="desc">Resolves the first candidate service name that the container can</span>
 </a>
+<a class="api-item" href="#authinternalcontainerresolver-resolvecandidate">
+<code class="vis vis-public">public</code>
+<code class="ret">object</code>
+<code class="sig"><span class="sf">resolveCandidate</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fqn</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$shortName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$context</span></span>)</code>
+<span class="desc">Convenience composition of serviceCandidates() + requireService():</span>
+</a>
 <a class="api-item" href="#authinternalcontainerresolver-resolvefresh">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
@@ -2825,7 +3305,7 @@ __Uses__ `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Containe
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<div class="api-group">Public · 5</div>
 
 #### `ensureContainer()` { #authinternalcontainerresolver-ensurecontainer }
 
@@ -2849,6 +3329,24 @@ Resolves the first candidate service name that the container can
 provide, as a shared instance. Used for framework services (request,
 cookies, session) whose container key may vary between application
 setups.
+
+#### `resolveCandidate()` { #authinternalcontainerresolver-resolvecandidate }
+
+```php
+public static function resolveCandidate(
+    mixed $container,
+    array $options,
+    string $key,
+    string $fqn,
+    string $shortName,
+    string $context
+): object;
+```
+
+Convenience composition of serviceCandidates() + requireService():
+resolves the first bound candidate for a framework service whose
+container key may vary, using the options override or the
+[interface FQN, conventional short name] fallback.
 
 #### `resolveFresh()` { #authinternalcontainerresolver-resolvefresh }
 
@@ -2883,7 +3381,7 @@ otherwise the interface FQN followed by the conventional short name.
 ## Auth\Internal\Options
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Internal/Options.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Internal/Options.php){ .src-btn }
 
 Internal option-parsing helpers shared by adapter / guard fromOptions()
 implementations. Not part of the public API.
@@ -2894,7 +3392,7 @@ implementations. Not part of the public API.
 
 </div>
 
-__Uses__ `Phalcon\Auth\Exception`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\OptionRequiresArray` · `Phalcon\Auth\Exceptions\OptionRequiresString`
 { .api-uses }
 
 ### Method Summary
@@ -2969,7 +3467,7 @@ public static function stringOrNull(
 ## Auth\Manager
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Manager.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Manager.php){ .src-btn }
 
 Composes guards (authentication) and access gates (authorization)
 behind a single facade. Guard-specific behavior is reached through
@@ -2982,7 +3480,7 @@ relevant capability interface (GuardStateful, BasicAuth, etc.).
 
 </div>
 
-__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\Manager`
+__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\AccessNotRegistered` · `Phalcon\Auth\Exceptions\ActiveAccessRequired` · `Phalcon\Auth\Exceptions\DefaultGuardNotRegistered` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\GuardNotDefined` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\Manager`
 { .api-uses }
 
 ### Method Summary
@@ -3045,7 +3543,7 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\DoesNot
 <a class="api-item" href="#authmanager-guard">
 <code class="vis vis-public">public</code>
 <code class="ret">Guard</code>
-<code class="sig"><span class="sf">guard</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">guard</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#authmanager-id">
 <code class="vis vis-public">public</code>
@@ -3094,12 +3592,12 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\DoesNot
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">Access | null</code>
+<code class="ret">Access|null</code>
 <code class="sig"><span class="sv">$activeAccess</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">Guard | null</code>
+<code class="ret">Guard|null</code>
 <code class="sig"><span class="sv">$defaultGuard</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -3189,7 +3687,7 @@ public function getGuards(): array;
 #### `guard()` { #authmanager-guard }
 
 ```php
-public function guard( string $name = null ): Guard;
+public function guard( string|null $name = null ): Guard;
 ```
 
 #### `id()` { #authmanager-id }
@@ -3238,7 +3736,7 @@ public function validate( array $credentials = [] ): bool;
 ## Auth\ManagerFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/ManagerFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/ManagerFactory.php){ .src-btn }
 
 Single entry-point factory that builds a fully wired Phalcon\Auth\Manager
 from a config tree. Framework-shared services (RequestInterface,
@@ -3285,7 +3783,7 @@ not separately constructed copies.
 
 </div>
 
-__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLocator` · `Phalcon\Auth\Guard\GuardLocator` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security`
+__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLocator` · `Phalcon\Auth\Exceptions\UnknownAdapter` · `Phalcon\Auth\Exceptions\UnknownGuard` · `Phalcon\Auth\Guard\GuardLocator` · `Phalcon\Auth\Internal\Options` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security`
 { .api-uses }
 
 ### Method Summary
@@ -3293,12 +3791,12 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLoc
 <div class="api-list">
 <a class="api-item" href="#authmanagerfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">AdapterLocator</span> <span class="sv">$adapterLocator</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">GuardLocator</span> <span class="sv">$guardLocator</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">AccessLocator</span> <span class="sv">$accessLocator</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">Collection|DiInterface</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">AdapterLocator|null</span> <span class="sv">$adapterLocator</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">GuardLocator|null</span> <span class="sv">$guardLocator</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">AccessLocator|null</span> <span class="sv">$accessLocator</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#authmanagerfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">Manager</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
 </a>
 <a class="api-item" href="#authmanagerfactory-buildadapter">
 <code class="vis vis-protected">protected</code>
@@ -3351,17 +3849,17 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLoc
 ```php
 public function __construct(
     Security $hasher,
-    mixed $container,
-    AdapterLocator $adapterLocator = null,
-    GuardLocator $guardLocator = null,
-    AccessLocator $accessLocator = null
+    Collection|DiInterface $container,
+    AdapterLocator|null $adapterLocator = null,
+    GuardLocator|null $guardLocator = null,
+    AccessLocator|null $accessLocator = null
 );
 ```
 
 #### `load()` { #authmanagerfactory-load }
 
 ```php
-public function load( mixed $config ): Manager;
+public function load( array|ConfigInterface $config ): Manager;
 ```
 
 <div class="api-group">Protected · 2</div>
@@ -3390,7 +3888,7 @@ protected function buildGuard(
 ## Auth\Micro\AuthMicroListener
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Micro/AuthMicroListener.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Micro/AuthMicroListener.php){ .src-btn }
 
 Listener that enforces the active Phalcon\Auth access gate on each Micro
 route execution. Attach to the events manager:
@@ -3412,7 +3910,7 @@ No-op when no active access has been set on the manager.
 
 </div>
 
-__Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Manager` · `Phalcon\Events\Event` · `Phalcon\Mvc\Micro` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\RouteInterface`
+__Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Manager` · `Phalcon\Events\Event` · `Phalcon\Mvc\Micro`
 { .api-uses }
 
 ### Method Summary
@@ -3440,7 +3938,7 @@ __Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exceptio
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$componentName</span></code>
+<code class="sig"><span class="sv">$componentName</span><span class="sm"> = &quot;Micro&quot;</span></code>
 </div>
 </div>
 
@@ -3478,7 +3976,7 @@ protected function getActionType(): string;
 ## Auth\Mvc\AuthDispatcherListener
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Mvc/AuthDispatcherListener.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Mvc/AuthDispatcherListener.php){ .src-btn }
 
 Listener that enforces the active Phalcon\Auth access gate on each MVC
 dispatch. Attach to the events manager:

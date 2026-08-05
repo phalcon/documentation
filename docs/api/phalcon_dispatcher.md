@@ -11,7 +11,7 @@ hide:
 ## Dispatcher\AbstractDispatcher
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Dispatcher/AbstractDispatcher.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Dispatcher/AbstractDispatcher.php){ .src-btn }
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher.
 This class can't be instantiated directly, you can use it to create your own
@@ -44,7 +44,7 @@ channels. For any given point they run in this order:
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - **`Phalcon\Dispatcher\AbstractDispatcher`** - implements [`Phalcon\Dispatcher\DispatcherInterface`](#dispatcherdispatcherinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Cli\Dispatcher`](phalcon_cli.md#clidispatcher)
@@ -52,7 +52,7 @@ channels. For any given point they run in this order:
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\Exception` · `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterInterface` · `Phalcon\Mvc\Model\Binder` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Support\Collection`
+__Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatcher\Exception` · `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Mvc\Model\Binder` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Support\Collection`
 { .api-uses }
 
 ### Method Summary
@@ -60,11 +60,11 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <div class="api-list">
 <a class="api-item" href="#dispatcherabstractdispatcher-callactionmethod">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">callActionMethod</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionMethod</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-dispatch">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|bool</code>
 <code class="sig"><span class="sf">dispatch</span>()</code>
 <span class="desc">Process the results of the router by calling into the appropriate</span>
 </a>
@@ -104,12 +104,6 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <code class="sig"><span class="sf">getDefaultNamespace</span>()</code>
 <span class="desc">Returns the default namespace</span>
 </a>
-<a class="api-item" href="#dispatcherabstractdispatcher-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
 <a class="api-item" href="#dispatcherabstractdispatcher-gethandlerclass">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -143,13 +137,13 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <a class="api-item" href="#dispatcherabstractdispatcher-getparam">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getparameters">
@@ -191,13 +185,13 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <a class="api-item" href="#dispatcherabstractdispatcher-hasparam">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">hasParam</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
+<code class="sig"><span class="sf">hasParam</span>( <span class="st">int|string</span> <span class="sv">$param</span> )</code>
 <span class="desc">Check if a param exists</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-hasparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">hasParameter</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
+<code class="sig"><span class="sf">hasParameter</span>( <span class="st">int|string</span> <span class="sv">$param</span> )</code>
 <span class="desc">Check if a param exists</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-isfinished">
@@ -230,12 +224,6 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <code class="sig"><span class="sf">setDefaultNamespace</span>( <span class="st">string</span> <span class="sv">$defaultNamespace</span> )</code>
 <span class="desc">Sets the default namespace</span>
 </a>
-<a class="api-item" href="#dispatcherabstractdispatcher-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
 <a class="api-item" href="#dispatcherabstractdispatcher-sethandlersuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
@@ -251,7 +239,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <a class="api-item" href="#dispatcherabstractdispatcher-setmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string|null</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the module where the controller is (only informative)</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setnamespacename">
@@ -263,13 +251,13 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <a class="api-item" href="#dispatcherabstractdispatcher-setparam">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setparameters">
@@ -298,8 +286,8 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-handleexception">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">handleException</span>( <span class="st">\Exception</span> <span class="sv">$exception</span> )</code>
-<span class="desc">Handles a user exception triggered inside the dispatch loop.</span>
+<code class="sig"><span class="sf">handleException</span>( <span class="st">Exception</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Handles a user exception</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-resolveemptyproperties">
 <code class="vis vis-protected">protected</code>
@@ -310,7 +298,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <a class="api-item" href="#dispatcherabstractdispatcher-throwdispatchexception">
 <code class="vis vis-protected">protected</code>
 <code class="sig"><span class="sf">throwDispatchException</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$exceptionCode</span><span class="sm"> = 0</span></span>)</code>
-<span class="desc">Throws an internal dispatch exception.</span>
+<span class="desc">Throws an internal exception</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-tocamelcase">
 <code class="vis vis-protected">protected</code>
@@ -361,11 +349,6 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$defaultNamespace</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -434,29 +417,29 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sv">$previousActionName</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sv">$previousHandlerName</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sv">$previousNamespaceName</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
+<code class="ret">mixed|null</code>
 <code class="sig"><span class="sv">$returnedValue</span><span class="sm"> = null</span></code>
 </div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 40</div>
+<div class="api-group">Public · 38</div>
 
 #### `callActionMethod()` { #dispatcherabstractdispatcher-callactionmethod }
 
@@ -465,13 +448,13 @@ public function callActionMethod(
     mixed $handler,
     string $actionMethod,
     array $params = []
-);
+): mixed;
 ```
 
 #### `dispatch()` { #dispatcherabstractdispatcher-dispatch }
 
 ```php
-public function dispatch(): mixed|bool;
+public function dispatch();
 ```
 
 Process the results of the router by calling into the appropriate
@@ -526,17 +509,6 @@ public function getBoundModels(): array;
 
 Returns bound models from binder instance
 
-```php
-class UserController extends Controller
-{
-    public function showAction(User $user)
-    {
-        // return array with $user
-        $boundModels = $this->dispatcher->getBoundModels();
-    }
-}
-```
-
 #### `getDefaultNamespace()` { #dispatcherabstractdispatcher-getdefaultnamespace }
 
 ```php
@@ -544,14 +516,6 @@ public function getDefaultNamespace(): string;
 ```
 
 Returns the default namespace
-
-#### `getEventsManager()` { #dispatcherabstractdispatcher-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
 
 #### `getHandlerClass()` { #dispatcherabstractdispatcher-gethandlerclass }
 
@@ -597,16 +561,16 @@ Gets a namespace to be prepended to the current handler name
 
 ```php
 public function getParam(
-    mixed $param,
-    mixed $filters = null,
+    int|string $param,
+    array|string|null $filters = null,
     mixed $defaultValue = null
 ): mixed;
 ```
 
 Gets a param by its name or numeric index
 
-Note: The interface declares `getParam(param, filters = null)` without the
-`defaultValue` argument, so code typed against `DispatcherInterface`
+Note: The interface declares `getParam($param, $filters = null)` without
+the `$defaultValue` argument, so code typed against `DispatcherInterface`
 cannot use the default-value feature. This signature drift is intentional
 for now; the interface and implementation will be aligned in the next
 major version.
@@ -615,8 +579,8 @@ major version.
 
 ```php
 public function getParameter(
-    mixed $param,
-    mixed $filters = null,
+    int|string $param,
+    array|string|null $filters = null,
     mixed $defaultValue = null
 ): mixed;
 ```
@@ -674,7 +638,7 @@ Returns value returned by the latest dispatched action
 #### `hasParam()` { #dispatcherabstractdispatcher-hasparam }
 
 ```php
-public function hasParam( mixed $param ): bool;
+public function hasParam( int|string $param ): bool;
 ```
 
 Check if a param exists
@@ -682,7 +646,7 @@ Check if a param exists
 #### `hasParameter()` { #dispatcherabstractdispatcher-hasparameter }
 
 ```php
-public function hasParameter( mixed $param ): bool;
+public function hasParameter( int|string $param ): bool;
 ```
 
 Check if a param exists
@@ -728,14 +692,6 @@ public function setDefaultNamespace( string $defaultNamespace ): void;
 
 Sets the default namespace
 
-#### `setEventsManager()` { #dispatcherabstractdispatcher-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the events manager
-
 #### `setHandlerSuffix()` { #dispatcherabstractdispatcher-sethandlersuffix }
 
 ```php
@@ -755,26 +711,10 @@ public function setModelBinder(
 
 Enable model binding during dispatch
 
-```php
-$di->set(
-    'dispatcher',
-    function() {
-        $dispatcher = new Dispatcher();
-
-        $dispatcher->setModelBinder(
-            new Binder(),
-            'cache'
-        );
-
-        return $dispatcher;
-    }
-);
-```
-
 #### `setModuleName()` { #dispatcherabstractdispatcher-setmodulename }
 
 ```php
-public function setModuleName( string $moduleName = null ): void;
+public function setModuleName( string|null $moduleName = null ): void;
 ```
 
 Sets the module where the controller is (only informative)
@@ -791,7 +731,7 @@ Sets the namespace where the controller class is
 
 ```php
 public function setParam(
-    mixed $param,
+    int|string $param,
     mixed $value
 ): void;
 ```
@@ -802,7 +742,7 @@ Set a param by its name or numeric index
 
 ```php
 public function setParameter(
-    mixed $param,
+    int|string $param,
     mixed $value
 ): void;
 ```
@@ -846,14 +786,10 @@ Check if the current executed action was forwarded by another one
 #### `handleException()` { #dispatcherabstractdispatcher-handleexception }
 
 ```php
-abstract protected function handleException( \Exception $exception );
+abstract protected function handleException( Exception $exception );
 ```
 
-Handles a user exception triggered inside the dispatch loop.
-
-Subclasses implement the namespace-specific behavior (typically firing
-the `dispatch:beforeException` event so listeners may forward or swallow
-the exception).
+Handles a user exception
 
 #### `resolveEmptyProperties()` { #dispatcherabstractdispatcher-resolveemptyproperties }
 
@@ -872,10 +808,7 @@ abstract protected function throwDispatchException(
 );
 ```
 
-Throws an internal dispatch exception.
-
-Subclasses build the namespace-specific exception and route it through
-{@see handleException()} before throwing it when it was not handled.
+Throws an internal exception
 
 #### `toCamelCase()` { #dispatcherabstractdispatcher-tocamelcase }
 
@@ -887,7 +820,7 @@ protected function toCamelCase( string $input ): string;
 ## Dispatcher\DispatcherInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Dispatcher/DispatcherInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Dispatcher/DispatcherInterface.php){ .src-btn }
 
 Interface for Phalcon\Dispatcher\AbstractDispatcher
 
@@ -905,7 +838,7 @@ __Uses__ `Phalcon\Contracts\Dispatcher\Dispatcher`
 ## Dispatcher\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Dispatcher/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Dispatcher/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Dispatcher/* will use this class
 
@@ -952,7 +885,7 @@ Exceptions thrown in Phalcon\Dispatcher/* will use this class
 ## Dispatcher\Exceptions\ForwardInInitializeForbidden
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Dispatcher/Exceptions/ForwardInInitializeForbidden.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Dispatcher/Exceptions/ForwardInInitializeForbidden.php){ .src-btn }
 
 <div class="api-tree" markdown>
 

@@ -25,7 +25,6 @@ hide:
 - [Phalcon Domain](phalcon_domain.md)
 - [Phalcon Encryption](phalcon_encryption.md)
 - [Phalcon Events](phalcon_events.md)
-- [Phalcon Factory](phalcon_factory.md)
 - [Phalcon Filter](phalcon_filter.md)
 - [Phalcon Flash](phalcon_flash.md)
 - [Phalcon Forms](phalcon_forms.md)

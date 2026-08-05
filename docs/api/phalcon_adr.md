@@ -11,7 +11,7 @@ hide:
 ## ADR\Application
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Application.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Application.php){ .src-btn }
 
 ADR composition root. Owns (or accepts) a container, exposes a small
 registration surface that hides the container's definition API, configures
@@ -27,7 +27,7 @@ parameters need to be declared via `define()`.
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Container\Container` · `Phalcon\Container\ContainerFactory` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Router\AttributeFilter` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface`
+__Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Container\Container` · `Phalcon\Container\ContainerFactory` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Router\AttributeFilter` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface`
 { .api-uses }
 
 ### Method Summary
@@ -35,7 +35,7 @@ __Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events
 <div class="api-list">
 <a class="api-item" href="#adrapplication-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Container</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">Container|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#adrapplication-bind">
 <code class="vis vis-public">public</code>
@@ -120,7 +120,7 @@ __Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Container</code>
 <code class="sig"><span class="sv">$container</span></code>
 </div>
 <div class="api-item">
@@ -142,7 +142,7 @@ __Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events
 #### `__construct()` { #adrapplication-__construct }
 
 ```php
-public function __construct( Container $container = null );
+public function __construct( Container|null $container = null );
 ```
 
 #### `bind()` { #adrapplication-bind }
@@ -261,7 +261,7 @@ Set the single delimiter between words in a path segment.
 ## ADR\Container\AdrProvider
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Container/AdrProvider.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Container/AdrProvider.php){ .src-btn }
 
 Registers the ADR seams in the container; concretes autowire.
 
@@ -302,7 +302,7 @@ public function provide( Collection $services ): void;
 ## ADR\Dispatcher
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Dispatcher.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Dispatcher.php){ .src-btn }
 
 Resolves the Action (and middleware) through the container, wraps it in the
 pipeline and runs it, firing the `pipeline:*` events. Global middleware is
@@ -350,18 +350,18 @@ __Uses__ `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\NotAnAction` · `
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">IocContainer</code>
 <code class="sig"><span class="sv">$container</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Manager</code>
 <code class="sig"><span class="sv">$events</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$globalMiddleware</span></code>
+<code class="sig"><span class="sv">$globalMiddleware</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -412,7 +412,7 @@ protected function resolveGlobal(): array;
 ## ADR\Emitter\SapiEmitter
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Emitter/SapiEmitter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Emitter/SapiEmitter.php){ .src-btn }
 
 Emits a response through the SAPI (headers + body via `Response::send()`).
 Refuses to emit once headers have already been sent.
@@ -450,7 +450,7 @@ public function emit( ResponseInterface $response ): void;
 ## ADR\ErrorResponder
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/ErrorResponder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/ErrorResponder.php){ .src-btn }
 
 Turns a thrown exception into a response through the responder chain.
 
@@ -466,7 +466,7 @@ ancestor chain, so map ordering never matters.
 
 </div>
 
-__Uses__ `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\ADR\Payload\Payload` · `Phalcon\ADR\Payload\Status` · `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\Logger\Logger` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface` · `Throwable`
+__Uses__ `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\ADR\Payload\Payload` · `Phalcon\ADR\Payload\Status` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\Logger\Logger` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -509,13 +509,13 @@ __Uses__ `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\Ro
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Responder</code>
 <code class="sig"><span class="sv">$chain</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$debug</span></code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$debug</span><span class="sm"> = false</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -524,7 +524,7 @@ __Uses__ `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\Ro
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Logger</code>
 <code class="sig"><span class="sv">$logger</span></code>
 </div>
 </div>
@@ -591,7 +591,7 @@ next to a `404` tells the client the opposite of what happened.
 ## ADR\EventfulHandler
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/EventfulHandler.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/EventfulHandler.php){ .src-btn }
 
 The terminal handler of the pipeline: fires the `adr:*` events around the
 Action's execution.
@@ -624,12 +624,12 @@ __Uses__ `Phalcon\ADR\Events\Event` · `Phalcon\Contracts\ADR\Action` · `Phalco
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Action</code>
 <code class="sig"><span class="sv">$action</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Manager</code>
 <code class="sig"><span class="sv">$events</span></code>
 </div>
 </div>
@@ -657,7 +657,7 @@ public function __invoke( AttributeRequest $request ): ResponseInterface;
 ## ADR\Events\Event
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Events/Event.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Events/Event.php){ .src-btn }
 
 The ADR event vocabulary, fired through the native events manager.
 
@@ -700,14 +700,14 @@ The ADR event vocabulary, fired through the native events manager.
 ## ADR\Exceptions\ActionDirectoryNotSet
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/ActionDirectoryNotSet.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/ActionDirectoryNotSet.php){ .src-btn }
 
 Thrown when the router is asked to match without an action directory; the
 convention cannot resolve sub-namespaces without one.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`**
 
@@ -736,14 +736,14 @@ public function __construct();
 ## ADR\Exceptions\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/Exception.php){ .src-btn }
 
 Generic exception for the ADR component, and the base for every typed ADR
 exception.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - **`Phalcon\ADR\Exceptions\Exception`** - implements [`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`](phalcon_contracts.md#contractsadrexceptionsadrthrowable)
         - [`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`](#adrexceptionsactiondirectorynotset)
         - [`Phalcon\ADR\Exceptions\HeadersAlreadySent`](#adrexceptionsheadersalreadysent)
@@ -761,14 +761,14 @@ __Uses__ `Exception` · `Phalcon\Contracts\ADR\Exceptions\ADRThrowable`
 ## ADR\Exceptions\HeadersAlreadySent
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/HeadersAlreadySent.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/HeadersAlreadySent.php){ .src-btn }
 
 Thrown when the emitter is asked to send a response after headers have
 already been sent.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\HeadersAlreadySent`**
 
@@ -797,13 +797,13 @@ public function __construct();
 ## ADR\Exceptions\MethodNotAllowed
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/MethodNotAllowed.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/MethodNotAllowed.php){ .src-btn }
 
 Thrown when a route matches the path but not the request method.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\MethodNotAllowed`**
 
@@ -832,13 +832,13 @@ public function __construct();
 ## ADR\Exceptions\NotAnAction
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/NotAnAction.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/NotAnAction.php){ .src-btn }
 
 Thrown when the dispatcher resolves a class that is not an ADR Action.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\NotAnAction`**
 
@@ -867,14 +867,14 @@ public function __construct( string $className = "" );
 ## ADR\Exceptions\OutputAlreadySent
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/OutputAlreadySent.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/OutputAlreadySent.php){ .src-btn }
 
 Thrown when the emitter is asked to send a response after output has already
 been sent.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\OutputAlreadySent`**
 
@@ -903,13 +903,13 @@ public function __construct();
 ## ADR\Exceptions\RouteNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/RouteNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/RouteNotFound.php){ .src-btn }
 
 Thrown when no route matches the request.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\RouteNotFound`**
 
@@ -938,7 +938,7 @@ public function __construct();
 ## ADR\Front\AbstractHttpFront
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Front/AbstractHttpFront.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Front/AbstractHttpFront.php){ .src-btn }
 
 Boots a container, builds the Application, handles the request and emits the
 response. Userland front controllers override `loadEnvironment()`,
@@ -952,7 +952,7 @@ response. Userland front controllers override `loadEnvironment()`,
 
 </div>
 
-__Uses__ `Phalcon\ADR\Application` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\Container\Container` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Contracts\Front\FrontController` · `Phalcon\Contracts\Http\AttributeRequest`
+__Uses__ `Phalcon\ADR\Application` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\Container\Container` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Contracts\Front\FrontController` · `Phalcon\Contracts\Http\AttributeRequest` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -1083,7 +1083,7 @@ protected function registerProviders( Container $container ): void;
 ## ADR\Front\HttpFront
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Front/HttpFront.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Front/HttpFront.php){ .src-btn }
 
 Concrete default HTTP front controller. Boots the ADR provider and runs the
 application with the framework defaults; subclass to override
@@ -1100,7 +1100,7 @@ application with the framework defaults; subclass to override
 ## ADR\Input\Input
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Input/Input.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Input/Input.php){ .src-btn }
 
 Generic, string-keyed input bag for an Action.
 
@@ -1115,7 +1115,7 @@ input value object: the factories use late static binding, so a subclass's
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Request\Bag\AttributeBag`
+__Uses__ `Phalcon\Contracts\Http\AttributeRequest`
 { .api-uses }
 
 ### Method Summary
@@ -1209,7 +1209,7 @@ public function toArray(): array;
 ## ADR\Middleware\CorsMiddleware
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Middleware/CorsMiddleware.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Middleware/CorsMiddleware.php){ .src-btn }
 
 CORS middleware. Inert by default: it emits nothing until an origin allowlist
 is configured, and only for requests whose `Origin` is on it. The allowed
@@ -1260,17 +1260,17 @@ __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` �
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedHeaders</span></code>
+<code class="sig"><span class="sv">$allowedHeaders</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedMethods</span></code>
+<code class="sig"><span class="sv">$allowedMethods</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedOrigins</span></code>
+<code class="sig"><span class="sv">$allowedOrigins</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -1319,7 +1319,7 @@ protected function isAllowed( string $origin ): bool;
 ## ADR\Middleware\MethodOverrideMiddleware
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Middleware/MethodOverrideMiddleware.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Middleware/MethodOverrideMiddleware.php){ .src-btn }
 
 Thin enabler for the native `_method` override.
 
@@ -1375,7 +1375,7 @@ public function __invoke(
 ## ADR\Middleware\RequestIdMiddleware
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Middleware/RequestIdMiddleware.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Middleware/RequestIdMiddleware.php){ .src-btn }
 
 Ensures every request carries an `X-Request-Id`, reusing an incoming one or
 generating it, exposing it on the request attributes and the response.
@@ -1386,7 +1386,7 @@ generating it, exposing it on the request attributes and the response.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\ResponseInterface`
+__Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1416,7 +1416,7 @@ public function __invoke(
 ## ADR\Middleware\TimingMiddleware
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Middleware/TimingMiddleware.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Middleware/TimingMiddleware.php){ .src-btn }
 
 Adds an `X-Response-Time` header measuring how long the rest of the pipeline
 took to produce the response.
@@ -1457,7 +1457,7 @@ public function __invoke(
 ## ADR\Payload\Payload
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Payload/Payload.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Payload/Payload.php){ .src-btn }
 
 Immutable payload produced by the domain layer.
 
@@ -1958,7 +1958,7 @@ Returns a copy of the payload with the given status.
 ## ADR\Payload\PayloadFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Payload/PayloadFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Payload/PayloadFactory.php){ .src-btn }
 
 Thin, injectable factory mirroring the `Payload` named factories.
 
@@ -2254,7 +2254,7 @@ Creates a payload with the `VALID` status.
 ## ADR\Payload\Status
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Payload/Status.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Payload/Status.php){ .src-btn }
 
 Holds the status codes for the payload.
 
@@ -2368,7 +2368,7 @@ lineage:
 ## ADR\Pipeline
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Pipeline.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Pipeline.php){ .src-btn }
 
 Self-recursive middleware runner. It is itself a Handler: it carries an index
 and hands a new Pipeline (advanced by one) forward as the `next` handler, so
@@ -2404,8 +2404,8 @@ __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\Http\AttributeReq
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$index</span></code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$index</span><span class="sm"> = 0</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -2443,7 +2443,7 @@ public function __invoke( AttributeRequest $request ): ResponseInterface;
 ## ADR\Responder\AbstractFormattedResponder
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/AbstractFormattedResponder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/AbstractFormattedResponder.php){ .src-btn }
 
 Base for content-type responders: composes Status, Redirect and Format
 responders into a chain. Subclasses bind the formatter(s).
@@ -2480,7 +2480,7 @@ public function __construct( array $formatters = [] );
 ## ADR\Responder\ChainResponder
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/ChainResponder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/ChainResponder.php){ .src-btn }
 
 Composes single-purpose responders. Each link receives the request, the
 response threaded so far, and the payload, and returns the response.
@@ -2519,8 +2519,8 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">Responder[]</code>
-<code class="sig"><span class="sv">$links</span></code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$links</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
@@ -2554,7 +2554,7 @@ public function with( Responder $link ): ChainResponder;
 ## ADR\Responder\FormatResponder
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/FormatResponder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/FormatResponder.php){ .src-btn }
 
 Negotiates a formatter against the request `Accept` header and renders the
 payload as the response body + content type.
@@ -2591,7 +2591,7 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$formatters</span></code>
+<code class="sig"><span class="sv">$formatters</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
@@ -2619,7 +2619,7 @@ public function __invoke(
 ## ADR\Responder\Formatter\JsonFormatter
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/Formatter/JsonFormatter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/Formatter/JsonFormatter.php){ .src-btn }
 
 Renders a payload as JSON.
 
@@ -2678,7 +2678,7 @@ public function format( Payload $payload ): string;
 ## ADR\Responder\Formatter\TextFormatter
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/Formatter/TextFormatter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/Formatter/TextFormatter.php){ .src-btn }
 
 Renders a payload as plain text.
 
@@ -2737,7 +2737,7 @@ public function format( Payload $payload ): string;
 ## ADR\Responder\JsonResponder
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/JsonResponder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/JsonResponder.php){ .src-btn }
 
 A formatted responder bound to the JSON formatter.
 
@@ -2775,7 +2775,7 @@ public function __construct();
 ## ADR\Responder\Redirect
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/Redirect.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/Redirect.php){ .src-btn }
 
 Value object describing a redirect. An Action sets it on the payload; the
 RedirectResponder turns it into a `Location` header and status code.
@@ -2825,12 +2825,12 @@ RedirectResponder turns it into a `Location` header and status code.
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$status</span></code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$status</span><span class="sm"> = 302</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sv">$url</span></code>
 </div>
 </div>
@@ -2882,7 +2882,7 @@ public function url(): string;
 ## ADR\Responder\RedirectResponder
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/RedirectResponder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/RedirectResponder.php){ .src-btn }
 
 Applies a `Redirect` value object carried on the payload result: sets the
 status code and the `Location` header. A no-op when the result is not a
@@ -2925,7 +2925,7 @@ public function __invoke(
 ## ADR\Responder\StatusMapper
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/StatusMapper.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/StatusMapper.php){ .src-btn }
 
 Maps a domain `Status` to an HTTP status code.
 
@@ -2991,7 +2991,7 @@ An unmapped status resolves to 500 (server error), never a silent 200.
 ## ADR\Responder\StatusResponder
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/StatusResponder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/StatusResponder.php){ .src-btn }
 
 Sets the response HTTP status code from the payload status, via StatusMapper.
 
@@ -3009,7 +3009,7 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 <div class="api-list">
 <a class="api-item" href="#adrresponderstatusresponder-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">StatusMapper</span> <span class="sv">$mapper</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">StatusMapper|null</span> <span class="sv">$mapper</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#adrresponderstatusresponder-__invoke">
 <code class="vis vis-public">public</code>
@@ -3023,7 +3023,7 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">StatusMapper</code>
 <code class="sig"><span class="sv">$mapper</span></code>
 </div>
 </div>
@@ -3035,7 +3035,7 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 #### `__construct()` { #adrresponderstatusresponder-__construct }
 
 ```php
-public function __construct( StatusMapper $mapper = null );
+public function __construct( StatusMapper|null $mapper = null );
 ```
 
 #### `__invoke()` { #adrresponderstatusresponder-__invoke }
@@ -3052,7 +3052,7 @@ public function __invoke(
 ## ADR\Responder\TextResponder
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/TextResponder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/TextResponder.php){ .src-btn }
 
 A formatted responder bound to the text formatter.
 
@@ -3090,7 +3090,7 @@ public function __construct();
 ## ADR\Responder\ViewResponder
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/ViewResponder.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/ViewResponder.php){ .src-btn }
 
 Renders a template from the payload and returns it as an HTML response.
 
@@ -3139,12 +3139,12 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Renderer</code>
 <code class="sig"><span class="sv">$renderer</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">StatusMapper</code>
 <code class="sig"><span class="sv">$statusMapper</span></code>
 </div>
 <div class="api-item">
@@ -3203,7 +3203,7 @@ result should not carry.
 ## ADR\Router\AttributeFilter
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Router/AttributeFilter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Router/AttributeFilter.php){ .src-btn }
 
 Reads an Action's optional static `params()` declaration and transforms the
 router's positional tail segments: regex match (miss => RouteNotFound), cast
@@ -3231,6 +3231,7 @@ __Uses__ `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Contracts\ADR\Router
 </a>
 <a class="api-item" href="#adrrouterattributefilter-cast">
 <code class="vis vis-protected">protected</code>
+<code class="ret">float|int|string</code>
 <code class="sig"><span class="sf">cast</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
 </a>
 </div>
@@ -3256,14 +3257,14 @@ public function filter(
 protected function cast(
     string $value,
     string $type
-);
+): float|int|string;
 ```
 
 
 ## ADR\Router\Router
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Router/Router.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Router/Router.php){ .src-btn }
 
 Convention router. `method + static path -> Action class`; the path tail
 becomes positional request attributes. Middleware is resolved from a
@@ -3420,7 +3421,7 @@ __Uses__ `Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptio
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">verbs</span>()</code>
-<span class="desc">The HTTP verbs the convention recognises, in class-name form.</span>
+<span class="desc">The HTTP verbs the convention recognizes, in class-name form.</span>
 </a>
 </div>
 
@@ -3622,13 +3623,13 @@ Shared by pathFor() and methodFor() so that rule is stated once.
 protected function verbs(): array;
 ```
 
-The HTTP verbs the convention recognises, in class-name form.
+The HTTP verbs the convention recognizes, in class-name form.
 
 
 ## ADR\Router\RouterMatch
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Router/RouterMatch.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Router/RouterMatch.php){ .src-btn }
 
 Immutable result of a successful route match.
 
@@ -3646,7 +3647,7 @@ __Uses__ `Phalcon\Contracts\ADR\Router\RouterMatch`
 <div class="api-list">
 <a class="api-item" href="#adrrouterroutermatch-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$action</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$middleware</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$action</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$middleware</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#adrrouterroutermatch-getaction">
 <code class="vis vis-public">public</code>
@@ -3681,17 +3682,17 @@ __Uses__ `Phalcon\Contracts\ADR\Router\RouterMatch`
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$attributes</span></code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$middleware</span></code>
+<code class="sig"><span class="sv">$middleware</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
-<code class="sig"><span class="sv">$name</span></code>
+<code class="sig"><span class="sv">$name</span><span class="sm"> = null</span></code>
 </div>
 </div>
 
@@ -3706,7 +3707,7 @@ public function __construct(
     string $action,
     array $attributes = [],
     array $middleware = [],
-    string $name = null
+    string|null $name = null
 );
 ```
 

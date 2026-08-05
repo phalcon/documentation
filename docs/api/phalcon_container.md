@@ -11,15 +11,15 @@ hide:
 ## Container\Container
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Container.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Container.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Container`** - implements [`Phalcon\Contracts\Container\Service\Collection`](phalcon_contracts.md#contractscontainerservicecollection)
+- **`Phalcon\Container\Container`** - implements [`Phalcon\Contracts\Container\Service\Collection`](phalcon_contracts.md#contractscontainerservicecollection), [`Phalcon\Contracts\Container\Service\Enumerable`](phalcon_contracts.md#contractscontainerserviceenumerable)
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` · `Phalcon\Container\Definition\Processor\ObjectProcessor` · `Phalcon\Container\Definition\Processor\Processor` · `Phalcon\Container\Definition\Processor\StringProcessor` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Definition\ServiceLifetime` · `Phalcon\Container\Exceptions\CannotExtendResolved` · `Phalcon\Container\Exceptions\CircularAliasFound` · `Phalcon\Container\Exceptions\InstanceNotFound` · `Phalcon\Container\Exceptions\NoProcessorFound` · `Phalcon\Container\Exceptions\ParameterNotFound` · `Phalcon\Container\Exceptions\ServiceNotFound` · `Phalcon\Container\Exceptions\ServiceNotRegistered` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\InjectionAwareInterface` · `ReflectionException`
+__Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` · `Phalcon\Container\Definition\Processor\ObjectProcessor` · `Phalcon\Container\Definition\Processor\Processor` · `Phalcon\Container\Definition\Processor\StringProcessor` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Definition\ServiceLifetime` · `Phalcon\Container\Exceptions\CannotExtendResolved` · `Phalcon\Container\Exceptions\CircularAliasFound` · `Phalcon\Container\Exceptions\InstanceNotFound` · `Phalcon\Container\Exceptions\NoProcessorFound` · `Phalcon\Container\Exceptions\ParameterNotFound` · `Phalcon\Container\Exceptions\ServiceNotFound` · `Phalcon\Container\Exceptions\ServiceNotRegistered` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Enumerable` · `Phalcon\Di\InjectionAwareInterface` · `ReflectionException`
 { .api-uses }
 
 ### Method Summary
@@ -100,6 +100,12 @@ __Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` 
 <code class="ret">object</code>
 <code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
 <span class="desc">Resolve an return a service</span>
+</a>
+<a class="api-item" href="#containercontainer-getservicenames">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getServiceNames</span>()</code>
+<span class="desc">Returns the names of every registered service definition. Names that</span>
 </a>
 <a class="api-item" href="#containercontainer-has">
 <code class="vis vis-public">public</code>
@@ -281,7 +287,7 @@ __Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` 
 
 ### Methods
 
-<div class="api-group">Public · 34</div>
+<div class="api-group">Public · 35</div>
 
 #### `__construct()` { #containercontainer-__construct }
 
@@ -390,6 +396,16 @@ public function getService( string $serviceName ): object;
 ```
 
 Resolve an return a service
+
+#### `getServiceNames()` { #containercontainer-getservicenames }
+
+```php
+public function getServiceNames(): array;
+```
+
+Returns the names of every registered service definition. Names that
+only exist as an alias, a pre-set instance or a parameter are not
+included.
 
 #### `has()` { #containercontainer-has }
 
@@ -582,7 +598,7 @@ Remove a parameter
 ## Container\ContainerFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/ContainerFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/ContainerFactory.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -644,7 +660,7 @@ Returns a new container
 ## Container\Definition\DefinitionType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/DefinitionType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/DefinitionType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -677,7 +693,7 @@ Returns a new container
 ## Container\Definition\Processor\ClosureProcessor
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/Processor/ClosureProcessor.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/ClosureProcessor.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -733,7 +749,7 @@ Process the Closure
 ## Container\Definition\Processor\ObjectProcessor
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/Processor/ObjectProcessor.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/ObjectProcessor.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -789,7 +805,7 @@ Process the Object
 ## Container\Definition\Processor\ParameterProcessor
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/Processor/ParameterProcessor.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/ParameterProcessor.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -845,7 +861,7 @@ Process the parameter
 ## Container\Definition\Processor\Processor
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/Processor/Processor.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/Processor.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -901,7 +917,7 @@ Process the definition
 ## Container\Definition\Processor\StringProcessor
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/Processor/StringProcessor.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/StringProcessor.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -957,7 +973,7 @@ Process the class string
 ## Container\Definition\ServiceDefinition
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/ServiceDefinition.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/ServiceDefinition.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -965,7 +981,7 @@ Process the class string
 
 </div>
 
-__Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `ReflectionClass` · `ReflectionException`
+__Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `Phalcon\Contracts\Container\Resolver\Resolvable` · `ReflectionClass` · `ReflectionException`
 { .api-uses }
 
 ### Method Summary
@@ -1086,7 +1102,7 @@ __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\E
 <a class="api-item" href="#containerdefinitionservicedefinition-setargument">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">setArgument</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setArgument</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set an argument</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-setclass">
@@ -1156,12 +1172,12 @@ __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\E
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;array-key, mixed&gt;</code>
 <code class="sig"><span class="sv">$arguments</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string | null</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$className</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -1171,7 +1187,7 @@ __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\E
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">object | null</code>
+<code class="ret">object|null</code>
 <code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -1181,7 +1197,7 @@ __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\E
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">callable | null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$factory</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -1206,17 +1222,17 @@ __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\E
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sv">$serviceName</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;array-key, string&gt;</code>
 <code class="sig"><span class="sv">$tags</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sv">$type</span></code>
 </div>
 </div>
@@ -1383,7 +1399,7 @@ Is it frozen
 
 ```php
 public function setArgument(
-    mixed $param,
+    int|string $param,
     mixed $value
 ): static;
 ```
@@ -1476,7 +1492,7 @@ Check if frozen
 ## Container\Definition\ServiceLifetime
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/ServiceLifetime.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/ServiceLifetime.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1505,11 +1521,11 @@ Check if frozen
 ## Container\Exceptions\CannotExtendResolved
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/CannotExtendResolved.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/CannotExtendResolved.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\CannotExtendResolved`**
 
@@ -1541,11 +1557,11 @@ Cannot extend a resolved service
 ## Container\Exceptions\CannotResolveParameter
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/CannotResolveParameter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/CannotResolveParameter.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\CannotResolveParameter`**
 
@@ -1580,11 +1596,11 @@ Cannot resolve a parameter
 ## Container\Exceptions\CircularAliasFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/CircularAliasFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/CircularAliasFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\CircularAliasFound`**
 
@@ -1616,11 +1632,11 @@ Circular Alias found
 ## Container\Exceptions\ContainerThrowable
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/ContainerThrowable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ContainerThrowable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `Throwable`
+- `\Throwable`
     - [`Phalcon\Contracts\Container\Ioc\IocThrowable`](phalcon_contracts.md#contractscontaineriociocthrowable)
         - **`Phalcon\Container\Exceptions\ContainerThrowable`** - extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](phalcon_contracts.md#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](phalcon_contracts.md#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](phalcon_contracts.md#contractscontainerservicethrowable)
 
@@ -1633,11 +1649,11 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocThrowable` · `Phalcon\Contracts\Co
 ## Container\Exceptions\EnvNotDefined
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/EnvNotDefined.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/EnvNotDefined.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\EnvNotDefined`**
 
@@ -1666,11 +1682,11 @@ public function __construct( string $varname );
 ## Container\Exceptions\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/Exception.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - **`Phalcon\Container\Exceptions\Exception`** - implements [`Phalcon\Container\Exceptions\ContainerThrowable`](#containerexceptionscontainerthrowable)
         - [`Phalcon\Container\Exceptions\CannotExtendResolved`](#containerexceptionscannotextendresolved)
         - [`Phalcon\Container\Exceptions\CannotResolveParameter`](#containerexceptionscannotresolveparameter)
@@ -1695,11 +1711,11 @@ __Uses__ `Exception`
 ## Container\Exceptions\FrozenDefinition
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/FrozenDefinition.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/FrozenDefinition.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\FrozenDefinition`**
 
@@ -1731,11 +1747,11 @@ Definition is frozen
 ## Container\Exceptions\InstanceNotFound
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/InstanceNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/InstanceNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\InstanceNotFound`**
 
@@ -1764,11 +1780,11 @@ public function __construct( string $name );
 ## Container\Exceptions\InvalidExtender
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/InvalidExtender.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/InvalidExtender.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\InvalidExtender`**
 
@@ -1803,11 +1819,11 @@ Invalid extender (not callable)
 ## Container\Exceptions\NoClassSet
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/NoClassSet.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/NoClassSet.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\NoClassSet`**
 
@@ -1839,11 +1855,11 @@ No set for service
 ## Container\Exceptions\NoFactorySet
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/NoFactorySet.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/NoFactorySet.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\NoFactorySet`**
 
@@ -1875,11 +1891,11 @@ No factory for service
 ## Container\Exceptions\NoProcessorFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/NoProcessorFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/NoProcessorFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\NoProcessorFound`**
 
@@ -1911,11 +1927,11 @@ No processor found
 ## Container\Exceptions\ParameterNotFound
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/ParameterNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ParameterNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\ParameterNotFound`**
 
@@ -1944,11 +1960,11 @@ public function __construct( string $name );
 ## Container\Exceptions\ServiceNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/ServiceNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ServiceNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\ServiceNotFound`**
 
@@ -1980,11 +1996,11 @@ Service not found
 ## Container\Exceptions\ServiceNotRegistered
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/ServiceNotRegistered.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ServiceNotRegistered.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\ServiceNotRegistered`**
 
@@ -2016,7 +2032,7 @@ Service not registered
 ## Container\Provider\Cli
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Provider/Cli.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Provider/Cli.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2024,7 +2040,7 @@ Service not registered
 
 </div>
 
-__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory`
+__Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\DispatcherInterface` · `Phalcon\Cli\Router` · `Phalcon\Cli\RouterInterface` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -2054,7 +2070,7 @@ Provider for commonly used CLI applications
 ## Container\Provider\Web
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Provider/Web.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Provider/Web.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2062,7 +2078,7 @@ Provider for commonly used CLI applications
 
 </div>
 
-__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory`
+__Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Assets\Manager` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Container\Resolver\Lazy\LazyFactory` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Db\Event\Factory` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Http\Response\Cookies` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\DispatcherInterface` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -2092,12 +2108,12 @@ Provider for commonly used Web applications
 ## Container\Resolver\Lazy\ArrayValues
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/ArrayValues.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/ArrayValues.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-    - **`Phalcon\Container\Resolver\Lazy\ArrayValues`** - implements `ArrayAccess`, `Countable`, `IteratorAggregate`
+    - **`Phalcon\Container\Resolver\Lazy\ArrayValues`** - implements `\ArrayAccess`, `\Countable`, `\IteratorAggregate`
 
 </div>
 
@@ -2124,7 +2140,7 @@ __Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate`
 <a class="api-item" href="#containerresolverlazyarrayvalues-merge">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">merge</span>( <span class="st">mixed</span> <span class="sv">$values</span> )</code>
+<code class="sig"><span class="sf">merge</span>( <span class="st">iterable</span> <span class="sv">$values</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-offsetexists">
 <code class="vis vis-public">public</code>
@@ -2169,7 +2185,7 @@ __Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate`
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;array-key, mixed&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$values</span><span class="sm"> = []</span></code>
 </div>
 </div>
@@ -2199,7 +2215,7 @@ public function getIterator(): ArrayIterator;
 #### `merge()` { #containerresolverlazyarrayvalues-merge }
 
 ```php
-public function merge( mixed $values ): void;
+public function merge( iterable $values ): void;
 ```
 
 #### `offsetExists()` { #containerresolverlazyarrayvalues-offsetexists }
@@ -2261,7 +2277,7 @@ protected function resolveValues(
 ## Container\Resolver\Lazy\Call
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/Call.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Call.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2275,7 +2291,7 @@ protected function resolveValues(
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazycall-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">callable</span> <span class="sv">$callableObject</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$callableObject</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazycall-resolve">
 <code class="vis vis-public">public</code>
@@ -2302,7 +2318,7 @@ protected function resolveValues(
 #### `__construct()` { #containerresolverlazycall-__construct }
 
 ```php
-public function __construct( callable $callableObject );
+public function __construct( mixed $callableObject );
 ```
 
 #### `resolve()` { #containerresolverlazycall-resolve }
@@ -2317,7 +2333,7 @@ Resolve the callable
 ## Container\Resolver\Lazy\CallableGet
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/CallableGet.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/CallableGet.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2331,7 +2347,7 @@ Resolve the callable
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazycallableget-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">Lazy|string</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazycallableget-resolve">
 <code class="vis vis-public">public</code>
@@ -2346,7 +2362,7 @@ Resolve the callable
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|Lazy</code>
+<code class="ret">Lazy|string</code>
 <code class="sig"><span class="sv">$id</span></code>
 </div>
 </div>
@@ -2358,7 +2374,7 @@ Resolve the callable
 #### `__construct()` { #containerresolverlazycallableget-__construct }
 
 ```php
-public function __construct( mixed $id );
+public function __construct( Lazy|string $id );
 ```
 
 #### `resolve()` { #containerresolverlazycallableget-resolve }
@@ -2373,7 +2389,7 @@ Resolve to a closure on a get()
 ## Container\Resolver\Lazy\CallableNew
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/CallableNew.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/CallableNew.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2387,7 +2403,7 @@ Resolve to a closure on a get()
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazycallablenew-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">Lazy|string</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazycallablenew-resolve">
 <code class="vis vis-public">public</code>
@@ -2402,7 +2418,7 @@ Resolve to a closure on a get()
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|Lazy</code>
+<code class="ret">Lazy|string</code>
 <code class="sig"><span class="sv">$id</span></code>
 </div>
 </div>
@@ -2414,7 +2430,7 @@ Resolve to a closure on a get()
 #### `__construct()` { #containerresolverlazycallablenew-__construct }
 
 ```php
-public function __construct( mixed $id );
+public function __construct( Lazy|string $id );
 ```
 
 #### `resolve()` { #containerresolverlazycallablenew-resolve }
@@ -2429,7 +2445,7 @@ Resolve to a closure on a new()
 ## Container\Resolver\Lazy\CsEnv
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/CsEnv.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/CsEnv.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2469,7 +2485,7 @@ Resolve the getEnv() from keys as a comma separated list
 ## Container\Resolver\Lazy\Env
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/Env.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Env.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2488,7 +2504,7 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazyenv-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazyenv-resolve">
 <code class="vis vis-public">public</code>
@@ -2499,7 +2515,7 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 <a class="api-item" href="#containerresolverlazyenv-cast">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">cast</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<code class="sig"><span class="sf">cast</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
 <span class="desc">Cast a value to the defined type (if any)</span>
 </a>
 <a class="api-item" href="#containerresolverlazyenv-getenv">
@@ -2534,7 +2550,7 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 ```php
 public function __construct(
     string $varname,
-    string $vartype = null
+    string|null $vartype = null
 );
 ```
 
@@ -2551,7 +2567,7 @@ Resolve an environment variable
 #### `cast()` { #containerresolverlazyenv-cast }
 
 ```php
-protected function cast( mixed $value ): mixed;
+protected function cast( string $value ): mixed;
 ```
 
 Cast a value to the defined type (if any)
@@ -2568,7 +2584,7 @@ Return the env value
 ## Container\Resolver\Lazy\EnvDefault
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/EnvDefault.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/EnvDefault.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2586,7 +2602,7 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazyenvdefault-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazyenvdefault-resolve">
 <code class="vis vis-public">public</code>
@@ -2606,7 +2622,7 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 public function __construct(
     string $varname,
     mixed $defaultValue,
-    string $vartype = null
+    string|null $vartype = null
 );
 ```
 
@@ -2622,7 +2638,7 @@ Resolve an environment variable, returning the default if not defined
 ## Container\Resolver\Lazy\FunctionCall
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/FunctionCall.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/FunctionCall.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2651,7 +2667,7 @@ Resolve an environment variable, returning the default if not defined
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;array-key, mixed&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$arguments</span></code>
 </div>
 <div class="api-item">
@@ -2686,7 +2702,7 @@ Resolve a function
 ## Container\Resolver\Lazy\Get
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/Get.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Get.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2700,7 +2716,7 @@ Resolve a function
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazyget-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">Lazy|string</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazyget-resolve">
 <code class="vis vis-public">public</code>
@@ -2715,7 +2731,7 @@ Resolve a function
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|Lazy</code>
+<code class="ret">Lazy|string</code>
 <code class="sig"><span class="sv">$id</span></code>
 </div>
 </div>
@@ -2727,7 +2743,7 @@ Resolve a function
 #### `__construct()` { #containerresolverlazyget-__construct }
 
 ```php
-public function __construct( mixed $id );
+public function __construct( Lazy|string $id );
 ```
 
 #### `resolve()` { #containerresolverlazyget-resolve }
@@ -2742,7 +2758,7 @@ Resolve a shared instance
 ## Container\Resolver\Lazy\GetCall
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/GetCall.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/GetCall.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2756,7 +2772,7 @@ Resolve a shared instance
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazygetcall-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Lazy|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazygetcall-resolve">
 <code class="vis vis-public">public</code>
@@ -2771,12 +2787,12 @@ Resolve a shared instance
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;array-key, mixed&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$arguments</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|Lazy</code>
+<code class="ret">Lazy|string</code>
 <code class="sig"><span class="sv">$id</span></code>
 </div>
 <div class="api-item">
@@ -2794,7 +2810,7 @@ Resolve a shared instance
 
 ```php
 public function __construct(
-    mixed $id,
+    Lazy|string $id,
     string $method,
     array $arguments
 );
@@ -2812,7 +2828,7 @@ Resolve a shared instance method call
 ## Container\Resolver\Lazy\Lazy
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/Lazy.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Lazy.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2899,7 +2915,7 @@ protected function resolveArguments(
 ## Container\Resolver\Lazy\LazyFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/LazyFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/LazyFactory.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -2933,17 +2949,17 @@ protected function resolveArguments(
 <a class="api-item" href="#containerresolverlazylazyfactory-csenv">
 <code class="vis vis-public">public</code>
 <code class="ret">CsEnv</code>
-<code class="sig"><span class="sf">csEnv</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">csEnv</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-env">
 <code class="vis vis-public">public</code>
 <code class="ret">Env</code>
-<code class="sig"><span class="sf">env</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">env</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-envdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">EnvDefault</code>
-<code class="sig"><span class="sf">envDefault</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">envDefault</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-functioncall">
 <code class="vis vis-public">public</code>
@@ -3010,7 +3026,7 @@ public static function callableNew( string $id ): CallableNew;
 ```php
 public static function csEnv(
     string $name,
-    string $type = null
+    string|null $type = null
 ): CsEnv;
 ```
 
@@ -3019,7 +3035,7 @@ public static function csEnv(
 ```php
 public static function env(
     string $name,
-    string $type = null
+    string|null $type = null
 ): Env;
 ```
 
@@ -3029,7 +3045,7 @@ public static function env(
 public static function envDefault(
     string $name,
     mixed $defaultValue,
-    string $type = null
+    string|null $type = null
 ): EnvDefault;
 ```
 
@@ -3088,7 +3104,7 @@ public static function staticCall(
 ## Container\Resolver\Lazy\NewCall
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/NewCall.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/NewCall.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3102,7 +3118,7 @@ public static function staticCall(
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazynewcall-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Lazy|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazynewcall-resolve">
 <code class="vis vis-public">public</code>
@@ -3117,12 +3133,12 @@ public static function staticCall(
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;array-key, mixed&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$arguments</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|Lazy</code>
+<code class="ret">Lazy|string</code>
 <code class="sig"><span class="sv">$id</span></code>
 </div>
 <div class="api-item">
@@ -3140,7 +3156,7 @@ public static function staticCall(
 
 ```php
 public function __construct(
-    mixed $id,
+    Lazy|string $id,
     string $method,
     array $arguments
 );
@@ -3158,7 +3174,7 @@ Resolve a new instance method call
 ## Container\Resolver\Lazy\NewInstance
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/NewInstance.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/NewInstance.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3172,7 +3188,7 @@ Resolve a new instance method call
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazynewinstance-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">Lazy|string</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazynewinstance-resolve">
 <code class="vis vis-public">public</code>
@@ -3187,7 +3203,7 @@ Resolve a new instance method call
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|Lazy</code>
+<code class="ret">Lazy|string</code>
 <code class="sig"><span class="sv">$id</span></code>
 </div>
 </div>
@@ -3199,7 +3215,7 @@ Resolve a new instance method call
 #### `__construct()` { #containerresolverlazynewinstance-__construct }
 
 ```php
-public function __construct( mixed $id );
+public function __construct( Lazy|string $id );
 ```
 
 #### `resolve()` { #containerresolverlazynewinstance-resolve }
@@ -3214,7 +3230,7 @@ Resolve a new instance
 ## Container\Resolver\Lazy\StaticCall
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/StaticCall.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/StaticCall.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3228,7 +3244,7 @@ Resolve a new instance
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazystaticcall-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Lazy|string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazystaticcall-resolve">
 <code class="vis vis-public">public</code>
@@ -3243,12 +3259,12 @@ Resolve a new instance
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;array-key, mixed&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$arguments</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|Lazy</code>
+<code class="ret">Lazy|string</code>
 <code class="sig"><span class="sv">$className</span></code>
 </div>
 <div class="api-item">
@@ -3266,7 +3282,7 @@ Resolve a new instance
 
 ```php
 public function __construct(
-    mixed $className,
+    Lazy|string $className,
     string $method,
     array $arguments
 );
@@ -3284,7 +3300,7 @@ Resolve a static method call
 ## Container\Resolver\Resolver
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Resolver.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Resolver.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -3336,7 +3352,7 @@ __Uses__ `Closure` · `Phalcon\Container\Exceptions\CannotResolveParameter` · `
 <a class="api-item" href="#containerresolverresolver-resolvetype">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolveType</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$type</span></span>)</code>
+<code class="sig"><span class="sf">resolveType</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionType</span> <span class="sv">$type</span></span>)</code>
 <span class="desc">type is ReflectionType</span>
 </a>
 </div>
@@ -3415,7 +3431,7 @@ public function resolveParameters(
 ```php
 public function resolveType(
     object $ioc,
-    mixed $type
+    ReflectionType $type
 ): mixed;
 ```
 

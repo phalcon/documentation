@@ -11,7 +11,7 @@ hide:
 ## Translate\Adapter\AbstractAdapter
 
 <span class="badge badge--abstract">Abstract</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AbstractAdapter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Adapter/AbstractAdapter.php){ .src-btn }
 
 @template TKey of string
 @template TValue of string
@@ -19,7 +19,7 @@ hide:
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Translate\Adapter\AbstractAdapter`** - implements [`Phalcon\Translate\Adapter\AdapterInterface`](#translateadapteradapterinterface), `ArrayAccess`
+- **`Phalcon\Translate\Adapter\AbstractAdapter`** - implements [`Phalcon\Translate\Adapter\AdapterInterface`](#translateadapteradapterinterface), `\ArrayAccess`
     - [`Phalcon\Translate\Adapter\Csv`](#translateadaptercsv)
     - [`Phalcon\Translate\Adapter\Gettext`](#translateadaptergettext)
     - [`Phalcon\Translate\Adapter\NativeArray`](#translateadapternativearray)
@@ -34,7 +34,7 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Ex
 <div class="api-list">
 <a class="api-item" href="#translateadapterabstractadapter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">InterpolatorFactory</span> <span class="sv">$interpolator</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">InterpolatorFactory</span> <span class="sv">$interpolatorFactory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">AbstractAdapter constructor.</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-_">
@@ -52,13 +52,13 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Ex
 <a class="api-item" href="#translateadapterabstractadapter-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$translateKey</span> )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Check whether a translation key exists</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-offsetget">
 <code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$translateKey</span> )</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Returns the translation related to the given key</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-offsetset">
@@ -97,7 +97,7 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Ex
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">InterpolatorInterface | null</code>
+<code class="ret">InterpolatorInterface|null</code>
 <code class="sig"><span class="sv">$interpolator</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -120,7 +120,7 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Ex
 
 ```php
 public function __construct(
-    InterpolatorFactory $interpolator,
+    InterpolatorFactory $interpolatorFactory,
     array $options = []
 );
 ```
@@ -149,7 +149,7 @@ Whenever a key is not found this method will be called
 #### `offsetExists()` { #translateadapterabstractadapter-offsetexists }
 
 ```php
-public function offsetExists( mixed $translateKey ): bool;
+public function offsetExists( mixed $offset ): bool;
 ```
 
 Check whether a translation key exists
@@ -157,7 +157,7 @@ Check whether a translation key exists
 #### `offsetGet()` { #translateadapterabstractadapter-offsetget }
 
 ```php
-public function offsetGet( mixed $translateKey ): string|null;
+public function offsetGet( mixed $offset ): mixed;
 ```
 
 Returns the translation related to the given key
@@ -209,7 +209,7 @@ Replaces placeholders by the values passed
 ## Translate\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AdapterInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Adapter/AdapterInterface.php){ .src-btn }
 
 Phalcon\Translate\Adapter\AdapterInterface
 
@@ -293,7 +293,7 @@ Returns the translation string of the given key
 ## Translate\Adapter\Csv
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/Csv.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Adapter/Csv.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -302,7 +302,7 @@ Returns the translation string of the given key
 
 </div>
 
-__Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -337,11 +337,6 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpen
 <code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the internal array</span>
 </a>
-<a class="api-item" href="#translateadaptercsv-phpfopen">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFopen</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span></span>)</code>
-<span class="desc">@todo to be removed when we get traits</span>
-</a>
 </div>
 
 ### Properties
@@ -349,7 +344,7 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpen
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, string&gt;</code>
 <code class="sig"><span class="sv">$translate</span><span class="sm"> = []</span></code>
 </div>
 </div>
@@ -404,24 +399,11 @@ public function toArray(): array;
 
 Returns the internal array
 
-<div class="api-group">Protected · 1</div>
-
-#### `phpFopen()` { #translateadaptercsv-phpfopen }
-
-```php
-protected function phpFopen(
-    string $filename,
-    string $mode
-);
-```
-
-@todo to be removed when we get traits
-
 
 ## Translate\Adapter\Gettext
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/Gettext.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Adapter/Gettext.php){ .src-btn }
 
 Phalcon\Translate\Adapter\Gettext
 
@@ -447,7 +429,7 @@ Allows translations using gettext
 
 </div>
 
-__Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -481,7 +463,7 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingG
 </a>
 <a class="api-item" href="#translateadaptergettext-getlocale">
 <code class="vis vis-public">public</code>
-<code class="ret">string|false</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sf">getLocale</span>()</code>
 </a>
 <a class="api-item" href="#translateadaptergettext-has">
@@ -493,7 +475,7 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingG
 <a class="api-item" href="#translateadaptergettext-nquery">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">nquery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$msgid1</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$msgid2</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$count</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$domain</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">nquery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$msgid1</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$msgid2</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$count</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$domain</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">The plural version of gettext().</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-query">
@@ -523,12 +505,12 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingG
 <a class="api-item" href="#translateadaptergettext-setdomain">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">setDomain</span>( <span class="st">string</span> <span class="sv">$domain</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setDomain</span>( <span class="st">string|null</span> <span class="sv">$domain</span><span class="sm"> = null</span> )</code>
 <span class="desc">Changes the current domain (i.e. the translation file)</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-setlocale">
 <code class="vis vis-public">public</code>
-<code class="ret">string|bool</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sf">setLocale</span>(<span class="prm"><span class="st">int</span> <span class="sv">$category</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$localeArray</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets locale information</span>
 </a>
@@ -537,12 +519,6 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingG
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getOptionsDefault</span>()</code>
 <span class="desc">Gets default options</span>
-</a>
-<a class="api-item" href="#translateadaptergettext-phpfunctionexists">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpFunctionExists</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">@todo to be removed when we get traits</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-prepareoptions">
 <code class="vis vis-protected">protected</code>
@@ -558,21 +534,21 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingG
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
-<code class="sig"><span class="sv">$category</span></code>
+<code class="sig"><span class="sv">$category</span><span class="sm"> = LC_ALL</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$defaultDomain</span></code>
+<code class="sig"><span class="sv">$defaultDomain</span><span class="sm"> = &quot;messages&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|array</code>
+<code class="ret">array&lt;string, string&gt;|string</code>
 <code class="sig"><span class="sv">$directory</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string | false</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sv">$locale</span></code>
 </div>
 </div>
@@ -621,7 +597,7 @@ public function getDirectory(): array|string;
 #### `getLocale()` { #translateadaptergettext-getlocale }
 
 ```php
-public function getLocale(): string|false;
+public function getLocale(): false|string;
 ```
 
 #### `has()` { #translateadaptergettext-has }
@@ -640,7 +616,7 @@ public function nquery(
     string $msgid2,
     int $count,
     array $placeholders = [],
-    string $domain = null
+    string|null $domain = null
 ): string;
 ```
 
@@ -703,7 +679,7 @@ $gettext->setDirectory(
 #### `setDomain()` { #translateadaptergettext-setdomain }
 
 ```php
-public function setDomain( string $domain = null ): string;
+public function setDomain( string|null $domain = null ): string;
 ```
 
 Changes the current domain (i.e. the translation file)
@@ -714,7 +690,7 @@ Changes the current domain (i.e. the translation file)
 public function setLocale(
     int $category,
     array $localeArray = []
-): string|bool;
+): false|string;
 ```
 
 Sets locale information
@@ -734,7 +710,7 @@ $gettext->setLocale(LC_ALL, ["nl_NL"]);
 $gettext->setLocale(LC_ALL, ["de_DE@euro", "de_DE", "de", "ge"]);
 ```
 
-<div class="api-group">Protected · 3</div>
+<div class="api-group">Protected · 2</div>
 
 #### `getOptionsDefault()` { #translateadaptergettext-getoptionsdefault }
 
@@ -743,14 +719,6 @@ protected function getOptionsDefault(): array;
 ```
 
 Gets default options
-
-#### `phpFunctionExists()` { #translateadaptergettext-phpfunctionexists }
-
-```php
-protected function phpFunctionExists( string $name ): bool;
-```
-
-@todo to be removed when we get traits
 
 #### `prepareOptions()` { #translateadaptergettext-prepareoptions }
 
@@ -764,7 +732,7 @@ Validator for constructor
 ## Translate\Adapter\NativeArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/NativeArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Adapter/NativeArray.php){ .src-btn }
 
 Defines translation lists using PHP arrays
 
@@ -866,7 +834,7 @@ Returns the internal array
 ## Translate\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Exception.php){ .src-btn }
 
 Class for exceptions thrown by Phalcon\Translate
 
@@ -890,7 +858,7 @@ Class for exceptions thrown by Phalcon\Translate
 ## Translate\Exceptions\FileOpenError
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/FileOpenError.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Exceptions/FileOpenError.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -926,7 +894,7 @@ public function __construct( string $name );
 ## Translate\Exceptions\ImmutableObject
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/ImmutableObject.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Exceptions/ImmutableObject.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -962,7 +930,7 @@ public function __construct();
 ## Translate\Exceptions\InterpolatorNotRegistered
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/InterpolatorNotRegistered.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Exceptions/InterpolatorNotRegistered.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -979,7 +947,7 @@ __Uses__ `Phalcon\Translate\Exception`
 ## Translate\Exceptions\InvalidDataType
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/InvalidDataType.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Exceptions/InvalidDataType.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1015,7 +983,7 @@ public function __construct();
 ## Translate\Exceptions\KeyNotFound
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/KeyNotFound.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Exceptions/KeyNotFound.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1051,7 +1019,7 @@ public function __construct( string $key );
 ## Translate\Exceptions\MissingContent
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/MissingContent.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Exceptions/MissingContent.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1087,7 +1055,7 @@ public function __construct();
 ## Translate\Exceptions\MissingGettextExtension
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/MissingGettextExtension.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Exceptions/MissingGettextExtension.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1123,7 +1091,7 @@ public function __construct();
 ## Translate\Exceptions\MissingRequiredParameter
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/MissingRequiredParameter.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Exceptions/MissingRequiredParameter.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1170,7 +1138,7 @@ public function getParameter(): string;
 ## Translate\Exceptions\TranslatorNotRegistered
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/TranslatorNotRegistered.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Exceptions/TranslatorNotRegistered.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1187,17 +1155,15 @@ __Uses__ `Phalcon\Translate\Exception`
 ## Translate\InterpolatorFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/InterpolatorFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/InterpolatorFactory.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
-        - **`Phalcon\Translate\InterpolatorFactory`**
+- **`Phalcon\Translate\InterpolatorFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
+__Uses__ `Phalcon\Traits\Factory\FactoryTrait` · `Phalcon\Translate\Exceptions\InterpolatorNotRegistered` · `Phalcon\Translate\Interpolator\AssociativeArray` · `Phalcon\Translate\Interpolator\IndexedArray` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1264,7 +1230,7 @@ Returns the available adapters
 ## Translate\Interpolator\AssociativeArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/AssociativeArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Interpolator/AssociativeArray.php){ .src-btn }
 
 Class AssociativeArray
 
@@ -1274,7 +1240,7 @@ Class AssociativeArray
 
 </div>
 
-__Uses__ `Phalcon\Support\Helper\Str\Interpolate`
+__Uses__ `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1286,16 +1252,6 @@ __Uses__ `Phalcon\Support\Helper\Str\Interpolate`
 <code class="sig"><span class="sf">replacePlaceholders</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translation</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Replaces placeholders by the values passed</span>
 </a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Interpolate | null</code>
-<code class="sig"><span class="sv">$interpolate</span><span class="sm"> = null</span></code>
-</div>
 </div>
 
 ### Methods
@@ -1317,7 +1273,7 @@ Replaces placeholders by the values passed
 ## Translate\Interpolator\IndexedArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/IndexedArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Interpolator/IndexedArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1355,7 +1311,7 @@ Replaces placeholders by the values passed
 ## Translate\Interpolator\InterpolatorInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/InterpolatorInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Interpolator/InterpolatorInterface.php){ .src-btn }
 
 Phalcon\Translate\InterpolatorInterface
 
@@ -1397,19 +1353,17 @@ Replaces placeholders by the values passed
 ## Translate\TranslateFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/TranslateFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/TranslateFactory.php){ .src-btn }
 
 @property InterpolatorFactory $interpolator
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
-        - **`Phalcon\Translate\TranslateFactory`**
+- **`Phalcon\Translate\TranslateFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Adapter\AdapterInterface`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Support\Traits\ConfigTrait` · `Phalcon\Traits\Factory\FactoryTrait` · `Phalcon\Translate\Adapter\AdapterInterface` · `Phalcon\Translate\Adapter\Csv` · `Phalcon\Translate\Adapter\Gettext` · `Phalcon\Translate\Adapter\NativeArray` · `Phalcon\Translate\Exceptions\TranslatorNotRegistered`
 { .api-uses }
 
 ### Method Summary
@@ -1422,7 +1376,7 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` �
 <a class="api-item" href="#translatetranslatefactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#translatetranslatefactory-newinstance">
@@ -1460,7 +1414,7 @@ public function __construct(
 #### `load()` { #translatetranslatefactory-load }
 
 ```php
-public function load( mixed $config ): AdapterInterface;
+public function load( array|ConfigInterface $config ): AdapterInterface;
 ```
 
 Factory to create an instance from a Config object

@@ -11,7 +11,7 @@ hide:
 ## Domain\Payload\Payload
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/Payload.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/Payload.php){ .src-btn }
 
 Holds the payload
 
@@ -113,31 +113,31 @@ __Uses__ `Throwable`
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$extras</span></code>
+<code class="sig"><span class="sv">$extras</span><span class="sm"> = null</span></code>
 <span class="desc">Extra information</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$input</span></code>
+<code class="sig"><span class="sv">$input</span><span class="sm"> = null</span></code>
 <span class="desc">Input</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$messages</span></code>
+<code class="sig"><span class="sv">$messages</span><span class="sm"> = null</span></code>
 <span class="desc">Messages</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$output</span></code>
+<code class="sig"><span class="sv">$output</span><span class="sm"> = null</span></code>
 <span class="desc">Output</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$status</span></code>
+<code class="sig"><span class="sv">$status</span><span class="sm"> = null</span></code>
 <span class="desc">Status</span>
 </div>
 </div>
@@ -254,7 +254,7 @@ Status values are drawn from the `Status` vocabulary.
 ## Domain\Payload\PayloadFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/PayloadFactory.php){ .src-btn }
 
 Factory to create payload objects.
 
@@ -295,7 +295,7 @@ Instantiate a new object
 ## Domain\Payload\PayloadInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/PayloadInterface.php){ .src-btn }
 
 This interface is used for consumers
 
@@ -314,7 +314,7 @@ __Uses__ `Phalcon\Contracts\Domain\Payload\Payload`
 ## Domain\Payload\ReadableInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/ReadableInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/ReadableInterface.php){ .src-btn }
 
 This interface is used for consumers (read only)
 
@@ -333,7 +333,7 @@ __Uses__ `Phalcon\Contracts\Domain\Payload\Readable`
 ## Domain\Payload\Status
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/Status.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/Status.php){ .src-btn }
 
 Holds the status codes for the payload.
 
@@ -443,7 +443,7 @@ lineage:
 ## Domain\Payload\WriteableInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/WriteableInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/WriteableInterface.php){ .src-btn }
 
 This interface is used for consumers (write)
 

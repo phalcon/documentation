@@ -11,7 +11,7 @@ hide:
 ## Autoload\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Autoload/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Autoload will use this class
 
@@ -28,7 +28,7 @@ Exceptions thrown in Phalcon\Autoload will use this class
 ## Autoload\Exceptions\LoaderDirectoriesNotArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exceptions/LoaderDirectoriesNotArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Autoload/Exceptions/LoaderDirectoriesNotArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -64,7 +64,7 @@ public function __construct( string $name = "" );
 ## Autoload\Exceptions\LoaderMethodNotCallable
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exceptions/LoaderMethodNotCallable.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Autoload/Exceptions/LoaderMethodNotCallable.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -100,7 +100,7 @@ public function __construct();
 ## Autoload\Loader
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Loader.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Autoload/Loader.php){ .src-btn }
 
 The Phalcon Autoloader provides an easy way to automatically load classes
 (namespaced or not) as well as files. It also features extension loading,
@@ -108,12 +108,11 @@ allowing the user to autoload files with different extensions than .php.
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
-    - **`Phalcon\Autoload\Loader`**
+- **`Phalcon\Autoload\Loader`**
 
 </div>
 
-__Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Events\AbstractEventsAware`
+__Uses__ `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait`
 { .api-uses }
 
 ### Method Summary
@@ -151,7 +150,7 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Aut
 <a class="api-item" href="#autoloadloader-addnamespace">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addNamespace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$directories</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$prepend</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addNamespace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$namespace</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$directories</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$prepend</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#autoloadloader-autoload">
 <code class="vis vis-public">public</code>
@@ -275,6 +274,27 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Aut
 </a>
 </div>
 
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">EVENT_AFTER_CHECK_CLASS</span><span class="sm"> = &quot;loader:afterCheckClass&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">EVENT_BEFORE_CHECK_CLASS</span><span class="sm"> = &quot;loader:beforeCheckClass&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">EVENT_BEFORE_CHECK_PATH</span><span class="sm"> = &quot;loader:beforeCheckPath&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">EVENT_PATH_FOUND</span><span class="sm"> = &quot;loader:pathFound&quot;</span></code>
+</div>
+</div>
+
 ### Properties
 
 <div class="api-list">
@@ -285,32 +305,32 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Aut
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">TStrings</code>
 <code class="sig"><span class="sv">$classes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;int, string&gt;</code>
 <code class="sig"><span class="sv">$debug</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">TStrings</code>
 <code class="sig"><span class="sv">$directories</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">TStrings</code>
 <code class="sig"><span class="sv">$extensions</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|callable</code>
+<code class="ret">callable|string</code>
 <code class="sig"><span class="sv">$fileCheckingCallback</span><span class="sm"> = &quot;is_file&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">TStrings</code>
 <code class="sig"><span class="sv">$files</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -330,7 +350,7 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Aut
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">TNamespaces</code>
 <code class="sig"><span class="sv">$namespaces</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -391,7 +411,7 @@ Adds a file to be added to the loader
 
 ```php
 public function addNamespace(
-    string $name,
+    string $namespace,
     mixed $directories,
     bool $prepend = false
 ): static;

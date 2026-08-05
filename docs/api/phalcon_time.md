@@ -11,7 +11,7 @@ hide:
 ## Time\Clock\ClockInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/ClockInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Time/Clock/ClockInterface.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -46,7 +46,7 @@ public function now(): DateTimeImmutable;
 ## Time\Clock\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Time/Clock/Exception.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -60,7 +60,7 @@ public function now(): DateTimeImmutable;
 ## Time\Clock\Exceptions\InvalidModifier
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/Exceptions/InvalidModifier.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Time/Clock/Exceptions/InvalidModifier.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -78,7 +78,7 @@ __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
 <div class="api-list">
 <a class="api-item" href="#timeclockexceptionsinvalidmodifier-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modifier</span>,</span><span class="prm"><span class="st">Throwable</span> <span class="sv">$ex</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modifier</span>,</span><span class="prm"><span class="st">Throwable|null</span> <span class="sv">$ex</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -91,7 +91,7 @@ __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
 ```php
 public function __construct(
     string $modifier,
-    Throwable $ex = null
+    Throwable|null $ex = null
 );
 ```
 
@@ -99,7 +99,7 @@ public function __construct(
 ## Time\Clock\FrozenClock
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/FrozenClock.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Time/Clock/FrozenClock.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -203,7 +203,7 @@ Sets the clock to a new value. All consumers receive the same modification
 ## Time\Clock\SystemClock
 
 <span class="badge badge--final">Final</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/SystemClock.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Time/Clock/SystemClock.php){ .src-btn }
 
 <div class="api-tree" markdown>
 

@@ -11,11 +11,11 @@ hide:
 ## Config\Adapter\Grouped
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Adapter/Grouped.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Grouped.php){ .src-btn }
 
 Reads multiple files (or arrays) and merges them all together.
 
-See `Phalcon\Config\ConfigFactory::load` To load Config Adapter class using 'adapter' option.
+See `Phalcon\Config\Factory::load` To load Config Adapter class using 'adapter' option.
 
 ```php
 use Phalcon\Config\Adapter\Grouped;
@@ -71,7 +71,7 @@ $config = new Grouped(
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\GroupedAdapterRequiresArray` · `Phalcon\Factory\Exception`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`
 { .api-uses }
 
 ### Method Summary
@@ -79,8 +79,8 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\C
 <div class="api-list">
 <a class="api-item" href="#configadaptergrouped-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arrayConfig</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$defaultAdapter</span><span class="sm"> = &quot;php&quot;</span>,</span><span class="prm"><span class="st">ConfigFactory</span> <span class="sv">$factory</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Phalcon\Config\Adapter\Grouped constructor</span>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arrayConfig</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$defaultAdapter</span><span class="sm"> = &quot;php&quot;</span>,</span><span class="prm"><span class="st">ConfigFactory|null</span> <span class="sv">$factory</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Grouped constructor.</span>
 </a>
 </div>
 
@@ -94,19 +94,19 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\C
 public function __construct(
     array $arrayConfig,
     string $defaultAdapter = "php",
-    ConfigFactory $factory = null
+    ConfigFactory|null $factory = null
 );
 ```
 
-Phalcon\Config\Adapter\Grouped constructor
+Grouped constructor.
 
 
 ## Config\Adapter\Ini
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Adapter/Ini.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Ini.php){ .src-btn }
 
-Reads ini files and converts them to Phalcon\Config\Config objects.
+Reads ini files and converts them to Phalcon\Config objects.
 
 Given the next configuration file:
 
@@ -155,7 +155,7 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Traits\Php\IniTrait`
 { .api-uses }
 
 ### Method Summary
@@ -163,12 +163,11 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 <div class="api-list">
 <a class="api-item" href="#configadapterini-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$mode</span><span class="sm"> = 1</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$mode</span><span class="sm"> = INI_SCANNER_RAW</span></span>)</code>
 <span class="desc">Ini constructor.</span>
 </a>
 <a class="api-item" href="#configadapterini-cast">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
 <code class="sig"><span class="sf">cast</span>( <span class="st">mixed</span> <span class="sv">$ini</span> )</code>
 <span class="desc">We have to cast values manually because parse_ini_file() has a poor</span>
 </a>
@@ -183,11 +182,6 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 <code class="sig"><span class="sf">parseIniString</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Build multidimensional array from string</span>
 </a>
-<a class="api-item" href="#configadapterini-phpparseinifile">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpParseIniFile</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$processSections</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$scannerMode</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">@todo to be removed when we get traits</span>
-</a>
 </div>
 
 ### Methods
@@ -199,18 +193,18 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 ```php
 public function __construct(
     string $filePath,
-    int $mode = 1
+    int $mode = INI_SCANNER_RAW
 );
 ```
 
 Ini constructor.
 
-<div class="api-group">Protected · 4</div>
+<div class="api-group">Protected · 3</div>
 
 #### `cast()` { #configadapterini-cast }
 
 ```php
-protected function cast( mixed $ini ): mixed;
+protected function cast( mixed $ini );
 ```
 
 We have to cast values manually because parse_ini_file() has a poor
@@ -239,25 +233,13 @@ protected function parseIniString(
 
 Build multidimensional array from string
 
-#### `phpParseIniFile()` { #configadapterini-phpparseinifile }
-
-```php
-protected function phpParseIniFile(
-    string $filename,
-    bool $processSections = false,
-    int $scannerMode = 1
-);
-```
-
-@todo to be removed when we get traits
-
 
 ## Config\Adapter\Json
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Adapter/Json.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Json.php){ .src-btn }
 
-Reads JSON files and converts them to Phalcon\Config\Config objects.
+Reads JSON files and converts them to Phalcon\Config objects.
 
 Given the following configuration file:
 
@@ -284,7 +266,7 @@ echo $config->models->metadata;
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Support\Helper\Json\Decode`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -293,7 +275,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigF
 <a class="api-item" href="#configadapterjson-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$filePath</span> )</code>
-<span class="desc">Phalcon\Config\Adapter\Json constructor</span>
+<span class="desc">Json constructor.</span>
 </a>
 </div>
 
@@ -307,15 +289,15 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigF
 public function __construct( string $filePath );
 ```
 
-Phalcon\Config\Adapter\Json constructor
+Json constructor.
 
 
 ## Config\Adapter\Php
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Adapter/Php.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Php.php){ .src-btn }
 
-Reads php files and converts them to Phalcon\Config\Config objects.
+Reads php files and converts them to Phalcon\Config objects.
 
 Given the next configuration file:
 
@@ -366,7 +348,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigF
 <a class="api-item" href="#configadapterphp-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$filePath</span> )</code>
-<span class="desc">Phalcon\Config\Adapter\Php constructor</span>
+<span class="desc">Php constructor.</span>
 </a>
 </div>
 
@@ -380,15 +362,15 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigF
 public function __construct( string $filePath );
 ```
 
-Phalcon\Config\Adapter\Php constructor
+Php constructor.
 
 
 ## Config\Adapter\Yaml
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Adapter/Yaml.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Yaml.php){ .src-btn }
 
-Reads YAML files and converts them to Phalcon\Config\Config objects.
+Reads YAML files and converts them to Phalcon\Config objects.
 
 Given the following configuration file:
 
@@ -432,7 +414,7 @@ echo $config->models->metadata;
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Config\Exceptions\MissingYamlExtension`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Config\Exceptions\MissingYamlExtension` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\YamlTrait`
 { .api-uses }
 
 ### Method Summary
@@ -440,18 +422,8 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 <div class="api-list">
 <a class="api-item" href="#configadapteryaml-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Phalcon\Config\Adapter\Yaml constructor</span>
-</a>
-<a class="api-item" href="#configadapteryaml-phpextensionloaded">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpExtensionLoaded</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#configadapteryaml-phpyamlparsefile">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpYamlParseFile</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$pos</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ndocs</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$callbacks</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">@todo to be removed when we get traits</span>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Yaml constructor.</span>
 </a>
 </div>
 
@@ -464,38 +436,17 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 ```php
 public function __construct(
     string $filePath,
-    array $callbacks = null
+    array|null $callbacks = null
 );
 ```
 
-Phalcon\Config\Adapter\Yaml constructor
-
-<div class="api-group">Protected · 2</div>
-
-#### `phpExtensionLoaded()` { #configadapteryaml-phpextensionloaded }
-
-```php
-protected function phpExtensionLoaded( string $name ): bool;
-```
-
-#### `phpYamlParseFile()` { #configadapteryaml-phpyamlparsefile }
-
-```php
-protected function phpYamlParseFile(
-    mixed $filename,
-    mixed $pos = 0,
-    mixed $ndocs = null,
-    mixed $callbacks = []
-);
-```
-
-@todo to be removed when we get traits
+Yaml constructor.
 
 
 ## Config\Config
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Config.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Config.php){ .src-btn }
 
 `Phalcon\Config` is designed to simplify the access to, and the use of,
 configuration data within applications. It provides a nested object property
@@ -503,7 +454,7 @@ based user interface for accessing this configuration data within application
 code.
 
 ```php
-$config = new \Phalcon\Config\Config(
+$config = new \Phalcon\Config(
     [
         "database" => [
             "adapter"  => "Mysql",
@@ -533,7 +484,7 @@ $config = new \Phalcon\Config\Config(
 
 </div>
 
-__Uses__ `Phalcon\Config\Exceptions\InvalidMergeData` · `Phalcon\Support\Collection`
+__Uses__ `Phalcon\Support\Collection`
 { .api-uses }
 
 ### Method Summary
@@ -548,19 +499,18 @@ __Uses__ `Phalcon\Config\Exceptions\InvalidMergeData` · `Phalcon\Support\Collec
 <a class="api-item" href="#configconfig-merge">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">merge</span>( <span class="st">mixed</span> <span class="sv">$toMerge</span> )</code>
+<code class="sig"><span class="sf">merge</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$toMerge</span> )</code>
 <span class="desc">Merges a configuration into the current one</span>
 </a>
 <a class="api-item" href="#configconfig-path">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a value from current config using a dot separated path.</span>
 </a>
 <a class="api-item" href="#configconfig-setpathdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the default path delimiter</span>
 </a>
 <a class="api-item" href="#configconfig-toarray">
@@ -623,13 +573,13 @@ Gets the default path delimiter
 #### `merge()` { #configconfig-merge }
 
 ```php
-public function merge( mixed $toMerge ): ConfigInterface;
+public function merge( array|ConfigInterface $toMerge ): ConfigInterface;
 ```
 
 Merges a configuration into the current one
 
 ```php
-$appConfig = new \Phalcon\Config\Config(
+$appConfig = new \Phalcon\Config(
     [
         "database" => [
             "host" => "localhost",
@@ -646,8 +596,8 @@ $globalConfig->merge($appConfig);
 public function path(
     string $path,
     mixed $defaultValue = null,
-    string $delimiter = null
-): mixed;
+    string|null $delimiter = null
+);
 ```
 
 Returns a value from current config using a dot separated path.
@@ -659,7 +609,7 @@ echo $config->path("unknown.path", "default", ".");
 #### `setPathDelimiter()` { #configconfig-setpathdelimiter }
 
 ```php
-public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
+public function setPathDelimiter( string|null $delimiter = null ): ConfigInterface;
 ```
 
 Sets the default path delimiter
@@ -690,7 +640,7 @@ Builds a new collection with the given data, carrying over the
 configuration of the current one. Clone-based instead of
 constructor-based: adapter subclasses (Ini, Json, Php, Yaml, Grouped)
 define file-loading constructors that are incompatible with the
-parent's `(array data, ...)` signature, so `filter()`, `map()`,
+parent's `(array $data, ...)` signature, so `filter()`, `map()`,
 `sort()` and `where()` would otherwise fail on any adapter instance.
 
 #### `internalMerge()` { #configconfig-internalmerge }
@@ -724,7 +674,7 @@ the nested Config validates its own leaves.
 ## Config\ConfigFactory
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/ConfigFactory.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/ConfigFactory.php){ .src-btn }
 
 Loads Config Adapter class using 'adapter' option, if no extension is
 provided it will be added to filePath
@@ -742,13 +692,11 @@ $config = (new ConfigFactory())->load($options);
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
-        - **`Phalcon\Config\ConfigFactory`**
+- **`Phalcon\Config\ConfigFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exceptions\ConfigNotArrayOrObject` · `Phalcon\Config\Exceptions\MissingConfigOption` · `Phalcon\Config\Exceptions\MissingFileExtension` · `Phalcon\Factory\AbstractFactory`
+__Uses__ `Exception` · `Phalcon\Config\Adapter\Grouped` · `Phalcon\Config\Adapter\Ini` · `Phalcon\Config\Adapter\Json` · `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\Exceptions\MissingConfigOption` · `Phalcon\Config\Exceptions\MissingFileExtension` · `Phalcon\Traits\Factory\FactoryTrait`
 { .api-uses }
 
 ### Method Summary
@@ -762,13 +710,13 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon
 <a class="api-item" href="#configconfigfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">array|Config|string</span> <span class="sv">$config</span> )</code>
 <span class="desc">Load a config to create a new instance</span>
 </a>
 <a class="api-item" href="#configconfigfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fileName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fileName</span>,</span><span class="prm"><span class="st">array|int|string|null</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a new Config instance</span>
 </a>
 <a class="api-item" href="#configconfigfactory-getadapteraliases">
@@ -797,7 +745,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon
 <a class="api-item" href="#configconfigfactory-parseconfig">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">parseConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">parseConfig</span>( <span class="st">array|ConfigInterface|string</span> <span class="sv">$config</span> )</code>
 </a>
 </div>
 
@@ -816,7 +764,7 @@ ConfigFactory constructor.
 #### `load()` { #configconfigfactory-load }
 
 ```php
-public function load( mixed $config ): ConfigInterface;
+public function load( array|Config|string $config ): ConfigInterface;
 ```
 
 Load a config to create a new instance
@@ -827,7 +775,7 @@ Load a config to create a new instance
 public function newInstance(
     string $name,
     string $fileName,
-    mixed $params = null
+    array|int|string|null $params = null
 ): ConfigInterface;
 ```
 
@@ -871,22 +819,22 @@ Returns the available adapters
 #### `parseConfig()` { #configconfigfactory-parseconfig }
 
 ```php
-protected function parseConfig( mixed $config ): array;
+protected function parseConfig( array|ConfigInterface|string $config ): array;
 ```
 
 
 ## Config\ConfigInterface
 
 <span class="badge badge--interface">Interface</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/ConfigInterface.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/ConfigInterface.php){ .src-btn }
 
 Phalcon\Config\ConfigInterface
 
-Interface for Phalcon\Config\Config class
+Interface for Phalcon\Config class
 
 <div class="api-tree" markdown>
 
-- `ArrayAccess`
+- `\ArrayAccess`
     - [`Phalcon\Contracts\Support\Collection`](phalcon_contracts.md#contractssupportcollection)
         - [`Phalcon\Support\Collection\CollectionInterface`](phalcon_support.md#supportcollectioncollectioninterface)
             - **`Phalcon\Config\ConfigInterface`**
@@ -907,17 +855,16 @@ __Uses__ `Phalcon\Support\Collection\CollectionInterface`
 <a class="api-item" href="#configconfiginterface-merge">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">merge</span>( <span class="st">mixed</span> <span class="sv">$toMerge</span> )</code>
+<code class="sig"><span class="sf">merge</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$toMerge</span> )</code>
 </a>
 <a class="api-item" href="#configconfiginterface-path">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#configconfiginterface-setpathdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 </a>
 </div>
 
@@ -934,7 +881,7 @@ public function getPathDelimiter(): string;
 #### `merge()` { #configconfiginterface-merge }
 
 ```php
-public function merge( mixed $toMerge ): ConfigInterface;
+public function merge( array|ConfigInterface $toMerge ): ConfigInterface;
 ```
 
 #### `path()` { #configconfiginterface-path }
@@ -943,21 +890,21 @@ public function merge( mixed $toMerge ): ConfigInterface;
 public function path(
     string $path,
     mixed $defaultValue = null,
-    string $delimiter = null
-): mixed;
+    string|null $delimiter = null
+);
 ```
 
 #### `setPathDelimiter()` { #configconfiginterface-setpathdelimiter }
 
 ```php
-public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
+public function setPathDelimiter( string|null $delimiter = null ): ConfigInterface;
 ```
 
 
 ## Config\Exception
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exception.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Exception.php){ .src-btn }
 
 Exceptions thrown in Phalcon\Config will use this class
 
@@ -979,7 +926,7 @@ Exceptions thrown in Phalcon\Config will use this class
 ## Config\Exceptions\CannotLoadConfigFile
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/CannotLoadConfigFile.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Exceptions/CannotLoadConfigFile.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1026,7 +973,7 @@ public function getFileName(): string;
 ## Config\Exceptions\ConfigNotArrayOrObject
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/ConfigNotArrayOrObject.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Exceptions/ConfigNotArrayOrObject.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1062,7 +1009,7 @@ public function __construct();
 ## Config\Exceptions\GroupedAdapterRequiresArray
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/GroupedAdapterRequiresArray.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Exceptions/GroupedAdapterRequiresArray.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1098,7 +1045,7 @@ public function __construct();
 ## Config\Exceptions\InvalidMergeData
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/InvalidMergeData.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Exceptions/InvalidMergeData.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1134,7 +1081,7 @@ public function __construct();
 ## Config\Exceptions\MissingConfigOption
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/MissingConfigOption.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Exceptions/MissingConfigOption.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1181,7 +1128,7 @@ public function getOption(): string;
 ## Config\Exceptions\MissingFileExtension
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/MissingFileExtension.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Exceptions/MissingFileExtension.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
@@ -1217,7 +1164,7 @@ public function __construct();
 ## Config\Exceptions\MissingYamlExtension
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/MissingYamlExtension.zep){ .src-btn }
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Exceptions/MissingYamlExtension.php){ .src-btn }
 
 <div class="api-tree" markdown>
 
