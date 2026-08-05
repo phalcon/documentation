@@ -110,6 +110,8 @@ offering lower resource consumption and high performance.
       
     
     
+      <link rel="stylesheet" href="../../assets/css/api.css">
+    
       <link rel="stylesheet" href="../../assets/css/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
@@ -5566,7 +5568,7 @@ offering lower resource consumption and high performance.
 </div>
 <h2 id="domainpayloadpayload">Domain\Payload\Payload<a class="headerlink" href="#domainpayloadpayload" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/Payload.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/Payload.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Holds the payload</p>
 <div class="api-tree">
 <ul>
@@ -5661,31 +5663,31 @@ offering lower resource consumption and high performance.
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$extras</span></code>
+<code class="sig"><span class="sv">$extras</span><span class="sm"> = null</span></code>
 <span class="desc">Extra information</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$input</span></code>
+<code class="sig"><span class="sv">$input</span><span class="sm"> = null</span></code>
 <span class="desc">Input</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$messages</span></code>
+<code class="sig"><span class="sv">$messages</span><span class="sm"> = null</span></code>
 <span class="desc">Messages</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$output</span></code>
+<code class="sig"><span class="sv">$output</span><span class="sm"> = null</span></code>
 <span class="desc">Output</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$status</span></code>
+<code class="sig"><span class="sv">$status</span><span class="sm"> = null</span></code>
 <span class="desc">Status</span>
 </div>
 </div>
@@ -5747,7 +5749,7 @@ offering lower resource consumption and high performance.
 <p>@see Status</p>
 <h2 id="domainpayloadpayloadfactory">Domain\Payload\PayloadFactory<a class="headerlink" href="#domainpayloadpayloadfactory" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadFactory.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/PayloadFactory.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Factory to create payload objects.</p>
 <p>It exists so that payload creation can be registered as a service in the DI
 container and substituted in tests, rather than constructing <code>Payload</code>
@@ -5776,7 +5778,7 @@ instances directly.</p>
 <p>Instantiate a new object</p>
 <h2 id="domainpayloadpayloadinterface">Domain\Payload\PayloadInterface<a class="headerlink" href="#domainpayloadpayloadinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/PayloadInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>This interface is used for consumers</p>
 <div class="api-tree">
 <ul>
@@ -5792,7 +5794,7 @@ instances directly.</p>
 <p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Domain\Payload\Payload</code></p>
 <h2 id="domainpayloadreadableinterface">Domain\Payload\ReadableInterface<a class="headerlink" href="#domainpayloadreadableinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/ReadableInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/ReadableInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>This interface is used for consumers (read only)</p>
 <div class="api-tree">
 <ul>
@@ -5808,7 +5810,7 @@ instances directly.</p>
 <p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Domain\Payload\Readable</code></p>
 <h2 id="domainpayloadstatus">Domain\Payload\Status<a class="headerlink" href="#domainpayloadstatus" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/Status.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/Status.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Holds the status codes for the payload.</p>
 <p>The two failure-related statuses are distinct, following the Aura.Payload
 lineage:</p>
@@ -5911,7 +5913,7 @@ lineage:</p>
 
 <h2 id="domainpayloadwriteableinterface">Domain\Payload\WriteableInterface<a class="headerlink" href="#domainpayloadwriteableinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/WriteableInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Domain/Payload/WriteableInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>This interface is used for consumers (write)</p>
 <div class="api-tree">
 <ul>

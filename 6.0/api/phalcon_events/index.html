@@ -110,6 +110,8 @@ offering lower resource consumption and high performance.
       
     
     
+      <link rel="stylesheet" href="../../assets/css/api.css">
+    
       <link rel="stylesheet" href="../../assets/css/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
@@ -6025,6 +6027,17 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
+  <a href="#eventsmanager-getlistenermap" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getListenerMap()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#eventsmanager-getlisteners" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -6243,6 +6256,117 @@ offering lower resource consumption and high performance.
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#eventspsreventinterface" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Events\PsrEventInterface
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eventstraitseventsawaretrait" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Events\Traits\EventsAwareTrait
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Events\Traits\EventsAwareTrait">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-summary_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Method Summary
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Properties
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Methods
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventstraitseventsawaretrait-geteventsmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getEventsManager()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventstraitseventsawaretrait-seteventsmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>setEventsManager()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventstraitseventsawaretrait-firemanagerevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>fireManagerEvent()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventstraitseventsawaretrait-firepsrevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>firePsrEvent()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6282,19 +6406,16 @@ offering lower resource consumption and high performance.
 </div>
 <h2 id="eventsabstracteventsaware">Events\AbstractEventsAware<a class="headerlink" href="#eventsabstracteventsaware" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/AbstractEventsAware.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/AbstractEventsAware.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>This abstract class offers access to the events manager</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Events\AbstractEventsAware</code></strong><ul>
-<li><a href="../phalcon_acl/#acladapterabstractadapter"><code>Phalcon\Acl\Adapter\AbstractAdapter</code></a></li>
-<li><a href="../phalcon_auth/#authguardabstractguard"><code>Phalcon\Auth\Guard\AbstractGuard</code></a></li>
-<li><a href="../phalcon_autoload/#autoloadloader"><code>Phalcon\Autoload\Loader</code></a></li>
+<li><a href="../phalcon_queue/#queueconsumerqueueconsumer"><code>Phalcon\Queue\Consumer\QueueConsumer</code></a></li>
 </ul>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Events\ManagerInterface</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#eventsabstracteventsaware-geteventsmanager">
@@ -6311,7 +6432,7 @@ offering lower resource consumption and high performance.
 </a>
 <a class="api-item" href="#eventsabstracteventsaware-firemanagerevent">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed|bool</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Helper method to fire an event</span>
 </a>
@@ -6344,12 +6465,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nx">string</span> <span class="nv">$eventName</span><span class="p">,</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nx">bool</span> <span class="nv">$cancellable</span> <span class="o">=</span> <span class="k">true</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="o">|</span><span class="nx">bool</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Helper method to fire an event</p>
 <h2 id="eventsevent">Events\Event<a class="headerlink" href="#eventsevent" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Event.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/Event.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<p>Phalcon\Events\Event</p>
 <p>This class offers contextual information of a fired event in the
 EventsManager</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
@@ -6364,13 +6486,13 @@ EventsManager</p>
 <li><strong><code>Phalcon\Events\Event</code></strong> - implements <a href="#eventseventinterface"><code>Phalcon\Events\EventInterface</code></a>, <a href="../phalcon_contracts/#contractseventsstoppable"><code>Phalcon\Contracts\Events\Stoppable</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Events\Stoppable</code> · <code>Phalcon\Events\Exceptions\EventNotCancelable</code> · <code>Phalcon\Events\Exceptions\InvalidEventSource</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Events\Stoppable</code> · <code>Phalcon\Events\Exceptions\EventNotCancelable</code></p>
 <h3 id="method-summary_1">Method Summary<a class="headerlink" href="#method-summary_1" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#eventsevent-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$source</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Phalcon\Events\Event constructor</span>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">object|null</span> <span class="sv">$source</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
+<span class="desc">Event constructor.</span>
 </a>
 <a class="api-item" href="#eventsevent-getdata">
 <code class="vis vis-public">public</code>
@@ -6430,20 +6552,17 @@ EventsManager</p>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sv">$cancelable</span></code>
-<span class="desc">Is event cancelable?</span>
+<code class="sig"><span class="sv">$cancelable</span><span class="sm"> = true</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sv">$data</span></code>
-<span class="desc">Event data</span>
+<code class="sig"><span class="sv">$data</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">object|null</code>
 <code class="sig"><span class="sv">$source</span><span class="sm"> = null</span></code>
-<span class="desc">Event source</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -6455,7 +6574,6 @@ EventsManager</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$type</span></code>
-<span class="desc">Event type</span>
 </div>
 </div>
 
@@ -6465,12 +6583,12 @@ EventsManager</p>
 <h4 id="eventsevent-__construct"><code>__construct()</code><a class="headerlink" href="#eventsevent-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nx">mixed</span> <span class="nv">$source</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nx">object</span><span class="o">|</span><span class="k">null</span> <span class="nv">$source</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">);</span>
 </code></pre></div>
-<p>Phalcon\Events\Event constructor</p>
+<p>Event constructor.</p>
 <h4 id="eventsevent-getdata"><code>getData()</code><a class="headerlink" href="#eventsevent-getdata" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getData</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
@@ -6515,7 +6633,7 @@ EventsManager</p>
 </code></pre></div>
 <h2 id="eventseventinterface">Events\EventInterface<a class="headerlink" href="#eventseventinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/EventInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Phalcon\Events\EventInterface</p>
 <div class="api-tree">
 <ul>
@@ -6528,7 +6646,7 @@ EventsManager</p>
 <p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Events\Event</code></p>
 <h2 id="eventseventsawareinterface">Events\EventsAwareInterface<a class="headerlink" href="#eventseventsawareinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventsAwareInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/EventsAwareInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Phalcon\Events\EventsAwareInterface</p>
 <div class="api-tree">
 <ul>
@@ -6541,7 +6659,8 @@ EventsManager</p>
 <p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Events\EventsAware</code></p>
 <h2 id="eventsexception">Events\Exception<a class="headerlink" href="#eventsexception" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exception.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/Exception.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<p>Phalcon\Events\Exception</p>
 <p>Exceptions thrown in Phalcon\Events will use this class</p>
 <div class="api-tree">
 <ul>
@@ -6561,7 +6680,7 @@ EventsManager</p>
 </div>
 <h2 id="eventsexceptionseventnotcancelable">Events\Exceptions\EventNotCancelable<a class="headerlink" href="#eventsexceptionseventnotcancelable" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/EventNotCancelable.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/Exceptions/EventNotCancelable.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -6590,7 +6709,7 @@ EventsManager</p>
 </code></pre></div>
 <h2 id="eventsexceptionsinvalideventhandler">Events\Exceptions\InvalidEventHandler<a class="headerlink" href="#eventsexceptionsinvalideventhandler" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventHandler.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/Exceptions/InvalidEventHandler.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -6619,7 +6738,7 @@ EventsManager</p>
 </code></pre></div>
 <h2 id="eventsexceptionsinvalideventsource">Events\Exceptions\InvalidEventSource<a class="headerlink" href="#eventsexceptionsinvalideventsource" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventSource.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/Exceptions/InvalidEventSource.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -6651,7 +6770,7 @@ EventsManager</p>
 </code></pre></div>
 <h2 id="eventsexceptionsinvalideventtype">Events\Exceptions\InvalidEventType<a class="headerlink" href="#eventsexceptionsinvalideventtype" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventType.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/Exceptions/InvalidEventType.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -6680,7 +6799,7 @@ EventsManager</p>
 </code></pre></div>
 <h2 id="eventsexceptionsinvalidsubscriberconfiguration">Events\Exceptions\InvalidSubscriberConfiguration<a class="headerlink" href="#eventsexceptionsinvalidsubscriberconfiguration" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidSubscriberConfiguration.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/Exceptions/InvalidSubscriberConfiguration.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -6709,7 +6828,7 @@ EventsManager</p>
 </code></pre></div>
 <h2 id="eventsexceptionsnolistenersforevent">Events\Exceptions\NoListenersForEvent<a class="headerlink" href="#eventsexceptionsnolistenersforevent" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/NoListenersForEvent.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/Exceptions/NoListenersForEvent.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -6738,17 +6857,17 @@ EventsManager</p>
 </code></pre></div>
 <h2 id="eventsmanager">Events\Manager<a class="headerlink" href="#eventsmanager" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Manager.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/Manager.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Phalcon Events Manager, offers an easy way to intercept and manipulate, if
 needed, the normal flow of operation. With the EventsManager the developer
 can create hooks or plugins that will offer monitoring of data, manipulation,
 conditional execution and much more.</p>
 <div class="api-tree">
 <ul>
-<li><strong><code>Phalcon\Events\Manager</code></strong> - implements <a href="#eventsmanagerinterface"><code>Phalcon\Events\ManagerInterface</code></a></li>
+<li><strong><code>Phalcon\Events\Manager</code></strong> - implements <a href="#eventsmanagerinterface"><code>Phalcon\Events\ManagerInterface</code></a>, <code>\Psr\EventDispatcher\EventDispatcherInterface</code>, <a href="../phalcon_contracts/#contractseventsenumerable"><code>Phalcon\Contracts\Events\Enumerable</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\Contracts\Events\Stoppable</code> · <code>Phalcon\Contracts\Events\Subscriber</code> · <code>Phalcon\Events\Exceptions\InvalidEventHandler</code> · <code>Phalcon\Events\Exceptions\InvalidEventType</code> · <code>Phalcon\Events\Exceptions\InvalidSubscriberConfiguration</code> · <code>Phalcon\Events\Exceptions\NoListenersForEvent</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\Contracts\Events\Enumerable</code> · <code>Phalcon\Contracts\Events\Stoppable</code> · <code>Phalcon\Contracts\Events\Subscriber</code> · <code>Phalcon\Db\Event\AbstractModelEvent</code> · <code>Phalcon\Db\Event\ModelEventNameEnum</code> · <code>Phalcon\Events\Exceptions\InvalidEventHandler</code> · <code>Phalcon\Events\Exceptions\InvalidEventType</code> · <code>Phalcon\Events\Exceptions\InvalidSubscriberConfiguration</code> · <code>Phalcon\Events\Exceptions\NoListenersForEvent</code> · <code>Psr\EventDispatcher\EventDispatcherInterface</code> · <code>Psr\EventDispatcher\StoppableEventInterface</code> · <code>Throwable</code></p>
 <h3 id="method-summary_8">Method Summary<a class="headerlink" href="#method-summary_8" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#eventsmanager-addsubscriber">
@@ -6766,7 +6885,7 @@ conditional execution and much more.</p>
 <a class="api-item" href="#eventsmanager-attach">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">attach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$priority</span><span class="sm"> = self::DEFAULT_PRIORITY</span></span>)</code>
+<code class="sig"><span class="sf">attach</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">callable|object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$priority</span><span class="sm"> = self::DEFAULT_PRIORITY</span></span>)</code>
 <span class="desc">Attach a listener to the events manager</span>
 </a>
 <a class="api-item" href="#eventsmanager-clearsubscribers">
@@ -6784,19 +6903,20 @@ conditional execution and much more.</p>
 <a class="api-item" href="#eventsmanager-detach">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">detach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
+<code class="sig"><span class="sf">detach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">callable|object</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Detach the listener from the events manager</span>
 </a>
 <a class="api-item" href="#eventsmanager-detachall">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">detachAll</span>( <span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">detachAll</span>( <span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
 <span class="desc">Removes all events from the EventsManager</span>
 </a>
 <a class="api-item" href="#eventsmanager-dispatch">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">dispatch</span>(<span class="prm"><span class="st">object</span> <span class="sv">$event</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$source</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Dispatches an object event to its listeners, routed by an explicit name</span>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">dispatch</span>(<span class="prm"><span class="st">object</span> <span class="sv">$event</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">object|null</span> <span class="sv">$source</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Dispatches an object event to the appropriate event listeners.</span>
 </a>
 <a class="api-item" href="#eventsmanager-enablepriorities">
 <code class="vis vis-public">public</code>
@@ -6806,6 +6926,7 @@ conditional execution and much more.</p>
 </a>
 <a class="api-item" href="#eventsmanager-fire">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Fires an event in the events manager causing the active listeners to be</span>
 </a>
@@ -6813,12 +6934,19 @@ conditional execution and much more.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">fireAll</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Fires an event and returns every listener&#039;s return value as an</span>
+<span class="desc">Fires an event and returns every listener&#039;s return value as an indexed</span>
 </a>
 <a class="api-item" href="#eventsmanager-firequeue">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">fireQueue</span>(<span class="prm"><span class="st">array</span> <span class="sv">$queue</span>,</span><span class="prm"><span class="st">EventInterface</span> <span class="sv">$event</span></span>)</code>
 <span class="desc">Internal handler to call a queue of events.</span>
+</a>
+<a class="api-item" href="#eventsmanager-getlistenermap">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getListenerMap</span>()</code>
+<span class="desc">Returns every event type that currently has at least one listener,</span>
 </a>
 <a class="api-item" href="#eventsmanager-getlisteners">
 <code class="vis vis-public">public</code>
@@ -6842,7 +6970,7 @@ conditional execution and much more.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getSubscribers</span>()</code>
-<span class="desc">Returns the list of registered subscriber instances. Useful for</span>
+<span class="desc">Returns the list of registered subscriber instances.</span>
 </a>
 <a class="api-item" href="#eventsmanager-halt">
 <code class="vis vis-public">public</code>
@@ -6860,7 +6988,7 @@ conditional execution and much more.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isCollecting</span>()</code>
-<span class="desc">Check if the events manager is collecting all all the responses returned</span>
+<span class="desc">Check if the events manager is collecting all the responses returned by</span>
 </a>
 <a class="api-item" href="#eventsmanager-ishalted">
 <code class="vis vis-public">public</code>
@@ -6878,7 +7006,7 @@ conditional execution and much more.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isStrict</span>()</code>
-<span class="desc">Returns whether strict mode is enabled. When true, fire()/fireAll()</span>
+<span class="desc">Returns whether strict mode is enabled.</span>
 </a>
 <a class="api-item" href="#eventsmanager-isvalidhandler">
 <code class="vis vis-public">public</code>
@@ -6895,7 +7023,7 @@ conditional execution and much more.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">resume</span>()</code>
-<span class="desc">Clears the manager-level kill switch set by halt(). Subsequent</span>
+<span class="desc">Clears the manager-level kill switch set by halt().</span>
 </a>
 <a class="api-item" href="#eventsmanager-setmethodexistscachelimit">
 <code class="vis vis-public">public</code>
@@ -6907,13 +7035,13 @@ conditional execution and much more.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setStopOnFalse</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-<span class="desc">Enables/disables the stop-on-false short-circuit. When true, a</span>
+<span class="desc">Enables/disables the stop-on-false short-circuit. Default off.</span>
 </a>
 <a class="api-item" href="#eventsmanager-setstrict">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setStrict</span>( <span class="st">bool</span> <span class="sv">$strict</span> )</code>
-<span class="desc">Enables/disables strict mode. When true, fire()/fireAll() throw</span>
+<span class="desc">Enables/disables strict mode. When true, fire()/fireAll() throw when</span>
 </a>
 <a class="api-item" href="#eventsmanager-afterfire">
 <code class="vis vis-protected">protected</code>
@@ -6946,15 +7074,10 @@ conditional execution and much more.</p>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$eventNameCache</span><span class="sm"> = []</span></code>
 <span class="desc">Parsed-eventType cache. Memoizes the strpos + substr work done in
-fire() so the same event name fired repeatedly (the common case
-for db:beforeQuery, model:afterSave, etc.) collapses to a single
+fire() so the same event name fired repeatedly collapses to a single
 hash lookup.
 
-Shape: <code>eventNameCache[$eventType] = [typePrefix, eventName]</code>
-
-Unbounded by design - distinct event types in a typical Phalcon
-application are well under 100 keys, and the cache never needs
-invalidation (parse is deterministic for a given eventType string).</span>
+Shape: <code>eventNameCache[$eventType] = [typePrefix, eventName]</code></span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -6969,63 +7092,47 @@ invalidation (parse is deterministic for a given eventType string).</span>
       ...
   ]
 
-Kept sorted by priority descending when priorities are enabled
-(FIFO within the same priority); otherwise listeners are simply
-appended in attach order.
-
-<code>type</code> is classified once at attach() time so dispatch() can
+<code>type</code> is classified once at attach() time so the dispatch loop can
 route via a simple branch:
 
-  0 - Closure: direct invocation via <code>{handler}(args)</code>, no
-      arg-array alloc per call
-  1 - [obj, method] array callable: direct dynamic dispatch
-      <code>handler[0]-&gt;{handler[1]}(args)</code>
-  2 - plain object: dynamic dispatch via method named after the
-      event (the classic Phalcon listener pattern); class name is
-      captured at attach time to skip get_class() per fire
-  3 - generic callable (string fn name, invokable object,
-      [class, staticMethod]): call_user_func_array</span>
+  0 - Closure
+  1 - [obj, method] array callable
+  2 - plain object: method named after the event
+  3 - generic callable (string fn name, invokable object, etc.)</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$fireDepth</span><span class="sm"> = 0</span></code>
-<span class="desc">Re-entrancy depth of fire()/fireAll(). 0 means no fire is in
-progress. Incremented on every fire entry, decremented on exit.
-Used to keep nested fire() calls from clobbering the outer
-caller&#039;s <code>$this-&gt;responses</code> accumulator.</span>
+<span class="desc">Re-entrancy depth of fire()/fireAll(). 0 means no fire is in progress.
+Used to keep nested fire() calls from clobbering the outer caller&#039;s
+<code>$this-&gt;responses</code> accumulator.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$halted</span><span class="sm"> = false</span></code>
 <span class="desc">Manager-level kill switch. When true, every fire()/fireAll()/
-fireQueue() call returns immediately (null or empty array) without
-dispatching. Cleared by resume(). Survives across fire() calls,
-unlike Event::stop() which only stops the current dispatch chain.</span>
+fireQueue() call returns immediately without dispatching. Cleared by
+resume().</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$methodExistsCache</span><span class="sm"> = []</span></code>
-<span class="desc">Memoized method_exists() results for the OBJECT_METHOD dispatch
-path in dispatch(). Keyed by <code>handlerClass =&gt; [methodName =&gt; bool]</code>.
-A class doesn&#039;t gain methods at runtime so the lookup is permanent.</span>
+<span class="desc">Memoized method_exists() results for the plain-object dispatch path.
+Keyed by <code>handlerClass =&gt; [methodName =&gt; bool]</code>.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$methodExistsCacheLimit</span><span class="sm"> = 0</span></code>
 <span class="desc">Maximum number of distinct handler classes retained in
-methodExistsCache. 0 (default) keeps the original unbounded
-behavior; a positive value clears the cache when adding a new
-class would exceed it. Re-warming is cheap (method_exists is
-O(1)) and the cap is meant for very long-lived workers that see
-many distinct listener classes over time.</span>
+methodExistsCache. 0 (default) keeps the unbounded behavior.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;array-key, mixed&gt;</code>
 <code class="sig"><span class="sv">$responses</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -7033,25 +7140,21 @@ many distinct listener classes over time.</span>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$stopOnFalse</span><span class="sm"> = false</span></code>
 <span class="desc">When true, a listener returning literal <code>false</code> (with the event&#039;s
-<code>cancelable</code> flag on) short-circuits the dispatch loop and pins
-the fire() return as <code>false</code>. Default off - preserves the pre-5.13
-&quot;last-wins&quot; contract for codebases that rely on later listeners
-overriding an earlier false return [#17019].</span>
+<code>cancelable</code> flag on) short-circuits the dispatch loop and pins the
+fire() return as <code>false</code>. Default off.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$strict</span><span class="sm"> = false</span></code>
-<span class="desc">When true, fire()/fireAll() throw on dispatch of an event that
-has zero matching listeners. Catches typos in dev. Default off.</span>
+<span class="desc">When true, fire()/fireAll() throw on dispatch of an event that has zero
+matching listeners. Default off.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$subscriberEventsCache</span><span class="sm"> = []</span></code>
-<span class="desc">Memoized getSubscribedEvents() maps keyed by Subscriber class name.
-The static method&#039;s return is stable for the lifetime of a class
-definition, so the cache never needs invalidation.</span>
+<span class="desc">Memoized getSubscribedEvents() maps keyed by Subscriber class name.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -7061,7 +7164,7 @@ definition, so the cache never needs invalidation.</span>
 </div>
 
 <h3 id="methods_8">Methods<a class="headerlink" href="#methods_8" title="Permanent link">&para;</a></h3>
-<div class="api-group">Public · 28</div>
+<div class="api-group">Public · 29</div>
 
 <h4 id="eventsmanager-addsubscriber"><code>addSubscriber()</code><a class="headerlink" href="#eventsmanager-addsubscriber" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addSubscriber</span><span class="p">(</span> <span class="nx">Subscriber</span> <span class="nv">$subscriber</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
@@ -7075,8 +7178,8 @@ pipeline.</p>
 <p>Returns if priorities are enabled</p>
 <h4 id="eventsmanager-attach"><code>attach()</code><a class="headerlink" href="#eventsmanager-attach" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">attach</span><span class="p">(</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="nx">mixed</span> <span class="nv">$handler</span><span class="p">,</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="nx">callable</span><span class="o">|</span><span class="nx">object</span> <span class="nv">$handler</span><span class="p">,</span>
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="nx">int</span> <span class="nv">$priority</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">DEFAULT_PRIORITY</span>
 <a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
@@ -7086,8 +7189,6 @@ pipeline.</p>
 </code></pre></div>
 <p>Removes every registered subscriber and detaches each listener they
 contributed. Listeners attached via attach() are untouched.</p>
-<p>Iterates a snapshot of <code>subscribers</code> so removeSubscriber() can safely
-mutate the original property during the walk.</p>
 <h4 id="eventsmanager-collectresponses"><code>collectResponses()</code><a class="headerlink" href="#eventsmanager-collectresponses" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">collectResponses</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$collect</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
@@ -7096,44 +7197,36 @@ by every registered listener in a single fire</p>
 <h4 id="eventsmanager-detach"><code>detach()</code><a class="headerlink" href="#eventsmanager-detach" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">detach</span><span class="p">(</span>
 <a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="nx">mixed</span> <span class="nv">$handler</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="nx">callable</span><span class="o">|</span><span class="nx">object</span> <span class="nv">$handler</span>
 <a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Detach the listener from the events manager</p>
 <h4 id="eventsmanager-detachall"><code>detachAll()</code><a class="headerlink" href="#eventsmanager-detachall" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">detachAll</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">detachAll</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$type</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Removes all events from the EventsManager</p>
 <h4 id="eventsmanager-dispatch"><code>dispatch()</code><a class="headerlink" href="#eventsmanager-dispatch" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">dispatch</span><span class="p">(</span>
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="nx">object</span> <span class="nv">$event</span><span class="p">,</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="nx">mixed</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    <span class="nx">mixed</span> <span class="nv">$source</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="p">);</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    <span class="nx">object</span><span class="o">|</span><span class="k">null</span> <span class="nv">$source</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
-<p>Dispatches an object event to its listeners, routed by an explicit name
-(a string, or a [class, method] array) or, failing that, by the event's
-class name. Listeners receive the event object. Propagation stops when
-the event implements Phalcon\Contracts\Events\Stoppable and reports it
-is stopped.</p>
+<p>Dispatches an object event to the appropriate event listeners.</p>
+<p>PSR-14 shaped: listeners receive the (possibly mutated) event object.
+Propagation stops when the event implements
+{@see StoppableEventInterface} and reports it is stopped.</p>
 <h4 id="eventsmanager-enablepriorities"><code>enablePriorities()</code><a class="headerlink" href="#eventsmanager-enablepriorities" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">enablePriorities</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$enablePriorities</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Set if priorities are enabled in the EventsManager.</p>
-<p>A priority queue of events is a data structure similar
-to a regular queue of events: we can also put and extract
-elements from it. The difference is that each element in a
-priority queue is associated with a value called priority.
-This value is used to order elements of a queue: elements
-with higher priority are retrieved before the elements with
-lower priority.</p>
 <h4 id="eventsmanager-fire"><code>fire()</code><a class="headerlink" href="#eventsmanager-fire" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fire</span><span class="p">(</span>
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="nx">object</span> <span class="nv">$source</span><span class="p">,</span>
 <a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span>
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="p">);</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Fires an event in the events manager causing the active listeners to be
 notified about it</p>
@@ -7147,23 +7240,26 @@ notified about it</p>
 <a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span>
 <a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
-<p>Fires an event and returns every listener's return value as an
-indexed array. Independent of collectResponses(); the caller's
-collected state on <code>$this-&gt;responses</code> is preserved (stashed and
-restored across the call).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nv">$results</span> <span class="o">=</span> <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">fireAll</span><span class="p">(</span><span class="s2">&quot;db:beforeQuery&quot;</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">);</span>
-</code></pre></div>
+<p>Fires an event and returns every listener's return value as an indexed
+array. Independent of collectResponses(); the caller's collected state
+on <code>$this-&gt;responses</code> is preserved (stashed and restored).</p>
 <h4 id="eventsmanager-firequeue"><code>fireQueue()</code><a class="headerlink" href="#eventsmanager-firequeue" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">fireQueue</span><span class="p">(</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="k">array</span> <span class="nv">$queue</span><span class="p">,</span>
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="nx">EventInterface</span> <span class="nv">$event</span>
-<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">fireQueue</span><span class="p">(</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="k">array</span> <span class="nv">$queue</span><span class="p">,</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="nx">EventInterface</span> <span class="nv">$event</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Internal handler to call a queue of events.</p>
-<p>Kept at its original 2-arg signature for BC; thin wrapper around
-the private <code>dispatch()</code> helper. Direct callers pay the cost of
-re-extracting metadata from the Event; the framework's own fire()
-path bypasses this wrapper and calls dispatch() with hoisted args.</p>
+<p>Kept as a thin BC wrapper around the private dispatch loop.</p>
+<h4 id="eventsmanager-getlistenermap"><code>getListenerMap()</code><a class="headerlink" href="#eventsmanager-getlistenermap" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getListenerMap</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+</code></pre></div>
+<p>Returns every event type that currently has at least one listener,
+mapped to that type's listeners. Types contributed by subscribers are
+included, because addSubscriber() attaches through the regular listener
+pipeline.</p>
+<p>Unwrapping is delegated to getListeners() so the internal shape of
+$this-&gt;events is read in exactly one place.</p>
 <h4 id="eventsmanager-getlisteners"><code>getListeners()</code><a class="headerlink" href="#eventsmanager-getlisteners" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getListeners</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
@@ -7171,8 +7267,7 @@ path bypasses this wrapper and calls dispatch() with hoisted args.</p>
 <h4 id="eventsmanager-getmethodexistscachelimit"><code>getMethodExistsCacheLimit()</code><a class="headerlink" href="#eventsmanager-getmethodexistscachelimit" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getMethodExistsCacheLimit</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
-<p>Returns the configured method_exists-cache cap (0 = unlimited).
-See setMethodExistsCacheLimit().</p>
+<p>Returns the configured method_exists-cache cap (0 = unlimited).</p>
 <h4 id="eventsmanager-getresponses"><code>getResponses()</code><a class="headerlink" href="#eventsmanager-getresponses" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getResponses</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
@@ -7181,16 +7276,13 @@ See setMethodExistsCacheLimit().</p>
 <h4 id="eventsmanager-getsubscribers"><code>getSubscribers()</code><a class="headerlink" href="#eventsmanager-getsubscribers" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getSubscribers</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
-<p>Returns the list of registered subscriber instances. Useful for
-introspection and test setup/teardown.</p>
+<p>Returns the list of registered subscriber instances.</p>
 <h4 id="eventsmanager-halt"><code>halt()</code><a class="headerlink" href="#eventsmanager-halt" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">halt</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Manager-level kill switch. After halt(), every fire()/fireAll()/
 fireQueue() call returns immediately without dispatching, until
-resume() is called. Use this when a listener needs to abort all
-subsequent event activity for the lifetime of the manager (e.g.
-a security check that cancels everything downstream).</p>
+resume() is called.</p>
 <h4 id="eventsmanager-haslisteners"><code>hasListeners()</code><a class="headerlink" href="#eventsmanager-haslisteners" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">hasListeners</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
@@ -7198,8 +7290,8 @@ a security check that cancels everything downstream).</p>
 <h4 id="eventsmanager-iscollecting"><code>isCollecting()</code><a class="headerlink" href="#eventsmanager-iscollecting" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isCollecting</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
-<p>Check if the events manager is collecting all all the responses returned
-by every registered listener in a single fire</p>
+<p>Check if the events manager is collecting all the responses returned by
+every registered listener in a single fire</p>
 <h4 id="eventsmanager-ishalted"><code>isHalted()</code><a class="headerlink" href="#eventsmanager-ishalted" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isHalted</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
@@ -7207,14 +7299,11 @@ by every registered listener in a single fire</p>
 <h4 id="eventsmanager-isstoponfalse"><code>isStopOnFalse()</code><a class="headerlink" href="#eventsmanager-isstoponfalse" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isStopOnFalse</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
-<p>Returns whether the stop-on-false short-circuit is enabled.
-See setStopOnFalse().</p>
+<p>Returns whether the stop-on-false short-circuit is enabled.</p>
 <h4 id="eventsmanager-isstrict"><code>isStrict()</code><a class="headerlink" href="#eventsmanager-isstrict" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isStrict</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
-<p>Returns whether strict mode is enabled. When true, fire()/fireAll()
-throw when an event has no matching listeners - useful in dev to
-catch typos. Default off.</p>
+<p>Returns whether strict mode is enabled.</p>
 <h4 id="eventsmanager-isvalidhandler"><code>isValidHandler()</code><a class="headerlink" href="#eventsmanager-isvalidhandler" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isValidHandler</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$handler</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
@@ -7222,35 +7311,25 @@ catch typos. Default off.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">removeSubscriber</span><span class="p">(</span> <span class="nx">Subscriber</span> <span class="nv">$subscriber</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Removes a previously registered subscriber. Detaches every listener the
-subscriber declared via getSubscribedEvents(). Idempotent - calling
-with a subscriber that was never added (or already removed) is a no-op.</p>
+subscriber declared via getSubscribedEvents(). Idempotent.</p>
 <h4 id="eventsmanager-resume"><code>resume()</code><a class="headerlink" href="#eventsmanager-resume" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">resume</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
-<p>Clears the manager-level kill switch set by halt(). Subsequent
-fire()/fireAll()/fireQueue() calls resume normal dispatch.</p>
+<p>Clears the manager-level kill switch set by halt().</p>
 <h4 id="eventsmanager-setmethodexistscachelimit"><code>setMethodExistsCacheLimit()</code><a class="headerlink" href="#eventsmanager-setmethodexistscachelimit" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setMethodExistsCacheLimit</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$methodExistsCacheLimit</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Caps the number of distinct handler classes retained in the
-method_exists memoization cache. 0 disables the cap (the
-default; preserves the original unbounded behavior). When the
-cap is exceeded, the cache is cleared and re-warms on subsequent
-fires.</p>
+method_exists memoization cache. 0 disables the cap.</p>
 <h4 id="eventsmanager-setstoponfalse"><code>setStopOnFalse()</code><a class="headerlink" href="#eventsmanager-setstoponfalse" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setStopOnFalse</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
-<p>Enables/disables the stop-on-false short-circuit. When true, a
-listener returning literal <code>false</code> (with cancelable=true) stops
-the current event's queue and pins the fire() return as <code>false</code>.
-Later listeners cannot overwrite the cancel. Default off.</p>
-<p>Independent of halt() / event-&gt;stop() - only governs how the
-dispatch loop reacts to a <code>false</code> listener return.</p>
+<p>Enables/disables the stop-on-false short-circuit. Default off.</p>
 <h4 id="eventsmanager-setstrict"><code>setStrict()</code><a class="headerlink" href="#eventsmanager-setstrict" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setStrict</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$strict</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
-<p>Enables/disables strict mode. When true, fire()/fireAll() throw
-when dispatching an event with zero matching listeners.</p>
+<p>Enables/disables strict mode. When true, fire()/fireAll() throw when
+dispatching an event with zero matching listeners.</p>
 <div class="api-group">Protected · 2</div>
 
 <h4 id="eventsmanager-afterfire"><code>afterFire()</code><a class="headerlink" href="#eventsmanager-afterfire" title="Permanent link">&para;</a></h4>
@@ -7263,12 +7342,7 @@ when dispatching an event with zero matching listeners.</p>
 <a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Extension seam invoked after an event has been dispatched to its
-listener queues. Receives the computed dispatch result as <code>status</code>
-and returns the value fire() hands back to its caller; the base
-implementation returns <code>status</code> unchanged. A subclass can override
-it to run bookkeeping or to post-process / rewrite the result.</p>
-<p>Only called when the event was actually dispatched; the halted and
-no-listener short-circuits in fire() return before reaching it.</p>
+listener queues. The base implementation returns <code>status</code> unchanged.</p>
 <h4 id="eventsmanager-beforefire"><code>beforeFire()</code><a class="headerlink" href="#eventsmanager-beforefire" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">beforeFire</span><span class="p">(</span>
 <a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>    <span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
@@ -7278,15 +7352,11 @@ no-listener short-circuits in fire() return before reaching it.</p>
 <a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Extension seam invoked before an event is dispatched. The base
-implementation returns true, so dispatch proceeds unchanged. A
-subclass can override it to inspect the source and data and, by
-returning false, abort the dispatch entirely - for example to
-redirect a deferred event onto an external queue. Invoked before the
-no-listener short-circuits, so it sees every fire(), including those
-with no locally attached listeners.</p>
+implementation returns true, so dispatch proceeds. Returning false
+aborts the dispatch entirely.</p>
 <h2 id="eventsmanagerinterface">Events\ManagerInterface<a class="headerlink" href="#eventsmanagerinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/ManagerInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/ManagerInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Phalcon\Events\ManagerInterface</p>
 <div class="api-tree">
 <ul>
@@ -7297,6 +7367,86 @@ with no locally attached listeners.</p>
 </ul>
 </div>
 <p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Events\Manager</code></p>
+<h2 id="eventspsreventinterface">Events\PsrEventInterface<a class="headerlink" href="#eventspsreventinterface" title="Permanent link">&para;</a></h2>
+<p><span class="badge badge--interface">Interface</span>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/PsrEventInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<div class="api-tree">
+<ul>
+<li><strong><code>Phalcon\Events\PsrEventInterface</code></strong></li>
+</ul>
+</div>
+<h2 id="eventstraitseventsawaretrait">Events\Traits\EventsAwareTrait<a class="headerlink" href="#eventstraitseventsawaretrait" title="Permanent link">&para;</a></h2>
+<p><span class="badge badge--trait">Trait</span>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Events/Traits/EventsAwareTrait.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<div class="api-tree">
+<ul>
+<li><strong><code>Phalcon\Events\Traits\EventsAwareTrait</code></strong></li>
+</ul>
+</div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Events\Exception</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Phalcon\Events\PsrEventInterface</code></p>
+<p class="api-used-by"><strong>Used by</strong> <a href="../phalcon_application/#applicationabstractapplication"><code>Phalcon\Application\AbstractApplication</code></a> · <a href="../phalcon_auth/#authguardabstractguard"><code>Phalcon\Auth\Guard\AbstractGuard</code></a> · <a href="../phalcon_autoload/#autoloadloader"><code>Phalcon\Autoload\Loader</code></a> · <a href="../phalcon_cache/#cacheabstractcache"><code>Phalcon\Cache\AbstractCache</code></a> · <a href="../phalcon_cli/#clitask"><code>Phalcon\Cli\Task</code></a> · <a href="../phalcon_db/#dbadapterabstractadapter"><code>Phalcon\Db\Adapter\AbstractAdapter</code></a> · <a href="../phalcon_di/#didi"><code>Phalcon\Di\Di</code></a> · <a href="../phalcon_dispatcher/#dispatcherabstractdispatcher"><code>Phalcon\Dispatcher\AbstractDispatcher</code></a> · <a href="../phalcon_http/#httprequest"><code>Phalcon\Http\Request</code></a> · <a href="../phalcon_http/#httpresponse"><code>Phalcon\Http\Response</code></a> · <a href="../phalcon_mvc/#mvccontroller"><code>Phalcon\Mvc\Controller</code></a> · <a href="../phalcon_mvc/#mvcdispatcher"><code>Phalcon\Mvc\Dispatcher</code></a> · <a href="../phalcon_mvc/#mvcmicro"><code>Phalcon\Mvc\Micro</code></a> · <a href="../phalcon_mvc/#mvcmodelmanager"><code>Phalcon\Mvc\Model\Manager</code></a> · <a href="../phalcon_mvc/#mvcrouter"><code>Phalcon\Mvc\Router</code></a> · <a href="../phalcon_mvc/#mvcview"><code>Phalcon\Mvc\View</code></a> · <a href="../phalcon_mvc/#mvcviewengineabstractengine"><code>Phalcon\Mvc\View\Engine\AbstractEngine</code></a> · <a href="../phalcon_mvc/#mvcviewsimple"><code>Phalcon\Mvc\View\Simple</code></a> · <a href="../phalcon_storage/#storageadapterabstractadapter"><code>Phalcon\Storage\Adapter\AbstractAdapter</code></a></p>
+<h3 id="method-summary_9">Method Summary<a class="headerlink" href="#method-summary_9" title="Permanent link">&para;</a></h3>
+<div class="api-list">
+<a class="api-item" href="#eventstraitseventsawaretrait-geteventsmanager">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
+<span class="desc">Returns the internal event manager</span>
+</a>
+<a class="api-item" href="#eventstraitseventsawaretrait-seteventsmanager">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
+<span class="desc">Sets the events manager</span>
+</a>
+<a class="api-item" href="#eventstraitseventsawaretrait-firemanagerevent">
+<code class="vis vis-protected">protected</code>
+<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
+<span class="desc">Helper method to fire an event</span>
+</a>
+<a class="api-item" href="#eventstraitseventsawaretrait-firepsrevent">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">firePsrEvent</span>(<span class="prm"><span class="st">PsrEventInterface</span> <span class="sv">$event</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+</a>
+</div>
+
+<h3 id="properties_3">Properties<a class="headerlink" href="#properties_3" title="Permanent link">&para;</a></h3>
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+</div>
+</div>
+
+<h3 id="methods_9">Methods<a class="headerlink" href="#methods_9" title="Permanent link">&para;</a></h3>
+<div class="api-group">Public · 2</div>
+
+<h4 id="eventstraitseventsawaretrait-geteventsmanager"><code>getEventsManager()</code><a class="headerlink" href="#eventstraitseventsawaretrait-geteventsmanager" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getEventsManager</span><span class="p">()</span><span class="o">:</span> <span class="nx">ManagerInterface</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+</code></pre></div>
+<p>Returns the internal event manager</p>
+<h4 id="eventstraitseventsawaretrait-seteventsmanager"><code>setEventsManager()</code><a class="headerlink" href="#eventstraitseventsawaretrait-seteventsmanager" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setEventsManager</span><span class="p">(</span> <span class="nx">ManagerInterface</span> <span class="nv">$eventsManager</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+</code></pre></div>
+<p>Sets the events manager</p>
+<div class="api-group">Protected · 2</div>
+
+<h4 id="eventstraitseventsawaretrait-firemanagerevent"><code>fireManagerEvent()</code><a class="headerlink" href="#eventstraitseventsawaretrait-firemanagerevent" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">fireManagerEvent</span><span class="p">(</span>
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>    <span class="nx">string</span> <span class="nv">$eventName</span><span class="p">,</span>
+<a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a>    <span class="nx">bool</span> <span class="nv">$cancellable</span> <span class="o">=</span> <span class="k">true</span>
+<a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="p">);</span>
+</code></pre></div>
+<p>Helper method to fire an event</p>
+<h4 id="eventstraitseventsawaretrait-firepsrevent"><code>firePsrEvent()</code><a class="headerlink" href="#eventstraitseventsawaretrait-firepsrevent" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">firePsrEvent</span><span class="p">(</span>
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>    <span class="nx">PsrEventInterface</span> <span class="nv">$event</span><span class="p">,</span>
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+</code></pre></div>
 
   
 

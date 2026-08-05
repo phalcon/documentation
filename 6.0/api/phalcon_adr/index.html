@@ -110,6 +110,8 @@ offering lower resource consumption and high performance.
       
     
     
+      <link rel="stylesheet" href="../../assets/css/api.css">
+    
       <link rel="stylesheet" href="../../assets/css/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
@@ -8939,7 +8941,7 @@ offering lower resource consumption and high performance.
 </div>
 <h2 id="adrapplication">ADR\Application<a class="headerlink" href="#adrapplication" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Application.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Application.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>ADR composition root. Owns (or accepts) a container, exposes a small
 registration surface that hides the container's definition API, configures
 the convention router, and handles the request through the ADR flow.</p>
@@ -8951,12 +8953,12 @@ parameters need to be declared via <code>define()</code>.</p>
 <li><strong><code>Phalcon\ADR\Application</code></strong> - implements <a href="../phalcon_contracts/#contractsadrapplication"><code>Phalcon\Contracts\ADR\Application</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\ADR\Container\AdrProvider</code> · <code>Phalcon\ADR\Events\Event</code> · <code>Phalcon\ADR\Exceptions\RouteNotFound</code> · <code>Phalcon\Container\Container</code> · <code>Phalcon\Container\ContainerFactory</code> · <code>Phalcon\Contracts\ADR\Application</code> · <code>Phalcon\Contracts\ADR\Dispatcher</code> · <code>Phalcon\Contracts\ADR\Router\AttributeFilter</code> · <code>Phalcon\Contracts\ADR\Router\Router</code> · <code>Phalcon\Contracts\Events\Manager</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\Request\Bag\AttributeBag</code> · <code>Phalcon\Http\Response</code> · <code>Phalcon\Http\ResponseInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\ADR\Container\AdrProvider</code> · <code>Phalcon\ADR\Events\Event</code> · <code>Phalcon\ADR\Exceptions\RouteNotFound</code> · <code>Phalcon\Container\Container</code> · <code>Phalcon\Container\ContainerFactory</code> · <code>Phalcon\Contracts\ADR\Application</code> · <code>Phalcon\Contracts\ADR\Dispatcher</code> · <code>Phalcon\Contracts\ADR\Router\AttributeFilter</code> · <code>Phalcon\Contracts\ADR\Router\Router</code> · <code>Phalcon\Contracts\Events\Manager</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\Response</code> · <code>Phalcon\Http\ResponseInterface</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrapplication-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Container</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">Container|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#adrapplication-bind">
 <code class="vis vis-public">public</code>
@@ -9040,7 +9042,7 @@ parameters need to be declared via <code>define()</code>.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Container</code>
 <code class="sig"><span class="sv">$container</span></code>
 </div>
 <div class="api-item">
@@ -9059,7 +9061,7 @@ parameters need to be declared via <code>define()</code>.</p>
 <div class="api-group">Public · 12</div>
 
 <h4 id="adrapplication-__construct"><code>__construct()</code><a class="headerlink" href="#adrapplication-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">Container</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">Container</span><span class="o">|</span><span class="k">null</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
 </code></pre></div>
 <h4 id="adrapplication-bind"><code>bind()</code><a class="headerlink" href="#adrapplication-bind" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">bind</span><span class="p">(</span>
@@ -9131,7 +9133,7 @@ so nothing escapes uncaught.</p>
 <p>Set the single delimiter between words in a path segment.</p>
 <h2 id="adrcontaineradrprovider">ADR\Container\AdrProvider<a class="headerlink" href="#adrcontaineradrprovider" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Container/AdrProvider.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Container/AdrProvider.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Registers the ADR seams in the container; concretes autowire.</p>
 <p>Used instead of <code>Phalcon\Container\Provider\Web</code> for ADR applications. It
 shares the short aliases (<code>request</code>/<code>response</code>/<code>router</code>/<code>eventsManager</code>) but
@@ -9159,7 +9161,7 @@ binds the ADR contracts behind them.</p>
 </code></pre></div>
 <h2 id="adrdispatcher">ADR\Dispatcher<a class="headerlink" href="#adrdispatcher" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Dispatcher.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Dispatcher.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Resolves the Action (and middleware) through the container, wraps it in the
 pipeline and runs it, firing the <code>pipeline:*</code> events. Global middleware is
 resolved once and cached; only route middleware resolves per request.</p>
@@ -9199,18 +9201,18 @@ adapter. Everything else is constructor-injected.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">IocContainer</code>
 <code class="sig"><span class="sv">$container</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Manager</code>
 <code class="sig"><span class="sv">$events</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$globalMiddleware</span></code>
+<code class="sig"><span class="sv">$globalMiddleware</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -9246,7 +9248,7 @@ adapter. Everything else is constructor-injected.</p>
 </code></pre></div>
 <h2 id="adremittersapiemitter">ADR\Emitter\SapiEmitter<a class="headerlink" href="#adremittersapiemitter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Emitter/SapiEmitter.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Emitter/SapiEmitter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Emits a response through the SAPI (headers + body via <code>Response::send()</code>).
 Refuses to emit once headers have already been sent.</p>
 <div class="api-tree">
@@ -9272,7 +9274,7 @@ Refuses to emit once headers have already been sent.</p>
 </code></pre></div>
 <h2 id="adrerrorresponder">ADR\ErrorResponder<a class="headerlink" href="#adrerrorresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/ErrorResponder.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/ErrorResponder.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Turns a thrown exception into a response through the responder chain.</p>
 <p>The full diagnostic (class, message, file:line and the exception itself) goes
 to the log with a correlation reference; the client receives only a generic
@@ -9284,7 +9286,7 @@ ancestor chain, so map ordering never matters.</p>
 <li><strong><code>Phalcon\ADR\ErrorResponder</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Exceptions\MethodNotAllowed</code> · <code>Phalcon\ADR\Exceptions\RouteNotFound</code> · <code>Phalcon\ADR\Payload\Payload</code> · <code>Phalcon\ADR\Payload\Status</code> · <code>Phalcon\Contracts\ADR\Payload\Payload</code> · <code>Phalcon\Contracts\ADR\Responder\Responder</code> · <code>Phalcon\Contracts\Logger\Logger</code> · <code>Phalcon\Http\RequestInterface</code> · <code>Phalcon\Http\ResponseInterface</code> · <code>Throwable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Exceptions\MethodNotAllowed</code> · <code>Phalcon\ADR\Exceptions\RouteNotFound</code> · <code>Phalcon\ADR\Payload\Payload</code> · <code>Phalcon\ADR\Payload\Status</code> · <code>Phalcon\Contracts\ADR\Responder\Responder</code> · <code>Phalcon\Contracts\Logger\Logger</code> · <code>Phalcon\Http\RequestInterface</code> · <code>Phalcon\Http\ResponseInterface</code> · <code>Throwable</code></p>
 <h3 id="method-summary_4">Method Summary<a class="headerlink" href="#method-summary_4" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrerrorresponder-__construct">
@@ -9323,13 +9325,13 @@ ancestor chain, so map ordering never matters.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Responder</code>
 <code class="sig"><span class="sv">$chain</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$debug</span></code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$debug</span><span class="sm"> = false</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -9338,7 +9340,7 @@ ancestor chain, so map ordering never matters.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Logger</code>
 <code class="sig"><span class="sv">$logger</span></code>
 </div>
 </div>
@@ -9383,7 +9385,7 @@ ancestor chain, so map ordering never matters.</p>
 next to a <code>404</code> tells the client the opposite of what happened.</p>
 <h2 id="adreventfulhandler">ADR\EventfulHandler<a class="headerlink" href="#adreventfulhandler" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/EventfulHandler.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/EventfulHandler.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>The terminal handler of the pipeline: fires the <code>adr:*</code> events around the
 Action's execution.</p>
 <div class="api-tree">
@@ -9409,12 +9411,12 @@ Action's execution.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Action</code>
 <code class="sig"><span class="sv">$action</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Manager</code>
 <code class="sig"><span class="sv">$events</span></code>
 </div>
 </div>
@@ -9433,7 +9435,7 @@ Action's execution.</p>
 </code></pre></div>
 <h2 id="adreventsevent">ADR\Events\Event<a class="headerlink" href="#adreventsevent" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Events/Event.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Events/Event.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>The ADR event vocabulary, fired through the native events manager.</p>
 <div class="api-tree">
 <ul>
@@ -9470,12 +9472,12 @@ Action's execution.</p>
 
 <h2 id="adrexceptionsactiondirectorynotset">ADR\Exceptions\ActionDirectoryNotSet<a class="headerlink" href="#adrexceptionsactiondirectorynotset" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/ActionDirectoryNotSet.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/ActionDirectoryNotSet.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Thrown when the router is asked to match without an action directory; the
 convention cannot resolve sub-namespaces without one.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\ActionDirectoryNotSet</code></strong></li>
 </ul>
@@ -9500,12 +9502,12 @@ convention cannot resolve sub-namespaces without one.</p>
 </code></pre></div>
 <h2 id="adrexceptionsexception">ADR\Exceptions\Exception<a class="headerlink" href="#adrexceptionsexception" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/Exception.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/Exception.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Generic exception for the ADR component, and the base for every typed ADR
 exception.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\Exception</code></strong> - implements <a href="../phalcon_contracts/#contractsadrexceptionsadrthrowable"><code>Phalcon\Contracts\ADR\Exceptions\ADRThrowable</code></a><ul>
 <li><a href="#adrexceptionsactiondirectorynotset"><code>Phalcon\ADR\Exceptions\ActionDirectoryNotSet</code></a></li>
 <li><a href="#adrexceptionsheadersalreadysent"><code>Phalcon\ADR\Exceptions\HeadersAlreadySent</code></a></li>
@@ -9522,12 +9524,12 @@ exception.</p>
 <p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Contracts\ADR\Exceptions\ADRThrowable</code></p>
 <h2 id="adrexceptionsheadersalreadysent">ADR\Exceptions\HeadersAlreadySent<a class="headerlink" href="#adrexceptionsheadersalreadysent" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/HeadersAlreadySent.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/HeadersAlreadySent.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Thrown when the emitter is asked to send a response after headers have
 already been sent.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\HeadersAlreadySent</code></strong></li>
 </ul>
@@ -9552,11 +9554,11 @@ already been sent.</p>
 </code></pre></div>
 <h2 id="adrexceptionsmethodnotallowed">ADR\Exceptions\MethodNotAllowed<a class="headerlink" href="#adrexceptionsmethodnotallowed" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/MethodNotAllowed.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/MethodNotAllowed.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Thrown when a route matches the path but not the request method.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\MethodNotAllowed</code></strong></li>
 </ul>
@@ -9581,11 +9583,11 @@ already been sent.</p>
 </code></pre></div>
 <h2 id="adrexceptionsnotanaction">ADR\Exceptions\NotAnAction<a class="headerlink" href="#adrexceptionsnotanaction" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/NotAnAction.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/NotAnAction.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Thrown when the dispatcher resolves a class that is not an ADR Action.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\NotAnAction</code></strong></li>
 </ul>
@@ -9610,12 +9612,12 @@ already been sent.</p>
 </code></pre></div>
 <h2 id="adrexceptionsoutputalreadysent">ADR\Exceptions\OutputAlreadySent<a class="headerlink" href="#adrexceptionsoutputalreadysent" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/OutputAlreadySent.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/OutputAlreadySent.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Thrown when the emitter is asked to send a response after output has already
 been sent.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\OutputAlreadySent</code></strong></li>
 </ul>
@@ -9640,11 +9642,11 @@ been sent.</p>
 </code></pre></div>
 <h2 id="adrexceptionsroutenotfound">ADR\Exceptions\RouteNotFound<a class="headerlink" href="#adrexceptionsroutenotfound" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Exceptions/RouteNotFound.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Exceptions/RouteNotFound.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Thrown when no route matches the request.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\RouteNotFound</code></strong></li>
 </ul>
@@ -9669,7 +9671,7 @@ been sent.</p>
 </code></pre></div>
 <h2 id="adrfrontabstracthttpfront">ADR\Front\AbstractHttpFront<a class="headerlink" href="#adrfrontabstracthttpfront" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Front/AbstractHttpFront.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Front/AbstractHttpFront.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Boots a container, builds the Application, handles the request and emits the
 response. Userland front controllers override <code>loadEnvironment()</code>,
 <code>registerProviders()</code> and optionally <code>getApplication()</code>; bootstrap is
@@ -9682,7 +9684,7 @@ response. Userland front controllers override <code>loadEnvironment()</code>,
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Application</code> · <code>Phalcon\ADR\Container\AdrProvider</code> · <code>Phalcon\Container\Container</code> · <code>Phalcon\Contracts\ADR\Application</code> · <code>Phalcon\Contracts\ADR\Emitter\Emitter</code> · <code>Phalcon\Contracts\Front\FrontController</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Application</code> · <code>Phalcon\ADR\Container\AdrProvider</code> · <code>Phalcon\Container\Container</code> · <code>Phalcon\Contracts\ADR\Application</code> · <code>Phalcon\Contracts\ADR\Emitter\Emitter</code> · <code>Phalcon\Contracts\Front\FrontController</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Throwable</code></p>
 <h3 id="method-summary_12">Method Summary<a class="headerlink" href="#method-summary_12" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrfrontabstracthttpfront-__construct">
@@ -9780,7 +9782,7 @@ configure it (<code>setBaseNamespace()</code>/<code>secureWith()</code>) or to w
 </code></pre></div>
 <h2 id="adrfronthttpfront">ADR\Front\HttpFront<a class="headerlink" href="#adrfronthttpfront" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Front/HttpFront.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Front/HttpFront.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Concrete default HTTP front controller. Boots the ADR provider and runs the
 application with the framework defaults; subclass to override
 <code>loadEnvironment()</code> or <code>registerProviders()</code>.</p>
@@ -9794,7 +9796,7 @@ application with the framework defaults; subclass to override
 </div>
 <h2 id="adrinputinput">ADR\Input\Input<a class="headerlink" href="#adrinputinput" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Input/Input.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Input/Input.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Generic, string-keyed input bag for an Action.</p>
 <p><code>fromRequest()</code> merges the request query, parsed body and route attributes
 into a single bag (later sources win). Extend it to build a typed, per-domain
@@ -9805,7 +9807,7 @@ input value object: the factories use late static binding, so a subclass's
 <li><strong><code>Phalcon\ADR\Input\Input</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\Request\Bag\AttributeBag</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Http\AttributeRequest</code></p>
 <h3 id="method-summary_13">Method Summary<a class="headerlink" href="#method-summary_13" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrinputinput-__construct">
@@ -9874,7 +9876,7 @@ input value object: the factories use late static binding, so a subclass's
 </code></pre></div>
 <h2 id="adrmiddlewarecorsmiddleware">ADR\Middleware\CorsMiddleware<a class="headerlink" href="#adrmiddlewarecorsmiddleware" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Middleware/CorsMiddleware.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Middleware/CorsMiddleware.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>CORS middleware. Inert by default: it emits nothing until an origin allowlist
 is configured, and only for requests whose <code>Origin</code> is on it. The allowed
 origin is always echoed back explicitly, so credentials are never paired with
@@ -9918,17 +9920,17 @@ a wildcard origin. Preflight <code>OPTIONS</code> requests are answered directly
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedHeaders</span></code>
+<code class="sig"><span class="sv">$allowedHeaders</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedMethods</span></code>
+<code class="sig"><span class="sv">$allowedMethods</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedOrigins</span></code>
+<code class="sig"><span class="sv">$allowedOrigins</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -9962,7 +9964,7 @@ a wildcard origin. Preflight <code>OPTIONS</code> requests are answered directly
 </code></pre></div>
 <h2 id="adrmiddlewaremethodoverridemiddleware">ADR\Middleware\MethodOverrideMiddleware<a class="headerlink" href="#adrmiddlewaremethodoverridemiddleware" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Middleware/MethodOverrideMiddleware.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Middleware/MethodOverrideMiddleware.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Thin enabler for the native <code>_method</code> override.</p>
 <p><code>Request::getMethod()</code> already honors <code>X-HTTP-Method-Override</code> and, when the
 parameter-override flag is on, the <code>_method</code> field. This middleware only
@@ -10004,7 +10006,7 @@ method.</p>
 </code></pre></div>
 <h2 id="adrmiddlewarerequestidmiddleware">ADR\Middleware\RequestIdMiddleware<a class="headerlink" href="#adrmiddlewarerequestidmiddleware" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Middleware/RequestIdMiddleware.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Middleware/RequestIdMiddleware.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Ensures every request carries an <code>X-Request-Id</code>, reusing an incoming one or
 generating it, exposing it on the request attributes and the response.</p>
 <div class="api-tree">
@@ -10012,7 +10014,7 @@ generating it, exposing it on the request attributes and the response.</p>
 <li><strong><code>Phalcon\ADR\Middleware\RequestIdMiddleware</code></strong> - implements <a href="../phalcon_contracts/#contractsadrmiddleware"><code>Phalcon\Contracts\ADR\Middleware</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\Handler</code> · <code>Phalcon\Contracts\ADR\Middleware</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\Request\Bag\AttributeBag</code> · <code>Phalcon\Http\ResponseInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\Handler</code> · <code>Phalcon\Contracts\ADR\Middleware</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\ResponseInterface</code></p>
 <h3 id="method-summary_16">Method Summary<a class="headerlink" href="#method-summary_16" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrmiddlewarerequestidmiddleware-__invoke">
@@ -10033,7 +10035,7 @@ generating it, exposing it on the request attributes and the response.</p>
 </code></pre></div>
 <h2 id="adrmiddlewaretimingmiddleware">ADR\Middleware\TimingMiddleware<a class="headerlink" href="#adrmiddlewaretimingmiddleware" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Middleware/TimingMiddleware.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Middleware/TimingMiddleware.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Adds an <code>X-Response-Time</code> header measuring how long the rest of the pipeline
 took to produce the response.</p>
 <div class="api-tree">
@@ -10062,7 +10064,7 @@ took to produce the response.</p>
 </code></pre></div>
 <h2 id="adrpayloadpayload">ADR\Payload\Payload<a class="headerlink" href="#adrpayloadpayload" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Payload/Payload.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Payload/Payload.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Immutable payload produced by the domain layer.</p>
 <p>Every <code>with*()</code> method returns a new instance, leaving the receiver
 unchanged. Named factories provide a concise way to create a payload for the
@@ -10428,7 +10430,7 @@ established - HTTP 401).</p>
 <p>Returns a copy of the payload with the given status.</p>
 <h2 id="adrpayloadpayloadfactory">ADR\Payload\PayloadFactory<a class="headerlink" href="#adrpayloadpayloadfactory" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Payload/PayloadFactory.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Payload/PayloadFactory.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Thin, injectable factory mirroring the <code>Payload</code> named factories.</p>
 <p>It exists so that payload creation can be registered as a service in the DI
 container and substituted in tests, rather than calling the static factories
@@ -10638,7 +10640,7 @@ directly.</p>
 <p>Creates a payload with the <code>VALID</code> status.</p>
 <h2 id="adrpayloadstatus">ADR\Payload\Status<a class="headerlink" href="#adrpayloadstatus" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Payload/Status.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Payload/Status.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Holds the status codes for the payload.</p>
 <p>The two failure-related statuses are distinct, following the Aura.Payload
 lineage:</p>
@@ -10745,7 +10747,7 @@ lineage:</p>
 
 <h2 id="adrpipeline">ADR\Pipeline<a class="headerlink" href="#adrpipeline" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Pipeline.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Pipeline.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Self-recursive middleware runner. It is itself a Handler: it carries an index
 and hands a new Pipeline (advanced by one) forward as the <code>next</code> handler, so
 <code>next</code> is always a real Handler - no anonymous classes or callables.</p>
@@ -10773,8 +10775,8 @@ and hands a new Pipeline (advanced by one) forward as the <code>next</code> hand
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$index</span></code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$index</span><span class="sm"> = 0</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -10803,7 +10805,7 @@ and hands a new Pipeline (advanced by one) forward as the <code>next</code> hand
 </code></pre></div>
 <h2 id="adrresponderabstractformattedresponder">ADR\Responder\AbstractFormattedResponder<a class="headerlink" href="#adrresponderabstractformattedresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/AbstractFormattedResponder.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/AbstractFormattedResponder.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Base for content-type responders: composes Status, Redirect and Format
 responders into a chain. Subclasses bind the formatter(s).</p>
 <div class="api-tree">
@@ -10834,7 +10836,7 @@ responders into a chain. Subclasses bind the formatter(s).</p>
 </code></pre></div>
 <h2 id="adrresponderchainresponder">ADR\Responder\ChainResponder<a class="headerlink" href="#adrresponderchainresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/ChainResponder.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/ChainResponder.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Composes single-purpose responders. Each link receives the request, the
 response threaded so far, and the payload, and returns the response.</p>
 <div class="api-tree">
@@ -10868,8 +10870,8 @@ response threaded so far, and the payload, and returns the response.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">Responder[]</code>
-<code class="sig"><span class="sv">$links</span></code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$links</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
@@ -10891,7 +10893,7 @@ response threaded so far, and the payload, and returns the response.</p>
 </code></pre></div>
 <h2 id="adrresponderformatresponder">ADR\Responder\FormatResponder<a class="headerlink" href="#adrresponderformatresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/FormatResponder.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/FormatResponder.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Negotiates a formatter against the request <code>Accept</code> header and renders the
 payload as the response body + content type.</p>
 <p>If no formatter accepts the header it falls back to the first (default)
@@ -10920,7 +10922,7 @@ formatter, so the content type and body are never left unset.</p>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$formatters</span></code>
+<code class="sig"><span class="sv">$formatters</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
@@ -10939,7 +10941,7 @@ formatter, so the content type and body are never left unset.</p>
 </code></pre></div>
 <h2 id="adrresponderformatterjsonformatter">ADR\Responder\Formatter\JsonFormatter<a class="headerlink" href="#adrresponderformatterjsonformatter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/Formatter/JsonFormatter.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/Formatter/JsonFormatter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Renders a payload as JSON.</p>
 <div class="api-tree">
 <ul>
@@ -10980,7 +10982,7 @@ formatter, so the content type and body are never left unset.</p>
 </code></pre></div>
 <h2 id="adrresponderformattertextformatter">ADR\Responder\Formatter\TextFormatter<a class="headerlink" href="#adrresponderformattertextformatter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/Formatter/TextFormatter.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/Formatter/TextFormatter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Renders a payload as plain text.</p>
 <div class="api-tree">
 <ul>
@@ -11021,7 +11023,7 @@ formatter, so the content type and body are never left unset.</p>
 </code></pre></div>
 <h2 id="adrresponderjsonresponder">ADR\Responder\JsonResponder<a class="headerlink" href="#adrresponderjsonresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/JsonResponder.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/JsonResponder.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>A formatted responder bound to the JSON formatter.</p>
 <div class="api-tree">
 <ul>
@@ -11051,7 +11053,7 @@ formatter, so the content type and body are never left unset.</p>
 </code></pre></div>
 <h2 id="adrresponderredirect">ADR\Responder\Redirect<a class="headerlink" href="#adrresponderredirect" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/Redirect.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/Redirect.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Value object describing a redirect. An Action sets it on the payload; the
 RedirectResponder turns it into a <code>Location</code> header and status code.</p>
 <div class="api-tree">
@@ -11096,12 +11098,12 @@ RedirectResponder turns it into a <code>Location</code> header and status code.<
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$status</span></code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$status</span><span class="sm"> = 302</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sv">$url</span></code>
 </div>
 </div>
@@ -11132,7 +11134,7 @@ RedirectResponder turns it into a <code>Location</code> header and status code.<
 </code></pre></div>
 <h2 id="adrresponderredirectresponder">ADR\Responder\RedirectResponder<a class="headerlink" href="#adrresponderredirectresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/RedirectResponder.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/RedirectResponder.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Applies a <code>Redirect</code> value object carried on the payload result: sets the
 status code and the <code>Location</code> header. A no-op when the result is not a
 redirect.</p>
@@ -11163,7 +11165,7 @@ redirect.</p>
 </code></pre></div>
 <h2 id="adrresponderstatusmapper">ADR\Responder\StatusMapper<a class="headerlink" href="#adrresponderstatusmapper" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/StatusMapper.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/StatusMapper.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Maps a domain <code>Status</code> to an HTTP status code.</p>
 <p><code>Status</code> is the single source of truth: the default map covers every
 <code>Status</code> constant. Any status that is not mapped resolves to 500, never a
@@ -11210,7 +11212,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 <p>An unmapped status resolves to 500 (server error), never a silent 200.</p>
 <h2 id="adrresponderstatusresponder">ADR\Responder\StatusResponder<a class="headerlink" href="#adrresponderstatusresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/StatusResponder.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/StatusResponder.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Sets the response HTTP status code from the payload status, via StatusMapper.</p>
 <div class="api-tree">
 <ul>
@@ -11222,7 +11224,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 <div class="api-list">
 <a class="api-item" href="#adrresponderstatusresponder-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">StatusMapper</span> <span class="sv">$mapper</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">StatusMapper|null</span> <span class="sv">$mapper</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#adrresponderstatusresponder-__invoke">
 <code class="vis vis-public">public</code>
@@ -11235,7 +11237,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">StatusMapper</code>
 <code class="sig"><span class="sv">$mapper</span></code>
 </div>
 </div>
@@ -11244,7 +11246,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 <div class="api-group">Public · 2</div>
 
 <h4 id="adrresponderstatusresponder-__construct"><code>__construct()</code><a class="headerlink" href="#adrresponderstatusresponder-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">StatusMapper</span> <span class="nv">$mapper</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">StatusMapper</span><span class="o">|</span><span class="k">null</span> <span class="nv">$mapper</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
 </code></pre></div>
 <h4 id="adrresponderstatusresponder-__invoke"><code>__invoke()</code><a class="headerlink" href="#adrresponderstatusresponder-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-128-1" name="__codelineno-128-1" href="#__codelineno-128-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
@@ -11255,7 +11257,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 </code></pre></div>
 <h2 id="adrrespondertextresponder">ADR\Responder\TextResponder<a class="headerlink" href="#adrrespondertextresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/TextResponder.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/TextResponder.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>A formatted responder bound to the text formatter.</p>
 <div class="api-tree">
 <ul>
@@ -11285,7 +11287,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 </code></pre></div>
 <h2 id="adrresponderviewresponder">ADR\Responder\ViewResponder<a class="headerlink" href="#adrresponderviewresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Responder/ViewResponder.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Responder/ViewResponder.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Renders a template from the payload and returns it as an HTML response.</p>
 <p>The HTML sibling of <code>JsonResponder</code>: serialization is swapped for rendering,
 the status mapping and the <code>Responder</code> contract stay the same. It depends on
@@ -11326,12 +11328,12 @@ MVC view.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Renderer</code>
 <code class="sig"><span class="sv">$renderer</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">StatusMapper</code>
 <code class="sig"><span class="sv">$statusMapper</span></code>
 </div>
 <div class="api-item">
@@ -11373,7 +11375,7 @@ extras travel as they are, so an action can hand the view whatever the
 result should not carry.</p>
 <h2 id="adrrouterattributefilter">ADR\Router\AttributeFilter<a class="headerlink" href="#adrrouterattributefilter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Router/AttributeFilter.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Router/AttributeFilter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Reads an Action's optional static <code>params()</code> declaration and transforms the
 router's positional tail segments: regex match (miss =&gt; RouteNotFound), cast
 to a scalar type, then an optional converter closure. Declaration order names
@@ -11395,6 +11397,7 @@ segments pass through under their positional keys. An Action without
 </a>
 <a class="api-item" href="#adrrouterattributefilter-cast">
 <code class="vis vis-protected">protected</code>
+<code class="ret">float|int|string</code>
 <code class="sig"><span class="sf">cast</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
 </a>
 </div>
@@ -11414,11 +11417,11 @@ segments pass through under their positional keys. An Action without
 <div class="highlight"><pre><span></span><code><a id="__codelineno-135-1" name="__codelineno-135-1" href="#__codelineno-135-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">cast</span><span class="p">(</span>
 <a id="__codelineno-135-2" name="__codelineno-135-2" href="#__codelineno-135-2"></a>    <span class="nx">string</span> <span class="nv">$value</span><span class="p">,</span>
 <a id="__codelineno-135-3" name="__codelineno-135-3" href="#__codelineno-135-3"></a>    <span class="nx">string</span> <span class="nv">$type</span>
-<a id="__codelineno-135-4" name="__codelineno-135-4" href="#__codelineno-135-4"></a><span class="p">);</span>
+<a id="__codelineno-135-4" name="__codelineno-135-4" href="#__codelineno-135-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">float</span><span class="o">|</span><span class="nx">int</span><span class="o">|</span><span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="adrrouterrouter">ADR\Router\Router<a class="headerlink" href="#adrrouterrouter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Router/Router.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Router/Router.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Convention router. <code>method + static path -&gt; Action class</code>; the path tail
 becomes positional request attributes. Middleware is resolved from a
 namespace-prefix map (group semantics); global middleware stays on the
@@ -11566,7 +11569,7 @@ RFC 9110 both leave path structure entirely to the origin server.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">verbs</span>()</code>
-<span class="desc">The HTTP verbs the convention recognises, in class-name form.</span>
+<span class="desc">The HTTP verbs the convention recognizes, in class-name form.</span>
 </a>
 </div>
 
@@ -11700,10 +11703,10 @@ convention would ever have produced.</p>
 <h4 id="adrrouterrouter-verbs"><code>verbs()</code><a class="headerlink" href="#adrrouterrouter-verbs" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">verbs</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
-<p>The HTTP verbs the convention recognises, in class-name form.</p>
+<p>The HTTP verbs the convention recognizes, in class-name form.</p>
 <h2 id="adrrouterroutermatch">ADR\Router\RouterMatch<a class="headerlink" href="#adrrouterroutermatch" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Router/RouterMatch.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/ADR/Router/RouterMatch.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Immutable result of a successful route match.</p>
 <div class="api-tree">
 <ul>
@@ -11715,7 +11718,7 @@ convention would ever have produced.</p>
 <div class="api-list">
 <a class="api-item" href="#adrrouterroutermatch-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$action</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$middleware</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$action</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$middleware</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#adrrouterroutermatch-getaction">
 <code class="vis vis-public">public</code>
@@ -11749,17 +11752,17 @@ convention would ever have produced.</p>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$attributes</span></code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$middleware</span></code>
+<code class="sig"><span class="sv">$middleware</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
-<code class="sig"><span class="sv">$name</span></code>
+<code class="sig"><span class="sv">$name</span><span class="sm"> = null</span></code>
 </div>
 </div>
 
@@ -11771,7 +11774,7 @@ convention would ever have produced.</p>
 <a id="__codelineno-154-2" name="__codelineno-154-2" href="#__codelineno-154-2"></a>    <span class="nx">string</span> <span class="nv">$action</span><span class="p">,</span>
 <a id="__codelineno-154-3" name="__codelineno-154-3" href="#__codelineno-154-3"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
 <a id="__codelineno-154-4" name="__codelineno-154-4" href="#__codelineno-154-4"></a>    <span class="k">array</span> <span class="nv">$middleware</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-154-5" name="__codelineno-154-5" href="#__codelineno-154-5"></a>    <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-154-5" name="__codelineno-154-5" href="#__codelineno-154-5"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-154-6" name="__codelineno-154-6" href="#__codelineno-154-6"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="adrrouterroutermatch-getaction"><code>getAction()</code><a class="headerlink" href="#adrrouterroutermatch-getaction" title="Permanent link">&para;</a></h4>

@@ -110,6 +110,8 @@ offering lower resource consumption and high performance.
       
     
     
+      <link rel="stylesheet" href="../../assets/css/api.css">
+    
       <link rel="stylesheet" href="../../assets/css/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
@@ -6886,17 +6888,6 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
-  <a href="#properties_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Properties
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_12" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -6913,28 +6904,6 @@ offering lower resource consumption and high performance.
     <span class="md-ellipsis">
       <span class="md-typeset">
         <code>__construct()</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clitask-geteventsmanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <code>getEventsManager()</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clitask-seteventsmanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <code>setEventsManager()</code>
       </span>
     </span>
   </a>
@@ -7001,11 +6970,11 @@ offering lower resource consumption and high performance.
 </div>
 <h2 id="cliconsole">Cli\Console<a class="headerlink" href="#cliconsole" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Console.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>This component allows to create CLI applications using Phalcon</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diinjectable"><code>Phalcon\Di\Injectable</code></a><ul>
 <li><a href="../phalcon_application/#applicationabstractapplication"><code>Phalcon\Application\AbstractApplication</code></a><ul>
 <li><strong><code>Phalcon\Cli\Console</code></strong></li>
@@ -7017,19 +6986,19 @@ offering lower resource consumption and high performance.
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\Application\AbstractApplication</code> · <code>Phalcon\Cli\Console\Exceptions\ContainerRequired</code> · <code>Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition</code> · <code>Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound</code> · <code>Phalcon\Cli\Router\Route</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Phalcon\Mvc\ModuleDefinitionInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\Application\AbstractApplication</code> · <code>Phalcon\Cli\Console\Exception</code> · <code>Phalcon\Cli\Console\Exceptions\ContainerRequired</code> · <code>Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition</code> · <code>Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound</code> · <code>Phalcon\Cli\Router\Route</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Events\Exception</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#cliconsole-handle">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">handle</span>( <span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span> )</code>
 <span class="desc">Handle the whole command-line tasks</span>
 </a>
 <a class="api-item" href="#cliconsole-setargument">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">setArgument</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$str</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shift</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Set an specific argument</span>
+<code class="sig"><span class="sf">setArgument</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$str</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shift</span><span class="sm"> = true</span></span>)</code>
+<span class="desc">Set a specific argument</span>
 </a>
 </div>
 
@@ -7051,20 +7020,20 @@ offering lower resource consumption and high performance.
 <div class="api-group">Public · 2</div>
 
 <h4 id="cliconsole-handle"><code>handle()</code><a class="headerlink" href="#cliconsole-handle" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">);</span>
 </code></pre></div>
 <p>Handle the whole command-line tasks</p>
 <h4 id="cliconsole-setargument"><code>setArgument()</code><a class="headerlink" href="#cliconsole-setargument" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setArgument</span><span class="p">(</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">array</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">array</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="p">[],</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nx">bool</span> <span class="nv">$str</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="nx">bool</span> <span class="nv">$shift</span> <span class="o">=</span> <span class="k">true</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
-<p>Set an specific argument</p>
+<p>Set a specific argument</p>
 <h2 id="cliconsoleexception">Cli\Console\Exception<a class="headerlink" href="#cliconsoleexception" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exception.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Console/Exception.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Exceptions thrown in Phalcon\Cli\Console will use this class</p>
 <div class="api-tree">
 <ul>
@@ -7084,7 +7053,7 @@ offering lower resource consumption and high performance.
 </div>
 <h2 id="cliconsoleexceptionscontainerrequired">Cli\Console\Exceptions\ContainerRequired<a class="headerlink" href="#cliconsoleexceptionscontainerrequired" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/ContainerRequired.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Console/Exceptions/ContainerRequired.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7116,7 +7085,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <h2 id="cliconsoleexceptionsinvalidmoduledefinition">Cli\Console\Exceptions\InvalidModuleDefinition<a class="headerlink" href="#cliconsoleexceptionsinvalidmoduledefinition" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/InvalidModuleDefinition.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Console/Exceptions/InvalidModuleDefinition.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7136,7 +7105,7 @@ offering lower resource consumption and high performance.
 <div class="api-list">
 <a class="api-item" href="#cliconsoleexceptionsinvalidmoduledefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$reason</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$reason</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -7145,13 +7114,13 @@ offering lower resource consumption and high performance.
 
 <h4 id="cliconsoleexceptionsinvalidmoduledefinition-__construct"><code>__construct()</code><a class="headerlink" href="#cliconsoleexceptionsinvalidmoduledefinition-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nx">string</span> <span class="nv">$reason</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$reason</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">);</span>
 </code></pre></div>
 <h2 id="cliconsoleexceptionsmoduledefinitionpathnotfound">Cli\Console\Exceptions\ModuleDefinitionPathNotFound<a class="headerlink" href="#cliconsoleexceptionsmoduledefinitionpathnotfound" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/ModuleDefinitionPathNotFound.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Console/Exceptions/ModuleDefinitionPathNotFound.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7183,7 +7152,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <h2 id="clidispatcher">Cli\Dispatcher<a class="headerlink" href="#clidispatcher" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Dispatcher.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Dispatcher.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Dispatching is the process of taking the command-line arguments, extracting
 the module name, task name, action name, and optional parameters contained in
 it, and then instantiating a task and calling an action on it.</p>
@@ -7204,7 +7173,7 @@ it, and then instantiating a task and calling an action on it.</p>
 </code></pre></div>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
 <li><a href="../phalcon_dispatcher/#dispatcherabstractdispatcher"><code>Phalcon\Dispatcher\AbstractDispatcher</code></a><ul>
 <li><strong><code>Phalcon\Cli\Dispatcher</code></strong> - implements <a href="#clidispatcherinterface"><code>Phalcon\Cli\DispatcherInterface</code></a></li>
@@ -7216,31 +7185,31 @@ it, and then instantiating a task and calling an action on it.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cli\Dispatcher\Exception</code> · <code>Phalcon\Dispatcher\AbstractDispatcher</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Phalcon\Filter\FilterInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Cli\Dispatcher\Exception</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Dispatcher\AbstractDispatcher</code> · <code>Phalcon\Filter\Exception</code> · <code>Phalcon\Filter\Filter</code></p>
 <h3 id="method-summary_4">Method Summary<a class="headerlink" href="#method-summary_4" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#clidispatcher-callactionmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">callActionMethod</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionMethod</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">callActionMethod</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionMethod</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Calls the action method.</span>
 </a>
 <a class="api-item" href="#clidispatcher-getactivetask">
 <code class="vis vis-public">public</code>
-<code class="ret">TaskInterface</code>
+<code class="ret">TaskInterface|null</code>
 <code class="sig"><span class="sf">getActiveTask</span>()</code>
 <span class="desc">Returns the active task in the dispatcher</span>
 </a>
 <a class="api-item" href="#clidispatcher-getlasttask">
 <code class="vis vis-public">public</code>
-<code class="ret">TaskInterface</code>
+<code class="ret">TaskInterface|null</code>
 <code class="sig"><span class="sf">getLastTask</span>()</code>
 <span class="desc">Returns the latest dispatched controller</span>
 </a>
 <a class="api-item" href="#clidispatcher-getoption">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">getOption</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getOption</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets an option by its name or numeric index</span>
 </a>
 <a class="api-item" href="#clidispatcher-getoptions">
@@ -7264,7 +7233,7 @@ it, and then instantiating a task and calling an action on it.</p>
 <a class="api-item" href="#clidispatcher-hasoption">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">hasOption</span>( <span class="st">mixed</span> <span class="sv">$option</span> )</code>
+<code class="sig"><span class="sf">hasOption</span>( <span class="st">int|string</span> <span class="sv">$option</span> )</code>
 <span class="desc">Check if an option exists</span>
 </a>
 <a class="api-item" href="#clidispatcher-setdefaulttask">
@@ -7293,7 +7262,7 @@ it, and then instantiating a task and calling an action on it.</p>
 </a>
 <a class="api-item" href="#clidispatcher-handleexception">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">handleException</span>( <span class="st">\Exception</span> <span class="sv">$exception</span> )</code>
+<code class="sig"><span class="sf">handleException</span>( <span class="st">Exception</span> <span class="sv">$exception</span> )</code>
 <span class="desc">Handles a user exception</span>
 </a>
 <a class="api-item" href="#clidispatcher-throwdispatchexception">
@@ -7334,25 +7303,25 @@ it, and then instantiating a task and calling an action on it.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">callActionMethod</span><span class="p">(</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="nx">mixed</span> <span class="nv">$handler</span><span class="p">,</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nx">string</span> <span class="nv">$actionMethod</span><span class="p">,</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="k">array</span> <span class="nv">$params</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Calls the action method.</p>
 <p>The CLI options collected by the dispatcher are appended to the
-positional <code>params</code> before the call, so a task action receives any
+positional <code>parameters</code> before the call, so a task action receives any
 options as trailing arguments after its declared parameters.</p>
 <h4 id="clidispatcher-getactivetask"><code>getActiveTask()</code><a class="headerlink" href="#clidispatcher-getactivetask" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveTask</span><span class="p">()</span><span class="o">:</span> <span class="nx">TaskInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveTask</span><span class="p">()</span><span class="o">:</span> <span class="nx">TaskInterface</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the active task in the dispatcher</p>
 <h4 id="clidispatcher-getlasttask"><code>getLastTask()</code><a class="headerlink" href="#clidispatcher-getlasttask" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getLastTask</span><span class="p">()</span><span class="o">:</span> <span class="nx">TaskInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getLastTask</span><span class="p">()</span><span class="o">:</span> <span class="nx">TaskInterface</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the latest dispatched controller</p>
 <h4 id="clidispatcher-getoption"><code>getOption()</code><a class="headerlink" href="#clidispatcher-getoption" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getOption</span><span class="p">(</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nx">mixed</span> <span class="nv">$option</span><span class="p">,</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="nx">mixed</span> <span class="nv">$filters</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nx">int</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$option</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$filters</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
@@ -7370,7 +7339,7 @@ options as trailing arguments after its declared parameters.</p>
 </code></pre></div>
 <p>Gets the default task suffix</p>
 <h4 id="clidispatcher-hasoption"><code>hasOption()</code><a class="headerlink" href="#clidispatcher-hasoption" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">hasOption</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$option</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">hasOption</span><span class="p">(</span> <span class="nx">int</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$option</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Check if an option exists</p>
 <h4 id="clidispatcher-setdefaulttask"><code>setDefaultTask()</code><a class="headerlink" href="#clidispatcher-setdefaulttask" title="Permanent link">&para;</a></h4>
@@ -7392,7 +7361,7 @@ options as trailing arguments after its declared parameters.</p>
 <div class="api-group">Protected · 2</div>
 
 <h4 id="clidispatcher-handleexception"><code>handleException()</code><a class="headerlink" href="#clidispatcher-handleexception" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">handleException</span><span class="p">(</span> <span class="nx">\Exception</span> <span class="nv">$exception</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">handleException</span><span class="p">(</span> <span class="nx">Exception</span> <span class="nv">$exception</span> <span class="p">);</span>
 </code></pre></div>
 <p>Handles a user exception</p>
 <h4 id="clidispatcher-throwdispatchexception"><code>throwDispatchException()</code><a class="headerlink" href="#clidispatcher-throwdispatchexception" title="Permanent link">&para;</a></h4>
@@ -7404,7 +7373,7 @@ options as trailing arguments after its declared parameters.</p>
 <p>Throws an internal exception</p>
 <h2 id="clidispatcherinterface">Cli\DispatcherInterface<a class="headerlink" href="#clidispatcherinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/DispatcherInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/DispatcherInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Interface for Phalcon\Cli\Dispatcher</p>
 <div class="api-tree">
 <ul>
@@ -7420,7 +7389,7 @@ options as trailing arguments after its declared parameters.</p>
 <p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Cli\Dispatcher</code></p>
 <h2 id="clidispatcherexception">Cli\Dispatcher\Exception<a class="headerlink" href="#clidispatcherexception" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Dispatcher/Exception.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Dispatcher/Exception.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Exceptions thrown in Phalcon\Cli\Dispatcher will use this class</p>
 <div class="api-tree">
 <ul>
@@ -7435,7 +7404,7 @@ options as trailing arguments after its declared parameters.</p>
 </div>
 <h2 id="clirouter">Cli\Router<a class="headerlink" href="#clirouter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Router.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Phalcon\Cli\Router is the standard framework router. Routing is the process
 of taking a command-line arguments and decomposing it into parameters to
 determine which module, task, and action of that task should receive the
@@ -7454,7 +7423,7 @@ request.</p>
 </code></pre></div>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
 <li><strong><code>Phalcon\Cli\Router</code></strong> - implements <a href="#clirouterinterface"><code>Phalcon\Cli\RouterInterface</code></a></li>
 </ul>
@@ -7463,7 +7432,7 @@ request.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cli\Router\Exception</code> · <code>Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable</code> · <code>Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType</code> · <code>Phalcon\Cli\Router\Route</code> · <code>Phalcon\Cli\Router\RouteInterface</code> · <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Di\DiInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cli\Router\Exception</code> · <code>Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable</code> · <code>Phalcon\Cli\Router\Route</code> · <code>Phalcon\Cli\Router\RouteInterface</code> · <code>Phalcon\Di\AbstractInjectionAware</code></p>
 <h3 id="method-summary_5">Method Summary<a class="headerlink" href="#method-summary_5" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#clirouter-__construct">
@@ -7474,7 +7443,7 @@ request.</p>
 <a class="api-item" href="#clirouter-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$paths</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Adds a route to the router</span>
 </a>
 <a class="api-item" href="#clirouter-getactionname">
@@ -7515,19 +7484,19 @@ request.</p>
 </a>
 <a class="api-item" href="#clirouter-getroutebyid">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
-<code class="sig"><span class="sf">getRouteById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="ret">bool|RouteInterface</code>
+<code class="sig"><span class="sf">getRouteById</span>( <span class="st">string</span> <span class="sv">$routeId</span> )</code>
 <span class="desc">Returns a route object by its id</span>
 </a>
 <a class="api-item" href="#clirouter-getroutebyname">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
+<code class="ret">bool|RouteInterface</code>
 <code class="sig"><span class="sf">getRouteByName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a route object by its name</span>
 </a>
 <a class="api-item" href="#clirouter-getroutes">
 <code class="vis vis-public">public</code>
-<code class="ret">Route[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Returns all the routes defined in the router</span>
 </a>
@@ -7539,7 +7508,8 @@ request.</p>
 </a>
 <a class="api-item" href="#clirouter-handle">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">handle</span>( <span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span> )</code>
+<code class="ret">RouterInterface</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">array|string</span> <span class="sv">$arguments</span><span class="sm"> = []</span> )</code>
 <span class="desc">Handles routing information received from command-line arguments</span>
 </a>
 <a class="api-item" href="#clirouter-setdefaultaction">
@@ -7608,7 +7578,7 @@ request.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;array-key, string&gt;</code>
 <code class="sig"><span class="sv">$matches</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -7619,7 +7589,7 @@ request.</p>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$params</span><span class="sm"> = []</span></code>
+<code class="sig"><span class="sv">$parameters</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -7648,7 +7618,7 @@ request.</p>
 <h4 id="clirouter-add"><code>add()</code><a class="headerlink" href="#clirouter-add" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span>
 <a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    <span class="nx">string</span> <span class="nv">$pattern</span><span class="p">,</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="nx">mixed</span> <span class="nv">$paths</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$paths</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">RouteInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a route to the router</p>
@@ -7679,15 +7649,15 @@ request.</p>
 </code></pre></div>
 <p>Returns processed extra params</p>
 <h4 id="clirouter-getroutebyid"><code>getRouteById()</code><a class="headerlink" href="#clirouter-getroutebyid" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRouteById</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouteInterface</span><span class="o">|</span><span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRouteById</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$routeId</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="o">|</span><span class="nx">RouteInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a route object by its id</p>
 <h4 id="clirouter-getroutebyname"><code>getRouteByName()</code><a class="headerlink" href="#clirouter-getroutebyname" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRouteByName</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouteInterface</span><span class="o">|</span><span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRouteByName</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="o">|</span><span class="nx">RouteInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a route object by its name</p>
 <h4 id="clirouter-getroutes"><code>getRoutes()</code><a class="headerlink" href="#clirouter-getroutes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRoutes</span><span class="p">()</span><span class="o">:</span> <span class="nx">Route</span><span class="p">[];</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRoutes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns all the routes defined in the router</p>
 <h4 id="clirouter-gettaskname"><code>getTaskName()</code><a class="headerlink" href="#clirouter-gettaskname" title="Permanent link">&para;</a></h4>
@@ -7695,7 +7665,7 @@ request.</p>
 </code></pre></div>
 <p>Returns processed task name</p>
 <h4 id="clirouter-handle"><code>handle()</code><a class="headerlink" href="#clirouter-handle" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Handles routing information received from command-line arguments</p>
 <h4 id="clirouter-setdefaultaction"><code>setDefaultAction()</code><a class="headerlink" href="#clirouter-setdefaultaction" title="Permanent link">&para;</a></h4>
@@ -7729,7 +7699,7 @@ route</p>
 <p>Checks if the router matches any of the defined routes</p>
 <h2 id="clirouterinterface">Cli\RouterInterface<a class="headerlink" href="#clirouterinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/RouterInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/RouterInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Interface for Phalcon\Cli\Router</p>
 <div class="api-tree">
 <ul>
@@ -7742,7 +7712,7 @@ route</p>
 <a class="api-item" href="#clirouterinterface-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$paths</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Adds a route to the router on any HTTP method</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getactionname">
@@ -7783,19 +7753,19 @@ route</p>
 </a>
 <a class="api-item" href="#clirouterinterface-getroutebyid">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
-<code class="sig"><span class="sf">getRouteById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="ret">bool|RouteInterface</code>
+<code class="sig"><span class="sf">getRouteById</span>( <span class="st">string</span> <span class="sv">$routeId</span> )</code>
 <span class="desc">Returns a route object by its id</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getroutebyname">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
+<code class="ret">bool|RouteInterface</code>
 <code class="sig"><span class="sf">getRouteByName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a route object by its name</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getroutes">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Return all the routes defined in the router</span>
 </a>
@@ -7807,7 +7777,8 @@ route</p>
 </a>
 <a class="api-item" href="#clirouterinterface-handle">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">handle</span>( <span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span> )</code>
+<code class="ret">RouterInterface</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">array|string</span> <span class="sv">$arguments</span><span class="sm"> = []</span> )</code>
 <span class="desc">Handles routing information received from the rewrite engine.</span>
 </a>
 <a class="api-item" href="#clirouterinterface-setdefaultaction">
@@ -7848,7 +7819,7 @@ route</p>
 <h4 id="clirouterinterface-add"><code>add()</code><a class="headerlink" href="#clirouterinterface-add" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span>
 <a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>    <span class="nx">string</span> <span class="nv">$pattern</span><span class="p">,</span>
-<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>    <span class="nx">mixed</span> <span class="nv">$paths</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$paths</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">RouteInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a route to the router on any HTTP method</p>
@@ -7877,16 +7848,15 @@ route</p>
 </code></pre></div>
 <p>Returns processed extra params</p>
 <h4 id="clirouterinterface-getroutebyid"><code>getRouteById()</code><a class="headerlink" href="#clirouterinterface-getroutebyid" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRouteById</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouteInterface</span><span class="o">|</span><span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRouteById</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$routeId</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="o">|</span><span class="nx">RouteInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a route object by its id</p>
-<p>@todo change param type to string</p>
 <h4 id="clirouterinterface-getroutebyname"><code>getRouteByName()</code><a class="headerlink" href="#clirouterinterface-getroutebyname" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRouteByName</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouteInterface</span><span class="o">|</span><span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRouteByName</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="o">|</span><span class="nx">RouteInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a route object by its name</p>
 <h4 id="clirouterinterface-getroutes"><code>getRoutes()</code><a class="headerlink" href="#clirouterinterface-getroutes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRoutes</span><span class="p">()</span><span class="o">:</span> <span class="nx">RouteInterface</span><span class="p">[];</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRoutes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Return all the routes defined in the router</p>
 <h4 id="clirouterinterface-gettaskname"><code>getTaskName()</code><a class="headerlink" href="#clirouterinterface-gettaskname" title="Permanent link">&para;</a></h4>
@@ -7894,13 +7864,13 @@ route</p>
 </code></pre></div>
 <p>Returns processed task name</p>
 <h4 id="clirouterinterface-handle"><code>handle()</code><a class="headerlink" href="#clirouterinterface-handle" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Handles routing information received from the rewrite engine.</p>
-<p>When <code>arguments</code> is a string (or null), it is matched against the
-registered routes. When it is an array, matching is bypassed entirely:
-the array is treated as the already-resolved module/task/action/params,
-so <code>wasMatched()</code> stays false and <code>getMatchedRoute()</code> returns null even
+<p>When <code>arguments</code> is a string, it is matched against the registered
+routes. When it is an array, matching is bypassed entirely: the array is
+treated as the already-resolved module/task/action/params, so
+<code>wasMatched()</code> stays false and <code>getMatchedRoute()</code> returns null even
 though routing succeeded.</p>
 <h4 id="clirouterinterface-setdefaultaction"><code>setDefaultAction()</code><a class="headerlink" href="#clirouterinterface-setdefaultaction" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setDefaultAction</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$actionName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
@@ -7924,7 +7894,7 @@ though routing succeeded.</p>
 <p>Check if the router matches any of the defined routes</p>
 <h2 id="clirouterexception">Cli\Router\Exception<a class="headerlink" href="#clirouterexception" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exception.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Router/Exception.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Exceptions thrown in Phalcon\Cli\Router will use this class</p>
 <div class="api-tree">
 <ul>
@@ -7941,7 +7911,7 @@ though routing succeeded.</p>
 </div>
 <h2 id="clirouterexceptionsbeforematchnotcallable">Cli\Router\Exceptions\BeforeMatchNotCallable<a class="headerlink" href="#clirouterexceptionsbeforematchnotcallable" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exceptions/BeforeMatchNotCallable.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Router/Exceptions/BeforeMatchNotCallable.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7970,7 +7940,7 @@ though routing succeeded.</p>
 </code></pre></div>
 <h2 id="clirouterexceptionsinvalidroutepaths">Cli\Router\Exceptions\InvalidRoutePaths<a class="headerlink" href="#clirouterexceptionsinvalidroutepaths" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exceptions/InvalidRoutePaths.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Router/Exceptions/InvalidRoutePaths.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7999,7 +7969,7 @@ though routing succeeded.</p>
 </code></pre></div>
 <h2 id="clirouterexceptionsrouterargumentsinvalidtype">Cli\Router\Exceptions\RouterArgumentsInvalidType<a class="headerlink" href="#clirouterexceptionsrouterargumentsinvalidtype" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exceptions/RouterArgumentsInvalidType.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Router/Exceptions/RouterArgumentsInvalidType.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -8028,19 +7998,20 @@ though routing succeeded.</p>
 </code></pre></div>
 <h2 id="clirouterroute">Cli\Router\Route<a class="headerlink" href="#clirouterroute" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Route.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Router/Route.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>This class represents every route added to the router</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Cli\Router\Route</code></strong> - implements <a href="#clirouterrouteinterface"><code>Phalcon\Cli\Router\RouteInterface</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable</code> · <code>Phalcon\Cli\Router\Exceptions\InvalidRoutePaths</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable</code> · <code>Phalcon\Cli\Router\Exceptions\InvalidRoutePaths</code> · <code>Phalcon\Traits\Support\Helper\Str\UncamelizeTrait</code></p>
 <h3 id="method-summary_10">Method Summary<a class="headerlink" href="#method-summary_10" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#clirouterroute-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$paths</span><span class="sm"> = []</span></span>)</code>
+<span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#clirouterroute-beforematch">
 <code class="vis vis-public">public</code>
@@ -8057,13 +8028,13 @@ though routing succeeded.</p>
 <a class="api-item" href="#clirouterroute-convert">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig"><span class="sf">convert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$converter</span></span>)</code>
+<code class="sig"><span class="sf">convert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$converter</span></span>)</code>
 <span class="desc">Adds a converter to perform an additional transformation for certain</span>
 </a>
 <a class="api-item" href="#clirouterroute-delimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">delimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">delimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span> )</code>
 <span class="desc">Set the routing delimiter.</span>
 </a>
 <a class="api-item" href="#clirouterroute-extractnamedparams">
@@ -8135,7 +8106,7 @@ though routing succeeded.</p>
 <a class="api-item" href="#clirouterroute-reconfigure">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$paths</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Reconfigure the route adding a new pattern and a set of paths</span>
 </a>
 <a class="api-item" href="#clirouterroute-reset">
@@ -8231,9 +8202,10 @@ though routing succeeded.</p>
 <h4 id="clirouterroute-__construct"><code>__construct()</code><a class="headerlink" href="#clirouterroute-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>    <span class="nx">string</span> <span class="nv">$pattern</span><span class="p">,</span>
-<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>    <span class="nx">mixed</span> <span class="nv">$paths</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$paths</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a><span class="p">);</span>
 </code></pre></div>
+<p>Constructor</p>
 <h4 id="clirouterroute-beforematch"><code>beforeMatch()</code><a class="headerlink" href="#clirouterroute-beforematch" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">beforeMatch</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$callback</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouteInterface</span><span class="p">;</span>
 </code></pre></div>
@@ -8248,13 +8220,13 @@ expression</p>
 <h4 id="clirouterroute-convert"><code>convert()</code><a class="headerlink" href="#clirouterroute-convert" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">convert</span><span class="p">(</span>
 <a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>    <span class="nx">mixed</span> <span class="nv">$converter</span>
+<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>    <span class="nx">callable</span> <span class="nv">$converter</span>
 <a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">RouteInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a converter to perform an additional transformation for certain
 parameter</p>
 <h4 id="clirouterroute-delimiter"><code>delimiter()</code><a class="headerlink" href="#clirouterroute-delimiter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">delimiter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">delimiter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Set the routing delimiter.</p>
 <p>This sets a process-global delimiter that each route captures at
@@ -8309,7 +8281,7 @@ parses arguments.</p>
 <h4 id="clirouterroute-reconfigure"><code>reConfigure()</code><a class="headerlink" href="#clirouterroute-reconfigure" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">reConfigure</span><span class="p">(</span>
 <a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>    <span class="nx">string</span> <span class="nv">$pattern</span><span class="p">,</span>
-<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>    <span class="nx">mixed</span> <span class="nv">$paths</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$paths</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Reconfigure the route adding a new pattern and a set of paths</p>
@@ -8337,7 +8309,7 @@ makes newly created routes overwrite existing entries.</p>
 </code></pre></div>
 <h2 id="clirouterrouteinterface">Cli\Router\RouteInterface<a class="headerlink" href="#clirouterrouteinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/RouteInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Router/RouteInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Interface for Phalcon\Cli\Router\Route</p>
 <p>Note: <code>Phalcon\Cli\Router</code> always constructs and returns the concrete
 <code>Phalcon\Cli\Router\Route</code>, and there is no injection point for an externally
@@ -8360,7 +8332,7 @@ declared on the concrete <code>Route</code> class, not here.</p>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-delimiter">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">delimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">delimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span> )</code>
 <span class="desc">Set the routing delimiter</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-getcompiledpattern">
@@ -8414,7 +8386,7 @@ declared on the concrete <code>Route</code> class, not here.</p>
 <a class="api-item" href="#clirouterrouteinterface-reconfigure">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$paths</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Reconfigure the route adding a new pattern and a set of paths</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-reset">
@@ -8446,7 +8418,7 @@ declared on the concrete <code>Route</code> class, not here.</p>
 <p>Replaces placeholders from pattern returning a valid PCRE regular
 expression</p>
 <h4 id="clirouterrouteinterface-delimiter"><code>delimiter()</code><a class="headerlink" href="#clirouterrouteinterface-delimiter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">delimiter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">delimiter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="p">);</span>
 </code></pre></div>
 <p>Set the routing delimiter</p>
 <h4 id="clirouterrouteinterface-getcompiledpattern"><code>getCompiledPattern()</code><a class="headerlink" href="#clirouterrouteinterface-getcompiledpattern" title="Permanent link">&para;</a></h4>
@@ -8484,7 +8456,7 @@ expression</p>
 <h4 id="clirouterrouteinterface-reconfigure"><code>reConfigure()</code><a class="headerlink" href="#clirouterrouteinterface-reconfigure" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">reConfigure</span><span class="p">(</span>
 <a id="__codelineno-92-2" name="__codelineno-92-2" href="#__codelineno-92-2"></a>    <span class="nx">string</span> <span class="nv">$pattern</span><span class="p">,</span>
-<a id="__codelineno-92-3" name="__codelineno-92-3" href="#__codelineno-92-3"></a>    <span class="nx">mixed</span> <span class="nv">$paths</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-92-3" name="__codelineno-92-3" href="#__codelineno-92-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$paths</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-92-4" name="__codelineno-92-4" href="#__codelineno-92-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Reconfigure the route adding a new pattern and a set of paths</p>
@@ -8502,7 +8474,7 @@ expression</p>
 <p>Sets the route's name</p>
 <h2 id="clitask">Cli\Task<a class="headerlink" href="#clitask" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Task.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/Task.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Every command-line task should extend this class that encapsulates all the
 task functionality</p>
 <p>A task can be used to run "tasks" such as migrations, cronjobs, unit-tests,
@@ -8527,16 +8499,19 @@ followed by any CLI options the dispatcher collected (appended as trailing
 arguments). Declare optional trailing parameters to read those options.</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diinjectable"><code>Phalcon\Di\Injectable</code></a><ul>
-<li><strong><code>Phalcon\Cli\Task</code></strong> - implements <a href="#clitaskinterface"><code>Phalcon\Cli\TaskInterface</code></a>, <a href="../phalcon_events/#eventseventsawareinterface"><code>Phalcon\Events\EventsAwareInterface</code></a></li>
+<li><strong><code>Phalcon\Cli\Task</code></strong> - implements <a href="#clitaskinterface"><code>Phalcon\Cli\TaskInterface</code></a>, <a href="../phalcon_events/#eventseventsawareinterface"><code>Phalcon\Events\EventsAwareInterface</code></a><ul>
+<li><a href="../phalcon_queue/#queuecliconsumertask"><code>Phalcon\Queue\Cli\ConsumerTask</code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Di\Injectable</code> · <code>Phalcon\Events\EventsAwareInterface</code> · <code>Phalcon\Events\ManagerInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Di\Injectable</code> · <code>Phalcon\Events\EventsAwareInterface</code> · <code>Phalcon\Events\Traits\EventsAwareTrait</code></p>
 <h3 id="method-summary_12">Method Summary<a class="headerlink" href="#method-summary_12" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#clitask-__construct">
@@ -8544,47 +8519,18 @@ arguments). Declare optional trailing parameters to read those options.</p>
 <code class="sig"><span class="sf">__construct</span>()</code>
 <span class="desc">Phalcon\Cli\Task constructor</span>
 </a>
-<a class="api-item" href="#clitask-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
-<a class="api-item" href="#clitask-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
-</div>
-
-<h3 id="properties_4">Properties<a class="headerlink" href="#properties_4" title="Permanent link">&para;</a></h3>
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface</code>
-<code class="sig"><span class="sv">$eventsManager</span></code>
-</div>
 </div>
 
 <h3 id="methods_12">Methods<a class="headerlink" href="#methods_12" title="Permanent link">&para;</a></h3>
-<div class="api-group">Public · 3</div>
+<div class="api-group">Public · 1</div>
 
 <h4 id="clitask-__construct"><code>__construct()</code><a class="headerlink" href="#clitask-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
 </code></pre></div>
 <p>Phalcon\Cli\Task constructor</p>
-<h4 id="clitask-geteventsmanager"><code>getEventsManager()</code><a class="headerlink" href="#clitask-geteventsmanager" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getEventsManager</span><span class="p">()</span><span class="o">:</span> <span class="nx">ManagerInterface</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
-</code></pre></div>
-<p>Returns the internal event manager</p>
-<h4 id="clitask-seteventsmanager"><code>setEventsManager()</code><a class="headerlink" href="#clitask-seteventsmanager" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setEventsManager</span><span class="p">(</span> <span class="nx">ManagerInterface</span> <span class="nv">$eventsManager</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
-</code></pre></div>
-<p>Sets the events manager</p>
 <h2 id="clitaskinterface">Cli\TaskInterface<a class="headerlink" href="#clitaskinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/TaskInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Cli/TaskInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Interface for task handlers</p>
 <div class="api-tree">
 <ul>

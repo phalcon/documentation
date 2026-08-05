@@ -110,6 +110,8 @@ offering lower resource consumption and high performance.
       
     
     
+      <link rel="stylesheet" href="../../assets/css/api.css">
+    
       <link rel="stylesheet" href="../../assets/css/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
@@ -6518,7 +6520,7 @@ offering lower resource consumption and high performance.
 </div>
 <h2 id="paginatoradapterabstractadapter">Paginator\Adapter\AbstractAdapter<a class="headerlink" href="#paginatoradapterabstractadapter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AbstractAdapter.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/AbstractAdapter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Phalcon\Paginator\Adapter\AbstractAdapter</p>
 <div class="api-tree">
 <ul>
@@ -6537,7 +6539,7 @@ offering lower resource consumption and high performance.
 <a class="api-item" href="#paginatoradapterabstractadapter-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$config</span> )</code>
-<span class="desc">Phalcon\Paginator\Adapter\AbstractAdapter constructor</span>
+<span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#paginatoradapterabstractadapter-getlimit">
 <code class="vis vis-public">public</code>
@@ -6566,7 +6568,7 @@ offering lower resource consumption and high performance.
 <a class="api-item" href="#paginatoradapterabstractadapter-getrepository">
 <code class="vis vis-protected">protected</code>
 <code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sf">getRepository</span>( <span class="st">array</span> <span class="sv">$properties</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getRepository</span>( <span class="st">array|null</span> <span class="sv">$properties</span><span class="sm"> = null</span> )</code>
 <span class="desc">Gets current repository for pagination</span>
 </a>
 </div>
@@ -6577,7 +6579,6 @@ offering lower resource consumption and high performance.
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$config</span></code>
-<span class="desc">Configuration of paginator</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -6605,7 +6606,7 @@ offering lower resource consumption and high performance.
 <h4 id="paginatoradapterabstractadapter-__construct"><code>__construct()</code><a class="headerlink" href="#paginatoradapterabstractadapter-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$config</span> <span class="p">);</span>
 </code></pre></div>
-<p>Phalcon\Paginator\Adapter\AbstractAdapter constructor</p>
+<p>Constructor</p>
 <h4 id="paginatoradapterabstractadapter-getlimit"><code>getLimit()</code><a class="headerlink" href="#paginatoradapterabstractadapter-getlimit" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getLimit</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
@@ -6625,12 +6626,12 @@ offering lower resource consumption and high performance.
 <div class="api-group">Protected · 1</div>
 
 <h4 id="paginatoradapterabstractadapter-getrepository"><code>getRepository()</code><a class="headerlink" href="#paginatoradapterabstractadapter-getrepository" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getRepository</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$properties</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RepositoryInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getRepository</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="k">null</span> <span class="nv">$properties</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RepositoryInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets current repository for pagination</p>
 <h2 id="paginatoradapteradapterinterface">Paginator\Adapter\AdapterInterface<a class="headerlink" href="#paginatoradapteradapterinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AdapterInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/AdapterInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><a href="../phalcon_contracts/#contractspaginatoradapter"><code>Phalcon\Contracts\Paginator\Adapter</code></a><ul>
@@ -6642,15 +6643,14 @@ offering lower resource consumption and high performance.
 <p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Paginator\Adapter</code></p>
 <h2 id="paginatoradaptermodel">Paginator\Adapter\Model<a class="headerlink" href="#paginatoradaptermodel" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/Model.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Phalcon\Paginator\Adapter\Model</p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/Model.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a
 base.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">use</span> <span class="nx">Phalcon\Paginator\Adapter\Model</span><span class="p">;</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="p">[</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="p">]</span>
@@ -6658,9 +6658,9 @@ base.</p>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="p">[</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
 <a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="s2">&quot;parameters&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>             <span class="s2">&quot;columns&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;id, name&quot;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>             <span class="s2">&quot;columns&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;inv_id, inv_title&quot;</span>
 <a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>        <span class="p">],</span>
 <a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span>
 <a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
@@ -6669,13 +6669,13 @@ base.</p>
 <a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
 <a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span>
 <a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>    <span class="p">[</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
 <a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>        <span class="s2">&quot;parameters&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>             <span class="s2">&quot;type = :type:&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>             <span class="s2">&quot;inv_status_flag = :flag:&quot;</span><span class="p">,</span>
 <a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>             <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>                 <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>                 <span class="s2">&quot;flag&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
 <a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>             <span class="p">],</span>
-<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>             <span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;name&quot;</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>             <span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;inv_title&quot;</span>
 <a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>        <span class="p">],</span>
 <a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">16</span><span class="p">,</span>
 <a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
@@ -6684,8 +6684,8 @@ base.</p>
 <a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>
 <a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span>
 <a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>    <span class="p">[</span>
-<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>        <span class="s2">&quot;parameters&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;(id % 2) = 0&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>        <span class="s2">&quot;parameters&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;(inv_id % 2) = 0&quot;</span><span class="p">,</span>
 <a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span>
 <a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
 <a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a>    <span class="p">]</span>
@@ -6693,8 +6693,8 @@ base.</p>
 <a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a>
 <a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span>
 <a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a>    <span class="p">[</span>
-<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a>        <span class="s2">&quot;parameters&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;(id % 2) = 0&quot;</span> <span class="p">],</span>
+<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a>        <span class="s2">&quot;parameters&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;(inv_id % 2) = 0&quot;</span> <span class="p">],</span>
 <a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span>
 <a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
 <a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a>    <span class="p">]</span>
@@ -6710,7 +6710,7 @@ base.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Mvc\ModelInterface</code> · <code>Phalcon\Mvc\Model\ResultsetInterface</code> · <code>Phalcon\Paginator\Exception</code> · <code>Phalcon\Paginator\Exceptions\MissingRequiredParameter</code> · <code>Phalcon\Paginator\RepositoryInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Paginator\Exceptions\MissingRequiredParameter</code> · <code>Phalcon\Paginator\RepositoryInterface</code></p>
 <h3 id="method-summary_1">Method Summary<a class="headerlink" href="#method-summary_1" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#paginatoradaptermodel-__construct">
@@ -6739,8 +6739,7 @@ base.</p>
 <p>Returns a slice of the resultset to show in the pagination</p>
 <h2 id="paginatoradapternativearray">Paginator\Adapter\NativeArray<a class="headerlink" href="#paginatoradapternativearray" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/NativeArray.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Phalcon\Paginator\Adapter\NativeArray</p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/NativeArray.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Pagination using a PHP array as source of data</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">use</span> <span class="nx">Phalcon\Paginator\Adapter\NativeArray</span><span class="p">;</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
@@ -6786,15 +6785,14 @@ base.</p>
 <p>Returns a slice of the resultset to show in the pagination</p>
 <h2 id="paginatoradapterquerybuilder">Paginator\Adapter\QueryBuilder<a class="headerlink" href="#paginatoradapterquerybuilder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/QueryBuilder.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Phalcon\Paginator\Adapter\QueryBuilder</p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/QueryBuilder.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Pagination using a PHQL query builder as source of data</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">use</span> <span class="nx">Phalcon\Paginator\Adapter\QueryBuilder</span><span class="p">;</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nv">$builder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">createBuilder</span><span class="p">()</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>                <span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="s2">&quot;id, name&quot;</span><span class="p">)</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>                <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nx">Robots</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>                <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>                <span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="s2">&quot;inv_id, inv_title&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>                <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>                <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s2">&quot;inv_title&quot;</span><span class="p">);</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QueryBuilder</span><span class="p">(</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="p">[</span>
@@ -6856,8 +6854,8 @@ base.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|string</code>
-<code class="sig"><span class="sv">$columns</span></code>
+<code class="ret">array|string|null</code>
+<code class="sig"><span class="sv">$columns</span><span class="sm"> = null</span></code>
 <span class="desc">Column list used only for COUNT rewriting when the builder carries a
 HAVING or GROUP BY clause. It supplies the columns for the subquery
 that counts the grouped/having result set and is ignored otherwise.</span>
@@ -6893,8 +6891,7 @@ subquery). It has no effect on plain queries.</p>
 <p>Set query builder object</p>
 <h2 id="paginatoradapterquerybuildercursor">Paginator\Adapter\QueryBuilderCursor<a class="headerlink" href="#paginatoradapterquerybuildercursor" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/QueryBuilderCursor.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Phalcon\Paginator\Adapter\QueryBuilderCursor</p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Adapter/QueryBuilderCursor.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Cursor-based (keyset) pagination using a PHQL query builder as source of
 data.</p>
 <p>Unlike offset pagination, this adapter does not use an ever-growing OFFSET.
@@ -6938,7 +6935,7 @@ page is an O(1) index seek regardless of depth.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Mvc\Model\Query\Builder</code> · <code>Phalcon\Paginator\Exception</code> · <code>Phalcon\Paginator\Exceptions\InvalidBuilderInstance</code> · <code>Phalcon\Paginator\Exceptions\InvalidCursorColumn</code> · <code>Phalcon\Paginator\Exceptions\MissingRequiredParameter</code> · <code>Phalcon\Paginator\RepositoryInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Mvc\Model\Query\Builder</code> · <code>Phalcon\Paginator\Exceptions\InvalidBuilderInstance</code> · <code>Phalcon\Paginator\Exceptions\InvalidCursorColumn</code> · <code>Phalcon\Paginator\Exceptions\MissingRequiredParameter</code> · <code>Phalcon\Paginator\RepositoryInterface</code></p>
 <h3 id="method-summary_4">Method Summary<a class="headerlink" href="#method-summary_4" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#paginatoradapterquerybuildercursor-__construct">
@@ -7023,8 +7020,8 @@ page is an O(1) index seek regardless of depth.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getCurrentPage</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Get the current page number</p>
-<p>Returns the cursor value used for this page cast to int, or 0 for the
-first page. Use getCursor() to retrieve the raw cursor value.</p>
+<p>Returns the cursor value used for this page, or 0 for the first page.
+Use getCursor() to retrieve the raw cursor value.</p>
 <h4 id="paginatoradapterquerybuildercursor-getcursor"><code>getCursor()</code><a class="headerlink" href="#paginatoradapterquerybuildercursor-getcursor" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getCursor</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
@@ -7056,8 +7053,7 @@ next page, or null to restart from the first page.</p>
 <p>Set query builder object</p>
 <h2 id="paginatorexception">Paginator\Exception<a class="headerlink" href="#paginatorexception" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exception.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Phalcon\Paginator\Exception</p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exception.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Exceptions thrown in Phalcon\Paginator will use this class</p>
 <div class="api-tree">
 <ul>
@@ -7078,7 +7074,7 @@ next page, or null to restart from the first page.</p>
 </div>
 <h2 id="paginatorexceptionsbuildermodelnotdefined">Paginator\Exceptions\BuilderModelNotDefined<a class="headerlink" href="#paginatorexceptionsbuildermodelnotdefined" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/BuilderModelNotDefined.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/BuilderModelNotDefined.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7107,7 +7103,7 @@ next page, or null to restart from the first page.</p>
 </code></pre></div>
 <h2 id="paginatorexceptionsinvalidbuilderinstance">Paginator\Exceptions\InvalidBuilderInstance<a class="headerlink" href="#paginatorexceptionsinvalidbuilderinstance" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidBuilderInstance.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/InvalidBuilderInstance.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7136,7 +7132,7 @@ next page, or null to restart from the first page.</p>
 </code></pre></div>
 <h2 id="paginatorexceptionsinvalidcursorcolumn">Paginator\Exceptions\InvalidCursorColumn<a class="headerlink" href="#paginatorexceptionsinvalidcursorcolumn" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidCursorColumn.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/InvalidCursorColumn.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7165,7 +7161,7 @@ next page, or null to restart from the first page.</p>
 </code></pre></div>
 <h2 id="paginatorexceptionsinvalidlimit">Paginator\Exceptions\InvalidLimit<a class="headerlink" href="#paginatorexceptionsinvalidlimit" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidLimit.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/InvalidLimit.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7194,7 +7190,7 @@ next page, or null to restart from the first page.</p>
 </code></pre></div>
 <h2 id="paginatorexceptionsmissingcolumnsforhaving">Paginator\Exceptions\MissingColumnsForHaving<a class="headerlink" href="#paginatorexceptionsmissingcolumnsforhaving" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/MissingColumnsForHaving.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/MissingColumnsForHaving.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7223,7 +7219,7 @@ next page, or null to restart from the first page.</p>
 </code></pre></div>
 <h2 id="paginatorexceptionsmissingrequiredparameter">Paginator\Exceptions\MissingRequiredParameter<a class="headerlink" href="#paginatorexceptionsmissingrequiredparameter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/MissingRequiredParameter.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/MissingRequiredParameter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7260,7 +7256,7 @@ next page, or null to restart from the first page.</p>
 </code></pre></div>
 <h2 id="paginatorexceptionspaginatordatanotarray">Paginator\Exceptions\PaginatorDataNotArray<a class="headerlink" href="#paginatorexceptionspaginatordatanotarray" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/PaginatorDataNotArray.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Exceptions/PaginatorDataNotArray.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>
@@ -7289,19 +7285,13 @@ next page, or null to restart from the first page.</p>
 </code></pre></div>
 <h2 id="paginatorpaginatorfactory">Paginator\PaginatorFactory<a class="headerlink" href="#paginatorpaginatorfactory" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/PaginatorFactory.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/PaginatorFactory.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><a href="../phalcon_factory/#factoryabstractconfigfactory"><code>Phalcon\Factory\AbstractConfigFactory</code></a><ul>
-<li><a href="../phalcon_factory/#factoryabstractfactory"><code>Phalcon\Factory\AbstractFactory</code></a><ul>
 <li><strong><code>Phalcon\Paginator\PaginatorFactory</code></strong></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Paginator\Adapter\AdapterInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\Config</code> · <code>Phalcon\Mvc\Model\Query\Builder</code> · <code>Phalcon\Paginator\Adapter\AdapterInterface</code> · <code>Phalcon\Paginator\Adapter\Model</code> · <code>Phalcon\Paginator\Adapter\NativeArray</code> · <code>Phalcon\Paginator\Adapter\QueryBuilder</code> · <code>Phalcon\Paginator\Adapter\QueryBuilderCursor</code> · <code>Phalcon\Support\Traits\ConfigTrait</code> · <code>Phalcon\Traits\Factory\FactoryTrait</code></p>
 <h3 id="method-summary_12">Method Summary<a class="headerlink" href="#method-summary_12" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#paginatorpaginatorfactory-__construct">
@@ -7312,7 +7302,7 @@ next page, or null to restart from the first page.</p>
 <a class="api-item" href="#paginatorpaginatorfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">array|Config</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#paginatorpaginatorfactory-newinstance">
@@ -7342,7 +7332,7 @@ next page, or null to restart from the first page.</p>
 </code></pre></div>
 <p>AdapterFactory constructor.</p>
 <h4 id="paginatorpaginatorfactory-load"><code>load()</code><a class="headerlink" href="#paginatorpaginatorfactory-load" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">Config</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Factory to create an instance from a Config object</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">use</span> <span class="nx">Phalcon\Paginator\PaginatorFactory</span><span class="p">;</span>
@@ -7350,9 +7340,9 @@ next page, or null to restart from the first page.</p>
 <a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="nv">$builder</span> <span class="o">=</span> <span class="nv">$this</span>
 <a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>     <span class="o">-&gt;</span><span class="na">modelsManager</span>
 <a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>     <span class="o">-&gt;</span><span class="na">createBuilder</span><span class="p">()</span>
-<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>     <span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="s2">&quot;id, name&quot;</span><span class="p">)</span>
-<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>     <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nx">Robots</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>     <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>     <span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="s2">&quot;inv_id, inv_title&quot;</span><span class="p">)</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>     <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>     <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s2">&quot;inv_title&quot;</span><span class="p">);</span>
 <a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>
 <a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
 <a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>    <span class="s2">&quot;builder&quot;</span> <span class="o">=&gt;</span> <span class="nv">$builder</span><span class="p">,</span>
@@ -7381,20 +7371,19 @@ next page, or null to restart from the first page.</p>
 <p>Returns the available adapters</p>
 <h2 id="paginatorrepository">Paginator\Repository<a class="headerlink" href="#paginatorrepository" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Repository.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Phalcon\Paginator\Repository</p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/Repository.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Repository of current state Phalcon\Paginator\AdapterInterface::paginate()</p>
 <div class="api-tree">
 <ul>
-<li><strong><code>Phalcon\Paginator\Repository</code></strong> - implements <a href="#paginatorrepositoryinterface"><code>Phalcon\Paginator\RepositoryInterface</code></a>, <code>JsonSerializable</code></li>
+<li><strong><code>Phalcon\Paginator\Repository</code></strong> - implements <a href="#paginatorrepositoryinterface"><code>Phalcon\Paginator\RepositoryInterface</code></a>, <code>\JsonSerializable</code></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>JsonSerializable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>JsonSerializable</code> · <code>Phalcon\Traits\Support\Helper\Str\CamelizeTrait</code></p>
 <h3 id="method-summary_13">Method Summary<a class="headerlink" href="#method-summary_13" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#paginatorrepository-__get">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$property</span> )</code>
 <span class="desc">{@inheritdoc}</span>
 </a>
@@ -7502,7 +7491,7 @@ next page, or null to restart from the first page.</p>
 <div class="api-group">Public · 13</div>
 
 <h4 id="paginatorrepository-__get"><code>__get()</code><a class="headerlink" href="#paginatorrepository-__get" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$property</span> <span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$property</span> <span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>{@inheritdoc}</p>
 <h4 id="paginatorrepository-getaliases"><code>getAliases()</code><a class="headerlink" href="#paginatorrepository-getaliases" title="Permanent link">&para;</a></h4>
@@ -7568,7 +7557,7 @@ next page, or null to restart from the first page.</p>
 <p>Resolve alias property name</p>
 <h2 id="paginatorrepositoryinterface">Paginator\RepositoryInterface<a class="headerlink" href="#paginatorrepositoryinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/RepositoryInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Paginator/RepositoryInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
 <li><a href="../phalcon_contracts/#contractspaginatorrepository"><code>Phalcon\Contracts\Paginator\Repository</code></a><ul>

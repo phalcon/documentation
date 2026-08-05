@@ -114,6 +114,8 @@ offering lower resource consumption and high performance.
       
     
     
+      <link rel="stylesheet" href="../assets/css/api.css">
+    
       <link rel="stylesheet" href="../assets/css/extra.css">
     
     <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
@@ -5691,7 +5693,7 @@ offering lower resource consumption and high performance.
 </div>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
-<p>Adding this behaviour to a model prevents its <em>afterDelete</em> event from being triggered, since the record isn't actually deleted.</p>
+<p>Adding this behavior to a model prevents its <em>afterDelete</em> event from being triggered, since the record isn't actually deleted.</p>
 </div>
 <h2 id="custom">Custom<a class="headerlink" href="#custom" title="Permanent link">&para;</a></h2>
 <p>The ORM provides an API to create your own behaviors. A behavior must be a class implementing the <a href="../api/phalcon_mvc/#mvcmodelbehaviorinterface">Phalcon\Mvc\Model\BehaviorInterface</a> or extend <a href="../api/phalcon_mvc/#mvcmodelbehavior">Phalcon\Mvc\Model\Behavior</a> which exposes most of the methods required for implementing custom behaviors.</p>
