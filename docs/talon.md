@@ -75,6 +75,7 @@ vendor/bin/talon run mysql
 vendor/bin/talon run mysql pgsql
 vendor/bin/talon run all        # every mapped suite, sequentially
 vendor/bin/talon suites         # list mapped suites
+vendor/bin/talon schema         # generate the schema artifacts
 ```
 
 Each suite runs as its own subprocess, so per-suite extensions and environment variables take effect. A single suite forwards its exit code verbatim. Multiple suites print a per-suite summary and exit with the highest code.
@@ -189,6 +190,13 @@ Each driver reads its own block, so MySQL and MariaDB are configured independent
 | `pgsql`   | `DATA_POSTGRES_PASS`   | empty       |                                    |
 | `pgsql`   | `DATA_POSTGRES_SCHEMA` | empty       | Sets the connection search path    |
 | `sqlite`  | `DATA_SQLITE_NAME`     | `:memory:`  | A file path, or `:memory:`         |
+
+Two further variables apply to every driver:
+
+| Variable          | Default | Notes                                                                                     |
+|-------------------|---------|-------------------------------------------------------------------------------------------|
+| `dump_file`       | empty   | Schema artifact loaded on the first connection. A dialect directory, or a flat `.sql` file |
+| `initial_queries` | empty   | SQL run immediately after connecting, before any other statement                           |
 
 MariaDB connects through `pdo_mysql`, so `Settings::getDatabaseDsn('mariadb')` returns a DSN carrying the `mysql:` prefix. No additional PHP extension is required.
 
@@ -309,6 +317,173 @@ final class ReportTest extends TestCase
 }
 ```
 
+## Schema Fixtures
+
+A schema fixture is a class that declares the DDL for one table, per dialect. Talon generates the SQL artifacts from those classes, and your tests use the same classes to create, truncate, and populate the table.
+
+- **MySQL and MariaDB** share one set of statements. MariaDB uses the MySQL dialect, so there is no separate method for it.
+- **PostgreSQL** has its own set.
+- **SQLite** has its own set.
+
+Extend `Phalcon\Talon\Database\Schema\AbstractSchema` and declare the table name and the statements for each dialect. The three per-dialect methods are abstract, so a new dialect cannot be forgotten:
+
+```php
+<?php
+
+use Phalcon\Talon\Database\Schema\AbstractSchema;
+
+final class InvoicesSchema extends AbstractSchema
+{
+    protected string $table = 'co_invoices';
+
+    public function insert(int $id, string $title, float $total): int
+    {
+        return $this->execute(
+            'INSERT INTO co_invoices (inv_id, inv_title, inv_total) '
+            . 'VALUES (:id, :title, :total)',
+            [':id' => $id, ':title' => $title, ':total' => $total]
+        );
+    }
+
+    protected function getStatementsMysql(): array
+    {
+        return [
+            'CREATE TABLE `co_invoices` ('
+            . '`inv_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, '
+            . '`inv_title` VARCHAR(100) NULL, '
+            . '`inv_total` DECIMAL(10,2) NOT NULL, '
+            . 'PRIMARY KEY (`inv_id`)'
+            . ') ENGINE=InnoDB;',
+        ];
+    }
+
+    protected function getStatementsPgsql(): array
+    {
+        return [
+            'CREATE TABLE co_invoices ('
+            . 'inv_id SERIAL PRIMARY KEY, '
+            . 'inv_title VARCHAR(100) NULL, '
+            . 'inv_total NUMERIC(10,2) NOT NULL'
+            . ');',
+        ];
+    }
+
+    protected function getStatementsSqlite(): array
+    {
+        return [
+            'CREATE TABLE co_invoices ('
+            . 'inv_id INTEGER PRIMARY KEY AUTOINCREMENT, '
+            . 'inv_title TEXT NULL, '
+            . 'inv_total REAL NOT NULL'
+            . ');',
+        ];
+    }
+}
+```
+
+Four rules govern the statement lists:
+
+| Rule | Detail |
+|------|--------|
+| Creation statements only | Do not write a `DROP TABLE` for the declared table. The generator prepends one from the table name |
+| An empty list means absent | The table does not exist in that dialect. It is skipped entirely and gets no manifest entry |
+| One fixture, one table | The table name is the artifact file name and the manifest key. Two fixtures declaring the same table throw `SchemaTableDuplicate` |
+| `insert()` is yours | The contract covers `create()`, `drop()`, and `clear()`, never the data shape, so each fixture types its own insert signature |
+
+A fixture whose statements create a second table receives no generated `DROP` for that table. Write the drop yourself, or split the fixture in two.
+
+Override `getDependencies()` to declare the tables that must exist first:
+
+```php
+<?php
+
+use Phalcon\Talon\Database\Schema\AbstractSchema;
+
+final class InvoiceLinesSchema extends AbstractSchema
+{
+    protected string $table = 'co_invoice_lines';
+
+    /**
+     * @return list<string>
+     */
+    public function getDependencies(): array
+    {
+        return ['co_invoices'];
+    }
+
+    // getStatementsMysql(), getStatementsPgsql(), getStatementsSqlite() omitted
+}
+```
+
+### Generating the artifacts
+
+```bash
+vendor/bin/talon schema         # every dialect
+vendor/bin/talon schema mysql   # one dialect
+```
+
+The command is driven by five settings, read from the environment or from `Settings::fromArray()`:
+
+| Setting            | Description                                                             |
+|--------------------|-------------------------------------------------------------------------|
+| `schema_source`    | Directory holding the fixture classes, relative to the project root     |
+| `schema_namespace` | Namespace prefix for those classes                                      |
+| `schema_output`    | Directory the artifacts are written to, relative to the project root    |
+| `schema_pre`       | Class emitted before every table, for session setup or schema creation  |
+| `schema_post`      | Class emitted after every table, closing whatever `schema_pre` opened   |
+
+`schema_pre` and `schema_post` are ordinary `AbstractSchema` subclasses with an empty `$table`. Use them for statements that belong to the load as a whole, such as `SET FOREIGN_KEY_CHECKS=0` on MySQL or `CREATE SCHEMA IF NOT EXISTS` on PostgreSQL.
+
+Each dialect is written to its own directory:
+
+```text
+schema/mysql/_preSchema.sql     session setup
+schema/mysql/co_invoices.sql    the table's DROP, then its creation statements
+schema/mysql/manifest.json      load order, dependencies, per-dialect presence
+schema/mysql/_postSchema.sql    closes what _preSchema opened
+```
+
+File names follow your table names, so a schema-qualified name keeps its dot: `private.co_orders.sql`. The manifest is generated, never hand-edited. When it is wrong, correct a fixture class and regenerate.
+
+### Loading a schema
+
+Point `dump_file` at the dialect directory. `AbstractDatabaseTestCase` loads it on the first connection, in this order: `_preSchema.sql`, the manifest's tables, `_postSchema.sql`.
+
+```xml
+<env name="dump_file" value="resources/schema/mysql"/>
+```
+
+`Connection::loadSchema()` also accepts a single flat `.sql` file, so a project can move to the directory format on its own schedule.
+
+### Rebuilding one table
+
+Loading the whole schema once and truncating between tests remains the default. `addTable()` is the escape hatch for a test that needs one table rebuilt:
+
+```php
+<?php
+
+use Phalcon\Talon\PHPUnit\AbstractDatabaseTestCase;
+
+final class InvoiceRebuildTest extends AbstractDatabaseTestCase
+{
+    public function testRebuild(): void
+    {
+        $this->addTable('co_invoices');
+
+        $this->assertTrue($this->getConnection()->tableExists('co_invoices'));
+    }
+}
+```
+
+`addTable()` is standalone only, and that is enforced. A declared dependency that does not yet exist throws `SchemaDependencyMissing`. Dependencies are never resolved for you, so call the method once per table, dependency first:
+
+```php
+$this->addTable('co_invoices');       // the dependency
+$this->addTable('co_invoice_lines');  // the dependent
+```
+
+The restriction is deliberate. `schema_pre` is in effect only during the bulk load. By the time a test runs, `schema_post` has restored `FOREIGN_KEY_CHECKS=1`, so a table with foreign keys that loads correctly in bulk can fail on its own, on MySQL, for reasons the calling test does not suggest.
+
 ## Traits
 
 The traits are the core public API. Compose them directly when you do not want the base classes. They live in the `Phalcon\Talon\Traits` namespace:
@@ -317,7 +492,7 @@ The traits are the core public API. Compose them directly when you do not want t
 |-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ReflectionTrait`           | `callProtectedMethod`, `getProtectedProperty`, `setProtectedProperty`, `invokeMethod`                                                                      |
 | `FileSystemTrait`           | `getNewFileName`, `safeDeleteFile`, `safeDeleteDirectory`, `assertFileContentsContains`, `assertFileContentsEqual`                                         |
-| `DatabaseTrait`             | `assertInDatabase`, `assertNotInDatabase`, `getConnection`                                                                                                 |
+| `DatabaseTrait`             | `assertInDatabase`, `assertNotInDatabase`, `getConnection`, `getDialect`, `getDriver`, `addTable`                                                           |
 | `FunctionalTrait`           | `dispatch`, `getContent`                                                                                                                                   |
 | `FunctionalAssertionsTrait` | `assertController`, `assertAction`, `assertResponseCode`, `assertRedirectTo`, `assertResponseContentContains`, `assertHeader`, `assertDispatchIsForwarded` |
 | `BrowserTrait`              | `visitPage`, `fillField`, `selectOption`, `clickLink`, `pressButton`, `getCookie`, `setCookie`                                                             |
