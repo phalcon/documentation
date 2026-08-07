@@ -1,4 +1,4 @@
-FROM zensical/zensical:0.0.51
+FROM zensical/zensical:0.0.53
 
 LABEL authors="team@phalcon.io"
 
