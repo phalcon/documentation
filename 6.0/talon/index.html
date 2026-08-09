@@ -5844,7 +5844,7 @@ offering lower resource consumption and high performance.
   
 
 
-<h1 id="talon">Talon<a class="headerlink" href="#talon" title="Permanent link">&para;</a></h1>
+<h1 id="talon"><img src="../assets/images/talon-mark.svg" height="26" alt=""> Talon<a class="headerlink" href="#talon" title="Permanent link">&para;</a></h1>
 <hr />
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/phalcon/talon">Talon</a> is the Phalcon test harness. It is the part of Phalcon that catches the bugs. Talon bootstraps a Phalcon test environment and fronts PHPUnit, so any Phalcon project can write unit, database, functional, and browser tests with minimal boilerplate.</p>
@@ -6417,6 +6417,7 @@ offering lower resource consumption and high performance.
 </tr>
 </tbody>
 </table>
+<p><code>clear()</code> empties the table, but do not assert on its return value. MySQL and PostgreSQL clear with <code>TRUNCATE</code>, which reports no affected rows, so both return <code>0</code>. Only SQLite's <code>DELETE</code> returns a count.</p>
 <p>A fixture whose statements create a second table receives no generated <code>DROP</code> for that table. Write the drop yourself, or split the fixture in two.</p>
 <p>Override <code>getDependencies()</code> to declare the tables that must exist first:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
