@@ -1,4 +1,4 @@
-# Talon
+# <img src="assets/images/talon-mark.svg" height="26" alt=""> Talon
 
 - - -
 
@@ -389,6 +389,8 @@ Four rules govern the statement lists:
 | An empty list means absent | The table does not exist in that dialect. It is skipped entirely and gets no manifest entry |
 | One fixture, one table | The table name is the artifact file name and the manifest key. Two fixtures declaring the same table throw `SchemaTableDuplicate` |
 | `insert()` is yours | The contract covers `create()`, `drop()`, and `clear()`, never the data shape, so each fixture types its own insert signature |
+
+`clear()` empties the table, but do not assert on its return value. MySQL and PostgreSQL clear with `TRUNCATE`, which reports no affected rows, so both return `0`. Only SQLite's `DELETE` returns a count.
 
 A fixture whose statements create a second table receives no generated `DROP` for that table. Write the drop yourself, or split the fixture in two.
 
