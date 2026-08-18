@@ -1664,7 +1664,7 @@ Any exception thrown in the `Phalcon\Support\Helper` namespace will be of type `
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Support\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Support\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Support\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Support\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                         | Parent                      | Thrown when                                                                        |
 |---------------------------------------------------------------|-----------------------------|------------------------------------------------------------------------------------|

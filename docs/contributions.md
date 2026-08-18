@@ -33,13 +33,9 @@ When you create a pull request, we have a handy template to help you describe wh
 
 ## Documentation
 
-If programming in Zephir seems daunting, there are plenty of areas that you can contribute. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples on the respective pages.
+If programming seems daunting, there are plenty of areas that you can contribute. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples on the respective pages.
 
 All you have to do is go to our [documentation][phalcon-documentation] repository, fork it, make the changes, and send us a pull request.
-
-## Translations
-
-We have removed the translations from v5.5.x onward. There was not that much traffic from the community to help with translating the documentation into different languages.
 
 ## Questions and Support
 
@@ -53,26 +49,13 @@ We have removed the translations from v5.5.x onward. There was not that much tra
 - Only bugs found in the latest released version of Phalcon will be addressed.
 - We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests][tests] page for more information.
 - As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory, etc.
-- If you're submitting a [Segmentation Fault][segfault] error, we require a backtrace. Please check the [Generating a Backtrace](#generating-a-backtrace) section for more information.
 
-### Generating a Backtrace
-
-Sometimes due to [Segmentation Fault][segfault] error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.
-
-Please check the following links for instructions on how to generate the backtrace:
-
-* [Generating a gdb backtrace][gdb]
-* [Generating a backtrace, with a compiler, on Win32][gdb-w32]
-* [Debugging Symbols][symbols]
-* [Building PHP][building-php]
 
 ## Pull Request Checklist
 
-- Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance, `5.0.x`, and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
+- Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance, `6.0.x`, and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
 - Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing][env] page for more information on how to set up a test environment and how to write tests.
-- Since Phalcon is written in [Zephir][zephir], please do not submit commits that modify the C-generated files directly
 - Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not have to worry about coding standards. All tests (PHP code), follow the [PSR-12][psr-12] standard
-- Remove any change to `ext/kernel`, `*.zep.c`, and `*.zep.h` files before submitting the pull request
 - More information [here][pr].
 
 Before submitting **new functionality**, please open a [NFR][nfr] as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:

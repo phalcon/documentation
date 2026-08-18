@@ -730,6 +730,188 @@ The parameters available are:
 
     The parameters must be enclosed in curly brackets `{}`
 
+### Events
+
+The connections fire lifecycle events through the [Phalcon\Events\Manager][events-manager]. The events report every connection and statement operation, and the `before*` events can cancel the operation before it runs.
+
+Events are only fired when an events manager is set on the connection. Call `setEventsManager()` with the manager, and `getEventsManager()` to read it back. The event names are constants on [Phalcon\DataMapper\Pdo\Events][datamapper-pdo-events], so you do not have to repeat the strings.
+
+| Event                       | Cancellable | Data                                |
+|-----------------------------|-------------|-------------------------------------|
+| `dm:beforeConnect`          | Yes         | `null`                              |
+| `dm:afterConnect`           | No          | `null`                              |
+| `dm:beforeDisconnect`       | Yes         | `null`                              |
+| `dm:afterDisconnect`        | No          | `null`                              |
+| `dm:beforePerform`          | Yes         | `statement`, `values`               |
+| `dm:afterPerform`           | No          | `statement`, `values`               |
+| `dm:beforeExec`             | Yes         | `statement`                         |
+| `dm:afterExec`              | No          | `statement`, `affectedRows`         |
+| `dm:beforeQuery`            | Yes         | `statement`, `arguments`            |
+| `dm:afterQuery`             | No          | `statement`, `arguments`            |
+| `dm:beforeBeginTransaction` | Yes         | `null`                              |
+| `dm:afterBeginTransaction`  | No          | `null`                              |
+| `dm:beforeCommit`           | Yes         | `null`                              |
+| `dm:afterCommit`            | No          | `null`                              |
+| `dm:beforeRollBack`         | Yes         | `null`                              |
+| `dm:afterRollBack`          | No          | `null`                              |
+| `dm:connectionLost`         | No          | `null`                              |
+
+The handler receives the event, the connection that fired it, and the data listed above.
+
+```php
+<?php
+
+use Phalcon\DataMapper\Pdo\Connection;
+use Phalcon\DataMapper\Pdo\Events;
+use Phalcon\Events\Manager;
+
+$manager = new Manager();
+
+$manager->attach(
+    Events::AFTER_PERFORM,
+    function ($event, $connection, $data) {
+        error_log($data['statement']);
+    }
+);
+
+$connection = new Connection(
+    'mysql:host=127.0.0.1;dbname=phalcon_test',
+    'phalcon',
+    'secret'
+);
+
+$connection->setEventsManager($manager);
+
+$connection->fetchAll('SELECT * FROM co_invoices WHERE inv_status = ?', [0 => 1]);
+```
+
+Attaching to `dm` instead of the full event name gives a handler every DataMapper event. Read `$event->getType()` to tell them apart.
+
+```php
+<?php
+
+use Phalcon\Events\Manager;
+
+$manager = new Manager();
+
+$manager->attach(
+    'dm',
+    function ($event, $connection, $data) {
+        error_log($event->getType());
+    }
+);
+```
+
+#### Cancelling an Operation
+
+A listener on a `before*` event cancels the operation by stopping the event and returning `false`. Both parts are required:
+
+- `stop()` abandons the rest of the queue, so no later listener can replace the result. On its own it returns whatever the listener returned, which the connection cannot tell apart from having no listeners at all.
+- `return false` is the value the connection checks. On its own it is replaced by any later listener that returns a value, unless the manager runs with `setStopOnFalse(true)`.
+
+Together they cancel the operation whichever mode the manager is in.
+
+A cancelled operation throws [Phalcon\DataMapper\Pdo\Exception\OperationCancelled][datamapper-pdo-exception-operationcancelled]. The operation does not run. The exception is a deliberate cancellation and not a database failure, so catching it separately tells the two apart.
+
+```php
+<?php
+
+use Phalcon\DataMapper\Pdo\Connection;
+use Phalcon\DataMapper\Pdo\Events;
+use Phalcon\DataMapper\Pdo\Exception\OperationCancelled;
+use Phalcon\Events\Manager;
+
+$manager = new Manager();
+
+$manager->attach(
+    Events::BEFORE_EXEC,
+    function ($event, $connection, $data) {
+        if (str_starts_with(strtoupper(trim($data['statement'])), 'DELETE')) {
+            $event->stop();
+
+            return false;
+        }
+    }
+);
+
+$connection = new Connection(
+    'mysql:host=127.0.0.1;dbname=phalcon_test',
+    'phalcon',
+    'secret'
+);
+
+$connection->setEventsManager($manager);
+
+try {
+    $connection->exec('DELETE FROM co_invoices');
+} catch (OperationCancelled $ex) {
+    echo $ex->getMessage();
+    // Operation cancelled by a listener of 'dm:beforeExec'
+}
+```
+
+The `after*` events are not cancellable. The operation is complete when they fire.
+
+#### Connection Locator
+
+The [Phalcon\DataMapper\Pdo\ConnectionLocator][datamapper-pdo-connectionlocator] also accepts an events manager, and passes it to every connection it returns. Connections that the locator builds on demand therefore fire the events without being wired up one at a time.
+
+```php
+<?php
+
+use Phalcon\DataMapper\Pdo\Connection;
+use Phalcon\DataMapper\Pdo\ConnectionLocator;
+use Phalcon\DataMapper\Pdo\Events;
+use Phalcon\Events\Manager;
+
+$master = new Connection(
+    'mysql:host=127.0.0.1;dbname=phalcon_test',
+    'phalcon',
+    'secret'
+);
+
+$locator = new ConnectionLocator(
+    $master,
+    [
+        'reports' => function () {
+            return new Connection(
+                'mysql:host=127.0.0.2;dbname=phalcon_test',
+                'phalcon',
+                'secret'
+            );
+        },
+    ]
+);
+
+$manager = new Manager();
+
+$manager->attach(
+    Events::AFTER_QUERY,
+    function ($event, $connection, $data) {
+        error_log($data['statement']);
+    }
+);
+
+$locator->setEventsManager($manager);
+
+// the read connection is built here and already fires the events
+$locator->getRead('reports')->query('SELECT * FROM co_invoices');
+```
+
+#### Scope of the Events
+
+There are two groups. The operation events - perform, exec, query and the three transaction pairs - belong to one operation each. The connection events - `dm:beforeConnect`, `dm:afterConnect`, `dm:beforeDisconnect`, `dm:afterDisconnect` and `dm:connectionLost` - report a change of the connection state and fire whichever method causes the change. An automatic reconnect therefore reports the lost connection, the disconnect and the new connection.
+
+!!! info "NOTE"
+
+    `prepare()` has no events of its own. `perform()` calls it, so events on `prepare()` would report one operation twice.
+
+!!! info "NOTE"
+
+    [Phalcon\DataMapper\Pdo\Connection\Decorated][datamapper-pdo-connection-decorated] does not fire the connect and disconnect events. It receives a PDO instance that is already connected, and it cannot disconnect. All the other events work as described above.
+
+[Phalcon\DataMapper\Pdo\Connection\ConnectionInterface][datamapper-pdo-connection-connectioninterface] does not declare `getEventsManager()` and `setEventsManager()`. Classes that implement the interface directly are unchanged. The methods come from [Phalcon\DataMapper\Pdo\Connection\AbstractConnection][datamapper-pdo-connection-abstractconnection], which every connection shipped with Phalcon extends.
+
 ## Query
 
 ### Factory
@@ -2788,11 +2970,14 @@ Any exceptions thrown in the [Phalcon\DataMapper\Pdo][datamapper-pdo-connection]
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses under `Phalcon\DataMapper\Pdo\Exception\` so callers can catch a specific failure mode. Existing `catch (Phalcon\DataMapper\Pdo\Exception\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses under `Phalcon\DataMapper\Pdo\Exception\` so callers can catch a specific failure mode. Existing `catch (Phalcon\DataMapper\Pdo\Exception\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                  | Parent                                       | Thrown when                                                                                       |
 |--------------------------------------------------------|----------------------------------------------|---------------------------------------------------------------------------------------------------|
+| `Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`    | `Phalcon\DataMapper\Pdo\Exception\Exception` | A connection cannot disconnect because its PDO instance was created outside and then injected.    |
+| `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`  | `Phalcon\DataMapper\Pdo\Exception\Exception` | The connection locator is asked for a connection under a name that is not registered.             |
 | `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported`  | `Phalcon\DataMapper\Pdo\Exception\Exception` | A DSN names a PDO driver that has not been compiled into the running PHP binary.                  |
+| `Phalcon\DataMapper\Pdo\Exception\OperationCancelled`  | `Phalcon\DataMapper\Pdo\Exception\Exception` | A listener cancelled one of the cancellable `before*` events, so the operation did not run.       |
 | `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` | `Phalcon\DataMapper\Pdo\Exception\Exception` | A magic method call targets a driver method that does not exist on the PDO connection.            |
 | `Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`  | `Phalcon\DataMapper\Pdo\Exception\Exception` | A `Query\Select` magic call routes to a method that the underlying query builder does not expose. |
 
@@ -2806,9 +2991,11 @@ As of 5.14 the component raises granular subclasses under `Phalcon\DataMapper\Pd
 [datamapper-pdo-connection-pdointerface]: api/phalcon_datamapper.md#datamapperpdoconnectionpdointerface
 [datamapper-pdo-connectionlocator]: api/phalcon_datamapper.md#datamapperpdoconnectionlocator
 [datamapper-pdo-connectionlocatorinterface]: api/phalcon_datamapper.md#datamapperpdoconnectionlocatorinterface
+[datamapper-pdo-events]: api/phalcon_datamapper.md#datamapperpdoevents
 [datamapper-pdo-exception-cannotdisconnect]: api/phalcon_datamapper.md#datamapperpdoexceptioncannotdisconnect
 [datamapper-pdo-exception-connectionnotfound]: api/phalcon_datamapper.md#datamapperpdoexceptionconnectionnotfound
 [datamapper-pdo-exception-exception]: api/phalcon_datamapper.md#datamapperpdoexceptionexception
+[datamapper-pdo-exception-operationcancelled]: api/phalcon_datamapper.md#datamapperpdoexceptionoperationcancelled
 [datamapper-pdo-profiler-memorylogger]: api/phalcon_datamapper.md#datamapperpdoprofilermemorylogger
 [datamapper-pdo-profiler-profiler]: api/phalcon_datamapper.md#datamapperpdoprofilerprofiler
 [datamapper-pdo-profiler-profilerinterface]: api/phalcon_datamapper.md#datamapperpdoprofilerprofilerinterface
@@ -2821,4 +3008,5 @@ As of 5.14 the component raises granular subclasses under `Phalcon\DataMapper\Pd
 [datamapper-query-select]: api/phalcon_datamapper.md#datamapperqueryselect
 [datamapper-query-update]: api/phalcon_datamapper.md#datamapperqueryupdate
 [eaa]: https://martinfowler.com/books/eaa.html
+[events-manager]: api/phalcon_events.md#eventsmanager
 [logger]: logger.md

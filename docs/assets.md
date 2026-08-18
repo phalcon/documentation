@@ -949,7 +949,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Assets\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Assets\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Assets\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Assets\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                  | Parent                     | Thrown when                                                          |
 |--------------------------------------------------------|----------------------------|----------------------------------------------------------------------|
@@ -962,7 +962,7 @@ As of 5.14 the component raises granular subclasses of `Phalcon\Assets\Exception
 | `Phalcon\Assets\Exceptions\InvalidTargetPath`          | `Phalcon\Assets\Exception` | A target path configured on a collection is empty or not writable.   |
 | `Phalcon\Assets\Exceptions\TargetPathIsDirectory`      | `Phalcon\Assets\Exception` | The configured target path points at a directory rather than a file. |
 
-As of 5.15 `CollectionNotFound` includes the requested collection name in its message, and any collection filter that is not a `Phalcon\Contracts\Assets\Filter` raises `InvalidFilter` instead of producing a fatal error.
+`CollectionNotFound` includes the requested collection name in its message, and any collection filter that is not a `Phalcon\Contracts\Assets\Filter` raises `InvalidFilter` instead of producing a fatal error.
 
 [asset]: api/phalcon_assets.md#assetsasset
 [asset-css]: api/phalcon_assets.md#assetsassetcss

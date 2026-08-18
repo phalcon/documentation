@@ -1488,7 +1488,7 @@ class InvoiceComponent extends AbstractInjectionAware
 
 !!! warning "WARNING"
 
-    As of version 5.14.1, `Phalcon\Di\Injectable::__get()` no longer caches resolved services as dynamic object properties. Every magic property access (e.g. `$this->cfg`) re-resolves the service through the container. As a result, mutating an **array-valued** service through a magic property no longer works - the write is applied to a temporary copy and is silently lost:
+    `Phalcon\Di\Injectable::__get()` does not cache resolved services as dynamic object properties. Every magic property access (e.g. `$this->cfg`) re-resolves the service through the container. As a result, mutating an **array-valued** service through a magic property does not work - the write is applied to a temporary copy and is silently lost:
 
     ```php
     $this->cfg['namespace'] = 'newvalue';

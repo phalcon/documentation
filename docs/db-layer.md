@@ -3052,7 +3052,7 @@ Any exceptions thrown in the `Phalcon\Db` namespace will be of type `Phalcon\Db\
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Db\Exception` so callers can catch a specific failure mode. Every subclass extends `Phalcon\Db\Exception`, so existing `catch (Phalcon\Db\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Db\Exception` so callers can catch a specific failure mode. Every subclass extends `Phalcon\Db\Exception`, so existing `catch (Phalcon\Db\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                     | Parent                 | Thrown when                                                                                  |
 |-----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------------|

@@ -35,7 +35,7 @@ If you are working on an issue, note the number of the issue down. Let us assume
 
 `#12345 - Create New Object`
 
-- Check out the `5.0.x` branch
+- Check out the `6.0.x` branch
 - Create a branch: `T12345-create-new-object`
 
 The name of the branch starts with `T`, followed by the number of the issue and then the title of the issue as a slug.

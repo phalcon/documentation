@@ -804,7 +804,7 @@ Will not throw an error because `default` is a reserved word for filters like `{
 
 **`default` filter inside `switch`**
 
-As of 5.14.2 the word `default` is treated as the `{% default %}` clause only when it directly follows the opening `{%` delimiter inside a `switch` block. Everywhere else it is parsed as a regular identifier, so the `default` filter, `{{ default }}` and `{% set default = ... %}` all work inside `switch`-`case` blocks:
+The word `default` is treated as the `{% default %}` clause only when it directly follows the opening `{%` delimiter inside a `switch` block. Everywhere else it is parsed as a regular identifier, so the `default` filter, `{{ default }}` and `{% set default = ... %}` all work inside `switch`-`case` blocks:
 
 ```twig
 {% switch status %}

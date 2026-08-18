@@ -1510,6 +1510,23 @@ The events available in Phalcon are:
 | [Console][application-cli]  | `console:beforeHandleTask`           | Console, Dispatcher                                     |
 | [Console][application-cli]  | `console:beforeStartModule`          | Console, Module                                         |
 | [Console][application-cli]  | `console:boot`                       | Console                                                 |
+| [DataMapper][datamapper]    | `dm:afterBeginTransaction`           | Connection                                              |
+| [DataMapper][datamapper]    | `dm:afterCommit`                     | Connection                                              |
+| [DataMapper][datamapper]    | `dm:afterConnect`                    | Connection                                              |
+| [DataMapper][datamapper]    | `dm:afterDisconnect`                 | Connection                                              |
+| [DataMapper][datamapper]    | `dm:afterExec`                       | Connection, Statement, Affected Rows                    |
+| [DataMapper][datamapper]    | `dm:afterPerform`                    | Connection, Statement, Values                           |
+| [DataMapper][datamapper]    | `dm:afterQuery`                      | Connection, Statement, Arguments                        |
+| [DataMapper][datamapper]    | `dm:afterRollBack`                   | Connection                                              |
+| [DataMapper][datamapper]    | `dm:beforeBeginTransaction`          | Connection                                              |
+| [DataMapper][datamapper]    | `dm:beforeCommit`                    | Connection                                              |
+| [DataMapper][datamapper]    | `dm:beforeConnect`                   | Connection                                              |
+| [DataMapper][datamapper]    | `dm:beforeDisconnect`                | Connection                                              |
+| [DataMapper][datamapper]    | `dm:beforeExec`                      | Connection, Statement                                   |
+| [DataMapper][datamapper]    | `dm:beforePerform`                   | Connection, Statement, Values                           |
+| [DataMapper][datamapper]    | `dm:beforeQuery`                     | Connection, Statement, Arguments                        |
+| [DataMapper][datamapper]    | `dm:beforeRollBack`                  | Connection                                              |
+| [DataMapper][datamapper]    | `dm:connectionLost`                  | Connection                                              |
 | [Db][db-layer]              | `db:afterQuery`                      | Db                                                      |
 | [Db][db-layer]              | `db:beforeQuery`                     | Db                                                      |
 | [Db][db-layer]              | `db:connectionLost`                  | Db                                                      |
@@ -1642,6 +1659,7 @@ The component raises granular subclasses of `Phalcon\Events\Exception` so caller
 [contracts-eventsaware]: api/phalcon_contracts.md#contractseventseventsaware
 [contracts-manager]: api/phalcon_contracts.md#contractseventsmanager
 [contracts-stoppable]: api/phalcon_contracts.md#contractseventsstoppable
+[datamapper]: datamapper.md
 [db]: api/phalcon_db.md
 [db-layer]: db-layer.md
 [db-models]: db-models.md
