@@ -23,7 +23,7 @@ Settings::reset();                            // void
 `Settings::get($key)` resolves a setting in this order:
 
 1. PHP-level override stored by a prior `Settings::set($key, $value)` call.
-2. The C-level value returned by `globals_get($key)` - honouring `php.ini`, `.htaccess`, and per-virtualhost configuration.
+2. The C-level value returned by `globals_get($key)` - honoring `php.ini`, `.htaccess`, and per-virtualhost configuration.
 3. `null` if the key is not recognised.
 
 `Settings::set()` stores the value in the PHP-level override array only. It **does not** call `globals_set()`, so the underlying C struct is never modified. This keeps an override scoped to the current request (and the PHP process state) without leaking into other projects that share the same PHP worker.
@@ -47,7 +47,7 @@ Only the keys listed below are recognised. Calls to `set()` for any other key ar
 | `orm.case_insensitive_column_map`       | `bool` | Case-insensitive lookup of column-map keys                                                                             |
 | `orm.cast_last_insert_id_to_int`        | `bool` | Cast `lastInsertId` to `int` on auto-increment columns                                                                 |
 | `orm.cast_on_hydrate`                   | `bool` | Cast values to the column type during hydration                                                                        |
-| `orm.column_renaming`                   | `bool` | Honour the column-map during attribute lookup                                                                          |
+| `orm.column_renaming`                   | `bool` | Honor the column-map during attribute lookup                                                                          |
 | `orm.disable_assign_setters`            | `bool` | Skip setter methods in `Model::assign()` only (not hydration; see `orm.call_setters_on_hydration`)                     |
 | `orm.dynamic_update`                    | `bool` | Issue `UPDATE` statements only for changed columns                                                                     |
 | `orm.enable_implicit_joins`             | `bool` | Allow PHQL to auto-join related models                                                                                 |

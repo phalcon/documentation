@@ -4,7 +4,7 @@
 
 | Votes | Description                                                                                                                                                                                                |
 |-------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 025   | [**ORM**: Many to Many behaviour - save related #2871](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563456526)                                                                            |
+| 025   | [**ORM**: Many to Many behavior - save related #2871](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563456526)                                                                            |
 | 020   | [**Queue**: Add redis queue adapter to replace beanstalkd #13385](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563462564)                                                                 |
 | 020   | [**DI**: add autowire to DI container #13378](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563462162)                                                                                     |
 | 020   | [**Volt**: Support for embedding blocks into other blocks #329](https://github.com/phalcon/cphalcon/issues/14608#issuecomment-563450829)                                                                   |

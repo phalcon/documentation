@@ -402,7 +402,7 @@ $headerCollection = $this
 
 ### Static Base URI
 
-When a [Phalcon\Mvc\Url][url] service is registered in the DI container, local asset paths are resolved through `$url->getStatic()` instead of being prefixed with a bare `/`. This honours the `staticBaseUri` (or `baseUri`) configured on the URL component and makes asset resolution work correctly for applications deployed in a subdirectory or served from a CDN base path.
+When a [Phalcon\Mvc\Url][url] service is registered in the DI container, local asset paths are resolved through `$url->getStatic()` instead of being prefixed with a bare `/`. This honors the `staticBaseUri` (or `baseUri`) configured on the URL component and makes asset resolution work correctly for applications deployed in a subdirectory or served from a CDN base path.
 
 ```php
 <?php

@@ -208,7 +208,7 @@ mysql> select * from co_invoices;
 
 !!! warning "WARNING"
 
-    Adding this behaviour to a model prevents its _afterDelete_ event from being triggered, since the record isn't actually deleted.
+    Adding this behavior to a model prevents its _afterDelete_ event from being triggered, since the record isn't actually deleted.
 
 ## Custom
 

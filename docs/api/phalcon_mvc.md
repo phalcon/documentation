@@ -4152,7 +4152,7 @@ $invoice = Invoices::findFirst(
 
 echo "The first virtual invoice name is ", $invoice->inv_title;
 
-// behaviour with transaction
+// behavior with transaction
 $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction->begin();
 
@@ -5209,7 +5209,7 @@ class Invoices extends \Phalcon\Mvc\Model
 #### `invokeFinder()` { #mvcmodel-invokefinder }
 
 ```php
-protected final static function invokeFinder(
+final protected static function invokeFinder(
     string $method,
     array $arguments
 );
@@ -13415,7 +13415,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` ·
 <a class="api-item" href="#mvcmodelmetadata-initialize">
 <code class="vis vis-protected">protected</code>
 <code class="sig"><span class="sf">initialize</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$schema</span></span>)</code>
-<span class="desc">Initialize old behaviour for compatability</span>
+<span class="desc">Initialize old behavior for compatability</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-initializecolumnmap">
 <code class="vis vis-protected">protected</code>
@@ -14079,7 +14079,7 @@ final protected function initialize(
 );
 ```
 
-Initialize old behaviour for compatability
+Initialize old behavior for compatability
 
 #### `initializeColumnMap()` { #mvcmodelmetadata-initializecolumnmap }
 

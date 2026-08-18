@@ -6208,7 +6208,7 @@ echo (new Phalcon\Version())->getPart(Phalcon\Version::VERSION_MAJOR);
 #### `getSpecial()` { #supportversion-getspecial }
 
 ```php
-protected final function getSpecial( int $special ): string;
+final protected function getSpecial( int $special ): string;
 ```
 
 Translates a number to a special release.

@@ -1006,7 +1006,7 @@ Builds a HTML input[type="week"] tag
 #### `inputField()` { #tag-inputfield }
 
 ```php
-static final protected function inputField(
+final protected static function inputField(
     string $type,
     mixed $parameters,
     bool $asValue = false
@@ -1018,7 +1018,7 @@ Builds generic INPUT tags
 #### `inputFieldChecked()` { #tag-inputfieldchecked }
 
 ```php
-static final protected function inputFieldChecked(
+final protected static function inputFieldChecked(
     string $type,
     mixed $parameters
 ): string;
