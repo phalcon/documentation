@@ -17,7 +17,7 @@ This abstract class offers common access to the DI in a class
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - **`Phalcon\Di\AbstractInjectionAware`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
         - [`Phalcon\Assets\Manager`](phalcon_assets.md#assetsmanager)
         - [`Phalcon\Cli\Router`](phalcon_cli.md#clirouter)
@@ -227,7 +227,7 @@ __Uses__ `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalc
 <a class="api-item" href="#didi-loadfromyaml">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">loadFromYaml</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">loadFromYaml</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Loads services from a yaml file.</span>
 </a>
 <a class="api-item" href="#didi-offsetexists">
@@ -527,7 +527,7 @@ return [
 ```php
 public function loadFromYaml(
     string $filePath,
-    array $callbacks = null
+    array|null $callbacks = null
 ): void;
 ```
 
@@ -740,7 +740,7 @@ Interface for Phalcon\Di\Di
 
 <div class="api-tree" markdown>
 
-- `ArrayAccess`
+- `\ArrayAccess`
     - **`Phalcon\Di\DiInterface`**
 
 </div>
@@ -2003,7 +2003,7 @@ accessing a public property with the same name of a registered service
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - **`Phalcon\Di\Injectable`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
         - [`Phalcon\Application\AbstractApplication`](phalcon_application.md#applicationabstractapplication)
         - [`Phalcon\Cli\Task`](phalcon_cli.md#clitask)
@@ -2208,7 +2208,7 @@ __Uses__ `Closure` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phal
 <a class="api-item" href="#diservice-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolves the service</span>
 </a>
 <a class="api-item" href="#diservice-setdefinition">
@@ -2314,7 +2314,7 @@ Check whether the service is shared or not
 ```php
 public function resolve(
     mixed $parameters = null,
-    DiInterface $container = null
+    DiInterface|null $container = null
 ): mixed;
 ```
 
@@ -2398,7 +2398,7 @@ Represents a service in the services container
 <a class="api-item" href="#diserviceinterface-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolves the service</span>
 </a>
 <a class="api-item" href="#diserviceinterface-setdefinition">
@@ -2460,7 +2460,7 @@ Check whether the service is shared or not
 ```php
 public function resolve(
     mixed $parameters = null,
-    DiInterface $container = null
+    DiInterface|null $container = null
 ): mixed;
 ```
 

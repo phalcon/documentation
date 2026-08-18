@@ -17,14 +17,14 @@ This component allows to create CLI applications using Phalcon
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - [`Phalcon\Application\AbstractApplication`](phalcon_application.md#applicationabstractapplication)
             - **`Phalcon\Cli\Console`**
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Traits\Php\FileTrait`
+__Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -32,14 +32,14 @@ __Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\
 <div class="api-list">
 <a class="api-item" href="#cliconsole-handle">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">handle</span>( <span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">array|null</span> <span class="sv">$arguments</span><span class="sm"> = null</span> )</code>
 <span class="desc">Handle the whole command-line tasks</span>
 </a>
 <a class="api-item" href="#cliconsole-setargument">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">setArgument</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$str</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shift</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Set an specific argument</span>
+<code class="sig"><span class="sf">setArgument</span>(<span class="prm"><span class="st">array|null</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$str</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shift</span><span class="sm"> = true</span></span>)</code>
+<span class="desc">Set a specific argument</span>
 </a>
 </div>
 
@@ -48,7 +48,7 @@ __Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|string</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$arguments</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -65,7 +65,7 @@ __Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\
 #### `handle()` { #cliconsole-handle }
 
 ```php
-public function handle( array $arguments = null );
+public function handle( array|null $arguments = null );
 ```
 
 Handle the whole command-line tasks
@@ -74,13 +74,13 @@ Handle the whole command-line tasks
 
 ```php
 public function setArgument(
-    array $arguments = null,
+    array|null $arguments = null,
     bool $str = true,
     bool $shift = true
 ): static;
 ```
 
-Set an specific argument
+Set a specific argument
 
 
 ## Cli\Console\Exception
@@ -161,7 +161,7 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 <div class="api-list">
 <a class="api-item" href="#cliconsoleexceptionsinvalidmoduledefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$reason</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$reason</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -173,8 +173,8 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 
 ```php
 public function __construct(
-    string $name = null,
-    string $reason = null
+    string|null $name = null,
+    string|null $reason = null
 );
 ```
 
@@ -244,14 +244,14 @@ $handle = $dispatcher->dispatch();
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - [`Phalcon\Dispatcher\AbstractDispatcher`](phalcon_dispatcher.md#dispatcherabstractdispatcher)
             - **`Phalcon\Cli\Dispatcher`** - implements [`Phalcon\Cli\DispatcherInterface`](#clidispatcherinterface)
 
 </div>
 
-__Uses__ `Phalcon\Cli\Dispatcher\Exception` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterInterface`
+__Uses__ `Phalcon\Cli\Dispatcher\Exception` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterInterface`
 { .api-uses }
 
 ### Method Summary
@@ -383,7 +383,7 @@ public function callActionMethod(
 Calls the action method.
 
 The CLI options collected by the dispatcher are appended to the
-positional `params` before the call, so a task action receives any
+positional `parameters` before the call, so a task action receives any
 options as trailing arguments after its declared parameters.
 
 #### `getActiveTask()` { #clidispatcher-getactivetask }
@@ -561,13 +561,13 @@ echo $router->getTaskName();
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - **`Phalcon\Cli\Router`** - implements [`Phalcon\Cli\RouterInterface`](#clirouterinterface)
 
 </div>
 
-__Uses__ `Phalcon\Cli\Router\Exception` · `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType` · `Phalcon\Cli\Router\Route` · `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface`
+__Uses__ `Phalcon\Cli\Router\Exception` · `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType` · `Phalcon\Cli\Router\Route` · `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface`
 { .api-uses }
 
 ### Method Summary
@@ -622,13 +622,13 @@ __Uses__ `Phalcon\Cli\Router\Exception` · `Phalcon\Cli\Router\Exceptions\Before
 </a>
 <a class="api-item" href="#clirouter-getroutebyid">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
+<code class="ret">bool|RouteInterface</code>
 <code class="sig"><span class="sf">getRouteById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 <span class="desc">Returns a route object by its id</span>
 </a>
 <a class="api-item" href="#clirouter-getroutebyname">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
+<code class="ret">bool|RouteInterface</code>
 <code class="sig"><span class="sf">getRouteByName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a route object by its name</span>
 </a>
@@ -716,7 +716,7 @@ __Uses__ `Phalcon\Cli\Router\Exception` · `Phalcon\Cli\Router\Exceptions\Before
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;array-key, string&gt;</code>
 <code class="sig"><span class="sv">$matches</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -824,7 +824,7 @@ Returns processed extra params
 #### `getRouteById()` { #clirouter-getroutebyid }
 
 ```php
-public function getRouteById( mixed $id ): RouteInterface|bool;
+public function getRouteById( mixed $id ): bool|RouteInterface;
 ```
 
 Returns a route object by its id
@@ -832,7 +832,7 @@ Returns a route object by its id
 #### `getRouteByName()` { #clirouter-getroutebyname }
 
 ```php
-public function getRouteByName( string $name ): RouteInterface|bool;
+public function getRouteByName( string $name ): bool|RouteInterface;
 ```
 
 Returns a route object by its name
@@ -926,7 +926,7 @@ Interface for Phalcon\Cli\Router
 
 </div>
 
-__Uses__ `Phalcon\Cli\Router\RouteInterface`
+__Uses__ `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Contracts\Cli\CliTypes`
 { .api-uses }
 
 ### Method Summary
@@ -976,13 +976,13 @@ __Uses__ `Phalcon\Cli\Router\RouteInterface`
 </a>
 <a class="api-item" href="#clirouterinterface-getroutebyid">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
+<code class="ret">bool|RouteInterface</code>
 <code class="sig"><span class="sf">getRouteById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 <span class="desc">Returns a route object by its id</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getroutebyname">
 <code class="vis vis-public">public</code>
-<code class="ret">RouteInterface|bool</code>
+<code class="ret">bool|RouteInterface</code>
 <code class="sig"><span class="sf">getRouteByName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a route object by its name</span>
 </a>
@@ -1101,7 +1101,7 @@ Returns processed extra params
 #### `getRouteById()` { #clirouterinterface-getroutebyid }
 
 ```php
-public function getRouteById( mixed $id ): RouteInterface|bool;
+public function getRouteById( mixed $id ): bool|RouteInterface;
 ```
 
 Returns a route object by its id
@@ -1111,7 +1111,7 @@ Returns a route object by its id
 #### `getRouteByName()` { #clirouterinterface-getroutebyname }
 
 ```php
-public function getRouteByName( string $name ): RouteInterface|bool;
+public function getRouteByName( string $name ): bool|RouteInterface;
 ```
 
 Returns a route object by its name
@@ -1326,7 +1326,7 @@ This class represents every route added to the router
 
 </div>
 
-__Uses__ `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`
+__Uses__ `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths` · `Phalcon\Contracts\Cli\CliTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1335,6 +1335,7 @@ __Uses__ `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\
 <a class="api-item" href="#clirouterroute-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#clirouterroute-beforematch">
 <code class="vis vis-public">public</code>
@@ -1357,7 +1358,7 @@ __Uses__ `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\
 <a class="api-item" href="#clirouterroute-delimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">delimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">delimiter</span>( <span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 <span class="desc">Set the routing delimiter.</span>
 </a>
 <a class="api-item" href="#clirouterroute-extractnamedparams">
@@ -1534,6 +1535,8 @@ public function __construct(
 );
 ```
 
+Constructor
+
 #### `beforeMatch()` { #clirouterroute-beforematch }
 
 ```php
@@ -1568,7 +1571,7 @@ parameter
 #### `delimiter()` { #clirouterroute-delimiter }
 
 ```php
-public static function delimiter( string $delimiter = null ): void;
+public static function delimiter( string|null $delimiter = null ): void;
 ```
 
 Set the routing delimiter.
@@ -1736,6 +1739,9 @@ declared on the concrete `Route` class, not here.
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Cli\CliTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -1747,7 +1753,7 @@ declared on the concrete `Route` class, not here.
 </a>
 <a class="api-item" href="#clirouterrouteinterface-delimiter">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">delimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">delimiter</span>( <span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 <span class="desc">Set the routing delimiter</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-getcompiledpattern">
@@ -1840,7 +1846,7 @@ expression
 #### `delimiter()` { #clirouterrouteinterface-delimiter }
 
 ```php
-public static function delimiter( string $delimiter = null );
+public static function delimiter( string|null $delimiter = null );
 ```
 
 Set the routing delimiter
@@ -1979,14 +1985,14 @@ arguments). Declare optional trailing parameters to read those options.
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Cli\Task`** - implements [`Phalcon\Cli\TaskInterface`](#clitaskinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Queue\Cli\ConsumerTask`](phalcon_queue.md#queuecliconsumertask)
 
 </div>
 
-__Uses__ `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface`
+__Uses__ `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1997,33 +2003,11 @@ __Uses__ `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Ph
 <code class="sig"><span class="sf">__construct</span>()</code>
 <span class="desc">Phalcon\Cli\Task constructor</span>
 </a>
-<a class="api-item" href="#clitask-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
-<a class="api-item" href="#clitask-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface</code>
-<code class="sig"><span class="sv">$eventsManager</span></code>
-</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 3</div>
+<div class="api-group">Public · 1</div>
 
 #### `__construct()` { #clitask-__construct }
 
@@ -2032,22 +2016,6 @@ final public function __construct();
 ```
 
 Phalcon\Cli\Task constructor
-
-#### `getEventsManager()` { #clitask-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
-
-#### `setEventsManager()` { #clitask-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the events manager
 
 
 ## Cli\TaskInterface

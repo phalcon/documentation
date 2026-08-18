@@ -31,7 +31,7 @@ multi-key `cache:*Multiple` events).
 
 </div>
 
-__Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Exception\InvalidArgumentException` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Traversable`
+__Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Exception\InvalidArgumentException` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Throwable` · `Traversable`
 { .api-uses }
 
 ### Method Summary
@@ -44,6 +44,7 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 </a>
 <a class="api-item" href="#cacheabstractcache-get">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
@@ -53,23 +54,11 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <code class="sig"><span class="sf">getAdapter</span>()</code>
 <span class="desc">Returns the current adapter</span>
 </a>
-<a class="api-item" href="#cacheabstractcache-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Get the event manager</span>
-</a>
 <a class="api-item" href="#cacheabstractcache-set">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists data in the cache, uniquely referenced by a key with an</span>
-</a>
-<a class="api-item" href="#cacheabstractcache-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the event manager</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-checkkey">
 <code class="vis vis-protected">protected</code>
@@ -131,12 +120,6 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <code class="sig"><span class="sf">doSetMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</span>
 </a>
-<a class="api-item" href="#cacheabstractcache-fire">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span></span>)</code>
-<span class="desc">Trigger an event for the eventsManager.</span>
-</a>
 <a class="api-item" href="#cacheabstractcache-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
@@ -152,19 +135,12 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sv">$adapter</span></code>
-<span class="desc">The adapter</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-<span class="desc">Event Manager</span>
 </div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 4</div>
 
 #### `__construct()` { #cacheabstractcache-__construct }
 
@@ -180,7 +156,7 @@ Constructor.
 abstract public function get(
     string $key,
     mixed $defaultValue = null
-);
+): mixed;
 ```
 
 Fetches a value from the cache.
@@ -192,14 +168,6 @@ public function getAdapter(): AdapterInterface;
 ```
 
 Returns the current adapter
-
-#### `getEventsManager()` { #cacheabstractcache-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Get the event manager
 
 #### `set()` { #cacheabstractcache-set }
 
@@ -214,15 +182,7 @@ abstract public function set(
 Persists data in the cache, uniquely referenced by a key with an
 optional expiration TTL time.
 
-#### `setEventsManager()` { #cacheabstractcache-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the event manager
-
-<div class="api-group">Protected · 12</div>
+<div class="api-group">Protected · 11</div>
 
 #### `checkKey()` { #cacheabstractcache-checkkey }
 
@@ -318,17 +278,6 @@ protected function doSetMultiple(
 
 Persists a set of key => value pairs in the cache, with an optional TTL.
 
-#### `fire()` { #cacheabstractcache-fire }
-
-```php
-protected function fire(
-    string $eventName,
-    mixed $keys
-): void;
-```
-
-Trigger an event for the eventsManager.
-
 #### `getExceptionClass()` { #cacheabstractcache-getexceptionclass }
 
 ```php
@@ -353,7 +302,7 @@ Factory to create Cache adapters
 
 </div>
 
-__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu` · `Phalcon\Cache\Adapter\Libmemcached` · `Phalcon\Cache\Adapter\Memory` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Adapter\RedisCluster` · `Phalcon\Cache\Adapter\Stream` · `Phalcon\Cache\Adapter\Weak` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory`
+__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu` · `Phalcon\Cache\Adapter\Libmemcached` · `Phalcon\Cache\Adapter\Memory` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Adapter\RedisCluster` · `Phalcon\Cache\Adapter\Stream` · `Phalcon\Cache\Adapter\Weak` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -361,7 +310,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu
 <div class="api-list">
 <a class="api-item" href="#cacheadapterfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$serializerFactory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">AdapterFactory constructor.</span>
 </a>
 <a class="api-item" href="#cacheadapterfactory-newinstance">
@@ -401,7 +350,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu
 
 ```php
 public function __construct(
-    SerializerFactory $factory,
+    SerializerFactory $serializerFactory,
     array $services = []
 );
 ```
@@ -479,6 +428,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Ap
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -508,6 +458,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Li
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -537,6 +488,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Me
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -566,6 +518,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Re
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -596,6 +549,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Re
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -625,6 +579,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\St
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -654,6 +609,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\We
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -672,7 +628,7 @@ This component offers caching capabilities for your application.
 
 </div>
 
-__Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Exception\InvalidArgumentException`
+__Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Exception\InvalidArgumentException` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -698,6 +654,7 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 </a>
 <a class="api-item" href="#cachecache-get">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
@@ -766,7 +723,7 @@ Deletes multiple cache items in a single operation.
 public function get(
     string $key,
     mixed $defaultValue = null
-);
+): mixed;
 ```
 
 Fetches a value from the cache.
@@ -839,7 +796,7 @@ Creates a new Cache class
 
 </div>
 
-__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Cache` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractConfigFactory`
+__Uses__ `Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -866,6 +823,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Cache` · `P
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 </div>
 
@@ -918,6 +876,8 @@ Constructs a new Cache instance.
 protected function getExceptionClass(): string;
 ```
 
+Returns the exception class for the factory
+
 
 ## Cache\CacheInterface
 
@@ -957,7 +917,7 @@ Exceptions thrown in Phalcon\Cache will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Exception/InvalidArgumentException.zep){ .src-btn }
 
-Exceptions thrown in Phalcon\Cache will use this class
+Exceptions thrown in Phalcon\Cache for invalid arguments will use this class
 
 <div class="api-tree" markdown>
 

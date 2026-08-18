@@ -79,7 +79,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\C
 <div class="api-list">
 <a class="api-item" href="#configadaptergrouped-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arrayConfig</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$defaultAdapter</span><span class="sm"> = &quot;php&quot;</span>,</span><span class="prm"><span class="st">ConfigFactory</span> <span class="sv">$factory</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arrayConfig</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$defaultAdapter</span><span class="sm"> = &quot;php&quot;</span>,</span><span class="prm"><span class="st">ConfigFactory|null</span> <span class="sv">$factory</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Config\Adapter\Grouped constructor</span>
 </a>
 </div>
@@ -94,7 +94,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\C
 public function __construct(
     array $arrayConfig,
     string $defaultAdapter = "php",
-    ConfigFactory $factory = null
+    ConfigFactory|null $factory = null
 );
 ```
 
@@ -423,7 +423,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 <div class="api-list">
 <a class="api-item" href="#configadapteryaml-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Config\Adapter\Yaml constructor</span>
 </a>
 </div>
@@ -437,7 +437,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 ```php
 public function __construct(
     string $filePath,
-    array $callbacks = null
+    array|null $callbacks = null
 );
 ```
 
@@ -506,13 +506,13 @@ __Uses__ `Phalcon\Config\Exceptions\InvalidMergeData` · `Phalcon\Support\Collec
 <a class="api-item" href="#configconfig-path">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a value from current config using a dot separated path.</span>
 </a>
 <a class="api-item" href="#configconfig-setpathdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the default path delimiter</span>
 </a>
 <a class="api-item" href="#configconfig-toarray">
@@ -598,7 +598,7 @@ $globalConfig->merge($appConfig);
 public function path(
     string $path,
     mixed $defaultValue = null,
-    string $delimiter = null
+    string|null $delimiter = null
 ): mixed;
 ```
 
@@ -611,7 +611,7 @@ echo $config->path("unknown.path", "default", ".");
 #### `setPathDelimiter()` { #configconfig-setpathdelimiter }
 
 ```php
-public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
+public function setPathDelimiter( string|null $delimiter = null ): ConfigInterface;
 ```
 
 Sets the default path delimiter
@@ -838,7 +838,7 @@ Interface for Phalcon\Config\Config class
 
 <div class="api-tree" markdown>
 
-- `ArrayAccess`
+- `\ArrayAccess`
     - [`Phalcon\Contracts\Support\Collection`](phalcon_contracts.md#contractssupportcollection)
         - [`Phalcon\Support\Collection\CollectionInterface`](phalcon_support.md#supportcollectioncollectioninterface)
             - **`Phalcon\Config\ConfigInterface`**
@@ -864,12 +864,12 @@ __Uses__ `Phalcon\Support\Collection\CollectionInterface`
 <a class="api-item" href="#configconfiginterface-path">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#configconfiginterface-setpathdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 </a>
 </div>
 
@@ -895,14 +895,14 @@ public function merge( mixed $toMerge ): ConfigInterface;
 public function path(
     string $path,
     mixed $defaultValue = null,
-    string $delimiter = null
+    string|null $delimiter = null
 ): mixed;
 ```
 
 #### `setPathDelimiter()` { #configconfiginterface-setpathdelimiter }
 
 ```php
-public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
+public function setPathDelimiter( string|null $delimiter = null ): ConfigInterface;
 ```
 
 

@@ -224,6 +224,7 @@ in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setSeparator</span>( <span class="st">string</span> <span class="sv">$separator</span> )</code>
+<span class="desc">Set the separator</span>
 </a>
 <a class="api-item" href="#htmlbreadcrumbs-toarray">
 <code class="vis vis-public">public</code>
@@ -313,6 +314,8 @@ echo $breadcrumbs->render();
 public function setSeparator( string $separator ): static;
 ```
 
+Set the separator
+
 #### `toArray()` { #htmlbreadcrumbs-toarray }
 
 ```php
@@ -371,6 +374,7 @@ __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEsc
 <a class="api-item" href="#htmlescaper-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;utf-8&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = 11</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$doubleEncode</span><span class="sm"> = true</span></span>)</code>
+<span class="desc">Constructor. Accepts the legacy scalar params for backward compatibility</span>
 </a>
 <a class="api-item" href="#htmlescaper-attributes">
 <code class="vis vis-public">public</code>
@@ -388,6 +392,7 @@ __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEsc
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sf">detectEncoding</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+<span class="desc">Detects the character encoding of a string. Delegates to <code>HtmlEscaper</code>.</span>
 </a>
 <a class="api-item" href="#htmlescaper-escapecss">
 <code class="vis vis-public">public</code>
@@ -397,12 +402,12 @@ __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEsc
 <a class="api-item" href="#htmlescaper-escapehtml">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">escapeHtml</span>( <span class="st">string</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">escapeHtml</span>( <span class="st">string|null</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-escapehtmlattr">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">escapeHtmlAttr</span>( <span class="st">string</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">escapeHtmlAttr</span>( <span class="st">string|null</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-escapejs">
 <code class="vis vis-public">public</code>
@@ -428,11 +433,13 @@ __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEsc
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getEncoding</span>()</code>
+<span class="desc">Returns the encoding from the HtmlEscaper.</span>
 </a>
 <a class="api-item" href="#htmlescaper-getflags">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getFlags</span>()</code>
+<span class="desc">Returns the flags from the HtmlEscaper.</span>
 </a>
 <a class="api-item" href="#htmlescaper-gethtmlescaper">
 <code class="vis vis-public">public</code>
@@ -452,7 +459,7 @@ __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEsc
 <a class="api-item" href="#htmlescaper-html">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">html</span>( <span class="st">string</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">html</span>( <span class="st">string|null</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 <span class="desc">Escapes a HTML string. Delegates to the configured <code>HtmlEscaper</code>.</span>
 </a>
 <a class="api-item" href="#htmlescaper-js">
@@ -465,6 +472,7 @@ __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEsc
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">normalizeEncoding</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+<span class="desc">Normalizes a string&#039;s encoding to UTF-32. Delegates to <code>HtmlEscaper</code>.</span>
 </a>
 <a class="api-item" href="#htmlescaper-setattributeescaper">
 <code class="vis vis-public">public</code>
@@ -503,6 +511,7 @@ __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEsc
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setHtmlQuoteType</span>( <span class="st">int</span> <span class="sv">$flags</span> )</code>
+<span class="desc">Sets the HTML quoting type for htmlspecialchars.</span>
 </a>
 <a class="api-item" href="#htmlescaper-setjsescaper">
 <code class="vis vis-public">public</code>
@@ -566,6 +575,9 @@ public function __construct(
 );
 ```
 
+Constructor. Accepts the legacy scalar params for backward compatibility
+and fans them out to every sub-escaper so existing code keeps working.
+
 #### `attributes()` { #htmlescaper-attributes }
 
 ```php
@@ -589,6 +601,8 @@ Escape CSS strings. Delegates to the configured `CssEscaper`.
 final public function detectEncoding( string $input ): string|null;
 ```
 
+Detects the character encoding of a string. Delegates to `HtmlEscaper`.
+
 #### `escapeCss()` { #htmlescaper-escapecss }
 
 ```php
@@ -598,13 +612,13 @@ public function escapeCss( string $input ): string;
 #### `escapeHtml()` { #htmlescaper-escapehtml }
 
 ```php
-public function escapeHtml( string $input = null ): string;
+public function escapeHtml( string|null $input = null ): string;
 ```
 
 #### `escapeHtmlAttr()` { #htmlescaper-escapehtmlattr }
 
 ```php
-public function escapeHtmlAttr( string $input = null ): string;
+public function escapeHtmlAttr( string|null $input = null ): string;
 ```
 
 #### `escapeJs()` { #htmlescaper-escapejs }
@@ -637,11 +651,15 @@ public function getCssEscaper(): CssEscaper;
 public function getEncoding(): string;
 ```
 
+Returns the encoding from the HtmlEscaper.
+
 #### `getFlags()` { #htmlescaper-getflags }
 
 ```php
 public function getFlags(): int;
 ```
+
+Returns the flags from the HtmlEscaper.
 
 #### `getHtmlEscaper()` { #htmlescaper-gethtmlescaper }
 
@@ -664,7 +682,7 @@ public function getUrlEscaper(): UrlEscaper;
 #### `html()` { #htmlescaper-html }
 
 ```php
-public function html( string $input = null ): string;
+public function html( string|null $input = null ): string;
 ```
 
 Escapes a HTML string. Delegates to the configured `HtmlEscaper`.
@@ -682,6 +700,8 @@ Escape javascript strings. Delegates to the configured `JsEscaper`.
 ```php
 final public function normalizeEncoding( string $input ): string;
 ```
+
+Normalizes a string's encoding to UTF-32. Delegates to `HtmlEscaper`.
 
 #### `setAttributeEscaper()` { #htmlescaper-setattributeescaper }
 
@@ -729,6 +749,12 @@ public function setHtmlEscaper( HtmlEscaper $escaper ): static;
 
 ```php
 public function setHtmlQuoteType( int $flags ): static;
+```
+
+Sets the HTML quoting type for htmlspecialchars.
+
+```php
+$escaper->setHtmlQuoteType(ENT_XHTML);
 ```
 
 #### `setJsEscaper()` { #htmlescaper-setjsescaper }
@@ -1112,12 +1138,12 @@ Escapes a string for use as HTML body content via `htmlspecialchars`.
 <a class="api-item" href="#htmlescaperhtmlescaper-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string|null</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaperhtmlescaper-escape">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">escape</span>( <span class="st">string</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">escape</span>( <span class="st">string|null</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 </a>
 </div>
 
@@ -1128,13 +1154,13 @@ Escapes a string for use as HTML body content via `htmlspecialchars`.
 #### `__invoke()` { #htmlescaperhtmlescaper-__invoke }
 
 ```php
-public function __invoke( string $input = null ): string;
+public function __invoke( string|null $input = null ): string;
 ```
 
 #### `escape()` { #htmlescaperhtmlescaper-escape }
 
 ```php
-public function escape( string $input = null ): string;
+public function escape( string|null $input = null ): string;
 ```
 
 
@@ -1486,7 +1512,7 @@ public function __construct( string $message );
 
 <div class="api-tree" markdown>
 
-- `InvalidArgumentException`
+- `\InvalidArgumentException`
     - **`Phalcon\Html\Exceptions\InvalidResultsetValue`**
 
 </div>
@@ -1557,7 +1583,7 @@ public function __construct( string $name );
 
 <div class="api-tree" markdown>
 
-- `InvalidArgumentException`
+- `\InvalidArgumentException`
     - **`Phalcon\Html\Exceptions\UsingRequiresTwoValues`**
 
 </div>
@@ -1628,7 +1654,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperabstracthelper-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype|null</span> <span class="sv">$doctype</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">AbstractHelper constructor.</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-close">
@@ -1732,7 +1758,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 ```php
 public function __construct(
     EscaperInterface $escaper,
-    Doctype $doctype = null
+    Doctype|null $doctype = null
 );
 ```
 
@@ -1878,7 +1904,7 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelperabstractlist-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperabstractlist-__tostring">
 <code class="vis vis-public">public</code>
@@ -1922,7 +1948,7 @@ __Uses__ `Phalcon\Html\Exception`
 ```php
 public function __invoke(
     string $indent = "    ",
-    string $delimiter = null,
+    string|null $delimiter = null,
     array $attributes = []
 ): static;
 ```
@@ -1970,7 +1996,7 @@ Returns the tag name.
 <a class="api-item" href="#htmlhelperabstractseries-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperabstractseries-__tostring">
 <code class="vis vis-public">public</code>
@@ -2021,7 +2047,7 @@ Returns the tag name.
 ```php
 public function __invoke(
     string $indent = "    ",
-    string $delimiter = null
+    string|null $delimiter = null
 ): static;
 ```
 
@@ -2095,7 +2121,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperanchor-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype|null</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperanchor-__invoke">
 <code class="vis vis-public">public</code>
@@ -2124,7 +2150,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 ```php
 public function __construct(
     EscaperInterface $escaper,
-    Doctype $doctype = null,
+    Doctype|null $doctype = null,
     bool $forceRaw = false
 );
 ```
@@ -2166,7 +2192,7 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelperbase-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$href</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$href</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Produce a <code>&lt;base/&gt;</code> tag.</span>
 </a>
 </div>
@@ -2179,7 +2205,7 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function __invoke(
-    string $href = null,
+    string|null $href = null,
     array $attributes = []
 ): string;
 ```
@@ -2252,13 +2278,13 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Url\UrlInterfac
 <div class="api-list">
 <a class="api-item" href="#htmlhelperbreadcrumbs-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">UrlInterface</span> <span class="sv">$url</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">UrlInterface|null</span> <span class="sv">$url</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">AbstractHelper constructor.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the indent and delimiter and returns the object back.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-add">
@@ -2356,7 +2382,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Url\UrlInterfac
 ```php
 public function __construct(
     EscaperInterface $escaper,
-    UrlInterface $url = null
+    UrlInterface|null $url = null
 );
 ```
 
@@ -2367,7 +2393,7 @@ AbstractHelper constructor.
 ```php
 public function __invoke(
     string $indent = "    ",
-    string $delimiter = null
+    string|null $delimiter = null
 ): static;
 ```
 
@@ -2544,7 +2570,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperbutton-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype|null</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperbutton-__invoke">
 <code class="vis vis-public">public</code>
@@ -2573,7 +2599,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 ```php
 public function __construct(
     EscaperInterface $escaper,
-    Doctype $doctype = null,
+    Doctype|null $doctype = null,
     bool $forceRaw = false
 );
 ```
@@ -2777,7 +2803,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperelement-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype|null</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperelement-__invoke">
 <code class="vis vis-public">public</code>
@@ -2806,7 +2832,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 ```php
 public function __construct(
     EscaperInterface $escaper,
-    Doctype $doctype = null,
+    Doctype|null $doctype = null,
     bool $forceRaw = false
 );
 ```
@@ -3008,7 +3034,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputabstractchecked-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype|null</span> <span class="sv">$doctype</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractchecked-__tostring">
 <code class="vis vis-public">public</code>
@@ -3065,7 +3091,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype
 ```php
 public function __construct(
     EscaperInterface $escaper,
-    Doctype $doctype = null
+    Doctype|null $doctype = null
 );
 ```
 
@@ -3287,7 +3313,7 @@ __Uses__ `Phalcon\Html\Helper\AbstractHelper` · `Phalcon\Html\Helper\Doctype`
 <a class="api-item" href="#htmlhelperinputabstractinput-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractinput-__tostring">
 <code class="vis vis-public">public</code>
@@ -3297,7 +3323,7 @@ __Uses__ `Phalcon\Html\Helper\AbstractHelper` · `Phalcon\Html\Helper\Doctype`
 <a class="api-item" href="#htmlhelperinputabstractinput-setvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">setValue</span>( <span class="st">string</span> <span class="sv">$value</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setValue</span>( <span class="st">string|null</span> <span class="sv">$value</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the value of the element</span>
 </a>
 </div>
@@ -3326,7 +3352,7 @@ __Uses__ `Phalcon\Html\Helper\AbstractHelper` · `Phalcon\Html\Helper\Doctype`
 ```php
 public function __invoke(
     string $name,
-    string $value = null,
+    string|null $value = null,
     array $attributes = []
 ): static;
 ```
@@ -3342,7 +3368,7 @@ Returns the HTML for the input.
 #### `setValue()` { #htmlhelperinputabstractinput-setvalue }
 
 ```php
-public function setValue( string $value = null ): static;
+public function setValue( string|null $value = null ): static;
 ```
 
 Sets the value of the element
@@ -3455,7 +3481,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputgeneric-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = &quot;text&quot;</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype|null</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = &quot;text&quot;</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperinputgeneric-settype">
 <code class="vis vis-public">public</code>
@@ -3474,7 +3500,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype
 ```php
 public function __construct(
     EscaperInterface $escaper,
-    Doctype $doctype = null,
+    Doctype|null $doctype = null,
     string $type = "text"
 );
 ```
@@ -3592,13 +3618,13 @@ __Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Html\Helpe
 <a class="api-item" href="#htmlhelperinputselect-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Add an element to the list</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-addplaceholder">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addPlaceholder</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addPlaceholder</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Add a placeholder to the element</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-fromdata">
@@ -3610,7 +3636,7 @@ __Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Html\Helpe
 <a class="api-item" href="#htmlhelperinputselect-optgroup">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">optGroup</span>(<span class="prm"><span class="st">string</span> <span class="sv">$label</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">optGroup</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$label</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Creates an option group</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-placeholder">
@@ -3681,7 +3707,7 @@ __Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Html\Helpe
 ```php
 public function add(
     string $text,
-    string $value = null,
+    string|null $value = null,
     array $attributes = [],
     bool $raw = false
 ): static;
@@ -3694,7 +3720,7 @@ Add an element to the list
 ```php
 public function addPlaceholder(
     string $text,
-    string $value = null,
+    string|null $value = null,
     array $attributes = [],
     bool $raw = false
 ): static;
@@ -3717,7 +3743,7 @@ Optgroup entries: key = group label, value = [value => label] array.
 
 ```php
 public function optGroup(
-    string $label = null,
+    string|null $label = null,
     array $attributes = []
 ): static;
 ```
@@ -4058,7 +4084,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperlabel-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype|null</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperlabel-__invoke">
 <code class="vis vis-public">public</code>
@@ -4087,7 +4113,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 ```php
 public function __construct(
     EscaperInterface $escaper,
-    Doctype $doctype = null,
+    Doctype|null $doctype = null,
     bool $forceRaw = false
 );
 ```
@@ -4308,7 +4334,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperol-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype|null</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperol-add">
 <code class="vis vis-public">public</code>
@@ -4342,7 +4368,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface`
 ```php
 public function __construct(
     EscaperInterface $escaper,
-    Doctype $doctype = null,
+    Doctype|null $doctype = null,
     bool $forceRaw = false
 );
 ```
@@ -4391,7 +4417,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · 
 <div class="api-list">
 <a class="api-item" href="#htmlhelperpreload-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">ResponseInterface</span> <span class="sv">$response</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">ResponseInterface|null</span> <span class="sv">$response</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperpreload-__invoke">
 <code class="vis vis-public">public</code>
@@ -4419,7 +4445,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · 
 ```php
 public function __construct(
     EscaperInterface $escaper,
-    ResponseInterface $response = null
+    ResponseInterface|null $response = null
 );
 ```
 
@@ -4711,7 +4737,7 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelpertitle-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the separator and returns the object back</span>
 </a>
 <a class="api-item" href="#htmlhelpertitle-__tostring">
@@ -4785,7 +4811,7 @@ __Uses__ `Phalcon\Html\Exception`
 ```php
 public function __invoke(
     string $indent = "    ",
-    string $delimiter = null
+    string|null $delimiter = null
 ): static;
 ```
 
@@ -6102,7 +6128,7 @@ __Uses__ `Closure` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\E
 </a>
 <a class="api-item" href="#htmltagfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">ResponseInterface</span> <span class="sv">$response</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">UrlInterface</span> <span class="sv">$url</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">ResponseInterface|null</span> <span class="sv">$response</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">UrlInterface|null</span> <span class="sv">$url</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">TagFactory constructor.</span>
 </a>
 <a class="api-item" href="#htmltagfactory-has">
@@ -6166,8 +6192,8 @@ Magic call to make the helper objects available as methods.
 public function __construct(
     EscaperInterface $escaper,
     array $services = [],
-    ResponseInterface $response = null,
-    UrlInterface $url = null
+    ResponseInterface|null $response = null,
+    UrlInterface|null $url = null
 );
 ```
 

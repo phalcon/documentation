@@ -108,12 +108,11 @@ allowing the user to autoload files with different extensions than .php.
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
-    - **`Phalcon\Autoload\Loader`**
+- **`Phalcon\Autoload\Loader`**
 
 </div>
 
-__Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Events\AbstractEventsAware`
+__Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Contracts\Autoload\AutoloadTypes` · `Phalcon\Events\Exception` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 { .api-uses }
 
 ### Method Summary
@@ -211,7 +210,7 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Aut
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isRegistered</span>()</code>
-<span class="desc">returns isRegistered</span>
+<span class="desc">Returns isRegistered</span>
 </a>
 <a class="api-item" href="#autoloadloader-loadfiles">
 <code class="vis vis-public">public</code>
@@ -285,32 +284,34 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Aut
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$classes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;int, string&gt;</code>
 <code class="sig"><span class="sv">$debug</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$directories</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$extensions</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|callable</code>
+<code class="ret">callable</code>
 <code class="sig"><span class="sv">$fileCheckingCallback</span><span class="sm"> = &quot;is_file&quot;</span></code>
+<span class="desc">Always holds a callable. The setter accepts a callable or a callable
+string and rejects anything else.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$files</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -330,7 +331,7 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Aut
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">autoload_namespaces</code>
 <code class="sig"><span class="sv">$namespaces</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -475,7 +476,7 @@ Returns the namespaces currently registered in the autoloader
 public function isRegistered(): bool;
 ```
 
-returns isRegistered
+Returns isRegistered
 
 #### `loadFiles()` { #autoloadloader-loadfiles }
 

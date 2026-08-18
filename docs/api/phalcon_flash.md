@@ -27,7 +27,7 @@ Class AbstractFlash
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - **`Phalcon\Flash\AbstractFlash`** - implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface)
             - [`Phalcon\Flash\Direct`](#flashdirect)
@@ -43,7 +43,7 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\D
 <div class="api-list">
 <a class="api-item" href="#flashabstractflash-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">SessionInterface</span> <span class="sv">$session</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface|null</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">SessionInterface|null</span> <span class="sv">$session</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">AbstractFlash constructor.</span>
 </a>
 <a class="api-item" href="#flashabstractflash-clear">
@@ -193,7 +193,7 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\D
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">EscaperInterface | null</code>
+<code class="ret">EscaperInterface|null</code>
 <code class="sig"><span class="sv">$escaperService</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -226,8 +226,8 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\D
 
 ```php
 public function __construct(
-    EscaperInterface $escaper = null,
-    SessionInterface $session = null
+    EscaperInterface|null $escaper = null,
+    SessionInterface|null $session = null
 );
 ```
 
@@ -428,7 +428,7 @@ Class Direct
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
             - **`Phalcon\Flash\Direct`**
@@ -635,7 +635,7 @@ Class Session
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
             - **`Phalcon\Flash\Session`**
@@ -650,7 +650,7 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\E
 <div class="api-list">
 <a class="api-item" href="#flashsession-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$sessionKey</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface|null</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface|null</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$sessionKey</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Session constructor.</span>
 </a>
 <a class="api-item" href="#flashsession-clear">
@@ -674,7 +674,7 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\E
 <a class="api-item" href="#flashsession-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
 <span class="desc">Checks whether there are messages</span>
 </a>
 <a class="api-item" href="#flashsession-message">
@@ -692,7 +692,7 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\E
 <a class="api-item" href="#flashsession-getsessionmessages">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">getSessionMessages</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$remove</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getSessionMessages</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$remove</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the messages stored in session</span>
 </a>
 <a class="api-item" href="#flashsession-setsessionmessages">
@@ -730,9 +730,9 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\E
 
 ```php
 public function __construct(
-    EscaperInterface $escaper = null,
-    ManagerInterface $session = null,
-    string $sessionKey = null
+    EscaperInterface|null $escaper = null,
+    ManagerInterface|null $session = null,
+    string|null $sessionKey = null
 );
 ```
 
@@ -768,7 +768,7 @@ Returns the Session Service
 #### `has()` { #flashsession-has }
 
 ```php
-public function has( string $type = null ): bool;
+public function has( string|null $type = null ): bool;
 ```
 
 Checks whether there are messages
@@ -799,7 +799,7 @@ Prints the messages in the session flasher
 ```php
 protected function getSessionMessages(
     bool $remove,
-    string $type = null
+    string|null $type = null
 ): array;
 ```
 

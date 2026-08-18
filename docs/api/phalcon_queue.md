@@ -24,7 +24,7 @@ Phalcon\Storage\AdapterFactory.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory` · `Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory` · `Phalcon\Queue\Adapter\Redis\RedisConnectionFactory` · `Phalcon\Queue\Adapter\Stream\StreamConnectionFactory` · `Phalcon\Queue\Exceptions\Exception`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory` · `Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory` · `Phalcon\Queue\Adapter\Redis\RedisConnectionFactory` · `Phalcon\Queue\Adapter\Stream\StreamConnectionFactory` · `Phalcon\Queue\Exceptions\Exception`
 { .api-uses }
 
 ### Method Summary
@@ -45,6 +45,7 @@ __Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Factory\Abstrac
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 <a class="api-item" href="#queueadapterfactory-getservices">
 <code class="vis vis-protected">protected</code>
@@ -85,6 +86,8 @@ Creates a new ConnectionFactory for the named adapter.
 protected function getExceptionClass(): string;
 ```
 
+Returns the exception class for the factory
+
 #### `getServices()` { #queueadapterfactory-getservices }
 
 ```php
@@ -101,7 +104,7 @@ Returns the available adapters.
 
 Shared consumer base. Implements the blocking `receive()` as a polling loop
 on top of the abstract `receiveNoWait()`; concrete consumers provide the
-transport-specific `receiveNoWait`, `acknowledge` and `reject`.
+transport-specific `receiveNoWait`, `acknowledge`, `reject` and `getQueue`.
 
 Transports with a native blocking receive (Redis BRPOP, Beanstalk reserve)
 override `receive()` instead of polling.
@@ -490,7 +493,7 @@ from the original Phalcon\Queue\Beanstalk transport.
 
 </div>
 
-__Uses__ `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
+__Uses__ `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -532,13 +535,13 @@ __Uses__ `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
 </a>
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnection-put">
 <code class="vis vis-public">public</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$priority</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$delay</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$ttr</span></span>)</code>
 <span class="desc">Puts a job on the queue using the currently used tube. Returns the new</span>
 </a>
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnection-read">
 <code class="vis vis-public">public</code>
-<code class="ret">bool|string</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sf">read</span>( <span class="st">int</span> <span class="sv">$length</span><span class="sm"> = 0</span> )</code>
 <span class="desc">Reads a packet from the socket. Verifies the connection is available</span>
 </a>
@@ -562,7 +565,7 @@ __Uses__ `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
 </a>
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnection-statstube">
 <code class="vis vis-public">public</code>
-<code class="ret">array|bool</code>
+<code class="ret">array|false</code>
 <code class="sig"><span class="sf">statsTube</span>( <span class="st">string</span> <span class="sv">$tube</span> )</code>
 <span class="desc">Returns the Beanstalkd statistics for a tube as an associative array, or</span>
 </a>
@@ -586,7 +589,7 @@ __Uses__ `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
 </a>
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnection-write">
 <code class="vis vis-public">public</code>
-<code class="ret">bool|int</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">write</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
 <span class="desc">Writes data to the socket, connecting first when needed.</span>
 </a>
@@ -597,8 +600,8 @@ __Uses__ `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">resource</code>
-<code class="sig"><span class="sv">$connection</span></code>
+<code class="ret">resource|null</code>
+<code class="sig"><span class="sv">$connection</span><span class="sm"> = null</span></code>
 <span class="desc">Connection resource.</span>
 </div>
 <div class="api-item">
@@ -624,7 +627,7 @@ __Uses__ `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, bool&gt;</code>
 <code class="sig"><span class="sv">$watchedTubes</span><span class="sm"> = []</span></code>
 <span class="desc">Tubes currently on the watch list, keyed by tube name. A fresh
 connection watches &quot;default&quot;.</span>
@@ -696,7 +699,7 @@ public function put(
     int $priority,
     int $delay,
     int $ttr
-): int|bool;
+): false|int;
 ```
 
 Puts a job on the queue using the currently used tube. Returns the new
@@ -705,7 +708,7 @@ job id, or false when the server did not accept it.
 #### `read()` { #queueadapterbeanstalkbeanstalkconnection-read }
 
 ```php
-public function read( int $length = 0 ): bool|string;
+public function read( int $length = 0 ): false|string;
 ```
 
 Reads a packet from the socket. Verifies the connection is available
@@ -744,7 +747,7 @@ job is available; otherwise it blocks up to timeout seconds. Returns
 #### `statsTube()` { #queueadapterbeanstalkbeanstalkconnection-statstube }
 
 ```php
-public function statsTube( string $tube ): array|bool;
+public function statsTube( string $tube ): array|false;
 ```
 
 Returns the Beanstalkd statistics for a tube as an associative array, or
@@ -777,7 +780,7 @@ Adds the named tube to the watch list for the connection.
 #### `write()` { #queueadapterbeanstalkbeanstalkconnection-write }
 
 ```php
-public function write( string $data ): bool|int;
+public function write( string $data ): false|int;
 ```
 
 Writes data to the socket, connecting first when needed.
@@ -803,7 +806,7 @@ Options:
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context`
+__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1055,7 +1058,7 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destinat
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">BeanstalkConnection | null</code>
+<code class="ret">BeanstalkConnection|null</code>
 <code class="sig"><span class="sv">$connection</span><span class="sm"> = null</span></code>
 <span class="desc">Shared connection used by producers and purges.</span>
 </div>
@@ -1073,7 +1076,6 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destinat
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$pollInterval</span><span class="sm"> = 200</span></code>
-<span class="desc">Milliseconds slept between poll passes by a subscription consumer.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -1084,7 +1086,6 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destinat
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$ttr</span><span class="sm"> = 86400</span></code>
-<span class="desc">Default time-to-run (seconds) applied to every put.</span>
 </div>
 </div>
 
@@ -1225,7 +1226,7 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractMessage`
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string | null</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$jobId</span><span class="sm"> = null</span></code>
 <span class="desc">The reserved Beanstalkd job id, or null before it is reserved.</span>
 </div>
@@ -1322,13 +1323,13 @@ __Uses__ `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Messa
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int | null</code>
+<code class="ret">int|null</code>
 <code class="sig"><span class="sv">$deliveryDelay</span><span class="sm"> = null</span></code>
 <span class="desc">Delivery delay in milliseconds, or null when not set.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int | null</code>
+<code class="ret">int|null</code>
 <code class="sig"><span class="sv">$priority</span><span class="sm"> = null</span></code>
 <span class="desc">Job priority, or null when not set.</span>
 </div>
@@ -1402,6 +1403,7 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 <a class="api-item" href="#queueadapterbeanstalkbeanstalksubscriptionconsumer-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">BeanstalkContext</span> <span class="sv">$context</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pollInterval</span><span class="sm"> = 200</span></span>)</code>
+<span class="desc">The context is retained for transports that may later need it for a</span>
 </a>
 </div>
 
@@ -1412,8 +1414,6 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 <code class="vis vis-protected">protected</code>
 <code class="ret">BeanstalkContext</code>
 <code class="sig"><span class="sv">$context</span></code>
-<span class="desc">Retained for transports that may later need it for a native multi-queue
-receive; the shared poll loop does not use it.</span>
 </div>
 </div>
 
@@ -1429,6 +1429,9 @@ public function __construct(
     int $pollInterval = 200
 );
 ```
+
+The context is retained for transports that may later need it for a
+native multi-queue receive; the shared poll loop does not use it.
 
 
 ## Queue\Adapter\GenericQueue
@@ -1574,7 +1577,7 @@ Builds a MemoryContext. The Memory transport takes no options.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context`
+__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1800,7 +1803,7 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destinat
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, list&lt;MessageInterface&gt;&gt;</code>
 <code class="sig"><span class="sv">$queues</span><span class="sm"> = []</span></code>
 <span class="desc">Named queues: queue name =&gt; list of messages (FIFO).</span>
 </div>
@@ -1989,6 +1992,7 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 <a class="api-item" href="#queueadaptermemorymemorysubscriptionconsumer-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">MemoryContext</span> <span class="sv">$context</span> )</code>
+<span class="desc">The context is retained for transports that may later need it for a</span>
 </a>
 </div>
 
@@ -1999,8 +2003,6 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 <code class="vis vis-protected">protected</code>
 <code class="ret">MemoryContext</code>
 <code class="sig"><span class="sv">$context</span></code>
-<span class="desc">Retained for transports that may later need it for a native multi-queue
-receive; the shared poll loop does not use it.</span>
 </div>
 </div>
 
@@ -2013,6 +2015,9 @@ receive; the shared poll loop does not use it.</span>
 ```php
 public function __construct( MemoryContext $context );
 ```
+
+The context is retained for transports that may later need it for a
+native multi-queue receive; the shared poll loop does not use it.
 
 
 ## Queue\Adapter\MessageEnvelope
@@ -2032,7 +2037,7 @@ adapter only supplies its own concrete message factory around `decode()`.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\Message`
+__Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\QueueTypes`
 { .api-uses }
 
 ### Method Summary
@@ -2147,7 +2152,7 @@ Options:
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Exception` · `Phalcon\Storage\SerializerFactory`
+__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Exception` · `Phalcon\Storage\SerializerFactory`
 { .api-uses }
 
 ### Method Summary
@@ -2311,7 +2316,7 @@ destination factories come from AbstractContext.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\MessageEnvelope` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
+__Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\MessageEnvelope` · `Phalcon\Queue\Adapter\QueueDestinationGuard` · `Redis`
 { .api-uses }
 
 ### Method Summary
@@ -2319,7 +2324,7 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destinat
 <div class="api-list">
 <a class="api-item" href="#queueadapterredisrediscontext-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$redis</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;phalcon_queue:&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pollInterval</span><span class="sm"> = 200</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">RedisService</span> <span class="sv">$redis</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;phalcon_queue:&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pollInterval</span><span class="sm"> = 200</span></span>)</code>
 </a>
 <a class="api-item" href="#queueadapterredisrediscontext-blockingpop">
 <code class="vis vis-public">public</code>
@@ -2378,19 +2383,16 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destinat
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$pollInterval</span><span class="sm"> = 200</span></code>
-<span class="desc">Milliseconds slept between poll passes by a subscription consumer.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;phalcon_queue:&quot;</span></code>
-<span class="desc">Key prefix applied to every queue (and its delayed companion set).</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">\Redis</code>
+<code class="ret">RedisService</code>
 <code class="sig"><span class="sv">$redis</span></code>
-<span class="desc">The connected ext-redis client.</span>
 </div>
 </div>
 
@@ -2402,7 +2404,7 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destinat
 
 ```php
 public function __construct(
-    mixed $redis,
+    RedisService $redis,
     string $prefix = "phalcon_queue:",
     int $pollInterval = 200
 );
@@ -2557,7 +2559,7 @@ __Uses__ `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Messa
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int | null</code>
+<code class="ret">int|null</code>
 <code class="sig"><span class="sv">$deliveryDelay</span><span class="sm"> = null</span></code>
 <span class="desc">Delivery delay in milliseconds, or null when not set.</span>
 </div>
@@ -2619,6 +2621,7 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 <a class="api-item" href="#queueadapterredisredissubscriptionconsumer-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">RedisContext</span> <span class="sv">$context</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pollInterval</span><span class="sm"> = 200</span></span>)</code>
+<span class="desc">The context is retained for transports that may later need it for a</span>
 </a>
 </div>
 
@@ -2629,8 +2632,6 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 <code class="vis vis-protected">protected</code>
 <code class="ret">RedisContext</code>
 <code class="sig"><span class="sv">$context</span></code>
-<span class="desc">Retained for transports that may later need it for a native multi-queue
-receive; the shared poll loop does not use it.</span>
 </div>
 </div>
 
@@ -2647,6 +2648,9 @@ public function __construct(
 );
 ```
 
+The context is retained for transports that may later need it for a
+native multi-queue receive; the shared poll loop does not use it.
+
 
 ## Queue\Adapter\Stream\StreamConnectionFactory
 
@@ -2656,7 +2660,8 @@ public function __construct(
 Builds a StreamContext.
 
 Options:
-  - storageDir:   directory holding the queue files (default: system temp).
+  - storageDir:   directory holding the queue files (default: a private
+                  "phalcon_queue" subdirectory of the system temp dir).
   - pollInterval: milliseconds between consumer poll attempts (default 200).
 
 <div class="api-tree" markdown>
@@ -2665,7 +2670,7 @@ Options:
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context`
+__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`
 { .api-uses }
 
 ### Method Summary
@@ -3068,6 +3073,7 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 <a class="api-item" href="#queueadapterstreamstreamsubscriptionconsumer-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">StreamContext</span> <span class="sv">$context</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pollInterval</span><span class="sm"> = 200</span></span>)</code>
+<span class="desc">The context is retained for transports that may later need it for a</span>
 </a>
 </div>
 
@@ -3078,8 +3084,6 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 <code class="vis vis-protected">protected</code>
 <code class="ret">StreamContext</code>
 <code class="sig"><span class="sv">$context</span></code>
-<span class="desc">Retained for transports that may later need it for a native multi-queue
-receive; the shared poll loop does not use it.</span>
 </div>
 </div>
 
@@ -3095,6 +3099,9 @@ public function __construct(
     int $pollInterval = 200
 );
 ```
+
+The context is retained for transports that may later need it for a
+native multi-queue receive; the shared poll loop does not use it.
 
 
 ## Queue\Adapter\Traits\MessageTrait
@@ -3114,6 +3121,9 @@ for binary compatibility with the wider interop ecosystem.
 - **`Phalcon\Queue\Adapter\Traits\MessageTrait`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Queue\QueueTypes`
+{ .api-uses }
 
 __Used by__ [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
 { .api-used-by }
@@ -3259,14 +3269,12 @@ __Used by__ [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessa
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$headers</span><span class="sm"> = null</span></code>
-<span class="desc">@todo Use a default [] once Zephir supports array trait defaults</span>
+<code class="sig"><span class="sv">$headers</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$properties</span><span class="sm"> = null</span></code>
-<span class="desc">@todo Use a default [] once Zephir supports array trait defaults</span>
+<code class="sig"><span class="sv">$properties</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -3481,6 +3489,9 @@ keep just the constructor that captures their context and poll interval.
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Queue\QueueTypes`
+{ .api-uses }
+
 __Used by__ [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
 { .api-used-by }
 
@@ -3525,10 +3536,8 @@ __Used by__ [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapter
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$subscriptions</span><span class="sm"> = null</span></code>
-<span class="desc">Subscriptions keyed by queue name: [consumer, callback].
-
-@todo Use a default [] once Zephir supports array trait defaults</span>
+<code class="sig"><span class="sv">$subscriptions</span><span class="sm"> = []</span></code>
+<span class="desc">Subscriptions keyed by queue name: [consumer, callback].</span>
 </div>
 </div>
 
@@ -3595,14 +3604,14 @@ FactoryDefault.
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - [`Phalcon\Cli\Task`](phalcon_cli.md#clitask)
             - **`Phalcon\Queue\Cli\ConsumerTask`**
 
 </div>
 
-__Uses__ `Phalcon\Cli\Task` · `Phalcon\Di\DiInterface` · `Phalcon\Queue\Consumer\QueueConsumer` · `Phalcon\Queue\Consumer\Worker` · `Phalcon\Queue\Consumer\WorkerOptions`
+__Uses__ `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Task` · `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Processor` · `Phalcon\Di\DiInterface` · `Phalcon\Queue\Consumer\QueueConsumer` · `Phalcon\Queue\Consumer\Worker` · `Phalcon\Queue\Consumer\WorkerOptions` · `Phalcon\Queue\QueueFactory`
 { .api-uses }
 
 ### Method Summary
@@ -3786,7 +3795,7 @@ stop signal through `stop()` / `isStopRequested()`.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Processor` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Events\AbstractEventsAware` · `Phalcon\Events\EventsAwareInterface`
+__Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Processor` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Events\AbstractEventsAware` · `Phalcon\Events\EventsAwareInterface` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -3810,9 +3819,9 @@ __Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\Message` 
 </a>
 <a class="api-item" href="#queueconsumerqueueconsumer-consumeonce">
 <code class="vis vis-public">public</code>
-<code class="ret">bool</code>
+<code class="ret">int</code>
 <code class="sig"><span class="sf">consumeOnce</span>()</code>
-<span class="desc">Polls every bound queue once, processing up to one message from each.</span>
+<span class="desc">Polls every bound queue once, dispatching any messages found. Returns</span>
 </a>
 <a class="api-item" href="#queueconsumerqueueconsumer-end">
 <code class="vis vis-public">public</code>
@@ -3851,7 +3860,7 @@ __Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\Message` 
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, BoundProcessor&gt;</code>
 <code class="sig"><span class="sv">$bindings</span><span class="sm"> = []</span></code>
 <span class="desc">Bound processors keyed by queue name.</span>
 </div>
@@ -3906,12 +3915,12 @@ block until stopped). The simple loop; production setups use Worker.
 #### `consumeOnce()` { #queueconsumerqueueconsumer-consumeonce }
 
 ```php
-public function consumeOnce(): bool;
+public function consumeOnce(): int;
 ```
 
-Polls every bound queue once, processing up to one message from each.
-Returns true if any message was handled. Sleeps the poll interval when
-nothing was received so callers can loop tightly.
+Polls every bound queue once, dispatching any messages found. Returns
+the number of messages processed in this pass, so callers (the Worker)
+can apply a message-count limit across several bound queues.
 
 #### `end()` { #queueconsumerqueueconsumer-end }
 
@@ -3981,7 +3990,7 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait`
 <div class="api-list">
 <a class="api-item" href="#queueconsumerworker-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">QueueConsumer</span> <span class="sv">$consumer</span>,</span><span class="prm"><span class="st">WorkerOptions</span> <span class="sv">$options</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">QueueConsumer</span> <span class="sv">$consumer</span>,</span><span class="prm"><span class="st">WorkerOptions|null</span> <span class="sv">$options</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#queueconsumerworker-handlesignal">
 <code class="vis vis-public">public</code>
@@ -4021,7 +4030,7 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait`
 ```php
 public function __construct(
     QueueConsumer $consumer,
-    WorkerOptions $options = null
+    WorkerOptions|null $options = null
 );
 ```
 
@@ -4165,7 +4174,7 @@ Thrown when the transport does not support a delivery delay.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
         - **`Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException`**
 
@@ -4201,7 +4210,7 @@ queue exception.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - **`Phalcon\Queue\Exceptions\Exception`** - implements [`Phalcon\Queue\Exceptions\QueueThrowable`](#queueexceptionsqueuethrowable)
         - [`Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException`](#queueexceptionsdeliverydelaynotsupportedexception)
         - [`Phalcon\Queue\Exceptions\InvalidDestinationException`](#queueexceptionsinvaliddestinationexception)
@@ -4229,7 +4238,7 @@ Topic passed where a Queue is required. The action verb ("send to",
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
         - **`Phalcon\Queue\Exceptions\InvalidDestinationException`**
 
@@ -4264,7 +4273,7 @@ Thrown when a message is not valid for the operation.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
         - **`Phalcon\Queue\Exceptions\InvalidMessageException`**
 
@@ -4299,7 +4308,7 @@ Thrown when the transport does not support message priority.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
         - **`Phalcon\Queue\Exceptions\PriorityNotSupportedException`**
 
@@ -4334,7 +4343,7 @@ Thrown when the transport does not support purging a queue.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
         - **`Phalcon\Queue\Exceptions\PurgeQueueNotSupportedException`**
 
@@ -4375,6 +4384,9 @@ implements it, so callers can catch all queue errors with a single type.
 
 </div>
 
+__Uses__ `Throwable`
+{ .api-uses }
+
 
 ## Queue\Exceptions\SubscriptionConsumerNotSupportedException
 
@@ -4385,7 +4397,7 @@ Thrown when the transport does not support subscription consumers.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
         - **`Phalcon\Queue\Exceptions\SubscriptionConsumerNotSupportedException`**
 
@@ -4420,7 +4432,7 @@ Thrown when the transport does not support temporary queues.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
         - **`Phalcon\Queue\Exceptions\TemporaryQueueNotSupportedException`**
 
@@ -4455,7 +4467,7 @@ Thrown when the transport does not support a message time to live.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
         - **`Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`**
 
@@ -4496,7 +4508,7 @@ Phalcon\Cache\CacheFactory.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Queue\Exceptions\Exception`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Queue\Exceptions\Exception`
 { .api-uses }
 
 ### Method Summary
@@ -4504,8 +4516,8 @@ __Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Factory\AbstractConfigFac
 <div class="api-list">
 <a class="api-item" href="#queuequeuefactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory</span> <span class="sv">$factory</span><span class="sm"> = null</span> )</code>
-<span class="desc">QueueFactory constructor. A default AdapterFactory is created when none</span>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory|null</span> <span class="sv">$factory</span><span class="sm"> = null</span> )</code>
+<span class="desc">A default AdapterFactory is created when none is supplied, so the</span>
 </a>
 <a class="api-item" href="#queuequeuefactory-load">
 <code class="vis vis-public">public</code>
@@ -4523,6 +4535,7 @@ __Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Factory\AbstractConfigFac
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 </div>
 
@@ -4543,11 +4556,11 @@ __Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Factory\AbstractConfigFac
 #### `__construct()` { #queuequeuefactory-__construct }
 
 ```php
-public function __construct( AdapterFactory $factory = null );
+public function __construct( AdapterFactory|null $factory = null );
 ```
 
-QueueFactory constructor. A default AdapterFactory is created when none
-is supplied, so the factory is usable straight from the DI container.
+A default AdapterFactory is created when none is supplied, so the
+factory is usable straight from the DI container.
 
 #### `load()` { #queuequeuefactory-load }
 
@@ -4575,3 +4588,5 @@ Builds a Context for the named adapter.
 ```php
 protected function getExceptionClass(): string;
 ```
+
+Returns the exception class for the factory

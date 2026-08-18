@@ -60,7 +60,7 @@ $application->main();
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - [`Phalcon\Application\AbstractApplication`](phalcon_application.md#applicationabstractapplication)
             - **`Phalcon\Mvc\Application`**
@@ -237,7 +237,7 @@ __Uses__ `Phalcon\Mvc\Application\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcapplicationexceptionsinvalidmoduledefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$reason</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$reason</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -249,8 +249,8 @@ __Uses__ `Phalcon\Mvc\Application\Exception`
 
 ```php
 public function __construct(
-    string $name = null,
-    string $reason = null
+    string|null $name = null,
+    string|null $reason = null
 );
 ```
 
@@ -338,7 +338,7 @@ class PeopleController extends \Phalcon\Mvc\Controller
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Mvc\Controller`** - implements [`Phalcon\Mvc\ControllerInterface`](#mvccontrollerinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
@@ -499,14 +499,14 @@ $controller = $dispatcher->dispatch();
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - [`Phalcon\Dispatcher\AbstractDispatcher`](phalcon_dispatcher.md#dispatcherabstractdispatcher)
             - **`Phalcon\Mvc\Dispatcher`** - implements [`Phalcon\Mvc\DispatcherInterface`](#mvcdispatcherinterface)
 
 </div>
 
-__Uses__ `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Dispatcher\Exception` · `Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`
+__Uses__ `Phalcon\Contracts\Dispatcher\DispatcherTypes` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Dispatcher\Exception` · `Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`
 { .api-uses }
 
 ### Method Summary
@@ -913,9 +913,9 @@ $app->handle("/say/welcome/Phalcon");
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Mvc\Micro`** - implements `ArrayAccess`, [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Mvc\Micro`** - implements `\ArrayAccess`, [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 
@@ -927,7 +927,7 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 <div class="api-list">
 <a class="api-item" href="#mvcmicro-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\Micro constructor</span>
 </a>
 <a class="api-item" href="#mvcmicro-after">
@@ -1236,7 +1236,7 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 #### `__construct()` { #mvcmicro-__construct }
 
 ```php
-public function __construct( DiInterface $container = null );
+public function __construct( DiInterface|null $container = null );
 ```
 
 Phalcon\Mvc\Micro constructor
@@ -1634,13 +1634,13 @@ $app->mount($collection);
 <a class="api-item" href="#mvcmicrocollection-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is DELETE.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-get">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is GET.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-gethandler">
@@ -1664,7 +1664,7 @@ $app->mount($collection);
 <a class="api-item" href="#mvcmicrocollection-head">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is HEAD.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-islazy">
@@ -1676,37 +1676,37 @@ $app->mount($collection);
 <a class="api-item" href="#mvcmicrocollection-map">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-mapvia">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">mapVia</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">mapVia</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler via methods.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-options">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-patch">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PATCH.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-post">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is POST.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-put">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PUT.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-sethandler">
@@ -1730,7 +1730,7 @@ $app->mount($collection);
 <a class="api-item" href="#mvcmicrocollection-addmap">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">addMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Internal function to add a handler to the group.</span>
 </a>
 </div>
@@ -1770,7 +1770,7 @@ $app->mount($collection);
 public function delete(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1782,7 +1782,7 @@ Maps a route to a handler that only matches if the HTTP method is DELETE.
 public function get(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1818,7 +1818,7 @@ Returns the collection prefix if any
 public function head(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1838,7 +1838,7 @@ Returns if the main handler must be lazy loaded
 public function map(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1851,7 +1851,7 @@ public function mapVia(
     string $routePattern,
     callable $handler,
     mixed $method,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1872,7 +1872,7 @@ $collection->mapVia(
 public function options(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1885,7 +1885,7 @@ OPTIONS.
 public function patch(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1897,7 +1897,7 @@ Maps a route to a handler that only matches if the HTTP method is PATCH.
 public function post(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1909,7 +1909,7 @@ Maps a route to a handler that only matches if the HTTP method is POST.
 public function put(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1951,7 +1951,7 @@ protected function addMap(
     mixed $method,
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): void;
 ```
 
@@ -1979,13 +1979,13 @@ Interface for Phalcon\Mvc\Micro\Collection
 <a class="api-item" href="#mvcmicrocollectioninterface-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-gethandler">
@@ -2009,7 +2009,7 @@ Interface for Phalcon\Mvc\Micro\Collection
 <a class="api-item" href="#mvcmicrocollectioninterface-head">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-islazy">
@@ -2021,31 +2021,31 @@ Interface for Phalcon\Mvc\Micro\Collection
 <a class="api-item" href="#mvcmicrocollectioninterface-map">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-options">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-patch">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-post">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-put">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-sethandler">
@@ -2078,7 +2078,7 @@ Interface for Phalcon\Mvc\Micro\Collection
 public function delete(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2090,7 +2090,7 @@ Maps a route to a handler that only matches if the HTTP method is DELETE
 public function get(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2126,7 +2126,7 @@ Returns the collection prefix if any
 public function head(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2146,7 +2146,7 @@ Returns if the main handler must be lazy loaded
 public function map(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2158,7 +2158,7 @@ Maps a route to a handler
 public function options(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2170,7 +2170,7 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 public function patch(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2182,7 +2182,7 @@ Maps a route to a handler that only matches if the HTTP method is PATCH
 public function post(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2194,7 +2194,7 @@ Maps a route to a handler that only matches if the HTTP method is POST
 public function put(
     string $routePattern,
     callable $handler,
-    string $name = null
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2641,7 +2641,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound` · `Phalcon\Mvc\Mode
 </a>
 <a class="api-item" href="#mvcmicrolazyloader-callmethod">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">callMethod</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span>,</span><span class="prm"><span class="st">BinderInterface</span> <span class="sv">$modelBinder</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">callMethod</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span>,</span><span class="prm"><span class="st">BinderInterface|null</span> <span class="sv">$modelBinder</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Calling __call method</span>
 </a>
 <a class="api-item" href="#mvcmicrolazyloader-getdefinition">
@@ -2689,7 +2689,7 @@ Phalcon\Mvc\Micro\LazyLoader constructor
 public function callMethod(
     string $method,
     mixed $arguments,
-    BinderInterface $modelBinder = null
+    BinderInterface|null $modelBinder = null
 );
 ```
 
@@ -2807,9 +2807,9 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `JsonSerializable`
+        - **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\JsonSerializable`
 
 </div>
 
@@ -2831,7 +2831,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$modelsManager</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface|null</span> <span class="sv">$modelsManager</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model constructor</span>
 </a>
 <a class="api-item" href="#mvcmodel-__get">
@@ -2878,7 +2878,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">appendMessagesFrom</span>( <span class="st">mixed</span> <span class="sv">$model</span> )</code>
-<span class="desc">**</span>
+<span class="desc">Append messages to this model from another Model.</span>
 </a>
 <a class="api-item" href="#mvcmodel-assign">
 <code class="vis vis-public">public</code>
@@ -2888,7 +2888,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-average">
 <code class="vis vis-public">public</code>
-<code class="ret">double|ResultsetInterface</code>
+<code class="ret">float|ResultsetInterface</code>
 <code class="sig"><span class="sf">average</span>( <span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = []</span> )</code>
 <span class="desc">Returns the average value on a column for a result-set of rows matching</span>
 </a>
@@ -2901,7 +2901,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <a class="api-item" href="#mvcmodel-cloneresultmap">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig"><span class="sf">cloneResultMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$base</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$dirtyState</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$keepSnapshots</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">cloneResultMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$base</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$dirtyState</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">bool|null</span> <span class="sv">$keepSnapshots</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Assigns values to a model from an array, returning a new model.</span>
 </a>
 <a class="api-item" href="#mvcmodel-cloneresultmaphydrate">
@@ -3114,7 +3114,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <a class="api-item" href="#mvcmodel-query">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">query</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">query</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Create a criteria for a specific model</span>
 </a>
 <a class="api-item" href="#mvcmodel-readattribute">
@@ -3213,7 +3213,7 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 </a>
 <a class="api-item" href="#mvcmodel-sum">
 <code class="vis vis-public">public</code>
-<code class="ret">double|ResultsetInterface</code>
+<code class="ret">float|ResultsetInterface</code>
 <code class="sig"><span class="sf">sum</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Calculates the sum on a column for a result-set of rows that match the</span>
 </a>
@@ -3581,8 +3581,8 @@ Handles method calls when a static method is not implemented
 ```php
 final public function __construct(
     mixed $data = null,
-    DiInterface $container = null,
-    ManagerInterface $modelsManager = null
+    DiInterface|null $container = null,
+    ManagerInterface|null $modelsManager = null
 );
 ```
 
@@ -3706,7 +3706,6 @@ class Invoices extends Model
 public inline function appendMessagesFrom( mixed $model ): void;
 ```
 
-**
 Append messages to this model from another Model.
 
 #### `assign()` { #mvcmodel-assign }
@@ -3765,7 +3764,7 @@ $invoice->assign(
 #### `average()` { #mvcmodel-average }
 
 ```php
-public static function average( array $parameters = [] ): double|ResultsetInterface;
+public static function average( array $parameters = [] ): float|ResultsetInterface;
 ```
 
 Returns the average value on a column for a result-set of rows matching
@@ -3827,7 +3826,7 @@ public static function cloneResultMap(
     array $data,
     mixed $columnMap,
     int $dirtyState = 0,
-    bool $keepSnapshots = null
+    bool|null $keepSnapshots = null
 ): ModelInterface;
 ```
 
@@ -4551,7 +4550,7 @@ echo "The minimum invoice id of paid invoices is ", $id;
 #### `query()` { #mvcmodel-query }
 
 ```php
-public static function query( DiInterface $container = null ): CriteriaInterface;
+public static function query( DiInterface|null $container = null ): CriteriaInterface;
 ```
 
 Create a criteria for a specific model
@@ -4793,7 +4792,7 @@ Skips the current operation forcing a success state
 #### `sum()` { #mvcmodel-sum }
 
 ```php
-public static function sum( mixed $parameters = null ): double|ResultsetInterface;
+public static function sum( mixed $parameters = null ): float|ResultsetInterface;
 ```
 
 Calculates the sum on a column for a result-set of rows that match the
@@ -5209,7 +5208,7 @@ class Invoices extends \Phalcon\Mvc\Model
 #### `invokeFinder()` { #mvcmodel-invokefinder }
 
 ```php
-final protected static function invokeFinder(
+protected final static function invokeFinder(
     string $method,
     array $arguments
 );
@@ -5474,7 +5473,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 </a>
 <a class="api-item" href="#mvcmodelinterface-average">
 <code class="vis vis-public">public</code>
-<code class="ret">double|ResultsetInterface</code>
+<code class="ret">float|ResultsetInterface</code>
 <code class="sig"><span class="sf">average</span>( <span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = []</span> )</code>
 <span class="desc">Allows to calculate the average value on a column matching the specified</span>
 </a>
@@ -5616,7 +5615,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 <a class="api-item" href="#mvcmodelinterface-query">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig"><span class="sf">query</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">query</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Create a criteria for a specific model</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-refresh">
@@ -5681,7 +5680,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 </a>
 <a class="api-item" href="#mvcmodelinterface-sum">
 <code class="vis vis-public">public</code>
-<code class="ret">double|ResultsetInterface</code>
+<code class="ret">float|ResultsetInterface</code>
 <code class="sig"><span class="sf">sum</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Allows to calculate a sum on a column that match the specified conditions</span>
 </a>
@@ -5726,7 +5725,7 @@ Assigns values to a model from an array
 #### `average()` { #mvcmodelinterface-average }
 
 ```php
-public static function average( array $parameters = [] ): double|ResultsetInterface;
+public static function average( array $parameters = [] ): float|ResultsetInterface;
 ```
 
 Allows to calculate the average value on a column matching the specified
@@ -5961,7 +5960,7 @@ conditions
 #### `query()` { #mvcmodelinterface-query }
 
 ```php
-public static function query( DiInterface $container = null ): CriteriaInterface;
+public static function query( DiInterface|null $container = null ): CriteriaInterface;
 ```
 
 Create a criteria for a specific model
@@ -6059,7 +6058,7 @@ Skips the current operation forcing a success state
 #### `sum()` { #mvcmodelinterface-sum }
 
 ```php
-public static function sum( mixed $parameters = null ): double|ResultsetInterface;
+public static function sum( mixed $parameters = null ): float|ResultsetInterface;
 ```
 
 Allows to calculate a sum on a column that match the specified conditions
@@ -6123,7 +6122,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 </a>
 <a class="api-item" href="#mvcmodelbehavior-getoptions">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getOptions</span>( <span class="st">string</span> <span class="sv">$eventName</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getOptions</span>( <span class="st">string|null</span> <span class="sv">$eventName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the behavior options related to an event</span>
 </a>
 <a class="api-item" href="#mvcmodelbehavior-musttakeaction">
@@ -6184,7 +6183,7 @@ This method receives the notifications from the EventsManager
 #### `getOptions()` { #mvcmodelbehavior-getoptions }
 
 ```php
-protected function getOptions( string $eventName = null );
+protected function getOptions( string|null $eventName = null );
 ```
 
 Returns the behavior options related to an event
@@ -6410,13 +6409,13 @@ __Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\C
 <div class="api-list">
 <a class="api-item" href="#mvcmodelbinder-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterInterface</span> <span class="sv">$cache</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterInterface|null</span> <span class="sv">$cache</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\Model\Binder constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-bindtohandler">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">bindToHandler</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">bindToHandler</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$methodName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Bind models into params in proper handler</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-getboundmodels">
@@ -6499,7 +6498,7 @@ __Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\C
 #### `__construct()` { #mvcmodelbinder-__construct }
 
 ```php
-public function __construct( AdapterInterface $cache = null );
+public function __construct( AdapterInterface|null $cache = null );
 ```
 
 Phalcon\Mvc\Model\Binder constructor
@@ -6511,7 +6510,7 @@ public function bindToHandler(
     object $handler,
     array $params,
     string $cacheKey,
-    string $methodName = null
+    string|null $methodName = null
 ): array;
 ```
 
@@ -6608,7 +6607,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface`
 <a class="api-item" href="#mvcmodelbinderinterface-bindtohandler">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">bindToHandler</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">bindToHandler</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$methodName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Bind models into params in proper handler</span>
 </a>
 <a class="api-item" href="#mvcmodelbinderinterface-getboundmodels">
@@ -6642,7 +6641,7 @@ public function bindToHandler(
     object $handler,
     array $params,
     string $cacheKey,
-    string $methodName = null
+    string|null $methodName = null
 ): array;
 ```
 
@@ -10591,6 +10590,7 @@ public function __construct( string $className );
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">caseInsensitiveColumnMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$key</span></span>)</code>
+<span class="desc">Attempts to find key case-insensitively</span>
 </a>
 </div>
 
@@ -10606,6 +10606,8 @@ public static function caseInsensitiveColumnMap(
     mixed $key
 ): string;
 ```
+
+Attempts to find key case-insensitively
 
 
 ## Mvc\Model\Hydration\CloneResultMapHydrate
@@ -10628,6 +10630,7 @@ __Uses__ `Phalcon\Mvc\Model` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` ·
 <a class="api-item" href="#mvcmodelhydrationcloneresultmaphydrate-cloneresultmaphydrate">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">cloneResultMapHydrate</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$hydrationMode</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$calledClass</span><span class="sm"> = &quot;Phalcon\\Mvc\\Model&quot;</span></span>)</code>
+<span class="desc">Returns an hydrated result based on the data and the column map</span>
 </a>
 </div>
 
@@ -10645,6 +10648,8 @@ public static function cloneResultMapHydrate(
     string $calledClass = "Phalcon\\Mvc\\Model"
 );
 ```
+
+Returns an hydrated result based on the data and the column map
 
 
 ## Mvc\Model\Manager
@@ -10792,7 +10797,7 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <a class="api-item" href="#mvcmodelmanager-getbelongstorecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface|bool</code>
-<code class="sig"><span class="sf">getBelongsToRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getBelongsToRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets belongsTo related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getbuilder">
@@ -10834,7 +10839,7 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <a class="api-item" href="#mvcmodelmanager-gethasmanyrecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface|bool</code>
-<code class="sig"><span class="sf">getHasManyRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getHasManyRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets hasMany related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasmanytomany">
@@ -10858,7 +10863,7 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <a class="api-item" href="#mvcmodelmanager-gethasonerecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|bool</code>
-<code class="sig"><span class="sf">getHasOneRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getHasOneRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets belongsTo related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasonethrough">
@@ -10917,7 +10922,7 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 </a>
 <a class="api-item" href="#mvcmodelmanager-getrelationrecords">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">getRelationRecords</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getRelationRecords</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Helper method to query records based on a relation definition</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getrelations">
@@ -11543,7 +11548,7 @@ public function getBelongsToRecords(
     string $modelRelation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -11610,7 +11615,7 @@ public function getHasManyRecords(
     string $modelRelation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -11648,7 +11653,7 @@ public function getHasOneRecords(
     string $modelRelation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
+    string|null $method = null
 ): ModelInterface|bool;
 ```
 
@@ -11736,7 +11741,7 @@ public function getRelationRecords(
     RelationInterface $relation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
+    string|null $method = null
 );
 ```
 
@@ -12238,7 +12243,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 <a class="api-item" href="#mvcmodelmanagerinterface-getbelongstorecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface|bool</code>
-<code class="sig"><span class="sf">getBelongsToRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getBelongsToRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets belongsTo related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getbuilder">
@@ -12256,7 +12261,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasmanyrecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface|bool</code>
-<code class="sig"><span class="sf">getHasManyRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getHasManyRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets hasMany related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasmanytomany">
@@ -12280,7 +12285,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasonerecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|bool</code>
-<code class="sig"><span class="sf">getHasOneRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getHasOneRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets hasOne related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasonethrough">
@@ -12333,7 +12338,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getrelationrecords">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">getRelationRecords</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getRelationRecords</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Helper method to query records based on a relation definition</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getrelations">
@@ -12656,7 +12661,7 @@ public function getBelongsToRecords(
     string $modelRelation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -12686,7 +12691,7 @@ public function getHasManyRecords(
     string $modelRelation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -12724,7 +12729,7 @@ public function getHasOneRecords(
     string $modelRelation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
+    string|null $method = null
 ): ModelInterface|bool;
 ```
 
@@ -12804,7 +12809,7 @@ public function getRelationRecords(
     RelationInterface $relation,
     ModelInterface $record,
     mixed $parameters = null,
-    string $method = null
+    string|null $method = null
 );
 ```
 
@@ -14595,7 +14600,7 @@ __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataapcu-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$options</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\MetaData\Apcu constructor</span>
 </a>
 </div>
@@ -14609,7 +14614,7 @@ __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 ```php
 public function __construct(
     AdapterFactory $factory,
-    array $options = null
+    array|null $options = null
 );
 ```
 
@@ -15551,7 +15556,7 @@ __Uses__ `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Adapter\AdapterInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelquery-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$phql</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$phql</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Query constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-cache">
@@ -15801,7 +15806,7 @@ __Uses__ `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Adapter\AdapterInterface`
 <a class="api-item" href="#mvcmodelquery-getreadconnection">
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">getReadConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">getReadConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$intermediate</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Gets the read connection from the model if there is no transaction set</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getrelatedrecords">
@@ -15830,7 +15835,7 @@ __Uses__ `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Adapter\AdapterInterface`
 <a class="api-item" href="#mvcmodelquery-getwriteconnection">
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">getWriteConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">getWriteConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$intermediate</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Gets the write connection from the model if there is no transaction</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-preparedelete">
@@ -16028,8 +16033,8 @@ transaction instead of this one</span>
 
 ```php
 public function __construct(
-    string $phql = null,
-    DiInterface $container = null,
+    string|null $phql = null,
+    DiInterface|null $container = null,
     array $options = []
 );
 ```
@@ -16433,7 +16438,7 @@ expression
 ```php
 protected function getReadConnection(
     ModelInterface $model,
-    array $intermediate = null,
+    array|null $intermediate = null,
     array $bindParams = [],
     array $bindTypes = []
 ): AdapterInterface;
@@ -16494,7 +16499,7 @@ Resolves a table in a SELECT statement checking if the model exists
 ```php
 protected function getWriteConnection(
     ModelInterface $model,
-    array $intermediate = null,
+    array|null $intermediate = null,
     array $bindParams = [],
     array $bindTypes = []
 ): AdapterInterface;
@@ -16828,13 +16833,13 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <div class="api-list">
 <a class="api-item" href="#mvcmodelquerybuilder-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Query\Builder constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-addfrom">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">addFrom</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addFrom</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a model to take part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-andhaving">
@@ -17015,19 +17020,19 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <a class="api-item" href="#mvcmodelquerybuilder-innerjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an INNER join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-join">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an :type: join (by default type - INNER) to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-leftjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a LEFT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-limit">
@@ -17087,7 +17092,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <a class="api-item" href="#mvcmodelquerybuilder-rightjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a RIGHT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-setbindparams">
@@ -17245,7 +17250,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 ```php
 public function __construct(
     mixed $params = null,
-    DiInterface $container = null
+    DiInterface|null $container = null
 );
 ```
 
@@ -17256,7 +17261,7 @@ Phalcon\Mvc\Model\Query\Builder constructor
 ```php
 public function addFrom(
     string $model,
-    string $alias = null
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17621,6 +17626,9 @@ $builder->groupBy(
 );
 ```
 
+Passing null (or an empty array) clears the clause; the PHQL generator
+treats both as "no GROUP BY".
+
 #### `having()` { #mvcmodelquerybuilder-having }
 
 ```php
@@ -17684,8 +17692,8 @@ $builder->inWhere(
 ```php
 public function innerJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17716,9 +17724,9 @@ $builder->innerJoin(
 ```php
 public function join(
     string $model,
-    string $conditions = null,
-    string $alias = null,
-    string $type = null
+    string|null $conditions = null,
+    string|null $alias = null,
+    string|null $type = null
 ): BuilderInterface;
 ```
 
@@ -17757,8 +17765,8 @@ $builder->join(
 ```php
 public function leftJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17933,8 +17941,8 @@ $builder->orderBy(["Invoices.inv_title DESC"]);
 ```php
 public function rightJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -18094,7 +18102,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 <a class="api-item" href="#mvcmodelquerybuilderinterface-addfrom">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">addFrom</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addFrom</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a model to take part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-andwhere">
@@ -18239,19 +18247,19 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 <a class="api-item" href="#mvcmodelquerybuilderinterface-innerjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an INNER join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-join">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an :type: join (by default type - INNER) to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-leftjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a LEFT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-limit">
@@ -18293,7 +18301,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 <a class="api-item" href="#mvcmodelquerybuilderinterface-rightjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a RIGHT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-setbindparams">
@@ -18338,7 +18346,7 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 ```php
 public function addFrom(
     string $model,
-    string $alias = null
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -18608,8 +18616,8 @@ Appends an IN condition to the current conditions
 ```php
 public function innerJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -18620,8 +18628,8 @@ Adds an INNER join to the query
 ```php
 public function join(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -18632,8 +18640,8 @@ Adds an :type: join (by default type - INNER) to the query
 ```php
 public function leftJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -18708,8 +18716,8 @@ Sets an ORDER BY condition clause
 ```php
 public function rightJoin(
     string $model,
-    string $conditions = null,
-    string $alias = null
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -20874,7 +20882,7 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelquerystatus-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$success</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$success</span>,</span><span class="prm"><span class="st">ModelInterface|null</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Query\Status</span>
 </a>
 <a class="api-item" href="#mvcmodelquerystatus-getmessages">
@@ -20921,7 +20929,7 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 ```php
 public function __construct(
     bool $success,
-    ModelInterface $model = null
+    ModelInterface|null $model = null
 );
 ```
 
@@ -21678,7 +21686,7 @@ while ($invoices->valid()) {
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Resultset`** - implements [`Phalcon\Mvc\Model\ResultsetInterface`](#mvcmodelresultsetinterface), `Iterator`, `SeekableIterator`, `Countable`, `ArrayAccess`, `JsonSerializable`
+- **`Phalcon\Mvc\Model\Resultset`** - implements [`Phalcon\Mvc\Model\ResultsetInterface`](#mvcmodelresultsetinterface), `\Iterator`, `\SeekableIterator`, `\Countable`, `\ArrayAccess`, `\JsonSerializable`
     - [`Phalcon\Mvc\Model\Resultset\Complex`](#mvcmodelresultsetcomplex)
     - [`Phalcon\Mvc\Model\Resultset\Simple`](#mvcmodelresultsetsimple)
 
@@ -21704,7 +21712,7 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 <a class="api-item" href="#mvcmodelresultset-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>( <span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">delete</span>( <span class="st">Closure|null</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span> )</code>
 <span class="desc">Deletes every record in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-filter">
@@ -21840,7 +21848,7 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 <a class="api-item" href="#mvcmodelresultset-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">Closure|null</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Updates every record in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-valid">
@@ -21961,7 +21969,7 @@ Counts how many rows are in the resultset
 #### `delete()` { #mvcmodelresultset-delete }
 
 ```php
-public function delete( Closure $conditionCallback = null ): bool;
+public function delete( Closure|null $conditionCallback = null ): bool;
 ```
 
 Deletes every record in the resultset
@@ -22190,7 +22198,7 @@ Set if the resultset is fresh or an old one cached
 ```php
 public function update(
     mixed $data,
-    Closure $conditionCallback = null
+    Closure|null $conditionCallback = null
 ): bool;
 ```
 
@@ -22233,7 +22241,7 @@ __Uses__ `Closure` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelI
 <a class="api-item" href="#mvcmodelresultsetinterface-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>( <span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">delete</span>( <span class="st">Closure|null</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span> )</code>
 <span class="desc">Deletes every record in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-filter">
@@ -22305,7 +22313,7 @@ __Uses__ `Closure` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelI
 <a class="api-item" href="#mvcmodelresultsetinterface-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">Closure|null</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Updates every record in the resultset</span>
 </a>
 </div>
@@ -22317,7 +22325,7 @@ __Uses__ `Closure` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelI
 #### `delete()` { #mvcmodelresultsetinterface-delete }
 
 ```php
-public function delete( Closure $conditionCallback = null ): bool;
+public function delete( Closure|null $conditionCallback = null ): bool;
 ```
 
 Deletes every record in the resultset
@@ -22426,7 +22434,7 @@ it could consume more memory than currently it does.
 ```php
 public function update(
     mixed $data,
-    Closure $conditionCallback = null
+    Closure|null $conditionCallback = null
 ): bool;
 ```
 
@@ -22461,7 +22469,7 @@ __Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 <div class="api-list">
 <a class="api-item" href="#mvcmodelresultsetcomplex-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columnTypes</span>,</span><span class="prm"><span class="st">ResultInterface</span> <span class="sv">$result</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$resultsetRowClass</span><span class="sm"> = &quot;&quot;</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columnTypes</span>,</span><span class="prm"><span class="st">ResultInterface|null</span> <span class="sv">$result</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$resultsetRowClass</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Resultset\Complex constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetcomplex-__serialize">
@@ -22531,7 +22539,7 @@ disableHydration to true</span>
 ```php
 public function __construct(
     mixed $columnTypes,
-    ResultInterface $result = null,
+    ResultInterface|null $result = null,
     mixed $cache = null,
     string $resultsetRowClass = ""
 );
@@ -22791,7 +22799,7 @@ This objects implements the ArrayAccess interface to allow access the object as 
 <div class="api-tree" markdown>
 
 - `\stdClass`
-    - **`Phalcon\Mvc\Model\Row`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `ArrayAccess`, `JsonSerializable`
+    - **`Phalcon\Mvc\Model\Row`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\ArrayAccess`, `\JsonSerializable`
 
 </div>
 
@@ -23051,7 +23059,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 <a class="api-item" href="#mvcmodeltransaction-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">rollback</span>(<span class="prm"><span class="st">string</span> <span class="sv">$rollbackMessage</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$rollbackRecord</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">rollback</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$rollbackMessage</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ModelInterface|null</span> <span class="sv">$rollbackRecord</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Rollbacks the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-setisnewtransaction">
@@ -23199,8 +23207,8 @@ Checks whether internal connection is under an active transaction
 
 ```php
 public function rollback(
-    string $rollbackMessage = null,
-    ModelInterface $rollbackRecord = null
+    string|null $rollbackMessage = null,
+    ModelInterface|null $rollbackRecord = null
 ): bool;
 ```
 
@@ -23305,7 +23313,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Transaction\ManagerI
 <a class="api-item" href="#mvcmodeltransactioninterface-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">rollback</span>(<span class="prm"><span class="st">string</span> <span class="sv">$rollbackMessage</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$rollbackRecord</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">rollback</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$rollbackMessage</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ModelInterface|null</span> <span class="sv">$rollbackRecord</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Rollbacks the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-setisnewtransaction">
@@ -23396,8 +23404,8 @@ Checks whether internal connection is under an active transaction
 
 ```php
 public function rollback(
-    string $rollbackMessage = null,
-    ModelInterface $rollbackRecord = null
+    string|null $rollbackMessage = null,
+    ModelInterface|null $rollbackRecord = null
 ): bool;
 ```
 
@@ -23489,7 +23497,7 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodeltransactionfailed-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">ModelInterface|null</span> <span class="sv">$record</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Transaction\Failed constructor</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionfailed-getrecord">
@@ -23525,7 +23533,7 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 ```php
 public function __construct(
     string $message,
-    ModelInterface $record = null
+    ModelInterface|null $record = null
 );
 ```
 
@@ -23611,7 +23619,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwa
 <div class="api-list">
 <a class="api-item" href="#mvcmodeltransactionmanager-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\Model\Transaction\Manager constructor</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-collecttransactions">
@@ -23753,7 +23761,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwa
 #### `__construct()` { #mvcmodeltransactionmanager-__construct }
 
 ```php
-public function __construct( DiInterface $container = null );
+public function __construct( DiInterface|null $container = null );
 ```
 
 Phalcon\Mvc\Model\Transaction\Manager constructor
@@ -24200,7 +24208,7 @@ __Uses__ `Phalcon\Di\DiInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmoduledefinitioninterface-registerautoloaders">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">registerAutoloaders</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">registerAutoloaders</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Registers an autoloader related to the module</span>
 </a>
 <a class="api-item" href="#mvcmoduledefinitioninterface-registerservices">
@@ -24217,7 +24225,7 @@ __Uses__ `Phalcon\Di\DiInterface`
 #### `registerAutoloaders()` { #mvcmoduledefinitioninterface-registerautoloaders }
 
 ```php
-public function registerAutoloaders( DiInterface $container = null );
+public function registerAutoloaders( DiInterface|null $container = null );
 ```
 
 Registers an autoloader related to the module
@@ -24265,7 +24273,7 @@ echo $router->getControllerName();
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - **`Phalcon\Mvc\Router`** - implements [`Phalcon\Mvc\RouterInterface`](#mvcrouterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Mvc\Router\Annotations`](#mvcrouterannotations)
@@ -24600,6 +24608,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">rebuildMethodIndex</span>()</code>
+<span class="desc">Rebuilds the HTTP-method index from the current routes array.</span>
 </a>
 </div>
 
@@ -25425,6 +25434,9 @@ Builds a Group from a config entry and mounts it. Used by loadFromConfig.
 protected function rebuildMethodIndex(): void;
 ```
 
+Rebuilds the HTTP-method index from the current routes array.
+Routes with no HTTP method constraint are filed under "*".
+
 
 ## Mvc\RouterInterface
 
@@ -25963,7 +25975,7 @@ $di->setShared(
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - [`Phalcon\Mvc\Router`](#mvcrouter)
             - **`Phalcon\Mvc\Router\Annotations`**
@@ -25979,13 +25991,13 @@ __Uses__ `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalco
 <a class="api-item" href="#mvcrouterannotations-addmoduleresource">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addModuleResource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$module</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addModuleResource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$module</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$prefix</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a resource to the annotations handler</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-addresource">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addResource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addResource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$prefix</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a resource to the annotations handler</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-getactionpreformatcallback">
@@ -26075,7 +26087,7 @@ __Uses__ `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalco
 public function addModuleResource(
     string $module,
     string $handler,
-    string $prefix = null
+    string|null $prefix = null
 ): static;
 ```
 
@@ -26088,7 +26100,7 @@ The class is located in a module
 ```php
 public function addResource(
     string $handler,
-    string $prefix = null
+    string|null $prefix = null
 ): static;
 ```
 
@@ -28594,7 +28606,7 @@ echo $url->get(
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - **`Phalcon\Mvc\Url`** - implements [`Phalcon\Mvc\Url\UrlInterface`](#mvcurlurlinterface)
 
@@ -28608,12 +28620,12 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <div class="api-list">
 <a class="api-item" href="#mvcurl-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">RouterInterface</span> <span class="sv">$router</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">RouterInterface|null</span> <span class="sv">$router</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#mvcurl-get">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$uri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$baseUri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$replaceArgs</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$uri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool|null</span> <span class="sv">$local</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$baseUri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$replaceArgs</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Generates a URL</span>
 </a>
 <a class="api-item" href="#mvcurl-getbasepath">
@@ -28643,7 +28655,7 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <a class="api-item" href="#mvcurl-path">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">path</span>( <span class="st">string</span> <span class="sv">$path</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">path</span>( <span class="st">string|null</span> <span class="sv">$path</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates a local path</span>
 </a>
 <a class="api-item" href="#mvcurl-setbasepath">
@@ -28671,22 +28683,22 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">null | string</code>
+<code class="ret">null|string</code>
 <code class="sig"><span class="sv">$basePath</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">null | string</code>
+<code class="ret">null|string</code>
 <code class="sig"><span class="sv">$baseUri</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">RouterInterface | null</code>
+<code class="ret">RouterInterface|null</code>
 <code class="sig"><span class="sv">$router</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">null | string</code>
+<code class="ret">null|string</code>
 <code class="sig"><span class="sv">$staticBaseUri</span><span class="sm"> = null</span></code>
 </div>
 </div>
@@ -28698,7 +28710,7 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 #### `__construct()` { #mvcurl-__construct }
 
 ```php
-public function __construct( RouterInterface $router = null );
+public function __construct( RouterInterface|null $router = null );
 ```
 
 #### `get()` { #mvcurl-get }
@@ -28707,7 +28719,7 @@ public function __construct( RouterInterface $router = null );
 public function get(
     mixed $uri = null,
     mixed $arguments = null,
-    bool $local = null,
+    bool|null $local = null,
     mixed $baseUri = null,
     bool $replaceArgs = false
 ): string;
@@ -28737,7 +28749,9 @@ echo $url->get(
     ]
 );
 
-// Generate an absolute URL by setting the third parameter as false.
+// A URI that already carries a scheme is detected as remote and is
+// returned untouched. The third parameter is only honored when it is
+// explicitly true - a false reads the same as leaving it out.
 echo $url->get(
     "https://phalcon.io/",
     null,
@@ -28803,7 +28817,7 @@ Returns the prefix for all the generated static urls. By default /
 #### `path()` { #mvcurl-path }
 
 ```php
-public function path( string $path = null ): string;
+public function path( string|null $path = null ): string;
 ```
 
 Generates a local path
@@ -28994,7 +29008,7 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 <a class="api-item" href="#mvcurlurlinterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$uri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$baseUri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$replaceArgs</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$uri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool|null</span> <span class="sv">$local</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$baseUri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$replaceArgs</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Generates a URL</span>
 </a>
 <a class="api-item" href="#mvcurlurlinterface-getbasepath">
@@ -29012,7 +29026,7 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 <a class="api-item" href="#mvcurlurlinterface-path">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">path</span>( <span class="st">string</span> <span class="sv">$path</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">path</span>( <span class="st">string|null</span> <span class="sv">$path</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates a local path</span>
 </a>
 <a class="api-item" href="#mvcurlurlinterface-setbasepath">
@@ -29039,7 +29053,7 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 public function get(
     mixed $uri = null,
     mixed $arguments = null,
-    bool $local = null,
+    bool|null $local = null,
     mixed $baseUri = null,
     bool $replaceArgs = false
 ): string;
@@ -29066,7 +29080,7 @@ Returns the prefix for all the generated urls. By default /
 #### `path()` { #mvcurlurlinterface-path }
 
 ```php
-public function path( string $path = null ): string;
+public function path( string|null $path = null ): string;
 ```
 
 Generates a local path
@@ -29118,7 +29132,7 @@ echo $view->getContent();
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Mvc\View`** - implements [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
@@ -30709,7 +30723,7 @@ basic interfacing between the engine and the Phalcon\Mvc\View component.
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Mvc\View\Engine\AbstractEngine`** - implements [`Phalcon\Mvc\View\Engine\EngineInterface`](#mvcviewengineengineinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Mvc\View\Engine\Php`](#mvcviewenginephp)
@@ -30725,7 +30739,7 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\
 <div class="api-list">
 <a class="api-item" href="#mvcviewengineabstractengine-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">ViewBaseInterface</span> <span class="sv">$view</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">ViewBaseInterface</span> <span class="sv">$view</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\View\Engine constructor</span>
 </a>
 <a class="api-item" href="#mvcviewengineabstractengine-getcontent">
@@ -30790,7 +30804,7 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\
 ```php
 public function __construct(
     ViewBaseInterface $view,
-    DiInterface $container = null
+    DiInterface|null $container = null
 );
 ```
 
@@ -30936,7 +30950,7 @@ Adapter to use PHP itself as templating engine
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
             - **`Phalcon\Mvc\View\Engine\Php`**
@@ -30979,7 +30993,7 @@ Designer friendly and fast template engine for PHP written in Zephir/C
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
             - **`Phalcon\Mvc\View\Engine\Volt`** - implements [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
@@ -31254,7 +31268,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltcompiler-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">ViewBaseInterface</span> <span class="sv">$view</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">ViewBaseInterface|null</span> <span class="sv">$view</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\View\Engine\Volt\Compiler</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-addextension">
@@ -31637,7 +31651,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 #### `__construct()` { #mvcviewenginevoltcompiler-__construct }
 
 ```php
-public function __construct( ViewBaseInterface $view = null );
+public function __construct( ViewBaseInterface|null $view = null );
 ```
 
 Phalcon\Mvc\View\Engine\Volt\Compiler
@@ -32181,7 +32195,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexception-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$statement</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">\Exception</span> <span class="sv">$previous</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$statement</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">\Exception|null</span> <span class="sv">$previous</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#mvcviewenginevoltexception-getstatement">
 <code class="vis vis-public">public</code>
@@ -32212,7 +32226,7 @@ public function __construct(
     string $message = "",
     array $statement = [],
     int $code = 0,
-    \Exception $previous = null
+    \Exception|null $previous = null
 );
 ```
 
@@ -33451,7 +33465,7 @@ echo $view->render(
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Mvc\View\Simple`** - implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface), [`Phalcon\Contracts\View\Renderer`](phalcon_contracts.md#contractsviewrenderer)
 

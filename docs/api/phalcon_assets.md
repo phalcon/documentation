@@ -35,7 +35,7 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\A
 <div class="api-list">
 <a class="api-item" href="#assetsasset-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isLocal</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isAutoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isLocal</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isAutoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Asset constructor.</span>
 </a>
 <a class="api-item" href="#assetsasset-getassetkey">
@@ -47,29 +47,31 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\A
 <a class="api-item" href="#assetsasset-getcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getContent</span>( <span class="st">string</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getContent</span>( <span class="st">string|null</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the content of the asset as an string</span>
 </a>
 <a class="api-item" href="#assetsasset-getfilter">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getFilter</span>()</code>
+<span class="desc">Gets if the asset must be filtered or not.</span>
 </a>
 <a class="api-item" href="#assetsasset-getpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getPath</span>()</code>
+<span class="desc">Returns the path for this asset</span>
 </a>
 <a class="api-item" href="#assetsasset-getrealsourcepath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getRealSourcePath</span>( <span class="st">string</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getRealSourcePath</span>( <span class="st">string|null</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the complete location where the asset is located</span>
 </a>
 <a class="api-item" href="#assetsasset-getrealtargetpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getRealTargetPath</span>( <span class="st">string</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getRealTargetPath</span>( <span class="st">string|null</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the complete location where the asset must be written</span>
 </a>
 <a class="api-item" href="#assetsasset-getrealtargeturi">
@@ -82,6 +84,7 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\A
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getType</span>()</code>
+<span class="desc">Gets the asset&#039;s type.</span>
 </a>
 <a class="api-item" href="#assetsasset-getversion">
 <code class="vis vis-public">public</code>
@@ -176,7 +179,7 @@ public function __construct(
     bool $isLocal = true,
     bool $filter = true,
     array $attributes = [],
-    string $version = null,
+    string|null $version = null,
     bool $isAutoVersion = false
 );
 ```
@@ -194,7 +197,7 @@ Gets the asset's key.
 #### `getContent()` { #assetsasset-getcontent }
 
 ```php
-public function getContent( string $basePath = null ): string;
+public function getContent( string|null $basePath = null ): string;
 ```
 
 Returns the content of the asset as an string
@@ -206,16 +209,20 @@ Optionally a base path where the asset is located can be set
 public function getFilter(): bool;
 ```
 
+Gets if the asset must be filtered or not.
+
 #### `getPath()` { #assetsasset-getpath }
 
 ```php
 public function getPath(): string;
 ```
 
+Returns the path for this asset
+
 #### `getRealSourcePath()` { #assetsasset-getrealsourcepath }
 
 ```php
-public function getRealSourcePath( string $basePath = null ): string;
+public function getRealSourcePath( string|null $basePath = null ): string;
 ```
 
 Returns the complete location where the asset is located
@@ -223,7 +230,7 @@ Returns the complete location where the asset is located
 #### `getRealTargetPath()` { #assetsasset-getrealtargetpath }
 
 ```php
-public function getRealTargetPath( string $basePath = null ): string;
+public function getRealTargetPath( string|null $basePath = null ): string;
 ```
 
 Returns the complete location where the asset must be written
@@ -241,6 +248,8 @@ Returns the real target uri for the generated HTML
 ```php
 public function getType(): string;
 ```
+
+Gets the asset's type.
 
 #### `getVersion()` { #assetsasset-getversion }
 
@@ -345,7 +354,7 @@ __Uses__ `Phalcon\Assets\Asset`
 <div class="api-list">
 <a class="api-item" href="#assetsassetcss-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Phalcon\Assets\Asset\Css constructor</span>
 </a>
 </div>
@@ -362,7 +371,7 @@ public function __construct(
     bool $local = true,
     bool $filter = true,
     array $attributes = [],
-    string $version = null,
+    string|null $version = null,
     bool $autoVersion = false
 );
 ```
@@ -392,7 +401,7 @@ __Uses__ `Phalcon\Assets\Asset`
 <div class="api-list">
 <a class="api-item" href="#assetsassetjs-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Phalcon\Assets\Asset\Js constructor</span>
 </a>
 </div>
@@ -409,7 +418,7 @@ public function __construct(
     bool $local = true,
     bool $filter = true,
     array $attributes = [],
-    string $version = null,
+    string|null $version = null,
     bool $autoVersion = false
 );
 ```
@@ -426,7 +435,7 @@ Collection of asset objects
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Assets\Collection`** - implements `Countable`, `IteratorAggregate`
+- **`Phalcon\Assets\Collection`** - implements `\Countable`, `\IteratorAggregate`
 
 </div>
 
@@ -445,7 +454,7 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Asset
 <a class="api-item" href="#assetscollection-addcss">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$isLocal</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$isLocal</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Adds a CSS asset to the collection</span>
 </a>
 <a class="api-item" href="#assetscollection-addfilter">
@@ -475,7 +484,7 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Asset
 <a class="api-item" href="#assetscollection-addjs">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$isLocal</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$isLocal</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Adds a JavaScript asset to the collection</span>
 </a>
 <a class="api-item" href="#assetscollection-count">
@@ -488,16 +497,19 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Asset
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getAssets</span>()</code>
+<span class="desc">Return the stored assets</span>
 </a>
 <a class="api-item" href="#assetscollection-getcodes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getCodes</span>()</code>
+<span class="desc">Return the stored codes</span>
 </a>
 <a class="api-item" href="#assetscollection-getfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getFilters</span>()</code>
+<span class="desc">Return the stored filters</span>
 </a>
 <a class="api-item" href="#assetscollection-getiterator">
 <code class="vis vis-public">public</code>
@@ -514,6 +526,7 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Asset
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getPrefix</span>()</code>
+<span class="desc">Returns the prefix</span>
 </a>
 <a class="api-item" href="#assetscollection-getrealtargetpath">
 <code class="vis vis-public">public</code>
@@ -525,11 +538,13 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Asset
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getTargetIsLocal</span>()</code>
+<span class="desc">Returns whether the target is local or not</span>
 </a>
 <a class="api-item" href="#assetscollection-getversion">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getVersion</span>()</code>
+<span class="desc">Returns the version</span>
 </a>
 <a class="api-item" href="#assetscollection-has">
 <code class="vis vis-public">public</code>
@@ -658,7 +673,7 @@ public function addCss(
     mixed $isLocal = null,
     bool $filter = true,
     array $attributes = [],
-    string $version = null,
+    string|null $version = null,
     bool $autoVersion = false
 ): static;
 ```
@@ -713,7 +728,7 @@ public function addJs(
     mixed $isLocal = null,
     bool $filter = true,
     array $attributes = [],
-    string $version = null,
+    string|null $version = null,
     bool $autoVersion = false
 ): static;
 ```
@@ -736,17 +751,23 @@ Return the count of the assets
 public function getAssets(): array;
 ```
 
+Return the stored assets
+
 #### `getCodes()` { #assetscollection-getcodes }
 
 ```php
 public function getCodes(): array;
 ```
 
+Return the stored codes
+
 #### `getFilters()` { #assetscollection-getfilters }
 
 ```php
 public function getFilters(): array;
 ```
+
+Return the stored filters
 
 #### `getIterator()` { #assetscollection-getiterator }
 
@@ -770,6 +791,8 @@ public function getJoin(): bool;
 public function getPrefix(): string;
 ```
 
+Returns the prefix
+
 #### `getRealTargetPath()` { #assetscollection-getrealtargetpath }
 
 ```php
@@ -785,11 +808,15 @@ be written
 public function getTargetIsLocal(): bool;
 ```
 
+Returns whether the target is local or not
+
 #### `getVersion()` { #assetscollection-getversion }
 
 ```php
 public function getVersion(): string;
 ```
+
+Returns the version
 
 #### `has()` { #assetscollection-has }
 
@@ -1385,16 +1412,19 @@ __Uses__ `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Traits\Php\HashTrai
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getContent</span>()</code>
+<span class="desc">Gets if the asset content</span>
 </a>
 <a class="api-item" href="#assetsinline-getfilter">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getFilter</span>()</code>
+<span class="desc">Gets if the asset must be filtered or not.</span>
 </a>
 <a class="api-item" href="#assetsinline-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getType</span>()</code>
+<span class="desc">Gets the asset&#039;s type.</span>
 </a>
 <a class="api-item" href="#assetsinline-setattributes">
 <code class="vis vis-public">public</code>
@@ -1467,17 +1497,23 @@ Gets the asset's key.
 public function getContent(): string;
 ```
 
+Gets if the asset content
+
 #### `getFilter()` { #assetsinline-getfilter }
 
 ```php
 public function getFilter(): bool;
 ```
 
+Gets if the asset must be filtered or not.
+
 #### `getType()` { #assetsinline-gettype }
 
 ```php
 public function getType(): string;
 ```
+
+Gets the asset's type.
 
 #### `setAttributes()` { #assetsinline-setattributes }
 
@@ -1601,7 +1637,7 @@ Manages collections of CSS/JavaScript assets
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - **`Phalcon\Assets\Manager`**
 
@@ -1633,7 +1669,7 @@ __Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Ass
 <a class="api-item" href="#assetsmanager-addcss">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Adds a CSS asset to the &#039;css&#039; collection</span>
 </a>
 <a class="api-item" href="#assetsmanager-addinlinecode">
@@ -1663,7 +1699,7 @@ __Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Ass
 <a class="api-item" href="#assetsmanager-addjs">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Adds a JavaScript asset to the &#039;js&#039; collection</span>
 </a>
 <a class="api-item" href="#assetsmanager-collection">
@@ -1729,7 +1765,7 @@ __Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Ass
 <a class="api-item" href="#assetsmanager-outputcss">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">outputCss</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">outputCss</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Prints the HTML for CSS assets</span>
 </a>
 <a class="api-item" href="#assetsmanager-outputinline">
@@ -1741,19 +1777,19 @@ __Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Ass
 <a class="api-item" href="#assetsmanager-outputinlinecss">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">outputInlineCss</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">outputInlineCss</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Prints the HTML for inline CSS</span>
 </a>
 <a class="api-item" href="#assetsmanager-outputinlinejs">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">outputInlineJs</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">outputInlineJs</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Prints the HTML for inline JS</span>
 </a>
 <a class="api-item" href="#assetsmanager-outputjs">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">outputJs</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">outputJs</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Prints the HTML for JS assets</span>
 </a>
 <a class="api-item" href="#assetsmanager-set">
@@ -1843,7 +1879,7 @@ public function addCss(
     bool $local = true,
     bool $filter = true,
     array $attributes = [],
-    string $version = null,
+    string|null $version = null,
     bool $autoVersion = false
 ): static;
 ```
@@ -1901,7 +1937,7 @@ public function addJs(
     bool $local = true,
     bool $filter = true,
     array $attributes = [],
-    string $version = null,
+    string|null $version = null,
     bool $autoVersion = false
 ): static;
 ```
@@ -2020,7 +2056,7 @@ Traverses a collection calling the callback to generate its HTML
 #### `outputCss()` { #assetsmanager-outputcss }
 
 ```php
-public function outputCss( string $name = null ): string;
+public function outputCss( string|null $name = null ): string;
 ```
 
 Prints the HTML for CSS assets
@@ -2039,7 +2075,7 @@ Traverses a collection and generate its HTML
 #### `outputInlineCss()` { #assetsmanager-outputinlinecss }
 
 ```php
-public function outputInlineCss( string $name = null ): string;
+public function outputInlineCss( string|null $name = null ): string;
 ```
 
 Prints the HTML for inline CSS
@@ -2047,7 +2083,7 @@ Prints the HTML for inline CSS
 #### `outputInlineJs()` { #assetsmanager-outputinlinejs }
 
 ```php
-public function outputInlineJs( string $name = null ): string;
+public function outputInlineJs( string|null $name = null ): string;
 ```
 
 Prints the HTML for inline JS
@@ -2055,7 +2091,7 @@ Prints the HTML for inline JS
 #### `outputJs()` { #assetsmanager-outputjs }
 
 ```php
-public function outputJs( string $name = null ): string;
+public function outputJs( string|null $name = null ): string;
 ```
 
 Prints the HTML for JS assets

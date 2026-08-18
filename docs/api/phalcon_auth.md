@@ -168,12 +168,12 @@ __Uses__ `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Guard
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">list&lt;string&gt;</code>
 <code class="sig"><span class="sv">$exceptActions</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">list&lt;string&gt;</code>
 <code class="sig"><span class="sv">$onlyActions</span><span class="sm"> = []</span></code>
 </div>
 </div>
@@ -703,7 +703,7 @@ __Uses__ `Phalcon\Auth\AuthUser` · `Phalcon\Auth\Exceptions\DoesNotImplement` �
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">matchesRow</span>(<span class="prm"><span class="st">array</span> <span class="sv">$row</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$credentials</span></span>)</code>
-<span class="desc">Strict per-key match of a row against credentials, skipping &#039;password&#039;.</span>
+<span class="desc">Per-key match of a row against credentials, skipping &#039;password&#039;. Values</span>
 </a>
 </div>
 
@@ -770,7 +770,9 @@ protected function matchesRow(
 ): bool;
 ```
 
-Strict per-key match of a row against credentials, skipping 'password'.
+Per-key match of a row against credentials, skipping 'password'. Values
+are compared as strings so typed row values (e.g. int id, bool active)
+match the string input that arrives from an HTTP request.
 
 
 ## Auth\Adapter\AdapterLocator
@@ -864,7 +866,7 @@ __Uses__ `Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait` · `Phalcon\Contr
 <div class="api-list">
 <a class="api-item" href="#authadapterconfigabstractadapterconfig-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$model</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string|null</span> <span class="sv">$model</span><span class="sm"> = null</span> )</code>
 </a>
 </div>
 
@@ -875,7 +877,7 @@ __Uses__ `Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait` · `Phalcon\Contr
 #### `__construct()` { #authadapterconfigabstractadapterconfig-__construct }
 
 ```php
-public function __construct( string $model = null );
+public function __construct( string|null $model = null );
 ```
 
 
@@ -896,7 +898,7 @@ public function __construct( string $model = null );
 <div class="api-list">
 <a class="api-item" href="#authadapterconfigmemoryadapterconfig-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$users</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$users</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#authadapterconfigmemoryadapterconfig-getusers">
 <code class="vis vis-public">public</code>
@@ -924,7 +926,7 @@ public function __construct( string $model = null );
 ```php
 public function __construct(
     array $users = [],
-    string $model = null
+    string|null $model = null
 );
 ```
 
@@ -1025,7 +1027,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 <div class="api-list">
 <a class="api-item" href="#authadapterconfigstreamadapterconfig-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#authadapterconfigstreamadapterconfig-getfile">
 <code class="vis vis-public">public</code>
@@ -1053,7 +1055,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 ```php
 public function __construct(
     string $file,
-    string $model = null
+    string|null $model = null
 );
 ```
 
@@ -1246,7 +1248,7 @@ __Uses__ `Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Excep
 <a class="api-item" href="#authadaptermodel-retrievebytoken">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveByToken</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">retrieveByToken</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Retrieve a user by the remember-me cookie payload.</span>
 </a>
 </div>
@@ -1301,7 +1303,7 @@ public function retrieveById( mixed $id ): AuthUser|null;
 public function retrieveByToken(
     mixed $id,
     string $token,
-    string $userAgent = null
+    string|null $userAgent = null
 ): AuthUser|null;
 ```
 
@@ -1838,7 +1840,7 @@ __Uses__ `Phalcon\Auth\Exception`
 <a class="api-item" href="#authexceptionsdoesnotimplement-assert">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">assert</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$interfaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
+<code class="sig"><span class="sf">assert</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$interfaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
 <span class="desc">Throws when value is not an instance of the given interface. Keeps the</span>
 </a>
 </div>
@@ -1861,7 +1863,7 @@ public function __construct(
 ```php
 public static function assert(
     mixed $value,
-    mixed $interfaceName,
+    string $interfaceName,
     string $type,
     string $name
 ): void;
@@ -2308,14 +2310,13 @@ public function __construct( string $type );
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
-    - **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](phalcon_contracts.md#contractsauthguardguard)
-        - [`Phalcon\Auth\Guard\Session`](#authguardsession)
-        - [`Phalcon\Auth\Guard\Token`](#authguardtoken)
+- **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](phalcon_contracts.md#contractsauthguardguard)
+    - [`Phalcon\Auth\Guard\Session`](#authguardsession)
+    - [`Phalcon\Auth\Guard\Token`](#authguardtoken)
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardConfig` · `Phalcon\Events\AbstractEventsAware`
+__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardConfig` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2394,12 +2395,12 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Aut
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">AuthUser | null</code>
+<code class="ret">AuthUser|null</code>
 <code class="sig"><span class="sv">$lastUserAttempted</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">AuthUser | null</code>
+<code class="ret">AuthUser|null</code>
 <code class="sig"><span class="sv">$user</span><span class="sm"> = null</span></code>
 </div>
 </div>
@@ -2530,7 +2531,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 <div class="api-list">
 <a class="api-item" href="#authguardconfigsessionguardconfig-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$suffix</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$rememberName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$rememberTtl</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$suffix</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$rememberName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$rememberTtl</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#authguardconfigsessionguardconfig-getname">
 <code class="vis vis-public">public</code>
@@ -2555,8 +2556,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 <div class="api-item">
 <code class="ret">int</code>
 <code class="sig"><span class="sc">DEFAULT_REMEMBER_TTL</span><span class="sm"> = 31536000</span></code>
-<span class="desc">Default remember-me cookie lifetime,
-in seconds (365 days).</span>
+<span class="desc">Default remember-me cookie lifetime, in seconds (365 days).</span>
 </div>
 </div>
 
@@ -2568,10 +2568,10 @@ in seconds (365 days).</span>
 
 ```php
 public function __construct(
-    string $suffix = null,
-    string $name = null,
-    string $rememberName = null,
-    mixed $rememberTtl = null
+    string|null $suffix = null,
+    string|null $name = null,
+    string|null $rememberName = null,
+    int|null $rememberTtl = null
 );
 ```
 
@@ -2742,13 +2742,12 @@ protected function getServices(): array;
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
-    - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-        - **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](phalcon_contracts.md#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](phalcon_contracts.md#contractsauthguardbasicauth)
+- [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
+    - **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](phalcon_contracts.md#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](phalcon_contracts.md#contractsauthguardbasicauth)
 
 </div>
 
-__Uses__ `DateTimeImmutable` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
 { .api-uses }
 
 ### Method Summary
@@ -2756,7 +2755,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Except
 <div class="api-list">
 <a class="api-item" href="#authguardsession-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">CookiesInterface</span> <span class="sv">$cookies</span>,</span><span class="prm"><span class="st">SessionManagerInterface</span> <span class="sv">$session</span>,</span><span class="prm"><span class="st">SessionGuardConfig</span> <span class="sv">$config</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ClockInterface</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">CookiesInterface</span> <span class="sv">$cookies</span>,</span><span class="prm"><span class="st">SessionManagerInterface</span> <span class="sv">$session</span>,</span><span class="prm"><span class="st">SessionGuardConfig|null</span> <span class="sv">$config</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ClockInterface|null</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#authguardsession-attempt">
 <code class="vis vis-public">public</code>
@@ -2790,7 +2789,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Except
 </a>
 <a class="api-item" href="#authguardsession-loginbyid">
 <code class="vis vis-public">public</code>
-<code class="ret">false|AuthUser</code>
+<code class="ret">AuthUser|false</code>
 <code class="sig"><span class="sf">loginById</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#authguardsession-logout">
@@ -2805,7 +2804,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Except
 </a>
 <a class="api-item" href="#authguardsession-oncebasic">
 <code class="vis vis-public">public</code>
-<code class="ret">false|AuthUser</code>
+<code class="ret">AuthUser|false</code>
 <code class="sig"><span class="sf">onceBasic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;email&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$extraConditions</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#authguardsession-user">
@@ -2897,8 +2896,8 @@ public function __construct(
     RequestInterface $request,
     CookiesInterface $cookies,
     SessionManagerInterface $session,
-    SessionGuardConfig $config = null,
-    ClockInterface $clock = null
+    SessionGuardConfig|null $config = null,
+    ClockInterface|null $clock = null
 );
 ```
 
@@ -2957,7 +2956,7 @@ public function login(
 public function loginById(
     mixed $id,
     bool $remember = false
-): false|AuthUser;
+): AuthUser|false;
 ```
 
 #### `logout()` { #authguardsession-logout }
@@ -2978,7 +2977,7 @@ public function once( array $credentials = [] ): bool;
 public function onceBasic(
     string $field = "email",
     array $extraConditions = []
-): false|AuthUser;
+): AuthUser|false;
 ```
 
 #### `user()` { #authguardsession-user }
@@ -3050,9 +3049,8 @@ protected function userFromRecaller( UserRemember $recaller ): AuthUser|null;
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
-    - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-        - **`Phalcon\Auth\Guard\Token`**
+- [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
+    - **`Phalcon\Auth\Guard\Token`**
 
 </div>
 
@@ -3269,7 +3267,7 @@ callers and userland catch a single exception family.
 
 </div>
 
-__Uses__ `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception`
+__Uses__ `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `TypeError`
 { .api-uses }
 
 ### Method Summary
@@ -3547,7 +3545,7 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\AccessN
 <a class="api-item" href="#authmanager-guard">
 <code class="vis vis-public">public</code>
 <code class="ret">Guard</code>
-<code class="sig"><span class="sf">guard</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">guard</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#authmanager-id">
 <code class="vis vis-public">public</code>
@@ -3596,12 +3594,12 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\AccessN
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">Access | null</code>
+<code class="ret">Access|null</code>
 <code class="sig"><span class="sv">$activeAccess</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">Guard | null</code>
+<code class="ret">Guard|null</code>
 <code class="sig"><span class="sv">$defaultGuard</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -3691,7 +3689,7 @@ public function getGuards(): array;
 #### `guard()` { #authmanager-guard }
 
 ```php
-public function guard( string $name = null ): Guard;
+public function guard( string|null $name = null ): Guard;
 ```
 
 #### `id()` { #authmanager-id }
@@ -3787,7 +3785,7 @@ not separately constructed copies.
 
 </div>
 
-__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLocator` · `Phalcon\Auth\Exceptions\UnknownAdapter` · `Phalcon\Auth\Exceptions\UnknownGuard` · `Phalcon\Auth\Guard\GuardLocator` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security`
+__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLocator` · `Phalcon\Auth\Exceptions\UnknownAdapter` · `Phalcon\Auth\Exceptions\UnknownGuard` · `Phalcon\Auth\Guard\GuardLocator` · `Phalcon\Auth\Internal\Options` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security` · `Phalcon\Traits\Factory\ConfigTrait`
 { .api-uses }
 
 ### Method Summary
@@ -3795,7 +3793,7 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLoc
 <div class="api-list">
 <a class="api-item" href="#authmanagerfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">AdapterLocator</span> <span class="sv">$adapterLocator</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">GuardLocator</span> <span class="sv">$guardLocator</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">AccessLocator</span> <span class="sv">$accessLocator</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">AdapterLocator|null</span> <span class="sv">$adapterLocator</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">GuardLocator|null</span> <span class="sv">$guardLocator</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">AccessLocator|null</span> <span class="sv">$accessLocator</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#authmanagerfactory-load">
 <code class="vis vis-public">public</code>
@@ -3811,6 +3809,11 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLoc
 <code class="vis vis-protected">protected</code>
 <code class="ret">Guard</code>
 <code class="sig"><span class="sf">buildGuard</span>(<span class="prm"><span class="st">GuardLocator</span> <span class="sv">$locator</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
+</a>
+<a class="api-item" href="#authmanagerfactory-getexceptionclass">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 </div>
 
@@ -3829,7 +3832,7 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLoc
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">Collection|DiInterface</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$container</span></code>
 </div>
 <div class="api-item">
@@ -3854,9 +3857,9 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLoc
 public function __construct(
     Security $hasher,
     mixed $container,
-    AdapterLocator $adapterLocator = null,
-    GuardLocator $guardLocator = null,
-    AccessLocator $accessLocator = null
+    AdapterLocator|null $adapterLocator = null,
+    GuardLocator|null $guardLocator = null,
+    AccessLocator|null $accessLocator = null
 );
 ```
 
@@ -3866,7 +3869,7 @@ public function __construct(
 public function load( mixed $config ): Manager;
 ```
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 3</div>
 
 #### `buildAdapter()` { #authmanagerfactory-buildadapter }
 
@@ -3886,6 +3889,12 @@ protected function buildGuard(
     Adapter $adapter,
     array $options
 ): Guard;
+```
+
+#### `getExceptionClass()` { #authmanagerfactory-getexceptionclass }
+
+```php
+protected function getExceptionClass(): string;
 ```
 
 

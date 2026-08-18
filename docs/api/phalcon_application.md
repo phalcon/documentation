@@ -17,7 +17,7 @@ Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Application\AbstractApplication`** - implements [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Cli\Console`](phalcon_cli.md#cliconsole)
@@ -25,7 +25,7 @@ Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
 </div>
 
-__Uses__ `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface`
+__Uses__ `Closure` · `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Contracts\Application\ApplicationTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 { .api-uses }
 
 ### Method Summary
@@ -33,8 +33,8 @@ __Uses__ `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Di\DiI
 <div class="api-list">
 <a class="api-item" href="#applicationabstractapplication-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
-<span class="desc">Phalcon\AbstractApplication constructor</span>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<span class="desc">AbstractApplication constructor.</span>
 </a>
 <a class="api-item" href="#applicationabstractapplication-getdefaultmodule">
 <code class="vis vis-public">public</code>
@@ -42,15 +42,9 @@ __Uses__ `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Di\DiI
 <code class="sig"><span class="sf">getDefaultModule</span>()</code>
 <span class="desc">Returns the default module name</span>
 </a>
-<a class="api-item" href="#applicationabstractapplication-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
 <a class="api-item" href="#applicationabstractapplication-getmodule">
 <code class="vis vis-public">public</code>
-<code class="ret">array|object</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getModule</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets the module definition registered in the application via module name</span>
 </a>
@@ -70,7 +64,7 @@ __Uses__ `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Di\DiI
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setDefaultModule</span>( <span class="st">string</span> <span class="sv">$defaultModule</span> )</code>
-<span class="desc">Sets the module name to be used if the router does not return a valid module</span>
+<span class="desc">Sets the module name to be used if the router does not return a valid</span>
 </a>
 <a class="api-item" href="#applicationabstractapplication-seteventsmanager">
 <code class="vis vis-public">public</code>
@@ -90,11 +84,6 @@ __Uses__ `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Di\DiI
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$modules</span><span class="sm"> = []</span></code>
 </div>
@@ -102,15 +91,15 @@ __Uses__ `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Di\DiI
 
 ### Methods
 
-<div class="api-group">Public · 8</div>
+<div class="api-group">Public · 7</div>
 
 #### `__construct()` { #applicationabstractapplication-__construct }
 
 ```php
-public function __construct( DiInterface $container = null );
+public function __construct( DiInterface|null $container = null );
 ```
 
-Phalcon\AbstractApplication constructor
+AbstractApplication constructor.
 
 #### `getDefaultModule()` { #applicationabstractapplication-getdefaultmodule }
 
@@ -120,18 +109,10 @@ public function getDefaultModule(): string;
 
 Returns the default module name
 
-#### `getEventsManager()` { #applicationabstractapplication-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
-
 #### `getModule()` { #applicationabstractapplication-getmodule }
 
 ```php
-public function getModule( string $name ): array|object;
+public function getModule( string $name ): mixed;
 ```
 
 Gets the module definition registered in the application via module name
@@ -176,7 +157,8 @@ $this->registerModules(
 public function setDefaultModule( string $defaultModule ): static;
 ```
 
-Sets the module name to be used if the router does not return a valid module
+Sets the module name to be used if the router does not return a valid
+module
 
 #### `setEventsManager()` { #applicationabstractapplication-seteventsmanager }
 
@@ -192,7 +174,7 @@ Sets the events manager
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Application/Exception.zep){ .src-btn }
 
-Exceptions thrown in Phalcon\Application class will use this class
+Exceptions thrown in Phalcon\Application use this class
 
 <div class="api-tree" markdown>
 

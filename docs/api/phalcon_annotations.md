@@ -958,7 +958,7 @@ $annotation = $classAnnotations->get("Cacheable");
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Annotations\Collection`** - implements `Iterator`, `Countable`
+- **`Phalcon\Annotations\Collection`** - implements `\Iterator`, `\Countable`
 
 </div>
 
@@ -1240,7 +1240,7 @@ public function __construct();
 
 <div class="api-tree" markdown>
 
-- `RuntimeException`
+- `\RuntimeException`
     - **`Phalcon\Annotations\Exceptions\CannotReadAnnotationData`**
 
 </div>

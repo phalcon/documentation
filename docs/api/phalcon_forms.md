@@ -1873,7 +1873,7 @@ public function __construct( string $name );
 
 <div class="api-tree" markdown>
 
-- `InvalidArgumentException`
+- `\InvalidArgumentException`
     - **`Phalcon\Forms\Exceptions\FormElementNameRequired`**
 
 </div>
@@ -2345,9 +2345,9 @@ This component allows to build forms using an object-oriented interface
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Forms\Form`** - implements `Countable`, `Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](phalcon_html.md#htmlattributesattributesinterface)
+        - **`Phalcon\Forms\Form`** - implements `\Countable`, `\Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](phalcon_html.md#htmlattributesattributesinterface)
 
 </div>
 
@@ -2365,7 +2365,7 @@ __Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalc
 <a class="api-item" href="#formsform-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">ElementInterface</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$position</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">ElementInterface</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$position</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an element to the form</span>
 </a>
 <a class="api-item" href="#formsform-bind">
@@ -2682,8 +2682,8 @@ Phalcon\Forms\Form constructor
 ```php
 public function add(
     ElementInterface $element,
-    string $position = null,
-    bool $type = null
+    string|null $position = null,
+    bool|null $type = null
 ): static;
 ```
 
@@ -3413,7 +3413,7 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exceptions\FormNotRe
 <div class="api-list">
 <a class="api-item" href="#formsmanager-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">FormsLocator</span> <span class="sv">$locator</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">FormsLocator|null</span> <span class="sv">$locator</span><span class="sm"> = null</span> )</code>
 <span class="desc">Manager constructor.</span>
 </a>
 <a class="api-item" href="#formsmanager-create">
@@ -3476,7 +3476,7 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exceptions\FormNotRe
 #### `__construct()` { #formsmanager-__construct }
 
 ```php
-public function __construct( FormsLocator $locator = null );
+public function __construct( FormsLocator|null $locator = null );
 ```
 
 Manager constructor.

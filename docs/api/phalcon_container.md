@@ -1177,7 +1177,7 @@ __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\E
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string | null</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$className</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -1187,7 +1187,7 @@ __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\E
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">object | null</code>
+<code class="ret">object|null</code>
 <code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -1197,7 +1197,7 @@ __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\E
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">callable | null</code>
+<code class="ret">callable|null</code>
 <code class="sig"><span class="sv">$factory</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -1525,7 +1525,7 @@ Check if frozen
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\CannotExtendResolved`**
 
@@ -1561,7 +1561,7 @@ Cannot extend a resolved service
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\CannotResolveParameter`**
 
@@ -1600,7 +1600,7 @@ Cannot resolve a parameter
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\CircularAliasFound`**
 
@@ -1636,7 +1636,7 @@ Circular Alias found
 
 <div class="api-tree" markdown>
 
-- `Throwable`
+- `\Throwable`
     - [`Phalcon\Contracts\Container\Ioc\IocThrowable`](phalcon_contracts.md#contractscontaineriociocthrowable)
         - **`Phalcon\Container\Exceptions\ContainerThrowable`** - extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](phalcon_contracts.md#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](phalcon_contracts.md#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](phalcon_contracts.md#contractscontainerservicethrowable)
 
@@ -1653,7 +1653,7 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocThrowable` · `Phalcon\Contracts\Co
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\EnvNotDefined`**
 
@@ -1686,7 +1686,7 @@ public function __construct( string $varname );
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - **`Phalcon\Container\Exceptions\Exception`** - implements [`Phalcon\Container\Exceptions\ContainerThrowable`](#containerexceptionscontainerthrowable)
         - [`Phalcon\Container\Exceptions\CannotExtendResolved`](#containerexceptionscannotextendresolved)
         - [`Phalcon\Container\Exceptions\CannotResolveParameter`](#containerexceptionscannotresolveparameter)
@@ -1715,7 +1715,7 @@ __Uses__ `Exception`
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\FrozenDefinition`**
 
@@ -1751,7 +1751,7 @@ Definition is frozen
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\InstanceNotFound`**
 
@@ -1784,7 +1784,7 @@ public function __construct( string $name );
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\InvalidExtender`**
 
@@ -1823,7 +1823,7 @@ Invalid extender (not callable)
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\NoClassSet`**
 
@@ -1859,7 +1859,7 @@ No set for service
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\NoFactorySet`**
 
@@ -1895,7 +1895,7 @@ No factory for service
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\NoProcessorFound`**
 
@@ -1931,7 +1931,7 @@ No processor found
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\ParameterNotFound`**
 
@@ -1964,7 +1964,7 @@ public function __construct( string $name );
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\ServiceNotFound`**
 
@@ -2000,7 +2000,7 @@ Service not found
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\ServiceNotRegistered`**
 
@@ -2113,7 +2113,7 @@ Provider for commonly used Web applications
 <div class="api-tree" markdown>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-    - **`Phalcon\Container\Resolver\Lazy\ArrayValues`** - implements `ArrayAccess`, `Countable`, `IteratorAggregate`
+    - **`Phalcon\Container\Resolver\Lazy\ArrayValues`** - implements `\ArrayAccess`, `\Countable`, `\IteratorAggregate`
 
 </div>
 
@@ -2504,7 +2504,7 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazyenv-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazyenv-resolve">
 <code class="vis vis-public">public</code>
@@ -2550,7 +2550,7 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 ```php
 public function __construct(
     string $varname,
-    string $vartype = null
+    string|null $vartype = null
 );
 ```
 
@@ -2602,7 +2602,7 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazyenvdefault-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazyenvdefault-resolve">
 <code class="vis vis-public">public</code>
@@ -2622,7 +2622,7 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 public function __construct(
     string $varname,
     mixed $defaultValue,
-    string $vartype = null
+    string|null $vartype = null
 );
 ```
 
@@ -2949,17 +2949,17 @@ protected function resolveArguments(
 <a class="api-item" href="#containerresolverlazylazyfactory-csenv">
 <code class="vis vis-public">public</code>
 <code class="ret">CsEnv</code>
-<code class="sig"><span class="sf">csEnv</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">csEnv</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-env">
 <code class="vis vis-public">public</code>
 <code class="ret">Env</code>
-<code class="sig"><span class="sf">env</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">env</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-envdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">EnvDefault</code>
-<code class="sig"><span class="sf">envDefault</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">envDefault</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-functioncall">
 <code class="vis vis-public">public</code>
@@ -3026,7 +3026,7 @@ public static function callableNew( string $id ): CallableNew;
 ```php
 public static function csEnv(
     string $name,
-    string $type = null
+    string|null $type = null
 ): CsEnv;
 ```
 
@@ -3035,7 +3035,7 @@ public static function csEnv(
 ```php
 public static function env(
     string $name,
-    string $type = null
+    string|null $type = null
 ): Env;
 ```
 
@@ -3045,7 +3045,7 @@ public static function env(
 public static function envDefault(
     string $name,
     mixed $defaultValue,
-    string $type = null
+    string|null $type = null
 ): EnvDefault;
 ```
 

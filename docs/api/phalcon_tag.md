@@ -23,7 +23,7 @@ This component is a class that you can extend to add more helpers.
 
 </div>
 
-__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Tag\Exception` · `Phalcon\Tag\Select`
+__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Tag\Exception` · `Phalcon\Tag\Select` · `Stringable`
 { .api-uses }
 
 ### Method Summary
@@ -39,31 +39,31 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">checkField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;check&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;check&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-colorfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">colorField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;color&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;color&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-datefield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">dateField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;date&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;date&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-datetimefield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">dateTimeField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;datetime&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;datetime&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-datetimelocalfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">dateTimeLocalField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;datetime-local&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;datetime-local&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-displayto">
 <code class="vis vis-public">public</code>
@@ -75,25 +75,25 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">emailField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;email&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;email&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-endform">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">endForm</span>()</code>
-<span class="desc">Builds a HTML close FORM tag</span>
+<span class="desc">Builds an HTML close FORM tag</span>
 </a>
 <a class="api-item" href="#tag-filefield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">fileField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;file&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;file&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-formlegacy">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">formLegacy</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML FORM tag</span>
+<span class="desc">Builds an HTML FORM tag</span>
 </a>
 <a class="api-item" href="#tag-friendlytitle">
 <code class="vis vis-public">public</code>
@@ -145,6 +145,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 </a>
 <a class="api-item" href="#tag-getvalue">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getValue</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Every helper calls this function to check whether a component has a</span>
 </a>
@@ -170,7 +171,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">imageInput</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;image&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;image&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-javascriptinclude">
 <code class="vis vis-public">public</code>
@@ -182,19 +183,19 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">linkTo</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$text</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$local</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Builds a HTML A tag using framework conventions</span>
+<span class="desc">Builds an HTML A tag using framework conventions</span>
 </a>
 <a class="api-item" href="#tag-monthfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">monthField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;month&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;month&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-numericfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">numericField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;number&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;number&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-passwordfield">
 <code class="vis vis-public">public</code>
@@ -218,13 +219,13 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">radioField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;radio&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;radio&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-rangefield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">rangeField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;range&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;range&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-renderattributes">
 <code class="vis vis-public">public</code>
@@ -260,7 +261,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">selectStatic</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Builds a HTML SELECT tag using a PHP array for options</span>
+<span class="desc">Builds an HTML SELECT tag using a PHP array for options</span>
 </a>
 <a class="api-item" href="#tag-setautoescape">
 <code class="vis vis-public">public</code>
@@ -314,7 +315,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">submitButton</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;submit&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;submit&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-taghtml">
 <code class="vis vis-public">public</code>
@@ -332,37 +333,43 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">telField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;tel&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;tel&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-textarea">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">textArea</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML TEXTAREA tag</span>
+<span class="desc">Builds an HTML TEXTAREA tag</span>
 </a>
 <a class="api-item" href="#tag-textfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">textField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;text&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;text&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-timefield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">timeField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;time&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;time&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-urlfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">urlField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;url&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;url&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-weekfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">weekField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;week&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;week&quot;] tag</span>
+</a>
+<a class="api-item" href="#tag-getstaticurl">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getStaticUrl</span>( <span class="st">mixed</span> <span class="sv">$uri</span> )</code>
+<span class="desc">Resolves a static (asset) URL through the <code>url</code> service.</span>
 </a>
 <a class="api-item" href="#tag-inputfield">
 <code class="vis vis-protected">protected</code>
@@ -375,6 +382,12 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="ret">string</code>
 <code class="sig"><span class="sf">inputFieldChecked</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span></span>)</code>
 <span class="desc">Builds INPUT tags that implements the checked attribute</span>
+</a>
+<a class="api-item" href="#tag-tostringvalue">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toStringValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<span class="desc">Reduces an arbitrary helper value to the string a tag attribute, id or</span>
 </a>
 </div>
 
@@ -439,29 +452,26 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-protected">protected</code>
 <code class="ret">DiInterface|null</code>
 <code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
-<span class="desc">DI Container</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$displayValues</span></code>
-<span class="desc">Pre-assigned values for components</span>
+<code class="sig"><span class="sv">$displayValues</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$documentAppendTitle</span></code>
+<code class="sig"><span class="sv">$documentAppendTitle</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$documentPrependTitle</span></code>
+<code class="sig"><span class="sv">$documentPrependTitle</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$documentTitle</span><span class="sm"> = null</span></code>
-<span class="desc">HTML document title</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -503,7 +513,7 @@ Appends a text to current document title
 public static function checkField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="check"] tag
+Builds an HTML input[type="check"] tag
 
 #### `colorField()` { #tag-colorfield }
 
@@ -511,7 +521,7 @@ Builds a HTML input[type="check"] tag
 public static function colorField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="color"] tag
+Builds an HTML input[type="color"] tag
 
 #### `dateField()` { #tag-datefield }
 
@@ -519,7 +529,7 @@ Builds a HTML input[type="color"] tag
 public static function dateField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="date"] tag
+Builds an HTML input[type="date"] tag
 
 #### `dateTimeField()` { #tag-datetimefield }
 
@@ -527,7 +537,7 @@ Builds a HTML input[type="date"] tag
 public static function dateTimeField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="datetime"] tag
+Builds an HTML input[type="datetime"] tag
 
 #### `dateTimeLocalField()` { #tag-datetimelocalfield }
 
@@ -535,7 +545,7 @@ Builds a HTML input[type="datetime"] tag
 public static function dateTimeLocalField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="datetime-local"] tag
+Builds an HTML input[type="datetime-local"] tag
 
 #### `displayTo()` { #tag-displayto }
 
@@ -554,7 +564,7 @@ Alias of Phalcon\Tag::setDefault()
 public static function emailField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="email"] tag
+Builds an HTML input[type="email"] tag
 
 #### `endForm()` { #tag-endform }
 
@@ -562,7 +572,7 @@ Builds a HTML input[type="email"] tag
 public static function endForm(): string;
 ```
 
-Builds a HTML close FORM tag
+Builds an HTML close FORM tag
 
 #### `fileField()` { #tag-filefield }
 
@@ -570,7 +580,7 @@ Builds a HTML close FORM tag
 public static function fileField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="file"] tag
+Builds an HTML input[type="file"] tag
 
 #### `formLegacy()` { #tag-formlegacy }
 
@@ -578,7 +588,7 @@ Builds a HTML input[type="file"] tag
 public static function formLegacy( mixed $parameters ): string;
 ```
 
-Builds a HTML FORM tag
+Builds an HTML FORM tag
 
 #### `friendlyTitle()` { #tag-friendlytitle }
 
@@ -658,7 +668,7 @@ Returns a URL service from the default DI
 public static function getValue(
     mixed $name,
     array $params = []
-);
+): mixed;
 ```
 
 Every helper calls this function to check whether a component has a
@@ -698,7 +708,7 @@ Builds HTML IMG tags
 public static function imageInput( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="image"] tag
+Builds an HTML input[type="image"] tag
 
 #### `javascriptInclude()` { #tag-javascriptinclude }
 
@@ -721,7 +731,7 @@ public static function linkTo(
 ): string;
 ```
 
-Builds a HTML A tag using framework conventions
+Builds an HTML A tag using framework conventions
 
 #### `monthField()` { #tag-monthfield }
 
@@ -729,7 +739,7 @@ Builds a HTML A tag using framework conventions
 public static function monthField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="month"] tag
+Builds an HTML input[type="month"] tag
 
 #### `numericField()` { #tag-numericfield }
 
@@ -737,7 +747,7 @@ Builds a HTML input[type="month"] tag
 public static function numericField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="number"] tag
+Builds an HTML input[type="number"] tag
 
 #### `passwordField()` { #tag-passwordfield }
 
@@ -769,7 +779,7 @@ Prepends a text to current document title
 public static function radioField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="radio"] tag
+Builds an HTML input[type="radio"] tag
 
 #### `rangeField()` { #tag-rangefield }
 
@@ -777,7 +787,7 @@ Builds a HTML input[type="radio"] tag
 public static function rangeField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="range"] tag
+Builds an HTML input[type="range"] tag
 
 #### `renderAttributes()` { #tag-renderattributes }
 
@@ -838,7 +848,7 @@ public static function selectStatic(
 ): string;
 ```
 
-Builds a HTML SELECT tag using a PHP array for options
+Builds an HTML SELECT tag using a PHP array for options
 
 #### `setAutoescape()` { #tag-setautoescape }
 
@@ -919,7 +929,7 @@ Builds a LINK[rel="stylesheet"] tag
 public static function submitButton( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="submit"] tag
+Builds an HTML input[type="submit"] tag
 
 #### `tagHtml()` { #tag-taghtml }
 
@@ -952,7 +962,7 @@ Builds a HTML tag closing tag
 public static function telField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="tel"] tag
+Builds an HTML input[type="tel"] tag
 
 #### `textArea()` { #tag-textarea }
 
@@ -960,14 +970,7 @@ Builds a HTML input[type="tel"] tag
 public static function textArea( mixed $parameters ): string;
 ```
 
-Builds a HTML TEXTAREA tag
-
-@paraym array parameters = [
-    'id' => '',
-    'name' => '',
-    'value' => '',
-    'class' => ''
-]
+Builds an HTML TEXTAREA tag
 
 #### `textField()` { #tag-textfield }
 
@@ -975,7 +978,7 @@ Builds a HTML TEXTAREA tag
 public static function textField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="text"] tag
+Builds an HTML input[type="text"] tag
 
 #### `timeField()` { #tag-timefield }
 
@@ -983,7 +986,7 @@ Builds a HTML input[type="text"] tag
 public static function timeField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="time"] tag
+Builds an HTML input[type="time"] tag
 
 #### `urlField()` { #tag-urlfield }
 
@@ -991,7 +994,7 @@ Builds a HTML input[type="time"] tag
 public static function urlField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="url"] tag
+Builds an HTML input[type="url"] tag
 
 #### `weekField()` { #tag-weekfield }
 
@@ -999,9 +1002,22 @@ Builds a HTML input[type="url"] tag
 public static function weekField( mixed $parameters ): string;
 ```
 
-Builds a HTML input[type="week"] tag
+Builds an HTML input[type="week"] tag
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 4</div>
+
+#### `getStaticUrl()` { #tag-getstaticurl }
+
+```php
+final protected static function getStaticUrl( mixed $uri ): string;
+```
+
+Resolves a static (asset) URL through the `url` service.
+
+`getStatic()` lives on Phalcon\Mvc\Url but is absent from
+Phalcon\Mvc\Url\UrlInterface, which is what getUrlService() is typed
+to return. A service that does not carry it falls back to `get()`
+rather than aborting the helper.
 
 #### `inputField()` { #tag-inputfield }
 
@@ -1025,6 +1041,17 @@ final protected static function inputFieldChecked(
 ```
 
 Builds INPUT tags that implements the checked attribute
+
+#### `toStringValue()` { #tag-tostringvalue }
+
+```php
+final protected static function toStringValue( mixed $value ): string;
+```
+
+Reduces an arbitrary helper value to the string a tag attribute, id or
+URI needs. Parameter bags are user supplied, so a value that cannot be
+expressed as a string - an array, an object without `__toString()` -
+reads back as an empty string rather than aborting the helper.
 
 
 ## Tag\Exception
@@ -1060,7 +1087,7 @@ Phalcon\Mvc\Model resultset
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Tag`
+__Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Tag` · `Stringable`
 { .api-uses }
 
 ### Method Summary
@@ -1071,6 +1098,17 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Model\Resultset
 <code class="ret">string</code>
 <code class="sig"><span class="sf">selectField</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates a SELECT tag</span>
+</a>
+<a class="api-item" href="#tagselect-echooption">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">echoOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$selected</span><span class="sm"> = false</span></span>)</code>
+</a>
+<a class="api-item" href="#tagselect-tostringvalue">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toStringValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<span class="desc">Reduces an arbitrary option value to the string the markup needs.</span>
 </a>
 </div>
 
@@ -1088,3 +1126,24 @@ public static function selectField(
 ```
 
 Generates a SELECT tag
+
+<div class="api-group">Protected · 2</div>
+
+#### `echoOption()` { #tagselect-echooption }
+
+```php
+protected static function echoOption(
+    string $value,
+    bool $selected = false
+): string;
+```
+
+#### `toStringValue()` { #tagselect-tostringvalue }
+
+```php
+protected static function toStringValue( mixed $value ): string;
+```
+
+Reduces an arbitrary option value to the string the markup needs.
+Option data is user supplied, so anything that cannot be expressed as
+a string reads back as an empty string rather than aborting the tag.

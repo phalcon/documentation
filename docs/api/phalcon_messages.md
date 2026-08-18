@@ -102,17 +102,17 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Message.zep){ .src-btn }
 
-Phalcon\Messages\Message
+Class Message
 
 Stores a message from various components
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Messages\Message`** - implements [`Phalcon\Messages\MessageInterface`](#messagesmessageinterface), `JsonSerializable`
+- **`Phalcon\Messages\Message`** - implements [`Phalcon\Messages\MessageInterface`](#messagesmessageinterface), `\JsonSerializable`
 
 </div>
 
-__Uses__ `JsonSerializable`
+__Uses__ `JsonSerializable` · `Phalcon\Contracts\Messages\MessagesTypes`
 { .api-uses }
 
 ### Method Summary
@@ -198,12 +198,12 @@ __Uses__ `JsonSerializable`
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
-<code class="sig"><span class="sv">$code</span></code>
+<code class="sig"><span class="sv">$code</span><span class="sm"> = 0</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$field</span></code>
+<code class="sig"><span class="sv">$field</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -218,7 +218,7 @@ __Uses__ `JsonSerializable`
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$type</span></code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 </div>
 
@@ -332,15 +332,16 @@ Sets message type
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/MessageInterface.zep){ .src-btn }
 
-Phalcon\Messages\MessageInterface
-
-Interface for Phalcon\Messages\MessageInterface
+Interface for Phalcon\Messages\Message
 
 <div class="api-tree" markdown>
 
 - **`Phalcon\Messages\MessageInterface`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Messages\MessagesTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -522,11 +523,11 @@ must take part in iteration.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Messages\Messages`** - implements [`Phalcon\Contracts\Messages\Messages`](phalcon_contracts.md#contractsmessagesmessages), `JsonSerializable`
+- **`Phalcon\Messages\Messages`** - implements [`Phalcon\Contracts\Messages\Messages`](phalcon_contracts.md#contractsmessagesmessages), `\JsonSerializable`
 
 </div>
 
-__Uses__ `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Traversable`
+__Uses__ `Iterator` · `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Phalcon\Messages\Traits\MessagesHelperTrait` · `Traversable`
 { .api-uses }
 
 ### Method Summary
@@ -548,18 +549,6 @@ __Uses__ `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon
 <code class="sig"><span class="sf">appendMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
 <span class="desc">Appends an array of messages to the collection</span>
 </a>
-<a class="api-item" href="#messagesmessages-count">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">count</span>()</code>
-<span class="desc">Returns the number of messages in the list</span>
-</a>
-<a class="api-item" href="#messagesmessages-current">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">current</span>()</code>
-<span class="desc">Returns the current message in the iterator</span>
-</a>
 <a class="api-item" href="#messagesmessages-filter">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
@@ -572,74 +561,11 @@ __Uses__ `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon
 <code class="sig"><span class="sf">jsonSerialize</span>()</code>
 <span class="desc">Returns serialised message objects as array for json_encode. Calls</span>
 </a>
-<a class="api-item" href="#messagesmessages-key">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">key</span>()</code>
-<span class="desc">Returns the current position/key in the iterator</span>
-</a>
-<a class="api-item" href="#messagesmessages-next">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">next</span>()</code>
-<span class="desc">Moves the internal iteration pointer to the next position</span>
-</a>
-<a class="api-item" href="#messagesmessages-offsetexists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
-<span class="desc">Checks if an index exists</span>
-</a>
-<a class="api-item" href="#messagesmessages-offsetget">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
-<span class="desc">Gets an attribute a message using the array syntax</span>
-</a>
-<a class="api-item" href="#messagesmessages-offsetset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Sets an attribute using the array-syntax</span>
-</a>
-<a class="api-item" href="#messagesmessages-offsetunset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
-<span class="desc">Removes a message from the list</span>
-</a>
-<a class="api-item" href="#messagesmessages-rewind">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">rewind</span>()</code>
-<span class="desc">Rewinds the internal iterator</span>
-</a>
-<a class="api-item" href="#messagesmessages-valid">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">valid</span>()</code>
-<span class="desc">Check if the current message in the iterator is valid</span>
-</a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$messages</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$position</span><span class="sm"> = 0</span></code>
-</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 15</div>
+<div class="api-group">Public · 5</div>
 
 #### `__construct()` { #messagesmessages-__construct }
 
@@ -675,21 +601,10 @@ Appends an array of messages to the collection
 $messages->appendMessages($messagesArray);
 ```
 
-#### `count()` { #messagesmessages-count }
-
-```php
-public function count(): int;
-```
-
-Returns the number of messages in the list
-
-#### `current()` { #messagesmessages-current }
-
-```php
-public function current(): MessageInterface;
-```
-
-Returns the current message in the iterator
+Accepts an array of MessageInterface objects or an Iterator yielding
+them. The parameter stays untyped so that a non-iterable argument
+reaches the guard below and raises MessagesNotIterable rather than a
+TypeError.
 
 #### `filter()` { #messagesmessages-filter }
 
@@ -713,7 +628,127 @@ $data = $messages->jsonSerialize();
 echo json_encode($data);
 ```
 
-#### `key()` { #messagesmessages-key }
+
+## Messages\Traits\MessagesHelperTrait
+
+<span class="badge badge--trait">Trait</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Traits/MessagesHelperTrait.zep){ .src-btn }
+
+Trait MessagesHelperTrait
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Messages\Traits\MessagesHelperTrait`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\MessageInterface`
+{ .api-uses }
+
+__Used by__ [`Phalcon\Messages\Messages`](#messagesmessages)
+{ .api-used-by }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#messagestraitsmessageshelpertrait-count">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">count</span>()</code>
+<span class="desc">Returns the number of messages in the list</span>
+</a>
+<a class="api-item" href="#messagestraitsmessageshelpertrait-current">
+<code class="vis vis-public">public</code>
+<code class="ret">MessageInterface</code>
+<code class="sig"><span class="sf">current</span>()</code>
+<span class="desc">Returns the current message in the iterator</span>
+</a>
+<a class="api-item" href="#messagestraitsmessageshelpertrait-key">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">key</span>()</code>
+<span class="desc">Returns the current position/key in the iterator</span>
+</a>
+<a class="api-item" href="#messagestraitsmessageshelpertrait-next">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">next</span>()</code>
+<span class="desc">Moves the internal iteration pointer to the next position</span>
+</a>
+<a class="api-item" href="#messagestraitsmessageshelpertrait-offsetexists">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
+<span class="desc">Checks if an index exists</span>
+</a>
+<a class="api-item" href="#messagestraitsmessageshelpertrait-offsetget">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
+<span class="desc">Gets an attribute a message using the array syntax</span>
+</a>
+<a class="api-item" href="#messagestraitsmessageshelpertrait-offsetset">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Sets an attribute using the array-syntax</span>
+</a>
+<a class="api-item" href="#messagestraitsmessageshelpertrait-offsetunset">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
+<span class="desc">Removes a message from the list</span>
+</a>
+<a class="api-item" href="#messagestraitsmessageshelpertrait-rewind">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">rewind</span>()</code>
+<span class="desc">Rewinds the internal iterator</span>
+</a>
+<a class="api-item" href="#messagestraitsmessageshelpertrait-valid">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">valid</span>()</code>
+<span class="desc">Check if the current message in the iterator is valid</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">messages_list</code>
+<code class="sig"><span class="sv">$messages</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$position</span><span class="sm"> = 0</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 10</div>
+
+#### `count()` { #messagestraitsmessageshelpertrait-count }
+
+```php
+public function count(): int;
+```
+
+Returns the number of messages in the list
+
+#### `current()` { #messagestraitsmessageshelpertrait-current }
+
+```php
+public function current(): MessageInterface;
+```
+
+Returns the current message in the iterator
+
+#### `key()` { #messagestraitsmessageshelpertrait-key }
 
 ```php
 public function key(): int;
@@ -721,7 +756,7 @@ public function key(): int;
 
 Returns the current position/key in the iterator
 
-#### `next()` { #messagesmessages-next }
+#### `next()` { #messagestraitsmessageshelpertrait-next }
 
 ```php
 public function next(): void;
@@ -729,10 +764,10 @@ public function next(): void;
 
 Moves the internal iteration pointer to the next position
 
-#### `offsetExists()` { #messagesmessages-offsetexists }
+#### `offsetExists()` { #messagestraitsmessageshelpertrait-offsetexists }
 
 ```php
-public function offsetExists( mixed $index ): bool;
+public function offsetExists( mixed $offset ): bool;
 ```
 
 Checks if an index exists
@@ -743,10 +778,10 @@ var_dump(
 );
 ```
 
-#### `offsetGet()` { #messagesmessages-offsetget }
+#### `offsetGet()` { #messagestraitsmessageshelpertrait-offsetget }
 
 ```php
-public function offsetGet( mixed $index ): mixed;
+public function offsetGet( mixed $offset ): mixed;
 ```
 
 Gets an attribute a message using the array syntax
@@ -757,7 +792,7 @@ print_r(
 );
 ```
 
-#### `offsetSet()` { #messagesmessages-offsetset }
+#### `offsetSet()` { #messagestraitsmessageshelpertrait-offsetset }
 
 ```php
 public function offsetSet(
@@ -772,10 +807,10 @@ Sets an attribute using the array-syntax
 $messages[0] = new \Phalcon\Messages\Message("This is a message");
 ```
 
-#### `offsetUnset()` { #messagesmessages-offsetunset }
+#### `offsetUnset()` { #messagestraitsmessageshelpertrait-offsetunset }
 
 ```php
-public function offsetUnset( mixed $index ): void;
+public function offsetUnset( mixed $offset ): void;
 ```
 
 Removes a message from the list
@@ -784,7 +819,7 @@ Removes a message from the list
 unset($message["database"]);
 ```
 
-#### `rewind()` { #messagesmessages-rewind }
+#### `rewind()` { #messagestraitsmessageshelpertrait-rewind }
 
 ```php
 public function rewind(): void;
@@ -792,7 +827,7 @@ public function rewind(): void;
 
 Rewinds the internal iterator
 
-#### `valid()` { #messagesmessages-valid }
+#### `valid()` { #messagestraitsmessageshelpertrait-valid }
 
 ```php
 public function valid(): bool;

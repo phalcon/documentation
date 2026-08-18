@@ -359,7 +359,7 @@ __Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Ph
 <a class="api-item" href="#acladaptermemory-isallowed">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Check whether a role is allowed to access an action from a component</span>
 </a>
 <a class="api-item" href="#acladaptermemory-iscomponent">
@@ -696,7 +696,7 @@ public function isAllowed(
     mixed $roleName,
     mixed $componentName,
     string $access,
-    array $parameters = null
+    array|null $parameters = null
 ): bool;
 ```
 
@@ -873,7 +873,7 @@ __Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 <div class="api-list">
 <a class="api-item" href="#aclcomponent-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$description</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$description</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Acl\Component constructor</span>
 </a>
 </div>
@@ -887,7 +887,7 @@ __Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 ```php
 public function __construct(
     string $name,
-    string $description = null
+    string|null $description = null
 );
 ```
 
@@ -1365,7 +1365,7 @@ __Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 <div class="api-list">
 <a class="api-item" href="#aclrole-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$description</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$description</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Acl\Role constructor</span>
 </a>
 </div>
@@ -1379,7 +1379,7 @@ __Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 ```php
 public function __construct(
     string $name,
-    string $description = null
+    string|null $description = null
 );
 ```
 
@@ -1463,7 +1463,7 @@ __Used by__ [`Phalcon\Acl\AbstractElement`](#aclabstractelement)
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string | null</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$description</span></code>
 <span class="desc">Element description</span>
 </div>

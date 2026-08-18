@@ -27,7 +27,7 @@ parameters need to be declared via `define()`.
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Container\Container` · `Phalcon\Container\ContainerFactory` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Router\AttributeFilter` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface`
+__Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Container\Container` · `Phalcon\Container\ContainerFactory` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Router\AttributeFilter` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface`
 { .api-uses }
 
 ### Method Summary
@@ -35,7 +35,7 @@ __Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events
 <div class="api-list">
 <a class="api-item" href="#adrapplication-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Container</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">Container|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#adrapplication-bind">
 <code class="vis vis-public">public</code>
@@ -120,12 +120,12 @@ __Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Container</code>
 <code class="sig"><span class="sv">$container</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string[]&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$middlewareMap</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -142,7 +142,7 @@ __Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events
 #### `__construct()` { #adrapplication-__construct }
 
 ```php
-public function __construct( Container $container = null );
+public function __construct( Container|null $container = null );
 ```
 
 #### `bind()` { #adrapplication-bind }
@@ -318,7 +318,7 @@ adapter. Everything else is constructor-injected.
 
 </div>
 
-__Uses__ `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\NotAnAction` · `Phalcon\Contracts\ADR\Action` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+__Uses__ `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\NotAnAction` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Action` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 { .api-uses }
 
 ### Method Summary
@@ -350,22 +350,22 @@ __Uses__ `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\NotAnAction` · `
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">IocContainer</code>
 <code class="sig"><span class="sv">$container</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Manager</code>
 <code class="sig"><span class="sv">$events</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$globalMiddleware</span></code>
+<code class="sig"><span class="sv">$globalMiddleware</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|null</code>
+<code class="ret">list&lt;Middleware&gt;|null</code>
 <code class="sig"><span class="sv">$resolvedGlobal</span><span class="sm"> = null</span></code>
 </div>
 </div>
@@ -466,7 +466,7 @@ ancestor chain, so map ordering never matters.
 
 </div>
 
-__Uses__ `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\ADR\Payload\Payload` · `Phalcon\ADR\Payload\Status` · `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\Logger\Logger` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface` · `Throwable`
+__Uses__ `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\ADR\Payload\Payload` · `Phalcon\ADR\Payload\Status` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\Logger\Logger` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -509,13 +509,13 @@ __Uses__ `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\Ro
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Responder</code>
 <code class="sig"><span class="sv">$chain</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$debug</span></code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$debug</span><span class="sm"> = false</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -524,7 +524,7 @@ __Uses__ `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\Ro
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Logger</code>
 <code class="sig"><span class="sv">$logger</span></code>
 </div>
 </div>
@@ -624,12 +624,12 @@ __Uses__ `Phalcon\ADR\Events\Event` · `Phalcon\Contracts\ADR\Action` · `Phalco
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Action</code>
 <code class="sig"><span class="sv">$action</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Manager</code>
 <code class="sig"><span class="sv">$events</span></code>
 </div>
 </div>
@@ -707,7 +707,7 @@ convention cannot resolve sub-namespaces without one.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`**
 
@@ -743,7 +743,7 @@ exception.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - **`Phalcon\ADR\Exceptions\Exception`** - implements [`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`](phalcon_contracts.md#contractsadrexceptionsadrthrowable)
         - [`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`](#adrexceptionsactiondirectorynotset)
         - [`Phalcon\ADR\Exceptions\HeadersAlreadySent`](#adrexceptionsheadersalreadysent)
@@ -768,7 +768,7 @@ already been sent.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\HeadersAlreadySent`**
 
@@ -803,7 +803,7 @@ Thrown when a route matches the path but not the request method.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\MethodNotAllowed`**
 
@@ -838,7 +838,7 @@ Thrown when the dispatcher resolves a class that is not an ADR Action.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\NotAnAction`**
 
@@ -874,7 +874,7 @@ been sent.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\OutputAlreadySent`**
 
@@ -909,7 +909,7 @@ Thrown when no route matches the request.
 
 <div class="api-tree" markdown>
 
-- `BaseException`
+- `\Exception`
     - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
         - **`Phalcon\ADR\Exceptions\RouteNotFound`**
 
@@ -952,7 +952,7 @@ response. Userland front controllers override `loadEnvironment()`,
 
 </div>
 
-__Uses__ `Phalcon\ADR\Application` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\Container\Container` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Contracts\Front\FrontController` · `Phalcon\Contracts\Http\AttributeRequest`
+__Uses__ `Phalcon\ADR\Application` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\Container\Container` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Contracts\Front\FrontController` · `Phalcon\Contracts\Http\AttributeRequest` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -1012,7 +1012,7 @@ __Uses__ `Phalcon\ADR\Application` · `Phalcon\ADR\Container\AdrProvider` · `Ph
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$projectRoot</span></code>
+<code class="sig"><span class="sv">$projectRoot</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 </div>
 
@@ -1115,7 +1115,7 @@ input value object: the factories use late static binding, so a subclass's
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Request\Bag\AttributeBag`
+__Uses__ `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Request\Bag\AttributeBag`
 { .api-uses }
 
 ### Method Summary
@@ -1222,7 +1222,7 @@ a wildcard origin. Preflight `OPTIONS` requests are answered directly.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+__Uses__ `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1259,18 +1259,18 @@ __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` �
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedHeaders</span></code>
+<code class="ret">list&lt;string&gt;</code>
+<code class="sig"><span class="sv">$allowedHeaders</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedMethods</span></code>
+<code class="ret">list&lt;string&gt;</code>
+<code class="sig"><span class="sv">$allowedMethods</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedOrigins</span></code>
+<code class="ret">list&lt;string&gt;</code>
+<code class="sig"><span class="sv">$allowedOrigins</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -1335,7 +1335,7 @@ method.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+__Uses__ `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1353,7 +1353,7 @@ __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` �
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;int, string&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$allowed</span><span class="sm"> = [...]</span></code>
 </div>
 </div>
@@ -2404,13 +2404,13 @@ __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\Http\AttributeReq
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$index</span></code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$index</span><span class="sm"> = 0</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$middleware</span></code>
+<code class="sig"><span class="sv">$middleware</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -2520,7 +2520,7 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">Responder[]</code>
-<code class="sig"><span class="sv">$links</span></code>
+<code class="sig"><span class="sv">$links</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
@@ -2591,7 +2591,7 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$formatters</span></code>
+<code class="sig"><span class="sv">$formatters</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
@@ -2825,12 +2825,12 @@ RedirectResponder turns it into a `Location` header and status code.
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$status</span></code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$status</span><span class="sm"> = 302</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sv">$url</span></code>
 </div>
 </div>
@@ -2939,7 +2939,7 @@ silent 200. Every entry can be overridden through the constructor.
 
 </div>
 
-__Uses__ `Phalcon\ADR\Payload\Status`
+__Uses__ `Phalcon\ADR\Payload\Status` · `Phalcon\Contracts\ADR\ADRTypes`
 { .api-uses }
 
 ### Method Summary
@@ -2962,7 +2962,7 @@ __Uses__ `Phalcon\ADR\Payload\Status`
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;int, int&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$map</span></code>
 </div>
 </div>
@@ -3009,7 +3009,7 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 <div class="api-list">
 <a class="api-item" href="#adrresponderstatusresponder-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">StatusMapper</span> <span class="sv">$mapper</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">StatusMapper|null</span> <span class="sv">$mapper</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#adrresponderstatusresponder-__invoke">
 <code class="vis vis-public">public</code>
@@ -3023,7 +3023,7 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">StatusMapper</code>
 <code class="sig"><span class="sv">$mapper</span></code>
 </div>
 </div>
@@ -3035,7 +3035,7 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 #### `__construct()` { #adrresponderstatusresponder-__construct }
 
 ```php
-public function __construct( StatusMapper $mapper = null );
+public function __construct( StatusMapper|null $mapper = null );
 ```
 
 #### `__invoke()` { #adrresponderstatusresponder-__invoke }
@@ -3105,7 +3105,7 @@ MVC view.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\View\Renderer` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
+__Uses__ `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\View\Renderer` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
 { .api-uses }
 
 ### Method Summary
@@ -3139,12 +3139,12 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Renderer</code>
 <code class="sig"><span class="sv">$renderer</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">StatusMapper</code>
 <code class="sig"><span class="sv">$statusMapper</span></code>
 </div>
 <div class="api-item">
@@ -3218,7 +3218,7 @@ segments pass through under their positional keys. An Action without
 
 </div>
 
-__Uses__ `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Contracts\ADR\Router\AttributeFilter`
+__Uses__ `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\AttributeFilter`
 { .api-uses }
 
 ### Method Summary
@@ -3231,6 +3231,7 @@ __Uses__ `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Contracts\ADR\Router
 </a>
 <a class="api-item" href="#adrrouterattributefilter-cast">
 <code class="vis vis-protected">protected</code>
+<code class="ret">float|int|string</code>
 <code class="sig"><span class="sf">cast</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
 </a>
 </div>
@@ -3256,7 +3257,7 @@ public function filter(
 protected function cast(
     string $value,
     string $type
-);
+): float|int|string;
 ```
 
 
@@ -3320,7 +3321,7 @@ RFC 9110 both leave path structure entirely to the origin server.
 
 </div>
 
-__Uses__ `Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\ADR\Router\RouterMatch` · `Phalcon\Http\RequestInterface`
+__Uses__ `Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\ADR\Router\RouterMatch` · `Phalcon\Http\RequestInterface`
 { .api-uses }
 
 ### Method Summary
@@ -3420,7 +3421,7 @@ __Uses__ `Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptio
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">verbs</span>()</code>
-<span class="desc">The HTTP verbs the convention recognises, in class-name form.</span>
+<span class="desc">The HTTP verbs the convention recognizes, in class-name form.</span>
 </a>
 </div>
 
@@ -3439,7 +3440,7 @@ __Uses__ `Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptio
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string[]&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$middlewareMap</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -3622,7 +3623,7 @@ Shared by pathFor() and methodFor() so that rule is stated once.
 protected function verbs(): array;
 ```
 
-The HTTP verbs the convention recognises, in class-name form.
+The HTTP verbs the convention recognizes, in class-name form.
 
 
 ## ADR\Router\RouterMatch
@@ -3638,7 +3639,7 @@ Immutable result of a successful route match.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\ADR\Router\RouterMatch`
+__Uses__ `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\RouterMatch`
 { .api-uses }
 
 ### Method Summary
@@ -3646,7 +3647,7 @@ __Uses__ `Phalcon\Contracts\ADR\Router\RouterMatch`
 <div class="api-list">
 <a class="api-item" href="#adrrouterroutermatch-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$action</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$middleware</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$action</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$middleware</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#adrrouterroutermatch-getaction">
 <code class="vis vis-public">public</code>
@@ -3676,22 +3677,22 @@ __Uses__ `Phalcon\Contracts\ADR\Router\RouterMatch`
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$action</span></code>
+<code class="sig"><span class="sv">$action</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$attributes</span></code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$middleware</span></code>
+<code class="sig"><span class="sv">$middleware</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
-<code class="sig"><span class="sv">$name</span></code>
+<code class="sig"><span class="sv">$name</span><span class="sm"> = null</span></code>
 </div>
 </div>
 
@@ -3706,7 +3707,7 @@ public function __construct(
     string $action,
     array $attributes = [],
     array $middleware = [],
-    string $name = null
+    string|null $name = null
 );
 ```
 

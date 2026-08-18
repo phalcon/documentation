@@ -25,7 +25,7 @@ Phalcon\Paginator\Adapter\AbstractAdapter
 
 </div>
 
-__Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidLimit` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\Repository` · `Phalcon\Paginator\RepositoryInterface`
+__Uses__ `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidLimit` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\Repository` · `Phalcon\Paginator\RepositoryInterface`
 { .api-uses }
 
 ### Method Summary
@@ -34,7 +34,7 @@ __Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidL
 <a class="api-item" href="#paginatoradapterabstractadapter-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$config</span> )</code>
-<span class="desc">Phalcon\Paginator\Adapter\AbstractAdapter constructor</span>
+<span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#paginatoradapterabstractadapter-getlimit">
 <code class="vis vis-public">public</code>
@@ -63,7 +63,7 @@ __Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidL
 <a class="api-item" href="#paginatoradapterabstractadapter-getrepository">
 <code class="vis vis-protected">protected</code>
 <code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sf">getRepository</span>( <span class="st">array</span> <span class="sv">$properties</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getRepository</span>( <span class="st">array|null</span> <span class="sv">$properties</span><span class="sm"> = null</span> )</code>
 <span class="desc">Gets current repository for pagination</span>
 </a>
 </div>
@@ -107,7 +107,7 @@ __Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidL
 public function __construct( array $config );
 ```
 
-Phalcon\Paginator\Adapter\AbstractAdapter constructor
+Constructor
 
 #### `getLimit()` { #paginatoradapterabstractadapter-getlimit }
 
@@ -146,7 +146,7 @@ Sets current repository for pagination
 #### `getRepository()` { #paginatoradapterabstractadapter-getrepository }
 
 ```php
-protected function getRepository( array $properties = null ): RepositoryInterface;
+protected function getRepository( array|null $properties = null ): RepositoryInterface;
 ```
 
 Gets current repository for pagination
@@ -172,8 +172,6 @@ __Uses__ `Phalcon\Contracts\Paginator\Adapter`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/Model.zep){ .src-btn }
-
-Phalcon\Paginator\Adapter\Model
 
 This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a
 base.
@@ -243,7 +241,7 @@ $paginate = $paginator->paginate();
 
 </div>
 
-__Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
+__Uses__ `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 { .api-uses }
 
 ### Method Summary
@@ -287,8 +285,6 @@ Returns a slice of the resultset to show in the pagination
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/NativeArray.zep){ .src-btn }
-
-Phalcon\Paginator\Adapter\NativeArray
 
 Pagination using a PHP array as source of data
 
@@ -349,8 +345,6 @@ Returns a slice of the resultset to show in the pagination
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/QueryBuilder.zep){ .src-btn }
 
-Phalcon\Paginator\Adapter\QueryBuilder
-
 Pagination using a PHQL query builder as source of data
 
 ```php
@@ -377,7 +371,7 @@ $paginator = new QueryBuilder(
 
 </div>
 
-__Uses__ `Phalcon\Db\Enum` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\BuilderModelNotDefined` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\MissingColumnsForHaving` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
+__Uses__ `Phalcon\Contracts\Db\Adapter\Adapter` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Db\Enum` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\BuilderModelNotDefined` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\MissingColumnsForHaving` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 { .api-uses }
 
 ### Method Summary
@@ -425,7 +419,7 @@ __Uses__ `Phalcon\Db\Enum` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Pagi
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|string</code>
+<code class="ret">paginator_columns|null</code>
 <code class="sig"><span class="sv">$columns</span></code>
 <span class="desc">Column list used only for COUNT rewriting when the builder carries a
 HAVING or GROUP BY clause. It supplies the columns for the subquery
@@ -488,8 +482,6 @@ Set query builder object
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/QueryBuilderCursor.zep){ .src-btn }
 
-Phalcon\Paginator\Adapter\QueryBuilderCursor
-
 Cursor-based (keyset) pagination using a PHQL query builder as source of
 data.
 
@@ -537,7 +529,7 @@ $page = $paginator->paginate();
 
 </div>
 
-__Uses__ `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\InvalidCursorColumn` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
+__Uses__ `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\InvalidCursorColumn` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 { .api-uses }
 
 ### Method Summary
@@ -698,8 +690,6 @@ Set query builder object
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exception.zep){ .src-btn }
-
-Phalcon\Paginator\Exception
 
 Exceptions thrown in Phalcon\Paginator will use this class
 
@@ -994,7 +984,7 @@ public function __construct();
 
 </div>
 
-__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -1103,17 +1093,15 @@ Returns the available adapters
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Repository.zep){ .src-btn }
 
-Phalcon\Paginator\Repository
-
 Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Paginator\Repository`** - implements [`Phalcon\Paginator\RepositoryInterface`](#paginatorrepositoryinterface), `JsonSerializable`
+- **`Phalcon\Paginator\Repository`** - implements [`Phalcon\Paginator\RepositoryInterface`](#paginatorrepositoryinterface), `\JsonSerializable`
 
 </div>
 
-__Uses__ `JsonSerializable`
+__Uses__ `JsonSerializable` · `Phalcon\Contracts\Paginator\PaginatorTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1123,79 +1111,66 @@ __Uses__ `JsonSerializable`
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
 <code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$property</span> )</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-getaliases">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getAliases</span>()</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-getcurrent">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getCurrent</span>()</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-getfirst">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getFirst</span>()</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-getitems">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getItems</span>()</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-getlast">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getLast</span>()</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-getlimit">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getLimit</span>()</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-getnext">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getNext</span>()</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-getprevious">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getPrevious</span>()</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-gettotalitems">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getTotalItems</span>()</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-jsonserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">jsonSerialize</span>()</code>
-<span class="desc">See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)</span>
 </a>
 <a class="api-item" href="#paginatorrepository-setaliases">
 <code class="vis vis-public">public</code>
 <code class="ret">RepositoryInterface</code>
 <code class="sig"><span class="sf">setAliases</span>( <span class="st">array</span> <span class="sv">$aliases</span> )</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-setproperties">
 <code class="vis vis-public">public</code>
 <code class="ret">RepositoryInterface</code>
 <code class="sig"><span class="sf">setProperties</span>( <span class="st">array</span> <span class="sv">$properties</span> )</code>
-<span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#paginatorrepository-getproperty">
 <code class="vis vis-protected">protected</code>
@@ -1216,12 +1191,12 @@ __Uses__ `JsonSerializable`
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">paginator_aliases</code>
 <code class="sig"><span class="sv">$aliases</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">paginator_properties</code>
 <code class="sig"><span class="sv">$properties</span><span class="sm"> = []</span></code>
 </div>
 </div>
@@ -1236,15 +1211,11 @@ __Uses__ `JsonSerializable`
 public function __get( string $property ): mixed|null;
 ```
 
-{@inheritdoc}
-
 #### `getAliases()` { #paginatorrepository-getaliases }
 
 ```php
 public function getAliases(): array;
 ```
-
-{@inheritdoc}
 
 #### `getCurrent()` { #paginatorrepository-getcurrent }
 
@@ -1252,15 +1223,11 @@ public function getAliases(): array;
 public function getCurrent(): int;
 ```
 
-{@inheritdoc}
-
 #### `getFirst()` { #paginatorrepository-getfirst }
 
 ```php
 public function getFirst(): int;
 ```
-
-{@inheritdoc}
 
 #### `getItems()` { #paginatorrepository-getitems }
 
@@ -1268,15 +1235,11 @@ public function getFirst(): int;
 public function getItems(): mixed;
 ```
 
-{@inheritdoc}
-
 #### `getLast()` { #paginatorrepository-getlast }
 
 ```php
 public function getLast(): int;
 ```
-
-{@inheritdoc}
 
 #### `getLimit()` { #paginatorrepository-getlimit }
 
@@ -1284,15 +1247,11 @@ public function getLast(): int;
 public function getLimit(): int;
 ```
 
-{@inheritdoc}
-
 #### `getNext()` { #paginatorrepository-getnext }
 
 ```php
 public function getNext(): int;
 ```
-
-{@inheritdoc}
 
 #### `getPrevious()` { #paginatorrepository-getprevious }
 
@@ -1300,15 +1259,11 @@ public function getNext(): int;
 public function getPrevious(): int;
 ```
 
-{@inheritdoc}
-
 #### `getTotalItems()` { #paginatorrepository-gettotalitems }
 
 ```php
 public function getTotalItems(): int;
 ```
-
-{@inheritdoc}
 
 #### `jsonSerialize()` { #paginatorrepository-jsonserialize }
 
@@ -1316,23 +1271,17 @@ public function getTotalItems(): int;
 public function jsonSerialize(): array;
 ```
 
-See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
-
 #### `setAliases()` { #paginatorrepository-setaliases }
 
 ```php
 public function setAliases( array $aliases ): RepositoryInterface;
 ```
 
-{@inheritdoc}
-
 #### `setProperties()` { #paginatorrepository-setproperties }
 
 ```php
 public function setProperties( array $properties ): RepositoryInterface;
 ```
-
-{@inheritdoc}
 
 <div class="api-group">Protected · 2</div>
 
@@ -1346,6 +1295,10 @@ protected function getProperty(
 ```
 
 Gets value of property by name
+
+The repository is filled by the adapters, which store an int under every
+property that has an int default, so callers passing one are handed an
+int back.
 
 #### `getRealNameProperty()` { #paginatorrepository-getrealnameproperty }
 

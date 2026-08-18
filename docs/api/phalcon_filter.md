@@ -1366,7 +1366,7 @@ Allows to validate data using custom or built-in validators
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Filter\Validation`** - implements [`Phalcon\Filter\Validation\ValidationInterface`](#filtervalidationvalidationinterface)
 
@@ -1427,7 +1427,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` 
 <a class="api-item" href="#filtervalidation-getfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">getFilters</span>( <span class="st">string</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getFilters</span>( <span class="st">string|null</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns all the filters or a specific one</span>
 </a>
 <a class="api-item" href="#filtervalidation-getlabel">
@@ -1506,6 +1506,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` 
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setValidators</span>( <span class="st">array</span> <span class="sv">$validators</span> )</code>
+<span class="desc">Sets the validator array</span>
 </a>
 <a class="api-item" href="#filtervalidation-validate">
 <code class="vis vis-public">public</code>
@@ -1670,7 +1671,7 @@ Returns the bound entity
 #### `getFilters()` { #filtervalidation-getfilters }
 
 ```php
-public function getFilters( string $field = null ): mixed|null;
+public function getFilters( string|null $field = null ): mixed|null;
 ```
 
 Returns all the filters or a specific one
@@ -1795,6 +1796,8 @@ Adds labels for fields
 public function setValidators( array $validators ): static;
 ```
 
+Sets the validator array
+
 #### `validate()` { #filtervalidation-validate }
 
 ```php
@@ -1909,7 +1912,7 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\Fi
 <a class="api-item" href="#filtervalidationabstractvalidator-gettemplate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string|null</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
 <span class="desc">Get the template message</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-gettemplates">
@@ -2044,7 +2047,7 @@ Returns null if the option hasn't set
 #### `getTemplate()` { #filtervalidationabstractvalidator-gettemplate }
 
 ```php
-public function getTemplate( string $field = null ): string;
+public function getTemplate( string|null $field = null ): string;
 ```
 
 Get the template message
@@ -3028,7 +3031,7 @@ __Uses__ `Phalcon\Di\Injectable` · `Phalcon\Messages\MessageInterface` · `Phal
 <a class="api-item" href="#filtervalidationvalidationinterface-getfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">getFilters</span>( <span class="st">string</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getFilters</span>( <span class="st">string|null</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns all the filters or a specific one</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-getlabel">
@@ -3134,7 +3137,7 @@ Returns the bound entity
 #### `getFilters()` { #filtervalidationvalidationinterface-getfilters }
 
 ```php
-public function getFilters( string $field = null ): mixed|null;
+public function getFilters( string|null $field = null ): mixed|null;
 ```
 
 Returns all the filters or a specific one
@@ -3853,7 +3856,7 @@ $validator->add(
 
 </div>
 
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\Message`
+__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\Message` · `ReflectionFunction`
 { .api-uses }
 
 ### Method Summary
@@ -4756,7 +4759,7 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-getfilesizeinbytes">
 <code class="vis vis-public">public</code>
-<code class="ret">double</code>
+<code class="ret">float</code>
 <code class="sig"><span class="sf">getFileSizeInBytes</span>( <span class="st">string</span> <span class="sv">$size</span> )</code>
 <span class="desc">Convert a string like &quot;2.5MB&quot; in bytes</span>
 </a>
@@ -4884,7 +4887,7 @@ Check if uploaded file is larger than PHP allowed size
 #### `getFileSizeInBytes()` { #filtervalidationvalidatorfileabstractfile-getfilesizeinbytes }
 
 ```php
-public function getFileSizeInBytes( string $size ): double;
+public function getFileSizeInBytes( string $size ): float;
 ```
 
 Convert a string like "2.5MB" in bytes
@@ -5562,7 +5565,7 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\Fil
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfilesizeequal-getconditional">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">double</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">float</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">float</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the conditional</span>
 </a>
 </div>
@@ -5598,8 +5601,8 @@ Executes the validation
 
 ```php
 protected function getConditional(
-    double $source,
-    double $target,
+    float $source,
+    float $target,
     bool $included = false
 );
 ```
@@ -5669,7 +5672,7 @@ $validator->add(
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfilesizemax-getconditional">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">double</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">float</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">float</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the conditional</span>
 </a>
 </div>
@@ -5692,8 +5695,8 @@ $validator->add(
 
 ```php
 protected function getConditional(
-    double $source,
-    double $target,
+    float $source,
+    float $target,
     bool $included = false
 );
 ```
@@ -5763,7 +5766,7 @@ $validator->add(
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfilesizemin-getconditional">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">double</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">float</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">float</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the conditional</span>
 </a>
 </div>
@@ -5786,8 +5789,8 @@ $validator->add(
 
 ```php
 protected function getConditional(
-    double $source,
-    double $target,
+    float $source,
+    float $target,
     bool $included = false
 );
 ```
@@ -6540,6 +6543,11 @@ The test is passed if for a string's length L, min<=L<=max, i.e. L must
 be at least min, and at most max.
 Since Phalcon v4.0 this validator works like a container
 
+The "includedMinimum" and "includedMaximum" options are true by
+default. Set an option to false to exclude that boundary. The two
+options are independent of each other. The "included" option sets
+the two boundaries together and has precedence.
+
 ```php
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\StringLength as StringLength;
@@ -6638,6 +6646,11 @@ Constructor
 Validates that a string has the specified maximum constraints
 The test is passed if for a string's length L, L<=max, i.e. L must
 be at most max.
+
+The "included" option is true by default. Set the option to false
+for L<max, i.e. L must be less than max. The "includedMaximum" option
+is an alias of "included". If you set the two options, "included" has
+precedence.
 
 ```php
 use Phalcon\Filter\Validation;
@@ -6749,6 +6762,11 @@ Validates that a string has the specified minimum constraints
 The test is passed if for a string's length L, min<=L, i.e. L must
 be at least min.
 
+The "included" option is true by default. Set the option to false
+for min<L, i.e. L must be more than min. The "includedMinimum" option
+is an alias of "included". If you set the two options, "included" has
+precedence.
+
 ```php
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\StringLength\Min;
@@ -6761,7 +6779,7 @@ $validation->add(
         [
             "min"     => 2,
             "message" => "We want more than just their initials",
-            "included" => true
+            "included" => false
         ]
     )
 );

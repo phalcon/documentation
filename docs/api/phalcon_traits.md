@@ -8,6 +8,163 @@ hide:
     All classes are prefixed with `Phalcon`
 
 
+## Traits\Factory\ConfigTrait
+
+<span class="badge badge--trait">Trait</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Traits/Factory/ConfigTrait.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Traits\Factory\ConfigTrait`**
+
+</div>
+
+__Uses__ `Phalcon\Config\ConfigInterface`
+{ .api-uses }
+
+__Used by__ [`Phalcon\Auth\ManagerFactory`](phalcon_auth.md#authmanagerfactory)
+{ .api-used-by }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#traitsfactoryconfigtrait-checkconfig">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">checkConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+</a>
+<a class="api-item" href="#traitsfactoryconfigtrait-checkconfigelement">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">checkConfigElement</span>(<span class="prm"><span class="st">array</span> <span class="sv">$config</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$element</span></span>)</code>
+<span class="desc">Checks if the config has a specific element</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Protected · 2</div>
+
+#### `checkConfig()` { #traitsfactoryconfigtrait-checkconfig }
+
+```php
+protected function checkConfig( mixed $config ): array;
+```
+
+#### `checkConfigElement()` { #traitsfactoryconfigtrait-checkconfigelement }
+
+```php
+protected function checkConfigElement(
+    array $config,
+    string $element
+): array;
+```
+
+Checks if the config has a specific element
+
+
+## Traits\Factory\FactoryTrait
+
+<span class="badge badge--trait">Trait</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Traits/Factory/FactoryTrait.zep){ .src-btn }
+
+Methods allowing a mapper based factory to operate. Supports injected
+services, getting a service by name (key), initialization and setting of
+the exception class (when exceptions are needed to be thrown)
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Traits\Factory\FactoryTrait`**
+
+</div>
+
+__Uses__ `Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#traitsfactoryfactorytrait-getcachedinstance">
+<code class="vis vis-protected">protected</code>
+<code class="ret">object</code>
+<code class="sig"><span class="sf">getCachedInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span></span>)</code>
+<span class="desc">Return an object from the instances pool. If it does not exist, create it</span>
+</a>
+<a class="api-item" href="#traitsfactoryfactorytrait-getexceptionclass">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
+</a>
+<a class="api-item" href="#traitsfactoryfactorytrait-getservice">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+<span class="desc">Returns a service based on the name; throws exception if it does not</span>
+</a>
+<a class="api-item" href="#traitsfactoryfactorytrait-getservices">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
+<span class="desc">Returns the services for the factory</span>
+</a>
+<a class="api-item" href="#traitsfactoryfactorytrait-init">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
+<span class="desc">Initializes services</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Protected · 5</div>
+
+#### `getCachedInstance()` { #traitsfactoryfactorytrait-getcachedinstance }
+
+```php
+protected function getCachedInstance(
+    string $name,
+    mixed $arguments
+): object;
+```
+
+Return an object from the instances pool. If it does not exist, create it
+
+#### `getExceptionClass()` { #traitsfactoryfactorytrait-getexceptionclass }
+
+```php
+abstract protected function getExceptionClass(): string;
+```
+
+Returns the exception class for the factory
+
+#### `getService()` { #traitsfactoryfactorytrait-getservice }
+
+```php
+protected function getService( string $name ): string;
+```
+
+Returns a service based on the name; throws exception if it does not
+exist
+
+#### `getServices()` { #traitsfactoryfactorytrait-getservices }
+
+```php
+abstract protected function getServices(): array;
+```
+
+Returns the services for the factory
+
+#### `init()` { #traitsfactoryfactorytrait-init }
+
+```php
+protected function init( array $services = [] ): void;
+```
+
+Initializes services
+
+
 ## Traits\Php\ApcuTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -267,7 +424,7 @@ __Used by__ [`Phalcon\Annotations\Adapter\Stream`](phalcon_annotations.md#annota
 <a class="api-item" href="#traitsphpfiletrait-phpfilegetcontents">
 <code class="vis vis-protected">protected</code>
 <code class="ret">false|string</code>
-<code class="sig"><span class="sf">phpFileGetContents</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useIncludePath</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$context</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offset</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$length</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">phpFileGetContents</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useIncludePath</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$context</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offset</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$length</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">@link https://php.net/manual/en/function.file-get-contents.php</span>
 </a>
 <a class="api-item" href="#traitsphpfiletrait-phpfileputcontents">
@@ -285,7 +442,7 @@ __Used by__ [`Phalcon\Annotations\Adapter\Stream`](phalcon_annotations.md#annota
 <a class="api-item" href="#traitsphpfiletrait-phpfwrite">
 <code class="vis vis-protected">protected</code>
 <code class="ret">false|int</code>
-<code class="sig"><span class="sf">phpFwrite</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handle</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$length</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">phpFwrite</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handle</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$length</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Binary-safe file write</span>
 </a>
 <a class="api-item" href="#traitsphpfiletrait-phpiswritable">
@@ -348,7 +505,7 @@ protected static function phpFileGetContents(
     bool $useIncludePath = false,
     mixed $context = null,
     int $offset = 0,
-    int $length = null
+    int|null $length = null
 ): false|string;
 ```
 
@@ -386,7 +543,7 @@ protected static function phpFopen(
 protected static function phpFwrite(
     mixed $handle,
     string $data,
-    int $length = null
+    int|null $length = null
 ): false|int;
 ```
 
@@ -1143,7 +1300,7 @@ __Used by__ [`Phalcon\ADR\Middleware\CorsMiddleware`](phalcon_adr.md#adrmiddlewa
 <a class="api-item" href="#traitssupporthelperarrgettrait-getarrval">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -1158,7 +1315,7 @@ protected static function getArrVal(
     array $collection,
     mixed $index,
     mixed $defaultValue = null,
-    string $cast = null
+    string|null $cast = null
 ): mixed;
 ```
 
@@ -1431,7 +1588,7 @@ Interpolates context values into the message placeholders
 
 </div>
 
-__Used by__ [`Phalcon\Logger\Formatter\AbstractFormatter`](phalcon_logger.md#loggerformatterabstractformatter) · [`Phalcon\Support\Helper\Str\AbstractStr`](phalcon_support.md#supporthelperstrabstractstr) · [`Phalcon\Support\Helper\Str\Interpolate`](phalcon_support.md#supporthelperstrinterpolate) · [`Phalcon\Translate\Interpolator\AssociativeArray`](phalcon_translate.md#translateinterpolatorassociativearray)
+__Used by__ [`Phalcon\Logger\Formatter\AbstractFormatter`](phalcon_logger.md#loggerformatterabstractformatter) · [`Phalcon\Support\Debug\Dump`](phalcon_support.md#supportdebugdump) · [`Phalcon\Support\Debug\Renderer\HtmlRenderer`](phalcon_support.md#supportdebugrendererhtmlrenderer) · [`Phalcon\Support\Helper\Str\AbstractStr`](phalcon_support.md#supporthelperstrabstractstr) · [`Phalcon\Support\Helper\Str\Interpolate`](phalcon_support.md#supporthelperstrinterpolate) · [`Phalcon\Translate\Interpolator\AssociativeArray`](phalcon_translate.md#translateinterpolatorassociativearray)
 { .api-used-by }
 
 ### Method Summary

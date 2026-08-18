@@ -13,20 +13,18 @@ hide:
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AbstractAdapter.zep){ .src-btn }
 
-@template TKey of string
-@template TValue of string
-@implements ArrayAccess<TKey, TValue>
+@implements ArrayAccess<string, string>
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Translate\Adapter\AbstractAdapter`** - implements [`Phalcon\Translate\Adapter\AdapterInterface`](#translateadapteradapterinterface), `ArrayAccess`
+- **`Phalcon\Translate\Adapter\AbstractAdapter`** - implements [`Phalcon\Translate\Adapter\AdapterInterface`](#translateadapteradapterinterface), `\ArrayAccess`
     - [`Phalcon\Translate\Adapter\Csv`](#translateadaptercsv)
     - [`Phalcon\Translate\Adapter\Gettext`](#translateadaptergettext)
     - [`Phalcon\Translate\Adapter\NativeArray`](#translateadapternativearray)
 
 </div>
 
-__Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Phalcon\Translate\Exceptions\KeyNotFound` · `Phalcon\Translate\InterpolatorFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
+__Uses__ `ArrayAccess` · `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Phalcon\Translate\Exceptions\KeyNotFound` · `Phalcon\Translate\InterpolatorFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
 { .api-uses }
 
 ### Method Summary
@@ -34,7 +32,7 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Ex
 <div class="api-list">
 <a class="api-item" href="#translateadapterabstractadapter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">InterpolatorFactory</span> <span class="sv">$interpolator</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">InterpolatorFactory</span> <span class="sv">$interpolatorFactory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">AbstractAdapter constructor.</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-_">
@@ -52,13 +50,13 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Ex
 <a class="api-item" href="#translateadapterabstractadapter-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$translateKey</span> )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Check whether a translation key exists</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-offsetget">
 <code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$translateKey</span> )</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Returns the translation related to the given key</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-offsetset">
@@ -97,7 +95,7 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Ex
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">InterpolatorInterface | null</code>
+<code class="ret">InterpolatorInterface|null</code>
 <code class="sig"><span class="sv">$interpolator</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -120,7 +118,7 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Ex
 
 ```php
 public function __construct(
-    InterpolatorFactory $interpolator,
+    InterpolatorFactory $interpolatorFactory,
     array $options = []
 );
 ```
@@ -149,7 +147,7 @@ Whenever a key is not found this method will be called
 #### `offsetExists()` { #translateadapterabstractadapter-offsetexists }
 
 ```php
-public function offsetExists( mixed $translateKey ): bool;
+public function offsetExists( mixed $offset ): bool;
 ```
 
 Check whether a translation key exists
@@ -157,7 +155,7 @@ Check whether a translation key exists
 #### `offsetGet()` { #translateadapterabstractadapter-offsetget }
 
 ```php
-public function offsetGet( mixed $translateKey ): string|null;
+public function offsetGet( mixed $offset ): string;
 ```
 
 Returns the translation related to the given key
@@ -302,7 +300,7 @@ Returns the translation string of the given key
 
 </div>
 
-__Uses__ `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -429,7 +427,7 @@ Allows translations using gettext
 
 </div>
 
-__Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -463,7 +461,7 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Pha
 </a>
 <a class="api-item" href="#translateadaptergettext-getlocale">
 <code class="vis vis-public">public</code>
-<code class="ret">string|false</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sf">getLocale</span>()</code>
 </a>
 <a class="api-item" href="#translateadaptergettext-has">
@@ -475,7 +473,7 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Pha
 <a class="api-item" href="#translateadaptergettext-nquery">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">nquery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$msgid1</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$msgid2</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$count</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$domain</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">nquery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$msgid1</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$msgid2</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$count</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$domain</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">The plural version of gettext().</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-query">
@@ -505,12 +503,12 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Pha
 <a class="api-item" href="#translateadaptergettext-setdomain">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">setDomain</span>( <span class="st">string</span> <span class="sv">$domain</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setDomain</span>( <span class="st">string|null</span> <span class="sv">$domain</span><span class="sm"> = null</span> )</code>
 <span class="desc">Changes the current domain (i.e. the translation file)</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-setlocale">
 <code class="vis vis-public">public</code>
-<code class="ret">string|bool</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sf">setLocale</span>(<span class="prm"><span class="st">int</span> <span class="sv">$category</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$localeArray</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets locale information</span>
 </a>
@@ -534,21 +532,21 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Pha
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
-<code class="sig"><span class="sv">$category</span></code>
+<code class="sig"><span class="sv">$category</span><span class="sm"> = 6</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$defaultDomain</span></code>
+<code class="sig"><span class="sv">$defaultDomain</span><span class="sm"> = &quot;messages&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|array</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$directory</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string | false</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sv">$locale</span></code>
 </div>
 </div>
@@ -597,7 +595,7 @@ public function getDirectory(): array|string;
 #### `getLocale()` { #translateadaptergettext-getlocale }
 
 ```php
-public function getLocale(): string|false;
+public function getLocale(): false|string;
 ```
 
 #### `has()` { #translateadaptergettext-has }
@@ -616,7 +614,7 @@ public function nquery(
     string $msgid2,
     int $count,
     array $placeholders = [],
-    string $domain = null
+    string|null $domain = null
 ): string;
 ```
 
@@ -679,7 +677,7 @@ $gettext->setDirectory(
 #### `setDomain()` { #translateadaptergettext-setdomain }
 
 ```php
-public function setDomain( string $domain = null ): string;
+public function setDomain( string|null $domain = null ): string;
 ```
 
 Changes the current domain (i.e. the translation file)
@@ -690,7 +688,7 @@ Changes the current domain (i.e. the translation file)
 public function setLocale(
     int $category,
     array $localeArray = []
-): string|bool;
+): false|string;
 ```
 
 Sets locale information
@@ -743,7 +741,7 @@ Defines translation lists using PHP arrays
 
 </div>
 
-__Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidDataType` · `Phalcon\Translate\Exceptions\MissingContent` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidDataType` · `Phalcon\Translate\Exceptions\MissingContent` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -1165,7 +1163,7 @@ __Uses__ `Phalcon\Translate\Exception`
 
 </div>
 
-__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Exceptions\InterpolatorNotRegistered` · `Phalcon\Translate\Interpolator\AssociativeArray` · `Phalcon\Translate\Interpolator\IndexedArray` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
+__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Exceptions\InterpolatorNotRegistered` · `Phalcon\Translate\Interpolator\AssociativeArray` · `Phalcon\Translate\Interpolator\IndexedArray` · `Phalcon\Translate\Interpolator\InterpolatorInterface` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -1367,7 +1365,7 @@ Replaces placeholders by the values passed
 
 </div>
 
-__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Adapter\AdapterInterface` · `Phalcon\Translate\Adapter\Csv` · `Phalcon\Translate\Adapter\Gettext` · `Phalcon\Translate\Adapter\NativeArray` · `Phalcon\Translate\Exceptions\TranslatorNotRegistered`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Adapter\AdapterInterface` · `Phalcon\Translate\Adapter\Csv` · `Phalcon\Translate\Adapter\Gettext` · `Phalcon\Translate\Adapter\NativeArray` · `Phalcon\Translate\Exceptions\TranslatorNotRegistered` · `Throwable`
 { .api-uses }
 
 ### Method Summary

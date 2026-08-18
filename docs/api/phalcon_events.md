@@ -19,8 +19,6 @@ This abstract class offers access to the events manager
 
 - **`Phalcon\Events\AbstractEventsAware`**
     - [`Phalcon\Acl\Adapter\AbstractAdapter`](phalcon_acl.md#acladapterabstractadapter)
-    - [`Phalcon\Auth\Guard\AbstractGuard`](phalcon_auth.md#authguardabstractguard)
-    - [`Phalcon\Autoload\Loader`](phalcon_autoload.md#autoloadloader)
     - [`Phalcon\Queue\Consumer\QueueConsumer`](phalcon_queue.md#queueconsumerqueueconsumer)
 
 </div>
@@ -652,7 +650,7 @@ __Uses__ `Closure` · `Phalcon\Contracts\Events\Enumerable` · `Phalcon\Contract
 <a class="api-item" href="#eventsmanager-detachall">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">detachAll</span>( <span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">detachAll</span>( <span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
 <span class="desc">Removes all events from the EventsManager</span>
 </a>
 <a class="api-item" href="#eventsmanager-dispatch">
@@ -998,7 +996,7 @@ Detach the listener from the events manager
 #### `detachAll()` { #eventsmanager-detachall }
 
 ```php
-public function detachAll( string $type = null ): void;
+public function detachAll( string|null $type = null ): void;
 ```
 
 Removes all events from the EventsManager
@@ -1313,3 +1311,88 @@ Phalcon\Events\ManagerInterface
 
 __Uses__ `Phalcon\Contracts\Events\Manager`
 { .api-uses }
+
+
+## Events\Traits\EventsAwareTrait
+
+<span class="badge badge--trait">Trait</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Traits/EventsAwareTrait.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Events\Traits\EventsAwareTrait`**
+
+</div>
+
+__Uses__ `Phalcon\Events\Exception` · `Phalcon\Events\ManagerInterface`
+{ .api-uses }
+
+__Used by__ [`Phalcon\Application\AbstractApplication`](phalcon_application.md#applicationabstractapplication) · [`Phalcon\Auth\Guard\AbstractGuard`](phalcon_auth.md#authguardabstractguard) · [`Phalcon\Autoload\Loader`](phalcon_autoload.md#autoloadloader) · [`Phalcon\Cache\AbstractCache`](phalcon_cache.md#cacheabstractcache) · [`Phalcon\Cli\Task`](phalcon_cli.md#clitask) · [`Phalcon\DataMapper\Pdo\ConnectionLocator`](phalcon_datamapper.md#datamapperpdoconnectionlocator) · [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](phalcon_datamapper.md#datamapperpdoconnectionabstractconnection) · [`Phalcon\Dispatcher\AbstractDispatcher`](phalcon_dispatcher.md#dispatcherabstractdispatcher) · [`Phalcon\Http\Request`](phalcon_http.md#httprequest) · [`Phalcon\Http\Response`](phalcon_http.md#httpresponse) · [`Phalcon\Storage\Adapter\AbstractAdapter`](phalcon_storage.md#storageadapterabstractadapter)
+{ .api-used-by }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#eventstraitseventsawaretrait-geteventsmanager">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
+<span class="desc">Returns the internal event manager</span>
+</a>
+<a class="api-item" href="#eventstraitseventsawaretrait-seteventsmanager">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
+<span class="desc">Sets the events manager</span>
+</a>
+<a class="api-item" href="#eventstraitseventsawaretrait-firemanagerevent">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
+<span class="desc">Helper method to fire an event</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 2</div>
+
+#### `getEventsManager()` { #eventstraitseventsawaretrait-geteventsmanager }
+
+```php
+public function getEventsManager(): ManagerInterface|null;
+```
+
+Returns the internal event manager
+
+#### `setEventsManager()` { #eventstraitseventsawaretrait-seteventsmanager }
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+
+Sets the events manager
+
+<div class="api-group">Protected · 1</div>
+
+#### `fireManagerEvent()` { #eventstraitseventsawaretrait-firemanagerevent }
+
+```php
+protected function fireManagerEvent(
+    string $eventName,
+    mixed $data = null,
+    bool $cancellable = true
+): mixed;
+```
+
+Helper method to fire an event

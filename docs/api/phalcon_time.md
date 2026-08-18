@@ -78,7 +78,7 @@ __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
 <div class="api-list">
 <a class="api-item" href="#timeclockexceptionsinvalidmodifier-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modifier</span>,</span><span class="prm"><span class="st">Throwable</span> <span class="sv">$ex</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modifier</span>,</span><span class="prm"><span class="st">Throwable|null</span> <span class="sv">$ex</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -91,7 +91,7 @@ __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
 ```php
 public function __construct(
     string $modifier,
-    Throwable $ex = null
+    Throwable|null $ex = null
 );
 ```
 

@@ -45,31 +45,31 @@ __Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\
 <div class="api-list">
 <a class="api-item" href="#encryptioncrypt-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$cipher</span><span class="sm"> = self::DEFAULT_CIPHER</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useSigning</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">PadFactory</span> <span class="sv">$padFactory</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$cipher</span><span class="sm"> = self::DEFAULT_CIPHER</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useSigning</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">PadFactory|null</span> <span class="sv">$padFactory</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Crypt constructor.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-decrypt">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">decrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">decrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Decrypts an encrypted text.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-decryptbase64">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">decryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$safe</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">decryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$safe</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Decrypt a text that is coded as a base64 string.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-encrypt">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">encrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">encrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Encrypts a text.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-encryptbase64">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">encryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$safe</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">encryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$safe</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Encrypts a text returning the result as a base64 string.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-getauthdata">
@@ -342,7 +342,7 @@ call to a single hash lookup after warm-up.</span>
 public function __construct(
     string $cipher = self::DEFAULT_CIPHER,
     bool $useSigning = true,
-    PadFactory $padFactory = null
+    PadFactory|null $padFactory = null
 );
 ```
 
@@ -353,7 +353,7 @@ Crypt constructor.
 ```php
 public function decrypt(
     string $input,
-    string $key = null
+    string|null $key = null
 ): string;
 ```
 
@@ -371,7 +371,7 @@ $encrypted = $crypt->decrypt(
 ```php
 public function decryptBase64(
     string $input,
-    string $key = null,
+    string|null $key = null,
     bool $safe = false
 ): string;
 ```
@@ -383,7 +383,7 @@ Decrypt a text that is coded as a base64 string.
 ```php
 public function encrypt(
     string $input,
-    string $key = null
+    string|null $key = null
 ): string;
 ```
 
@@ -401,7 +401,7 @@ $encrypted = $crypt->encrypt(
 ```php
 public function encryptBase64(
     string $input,
-    string $key = null,
+    string|null $key = null,
     bool $safe = false
 ): string;
 ```
@@ -1590,7 +1590,7 @@ if ($user) {
 
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - **`Phalcon\Encryption\Security`** - implements [`Phalcon\Contracts\Encryption\Security\Security`](phalcon_contracts.md#contractsencryptionsecuritysecurity)
 
@@ -1604,7 +1604,7 @@ __Uses__ `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\Abstrac
 <div class="api-list">
 <a class="api-item" href="#encryptionsecurity-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SessionInterface</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SessionInterface|null</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">RequestInterface|null</span> <span class="sv">$request</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Security constructor.</span>
 </a>
 <a class="api-item" href="#encryptionsecurity-checkhash">
@@ -1616,7 +1616,7 @@ __Uses__ `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\Abstrac
 <a class="api-item" href="#encryptionsecurity-checktoken">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">checkToken</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tokenKey</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$tokenValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$destroyIfValid</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">checkToken</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$tokenKey</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$tokenValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$destroyIfValid</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Check if the CSRF token sent in the request is the same that the current</span>
 </a>
 <a class="api-item" href="#encryptionsecurity-computehmac">
@@ -1858,8 +1858,8 @@ __Uses__ `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\Abstrac
 
 ```php
 public function __construct(
-    SessionInterface $session = null,
-    RequestInterface $request = null
+    SessionInterface|null $session = null,
+    RequestInterface|null $request = null
 );
 ```
 
@@ -1882,7 +1882,7 @@ password matches
 
 ```php
 public function checkToken(
-    string $tokenKey = null,
+    string|null $tokenKey = null,
     mixed $tokenValue = null,
     bool $destroyIfValid = true
 ): bool;
@@ -2573,7 +2573,7 @@ Sets a registered claim
 
 <div class="api-tree" markdown>
 
-- `Exception`
+- `\Exception`
     - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
         - **`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`**
 
@@ -2606,7 +2606,7 @@ public function __construct();
 
 <div class="api-tree" markdown>
 
-- `Exception`
+- `\Exception`
     - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
         - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`**
 
@@ -2639,7 +2639,7 @@ public function __construct();
 
 <div class="api-tree" markdown>
 
-- `Exception`
+- `\Exception`
     - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
         - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`**
 
@@ -2672,7 +2672,7 @@ public function __construct();
 
 <div class="api-tree" markdown>
 
-- `InvalidArgumentException`
+- `\InvalidArgumentException`
     - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims`**
 
 </div>
@@ -2707,7 +2707,7 @@ public function __construct();
 
 <div class="api-tree" markdown>
 
-- `Exception`
+- `\Exception`
     - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
         - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`**
 
@@ -2740,7 +2740,7 @@ public function __construct();
 
 <div class="api-tree" markdown>
 
-- `InvalidArgumentException`
+- `\InvalidArgumentException`
     - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader`**
 
 </div>
@@ -2775,7 +2775,7 @@ public function __construct();
 
 <div class="api-tree" markdown>
 
-- `Exception`
+- `\Exception`
     - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
         - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`**
 
@@ -2808,7 +2808,7 @@ public function __construct();
 
 <div class="api-tree" markdown>
 
-- `InvalidArgumentException`
+- `\InvalidArgumentException`
     - **`Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString`**
 
 </div>
@@ -2843,7 +2843,7 @@ public function __construct();
 
 <div class="api-tree" markdown>
 
-- `InvalidArgumentException`
+- `\InvalidArgumentException`
     - **`Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader`**
 
 </div>
@@ -2880,7 +2880,7 @@ Exception thrown when the algorithm is not supported for JWT
 
 <div class="api-tree" markdown>
 
-- `Exception`
+- `\Exception`
     - **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`**
         - [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`](#encryptionsecurityjwtexceptionsunsupportedhmacalgorithm)
 
@@ -2897,7 +2897,7 @@ __Uses__ `Exception`
 
 <div class="api-tree" markdown>
 
-- `Exception`
+- `\Exception`
     - [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`](#encryptionsecurityjwtexceptionsunsupportedalgorithmexception)
         - **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`**
 
@@ -2932,7 +2932,7 @@ Exception thrown when the validation does not pass for JWT
 
 <div class="api-tree" markdown>
 
-- `Exception`
+- `\Exception`
     - **`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`**
         - [`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`](#encryptionsecurityjwtexceptionsemptypassphrase)
         - [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`](#encryptionsecurityjwtexceptionsinvalidaudience)
@@ -2954,7 +2954,7 @@ __Uses__ `Exception`
 
 <div class="api-tree" markdown>
 
-- `Exception`
+- `\Exception`
     - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
         - **`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`**
 
@@ -3428,7 +3428,7 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Encryption\Security\JWT\Exceptio
 <div class="api-list">
 <a class="api-item" href="#encryptionsecurityjwttokenparser-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Decode</span> <span class="sv">$decode</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">Decode|null</span> <span class="sv">$decode</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#encryptionsecurityjwttokenparser-parse">
 <code class="vis vis-public">public</code>
@@ -3445,7 +3445,7 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Encryption\Security\JWT\Exceptio
 #### `__construct()` { #encryptionsecurityjwttokenparser-__construct }
 
 ```php
-public function __construct( Decode $decode = null );
+public function __construct( Decode|null $decode = null );
 ```
 
 #### `parse()` { #encryptionsecurityjwttokenparser-parse }
@@ -3685,7 +3685,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Encryption\Security\JWT\Exceptions\Inva
 <div class="api-list">
 <a class="api-item" href="#encryptionsecurityjwtvalidator-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Token</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$timeShift</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">ClockInterface</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Token</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$timeShift</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">ClockInterface|null</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Validator constructor.</span>
 </a>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-get">
@@ -3733,7 +3733,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Encryption\Security\JWT\Exceptions\Inva
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validateid">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">validateId</span>( <span class="st">string</span> <span class="sv">$id</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">validateId</span>( <span class="st">string|null</span> <span class="sv">$id</span><span class="sm"> = null</span> )</code>
 <span class="desc">Validate the id of the token</span>
 </a>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validateissuedat">
@@ -3745,7 +3745,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Encryption\Security\JWT\Exceptions\Inva
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validateissuer">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">validateIssuer</span>( <span class="st">string</span> <span class="sv">$issuer</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">validateIssuer</span>( <span class="st">string|null</span> <span class="sv">$issuer</span><span class="sm"> = null</span> )</code>
 <span class="desc">Validate the issuer of the token</span>
 </a>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validatenotbefore">
@@ -3763,7 +3763,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Encryption\Security\JWT\Exceptions\Inva
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validatesubject">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">validateSubject</span>( <span class="st">string</span> <span class="sv">$subject</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">validateSubject</span>( <span class="st">string|null</span> <span class="sv">$subject</span><span class="sm"> = null</span> )</code>
 <span class="desc">Validate the subject of the token</span>
 </a>
 </div>
@@ -3778,7 +3778,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Encryption\Security\JWT\Exceptions\Inva
 public function __construct(
     Token $token,
     int $timeShift = 0,
-    ClockInterface $clock = null
+    ClockInterface|null $clock = null
 );
 ```
 
@@ -3849,7 +3849,7 @@ Validate the expiration time of the token
 #### `validateId()` { #encryptionsecurityjwtvalidator-validateid }
 
 ```php
-public function validateId( string $id = null ): static;
+public function validateId( string|null $id = null ): static;
 ```
 
 Validate the id of the token
@@ -3870,7 +3870,7 @@ it, i.e. in the future, is rejected.
 #### `validateIssuer()` { #encryptionsecurityjwtvalidator-validateissuer }
 
 ```php
-public function validateIssuer( string $issuer = null ): static;
+public function validateIssuer( string|null $issuer = null ): static;
 ```
 
 Validate the issuer of the token
@@ -3902,7 +3902,7 @@ Validate the signature of the token
 #### `validateSubject()` { #encryptionsecurityjwtvalidator-validatesubject }
 
 ```php
-public function validateSubject( string $subject = null ): static;
+public function validateSubject( string|null $subject = null ): static;
 ```
 
 Validate the subject of the token
@@ -4682,7 +4682,7 @@ as fallback.
 <div class="api-list">
 <a class="api-item" href="#encryptionsecurityuuidversion1-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">\DateTimeInterface</span> <span class="sv">$dateTime</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$node</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">\DateTimeInterface|null</span> <span class="sv">$dateTime</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$node</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#encryptionsecurityuuidversion1-getdatetime">
 <code class="vis vis-public">public</code>
@@ -4706,7 +4706,7 @@ as fallback.
 
 ```php
 public function __construct(
-    \DateTimeInterface $dateTime = null,
+    \DateTimeInterface|null $dateTime = null,
     mixed $node = null
 );
 ```

@@ -20,7 +20,7 @@ dispatchers.
 ## Error protocol
 
 Subclasses (including third-party ones) MUST implement the two abstract
-error hooks {@see throwDispatchException()} and {@see handleException()}.
+error hooks throwDispatchException() and handleException().
 The dispatch loop calls them on every error/exception path; a subclass that
 omits them cannot be loaded.
 
@@ -31,20 +31,22 @@ channels. For any given point they run in this order:
 
 1. **Events-manager listener** - e.g. `dispatch:beforeExecuteRoute`. A
    listener returning `false` cancels; calling `forward()` re-enters the
-   loop; throwing routes through {@see handleException()}.
+   loop; throwing routes through handleException().
 2. **Duck-typed handler method** - e.g. a `beforeExecuteRoute()` method on
    the controller/task itself (presence is cached per class). Same
    `false` / `forward()` cancellation semantics as the event.
 3. **`dispatch:beforeCallAction` observer** - fired by
-   {@see callActionMethod()} with a `Phalcon\Support\Collection` carrying
+   callActionMethod() with a `Phalcon\Support\Collection` carrying
    the mutable keys `handler`, `action` and `params`. Listeners may rewrite
    those keys to change *what* gets invoked; the substituted callable is
    re-validated before the call. `dispatch:afterCallAction` receives the
    same Collection plus a `result` key.
 
+@todo fix the returnValue type in v7
+
 <div class="api-tree" markdown>
 
-- `stdClass`
+- `\stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - **`Phalcon\Dispatcher\AbstractDispatcher`** - implements [`Phalcon\Dispatcher\DispatcherInterface`](#dispatcherdispatcherinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Cli\Dispatcher`](phalcon_cli.md#clidispatcher)
@@ -52,7 +54,7 @@ channels. For any given point they run in this order:
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\Exception` · `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterInterface` · `Phalcon\Mvc\Model\Binder` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Support\Collection`
+__Uses__ `Exception` · `Phalcon\Contracts\Dispatcher\DispatcherTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\Exception` · `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Filter\FilterInterface` · `Phalcon\Mvc\Model\Binder` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Support\Collection`
 { .api-uses }
 
 ### Method Summary
@@ -103,12 +105,6 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getDefaultNamespace</span>()</code>
 <span class="desc">Returns the default namespace</span>
-</a>
-<a class="api-item" href="#dispatcherabstractdispatcher-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-gethandlerclass">
 <code class="vis vis-public">public</code>
@@ -230,12 +226,6 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <code class="sig"><span class="sf">setDefaultNamespace</span>( <span class="st">string</span> <span class="sv">$defaultNamespace</span> )</code>
 <span class="desc">Sets the default namespace</span>
 </a>
-<a class="api-item" href="#dispatcherabstractdispatcher-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
 <a class="api-item" href="#dispatcherabstractdispatcher-sethandlersuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
@@ -251,7 +241,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <a class="api-item" href="#dispatcherabstractdispatcher-setmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string|null</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the module where the controller is (only informative)</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setnamespacename">
@@ -364,11 +354,6 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$finished</span><span class="sm"> = false</span></code>
 </div>
@@ -404,7 +389,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$lastHandler</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -456,7 +441,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 
 ### Methods
 
-<div class="api-group">Public · 40</div>
+<div class="api-group">Public · 38</div>
 
 #### `callActionMethod()` { #dispatcherabstractdispatcher-callactionmethod }
 
@@ -544,14 +529,6 @@ public function getDefaultNamespace(): string;
 ```
 
 Returns the default namespace
-
-#### `getEventsManager()` { #dispatcherabstractdispatcher-geteventsmanager }
-
-```php
-public function getEventsManager(): ManagerInterface|null;
-```
-
-Returns the internal event manager
 
 #### `getHandlerClass()` { #dispatcherabstractdispatcher-gethandlerclass }
 
@@ -728,14 +705,6 @@ public function setDefaultNamespace( string $defaultNamespace ): void;
 
 Sets the default namespace
 
-#### `setEventsManager()` { #dispatcherabstractdispatcher-seteventsmanager }
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-
-Sets the events manager
-
 #### `setHandlerSuffix()` { #dispatcherabstractdispatcher-sethandlersuffix }
 
 ```php
@@ -774,7 +743,7 @@ $di->set(
 #### `setModuleName()` { #dispatcherabstractdispatcher-setmodulename }
 
 ```php
-public function setModuleName( string $moduleName = null ): void;
+public function setModuleName( string|null $moduleName = null ): void;
 ```
 
 Sets the module where the controller is (only informative)
@@ -875,7 +844,7 @@ abstract protected function throwDispatchException(
 Throws an internal dispatch exception.
 
 Subclasses build the namespace-specific exception and route it through
-{@see handleException()} before throwing it when it was not handled.
+handleException() before throwing it when it was not handled.
 
 #### `toCamelCase()` { #dispatcherabstractdispatcher-tocamelcase }
 
