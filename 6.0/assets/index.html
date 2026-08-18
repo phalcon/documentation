@@ -6721,7 +6721,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-41-17" name="__codelineno-41-17" href="#__codelineno-41-17"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="granular-exceptions">Granular Exceptions<a class="headerlink" href="#granular-exceptions" title="Permanent link">&para;</a></h3>
-<p>As of 5.14 the component raises granular subclasses of <code>Phalcon\Assets\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Assets\Exception $e)</code> blocks continue to work unchanged.</p>
+<p>The component raises granular subclasses of <code>Phalcon\Assets\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Assets\Exception $e)</code> blocks continue to work unchanged.</p>
 <table>
 <thead>
 <tr>
@@ -6773,7 +6773,7 @@ offering lower resource consumption and high performance.
 </tr>
 </tbody>
 </table>
-<p>As of 5.15 <code>CollectionNotFound</code> includes the requested collection name in its message, and any collection filter that is not a <code>Phalcon\Contracts\Assets\Filter</code> raises <code>InvalidFilter</code> instead of producing a fatal error.</p>
+<p><code>CollectionNotFound</code> includes the requested collection name in its message, and any collection filter that is not a <code>Phalcon\Contracts\Assets\Filter</code> raises <code>InvalidFilter</code> instead of producing a fatal error.</p>
 
 
 

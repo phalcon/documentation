@@ -7260,7 +7260,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
-<p>As of version 5.14.1, <code>Phalcon\Di\Injectable::__get()</code> no longer caches resolved services as dynamic object properties. Every magic property access (e.g. <code>$this-&gt;cfg</code>) re-resolves the service through the container. As a result, mutating an <strong>array-valued</strong> service through a magic property no longer works - the write is applied to a temporary copy and is silently lost:</p>
+<p><code>Phalcon\Di\Injectable::__get()</code> does not cache resolved services as dynamic object properties. Every magic property access (e.g. <code>$this-&gt;cfg</code>) re-resolves the service through the container. As a result, mutating an <strong>array-valued</strong> service through a magic property does not work - the write is applied to a temporary copy and is silently lost:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cfg</span><span class="p">[</span><span class="s1">&#39;namespace&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;newvalue&#39;</span><span class="p">;</span>
 <a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>
 <a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cfg</span><span class="p">[</span><span class="s1">&#39;namespace&#39;</span><span class="p">];</span> <span class="c1">// still the old value</span>

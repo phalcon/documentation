@@ -5301,10 +5301,8 @@ offering lower resource consumption and high performance.
 <p>Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the <strong>master</strong> branch are not allowed</p>
 </div>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
-<p>If programming in Zephir seems daunting, there are plenty of areas that you can contribute. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples on the respective pages.</p>
+<p>If programming seems daunting, there are plenty of areas that you can contribute. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples on the respective pages.</p>
 <p>All you have to do is go to our <a href="https://github.com/phalcon/documentation">documentation</a> repository, fork it, make the changes, and send us a pull request.</p>
-<h2 id="translations">Translations<a class="headerlink" href="#translations" title="Permanent link">&para;</a></h2>
-<p>We have removed the translations from v5.5.x onward. There was not that much traffic from the community to help with translating the documentation into different languages.</p>
 <h2 id="questions-and-support">Questions and Support<a class="headerlink" href="#questions-and-support" title="Permanent link">&para;</a></h2>
 <div class="admonition danger">
 <p class="admonition-title">DANGER</p>
@@ -5316,24 +5314,12 @@ offering lower resource consumption and high performance.
 <li>Only bugs found in the latest released version of Phalcon will be addressed.</li>
 <li>We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the <a href="../reproducible-tests/">reproducible tests</a> page for more information.</li>
 <li>As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory, etc.</li>
-<li>If you're submitting a <a href="https://en.wikipedia.org/wiki/Segmentation_fault">Segmentation Fault</a> error, we require a backtrace. Please check the <a href="#generating-a-backtrace">Generating a Backtrace</a> section for more information.</li>
-</ul>
-<h3 id="generating-a-backtrace">Generating a Backtrace<a class="headerlink" href="#generating-a-backtrace" title="Permanent link">&para;</a></h3>
-<p>Sometimes due to <a href="https://en.wikipedia.org/wiki/Segmentation_fault">Segmentation Fault</a> error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.</p>
-<p>Please check the following links for instructions on how to generate the backtrace:</p>
-<ul>
-<li><a href="https://bugs.php.net/bugs-generating-backtrace.php">Generating a gdb backtrace</a></li>
-<li><a href="https://bugs.php.net/bugs-generating-backtrace-win32.php">Generating a backtrace, with a compiler, on Win32</a></li>
-<li><a href="https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols">Debugging Symbols</a></li>
-<li><a href="https://www.phpinternalsbook.com/build_system/building_php.html">Building PHP</a></li>
 </ul>
 <h2 id="pull-request-checklist">Pull Request Checklist<a class="headerlink" href="#pull-request-checklist" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Pull requests to the <code>master</code> branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance, <code>5.0.x</code>, and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.</li>
+<li>Pull requests to the <code>master</code> branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance, <code>6.0.x</code>, and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.</li>
 <li>Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our <a href="../testing-environment/">testing</a> page for more information on how to set up a test environment and how to write tests.</li>
-<li>Since Phalcon is written in <a href="https://zephir-lang.com">Zephir</a>, please do not submit commits that modify the C-generated files directly</li>
 <li>Phalcon follows a specific coding style. Please install the <code>editorconfig</code> plugin in your favorite IDE to take advantage of the supplied <code>.editorconfig</code> file that comes with this repository and not have to worry about coding standards. All tests (PHP code), follow the <a href="https://www.php-fig.org/psr/psr-12/">PSR-12</a> standard</li>
-<li>Remove any change to <code>ext/kernel</code>, <code>*.zep.c</code>, and <code>*.zep.h</code> files before submitting the pull request</li>
 <li>More information <a href="../new-pull-request/">here</a>.</li>
 </ul>
 <p>Before submitting <strong>new functionality</strong>, please open a <a href="../new-feature-request/">NFR</a> as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:</p>

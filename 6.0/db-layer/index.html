@@ -9778,7 +9778,7 @@ offering lower resource consumption and high performance.
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <p>Any exceptions thrown in the <code>Phalcon\Db</code> namespace will be of type <code>Phalcon\Db\Exception</code>. You can use this exception to selectively catch exceptions thrown only from this component.</p>
 <h3 id="granular-exceptions">Granular Exceptions<a class="headerlink" href="#granular-exceptions" title="Permanent link">&para;</a></h3>
-<p>As of 5.14 the component raises granular subclasses of <code>Phalcon\Db\Exception</code> so callers can catch a specific failure mode. Every subclass extends <code>Phalcon\Db\Exception</code>, so existing <code>catch (Phalcon\Db\Exception $e)</code> blocks continue to work unchanged.</p>
+<p>The component raises granular subclasses of <code>Phalcon\Db\Exception</code> so callers can catch a specific failure mode. Every subclass extends <code>Phalcon\Db\Exception</code>, so existing <code>catch (Phalcon\Db\Exception $e)</code> blocks continue to work unchanged.</p>
 <table>
 <thead>
 <tr>
