@@ -1,7 +1,7 @@
 # Workflow inspiration and adaptation came from Andruino-Cli
 # https://github.com/arduino/arduino-cli/blob/master/.github/workflows/deploy-cobra-mkdocs-versioned-poetry.yml
 
-name: Deploy Documents 5.18
+name: Deploy Documents 5.19
 
 on:
   push:

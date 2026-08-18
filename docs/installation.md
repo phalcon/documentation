@@ -6,7 +6,7 @@
 
 ### PHP 8.1
 
-Phalcon v5.18 supports only PHP 8.1 and above.
+Phalcon v5.19 supports only PHP 8.1 and above.
 
 Although PHP 8.1 was released several years ago and its [active support][php-support] as well as security updates have expired, Phalcon still supports it, in order to offer enough time for developers to upgrade their applications.
 
@@ -103,7 +103,7 @@ if it gives you an error, you can use
 
 ```bash
 sudo ln -s /opt/local/include/pcre.h /usr/include/
-sudo pecl install apc 
+sudo pecl install apc
 ```
 
 ## Installation Platforms
@@ -220,7 +220,7 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.18.0 ./
+git checkout tags/v5.19.0 ./
 zephir fullclean
 zephir build
 ```
@@ -263,7 +263,7 @@ Compile phalcon:
 
 ```bash
 brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
-brew install phalcon --build-from-source 
+brew install phalcon --build-from-source
 ```
 
 #### MacPorts
@@ -331,9 +331,9 @@ Compiling from source is similar to most environments (Linux/macOS).
 If you wish to compile Phalcon you can do so by using [Zephir][zephir-phar]. You will need to download the latest `zephir.phar` from [here][zephir-phar]. Move the file to a folder that is available in your `PATH`, such as `/usr/local/bin` for example, and make it executable:
 
 ```bash
-mv zephir.phar /usr/local/bin 
+mv zephir.phar /usr/local/bin
 cd /usr/local/bin/
-mv zephir.phar zephir 
+mv zephir.phar zephir
 chmod a+x zephir
 ```
 
@@ -353,7 +353,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.18.0 ./
+git checkout tags/v5.19.0 ./
 zephir fullclean
 zephir build
 ```
@@ -378,7 +378,7 @@ The instructions above will compile **and** install the module on your system. Y
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.18.0 ./
+git checkout tags/v5.19.0 ./
 zephir fullclean
 zephir compile
 cd ext

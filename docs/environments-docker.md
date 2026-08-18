@@ -58,7 +58,7 @@ The provided Docker image is usually all you need to run a basic Phalcon applica
 Let's say you want to install the `memcached` extension. Phalcon provides a way to do so:
 
 ```dockerfile
-FROM phalconphp/cphalcon:v5.18.0-php8.4
+FROM phalconphp/cphalcon:v5.19.0-php8.4
 
 RUN set -eux \
   && install-php-extensions memcached

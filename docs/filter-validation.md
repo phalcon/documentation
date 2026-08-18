@@ -570,7 +570,9 @@ $validator->add(
 );
 ```
 
-The closure passed as the `callback` option is bound to the validator instance before it is called, so inside the closure `$this` refers to the [Phalcon\Filter\Validation\Validator\Callback][validation-validator-callback] validator. This lets the callback call the validator's own public methods - such as `$this->setTemplate()` - to change the failure message depending on which check failed. Only closures are bound; string function names and `[object, method]` callables are invoked as-is.
+The closure passed as the `callback` option keeps its own `$this`. A closure that you write inside a class can therefore still read the properties and call the methods of the object that created it.
+
+To reach the validator from inside the callback, declare a second parameter. The [Phalcon\Filter\Validation\Validator\Callback][validation-validator-callback] validator is passed as the second argument to every closure that declares one. The callback can then call the validator's own public methods - such as `setTemplate()` - to change the failure message depending on which check failed. A closure that declares one parameter receives the data only. String function names and `[object, method]` callables never receive the validator.
 
 ```php
 <?php
@@ -583,15 +585,16 @@ $validation->add(
     'title',
     new Callback(
         [
-            'callback' => function ($data) {
+            'message'  => 'The title is not valid',
+            'callback' => function ($data, $validator) {
                 if (!is_string($data['title'])) {
-                    $this->setTemplate('Title is not a string');
+                    $validator->setTemplate('Title is not a string');
 
                     return false;
                 }
 
                 if (strlen($data['title']) > 10) {
-                    $this->setTemplate('Title too long');
+                    $validator->setTemplate('Title too long');
 
                     return false;
                 }
@@ -602,6 +605,12 @@ $validation->add(
     )
 );
 ```
+
+A template set this way applies to the current call only. The validator restores the previous template when the call ends. A later call that does not call `setTemplate()` therefore falls back to the `message` or `template` option.
+
+!!! info "NOTE"
+
+    Phalcon `5.17.0` to `5.18.2` bound the closure to the validator, which replaced `$this` inside the callback. A callback written for those versions must declare the second parameter and call `$validator->setTemplate()` in place of `$this->setTemplate()`.
 
 ### Confirmation
 
@@ -1645,13 +1654,28 @@ minimum <= string length <= maximum
 
 This validator works like a container.
 
+Both boundaries are inclusive by default. `includedMinimum` and `includedMaximum` control one boundary each. Set an option to `false` to exclude that boundary.
+
+| Option            | Default | `false` changes the test to |
+| ----------------- | ------- | --------------------------- |
+| `includedMinimum` | `true`  | `minimum < string length`   |
+| `includedMaximum` | `true`  | `string length < maximum`   |
+
+The two options are independent. Setting one leaves the other at its default. The `included` option sets both boundaries at once and takes precedence over `includedMinimum` and `includedMaximum`.
+
+Both options also accept an array keyed by field name, in the same way as `min`, `max` and the message options.
+
+!!! info "NOTE"
+
+    Phalcon `5.7.0` to `5.18.2` treated both boundaries as exclusive when `includedMinimum` and `includedMaximum` were not set. A string of exactly the minimum or maximum length failed the validation. The boundaries are now inclusive unless you set the option to `false`.
+
 ```php
 <?php
 
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\StringLength;
 
-$validator = new Validation();
+$validation = new Validation();
 
 $validation->add(
     "name_last",
@@ -1711,13 +1735,17 @@ Validates that a string has the specified maximum constraints. The validation pa
 string length <= maximum
 ```
 
+The maximum is inclusive by default. Set `included` to `false` to exclude it, which changes the test to `string length < maximum`. The option also accepts an array keyed by field name.
+
+`includedMaximum` is an alias of `included`, so the option name used by the `StringLength` container also works here. If you set both, `included` takes precedence.
+
 ```php
 <?php
 
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\StringLength\Max;
 
-$validator = new Validation();
+$validation = new Validation();
 
 $validation->add(
     "name_last",
@@ -1754,6 +1782,28 @@ $validation->add(
 );
 ```
 
+Using the alias, which rejects a last name of exactly 50 characters:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\StringLength\Max;
+
+$validation = new Validation();
+
+$validation->add(
+    "name_last",
+    new Max(
+        [
+            "max"             => 50,
+            "message"         => "Last name too long",
+            "includedMaximum" => false,
+        ]
+    )
+);
+```
+
 ### StringLength Min
 
 Validates that a string has the specified minimum constraints. The validation passes if for a string length `L` it is more or equal to the minimum. The formula is:
@@ -1762,13 +1812,17 @@ Validates that a string has the specified minimum constraints. The validation pa
 minimum <= string length 
 ```
 
+The minimum is inclusive by default. Set `included` to `false` to exclude it, which changes the test to `minimum < string length`. The option also accepts an array keyed by field name.
+
+`includedMinimum` is an alias of `included`, so the option name used by the `StringLength` container also works here. If you set both, `included` takes precedence.
+
 ```php
 <?php
 
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\StringLength\Min;
 
-$validator = new Validation();
+$validation = new Validation();
 
 $validation->add(
     "name_last",
@@ -1800,6 +1854,28 @@ $validation->add(
                 "name_last"  => false,
                 "name_first" => true,
             ]
+        ]
+    )
+);
+```
+
+Using the alias, which rejects a last name of exactly 2 characters:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\StringLength\Min;
+
+$validation = new Validation();
+
+$validation->add(
+    "name_last",
+    new Min(
+        [
+            "min"             => 2,
+            "message"         => "Last name too short",
+            "includedMinimum" => false,
         ]
     )
 );
