@@ -7275,7 +7275,7 @@ files (see Phalcon\Config\Config object).</p>
 @property array              $excluded
 @property int                $logLevel
 @property string             $name
-@property string             $timezone</p>
+@property DateTimeZone       $timezone</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Logger\AbstractLogger</code></strong><ul>
@@ -7284,12 +7284,12 @@ files (see Phalcon\Config\Config object).</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>DateTimeImmutable</code> · <code>DateTimeZone</code> · <code>Exception</code> · <code>Phalcon\Logger\Adapter\AdapterInterface</code> · <code>Phalcon\Logger\Exceptions\AdapterNotFound</code> · <code>Phalcon\Logger\Exceptions\NoAdaptersConfigured</code> · <code>Phalcon\Time\Clock\ClockInterface</code> · <code>Phalcon\Time\Clock\SystemClock</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>DateTimeZone</code> · <code>Exception</code> · <code>Phalcon\Logger\Adapter\AdapterInterface</code> · <code>Phalcon\Logger\Exceptions\AdapterNotFound</code> · <code>Phalcon\Logger\Exceptions\NoAdaptersConfigured</code> · <code>Phalcon\Time\Clock\ClockInterface</code> · <code>Phalcon\Time\Clock\SystemClock</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggerabstractlogger-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone</span> <span class="sv">$timezone</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ClockInterface</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone|null</span> <span class="sv">$timezone</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ClockInterface|null</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-addadapter">
@@ -7477,8 +7477,8 @@ setLogLevel() values.</span>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">array</span> <span class="nv">$adapters</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nx">DateTimeZone</span> <span class="nv">$timezone</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nx">ClockInterface</span> <span class="nv">$clock</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nx">DateTimeZone</span><span class="o">|</span><span class="k">null</span> <span class="nv">$timezone</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nx">ClockInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$clock</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">);</span>
 </code></pre></div>
 <p>Constructor.</p>
@@ -7569,7 +7569,7 @@ between DEBUG and TRACE in the ordering, so the threshold becomes
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Logger\Adapter\AdapterInterface</code> · <code>Phalcon\Logger\Adapter\Noop</code> · <code>Phalcon\Logger\Adapter\Stream</code> · <code>Phalcon\Logger\Adapter\Syslog</code> · <code>Phalcon\Logger\Exception</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Logger\Adapter\AdapterInterface</code> · <code>Phalcon\Logger\Adapter\Noop</code> · <code>Phalcon\Logger\Adapter\Stream</code> · <code>Phalcon\Logger\Adapter\Syslog</code> · <code>Throwable</code></p>
 <h3 id="method-summary_1">Method Summary<a class="headerlink" href="#method-summary_1" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggeradapterfactory-__construct">
@@ -7624,10 +7624,6 @@ between DEBUG and TRACE in the ordering, so the threshold becomes
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/AbstractAdapter.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Class AbstractAdapter</p>
-<p>@property string             $defaultFormatter
-@property FormatterInterface $formatter
-@property bool               $inTransaction
-@property array              $queue</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Logger\Adapter\AbstractAdapter</code></strong> - implements <a href="#loggeradapteradapterinterface"><code>Phalcon\Logger\Adapter\AdapterInterface</code></a><ul>
@@ -7686,6 +7682,7 @@ between DEBUG and TRACE in the ordering, so the threshold becomes
 <code class="vis vis-public">public</code>
 <code class="ret">FormatterInterface</code>
 <code class="sig"><span class="sf">getFormatter</span>()</code>
+<span class="desc">Return the formatter used</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-getqueuelimit">
 <code class="vis vis-public">public</code>
@@ -7805,6 +7802,7 @@ than throwing.</p>
 <h4 id="loggeradapterabstractadapter-getformatter"><code>getFormatter()</code><a class="headerlink" href="#loggeradapterabstractadapter-getformatter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFormatter</span><span class="p">()</span><span class="o">:</span> <span class="nx">FormatterInterface</span><span class="p">;</span>
 </code></pre></div>
+<p>Return the formatter used</p>
 <h4 id="loggeradapterabstractadapter-getqueuelimit"><code>getQueueLimit()</code><a class="headerlink" href="#loggeradapterabstractadapter-getqueuelimit" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getQueueLimit</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
@@ -8010,7 +8008,7 @@ unbounded behavior).</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Logger\Adapter\Exceptions\FileOpenFailed</code> · <code>Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode</code> · <code>Phalcon\Logger\Item</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Logger\Adapter\Exceptions\FileOpenFailed</code> · <code>Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode</code> · <code>Phalcon\Logger\Exception</code> · <code>Phalcon\Logger\Item</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
 <h3 id="method-summary_7">Method Summary<a class="headerlink" href="#method-summary_7" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggeradapterstream-__construct">
@@ -8179,7 +8177,6 @@ unbounded behavior).</p>
 <a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Open connection to system logger</p>
-<p>@link https://php.net/manual/en/function.openlog.php</p>
 <h2 id="loggerenum">Logger\Enum<a class="headerlink" href="#loggerenum" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Enum.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -8202,6 +8199,10 @@ unbounded behavior).</p>
 <div class="api-item">
 <code class="ret">int</code>
 <code class="sig"><span class="sc">CUSTOM</span><span class="sm"> = 8</span></code>
+<span class="desc">Default threshold and fallback sink. It sits between DEBUG (7) and
+TRACE (9) in the ordering, so the default log level excludes TRACE.
+It is also the fallback for unknown message levels and invalid
+setLogLevel() values.</span>
 </div>
 <div class="api-item">
 <code class="ret">int</code>
@@ -8467,6 +8468,7 @@ unbounded behavior).</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getInterpolatedMessage</span>(<span class="prm"><span class="st">Item</span> <span class="sv">$item</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span></span>)</code>
+<span class="desc">Returns the interpolated message, replacing context placeholders.</span>
 </a>
 </div>
 
@@ -8511,6 +8513,7 @@ unbounded behavior).</p>
 <a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>    <span class="nx">string</span> <span class="nv">$message</span>
 <a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Returns the interpolated message, replacing context placeholders.</p>
 <h2 id="loggerformatterformatterinterface">Logger\Formatter\FormatterInterface<a class="headerlink" href="#loggerformatterformatterinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Formatter/FormatterInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -8647,11 +8650,6 @@ unbounded behavior).</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Item.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Phalcon\Logger\Item</p>
 <p>Represents each item in a logging transaction</p>
-<p>@property array             $context
-@property string            $message
-@property int               $level
-@property string            $levelName
-@property DateTimeImmutable $dateTime</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Logger\Item</code></strong></li>
@@ -8766,7 +8764,6 @@ from config files (see Phalcon\Config\Config object).</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Logger\Exception</code></p>
 <h3 id="method-summary_19">Method Summary<a class="headerlink" href="#method-summary_19" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggerlogger-alert">
@@ -8929,12 +8926,13 @@ that are not necessarily wrong.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>DateTimeZone</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Factory\AbstractConfigFactory</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>DateTimeZone</code> · <code>Exception</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Factory\AbstractConfigFactory</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>Throwable</code></p>
 <h3 id="method-summary_20">Method Summary<a class="headerlink" href="#method-summary_20" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggerloggerfactory-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory</span> <span class="sv">$factory</span> )</code>
+<span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#loggerloggerfactory-load">
 <code class="vis vis-public">public</code>
@@ -8945,7 +8943,7 @@ that are not necessarily wrong.</p>
 <a class="api-item" href="#loggerloggerfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">Logger</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone</span> <span class="sv">$timezone</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone|null</span> <span class="sv">$timezone</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a Logger object</span>
 </a>
 <a class="api-item" href="#loggerloggerfactory-getexceptionclass">
@@ -8961,6 +8959,7 @@ that are not necessarily wrong.</p>
 <h4 id="loggerloggerfactory-__construct"><code>__construct()</code><a class="headerlink" href="#loggerloggerfactory-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">AdapterFactory</span> <span class="nv">$factory</span> <span class="p">);</span>
 </code></pre></div>
+<p>Constructor</p>
 <h4 id="loggerloggerfactory-load"><code>load()</code><a class="headerlink" href="#loggerloggerfactory-load" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Logger</span><span class="p">;</span>
 </code></pre></div>
@@ -8969,7 +8968,7 @@ that are not necessarily wrong.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">newInstance</span><span class="p">(</span>
 <a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-83-3" name="__codelineno-83-3" href="#__codelineno-83-3"></a>    <span class="k">array</span> <span class="nv">$adapters</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-83-4" name="__codelineno-83-4" href="#__codelineno-83-4"></a>    <span class="nx">DateTimeZone</span> <span class="nv">$timezone</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-83-4" name="__codelineno-83-4" href="#__codelineno-83-4"></a>    <span class="nx">DateTimeZone</span><span class="o">|</span><span class="k">null</span> <span class="nv">$timezone</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-83-5" name="__codelineno-83-5" href="#__codelineno-83-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">Logger</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a Logger object</p>

@@ -7890,7 +7890,7 @@ offering lower resource consumption and high performance.
 <p>This abstract class offers common access to the DI in a class</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><strong><code>Phalcon\Di\AbstractInjectionAware</code></strong> - implements <a href="#diinjectionawareinterface"><code>Phalcon\Di\InjectionAwareInterface</code></a><ul>
 <li><a href="../phalcon_assets/#assetsmanager"><code>Phalcon\Assets\Manager</code></a></li>
 <li><a href="../phalcon_cli/#clirouter"><code>Phalcon\Cli\Router</code></a></li>
@@ -8079,7 +8079,7 @@ less prone to errors.</p>
 <a class="api-item" href="#didi-loadfromyaml">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">loadFromYaml</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">loadFromYaml</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Loads services from a yaml file.</span>
 </a>
 <a class="api-item" href="#didi-offsetexists">
@@ -8312,7 +8312,7 @@ this method reports only on the resolved-instance cache populated by
 <h4 id="didi-loadfromyaml"><code>loadFromYaml()</code><a class="headerlink" href="#didi-loadfromyaml" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">loadFromYaml</span><span class="p">(</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nx">string</span> <span class="nv">$filePath</span><span class="p">,</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="k">array</span> <span class="nv">$callbacks</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="k">array</span><span class="o">|</span><span class="k">null</span> <span class="nv">$callbacks</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Loads services from a yaml file.</p>
@@ -8447,7 +8447,7 @@ methods</p>
 <p>Interface for Phalcon\Di\Di</p>
 <div class="api-tree">
 <ul>
-<li><code>ArrayAccess</code><ul>
+<li><code>\ArrayAccess</code><ul>
 <li><strong><code>Phalcon\Di\DiInterface</code></strong></li>
 </ul>
 </li>
@@ -9451,7 +9451,7 @@ accessing a public property with the same name of a registered service</p>
 @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><strong><code>Phalcon\Di\Injectable</code></strong> - implements <a href="#diinjectionawareinterface"><code>Phalcon\Di\InjectionAwareInterface</code></a><ul>
 <li><a href="../phalcon_application/#applicationabstractapplication"><code>Phalcon\Application\AbstractApplication</code></a></li>
 <li><a href="../phalcon_cli/#clitask"><code>Phalcon\Cli\Task</code></a></li>
@@ -9613,7 +9613,7 @@ Phalcon\Di\Di that creates them</p>
 <a class="api-item" href="#diservice-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolves the service</span>
 </a>
 <a class="api-item" href="#diservice-setdefinition">
@@ -9695,7 +9695,7 @@ Phalcon\Di\Di that creates them</p>
 <h4 id="diservice-resolve"><code>resolve()</code><a class="headerlink" href="#diservice-resolve" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">resolve</span><span class="p">(</span>
 <a id="__codelineno-95-2" name="__codelineno-95-2" href="#__codelineno-95-2"></a>    <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-95-3" name="__codelineno-95-3" href="#__codelineno-95-3"></a>    <span class="nx">DiInterface</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-95-3" name="__codelineno-95-3" href="#__codelineno-95-3"></a>    <span class="nx">DiInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-95-4" name="__codelineno-95-4" href="#__codelineno-95-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Resolves the service</p>
@@ -9755,7 +9755,7 @@ Phalcon\Di\Di that creates them</p>
 <a class="api-item" href="#diserviceinterface-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolves the service</span>
 </a>
 <a class="api-item" href="#diserviceinterface-setdefinition">
@@ -9798,7 +9798,7 @@ Phalcon\Di\Di that creates them</p>
 <h4 id="diserviceinterface-resolve"><code>resolve()</code><a class="headerlink" href="#diserviceinterface-resolve" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">resolve</span><span class="p">(</span>
 <a id="__codelineno-104-2" name="__codelineno-104-2" href="#__codelineno-104-2"></a>    <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-104-3" name="__codelineno-104-3" href="#__codelineno-104-3"></a>    <span class="nx">DiInterface</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-104-3" name="__codelineno-104-3" href="#__codelineno-104-3"></a>    <span class="nx">DiInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-104-4" name="__codelineno-104-4" href="#__codelineno-104-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Resolves the service</p>

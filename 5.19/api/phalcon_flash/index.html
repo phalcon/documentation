@@ -5955,7 +5955,7 @@ stylized using CSS</p>
 <p>@package Phalcon\Flash</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
 <li><strong><code>Phalcon\Flash\AbstractFlash</code></strong> - implements <a href="#flashflashinterface"><code>Phalcon\Flash\FlashInterface</code></a><ul>
 <li><a href="#flashdirect"><code>Phalcon\Flash\Direct</code></a></li>
@@ -5973,7 +5973,7 @@ stylized using CSS</p>
 <div class="api-list">
 <a class="api-item" href="#flashabstractflash-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">SessionInterface</span> <span class="sv">$session</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface|null</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">SessionInterface|null</span> <span class="sv">$session</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">AbstractFlash constructor.</span>
 </a>
 <a class="api-item" href="#flashabstractflash-clear">
@@ -6122,7 +6122,7 @@ stylized using CSS</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">EscaperInterface | null</code>
+<code class="ret">EscaperInterface|null</code>
 <code class="sig"><span class="sv">$escaperService</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -6152,8 +6152,8 @@ stylized using CSS</p>
 
 <h4 id="flashabstractflash-__construct"><code>__construct()</code><a class="headerlink" href="#flashabstractflash-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="nx">EscaperInterface</span> <span class="nv">$escaper</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nx">SessionInterface</span> <span class="nv">$session</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="nx">EscaperInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$escaper</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nx">SessionInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$session</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>AbstractFlash constructor.</p>
@@ -6261,7 +6261,7 @@ the rendered string while <code>output()</code> does not emit it.</p>
 <p>@package Phalcon\Flash</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
 <li><a href="#flashabstractflash"><code>Phalcon\Flash\AbstractFlash</code></a><ul>
 <li><strong><code>Phalcon\Flash\Direct</code></strong></li>
@@ -6430,7 +6430,7 @@ the next request.</p>
 <p>@package Phalcon\Flash</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
 <li><a href="#flashabstractflash"><code>Phalcon\Flash\AbstractFlash</code></a><ul>
 <li><strong><code>Phalcon\Flash\Session</code></strong></li>
@@ -6447,7 +6447,7 @@ the next request.</p>
 <div class="api-list">
 <a class="api-item" href="#flashsession-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$sessionKey</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface|null</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface|null</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$sessionKey</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Session constructor.</span>
 </a>
 <a class="api-item" href="#flashsession-clear">
@@ -6471,7 +6471,7 @@ the next request.</p>
 <a class="api-item" href="#flashsession-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
 <span class="desc">Checks whether there are messages</span>
 </a>
 <a class="api-item" href="#flashsession-message">
@@ -6489,7 +6489,7 @@ the next request.</p>
 <a class="api-item" href="#flashsession-getsessionmessages">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">getSessionMessages</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$remove</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getSessionMessages</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$remove</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the messages stored in session</span>
 </a>
 <a class="api-item" href="#flashsession-setsessionmessages">
@@ -6522,9 +6522,9 @@ the next request.</p>
 
 <h4 id="flashsession-__construct"><code>__construct()</code><a class="headerlink" href="#flashsession-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="nx">EscaperInterface</span> <span class="nv">$escaper</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    <span class="nx">ManagerInterface</span> <span class="nv">$session</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="nx">string</span> <span class="nv">$sessionKey</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="nx">EscaperInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$escaper</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    <span class="nx">ManagerInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$session</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$sessionKey</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="p">);</span>
 </code></pre></div>
 <p>Session constructor.</p>
@@ -6544,7 +6544,7 @@ the next request.</p>
 </code></pre></div>
 <p>Returns the Session Service</p>
 <h4 id="flashsession-has"><code>has()</code><a class="headerlink" href="#flashsession-has" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$type</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Checks whether there are messages</p>
 <h4 id="flashsession-message"><code>message()</code><a class="headerlink" href="#flashsession-message" title="Permanent link">&para;</a></h4>
@@ -6563,7 +6563,7 @@ the next request.</p>
 <h4 id="flashsession-getsessionmessages"><code>getSessionMessages()</code><a class="headerlink" href="#flashsession-getsessionmessages" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getSessionMessages</span><span class="p">(</span>
 <a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="nx">bool</span> <span class="nv">$remove</span><span class="p">,</span>
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$type</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the messages stored in session</p>

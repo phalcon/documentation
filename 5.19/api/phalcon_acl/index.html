@@ -6818,7 +6818,7 @@ component/access</p>
 <a class="api-item" href="#acladaptermemory-isallowed">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Check whether a role is allowed to access an action from a component</span>
 </a>
 <a class="api-item" href="#acladaptermemory-iscomponent">
@@ -7077,7 +7077,7 @@ been found it returns an empty array</p>
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="nx">mixed</span> <span class="nv">$roleName</span><span class="p">,</span>
 <a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="nx">mixed</span> <span class="nv">$componentName</span><span class="p">,</span>
 <a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="nx">string</span> <span class="nv">$access</span><span class="p">,</span>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="k">array</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="k">array</span><span class="o">|</span><span class="k">null</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Check whether a role is allowed to access an action from a component</p>
@@ -7212,7 +7212,7 @@ description maps for serializer independence.</p>
 <div class="api-list">
 <a class="api-item" href="#aclcomponent-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$description</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$description</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Acl\Component constructor</span>
 </a>
 </div>
@@ -7223,7 +7223,7 @@ description maps for serializer independence.</p>
 <h4 id="aclcomponent-__construct"><code>__construct()</code><a class="headerlink" href="#aclcomponent-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>Phalcon\Acl\Component constructor</p>
@@ -7612,7 +7612,7 @@ description maps for serializer independence.</p>
 <div class="api-list">
 <a class="api-item" href="#aclrole-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$description</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$description</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Acl\Role constructor</span>
 </a>
 </div>
@@ -7623,7 +7623,7 @@ description maps for serializer independence.</p>
 <h4 id="aclrole-__construct"><code>__construct()</code><a class="headerlink" href="#aclrole-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>Phalcon\Acl\Role constructor</p>
@@ -7686,7 +7686,7 @@ description maps for serializer independence.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string | null</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$description</span></code>
 <span class="desc">Element description</span>
 </div>

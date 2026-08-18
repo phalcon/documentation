@@ -12649,7 +12649,7 @@ string is passed, the method will return false</p>
 <p>Allows to validate data using custom or built-in validators</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diinjectable"><code>Phalcon\Di\Injectable</code></a><ul>
 <li><strong><code>Phalcon\Filter\Validation</code></strong> - implements <a href="#filtervalidationvalidationinterface"><code>Phalcon\Filter\Validation\ValidationInterface</code></a></li>
 </ul>
@@ -12710,7 +12710,7 @@ string is passed, the method will return false</p>
 <a class="api-item" href="#filtervalidation-getfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">getFilters</span>( <span class="st">string</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getFilters</span>( <span class="st">string|null</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns all the filters or a specific one</span>
 </a>
 <a class="api-item" href="#filtervalidation-getlabel">
@@ -12789,6 +12789,7 @@ string is passed, the method will return false</p>
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setValidators</span>( <span class="st">array</span> <span class="sv">$validators</span> )</code>
+<span class="desc">Sets the validator array</span>
 </a>
 <a class="api-item" href="#filtervalidation-validate">
 <code class="vis vis-public">public</code>
@@ -12916,7 +12917,7 @@ empty string when none has been registered.</p>
 </code></pre></div>
 <p>Returns the bound entity</p>
 <h4 id="filtervalidation-getfilters"><code>getFilters()</code><a class="headerlink" href="#filtervalidation-getfilters" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilters</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilters</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$field</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns all the filters or a specific one</p>
 <h4 id="filtervalidation-getlabel"><code>getLabel()</code><a class="headerlink" href="#filtervalidation-getlabel" title="Permanent link">&para;</a></h4>
@@ -12988,6 +12989,7 @@ are merged, so defaults can be registered incrementally.</p>
 <h4 id="filtervalidation-setvalidators"><code>setValidators()</code><a class="headerlink" href="#filtervalidation-setvalidators" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setValidators</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$validators</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
+<p>Sets the validator array</p>
 <h4 id="filtervalidation-validate"><code>validate()</code><a class="headerlink" href="#filtervalidation-validate" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validate</span><span class="p">(</span>
 <a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
@@ -13084,7 +13086,7 @@ When you use bind(), the this-&gt;data is already set, so you can reuse it here<
 <a class="api-item" href="#filtervalidationabstractvalidator-gettemplate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string|null</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
 <span class="desc">Get the template message</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-gettemplates">
@@ -13207,7 +13209,7 @@ global default registered via Validation::setDefaultMessages() applies.</span>
 <p>Returns an option in the validator's options
 Returns null if the option hasn't set</p>
 <h4 id="filtervalidationabstractvalidator-gettemplate"><code>getTemplate()</code><a class="headerlink" href="#filtervalidationabstractvalidator-gettemplate" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTemplate</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTemplate</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$field</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Get the template message</p>
 <h4 id="filtervalidationabstractvalidator-gettemplates"><code>getTemplates()</code><a class="headerlink" href="#filtervalidationabstractvalidator-gettemplates" title="Permanent link">&para;</a></h4>
@@ -13978,7 +13980,7 @@ validators.</p>
 <a class="api-item" href="#filtervalidationvalidationinterface-getfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">getFilters</span>( <span class="st">string</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getFilters</span>( <span class="st">string|null</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns all the filters or a specific one</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-getlabel">
@@ -14065,7 +14067,7 @@ The entity is used to obtain the validation values</p>
 </code></pre></div>
 <p>Returns the bound entity</p>
 <h4 id="filtervalidationvalidationinterface-getfilters"><code>getFilters()</code><a class="headerlink" href="#filtervalidationvalidationinterface-getfilters" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilters</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilters</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$field</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns all the filters or a specific one</p>
 <h4 id="filtervalidationvalidationinterface-getlabel"><code>getLabel()</code><a class="headerlink" href="#filtervalidationvalidationinterface-getlabel" title="Permanent link">&para;</a></h4>
@@ -14614,7 +14616,7 @@ For a value x, the test is passed if minimum&lt;=x&lt;=maximum.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Filter\Validation</code> · <code>Phalcon\Filter\Validation\AbstractValidator</code> · <code>Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn</code> · <code>Phalcon\Filter\Validation\ValidatorInterface</code> · <code>Phalcon\Messages\Message</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Filter\Validation</code> · <code>Phalcon\Filter\Validation\AbstractValidator</code> · <code>Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn</code> · <code>Phalcon\Filter\Validation\ValidatorInterface</code> · <code>Phalcon\Messages\Message</code> · <code>ReflectionFunction</code></p>
 <h3 id="method-summary_56">Method Summary<a class="headerlink" href="#method-summary_56" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorcallback-__construct">
@@ -15372,7 +15374,7 @@ class</p>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-getfilesizeinbytes">
 <code class="vis vis-public">public</code>
-<code class="ret">double</code>
+<code class="ret">float</code>
 <code class="sig"><span class="sf">getFileSizeInBytes</span>( <span class="st">string</span> <span class="sv">$size</span> )</code>
 <span class="desc">Convert a string like &quot;2.5MB&quot; in bytes</span>
 </a>
@@ -15480,7 +15482,7 @@ class</p>
 </code></pre></div>
 <p>Check if uploaded file is larger than PHP allowed size</p>
 <h4 id="filtervalidationvalidatorfileabstractfile-getfilesizeinbytes"><code>getFileSizeInBytes()</code><a class="headerlink" href="#filtervalidationvalidatorfileabstractfile-getfilesizeinbytes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFileSizeInBytes</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$size</span> <span class="p">)</span><span class="o">:</span> <span class="nx">double</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFileSizeInBytes</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$size</span> <span class="p">)</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
 </code></pre></div>
 <p>Convert a string like "2.5MB" in bytes</p>
 <h4 id="filtervalidationvalidatorfileabstractfile-getmessagefileempty"><code>getMessageFileEmpty()</code><a class="headerlink" href="#filtervalidationvalidatorfileabstractfile-getmessagefileempty" title="Permanent link">&para;</a></h4>
@@ -16043,7 +16045,7 @@ dimensions must match the ratio exactly: 1920x1080 matches "16x9",
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfilesizeequal-getconditional">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">double</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">float</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">float</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the conditional</span>
 </a>
 </div>
@@ -16071,8 +16073,8 @@ dimensions must match the ratio exactly: 1920x1080 matches "16x9",
 
 <h4 id="filtervalidationvalidatorfilesizeequal-getconditional"><code>getConditional()</code><a class="headerlink" href="#filtervalidationvalidatorfilesizeequal-getconditional" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-187-1" name="__codelineno-187-1" href="#__codelineno-187-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getConditional</span><span class="p">(</span>
-<a id="__codelineno-187-2" name="__codelineno-187-2" href="#__codelineno-187-2"></a>    <span class="nx">double</span> <span class="nv">$source</span><span class="p">,</span>
-<a id="__codelineno-187-3" name="__codelineno-187-3" href="#__codelineno-187-3"></a>    <span class="nx">double</span> <span class="nv">$target</span><span class="p">,</span>
+<a id="__codelineno-187-2" name="__codelineno-187-2" href="#__codelineno-187-2"></a>    <span class="nx">float</span> <span class="nv">$source</span><span class="p">,</span>
+<a id="__codelineno-187-3" name="__codelineno-187-3" href="#__codelineno-187-3"></a>    <span class="nx">float</span> <span class="nv">$target</span><span class="p">,</span>
 <a id="__codelineno-187-4" name="__codelineno-187-4" href="#__codelineno-187-4"></a>    <span class="nx">bool</span> <span class="nv">$included</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-187-5" name="__codelineno-187-5" href="#__codelineno-187-5"></a><span class="p">);</span>
 </code></pre></div>
@@ -16138,7 +16140,7 @@ dimensions must match the ratio exactly: 1920x1080 matches "16x9",
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfilesizemax-getconditional">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">double</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">float</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">float</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the conditional</span>
 </a>
 </div>
@@ -16157,8 +16159,8 @@ dimensions must match the ratio exactly: 1920x1080 matches "16x9",
 
 <h4 id="filtervalidationvalidatorfilesizemax-getconditional"><code>getConditional()</code><a class="headerlink" href="#filtervalidationvalidatorfilesizemax-getconditional" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-189-1" name="__codelineno-189-1" href="#__codelineno-189-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getConditional</span><span class="p">(</span>
-<a id="__codelineno-189-2" name="__codelineno-189-2" href="#__codelineno-189-2"></a>    <span class="nx">double</span> <span class="nv">$source</span><span class="p">,</span>
-<a id="__codelineno-189-3" name="__codelineno-189-3" href="#__codelineno-189-3"></a>    <span class="nx">double</span> <span class="nv">$target</span><span class="p">,</span>
+<a id="__codelineno-189-2" name="__codelineno-189-2" href="#__codelineno-189-2"></a>    <span class="nx">float</span> <span class="nv">$source</span><span class="p">,</span>
+<a id="__codelineno-189-3" name="__codelineno-189-3" href="#__codelineno-189-3"></a>    <span class="nx">float</span> <span class="nv">$target</span><span class="p">,</span>
 <a id="__codelineno-189-4" name="__codelineno-189-4" href="#__codelineno-189-4"></a>    <span class="nx">bool</span> <span class="nv">$included</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-189-5" name="__codelineno-189-5" href="#__codelineno-189-5"></a><span class="p">);</span>
 </code></pre></div>
@@ -16224,7 +16226,7 @@ dimensions must match the ratio exactly: 1920x1080 matches "16x9",
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfilesizemin-getconditional">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">double</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">float</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">float</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the conditional</span>
 </a>
 </div>
@@ -16243,8 +16245,8 @@ dimensions must match the ratio exactly: 1920x1080 matches "16x9",
 
 <h4 id="filtervalidationvalidatorfilesizemin-getconditional"><code>getConditional()</code><a class="headerlink" href="#filtervalidationvalidatorfilesizemin-getconditional" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-191-1" name="__codelineno-191-1" href="#__codelineno-191-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getConditional</span><span class="p">(</span>
-<a id="__codelineno-191-2" name="__codelineno-191-2" href="#__codelineno-191-2"></a>    <span class="nx">double</span> <span class="nv">$source</span><span class="p">,</span>
-<a id="__codelineno-191-3" name="__codelineno-191-3" href="#__codelineno-191-3"></a>    <span class="nx">double</span> <span class="nv">$target</span><span class="p">,</span>
+<a id="__codelineno-191-2" name="__codelineno-191-2" href="#__codelineno-191-2"></a>    <span class="nx">float</span> <span class="nv">$source</span><span class="p">,</span>
+<a id="__codelineno-191-3" name="__codelineno-191-3" href="#__codelineno-191-3"></a>    <span class="nx">float</span> <span class="nv">$target</span><span class="p">,</span>
 <a id="__codelineno-191-4" name="__codelineno-191-4" href="#__codelineno-191-4"></a>    <span class="nx">bool</span> <span class="nv">$included</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-191-5" name="__codelineno-191-5" href="#__codelineno-191-5"></a><span class="p">);</span>
 </code></pre></div>
@@ -16861,6 +16863,10 @@ list of single-file structures.</p>
 The test is passed if for a string's length L, min&lt;=L&lt;=max, i.e. L must
 be at least min, and at most max.
 Since Phalcon v4.0 this validator works like a container</p>
+<p>The "includedMinimum" and "includedMaximum" options are true by
+default. Set an option to false to exclude that boundary. The two
+options are independent of each other. The "included" option sets
+the two boundaries together and has precedence.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-214-1" name="__codelineno-214-1" href="#__codelineno-214-1"></a><span class="k">use</span> <span class="nx">Phalcon\Filter\Validation</span><span class="p">;</span>
 <a id="__codelineno-214-2" name="__codelineno-214-2" href="#__codelineno-214-2"></a><span class="k">use</span> <span class="nx">Phalcon\Filter\Validation\Validator\StringLength</span> <span class="k">as</span> <span class="nx">StringLength</span><span class="p">;</span>
 <a id="__codelineno-214-3" name="__codelineno-214-3" href="#__codelineno-214-3"></a>
@@ -16949,6 +16955,10 @@ Since Phalcon v4.0 this validator works like a container</p>
 <p>Validates that a string has the specified maximum constraints
 The test is passed if for a string's length L, L&lt;=max, i.e. L must
 be at most max.</p>
+<p>The "included" option is true by default. Set the option to false
+for L&lt;max, i.e. L must be less than max. The "includedMaximum" option
+is an alias of "included". If you set the two options, "included" has
+precedence.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-216-1" name="__codelineno-216-1" href="#__codelineno-216-1"></a><span class="k">use</span> <span class="nx">Phalcon\Filter\Validation</span><span class="p">;</span>
 <a id="__codelineno-216-2" name="__codelineno-216-2" href="#__codelineno-216-2"></a><span class="k">use</span> <span class="nx">Phalcon\Filter\Validation\Validator\StringLength\Max</span><span class="p">;</span>
 <a id="__codelineno-216-3" name="__codelineno-216-3" href="#__codelineno-216-3"></a>
@@ -16988,7 +16998,7 @@ be at most max.</p>
 <a id="__codelineno-216-37" name="__codelineno-216-37" href="#__codelineno-216-37"></a>    <span class="p">)</span>
 <a id="__codelineno-216-38" name="__codelineno-216-38" href="#__codelineno-216-38"></a><span class="p">);</span>
 </code></pre></div>
-<div class="api-tree">
+<div class="api-tree" markdown>
 <ul>
 <li><a href="#filtervalidationabstractvalidator"><code>Phalcon\Filter\Validation\AbstractValidator</code></a><ul>
 <li><strong><code>Phalcon\Filter\Validation\Validator\StringLength\Max</code></strong></li>
@@ -17041,6 +17051,10 @@ be at most max.</p>
 <p>Validates that a string has the specified minimum constraints
 The test is passed if for a string's length L, min&lt;=L, i.e. L must
 be at least min.</p>
+<p>The "included" option is true by default. Set the option to false
+for min&lt;L, i.e. L must be more than min. The "includedMinimum" option
+is an alias of "included". If you set the two options, "included" has
+precedence.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-219-1" name="__codelineno-219-1" href="#__codelineno-219-1"></a><span class="k">use</span> <span class="nx">Phalcon\Filter\Validation</span><span class="p">;</span>
 <a id="__codelineno-219-2" name="__codelineno-219-2" href="#__codelineno-219-2"></a><span class="k">use</span> <span class="nx">Phalcon\Filter\Validation\Validator\StringLength\Min</span><span class="p">;</span>
 <a id="__codelineno-219-3" name="__codelineno-219-3" href="#__codelineno-219-3"></a>
@@ -17052,7 +17066,7 @@ be at least min.</p>
 <a id="__codelineno-219-9" name="__codelineno-219-9" href="#__codelineno-219-9"></a>        <span class="p">[</span>
 <a id="__codelineno-219-10" name="__codelineno-219-10" href="#__codelineno-219-10"></a>            <span class="s2">&quot;min&quot;</span>     <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
 <a id="__codelineno-219-11" name="__codelineno-219-11" href="#__codelineno-219-11"></a>            <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;We want more than just their initials&quot;</span><span class="p">,</span>
-<a id="__codelineno-219-12" name="__codelineno-219-12" href="#__codelineno-219-12"></a>            <span class="s2">&quot;included&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+<a id="__codelineno-219-12" name="__codelineno-219-12" href="#__codelineno-219-12"></a>            <span class="s2">&quot;included&quot;</span> <span class="o">=&gt;</span> <span class="k">false</span>
 <a id="__codelineno-219-13" name="__codelineno-219-13" href="#__codelineno-219-13"></a>        <span class="p">]</span>
 <a id="__codelineno-219-14" name="__codelineno-219-14" href="#__codelineno-219-14"></a>    <span class="p">)</span>
 <a id="__codelineno-219-15" name="__codelineno-219-15" href="#__codelineno-219-15"></a><span class="p">);</span>
@@ -17080,7 +17094,7 @@ be at least min.</p>
 <a id="__codelineno-219-37" name="__codelineno-219-37" href="#__codelineno-219-37"></a>    <span class="p">)</span>
 <a id="__codelineno-219-38" name="__codelineno-219-38" href="#__codelineno-219-38"></a><span class="p">);</span>
 </code></pre></div>
-<div class="api-tree">
+<div class="api-tree" markdown>
 <ul>
 <li><a href="#filtervalidationabstractvalidator"><code>Phalcon\Filter\Validation\AbstractValidator</code></a><ul>
 <li><strong><code>Phalcon\Filter\Validation\Validator\StringLength\Min</code></strong></li>

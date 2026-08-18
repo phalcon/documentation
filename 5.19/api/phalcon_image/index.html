@@ -7229,6 +7229,7 @@ offering lower resource consumption and high performance.
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/AbstractAdapter.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>All image adapters must use this class</p>
+<p>@template TImage of object</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Image\Adapter\AbstractAdapter</code></strong> - implements <a href="#imageadapteradapterinterface"><code>Phalcon\Image\Adapter\AdapterInterface</code></a><ul>
@@ -7238,7 +7239,7 @@ offering lower resource consumption and high performance.
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Image\Enum</code> · <code>Phalcon\Image\Exception</code> · <code>Phalcon\Image\Exceptions\InvalidColor</code> · <code>Phalcon\Image\Exceptions\MissingDimensions</code> · <code>Phalcon\Image\Exceptions\MissingHeight</code> · <code>Phalcon\Image\Exceptions\MissingWidth</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Image\ImageTypes</code> · <code>Phalcon\Image\Enum</code> · <code>Phalcon\Image\Exception</code> · <code>Phalcon\Image\Exceptions\InvalidColor</code> · <code>Phalcon\Image\Exceptions\MissingDimensions</code> · <code>Phalcon\Image\Exceptions\MissingHeight</code> · <code>Phalcon\Image\Exceptions\MissingWidth</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#imageadapterabstractadapter-background">
@@ -7315,13 +7316,13 @@ offering lower resource consumption and high performance.
 <a class="api-item" href="#imageadapterabstractadapter-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$extension</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
 <span class="desc">Render the image and return the binary string</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-resize">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">resize</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$master</span><span class="sm"> = Enum::AUTO</span></span>)</code>
+<code class="sig"><span class="sf">resize</span>(<span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$master</span><span class="sm"> = Enum::AUTO</span></span>)</code>
 <span class="desc">Resize the image to the given size</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-rotate">
@@ -7333,7 +7334,7 @@ offering lower resource consumption and high performance.
 <a class="api-item" href="#imageadapterabstractadapter-save">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">save</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = -1</span></span>)</code>
+<code class="sig"><span class="sf">save</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Save the image</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-sharpen">
@@ -7345,7 +7346,7 @@ offering lower resource consumption and high performance.
 <a class="api-item" href="#imageadapterabstractadapter-text">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">text</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$color</span><span class="sm"> = &quot;000000&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span><span class="sm"> = 12</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">text</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$color</span><span class="sm"> = &quot;000000&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span><span class="sm"> = 12</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a text to an image with a specified opacity</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-watermark">
@@ -7419,6 +7420,7 @@ offering lower resource consumption and high performance.
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-processsave">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
 <code class="sig"><span class="sf">processSave</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
 <span class="desc">Saves the image to the supplied file path.</span>
 </a>
@@ -7431,7 +7433,7 @@ offering lower resource consumption and high performance.
 <a class="api-item" href="#imageadapterabstractadapter-processtext">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Renders text onto the image. The opacity is clamped to 0-100 and the</span>
 </a>
 <a class="api-item" href="#imageadapterabstractadapter-processwatermark">
@@ -7453,18 +7455,18 @@ offering lower resource consumption and high performance.
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$height</span></code>
-<span class="desc">Image height</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed|null</code>
+<code class="ret">TImage|null</code>
 <code class="sig"><span class="sv">$image</span><span class="sm"> = null</span></code>
+<span class="desc">The handle of the underlying backend. Every adapter assigns it in its
+constructor and releases it in its destructor.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$mime</span></code>
-<span class="desc">Image mime type</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -7554,15 +7556,15 @@ worth knowing inside loops.</p>
 <p>Add a reflection to an image</p>
 <h4 id="imageadapterabstractadapter-render"><code>render()</code><a class="headerlink" href="#imageadapterabstractadapter-render" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">(</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="nx">string</span> <span class="nv">$extension</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$extension</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="nx">int</span> <span class="nv">$quality</span> <span class="o">=</span> <span class="mi">100</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Render the image and return the binary string</p>
 <h4 id="imageadapterabstractadapter-resize"><code>resize()</code><a class="headerlink" href="#imageadapterabstractadapter-resize" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">resize</span><span class="p">(</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="nx">int</span> <span class="nv">$width</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="nx">int</span> <span class="nv">$height</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$width</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$height</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="nx">int</span> <span class="nv">$master</span> <span class="o">=</span> <span class="nx">Enum</span><span class="o">::</span><span class="na">AUTO</span>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
@@ -7573,7 +7575,7 @@ worth knowing inside loops.</p>
 <p>Rotate the image by a given amount</p>
 <h4 id="imageadapterabstractadapter-save"><code>save()</code><a class="headerlink" href="#imageadapterabstractadapter-save" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nx">string</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="nx">int</span> <span class="nv">$quality</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
@@ -7590,10 +7592,12 @@ worth knowing inside loops.</p>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="nx">int</span> <span class="nv">$opacity</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
 <a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="nx">string</span> <span class="nv">$color</span> <span class="o">=</span> <span class="s2">&quot;000000&quot;</span><span class="p">,</span>
 <a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="nx">int</span> <span class="nv">$size</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="nx">string</span> <span class="nv">$fontFile</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$fontFile</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Add a text to an image with a specified opacity</p>
+<p>The offsets accept <code>false</code> to centre the text on that axis, so they are
+wider than the <code>int</code> the interface documents.</p>
 <h4 id="imageadapterabstractadapter-watermark"><code>watermark()</code><a class="headerlink" href="#imageadapterabstractadapter-watermark" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">watermark</span><span class="p">(</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nx">AdapterInterface</span> <span class="nv">$watermark</span><span class="p">,</span>
@@ -7687,7 +7691,7 @@ integers per the requested resize mode.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">abstract</span> <span class="k">protected</span> <span class="k">function</span> <span class="nf">processSave</span><span class="p">(</span>
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="nx">string</span> <span class="nv">$file</span><span class="p">,</span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="nx">int</span> <span class="nv">$quality</span>
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="p">);</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Saves the image to the supplied file path.</p>
 <h4 id="imageadapterabstractadapter-processsharpen"><code>processSharpen()</code><a class="headerlink" href="#imageadapterabstractadapter-processsharpen" title="Permanent link">&para;</a></h4>
@@ -7704,7 +7708,7 @@ integers per the requested resize mode.</p>
 <a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>    <span class="nx">int</span> <span class="nv">$green</span><span class="p">,</span>
 <a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    <span class="nx">int</span> <span class="nv">$blue</span><span class="p">,</span>
 <a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>    <span class="nx">int</span> <span class="nv">$size</span><span class="p">,</span>
-<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>    <span class="nx">string</span> <span class="nv">$fontFile</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$fontFile</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Renders text onto the image. The opacity is clamped to 0-100 and the
@@ -7747,7 +7751,7 @@ its public render() output, so it may be any adapter backend.</p>
 <a class="api-item" href="#imageadapteradapterinterface-crop">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">crop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">crop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$offsetX</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$offsetY</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Crop an image</span>
 </a>
 <a class="api-item" href="#imageadapteradapterinterface-flip">
@@ -7787,13 +7791,13 @@ its public render() output, so it may be any adapter backend.</p>
 <a class="api-item" href="#imageadapteradapterinterface-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$extension</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
 <span class="desc">Render an image</span>
 </a>
 <a class="api-item" href="#imageadapteradapterinterface-resize">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">resize</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$master</span><span class="sm"> = Enum::AUTO</span></span>)</code>
+<code class="sig"><span class="sf">resize</span>(<span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$master</span><span class="sm"> = Enum::AUTO</span></span>)</code>
 <span class="desc">Resize an image</span>
 </a>
 <a class="api-item" href="#imageadapteradapterinterface-rotate">
@@ -7805,7 +7809,7 @@ its public render() output, so it may be any adapter backend.</p>
 <a class="api-item" href="#imageadapteradapterinterface-save">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">save</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
+<code class="sig"><span class="sf">save</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
 <span class="desc">Save an image</span>
 </a>
 <a class="api-item" href="#imageadapteradapterinterface-sharpen">
@@ -7817,7 +7821,7 @@ its public render() output, so it may be any adapter backend.</p>
 <a class="api-item" href="#imageadapteradapterinterface-text">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">text</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$color</span><span class="sm"> = &quot;000000&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span><span class="sm"> = 12</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">text</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$color</span><span class="sm"> = &quot;000000&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span><span class="sm"> = 12</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds text on an image</span>
 </a>
 <a class="api-item" href="#imageadapteradapterinterface-watermark">
@@ -7846,8 +7850,8 @@ its public render() output, so it may be any adapter backend.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">crop</span><span class="p">(</span>
 <a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="nx">int</span> <span class="nv">$width</span><span class="p">,</span>
 <a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>    <span class="nx">int</span> <span class="nv">$height</span><span class="p">,</span>
-<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>    <span class="nx">int</span> <span class="nv">$offsetX</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="nx">int</span> <span class="nv">$offsetY</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$offsetX</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$offsetY</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Crop an image</p>
@@ -7879,15 +7883,15 @@ its public render() output, so it may be any adapter backend.</p>
 <p>Reflect an image</p>
 <h4 id="imageadapteradapterinterface-render"><code>render()</code><a class="headerlink" href="#imageadapteradapterinterface-render" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">(</span>
-<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>    <span class="nx">string</span> <span class="nv">$extension</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$extension</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>    <span class="nx">int</span> <span class="nv">$quality</span> <span class="o">=</span> <span class="mi">100</span>
 <a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Render an image</p>
 <h4 id="imageadapteradapterinterface-resize"><code>resize()</code><a class="headerlink" href="#imageadapteradapterinterface-resize" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">resize</span><span class="p">(</span>
-<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>    <span class="nx">int</span> <span class="nv">$width</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>    <span class="nx">int</span> <span class="nv">$height</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$width</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$height</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>    <span class="nx">int</span> <span class="nv">$master</span> <span class="o">=</span> <span class="nx">Enum</span><span class="o">::</span><span class="na">AUTO</span>
 <a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
@@ -7898,7 +7902,7 @@ its public render() output, so it may be any adapter backend.</p>
 <p>Rotate an image</p>
 <h4 id="imageadapteradapterinterface-save"><code>save()</code><a class="headerlink" href="#imageadapteradapterinterface-save" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span>
-<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>    <span class="nx">string</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>    <span class="nx">int</span> <span class="nv">$quality</span> <span class="o">=</span> <span class="mi">100</span>
 <a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
@@ -7915,7 +7919,7 @@ its public render() output, so it may be any adapter backend.</p>
 <a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a>    <span class="nx">int</span> <span class="nv">$opacity</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
 <a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a>    <span class="nx">string</span> <span class="nv">$color</span> <span class="o">=</span> <span class="s2">&quot;000000&quot;</span><span class="p">,</span>
 <a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a>    <span class="nx">int</span> <span class="nv">$size</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
-<a id="__codelineno-49-8" name="__codelineno-49-8" href="#__codelineno-49-8"></a>    <span class="nx">string</span> <span class="nv">$fontFile</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-49-8" name="__codelineno-49-8" href="#__codelineno-49-8"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$fontFile</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-49-9" name="__codelineno-49-9" href="#__codelineno-49-9"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds text on an image</p>
@@ -7960,6 +7964,7 @@ Phalcon\Image\Exceptions\UnsupportedImageType. Visual semantics differ from
 the Imagick adapter: blur() applies repeated 3x3 Gaussian convolutions
 (the radius is the number of passes), while sharpen and reflection use GD's
 own scales. Switching the factory backend can change the rendered output.</p>
+<p>@extends AbstractAdapter<GdImage></p>
 <div class="api-tree">
 <ul>
 <li><a href="#imageadapterabstractadapter"><code>Phalcon\Image\Adapter\AbstractAdapter</code></a><ul>
@@ -7968,12 +7973,12 @@ own scales. Switching the factory backend can change the rendered output.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Image\Enum</code> · <code>Phalcon\Image\Exception</code> · <code>Phalcon\Image\Exceptions\ExtensionNotLoaded</code> · <code>Phalcon\Image\Exceptions\ImageLoadFailed</code> · <code>Phalcon\Image\Exceptions\TextRenderingFailed</code> · <code>Phalcon\Image\Exceptions\UnsupportedImageType</code> · <code>Phalcon\Image\Exceptions\VersionMismatch</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Phalcon\Traits\Php\InfoTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>GdImage</code> · <code>Phalcon\Contracts\Image\ImageTypes</code> · <code>Phalcon\Image\Enum</code> · <code>Phalcon\Image\Exception</code> · <code>Phalcon\Image\Exceptions\ExtensionNotLoaded</code> · <code>Phalcon\Image\Exceptions\ImageLoadFailed</code> · <code>Phalcon\Image\Exceptions\TextRenderingFailed</code> · <code>Phalcon\Image\Exceptions\UnsupportedImageType</code> · <code>Phalcon\Image\Exceptions\VersionMismatch</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Phalcon\Traits\Php\InfoTrait</code></p>
 <h3 id="method-summary_2">Method Summary<a class="headerlink" href="#method-summary_2" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#imageadaptergd-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Loads an image from a file, or creates a blank canvas.</span>
 </a>
 <a class="api-item" href="#imageadaptergd-__destruct">
@@ -8032,6 +8037,7 @@ own scales. Switching the factory backend can change the rendered output.</p>
 </a>
 <a class="api-item" href="#imageadaptergd-processrender">
 <code class="vis vis-protected">protected</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sf">processRender</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
 </a>
 <a class="api-item" href="#imageadaptergd-processresize">
@@ -8057,7 +8063,7 @@ own scales. Switching the factory backend can change the rendered output.</p>
 <a class="api-item" href="#imageadaptergd-processtext">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#imageadaptergd-processwatermark">
 <code class="vis vis-protected">protected</code>
@@ -8072,8 +8078,8 @@ own scales. Switching the factory backend can change the rendered output.</p>
 <h4 id="imageadaptergd-__construct"><code>__construct()</code><a class="headerlink" href="#imageadaptergd-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>    <span class="nx">string</span> <span class="nv">$file</span><span class="p">,</span>
-<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>    <span class="nx">int</span> <span class="nv">$width</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>    <span class="nx">int</span> <span class="nv">$height</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$width</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$height</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a><span class="p">);</span>
 </code></pre></div>
 <p>Loads an image from a file, or creates a blank canvas.</p>
@@ -8144,7 +8150,7 @@ load-or-create ambiguity of the constructor.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">processRender</span><span class="p">(</span>
 <a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>    <span class="nx">string</span> <span class="nv">$extension</span><span class="p">,</span>
 <a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>    <span class="nx">int</span> <span class="nv">$quality</span>
-<a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="p">);</span>
+<a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">false</span><span class="o">|</span><span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="imageadaptergd-processresize"><code>processResize()</code><a class="headerlink" href="#imageadaptergd-processresize" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">processResize</span><span class="p">(</span>
@@ -8174,7 +8180,7 @@ load-or-create ambiguity of the constructor.</p>
 <a id="__codelineno-68-7" name="__codelineno-68-7" href="#__codelineno-68-7"></a>    <span class="nx">int</span> <span class="nv">$green</span><span class="p">,</span>
 <a id="__codelineno-68-8" name="__codelineno-68-8" href="#__codelineno-68-8"></a>    <span class="nx">int</span> <span class="nv">$blue</span><span class="p">,</span>
 <a id="__codelineno-68-9" name="__codelineno-68-9" href="#__codelineno-68-9"></a>    <span class="nx">int</span> <span class="nv">$size</span><span class="p">,</span>
-<a id="__codelineno-68-10" name="__codelineno-68-10" href="#__codelineno-68-10"></a>    <span class="nx">string</span> <span class="nv">$fontFile</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-68-10" name="__codelineno-68-10" href="#__codelineno-68-10"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$fontFile</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-68-11" name="__codelineno-68-11" href="#__codelineno-68-11"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="imageadaptergd-processwatermark"><code>processWatermark()</code><a class="headerlink" href="#imageadaptergd-processwatermark" title="Permanent link">&para;</a></h4>
@@ -8224,6 +8230,7 @@ load-or-create ambiguity of the constructor.</p>
 <p>Visual semantics differ from the Gd adapter: blur() maps the radius to a
 blur sigma, while sharpen and reflection use ImageMagick's own scales.
 Switching the factory backend can change the rendered output.</p>
+<p>@extends AbstractAdapter<ImagickNative></p>
 <div class="api-tree">
 <ul>
 <li><a href="#imageadapterabstractadapter"><code>Phalcon\Image\Adapter\AbstractAdapter</code></a><ul>
@@ -8237,7 +8244,7 @@ Switching the factory backend can change the rendered output.</p>
 <div class="api-list">
 <a class="api-item" href="#imageadapterimagick-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Loads an image from a file, or creates a blank canvas.</span>
 </a>
 <a class="api-item" href="#imageadapterimagick-__destruct">
@@ -8325,7 +8332,7 @@ Switching the factory backend can change the rendered output.</p>
 </a>
 <a class="api-item" href="#imageadapterimagick-processsave">
 <code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
+<code class="ret">bool</code>
 <code class="sig"><span class="sf">processSave</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
 <span class="desc">Execute a save.</span>
 </a>
@@ -8338,7 +8345,7 @@ Switching the factory backend can change the rendered output.</p>
 <a class="api-item" href="#imageadapterimagick-processtext">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Execute a text</span>
 </a>
 <a class="api-item" href="#imageadapterimagick-processwatermark">
@@ -8364,8 +8371,8 @@ Switching the factory backend can change the rendered output.</p>
 <h4 id="imageadapterimagick-__construct"><code>__construct()</code><a class="headerlink" href="#imageadapterimagick-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>    <span class="nx">string</span> <span class="nv">$file</span><span class="p">,</span>
-<a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>    <span class="nx">int</span> <span class="nv">$width</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>    <span class="nx">int</span> <span class="nv">$height</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$width</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$height</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a><span class="p">);</span>
 </code></pre></div>
 <p>Loads an image from a file, or creates a blank canvas.</p>
@@ -8470,7 +8477,7 @@ Imagick</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">processSave</span><span class="p">(</span>
 <a id="__codelineno-86-2" name="__codelineno-86-2" href="#__codelineno-86-2"></a>    <span class="nx">string</span> <span class="nv">$file</span><span class="p">,</span>
 <a id="__codelineno-86-3" name="__codelineno-86-3" href="#__codelineno-86-3"></a>    <span class="nx">int</span> <span class="nv">$quality</span>
-<a id="__codelineno-86-4" name="__codelineno-86-4" href="#__codelineno-86-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<a id="__codelineno-86-4" name="__codelineno-86-4" href="#__codelineno-86-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Execute a save.</p>
 <h4 id="imageadapterimagick-processsharpen"><code>processSharpen()</code><a class="headerlink" href="#imageadapterimagick-processsharpen" title="Permanent link">&para;</a></h4>
@@ -8487,7 +8494,7 @@ Imagick</p>
 <a id="__codelineno-88-7" name="__codelineno-88-7" href="#__codelineno-88-7"></a>    <span class="nx">int</span> <span class="nv">$green</span><span class="p">,</span>
 <a id="__codelineno-88-8" name="__codelineno-88-8" href="#__codelineno-88-8"></a>    <span class="nx">int</span> <span class="nv">$blue</span><span class="p">,</span>
 <a id="__codelineno-88-9" name="__codelineno-88-9" href="#__codelineno-88-9"></a>    <span class="nx">int</span> <span class="nv">$size</span><span class="p">,</span>
-<a id="__codelineno-88-10" name="__codelineno-88-10" href="#__codelineno-88-10"></a>    <span class="nx">string</span> <span class="nv">$fontFile</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-88-10" name="__codelineno-88-10" href="#__codelineno-88-10"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$fontFile</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-88-11" name="__codelineno-88-11" href="#__codelineno-88-11"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Execute a text</p>
@@ -8937,7 +8944,7 @@ Imagick</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Image\Adapter\AdapterInterface</code> · <code>Phalcon\Image\Adapter\Gd</code> · <code>Phalcon\Image\Adapter\Imagick</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Image\ImageTypes</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Image\Adapter\AdapterInterface</code> · <code>Phalcon\Image\Adapter\Gd</code> · <code>Phalcon\Image\Adapter\Imagick</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>Throwable</code></p>
 <h3 id="method-summary_16">Method Summary<a class="headerlink" href="#method-summary_16" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#imageimagefactory-__construct">
@@ -8954,7 +8961,7 @@ Imagick</p>
 <a class="api-item" href="#imageimagefactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a new instance</span>
 </a>
 <a class="api-item" href="#imageimagefactory-getexceptionclass">
@@ -8985,8 +8992,8 @@ Imagick</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">newInstance</span><span class="p">(</span>
 <a id="__codelineno-104-2" name="__codelineno-104-2" href="#__codelineno-104-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-104-3" name="__codelineno-104-3" href="#__codelineno-104-3"></a>    <span class="nx">string</span> <span class="nv">$file</span><span class="p">,</span>
-<a id="__codelineno-104-4" name="__codelineno-104-4" href="#__codelineno-104-4"></a>    <span class="nx">int</span> <span class="nv">$width</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-104-5" name="__codelineno-104-5" href="#__codelineno-104-5"></a>    <span class="nx">int</span> <span class="nv">$height</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-104-4" name="__codelineno-104-4" href="#__codelineno-104-4"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$width</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-104-5" name="__codelineno-104-5" href="#__codelineno-104-5"></a>    <span class="nx">int</span><span class="o">|</span><span class="k">null</span> <span class="nv">$height</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-104-6" name="__codelineno-104-6" href="#__codelineno-104-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Creates a new instance</p>

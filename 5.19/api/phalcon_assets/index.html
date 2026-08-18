@@ -7430,7 +7430,7 @@ offering lower resource consumption and high performance.
 <div class="api-list">
 <a class="api-item" href="#assetsasset-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isLocal</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isAutoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isLocal</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isAutoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Asset constructor.</span>
 </a>
 <a class="api-item" href="#assetsasset-getassetkey">
@@ -7442,29 +7442,31 @@ offering lower resource consumption and high performance.
 <a class="api-item" href="#assetsasset-getcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getContent</span>( <span class="st">string</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getContent</span>( <span class="st">string|null</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the content of the asset as an string</span>
 </a>
 <a class="api-item" href="#assetsasset-getfilter">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getFilter</span>()</code>
+<span class="desc">Gets if the asset must be filtered or not.</span>
 </a>
 <a class="api-item" href="#assetsasset-getpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getPath</span>()</code>
+<span class="desc">Returns the path for this asset</span>
 </a>
 <a class="api-item" href="#assetsasset-getrealsourcepath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getRealSourcePath</span>( <span class="st">string</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getRealSourcePath</span>( <span class="st">string|null</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the complete location where the asset is located</span>
 </a>
 <a class="api-item" href="#assetsasset-getrealtargetpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">getRealTargetPath</span>( <span class="st">string</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">getRealTargetPath</span>( <span class="st">string|null</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the complete location where the asset must be written</span>
 </a>
 <a class="api-item" href="#assetsasset-getrealtargeturi">
@@ -7477,6 +7479,7 @@ offering lower resource consumption and high performance.
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getType</span>()</code>
+<span class="desc">Gets the asset&#039;s type.</span>
 </a>
 <a class="api-item" href="#assetsasset-getversion">
 <code class="vis vis-public">public</code>
@@ -7567,7 +7570,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="nx">bool</span> <span class="nv">$isLocal</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="nx">string</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="nx">bool</span> <span class="nv">$isAutoVersion</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">);</span>
 </code></pre></div>
@@ -7577,22 +7580,24 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>Gets the asset's key.</p>
 <h4 id="assetsasset-getcontent"><code>getContent()</code><a class="headerlink" href="#assetsasset-getcontent" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getContent</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getContent</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the content of the asset as an string
 Optionally a base path where the asset is located can be set</p>
 <h4 id="assetsasset-getfilter"><code>getFilter()</code><a class="headerlink" href="#assetsasset-getfilter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilter</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
+<p>Gets if the asset must be filtered or not.</p>
 <h4 id="assetsasset-getpath"><code>getPath()</code><a class="headerlink" href="#assetsasset-getpath" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPath</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Returns the path for this asset</p>
 <h4 id="assetsasset-getrealsourcepath"><code>getRealSourcePath()</code><a class="headerlink" href="#assetsasset-getrealsourcepath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealSourcePath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealSourcePath</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the complete location where the asset is located</p>
 <h4 id="assetsasset-getrealtargetpath"><code>getRealTargetPath()</code><a class="headerlink" href="#assetsasset-getrealtargetpath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealTargetPath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealTargetPath</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the complete location where the asset must be written</p>
 <h4 id="assetsasset-getrealtargeturi"><code>getRealTargetUri()</code><a class="headerlink" href="#assetsasset-getrealtargeturi" title="Permanent link">&para;</a></h4>
@@ -7602,6 +7607,7 @@ Optionally a base path where the asset is located can be set</p>
 <h4 id="assetsasset-gettype"><code>getType()</code><a class="headerlink" href="#assetsasset-gettype" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Gets the asset's type.</p>
 <h4 id="assetsasset-getversion"><code>getVersion()</code><a class="headerlink" href="#assetsasset-getversion" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getVersion</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
@@ -7663,7 +7669,7 @@ Optionally a base path where the asset is located can be set</p>
 <div class="api-list">
 <a class="api-item" href="#assetsassetcss-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Phalcon\Assets\Asset\Css constructor</span>
 </a>
 </div>
@@ -7677,7 +7683,7 @@ Optionally a base path where the asset is located can be set</p>
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="nx">string</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="p">);</span>
 </code></pre></div>
@@ -7699,7 +7705,7 @@ Optionally a base path where the asset is located can be set</p>
 <div class="api-list">
 <a class="api-item" href="#assetsassetjs-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Phalcon\Assets\Asset\Js constructor</span>
 </a>
 </div>
@@ -7713,7 +7719,7 @@ Optionally a base path where the asset is located can be set</p>
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="nx">string</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="p">);</span>
 </code></pre></div>
@@ -7724,7 +7730,7 @@ Optionally a base path where the asset is located can be set</p>
 <p>Collection of asset objects</p>
 <div class="api-tree">
 <ul>
-<li><strong><code>Phalcon\Assets\Collection</code></strong> - implements <code>Countable</code>, <code>IteratorAggregate</code></li>
+<li><strong><code>Phalcon\Assets\Collection</code></strong> - implements <code>\Countable</code>, <code>\IteratorAggregate</code></li>
 </ul>
 </div>
 <p class="api-uses"><strong>Uses</strong> <code>ArrayIterator</code> · <code>Countable</code> · <code>IteratorAggregate</code> · <code>Phalcon\Assets\Traits\AttributesTrait</code> · <code>Phalcon\Assets\Traits\SourceTargetTrait</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
@@ -7739,7 +7745,7 @@ Optionally a base path where the asset is located can be set</p>
 <a class="api-item" href="#assetscollection-addcss">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$isLocal</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$isLocal</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Adds a CSS asset to the collection</span>
 </a>
 <a class="api-item" href="#assetscollection-addfilter">
@@ -7769,7 +7775,7 @@ Optionally a base path where the asset is located can be set</p>
 <a class="api-item" href="#assetscollection-addjs">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$isLocal</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$isLocal</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Adds a JavaScript asset to the collection</span>
 </a>
 <a class="api-item" href="#assetscollection-count">
@@ -7782,16 +7788,19 @@ Optionally a base path where the asset is located can be set</p>
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getAssets</span>()</code>
+<span class="desc">Return the stored assets</span>
 </a>
 <a class="api-item" href="#assetscollection-getcodes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getCodes</span>()</code>
+<span class="desc">Return the stored codes</span>
 </a>
 <a class="api-item" href="#assetscollection-getfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getFilters</span>()</code>
+<span class="desc">Return the stored filters</span>
 </a>
 <a class="api-item" href="#assetscollection-getiterator">
 <code class="vis vis-public">public</code>
@@ -7808,6 +7817,7 @@ Optionally a base path where the asset is located can be set</p>
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getPrefix</span>()</code>
+<span class="desc">Returns the prefix</span>
 </a>
 <a class="api-item" href="#assetscollection-getrealtargetpath">
 <code class="vis vis-public">public</code>
@@ -7819,11 +7829,13 @@ Optionally a base path where the asset is located can be set</p>
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getTargetIsLocal</span>()</code>
+<span class="desc">Returns whether the target is local or not</span>
 </a>
 <a class="api-item" href="#assetscollection-getversion">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getVersion</span>()</code>
+<span class="desc">Returns the version</span>
 </a>
 <a class="api-item" href="#assetscollection-has">
 <code class="vis vis-public">public</code>
@@ -7944,7 +7956,7 @@ Optionally a base path where the asset is located can be set</p>
 <a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="nx">mixed</span> <span class="nv">$isLocal</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="nx">string</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
@@ -7979,7 +7991,7 @@ Optionally a base path where the asset is located can be set</p>
 <a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="nx">mixed</span> <span class="nv">$isLocal</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="nx">string</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
@@ -7992,12 +8004,15 @@ Optionally a base path where the asset is located can be set</p>
 <h4 id="assetscollection-getassets"><code>getAssets()</code><a class="headerlink" href="#assetscollection-getassets" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAssets</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
+<p>Return the stored assets</p>
 <h4 id="assetscollection-getcodes"><code>getCodes()</code><a class="headerlink" href="#assetscollection-getcodes" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getCodes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
+<p>Return the stored codes</p>
 <h4 id="assetscollection-getfilters"><code>getFilters()</code><a class="headerlink" href="#assetscollection-getfilters" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilters</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
+<p>Return the stored filters</p>
 <h4 id="assetscollection-getiterator"><code>getIterator()</code><a class="headerlink" href="#assetscollection-getiterator" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getIterator</span><span class="p">()</span><span class="o">:</span> <span class="nx">\Traversable</span><span class="p">;</span>
 </code></pre></div>
@@ -8009,6 +8024,7 @@ Optionally a base path where the asset is located can be set</p>
 <h4 id="assetscollection-getprefix"><code>getPrefix()</code><a class="headerlink" href="#assetscollection-getprefix" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPrefix</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Returns the prefix</p>
 <h4 id="assetscollection-getrealtargetpath"><code>getRealTargetPath()</code><a class="headerlink" href="#assetscollection-getrealtargetpath" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealTargetPath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$basePath</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -8017,9 +8033,11 @@ be written</p>
 <h4 id="assetscollection-gettargetislocal"><code>getTargetIsLocal()</code><a class="headerlink" href="#assetscollection-gettargetislocal" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTargetIsLocal</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
+<p>Returns whether the target is local or not</p>
 <h4 id="assetscollection-getversion"><code>getVersion()</code><a class="headerlink" href="#assetscollection-getversion" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getVersion</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Returns the version</p>
 <h4 id="assetscollection-has"><code>has()</code><a class="headerlink" href="#assetscollection-has" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span> <span class="nx">AssetInterface</span> <span class="nv">$asset</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
@@ -8464,16 +8482,19 @@ the content unchanged.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getContent</span>()</code>
+<span class="desc">Gets if the asset content</span>
 </a>
 <a class="api-item" href="#assetsinline-getfilter">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getFilter</span>()</code>
+<span class="desc">Gets if the asset must be filtered or not.</span>
 </a>
 <a class="api-item" href="#assetsinline-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getType</span>()</code>
+<span class="desc">Gets the asset&#039;s type.</span>
 </a>
 <a class="api-item" href="#assetsinline-setattributes">
 <code class="vis vis-public">public</code>
@@ -8533,12 +8554,15 @@ the content unchanged.</p>
 <h4 id="assetsinline-getcontent"><code>getContent()</code><a class="headerlink" href="#assetsinline-getcontent" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getContent</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Gets if the asset content</p>
 <h4 id="assetsinline-getfilter"><code>getFilter()</code><a class="headerlink" href="#assetsinline-getfilter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilter</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
+<p>Gets if the asset must be filtered or not.</p>
 <h4 id="assetsinline-gettype"><code>getType()</code><a class="headerlink" href="#assetsinline-gettype" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Gets the asset's type.</p>
 <h4 id="assetsinline-setattributes"><code>setAttributes()</code><a class="headerlink" href="#assetsinline-setattributes" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAttributes</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$attributes</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
 </code></pre></div>
@@ -8623,7 +8647,7 @@ the content unchanged.</p>
 <p>Manages collections of CSS/JavaScript assets</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
 <li><strong><code>Phalcon\Assets\Manager</code></strong></li>
 </ul>
@@ -8655,7 +8679,7 @@ the content unchanged.</p>
 <a class="api-item" href="#assetsmanager-addcss">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Adds a CSS asset to the &#039;css&#039; collection</span>
 </a>
 <a class="api-item" href="#assetsmanager-addinlinecode">
@@ -8685,7 +8709,7 @@ the content unchanged.</p>
 <a class="api-item" href="#assetsmanager-addjs">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Adds a JavaScript asset to the &#039;js&#039; collection</span>
 </a>
 <a class="api-item" href="#assetsmanager-collection">
@@ -8751,7 +8775,7 @@ the content unchanged.</p>
 <a class="api-item" href="#assetsmanager-outputcss">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">outputCss</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">outputCss</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Prints the HTML for CSS assets</span>
 </a>
 <a class="api-item" href="#assetsmanager-outputinline">
@@ -8763,19 +8787,19 @@ the content unchanged.</p>
 <a class="api-item" href="#assetsmanager-outputinlinecss">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">outputInlineCss</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">outputInlineCss</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Prints the HTML for inline CSS</span>
 </a>
 <a class="api-item" href="#assetsmanager-outputinlinejs">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">outputInlineJs</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">outputInlineJs</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Prints the HTML for inline JS</span>
 </a>
 <a class="api-item" href="#assetsmanager-outputjs">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">outputJs</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">outputJs</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Prints the HTML for JS assets</span>
 </a>
 <a class="api-item" href="#assetsmanager-set">
@@ -8849,7 +8873,7 @@ the content unchanged.</p>
 <a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-73-5" name="__codelineno-73-5" href="#__codelineno-73-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-73-6" name="__codelineno-73-6" href="#__codelineno-73-6"></a>    <span class="nx">string</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-73-6" name="__codelineno-73-6" href="#__codelineno-73-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-73-7" name="__codelineno-73-7" href="#__codelineno-73-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-73-8" name="__codelineno-73-8" href="#__codelineno-73-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
@@ -8887,7 +8911,7 @@ the content unchanged.</p>
 <a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-78-6" name="__codelineno-78-6" href="#__codelineno-78-6"></a>    <span class="nx">string</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-78-6" name="__codelineno-78-6" href="#__codelineno-78-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-78-7" name="__codelineno-78-7" href="#__codelineno-78-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-78-8" name="__codelineno-78-8" href="#__codelineno-78-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
@@ -8954,7 +8978,7 @@ the content unchanged.</p>
 </code></pre></div>
 <p>Traverses a collection calling the callback to generate its HTML</p>
 <h4 id="assetsmanager-outputcss"><code>outputCss()</code><a class="headerlink" href="#assetsmanager-outputcss" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputCss</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputCss</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Prints the HTML for CSS assets</p>
 <h4 id="assetsmanager-outputinline"><code>outputInline()</code><a class="headerlink" href="#assetsmanager-outputinline" title="Permanent link">&para;</a></h4>
@@ -8965,15 +8989,15 @@ the content unchanged.</p>
 </code></pre></div>
 <p>Traverses a collection and generate its HTML</p>
 <h4 id="assetsmanager-outputinlinecss"><code>outputInlineCss()</code><a class="headerlink" href="#assetsmanager-outputinlinecss" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputInlineCss</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputInlineCss</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Prints the HTML for inline CSS</p>
 <h4 id="assetsmanager-outputinlinejs"><code>outputInlineJs()</code><a class="headerlink" href="#assetsmanager-outputinlinejs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputInlineJs</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputInlineJs</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Prints the HTML for inline JS</p>
 <h4 id="assetsmanager-outputjs"><code>outputJs()</code><a class="headerlink" href="#assetsmanager-outputjs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputJs</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputJs</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Prints the HTML for JS assets</p>
 <h4 id="assetsmanager-set"><code>set()</code><a class="headerlink" href="#assetsmanager-set" title="Permanent link">&para;</a></h4>

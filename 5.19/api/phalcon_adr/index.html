@@ -8925,12 +8925,12 @@ parameters need to be declared via <code>define()</code>.</p>
 <li><strong><code>Phalcon\ADR\Application</code></strong> - implements <a href="../phalcon_contracts/#contractsadrapplication"><code>Phalcon\Contracts\ADR\Application</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\ADR\Container\AdrProvider</code> · <code>Phalcon\ADR\Events\Event</code> · <code>Phalcon\ADR\Exceptions\RouteNotFound</code> · <code>Phalcon\Container\Container</code> · <code>Phalcon\Container\ContainerFactory</code> · <code>Phalcon\Contracts\ADR\Application</code> · <code>Phalcon\Contracts\ADR\Dispatcher</code> · <code>Phalcon\Contracts\ADR\Router\AttributeFilter</code> · <code>Phalcon\Contracts\ADR\Router\Router</code> · <code>Phalcon\Contracts\Events\Manager</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\Request\Bag\AttributeBag</code> · <code>Phalcon\Http\Response</code> · <code>Phalcon\Http\ResponseInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\ADR\Container\AdrProvider</code> · <code>Phalcon\ADR\Events\Event</code> · <code>Phalcon\ADR\Exceptions\RouteNotFound</code> · <code>Phalcon\Container\Container</code> · <code>Phalcon\Container\ContainerFactory</code> · <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Application</code> · <code>Phalcon\Contracts\ADR\Dispatcher</code> · <code>Phalcon\Contracts\ADR\Router\AttributeFilter</code> · <code>Phalcon\Contracts\ADR\Router\Router</code> · <code>Phalcon\Contracts\Events\Manager</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\Request\Bag\AttributeBag</code> · <code>Phalcon\Http\Response</code> · <code>Phalcon\Http\ResponseInterface</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrapplication-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Container</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">Container|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#adrapplication-bind">
 <code class="vis vis-public">public</code>
@@ -9014,12 +9014,12 @@ parameters need to be declared via <code>define()</code>.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Container</code>
 <code class="sig"><span class="sv">$container</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string[]&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$middlewareMap</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -9033,7 +9033,7 @@ parameters need to be declared via <code>define()</code>.</p>
 <div class="api-group">Public · 12</div>
 
 <h4 id="adrapplication-__construct"><code>__construct()</code><a class="headerlink" href="#adrapplication-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">Container</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">Container</span><span class="o">|</span><span class="k">null</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
 </code></pre></div>
 <h4 id="adrapplication-bind"><code>bind()</code><a class="headerlink" href="#adrapplication-bind" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">bind</span><span class="p">(</span>
@@ -9145,7 +9145,7 @@ adapter. Everything else is constructor-injected.</p>
 <li><strong><code>Phalcon\ADR\Dispatcher</code></strong> - implements <a href="../phalcon_contracts/#contractsadrdispatcher"><code>Phalcon\Contracts\ADR\Dispatcher</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Events\Event</code> · <code>Phalcon\ADR\Exceptions\NotAnAction</code> · <code>Phalcon\Contracts\ADR\Action</code> · <code>Phalcon\Contracts\ADR\Dispatcher</code> · <code>Phalcon\Contracts\Container\Ioc\IocContainer</code> · <code>Phalcon\Contracts\Events\Manager</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\ResponseInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Events\Event</code> · <code>Phalcon\ADR\Exceptions\NotAnAction</code> · <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Action</code> · <code>Phalcon\Contracts\ADR\Dispatcher</code> · <code>Phalcon\Contracts\ADR\Middleware</code> · <code>Phalcon\Contracts\Container\Ioc\IocContainer</code> · <code>Phalcon\Contracts\Events\Manager</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\ResponseInterface</code></p>
 <h3 id="method-summary_2">Method Summary<a class="headerlink" href="#method-summary_2" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrdispatcher-__construct">
@@ -9173,22 +9173,22 @@ adapter. Everything else is constructor-injected.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">IocContainer</code>
 <code class="sig"><span class="sv">$container</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Manager</code>
 <code class="sig"><span class="sv">$events</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$globalMiddleware</span></code>
+<code class="sig"><span class="sv">$globalMiddleware</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array|null</code>
+<code class="ret">list&lt;Middleware&gt;|null</code>
 <code class="sig"><span class="sv">$resolvedGlobal</span><span class="sm"> = null</span></code>
 </div>
 </div>
@@ -9258,7 +9258,7 @@ ancestor chain, so map ordering never matters.</p>
 <li><strong><code>Phalcon\ADR\ErrorResponder</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Exceptions\MethodNotAllowed</code> · <code>Phalcon\ADR\Exceptions\RouteNotFound</code> · <code>Phalcon\ADR\Payload\Payload</code> · <code>Phalcon\ADR\Payload\Status</code> · <code>Phalcon\Contracts\ADR\Payload\Payload</code> · <code>Phalcon\Contracts\ADR\Responder\Responder</code> · <code>Phalcon\Contracts\Logger\Logger</code> · <code>Phalcon\Http\RequestInterface</code> · <code>Phalcon\Http\ResponseInterface</code> · <code>Throwable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Exceptions\MethodNotAllowed</code> · <code>Phalcon\ADR\Exceptions\RouteNotFound</code> · <code>Phalcon\ADR\Payload\Payload</code> · <code>Phalcon\ADR\Payload\Status</code> · <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Payload\Payload</code> · <code>Phalcon\Contracts\ADR\Responder\Responder</code> · <code>Phalcon\Contracts\Logger\Logger</code> · <code>Phalcon\Http\RequestInterface</code> · <code>Phalcon\Http\ResponseInterface</code> · <code>Throwable</code></p>
 <h3 id="method-summary_4">Method Summary<a class="headerlink" href="#method-summary_4" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrerrorresponder-__construct">
@@ -9297,13 +9297,13 @@ ancestor chain, so map ordering never matters.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Responder</code>
 <code class="sig"><span class="sv">$chain</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$debug</span></code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$debug</span><span class="sm"> = false</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -9312,7 +9312,7 @@ ancestor chain, so map ordering never matters.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Logger</code>
 <code class="sig"><span class="sv">$logger</span></code>
 </div>
 </div>
@@ -9383,12 +9383,12 @@ Action's execution.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Action</code>
 <code class="sig"><span class="sv">$action</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Manager</code>
 <code class="sig"><span class="sv">$events</span></code>
 </div>
 </div>
@@ -9449,7 +9449,7 @@ Action's execution.</p>
 convention cannot resolve sub-namespaces without one.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\ActionDirectoryNotSet</code></strong></li>
 </ul>
@@ -9479,7 +9479,7 @@ convention cannot resolve sub-namespaces without one.</p>
 exception.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\Exception</code></strong> - implements <a href="../phalcon_contracts/#contractsadrexceptionsadrthrowable"><code>Phalcon\Contracts\ADR\Exceptions\ADRThrowable</code></a><ul>
 <li><a href="#adrexceptionsactiondirectorynotset"><code>Phalcon\ADR\Exceptions\ActionDirectoryNotSet</code></a></li>
 <li><a href="#adrexceptionsheadersalreadysent"><code>Phalcon\ADR\Exceptions\HeadersAlreadySent</code></a></li>
@@ -9501,7 +9501,7 @@ exception.</p>
 already been sent.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\HeadersAlreadySent</code></strong></li>
 </ul>
@@ -9530,7 +9530,7 @@ already been sent.</p>
 <p>Thrown when a route matches the path but not the request method.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\MethodNotAllowed</code></strong></li>
 </ul>
@@ -9559,7 +9559,7 @@ already been sent.</p>
 <p>Thrown when the dispatcher resolves a class that is not an ADR Action.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\NotAnAction</code></strong></li>
 </ul>
@@ -9589,7 +9589,7 @@ already been sent.</p>
 been sent.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\OutputAlreadySent</code></strong></li>
 </ul>
@@ -9618,7 +9618,7 @@ been sent.</p>
 <p>Thrown when no route matches the request.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#adrexceptionsexception"><code>Phalcon\ADR\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\ADR\Exceptions\RouteNotFound</code></strong></li>
 </ul>
@@ -9656,7 +9656,7 @@ response. Userland front controllers override <code>loadEnvironment()</code>,
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Application</code> · <code>Phalcon\ADR\Container\AdrProvider</code> · <code>Phalcon\Container\Container</code> · <code>Phalcon\Contracts\ADR\Application</code> · <code>Phalcon\Contracts\ADR\Emitter\Emitter</code> · <code>Phalcon\Contracts\Front\FrontController</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Application</code> · <code>Phalcon\ADR\Container\AdrProvider</code> · <code>Phalcon\Container\Container</code> · <code>Phalcon\Contracts\ADR\Application</code> · <code>Phalcon\Contracts\ADR\Emitter\Emitter</code> · <code>Phalcon\Contracts\Front\FrontController</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Throwable</code></p>
 <h3 id="method-summary_12">Method Summary<a class="headerlink" href="#method-summary_12" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrfrontabstracthttpfront-__construct">
@@ -9712,7 +9712,7 @@ response. Userland front controllers override <code>loadEnvironment()</code>,
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$projectRoot</span></code>
+<code class="sig"><span class="sv">$projectRoot</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 </div>
 
@@ -9779,7 +9779,7 @@ input value object: the factories use late static binding, so a subclass's
 <li><strong><code>Phalcon\ADR\Input\Input</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\Request\Bag\AttributeBag</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\Request\Bag\AttributeBag</code></p>
 <h3 id="method-summary_13">Method Summary<a class="headerlink" href="#method-summary_13" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrinputinput-__construct">
@@ -9858,7 +9858,7 @@ a wildcard origin. Preflight <code>OPTIONS</code> requests are answered directly
 <li><strong><code>Phalcon\ADR\Middleware\CorsMiddleware</code></strong> - implements <a href="../phalcon_contracts/#contractsadrmiddleware"><code>Phalcon\Contracts\ADR\Middleware</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\Handler</code> · <code>Phalcon\Contracts\ADR\Middleware</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\Response</code> · <code>Phalcon\Http\ResponseInterface</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Handler</code> · <code>Phalcon\Contracts\ADR\Middleware</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\Response</code> · <code>Phalcon\Http\ResponseInterface</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code></p>
 <h3 id="method-summary_14">Method Summary<a class="headerlink" href="#method-summary_14" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrmiddlewarecorsmiddleware-__construct">
@@ -9891,18 +9891,18 @@ a wildcard origin. Preflight <code>OPTIONS</code> requests are answered directly
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedHeaders</span></code>
+<code class="ret">list&lt;string&gt;</code>
+<code class="sig"><span class="sv">$allowedHeaders</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedMethods</span></code>
+<code class="ret">list&lt;string&gt;</code>
+<code class="sig"><span class="sv">$allowedMethods</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$allowedOrigins</span></code>
+<code class="ret">list&lt;string&gt;</code>
+<code class="sig"><span class="sv">$allowedOrigins</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -9948,7 +9948,7 @@ method.</p>
 <li><strong><code>Phalcon\ADR\Middleware\MethodOverrideMiddleware</code></strong> - implements <a href="../phalcon_contracts/#contractsadrmiddleware"><code>Phalcon\Contracts\ADR\Middleware</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\Handler</code> · <code>Phalcon\Contracts\ADR\Middleware</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\ResponseInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Handler</code> · <code>Phalcon\Contracts\ADR\Middleware</code> · <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Http\ResponseInterface</code></p>
 <h3 id="method-summary_15">Method Summary<a class="headerlink" href="#method-summary_15" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrmiddlewaremethodoverridemiddleware-__invoke">
@@ -9962,7 +9962,7 @@ method.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;int, string&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$allowed</span><span class="sm"> = [...]</span></code>
 </div>
 </div>
@@ -10747,13 +10747,13 @@ and hands a new Pipeline (advanced by one) forward as the <code>next</code> hand
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$index</span></code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$index</span><span class="sm"> = 0</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$middleware</span></code>
+<code class="sig"><span class="sv">$middleware</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -10843,7 +10843,7 @@ response threaded so far, and the payload, and returns the response.</p>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">Responder[]</code>
-<code class="sig"><span class="sv">$links</span></code>
+<code class="sig"><span class="sv">$links</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
@@ -10894,7 +10894,7 @@ formatter, so the content type and body are never left unset.</p>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$formatters</span></code>
+<code class="sig"><span class="sv">$formatters</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
@@ -11070,12 +11070,12 @@ RedirectResponder turns it into a <code>Location</code> header and status code.<
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$status</span></code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$status</span><span class="sm"> = 302</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sv">$url</span></code>
 </div>
 </div>
@@ -11147,7 +11147,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 <li><strong><code>Phalcon\ADR\Responder\StatusMapper</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Payload\Status</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Payload\Status</code> · <code>Phalcon\Contracts\ADR\ADRTypes</code></p>
 <h3 id="method-summary_29">Method Summary<a class="headerlink" href="#method-summary_29" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrresponderstatusmapper-__construct">
@@ -11166,7 +11166,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;int, int&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$map</span></code>
 </div>
 </div>
@@ -11196,7 +11196,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 <div class="api-list">
 <a class="api-item" href="#adrresponderstatusresponder-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">StatusMapper</span> <span class="sv">$mapper</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">StatusMapper|null</span> <span class="sv">$mapper</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#adrresponderstatusresponder-__invoke">
 <code class="vis vis-public">public</code>
@@ -11209,7 +11209,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">StatusMapper</code>
 <code class="sig"><span class="sv">$mapper</span></code>
 </div>
 </div>
@@ -11218,7 +11218,7 @@ silent 200. Every entry can be overridden through the constructor.</p>
 <div class="api-group">Public · 2</div>
 
 <h4 id="adrresponderstatusresponder-__construct"><code>__construct()</code><a class="headerlink" href="#adrresponderstatusresponder-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">StatusMapper</span> <span class="nv">$mapper</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">StatusMapper</span><span class="o">|</span><span class="k">null</span> <span class="nv">$mapper</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
 </code></pre></div>
 <h4 id="adrresponderstatusresponder-__invoke"><code>__invoke()</code><a class="headerlink" href="#adrresponderstatusresponder-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-128-1" name="__codelineno-128-1" href="#__codelineno-128-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
@@ -11270,7 +11270,7 @@ MVC view.</p>
 <li><strong><code>Phalcon\ADR\Responder\ViewResponder</code></strong> - implements <a href="../phalcon_contracts/#contractsadrresponderresponder"><code>Phalcon\Contracts\ADR\Responder\Responder</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\Payload\Payload</code> · <code>Phalcon\Contracts\ADR\Responder\Responder</code> · <code>Phalcon\Contracts\View\Renderer</code> · <code>Phalcon\Http\RequestInterface</code> · <code>Phalcon\Http\ResponseInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Payload\Payload</code> · <code>Phalcon\Contracts\ADR\Responder\Responder</code> · <code>Phalcon\Contracts\View\Renderer</code> · <code>Phalcon\Http\RequestInterface</code> · <code>Phalcon\Http\ResponseInterface</code></p>
 <h3 id="method-summary_32">Method Summary<a class="headerlink" href="#method-summary_32" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrresponderviewresponder-__construct">
@@ -11300,12 +11300,12 @@ MVC view.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">Renderer</code>
 <code class="sig"><span class="sv">$renderer</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">StatusMapper</code>
 <code class="sig"><span class="sv">$statusMapper</span></code>
 </div>
 <div class="api-item">
@@ -11359,7 +11359,7 @@ segments pass through under their positional keys. An Action without
 <li><strong><code>Phalcon\ADR\Router\AttributeFilter</code></strong> - implements <a href="../phalcon_contracts/#contractsadrrouterattributefilter"><code>Phalcon\Contracts\ADR\Router\AttributeFilter</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Exceptions\RouteNotFound</code> · <code>Phalcon\Contracts\ADR\Router\AttributeFilter</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Exceptions\RouteNotFound</code> · <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Router\AttributeFilter</code></p>
 <h3 id="method-summary_33">Method Summary<a class="headerlink" href="#method-summary_33" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrrouterattributefilter-filter">
@@ -11369,6 +11369,7 @@ segments pass through under their positional keys. An Action without
 </a>
 <a class="api-item" href="#adrrouterattributefilter-cast">
 <code class="vis vis-protected">protected</code>
+<code class="ret">float|int|string</code>
 <code class="sig"><span class="sf">cast</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
 </a>
 </div>
@@ -11388,7 +11389,7 @@ segments pass through under their positional keys. An Action without
 <div class="highlight"><pre><span></span><code><a id="__codelineno-135-1" name="__codelineno-135-1" href="#__codelineno-135-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">cast</span><span class="p">(</span>
 <a id="__codelineno-135-2" name="__codelineno-135-2" href="#__codelineno-135-2"></a>    <span class="nx">string</span> <span class="nv">$value</span><span class="p">,</span>
 <a id="__codelineno-135-3" name="__codelineno-135-3" href="#__codelineno-135-3"></a>    <span class="nx">string</span> <span class="nv">$type</span>
-<a id="__codelineno-135-4" name="__codelineno-135-4" href="#__codelineno-135-4"></a><span class="p">);</span>
+<a id="__codelineno-135-4" name="__codelineno-135-4" href="#__codelineno-135-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">float</span><span class="o">|</span><span class="nx">int</span><span class="o">|</span><span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="adrrouterrouter">ADR\Router\Router<a class="headerlink" href="#adrrouterrouter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
@@ -11443,7 +11444,7 @@ RFC 9110 both leave path structure entirely to the origin server.</p>
 <li><strong><code>Phalcon\ADR\Router\Router</code></strong> - implements <a href="../phalcon_contracts/#contractsadrrouterrouter"><code>Phalcon\Contracts\ADR\Router\Router</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Exceptions\ActionDirectoryNotSet</code> · <code>Phalcon\ADR\Exceptions\MethodNotAllowed</code> · <code>Phalcon\Contracts\ADR\Router\Router</code> · <code>Phalcon\Contracts\ADR\Router\RouterMatch</code> · <code>Phalcon\Http\RequestInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Exceptions\ActionDirectoryNotSet</code> · <code>Phalcon\ADR\Exceptions\MethodNotAllowed</code> · <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Router\Router</code> · <code>Phalcon\Contracts\ADR\Router\RouterMatch</code> · <code>Phalcon\Http\RequestInterface</code></p>
 <h3 id="method-summary_34">Method Summary<a class="headerlink" href="#method-summary_34" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrrouterrouter-candidatesfor">
@@ -11540,7 +11541,7 @@ RFC 9110 both leave path structure entirely to the origin server.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">verbs</span>()</code>
-<span class="desc">The HTTP verbs the convention recognises, in class-name form.</span>
+<span class="desc">The HTTP verbs the convention recognizes, in class-name form.</span>
 </a>
 </div>
 
@@ -11558,7 +11559,7 @@ RFC 9110 both leave path structure entirely to the origin server.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string[]&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$middlewareMap</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -11674,7 +11675,7 @@ convention would ever have produced.</p>
 <h4 id="adrrouterrouter-verbs"><code>verbs()</code><a class="headerlink" href="#adrrouterrouter-verbs" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">verbs</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
-<p>The HTTP verbs the convention recognises, in class-name form.</p>
+<p>The HTTP verbs the convention recognizes, in class-name form.</p>
 <h2 id="adrrouterroutermatch">ADR\Router\RouterMatch<a class="headerlink" href="#adrrouterroutermatch" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/ADR/Router/RouterMatch.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -11684,12 +11685,12 @@ convention would ever have produced.</p>
 <li><strong><code>Phalcon\ADR\Router\RouterMatch</code></strong> - implements <a href="../phalcon_contracts/#contractsadrrouterroutermatch"><code>Phalcon\Contracts\ADR\Router\RouterMatch</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\Router\RouterMatch</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Router\RouterMatch</code></p>
 <h3 id="method-summary_35">Method Summary<a class="headerlink" href="#method-summary_35" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrrouterroutermatch-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$action</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$middleware</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$action</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$middleware</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#adrrouterroutermatch-getaction">
 <code class="vis vis-public">public</code>
@@ -11718,22 +11719,22 @@ convention would ever have produced.</p>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$action</span></code>
+<code class="sig"><span class="sv">$action</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$attributes</span></code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$middleware</span></code>
+<code class="sig"><span class="sv">$middleware</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
-<code class="sig"><span class="sv">$name</span></code>
+<code class="sig"><span class="sv">$name</span><span class="sm"> = null</span></code>
 </div>
 </div>
 
@@ -11745,7 +11746,7 @@ convention would ever have produced.</p>
 <a id="__codelineno-154-2" name="__codelineno-154-2" href="#__codelineno-154-2"></a>    <span class="nx">string</span> <span class="nv">$action</span><span class="p">,</span>
 <a id="__codelineno-154-3" name="__codelineno-154-3" href="#__codelineno-154-3"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
 <a id="__codelineno-154-4" name="__codelineno-154-4" href="#__codelineno-154-4"></a>    <span class="k">array</span> <span class="nv">$middleware</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-154-5" name="__codelineno-154-5" href="#__codelineno-154-5"></a>    <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-154-5" name="__codelineno-154-5" href="#__codelineno-154-5"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-154-6" name="__codelineno-154-6" href="#__codelineno-154-6"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="adrrouterroutermatch-getaction"><code>getAction()</code><a class="headerlink" href="#adrrouterroutermatch-getaction" title="Permanent link">&para;</a></h4>

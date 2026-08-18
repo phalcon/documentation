@@ -9844,7 +9844,7 @@ Phalcon\Storage\AdapterFactory.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Redis\RedisConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Stream\StreamConnectionFactory</code> · <code>Phalcon\Queue\Exceptions\Exception</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Redis\RedisConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Stream\StreamConnectionFactory</code> · <code>Phalcon\Queue\Exceptions\Exception</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterfactory-__construct">
@@ -9862,6 +9862,7 @@ Phalcon\Storage\AdapterFactory.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 <a class="api-item" href="#queueadapterfactory-getservices">
 <code class="vis vis-protected">protected</code>
@@ -9890,6 +9891,7 @@ Phalcon\Storage\AdapterFactory.</p>
 <h4 id="queueadapterfactory-getexceptionclass"><code>getExceptionClass()</code><a class="headerlink" href="#queueadapterfactory-getexceptionclass" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Returns the exception class for the factory</p>
 <h4 id="queueadapterfactory-getservices"><code>getServices()</code><a class="headerlink" href="#queueadapterfactory-getservices" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getServices</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
@@ -9899,7 +9901,7 @@ Phalcon\Storage\AdapterFactory.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Queue/Adapter/AbstractConsumer.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Shared consumer base. Implements the blocking <code>receive()</code> as a polling loop
 on top of the abstract <code>receiveNoWait()</code>; concrete consumers provide the
-transport-specific <code>receiveNoWait</code>, <code>acknowledge</code> and <code>reject</code>.</p>
+transport-specific <code>receiveNoWait</code>, <code>acknowledge</code>, <code>reject</code> and <code>getQueue</code>.</p>
 <p>Transports with a native blocking receive (Redis BRPOP, Beanstalk reserve)
 override <code>receive()</code> instead of polling.</p>
 <div class="api-tree">
@@ -10194,7 +10196,7 @@ from the original Phalcon\Queue\Beanstalk transport.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnection</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Queue\Exceptions\Exception</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\QueueTypes</code> · <code>Phalcon\Queue\Exceptions\Exception</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
 <h3 id="method-summary_4">Method Summary<a class="headerlink" href="#method-summary_4" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnection-__construct">
@@ -10233,13 +10235,13 @@ from the original Phalcon\Queue\Beanstalk transport.</p>
 </a>
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnection-put">
 <code class="vis vis-public">public</code>
-<code class="ret">int|bool</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$priority</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$delay</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$ttr</span></span>)</code>
 <span class="desc">Puts a job on the queue using the currently used tube. Returns the new</span>
 </a>
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnection-read">
 <code class="vis vis-public">public</code>
-<code class="ret">bool|string</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sf">read</span>( <span class="st">int</span> <span class="sv">$length</span><span class="sm"> = 0</span> )</code>
 <span class="desc">Reads a packet from the socket. Verifies the connection is available</span>
 </a>
@@ -10263,7 +10265,7 @@ from the original Phalcon\Queue\Beanstalk transport.</p>
 </a>
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnection-statstube">
 <code class="vis vis-public">public</code>
-<code class="ret">array|bool</code>
+<code class="ret">array|false</code>
 <code class="sig"><span class="sf">statsTube</span>( <span class="st">string</span> <span class="sv">$tube</span> )</code>
 <span class="desc">Returns the Beanstalkd statistics for a tube as an associative array, or</span>
 </a>
@@ -10287,7 +10289,7 @@ from the original Phalcon\Queue\Beanstalk transport.</p>
 </a>
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnection-write">
 <code class="vis vis-public">public</code>
-<code class="ret">bool|int</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">write</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
 <span class="desc">Writes data to the socket, connecting first when needed.</span>
 </a>
@@ -10297,8 +10299,8 @@ from the original Phalcon\Queue\Beanstalk transport.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">resource</code>
-<code class="sig"><span class="sv">$connection</span></code>
+<code class="ret">resource|null</code>
+<code class="sig"><span class="sv">$connection</span><span class="sm"> = null</span></code>
 <span class="desc">Connection resource.</span>
 </div>
 <div class="api-item">
@@ -10324,7 +10326,7 @@ from the original Phalcon\Queue\Beanstalk transport.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, bool&gt;</code>
 <code class="sig"><span class="sv">$watchedTubes</span><span class="sm"> = []</span></code>
 <span class="desc">Tubes currently on the watch list, keyed by tube name. A fresh
 connection watches &quot;default&quot;.</span>
@@ -10370,12 +10372,12 @@ connection watches &quot;default&quot;.</span>
 <a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="nx">int</span> <span class="nv">$priority</span><span class="p">,</span>
 <a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="nx">int</span> <span class="nv">$delay</span><span class="p">,</span>
 <a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="nx">int</span> <span class="nv">$ttr</span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">int</span><span class="o">|</span><span class="nx">bool</span><span class="p">;</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="p">)</span><span class="o">:</span> <span class="k">false</span><span class="o">|</span><span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Puts a job on the queue using the currently used tube. Returns the new
 job id, or false when the server did not accept it.</p>
 <h4 id="queueadapterbeanstalkbeanstalkconnection-read"><code>read()</code><a class="headerlink" href="#queueadapterbeanstalkbeanstalkconnection-read" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">read</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$length</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="o">|</span><span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">read</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$length</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span><span class="o">:</span> <span class="k">false</span><span class="o">|</span><span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Reads a packet from the socket. Verifies the connection is available
 first.</p>
@@ -10398,7 +10400,7 @@ first.</p>
 job is available; otherwise it blocks up to timeout seconds. Returns
 [id, body] or null when none is reserved.</p>
 <h4 id="queueadapterbeanstalkbeanstalkconnection-statstube"><code>statsTube()</code><a class="headerlink" href="#queueadapterbeanstalkbeanstalkconnection-statstube" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">statsTube</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$tube</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">statsTube</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$tube</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="k">false</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the Beanstalkd statistics for a tube as an associative array, or
 false when the tube does not exist.</p>
@@ -10415,7 +10417,7 @@ false when the tube does not exist.</p>
 </code></pre></div>
 <p>Adds the named tube to the watch list for the connection.</p>
 <h4 id="queueadapterbeanstalkbeanstalkconnection-write"><code>write()</code><a class="headerlink" href="#queueadapterbeanstalkbeanstalkconnection-write" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">write</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$data</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="o">|</span><span class="nx">int</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">write</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$data</span> <span class="p">)</span><span class="o">:</span> <span class="k">false</span><span class="o">|</span><span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Writes data to the socket, connecting first when needed.</p>
 <h2 id="queueadapterbeanstalkbeanstalkconnectionfactory">Queue\Adapter\Beanstalk\BeanstalkConnectionFactory<a class="headerlink" href="#queueadapterbeanstalkbeanstalkconnectionfactory" title="Permanent link">&para;</a></h2>
@@ -10433,7 +10435,7 @@ false when the tube does not exist.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory</code></strong> - implements <a href="../phalcon_contracts/#contractsqueueconnectionfactory"><code>Phalcon\Contracts\Queue\ConnectionFactory</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <h3 id="method-summary_5">Method Summary<a class="headerlink" href="#method-summary_5" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnectionfactory-__construct">
@@ -10639,7 +10641,7 @@ AbstractContext.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">BeanstalkConnection | null</code>
+<code class="ret">BeanstalkConnection|null</code>
 <code class="sig"><span class="sv">$connection</span><span class="sm"> = null</span></code>
 <span class="desc">Shared connection used by producers and purges.</span>
 </div>
@@ -10657,7 +10659,6 @@ AbstractContext.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$pollInterval</span><span class="sm"> = 200</span></code>
-<span class="desc">Milliseconds slept between poll passes by a subscription consumer.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -10668,7 +10669,6 @@ AbstractContext.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$ttr</span><span class="sm"> = 86400</span></code>
-<span class="desc">Default time-to-run (seconds) applied to every put.</span>
 </div>
 </div>
 
@@ -10767,7 +10767,7 @@ MessageTrait.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string | null</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$jobId</span><span class="sm"> = null</span></code>
 <span class="desc">The reserved Beanstalkd job id, or null before it is reserved.</span>
 </div>
@@ -10849,13 +10849,13 @@ rejects it).</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int | null</code>
+<code class="ret">int|null</code>
 <code class="sig"><span class="sv">$deliveryDelay</span><span class="sm"> = null</span></code>
 <span class="desc">Delivery delay in milliseconds, or null when not set.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int | null</code>
+<code class="ret">int|null</code>
 <code class="sig"><span class="sv">$priority</span><span class="sm"> = null</span></code>
 <span class="desc">Job priority, or null when not set.</span>
 </div>
@@ -10904,6 +10904,7 @@ lives in SubscriptionConsumerTrait.</p>
 <a class="api-item" href="#queueadapterbeanstalkbeanstalksubscriptionconsumer-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">BeanstalkContext</span> <span class="sv">$context</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pollInterval</span><span class="sm"> = 200</span></span>)</code>
+<span class="desc">The context is retained for transports that may later need it for a</span>
 </a>
 </div>
 
@@ -10913,8 +10914,6 @@ lives in SubscriptionConsumerTrait.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">BeanstalkContext</code>
 <code class="sig"><span class="sv">$context</span></code>
-<span class="desc">Retained for transports that may later need it for a native multi-queue
-receive; the shared poll loop does not use it.</span>
 </div>
 </div>
 
@@ -10927,6 +10926,8 @@ receive; the shared poll loop does not use it.</span>
 <a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a>    <span class="nx">int</span> <span class="nv">$pollInterval</span> <span class="o">=</span> <span class="mi">200</span>
 <a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a><span class="p">);</span>
 </code></pre></div>
+<p>The context is retained for transports that may later need it for a
+native multi-queue receive; the shared poll loop does not use it.</p>
 <h2 id="queueadaptergenericqueue">Queue\Adapter\GenericQueue<a class="headerlink" href="#queueadaptergenericqueue" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Queue/Adapter/GenericQueue.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -11030,7 +11031,7 @@ specific subclass.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory</code></strong> - implements <a href="../phalcon_contracts/#contractsqueueconnectionfactory"><code>Phalcon\Contracts\Queue\ConnectionFactory</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <h3 id="method-summary_13">Method Summary<a class="headerlink" href="#method-summary_13" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadaptermemorymemoryconnectionfactory-__construct">
@@ -11212,7 +11213,7 @@ createTopic / createTemporaryQueue) come from AbstractContext.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, list&lt;MessageInterface&gt;&gt;</code>
 <code class="sig"><span class="sv">$queues</span><span class="sm"> = []</span></code>
 <span class="desc">Named queues: queue name =&gt; list of messages (FIFO).</span>
 </div>
@@ -11343,6 +11344,7 @@ lives in SubscriptionConsumerTrait.</p>
 <a class="api-item" href="#queueadaptermemorymemorysubscriptionconsumer-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">MemoryContext</span> <span class="sv">$context</span> )</code>
+<span class="desc">The context is retained for transports that may later need it for a</span>
 </a>
 </div>
 
@@ -11352,8 +11354,6 @@ lives in SubscriptionConsumerTrait.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">MemoryContext</code>
 <code class="sig"><span class="sv">$context</span></code>
-<span class="desc">Retained for transports that may later need it for a native multi-queue
-receive; the shared poll loop does not use it.</span>
 </div>
 </div>
 
@@ -11363,6 +11363,8 @@ receive; the shared poll loop does not use it.</span>
 <h4 id="queueadaptermemorymemorysubscriptionconsumer-__construct"><code>__construct()</code><a class="headerlink" href="#queueadaptermemorymemorysubscriptionconsumer-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">MemoryContext</span> <span class="nv">$context</span> <span class="p">);</span>
 </code></pre></div>
+<p>The context is retained for transports that may later need it for a
+native multi-queue receive; the shared poll loop does not use it.</p>
 <h2 id="queueadaptermessageenvelope">Queue\Adapter\MessageEnvelope<a class="headerlink" href="#queueadaptermessageenvelope" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Queue/Adapter/MessageEnvelope.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -11376,7 +11378,7 @@ adapter only supplies its own concrete message factory around <code>decode()</co
 <li><strong><code>Phalcon\Queue\Adapter\MessageEnvelope</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Message</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Message</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <h3 id="method-summary_18">Method Summary<a class="headerlink" href="#method-summary_18" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadaptermessageenvelope-decode">
@@ -11460,7 +11462,7 @@ connection handling instead of re-implementing it.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Redis\RedisConnectionFactory</code></strong> - implements <a href="../phalcon_contracts/#contractsqueueconnectionfactory"><code>Phalcon\Contracts\Queue\ConnectionFactory</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Queue\Exceptions\Exception</code> · <code>Phalcon\Storage\Adapter\Redis</code> · <code>Phalcon\Storage\Exception</code> · <code>Phalcon\Storage\SerializerFactory</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code> · <code>Phalcon\Queue\Exceptions\Exception</code> · <code>Phalcon\Storage\Adapter\Redis</code> · <code>Phalcon\Storage\Exception</code> · <code>Phalcon\Storage\SerializerFactory</code></p>
 <h3 id="method-summary_20">Method Summary<a class="headerlink" href="#method-summary_20" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterredisredisconnectionfactory-__construct">
@@ -11586,12 +11588,12 @@ destination factories come from AbstractContext.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Consumer</code> · <code>Phalcon\Contracts\Queue\Destination</code> · <code>Phalcon\Contracts\Queue\Message</code> · <code>Phalcon\Contracts\Queue\Producer</code> · <code>Phalcon\Contracts\Queue\Queue</code> · <code>Phalcon\Contracts\Queue\SubscriptionConsumer</code> · <code>Phalcon\Queue\Adapter\AbstractContext</code> · <code>Phalcon\Queue\Adapter\MessageEnvelope</code> · <code>Phalcon\Queue\Adapter\QueueDestinationGuard</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Consumer</code> · <code>Phalcon\Contracts\Queue\Destination</code> · <code>Phalcon\Contracts\Queue\Message</code> · <code>Phalcon\Contracts\Queue\Producer</code> · <code>Phalcon\Contracts\Queue\Queue</code> · <code>Phalcon\Contracts\Queue\SubscriptionConsumer</code> · <code>Phalcon\Queue\Adapter\AbstractContext</code> · <code>Phalcon\Queue\Adapter\MessageEnvelope</code> · <code>Phalcon\Queue\Adapter\QueueDestinationGuard</code> · <code>Redis</code></p>
 <h3 id="method-summary_22">Method Summary<a class="headerlink" href="#method-summary_22" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterredisrediscontext-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$redis</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;phalcon_queue:&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pollInterval</span><span class="sm"> = 200</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">RedisService</span> <span class="sv">$redis</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;phalcon_queue:&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pollInterval</span><span class="sm"> = 200</span></span>)</code>
 </a>
 <a class="api-item" href="#queueadapterredisrediscontext-blockingpop">
 <code class="vis vis-public">public</code>
@@ -11649,19 +11651,16 @@ destination factories come from AbstractContext.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$pollInterval</span><span class="sm"> = 200</span></code>
-<span class="desc">Milliseconds slept between poll passes by a subscription consumer.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;phalcon_queue:&quot;</span></code>
-<span class="desc">Key prefix applied to every queue (and its delayed companion set).</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">\Redis</code>
+<code class="ret">RedisService</code>
 <code class="sig"><span class="sv">$redis</span></code>
-<span class="desc">The connected ext-redis client.</span>
 </div>
 </div>
 
@@ -11670,7 +11669,7 @@ destination factories come from AbstractContext.</p>
 
 <h4 id="queueadapterredisrediscontext-__construct"><code>__construct()</code><a class="headerlink" href="#queueadapterredisrediscontext-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a>    <span class="nx">mixed</span> <span class="nv">$redis</span><span class="p">,</span>
+<a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a>    <span class="nx">RedisService</span> <span class="nv">$redis</span><span class="p">,</span>
 <a id="__codelineno-94-3" name="__codelineno-94-3" href="#__codelineno-94-3"></a>    <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;phalcon_queue:&quot;</span><span class="p">,</span>
 <a id="__codelineno-94-4" name="__codelineno-94-4" href="#__codelineno-94-4"></a>    <span class="nx">int</span> <span class="nv">$pollInterval</span> <span class="o">=</span> <span class="mi">200</span>
 <a id="__codelineno-94-5" name="__codelineno-94-5" href="#__codelineno-94-5"></a><span class="p">);</span>
@@ -11782,7 +11781,7 @@ AbstractProducer reject them).</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int | null</code>
+<code class="ret">int|null</code>
 <code class="sig"><span class="sv">$deliveryDelay</span><span class="sm"> = null</span></code>
 <span class="desc">Delivery delay in milliseconds, or null when not set.</span>
 </div>
@@ -11825,6 +11824,7 @@ in SubscriptionConsumerTrait.</p>
 <a class="api-item" href="#queueadapterredisredissubscriptionconsumer-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">RedisContext</span> <span class="sv">$context</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pollInterval</span><span class="sm"> = 200</span></span>)</code>
+<span class="desc">The context is retained for transports that may later need it for a</span>
 </a>
 </div>
 
@@ -11834,8 +11834,6 @@ in SubscriptionConsumerTrait.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">RedisContext</code>
 <code class="sig"><span class="sv">$context</span></code>
-<span class="desc">Retained for transports that may later need it for a native multi-queue
-receive; the shared poll loop does not use it.</span>
 </div>
 </div>
 
@@ -11848,19 +11846,22 @@ receive; the shared poll loop does not use it.</span>
 <a id="__codelineno-108-3" name="__codelineno-108-3" href="#__codelineno-108-3"></a>    <span class="nx">int</span> <span class="nv">$pollInterval</span> <span class="o">=</span> <span class="mi">200</span>
 <a id="__codelineno-108-4" name="__codelineno-108-4" href="#__codelineno-108-4"></a><span class="p">);</span>
 </code></pre></div>
+<p>The context is retained for transports that may later need it for a
+native multi-queue receive; the shared poll loop does not use it.</p>
 <h2 id="queueadapterstreamstreamconnectionfactory">Queue\Adapter\Stream\StreamConnectionFactory<a class="headerlink" href="#queueadapterstreamstreamconnectionfactory" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Queue/Adapter/Stream/StreamConnectionFactory.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Builds a StreamContext.</p>
 <p>Options:
-  - storageDir:   directory holding the queue files (default: system temp).
+  - storageDir:   directory holding the queue files (default: a private
+                  "phalcon_queue" subdirectory of the system temp dir).
   - pollInterval: milliseconds between consumer poll attempts (default 200).</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Queue\Adapter\Stream\StreamConnectionFactory</code></strong> - implements <a href="../phalcon_contracts/#contractsqueueconnectionfactory"><code>Phalcon\Contracts\Queue\ConnectionFactory</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <h3 id="method-summary_25">Method Summary<a class="headerlink" href="#method-summary_25" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterstreamstreamconnectionfactory-__construct">
@@ -12169,6 +12170,7 @@ lives in SubscriptionConsumerTrait.</p>
 <a class="api-item" href="#queueadapterstreamstreamsubscriptionconsumer-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">StreamContext</span> <span class="sv">$context</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pollInterval</span><span class="sm"> = 200</span></span>)</code>
+<span class="desc">The context is retained for transports that may later need it for a</span>
 </a>
 </div>
 
@@ -12178,8 +12180,6 @@ lives in SubscriptionConsumerTrait.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">StreamContext</code>
 <code class="sig"><span class="sv">$context</span></code>
-<span class="desc">Retained for transports that may later need it for a native multi-queue
-receive; the shared poll loop does not use it.</span>
 </div>
 </div>
 
@@ -12192,6 +12192,8 @@ receive; the shared poll loop does not use it.</span>
 <a id="__codelineno-126-3" name="__codelineno-126-3" href="#__codelineno-126-3"></a>    <span class="nx">int</span> <span class="nv">$pollInterval</span> <span class="o">=</span> <span class="mi">200</span>
 <a id="__codelineno-126-4" name="__codelineno-126-4" href="#__codelineno-126-4"></a><span class="p">);</span>
 </code></pre></div>
+<p>The context is retained for transports that may later need it for a
+native multi-queue receive; the shared poll loop does not use it.</p>
 <h2 id="queueadaptertraitsmessagetrait">Queue\Adapter\Traits\MessageTrait<a class="headerlink" href="#queueadaptertraitsmessagetrait" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--trait">Trait</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Queue/Adapter/Traits/MessageTrait.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -12205,6 +12207,7 @@ for binary compatibility with the wider interop ecosystem.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Traits\MessageTrait</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <p class="api-used-by"><strong>Used by</strong> <a href="#queueadapterabstractmessage"><code>Phalcon\Queue\Adapter\AbstractMessage</code></a></p>
 <h3 id="method-summary_30">Method Summary<a class="headerlink" href="#method-summary_30" title="Permanent link">&para;</a></h3>
 <div class="api-list">
@@ -12345,14 +12348,12 @@ for binary compatibility with the wider interop ecosystem.</p>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$headers</span><span class="sm"> = null</span></code>
-<span class="desc">@todo Use a default [] once Zephir supports array trait defaults</span>
+<code class="sig"><span class="sv">$headers</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$properties</span><span class="sm"> = null</span></code>
-<span class="desc">@todo Use a default [] once Zephir supports array trait defaults</span>
+<code class="sig"><span class="sv">$properties</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -12477,6 +12478,7 @@ keep just the constructor that captures their context and poll interval.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Traits\SubscriptionConsumerTrait</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <p class="api-used-by"><strong>Used by</strong> <a href="#queueadapterabstractsubscriptionconsumer"><code>Phalcon\Queue\Adapter\AbstractSubscriptionConsumer</code></a></p>
 <h3 id="method-summary_31">Method Summary<a class="headerlink" href="#method-summary_31" title="Permanent link">&para;</a></h3>
 <div class="api-list">
@@ -12517,10 +12519,8 @@ keep just the constructor that captures their context and poll interval.</p>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$subscriptions</span><span class="sm"> = null</span></code>
-<span class="desc">Subscriptions keyed by queue name: [consumer, callback].
-
-@todo Use a default [] once Zephir supports array trait defaults</span>
+<code class="sig"><span class="sv">$subscriptions</span><span class="sm"> = []</span></code>
+<span class="desc">Subscriptions keyed by queue name: [consumer, callback].</span>
 </div>
 </div>
 
@@ -12564,7 +12564,7 @@ Phalcon\Cli use Worker directly.</p>
 FactoryDefault.</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diinjectable"><code>Phalcon\Di\Injectable</code></a><ul>
 <li><a href="../phalcon_cli/#clitask"><code>Phalcon\Cli\Task</code></a><ul>
 <li><strong><code>Phalcon\Queue\Cli\ConsumerTask</code></strong></li>
@@ -12576,7 +12576,7 @@ FactoryDefault.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cli\Task</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Queue\Consumer\QueueConsumer</code> · <code>Phalcon\Queue\Consumer\Worker</code> · <code>Phalcon\Queue\Consumer\WorkerOptions</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cli\Dispatcher</code> · <code>Phalcon\Cli\Task</code> · <code>Phalcon\Config\Config</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Queue\Processor</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Queue\Consumer\QueueConsumer</code> · <code>Phalcon\Queue\Consumer\Worker</code> · <code>Phalcon\Queue\Consumer\WorkerOptions</code> · <code>Phalcon\Queue\QueueFactory</code></p>
 <h3 id="method-summary_32">Method Summary<a class="headerlink" href="#method-summary_32" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queuecliconsumertask-mainaction">
@@ -12722,7 +12722,7 @@ stop signal through <code>stop()</code> / <code>isStopRequested()</code>.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\Message</code> · <code>Phalcon\Contracts\Queue\Processor</code> · <code>Phalcon\Contracts\Queue\Queue</code> · <code>Phalcon\Events\AbstractEventsAware</code> · <code>Phalcon\Events\EventsAwareInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Consumer</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\Message</code> · <code>Phalcon\Contracts\Queue\Processor</code> · <code>Phalcon\Contracts\Queue\Queue</code> · <code>Phalcon\Events\AbstractEventsAware</code> · <code>Phalcon\Events\EventsAwareInterface</code> · <code>Throwable</code></p>
 <h3 id="method-summary_34">Method Summary<a class="headerlink" href="#method-summary_34" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueconsumerqueueconsumer-__construct">
@@ -12743,9 +12743,9 @@ stop signal through <code>stop()</code> / <code>isStopRequested()</code>.</p>
 </a>
 <a class="api-item" href="#queueconsumerqueueconsumer-consumeonce">
 <code class="vis vis-public">public</code>
-<code class="ret">bool</code>
+<code class="ret">int</code>
 <code class="sig"><span class="sf">consumeOnce</span>()</code>
-<span class="desc">Polls every bound queue once, processing up to one message from each.</span>
+<span class="desc">Polls every bound queue once, dispatching any messages found. Returns</span>
 </a>
 <a class="api-item" href="#queueconsumerqueueconsumer-end">
 <code class="vis vis-public">public</code>
@@ -12783,7 +12783,7 @@ stop signal through <code>stop()</code> / <code>isStopRequested()</code>.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, BoundProcessor&gt;</code>
 <code class="sig"><span class="sv">$bindings</span><span class="sm"> = []</span></code>
 <span class="desc">Bound processors keyed by queue name.</span>
 </div>
@@ -12824,11 +12824,11 @@ stop signal through <code>stop()</code> / <code>isStopRequested()</code>.</p>
 <p>Runs the consumption loop, blocking up to timeout milliseconds (0 =
 block until stopped). The simple loop; production setups use Worker.</p>
 <h4 id="queueconsumerqueueconsumer-consumeonce"><code>consumeOnce()</code><a class="headerlink" href="#queueconsumerqueueconsumer-consumeonce" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-160-1" name="__codelineno-160-1" href="#__codelineno-160-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">consumeOnce</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-160-1" name="__codelineno-160-1" href="#__codelineno-160-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">consumeOnce</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
-<p>Polls every bound queue once, processing up to one message from each.
-Returns true if any message was handled. Sleeps the poll interval when
-nothing was received so callers can loop tightly.</p>
+<p>Polls every bound queue once, dispatching any messages found. Returns
+the number of messages processed in this pass, so callers (the Worker)
+can apply a message-count limit across several bound queues.</p>
 <h4 id="queueconsumerqueueconsumer-end"><code>end()</code><a class="headerlink" href="#queueconsumerqueueconsumer-end" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-161-1" name="__codelineno-161-1" href="#__codelineno-161-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">end</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
@@ -12869,7 +12869,7 @@ guillotine), because the stop flag is only checked between iterations.</p>
 <div class="api-list">
 <a class="api-item" href="#queueconsumerworker-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">QueueConsumer</span> <span class="sv">$consumer</span>,</span><span class="prm"><span class="st">WorkerOptions</span> <span class="sv">$options</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">QueueConsumer</span> <span class="sv">$consumer</span>,</span><span class="prm"><span class="st">WorkerOptions|null</span> <span class="sv">$options</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#queueconsumerworker-handlesignal">
 <code class="vis vis-public">public</code>
@@ -12905,7 +12905,7 @@ guillotine), because the stop flag is only checked between iterations.</p>
 <h4 id="queueconsumerworker-__construct"><code>__construct()</code><a class="headerlink" href="#queueconsumerworker-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-166-2" name="__codelineno-166-2" href="#__codelineno-166-2"></a>    <span class="nx">QueueConsumer</span> <span class="nv">$consumer</span><span class="p">,</span>
-<a id="__codelineno-166-3" name="__codelineno-166-3" href="#__codelineno-166-3"></a>    <span class="nx">WorkerOptions</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-166-3" name="__codelineno-166-3" href="#__codelineno-166-3"></a>    <span class="nx">WorkerOptions</span><span class="o">|</span><span class="k">null</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-166-4" name="__codelineno-166-4" href="#__codelineno-166-4"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="queueconsumerworker-handlesignal"><code>handleSignal()</code><a class="headerlink" href="#queueconsumerworker-handlesignal" title="Permanent link">&para;</a></h4>
@@ -13013,7 +13013,7 @@ restart in lockstep.</span>
 <p>Thrown when the transport does not support a delivery delay.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#queueexceptionsexception"><code>Phalcon\Queue\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException</code></strong></li>
 </ul>
@@ -13043,7 +13043,7 @@ restart in lockstep.</span>
 queue exception.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><strong><code>Phalcon\Queue\Exceptions\Exception</code></strong> - implements <a href="#queueexceptionsqueuethrowable"><code>Phalcon\Queue\Exceptions\QueueThrowable</code></a><ul>
 <li><a href="#queueexceptionsdeliverydelaynotsupportedexception"><code>Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException</code></a></li>
 <li><a href="#queueexceptionsinvaliddestinationexception"><code>Phalcon\Queue\Exceptions\InvalidDestinationException</code></a></li>
@@ -13068,7 +13068,7 @@ Topic passed where a Queue is required. The action verb ("send to",
 "consume from") tailors the message to the failing operation.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#queueexceptionsexception"><code>Phalcon\Queue\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\Queue\Exceptions\InvalidDestinationException</code></strong></li>
 </ul>
@@ -13097,7 +13097,7 @@ Topic passed where a Queue is required. The action verb ("send to",
 <p>Thrown when a message is not valid for the operation.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#queueexceptionsexception"><code>Phalcon\Queue\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\Queue\Exceptions\InvalidMessageException</code></strong></li>
 </ul>
@@ -13126,7 +13126,7 @@ Topic passed where a Queue is required. The action verb ("send to",
 <p>Thrown when the transport does not support message priority.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#queueexceptionsexception"><code>Phalcon\Queue\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\Queue\Exceptions\PriorityNotSupportedException</code></strong></li>
 </ul>
@@ -13155,7 +13155,7 @@ Topic passed where a Queue is required. The action verb ("send to",
 <p>Thrown when the transport does not support purging a queue.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#queueexceptionsexception"><code>Phalcon\Queue\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\Queue\Exceptions\PurgeQueueNotSupportedException</code></strong></li>
 </ul>
@@ -13191,13 +13191,14 @@ implements it, so callers can catch all queue errors with a single type.</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Throwable</code></p>
 <h2 id="queueexceptionssubscriptionconsumernotsupportedexception">Queue\Exceptions\SubscriptionConsumerNotSupportedException<a class="headerlink" href="#queueexceptionssubscriptionconsumernotsupportedexception" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Queue/Exceptions/SubscriptionConsumerNotSupportedException.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Thrown when the transport does not support subscription consumers.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#queueexceptionsexception"><code>Phalcon\Queue\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\Queue\Exceptions\SubscriptionConsumerNotSupportedException</code></strong></li>
 </ul>
@@ -13226,7 +13227,7 @@ implements it, so callers can catch all queue errors with a single type.</p>
 <p>Thrown when the transport does not support temporary queues.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#queueexceptionsexception"><code>Phalcon\Queue\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\Queue\Exceptions\TemporaryQueueNotSupportedException</code></strong></li>
 </ul>
@@ -13255,7 +13256,7 @@ implements it, so callers can catch all queue errors with a single type.</p>
 <p>Thrown when the transport does not support a message time to live.</p>
 <div class="api-tree">
 <ul>
-<li><code>BaseException</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#queueexceptionsexception"><code>Phalcon\Queue\Exceptions\Exception</code></a><ul>
 <li><strong><code>Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException</code></strong></li>
 </ul>
@@ -13291,13 +13292,13 @@ Phalcon\Cache\CacheFactory.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Factory\AbstractConfigFactory</code> · <code>Phalcon\Queue\Exceptions\Exception</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code> · <code>Phalcon\Factory\AbstractConfigFactory</code> · <code>Phalcon\Queue\Exceptions\Exception</code></p>
 <h3 id="method-summary_45">Method Summary<a class="headerlink" href="#method-summary_45" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queuequeuefactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory</span> <span class="sv">$factory</span><span class="sm"> = null</span> )</code>
-<span class="desc">QueueFactory constructor. A default AdapterFactory is created when none</span>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory|null</span> <span class="sv">$factory</span><span class="sm"> = null</span> )</code>
+<span class="desc">A default AdapterFactory is created when none is supplied, so the</span>
 </a>
 <a class="api-item" href="#queuequeuefactory-load">
 <code class="vis vis-public">public</code>
@@ -13315,6 +13316,7 @@ Phalcon\Cache\CacheFactory.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 </div>
 
@@ -13331,10 +13333,10 @@ Phalcon\Cache\CacheFactory.</p>
 <div class="api-group">Public · 3</div>
 
 <h4 id="queuequeuefactory-__construct"><code>__construct()</code><a class="headerlink" href="#queuequeuefactory-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-182-1" name="__codelineno-182-1" href="#__codelineno-182-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">AdapterFactory</span> <span class="nv">$factory</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-182-1" name="__codelineno-182-1" href="#__codelineno-182-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">AdapterFactory</span><span class="o">|</span><span class="k">null</span> <span class="nv">$factory</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
 </code></pre></div>
-<p>QueueFactory constructor. A default AdapterFactory is created when none
-is supplied, so the factory is usable straight from the DI container.</p>
+<p>A default AdapterFactory is created when none is supplied, so the
+factory is usable straight from the DI container.</p>
 <h4 id="queuequeuefactory-load"><code>load()</code><a class="headerlink" href="#queuequeuefactory-load" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-183-1" name="__codelineno-183-1" href="#__codelineno-183-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ContextInterface</span><span class="p">;</span>
 </code></pre></div>
@@ -13351,6 +13353,7 @@ is supplied, so the factory is usable straight from the DI container.</p>
 <h4 id="queuequeuefactory-getexceptionclass"><code>getExceptionClass()</code><a class="headerlink" href="#queuequeuefactory-getexceptionclass" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-185-1" name="__codelineno-185-1" href="#__codelineno-185-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Returns the exception class for the factory</p>
 
   
 

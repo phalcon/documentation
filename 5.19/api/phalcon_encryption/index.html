@@ -10174,31 +10174,31 @@ offering lower resource consumption and high performance.
 <div class="api-list">
 <a class="api-item" href="#encryptioncrypt-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$cipher</span><span class="sm"> = self::DEFAULT_CIPHER</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useSigning</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">PadFactory</span> <span class="sv">$padFactory</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$cipher</span><span class="sm"> = self::DEFAULT_CIPHER</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useSigning</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">PadFactory|null</span> <span class="sv">$padFactory</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Crypt constructor.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-decrypt">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">decrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">decrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Decrypts an encrypted text.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-decryptbase64">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">decryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$safe</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">decryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$safe</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Decrypt a text that is coded as a base64 string.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-encrypt">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">encrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">encrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Encrypts a text.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-encryptbase64">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">encryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$safe</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">encryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$safe</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Encrypts a text returning the result as a base64 string.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-getauthdata">
@@ -10466,14 +10466,14 @@ call to a single hash lookup after warm-up.</span>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="nx">string</span> <span class="nv">$cipher</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">DEFAULT_CIPHER</span><span class="p">,</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nx">bool</span> <span class="nv">$useSigning</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="nx">PadFactory</span> <span class="nv">$padFactory</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="nx">PadFactory</span><span class="o">|</span><span class="k">null</span> <span class="nv">$padFactory</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">);</span>
 </code></pre></div>
 <p>Crypt constructor.</p>
 <h4 id="encryptioncrypt-decrypt"><code>decrypt()</code><a class="headerlink" href="#encryptioncrypt-decrypt" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">decrypt</span><span class="p">(</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nx">string</span> <span class="nv">$input</span><span class="p">,</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nx">string</span> <span class="nv">$key</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$key</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Decrypts an encrypted text.</p>
@@ -10485,7 +10485,7 @@ call to a single hash lookup after warm-up.</span>
 <h4 id="encryptioncrypt-decryptbase64"><code>decryptBase64()</code><a class="headerlink" href="#encryptioncrypt-decryptbase64" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">decryptBase64</span><span class="p">(</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="nx">string</span> <span class="nv">$input</span><span class="p">,</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nx">string</span> <span class="nv">$key</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$key</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nx">bool</span> <span class="nv">$safe</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -10493,7 +10493,7 @@ call to a single hash lookup after warm-up.</span>
 <h4 id="encryptioncrypt-encrypt"><code>encrypt()</code><a class="headerlink" href="#encryptioncrypt-encrypt" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">encrypt</span><span class="p">(</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="nx">string</span> <span class="nv">$input</span><span class="p">,</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nx">string</span> <span class="nv">$key</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$key</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Encrypts a text.</p>
@@ -10505,7 +10505,7 @@ call to a single hash lookup after warm-up.</span>
 <h4 id="encryptioncrypt-encryptbase64"><code>encryptBase64()</code><a class="headerlink" href="#encryptioncrypt-encryptbase64" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">encryptBase64</span><span class="p">(</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nx">string</span> <span class="nv">$input</span><span class="p">,</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="nx">string</span> <span class="nv">$key</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$key</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="nx">bool</span> <span class="nv">$safe</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -11397,7 +11397,7 @@ applications</p>
 </code></pre></div>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
 <li><strong><code>Phalcon\Encryption\Security</code></strong> - implements <a href="../phalcon_contracts/#contractsencryptionsecuritysecurity"><code>Phalcon\Contracts\Encryption\Security\Security</code></a></li>
 </ul>
@@ -11411,7 +11411,7 @@ applications</p>
 <div class="api-list">
 <a class="api-item" href="#encryptionsecurity-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SessionInterface</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SessionInterface|null</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">RequestInterface|null</span> <span class="sv">$request</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Security constructor.</span>
 </a>
 <a class="api-item" href="#encryptionsecurity-checkhash">
@@ -11423,7 +11423,7 @@ applications</p>
 <a class="api-item" href="#encryptionsecurity-checktoken">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">checkToken</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tokenKey</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$tokenValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$destroyIfValid</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">checkToken</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$tokenKey</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$tokenValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$destroyIfValid</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Check if the CSRF token sent in the request is the same that the current</span>
 </a>
 <a class="api-item" href="#encryptionsecurity-computehmac">
@@ -11660,8 +11660,8 @@ applications</p>
 
 <h4 id="encryptionsecurity-__construct"><code>__construct()</code><a class="headerlink" href="#encryptionsecurity-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>    <span class="nx">SessionInterface</span> <span class="nv">$session</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>    <span class="nx">RequestInterface</span> <span class="nv">$request</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>    <span class="nx">SessionInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$session</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>    <span class="nx">RequestInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$request</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>Security constructor.</p>
@@ -11676,7 +11676,7 @@ applications</p>
 password matches</p>
 <h4 id="encryptionsecurity-checktoken"><code>checkToken()</code><a class="headerlink" href="#encryptionsecurity-checktoken" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">checkToken</span><span class="p">(</span>
-<a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>    <span class="nx">string</span> <span class="nv">$tokenKey</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$tokenKey</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>    <span class="nx">mixed</span> <span class="nv">$tokenValue</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>    <span class="nx">bool</span> <span class="nv">$destroyIfValid</span> <span class="o">=</span> <span class="k">true</span>
 <a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
@@ -12167,7 +12167,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/EmptyPassphrase.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>Exception</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#encryptionsecurityjwtexceptionsvalidatorexception"><code>Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException</code></a><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase</code></strong></li>
 </ul>
@@ -12195,7 +12195,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidAudience.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>Exception</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#encryptionsecurityjwtexceptionsvalidatorexception"><code>Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException</code></a><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience</code></strong></li>
 </ul>
@@ -12223,7 +12223,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidAudienceType.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>Exception</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#encryptionsecurityjwtexceptionsvalidatorexception"><code>Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException</code></a><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType</code></strong></li>
 </ul>
@@ -12251,7 +12251,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidClaims.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>InvalidArgumentException</code><ul>
+<li><code>\InvalidArgumentException</code><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims</code></strong></li>
 </ul>
 </li>
@@ -12277,7 +12277,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidExpirationTime.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>Exception</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#encryptionsecurityjwtexceptionsvalidatorexception"><code>Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException</code></a><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime</code></strong></li>
 </ul>
@@ -12305,7 +12305,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidHeader.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>InvalidArgumentException</code><ul>
+<li><code>\InvalidArgumentException</code><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader</code></strong></li>
 </ul>
 </li>
@@ -12331,7 +12331,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidNotBefore.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>Exception</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#encryptionsecurityjwtexceptionsvalidatorexception"><code>Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException</code></a><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore</code></strong></li>
 </ul>
@@ -12359,7 +12359,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/MalformedJwtString.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>InvalidArgumentException</code><ul>
+<li><code>\InvalidArgumentException</code><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString</code></strong></li>
 </ul>
 </li>
@@ -12385,7 +12385,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/MissingJwtTypHeader.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>InvalidArgumentException</code><ul>
+<li><code>\InvalidArgumentException</code><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader</code></strong></li>
 </ul>
 </li>
@@ -12412,7 +12412,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <p>Exception thrown when the algorithm is not supported for JWT</p>
 <div class="api-tree">
 <ul>
-<li><code>Exception</code><ul>
+<li><code>\Exception</code><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException</code></strong><ul>
 <li><a href="#encryptionsecurityjwtexceptionsunsupportedhmacalgorithm"><code>Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm</code></a></li>
 </ul>
@@ -12427,7 +12427,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/UnsupportedHmacAlgorithm.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>Exception</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#encryptionsecurityjwtexceptionsunsupportedalgorithmexception"><code>Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException</code></a><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm</code></strong></li>
 </ul>
@@ -12456,7 +12456,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <p>Exception thrown when the validation does not pass for JWT</p>
 <div class="api-tree">
 <ul>
-<li><code>Exception</code><ul>
+<li><code>\Exception</code><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException</code></strong><ul>
 <li><a href="#encryptionsecurityjwtexceptionsemptypassphrase"><code>Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase</code></a></li>
 <li><a href="#encryptionsecurityjwtexceptionsinvalidaudience"><code>Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience</code></a></li>
@@ -12476,7 +12476,7 @@ value.  Use of this claim is OPTIONAL.</p>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/WeakPassphrase.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><code>Exception</code><ul>
+<li><code>\Exception</code><ul>
 <li><a href="#encryptionsecurityjwtexceptionsvalidatorexception"><code>Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException</code></a><ul>
 <li><strong><code>Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase</code></strong></li>
 </ul>
@@ -12845,7 +12845,7 @@ signature. It returns a token object populated with the decoded information.</p>
 <div class="api-list">
 <a class="api-item" href="#encryptionsecurityjwttokenparser-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Decode</span> <span class="sv">$decode</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">Decode|null</span> <span class="sv">$decode</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#encryptionsecurityjwttokenparser-parse">
 <code class="vis vis-public">public</code>
@@ -12859,7 +12859,7 @@ signature. It returns a token object populated with the decoded information.</p>
 <div class="api-group">Public · 2</div>
 
 <h4 id="encryptionsecurityjwttokenparser-__construct"><code>__construct()</code><a class="headerlink" href="#encryptionsecurityjwttokenparser-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-140-1" name="__codelineno-140-1" href="#__codelineno-140-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">Decode</span> <span class="nv">$decode</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-140-1" name="__codelineno-140-1" href="#__codelineno-140-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">Decode</span><span class="o">|</span><span class="k">null</span> <span class="nv">$decode</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
 </code></pre></div>
 <h4 id="encryptionsecurityjwttokenparser-parse"><code>parse()</code><a class="headerlink" href="#encryptionsecurityjwttokenparser-parse" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-141-1" name="__codelineno-141-1" href="#__codelineno-141-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">parse</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$token</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Token</span><span class="p">;</span>
@@ -13029,7 +13029,7 @@ as null expresses no expectation and is skipped.</p>
 <div class="api-list">
 <a class="api-item" href="#encryptionsecurityjwtvalidator-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Token</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$timeShift</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">ClockInterface</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Token</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$timeShift</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">ClockInterface|null</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Validator constructor.</span>
 </a>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-get">
@@ -13077,7 +13077,7 @@ as null expresses no expectation and is skipped.</p>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validateid">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">validateId</span>( <span class="st">string</span> <span class="sv">$id</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">validateId</span>( <span class="st">string|null</span> <span class="sv">$id</span><span class="sm"> = null</span> )</code>
 <span class="desc">Validate the id of the token</span>
 </a>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validateissuedat">
@@ -13089,7 +13089,7 @@ as null expresses no expectation and is skipped.</p>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validateissuer">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">validateIssuer</span>( <span class="st">string</span> <span class="sv">$issuer</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">validateIssuer</span>( <span class="st">string|null</span> <span class="sv">$issuer</span><span class="sm"> = null</span> )</code>
 <span class="desc">Validate the issuer of the token</span>
 </a>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validatenotbefore">
@@ -13107,7 +13107,7 @@ as null expresses no expectation and is skipped.</p>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validatesubject">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">validateSubject</span>( <span class="st">string</span> <span class="sv">$subject</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">validateSubject</span>( <span class="st">string|null</span> <span class="sv">$subject</span><span class="sm"> = null</span> )</code>
 <span class="desc">Validate the subject of the token</span>
 </a>
 </div>
@@ -13119,7 +13119,7 @@ as null expresses no expectation and is skipped.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-152-1" name="__codelineno-152-1" href="#__codelineno-152-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-152-2" name="__codelineno-152-2" href="#__codelineno-152-2"></a>    <span class="nx">Token</span> <span class="nv">$token</span><span class="p">,</span>
 <a id="__codelineno-152-3" name="__codelineno-152-3" href="#__codelineno-152-3"></a>    <span class="nx">int</span> <span class="nv">$timeShift</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-152-4" name="__codelineno-152-4" href="#__codelineno-152-4"></a>    <span class="nx">ClockInterface</span> <span class="nv">$clock</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-152-4" name="__codelineno-152-4" href="#__codelineno-152-4"></a>    <span class="nx">ClockInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$clock</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-152-5" name="__codelineno-152-5" href="#__codelineno-152-5"></a><span class="p">);</span>
 </code></pre></div>
 <p>Validator constructor.</p>
@@ -13158,7 +13158,7 @@ as null expresses no expectation and is skipped.</p>
 </code></pre></div>
 <p>Validate the expiration time of the token</p>
 <h4 id="encryptionsecurityjwtvalidator-validateid"><code>validateId()</code><a class="headerlink" href="#encryptionsecurityjwtvalidator-validateid" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-160-1" name="__codelineno-160-1" href="#__codelineno-160-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateId</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-160-1" name="__codelineno-160-1" href="#__codelineno-160-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateId</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Validate the id of the token</p>
 <p>A null id expresses no expectation and is skipped.</p>
@@ -13169,7 +13169,7 @@ as null expresses no expectation and is skipped.</p>
 <p>A token issued at exactly $timestamp is valid. Only a token issued after
 it, i.e. in the future, is rejected.</p>
 <h4 id="encryptionsecurityjwtvalidator-validateissuer"><code>validateIssuer()</code><a class="headerlink" href="#encryptionsecurityjwtvalidator-validateissuer" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateIssuer</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$issuer</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateIssuer</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$issuer</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Validate the issuer of the token</p>
 <p>A null issuer expresses no expectation and is skipped.</p>
@@ -13187,7 +13187,7 @@ it, i.e. in the future, is rejected.</p>
 </code></pre></div>
 <p>Validate the signature of the token</p>
 <h4 id="encryptionsecurityjwtvalidator-validatesubject"><code>validateSubject()</code><a class="headerlink" href="#encryptionsecurityjwtvalidator-validatesubject" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-165-1" name="__codelineno-165-1" href="#__codelineno-165-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateSubject</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$subject</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-165-1" name="__codelineno-165-1" href="#__codelineno-165-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateSubject</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$subject</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Validate the subject of the token</p>
 <p>A null subject expresses no expectation and is skipped.</p>
@@ -13767,7 +13767,7 @@ as fallback.</p>
 <div class="api-list">
 <a class="api-item" href="#encryptionsecurityuuidversion1-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">\DateTimeInterface</span> <span class="sv">$dateTime</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$node</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">\DateTimeInterface|null</span> <span class="sv">$dateTime</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$node</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#encryptionsecurityuuidversion1-getdatetime">
 <code class="vis vis-public">public</code>
@@ -13788,7 +13788,7 @@ as fallback.</p>
 
 <h4 id="encryptionsecurityuuidversion1-__construct"><code>__construct()</code><a class="headerlink" href="#encryptionsecurityuuidversion1-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-198-1" name="__codelineno-198-1" href="#__codelineno-198-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-198-2" name="__codelineno-198-2" href="#__codelineno-198-2"></a>    <span class="nx">\DateTimeInterface</span> <span class="nv">$dateTime</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-198-2" name="__codelineno-198-2" href="#__codelineno-198-2"></a>    <span class="nx">\DateTimeInterface</span><span class="o">|</span><span class="k">null</span> <span class="nv">$dateTime</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-198-3" name="__codelineno-198-3" href="#__codelineno-198-3"></a>    <span class="nx">mixed</span> <span class="nv">$node</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-198-4" name="__codelineno-198-4" href="#__codelineno-198-4"></a><span class="p">);</span>
 </code></pre></div>

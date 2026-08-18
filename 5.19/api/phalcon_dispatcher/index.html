@@ -5353,17 +5353,6 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
-  <a href="#dispatcherabstractdispatcher-geteventsmanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <code>getEventsManager()</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#dispatcherabstractdispatcher-gethandlerclass" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -5577,17 +5566,6 @@ offering lower resource consumption and high performance.
     <span class="md-ellipsis">
       <span class="md-typeset">
         <code>setDefaultNamespace()</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dispatcherabstractdispatcher-seteventsmanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <code>setEventsManager()</code>
       </span>
     </span>
   </a>
@@ -5898,7 +5876,7 @@ This class can't be instantiated directly, you can use it to create your own
 dispatchers.</p>
 <h2 id="error-protocol">Error protocol<a class="headerlink" href="#error-protocol" title="Permanent link">&para;</a></h2>
 <p>Subclasses (including third-party ones) MUST implement the two abstract
-error hooks {@see throwDispatchException()} and {@see handleException()}.
+error hooks throwDispatchException() and handleException().
 The dispatch loop calls them on every error/exception path; a subclass that
 omits them cannot be loaded.</p>
 <h2 id="hook-channels">Hook channels<a class="headerlink" href="#hook-channels" title="Permanent link">&para;</a></h2>
@@ -5907,20 +5885,21 @@ channels. For any given point they run in this order:</p>
 <ol>
 <li><strong>Events-manager listener</strong> - e.g. <code>dispatch:beforeExecuteRoute</code>. A
    listener returning <code>false</code> cancels; calling <code>forward()</code> re-enters the
-   loop; throwing routes through {@see handleException()}.</li>
+   loop; throwing routes through handleException().</li>
 <li><strong>Duck-typed handler method</strong> - e.g. a <code>beforeExecuteRoute()</code> method on
    the controller/task itself (presence is cached per class). Same
    <code>false</code> / <code>forward()</code> cancellation semantics as the event.</li>
 <li><strong><code>dispatch:beforeCallAction</code> observer</strong> - fired by
-   {@see callActionMethod()} with a <code>Phalcon\Support\Collection</code> carrying
+   callActionMethod() with a <code>Phalcon\Support\Collection</code> carrying
    the mutable keys <code>handler</code>, <code>action</code> and <code>params</code>. Listeners may rewrite
    those keys to change <em>what</em> gets invoked; the substituted callable is
    re-validated before the call. <code>dispatch:afterCallAction</code> receives the
    same Collection plus a <code>result</code> key.</li>
 </ol>
+<p>@todo fix the returnValue type in v7</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
 <li><strong><code>Phalcon\Dispatcher\AbstractDispatcher</code></strong> - implements <a href="#dispatcherdispatcherinterface"><code>Phalcon\Dispatcher\DispatcherInterface</code></a>, <a href="../phalcon_events/#eventseventsawareinterface"><code>Phalcon\Events\EventsAwareInterface</code></a><ul>
 <li><a href="../phalcon_cli/#clidispatcher"><code>Phalcon\Cli\Dispatcher</code></a></li>
@@ -5933,7 +5912,7 @@ channels. For any given point they run in this order:</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Dispatcher\Exception</code> · <code>Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden</code> · <code>Phalcon\Events\EventsAwareInterface</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Phalcon\Filter\FilterInterface</code> · <code>Phalcon\Mvc\Model\Binder</code> · <code>Phalcon\Mvc\Model\BinderInterface</code> · <code>Phalcon\Support\Collection</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Contracts\Dispatcher\DispatcherTypes</code> · <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Dispatcher\Exception</code> · <code>Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden</code> · <code>Phalcon\Events\EventsAwareInterface</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Phalcon\Events\Traits\EventsAwareTrait</code> · <code>Phalcon\Filter\FilterInterface</code> · <code>Phalcon\Mvc\Model\Binder</code> · <code>Phalcon\Mvc\Model\BinderInterface</code> · <code>Phalcon\Support\Collection</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#dispatcherabstractdispatcher-callactionmethod">
@@ -5981,12 +5960,6 @@ channels. For any given point they run in this order:</p>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getDefaultNamespace</span>()</code>
 <span class="desc">Returns the default namespace</span>
-</a>
-<a class="api-item" href="#dispatcherabstractdispatcher-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-gethandlerclass">
 <code class="vis vis-public">public</code>
@@ -6108,12 +6081,6 @@ channels. For any given point they run in this order:</p>
 <code class="sig"><span class="sf">setDefaultNamespace</span>( <span class="st">string</span> <span class="sv">$defaultNamespace</span> )</code>
 <span class="desc">Sets the default namespace</span>
 </a>
-<a class="api-item" href="#dispatcherabstractdispatcher-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
 <a class="api-item" href="#dispatcherabstractdispatcher-sethandlersuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
@@ -6129,7 +6096,7 @@ channels. For any given point they run in this order:</p>
 <a class="api-item" href="#dispatcherabstractdispatcher-setmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string|null</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the module where the controller is (only informative)</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setnamespacename">
@@ -6241,11 +6208,6 @@ channels. For any given point they run in this order:</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$finished</span><span class="sm"> = false</span></code>
 </div>
@@ -6281,7 +6243,7 @@ channels. For any given point they run in this order:</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$lastHandler</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -6332,7 +6294,7 @@ channels. For any given point they run in this order:</p>
 </div>
 
 <h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
-<div class="api-group">Public · 40</div>
+<div class="api-group">Public · 38</div>
 
 <h4 id="dispatcherabstractdispatcher-callactionmethod"><code>callActionMethod()</code><a class="headerlink" href="#dispatcherabstractdispatcher-callactionmethod" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">callActionMethod</span><span class="p">(</span>
@@ -6386,36 +6348,32 @@ controller action(s) including any routing data or injected parameters.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaultNamespace</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the default namespace</p>
-<h4 id="dispatcherabstractdispatcher-geteventsmanager"><code>getEventsManager()</code><a class="headerlink" href="#dispatcherabstractdispatcher-geteventsmanager" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getEventsManager</span><span class="p">()</span><span class="o">:</span> <span class="nx">ManagerInterface</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
-</code></pre></div>
-<p>Returns the internal event manager</p>
 <h4 id="dispatcherabstractdispatcher-gethandlerclass"><code>getHandlerClass()</code><a class="headerlink" href="#dispatcherabstractdispatcher-gethandlerclass" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getHandlerClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getHandlerClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Possible class name that will be located to dispatch the request</p>
 <h4 id="dispatcherabstractdispatcher-gethandlersuffix"><code>getHandlerSuffix()</code><a class="headerlink" href="#dispatcherabstractdispatcher-gethandlersuffix" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getHandlerSuffix</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getHandlerSuffix</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets the default handler suffix</p>
 <h4 id="dispatcherabstractdispatcher-getmodelbinder"><code>getModelBinder()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getmodelbinder" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getModelBinder</span><span class="p">()</span><span class="o">:</span> <span class="nx">BinderInterface</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getModelBinder</span><span class="p">()</span><span class="o">:</span> <span class="nx">BinderInterface</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets model binder</p>
 <h4 id="dispatcherabstractdispatcher-getmodulename"><code>getModuleName()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getmodulename" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getModuleName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getModuleName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets the module where the controller class is</p>
 <h4 id="dispatcherabstractdispatcher-getnamespacename"><code>getNamespaceName()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getnamespacename" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getNamespaceName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getNamespaceName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets a namespace to be prepended to the current handler name</p>
 <h4 id="dispatcherabstractdispatcher-getparam"><code>getParam()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getparam" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getParam</span><span class="p">(</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nx">mixed</span> <span class="nv">$param</span><span class="p">,</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="nx">mixed</span> <span class="nv">$filters</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getParam</span><span class="p">(</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="nx">mixed</span> <span class="nv">$param</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="nx">mixed</span> <span class="nv">$filters</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets a param by its name or numeric index</p>
 <p>Note: The interface declares <code>getParam(param, filters = null)</code> without the
@@ -6424,157 +6382,153 @@ cannot use the default-value feature. This signature drift is intentional
 for now; the interface and implementation will be aligned in the next
 major version.</p>
 <h4 id="dispatcherabstractdispatcher-getparameter"><code>getParameter()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getparameter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getParameter</span><span class="p">(</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="nx">mixed</span> <span class="nv">$param</span><span class="p">,</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="nx">mixed</span> <span class="nv">$filters</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getParameter</span><span class="p">(</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nx">mixed</span> <span class="nv">$param</span><span class="p">,</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="nx">mixed</span> <span class="nv">$filters</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets a param by its name or numeric index</p>
 <h4 id="dispatcherabstractdispatcher-getparameters"><code>getParameters()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getparameters" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getParameters</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getParameters</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets action params</p>
 <h4 id="dispatcherabstractdispatcher-getparams"><code>getParams()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getparams" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getParams</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getParams</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets action params</p>
 <h4 id="dispatcherabstractdispatcher-getpreviousactionname"><code>getPreviousActionName()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getpreviousactionname" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPreviousActionName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPreviousActionName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets previous dispatched action name</p>
 <h4 id="dispatcherabstractdispatcher-getprevioushandlername"><code>getPreviousHandlerName()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getprevioushandlername" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPreviousHandlerName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPreviousHandlerName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets previous dispatched handler name</p>
 <h4 id="dispatcherabstractdispatcher-getpreviousnamespacename"><code>getPreviousNamespaceName()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getpreviousnamespacename" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPreviousNamespaceName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPreviousNamespaceName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets previous dispatched namespace name</p>
 <h4 id="dispatcherabstractdispatcher-getreturnedvalue"><code>getReturnedValue()</code><a class="headerlink" href="#dispatcherabstractdispatcher-getreturnedvalue" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getReturnedValue</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getReturnedValue</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns value returned by the latest dispatched action</p>
 <h4 id="dispatcherabstractdispatcher-hasparam"><code>hasParam()</code><a class="headerlink" href="#dispatcherabstractdispatcher-hasparam" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">hasParam</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$param</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">hasParam</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$param</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Check if a param exists</p>
 <h4 id="dispatcherabstractdispatcher-hasparameter"><code>hasParameter()</code><a class="headerlink" href="#dispatcherabstractdispatcher-hasparameter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">hasParameter</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$param</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">hasParameter</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$param</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Check if a param exists</p>
 <h4 id="dispatcherabstractdispatcher-isfinished"><code>isFinished()</code><a class="headerlink" href="#dispatcherabstractdispatcher-isfinished" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isFinished</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isFinished</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Checks if the dispatch loop is finished or has more pendent
 controllers/tasks to dispatch</p>
 <h4 id="dispatcherabstractdispatcher-setactionname"><code>setActionName()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setactionname" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setActionName</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$actionName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setActionName</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$actionName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the action name to be dispatched</p>
 <h4 id="dispatcherabstractdispatcher-setactionsuffix"><code>setActionSuffix()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setactionsuffix" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setActionSuffix</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$actionSuffix</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setActionSuffix</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$actionSuffix</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the default action suffix</p>
 <h4 id="dispatcherabstractdispatcher-setdefaultaction"><code>setDefaultAction()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setdefaultaction" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setDefaultAction</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$actionName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setDefaultAction</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$actionName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the default action name</p>
 <h4 id="dispatcherabstractdispatcher-setdefaultnamespace"><code>setDefaultNamespace()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setdefaultnamespace" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setDefaultNamespace</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$defaultNamespace</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setDefaultNamespace</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$defaultNamespace</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the default namespace</p>
-<h4 id="dispatcherabstractdispatcher-seteventsmanager"><code>setEventsManager()</code><a class="headerlink" href="#dispatcherabstractdispatcher-seteventsmanager" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setEventsManager</span><span class="p">(</span> <span class="nx">ManagerInterface</span> <span class="nv">$eventsManager</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
-</code></pre></div>
-<p>Sets the events manager</p>
 <h4 id="dispatcherabstractdispatcher-sethandlersuffix"><code>setHandlerSuffix()</code><a class="headerlink" href="#dispatcherabstractdispatcher-sethandlersuffix" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setHandlerSuffix</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$handlerSuffix</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setHandlerSuffix</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$handlerSuffix</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the default suffix for the handler</p>
 <h4 id="dispatcherabstractdispatcher-setmodelbinder"><code>setModelBinder()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setmodelbinder" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setModelBinder</span><span class="p">(</span>
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="nx">BinderInterface</span> <span class="nv">$modelBinder</span><span class="p">,</span>
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="nx">mixed</span> <span class="nv">$cache</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">DispatcherInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setModelBinder</span><span class="p">(</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="nx">BinderInterface</span> <span class="nv">$modelBinder</span><span class="p">,</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="nx">mixed</span> <span class="nv">$cache</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">DispatcherInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Enable model binding during dispatch</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">();</span>
-<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>
-<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setModelBinder</span><span class="p">(</span>
-<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>            <span class="k">new</span> <span class="nx">Binder</span><span class="p">(),</span>
-<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>            <span class="s1">&#39;cache&#39;</span>
-<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>        <span class="p">);</span>
-<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>
-<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
-<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>    <span class="p">}</span>
-<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">();</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setModelBinder</span><span class="p">(</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>            <span class="k">new</span> <span class="nx">Binder</span><span class="p">(),</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>            <span class="s1">&#39;cache&#39;</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>        <span class="p">);</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>    <span class="p">}</span>
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dispatcherabstractdispatcher-setmodulename"><code>setModuleName()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setmodulename" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setModuleName</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$moduleName</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setModuleName</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$moduleName</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the module where the controller is (only informative)</p>
 <h4 id="dispatcherabstractdispatcher-setnamespacename"><code>setNamespaceName()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setnamespacename" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setNamespaceName</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$namespaceName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setNamespaceName</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$namespaceName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the namespace where the controller class is</p>
 <h4 id="dispatcherabstractdispatcher-setparam"><code>setParam()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setparam" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setParam</span><span class="p">(</span>
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="nx">mixed</span> <span class="nv">$param</span><span class="p">,</span>
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span>
-<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setParam</span><span class="p">(</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="nx">mixed</span> <span class="nv">$param</span><span class="p">,</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Set a param by its name or numeric index</p>
 <h4 id="dispatcherabstractdispatcher-setparameter"><code>setParameter()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setparameter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setParameter</span><span class="p">(</span>
-<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>    <span class="nx">mixed</span> <span class="nv">$param</span><span class="p">,</span>
-<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span>
-<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setParameter</span><span class="p">(</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="nx">mixed</span> <span class="nv">$param</span><span class="p">,</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Set a param by its name or numeric index</p>
 <h4 id="dispatcherabstractdispatcher-setparameters"><code>setParameters()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setparameters" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setParameters</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$params</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setParameters</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$params</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets action params to be dispatched</p>
 <h4 id="dispatcherabstractdispatcher-setparams"><code>setParams()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setparams" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setParams</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$params</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setParams</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$params</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets action params to be dispatched</p>
 <h4 id="dispatcherabstractdispatcher-setreturnedvalue"><code>setReturnedValue()</code><a class="headerlink" href="#dispatcherabstractdispatcher-setreturnedvalue" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setReturnedValue</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$value</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setReturnedValue</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$value</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the latest returned value by an action manually</p>
 <h4 id="dispatcherabstractdispatcher-wasforwarded"><code>wasForwarded()</code><a class="headerlink" href="#dispatcherabstractdispatcher-wasforwarded" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">wasForwarded</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">wasForwarded</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Check if the current executed action was forwarded by another one</p>
 <div class="api-group">Protected · 4</div>
 
 <h4 id="dispatcherabstractdispatcher-handleexception"><code>handleException()</code><a class="headerlink" href="#dispatcherabstractdispatcher-handleexception" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">abstract</span> <span class="k">protected</span> <span class="k">function</span> <span class="nf">handleException</span><span class="p">(</span> <span class="nx">\Exception</span> <span class="nv">$exception</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">abstract</span> <span class="k">protected</span> <span class="k">function</span> <span class="nf">handleException</span><span class="p">(</span> <span class="nx">\Exception</span> <span class="nv">$exception</span> <span class="p">);</span>
 </code></pre></div>
 <p>Handles a user exception triggered inside the dispatch loop.</p>
 <p>Subclasses implement the namespace-specific behavior (typically firing
 the <code>dispatch:beforeException</code> event so listeners may forward or swallow
 the exception).</p>
 <h4 id="dispatcherabstractdispatcher-resolveemptyproperties"><code>resolveEmptyProperties()</code><a class="headerlink" href="#dispatcherabstractdispatcher-resolveemptyproperties" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">resolveEmptyProperties</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">resolveEmptyProperties</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Set empty properties to their defaults (where defaults are available)</p>
 <h4 id="dispatcherabstractdispatcher-throwdispatchexception"><code>throwDispatchException()</code><a class="headerlink" href="#dispatcherabstractdispatcher-throwdispatchexception" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">abstract</span> <span class="k">protected</span> <span class="k">function</span> <span class="nf">throwDispatchException</span><span class="p">(</span>
-<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
-<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>    <span class="nx">int</span> <span class="nv">$exceptionCode</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">abstract</span> <span class="k">protected</span> <span class="k">function</span> <span class="nf">throwDispatchException</span><span class="p">(</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    <span class="nx">int</span> <span class="nv">$exceptionCode</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>Throws an internal dispatch exception.</p>
 <p>Subclasses build the namespace-specific exception and route it through
-{@see handleException()} before throwing it when it was not handled.</p>
+handleException() before throwing it when it was not handled.</p>
 <h4 id="dispatcherabstractdispatcher-tocamelcase"><code>toCamelCase()</code><a class="headerlink" href="#dispatcherabstractdispatcher-tocamelcase" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">toCamelCase</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$input</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">toCamelCase</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$input</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="dispatcherdispatcherinterface">Dispatcher\DispatcherInterface<a class="headerlink" href="#dispatcherdispatcherinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
@@ -6661,7 +6615,7 @@ the exception).</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="dispatcherexceptionsforwardininitializeforbidden-__construct"><code>__construct()</code><a class="headerlink" href="#dispatcherexceptionsforwardininitializeforbidden-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
 </code></pre></div>
 
   

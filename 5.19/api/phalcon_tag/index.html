@@ -5870,6 +5870,17 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
+  <a href="#tag-getstaticurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getStaticUrl()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tag-inputfield" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -5885,6 +5896,17 @@ offering lower resource consumption and high performance.
     <span class="md-ellipsis">
       <span class="md-typeset">
         <code>inputFieldChecked()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag-tostringvalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>toStringValue()</code>
       </span>
     </span>
   </a>
@@ -5958,6 +5980,28 @@ offering lower resource consumption and high performance.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tagselect-echooption" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>echoOption()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tagselect-tostringvalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>toStringValue()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6016,7 +6060,7 @@ This component is a class that you can extend to add more helpers.</p>
 <li><strong><code>Phalcon\Tag</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Di\Di</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Html\Link\Link</code> · <code>Phalcon\Html\Link\Serializer\Header</code> · <code>Phalcon\Mvc\Url\UrlInterface</code> · <code>Phalcon\Support\Helper\Str\Friendly</code> · <code>Phalcon\Tag\Exception</code> · <code>Phalcon\Tag\Select</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Di\Di</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Html\Link\Link</code> · <code>Phalcon\Html\Link\Serializer\Header</code> · <code>Phalcon\Mvc\Url</code> · <code>Phalcon\Mvc\Url\UrlInterface</code> · <code>Phalcon\Support\Helper\Str\Friendly</code> · <code>Phalcon\Tag\Exception</code> · <code>Phalcon\Tag\Select</code> · <code>Stringable</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#tag-appendtitle">
@@ -6029,31 +6073,31 @@ This component is a class that you can extend to add more helpers.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">checkField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;check&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;check&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-colorfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">colorField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;color&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;color&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-datefield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">dateField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;date&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;date&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-datetimefield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">dateTimeField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;datetime&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;datetime&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-datetimelocalfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">dateTimeLocalField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;datetime-local&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;datetime-local&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-displayto">
 <code class="vis vis-public">public</code>
@@ -6065,25 +6109,25 @@ This component is a class that you can extend to add more helpers.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">emailField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;email&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;email&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-endform">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">endForm</span>()</code>
-<span class="desc">Builds a HTML close FORM tag</span>
+<span class="desc">Builds an HTML close FORM tag</span>
 </a>
 <a class="api-item" href="#tag-filefield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">fileField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;file&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;file&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-formlegacy">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">formLegacy</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML FORM tag</span>
+<span class="desc">Builds an HTML FORM tag</span>
 </a>
 <a class="api-item" href="#tag-friendlytitle">
 <code class="vis vis-public">public</code>
@@ -6135,6 +6179,7 @@ This component is a class that you can extend to add more helpers.</p>
 </a>
 <a class="api-item" href="#tag-getvalue">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getValue</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Every helper calls this function to check whether a component has a</span>
 </a>
@@ -6160,7 +6205,7 @@ This component is a class that you can extend to add more helpers.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">imageInput</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;image&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;image&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-javascriptinclude">
 <code class="vis vis-public">public</code>
@@ -6172,19 +6217,19 @@ This component is a class that you can extend to add more helpers.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">linkTo</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$text</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$local</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Builds a HTML A tag using framework conventions</span>
+<span class="desc">Builds an HTML A tag using framework conventions</span>
 </a>
 <a class="api-item" href="#tag-monthfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">monthField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;month&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;month&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-numericfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">numericField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;number&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;number&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-passwordfield">
 <code class="vis vis-public">public</code>
@@ -6208,13 +6253,13 @@ This component is a class that you can extend to add more helpers.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">radioField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;radio&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;radio&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-rangefield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">rangeField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;range&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;range&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-renderattributes">
 <code class="vis vis-public">public</code>
@@ -6250,7 +6295,7 @@ This component is a class that you can extend to add more helpers.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">selectStatic</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Builds a HTML SELECT tag using a PHP array for options</span>
+<span class="desc">Builds an HTML SELECT tag using a PHP array for options</span>
 </a>
 <a class="api-item" href="#tag-setautoescape">
 <code class="vis vis-public">public</code>
@@ -6304,7 +6349,7 @@ This component is a class that you can extend to add more helpers.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">submitButton</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;submit&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;submit&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-taghtml">
 <code class="vis vis-public">public</code>
@@ -6322,37 +6367,43 @@ This component is a class that you can extend to add more helpers.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">telField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;tel&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;tel&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-textarea">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">textArea</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML TEXTAREA tag</span>
+<span class="desc">Builds an HTML TEXTAREA tag</span>
 </a>
 <a class="api-item" href="#tag-textfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">textField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;text&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;text&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-timefield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">timeField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;time&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;time&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-urlfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">urlField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;url&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;url&quot;] tag</span>
 </a>
 <a class="api-item" href="#tag-weekfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">weekField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;week&quot;] tag</span>
+<span class="desc">Builds an HTML input[type=&quot;week&quot;] tag</span>
+</a>
+<a class="api-item" href="#tag-getstaticurl">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getStaticUrl</span>( <span class="st">mixed</span> <span class="sv">$uri</span> )</code>
+<span class="desc">Resolves a static (asset) URL through the <code>url</code> service.</span>
 </a>
 <a class="api-item" href="#tag-inputfield">
 <code class="vis vis-protected">protected</code>
@@ -6365,6 +6416,12 @@ This component is a class that you can extend to add more helpers.</p>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">inputFieldChecked</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span></span>)</code>
 <span class="desc">Builds INPUT tags that implements the checked attribute</span>
+</a>
+<a class="api-item" href="#tag-tostringvalue">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toStringValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<span class="desc">Reduces an arbitrary helper value to the string a tag attribute, id or</span>
 </a>
 </div>
 
@@ -6427,29 +6484,26 @@ This component is a class that you can extend to add more helpers.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">DiInterface|null</code>
 <code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
-<span class="desc">DI Container</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$displayValues</span></code>
-<span class="desc">Pre-assigned values for components</span>
+<code class="sig"><span class="sv">$displayValues</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$documentAppendTitle</span></code>
+<code class="sig"><span class="sv">$documentAppendTitle</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$documentPrependTitle</span></code>
+<code class="sig"><span class="sv">$documentPrependTitle</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$documentTitle</span><span class="sm"> = null</span></code>
-<span class="desc">HTML document title</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -6483,23 +6537,23 @@ This component is a class that you can extend to add more helpers.</p>
 <h4 id="tag-checkfield"><code>checkField()</code><a class="headerlink" href="#tag-checkfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">checkField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="check"] tag</p>
+<p>Builds an HTML input[type="check"] tag</p>
 <h4 id="tag-colorfield"><code>colorField()</code><a class="headerlink" href="#tag-colorfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">colorField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="color"] tag</p>
+<p>Builds an HTML input[type="color"] tag</p>
 <h4 id="tag-datefield"><code>dateField()</code><a class="headerlink" href="#tag-datefield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">dateField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="date"] tag</p>
+<p>Builds an HTML input[type="date"] tag</p>
 <h4 id="tag-datetimefield"><code>dateTimeField()</code><a class="headerlink" href="#tag-datetimefield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">dateTimeField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="datetime"] tag</p>
+<p>Builds an HTML input[type="datetime"] tag</p>
 <h4 id="tag-datetimelocalfield"><code>dateTimeLocalField()</code><a class="headerlink" href="#tag-datetimelocalfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">dateTimeLocalField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="datetime-local"] tag</p>
+<p>Builds an HTML input[type="datetime-local"] tag</p>
 <h4 id="tag-displayto"><code>displayTo()</code><a class="headerlink" href="#tag-displayto" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">displayTo</span><span class="p">(</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span>
@@ -6510,19 +6564,19 @@ This component is a class that you can extend to add more helpers.</p>
 <h4 id="tag-emailfield"><code>emailField()</code><a class="headerlink" href="#tag-emailfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">emailField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="email"] tag</p>
+<p>Builds an HTML input[type="email"] tag</p>
 <h4 id="tag-endform"><code>endForm()</code><a class="headerlink" href="#tag-endform" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">endForm</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML close FORM tag</p>
+<p>Builds an HTML close FORM tag</p>
 <h4 id="tag-filefield"><code>fileField()</code><a class="headerlink" href="#tag-filefield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">fileField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="file"] tag</p>
+<p>Builds an HTML input[type="file"] tag</p>
 <h4 id="tag-formlegacy"><code>formLegacy()</code><a class="headerlink" href="#tag-formlegacy" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">formLegacy</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML FORM tag</p>
+<p>Builds an HTML FORM tag</p>
 <h4 id="tag-friendlytitle"><code>friendlyTitle()</code><a class="headerlink" href="#tag-friendlytitle" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">friendlyTitle</span><span class="p">(</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
@@ -6567,7 +6621,7 @@ This component is a class that you can extend to add more helpers.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getValue</span><span class="p">(</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nx">mixed</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="k">array</span> <span class="nv">$params</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">);</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Every helper calls this function to check whether a component has a
 predefined value using Phalcon\Tag::setDefault() or value from $_POST</p>
@@ -6590,7 +6644,7 @@ or value from $_POST</p>
 <h4 id="tag-imageinput"><code>imageInput()</code><a class="headerlink" href="#tag-imageinput" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">imageInput</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="image"] tag</p>
+<p>Builds an HTML input[type="image"] tag</p>
 <h4 id="tag-javascriptinclude"><code>javascriptInclude()</code><a class="headerlink" href="#tag-javascriptinclude" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">javascriptInclude</span><span class="p">(</span>
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
@@ -6605,15 +6659,15 @@ or value from $_POST</p>
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    <span class="nx">mixed</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span>
 <a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML A tag using framework conventions</p>
+<p>Builds an HTML A tag using framework conventions</p>
 <h4 id="tag-monthfield"><code>monthField()</code><a class="headerlink" href="#tag-monthfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">monthField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="month"] tag</p>
+<p>Builds an HTML input[type="month"] tag</p>
 <h4 id="tag-numericfield"><code>numericField()</code><a class="headerlink" href="#tag-numericfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">numericField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="number"] tag</p>
+<p>Builds an HTML input[type="number"] tag</p>
 <h4 id="tag-passwordfield"><code>passwordField()</code><a class="headerlink" href="#tag-passwordfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">passwordField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -6629,11 +6683,11 @@ or value from $_POST</p>
 <h4 id="tag-radiofield"><code>radioField()</code><a class="headerlink" href="#tag-radiofield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">radioField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="radio"] tag</p>
+<p>Builds an HTML input[type="radio"] tag</p>
 <h4 id="tag-rangefield"><code>rangeField()</code><a class="headerlink" href="#tag-rangefield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">rangeField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="range"] tag</p>
+<p>Builds an HTML input[type="range"] tag</p>
 <h4 id="tag-renderattributes"><code>renderAttributes()</code><a class="headerlink" href="#tag-renderattributes" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">renderAttributes</span><span class="p">(</span>
 <a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="nx">string</span> <span class="nv">$code</span><span class="p">,</span>
@@ -6670,7 +6724,7 @@ any default value.</p>
 <a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML SELECT tag using a PHP array for options</p>
+<p>Builds an HTML SELECT tag using a PHP array for options</p>
 <h4 id="tag-setautoescape"><code>setAutoescape()</code><a class="headerlink" href="#tag-setautoescape" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">setAutoescape</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$autoescape</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
@@ -6715,7 +6769,7 @@ any default value.</p>
 <h4 id="tag-submitbutton"><code>submitButton()</code><a class="headerlink" href="#tag-submitbutton" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">submitButton</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="submit"] tag</p>
+<p>Builds an HTML input[type="submit"] tag</p>
 <h4 id="tag-taghtml"><code>tagHtml()</code><a class="headerlink" href="#tag-taghtml" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">tagHtml</span><span class="p">(</span>
 <a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>    <span class="nx">string</span> <span class="nv">$tagName</span><span class="p">,</span>
@@ -6736,50 +6790,59 @@ any default value.</p>
 <h4 id="tag-telfield"><code>telField()</code><a class="headerlink" href="#tag-telfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">telField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="tel"] tag</p>
+<p>Builds an HTML input[type="tel"] tag</p>
 <h4 id="tag-textarea"><code>textArea()</code><a class="headerlink" href="#tag-textarea" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">textArea</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML TEXTAREA tag</p>
-<p>@paraym array parameters = [
-    'id' =&gt; '',
-    'name' =&gt; '',
-    'value' =&gt; '',
-    'class' =&gt; ''
-]</p>
+<p>Builds an HTML TEXTAREA tag</p>
 <h4 id="tag-textfield"><code>textField()</code><a class="headerlink" href="#tag-textfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">textField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="text"] tag</p>
+<p>Builds an HTML input[type="text"] tag</p>
 <h4 id="tag-timefield"><code>timeField()</code><a class="headerlink" href="#tag-timefield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">timeField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="time"] tag</p>
+<p>Builds an HTML input[type="time"] tag</p>
 <h4 id="tag-urlfield"><code>urlField()</code><a class="headerlink" href="#tag-urlfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">urlField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="url"] tag</p>
+<p>Builds an HTML input[type="url"] tag</p>
 <h4 id="tag-weekfield"><code>weekField()</code><a class="headerlink" href="#tag-weekfield" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">weekField</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$parameters</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
-<p>Builds a HTML input[type="week"] tag</p>
-<div class="api-group">Protected · 2</div>
+<p>Builds an HTML input[type="week"] tag</p>
+<div class="api-group">Protected · 4</div>
 
+<h4 id="tag-getstaticurl"><code>getStaticUrl()</code><a class="headerlink" href="#tag-getstaticurl" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="k">final</span> <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getStaticUrl</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$uri</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+</code></pre></div>
+<p>Resolves a static (asset) URL through the <code>url</code> service.</p>
+<p><code>getStatic()</code> lives on Phalcon\Mvc\Url but is absent from
+Phalcon\Mvc\Url\UrlInterface, which is what getUrlService() is typed
+to return. A service that does not carry it falls back to <code>get()</code>
+rather than aborting the helper.</p>
 <h4 id="tag-inputfield"><code>inputField()</code><a class="headerlink" href="#tag-inputfield" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="k">final</span> <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">inputField</span><span class="p">(</span>
-<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
-<a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a>    <span class="nx">mixed</span> <span class="nv">$parameters</span><span class="p">,</span>
-<a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a>    <span class="nx">bool</span> <span class="nv">$asValue</span> <span class="o">=</span> <span class="k">false</span>
-<a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">final</span> <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">inputField</span><span class="p">(</span>
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>    <span class="nx">mixed</span> <span class="nv">$parameters</span><span class="p">,</span>
+<a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a>    <span class="nx">bool</span> <span class="nv">$asValue</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Builds generic INPUT tags</p>
 <h4 id="tag-inputfieldchecked"><code>inputFieldChecked()</code><a class="headerlink" href="#tag-inputfieldchecked" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">final</span> <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">inputFieldChecked</span><span class="p">(</span>
-<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
-<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>    <span class="nx">mixed</span> <span class="nv">$parameters</span>
-<a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="k">final</span> <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">inputFieldChecked</span><span class="p">(</span>
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
+<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>    <span class="nx">mixed</span> <span class="nv">$parameters</span>
+<a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Builds INPUT tags that implements the checked attribute</p>
+<h4 id="tag-tostringvalue"><code>toStringValue()</code><a class="headerlink" href="#tag-tostringvalue" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">final</span> <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">toStringValue</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$value</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+</code></pre></div>
+<p>Reduces an arbitrary helper value to the string a tag attribute, id or
+URI needs. Parameter bags are user supplied, so a value that cannot be
+expressed as a string - an array, an object without <code>__toString()</code> -
+reads back as an empty string rather than aborting the helper.</p>
 <h2 id="tagexception">Tag\Exception<a class="headerlink" href="#tagexception" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag/Exception.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -6804,7 +6867,7 @@ Phalcon\Mvc\Model resultset</p>
 <li><strong><code>Phalcon\Tag\Select</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Mvc\Model\ResultsetInterface</code> · <code>Phalcon\Tag</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Mvc\Model\ResultsetInterface</code> · <code>Phalcon\Tag</code> · <code>Stringable</code></p>
 <h3 id="method-summary_1">Method Summary<a class="headerlink" href="#method-summary_1" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#tagselect-selectfield">
@@ -6813,18 +6876,43 @@ Phalcon\Mvc\Model resultset</p>
 <code class="sig"><span class="sf">selectField</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates a SELECT tag</span>
 </a>
+<a class="api-item" href="#tagselect-echooption">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">echoOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$selected</span><span class="sm"> = false</span></span>)</code>
+</a>
+<a class="api-item" href="#tagselect-tostringvalue">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toStringValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<span class="desc">Reduces an arbitrary option value to the string the markup needs.</span>
+</a>
 </div>
 
 <h3 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h3>
 <div class="api-group">Public · 1</div>
 
 <h4 id="tagselect-selectfield"><code>selectField()</code><a class="headerlink" href="#tagselect-selectfield" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">selectField</span><span class="p">(</span>
-<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>    <span class="nx">mixed</span> <span class="nv">$parameters</span><span class="p">,</span>
-<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">selectField</span><span class="p">(</span>
+<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>    <span class="nx">mixed</span> <span class="nv">$parameters</span><span class="p">,</span>
+<a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Generates a SELECT tag</p>
+<div class="api-group">Protected · 2</div>
+
+<h4 id="tagselect-echooption"><code>echoOption()</code><a class="headerlink" href="#tagselect-echooption" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">echoOption</span><span class="p">(</span>
+<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>    <span class="nx">string</span> <span class="nv">$value</span><span class="p">,</span>
+<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>    <span class="nx">bool</span> <span class="nv">$selected</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="tagselect-tostringvalue"><code>toStringValue()</code><a class="headerlink" href="#tagselect-tostringvalue" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">toStringValue</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$value</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+</code></pre></div>
+<p>Reduces an arbitrary option value to the string the markup needs.
+Option data is user supplied, so anything that cannot be expressed as
+a string reads back as an empty string rather than aborting the tag.</p>
 
   
 

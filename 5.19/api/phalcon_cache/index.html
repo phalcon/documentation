@@ -5276,32 +5276,10 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
-  <a href="#cacheabstractcache-geteventsmanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <code>getEventsManager()</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#cacheabstractcache-set" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         <code>set()</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cacheabstractcache-seteventsmanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <code>setEventsManager()</code>
       </span>
     </span>
   </a>
@@ -5412,17 +5390,6 @@ offering lower resource consumption and high performance.
     <span class="md-ellipsis">
       <span class="md-typeset">
         <code>doSetMultiple()</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cacheabstractcache-fire" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <code>fire()</code>
       </span>
     </span>
   </a>
@@ -6091,7 +6058,7 @@ multi-key <code>cache:*Multiple</code> events).</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>DateInterval</code> · <code>Phalcon\Cache\Adapter\AdapterInterface</code> · <code>Phalcon\Cache\Adapter\Redis</code> · <code>Phalcon\Cache\Exception\InvalidArgumentException</code> · <code>Phalcon\Events\EventsAwareInterface</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Traversable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>DateInterval</code> · <code>Phalcon\Cache\Adapter\AdapterInterface</code> · <code>Phalcon\Cache\Adapter\Redis</code> · <code>Phalcon\Cache\Exception\InvalidArgumentException</code> · <code>Phalcon\Events\EventsAwareInterface</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Phalcon\Events\Traits\EventsAwareTrait</code> · <code>Throwable</code> · <code>Traversable</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#cacheabstractcache-__construct">
@@ -6101,6 +6068,7 @@ multi-key <code>cache:*Multiple</code> events).</p>
 </a>
 <a class="api-item" href="#cacheabstractcache-get">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
@@ -6110,23 +6078,11 @@ multi-key <code>cache:*Multiple</code> events).</p>
 <code class="sig"><span class="sf">getAdapter</span>()</code>
 <span class="desc">Returns the current adapter</span>
 </a>
-<a class="api-item" href="#cacheabstractcache-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Get the event manager</span>
-</a>
 <a class="api-item" href="#cacheabstractcache-set">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists data in the cache, uniquely referenced by a key with an</span>
-</a>
-<a class="api-item" href="#cacheabstractcache-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the event manager</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-checkkey">
 <code class="vis vis-protected">protected</code>
@@ -6188,12 +6144,6 @@ multi-key <code>cache:*Multiple</code> events).</p>
 <code class="sig"><span class="sf">doSetMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</span>
 </a>
-<a class="api-item" href="#cacheabstractcache-fire">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span></span>)</code>
-<span class="desc">Trigger an event for the eventsManager.</span>
-</a>
 <a class="api-item" href="#cacheabstractcache-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
@@ -6208,18 +6158,11 @@ multi-key <code>cache:*Multiple</code> events).</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sv">$adapter</span></code>
-<span class="desc">The adapter</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-<span class="desc">Event Manager</span>
 </div>
 </div>
 
 <h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 4</div>
 
 <h4 id="cacheabstractcache-__construct"><code>__construct()</code><a class="headerlink" href="#cacheabstractcache-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">AdapterInterface</span> <span class="nv">$adapter</span> <span class="p">);</span>
@@ -6229,95 +6172,80 @@ multi-key <code>cache:*Multiple</code> events).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">);</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Fetches a value from the cache.</p>
 <h4 id="cacheabstractcache-getadapter"><code>getAdapter()</code><a class="headerlink" href="#cacheabstractcache-getadapter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAdapter</span><span class="p">()</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the current adapter</p>
-<h4 id="cacheabstractcache-geteventsmanager"><code>getEventsManager()</code><a class="headerlink" href="#cacheabstractcache-geteventsmanager" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getEventsManager</span><span class="p">()</span><span class="o">:</span> <span class="nx">ManagerInterface</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
-</code></pre></div>
-<p>Get the event manager</p>
 <h4 id="cacheabstractcache-set"><code>set()</code><a class="headerlink" href="#cacheabstractcache-set" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">set</span><span class="p">(</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">,</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nx">mixed</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">set</span><span class="p">(</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nx">mixed</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Persists data in the cache, uniquely referenced by a key with an
 optional expiration TTL time.</p>
-<h4 id="cacheabstractcache-seteventsmanager"><code>setEventsManager()</code><a class="headerlink" href="#cacheabstractcache-seteventsmanager" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setEventsManager</span><span class="p">(</span> <span class="nx">ManagerInterface</span> <span class="nv">$eventsManager</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
-</code></pre></div>
-<p>Sets the event manager</p>
-<div class="api-group">Protected · 12</div>
+<div class="api-group">Protected · 11</div>
 
 <h4 id="cacheabstractcache-checkkey"><code>checkKey()</code><a class="headerlink" href="#cacheabstractcache-checkkey" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">checkKey</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">checkKey</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Checks the key. If it contains invalid characters an exception is thrown</p>
 <h4 id="cacheabstractcache-checkkeys"><code>checkKeys()</code><a class="headerlink" href="#cacheabstractcache-checkkeys" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">checkKeys</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$keys</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">checkKeys</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$keys</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Checks the key. If it contains invalid characters an exception is thrown</p>
 <h4 id="cacheabstractcache-doclear"><code>doClear()</code><a class="headerlink" href="#cacheabstractcache-doclear" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doClear</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doClear</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Wipes clean the entire cache's keys.</p>
 <h4 id="cacheabstractcache-dodelete"><code>doDelete()</code><a class="headerlink" href="#cacheabstractcache-dodelete" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doDelete</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doDelete</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Delete an item from the cache by its unique key.</p>
 <h4 id="cacheabstractcache-dodeletemultiple"><code>doDeleteMultiple()</code><a class="headerlink" href="#cacheabstractcache-dodeletemultiple" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doDeleteMultiple</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$keys</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doDeleteMultiple</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$keys</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Deletes multiple cache items in a single operation.</p>
 <h4 id="cacheabstractcache-doget"><code>doGet()</code><a class="headerlink" href="#cacheabstractcache-doget" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doGet</span><span class="p">(</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doGet</span><span class="p">(</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Fetches a value from the cache.</p>
 <h4 id="cacheabstractcache-dogetmultiple"><code>doGetMultiple()</code><a class="headerlink" href="#cacheabstractcache-dogetmultiple" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doGetMultiple</span><span class="p">(</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="nx">mixed</span> <span class="nv">$keys</span><span class="p">,</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doGetMultiple</span><span class="p">(</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nx">mixed</span> <span class="nv">$keys</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Obtains multiple cache items by their unique keys.</p>
 <h4 id="cacheabstractcache-dohas"><code>doHas()</code><a class="headerlink" href="#cacheabstractcache-dohas" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doHas</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doHas</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Determines whether an item is present in the cache.</p>
 <h4 id="cacheabstractcache-doset"><code>doSet()</code><a class="headerlink" href="#cacheabstractcache-doset" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doSet</span><span class="p">(</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">,</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="nx">mixed</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doSet</span><span class="p">(</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="nx">mixed</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Persists data in the cache, uniquely referenced by a key with an optional
 expiration TTL time.</p>
 <h4 id="cacheabstractcache-dosetmultiple"><code>doSetMultiple()</code><a class="headerlink" href="#cacheabstractcache-dosetmultiple" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doSetMultiple</span><span class="p">(</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="nx">mixed</span> <span class="nv">$values</span><span class="p">,</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="nx">mixed</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doSetMultiple</span><span class="p">(</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="nx">mixed</span> <span class="nv">$values</span><span class="p">,</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="nx">mixed</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</p>
-<h4 id="cacheabstractcache-fire"><code>fire()</code><a class="headerlink" href="#cacheabstractcache-fire" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">fire</span><span class="p">(</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nx">string</span> <span class="nv">$eventName</span><span class="p">,</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="nx">mixed</span> <span class="nv">$keys</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
-</code></pre></div>
-<p>Trigger an event for the eventsManager.</p>
 <h4 id="cacheabstractcache-getexceptionclass"><code>getExceptionClass()</code><a class="headerlink" href="#cacheabstractcache-getexceptionclass" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">abstract</span> <span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">abstract</span> <span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the exception class that will be used for exceptions thrown</p>
 <h2 id="cacheadapterfactory">Cache\AdapterFactory<a class="headerlink" href="#cacheadapterfactory" title="Permanent link">&para;</a></h2>
@@ -6335,12 +6263,12 @@ expiration TTL time.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cache\Adapter\AdapterInterface</code> · <code>Phalcon\Cache\Adapter\Apcu</code> · <code>Phalcon\Cache\Adapter\Libmemcached</code> · <code>Phalcon\Cache\Adapter\Memory</code> · <code>Phalcon\Cache\Adapter\Redis</code> · <code>Phalcon\Cache\Adapter\RedisCluster</code> · <code>Phalcon\Cache\Adapter\Stream</code> · <code>Phalcon\Cache\Adapter\Weak</code> · <code>Phalcon\Cache\Exception\Exception</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Storage\SerializerFactory</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cache\Adapter\AdapterInterface</code> · <code>Phalcon\Cache\Adapter\Apcu</code> · <code>Phalcon\Cache\Adapter\Libmemcached</code> · <code>Phalcon\Cache\Adapter\Memory</code> · <code>Phalcon\Cache\Adapter\Redis</code> · <code>Phalcon\Cache\Adapter\RedisCluster</code> · <code>Phalcon\Cache\Adapter\Stream</code> · <code>Phalcon\Cache\Adapter\Weak</code> · <code>Phalcon\Cache\Exception\Exception</code> · <code>Phalcon\Contracts\Storage\StorageTypes</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Storage\SerializerFactory</code> · <code>Throwable</code></p>
 <h3 id="method-summary_1">Method Summary<a class="headerlink" href="#method-summary_1" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#cacheadapterfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$serializerFactory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">AdapterFactory constructor.</span>
 </a>
 <a class="api-item" href="#cacheadapterfactory-newinstance">
@@ -6375,26 +6303,26 @@ expiration TTL time.</p>
 <div class="api-group">Public · 2</div>
 
 <h4 id="cacheadapterfactory-__construct"><code>__construct()</code><a class="headerlink" href="#cacheadapterfactory-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="nx">SerializerFactory</span> <span class="nv">$factory</span><span class="p">,</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="k">array</span> <span class="nv">$services</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="nx">SerializerFactory</span> <span class="nv">$serializerFactory</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="k">array</span> <span class="nv">$services</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>AdapterFactory constructor.</p>
 <h4 id="cacheadapterfactory-newinstance"><code>newInstance()</code><a class="headerlink" href="#cacheadapterfactory-newinstance" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">newInstance</span><span class="p">(</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">newInstance</span><span class="p">(</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Create a new instance of the adapter</p>
 <div class="api-group">Protected · 2</div>
 
 <h4 id="cacheadapterfactory-getexceptionclass"><code>getExceptionClass()</code><a class="headerlink" href="#cacheadapterfactory-getexceptionclass" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="cacheadapterfactory-getservices"><code>getServices()</code><a class="headerlink" href="#cacheadapterfactory-getservices" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getServices</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getServices</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the available adapters</p>
 <h2 id="cacheadapteradapterinterface">Cache\Adapter\AdapterInterface<a class="headerlink" href="#cacheadapteradapterinterface" title="Permanent link">&para;</a></h2>
@@ -6432,6 +6360,7 @@ expiration TTL time.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -6457,6 +6386,7 @@ expiration TTL time.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -6482,6 +6412,7 @@ expiration TTL time.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -6507,6 +6438,7 @@ expiration TTL time.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -6535,6 +6467,7 @@ expiration TTL time.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -6560,6 +6493,7 @@ expiration TTL time.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -6585,6 +6519,7 @@ expiration TTL time.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+<span class="desc">EventType prefix.</span>
 </div>
 </div>
 
@@ -6600,7 +6535,7 @@ expiration TTL time.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>DateInterval</code> · <code>Phalcon\Cache\Adapter\AdapterInterface</code> · <code>Phalcon\Cache\Exception\InvalidArgumentException</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>DateInterval</code> · <code>Phalcon\Cache\Adapter\AdapterInterface</code> · <code>Phalcon\Cache\Exception\InvalidArgumentException</code> · <code>Throwable</code></p>
 <h3 id="method-summary_2">Method Summary<a class="headerlink" href="#method-summary_2" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#cachecache-clear">
@@ -6623,6 +6558,7 @@ expiration TTL time.</p>
 </a>
 <a class="api-item" href="#cachecache-get">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
@@ -6661,55 +6597,55 @@ expiration TTL time.</p>
 <div class="api-group">Public · 8</div>
 
 <h4 id="cachecache-clear"><code>clear()</code><a class="headerlink" href="#cachecache-clear" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">clear</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">clear</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Wipes clean the entire cache's keys.</p>
 <h4 id="cachecache-delete"><code>delete()</code><a class="headerlink" href="#cachecache-delete" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Delete an item from the cache by its unique key.</p>
 <h4 id="cachecache-deletemultiple"><code>deleteMultiple()</code><a class="headerlink" href="#cachecache-deletemultiple" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">deleteMultiple</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$keys</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">deleteMultiple</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$keys</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Deletes multiple cache items in a single operation.</p>
 <h4 id="cachecache-get"><code>get()</code><a class="headerlink" href="#cachecache-get" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Fetches a value from the cache.</p>
 <h4 id="cachecache-getmultiple"><code>getMultiple()</code><a class="headerlink" href="#cachecache-getmultiple" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getMultiple</span><span class="p">(</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="nx">mixed</span> <span class="nv">$keys</span><span class="p">,</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getMultiple</span><span class="p">(</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="nx">mixed</span> <span class="nv">$keys</span><span class="p">,</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>Obtains multiple cache items by their unique keys.</p>
 <h4 id="cachecache-has"><code>has()</code><a class="headerlink" href="#cachecache-has" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$key</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Determines whether an item is present in the cache.</p>
 <h4 id="cachecache-set"><code>set()</code><a class="headerlink" href="#cachecache-set" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">set</span><span class="p">(</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">,</span>
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="nx">mixed</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">set</span><span class="p">(</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">,</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    <span class="nx">mixed</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Persists data in the cache, uniquely referenced by a key with an optional
 expiration TTL time.</p>
 <h4 id="cachecache-setmultiple"><code>setMultiple()</code><a class="headerlink" href="#cachecache-setmultiple" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setMultiple</span><span class="p">(</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="nx">mixed</span> <span class="nv">$values</span><span class="p">,</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="nx">mixed</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setMultiple</span><span class="p">(</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="nx">mixed</span> <span class="nv">$values</span><span class="p">,</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="nx">mixed</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</p>
 <div class="api-group">Protected · 1</div>
 
 <h4 id="cachecache-getexceptionclass"><code>getExceptionClass()</code><a class="headerlink" href="#cachecache-getexceptionclass" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the exception class that will be used for exceptions thrown</p>
 <h2 id="cachecachefactory">Cache\CacheFactory<a class="headerlink" href="#cachecachefactory" title="Permanent link">&para;</a></h2>
@@ -6724,7 +6660,7 @@ expiration TTL time.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cache\Adapter\AdapterInterface</code> · <code>Phalcon\Cache\Cache</code> · <code>Phalcon\Cache\Exception\Exception</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Factory\AbstractConfigFactory</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cache\Exception\Exception</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Storage\StorageTypes</code> · <code>Phalcon\Factory\AbstractConfigFactory</code> · <code>Throwable</code></p>
 <h3 id="method-summary_3">Method Summary<a class="headerlink" href="#method-summary_3" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#cachecachefactory-__construct">
@@ -6748,6 +6684,7 @@ expiration TTL time.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 </div>
 
@@ -6764,25 +6701,26 @@ expiration TTL time.</p>
 <div class="api-group">Public · 3</div>
 
 <h4 id="cachecachefactory-__construct"><code>__construct()</code><a class="headerlink" href="#cachecachefactory-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">AdapterFactory</span> <span class="nv">$factory</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">AdapterFactory</span> <span class="nv">$factory</span> <span class="p">);</span>
 </code></pre></div>
 <p>Constructor</p>
 <h4 id="cachecachefactory-load"><code>load()</code><a class="headerlink" href="#cachecachefactory-load" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">CacheInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">CacheInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Factory to create an instance from a Config object</p>
 <h4 id="cachecachefactory-newinstance"><code>newInstance()</code><a class="headerlink" href="#cachecachefactory-newinstance" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">newInstance</span><span class="p">(</span>
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">CacheInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">newInstance</span><span class="p">(</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">CacheInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Constructs a new Cache instance.</p>
 <div class="api-group">Protected · 1</div>
 
 <h4 id="cachecachefactory-getexceptionclass"><code>getExceptionClass()</code><a class="headerlink" href="#cachecachefactory-getexceptionclass" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Returns the exception class for the factory</p>
 <h2 id="cachecacheinterface">Cache\CacheInterface<a class="headerlink" href="#cachecacheinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/CacheInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -6811,7 +6749,7 @@ expiration TTL time.</p>
 <h2 id="cacheexceptioninvalidargumentexception">Cache\Exception\InvalidArgumentException<a class="headerlink" href="#cacheexceptioninvalidargumentexception" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Exception/InvalidArgumentException.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Exceptions thrown in Phalcon\Cache will use this class</p>
+<p>Exceptions thrown in Phalcon\Cache for invalid arguments will use this class</p>
 <div class="api-tree">
 <ul>
 <li><code>\Exception</code><ul>

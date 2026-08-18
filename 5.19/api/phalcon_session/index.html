@@ -7124,7 +7124,7 @@ offering lower resource consumption and high performance.
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/AbstractAdapter.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <div class="api-tree">
 <ul>
-<li><strong><code>Phalcon\Session\Adapter\AbstractAdapter</code></strong> - implements <code>SessionHandlerInterface</code>, <code>SessionUpdateTimestampHandlerInterface</code><ul>
+<li><strong><code>Phalcon\Session\Adapter\AbstractAdapter</code></strong> - implements <code>\SessionHandlerInterface</code>, <code>\SessionUpdateTimestampHandlerInterface</code><ul>
 <li><a href="#sessionadapterlibmemcached"><code>Phalcon\Session\Adapter\Libmemcached</code></a></li>
 <li><a href="#sessionadapterredis"><code>Phalcon\Session\Adapter\Redis</code></a></li>
 </ul>
@@ -7143,43 +7143,43 @@ offering lower resource consumption and high performance.
 <a class="api-item" href="#sessionadapterabstractadapter-destroy">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">destroy</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">destroy</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Destroy</span>
 </a>
 <a class="api-item" href="#sessionadapterabstractadapter-gc">
 <code class="vis vis-public">public</code>
-<code class="ret">int|false</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">gc</span>( <span class="st">int</span> <span class="sv">$max_lifetime</span> )</code>
 <span class="desc">Garbage Collector</span>
 </a>
 <a class="api-item" href="#sessionadapterabstractadapter-open">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">open</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$name</span></span>)</code>
+<code class="sig"><span class="sf">open</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
 <span class="desc">Open</span>
 </a>
 <a class="api-item" href="#sessionadapterabstractadapter-read">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Read</span>
 </a>
 <a class="api-item" href="#sessionadapterabstractadapter-updatetimestamp">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Refresh the session lifetime without changing the session data</span>
 </a>
 <a class="api-item" href="#sessionadapterabstractadapter-validateid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">validateId</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">validateId</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Validate the session id (used when strict mode is enabled)</span>
 </a>
 <a class="api-item" href="#sessionadapterabstractadapter-write">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Write</span>
 </a>
 </div>
@@ -7201,39 +7201,39 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>Close</p>
 <h4 id="sessionadapterabstractadapter-destroy"><code>destroy()</code><a class="headerlink" href="#sessionadapterabstractadapter-destroy" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Destroy</p>
 <h4 id="sessionadapterabstractadapter-gc"><code>gc()</code><a class="headerlink" href="#sessionadapterabstractadapter-gc" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">gc</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$max_lifetime</span> <span class="p">)</span><span class="o">:</span> <span class="nx">int</span><span class="o">|</span><span class="k">false</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">gc</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$max_lifetime</span> <span class="p">)</span><span class="o">:</span> <span class="k">false</span><span class="o">|</span><span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Garbage Collector</p>
 <h4 id="sessionadapterabstractadapter-open"><code>open()</code><a class="headerlink" href="#sessionadapterabstractadapter-open" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">open</span><span class="p">(</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nx">mixed</span> <span class="nv">$path</span><span class="p">,</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nx">mixed</span> <span class="nv">$name</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nx">string</span> <span class="nv">$name</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Open</p>
 <h4 id="sessionadapterabstractadapter-read"><code>read()</code><a class="headerlink" href="#sessionadapterabstractadapter-read" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">read</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">read</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Read</p>
 <h4 id="sessionadapterabstractadapter-updatetimestamp"><code>updateTimestamp()</code><a class="headerlink" href="#sessionadapterabstractadapter-updatetimestamp" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">updateTimestamp</span><span class="p">(</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="nx">mixed</span> <span class="nv">$id</span><span class="p">,</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nx">string</span> <span class="nv">$data</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Refresh the session lifetime without changing the session data</p>
 <h4 id="sessionadapterabstractadapter-validateid"><code>validateId()</code><a class="headerlink" href="#sessionadapterabstractadapter-validateid" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateId</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateId</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Validate the session id (used when strict mode is enabled)</p>
 <h4 id="sessionadapterabstractadapter-write"><code>write()</code><a class="headerlink" href="#sessionadapterabstractadapter-write" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">write</span><span class="p">(</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nx">mixed</span> <span class="nv">$id</span><span class="p">,</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="nx">string</span> <span class="nv">$data</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Write</p>
@@ -7322,7 +7322,7 @@ offering lower resource consumption and high performance.
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Storage\AdapterFactory</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>Phalcon\Storage\AdapterFactory</code></p>
 <h3 id="method-summary_3">Method Summary<a class="headerlink" href="#method-summary_3" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionadapterlibmemcached-__construct">
@@ -7367,7 +7367,7 @@ other purpose that no session needs to be invoked</p>
 </code></pre></div>
 <div class="api-tree">
 <ul>
-<li><strong><code>Phalcon\Session\Adapter\Noop</code></strong> - implements <code>SessionHandlerInterface</code>, <code>SessionUpdateTimestampHandlerInterface</code><ul>
+<li><strong><code>Phalcon\Session\Adapter\Noop</code></strong> - implements <code>\SessionHandlerInterface</code>, <code>\SessionUpdateTimestampHandlerInterface</code><ul>
 <li><a href="#sessionadapterstream"><code>Phalcon\Session\Adapter\Stream</code></a></li>
 </ul>
 </li>
@@ -7385,43 +7385,43 @@ other purpose that no session needs to be invoked</p>
 <a class="api-item" href="#sessionadapternoop-destroy">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">destroy</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">destroy</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Destroy</span>
 </a>
 <a class="api-item" href="#sessionadapternoop-gc">
 <code class="vis vis-public">public</code>
-<code class="ret">int|false</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">gc</span>( <span class="st">int</span> <span class="sv">$max_lifetime</span> )</code>
 <span class="desc">Garbage Collector</span>
 </a>
 <a class="api-item" href="#sessionadapternoop-open">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">open</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$name</span></span>)</code>
+<code class="sig"><span class="sf">open</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
 <span class="desc">Open</span>
 </a>
 <a class="api-item" href="#sessionadapternoop-read">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Read</span>
 </a>
 <a class="api-item" href="#sessionadapternoop-updatetimestamp">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Refresh the session lifetime without changing the session data</span>
 </a>
 <a class="api-item" href="#sessionadapternoop-validateid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">validateId</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">validateId</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Validate the session id (used when strict mode is enabled)</span>
 </a>
 <a class="api-item" href="#sessionadapternoop-write">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Write</span>
 </a>
 </div>
@@ -7434,39 +7434,39 @@ other purpose that no session needs to be invoked</p>
 </code></pre></div>
 <p>Close</p>
 <h4 id="sessionadapternoop-destroy"><code>destroy()</code><a class="headerlink" href="#sessionadapternoop-destroy" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Destroy</p>
 <h4 id="sessionadapternoop-gc"><code>gc()</code><a class="headerlink" href="#sessionadapternoop-gc" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">gc</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$max_lifetime</span> <span class="p">)</span><span class="o">:</span> <span class="nx">int</span><span class="o">|</span><span class="k">false</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">gc</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$max_lifetime</span> <span class="p">)</span><span class="o">:</span> <span class="k">false</span><span class="o">|</span><span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Garbage Collector</p>
 <h4 id="sessionadapternoop-open"><code>open()</code><a class="headerlink" href="#sessionadapternoop-open" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">open</span><span class="p">(</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="nx">mixed</span> <span class="nv">$path</span><span class="p">,</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="nx">mixed</span> <span class="nv">$name</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="nx">string</span> <span class="nv">$name</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Open</p>
 <h4 id="sessionadapternoop-read"><code>read()</code><a class="headerlink" href="#sessionadapternoop-read" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">read</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">read</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Read</p>
 <h4 id="sessionadapternoop-updatetimestamp"><code>updateTimestamp()</code><a class="headerlink" href="#sessionadapternoop-updatetimestamp" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">updateTimestamp</span><span class="p">(</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="nx">mixed</span> <span class="nv">$id</span><span class="p">,</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="nx">string</span> <span class="nv">$data</span>
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Refresh the session lifetime without changing the session data</p>
 <h4 id="sessionadapternoop-validateid"><code>validateId()</code><a class="headerlink" href="#sessionadapternoop-validateid" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateId</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateId</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Validate the session id (used when strict mode is enabled)</p>
 <h4 id="sessionadapternoop-write"><code>write()</code><a class="headerlink" href="#sessionadapternoop-write" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">write</span><span class="p">(</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nx">mixed</span> <span class="nv">$id</span><span class="p">,</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="nx">string</span> <span class="nv">$data</span>
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Write</p>
@@ -7482,7 +7482,7 @@ other purpose that no session needs to be invoked</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError</code> · <code>Phalcon\Storage\AdapterFactory</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError</code> · <code>Phalcon\Storage\AdapterFactory</code></p>
 <h3 id="method-summary_5">Method Summary<a class="headerlink" href="#method-summary_5" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionadapterredis-__construct">
@@ -7499,19 +7499,19 @@ other purpose that no session needs to be invoked</p>
 <a class="api-item" href="#sessionadapterredis-destroy">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">destroy</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">destroy</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Destroy</span>
 </a>
 <a class="api-item" href="#sessionadapterredis-read">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Read</span>
 </a>
 <a class="api-item" href="#sessionadapterredis-acquirelock">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">acquireLock</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">acquireLock</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Tries to acquire the session lock, pausing <code>lockWaitTime</code> microseconds</span>
 </a>
 <a class="api-item" href="#sessionadapterredis-releaselock">
@@ -7586,17 +7586,17 @@ longest expected request to retain the lock for the whole request.</span>
 </code></pre></div>
 <p>Close - releases the session lock if one is held</p>
 <h4 id="sessionadapterredis-destroy"><code>destroy()</code><a class="headerlink" href="#sessionadapterredis-destroy" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Destroy</p>
 <h4 id="sessionadapterredis-read"><code>read()</code><a class="headerlink" href="#sessionadapterredis-read" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">read</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">read</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Read</p>
 <div class="api-group">Protected · 2</div>
 
 <h4 id="sessionadapterredis-acquirelock"><code>acquireLock()</code><a class="headerlink" href="#sessionadapterredis-acquirelock" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">acquireLock</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">acquireLock</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Tries to acquire the session lock, pausing <code>lockWaitTime</code> microseconds
 between attempts, up to <code>lockRetries</code> times</p>
@@ -7622,9 +7622,6 @@ between attempts, up to <code>lockRetries</code> times</p>
 <a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="p">);</span>
 <a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="nv">$session</span><span class="o">-&gt;</span><span class="na">setAdapter</span><span class="p">(</span><span class="nv">$files</span><span class="p">);</span>
 </code></pre></div>
-<p>@property array  $options
-@property string $prefix
-@property string $path</p>
 <div class="api-tree">
 <ul>
 <li><a href="#sessionadapternoop"><code>Phalcon\Session\Adapter\Noop</code></a><ul>
@@ -7633,7 +7630,7 @@ between attempts, up to <code>lockRetries</code> times</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError</code> · <code>Phalcon\Session\Adapter\Exceptions\InvalidSavePath</code> · <code>Phalcon\Session\Adapter\Exceptions\SavePathUnavailable</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Phalcon\Traits\Php\IniTrait</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError</code> · <code>Phalcon\Session\Adapter\Exceptions\InvalidSavePath</code> · <code>Phalcon\Session\Adapter\Exceptions\SavePathUnavailable</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Phalcon\Traits\Php\IniTrait</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait</code></p>
 <h3 id="method-summary_6">Method Summary<a class="headerlink" href="#method-summary_6" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionadapterstream-__construct">
@@ -7644,42 +7641,42 @@ between attempts, up to <code>lockRetries</code> times</p>
 <a class="api-item" href="#sessionadapterstream-destroy">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">destroy</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">destroy</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#sessionadapterstream-gc">
 <code class="vis vis-public">public</code>
-<code class="ret">int|false</code>
+<code class="ret">false|int</code>
 <code class="sig"><span class="sf">gc</span>( <span class="st">int</span> <span class="sv">$max_lifetime</span> )</code>
 <span class="desc">Garbage Collector</span>
 </a>
 <a class="api-item" href="#sessionadapterstream-open">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">open</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$name</span></span>)</code>
+<code class="sig"><span class="sf">open</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
 <span class="desc">Ignore the savePath and use local defined path</span>
 </a>
 <a class="api-item" href="#sessionadapterstream-read">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Reads data from the adapter</span>
 </a>
 <a class="api-item" href="#sessionadapterstream-updatetimestamp">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Refresh the session file modification time without changing its data</span>
 </a>
 <a class="api-item" href="#sessionadapterstream-validateid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">validateId</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">validateId</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 <span class="desc">Validate the session id (used when strict mode is enabled)</span>
 </a>
 <a class="api-item" href="#sessionadapterstream-write">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
 </a>
 <a class="api-item" href="#sessionadapterstream-getglobfiles">
 <code class="vis vis-protected">protected</code>
@@ -7719,38 +7716,38 @@ between attempts, up to <code>lockRetries</code> times</p>
 </code></pre></div>
 <p>Constructor</p>
 <h4 id="sessionadapterstream-destroy"><code>destroy()</code><a class="headerlink" href="#sessionadapterstream-destroy" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="sessionadapterstream-gc"><code>gc()</code><a class="headerlink" href="#sessionadapterstream-gc" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">gc</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$max_lifetime</span> <span class="p">)</span><span class="o">:</span> <span class="nx">int</span><span class="o">|</span><span class="k">false</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">gc</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$max_lifetime</span> <span class="p">)</span><span class="o">:</span> <span class="k">false</span><span class="o">|</span><span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Garbage Collector</p>
 <h4 id="sessionadapterstream-open"><code>open()</code><a class="headerlink" href="#sessionadapterstream-open" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">open</span><span class="p">(</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="nx">mixed</span> <span class="nv">$path</span><span class="p">,</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="nx">mixed</span> <span class="nv">$name</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="nx">string</span> <span class="nv">$name</span>
 <a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Ignore the savePath and use local defined path</p>
 <h4 id="sessionadapterstream-read"><code>read()</code><a class="headerlink" href="#sessionadapterstream-read" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">read</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">read</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Reads data from the adapter</p>
 <h4 id="sessionadapterstream-updatetimestamp"><code>updateTimestamp()</code><a class="headerlink" href="#sessionadapterstream-updatetimestamp" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">updateTimestamp</span><span class="p">(</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="nx">mixed</span> <span class="nv">$id</span><span class="p">,</span>
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    <span class="nx">string</span> <span class="nv">$data</span>
 <a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Refresh the session file modification time without changing its data</p>
 <h4 id="sessionadapterstream-validateid"><code>validateId()</code><a class="headerlink" href="#sessionadapterstream-validateid" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateId</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateId</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$id</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Validate the session id (used when strict mode is enabled)</p>
 <h4 id="sessionadapterstream-write"><code>write()</code><a class="headerlink" href="#sessionadapterstream-write" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">write</span><span class="p">(</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="nx">mixed</span> <span class="nv">$id</span><span class="p">,</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="nx">string</span> <span class="nv">$data</span>
 <a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <div class="api-group">Protected · 2</div>
@@ -7766,7 +7763,6 @@ between attempts, up to <code>lockRetries</code> times</p>
 <h2 id="sessionbag">Session\Bag<a class="headerlink" href="#sessionbag" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Bag.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Phalcon\Session\Bag</p>
 <p>This component helps to separate session data into "namespaces". Working by
 this way you can easily create groups of session variables into the
 application</p>
@@ -7778,6 +7774,7 @@ application</p>
 <p>@property DiInterface|null $container
 @property string           $name
 @property ManagerInterface $session;</p>
+<p>@extends Collection<mixed></p>
 <div class="api-tree">
 <ul>
 <li><a href="../phalcon_support/#supportcollection"><code>Phalcon\Support\Collection</code></a><ul>
@@ -7786,7 +7783,7 @@ application</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Di\Di</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Di\InjectionAwareInterface</code> · <code>Phalcon\Session\ManagerInterface</code> · <code>Phalcon\Support\Collection</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>Phalcon\Di\Di</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Di\InjectionAwareInterface</code> · <code>Phalcon\Session\ManagerInterface</code> · <code>Phalcon\Support\Collection</code></p>
 <h3 id="method-summary_7">Method Summary<a class="headerlink" href="#method-summary_7" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionbag-__construct">
@@ -7870,7 +7867,6 @@ application</p>
 <h2 id="sessionbaginterface">Session\BagInterface<a class="headerlink" href="#sessionbaginterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/BagInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Phalcon\Session\BagInterface</p>
 <p>Interface for Phalcon\Session\Bag</p>
 <div class="api-tree">
 <ul>
@@ -7907,7 +7903,7 @@ application</p>
 <a class="api-item" href="#sessionbaginterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#sessionbaginterface-has">
 <code class="vis vis-public">public</code>
@@ -7956,7 +7952,7 @@ application</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span>
 <a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>    <span class="nx">string</span> <span class="nv">$element</span><span class="p">,</span>
 <a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>    <span class="nx">string</span> <span class="nv">$cast</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$cast</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="sessionbaginterface-has"><code>has()</code><a class="headerlink" href="#sessionbaginterface-has" title="Permanent link">&para;</a></h4>
@@ -8145,13 +8141,10 @@ application</p>
 <h2 id="sessionmanager">Session\Manager<a class="headerlink" href="#sessionmanager" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Manager.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>@property SessionHandlerInterface|null $adapter
-@property string                       $name
-@property array                        $options
-@property string                       $uniqueId</p>
+<p>Session manager class</p>
 <div class="api-tree">
 <ul>
-<li><code>stdClass</code><ul>
+<li><code>\stdClass</code><ul>
 <li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
 <li><strong><code>Phalcon\Session\Manager</code></strong> - implements <a href="#sessionmanagerinterface"><code>Phalcon\Session\ManagerInterface</code></a></li>
 </ul>
@@ -8160,7 +8153,7 @@ application</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Session\Exceptions\InvalidSessionAdapter</code> · <code>Phalcon\Session\Exceptions\InvalidSessionId</code> · <code>Phalcon\Session\Exceptions\InvalidSessionName</code> · <code>Phalcon\Session\Exceptions\SessionAlreadyStarted</code> · <code>Phalcon\Session\Exceptions\SessionModificationDenied</code> · <code>Phalcon\Traits\Php\HeaderTrait</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>SessionHandlerInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Session\Exceptions\InvalidSessionAdapter</code> · <code>Phalcon\Session\Exceptions\InvalidSessionId</code> · <code>Phalcon\Session\Exceptions\InvalidSessionName</code> · <code>Phalcon\Session\Exceptions\SessionAlreadyStarted</code> · <code>Phalcon\Session\Exceptions\SessionModificationDenied</code> · <code>Phalcon\Traits\Php\HeaderTrait</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>SessionHandlerInterface</code></p>
 <h3 id="method-summary_14">Method Summary<a class="headerlink" href="#method-summary_14" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionmanager-__construct">
@@ -8404,14 +8397,13 @@ started)</p>
 <h2 id="sessionmanagerinterface">Session\ManagerInterface<a class="headerlink" href="#sessionmanagerinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/ManagerInterface.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Phalcon\Session</p>
 <p>Interface for the Phalcon\Session\Manager</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Session\ManagerInterface</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>SessionHandlerInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>SessionHandlerInterface</code></p>
 <h3 id="method-summary_15">Method Summary<a class="headerlink" href="#method-summary_15" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionmanagerinterface-__get">

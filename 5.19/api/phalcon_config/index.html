@@ -6409,7 +6409,7 @@ offering lower resource consumption and high performance.
 <div class="api-list">
 <a class="api-item" href="#configadaptergrouped-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arrayConfig</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$defaultAdapter</span><span class="sm"> = &quot;php&quot;</span>,</span><span class="prm"><span class="st">ConfigFactory</span> <span class="sv">$factory</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arrayConfig</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$defaultAdapter</span><span class="sm"> = &quot;php&quot;</span>,</span><span class="prm"><span class="st">ConfigFactory|null</span> <span class="sv">$factory</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Config\Adapter\Grouped constructor</span>
 </a>
 </div>
@@ -6421,7 +6421,7 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">array</span> <span class="nv">$arrayConfig</span><span class="p">,</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nx">string</span> <span class="nv">$defaultAdapter</span> <span class="o">=</span> <span class="s2">&quot;php&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nx">ConfigFactory</span> <span class="nv">$factory</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nx">ConfigFactory</span><span class="o">|</span><span class="k">null</span> <span class="nv">$factory</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">);</span>
 </code></pre></div>
 <p>Phalcon\Config\Adapter\Grouped constructor</p>
@@ -6678,7 +6678,7 @@ from their parsers and perform no casting.</p>
 <div class="api-list">
 <a class="api-item" href="#configadapteryaml-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Config\Adapter\Yaml constructor</span>
 </a>
 </div>
@@ -6689,7 +6689,7 @@ from their parsers and perform no casting.</p>
 <h4 id="configadapteryaml-__construct"><code>__construct()</code><a class="headerlink" href="#configadapteryaml-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nx">string</span> <span class="nv">$filePath</span><span class="p">,</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="k">array</span> <span class="nv">$callbacks</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="k">array</span><span class="o">|</span><span class="k">null</span> <span class="nv">$callbacks</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>Phalcon\Config\Adapter\Yaml constructor</p>
@@ -6750,13 +6750,13 @@ code.</p>
 <a class="api-item" href="#configconfig-path">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a value from current config using a dot separated path.</span>
 </a>
 <a class="api-item" href="#configconfig-setpathdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the default path delimiter</span>
 </a>
 <a class="api-item" href="#configconfig-toarray">
@@ -6827,14 +6827,14 @@ code.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">path</span><span class="p">(</span>
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a value from current config using a dot separated path.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">echo</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">path</span><span class="p">(</span><span class="s2">&quot;unknown.path&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="configconfig-setpathdelimiter"><code>setPathDelimiter()</code><a class="headerlink" href="#configconfig-setpathdelimiter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setPathDelimiter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setPathDelimiter</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the default path delimiter</p>
 <h4 id="configconfig-toarray"><code>toArray()</code><a class="headerlink" href="#configconfig-toarray" title="Permanent link">&para;</a></h4>
@@ -6998,7 +6998,7 @@ parameter-forwarding knowledge used by <code>load()</code> and <code>newInstance
 <p>Interface for Phalcon\Config\Config class</p>
 <div class="api-tree">
 <ul>
-<li><code>ArrayAccess</code><ul>
+<li><code>\ArrayAccess</code><ul>
 <li><a href="../phalcon_contracts/#contractssupportcollection"><code>Phalcon\Contracts\Support\Collection</code></a><ul>
 <li><a href="../phalcon_support/#supportcollectioncollectioninterface"><code>Phalcon\Support\Collection\CollectionInterface</code></a><ul>
 <li><strong><code>Phalcon\Config\ConfigInterface</code></strong></li>
@@ -7026,12 +7026,12 @@ parameter-forwarding knowledge used by <code>load()</code> and <code>newInstance
 <a class="api-item" href="#configconfiginterface-path">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#configconfiginterface-setpathdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
+<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 </a>
 </div>
 
@@ -7048,11 +7048,11 @@ parameter-forwarding knowledge used by <code>load()</code> and <code>newInstance
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">path</span><span class="p">(</span>
 <a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
 <a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>    <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="configconfiginterface-setpathdelimiter"><code>setPathDelimiter()</code><a class="headerlink" href="#configconfiginterface-setpathdelimiter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setPathDelimiter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setPathDelimiter</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="configexception">Config\Exception<a class="headerlink" href="#configexception" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
