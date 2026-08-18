@@ -1675,7 +1675,7 @@ Both options also accept an array keyed by field name, in the same way as `min`,
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\StringLength;
 
-$validator = new Validation();
+$validation = new Validation();
 
 $validation->add(
     "name_last",
@@ -1745,7 +1745,7 @@ The maximum is inclusive by default. Set `included` to `false` to exclude it, wh
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\StringLength\Max;
 
-$validator = new Validation();
+$validation = new Validation();
 
 $validation->add(
     "name_last",
@@ -1822,7 +1822,7 @@ The minimum is inclusive by default. Set `included` to `false` to exclude it, wh
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\StringLength\Min;
 
-$validator = new Validation();
+$validation = new Validation();
 
 $validation->add(
     "name_last",
