@@ -110,6 +110,8 @@ offering lower resource consumption and high performance.
       
     
     
+      <link rel="stylesheet" href="../../assets/css/api.css">
+    
       <link rel="stylesheet" href="../../assets/css/extra.css">
     
     <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
@@ -37216,7 +37218,7 @@ Returning true on success or false otherwise.</p>
 <a id="__codelineno-156-20" name="__codelineno-156-20" href="#__codelineno-156-20"></a>
 <a id="__codelineno-156-21" name="__codelineno-156-21" href="#__codelineno-156-21"></a><span class="k">echo</span> <span class="s2">&quot;The first virtual invoice name is &quot;</span><span class="p">,</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">inv_title</span><span class="p">;</span>
 <a id="__codelineno-156-22" name="__codelineno-156-22" href="#__codelineno-156-22"></a>
-<a id="__codelineno-156-23" name="__codelineno-156-23" href="#__codelineno-156-23"></a><span class="c1">// behaviour with transaction</span>
+<a id="__codelineno-156-23" name="__codelineno-156-23" href="#__codelineno-156-23"></a><span class="c1">// behavior with transaction</span>
 <a id="__codelineno-156-24" name="__codelineno-156-24" href="#__codelineno-156-24"></a><span class="nv">$myTransaction</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Transaction</span><span class="p">(</span><span class="nx">\Phalcon\Di\Di</span><span class="o">::</span><span class="na">getDefault</span><span class="p">());</span>
 <a id="__codelineno-156-25" name="__codelineno-156-25" href="#__codelineno-156-25"></a><span class="nv">$myTransaction</span><span class="o">-&gt;</span><span class="na">begin</span><span class="p">();</span>
 <a id="__codelineno-156-26" name="__codelineno-156-26" href="#__codelineno-156-26"></a>
@@ -37957,7 +37959,7 @@ relation</p>
 <a id="__codelineno-245-15" name="__codelineno-245-15" href="#__codelineno-245-15"></a><span class="p">}</span>
 </code></pre></div>
 <h4 id="mvcmodel-invokefinder"><code>invokeFinder()</code><a class="headerlink" href="#mvcmodel-invokefinder" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-246-1" name="__codelineno-246-1" href="#__codelineno-246-1"></a><span class="k">protected</span> <span class="k">final</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">invokeFinder</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-246-1" name="__codelineno-246-1" href="#__codelineno-246-1"></a><span class="k">final</span> <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">invokeFinder</span><span class="p">(</span>
 <a id="__codelineno-246-2" name="__codelineno-246-2" href="#__codelineno-246-2"></a>    <span class="nx">string</span> <span class="nv">$method</span><span class="p">,</span>
 <a id="__codelineno-246-3" name="__codelineno-246-3" href="#__codelineno-246-3"></a>    <span class="k">array</span> <span class="nv">$arguments</span>
 <a id="__codelineno-246-4" name="__codelineno-246-4" href="#__codelineno-246-4"></a><span class="p">);</span>
@@ -44441,7 +44443,7 @@ is defined:</p>
 <a class="api-item" href="#mvcmodelmetadata-initialize">
 <code class="vis vis-protected">protected</code>
 <code class="sig"><span class="sf">initialize</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$schema</span></span>)</code>
-<span class="desc">Initialize old behaviour for compatability</span>
+<span class="desc">Initialize old behavior for compatability</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-initializecolumnmap">
 <code class="vis vis-protected">protected</code>
@@ -44905,7 +44907,7 @@ inside initializeMetaData() after the real schema is loaded.</span>
 <a id="__codelineno-690-5" name="__codelineno-690-5" href="#__codelineno-690-5"></a>    <span class="nx">mixed</span> <span class="nv">$schema</span>
 <a id="__codelineno-690-6" name="__codelineno-690-6" href="#__codelineno-690-6"></a><span class="p">);</span>
 </code></pre></div>
-<p>Initialize old behaviour for compatability</p>
+<p>Initialize old behavior for compatability</p>
 <h4 id="mvcmodelmetadata-initializecolumnmap"><code>initializeColumnMap()</code><a class="headerlink" href="#mvcmodelmetadata-initializecolumnmap" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-691-1" name="__codelineno-691-1" href="#__codelineno-691-1"></a><span class="k">final</span> <span class="k">protected</span> <span class="k">function</span> <span class="nf">initializeColumnMap</span><span class="p">(</span>
 <a id="__codelineno-691-2" name="__codelineno-691-2" href="#__codelineno-691-2"></a>    <span class="nx">ModelInterface</span> <span class="nv">$model</span><span class="p">,</span>

@@ -114,6 +114,8 @@ offering lower resource consumption and high performance.
       
     
     
+      <link rel="stylesheet" href="./css/api.css">
+    
       <link rel="stylesheet" href="./css/extra.css">
     
     <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
@@ -6226,7 +6228,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s1">&#39;js/bootstrap.min.js&#39;</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="static-base-uri">Static Base URI<a class="headerlink" href="#static-base-uri" title="Permanent link">&para;</a></h3>
-<p>When a <a href="../mvc-url/">Phalcon\Mvc\Url</a> service is registered in the DI container, local asset paths are resolved through <code>$url-&gt;getStatic()</code> instead of being prefixed with a bare <code>/</code>. This honours the <code>staticBaseUri</code> (or <code>baseUri</code>) configured on the URL component and makes asset resolution work correctly for applications deployed in a subdirectory or served from a CDN base path.</p>
+<p>When a <a href="../mvc-url/">Phalcon\Mvc\Url</a> service is registered in the DI container, local asset paths are resolved through <code>$url-&gt;getStatic()</code> instead of being prefixed with a bare <code>/</code>. This honors the <code>staticBaseUri</code> (or <code>baseUri</code>) configured on the URL component and makes asset resolution work correctly for applications deployed in a subdirectory or served from a CDN base path.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>

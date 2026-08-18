@@ -114,6 +114,8 @@ offering lower resource consumption and high performance.
       
     
     
+      <link rel="stylesheet" href="../assets/css/api.css">
+    
       <link rel="stylesheet" href="../assets/css/extra.css">
     
     <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
@@ -5424,7 +5426,7 @@ offering lower resource consumption and high performance.
 <p><code>Settings::get($key)</code> resolves a setting in this order:</p>
 <ol>
 <li>PHP-level override stored by a prior <code>Settings::set($key, $value)</code> call.</li>
-<li>The C-level value returned by <code>globals_get($key)</code> - honouring <code>php.ini</code>, <code>.htaccess</code>, and per-virtualhost configuration.</li>
+<li>The C-level value returned by <code>globals_get($key)</code> - honoring <code>php.ini</code>, <code>.htaccess</code>, and per-virtualhost configuration.</li>
 <li><code>null</code> if the key is not recognised.</li>
 </ol>
 <p><code>Settings::set()</code> stores the value in the PHP-level override array only. It <strong>does not</strong> call <code>globals_set()</code>, so the underlying C struct is never modified. This keeps an override scoped to the current request (and the PHP process state) without leaking into other projects that share the same PHP worker.</p>
@@ -5482,7 +5484,7 @@ offering lower resource consumption and high performance.
 <tr>
 <td><code>orm.column_renaming</code></td>
 <td><code>bool</code></td>
-<td>Honour the column-map during attribute lookup</td>
+<td>Honor the column-map during attribute lookup</td>
 </tr>
 <tr>
 <td><code>orm.disable_assign_setters</code></td>
