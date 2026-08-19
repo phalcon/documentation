@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5445,14 +5445,14 @@ offering lower resource consumption and high performance.
 <p>The <a href="../adr-router/">router</a> maps an HTTP method and a URL path directly to an action class by convention: the path segments become the namespace and the HTTP method becomes the class name.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>GET    /invoices        -&gt;  MyApp\Action\Invoices\Get
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>POST   /invoices        -&gt;  MyApp\Action\Invoices\Post
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>GET    /invoices/42     -&gt;  MyApp\Action\Invoices\Get   (with &quot;42&quot; as a route attribute)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>GET    /invoices/42     -&gt;  MyApp\Action\Invoices\Get   (with "42" as a route attribute)
 </code></pre></div>
 <p>Because each route resolves to its own class, there are no controller methods to grow, no shared state between actions, and nothing to route around inside the class.</p>
 <h2 id="reading-input">Reading input<a class="headerlink" href="#reading-input" title="Permanent link">&para;</a></h2>
 <p><code>Phalcon\ADR\Input\Input</code> collects the request data into a single object the domain can consume without any knowledge of HTTP:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$input</span> <span class="o">=</span> <span class="nx">Input</span><span class="o">::</span><span class="na">fromRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'id'</span><span class="p">);</span>
 </code></pre></div>
 <p><code>Input::fromRequest()</code> merges the query string, the POST body, the JSON body and the route attributes into one bag. See <a href="../adr-input/">Input</a> for details.</p>
 <h2 id="resolution-and-middleware">Resolution and middleware<a class="headerlink" href="#resolution-and-middleware" title="Permanent link">&para;</a></h2>
@@ -5642,7 +5642,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

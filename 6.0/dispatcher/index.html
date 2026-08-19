@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5781,8 +5781,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setDI</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setControllerName</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">);</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setControllerName</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="s2">"index"</span><span class="p">);</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setParams</span><span class="p">([]);</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nv">$controller</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">();</span>
@@ -5811,41 +5811,41 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">use</span> <span class="nx">MyApp\Front\Bootstrap</span> <span class="k">as</span> <span class="nx">Front</span><span class="p">;</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nv">$modules</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="s2">&quot;frontend&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="nx">Front</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="s2">&quot;path&quot;</span>      <span class="o">=&gt;</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/app/Modules/Front/Bootstrap.php&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="s2">&quot;metadata&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>            <span class="s2">&quot;controllersNamespace&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;MyApp\Front\Controllers&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="s2">"frontend"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s2">"className"</span> <span class="o">=&gt;</span> <span class="nx">Front</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="s2">"path"</span>      <span class="o">=&gt;</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/app/Modules/Front/Bootstrap.php"</span><span class="p">,</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="s2">"metadata"</span>  <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>            <span class="s2">"controllersNamespace"</span> <span class="o">=&gt;</span> <span class="s2">"MyApp\Front\Controllers"</span><span class="p">,</span>
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>        <span class="p">],</span>
 <a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="p">],</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="s2">&quot;backend&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>        <span class="s2">&quot;className&quot;</span> <span class="o">=&gt;</span> <span class="nx">Back</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="s2">&quot;path&quot;</span>      <span class="o">=&gt;</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/app/Modules/Back/Bootstrap.php&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>        <span class="s2">&quot;metadata&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>            <span class="s2">&quot;controllersNamespace&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;MyApp\Back\Controllers&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="s2">"backend"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>        <span class="s2">"className"</span> <span class="o">=&gt;</span> <span class="nx">Back</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="s2">"path"</span>      <span class="o">=&gt;</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/app/Modules/Back/Bootstrap.php"</span><span class="p">,</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>        <span class="s2">"metadata"</span>  <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>            <span class="s2">"controllersNamespace"</span> <span class="o">=&gt;</span> <span class="s2">"MyApp\Back\Controllers"</span><span class="p">,</span>
 <a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="p">],</span>
 <a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="p">],</span>
 <a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="p">];</span>
 <a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
 <a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="nv">$application</span><span class="o">-&gt;</span><span class="na">registerModules</span><span class="p">(</span><span class="nv">$modules</span><span class="p">);</span>
 <a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
-<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="nv">$eventsManager</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s2">&quot;eventsManager&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="nv">$eventsManager</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s2">"eventsManager"</span><span class="p">);</span>
 <a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>
 <a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>    <span class="s2">&quot;dispatch:beforeForward&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>    <span class="s2">"dispatch:beforeForward"</span><span class="p">,</span>
 <a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>    <span class="k">function</span> <span class="p">(</span>
 <a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>        <span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> 
 <a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>        <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">,</span> 
 <a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>        <span class="k">array</span> <span class="nv">$forward</span>
 <a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>    <span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$modules</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>        <span class="nv">$metadata</span> <span class="o">=</span> <span class="nv">$modules</span><span class="p">[</span><span class="nv">$forward</span><span class="p">[</span><span class="s2">&quot;module&quot;</span><span class="p">]][</span><span class="s2">&quot;metadata&quot;</span><span class="p">];</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>        <span class="nv">$metadata</span> <span class="o">=</span> <span class="nv">$modules</span><span class="p">[</span><span class="nv">$forward</span><span class="p">[</span><span class="s2">"module"</span><span class="p">]][</span><span class="s2">"metadata"</span><span class="p">];</span>
 <a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
 <a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setModuleName</span><span class="p">(</span>
-<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>            <span class="nv">$forward</span><span class="p">[</span><span class="s2">&quot;module&quot;</span><span class="p">]</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>            <span class="nv">$forward</span><span class="p">[</span><span class="s2">"module"</span><span class="p">]</span>
 <a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>        <span class="p">);</span>
 <a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a>
 <a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setNamespaceName</span><span class="p">(</span>
-<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>            <span class="nv">$metadata</span><span class="p">[</span><span class="s2">&quot;controllersNamespace&quot;</span><span class="p">]</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>            <span class="nv">$metadata</span><span class="p">[</span><span class="s2">"controllersNamespace"</span><span class="p">]</span>
 <a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>        <span class="p">);</span>
 <a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>    <span class="p">}</span>
 <a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="p">);</span>
@@ -5853,9 +5853,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="c1">// Forward</span>
 <a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
 <a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a>    <span class="p">[</span>
-<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>        <span class="s2">&quot;module&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;posts&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a>        <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>        <span class="s2">"module"</span>     <span class="o">=&gt;</span> <span class="s2">"backend"</span><span class="p">,</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>        <span class="s2">"controller"</span> <span class="o">=&gt;</span> <span class="s2">"posts"</span><span class="p">,</span>
+<a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a>        <span class="s2">"action"</span>     <span class="o">=&gt;</span> <span class="s2">"index"</span><span class="p">,</span>
 <a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a>    <span class="p">]</span>
 <a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="p">);</span>
 </code></pre></div>
@@ -6018,13 +6018,13 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>Enable model binding during dispatch</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>    <span class="s1">'dispatcher'</span><span class="p">,</span>
 <a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>    <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">();</span>
 <a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>
 <a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setModelBinder</span><span class="p">(</span>
 <a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a>            <span class="k">new</span> <span class="nx">Binder</span><span class="p">(),</span>
-<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>            <span class="s1">&#39;cache&#39;</span>
+<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>            <span class="s1">'cache'</span>
 <a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a>        <span class="p">);</span>
 <a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a>
 <a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a>        <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
@@ -6080,13 +6080,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="k">while</span> <span class="p">(</span><span class="k">true</span> <span class="o">!==</span> <span class="nv">$finished</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>    <span class="nv">$finished</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 <a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>
-<a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>    <span class="nv">$controllerClass</span> <span class="o">=</span> <span class="nv">$controllerName</span> <span class="o">.</span> <span class="s1">&#39;Controller&#39;</span><span class="p">;</span>
+<a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>    <span class="nv">$controllerClass</span> <span class="o">=</span> <span class="nv">$controllerName</span> <span class="o">.</span> <span class="s1">'Controller'</span><span class="p">;</span>
 <a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a>    <span class="nv">$controller</span>      <span class="o">=</span> <span class="k">new</span> <span class="nv">$controllerClass</span><span class="p">();</span>
 <a id="__codelineno-50-10" name="__codelineno-50-10" href="#__codelineno-50-10"></a>
 <a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a>    <span class="nb">call_user_func_array</span><span class="p">(</span>
 <a id="__codelineno-50-12" name="__codelineno-50-12" href="#__codelineno-50-12"></a>        <span class="p">[</span>
 <a id="__codelineno-50-13" name="__codelineno-50-13" href="#__codelineno-50-13"></a>            <span class="nv">$controller</span><span class="p">,</span>
-<a id="__codelineno-50-14" name="__codelineno-50-14" href="#__codelineno-50-14"></a>            <span class="nv">$actionName</span> <span class="o">.</span> <span class="s1">&#39;Action&#39;</span><span class="p">,</span>
+<a id="__codelineno-50-14" name="__codelineno-50-14" href="#__codelineno-50-14"></a>            <span class="nv">$actionName</span> <span class="o">.</span> <span class="s1">'Action'</span><span class="p">,</span>
 <a id="__codelineno-50-15" name="__codelineno-50-15" href="#__codelineno-50-15"></a>        <span class="p">],</span>
 <a id="__codelineno-50-16" name="__codelineno-50-16" href="#__codelineno-50-16"></a>        <span class="nv">$params</span>
 <a id="__codelineno-50-17" name="__codelineno-50-17" href="#__codelineno-50-17"></a>    <span class="p">);</span>
@@ -6113,8 +6113,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-51-14" name="__codelineno-51-14" href="#__codelineno-51-14"></a>
 <a id="__codelineno-51-15" name="__codelineno-51-15" href="#__codelineno-51-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
 <a id="__codelineno-51-16" name="__codelineno-51-16" href="#__codelineno-51-16"></a>            <span class="p">[</span>
-<a id="__codelineno-51-17" name="__codelineno-51-17" href="#__codelineno-51-17"></a>                <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;invoices&#39;</span><span class="p">,</span>
-<a id="__codelineno-51-18" name="__codelineno-51-18" href="#__codelineno-51-18"></a>                <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span>
+<a id="__codelineno-51-17" name="__codelineno-51-17" href="#__codelineno-51-17"></a>                <span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'invoices'</span><span class="p">,</span>
+<a id="__codelineno-51-18" name="__codelineno-51-18" href="#__codelineno-51-18"></a>                <span class="s1">'action'</span>     <span class="o">=&gt;</span> <span class="s1">'list'</span><span class="p">,</span>
 <a id="__codelineno-51-19" name="__codelineno-51-19" href="#__codelineno-51-19"></a>            <span class="p">]</span>
 <a id="__codelineno-51-20" name="__codelineno-51-20" href="#__codelineno-51-20"></a>        <span class="p">);</span>
 <a id="__codelineno-51-21" name="__codelineno-51-21" href="#__codelineno-51-21"></a>    <span class="p">}</span>
@@ -6129,7 +6129,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>
 <a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
 <a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a>    <span class="p">[</span>
-<a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>        <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;search&#39;</span><span class="p">,</span>
+<a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>        <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'search'</span><span class="p">,</span>
 <a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a>    <span class="p">]</span>
 <a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a><span class="p">);</span>
 </code></pre></div>
@@ -6138,8 +6138,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>
 <a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
 <a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>    <span class="p">[</span>
-<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>        <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;search&#39;</span><span class="p">,</span>
-<a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>        <span class="s1">&#39;params&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>        <span class="s1">'action'</span> <span class="o">=&gt;</span> <span class="s1">'search'</span><span class="p">,</span>
+<a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>        <span class="s1">'params'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
 <a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a>    <span class="p">]</span>
 <a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a><span class="p">);</span>
 </code></pre></div>
@@ -6185,12 +6185,12 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a><span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">;</span>
 <a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a>
 <a id="__codelineno-55-8" name="__codelineno-55-8" href="#__codelineno-55-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
+<a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a>    <span class="s1">'dispatcher'</span><span class="p">,</span>
 <a id="__codelineno-55-10" name="__codelineno-55-10" href="#__codelineno-55-10"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-55-11" name="__codelineno-55-11" href="#__codelineno-55-11"></a>        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-55-12" name="__codelineno-55-12" href="#__codelineno-55-12"></a>
 <a id="__codelineno-55-13" name="__codelineno-55-13" href="#__codelineno-55-13"></a>        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-55-14" name="__codelineno-55-14" href="#__codelineno-55-14"></a>            <span class="s1">&#39;dispatch:beforeDispatchLoop&#39;</span><span class="p">,</span>
+<a id="__codelineno-55-14" name="__codelineno-55-14" href="#__codelineno-55-14"></a>            <span class="s1">'dispatch:beforeDispatchLoop'</span><span class="p">,</span>
 <a id="__codelineno-55-15" name="__codelineno-55-15" href="#__codelineno-55-15"></a>            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-55-16" name="__codelineno-55-16" href="#__codelineno-55-16"></a>                <span class="nv">$params</span>    <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">();</span>
 <a id="__codelineno-55-17" name="__codelineno-55-17" href="#__codelineno-55-17"></a>                <span class="nv">$keyParams</span> <span class="o">=</span> <span class="p">[];</span>
@@ -6226,18 +6226,18 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
 <a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a>
 <a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-57-9" name="__codelineno-57-9" href="#__codelineno-57-9"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
+<a id="__codelineno-57-9" name="__codelineno-57-9" href="#__codelineno-57-9"></a>    <span class="s1">'dispatcher'</span><span class="p">,</span>
 <a id="__codelineno-57-10" name="__codelineno-57-10" href="#__codelineno-57-10"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-57-11" name="__codelineno-57-11" href="#__codelineno-57-11"></a>        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-57-12" name="__codelineno-57-12" href="#__codelineno-57-12"></a>
 <a id="__codelineno-57-13" name="__codelineno-57-13" href="#__codelineno-57-13"></a>        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-57-14" name="__codelineno-57-14" href="#__codelineno-57-14"></a>            <span class="s1">&#39;dispatch:beforeDispatchLoop&#39;</span><span class="p">,</span>
+<a id="__codelineno-57-14" name="__codelineno-57-14" href="#__codelineno-57-14"></a>            <span class="s1">'dispatch:beforeDispatchLoop'</span><span class="p">,</span>
 <a id="__codelineno-57-15" name="__codelineno-57-15" href="#__codelineno-57-15"></a>            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-57-16" name="__codelineno-57-16" href="#__codelineno-57-16"></a>                <span class="nv">$params</span>    <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">();</span>
 <a id="__codelineno-57-17" name="__codelineno-57-17" href="#__codelineno-57-17"></a>                <span class="nv">$keyParams</span> <span class="o">=</span> <span class="p">[];</span>
 <a id="__codelineno-57-18" name="__codelineno-57-18" href="#__codelineno-57-18"></a>
 <a id="__codelineno-57-19" name="__codelineno-57-19" href="#__codelineno-57-19"></a>                <span class="k">foreach</span> <span class="p">(</span><span class="nv">$params</span> <span class="k">as</span> <span class="nv">$param</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-57-20" name="__codelineno-57-20" href="#__codelineno-57-20"></a>                    <span class="nv">$parts</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nv">$param</span><span class="p">);</span>
+<a id="__codelineno-57-20" name="__codelineno-57-20" href="#__codelineno-57-20"></a>                    <span class="nv">$parts</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">':'</span><span class="p">,</span> <span class="nv">$param</span><span class="p">);</span>
 <a id="__codelineno-57-21" name="__codelineno-57-21" href="#__codelineno-57-21"></a>                    <span class="nv">$key</span>   <span class="o">=</span> <span class="nv">$parts</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 <a id="__codelineno-57-22" name="__codelineno-57-22" href="#__codelineno-57-22"></a>                    <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$parts</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
 <a id="__codelineno-57-23" name="__codelineno-57-23" href="#__codelineno-57-23"></a>
@@ -6271,11 +6271,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-58-12" name="__codelineno-58-12" href="#__codelineno-58-12"></a>    <span class="p">{</span>
 <a id="__codelineno-58-13" name="__codelineno-58-13" href="#__codelineno-58-13"></a>        <span class="nv">$invoiceId</span> <span class="o">=</span> <span class="nv">$this</span>
 <a id="__codelineno-58-14" name="__codelineno-58-14" href="#__codelineno-58-14"></a>            <span class="o">-&gt;</span><span class="na">dispatcher</span>
-<a id="__codelineno-58-15" name="__codelineno-58-15" href="#__codelineno-58-15"></a>            <span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s1">&#39;invoiceId&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<a id="__codelineno-58-15" name="__codelineno-58-15" href="#__codelineno-58-15"></a>            <span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s1">'invoiceId'</span><span class="p">,</span> <span class="s1">'int'</span><span class="p">)</span>
 <a id="__codelineno-58-16" name="__codelineno-58-16" href="#__codelineno-58-16"></a>        <span class="p">;</span>
 <a id="__codelineno-58-17" name="__codelineno-58-17" href="#__codelineno-58-17"></a>        <span class="nv">$filter</span> <span class="o">=</span> <span class="nv">$this</span>
 <a id="__codelineno-58-18" name="__codelineno-58-18" href="#__codelineno-58-18"></a>            <span class="o">-&gt;</span><span class="na">dispatcher</span>
-<a id="__codelineno-58-19" name="__codelineno-58-19" href="#__codelineno-58-19"></a>            <span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<a id="__codelineno-58-19" name="__codelineno-58-19" href="#__codelineno-58-19"></a>            <span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s1">'filter'</span><span class="p">,</span> <span class="s1">'string'</span><span class="p">)</span>
 <a id="__codelineno-58-20" name="__codelineno-58-20" href="#__codelineno-58-20"></a>        <span class="p">;</span>
 <a id="__codelineno-58-21" name="__codelineno-58-21" href="#__codelineno-58-21"></a>
 <a id="__codelineno-58-22" name="__codelineno-58-22" href="#__codelineno-58-22"></a>        <span class="c1">// ...</span>
@@ -6300,14 +6300,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a><span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
 <a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a><span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">Manager</span><span class="p">;</span>
 <a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a>
-<a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s1">&#39;helper&#39;</span><span class="p">);</span>
+<a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s1">'helper'</span><span class="p">);</span>
 <a id="__codelineno-60-8" name="__codelineno-60-8" href="#__codelineno-60-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
+<a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a>    <span class="s1">'dispatcher'</span><span class="p">,</span>
 <a id="__codelineno-60-10" name="__codelineno-60-10" href="#__codelineno-60-10"></a>    <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$helper</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-60-11" name="__codelineno-60-11" href="#__codelineno-60-11"></a>        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-60-12" name="__codelineno-60-12" href="#__codelineno-60-12"></a>
 <a id="__codelineno-60-13" name="__codelineno-60-13" href="#__codelineno-60-13"></a>        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-60-14" name="__codelineno-60-14" href="#__codelineno-60-14"></a>            <span class="s1">&#39;dispatch:beforeDispatchLoop&#39;</span><span class="p">,</span>
+<a id="__codelineno-60-14" name="__codelineno-60-14" href="#__codelineno-60-14"></a>            <span class="s1">'dispatch:beforeDispatchLoop'</span><span class="p">,</span>
 <a id="__codelineno-60-15" name="__codelineno-60-15" href="#__codelineno-60-15"></a>            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-60-16" name="__codelineno-60-16" href="#__codelineno-60-16"></a>                <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span>
 <a id="__codelineno-60-17" name="__codelineno-60-17" href="#__codelineno-60-17"></a>                    <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">camelize</span><span class="p">(</span>
@@ -6337,15 +6337,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-62-5" name="__codelineno-62-5" href="#__codelineno-62-5"></a><span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">;</span>
 <a id="__codelineno-62-6" name="__codelineno-62-6" href="#__codelineno-62-6"></a>
 <a id="__codelineno-62-7" name="__codelineno-62-7" href="#__codelineno-62-7"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-62-8" name="__codelineno-62-8" href="#__codelineno-62-8"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
+<a id="__codelineno-62-8" name="__codelineno-62-8" href="#__codelineno-62-8"></a>    <span class="s1">'dispatcher'</span><span class="p">,</span>
 <a id="__codelineno-62-9" name="__codelineno-62-9" href="#__codelineno-62-9"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-62-10" name="__codelineno-62-10" href="#__codelineno-62-10"></a>        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-62-11" name="__codelineno-62-11" href="#__codelineno-62-11"></a>
 <a id="__codelineno-62-12" name="__codelineno-62-12" href="#__codelineno-62-12"></a>        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-62-13" name="__codelineno-62-13" href="#__codelineno-62-13"></a>            <span class="s1">&#39;dispatch:beforeDispatchLoop&#39;</span><span class="p">,</span>
+<a id="__codelineno-62-13" name="__codelineno-62-13" href="#__codelineno-62-13"></a>            <span class="s1">'dispatch:beforeDispatchLoop'</span><span class="p">,</span>
 <a id="__codelineno-62-14" name="__codelineno-62-14" href="#__codelineno-62-14"></a>            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-62-15" name="__codelineno-62-15" href="#__codelineno-62-15"></a>                <span class="nv">$action</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">();</span>
-<a id="__codelineno-62-16" name="__codelineno-62-16" href="#__codelineno-62-16"></a>                <span class="nv">$action</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">&#39;/\.php$/&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$action</span><span class="p">);</span>
+<a id="__codelineno-62-16" name="__codelineno-62-16" href="#__codelineno-62-16"></a>                <span class="nv">$action</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">'/\.php$/'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="nv">$action</span><span class="p">);</span>
 <a id="__codelineno-62-17" name="__codelineno-62-17" href="#__codelineno-62-17"></a>
 <a id="__codelineno-62-18" name="__codelineno-62-18" href="#__codelineno-62-18"></a>                <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="nv">$action</span><span class="p">);</span>
 <a id="__codelineno-62-19" name="__codelineno-62-19" href="#__codelineno-62-19"></a>            <span class="p">}</span>
@@ -6392,12 +6392,12 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-64-8" name="__codelineno-64-8" href="#__codelineno-64-8"></a><span class="k">use</span> <span class="nx">\ReflectionMethod</span><span class="p">;</span>
 <a id="__codelineno-64-9" name="__codelineno-64-9" href="#__codelineno-64-9"></a>
 <a id="__codelineno-64-10" name="__codelineno-64-10" href="#__codelineno-64-10"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-64-11" name="__codelineno-64-11" href="#__codelineno-64-11"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
+<a id="__codelineno-64-11" name="__codelineno-64-11" href="#__codelineno-64-11"></a>    <span class="s1">'dispatcher'</span><span class="p">,</span>
 <a id="__codelineno-64-12" name="__codelineno-64-12" href="#__codelineno-64-12"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-64-13" name="__codelineno-64-13" href="#__codelineno-64-13"></a>        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-64-14" name="__codelineno-64-14" href="#__codelineno-64-14"></a>
 <a id="__codelineno-64-15" name="__codelineno-64-15" href="#__codelineno-64-15"></a>        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-64-16" name="__codelineno-64-16" href="#__codelineno-64-16"></a>            <span class="s1">&#39;dispatch:beforeDispatchLoop&#39;</span><span class="p">,</span>
+<a id="__codelineno-64-16" name="__codelineno-64-16" href="#__codelineno-64-16"></a>            <span class="s1">'dispatch:beforeDispatchLoop'</span><span class="p">,</span>
 <a id="__codelineno-64-17" name="__codelineno-64-17" href="#__codelineno-64-17"></a>            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-64-18" name="__codelineno-64-18" href="#__codelineno-64-18"></a>                <span class="nv">$controllerName</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getControllerClass</span><span class="p">();</span>
 <a id="__codelineno-64-19" name="__codelineno-64-19" href="#__codelineno-64-19"></a>                <span class="nv">$actionName</span>     <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActiveMethod</span><span class="p">();</span>
@@ -6522,12 +6522,12 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-69-8" name="__codelineno-69-8" href="#__codelineno-69-8"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher\Exception</span> <span class="k">as</span> <span class="nx">DispatchException</span><span class="p">;</span>
 <a id="__codelineno-69-9" name="__codelineno-69-9" href="#__codelineno-69-9"></a>
 <a id="__codelineno-69-10" name="__codelineno-69-10" href="#__codelineno-69-10"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span>
-<a id="__codelineno-69-11" name="__codelineno-69-11" href="#__codelineno-69-11"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
+<a id="__codelineno-69-11" name="__codelineno-69-11" href="#__codelineno-69-11"></a>    <span class="s1">'dispatcher'</span><span class="p">,</span>
 <a id="__codelineno-69-12" name="__codelineno-69-12" href="#__codelineno-69-12"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-69-13" name="__codelineno-69-13" href="#__codelineno-69-13"></a>        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-69-14" name="__codelineno-69-14" href="#__codelineno-69-14"></a>
 <a id="__codelineno-69-15" name="__codelineno-69-15" href="#__codelineno-69-15"></a>        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-69-16" name="__codelineno-69-16" href="#__codelineno-69-16"></a>            <span class="s1">&#39;dispatch:beforeException&#39;</span><span class="p">,</span>
+<a id="__codelineno-69-16" name="__codelineno-69-16" href="#__codelineno-69-16"></a>            <span class="s1">'dispatch:beforeException'</span><span class="p">,</span>
 <a id="__codelineno-69-17" name="__codelineno-69-17" href="#__codelineno-69-17"></a>            <span class="k">function</span> <span class="p">(</span>
 <a id="__codelineno-69-18" name="__codelineno-69-18" href="#__codelineno-69-18"></a>                <span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> 
 <a id="__codelineno-69-19" name="__codelineno-69-19" href="#__codelineno-69-19"></a>                <span class="nv">$dispatcher</span><span class="p">,</span> 
@@ -6537,8 +6537,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-69-23" name="__codelineno-69-23" href="#__codelineno-69-23"></a>                <span class="k">if</span> <span class="p">(</span><span class="nv">$exception</span> <span class="nx">instanceof</span> <span class="nx">DispatchException</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-69-24" name="__codelineno-69-24" href="#__codelineno-69-24"></a>                    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
 <a id="__codelineno-69-25" name="__codelineno-69-25" href="#__codelineno-69-25"></a>                        <span class="p">[</span>
-<a id="__codelineno-69-26" name="__codelineno-69-26" href="#__codelineno-69-26"></a>                            <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span>
-<a id="__codelineno-69-27" name="__codelineno-69-27" href="#__codelineno-69-27"></a>                            <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;fourOhFour&#39;</span><span class="p">,</span>
+<a id="__codelineno-69-26" name="__codelineno-69-26" href="#__codelineno-69-26"></a>                            <span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'index'</span><span class="p">,</span>
+<a id="__codelineno-69-27" name="__codelineno-69-27" href="#__codelineno-69-27"></a>                            <span class="s1">'action'</span>     <span class="o">=&gt;</span> <span class="s1">'fourOhFour'</span><span class="p">,</span>
 <a id="__codelineno-69-28" name="__codelineno-69-28" href="#__codelineno-69-28"></a>                        <span class="p">]</span>
 <a id="__codelineno-69-29" name="__codelineno-69-29" href="#__codelineno-69-29"></a>                    <span class="p">);</span>
 <a id="__codelineno-69-30" name="__codelineno-69-30" href="#__codelineno-69-30"></a>
@@ -6564,12 +6564,12 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-70-7" name="__codelineno-70-7" href="#__codelineno-70-7"></a><span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">;</span>
 <a id="__codelineno-70-8" name="__codelineno-70-8" href="#__codelineno-70-8"></a>
 <a id="__codelineno-70-9" name="__codelineno-70-9" href="#__codelineno-70-9"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span>
-<a id="__codelineno-70-10" name="__codelineno-70-10" href="#__codelineno-70-10"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
+<a id="__codelineno-70-10" name="__codelineno-70-10" href="#__codelineno-70-10"></a>    <span class="s1">'dispatcher'</span><span class="p">,</span>
 <a id="__codelineno-70-11" name="__codelineno-70-11" href="#__codelineno-70-11"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-70-12" name="__codelineno-70-12" href="#__codelineno-70-12"></a>        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-70-13" name="__codelineno-70-13" href="#__codelineno-70-13"></a>
 <a id="__codelineno-70-14" name="__codelineno-70-14" href="#__codelineno-70-14"></a>        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-70-15" name="__codelineno-70-15" href="#__codelineno-70-15"></a>            <span class="s1">&#39;dispatch:beforeException&#39;</span><span class="p">,</span>
+<a id="__codelineno-70-15" name="__codelineno-70-15" href="#__codelineno-70-15"></a>            <span class="s1">'dispatch:beforeException'</span><span class="p">,</span>
 <a id="__codelineno-70-16" name="__codelineno-70-16" href="#__codelineno-70-16"></a>            <span class="k">function</span> <span class="p">(</span>
 <a id="__codelineno-70-17" name="__codelineno-70-17" href="#__codelineno-70-17"></a>                <span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> 
 <a id="__codelineno-70-18" name="__codelineno-70-18" href="#__codelineno-70-18"></a>                <span class="nv">$dispatcher</span><span class="p">,</span> 
@@ -6581,8 +6581,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-70-24" name="__codelineno-70-24" href="#__codelineno-70-24"></a>                        <span class="c1">// 404</span>
 <a id="__codelineno-70-25" name="__codelineno-70-25" href="#__codelineno-70-25"></a>                        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
 <a id="__codelineno-70-26" name="__codelineno-70-26" href="#__codelineno-70-26"></a>                            <span class="p">[</span>
-<a id="__codelineno-70-27" name="__codelineno-70-27" href="#__codelineno-70-27"></a>                                <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span>
-<a id="__codelineno-70-28" name="__codelineno-70-28" href="#__codelineno-70-28"></a>                                <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;fourOhFour&#39;</span><span class="p">,</span>
+<a id="__codelineno-70-27" name="__codelineno-70-27" href="#__codelineno-70-27"></a>                                <span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'index'</span><span class="p">,</span>
+<a id="__codelineno-70-28" name="__codelineno-70-28" href="#__codelineno-70-28"></a>                                <span class="s1">'action'</span>     <span class="o">=&gt;</span> <span class="s1">'fourOhFour'</span><span class="p">,</span>
 <a id="__codelineno-70-29" name="__codelineno-70-29" href="#__codelineno-70-29"></a>                            <span class="p">]</span>
 <a id="__codelineno-70-30" name="__codelineno-70-30" href="#__codelineno-70-30"></a>                        <span class="p">);</span>
 <a id="__codelineno-70-31" name="__codelineno-70-31" href="#__codelineno-70-31"></a>
@@ -6613,16 +6613,16 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-71-12" name="__codelineno-71-12" href="#__codelineno-71-12"></a>        <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">,</span> 
 <a id="__codelineno-71-13" name="__codelineno-71-13" href="#__codelineno-71-13"></a>        <span class="nx">Exception</span> <span class="nv">$exception</span>
 <a id="__codelineno-71-14" name="__codelineno-71-14" href="#__codelineno-71-14"></a>    <span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-71-15" name="__codelineno-71-15" href="#__codelineno-71-15"></a>        <span class="nv">$action</span> <span class="o">=</span> <span class="s1">&#39;fiveOhThree&#39;</span><span class="p">;</span>
+<a id="__codelineno-71-15" name="__codelineno-71-15" href="#__codelineno-71-15"></a>        <span class="nv">$action</span> <span class="o">=</span> <span class="s1">'fiveOhThree'</span><span class="p">;</span>
 <a id="__codelineno-71-16" name="__codelineno-71-16" href="#__codelineno-71-16"></a>
 <a id="__codelineno-71-17" name="__codelineno-71-17" href="#__codelineno-71-17"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$exception</span> <span class="nx">instanceof</span> <span class="nx">DispatchException</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-71-18" name="__codelineno-71-18" href="#__codelineno-71-18"></a>            <span class="nv">$action</span> <span class="o">=</span> <span class="s1">&#39;fourOhFour&#39;</span><span class="p">;</span>
+<a id="__codelineno-71-18" name="__codelineno-71-18" href="#__codelineno-71-18"></a>            <span class="nv">$action</span> <span class="o">=</span> <span class="s1">'fourOhFour'</span><span class="p">;</span>
 <a id="__codelineno-71-19" name="__codelineno-71-19" href="#__codelineno-71-19"></a>        <span class="p">}</span>
 <a id="__codelineno-71-20" name="__codelineno-71-20" href="#__codelineno-71-20"></a>
 <a id="__codelineno-71-21" name="__codelineno-71-21" href="#__codelineno-71-21"></a>        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
 <a id="__codelineno-71-22" name="__codelineno-71-22" href="#__codelineno-71-22"></a>            <span class="p">[</span>
-<a id="__codelineno-71-23" name="__codelineno-71-23" href="#__codelineno-71-23"></a>                <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span>
-<a id="__codelineno-71-24" name="__codelineno-71-24" href="#__codelineno-71-24"></a>                <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="nv">$action</span><span class="p">,</span>
+<a id="__codelineno-71-23" name="__codelineno-71-23" href="#__codelineno-71-23"></a>                <span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'index'</span><span class="p">,</span>
+<a id="__codelineno-71-24" name="__codelineno-71-24" href="#__codelineno-71-24"></a>                <span class="s1">'action'</span>     <span class="o">=&gt;</span> <span class="nv">$action</span><span class="p">,</span>
 <a id="__codelineno-71-25" name="__codelineno-71-25" href="#__codelineno-71-25"></a>            <span class="p">]</span>
 <a id="__codelineno-71-26" name="__codelineno-71-26" href="#__codelineno-71-26"></a>        <span class="p">);</span>
 <a id="__codelineno-71-27" name="__codelineno-71-27" href="#__codelineno-71-27"></a>
@@ -6721,12 +6721,12 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-72-5" name="__codelineno-72-5" href="#__codelineno-72-5"></a><span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">;</span>
 <a id="__codelineno-72-6" name="__codelineno-72-6" href="#__codelineno-72-6"></a>
 <a id="__codelineno-72-7" name="__codelineno-72-7" href="#__codelineno-72-7"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-72-8" name="__codelineno-72-8" href="#__codelineno-72-8"></a>    <span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span>
+<a id="__codelineno-72-8" name="__codelineno-72-8" href="#__codelineno-72-8"></a>    <span class="s1">'dispatcher'</span><span class="p">,</span>
 <a id="__codelineno-72-9" name="__codelineno-72-9" href="#__codelineno-72-9"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-72-10" name="__codelineno-72-10" href="#__codelineno-72-10"></a>        <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-72-11" name="__codelineno-72-11" href="#__codelineno-72-11"></a>
 <a id="__codelineno-72-12" name="__codelineno-72-12" href="#__codelineno-72-12"></a>        <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-72-13" name="__codelineno-72-13" href="#__codelineno-72-13"></a>            <span class="s1">&#39;dispatch&#39;</span><span class="p">,</span>
+<a id="__codelineno-72-13" name="__codelineno-72-13" href="#__codelineno-72-13"></a>            <span class="s1">'dispatch'</span><span class="p">,</span>
 <a id="__codelineno-72-14" name="__codelineno-72-14" href="#__codelineno-72-14"></a>            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-72-15" name="__codelineno-72-15" href="#__codelineno-72-15"></a>                <span class="c1">// ...</span>
 <a id="__codelineno-72-16" name="__codelineno-72-16" href="#__codelineno-72-16"></a>            <span class="p">}</span>
@@ -6784,20 +6784,20 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-74-10" name="__codelineno-74-10" href="#__codelineno-74-10"></a><span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-74-11" name="__codelineno-74-11" href="#__codelineno-74-11"></a>
 <a id="__codelineno-74-12" name="__codelineno-74-12" href="#__codelineno-74-12"></a><span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-74-13" name="__codelineno-74-13" href="#__codelineno-74-13"></a>    <span class="s1">&#39;dispatch:beforeCallAction&#39;</span><span class="p">,</span>
+<a id="__codelineno-74-13" name="__codelineno-74-13" href="#__codelineno-74-13"></a>    <span class="s1">'dispatch:beforeCallAction'</span><span class="p">,</span>
 <a id="__codelineno-74-14" name="__codelineno-74-14" href="#__codelineno-74-14"></a>    <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">,</span> <span class="nx">Collection</span> <span class="nv">$observer</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-74-15" name="__codelineno-74-15" href="#__codelineno-74-15"></a>        <span class="c1">// Read the resolved handler, action, and params</span>
-<a id="__codelineno-74-16" name="__codelineno-74-16" href="#__codelineno-74-16"></a>        <span class="nv">$action</span> <span class="o">=</span> <span class="nv">$observer</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">);</span>
+<a id="__codelineno-74-16" name="__codelineno-74-16" href="#__codelineno-74-16"></a>        <span class="nv">$action</span> <span class="o">=</span> <span class="nv">$observer</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'action'</span><span class="p">);</span>
 <a id="__codelineno-74-17" name="__codelineno-74-17" href="#__codelineno-74-17"></a>
 <a id="__codelineno-74-18" name="__codelineno-74-18" href="#__codelineno-74-18"></a>        <span class="c1">// Rewrite the parameters before the action runs</span>
-<a id="__codelineno-74-19" name="__codelineno-74-19" href="#__codelineno-74-19"></a>        <span class="nv">$observer</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;params&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;invoiceId&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">]);</span>
+<a id="__codelineno-74-19" name="__codelineno-74-19" href="#__codelineno-74-19"></a>        <span class="nv">$observer</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'params'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'invoiceId'</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">]);</span>
 <a id="__codelineno-74-20" name="__codelineno-74-20" href="#__codelineno-74-20"></a>    <span class="p">}</span>
 <a id="__codelineno-74-21" name="__codelineno-74-21" href="#__codelineno-74-21"></a><span class="p">);</span>
 <a id="__codelineno-74-22" name="__codelineno-74-22" href="#__codelineno-74-22"></a>
 <a id="__codelineno-74-23" name="__codelineno-74-23" href="#__codelineno-74-23"></a><span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-74-24" name="__codelineno-74-24" href="#__codelineno-74-24"></a>    <span class="s1">&#39;dispatch:afterCallAction&#39;</span><span class="p">,</span>
+<a id="__codelineno-74-24" name="__codelineno-74-24" href="#__codelineno-74-24"></a>    <span class="s1">'dispatch:afterCallAction'</span><span class="p">,</span>
 <a id="__codelineno-74-25" name="__codelineno-74-25" href="#__codelineno-74-25"></a>    <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">,</span> <span class="nx">Collection</span> <span class="nv">$observer</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-74-26" name="__codelineno-74-26" href="#__codelineno-74-26"></a>        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$observer</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">);</span>
+<a id="__codelineno-74-26" name="__codelineno-74-26" href="#__codelineno-74-26"></a>        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$observer</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'result'</span><span class="p">);</span>
 <a id="__codelineno-74-27" name="__codelineno-74-27" href="#__codelineno-74-27"></a>    <span class="p">}</span>
 <a id="__codelineno-74-28" name="__codelineno-74-28" href="#__codelineno-74-28"></a><span class="p">);</span>
 <a id="__codelineno-74-29" name="__codelineno-74-29" href="#__codelineno-74-29"></a>
@@ -6822,29 +6822,29 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-75-9" name="__codelineno-75-9" href="#__codelineno-75-9"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Di</span><span class="p">();</span>
 <a id="__codelineno-75-10" name="__codelineno-75-10" href="#__codelineno-75-10"></a>
 <a id="__codelineno-75-11" name="__codelineno-75-11" href="#__codelineno-75-11"></a><span class="nv">$modules</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-75-12" name="__codelineno-75-12" href="#__codelineno-75-12"></a>    <span class="s1">&#39;backend&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-75-13" name="__codelineno-75-13" href="#__codelineno-75-13"></a>        <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="nx">Bootstrap</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-75-14" name="__codelineno-75-14" href="#__codelineno-75-14"></a>        <span class="s1">&#39;path&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;/app/Modules/Back/Bootstrap.php&#39;</span><span class="p">,</span>
-<a id="__codelineno-75-15" name="__codelineno-75-15" href="#__codelineno-75-15"></a>        <span class="s1">&#39;metadata&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-75-16" name="__codelineno-75-16" href="#__codelineno-75-16"></a>            <span class="s1">&#39;controllersNamespace&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;MyApp\Back\Controllers&#39;</span><span class="p">,</span>
+<a id="__codelineno-75-12" name="__codelineno-75-12" href="#__codelineno-75-12"></a>    <span class="s1">'backend'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-75-13" name="__codelineno-75-13" href="#__codelineno-75-13"></a>        <span class="s1">'className'</span> <span class="o">=&gt;</span> <span class="nx">Bootstrap</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-75-14" name="__codelineno-75-14" href="#__codelineno-75-14"></a>        <span class="s1">'path'</span>      <span class="o">=&gt;</span> <span class="s1">'/app/Modules/Back/Bootstrap.php'</span><span class="p">,</span>
+<a id="__codelineno-75-15" name="__codelineno-75-15" href="#__codelineno-75-15"></a>        <span class="s1">'metadata'</span>  <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-75-16" name="__codelineno-75-16" href="#__codelineno-75-16"></a>            <span class="s1">'controllersNamespace'</span> <span class="o">=&gt;</span> <span class="s1">'MyApp\Back\Controllers'</span><span class="p">,</span>
 <a id="__codelineno-75-17" name="__codelineno-75-17" href="#__codelineno-75-17"></a>        <span class="p">],</span>
 <a id="__codelineno-75-18" name="__codelineno-75-18" href="#__codelineno-75-18"></a>    <span class="p">],</span>
 <a id="__codelineno-75-19" name="__codelineno-75-19" href="#__codelineno-75-19"></a><span class="p">];</span>
 <a id="__codelineno-75-20" name="__codelineno-75-20" href="#__codelineno-75-20"></a>
 <a id="__codelineno-75-21" name="__codelineno-75-21" href="#__codelineno-75-21"></a><span class="nv">$manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-75-22" name="__codelineno-75-22" href="#__codelineno-75-22"></a><span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-75-23" name="__codelineno-75-23" href="#__codelineno-75-23"></a>    <span class="s1">&#39;dispatch:beforeForward&#39;</span><span class="p">,</span>
+<a id="__codelineno-75-23" name="__codelineno-75-23" href="#__codelineno-75-23"></a>    <span class="s1">'dispatch:beforeForward'</span><span class="p">,</span>
 <a id="__codelineno-75-24" name="__codelineno-75-24" href="#__codelineno-75-24"></a>    <span class="k">function</span> <span class="p">(</span>
 <a id="__codelineno-75-25" name="__codelineno-75-25" href="#__codelineno-75-25"></a>        <span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> 
 <a id="__codelineno-75-26" name="__codelineno-75-26" href="#__codelineno-75-26"></a>        <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">,</span> 
 <a id="__codelineno-75-27" name="__codelineno-75-27" href="#__codelineno-75-27"></a>        <span class="k">array</span> <span class="nv">$forward</span>
 <a id="__codelineno-75-28" name="__codelineno-75-28" href="#__codelineno-75-28"></a>    <span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$modules</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-75-29" name="__codelineno-75-29" href="#__codelineno-75-29"></a>        <span class="nv">$moduleName</span> <span class="o">=</span> <span class="nv">$forward</span><span class="p">[</span><span class="s1">&#39;module&#39;</span><span class="p">];</span>
-<a id="__codelineno-75-30" name="__codelineno-75-30" href="#__codelineno-75-30"></a>        <span class="nv">$metadata</span>   <span class="o">=</span> <span class="nv">$modules</span><span class="p">[</span><span class="nv">$moduleName</span><span class="p">][</span><span class="s1">&#39;metadata&#39;</span><span class="p">];</span>
+<a id="__codelineno-75-29" name="__codelineno-75-29" href="#__codelineno-75-29"></a>        <span class="nv">$moduleName</span> <span class="o">=</span> <span class="nv">$forward</span><span class="p">[</span><span class="s1">'module'</span><span class="p">];</span>
+<a id="__codelineno-75-30" name="__codelineno-75-30" href="#__codelineno-75-30"></a>        <span class="nv">$metadata</span>   <span class="o">=</span> <span class="nv">$modules</span><span class="p">[</span><span class="nv">$moduleName</span><span class="p">][</span><span class="s1">'metadata'</span><span class="p">];</span>
 <a id="__codelineno-75-31" name="__codelineno-75-31" href="#__codelineno-75-31"></a>
 <a id="__codelineno-75-32" name="__codelineno-75-32" href="#__codelineno-75-32"></a>        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setModuleName</span><span class="p">(</span><span class="nv">$moduleName</span><span class="p">);</span>
 <a id="__codelineno-75-33" name="__codelineno-75-33" href="#__codelineno-75-33"></a>        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setNamespaceName</span><span class="p">(</span>
-<a id="__codelineno-75-34" name="__codelineno-75-34" href="#__codelineno-75-34"></a>            <span class="nv">$metadata</span><span class="p">[</span><span class="s1">&#39;controllersNamespace&#39;</span><span class="p">]</span>
+<a id="__codelineno-75-34" name="__codelineno-75-34" href="#__codelineno-75-34"></a>            <span class="nv">$metadata</span><span class="p">[</span><span class="s1">'controllersNamespace'</span><span class="p">]</span>
 <a id="__codelineno-75-35" name="__codelineno-75-35" href="#__codelineno-75-35"></a>        <span class="p">);</span>
 <a id="__codelineno-75-36" name="__codelineno-75-36" href="#__codelineno-75-36"></a>    <span class="p">}</span>
 <a id="__codelineno-75-37" name="__codelineno-75-37" href="#__codelineno-75-37"></a><span class="p">);</span>
@@ -6852,13 +6852,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-75-39" name="__codelineno-75-39" href="#__codelineno-75-39"></a><span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">();</span>
 <a id="__codelineno-75-40" name="__codelineno-75-40" href="#__codelineno-75-40"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setDI</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
 <a id="__codelineno-75-41" name="__codelineno-75-41" href="#__codelineno-75-41"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$manager</span><span class="p">);</span>
-<a id="__codelineno-75-42" name="__codelineno-75-42" href="#__codelineno-75-42"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">);</span>
+<a id="__codelineno-75-42" name="__codelineno-75-42" href="#__codelineno-75-42"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'dispatcher'</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">);</span>
 <a id="__codelineno-75-43" name="__codelineno-75-43" href="#__codelineno-75-43"></a>
 <a id="__codelineno-75-44" name="__codelineno-75-44" href="#__codelineno-75-44"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
 <a id="__codelineno-75-45" name="__codelineno-75-45" href="#__codelineno-75-45"></a>    <span class="p">[</span>
-<a id="__codelineno-75-46" name="__codelineno-75-46" href="#__codelineno-75-46"></a>        <span class="s1">&#39;module&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;backend&#39;</span><span class="p">,</span>
-<a id="__codelineno-75-47" name="__codelineno-75-47" href="#__codelineno-75-47"></a>        <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;invoices&#39;</span><span class="p">,</span>
-<a id="__codelineno-75-48" name="__codelineno-75-48" href="#__codelineno-75-48"></a>        <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span>
+<a id="__codelineno-75-46" name="__codelineno-75-46" href="#__codelineno-75-46"></a>        <span class="s1">'module'</span>     <span class="o">=&gt;</span> <span class="s1">'backend'</span><span class="p">,</span>
+<a id="__codelineno-75-47" name="__codelineno-75-47" href="#__codelineno-75-47"></a>        <span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'invoices'</span><span class="p">,</span>
+<a id="__codelineno-75-48" name="__codelineno-75-48" href="#__codelineno-75-48"></a>        <span class="s1">'action'</span>     <span class="o">=&gt;</span> <span class="s1">'index'</span><span class="p">,</span>
 <a id="__codelineno-75-49" name="__codelineno-75-49" href="#__codelineno-75-49"></a>    <span class="p">]</span>
 <a id="__codelineno-75-50" name="__codelineno-75-50" href="#__codelineno-75-50"></a><span class="p">);</span>
 <a id="__codelineno-75-51" name="__codelineno-75-51" href="#__codelineno-75-51"></a>
@@ -6895,8 +6895,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-76-4" name="__codelineno-76-4" href="#__codelineno-76-4"></a>
 <a id="__codelineno-76-5" name="__codelineno-76-5" href="#__codelineno-76-5"></a><span class="k">function</span> <span class="nf">configure</span><span class="p">(</span><span class="nx">DispatcherContract</span> <span class="nv">$dispatcher</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
 <a id="__codelineno-76-6" name="__codelineno-76-6" href="#__codelineno-76-6"></a><span class="p">{</span>
-<a id="__codelineno-76-7" name="__codelineno-76-7" href="#__codelineno-76-7"></a>    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setControllerName</span><span class="p">(</span><span class="s1">&#39;invoices&#39;</span><span class="p">);</span>
-<a id="__codelineno-76-8" name="__codelineno-76-8" href="#__codelineno-76-8"></a>    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">);</span>
+<a id="__codelineno-76-7" name="__codelineno-76-7" href="#__codelineno-76-7"></a>    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setControllerName</span><span class="p">(</span><span class="s1">'invoices'</span><span class="p">);</span>
+<a id="__codelineno-76-8" name="__codelineno-76-8" href="#__codelineno-76-8"></a>    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="s1">'index'</span><span class="p">);</span>
 <a id="__codelineno-76-9" name="__codelineno-76-9" href="#__codelineno-76-9"></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="custom">Custom<a class="headerlink" href="#custom" title="Permanent link">&para;</a></h2>
@@ -7254,7 +7254,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

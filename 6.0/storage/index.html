@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -6097,7 +6097,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="sd">     * </span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="sd">     * @var string</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="sd">     */</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="k">private</span> <span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="k">private</span> <span class="nv">$data</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="sd">/**</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="sd">     * Return the stored data</span>
@@ -6147,7 +6147,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">use</span> <span class="nx">MyApp\Storage\Serializer\Garble</span><span class="p">;</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;I came, I saw, I conquered.&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">$data</span> <span class="o">=</span> <span class="s1">'I came, I saw, I conquered.'</span><span class="p">;</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nv">$garble</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Garble</span><span class="p">();</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nv">$garble</span>
@@ -6155,13 +6155,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="o">-&gt;</span><span class="na">serialize</span><span class="p">()</span>  
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">;</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="k">echo</span> <span class="nv">$garble</span><span class="o">-&gt;</span><span class="na">getData</span><span class="p">();</span> <span class="c1">// &quot;V pnzr, V fnj, V pbadhrerq.&quot;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="k">echo</span> <span class="nv">$garble</span><span class="o">-&gt;</span><span class="na">getData</span><span class="p">();</span> <span class="c1">// "V pnzr, V fnj, V pbadhrerq."</span>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nv">$encrypted</span> <span class="o">=</span> <span class="s1">&#39;V pnzr, V fnj, V pbadhrerq.&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nv">$encrypted</span> <span class="o">=</span> <span class="s1">'V pnzr, V fnj, V pbadhrerq.'</span><span class="p">;</span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
 <a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="nv">$garble</span><span class="o">-&gt;</span><span class="na">unserialize</span><span class="p">(</span><span class="nv">$encrypted</span><span class="p">);</span>
 <a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="k">echo</span> <span class="nv">$garble</span><span class="o">-&gt;</span><span class="na">getData</span><span class="p">();</span> <span class="c1">// &quot;I came, I saw, I conquered.&quot;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="k">echo</span> <span class="nv">$garble</span><span class="o">-&gt;</span><span class="na">getData</span><span class="p">();</span> <span class="c1">// "I came, I saw, I conquered."</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
@@ -6178,7 +6178,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nv">$jsonSerializer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Json</span><span class="p">();</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nv">$factory</span>        <span class="o">=</span> <span class="k">new</span> <span class="nx">SerializerFactory</span><span class="p">();</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nv">$jsonSerializer</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;json&#39;</span><span class="p">);</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nv">$jsonSerializer</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'json'</span><span class="p">);</span>
 </code></pre></div>
 <p>The parameters you can use for the factory are:</p>
 <table>
@@ -6417,8 +6417,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nv">$serializerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerializerFactory</span><span class="p">();</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="s1">&#39;defaultSerializer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Json&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="s1">&#39;lifetime&#39;</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="s1">'defaultSerializer'</span> <span class="o">=&gt;</span> <span class="s1">'Json'</span><span class="p">,</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="s1">'lifetime'</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">];</span>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Apcu</span><span class="p">(</span><span class="nv">$serializerFactory</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
@@ -6510,18 +6510,18 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">$serializerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerializerFactory</span><span class="p">();</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="s1">&#39;defaultSerializer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Json&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="s1">&#39;lifetime&#39;</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="s1">&#39;servers&#39;</span>           <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="s1">'defaultSerializer'</span> <span class="o">=&gt;</span> <span class="s1">'Json'</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="s1">'lifetime'</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="s1">'servers'</span>           <span class="o">=&gt;</span> <span class="p">[</span>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="mi">0</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>            <span class="s1">&#39;host&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;10.4.13.100&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>            <span class="s1">&#39;port&#39;</span>   <span class="o">=&gt;</span> <span class="mi">11211</span><span class="p">,</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>            <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>            <span class="s1">'host'</span>   <span class="o">=&gt;</span> <span class="s1">'10.4.13.100'</span><span class="p">,</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>            <span class="s1">'port'</span>   <span class="o">=&gt;</span> <span class="mi">11211</span><span class="p">,</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>            <span class="s1">'weight'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
 <a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>        <span class="p">],</span>
 <a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>        <span class="mi">1</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>            <span class="s1">&#39;host&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;10.4.13.110&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>            <span class="s1">&#39;port&#39;</span>   <span class="o">=&gt;</span> <span class="mi">11211</span><span class="p">,</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>            <span class="s1">&#39;weight&#39;</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>            <span class="s1">'host'</span>   <span class="o">=&gt;</span> <span class="s1">'10.4.13.110'</span><span class="p">,</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>            <span class="s1">'port'</span>   <span class="o">=&gt;</span> <span class="mi">11211</span><span class="p">,</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>            <span class="s1">'weight'</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
 <a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="p">],</span>
 <a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="p">],</span>
 <a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="p">];</span>
@@ -6577,8 +6577,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nv">$serializerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerializerFactory</span><span class="p">();</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="s1">&#39;defaultSerializer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Json&#39;</span><span class="p">,</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="s1">&#39;lifetime&#39;</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="s1">'defaultSerializer'</span> <span class="o">=&gt;</span> <span class="s1">'Json'</span><span class="p">,</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="s1">'lifetime'</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">];</span>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Memory</span><span class="p">(</span><span class="nv">$serializerFactory</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
@@ -6664,11 +6664,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nv">$serializerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerializerFactory</span><span class="p">();</span>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="s1">&#39;defaultSerializer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Json&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="s1">&#39;lifetime&#39;</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="s1">&#39;host&#39;</span>              <span class="o">=&gt;</span> <span class="s1">&#39;10.4.13.100&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="s1">&#39;port&#39;</span>              <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="s1">&#39;index&#39;</span>             <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="s1">'defaultSerializer'</span> <span class="o">=&gt;</span> <span class="s1">'Json'</span><span class="p">,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="s1">'lifetime'</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="s1">'host'</span>              <span class="o">=&gt;</span> <span class="s1">'10.4.13.100'</span><span class="p">,</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="s1">'port'</span>              <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="s1">'index'</span>             <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
 <a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">];</span>
 <a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
 <a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Redis</span><span class="p">(</span><span class="nv">$serializerFactory</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
@@ -6688,11 +6688,11 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">getAdapter</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setOption</span><span class="p">(</span><span class="nx">\Redis</span><span class="o">::</span><span class="na">OPT_SERIALIZER</span><span class="p">,</span> <span class="nx">\Redis</span><span class="o">::</span><span class="na">SERIALIZER_NONE</span><span class="p">);</span>
 </code></pre></div>
 <p>or you could use <code>increment</code> instead of using <code>set</code> at the first setting of the value to the key:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;my-key&#39;</span><span class="p">);</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">increment</span><span class="p">(</span><span class="s1">&#39;my-key&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">echo</span> <span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;my-key&#39;</span><span class="p">);</span>      <span class="c1">// 2</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">increment</span><span class="p">(</span><span class="s1">&#39;my-key&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">echo</span> <span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;my-key&#39;</span><span class="p">);</span>      <span class="c1">// 3</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">'my-key'</span><span class="p">);</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">increment</span><span class="p">(</span><span class="s1">'my-key'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">echo</span> <span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'my-key'</span><span class="p">);</span>      <span class="c1">// 2</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">increment</span><span class="p">(</span><span class="s1">'my-key'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">echo</span> <span class="nv">$storage</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'my-key'</span><span class="p">);</span>      <span class="c1">// 3</span>
 </code></pre></div>
 <h3 id="rediscluster"><code>RedisCluster</code><a class="headerlink" href="#rediscluster" title="Permanent link">&para;</a></h3>
 <p>This adapter utilizes PHP's <a href="https://github.com/phpredis/phpredis">redis</a> extension to connect to a Redis Cluster. It extends the <code>Redis</code> adapter and shares its serializer support, but connects to multiple nodes and uses <code>ph-redc-</code> as its default key prefix.</p>
@@ -6764,18 +6764,18 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nv">$serializerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerializerFactory</span><span class="p">();</span>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="s1">&#39;defaultSerializer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Json&#39;</span><span class="p">,</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="s1">&#39;lifetime&#39;</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="s1">&#39;hosts&#39;</span>             <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;redis-node-1:7000&#39;</span><span class="p">,</span> <span class="s1">&#39;redis-node-2:7001&#39;</span><span class="p">],</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="s1">'defaultSerializer'</span> <span class="o">=&gt;</span> <span class="s1">'Json'</span><span class="p">,</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="s1">'lifetime'</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="s1">'hosts'</span>             <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'redis-node-1:7000'</span><span class="p">,</span> <span class="s1">'redis-node-2:7001'</span><span class="p">],</span>
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">];</span>
 <a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
 <a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RedisCluster</span><span class="p">(</span><span class="nv">$serializerFactory</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 </code></pre></div>
 <p><strong>Connecting by named cluster (configured in <code>redis.ini</code>):</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">; redis.ini</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="na">redis.clusters.seeds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mycluster[]=localhost:7000&amp;mycluster[]=localhost:7001&quot;</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="na">redis.clusters.timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mycluster=5&quot;</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="na">redis.clusters.read_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mycluster=10&quot;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="na">redis.clusters.seeds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"mycluster[]=localhost:7000&amp;mycluster[]=localhost:7001"</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="na">redis.clusters.timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"mycluster=5"</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="na">redis.clusters.read_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"mycluster=10"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
@@ -6784,7 +6784,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nv">$serializerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerializerFactory</span><span class="p">();</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RedisCluster</span><span class="p">(</span><span class="nv">$serializerFactory</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mycluster&#39;</span><span class="p">]);</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RedisCluster</span><span class="p">(</span><span class="nv">$serializerFactory</span><span class="p">,</span> <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'mycluster'</span><span class="p">]);</span>
 </code></pre></div>
 <h3 id="stream"><code>Stream</code><a class="headerlink" href="#stream" title="Permanent link">&para;</a></h3>
 <p>This adapter is the simplest to set up since it uses the target system's file system (it only requires a storage path that is writeable). It is one of the slowest storage adapters since the data has to be written to the file system. Each file created corresponds to a key stored. The file contains additional metadata to calculate the lifetime of the storage element, resulting in additional reads and writes to the file system.</p>
@@ -6836,9 +6836,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">$serializerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerializerFactory</span><span class="p">();</span>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="s1">&#39;defaultSerializer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Json&#39;</span><span class="p">,</span>
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    <span class="s1">&#39;lifetime&#39;</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    <span class="s1">&#39;storageDir&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;/data/storage&#39;</span><span class="p">,</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="s1">'defaultSerializer'</span> <span class="o">=&gt;</span> <span class="s1">'Json'</span><span class="p">,</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    <span class="s1">'lifetime'</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    <span class="s1">'storageDir'</span>        <span class="o">=&gt;</span> <span class="s1">'/data/storage'</span><span class="p">,</span>
 <a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="p">];</span>
 <a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
 <a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="nv">$serializerFactory</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
@@ -6906,7 +6906,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-14-58" name="__codelineno-14-58" href="#__codelineno-14-58"></a><span class="sd">     * Returns all the keys stored. If a filter has been passed the </span>
 <a id="__codelineno-14-59" name="__codelineno-14-59" href="#__codelineno-14-59"></a><span class="sd">     * keys that match the filter will be returned</span>
 <a id="__codelineno-14-60" name="__codelineno-14-60" href="#__codelineno-14-60"></a><span class="sd">     */</span>
-<a id="__codelineno-14-61" name="__codelineno-14-61" href="#__codelineno-14-61"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+<a id="__codelineno-14-61" name="__codelineno-14-61" href="#__codelineno-14-61"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">""</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
 <a id="__codelineno-14-62" name="__codelineno-14-62" href="#__codelineno-14-62"></a>    <span class="p">{</span>
 <a id="__codelineno-14-63" name="__codelineno-14-63" href="#__codelineno-14-63"></a>        <span class="c1">// Custom implementation</span>
 <a id="__codelineno-14-64" name="__codelineno-14-64" href="#__codelineno-14-64"></a>    <span class="p">}</span>
@@ -6953,7 +6953,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nv">$custom</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Custom</span><span class="p">();</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nv">$custom</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;my-key&#39;</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nv">$custom</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'my-key'</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="adapter-factory">Adapter Factory<a class="headerlink" href="#adapter-factory" title="Permanent link">&para;</a></h2>
 <p>Although all adapter classes can be instantiated using the <code>new</code> keyword, Phalcon offers the <a href="../api/phalcon_storage/#storageadapterfactory">Phalcon\Storage\AdapterFactory</a> class, so that you can instantiate cache adapter classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the <code>newInstance()</code> method with the same parameters during the same request, you will get the same object back.</p>
@@ -6966,9 +6966,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nv">$jsonSerializer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Json</span><span class="p">();</span>
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
 <a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="s1">&#39;defaultSerializer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Json&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="s1">&#39;lifetime&#39;</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="s1">&#39;serializer&#39;</span>        <span class="o">=&gt;</span> <span class="nv">$jsonSerializer</span><span class="p">,</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="s1">'defaultSerializer'</span> <span class="o">=&gt;</span> <span class="s1">'Json'</span><span class="p">,</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="s1">'lifetime'</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="s1">'serializer'</span>        <span class="o">=&gt;</span> <span class="nv">$jsonSerializer</span><span class="p">,</span>
 <a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="p">];</span>
 <a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
 <a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Apcu</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
@@ -6982,11 +6982,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="nv">$adapterFactory</span>    <span class="o">=</span> <span class="k">new</span> <span class="nx">AdapterFactory</span><span class="p">(</span><span class="nv">$serializerFactory</span><span class="p">);</span>
 <a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
 <a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="s1">&#39;defaultSerializer&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Json&#39;</span><span class="p">,</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="s1">&#39;lifetime&#39;</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="s1">'defaultSerializer'</span> <span class="o">=&gt;</span> <span class="s1">'Json'</span><span class="p">,</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="s1">'lifetime'</span>          <span class="o">=&gt;</span> <span class="mi">7200</span><span class="p">,</span>
 <a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="p">];</span>
 <a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
-<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="nv">$adapterFactory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;apcu&#39;</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="nv">$adapterFactory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'apcu'</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 </code></pre></div>
 <p>The parameters you can use for the factory are:</p>
 <table>
@@ -7350,7 +7350,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

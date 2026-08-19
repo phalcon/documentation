@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5685,16 +5685,16 @@ offering lower resource consumption and high performance.
 <p>Then at the end of the file save the profiled data:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">$xhprof_data</span> <span class="o">=</span> <span class="nb">xhprof_disable</span><span class="p">(</span><span class="s1">&#39;/tmp&#39;</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">$xhprof_data</span> <span class="o">=</span> <span class="nb">xhprof_disable</span><span class="p">(</span><span class="s1">'/tmp'</span><span class="p">);</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">$XHPROF_ROOT</span> <span class="o">=</span> <span class="s1">&#39;/var/www/xhprof/&#39;</span><span class="p">;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">include_once</span> <span class="nv">$XHPROF_ROOT</span> <span class="o">.</span> <span class="s1">&#39;/xhprof_lib/utils/xhprof_lib.php&#39;</span><span class="p">;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">include_once</span> <span class="nv">$XHPROF_ROOT</span> <span class="o">.</span> <span class="s1">&#39;/xhprof_lib/utils/xhprof_runs.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">$XHPROF_ROOT</span> <span class="o">=</span> <span class="s1">'/var/www/xhprof/'</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">include_once</span> <span class="nv">$XHPROF_ROOT</span> <span class="o">.</span> <span class="s1">'/xhprof_lib/utils/xhprof_lib.php'</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">include_once</span> <span class="nv">$XHPROF_ROOT</span> <span class="o">.</span> <span class="s1">'/xhprof_lib/utils/xhprof_runs.php'</span><span class="p">;</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nv">$xhprof_runs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XHProfRuns_Default</span><span class="p">();</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nv">$run_id</span> <span class="o">=</span> <span class="nv">$xhprof_runs</span><span class="o">-&gt;</span><span class="na">save_run</span><span class="p">(</span><span class="nv">$xhprof_data</span><span class="p">,</span> <span class="s1">&#39;xhprof_testing&#39;</span><span class="p">);</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nv">$run_id</span> <span class="o">=</span> <span class="nv">$xhprof_runs</span><span class="o">-&gt;</span><span class="na">save_run</span><span class="p">(</span><span class="nv">$xhprof_data</span><span class="p">,</span> <span class="s1">'xhprof_testing'</span><span class="p">);</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">echo</span> <span class="s2">&quot;https://localhost/xhprof/xhprof_html/index.php?run=</span><span class="si">{</span><span class="nv">$run_id</span><span class="si">}</span><span class="s2">&amp;source=xhprof_testing</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">echo</span> <span class="s2">"https://localhost/xhprof/xhprof_html/index.php?run=</span><span class="si">{</span><span class="nv">$run_id</span><span class="si">}</span><span class="s2">&amp;source=xhprof_testing</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <p>Xhprof provides a built-in HTML viewer to analyze the profiled data:</p>
 <p><img alt="" src="../assets/images/content/performance-xhprof-2.jpg" /></p>
@@ -5934,7 +5934,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

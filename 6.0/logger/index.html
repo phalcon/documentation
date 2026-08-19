@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -6397,18 +6397,18 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">use</span> <span class="nx">Phalcon\Storage\SerializerFactory</span><span class="p">;</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">$config</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="s2">&quot;name&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;prod-logger&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="s2">&quot;options&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="s2">&quot;adapters&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>            <span class="s2">&quot;main&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>                <span class="s2">&quot;adapter&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;stream&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>                <span class="s2">&quot;name&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;/storage/logs/main.log&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>                <span class="s2">&quot;options&quot;</span> <span class="o">=&gt;</span> <span class="p">[]</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="s2">"name"</span>    <span class="o">=&gt;</span> <span class="s2">"prod-logger"</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="s2">"options"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="s2">"adapters"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>            <span class="s2">"main"</span>  <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>                <span class="s2">"adapter"</span> <span class="o">=&gt;</span> <span class="s2">"stream"</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>                <span class="s2">"name"</span>    <span class="o">=&gt;</span> <span class="s2">"/storage/logs/main.log"</span><span class="p">,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>                <span class="s2">"options"</span> <span class="o">=&gt;</span> <span class="p">[]</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>            <span class="p">],</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>            <span class="s2">&quot;admin&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>                <span class="s2">&quot;adapter&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;stream&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>                <span class="s2">&quot;name&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;/storage/logs/admin.log&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>                <span class="s2">&quot;options&quot;</span> <span class="o">=&gt;</span> <span class="p">[]</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>            <span class="s2">"admin"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>                <span class="s2">"adapter"</span> <span class="o">=&gt;</span> <span class="s2">"stream"</span><span class="p">,</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>                <span class="s2">"name"</span>    <span class="o">=&gt;</span> <span class="s2">"/storage/logs/admin.log"</span><span class="p">,</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>                <span class="s2">"options"</span> <span class="o">=&gt;</span> <span class="p">[]</span>
 <a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>            <span class="p">],</span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>        <span class="p">],</span>
 <a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="p">],</span>
@@ -6430,15 +6430,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">use</span> <span class="nx">Phalcon\Storage\SerializerFactory</span><span class="p">;</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nv">$adapters</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="s2">&quot;main&quot;</span>  <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s2">&quot;/storage/logs/main.log&quot;</span><span class="p">),</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="s2">&quot;admin&quot;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s2">&quot;/storage/logs/admin.log&quot;</span><span class="p">),</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="s2">"main"</span>  <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s2">"/storage/logs/main.log"</span><span class="p">),</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="s2">"admin"</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s2">"/storage/logs/admin.log"</span><span class="p">),</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">];</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nv">$serializerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerializerFactory</span><span class="p">();</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nv">$adapterFactory</span>    <span class="o">=</span> <span class="k">new</span> <span class="nx">AdapterFactory</span><span class="p">(</span><span class="nv">$serializerFactory</span><span class="p">);</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nv">$loggerFactory</span>     <span class="o">=</span> <span class="k">new</span> <span class="nx">LoggerFactory</span><span class="p">(</span><span class="nv">$adapterFactory</span><span class="p">);</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="nv">$loggerFactory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;prod-logger&#39;</span><span class="p">,</span> <span class="nv">$adapters</span><span class="p">);</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="nv">$loggerFactory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'prod-logger'</span><span class="p">,</span> <span class="nv">$adapters</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="creating-a-logger">Creating a Logger<a class="headerlink" href="#creating-a-logger" title="Permanent link">&para;</a></h2>
 <p>Creating a logger is a multi-step process. First, you create the logger object, and then you attach an adapter to it. After that, you can start logging messages according to the needs of your application.</p>
@@ -6447,15 +6447,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="p">[</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="p">]</span>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">);</span>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <p>The above example creates a <a href="../api/phalcon_logger/#loggeradapterstream">Stream</a> adapter. We then create a logger object and attach this adapter to it. Each adapter attached to a logger needs to have a unique name, for the logger to be able to know where to log the messages. When calling the <code>error()</code> method on the logger object, the message is going to be stored in the <code>/storage/logs/main.log</code>.</p>
 <p>Since the logger component implements PSR-3, the following methods are available:</p>
@@ -6464,23 +6464,23 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="p">[</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="p">]</span>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">);</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">alert</span><span class="p">(</span><span class="s2">&quot;This is an alert message&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">critical</span><span class="p">(</span><span class="s2">&quot;This is a critical message&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">debug</span><span class="p">(</span><span class="s2">&quot;This is a debug message&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;This is an error message&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">emergency</span><span class="p">(</span><span class="s2">&quot;This is an emergency message&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">&quot;This is an info message&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">CRITICAL</span><span class="p">,</span> <span class="s2">&quot;This is a log message&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span><span class="s2">&quot;This is a notice message&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">&quot;This is a warning message&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">alert</span><span class="p">(</span><span class="s2">"This is an alert message"</span><span class="p">);</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">critical</span><span class="p">(</span><span class="s2">"This is a critical message"</span><span class="p">);</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">debug</span><span class="p">(</span><span class="s2">"This is a debug message"</span><span class="p">);</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">"This is an error message"</span><span class="p">);</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">emergency</span><span class="p">(</span><span class="s2">"This is an emergency message"</span><span class="p">);</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">"This is an info message"</span><span class="p">);</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">CRITICAL</span><span class="p">,</span> <span class="s2">"This is a log message"</span><span class="p">);</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span><span class="s2">"This is a notice message"</span><span class="p">);</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">"This is a warning message"</span><span class="p">);</span>
 </code></pre></div>
 <p>The log generated is as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">[</span>Tue,<span class="w"> </span><span class="m">25</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">12</span>:13:14<span class="w"> </span>-0400<span class="o">][</span>alert<span class="o">]</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>an<span class="w"> </span>alert<span class="w"> </span>message
@@ -6500,20 +6500,20 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nv">$adapter1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/logs/first-log.log&#39;</span><span class="p">);</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">$adapter2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/remote/second-log.log&#39;</span><span class="p">);</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nv">$adapter3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/manager/third-log.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nv">$adapter1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/logs/first-log.log'</span><span class="p">);</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">$adapter2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/remote/second-log.log'</span><span class="p">);</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nv">$adapter3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/manager/third-log.log'</span><span class="p">);</span>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="p">[</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="s1">&#39;local&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$adapter1</span><span class="p">,</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="s1">&#39;remote&#39;</span>  <span class="o">=&gt;</span> <span class="nv">$adapter2</span><span class="p">,</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>        <span class="s1">&#39;manager&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter3</span><span class="p">,</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="s1">'local'</span>   <span class="o">=&gt;</span> <span class="nv">$adapter1</span><span class="p">,</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="s1">'remote'</span>  <span class="o">=&gt;</span> <span class="nv">$adapter2</span><span class="p">,</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>        <span class="s1">'manager'</span> <span class="o">=&gt;</span> <span class="nv">$adapter3</span><span class="p">,</span>
 <a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="p">]</span>
 <a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="p">);</span>
 <a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <p>The messages are sent to the handlers in the order they were registered using the <a href="https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)">first in first out</a> principle.</p>
 <h3 id="excluding-adapters">Excluding Adapters<a class="headerlink" href="#excluding-adapters" title="Permanent link">&para;</a></h3>
@@ -6524,30 +6524,30 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nv">$adapter1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/logs/first-log.log&#39;</span><span class="p">);</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">$adapter2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/remote/second-log.log&#39;</span><span class="p">);</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nv">$adapter3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/manager/third-log.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nv">$adapter1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/logs/first-log.log'</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">$adapter2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/remote/second-log.log'</span><span class="p">);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nv">$adapter3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/manager/third-log.log'</span><span class="p">);</span>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="p">[</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="s1">&#39;local&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$adapter1</span><span class="p">,</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="s1">&#39;remote&#39;</span>  <span class="o">=&gt;</span> <span class="nv">$adapter2</span><span class="p">,</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        <span class="s1">&#39;manager&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter3</span><span class="p">,</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="s1">'local'</span>   <span class="o">=&gt;</span> <span class="nv">$adapter1</span><span class="p">,</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="s1">'remote'</span>  <span class="o">=&gt;</span> <span class="nv">$adapter2</span><span class="p">,</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        <span class="s1">'manager'</span> <span class="o">=&gt;</span> <span class="nv">$adapter3</span><span class="p">,</span>
 <a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>    <span class="p">]</span>
 <a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="p">);</span>
 </code></pre></div>
 <p>we have the following:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <p>Log to all adapters</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nv">$logger</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="o">-&gt;</span><span class="na">excludeAdapters</span><span class="p">([</span><span class="s1">&#39;local&#39;</span><span class="p">])</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;This does not go to the &quot;local&quot; logger&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="o">-&gt;</span><span class="na">excludeAdapters</span><span class="p">([</span><span class="s1">'local'</span><span class="p">])</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'This does not go to the "local" logger'</span><span class="p">);</span>
 </code></pre></div>
 <p>Log only to remote and manager</p>
 <div class="admonition info">
@@ -6618,25 +6618,25 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="p">[</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="p">]</span>
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">);</span>
 <a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
 <a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">setLogLevel</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">ALERT</span><span class="p">);</span>
 <a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">alert</span><span class="p">(</span><span class="s2">&quot;This is an alert message&quot;</span><span class="p">);</span>
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">critical</span><span class="p">(</span><span class="s2">&quot;This is a critical message&quot;</span><span class="p">);</span>
-<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">debug</span><span class="p">(</span><span class="s2">&quot;This is a debug message&quot;</span><span class="p">);</span>
-<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;This is an error message&quot;</span><span class="p">);</span>
-<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">emergency</span><span class="p">(</span><span class="s2">&quot;This is an emergency message&quot;</span><span class="p">);</span>
-<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">&quot;This is an info message&quot;</span><span class="p">);</span>
-<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">CRITICAL</span><span class="p">,</span> <span class="s2">&quot;This is a log message&quot;</span><span class="p">);</span>
-<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span><span class="s2">&quot;This is a notice message&quot;</span><span class="p">);</span>
-<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">&quot;This is a warning message&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">alert</span><span class="p">(</span><span class="s2">"This is an alert message"</span><span class="p">);</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">critical</span><span class="p">(</span><span class="s2">"This is a critical message"</span><span class="p">);</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">debug</span><span class="p">(</span><span class="s2">"This is a debug message"</span><span class="p">);</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">"This is an error message"</span><span class="p">);</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">emergency</span><span class="p">(</span><span class="s2">"This is an emergency message"</span><span class="p">);</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">"This is an info message"</span><span class="p">);</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">CRITICAL</span><span class="p">,</span> <span class="s2">"This is a log message"</span><span class="p">);</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span><span class="s2">"This is a notice message"</span><span class="p">);</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">"This is a warning message"</span><span class="p">);</span>
 </code></pre></div>
 <p>The log generated is as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">[</span>Tue,<span class="w"> </span><span class="m">25</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">12</span>:13:14<span class="w"> </span>-0400<span class="o">][</span>alert<span class="o">]</span><span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>an<span class="w"> </span>alert<span class="w"> </span>message
@@ -6664,16 +6664,16 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="p">[</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    <span class="p">]</span>
 <a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="p">);</span>
 <a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="c1">// &quot;warnning&quot; is a typo and is not a known level; it is logged as CUSTOM</span>
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s1">&#39;warnning&#39;</span><span class="p">,</span> <span class="s1">&#39;Disk space is low&#39;</span><span class="p">);</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="c1">// "warnning" is a typo and is not a known level; it is logged as CUSTOM</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s1">'warnning'</span><span class="p">,</span> <span class="s1">'Disk space is low'</span><span class="p">);</span>
 </code></pre></div>
 <p>The log generated is as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">[</span>Tue,<span class="w"> </span><span class="m">25</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">12</span>:13:14<span class="w"> </span>-0400<span class="o">][</span>custom<span class="o">]</span><span class="w"> </span>Disk<span class="w"> </span>space<span class="w"> </span>is<span class="w"> </span>low
@@ -6688,24 +6688,24 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="p">[</span>
-<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    <span class="p">]</span>
 <a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="p">);</span>
 <a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
 <a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="c1">// Suppressed: the default minimum level is CUSTOM (8), TRACE (9) is higher</span>
-<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">trace</span><span class="p">(</span><span class="s1">&#39;This message is not logged at the default level&#39;</span><span class="p">);</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">trace</span><span class="p">(</span><span class="s1">'This message is not logged at the default level'</span><span class="p">);</span>
 <a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>
 <a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">setLogLevel</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">TRACE</span><span class="p">);</span>
 <a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>
 <a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="c1">// Emitted: the minimum level now includes TRACE</span>
-<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">trace</span><span class="p">(</span><span class="s1">&#39;Raw response body: {&quot;status&quot;:&quot;ok&quot;}&#39;</span><span class="p">);</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">trace</span><span class="p">(</span><span class="s1">'Raw response body: {"status":"ok"}'</span><span class="p">);</span>
 </code></pre></div>
 <p>The log generated is as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">[</span>Tue,<span class="w"> </span><span class="m">25</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">12</span>:13:14<span class="w"> </span>-0400<span class="o">][</span>trace<span class="o">]</span><span class="w"> </span>Raw<span class="w"> </span>response<span class="w"> </span>body:<span class="w"> </span><span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;ok&quot;</span><span class="o">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">[</span>Tue,<span class="w"> </span><span class="m">25</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">12</span>:13:14<span class="w"> </span>-0400<span class="o">][</span>trace<span class="o">]</span><span class="w"> </span>Raw<span class="w"> </span>response<span class="w"> </span>body:<span class="w"> </span><span class="o">{</span><span class="s2">"status"</span>:<span class="s2">"ok"</span><span class="o">}</span>
 </code></pre></div>
 <p>The level name is emitted in lowercase as <code>trace</code>. When the <a href="../api/phalcon_logger/#loggeradaptersyslog">Syslog</a> adapter receives a <code>trace</code> message, it maps the level to <code>LOG_DEBUG</code>.</p>
 <h2 id="transactions">Transactions<a class="headerlink" href="#transactions" title="Permanent link">&para;</a></h2>
@@ -6738,27 +6738,27 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nv">$adapter1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/logs/first-log.log&#39;</span><span class="p">);</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nv">$adapter2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/remote/second-log.log&#39;</span><span class="p">);</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nv">$adapter3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/manager/third-log.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nv">$adapter1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/logs/first-log.log'</span><span class="p">);</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nv">$adapter2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/remote/second-log.log'</span><span class="p">);</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nv">$adapter3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/manager/third-log.log'</span><span class="p">);</span>
 <a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
 <a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="p">[</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>        <span class="s1">&#39;local&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$adapter1</span><span class="p">,</span>
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>        <span class="s1">&#39;remote&#39;</span>  <span class="o">=&gt;</span> <span class="nv">$adapter2</span><span class="p">,</span>
-<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>        <span class="s1">&#39;manager&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter3</span><span class="p">,</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>        <span class="s1">'local'</span>   <span class="o">=&gt;</span> <span class="nv">$adapter1</span><span class="p">,</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>        <span class="s1">'remote'</span>  <span class="o">=&gt;</span> <span class="nv">$adapter2</span><span class="p">,</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>        <span class="s1">'manager'</span> <span class="o">=&gt;</span> <span class="nv">$adapter3</span><span class="p">,</span>
 <a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>    <span class="p">]</span>
 <a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="p">);</span>
 <a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>
-<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">getAdapter</span><span class="p">(</span><span class="s1">&#39;manager&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">begin</span><span class="p">();</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">getAdapter</span><span class="p">(</span><span class="s1">'manager'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">begin</span><span class="p">();</span>
 <a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>
-<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something happened&#39;</span><span class="p">);</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something happened'</span><span class="p">);</span>
 <a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>
-<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">getAdapter</span><span class="p">(</span><span class="s1">&#39;manager&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">getAdapter</span><span class="p">(</span><span class="s1">'manager'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
 </code></pre></div>
 <p>In the example above, we register three adapters. We set the <code>manager</code> logger to be in transaction mode. As soon as we call:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something happened&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something happened'</span><span class="p">);</span>
 </code></pre></div>
 <p>the message will be logged in both <code>local</code> and <code>remote</code> adapters. It will be queued for the <code>manager</code> adapter and not logged until we call the <code>commit</code> method in the <code>manager</code> adapter.</p>
 <div class="admonition info">
@@ -6794,21 +6794,21 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="nv">$adapter1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/logs/first-log.log&#39;</span><span class="p">);</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="nv">$adapter2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/remote/second-log.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="nv">$adapter1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/logs/first-log.log'</span><span class="p">);</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="nv">$adapter2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/remote/second-log.log'</span><span class="p">);</span>
 <a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
 <a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="p">[</span>
-<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>        <span class="s1">&#39;local&#39;</span>  <span class="o">=&gt;</span> <span class="nv">$adapter1</span><span class="p">,</span>
-<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>        <span class="s1">&#39;remote&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter2</span><span class="p">,</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>        <span class="s1">'local'</span>  <span class="o">=&gt;</span> <span class="nv">$adapter1</span><span class="p">,</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>        <span class="s1">'remote'</span> <span class="o">=&gt;</span> <span class="nv">$adapter2</span><span class="p">,</span>
 <a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="p">]</span>
 <a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="p">);</span>
 <a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>
 <a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">begin</span><span class="p">();</span>
 <a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>
-<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something happened&#39;</span><span class="p">);</span>
-<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;Processing complete&#39;</span><span class="p">);</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something happened'</span><span class="p">);</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Processing complete'</span><span class="p">);</span>
 <a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>
 <a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
 </code></pre></div>
@@ -6821,15 +6821,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/var/log/application.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/var/log/application.log'</span><span class="p">);</span>
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nv">$adapter</span><span class="o">-&gt;</span><span class="na">setQueueLimit</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">&#39;messages&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;file&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">]);</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'messages'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'file'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">]);</span>
 <a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
 <a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="nv">$adapter</span><span class="o">-&gt;</span><span class="na">begin</span><span class="p">();</span>
 <a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>
 <a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">5000</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>    <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;record &#39;</span> <span class="o">.</span> <span class="nv">$i</span><span class="p">);</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>    <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'record '</span> <span class="o">.</span> <span class="nv">$i</span><span class="p">);</span>
 <a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="p">}</span>
 <a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>
 <a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="nv">$adapter</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
@@ -6892,19 +6892,19 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Formatter\Line</span><span class="p">;</span>
 <a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Line</span><span class="p">(</span><span class="s1">&#39;[%level%] - [%date%] - %message%&#39;</span><span class="p">);</span>
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="nv">$adapter</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Line</span><span class="p">(</span><span class="s1">'[%level%] - [%date%] - %message%'</span><span class="p">);</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="nv">$adapter</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>
 <a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="nv">$adapter</span><span class="o">-&gt;</span><span class="na">setFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">);</span>
 <a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>
 <a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>    <span class="p">[</span>
-<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>    <span class="p">]</span>
 <a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="p">);</span>
 <a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>
-<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <p>which produces:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">[</span>alert<span class="o">]</span><span class="w"> </span>-<span class="w"> </span><span class="o">[</span>Tue,<span class="w"> </span><span class="m">25</span><span class="w"> </span>Dec<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">12</span>:13:14<span class="w"> </span>-0400<span class="o">]</span><span class="w"> </span>-<span class="w"> </span>Something<span class="w"> </span>went<span class="w"> </span>wrong
@@ -6917,24 +6917,24 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Formatter\Line</span><span class="p">;</span>
 <a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
 <a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Line</span><span class="p">();</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">setFormat</span><span class="p">(</span><span class="s1">&#39;[%level%] - [%date%] - %message%&#39;</span><span class="p">);</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">setFormat</span><span class="p">(</span><span class="s1">'[%level%] - [%date%] - %message%'</span><span class="p">);</span>
 <a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
 <a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="nv">$adapter</span><span class="o">-&gt;</span><span class="na">setFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">);</span>
 <a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>
 <a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>    <span class="p">[</span>
-<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>    <span class="p">]</span>
 <a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="p">);</span>
 <a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>
-<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="date-format">Date Format<a class="headerlink" href="#date-format" title="Permanent link">&para;</a></h4>
 <p>The default date format is:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="s2">&quot;D, d M y H:i:s O&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="s2">"D, d M y H:i:s O"</span>
 </code></pre></div>
 <p>If the default format of the message does not fit the needs of your application you can change it using the <code>setDateFormat()</code> method. The method accepts a string with characters that correspond to date formats. For all available formats, please consult <a href="https://www.php.net/manual/en/function.date.php">this page</a>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -6944,20 +6944,20 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Formatter\Line</span><span class="p">;</span>
 <a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
 <a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Line</span><span class="p">();</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">setDateFormat</span><span class="p">(</span><span class="s1">&#39;Ymd-His&#39;</span><span class="p">);</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">setDateFormat</span><span class="p">(</span><span class="s1">'Ymd-His'</span><span class="p">);</span>
 <a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>
 <a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="nv">$adapter</span><span class="o">-&gt;</span><span class="na">setFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">);</span>
 <a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>
 <a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>    <span class="p">[</span>
-<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>    <span class="p">]</span>
 <a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="p">);</span>
 <a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a>
-<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span> 
+<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span> 
 </code></pre></div>
 <p>which produces:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="o">[</span>error<span class="o">]</span><span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">20181225</span>-121314<span class="o">]</span><span class="w"> </span>-<span class="w"> </span>Something<span class="w"> </span>went<span class="w"> </span>wrong
@@ -6965,9 +6965,9 @@ offering lower resource consumption and high performance.
 <h3 id="json-formatter">JSON Formatter<a class="headerlink" href="#json-formatter" title="Permanent link">&para;</a></h3>
 <p>Formats the messages returning a JSON string:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">{</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="nt">&quot;level&quot;</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Level of the message&quot;</span><span class="p">,</span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The message&quot;</span><span class="p">,</span>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The date as defined in the date format&quot;</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="nt">"level"</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="s2">"Level of the message"</span><span class="p">,</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="nt">"message"</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s2">"The message"</span><span class="p">,</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">    </span><span class="nt">"timestamp"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"The date as defined in the date format"</span>
 <a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="p">}</span>
 </code></pre></div>
 <div class="admonition info">
@@ -6982,7 +6982,7 @@ offering lower resource consumption and high performance.
 </div>
 <h4 id="date-format_1">Date Format<a class="headerlink" href="#date-format_1" title="Permanent link">&para;</a></h4>
 <p>The default date format is:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="s2">&quot;D, d M y H:i:s O&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="s2">"D, d M y H:i:s O"</span>
 </code></pre></div>
 <p>If the default format of the message does not fit the needs of your application you can change it using the <code>setDateFormat()</code> method. The method accepts a string with characters that correspond to date formats. For all available formats, please consult <a href="https://www.php.net/manual/en/function.date.php">this page</a>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -6992,25 +6992,25 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Formatter\Line</span><span class="p">;</span>
 <a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>
 <a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Line</span><span class="p">();</span>
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">setDateFormat</span><span class="p">(</span><span class="s1">&#39;Ymd-His&#39;</span><span class="p">);</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">setDateFormat</span><span class="p">(</span><span class="s1">'Ymd-His'</span><span class="p">);</span>
 <a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>
-<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="nv">$adapter</span><span class="o">-&gt;</span><span class="na">setFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">);</span>
 <a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>
 <a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>    <span class="p">[</span>
-<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>    <span class="p">]</span>
 <a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="p">);</span>
 <a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a>
-<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <p>which produces:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="p">{</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="nt">&quot;level&quot;</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">,</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Something went wrong&quot;</span><span class="p">,</span>
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20181225-121314&quot;</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="nt">"level"</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="nt">"message"</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s2">"Something went wrong"</span><span class="p">,</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">    </span><span class="nt">"timestamp"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"20181225-121314"</span>
 <a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="custom-formatter">Custom Formatter<a class="headerlink" href="#custom-formatter" title="Permanent link">&para;</a></h3>
@@ -7023,18 +7023,18 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>    <span class="p">[</span>
-<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>    <span class="p">]</span>
 <a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="p">);</span>
 <a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>
-<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;%framework% executed the &quot;Hello World&quot; test in %secs% second(s)&#39;</span><span class="p">;</span>
+<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="nv">$message</span> <span class="o">=</span> <span class="s1">'%framework% executed the "Hello World" test in %secs% second(s)'</span><span class="p">;</span>
 <a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="nv">$context</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a>    <span class="s1">&#39;framework&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>    <span class="s1">&#39;secs&#39;</span>      <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a>    <span class="s1">'framework'</span> <span class="o">=&gt;</span> <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>    <span class="s1">'secs'</span>      <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
 <a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="p">];</span>
 <a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a>
 <a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nv">$context</span><span class="p">);</span>
@@ -7057,16 +7057,16 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>
-<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>    <span class="p">[</span>
-<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>    <span class="p">]</span>
 <a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a><span class="p">);</span>
 <a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>
 <a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a><span class="c1">// Log to all adapters</span>
-<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <p>The stream logger writes messages to a valid registered stream in PHP. A list of streams is available <a href="https://php.net/manual/en/wrappers.php">here</a>. Logging to a stream</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -7074,15 +7074,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>
-<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;php://stderr&#39;</span><span class="p">);</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'php://stderr'</span><span class="p">);</span>
 <a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>    <span class="p">[</span>
-<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>    <span class="p">]</span>
 <a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a><span class="p">);</span>
 <a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>
-<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="syslog_1">Syslog<a class="headerlink" href="#syslog_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -7092,21 +7092,21 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>
 <a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="c1">// Setting identity/mode/facility</span>
 <a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Syslog</span><span class="p">(</span>
-<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>    <span class="s1">&#39;ident-name&#39;</span><span class="p">,</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>    <span class="s1">'ident-name'</span><span class="p">,</span>
 <a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>    <span class="p">[</span>
-<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>        <span class="s1">&#39;option&#39;</span>   <span class="o">=&gt;</span> <span class="nx">LOG_NDELAY</span><span class="p">,</span>
-<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>        <span class="s1">&#39;facility&#39;</span> <span class="o">=&gt;</span> <span class="nx">LOG_MAIL</span><span class="p">,</span>
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>        <span class="s1">'option'</span>   <span class="o">=&gt;</span> <span class="nx">LOG_NDELAY</span><span class="p">,</span>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>        <span class="s1">'facility'</span> <span class="o">=&gt;</span> <span class="nx">LOG_MAIL</span><span class="p">,</span>
 <a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>    <span class="p">]</span>
 <a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="p">);</span>
 <a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>
 <a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>    <span class="p">[</span>
-<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>    <span class="p">]</span>
 <a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="p">);</span>
 <a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a>
-<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="noop_1">Noop<a class="headerlink" href="#noop_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -7114,15 +7114,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Noop</span><span class="p">;</span>
 <a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>
-<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Noop</span><span class="p">(</span><span class="s1">&#39;nothing&#39;</span><span class="p">);</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Noop</span><span class="p">(</span><span class="s1">'nothing'</span><span class="p">);</span>
 <a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>    <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>    <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>    <span class="p">[</span>
-<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>    <span class="p">]</span>
 <a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="p">);</span>
 <a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>
-<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="custom-adapters">Custom Adapters<a class="headerlink" href="#custom-adapters" title="Permanent link">&para;</a></h3>
 <p>The <a href="../api/phalcon_logger/#loggeradapteradapterinterface">Phalcon\Logger\AdapterInterface</a> interface must be implemented in order to create your own logger adapters or extend the existing ones. You can also take advantage of the functionality in <a href="../api/phalcon_logger/#loggeradapterabstractadapter">Phalcon\Logger\Adapter\AbstractAdapter</a> abstract class.</p>
@@ -7144,13 +7144,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Di</span><span class="p">();</span>
 <a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>
 <a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>    <span class="s1">&#39;logger&#39;</span><span class="p">,</span>
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>    <span class="s1">'logger'</span><span class="p">,</span>
 <a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>        <span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>        <span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>        <span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a>            <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a>            <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a>            <span class="p">[</span>
-<a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a>                <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a>                <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a>            <span class="p">]</span>
 <a id="__codelineno-36-18" name="__codelineno-36-18" href="#__codelineno-36-18"></a>        <span class="p">);</span>
 <a id="__codelineno-36-19" name="__codelineno-36-19" href="#__codelineno-36-19"></a>
@@ -7159,7 +7159,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-36-22" name="__codelineno-36-22" href="#__codelineno-36-22"></a><span class="p">);</span>
 <a id="__codelineno-36-23" name="__codelineno-36-23" href="#__codelineno-36-23"></a>
 <a id="__codelineno-36-24" name="__codelineno-36-24" href="#__codelineno-36-24"></a><span class="c1">// accessing it later:</span>
-<a id="__codelineno-36-25" name="__codelineno-36-25" href="#__codelineno-36-25"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">);</span>
+<a id="__codelineno-36-25" name="__codelineno-36-25" href="#__codelineno-36-25"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s1">'logger'</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="psr-3">PSR-3<a class="headerlink" href="#psr-3" title="Permanent link">&para;</a></h2>
 <p><a href="../api/phalcon_logger/#loggerlogger">Phalcon\Logger\Logger</a> implements methods that are in line with <a href="https://www.php-fig.org/psr/psr-3/">PSR-3</a> but does not implement <code>Psr\Log\LoggerInterface</code> directly. The <a href="https://github.com/phalcon/bridge-psr3">phalcon/bridge-psr3</a> package bridges the two standards in both directions.</p>
@@ -7180,15 +7180,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span><span class="p">;</span>
 <a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>
 <a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>    <span class="s1">&#39;application&#39;</span><span class="p">,</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>    <span class="s1">'application'</span><span class="p">,</span>
 <a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>    <span class="p">[</span>
-<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>        <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/application.log&#39;</span><span class="p">),</span>
+<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>        <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/application.log'</span><span class="p">),</span>
 <a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a>    <span class="p">]</span>
 <a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a><span class="p">);</span>
 <a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>
 <a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a><span class="c1">// $logger is a Psr\Log\LoggerInterface</span>
-<a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;Order placed&#39;</span><span class="p">);</span>
-<a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Payment gateway timed out&#39;</span><span class="p">);</span>
+<a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Order placed'</span><span class="p">);</span>
+<a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Payment gateway timed out'</span><span class="p">);</span>
 </code></pre></div>
 <p>The returned object can be passed to any consumer that type-hints <code>Psr\Log\LoggerInterface</code>.</p>
 <h3 id="psr-3-logger-as-a-phalcon-adapter">PSR-3 Logger as a Phalcon Adapter<a class="headerlink" href="#psr-3-logger-as-a-phalcon-adapter" title="Permanent link">&para;</a></h3>
@@ -7199,17 +7199,17 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="k">use</span> <span class="nx">Phalcon\Bridge\Psr3\Adapter</span><span class="p">;</span>
 <a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Logger</span><span class="p">;</span>
 <a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>
-<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="nv">$psr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Monolog</span><span class="p">(</span><span class="s1">&#39;application&#39;</span><span class="p">);</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="nv">$psr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Monolog</span><span class="p">(</span><span class="s1">'application'</span><span class="p">);</span>
 <a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>
 <a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>    <span class="s1">&#39;application&#39;</span><span class="p">,</span>
+<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>    <span class="s1">'application'</span><span class="p">,</span>
 <a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a>    <span class="p">[</span>
-<a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a>        <span class="s1">&#39;psr&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Adapter</span><span class="p">(</span><span class="nv">$psr</span><span class="p">),</span>
+<a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a>        <span class="s1">'psr'</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Adapter</span><span class="p">(</span><span class="nv">$psr</span><span class="p">),</span>
 <a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>    <span class="p">]</span>
 <a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a><span class="p">);</span>
 <a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a>
 <a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a><span class="c1">// The message is forwarded to the PSR-3 logger</span>
-<a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">&#39;Disk space is low&#39;</span><span class="p">);</span>
+<a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">'Disk space is low'</span><span class="p">);</span>
 </code></pre></div>
 <p>The result is a <a href="../api/phalcon_logger/#loggerlogger">Phalcon\Logger\Logger</a>, so it can be injected wherever Phalcon expects a logger, such as the DataMapper profiler.</p>
 <p>Phalcon level names map to the matching PSR-3 levels. The two Phalcon-only levels, <code>CUSTOM</code> (<code>8</code>) and <code>TRACE</code> (<code>9</code>), are forwarded to the PSR-3 <code>debug</code> level, because PSR-3 defines no equivalent.</p>
@@ -7246,15 +7246,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="k">use</span> <span class="nx">Phalcon\Logger\Exception</span><span class="p">;</span>
 <a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>
 <a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="k">try</span> <span class="p">{</span>
-<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>    <span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">&#39;/storage/logs/main.log&#39;</span><span class="p">);</span>
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>    <span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span><span class="s1">'/storage/logs/main.log'</span><span class="p">);</span>
 <a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>    <span class="nv">$logger</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span>
-<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>        <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>        <span class="s1">'messages'</span><span class="p">,</span>
 <a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a>        <span class="p">[</span>
-<a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>            <span class="s1">&#39;main&#39;</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
+<a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>            <span class="s1">'main'</span> <span class="o">=&gt;</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a>        <span class="p">]</span>
 <a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a>    <span class="p">);</span>
 <a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a>
-<a id="__codelineno-40-16" name="__codelineno-40-16" href="#__codelineno-40-16"></a>    <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-40-16" name="__codelineno-40-16" href="#__codelineno-40-16"></a>    <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 <a id="__codelineno-40-17" name="__codelineno-40-17" href="#__codelineno-40-17"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-40-18" name="__codelineno-40-18" href="#__codelineno-40-18"></a>    <span class="k">echo</span> <span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
 <a id="__codelineno-40-19" name="__codelineno-40-19" href="#__codelineno-40-19"></a><span class="p">}</span>
@@ -7502,7 +7502,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

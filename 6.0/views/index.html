@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -6083,13 +6083,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
 </code></pre></div>
 <p>Renders a partial view</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPartial</span><span class="p">(</span><span class="s2">&quot;shared/footer&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPartial</span><span class="p">(</span><span class="s2">"shared/footer"</span><span class="p">);</span>
 </code></pre></div>
 <p>Retrieve the contents of a partial</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPartial</span><span class="p">(</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="s2">&quot;shared/footer&quot;</span><span class="p">,</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="s2">"shared/footer"</span><span class="p">,</span>
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="p">[</span>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>        <span class="s2">&quot;content&quot;</span> <span class="o">=&gt;</span> <span class="nv">$html</span><span class="p">,</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>        <span class="s2">"content"</span> <span class="o">=&gt;</span> <span class="nv">$html</span><span class="p">,</span>
 <a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="p">]</span>
 <a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="p">);</span>
 </code></pre></div>
@@ -6106,10 +6106,10 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>Perform the automatic rendering returning the output as a string</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nv">$template</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">getRender</span><span class="p">(</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="s2">&quot;invoices&quot;</span><span class="p">,</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="s2">&quot;show&quot;</span><span class="p">,</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="s2">"invoices"</span><span class="p">,</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="s2">"show"</span><span class="p">,</span>
 <a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="p">[</span>
-<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>        <span class="s2">&quot;invoices&quot;</span> <span class="o">=&gt;</span> <span class="nv">$invoices</span><span class="p">,</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>        <span class="s2">"invoices"</span> <span class="o">=&gt;</span> <span class="nv">$invoices</span><span class="p">,</span>
 <a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>    <span class="p">]</span>
 <a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="p">);</span>
 </code></pre></div>
@@ -6131,13 +6131,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="p">)</span>
 </code></pre></div>
 <p>Renders a partial view</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s2">&quot;shared/footer&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s2">"shared/footer"</span><span class="p">);</span>
 </code></pre></div>
 <p>Show a partial inside another view</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span>
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="s2">&quot;shared/footer&quot;</span><span class="p">,</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="s2">"shared/footer"</span><span class="p">,</span>
 <a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>    <span class="p">[</span>
-<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>        <span class="s2">&quot;content&quot;</span> <span class="o">=&gt;</span> <span class="nv">$html</span><span class="p">,</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>        <span class="s2">"content"</span> <span class="o">=&gt;</span> <span class="nv">$html</span><span class="p">,</span>
 <a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="p">]</span>
 <a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="p">);</span>
 </code></pre></div>
@@ -6153,7 +6153,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>    <span class="p">{</span>
 <a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>        <span class="c1">// ...</span>
 <a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>
-<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span><span class="s2">&quot;invoices/list&quot;</span><span class="p">);</span>
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span><span class="s2">"invoices/list"</span><span class="p">);</span>
 <a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>    <span class="p">}</span>
 <a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="p">}</span>
 </code></pre></div>
@@ -6164,9 +6164,9 @@ offering lower resource consumption and high performance.
 <p>Register templating engines</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
 <a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>    <span class="p">[</span>
-<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>        <span class="s2">&quot;.phtml&quot;</span> <span class="o">=&gt;</span> <span class="nx">\Phalcon\Mvc\View\Engine\Php</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>        <span class="s2">&quot;.volt&quot;</span>  <span class="o">=&gt;</span> <span class="nx">\Phalcon\Mvc\View\Engine\Volt</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>        <span class="s2">&quot;.mhtml&quot;</span> <span class="o">=&gt;</span> <span class="nx">\MyCustomEngine</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>        <span class="s2">".phtml"</span> <span class="o">=&gt;</span> <span class="nx">\Phalcon\Mvc\View\Engine\Php</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>        <span class="s2">".volt"</span>  <span class="o">=&gt;</span> <span class="nx">\Phalcon\Mvc\View\Engine\Volt</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>        <span class="s2">".mhtml"</span> <span class="o">=&gt;</span> <span class="nx">\MyCustomEngine</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
 <a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>    <span class="p">]</span>
 <a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="p">);</span>
 </code></pre></div>
@@ -6179,7 +6179,7 @@ offering lower resource consumption and high performance.
 <p>Executes render process from dispatching data</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nv">$view</span>
 <a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>    <span class="o">-&gt;</span><span class="na">start</span><span class="p">()</span>
-<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    <span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">,</span> <span class="s2">&quot;recent&quot;</span><span class="p">)</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    <span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"recent"</span><span class="p">)</span>
 <a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>    <span class="o">-&gt;</span><span class="na">finish</span><span class="p">()</span>
 <a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="p">;</span>
 </code></pre></div>
@@ -6192,7 +6192,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="p">)</span><span class="o">:</span> <span class="nx">View</span>
 </code></pre></div>
 <p>Sets base path. Depending on your platform, always add a trailing slash or backslash</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/"</span><span class="p">);</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setContent</span><span class="p">(</span>
 <a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>    <span class="nx">string</span> <span class="nv">$content</span>
@@ -6200,7 +6200,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>Externally sets the view content</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span>
-<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>    <span class="s2">&quot;&lt;h1&gt;hello&lt;/h1&gt;&quot;</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>    <span class="s2">"&lt;h1&gt;hello&lt;/h1&gt;"</span>
 <a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="p">);</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setLayout</span><span class="p">(</span>
@@ -6208,7 +6208,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="p">)</span><span class="o">:</span> <span class="nx">View</span>
 </code></pre></div>
 <p>Change the layout to be used instead of using the name of the latest controller name</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setLayout</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setLayout</span><span class="p">(</span><span class="s2">"main"</span><span class="p">);</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setLayoutsDir</span><span class="p">(</span>
 <a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>    <span class="nx">string</span> <span class="nv">$layoutsDir</span>
@@ -6216,7 +6216,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>Sets the layouts subdirectory. It must be a directory under the views directory. Depending on your platform, always add a trailing slash or backslash</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setLayoutsDir</span><span class="p">(</span>
-<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>    <span class="s2">&quot;../common/layouts/&quot;</span>
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>    <span class="s2">"../common/layouts/"</span>
 <a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="p">);</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setMainView</span><span class="p">(</span>
@@ -6224,7 +6224,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="p">)</span><span class="o">:</span> <span class="nx">View</span>
 </code></pre></div>
 <p>Sets default view name. Must be a file without extension in the views directory</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setMainView</span><span class="p">(</span><span class="s2">&quot;base&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setMainView</span><span class="p">(</span><span class="s2">"base"</span><span class="p">);</span>
 </code></pre></div>
 <p>Renders as main view views-dir/base.phtml</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setPartialsDir</span><span class="p">(</span>
@@ -6233,7 +6233,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>Sets a partials subdirectory. Must be a directory under the views directory. Depending on your platform, always add a trailing slash or backslash</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setPartialsDir</span><span class="p">(</span>
-<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>    <span class="s2">&quot;../common/partials/&quot;</span>
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>    <span class="s2">"../common/partials/"</span>
 <a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="p">);</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setParamToView</span><span class="p">(</span>
@@ -6244,7 +6244,7 @@ offering lower resource consumption and high performance.
 <p>Adds parameters to views (alias of setVar)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="nv">$this</span>
 <a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>    <span class="o">-&gt;</span><span class="na">view</span>
-<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>    <span class="o">-&gt;</span><span class="na">setParamToView</span><span class="p">(</span><span class="s2">&quot;invoices&quot;</span><span class="p">,</span> <span class="nv">$invoices</span><span class="p">)</span>
+<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>    <span class="o">-&gt;</span><span class="na">setParamToView</span><span class="p">(</span><span class="s2">"invoices"</span><span class="p">,</span> <span class="nv">$invoices</span><span class="p">)</span>
 <a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setRenderLevel</span><span class="p">(</span>
@@ -6275,7 +6275,7 @@ offering lower resource consumption and high performance.
 <p>Set a single view parameter</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="nv">$this</span>
 <a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>    <span class="o">-&gt;</span><span class="na">view</span>
-<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>    <span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">&quot;invoices&quot;</span><span class="p">,</span> <span class="nv">$invoices</span><span class="p">)</span>
+<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>    <span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s2">"invoices"</span><span class="p">,</span> <span class="nv">$invoices</span><span class="p">)</span>
 <a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setVars</span><span class="p">(</span>
@@ -6286,7 +6286,7 @@ offering lower resource consumption and high performance.
 <p>Set all the render params</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVars</span><span class="p">(</span>
 <a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>    <span class="p">[</span>
-<a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>        <span class="s2">&quot;invoices&quot;</span> <span class="o">=&gt;</span> <span class="nv">$invoices</span><span class="p">,</span>
+<a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>        <span class="s2">"invoices"</span> <span class="o">=&gt;</span> <span class="nv">$invoices</span><span class="p">,</span>
 <a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>    <span class="p">]</span>
 <a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a><span class="p">);</span>
 </code></pre></div>
@@ -6315,11 +6315,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-70-6" name="__codelineno-70-6" href="#__codelineno-70-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
 <a id="__codelineno-70-7" name="__codelineno-70-7" href="#__codelineno-70-7"></a>
 <a id="__codelineno-70-8" name="__codelineno-70-8" href="#__codelineno-70-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-70-9" name="__codelineno-70-9" href="#__codelineno-70-9"></a>    <span class="s1">&#39;view&#39;</span><span class="p">,</span>
+<a id="__codelineno-70-9" name="__codelineno-70-9" href="#__codelineno-70-9"></a>    <span class="s1">'view'</span><span class="p">,</span>
 <a id="__codelineno-70-10" name="__codelineno-70-10" href="#__codelineno-70-10"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-70-11" name="__codelineno-70-11" href="#__codelineno-70-11"></a>        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
 <a id="__codelineno-70-12" name="__codelineno-70-12" href="#__codelineno-70-12"></a>
-<a id="__codelineno-70-13" name="__codelineno-70-13" href="#__codelineno-70-13"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-70-13" name="__codelineno-70-13" href="#__codelineno-70-13"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">'../app/views/'</span><span class="p">);</span>
 <a id="__codelineno-70-14" name="__codelineno-70-14" href="#__codelineno-70-14"></a>
 <a id="__codelineno-70-15" name="__codelineno-70-15" href="#__codelineno-70-15"></a>        <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
 <a id="__codelineno-70-16" name="__codelineno-70-16" href="#__codelineno-70-16"></a>    <span class="p">}</span>
@@ -6367,7 +6367,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-71-10" name="__codelineno-71-10" href="#__codelineno-71-10"></a><span class="p">{</span>
 <a id="__codelineno-71-11" name="__codelineno-71-11" href="#__codelineno-71-11"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">viewAction</span><span class="p">(</span><span class="nv">$invoiceId</span><span class="p">)</span>
 <a id="__codelineno-71-12" name="__codelineno-71-12" href="#__codelineno-71-12"></a>    <span class="p">{</span>
-<a id="__codelineno-71-13" name="__codelineno-71-13" href="#__codelineno-71-13"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s1">&#39;invoiceId&#39;</span><span class="p">,</span> <span class="nv">$invoiceId</span><span class="p">);</span>
+<a id="__codelineno-71-13" name="__codelineno-71-13" href="#__codelineno-71-13"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s1">'invoiceId'</span><span class="p">,</span> <span class="nv">$invoiceId</span><span class="p">);</span>
 <a id="__codelineno-71-14" name="__codelineno-71-14" href="#__codelineno-71-14"></a>    <span class="p">}</span>
 <a id="__codelineno-71-15" name="__codelineno-71-15" href="#__codelineno-71-15"></a><span class="p">}</span>
 </code></pre></div>
@@ -6407,13 +6407,13 @@ offering lower resource consumption and high performance.
 <p>You are not required to implement all the files mentioned above. <a href="../api/phalcon_mvc/#mvcview">Phalcon\Mvc\View</a> will move to the next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="o">&lt;!--</span> <span class="nx">app</span><span class="o">/</span><span class="nx">views</span><span class="o">/</span><span class="nx">invoices</span><span class="o">/</span><span class="nx">view</span><span class="o">.</span><span class="nx">phtml</span> <span class="o">--&gt;</span>
 <a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>
-<a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a><span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">View</span> <span class="nx">Name</span><span class="o">:</span> <span class="s2">&quot;view&quot;</span><span class="o">&lt;/</span><span class="nx">h3</span><span class="o">&gt;</span>
+<a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a><span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">View</span> <span class="nx">Name</span><span class="o">:</span> <span class="s2">"view"</span><span class="o">&lt;/</span><span class="nx">h3</span><span class="o">&gt;</span>
 <a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a>
 <a id="__codelineno-73-5" name="__codelineno-73-5" href="#__codelineno-73-5"></a><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">I</span> <span class="nx">have</span> <span class="nx">received</span> <span class="nx">the</span> <span class="nx">parameter</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$invoiceId</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="o">&lt;!--</span> <span class="nx">app</span><span class="o">/</span><span class="nx">views</span><span class="o">/</span><span class="nx">layouts</span><span class="o">/</span><span class="nx">invoices</span><span class="o">.</span><span class="nx">phtml</span> <span class="o">--&gt;</span>
 <a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a>
-<a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a><span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Controller</span> <span class="nx">view</span><span class="o">:</span> <span class="s2">&quot;invoices&quot;</span><span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
+<a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a><span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Controller</span> <span class="nx">view</span><span class="o">:</span> <span class="s2">"invoices"</span><span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
 <a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a>
 <a id="__codelineno-74-5" name="__codelineno-74-5" href="#__codelineno-74-5"></a><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span> <span class="cp">?&gt;</span>
 </code></pre></div>
@@ -6446,11 +6446,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-76-7" name="__codelineno-76-7" href="#__codelineno-76-7"></a>
 <a id="__codelineno-76-8" name="__codelineno-76-8" href="#__codelineno-76-8"></a>        <span class="o">&lt;!--</span> <span class="nx">app</span><span class="o">/</span><span class="nx">views</span><span class="o">/</span><span class="nx">layouts</span><span class="o">/</span><span class="nx">invoices</span><span class="o">.</span><span class="nx">phtml</span> <span class="o">--&gt;</span>
 <a id="__codelineno-76-9" name="__codelineno-76-9" href="#__codelineno-76-9"></a>
-<a id="__codelineno-76-10" name="__codelineno-76-10" href="#__codelineno-76-10"></a>        <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Controller</span> <span class="nx">view</span><span class="o">:</span> <span class="s2">&quot;invoices&quot;</span><span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
+<a id="__codelineno-76-10" name="__codelineno-76-10" href="#__codelineno-76-10"></a>        <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Controller</span> <span class="nx">view</span><span class="o">:</span> <span class="s2">"invoices"</span><span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
 <a id="__codelineno-76-11" name="__codelineno-76-11" href="#__codelineno-76-11"></a>
 <a id="__codelineno-76-12" name="__codelineno-76-12" href="#__codelineno-76-12"></a>        <span class="o">&lt;!--</span> <span class="nx">app</span><span class="o">/</span><span class="nx">views</span><span class="o">/</span><span class="nx">invoices</span><span class="o">/</span><span class="nx">view</span><span class="o">.</span><span class="nx">phtml</span> <span class="o">--&gt;</span>
 <a id="__codelineno-76-13" name="__codelineno-76-13" href="#__codelineno-76-13"></a>
-<a id="__codelineno-76-14" name="__codelineno-76-14" href="#__codelineno-76-14"></a>        <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">View</span> <span class="nx">Name</span><span class="o">:</span> <span class="s2">&quot;view&quot;</span><span class="o">&lt;/</span><span class="nx">h3</span><span class="o">&gt;</span>
+<a id="__codelineno-76-14" name="__codelineno-76-14" href="#__codelineno-76-14"></a>        <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">View</span> <span class="nx">Name</span><span class="o">:</span> <span class="s2">"view"</span><span class="o">&lt;/</span><span class="nx">h3</span><span class="o">&gt;</span>
 <a id="__codelineno-76-15" name="__codelineno-76-15" href="#__codelineno-76-15"></a>
 <a id="__codelineno-76-16" name="__codelineno-76-16" href="#__codelineno-76-16"></a>        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">I</span> <span class="nx">have</span> <span class="nx">received</span> <span class="nx">the</span> <span class="nx">parameter</span> <span class="mi">12345</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 <a id="__codelineno-76-17" name="__codelineno-76-17" href="#__codelineno-76-17"></a>
@@ -6474,13 +6474,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-77-12" name="__codelineno-77-12" href="#__codelineno-77-12"></a><span class="p">{</span>
 <a id="__codelineno-77-13" name="__codelineno-77-13" href="#__codelineno-77-13"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
 <a id="__codelineno-77-14" name="__codelineno-77-14" href="#__codelineno-77-14"></a>    <span class="p">{</span>
-<a id="__codelineno-77-15" name="__codelineno-77-15" href="#__codelineno-77-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setTemplateAfter</span><span class="p">(</span><span class="s1">&#39;common&#39;</span><span class="p">);</span>
+<a id="__codelineno-77-15" name="__codelineno-77-15" href="#__codelineno-77-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setTemplateAfter</span><span class="p">(</span><span class="s1">'common'</span><span class="p">);</span>
 <a id="__codelineno-77-16" name="__codelineno-77-16" href="#__codelineno-77-16"></a>    <span class="p">}</span>
 <a id="__codelineno-77-17" name="__codelineno-77-17" href="#__codelineno-77-17"></a>
 <a id="__codelineno-77-18" name="__codelineno-77-18" href="#__codelineno-77-18"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">lastAction</span><span class="p">()</span>
 <a id="__codelineno-77-19" name="__codelineno-77-19" href="#__codelineno-77-19"></a>    <span class="p">{</span>
 <a id="__codelineno-77-20" name="__codelineno-77-20" href="#__codelineno-77-20"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span>
-<a id="__codelineno-77-21" name="__codelineno-77-21" href="#__codelineno-77-21"></a>            <span class="s1">&#39;These are the latest invoices&#39;</span>
+<a id="__codelineno-77-21" name="__codelineno-77-21" href="#__codelineno-77-21"></a>            <span class="s1">'These are the latest invoices'</span>
 <a id="__codelineno-77-22" name="__codelineno-77-22" href="#__codelineno-77-22"></a>        <span class="p">);</span>
 <a id="__codelineno-77-23" name="__codelineno-77-23" href="#__codelineno-77-23"></a>    <span class="p">}</span>
 <a id="__codelineno-77-24" name="__codelineno-77-24" href="#__codelineno-77-24"></a><span class="p">}</span>
@@ -6498,13 +6498,13 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="o">&lt;!--</span> <span class="nx">app</span><span class="o">/</span><span class="nx">views</span><span class="o">/</span><span class="nx">layouts</span><span class="o">/</span><span class="nx">common</span><span class="o">.</span><span class="nx">phtml</span> <span class="o">--&gt;</span>
 <a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a>
-<a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a><span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">class</span><span class="o">=</span><span class="s1">&#39;menu&#39;</span><span class="o">&gt;</span>
-<a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a>    <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
-<a id="__codelineno-79-5" name="__codelineno-79-5" href="#__codelineno-79-5"></a>    <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">&#39;/list&#39;</span><span class="o">&gt;</span><span class="k">List</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
-<a id="__codelineno-79-6" name="__codelineno-79-6" href="#__codelineno-79-6"></a>    <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">&#39;/support&#39;</span><span class="o">&gt;</span><span class="nx">Support</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+<a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a><span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">class</span><span class="o">=</span><span class="s1">'menu'</span><span class="o">&gt;</span>
+<a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a>    <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">'/'</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+<a id="__codelineno-79-5" name="__codelineno-79-5" href="#__codelineno-79-5"></a>    <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">'/list'</span><span class="o">&gt;</span><span class="k">List</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+<a id="__codelineno-79-6" name="__codelineno-79-6" href="#__codelineno-79-6"></a>    <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">'/support'</span><span class="o">&gt;</span><span class="nx">Support</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
 <a id="__codelineno-79-7" name="__codelineno-79-7" href="#__codelineno-79-7"></a><span class="o">&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span>
 <a id="__codelineno-79-8" name="__codelineno-79-8" href="#__codelineno-79-8"></a>
-<a id="__codelineno-79-9" name="__codelineno-79-9" href="#__codelineno-79-9"></a><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s1">&#39;content&#39;</span><span class="o">&gt;</span>
+<a id="__codelineno-79-9" name="__codelineno-79-9" href="#__codelineno-79-9"></a><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s1">'content'</span><span class="o">&gt;</span>
 <a id="__codelineno-79-10" name="__codelineno-79-10" href="#__codelineno-79-10"></a>    <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span> <span class="cp">?&gt;</span>
 <a id="__codelineno-79-11" name="__codelineno-79-11" href="#__codelineno-79-11"></a><span class="x">&lt;/div&gt;</span>
 </code></pre></div>
@@ -6537,13 +6537,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-82-8" name="__codelineno-82-8" href="#__codelineno-82-8"></a>
 <a id="__codelineno-82-9" name="__codelineno-82-9" href="#__codelineno-82-9"></a>        <span class="o">&lt;!--</span> <span class="nx">app</span><span class="o">/</span><span class="nx">views</span><span class="o">/</span><span class="nx">layouts</span><span class="o">/</span><span class="nx">common</span><span class="o">.</span><span class="nx">phtml</span> <span class="o">--&gt;</span>
 <a id="__codelineno-82-10" name="__codelineno-82-10" href="#__codelineno-82-10"></a>
-<a id="__codelineno-82-11" name="__codelineno-82-11" href="#__codelineno-82-11"></a>        <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">class</span><span class="o">=</span><span class="s1">&#39;menu&#39;</span><span class="o">&gt;</span>
-<a id="__codelineno-82-12" name="__codelineno-82-12" href="#__codelineno-82-12"></a>            <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
-<a id="__codelineno-82-13" name="__codelineno-82-13" href="#__codelineno-82-13"></a>            <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">&#39;/list&#39;</span><span class="o">&gt;</span><span class="k">List</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
-<a id="__codelineno-82-14" name="__codelineno-82-14" href="#__codelineno-82-14"></a>            <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">&#39;/support&#39;</span><span class="o">&gt;</span><span class="nx">Support</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+<a id="__codelineno-82-11" name="__codelineno-82-11" href="#__codelineno-82-11"></a>        <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">class</span><span class="o">=</span><span class="s1">'menu'</span><span class="o">&gt;</span>
+<a id="__codelineno-82-12" name="__codelineno-82-12" href="#__codelineno-82-12"></a>            <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">'/'</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+<a id="__codelineno-82-13" name="__codelineno-82-13" href="#__codelineno-82-13"></a>            <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">'/list'</span><span class="o">&gt;</span><span class="k">List</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+<a id="__codelineno-82-14" name="__codelineno-82-14" href="#__codelineno-82-14"></a>            <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s1">'/support'</span><span class="o">&gt;</span><span class="nx">Support</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
 <a id="__codelineno-82-15" name="__codelineno-82-15" href="#__codelineno-82-15"></a>        <span class="o">&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span>
 <a id="__codelineno-82-16" name="__codelineno-82-16" href="#__codelineno-82-16"></a>
-<a id="__codelineno-82-17" name="__codelineno-82-17" href="#__codelineno-82-17"></a>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s1">&#39;content&#39;</span><span class="o">&gt;</span>
+<a id="__codelineno-82-17" name="__codelineno-82-17" href="#__codelineno-82-17"></a>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s1">'content'</span><span class="o">&gt;</span>
 <a id="__codelineno-82-18" name="__codelineno-82-18" href="#__codelineno-82-18"></a>
 <a id="__codelineno-82-19" name="__codelineno-82-19" href="#__codelineno-82-19"></a>            <span class="o">&lt;!--</span> <span class="nx">app</span><span class="o">/</span><span class="nx">views</span><span class="o">/</span><span class="nx">layouts</span><span class="o">/</span><span class="nx">invoices</span><span class="o">.</span><span class="nx">phtml</span> <span class="o">--&gt;</span>
 <a id="__codelineno-82-20" name="__codelineno-82-20" href="#__codelineno-82-20"></a>
@@ -6571,7 +6571,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a><span class="o">&lt;!</span><span class="nx">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
 <a id="__codelineno-83-3" name="__codelineno-83-3" href="#__codelineno-83-3"></a><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
 <a id="__codelineno-83-4" name="__codelineno-83-4" href="#__codelineno-83-4"></a>    <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
-<a id="__codelineno-83-5" name="__codelineno-83-5" href="#__codelineno-83-5"></a>        <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Blog</span><span class="s1">&#39;s title&lt;/title&gt;</span>
+<a id="__codelineno-83-5" name="__codelineno-83-5" href="#__codelineno-83-5"></a>        <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Blog</span><span class="s1">'s title&lt;/title&gt;</span>
 <a id="__codelineno-83-6" name="__codelineno-83-6" href="#__codelineno-83-6"></a><span class="s1">    &lt;/head&gt;</span>
 <a id="__codelineno-83-7" name="__codelineno-83-7" href="#__codelineno-83-7"></a><span class="s1">    &lt;body&gt;</span>
 <a id="__codelineno-83-8" name="__codelineno-83-8" href="#__codelineno-83-8"></a>
@@ -6581,13 +6581,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-83-12" name="__codelineno-83-12" href="#__codelineno-83-12"></a>
 <a id="__codelineno-83-13" name="__codelineno-83-13" href="#__codelineno-83-13"></a><span class="s1">        &lt;!-- app/views/layouts/common.phtml --&gt;</span>
 <a id="__codelineno-83-14" name="__codelineno-83-14" href="#__codelineno-83-14"></a>
-<a id="__codelineno-83-15" name="__codelineno-83-15" href="#__codelineno-83-15"></a><span class="s1">        &lt;ul class=&#39;</span><span class="nx">menu</span><span class="s1">&#39;&gt;</span>
-<a id="__codelineno-83-16" name="__codelineno-83-16" href="#__codelineno-83-16"></a><span class="s1">            &lt;li&gt;&lt;a href=&#39;</span><span class="o">/</span><span class="s1">&#39;&gt;Home&lt;/a&gt;&lt;/li&gt;</span>
-<a id="__codelineno-83-17" name="__codelineno-83-17" href="#__codelineno-83-17"></a><span class="s1">            &lt;li&gt;&lt;a href=&#39;</span><span class="o">/</span><span class="nx">articles</span><span class="s1">&#39;&gt;Articles&lt;/a&gt;&lt;/li&gt;</span>
-<a id="__codelineno-83-18" name="__codelineno-83-18" href="#__codelineno-83-18"></a><span class="s1">            &lt;li&gt;&lt;a href=&#39;</span><span class="o">/</span><span class="nx">contact</span><span class="s1">&#39;&gt;Contact us&lt;/a&gt;&lt;/li&gt;</span>
+<a id="__codelineno-83-15" name="__codelineno-83-15" href="#__codelineno-83-15"></a><span class="s1">        &lt;ul class='</span><span class="nx">menu</span><span class="s1">'&gt;</span>
+<a id="__codelineno-83-16" name="__codelineno-83-16" href="#__codelineno-83-16"></a><span class="s1">            &lt;li&gt;&lt;a href='</span><span class="o">/</span><span class="s1">'&gt;Home&lt;/a&gt;&lt;/li&gt;</span>
+<a id="__codelineno-83-17" name="__codelineno-83-17" href="#__codelineno-83-17"></a><span class="s1">            &lt;li&gt;&lt;a href='</span><span class="o">/</span><span class="nx">articles</span><span class="s1">'&gt;Articles&lt;/a&gt;&lt;/li&gt;</span>
+<a id="__codelineno-83-18" name="__codelineno-83-18" href="#__codelineno-83-18"></a><span class="s1">            &lt;li&gt;&lt;a href='</span><span class="o">/</span><span class="nx">contact</span><span class="s1">'&gt;Contact us&lt;/a&gt;&lt;/li&gt;</span>
 <a id="__codelineno-83-19" name="__codelineno-83-19" href="#__codelineno-83-19"></a><span class="s1">        &lt;/ul&gt;</span>
 <a id="__codelineno-83-20" name="__codelineno-83-20" href="#__codelineno-83-20"></a>
-<a id="__codelineno-83-21" name="__codelineno-83-21" href="#__codelineno-83-21"></a><span class="s1">        &lt;div class=&#39;</span><span class="nx">content</span><span class="err">&#39;</span><span class="o">&gt;</span>
+<a id="__codelineno-83-21" name="__codelineno-83-21" href="#__codelineno-83-21"></a><span class="s1">        &lt;div class='</span><span class="nx">content</span><span class="err">'</span><span class="o">&gt;</span>
 <a id="__codelineno-83-22" name="__codelineno-83-22" href="#__codelineno-83-22"></a>
 <a id="__codelineno-83-23" name="__codelineno-83-23" href="#__codelineno-83-23"></a>            <span class="o">&lt;!--</span> <span class="nx">app</span><span class="o">/</span><span class="nx">views</span><span class="o">/</span><span class="nx">invoices</span><span class="o">/</span><span class="nx">last</span><span class="o">.</span><span class="nx">phtml</span> <span class="o">--&gt;</span>
 <a id="__codelineno-83-24" name="__codelineno-83-24" href="#__codelineno-83-24"></a>
@@ -6685,7 +6685,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-85-3" name="__codelineno-85-3" href="#__codelineno-85-3"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
 <a id="__codelineno-85-4" name="__codelineno-85-4" href="#__codelineno-85-4"></a>
 <a id="__codelineno-85-5" name="__codelineno-85-5" href="#__codelineno-85-5"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-85-6" name="__codelineno-85-6" href="#__codelineno-85-6"></a>    <span class="s1">&#39;view&#39;</span><span class="p">,</span>
+<a id="__codelineno-85-6" name="__codelineno-85-6" href="#__codelineno-85-6"></a>    <span class="s1">'view'</span><span class="p">,</span>
 <a id="__codelineno-85-7" name="__codelineno-85-7" href="#__codelineno-85-7"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-85-8" name="__codelineno-85-8" href="#__codelineno-85-8"></a>        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
 <a id="__codelineno-85-9" name="__codelineno-85-9" href="#__codelineno-85-9"></a>
@@ -6773,7 +6773,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-89-14" name="__codelineno-89-14" href="#__codelineno-89-14"></a>    <span class="p">{</span>
 <a id="__codelineno-89-15" name="__codelineno-89-15" href="#__codelineno-89-15"></a>        <span class="k">return</span> <span class="nv">$this</span>
 <a id="__codelineno-89-16" name="__codelineno-89-16" href="#__codelineno-89-16"></a>            <span class="o">-&gt;</span><span class="na">response</span>
-<a id="__codelineno-89-17" name="__codelineno-89-17" href="#__codelineno-89-17"></a>            <span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">&#39;index/index&#39;</span><span class="p">)</span>
+<a id="__codelineno-89-17" name="__codelineno-89-17" href="#__codelineno-89-17"></a>            <span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">'index/index'</span><span class="p">)</span>
 <a id="__codelineno-89-18" name="__codelineno-89-18" href="#__codelineno-89-18"></a>        <span class="p">;</span>
 <a id="__codelineno-89-19" name="__codelineno-89-19" href="#__codelineno-89-19"></a>    <span class="p">}</span>
 <a id="__codelineno-89-20" name="__codelineno-89-20" href="#__codelineno-89-20"></a><span class="p">}</span>
@@ -6791,11 +6791,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-90-3" name="__codelineno-90-3" href="#__codelineno-90-3"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\View\Simple</span><span class="p">;</span>
 <a id="__codelineno-90-4" name="__codelineno-90-4" href="#__codelineno-90-4"></a>
 <a id="__codelineno-90-5" name="__codelineno-90-5" href="#__codelineno-90-5"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-90-6" name="__codelineno-90-6" href="#__codelineno-90-6"></a>    <span class="s1">&#39;view&#39;</span><span class="p">,</span>
+<a id="__codelineno-90-6" name="__codelineno-90-6" href="#__codelineno-90-6"></a>    <span class="s1">'view'</span><span class="p">,</span>
 <a id="__codelineno-90-7" name="__codelineno-90-7" href="#__codelineno-90-7"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-90-8" name="__codelineno-90-8" href="#__codelineno-90-8"></a>        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Simple</span><span class="p">();</span>
 <a id="__codelineno-90-9" name="__codelineno-90-9" href="#__codelineno-90-9"></a>
-<a id="__codelineno-90-10" name="__codelineno-90-10" href="#__codelineno-90-10"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-90-10" name="__codelineno-90-10" href="#__codelineno-90-10"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">'../app/views/'</span><span class="p">);</span>
 <a id="__codelineno-90-11" name="__codelineno-90-11" href="#__codelineno-90-11"></a>
 <a id="__codelineno-90-12" name="__codelineno-90-12" href="#__codelineno-90-12"></a>        <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
 <a id="__codelineno-90-13" name="__codelineno-90-13" href="#__codelineno-90-13"></a>    <span class="p">},</span>
@@ -6815,7 +6815,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-91-10" name="__codelineno-91-10" href="#__codelineno-91-10"></a>    <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">useImplicitView</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 <a id="__codelineno-91-11" name="__codelineno-91-11" href="#__codelineno-91-11"></a>
 <a id="__codelineno-91-12" name="__codelineno-91-12" href="#__codelineno-91-12"></a>    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span>
-<a id="__codelineno-91-13" name="__codelineno-91-13" href="#__codelineno-91-13"></a>        <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_URI&quot;</span><span class="p">]</span>
+<a id="__codelineno-91-13" name="__codelineno-91-13" href="#__codelineno-91-13"></a>        <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"REQUEST_URI"</span><span class="p">]</span>
 <a id="__codelineno-91-14" name="__codelineno-91-14" href="#__codelineno-91-14"></a>    <span class="p">);</span>
 <a id="__codelineno-91-15" name="__codelineno-91-15" href="#__codelineno-91-15"></a>
 <a id="__codelineno-91-16" name="__codelineno-91-16" href="#__codelineno-91-16"></a>    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
@@ -6839,25 +6839,25 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-92-13" name="__codelineno-92-13" href="#__codelineno-92-13"></a>
 <a id="__codelineno-92-14" name="__codelineno-92-14" href="#__codelineno-92-14"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
 <a id="__codelineno-92-15" name="__codelineno-92-15" href="#__codelineno-92-15"></a>    <span class="p">{</span>
-<a id="__codelineno-92-16" name="__codelineno-92-16" href="#__codelineno-92-16"></a>        <span class="c1">// &#39;views-dir/index.phtml&#39;</span>
-<a id="__codelineno-92-17" name="__codelineno-92-17" href="#__codelineno-92-17"></a>        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">);</span>
+<a id="__codelineno-92-16" name="__codelineno-92-16" href="#__codelineno-92-16"></a>        <span class="c1">// 'views-dir/index.phtml'</span>
+<a id="__codelineno-92-17" name="__codelineno-92-17" href="#__codelineno-92-17"></a>        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">'index'</span><span class="p">);</span>
 <a id="__codelineno-92-18" name="__codelineno-92-18" href="#__codelineno-92-18"></a>
-<a id="__codelineno-92-19" name="__codelineno-92-19" href="#__codelineno-92-19"></a>        <span class="c1">// &#39;views-dir/posts/show.phtml&#39;</span>
-<a id="__codelineno-92-20" name="__codelineno-92-20" href="#__codelineno-92-20"></a>        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;posts/show&#39;</span><span class="p">);</span>
+<a id="__codelineno-92-19" name="__codelineno-92-19" href="#__codelineno-92-19"></a>        <span class="c1">// 'views-dir/posts/show.phtml'</span>
+<a id="__codelineno-92-20" name="__codelineno-92-20" href="#__codelineno-92-20"></a>        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">'posts/show'</span><span class="p">);</span>
 <a id="__codelineno-92-21" name="__codelineno-92-21" href="#__codelineno-92-21"></a>
-<a id="__codelineno-92-22" name="__codelineno-92-22" href="#__codelineno-92-22"></a>        <span class="c1">// &#39;views-dir/index.phtml&#39; passing variables</span>
+<a id="__codelineno-92-22" name="__codelineno-92-22" href="#__codelineno-92-22"></a>        <span class="c1">// 'views-dir/index.phtml' passing variables</span>
 <a id="__codelineno-92-23" name="__codelineno-92-23" href="#__codelineno-92-23"></a>        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span>
-<a id="__codelineno-92-24" name="__codelineno-92-24" href="#__codelineno-92-24"></a>            <span class="s1">&#39;index&#39;</span><span class="p">,</span>
+<a id="__codelineno-92-24" name="__codelineno-92-24" href="#__codelineno-92-24"></a>            <span class="s1">'index'</span><span class="p">,</span>
 <a id="__codelineno-92-25" name="__codelineno-92-25" href="#__codelineno-92-25"></a>            <span class="p">[</span>
-<a id="__codelineno-92-26" name="__codelineno-92-26" href="#__codelineno-92-26"></a>                <span class="s1">&#39;posts&#39;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">find</span><span class="p">(),</span>
+<a id="__codelineno-92-26" name="__codelineno-92-26" href="#__codelineno-92-26"></a>                <span class="s1">'posts'</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">find</span><span class="p">(),</span>
 <a id="__codelineno-92-27" name="__codelineno-92-27" href="#__codelineno-92-27"></a>            <span class="p">]</span>
 <a id="__codelineno-92-28" name="__codelineno-92-28" href="#__codelineno-92-28"></a>        <span class="p">);</span>
 <a id="__codelineno-92-29" name="__codelineno-92-29" href="#__codelineno-92-29"></a>
-<a id="__codelineno-92-30" name="__codelineno-92-30" href="#__codelineno-92-30"></a>        <span class="c1">// &#39;views-dir/invoices/view.phtml&#39; passing variables</span>
+<a id="__codelineno-92-30" name="__codelineno-92-30" href="#__codelineno-92-30"></a>        <span class="c1">// 'views-dir/invoices/view.phtml' passing variables</span>
 <a id="__codelineno-92-31" name="__codelineno-92-31" href="#__codelineno-92-31"></a>        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span>
-<a id="__codelineno-92-32" name="__codelineno-92-32" href="#__codelineno-92-32"></a>            <span class="s1">&#39;invoices/view&#39;</span><span class="p">,</span>
+<a id="__codelineno-92-32" name="__codelineno-92-32" href="#__codelineno-92-32"></a>            <span class="s1">'invoices/view'</span><span class="p">,</span>
 <a id="__codelineno-92-33" name="__codelineno-92-33" href="#__codelineno-92-33"></a>            <span class="p">[</span>
-<a id="__codelineno-92-34" name="__codelineno-92-34" href="#__codelineno-92-34"></a>                <span class="s1">&#39;posts&#39;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">find</span><span class="p">(),</span>
+<a id="__codelineno-92-34" name="__codelineno-92-34" href="#__codelineno-92-34"></a>                <span class="s1">'posts'</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">find</span><span class="p">(),</span>
 <a id="__codelineno-92-35" name="__codelineno-92-35" href="#__codelineno-92-35"></a>            <span class="p">]</span>
 <a id="__codelineno-92-36" name="__codelineno-92-36" href="#__codelineno-92-36"></a>        <span class="p">);</span>
 <a id="__codelineno-92-37" name="__codelineno-92-37" href="#__codelineno-92-37"></a>    <span class="p">}</span>
@@ -6870,16 +6870,16 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-93-4" name="__codelineno-93-4" href="#__codelineno-93-4"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\View\Simple</span><span class="p">;</span>
 <a id="__codelineno-93-5" name="__codelineno-93-5" href="#__codelineno-93-5"></a>
 <a id="__codelineno-93-6" name="__codelineno-93-6" href="#__codelineno-93-6"></a><span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-93-7" name="__codelineno-93-7" href="#__codelineno-93-7"></a>    <span class="s1">&#39;invoices&#39;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">find</span><span class="p">(),</span>
+<a id="__codelineno-93-7" name="__codelineno-93-7" href="#__codelineno-93-7"></a>    <span class="s1">'invoices'</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">find</span><span class="p">(),</span>
 <a id="__codelineno-93-8" name="__codelineno-93-8" href="#__codelineno-93-8"></a><span class="p">];</span>
 <a id="__codelineno-93-9" name="__codelineno-93-9" href="#__codelineno-93-9"></a>
 <a id="__codelineno-93-10" name="__codelineno-93-10" href="#__codelineno-93-10"></a><span class="c1">// Phalcon\Mvc\View</span>
 <a id="__codelineno-93-11" name="__codelineno-93-11" href="#__codelineno-93-11"></a><span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
-<a id="__codelineno-93-12" name="__codelineno-93-12" href="#__codelineno-93-12"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;invoices&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
+<a id="__codelineno-93-12" name="__codelineno-93-12" href="#__codelineno-93-12"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">'invoices'</span><span class="p">,</span> <span class="s1">'view'</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
 <a id="__codelineno-93-13" name="__codelineno-93-13" href="#__codelineno-93-13"></a>
 <a id="__codelineno-93-14" name="__codelineno-93-14" href="#__codelineno-93-14"></a><span class="c1">// Phalcon\Mvc\View\Simple</span>
 <a id="__codelineno-93-15" name="__codelineno-93-15" href="#__codelineno-93-15"></a><span class="nv">$simpleView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Simple</span><span class="p">();</span>
-<a id="__codelineno-93-16" name="__codelineno-93-16" href="#__codelineno-93-16"></a><span class="k">echo</span> <span class="nv">$simpleView</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;invoices/view&#39;</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
+<a id="__codelineno-93-16" name="__codelineno-93-16" href="#__codelineno-93-16"></a><span class="k">echo</span> <span class="nv">$simpleView</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">'invoices/view'</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="picking-views">Picking Views<a class="headerlink" href="#picking-views" title="Permanent link">&para;</a></h3>
 <p>As mentioned above, when <a href="../api/phalcon_mvc/#mvcview">Phalcon\Mvc\View</a> is managed by <a href="../application/">Phalcon\Mvc\Application</a>, the view rendered is the one related to the last controller and action executed. You could override this by using the <code>pick()</code> method:</p>
@@ -6896,20 +6896,20 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-94-11" name="__codelineno-94-11" href="#__codelineno-94-11"></a><span class="p">{</span>
 <a id="__codelineno-94-12" name="__codelineno-94-12" href="#__codelineno-94-12"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">listAction</span><span class="p">()</span>
 <a id="__codelineno-94-13" name="__codelineno-94-13" href="#__codelineno-94-13"></a>    <span class="p">{</span>
-<a id="__codelineno-94-14" name="__codelineno-94-14" href="#__codelineno-94-14"></a>        <span class="c1">// Pick &#39;views-dir/invoices/search&#39; as a view to render</span>
-<a id="__codelineno-94-15" name="__codelineno-94-15" href="#__codelineno-94-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span><span class="s1">&#39;invoices/search&#39;</span><span class="p">);</span>
+<a id="__codelineno-94-14" name="__codelineno-94-14" href="#__codelineno-94-14"></a>        <span class="c1">// Pick 'views-dir/invoices/search' as a view to render</span>
+<a id="__codelineno-94-15" name="__codelineno-94-15" href="#__codelineno-94-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span><span class="s1">'invoices/search'</span><span class="p">);</span>
 <a id="__codelineno-94-16" name="__codelineno-94-16" href="#__codelineno-94-16"></a>
-<a id="__codelineno-94-17" name="__codelineno-94-17" href="#__codelineno-94-17"></a>        <span class="c1">// Pick &#39;views-dir/invoices/list&#39; as a view to render</span>
+<a id="__codelineno-94-17" name="__codelineno-94-17" href="#__codelineno-94-17"></a>        <span class="c1">// Pick 'views-dir/invoices/list' as a view to render</span>
 <a id="__codelineno-94-18" name="__codelineno-94-18" href="#__codelineno-94-18"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span>
 <a id="__codelineno-94-19" name="__codelineno-94-19" href="#__codelineno-94-19"></a>            <span class="p">[</span>
-<a id="__codelineno-94-20" name="__codelineno-94-20" href="#__codelineno-94-20"></a>                <span class="s1">&#39;invoices&#39;</span><span class="p">,</span>
+<a id="__codelineno-94-20" name="__codelineno-94-20" href="#__codelineno-94-20"></a>                <span class="s1">'invoices'</span><span class="p">,</span>
 <a id="__codelineno-94-21" name="__codelineno-94-21" href="#__codelineno-94-21"></a>            <span class="p">]</span>
 <a id="__codelineno-94-22" name="__codelineno-94-22" href="#__codelineno-94-22"></a>        <span class="p">);</span>
 <a id="__codelineno-94-23" name="__codelineno-94-23" href="#__codelineno-94-23"></a>
-<a id="__codelineno-94-24" name="__codelineno-94-24" href="#__codelineno-94-24"></a>        <span class="c1">// Pick &#39;views-dir/invoices/search&#39; as a view to render</span>
+<a id="__codelineno-94-24" name="__codelineno-94-24" href="#__codelineno-94-24"></a>        <span class="c1">// Pick 'views-dir/invoices/search' as a view to render</span>
 <a id="__codelineno-94-25" name="__codelineno-94-25" href="#__codelineno-94-25"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span>
 <a id="__codelineno-94-26" name="__codelineno-94-26" href="#__codelineno-94-26"></a>            <span class="p">[</span>
-<a id="__codelineno-94-27" name="__codelineno-94-27" href="#__codelineno-94-27"></a>                <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;search&#39;</span><span class="p">,</span>
+<a id="__codelineno-94-27" name="__codelineno-94-27" href="#__codelineno-94-27"></a>                <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">'search'</span><span class="p">,</span>
 <a id="__codelineno-94-28" name="__codelineno-94-28" href="#__codelineno-94-28"></a>            <span class="p">]</span>
 <a id="__codelineno-94-29" name="__codelineno-94-29" href="#__codelineno-94-29"></a>        <span class="p">);</span>
 <a id="__codelineno-94-30" name="__codelineno-94-30" href="#__codelineno-94-30"></a>    <span class="p">}</span>
@@ -6918,28 +6918,28 @@ offering lower resource consumption and high performance.
 <h2 id="partials">Partials<a class="headerlink" href="#partials" title="Permanent link">&para;</a></h2>
 <p>Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.</p>
 <p>One way to use partials is to treat them as HTML fragments that can be injected wherever needed with any necessary parameters:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="o">&gt;</span>
-<a id="__codelineno-95-2" name="__codelineno-95-2" href="#__codelineno-95-2"></a>    <span class="o">&lt;?</span><span class="nx">php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s1">&#39;shared/ad_banner&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s1">'top'</span><span class="o">&gt;</span>
+<a id="__codelineno-95-2" name="__codelineno-95-2" href="#__codelineno-95-2"></a>    <span class="o">&lt;?</span><span class="nx">php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s1">'shared/ad_banner'</span><span class="p">);</span> <span class="cp">?&gt;</span>
 <a id="__codelineno-95-3" name="__codelineno-95-3" href="#__codelineno-95-3"></a><span class="x">&lt;/div&gt;</span>
 <a id="__codelineno-95-4" name="__codelineno-95-4" href="#__codelineno-95-4"></a>
-<a id="__codelineno-95-5" name="__codelineno-95-5" href="#__codelineno-95-5"></a><span class="x">&lt;div class=&#39;content&#39;&gt;</span>
+<a id="__codelineno-95-5" name="__codelineno-95-5" href="#__codelineno-95-5"></a><span class="x">&lt;div class='content'&gt;</span>
 <a id="__codelineno-95-6" name="__codelineno-95-6" href="#__codelineno-95-6"></a><span class="x">    &lt;h1&gt;Invoices&lt;/h1&gt;</span>
 <a id="__codelineno-95-7" name="__codelineno-95-7" href="#__codelineno-95-7"></a>
 <a id="__codelineno-95-8" name="__codelineno-95-8" href="#__codelineno-95-8"></a><span class="x">    &lt;p&gt;Check out our specials!&lt;/p&gt;</span>
 <a id="__codelineno-95-9" name="__codelineno-95-9" href="#__codelineno-95-9"></a><span class="x">    ...</span>
 <a id="__codelineno-95-10" name="__codelineno-95-10" href="#__codelineno-95-10"></a><span class="x">&lt;/div&gt;</span>
 <a id="__codelineno-95-11" name="__codelineno-95-11" href="#__codelineno-95-11"></a>
-<a id="__codelineno-95-12" name="__codelineno-95-12" href="#__codelineno-95-12"></a><span class="x">&lt;div class=&#39;footer&#39;&gt;</span>
-<a id="__codelineno-95-13" name="__codelineno-95-13" href="#__codelineno-95-13"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s1">&#39;shared/footer&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+<a id="__codelineno-95-12" name="__codelineno-95-12" href="#__codelineno-95-12"></a><span class="x">&lt;div class='footer'&gt;</span>
+<a id="__codelineno-95-13" name="__codelineno-95-13" href="#__codelineno-95-13"></a><span class="x">    </span><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s1">'shared/footer'</span><span class="p">);</span> <span class="cp">?&gt;</span>
 <a id="__codelineno-95-14" name="__codelineno-95-14" href="#__codelineno-95-14"></a><span class="x">&lt;/div&gt;</span>
 </code></pre></div>
 <p>The <code>partial()</code> method does accept a second parameter as an array of variables/parameters that only will exist in the scope of the partial:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="o">&lt;?</span><span class="nx">php</span> 
 <a id="__codelineno-96-2" name="__codelineno-96-2" href="#__codelineno-96-2"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span>
-<a id="__codelineno-96-3" name="__codelineno-96-3" href="#__codelineno-96-3"></a>        <span class="s1">&#39;shared/ad_banner&#39;</span><span class="p">,</span> 
+<a id="__codelineno-96-3" name="__codelineno-96-3" href="#__codelineno-96-3"></a>        <span class="s1">'shared/ad_banner'</span><span class="p">,</span> 
 <a id="__codelineno-96-4" name="__codelineno-96-4" href="#__codelineno-96-4"></a>        <span class="p">[</span>
-<a id="__codelineno-96-5" name="__codelineno-96-5" href="#__codelineno-96-5"></a>            <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$site</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span> 
-<a id="__codelineno-96-6" name="__codelineno-96-6" href="#__codelineno-96-6"></a>            <span class="s1">&#39;size&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;big&#39;</span>
+<a id="__codelineno-96-5" name="__codelineno-96-5" href="#__codelineno-96-5"></a>            <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="nv">$site</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span> 
+<a id="__codelineno-96-6" name="__codelineno-96-6" href="#__codelineno-96-6"></a>            <span class="s1">'size'</span> <span class="o">=&gt;</span> <span class="s1">'big'</span>
 <a id="__codelineno-96-7" name="__codelineno-96-7" href="#__codelineno-96-7"></a>        <span class="p">]</span>
 <a id="__codelineno-96-8" name="__codelineno-96-8" href="#__codelineno-96-8"></a>    <span class="p">);</span> 
 <a id="__codelineno-96-9" name="__codelineno-96-9" href="#__codelineno-96-9"></a><span class="cp">?&gt;</span>
@@ -6960,22 +6960,22 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-97-12" name="__codelineno-97-12" href="#__codelineno-97-12"></a>    <span class="p">{</span>
 <a id="__codelineno-97-13" name="__codelineno-97-13" href="#__codelineno-97-13"></a>        <span class="nv">$invoice</span> <span class="o">=</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
 <a id="__codelineno-97-14" name="__codelineno-97-14" href="#__codelineno-97-14"></a>            <span class="p">[</span>
-<a id="__codelineno-97-15" name="__codelineno-97-15" href="#__codelineno-97-15"></a>                <span class="s1">&#39;conditions&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;inv_id = :id:&#39;</span><span class="p">,</span>
-<a id="__codelineno-97-16" name="__codelineno-97-16" href="#__codelineno-97-16"></a>                <span class="s1">&#39;bind&#39;</span>       <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-97-17" name="__codelineno-97-17" href="#__codelineno-97-17"></a>                    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$invoiceId</span><span class="p">)),</span>
+<a id="__codelineno-97-15" name="__codelineno-97-15" href="#__codelineno-97-15"></a>                <span class="s1">'conditions'</span> <span class="o">=&gt;</span> <span class="s1">'inv_id = :id:'</span><span class="p">,</span>
+<a id="__codelineno-97-16" name="__codelineno-97-16" href="#__codelineno-97-16"></a>                <span class="s1">'bind'</span>       <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-97-17" name="__codelineno-97-17" href="#__codelineno-97-17"></a>                    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$invoiceId</span><span class="p">)),</span>
 <a id="__codelineno-97-18" name="__codelineno-97-18" href="#__codelineno-97-18"></a>                <span class="p">]</span>
 <a id="__codelineno-97-19" name="__codelineno-97-19" href="#__codelineno-97-19"></a>            <span class="p">]</span>
 <a id="__codelineno-97-20" name="__codelineno-97-20" href="#__codelineno-97-20"></a>        <span class="p">);</span>
-<a id="__codelineno-97-21" name="__codelineno-97-21" href="#__codelineno-97-21"></a>        <span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">getRelated</span><span class="p">(</span><span class="s1">&#39;customer&#39;</span><span class="p">);</span>
+<a id="__codelineno-97-21" name="__codelineno-97-21" href="#__codelineno-97-21"></a>        <span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">getRelated</span><span class="p">(</span><span class="s1">'customer'</span><span class="p">);</span>
 <a id="__codelineno-97-22" name="__codelineno-97-22" href="#__codelineno-97-22"></a>
-<a id="__codelineno-97-23" name="__codelineno-97-23" href="#__codelineno-97-23"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s1">&#39;invoice&#39;</span><span class="p">,</span> <span class="nv">$invoice</span><span class="p">);</span>
+<a id="__codelineno-97-23" name="__codelineno-97-23" href="#__codelineno-97-23"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s1">'invoice'</span><span class="p">,</span> <span class="nv">$invoice</span><span class="p">);</span>
 <a id="__codelineno-97-24" name="__codelineno-97-24" href="#__codelineno-97-24"></a>
 <a id="__codelineno-97-25" name="__codelineno-97-25" href="#__codelineno-97-25"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">customerId</span> <span class="o">=</span> <span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">cst_id</span><span class="p">;</span>
 <a id="__codelineno-97-26" name="__codelineno-97-26" href="#__codelineno-97-26"></a>
 <a id="__codelineno-97-27" name="__codelineno-97-27" href="#__codelineno-97-27"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVars</span><span class="p">(</span>
 <a id="__codelineno-97-28" name="__codelineno-97-28" href="#__codelineno-97-28"></a>            <span class="p">[</span>
-<a id="__codelineno-97-29" name="__codelineno-97-29" href="#__codelineno-97-29"></a>                <span class="s1">&#39;name_first&#39;</span> <span class="o">=&gt;</span> <span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">name_first</span><span class="p">,</span>
-<a id="__codelineno-97-30" name="__codelineno-97-30" href="#__codelineno-97-30"></a>                <span class="s1">&#39;name_last&#39;</span>  <span class="o">=&gt;</span> <span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">name_last</span><span class="p">,</span>
+<a id="__codelineno-97-29" name="__codelineno-97-29" href="#__codelineno-97-29"></a>                <span class="s1">'name_first'</span> <span class="o">=&gt;</span> <span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">name_first</span><span class="p">,</span>
+<a id="__codelineno-97-30" name="__codelineno-97-30" href="#__codelineno-97-30"></a>                <span class="s1">'name_last'</span>  <span class="o">=&gt;</span> <span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">name_last</span><span class="p">,</span>
 <a id="__codelineno-97-31" name="__codelineno-97-31" href="#__codelineno-97-31"></a>            <span class="p">]</span>
 <a id="__codelineno-97-32" name="__codelineno-97-32" href="#__codelineno-97-32"></a>        <span class="p">);</span>
 <a id="__codelineno-97-33" name="__codelineno-97-33" href="#__codelineno-97-33"></a>    <span class="p">}</span>
@@ -6986,11 +6986,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-98-2" name="__codelineno-98-2" href="#__codelineno-98-2"></a>    <span class="nx">Invoices</span> <span class="p">[</span><span class="nx">Customer</span> <span class="c1">#{{ customerId }}]</span>
 <a id="__codelineno-98-3" name="__codelineno-98-3" href="#__codelineno-98-3"></a><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
 <a id="__codelineno-98-4" name="__codelineno-98-4" href="#__codelineno-98-4"></a>
-<a id="__codelineno-98-5" name="__codelineno-98-5" href="#__codelineno-98-5"></a><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s1">&#39;invoice&#39;</span><span class="o">&gt;</span>
+<a id="__codelineno-98-5" name="__codelineno-98-5" href="#__codelineno-98-5"></a><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s1">'invoice'</span><span class="o">&gt;</span>
 <a id="__codelineno-98-6" name="__codelineno-98-6" href="#__codelineno-98-6"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-98-7" name="__codelineno-98-7" href="#__codelineno-98-7"></a>
 <a id="__codelineno-98-8" name="__codelineno-98-8" href="#__codelineno-98-8"></a>    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$invoices</span> <span class="k">as</span> <span class="nv">$invoice</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-98-9" name="__codelineno-98-9" href="#__codelineno-98-9"></a>        <span class="k">echo</span> <span class="s1">&#39;&lt;h2&gt;&#39;</span><span class="p">,</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">inv_title</span><span class="p">,</span> <span class="s1">&#39;&lt;/h2&gt;&#39;</span><span class="p">;</span>
+<a id="__codelineno-98-9" name="__codelineno-98-9" href="#__codelineno-98-9"></a>        <span class="k">echo</span> <span class="s1">'&lt;h2&gt;'</span><span class="p">,</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">inv_title</span><span class="p">,</span> <span class="s1">'&lt;/h2&gt;'</span><span class="p">;</span>
 <a id="__codelineno-98-10" name="__codelineno-98-10" href="#__codelineno-98-10"></a>    <span class="p">}</span>
 <a id="__codelineno-98-11" name="__codelineno-98-11" href="#__codelineno-98-11"></a>
 <a id="__codelineno-98-12" name="__codelineno-98-12" href="#__codelineno-98-12"></a><span class="cp">?&gt;</span>
@@ -7005,11 +7005,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-99-3" name="__codelineno-99-3" href="#__codelineno-99-3"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
 <a id="__codelineno-99-4" name="__codelineno-99-4" href="#__codelineno-99-4"></a>
 <a id="__codelineno-99-5" name="__codelineno-99-5" href="#__codelineno-99-5"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-99-6" name="__codelineno-99-6" href="#__codelineno-99-6"></a>    <span class="s1">&#39;view&#39;</span><span class="p">,</span>
+<a id="__codelineno-99-6" name="__codelineno-99-6" href="#__codelineno-99-6"></a>    <span class="s1">'view'</span><span class="p">,</span>
 <a id="__codelineno-99-7" name="__codelineno-99-7" href="#__codelineno-99-7"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-99-8" name="__codelineno-99-8" href="#__codelineno-99-8"></a>        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
 <a id="__codelineno-99-9" name="__codelineno-99-9" href="#__codelineno-99-9"></a>
-<a id="__codelineno-99-10" name="__codelineno-99-10" href="#__codelineno-99-10"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-99-10" name="__codelineno-99-10" href="#__codelineno-99-10"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">'../app/views/'</span><span class="p">);</span>
 <a id="__codelineno-99-11" name="__codelineno-99-11" href="#__codelineno-99-11"></a>
 <a id="__codelineno-99-12" name="__codelineno-99-12" href="#__codelineno-99-12"></a>        <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
 <a id="__codelineno-99-13" name="__codelineno-99-13" href="#__codelineno-99-13"></a>    <span class="p">},</span>
@@ -7029,17 +7029,17 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-100-9" name="__codelineno-100-9" href="#__codelineno-100-9"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
 <a id="__codelineno-100-10" name="__codelineno-100-10" href="#__codelineno-100-10"></a>
 <a id="__codelineno-100-11" name="__codelineno-100-11" href="#__codelineno-100-11"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span>
-<a id="__codelineno-100-12" name="__codelineno-100-12" href="#__codelineno-100-12"></a>    <span class="s1">&#39;voltService&#39;</span><span class="p">,</span>
+<a id="__codelineno-100-12" name="__codelineno-100-12" href="#__codelineno-100-12"></a>    <span class="s1">'voltService'</span><span class="p">,</span>
 <a id="__codelineno-100-13" name="__codelineno-100-13" href="#__codelineno-100-13"></a>    <span class="k">function</span> <span class="p">(</span><span class="nx">ViewBaseInterface</span> <span class="nv">$view</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-100-14" name="__codelineno-100-14" href="#__codelineno-100-14"></a>        <span class="nv">$volt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Volt</span><span class="p">(</span><span class="nv">$view</span><span class="p">,</span> <span class="nv">$this</span><span class="p">);</span>
 <a id="__codelineno-100-15" name="__codelineno-100-15" href="#__codelineno-100-15"></a>        <span class="nv">$volt</span><span class="o">-&gt;</span><span class="na">setOptions</span><span class="p">(</span>
 <a id="__codelineno-100-16" name="__codelineno-100-16" href="#__codelineno-100-16"></a>            <span class="p">[</span>
-<a id="__codelineno-100-17" name="__codelineno-100-17" href="#__codelineno-100-17"></a>                <span class="s1">&#39;always&#39;</span>    <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-100-18" name="__codelineno-100-18" href="#__codelineno-100-18"></a>                <span class="s1">&#39;extension&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;.php&#39;</span><span class="p">,</span>
-<a id="__codelineno-100-19" name="__codelineno-100-19" href="#__codelineno-100-19"></a>                <span class="s1">&#39;separator&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span>
-<a id="__codelineno-100-20" name="__codelineno-100-20" href="#__codelineno-100-20"></a>                <span class="s1">&#39;stat&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-100-21" name="__codelineno-100-21" href="#__codelineno-100-21"></a>                <span class="s1">&#39;path&#39;</span>      <span class="o">=&gt;</span> <span class="nx">appPath</span><span class="p">(</span><span class="s1">&#39;storage/cache/volt/&#39;</span><span class="p">),</span>
-<a id="__codelineno-100-22" name="__codelineno-100-22" href="#__codelineno-100-22"></a>                <span class="s1">&#39;prefix&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;-prefix-&#39;</span><span class="p">,</span>
+<a id="__codelineno-100-17" name="__codelineno-100-17" href="#__codelineno-100-17"></a>                <span class="s1">'always'</span>    <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-100-18" name="__codelineno-100-18" href="#__codelineno-100-18"></a>                <span class="s1">'extension'</span> <span class="o">=&gt;</span> <span class="s1">'.php'</span><span class="p">,</span>
+<a id="__codelineno-100-19" name="__codelineno-100-19" href="#__codelineno-100-19"></a>                <span class="s1">'separator'</span> <span class="o">=&gt;</span> <span class="s1">'_'</span><span class="p">,</span>
+<a id="__codelineno-100-20" name="__codelineno-100-20" href="#__codelineno-100-20"></a>                <span class="s1">'stat'</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-100-21" name="__codelineno-100-21" href="#__codelineno-100-21"></a>                <span class="s1">'path'</span>      <span class="o">=&gt;</span> <span class="nx">appPath</span><span class="p">(</span><span class="s1">'storage/cache/volt/'</span><span class="p">),</span>
+<a id="__codelineno-100-22" name="__codelineno-100-22" href="#__codelineno-100-22"></a>                <span class="s1">'prefix'</span>    <span class="o">=&gt;</span> <span class="s1">'-prefix-'</span><span class="p">,</span>
 <a id="__codelineno-100-23" name="__codelineno-100-23" href="#__codelineno-100-23"></a>            <span class="p">]</span>
 <a id="__codelineno-100-24" name="__codelineno-100-24" href="#__codelineno-100-24"></a>        <span class="p">);</span>
 <a id="__codelineno-100-25" name="__codelineno-100-25" href="#__codelineno-100-25"></a>
@@ -7048,15 +7048,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-100-28" name="__codelineno-100-28" href="#__codelineno-100-28"></a><span class="p">);</span>
 <a id="__codelineno-100-29" name="__codelineno-100-29" href="#__codelineno-100-29"></a>
 <a id="__codelineno-100-30" name="__codelineno-100-30" href="#__codelineno-100-30"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-100-31" name="__codelineno-100-31" href="#__codelineno-100-31"></a>    <span class="s1">&#39;view&#39;</span><span class="p">,</span>
+<a id="__codelineno-100-31" name="__codelineno-100-31" href="#__codelineno-100-31"></a>    <span class="s1">'view'</span><span class="p">,</span>
 <a id="__codelineno-100-32" name="__codelineno-100-32" href="#__codelineno-100-32"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-100-33" name="__codelineno-100-33" href="#__codelineno-100-33"></a>        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
 <a id="__codelineno-100-34" name="__codelineno-100-34" href="#__codelineno-100-34"></a>
-<a id="__codelineno-100-35" name="__codelineno-100-35" href="#__codelineno-100-35"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-100-35" name="__codelineno-100-35" href="#__codelineno-100-35"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">'../app/views/'</span><span class="p">);</span>
 <a id="__codelineno-100-36" name="__codelineno-100-36" href="#__codelineno-100-36"></a>
 <a id="__codelineno-100-37" name="__codelineno-100-37" href="#__codelineno-100-37"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
 <a id="__codelineno-100-38" name="__codelineno-100-38" href="#__codelineno-100-38"></a>            <span class="p">[</span>
-<a id="__codelineno-100-39" name="__codelineno-100-39" href="#__codelineno-100-39"></a>                <span class="s1">&#39;.volt&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;voltService&#39;</span><span class="p">,</span>
+<a id="__codelineno-100-39" name="__codelineno-100-39" href="#__codelineno-100-39"></a>                <span class="s1">'.volt'</span> <span class="o">=&gt;</span> <span class="s1">'voltService'</span><span class="p">,</span>
 <a id="__codelineno-100-40" name="__codelineno-100-40" href="#__codelineno-100-40"></a>            <span class="p">]</span>
 <a id="__codelineno-100-41" name="__codelineno-100-41" href="#__codelineno-100-41"></a>        <span class="p">);</span>
 <a id="__codelineno-100-42" name="__codelineno-100-42" href="#__codelineno-100-42"></a>
@@ -7112,22 +7112,22 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-102-4" name="__codelineno-102-4" href="#__codelineno-102-4"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\View\Engine\Php</span><span class="p">;</span>
 <a id="__codelineno-102-5" name="__codelineno-102-5" href="#__codelineno-102-5"></a>
 <a id="__codelineno-102-6" name="__codelineno-102-6" href="#__codelineno-102-6"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-102-7" name="__codelineno-102-7" href="#__codelineno-102-7"></a>    <span class="s1">&#39;view&#39;</span><span class="p">,</span>
+<a id="__codelineno-102-7" name="__codelineno-102-7" href="#__codelineno-102-7"></a>    <span class="s1">'view'</span><span class="p">,</span>
 <a id="__codelineno-102-8" name="__codelineno-102-8" href="#__codelineno-102-8"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-102-9" name="__codelineno-102-9" href="#__codelineno-102-9"></a>        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
 <a id="__codelineno-102-10" name="__codelineno-102-10" href="#__codelineno-102-10"></a>
-<a id="__codelineno-102-11" name="__codelineno-102-11" href="#__codelineno-102-11"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-102-11" name="__codelineno-102-11" href="#__codelineno-102-11"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">'../app/views/'</span><span class="p">);</span>
 <a id="__codelineno-102-12" name="__codelineno-102-12" href="#__codelineno-102-12"></a>
 <a id="__codelineno-102-13" name="__codelineno-102-13" href="#__codelineno-102-13"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
 <a id="__codelineno-102-14" name="__codelineno-102-14" href="#__codelineno-102-14"></a>            <span class="p">[</span>
-<a id="__codelineno-102-15" name="__codelineno-102-15" href="#__codelineno-102-15"></a>                <span class="s1">&#39;.my-html&#39;</span> <span class="o">=&gt;</span> <span class="nx">\CustomEngine</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-102-15" name="__codelineno-102-15" href="#__codelineno-102-15"></a>                <span class="s1">'.my-html'</span> <span class="o">=&gt;</span> <span class="nx">\CustomEngine</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
 <a id="__codelineno-102-16" name="__codelineno-102-16" href="#__codelineno-102-16"></a>            <span class="p">]</span>
 <a id="__codelineno-102-17" name="__codelineno-102-17" href="#__codelineno-102-17"></a>        <span class="p">);</span>
 <a id="__codelineno-102-18" name="__codelineno-102-18" href="#__codelineno-102-18"></a>
 <a id="__codelineno-102-19" name="__codelineno-102-19" href="#__codelineno-102-19"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span>
 <a id="__codelineno-102-20" name="__codelineno-102-20" href="#__codelineno-102-20"></a>            <span class="p">[</span>
-<a id="__codelineno-102-21" name="__codelineno-102-21" href="#__codelineno-102-21"></a>                <span class="s1">&#39;.my-html&#39;</span> <span class="o">=&gt;</span> <span class="nx">\CustomEngine</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-102-22" name="__codelineno-102-22" href="#__codelineno-102-22"></a>                <span class="s1">&#39;.phtml&#39;</span>   <span class="o">=&gt;</span> <span class="nx">Php</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-102-21" name="__codelineno-102-21" href="#__codelineno-102-21"></a>                <span class="s1">'.my-html'</span> <span class="o">=&gt;</span> <span class="nx">\CustomEngine</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-102-22" name="__codelineno-102-22" href="#__codelineno-102-22"></a>                <span class="s1">'.phtml'</span>   <span class="o">=&gt;</span> <span class="nx">Php</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
 <a id="__codelineno-102-23" name="__codelineno-102-23" href="#__codelineno-102-23"></a>            <span class="p">]</span>
 <a id="__codelineno-102-24" name="__codelineno-102-24" href="#__codelineno-102-24"></a>        <span class="p">);</span>
 <a id="__codelineno-102-25" name="__codelineno-102-25" href="#__codelineno-102-25"></a>
@@ -7138,13 +7138,13 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <h2 id="dependency-injection">Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permanent link">&para;</a></h2>
 <p>Since our view is registered in our Dependency Injection container, the services available in the container are also available in the view. Each service is available by a property with the same name as the defined service.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s1">&#39;text/javascript&#39;</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s1">'text/javascript'</span><span class="o">&gt;</span>
 <a id="__codelineno-103-2" name="__codelineno-103-2" href="#__codelineno-103-2"></a>
 <a id="__codelineno-103-3" name="__codelineno-103-3" href="#__codelineno-103-3"></a><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-<a id="__codelineno-103-4" name="__codelineno-103-4" href="#__codelineno-103-4"></a><span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;?php echo $this-&gt;url-&gt;get(&#39;</span><span class="nx">invoices</span><span class="o">/</span><span class="nx">get</span><span class="s1">&#39;); ?&gt;&#39;</span>
+<a id="__codelineno-103-4" name="__codelineno-103-4" href="#__codelineno-103-4"></a><span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">'&lt;?php echo $this-&gt;url-&gt;get('</span><span class="nx">invoices</span><span class="o">/</span><span class="nx">get</span><span class="s1">'); ?&gt;'</span>
 <a id="__codelineno-103-5" name="__codelineno-103-5" href="#__codelineno-103-5"></a><span class="p">})</span>
 <a id="__codelineno-103-6" name="__codelineno-103-6" href="#__codelineno-103-6"></a><span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-103-7" name="__codelineno-103-7" href="#__codelineno-103-7"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">);</span>
+<a id="__codelineno-103-7" name="__codelineno-103-7" href="#__codelineno-103-7"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Done!'</span><span class="p">);</span>
 <a id="__codelineno-103-8" name="__codelineno-103-8" href="#__codelineno-103-8"></a><span class="p">});</span>
 <a id="__codelineno-103-9" name="__codelineno-103-9" href="#__codelineno-103-9"></a>
 <a id="__codelineno-103-10" name="__codelineno-103-10" href="#__codelineno-103-10"></a><span class="o">&lt;</span><span class="err">/script&gt;</span>
@@ -7160,15 +7160,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-104-4" name="__codelineno-104-4" href="#__codelineno-104-4"></a>
 <a id="__codelineno-104-5" name="__codelineno-104-5" href="#__codelineno-104-5"></a><span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
 <a id="__codelineno-104-6" name="__codelineno-104-6" href="#__codelineno-104-6"></a>
-<a id="__codelineno-104-7" name="__codelineno-104-7" href="#__codelineno-104-7"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-104-7" name="__codelineno-104-7" href="#__codelineno-104-7"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">'../app/views/'</span><span class="p">);</span>
 <a id="__codelineno-104-8" name="__codelineno-104-8" href="#__codelineno-104-8"></a>
 <a id="__codelineno-104-9" name="__codelineno-104-9" href="#__codelineno-104-9"></a><span class="c1">//...</span>
 <a id="__codelineno-104-10" name="__codelineno-104-10" href="#__codelineno-104-10"></a>
-<a id="__codelineno-104-11" name="__codelineno-104-11" href="#__codelineno-104-11"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s1">&#39;invoices&#39;</span><span class="p">,</span> <span class="nv">$invoices</span><span class="p">);</span>
-<a id="__codelineno-104-12" name="__codelineno-104-12" href="#__codelineno-104-12"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s1">&#39;isAdmin&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<a id="__codelineno-104-11" name="__codelineno-104-11" href="#__codelineno-104-11"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s1">'invoices'</span><span class="p">,</span> <span class="nv">$invoices</span><span class="p">);</span>
+<a id="__codelineno-104-12" name="__codelineno-104-12" href="#__codelineno-104-12"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s1">'isAdmin'</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-104-13" name="__codelineno-104-13" href="#__codelineno-104-13"></a>
 <a id="__codelineno-104-14" name="__codelineno-104-14" href="#__codelineno-104-14"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
-<a id="__codelineno-104-15" name="__codelineno-104-15" href="#__codelineno-104-15"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;invoices&#39;</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">);</span>
+<a id="__codelineno-104-15" name="__codelineno-104-15" href="#__codelineno-104-15"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">'invoices'</span><span class="p">,</span> <span class="s1">'list'</span><span class="p">);</span>
 <a id="__codelineno-104-16" name="__codelineno-104-16" href="#__codelineno-104-16"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">();</span>
 <a id="__codelineno-104-17" name="__codelineno-104-17" href="#__codelineno-104-17"></a>
 <a id="__codelineno-104-18" name="__codelineno-104-18" href="#__codelineno-104-18"></a><span class="k">echo</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
@@ -7181,14 +7181,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-105-5" name="__codelineno-105-5" href="#__codelineno-105-5"></a><span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
 <a id="__codelineno-105-6" name="__codelineno-105-6" href="#__codelineno-105-6"></a>
 <a id="__codelineno-105-7" name="__codelineno-105-7" href="#__codelineno-105-7"></a><span class="k">echo</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getRender</span><span class="p">(</span>
-<a id="__codelineno-105-8" name="__codelineno-105-8" href="#__codelineno-105-8"></a>    <span class="s1">&#39;invoices&#39;</span><span class="p">,</span>
-<a id="__codelineno-105-9" name="__codelineno-105-9" href="#__codelineno-105-9"></a>    <span class="s1">&#39;list&#39;</span><span class="p">,</span>
+<a id="__codelineno-105-8" name="__codelineno-105-8" href="#__codelineno-105-8"></a>    <span class="s1">'invoices'</span><span class="p">,</span>
+<a id="__codelineno-105-9" name="__codelineno-105-9" href="#__codelineno-105-9"></a>    <span class="s1">'list'</span><span class="p">,</span>
 <a id="__codelineno-105-10" name="__codelineno-105-10" href="#__codelineno-105-10"></a>    <span class="p">[</span>
-<a id="__codelineno-105-11" name="__codelineno-105-11" href="#__codelineno-105-11"></a>        <span class="s1">&#39;invoices&#39;</span> <span class="o">=&gt;</span> <span class="nv">$invoices</span><span class="p">,</span>
-<a id="__codelineno-105-12" name="__codelineno-105-12" href="#__codelineno-105-12"></a>        <span class="s1">&#39;isAdmin&#39;</span>  <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-105-11" name="__codelineno-105-11" href="#__codelineno-105-11"></a>        <span class="s1">'invoices'</span> <span class="o">=&gt;</span> <span class="nv">$invoices</span><span class="p">,</span>
+<a id="__codelineno-105-12" name="__codelineno-105-12" href="#__codelineno-105-12"></a>        <span class="s1">'isAdmin'</span>  <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-105-13" name="__codelineno-105-13" href="#__codelineno-105-13"></a>    <span class="p">],</span>
 <a id="__codelineno-105-14" name="__codelineno-105-14" href="#__codelineno-105-14"></a>    <span class="k">function</span> <span class="p">(</span><span class="nv">$view</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-105-15" name="__codelineno-105-15" href="#__codelineno-105-15"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-105-15" name="__codelineno-105-15" href="#__codelineno-105-15"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">'../app/views/'</span><span class="p">);</span>
 <a id="__codelineno-105-16" name="__codelineno-105-16" href="#__codelineno-105-16"></a>
 <a id="__codelineno-105-17" name="__codelineno-105-17" href="#__codelineno-105-17"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setRenderLevel</span><span class="p">(</span>
 <a id="__codelineno-105-18" name="__codelineno-105-18" href="#__codelineno-105-18"></a>            <span class="nx">View</span><span class="o">::</span><span class="na">LEVEL_LAYOUT</span>
@@ -7208,15 +7208,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-106-4" name="__codelineno-106-4" href="#__codelineno-106-4"></a>
 <a id="__codelineno-106-5" name="__codelineno-106-5" href="#__codelineno-106-5"></a><span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Simple</span><span class="p">();</span>
 <a id="__codelineno-106-6" name="__codelineno-106-6" href="#__codelineno-106-6"></a>
-<a id="__codelineno-106-7" name="__codelineno-106-7" href="#__codelineno-106-7"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-106-7" name="__codelineno-106-7" href="#__codelineno-106-7"></a><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">'../app/views/'</span><span class="p">);</span>
 <a id="__codelineno-106-8" name="__codelineno-106-8" href="#__codelineno-106-8"></a>
-<a id="__codelineno-106-9" name="__codelineno-106-9" href="#__codelineno-106-9"></a><span class="k">echo</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;templates/welcome&#39;</span><span class="p">);</span>
+<a id="__codelineno-106-9" name="__codelineno-106-9" href="#__codelineno-106-9"></a><span class="k">echo</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">'templates/welcome'</span><span class="p">);</span>
 <a id="__codelineno-106-10" name="__codelineno-106-10" href="#__codelineno-106-10"></a>
 <a id="__codelineno-106-11" name="__codelineno-106-11" href="#__codelineno-106-11"></a><span class="k">echo</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span>
-<a id="__codelineno-106-12" name="__codelineno-106-12" href="#__codelineno-106-12"></a>    <span class="s1">&#39;templates/welcome&#39;</span><span class="p">,</span>
+<a id="__codelineno-106-12" name="__codelineno-106-12" href="#__codelineno-106-12"></a>    <span class="s1">'templates/welcome'</span><span class="p">,</span>
 <a id="__codelineno-106-13" name="__codelineno-106-13" href="#__codelineno-106-13"></a>    <span class="p">[</span>
-<a id="__codelineno-106-14" name="__codelineno-106-14" href="#__codelineno-106-14"></a>        <span class="s1">&#39;email&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
-<a id="__codelineno-106-15" name="__codelineno-106-15" href="#__codelineno-106-15"></a>        <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$content</span><span class="p">,</span>
+<a id="__codelineno-106-14" name="__codelineno-106-14" href="#__codelineno-106-14"></a>        <span class="s1">'email'</span>   <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
+<a id="__codelineno-106-15" name="__codelineno-106-15" href="#__codelineno-106-15"></a>        <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="nv">$content</span><span class="p">,</span>
 <a id="__codelineno-106-16" name="__codelineno-106-16" href="#__codelineno-106-16"></a>    <span class="p">]</span>
 <a id="__codelineno-106-17" name="__codelineno-106-17" href="#__codelineno-106-17"></a><span class="p">);</span>
 </code></pre></div>
@@ -7269,21 +7269,21 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-107-7" name="__codelineno-107-7" href="#__codelineno-107-7"></a>
 <a id="__codelineno-107-8" name="__codelineno-107-8" href="#__codelineno-107-8"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
 <a id="__codelineno-107-9" name="__codelineno-107-9" href="#__codelineno-107-9"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-107-10" name="__codelineno-107-10" href="#__codelineno-107-10"></a>    <span class="s1">&#39;view&#39;</span><span class="p">,</span>
+<a id="__codelineno-107-10" name="__codelineno-107-10" href="#__codelineno-107-10"></a>    <span class="s1">'view'</span><span class="p">,</span>
 <a id="__codelineno-107-11" name="__codelineno-107-11" href="#__codelineno-107-11"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-107-12" name="__codelineno-107-12" href="#__codelineno-107-12"></a>        <span class="nv">$manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-107-13" name="__codelineno-107-13" href="#__codelineno-107-13"></a>
 <a id="__codelineno-107-14" name="__codelineno-107-14" href="#__codelineno-107-14"></a>        <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-107-15" name="__codelineno-107-15" href="#__codelineno-107-15"></a>            <span class="s1">&#39;view&#39;</span><span class="p">,</span>
+<a id="__codelineno-107-15" name="__codelineno-107-15" href="#__codelineno-107-15"></a>            <span class="s1">'view'</span><span class="p">,</span>
 <a id="__codelineno-107-16" name="__codelineno-107-16" href="#__codelineno-107-16"></a>            <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$view</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-107-17" name="__codelineno-107-17" href="#__codelineno-107-17"></a>                <span class="k">echo</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">(),</span> <span class="s1">&#39; - &#39;</span><span class="p">,</span> 
+<a id="__codelineno-107-17" name="__codelineno-107-17" href="#__codelineno-107-17"></a>                <span class="k">echo</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">(),</span> <span class="s1">' - '</span><span class="p">,</span> 
 <a id="__codelineno-107-18" name="__codelineno-107-18" href="#__codelineno-107-18"></a>                     <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getActiveRenderPath</span><span class="p">(),</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <a id="__codelineno-107-19" name="__codelineno-107-19" href="#__codelineno-107-19"></a>            <span class="p">}</span>
 <a id="__codelineno-107-20" name="__codelineno-107-20" href="#__codelineno-107-20"></a>        <span class="p">);</span>
 <a id="__codelineno-107-21" name="__codelineno-107-21" href="#__codelineno-107-21"></a>
 <a id="__codelineno-107-22" name="__codelineno-107-22" href="#__codelineno-107-22"></a>        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
 <a id="__codelineno-107-23" name="__codelineno-107-23" href="#__codelineno-107-23"></a>
-<a id="__codelineno-107-24" name="__codelineno-107-24" href="#__codelineno-107-24"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-107-24" name="__codelineno-107-24" href="#__codelineno-107-24"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">'../app/views/'</span><span class="p">);</span>
 <a id="__codelineno-107-25" name="__codelineno-107-25" href="#__codelineno-107-25"></a>
 <a id="__codelineno-107-26" name="__codelineno-107-26" href="#__codelineno-107-26"></a>        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$manager</span><span class="p">);</span>
 <a id="__codelineno-107-27" name="__codelineno-107-27" href="#__codelineno-107-27"></a>
@@ -7302,16 +7302,16 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-108-7" name="__codelineno-108-7" href="#__codelineno-108-7"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterRender</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$view</span><span class="p">)</span>
 <a id="__codelineno-108-8" name="__codelineno-108-8" href="#__codelineno-108-8"></a>    <span class="p">{</span>
 <a id="__codelineno-108-9" name="__codelineno-108-9" href="#__codelineno-108-9"></a>        <span class="nv">$tidyConfig</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-108-10" name="__codelineno-108-10" href="#__codelineno-108-10"></a>            <span class="s1">&#39;clean&#39;</span>          <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-108-11" name="__codelineno-108-11" href="#__codelineno-108-11"></a>            <span class="s1">&#39;output-xhtml&#39;</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-108-12" name="__codelineno-108-12" href="#__codelineno-108-12"></a>            <span class="s1">&#39;show-body-only&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-108-13" name="__codelineno-108-13" href="#__codelineno-108-13"></a>            <span class="s1">&#39;wrap&#39;</span>           <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-108-10" name="__codelineno-108-10" href="#__codelineno-108-10"></a>            <span class="s1">'clean'</span>          <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-108-11" name="__codelineno-108-11" href="#__codelineno-108-11"></a>            <span class="s1">'output-xhtml'</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-108-12" name="__codelineno-108-12" href="#__codelineno-108-12"></a>            <span class="s1">'show-body-only'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-108-13" name="__codelineno-108-13" href="#__codelineno-108-13"></a>            <span class="s1">'wrap'</span>           <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
 <a id="__codelineno-108-14" name="__codelineno-108-14" href="#__codelineno-108-14"></a>        <span class="p">];</span>
 <a id="__codelineno-108-15" name="__codelineno-108-15" href="#__codelineno-108-15"></a>
 <a id="__codelineno-108-16" name="__codelineno-108-16" href="#__codelineno-108-16"></a>        <span class="nv">$tidy</span> <span class="o">=</span> <span class="nx">tidy_parse_string</span><span class="p">(</span>
 <a id="__codelineno-108-17" name="__codelineno-108-17" href="#__codelineno-108-17"></a>            <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(),</span>
 <a id="__codelineno-108-18" name="__codelineno-108-18" href="#__codelineno-108-18"></a>            <span class="nv">$tidyConfig</span><span class="p">,</span>
-<a id="__codelineno-108-19" name="__codelineno-108-19" href="#__codelineno-108-19"></a>            <span class="s1">&#39;UTF8&#39;</span>
+<a id="__codelineno-108-19" name="__codelineno-108-19" href="#__codelineno-108-19"></a>            <span class="s1">'UTF8'</span>
 <a id="__codelineno-108-20" name="__codelineno-108-20" href="#__codelineno-108-20"></a>        <span class="p">);</span>
 <a id="__codelineno-108-21" name="__codelineno-108-21" href="#__codelineno-108-21"></a>
 <a id="__codelineno-108-22" name="__codelineno-108-22" href="#__codelineno-108-22"></a>        <span class="nv">$tidy</span><span class="o">-&gt;</span><span class="na">cleanRepair</span><span class="p">();</span>
@@ -7326,7 +7326,7 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-109-1" name="__codelineno-109-1" href="#__codelineno-109-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-109-2" name="__codelineno-109-2" href="#__codelineno-109-2"></a>
 <a id="__codelineno-109-3" name="__codelineno-109-3" href="#__codelineno-109-3"></a><span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-109-4" name="__codelineno-109-4" href="#__codelineno-109-4"></a>    <span class="s1">&#39;view:afterRender&#39;</span><span class="p">,</span>
+<a id="__codelineno-109-4" name="__codelineno-109-4" href="#__codelineno-109-4"></a>    <span class="s1">'view:afterRender'</span><span class="p">,</span>
 <a id="__codelineno-109-5" name="__codelineno-109-5" href="#__codelineno-109-5"></a>    <span class="k">new</span> <span class="nx">TidyPlugin</span><span class="p">()</span>
 <a id="__codelineno-109-6" name="__codelineno-109-6" href="#__codelineno-109-6"></a><span class="p">);</span>
 </code></pre></div>
@@ -7342,14 +7342,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-110-8" name="__codelineno-110-8" href="#__codelineno-110-8"></a>    <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
 <a id="__codelineno-110-9" name="__codelineno-110-9" href="#__codelineno-110-9"></a>
 <a id="__codelineno-110-10" name="__codelineno-110-10" href="#__codelineno-110-10"></a>    <span class="k">echo</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">getRender</span><span class="p">(</span>
-<a id="__codelineno-110-11" name="__codelineno-110-11" href="#__codelineno-110-11"></a>        <span class="s1">&#39;unknown-view&#39;</span><span class="p">,</span>
-<a id="__codelineno-110-12" name="__codelineno-110-12" href="#__codelineno-110-12"></a>        <span class="s1">&#39;list&#39;</span><span class="p">,</span>
+<a id="__codelineno-110-11" name="__codelineno-110-11" href="#__codelineno-110-11"></a>        <span class="s1">'unknown-view'</span><span class="p">,</span>
+<a id="__codelineno-110-12" name="__codelineno-110-12" href="#__codelineno-110-12"></a>        <span class="s1">'list'</span><span class="p">,</span>
 <a id="__codelineno-110-13" name="__codelineno-110-13" href="#__codelineno-110-13"></a>        <span class="p">[</span>
-<a id="__codelineno-110-14" name="__codelineno-110-14" href="#__codelineno-110-14"></a>            <span class="s1">&#39;invoices&#39;</span> <span class="o">=&gt;</span> <span class="nv">$invoices</span><span class="p">,</span>
-<a id="__codelineno-110-15" name="__codelineno-110-15" href="#__codelineno-110-15"></a>            <span class="s1">&#39;isAdmin&#39;</span>  <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-110-14" name="__codelineno-110-14" href="#__codelineno-110-14"></a>            <span class="s1">'invoices'</span> <span class="o">=&gt;</span> <span class="nv">$invoices</span><span class="p">,</span>
+<a id="__codelineno-110-15" name="__codelineno-110-15" href="#__codelineno-110-15"></a>            <span class="s1">'isAdmin'</span>  <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-110-16" name="__codelineno-110-16" href="#__codelineno-110-16"></a>        <span class="p">],</span>
 <a id="__codelineno-110-17" name="__codelineno-110-17" href="#__codelineno-110-17"></a>        <span class="k">function</span> <span class="p">(</span><span class="nv">$view</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-110-18" name="__codelineno-110-18" href="#__codelineno-110-18"></a>            <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-110-18" name="__codelineno-110-18" href="#__codelineno-110-18"></a>            <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">'../app/views/'</span><span class="p">);</span>
 <a id="__codelineno-110-19" name="__codelineno-110-19" href="#__codelineno-110-19"></a>
 <a id="__codelineno-110-20" name="__codelineno-110-20" href="#__codelineno-110-20"></a>            <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setRenderLevel</span><span class="p">(</span>
 <a id="__codelineno-110-21" name="__codelineno-110-21" href="#__codelineno-110-21"></a>                <span class="nx">View</span><span class="o">::</span><span class="na">LEVEL_LAYOUT</span>
@@ -7593,7 +7593,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

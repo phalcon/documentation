@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5765,7 +5765,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_URI&quot;</span><span class="p">]);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"REQUEST_URI"</span><span class="p">]);</span>
 </code></pre></div>
 <p>Now we need to create the routes so that the application can understand what to do when end users interact with our application. The <code>index.php</code> file changes to:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -5775,42 +5775,42 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="s1">'/api/robots'</span><span class="p">,</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="p">}</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">);</span>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="s1">&#39;/api/robots/search/{name}&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="s1">'/api/robots/search/{name}'</span><span class="p">,</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="k">function</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="p">}</span>
 <a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="p">);</span>
 <a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
 <a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    <span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    <span class="s1">'/api/robots/{id:[0-9]+}'</span><span class="p">,</span>
 <a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    <span class="k">function</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    <span class="p">}</span>
 <a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">);</span>
 <a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
 <a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>    <span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>    <span class="s1">'/api/robots'</span><span class="p">,</span>
 <a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>    <span class="p">}</span>
 <a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="p">);</span>
 <a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>
 <a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>    <span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>    <span class="s1">'/api/robots/{id:[0-9]+}'</span><span class="p">,</span>
 <a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>    <span class="k">function</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>    <span class="p">}</span>
 <a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="p">);</span>
 <a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>
 <a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span>
-<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>    <span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>    <span class="s1">'/api/robots/{id:[0-9]+}'</span><span class="p">,</span>
 <a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>    <span class="k">function</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>    <span class="p">}</span>
 <a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="p">);</span>
 <a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>
-<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;REQUEST_URI&quot;</span><span class="p">]);</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"REQUEST_URI"</span><span class="p">]);</span>
 </code></pre></div>
 <p>As we add the routes, we use the actual HTTP methods as the names of the methods called in the application object. This allows us to define listening points for the application based on those HTTP methods.</p>
 <p>The first parameter of each method call is the route and the second is the handler i.e. what do we do when the user calls that route? In our example, we have anonymous functions defined for each handler. For the following route:</p>
@@ -5836,32 +5836,32 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>        <span class="nv">$validator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validation</span><span class="p">();</span>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>        <span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>            <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>            <span class="s2">"type"</span><span class="p">,</span>
 <a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>            <span class="k">new</span> <span class="nx">InclusionIn</span><span class="p">(</span>
 <a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>                <span class="p">[</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>                    <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Type must be &quot;droid&quot;, &quot;mechanical&quot;, or &quot;virtual&quot;&#39;</span><span class="p">,</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>                    <span class="s1">&#39;domain&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>                        <span class="s1">&#39;droid&#39;</span><span class="p">,</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>                        <span class="s1">&#39;mechanical&#39;</span><span class="p">,</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>                        <span class="s1">&#39;virtual&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>                    <span class="s1">'message'</span> <span class="o">=&gt;</span> <span class="s1">'Type must be "droid", "mechanical", or "virtual"'</span><span class="p">,</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>                    <span class="s1">'domain'</span>  <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>                        <span class="s1">'droid'</span><span class="p">,</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>                        <span class="s1">'mechanical'</span><span class="p">,</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>                        <span class="s1">'virtual'</span><span class="p">,</span>
 <a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>                    <span class="p">],</span>
 <a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>                <span class="p">]</span>
 <a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>            <span class="p">)</span>
 <a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>        <span class="p">);</span>
 <a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>
 <a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>        <span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
-<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>            <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>            <span class="s1">'name'</span><span class="p">,</span>
 <a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>            <span class="k">new</span> <span class="nx">Uniqueness</span><span class="p">(</span>
 <a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>                <span class="p">[</span>
-<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>                    <span class="s1">&#39;field&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
-<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>                    <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The robot name must be unique&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>                    <span class="s1">'field'</span>   <span class="o">=&gt;</span> <span class="s1">'name'</span><span class="p">,</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>                    <span class="s1">'message'</span> <span class="o">=&gt;</span> <span class="s1">'The robot name must be unique'</span><span class="p">,</span>
 <a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>                <span class="p">]</span>
 <a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>            <span class="p">)</span>
 <a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>        <span class="p">);</span>
 <a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>
 <a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span>
-<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>                <span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="s1">&#39;The year cannot be less than zero&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>                <span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="s1">'The year cannot be less than zero'</span><span class="p">)</span>
 <a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>            <span class="p">);</span>
 <a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>        <span class="p">}</span>
 <a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a>
@@ -5884,21 +5884,21 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Loader</span><span class="p">();</span>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">setNamespaces</span><span class="p">(</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="p">[</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>        <span class="s1">&#39;MyApp\Models&#39;</span> <span class="o">=&gt;</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/models/&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>        <span class="s1">'MyApp\Models'</span> <span class="o">=&gt;</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/models/'</span><span class="p">,</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="p">]</span>
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="p">);</span>
 <a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
 <a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
 <a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
 <a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    <span class="s1">&#39;db&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    <span class="s1">'db'</span><span class="p">,</span>
 <a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">PdoMysql</span><span class="p">(</span>
 <a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>            <span class="p">[</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>                <span class="s1">&#39;host&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>                <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;asimov&#39;</span><span class="p">,</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>                <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;zeroth&#39;</span><span class="p">,</span>
-<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>                <span class="s1">&#39;dbname&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;robotics&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>                <span class="s1">'host'</span>     <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>                <span class="s1">'username'</span> <span class="o">=&gt;</span> <span class="s1">'asimov'</span><span class="p">,</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>                <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="s1">'zeroth'</span><span class="p">,</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>                <span class="s1">'dbname'</span>   <span class="o">=&gt;</span> <span class="s1">'robotics'</span><span class="p">,</span>
 <a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>            <span class="p">]</span>
 <a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>        <span class="p">);</span>
 <a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>    <span class="p">}</span>
@@ -5913,11 +5913,11 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="s1">'/api/robots'</span><span class="p">,</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>        <span class="nv">$phql</span> <span class="o">=</span> <span class="s1">&#39;SELECT id, name &#39;</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>              <span class="o">.</span> <span class="s1">&#39;FROM MyApp\Models\Robots &#39;</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>              <span class="o">.</span> <span class="s1">&#39;ORDER BY name&#39;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>        <span class="nv">$phql</span> <span class="o">=</span> <span class="s1">'SELECT id, name '</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>              <span class="o">.</span> <span class="s1">'FROM MyApp\Models\Robots '</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>              <span class="o">.</span> <span class="s1">'ORDER BY name'</span>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>        <span class="p">;</span>
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>        <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$app</span>
@@ -5929,8 +5929,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
 <a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>            <span class="nv">$data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>                <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>                <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>                <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
 <a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>            <span class="p">];</span>
 <a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>        <span class="p">}</span>
 <a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
@@ -5945,13 +5945,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1">// Searches for robots with $name in their name</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="s1">&#39;/api/robots/search/{name}&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="s1">'/api/robots/search/{name}'</span><span class="p">,</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="k">function</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>        <span class="nv">$phql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * &#39;</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>              <span class="o">.</span> <span class="s1">&#39;FROM MyApp\Models\Robots &#39;</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>              <span class="o">.</span> <span class="s1">&#39;WHERE name &#39;</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>              <span class="o">.</span> <span class="s1">&#39;LIKE :name: &#39;</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>              <span class="o">.</span> <span class="s1">&#39;ORDER BY name&#39;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>        <span class="nv">$phql</span> <span class="o">=</span> <span class="s1">'SELECT * '</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>              <span class="o">.</span> <span class="s1">'FROM MyApp\Models\Robots '</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>              <span class="o">.</span> <span class="s1">'WHERE name '</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>              <span class="o">.</span> <span class="s1">'LIKE :name: '</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>              <span class="o">.</span> <span class="s1">'ORDER BY name'</span>
 <a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>        <span class="p">;</span>
 <a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
 <a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>        <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$app</span>
@@ -5959,7 +5959,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>            <span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span>
 <a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>                <span class="nv">$phql</span><span class="p">,</span>
 <a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>                <span class="p">[</span>
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>                    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;%&#39;</span> <span class="o">.</span> <span class="nv">$name</span> <span class="o">.</span> <span class="s1">&#39;%&#39;</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>                    <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'%'</span> <span class="o">.</span> <span class="nv">$name</span> <span class="o">.</span> <span class="s1">'%'</span>
 <a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>                <span class="p">]</span>
 <a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>            <span class="p">)</span>
 <a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>        <span class="p">;</span>
@@ -5968,8 +5968,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>
 <a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>            <span class="nv">$data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>                <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>                <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>                <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
 <a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>            <span class="p">];</span>
 <a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>        <span class="p">}</span>
 <a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>
@@ -5985,11 +5985,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="s1">'/api/robots/{id:[0-9]+}'</span><span class="p">,</span>
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="k">function</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>        <span class="nv">$phql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * &#39;</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>              <span class="o">.</span> <span class="s1">&#39;FROM MyApp\Models\Robots &#39;</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>              <span class="o">.</span> <span class="s1">&#39;WHERE id = :id:&#39;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>        <span class="nv">$phql</span> <span class="o">=</span> <span class="s1">'SELECT * '</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>              <span class="o">.</span> <span class="s1">'FROM MyApp\Models\Robots '</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>              <span class="o">.</span> <span class="s1">'WHERE id = :id:'</span>
 <a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        <span class="p">;</span>
 <a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
 <a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$app</span>
@@ -5997,7 +5997,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>            <span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span>
 <a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>                <span class="nv">$phql</span><span class="p">,</span>
 <a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>                <span class="p">[</span>
-<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>                    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>                    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
 <a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>                <span class="p">]</span>
 <a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>            <span class="p">)</span>
 <a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>            <span class="o">-&gt;</span><span class="na">getFirst</span><span class="p">()</span>
@@ -6007,16 +6007,16 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span>
 <a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>                <span class="p">[</span>
-<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>                    <span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;NOT-FOUND&#39;</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>                    <span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'NOT-FOUND'</span>
 <a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>                <span class="p">]</span>
 <a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>            <span class="p">);</span>
 <a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 <a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span>
 <a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a>                <span class="p">[</span>
-<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>                    <span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;FOUND&#39;</span><span class="p">,</span>
-<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>                    <span class="s1">&#39;data&#39;</span>   <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>                        <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
-<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a>                        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>                    <span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'FOUND'</span><span class="p">,</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>                    <span class="s1">'data'</span>   <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>                        <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a>                        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span>
 <a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>                    <span class="p">]</span>
 <a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a>                <span class="p">]</span>
 <a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a>            <span class="p">);</span>
@@ -6033,13 +6033,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="s1">'/api/robots'</span><span class="p">,</span>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>        <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getJsonRawBody</span><span class="p">();</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>        <span class="nv">$phql</span>  <span class="o">=</span> <span class="s1">&#39;INSERT INTO MyApp\Models\Robots &#39;</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>               <span class="o">.</span> <span class="s1">&#39;(name, type, year) &#39;</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>               <span class="o">.</span> <span class="s1">&#39;VALUES &#39;</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>               <span class="o">.</span> <span class="s1">&#39;(:name:, :type:, :year:)&#39;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>        <span class="nv">$phql</span>  <span class="o">=</span> <span class="s1">'INSERT INTO MyApp\Models\Robots '</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>               <span class="o">.</span> <span class="s1">'(name, type, year) '</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>               <span class="o">.</span> <span class="s1">'VALUES '</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>               <span class="o">.</span> <span class="s1">'(:name:, :type:, :year:)'</span>
 <a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>        <span class="p">;</span>
 <a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
 <a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>        <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$app</span>
@@ -6047,9 +6047,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>            <span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span>
 <a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>                <span class="nv">$phql</span><span class="p">,</span>
 <a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>                <span class="p">[</span>
-<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>                    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
-<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>                    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">,</span>
-<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>                    <span class="s1">&#39;year&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span><span class="p">,</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>                    <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>                    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">,</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>                    <span class="s1">'year'</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span><span class="p">,</span>
 <a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>                <span class="p">]</span>
 <a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>            <span class="p">)</span>
 <a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>        <span class="p">;</span>
@@ -6057,18 +6057,18 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
 <a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>
 <a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">()</span> <span class="o">===</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="s1">&#39;Created&#39;</span><span class="p">);</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">201</span><span class="p">,</span> <span class="s1">'Created'</span><span class="p">);</span>
 <a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>
 <a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>            <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getModel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
 <a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>
 <a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span>
 <a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a>                <span class="p">[</span>
-<a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a>                    <span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span><span class="p">,</span>
-<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a>                    <span class="s1">&#39;data&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="p">,</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a>                    <span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'OK'</span><span class="p">,</span>
+<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a>                    <span class="s1">'data'</span>   <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="p">,</span>
 <a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a>                <span class="p">]</span>
 <a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a>            <span class="p">);</span>
 <a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">409</span><span class="p">,</span> <span class="s1">&#39;Conflict&#39;</span><span class="p">);</span>
+<a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">409</span><span class="p">,</span> <span class="s1">'Conflict'</span><span class="p">);</span>
 <a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a>
 <a id="__codelineno-10-43" name="__codelineno-10-43" href="#__codelineno-10-43"></a>            <span class="nv">$errors</span> <span class="o">=</span> <span class="p">[];</span>
 <a id="__codelineno-10-44" name="__codelineno-10-44" href="#__codelineno-10-44"></a>            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
@@ -6077,8 +6077,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-47" name="__codelineno-10-47" href="#__codelineno-10-47"></a>
 <a id="__codelineno-10-48" name="__codelineno-10-48" href="#__codelineno-10-48"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span>
 <a id="__codelineno-10-49" name="__codelineno-10-49" href="#__codelineno-10-49"></a>                <span class="p">[</span>
-<a id="__codelineno-10-50" name="__codelineno-10-50" href="#__codelineno-10-50"></a>                    <span class="s1">&#39;status&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span>
-<a id="__codelineno-10-51" name="__codelineno-10-51" href="#__codelineno-10-51"></a>                    <span class="s1">&#39;messages&#39;</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">,</span>
+<a id="__codelineno-10-50" name="__codelineno-10-50" href="#__codelineno-10-50"></a>                    <span class="s1">'status'</span>   <span class="o">=&gt;</span> <span class="s1">'ERROR'</span><span class="p">,</span>
+<a id="__codelineno-10-51" name="__codelineno-10-51" href="#__codelineno-10-51"></a>                    <span class="s1">'messages'</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">,</span>
 <a id="__codelineno-10-52" name="__codelineno-10-52" href="#__codelineno-10-52"></a>                <span class="p">]</span>
 <a id="__codelineno-10-53" name="__codelineno-10-53" href="#__codelineno-10-53"></a>            <span class="p">);</span>
 <a id="__codelineno-10-54" name="__codelineno-10-54" href="#__codelineno-10-54"></a>        <span class="p">}</span>
@@ -6096,22 +6096,22 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="s1">'/api/robots/{id:[0-9]+}'</span><span class="p">,</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="k">function</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>        <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getJsonRawBody</span><span class="p">();</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>        <span class="nv">$phql</span>  <span class="o">=</span> <span class="s1">&#39;UPDATE MyApp\Models\Robots &#39;</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>               <span class="o">.</span> <span class="s1">&#39;SET name = :name:, type = :type:, year = :year: &#39;</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>               <span class="o">.</span> <span class="s1">&#39;WHERE id = :id:&#39;</span><span class="p">;</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>        <span class="nv">$phql</span>  <span class="o">=</span> <span class="s1">'UPDATE MyApp\Models\Robots '</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>               <span class="o">.</span> <span class="s1">'SET name = :name:, type = :type:, year = :year: '</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>               <span class="o">.</span> <span class="s1">'WHERE id = :id:'</span><span class="p">;</span>
 <a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
 <a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>        <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$app</span>
 <a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>            <span class="o">-&gt;</span><span class="na">modelsManager</span>
 <a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>            <span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span>
 <a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>                <span class="nv">$phql</span><span class="p">,</span>
 <a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>                <span class="p">[</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>                    <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>                    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
-<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>                    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">,</span>
-<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>                    <span class="s1">&#39;year&#39;</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span><span class="p">,</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>                    <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>                    <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>                    <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">,</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>                    <span class="s1">'year'</span> <span class="o">=&gt;</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span><span class="p">,</span>
 <a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>                <span class="p">]</span>
 <a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>            <span class="p">)</span>
 <a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>        <span class="p">;</span>
@@ -6121,11 +6121,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">()</span> <span class="o">===</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span>
 <a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>                <span class="p">[</span>
-<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>                    <span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>                    <span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'OK'</span>
 <a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>                <span class="p">]</span>
 <a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a>            <span class="p">);</span>
 <a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">409</span><span class="p">,</span> <span class="s1">&#39;Conflict&#39;</span><span class="p">);</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">409</span><span class="p">,</span> <span class="s1">'Conflict'</span><span class="p">);</span>
 <a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a>
 <a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>            <span class="nv">$errors</span> <span class="o">=</span> <span class="p">[];</span>
 <a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
@@ -6134,8 +6134,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a>
 <a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span>
 <a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a>                <span class="p">[</span>
-<a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a>                    <span class="s1">&#39;status&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span>
-<a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a>                    <span class="s1">&#39;messages&#39;</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">,</span>
+<a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a>                    <span class="s1">'status'</span>   <span class="o">=&gt;</span> <span class="s1">'ERROR'</span><span class="p">,</span>
+<a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a>                    <span class="s1">'messages'</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">,</span>
 <a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a>                <span class="p">]</span>
 <a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a>            <span class="p">);</span>
 <a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a>        <span class="p">}</span>
@@ -6154,18 +6154,18 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="s1">&#39;/api/robots/{id:[0-9]+}&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="s1">'/api/robots/{id:[0-9]+}'</span><span class="p">,</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="k">function</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        <span class="nv">$phql</span> <span class="o">=</span> <span class="s1">&#39;DELETE &#39;</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>              <span class="o">.</span> <span class="s1">&#39;FROM MyApp\Models\Robots &#39;</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>              <span class="o">.</span> <span class="s1">&#39;WHERE id = :id:&#39;</span><span class="p">;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        <span class="nv">$phql</span> <span class="o">=</span> <span class="s1">'DELETE '</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>              <span class="o">.</span> <span class="s1">'FROM MyApp\Models\Robots '</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>              <span class="o">.</span> <span class="s1">'WHERE id = :id:'</span><span class="p">;</span>
 <a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
 <a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>        <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$app</span>
 <a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>            <span class="o">-&gt;</span><span class="na">modelsManager</span>
 <a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>            <span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span>
 <a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>                <span class="nv">$phql</span><span class="p">,</span>
 <a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>                <span class="p">[</span>
-<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>                    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>                    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
 <a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>                <span class="p">]</span>
 <a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>            <span class="p">)</span>
 <a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>        <span class="p">;</span>
@@ -6175,11 +6175,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">()</span> <span class="o">===</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span>
 <a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>                <span class="p">[</span>
-<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>                    <span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>                    <span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'OK'</span>
 <a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>                <span class="p">]</span>
 <a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>            <span class="p">);</span>
 <a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">409</span><span class="p">,</span> <span class="s1">&#39;Conflict&#39;</span><span class="p">);</span>
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">409</span><span class="p">,</span> <span class="s1">'Conflict'</span><span class="p">);</span>
 <a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>
 <a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>            <span class="nv">$errors</span> <span class="o">=</span> <span class="p">[];</span>
 <a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
@@ -6188,8 +6188,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a>
 <a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span>
 <a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>                <span class="p">[</span>
-<a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a>                    <span class="s1">&#39;status&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span>
-<a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a>                    <span class="s1">&#39;messages&#39;</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">,</span>
+<a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a>                    <span class="s1">'status'</span>   <span class="o">=&gt;</span> <span class="s1">'ERROR'</span><span class="p">,</span>
+<a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a>                    <span class="s1">'messages'</span> <span class="o">=&gt;</span> <span class="nv">$errors</span><span class="p">,</span>
 <a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a>                <span class="p">]</span>
 <a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a>            <span class="p">);</span>
 <a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a>        <span class="p">}</span>
@@ -6217,16 +6217,16 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nv">$uri</span> <span class="o">=</span> <span class="nb">urldecode</span><span class="p">(</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_URI&#39;</span><span class="p">],</span> <span class="nx">PHP_URL_PATH</span><span class="p">)</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_URI'</span><span class="p">],</span> <span class="nx">PHP_URL_PATH</span><span class="p">)</span>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">);</span>
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$uri</span> <span class="o">!==</span> <span class="s1">&#39;/&#39;</span> <span class="o">&amp;&amp;</span> <span class="nb">file_exists</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="nv">$uri</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$uri</span> <span class="o">!==</span> <span class="s1">'/'</span> <span class="o">&amp;&amp;</span> <span class="nb">file_exists</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="nv">$uri</span><span class="p">))</span> <span class="p">{</span>
 <a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
 <a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="p">}</span>
 <a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_URI&#39;</span><span class="p">];</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'_url'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_URI'</span><span class="p">];</span>
 <a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/index.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/index.php'</span><span class="p">;</span>
 </code></pre></div>
 <p>and then run the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$(which php) -S localhost:8000 -t / .htrouter.php
@@ -6242,7 +6242,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>Content-Length:<span class="w"> </span><span class="m">117</span>
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>Content-Type:<span class="w"> </span>text/html<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>UTF-8
 <a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="o">[{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;1&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Robotina&quot;</span><span class="o">}</span>,<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;2&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Astro Boy&quot;</span><span class="o">}</span>,<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Terminator&quot;</span><span class="o">}]</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="o">[{</span><span class="s2">"id"</span>:<span class="s2">"1"</span>,<span class="s2">"name"</span>:<span class="s2">"Robotina"</span><span class="o">}</span>,<span class="o">{</span><span class="s2">"id"</span>:<span class="s2">"2"</span>,<span class="s2">"name"</span>:<span class="s2">"Astro Boy"</span><span class="o">}</span>,<span class="o">{</span><span class="s2">"id"</span>:<span class="s2">"3"</span>,<span class="s2">"name"</span>:<span class="s2">"Terminator"</span><span class="o">}]</span>
 </code></pre></div>
 <p><strong>Search</strong> a robot by its name:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>curl<span class="w"> </span>-i<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://localhost/my-rest-api/api/robots/search/Astro
@@ -6253,7 +6253,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>Content-Length:<span class="w"> </span><span class="m">31</span>
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>Content-Type:<span class="w"> </span>text/html<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>UTF-8
 <a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="o">[{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;2&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Astro Boy&quot;</span><span class="o">}]</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="o">[{</span><span class="s2">"id"</span>:<span class="s2">"2"</span>,<span class="s2">"name"</span>:<span class="s2">"Astro Boy"</span><span class="o">}]</span>
 </code></pre></div>
 <p><strong>Get</strong> a robot by its id:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>curl<span class="w"> </span>-i<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://localhost/my-rest-api/api/robots/3
@@ -6264,10 +6264,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>Content-Length:<span class="w"> </span><span class="m">56</span>
 <a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>Content-Type:<span class="w"> </span>text/html<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>UTF-8
 <a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;FOUND&quot;</span>,<span class="s2">&quot;data&quot;</span>:<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;3&quot;</span>,<span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;Terminator&quot;</span><span class="o">}}</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="o">{</span><span class="s2">"status"</span>:<span class="s2">"FOUND"</span>,<span class="s2">"data"</span>:<span class="o">{</span><span class="s2">"id"</span>:<span class="s2">"3"</span>,<span class="s2">"name"</span>:<span class="s2">"Terminator"</span><span class="o">}}</span>
 </code></pre></div>
 <p><strong>Insert</strong> a new robot:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>curl<span class="w"> </span>-i<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;:&quot;C-3PO&quot;,&quot;type&quot;:&quot;droid&quot;,&quot;year&quot;:1977}&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>curl<span class="w"> </span>-i<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"name":"C-3PO","type":"droid","year":1977}'</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span>https://localhost/my-rest-api/api/robots
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>HTTP/1.1<span class="w"> </span><span class="m">201</span><span class="w"> </span>Created
@@ -6276,10 +6276,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>Content-Length:<span class="w"> </span><span class="m">75</span>
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>Content-Type:<span class="w"> </span>text/html<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>UTF-8
 <a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
-<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;OK&quot;</span>,<span class="s2">&quot;data&quot;</span>:<span class="o">{</span><span class="s2">&quot;name&quot;</span>:<span class="s2">&quot;C-3PO&quot;</span>,<span class="s2">&quot;type&quot;</span>:<span class="s2">&quot;droid&quot;</span>,<span class="s2">&quot;year&quot;</span>:1977,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;4&quot;</span><span class="o">}}</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="o">{</span><span class="s2">"status"</span>:<span class="s2">"OK"</span>,<span class="s2">"data"</span>:<span class="o">{</span><span class="s2">"name"</span>:<span class="s2">"C-3PO"</span>,<span class="s2">"type"</span>:<span class="s2">"droid"</span>,<span class="s2">"year"</span>:1977,<span class="s2">"id"</span>:<span class="s2">"4"</span><span class="o">}}</span>
 </code></pre></div>
 <p>Try to insert a new robot with the name of an existing robot:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>curl<span class="w"> </span>-i<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;:&quot;C-3PO&quot;,&quot;type&quot;:&quot;droid&quot;,&quot;year&quot;:1977}&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>curl<span class="w"> </span>-i<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"name":"C-3PO","type":"droid","year":1977}'</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span>https://localhost/my-rest-api/api/robots
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
 <a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>HTTP/1.1<span class="w"> </span><span class="m">409</span><span class="w"> </span>Conflict
@@ -6288,10 +6288,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>Content-Length:<span class="w"> </span><span class="m">63</span>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>Content-Type:<span class="w"> </span>text/html<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>UTF-8
 <a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>
-<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;ERROR&quot;</span>,<span class="s2">&quot;messages&quot;</span>:<span class="o">[</span><span class="s2">&quot;The robot name must be unique&quot;</span><span class="o">]}</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="o">{</span><span class="s2">"status"</span>:<span class="s2">"ERROR"</span>,<span class="s2">"messages"</span>:<span class="o">[</span><span class="s2">"The robot name must be unique"</span><span class="o">]}</span>
 </code></pre></div>
 <p><strong>Update</strong> a robot with an unknown type:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>curl<span class="w"> </span>-i<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;:&quot;ASIMO&quot;,&quot;type&quot;:&quot;humanoid&quot;,&quot;year&quot;:2000}&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>curl<span class="w"> </span>-i<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"name":"ASIMO","type":"humanoid","year":2000}'</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span>https://localhost/my-rest-api/api/robots/4
 <a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>HTTP/1.1<span class="w"> </span><span class="m">409</span><span class="w"> </span>Conflict
@@ -6300,8 +6300,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>Content-Length:<span class="w"> </span><span class="m">104</span>
 <a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>Content-Type:<span class="w"> </span>text/html<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>UTF-8
 <a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;ERROR&quot;</span>,<span class="s2">&quot;messages&quot;</span>:<span class="o">[</span><span class="s2">&quot;Value of field &#39;type&#39; must be part of</span>
-<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="s2">    list: droid, mechanical, virtual&quot;</span><span class="o">]}</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="o">{</span><span class="s2">"status"</span>:<span class="s2">"ERROR"</span>,<span class="s2">"messages"</span>:<span class="o">[</span><span class="s2">"Value of field 'type' must be part of</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="s2">    list: droid, mechanical, virtual"</span><span class="o">]}</span>
 </code></pre></div>
 <p><strong>Delete</strong> a robot:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>curl<span class="w"> </span>-i<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>https://localhost/my-rest-api/api/robots/4
@@ -6312,7 +6312,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>Content-Length:<span class="w"> </span><span class="m">15</span>
 <a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>Content-Type:<span class="w"> </span>text/html<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>UTF-8
 <a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>
-<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;OK&quot;</span><span class="o">}</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="o">{</span><span class="s2">"status"</span>:<span class="s2">"OK"</span><span class="o">}</span>
 </code></pre></div>
 
 
@@ -6499,7 +6499,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

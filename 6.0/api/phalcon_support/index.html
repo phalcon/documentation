@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -13313,10 +13313,10 @@ or just the fragment related to the exception</p>
 <p>Dumps information about a variable(s)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="nv">$foo</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
 <a id="__codelineno-92-2" name="__codelineno-92-2" href="#__codelineno-92-2"></a>
-<a id="__codelineno-92-3" name="__codelineno-92-3" href="#__codelineno-92-3"></a><span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\Phalcon\Debug\Dump</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">variable</span><span class="p">(</span><span class="nv">$foo</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">);</span>
+<a id="__codelineno-92-3" name="__codelineno-92-3" href="#__codelineno-92-3"></a><span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\Phalcon\Debug\Dump</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">variable</span><span class="p">(</span><span class="nv">$foo</span><span class="p">,</span> <span class="s2">"foo"</span><span class="p">);</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="nv">$foo</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span><span class="p">;</span>
-<a id="__codelineno-93-2" name="__codelineno-93-2" href="#__codelineno-93-2"></a><span class="nv">$bar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;value&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="nv">$foo</span> <span class="o">=</span> <span class="s2">"string"</span><span class="p">;</span>
+<a id="__codelineno-93-2" name="__codelineno-93-2" href="#__codelineno-93-2"></a><span class="nv">$bar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"key"</span> <span class="o">=&gt;</span> <span class="s2">"value"</span><span class="p">];</span>
 <a id="__codelineno-93-3" name="__codelineno-93-3" href="#__codelineno-93-3"></a><span class="nv">$baz</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
 <a id="__codelineno-93-4" name="__codelineno-93-4" href="#__codelineno-93-4"></a>
 <a id="__codelineno-93-5" name="__codelineno-93-5" href="#__codelineno-93-5"></a><span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\Phalcon\Debug\Dump</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">variables</span><span class="p">(</span><span class="nv">$foo</span><span class="p">,</span> <span class="nv">$bar</span><span class="p">,</span> <span class="nv">$baz</span><span class="p">);</span>
@@ -13458,13 +13458,13 @@ or just the fragment related to the exception</p>
 </code></pre></div>
 <p>Returns an JSON string of information about a single variable.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="nv">$foo</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-101-2" name="__codelineno-101-2" href="#__codelineno-101-2"></a>    <span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+<a id="__codelineno-101-2" name="__codelineno-101-2" href="#__codelineno-101-2"></a>    <span class="s2">"key"</span> <span class="o">=&gt;</span> <span class="s2">"value"</span><span class="p">,</span>
 <a id="__codelineno-101-3" name="__codelineno-101-3" href="#__codelineno-101-3"></a><span class="p">];</span>
 <a id="__codelineno-101-4" name="__codelineno-101-4" href="#__codelineno-101-4"></a>
 <a id="__codelineno-101-5" name="__codelineno-101-5" href="#__codelineno-101-5"></a><span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\Phalcon\Debug\Dump</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">toJson</span><span class="p">(</span><span class="nv">$foo</span><span class="p">);</span>
 <a id="__codelineno-101-6" name="__codelineno-101-6" href="#__codelineno-101-6"></a>
 <a id="__codelineno-101-7" name="__codelineno-101-7" href="#__codelineno-101-7"></a><span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
-<a id="__codelineno-101-8" name="__codelineno-101-8" href="#__codelineno-101-8"></a><span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">bar</span> <span class="o">=</span> <span class="s2">&quot;buz&quot;</span><span class="p">;</span>
+<a id="__codelineno-101-8" name="__codelineno-101-8" href="#__codelineno-101-8"></a><span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">bar</span> <span class="o">=</span> <span class="s2">"buz"</span><span class="p">;</span>
 <a id="__codelineno-101-9" name="__codelineno-101-9" href="#__codelineno-101-9"></a>
 <a id="__codelineno-101-10" name="__codelineno-101-10" href="#__codelineno-101-10"></a><span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\Phalcon\Debug\Dump</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">toJson</span><span class="p">(</span><span class="nv">$foo</span><span class="p">);</span>
 </code></pre></div>
@@ -13475,15 +13475,15 @@ or just the fragment related to the exception</p>
 <a id="__codelineno-102-4" name="__codelineno-102-4" href="#__codelineno-102-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns an HTML string of information about a single variable.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\Phalcon\Debug\Dump</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">variable</span><span class="p">(</span><span class="nv">$foo</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\Phalcon\Debug\Dump</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">variable</span><span class="p">(</span><span class="nv">$foo</span><span class="p">,</span> <span class="s2">"foo"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="supportdebugdump-variables"><code>variables()</code><a class="headerlink" href="#supportdebugdump-variables" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">variables</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns an HTML string of debugging information about any number of
 variables, each wrapped in a "pre" tag.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a><span class="nv">$foo</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span><span class="p">;</span>
-<a id="__codelineno-105-2" name="__codelineno-105-2" href="#__codelineno-105-2"></a><span class="nv">$bar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;value&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a><span class="nv">$foo</span> <span class="o">=</span> <span class="s2">"string"</span><span class="p">;</span>
+<a id="__codelineno-105-2" name="__codelineno-105-2" href="#__codelineno-105-2"></a><span class="nv">$bar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"key"</span> <span class="o">=&gt;</span> <span class="s2">"value"</span><span class="p">];</span>
 <a id="__codelineno-105-3" name="__codelineno-105-3" href="#__codelineno-105-3"></a><span class="nv">$baz</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
 <a id="__codelineno-105-4" name="__codelineno-105-4" href="#__codelineno-105-4"></a>
 <a id="__codelineno-105-5" name="__codelineno-105-5" href="#__codelineno-105-5"></a><span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\Phalcon\Debug\Dump</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">variables</span><span class="p">(</span><span class="nv">$foo</span><span class="p">,</span> <span class="nv">$bar</span><span class="p">,</span> <span class="nv">$baz</span><span class="p">);</span>
@@ -14987,7 +14987,7 @@ JsonEncodeError</p>
 
 <h4 id="supporthelperjsonexceptionsjsondecodeerror-__construct"><code>__construct()</code><a class="headerlink" href="#supporthelperjsonexceptionsjsondecodeerror-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-185-1" name="__codelineno-185-1" href="#__codelineno-185-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-185-2" name="__codelineno-185-2" href="#__codelineno-185-2"></a>    <span class="nx">string</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-185-2" name="__codelineno-185-2" href="#__codelineno-185-2"></a>    <span class="nx">string</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-185-3" name="__codelineno-185-3" href="#__codelineno-185-3"></a>    <span class="nx">int</span> <span class="nv">$code</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
 <a id="__codelineno-185-4" name="__codelineno-185-4" href="#__codelineno-185-4"></a>    <span class="nx">Throwable</span><span class="o">|</span><span class="k">null</span> <span class="nv">$previous</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-185-5" name="__codelineno-185-5" href="#__codelineno-185-5"></a><span class="p">);</span>
@@ -15017,7 +15017,7 @@ JsonEncodeError</p>
 
 <h4 id="supporthelperjsonexceptionsjsonencodeerror-__construct"><code>__construct()</code><a class="headerlink" href="#supporthelperjsonexceptionsjsonencodeerror-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-186-1" name="__codelineno-186-1" href="#__codelineno-186-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-186-2" name="__codelineno-186-2" href="#__codelineno-186-2"></a>    <span class="nx">string</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-186-2" name="__codelineno-186-2" href="#__codelineno-186-2"></a>    <span class="nx">string</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-186-3" name="__codelineno-186-3" href="#__codelineno-186-3"></a>    <span class="nx">int</span> <span class="nv">$code</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
 <a id="__codelineno-186-4" name="__codelineno-186-4" href="#__codelineno-186-4"></a>    <span class="nx">Throwable</span><span class="o">|</span><span class="k">null</span> <span class="nv">$previous</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-186-5" name="__codelineno-186-5" href="#__codelineno-186-5"></a><span class="p">);</span>
@@ -15162,7 +15162,7 @@ string intact, or set it to true to convert to uppercase.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-191-1" name="__codelineno-191-1" href="#__codelineno-191-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-191-2" name="__codelineno-191-2" href="#__codelineno-191-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
 <a id="__codelineno-191-3" name="__codelineno-191-3" href="#__codelineno-191-3"></a>    <span class="nx">bool</span> <span class="nv">$upperRest</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span>
-<a id="__codelineno-191-4" name="__codelineno-191-4" href="#__codelineno-191-4"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span>
+<a id="__codelineno-191-4" name="__codelineno-191-4" href="#__codelineno-191-4"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
 <a id="__codelineno-191-5" name="__codelineno-191-5" href="#__codelineno-191-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrdecrement">Support\Helper\Str\Decrement<a class="headerlink" href="#supporthelperstrdecrement" title="Permanent link">&para;</a></h2>
@@ -15190,7 +15190,7 @@ is already defined</p>
 <h4 id="supporthelperstrdecrement-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrdecrement-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-192-1" name="__codelineno-192-1" href="#__codelineno-192-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-192-2" name="__codelineno-192-2" href="#__codelineno-192-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-192-3" name="__codelineno-192-3" href="#__codelineno-192-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span>
+<a id="__codelineno-192-3" name="__codelineno-192-3" href="#__codelineno-192-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">"_"</span>
 <a id="__codelineno-192-4" name="__codelineno-192-4" href="#__codelineno-192-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrdirfromfile">Support\Helper\Str\DirFromFile<a class="headerlink" href="#supporthelperstrdirfromfile" title="Permanent link">&para;</a></h2>
@@ -15272,9 +15272,9 @@ by the separator</p>
 <h4 id="supporthelperstrdynamic-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrdynamic-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-195-1" name="__codelineno-195-1" href="#__codelineno-195-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-195-2" name="__codelineno-195-2" href="#__codelineno-195-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-195-3" name="__codelineno-195-3" href="#__codelineno-195-3"></a>    <span class="nx">string</span> <span class="nv">$leftDelimiter</span> <span class="o">=</span> <span class="s2">&quot;{&quot;</span><span class="p">,</span>
-<a id="__codelineno-195-4" name="__codelineno-195-4" href="#__codelineno-195-4"></a>    <span class="nx">string</span> <span class="nv">$rightDelimiter</span> <span class="o">=</span> <span class="s2">&quot;}&quot;</span><span class="p">,</span>
-<a id="__codelineno-195-5" name="__codelineno-195-5" href="#__codelineno-195-5"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span>
+<a id="__codelineno-195-3" name="__codelineno-195-3" href="#__codelineno-195-3"></a>    <span class="nx">string</span> <span class="nv">$leftDelimiter</span> <span class="o">=</span> <span class="s2">"{"</span><span class="p">,</span>
+<a id="__codelineno-195-4" name="__codelineno-195-4" href="#__codelineno-195-4"></a>    <span class="nx">string</span> <span class="nv">$rightDelimiter</span> <span class="o">=</span> <span class="s2">"}"</span><span class="p">,</span>
+<a id="__codelineno-195-5" name="__codelineno-195-5" href="#__codelineno-195-5"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">"|"</span>
 <a id="__codelineno-195-6" name="__codelineno-195-6" href="#__codelineno-195-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrendswith">Support\Helper\Str\EndsWith<a class="headerlink" href="#supporthelperstrendswith" title="Permanent link">&para;</a></h2>
@@ -15424,7 +15424,7 @@ is passed, it will also be used to replace those characters with a space.</p>
 <h4 id="supporthelperstrfriendly-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrfriendly-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-199-1" name="__codelineno-199-1" href="#__codelineno-199-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-199-2" name="__codelineno-199-2" href="#__codelineno-199-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-199-3" name="__codelineno-199-3" href="#__codelineno-199-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+<a id="__codelineno-199-3" name="__codelineno-199-3" href="#__codelineno-199-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">"-"</span><span class="p">,</span>
 <a id="__codelineno-199-4" name="__codelineno-199-4" href="#__codelineno-199-4"></a>    <span class="nx">bool</span> <span class="nv">$lowercase</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-199-5" name="__codelineno-199-5" href="#__codelineno-199-5"></a>    <span class="nx">mixed</span> <span class="nv">$replace</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-199-6" name="__codelineno-199-6" href="#__codelineno-199-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -15505,7 +15505,7 @@ is already defined</p>
 <h4 id="supporthelperstrincrement-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrincrement-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-202-1" name="__codelineno-202-1" href="#__codelineno-202-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-202-2" name="__codelineno-202-2" href="#__codelineno-202-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-202-3" name="__codelineno-202-3" href="#__codelineno-202-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span>
+<a id="__codelineno-202-3" name="__codelineno-202-3" href="#__codelineno-202-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">"_"</span>
 <a id="__codelineno-202-4" name="__codelineno-202-4" href="#__codelineno-202-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrinterpolate">Support\Helper\Str\Interpolate<a class="headerlink" href="#supporthelperstrinterpolate" title="Permanent link">&para;</a></h2>
@@ -15536,8 +15536,8 @@ right and left tokens are <code>%</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-203-1" name="__codelineno-203-1" href="#__codelineno-203-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-203-2" name="__codelineno-203-2" href="#__codelineno-203-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
 <a id="__codelineno-203-3" name="__codelineno-203-3" href="#__codelineno-203-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-203-4" name="__codelineno-203-4" href="#__codelineno-203-4"></a>    <span class="nx">string</span> <span class="nv">$leftToken</span> <span class="o">=</span> <span class="s2">&quot;%&quot;</span><span class="p">,</span>
-<a id="__codelineno-203-5" name="__codelineno-203-5" href="#__codelineno-203-5"></a>    <span class="nx">string</span> <span class="nv">$rightToken</span> <span class="o">=</span> <span class="s2">&quot;%&quot;</span>
+<a id="__codelineno-203-4" name="__codelineno-203-4" href="#__codelineno-203-4"></a>    <span class="nx">string</span> <span class="nv">$leftToken</span> <span class="o">=</span> <span class="s2">"%"</span><span class="p">,</span>
+<a id="__codelineno-203-5" name="__codelineno-203-5" href="#__codelineno-203-5"></a>    <span class="nx">string</span> <span class="nv">$rightToken</span> <span class="o">=</span> <span class="s2">"%"</span>
 <a id="__codelineno-203-6" name="__codelineno-203-6" href="#__codelineno-203-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrisanagram">Support\Helper\Str\IsAnagram<a class="headerlink" href="#supporthelperstrisanagram" title="Permanent link">&para;</a></h2>
@@ -15593,7 +15593,7 @@ right and left tokens are <code>%</code></p>
 <h4 id="supporthelperstrislower-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrislower-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-205-1" name="__codelineno-205-1" href="#__codelineno-205-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-205-2" name="__codelineno-205-2" href="#__codelineno-205-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-205-3" name="__codelineno-205-3" href="#__codelineno-205-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span>
+<a id="__codelineno-205-3" name="__codelineno-205-3" href="#__codelineno-205-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
 <a id="__codelineno-205-4" name="__codelineno-205-4" href="#__codelineno-205-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrispalindrome">Support\Helper\Str\IsPalindrome<a class="headerlink" href="#supporthelperstrispalindrome" title="Permanent link">&para;</a></h2>
@@ -15645,7 +15645,7 @@ right and left tokens are <code>%</code></p>
 <h4 id="supporthelperstrisupper-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrisupper-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-207-1" name="__codelineno-207-1" href="#__codelineno-207-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-207-2" name="__codelineno-207-2" href="#__codelineno-207-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-207-3" name="__codelineno-207-3" href="#__codelineno-207-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span>
+<a id="__codelineno-207-3" name="__codelineno-207-3" href="#__codelineno-207-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
 <a id="__codelineno-207-4" name="__codelineno-207-4" href="#__codelineno-207-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrkebabcase">Support\Helper\Str\KebabCase<a class="headerlink" href="#supporthelperstrkebabcase" title="Permanent link">&para;</a></h2>
@@ -15702,7 +15702,7 @@ right and left tokens are <code>%</code></p>
 <h4 id="supporthelperstrlen-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrlen-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-209-1" name="__codelineno-209-1" href="#__codelineno-209-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-209-2" name="__codelineno-209-2" href="#__codelineno-209-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-209-3" name="__codelineno-209-3" href="#__codelineno-209-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span>
+<a id="__codelineno-209-3" name="__codelineno-209-3" href="#__codelineno-209-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
 <a id="__codelineno-209-4" name="__codelineno-209-4" href="#__codelineno-209-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrlower">Support\Helper\Str\Lower<a class="headerlink" href="#supporthelperstrlower" title="Permanent link">&para;</a></h2>
@@ -15730,7 +15730,7 @@ right and left tokens are <code>%</code></p>
 <h4 id="supporthelperstrlower-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrlower-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-210-1" name="__codelineno-210-1" href="#__codelineno-210-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-210-2" name="__codelineno-210-2" href="#__codelineno-210-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-210-3" name="__codelineno-210-3" href="#__codelineno-210-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span>
+<a id="__codelineno-210-3" name="__codelineno-210-3" href="#__codelineno-210-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
 <a id="__codelineno-210-4" name="__codelineno-210-4" href="#__codelineno-210-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrpascalcase">Support\Helper\Str\PascalCase<a class="headerlink" href="#supporthelperstrpascalcase" title="Permanent link">&para;</a></h2>
@@ -16001,7 +16001,7 @@ characters [2345679ACDEFHJKLMNPRSTUVWXYZ]</span>
 <h4 id="supporthelperstrucwords-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrucwords-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-219-1" name="__codelineno-219-1" href="#__codelineno-219-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-219-2" name="__codelineno-219-2" href="#__codelineno-219-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-219-3" name="__codelineno-219-3" href="#__codelineno-219-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span>
+<a id="__codelineno-219-3" name="__codelineno-219-3" href="#__codelineno-219-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
 <a id="__codelineno-219-4" name="__codelineno-219-4" href="#__codelineno-219-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstruncamelize">Support\Helper\Str\Uncamelize<a class="headerlink" href="#supporthelperstruncamelize" title="Permanent link">&para;</a></h2>
@@ -16029,7 +16029,7 @@ characters [2345679ACDEFHJKLMNPRSTUVWXYZ]</span>
 <h4 id="supporthelperstruncamelize-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstruncamelize-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-220-1" name="__codelineno-220-1" href="#__codelineno-220-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-220-2" name="__codelineno-220-2" href="#__codelineno-220-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-220-3" name="__codelineno-220-3" href="#__codelineno-220-3"></a>    <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span>
+<a id="__codelineno-220-3" name="__codelineno-220-3" href="#__codelineno-220-3"></a>    <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="s2">"_"</span>
 <a id="__codelineno-220-4" name="__codelineno-220-4" href="#__codelineno-220-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrunderscore">Support\Helper\Str\Underscore<a class="headerlink" href="#supporthelperstrunderscore" title="Permanent link">&para;</a></h2>
@@ -16081,7 +16081,7 @@ characters [2345679ACDEFHJKLMNPRSTUVWXYZ]</span>
 <h4 id="supporthelperstrupper-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrupper-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-222-1" name="__codelineno-222-1" href="#__codelineno-222-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-222-2" name="__codelineno-222-2" href="#__codelineno-222-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-222-3" name="__codelineno-222-3" href="#__codelineno-222-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span>
+<a id="__codelineno-222-3" name="__codelineno-222-3" href="#__codelineno-222-3"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
 <a id="__codelineno-222-4" name="__codelineno-222-4" href="#__codelineno-222-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supportregistry">Support\Registry<a class="headerlink" href="#supportregistry" title="Permanent link">&para;</a></h2>
@@ -16093,24 +16093,24 @@ available throughout your application.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-223-1" name="__codelineno-223-1" href="#__codelineno-223-1"></a><span class="nv">$registry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Registry</span><span class="p">();</span>
 <a id="__codelineno-223-2" name="__codelineno-223-2" href="#__codelineno-223-2"></a>
 <a id="__codelineno-223-3" name="__codelineno-223-3" href="#__codelineno-223-3"></a><span class="c1">// Set value</span>
-<a id="__codelineno-223-4" name="__codelineno-223-4" href="#__codelineno-223-4"></a><span class="nv">$registry</span><span class="o">-&gt;</span><span class="na">something</span> <span class="o">=</span> <span class="s2">&quot;something&quot;</span><span class="p">;</span>
+<a id="__codelineno-223-4" name="__codelineno-223-4" href="#__codelineno-223-4"></a><span class="nv">$registry</span><span class="o">-&gt;</span><span class="na">something</span> <span class="o">=</span> <span class="s2">"something"</span><span class="p">;</span>
 <a id="__codelineno-223-5" name="__codelineno-223-5" href="#__codelineno-223-5"></a><span class="c1">// or</span>
-<a id="__codelineno-223-6" name="__codelineno-223-6" href="#__codelineno-223-6"></a><span class="nv">$registry</span><span class="p">[</span><span class="s2">&quot;something&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;something&quot;</span><span class="p">;</span>
+<a id="__codelineno-223-6" name="__codelineno-223-6" href="#__codelineno-223-6"></a><span class="nv">$registry</span><span class="p">[</span><span class="s2">"something"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"something"</span><span class="p">;</span>
 <a id="__codelineno-223-7" name="__codelineno-223-7" href="#__codelineno-223-7"></a>
 <a id="__codelineno-223-8" name="__codelineno-223-8" href="#__codelineno-223-8"></a><span class="c1">// Get value</span>
 <a id="__codelineno-223-9" name="__codelineno-223-9" href="#__codelineno-223-9"></a><span class="nv">$value</span> <span class="o">=</span> <span class="nv">$registry</span><span class="o">-&gt;</span><span class="na">something</span><span class="p">;</span>
 <a id="__codelineno-223-10" name="__codelineno-223-10" href="#__codelineno-223-10"></a><span class="c1">// or</span>
-<a id="__codelineno-223-11" name="__codelineno-223-11" href="#__codelineno-223-11"></a><span class="nv">$value</span> <span class="o">=</span> <span class="nv">$registry</span><span class="p">[</span><span class="s2">&quot;something&quot;</span><span class="p">];</span>
+<a id="__codelineno-223-11" name="__codelineno-223-11" href="#__codelineno-223-11"></a><span class="nv">$value</span> <span class="o">=</span> <span class="nv">$registry</span><span class="p">[</span><span class="s2">"something"</span><span class="p">];</span>
 <a id="__codelineno-223-12" name="__codelineno-223-12" href="#__codelineno-223-12"></a>
 <a id="__codelineno-223-13" name="__codelineno-223-13" href="#__codelineno-223-13"></a><span class="c1">// Check if the key exists</span>
 <a id="__codelineno-223-14" name="__codelineno-223-14" href="#__codelineno-223-14"></a><span class="nv">$exists</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$registry</span><span class="o">-&gt;</span><span class="na">something</span><span class="p">);</span>
 <a id="__codelineno-223-15" name="__codelineno-223-15" href="#__codelineno-223-15"></a><span class="c1">// or</span>
-<a id="__codelineno-223-16" name="__codelineno-223-16" href="#__codelineno-223-16"></a><span class="nv">$exists</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$registry</span><span class="p">[</span><span class="s2">&quot;something&quot;</span><span class="p">]);</span>
+<a id="__codelineno-223-16" name="__codelineno-223-16" href="#__codelineno-223-16"></a><span class="nv">$exists</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$registry</span><span class="p">[</span><span class="s2">"something"</span><span class="p">]);</span>
 <a id="__codelineno-223-17" name="__codelineno-223-17" href="#__codelineno-223-17"></a>
 <a id="__codelineno-223-18" name="__codelineno-223-18" href="#__codelineno-223-18"></a><span class="c1">// Unset</span>
 <a id="__codelineno-223-19" name="__codelineno-223-19" href="#__codelineno-223-19"></a><span class="nb">unset</span><span class="p">(</span><span class="nv">$registry</span><span class="o">-&gt;</span><span class="na">something</span><span class="p">);</span>
 <a id="__codelineno-223-20" name="__codelineno-223-20" href="#__codelineno-223-20"></a><span class="c1">// or</span>
-<a id="__codelineno-223-21" name="__codelineno-223-21" href="#__codelineno-223-21"></a><span class="nb">unset</span><span class="p">(</span><span class="nv">$registry</span><span class="p">[</span><span class="s2">&quot;something&quot;</span><span class="p">]);</span>
+<a id="__codelineno-223-21" name="__codelineno-223-21" href="#__codelineno-223-21"></a><span class="nb">unset</span><span class="p">(</span><span class="nv">$registry</span><span class="p">[</span><span class="s2">"something"</span><span class="p">]);</span>
 </code></pre></div>
 <p>In addition to ArrayAccess, Phalcon\Registry also implements Countable
 (count($registry) will return the number of elements in the registry),
@@ -16539,7 +16539,7 @@ no other project sharing this PHP process is affected.</p>
 <h4 id="supporttraitsfilepathtrait-preparevirtualpath"><code>prepareVirtualPath()</code><a class="headerlink" href="#supporttraitsfilepathtrait-preparevirtualpath" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-252-1" name="__codelineno-252-1" href="#__codelineno-252-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">prepareVirtualPath</span><span class="p">(</span>
 <a id="__codelineno-252-2" name="__codelineno-252-2" href="#__codelineno-252-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
-<a id="__codelineno-252-3" name="__codelineno-252-3" href="#__codelineno-252-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span>
+<a id="__codelineno-252-3" name="__codelineno-252-3" href="#__codelineno-252-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">"_"</span>
 <a id="__codelineno-252-4" name="__codelineno-252-4" href="#__codelineno-252-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supportversion">Support\Version<a class="headerlink" href="#supportversion" title="Permanent link">&para;</a></h2>
@@ -16831,7 +16831,7 @@ E - Special release version i.e. RC1, Beta2 etc.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

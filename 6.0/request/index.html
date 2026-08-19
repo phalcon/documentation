@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5942,7 +5942,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">);</span>
 </code></pre></div>
 <p>Get the <code>userEmail</code> field from the <code>$_REQUEST</code> superglobal. Sanitize the value with the <code>email</code> sanitizer:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -5951,7 +5951,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;some@example.com&#39;</span><span class="p">);</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">,</span> <span class="s1">'email'</span><span class="p">,</span> <span class="s1">'some@example.com'</span><span class="p">);</span>
 </code></pre></div>
 <p>Get the <code>userEmail</code> field from the <code>$_REQUEST</code> superglobal. Do not sanitize it. If the parameter is null, return the default value:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -5960,7 +5960,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">&#39;some@example.com&#39;</span><span class="p">);</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">'some@example.com'</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="_get">$_GET<a class="headerlink" href="#_get" title="Permanent link">&para;</a></h3>
 <p>The <a href="https://www.php.net/manual/en/reserved.variables.get.php">$_GET</a> superglobal contains an associative array that contains the variables passed to the current script via URL parameters (also known as the query string). You can retrieve the data stored in the array by calling the <code>getQuery()</code> method as follows:</p>
@@ -5972,7 +5972,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">);</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">);</span>
 </code></pre></div>
 <p>Get the <code>userEmail</code> field from the <code>$_GET</code> superglobal. Sanitize the value with the <code>email</code> sanitizer:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -5981,7 +5981,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;some@example.com&#39;</span><span class="p">);</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">,</span> <span class="s1">'email'</span><span class="p">,</span> <span class="s1">'some@example.com'</span><span class="p">);</span>
 </code></pre></div>
 <p>Get the <code>userEmail</code> field from the <code>$_GET</code> superglobal. Do not sanitize it. If the parameter is null, return the default value:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -5990,7 +5990,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">&#39;some@example.com&#39;</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">'some@example.com'</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="_post">$_POST<a class="headerlink" href="#_post" title="Permanent link">&para;</a></h3>
 <p>The <a href="https://www.php.net/manual/en/reserved.variables.post.php">$_POST</a> superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using <code>application/x-www-form-urlencoded</code> or <code>multipart/form-data</code> as the HTTP <code>Content-Type</code> in the request. You can retrieve the data stored in the array by calling the <code>getPost()</code> method as follows:</p>
@@ -6002,7 +6002,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">);</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">);</span>
 </code></pre></div>
 <p>Get the <code>userEmail</code> field from the <code>$_POST</code> superglobal. Sanitize the value with the <code>email</code> sanitizer:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -6011,7 +6011,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;some@example.com&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">,</span> <span class="s1">'email'</span><span class="p">,</span> <span class="s1">'some@example.com'</span><span class="p">);</span>
 </code></pre></div>
 <p>Get the <code>userEmail</code> field from the <code>$_POST</code> superglobal. Do not sanitize it. If the parameter is null, return the default value:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -6020,7 +6020,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">&#39;some@example.com&#39;</span><span class="p">);</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">'some@example.com'</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="put">Put<a class="headerlink" href="#put" title="Permanent link">&para;</a></h3>
 <p>The request object parses the PUT stream that has been received internally. You can retrieve the data stored in the array by calling the <code>getPut()</code> method as follows:</p>
@@ -6032,7 +6032,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">);</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">);</span>
 </code></pre></div>
 <p>Get the <code>userEmail</code> field from the <code>PUT</code> stream. Sanitize the value with the <code>email</code> sanitizer:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -6041,7 +6041,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;some@example.com&#39;</span><span class="p">);</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">,</span> <span class="s1">'email'</span><span class="p">,</span> <span class="s1">'some@example.com'</span><span class="p">);</span>
 </code></pre></div>
 <p>Get the <code>userEmail</code> field from the <code>PUT</code> stream. Do not sanitize it. If the parameter is null, return the default value:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -6050,7 +6050,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s1">&#39;userEmail&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">&#39;some@example.com&#39;</span><span class="p">);</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$email</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s1">'userEmail'</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">'some@example.com'</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="_server">$_SERVER<a class="headerlink" href="#_server" title="Permanent link">&para;</a></h3>
 <p>The <a href="https://www.php.net/manual/en/reserved.variables.server.php">$_SERVER</a> superglobal contains an array containing information such as headers, paths, and script locations. You can retrieve the data stored in the array by calling the <code>getServer()</code> method as follows:</p>
@@ -6062,7 +6062,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nv">$name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getServer</span><span class="p">(</span><span class="s1">&#39;SERVER_NAME&#39;</span><span class="p">);</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nv">$name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getServer</span><span class="p">(</span><span class="s1">'SERVER_NAME'</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="preset-sanitizers">Preset Sanitizers<a class="headerlink" href="#preset-sanitizers" title="Permanent link">&para;</a></h2>
 <p>It is relatively common that certain fields are using the same name throughout your application. A field posted from a form in your application can have the same name and function as another form in a different area. Examples of this behavior could be <code>id</code> fields, <code>name</code> etc.</p>
@@ -6076,25 +6076,25 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Di</span><span class="p">();</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
 <a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>    <span class="s1">&#39;request&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>    <span class="s1">'request'</span><span class="p">,</span>
 <a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>        <span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>        <span class="nv">$request</span>
 <a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>            <span class="o">-&gt;</span><span class="na">setParameterFilters</span><span class="p">(</span>
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>                <span class="s1">&#39;id&#39;</span><span class="p">,</span> 
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>                <span class="s1">'id'</span><span class="p">,</span> 
 <a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>                <span class="nx">Filter</span><span class="o">::</span><span class="na">FILTER_ABSINT</span><span class="p">,</span> 
 <a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>                <span class="p">[</span>
-<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>                    <span class="s1">&#39;post&#39;</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>                    <span class="s1">'post'</span>
 <a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>                <span class="p">]</span>
 <a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>            <span class="p">)</span>
 <a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>            <span class="o">-&gt;</span><span class="na">setParameterFilters</span><span class="p">(</span>
-<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>                <span class="s1">&#39;name&#39;</span><span class="p">,</span> 
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>                <span class="s1">'name'</span><span class="p">,</span> 
 <a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>                <span class="p">[</span>
-<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>                    <span class="s1">&#39;trim&#39;</span><span class="p">,</span> 
-<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>                    <span class="s1">&#39;string&#39;</span>
+<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>                    <span class="s1">'trim'</span><span class="p">,</span> 
+<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>                    <span class="s1">'string'</span>
 <a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>                <span class="p">],</span> 
 <a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a>                <span class="p">[</span>
-<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a>                    <span class="s1">&#39;post&#39;</span>
+<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a>                    <span class="s1">'post'</span>
 <a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a>                <span class="p">]</span>
 <a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a>            <span class="p">)</span>
 <a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a>        <span class="p">;</span>
@@ -6131,10 +6131,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>            <span class="c1">// Access POST data</span>
 <a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>            <span class="nv">$customerName</span> <span class="o">=</span> <span class="nv">$this</span>
 <a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>                <span class="o">-&gt;</span><span class="na">request</span>
-<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>                <span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>                <span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
 <a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>            <span class="nv">$customerBorn</span> <span class="o">=</span> <span class="nv">$this</span>
 <a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>                <span class="o">-&gt;</span><span class="na">request</span>
-<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>                <span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;born&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="s1">&#39;1984&#39;</span><span class="p">);</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>                <span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'born'</span><span class="p">,</span> <span class="s1">'string'</span><span class="p">,</span> <span class="s1">'1984'</span><span class="p">);</span>
 <a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>        <span class="p">}</span>
 <a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>    <span class="p">}</span>
 <a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="p">}</span>
@@ -6318,8 +6318,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="nv">$request</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="o">-&gt;</span><span class="na">setTrustedProxies</span><span class="p">([</span><span class="s2">&quot;10.0.0.10&quot;</span><span class="p">,</span> <span class="s2">&quot;10.0.0.11&quot;</span><span class="p">])</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="o">-&gt;</span><span class="na">setTrustedProxyHeader</span><span class="p">(</span><span class="s2">&quot;HTTP_CLIENT_IP&quot;</span><span class="p">);</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="o">-&gt;</span><span class="na">setTrustedProxies</span><span class="p">([</span><span class="s2">"10.0.0.10"</span><span class="p">,</span> <span class="s2">"10.0.0.11"</span><span class="p">])</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="o">-&gt;</span><span class="na">setTrustedProxyHeader</span><span class="p">(</span><span class="s2">"HTTP_CLIENT_IP"</span><span class="p">);</span>
 <a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
 <a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="nv">$ipAddress</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getClientAddress</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
 </code></pre></div>
@@ -6415,12 +6415,12 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
 <a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">isAjax</span><span class="p">())</span> <span class="p">{</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="k">echo</span> <span class="s1">&#39;The request was made with Ajax&#39;</span><span class="p">;</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="k">echo</span> <span class="s1">'The request was made with Ajax'</span><span class="p">;</span>
 <a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="p">}</span>
 <a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
 <a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="c1">// Check the request layer</span>
 <a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">isSecure</span><span class="p">())</span> <span class="p">{</span>
-<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="k">echo</span> <span class="s1">&#39;The request was made using a secure layer&#39;</span><span class="p">;</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="k">echo</span> <span class="s1">'The request was made using a secure layer'</span><span class="p">;</span>
 <a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="p">}</span>
 </code></pre></div>
 <p>Some methods:</p>
@@ -6451,19 +6451,19 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
 <a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="c1">// POST</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;POST&#39;</span><span class="p">;</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'POST'</span><span class="p">;</span>
 <a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="k">echo</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getMethod</span><span class="p">();</span>
 <a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
 <a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="sd">/**</span>
-<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="sd"> * header(&#39;X-HTTP-Method-Override: GET&#39;);</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="sd"> * header('X-HTTP-Method-Override: GET');</span>
 <a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="sd"> */</span> 
-<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;POST&#39;</span><span class="p">;</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'POST'</span><span class="p">;</span>
 <a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHttpMethodParameterOverride</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="k">echo</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getMethod</span><span class="p">();</span>
 <a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>
 <a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="c1">// GET</span>
-<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;POST&#39;</span><span class="p">;</span>
-<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;_method&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="s1">&#39;GET&#39;</span><span class="p">;</span>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'POST'</span><span class="p">;</span>
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">'_method'</span><span class="p">]</span>       <span class="o">=</span> <span class="s1">'GET'</span><span class="p">;</span>
 <a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHttpMethodParameterOverride</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a><span class="k">echo</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getMethod</span><span class="p">();</span>
 </code></pre></div>
@@ -6477,17 +6477,17 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
 <a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">;</span>
 <a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;example.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"example.com"</span><span class="p">;</span>
 <a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// example.com</span>
 <a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>
-<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;example.com:8080&quot;</span><span class="p">;</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"example.com:8080"</span><span class="p">;</span>
 <a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// example.com:8080</span>
 <a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>
 <a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setStrictHostCheck</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
-<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ex=am~ple.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ex=am~ple.com"</span><span class="p">;</span>
 <a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// UnexpectedValueException</span>
 <a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>
-<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ExAmPlE.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ExAmPlE.com"</span><span class="p">;</span>
 <a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// example.com</span>
 </code></pre></div>
 <p>The <code>getHttpHost()</code> method will return the hostname used by the request. The method will try to find hostname in following order:</p>
@@ -6518,10 +6518,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a>            <span class="nv">$files</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getUploadedFiles</span><span class="p">();</span>
 <a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>
 <a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>                <span class="k">echo</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getSize</span><span class="p">(),</span> <span class="s1">&#39;\n&#39;</span><span class="p">;</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>                <span class="k">echo</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="s1">' '</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getSize</span><span class="p">(),</span> <span class="s1">'\n'</span><span class="p">;</span>
 <a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a>
 <a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a>                <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">moveTo</span><span class="p">(</span>
-<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>                    <span class="s1">&#39;files/&#39;</span> <span class="o">.</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>                    <span class="s1">'files/'</span> <span class="o">.</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span>
 <a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a>                <span class="p">);</span>
 <a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a>            <span class="p">}</span>
 <a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a>        <span class="p">}</span>
@@ -6648,7 +6648,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
 <a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
 <a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_AUTHORIZATION&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Enigma Secret&#39;</span><span class="p">;</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_AUTHORIZATION'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Enigma Secret'</span><span class="p">;</span>
 <a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>
 <a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="nb">print_r</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHeaders</span><span class="p">());</span>
@@ -6674,38 +6674,38 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="p">{</span>
 <a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterAuthorizationResolve</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$data</span><span class="p">)</span>
 <a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>    <span class="p">{</span>
-<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;server&#39;</span><span class="p">][</span><span class="s1">&#39;CUSTOM_KERBEROS_AUTH&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'server'</span><span class="p">][</span><span class="s1">'CUSTOM_KERBEROS_AUTH'</span><span class="p">]))</span> <span class="p">{</span>
 <a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
 <a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a>        <span class="p">}</span>
 <a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a>
 <a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a>        <span class="k">list</span><span class="p">(</span><span class="nv">$type</span><span class="p">,)</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span>
-<a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>            <span class="s1">&#39; &#39;</span><span class="p">,</span> 
-<a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a>            <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;server&#39;</span><span class="p">][</span><span class="s1">&#39;CUSTOM_KERBEROS_AUTH&#39;</span><span class="p">],</span> 
+<a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>            <span class="s1">' '</span><span class="p">,</span> 
+<a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a>            <span class="nv">$data</span><span class="p">[</span><span class="s1">'server'</span><span class="p">][</span><span class="s1">'CUSTOM_KERBEROS_AUTH'</span><span class="p">],</span> 
 <a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a>            <span class="mi">2</span>
 <a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a>        <span class="p">);</span>
 <a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a>
-<a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$type</span> <span class="o">||</span> <span class="nb">stripos</span><span class="p">(</span><span class="nv">$type</span><span class="p">,</span> <span class="s1">&#39;negotiate&#39;</span><span class="p">)</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$type</span> <span class="o">||</span> <span class="nb">stripos</span><span class="p">(</span><span class="nv">$type</span><span class="p">,</span> <span class="s1">'negotiate'</span><span class="p">)</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a>            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
 <a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a>        <span class="p">}</span>
 <a id="__codelineno-31-25" name="__codelineno-31-25" href="#__codelineno-31-25"></a>
 <a id="__codelineno-31-26" name="__codelineno-31-26" href="#__codelineno-31-26"></a>        <span class="k">return</span> <span class="p">[</span>
-<a id="__codelineno-31-27" name="__codelineno-31-27" href="#__codelineno-31-27"></a>           <span class="s1">&#39;Authorization&#39;</span><span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;server&#39;</span><span class="p">][</span><span class="s1">&#39;CUSTOM_KERBEROS_AUTH&#39;</span><span class="p">],</span>
+<a id="__codelineno-31-27" name="__codelineno-31-27" href="#__codelineno-31-27"></a>           <span class="s1">'Authorization'</span><span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'server'</span><span class="p">][</span><span class="s1">'CUSTOM_KERBEROS_AUTH'</span><span class="p">],</span>
 <a id="__codelineno-31-28" name="__codelineno-31-28" href="#__codelineno-31-28"></a>        <span class="p">];</span>
 <a id="__codelineno-31-29" name="__codelineno-31-29" href="#__codelineno-31-29"></a>    <span class="p">}</span>
 <a id="__codelineno-31-30" name="__codelineno-31-30" href="#__codelineno-31-30"></a><span class="p">}</span>
 <a id="__codelineno-31-31" name="__codelineno-31-31" href="#__codelineno-31-31"></a>
-<a id="__codelineno-31-32" name="__codelineno-31-32" href="#__codelineno-31-32"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;CUSTOM_KERBEROS_AUTH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Negotiate &#39;</span>
-<a id="__codelineno-31-33" name="__codelineno-31-33" href="#__codelineno-31-33"></a>                                 <span class="o">.</span> <span class="s1">&#39;a87421000492aa874209af8bc028&#39;</span><span class="p">;</span>
+<a id="__codelineno-31-32" name="__codelineno-31-32" href="#__codelineno-31-32"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'CUSTOM_KERBEROS_AUTH'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Negotiate '</span>
+<a id="__codelineno-31-33" name="__codelineno-31-33" href="#__codelineno-31-33"></a>                                 <span class="o">.</span> <span class="s1">'a87421000492aa874209af8bc028'</span><span class="p">;</span>
 <a id="__codelineno-31-34" name="__codelineno-31-34" href="#__codelineno-31-34"></a>
 <a id="__codelineno-31-35" name="__codelineno-31-35" href="#__codelineno-31-35"></a><span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Di</span><span class="p">();</span>
 <a id="__codelineno-31-36" name="__codelineno-31-36" href="#__codelineno-31-36"></a>
 <a id="__codelineno-31-37" name="__codelineno-31-37" href="#__codelineno-31-37"></a><span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-31-38" name="__codelineno-31-38" href="#__codelineno-31-38"></a>    <span class="s1">&#39;eventsManager&#39;</span><span class="p">,</span>
+<a id="__codelineno-31-38" name="__codelineno-31-38" href="#__codelineno-31-38"></a>    <span class="s1">'eventsManager'</span><span class="p">,</span>
 <a id="__codelineno-31-39" name="__codelineno-31-39" href="#__codelineno-31-39"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-31-40" name="__codelineno-31-40" href="#__codelineno-31-40"></a>        <span class="nv">$manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-31-41" name="__codelineno-31-41" href="#__codelineno-31-41"></a>
 <a id="__codelineno-31-42" name="__codelineno-31-42" href="#__codelineno-31-42"></a>        <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-31-43" name="__codelineno-31-43" href="#__codelineno-31-43"></a>            <span class="s1">&#39;request&#39;</span><span class="p">,</span>
+<a id="__codelineno-31-43" name="__codelineno-31-43" href="#__codelineno-31-43"></a>            <span class="s1">'request'</span><span class="p">,</span>
 <a id="__codelineno-31-44" name="__codelineno-31-44" href="#__codelineno-31-44"></a>            <span class="k">new</span> <span class="nx">NegotiateAuthorizationListener</span><span class="p">()</span>
 <a id="__codelineno-31-45" name="__codelineno-31-45" href="#__codelineno-31-45"></a>        <span class="p">);</span>
 <a id="__codelineno-31-46" name="__codelineno-31-46" href="#__codelineno-31-46"></a>
@@ -6915,7 +6915,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

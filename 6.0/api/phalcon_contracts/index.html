@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -17092,7 +17092,7 @@ component/access</p>
 </code></pre></div>
 <p>Returns the default action</p>
 <h4 id="contractsacladapteradapter-getinheritedroles"><code>getInheritedRoles()</code><a class="headerlink" href="#contractsacladapteradapter-getinheritedroles" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getInheritedRoles</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getInheritedRoles</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the inherited roles for a passed role name. If no role name
 has been specified it will return the whole array. If the role has not
@@ -17802,14 +17802,14 @@ fail at construction time rather than returning null.</p>
 
 <h4 id="contractsauthguardbasicauth-basic"><code>basic()</code><a class="headerlink" href="#contractsauthguardbasicauth-basic" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">basic</span><span class="p">(</span>
-<a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a>    <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a>    <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="s2">"email"</span><span class="p">,</span>
 <a id="__codelineno-90-3" name="__codelineno-90-3" href="#__codelineno-90-3"></a>    <span class="k">array</span> <span class="nv">$extraConditions</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-90-4" name="__codelineno-90-4" href="#__codelineno-90-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Authenticate against HTTP Basic credentials. Returns true on success.</p>
 <h4 id="contractsauthguardbasicauth-oncebasic"><code>onceBasic()</code><a class="headerlink" href="#contractsauthguardbasicauth-oncebasic" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">onceBasic</span><span class="p">(</span>
-<a id="__codelineno-91-2" name="__codelineno-91-2" href="#__codelineno-91-2"></a>    <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<a id="__codelineno-91-2" name="__codelineno-91-2" href="#__codelineno-91-2"></a>    <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="s2">"email"</span><span class="p">,</span>
 <a id="__codelineno-91-3" name="__codelineno-91-3" href="#__codelineno-91-3"></a>    <span class="k">array</span> <span class="nv">$extraConditions</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-91-4" name="__codelineno-91-4" href="#__codelineno-91-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AuthUser</span><span class="o">|</span><span class="k">false</span><span class="p">;</span>
 </code></pre></div>
@@ -19965,12 +19965,12 @@ return any rows</p>
 </code></pre></div>
 <p>Returns the n'th field of first row in a SQL query result</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-232-1" name="__codelineno-232-1" href="#__codelineno-232-1"></a><span class="c1">// Getting count of invoices</span>
-<a id="__codelineno-232-2" name="__codelineno-232-2" href="#__codelineno-232-2"></a><span class="nv">$invoicesCount</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchColumn</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) FROM co_invoices&quot;</span><span class="p">);</span>
+<a id="__codelineno-232-2" name="__codelineno-232-2" href="#__codelineno-232-2"></a><span class="nv">$invoicesCount</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchColumn</span><span class="p">(</span><span class="s2">"SELECT COUNT(*) FROM co_invoices"</span><span class="p">);</span>
 <a id="__codelineno-232-3" name="__codelineno-232-3" href="#__codelineno-232-3"></a><span class="nb">print_r</span><span class="p">(</span><span class="nv">$invoicesCount</span><span class="p">);</span>
 <a id="__codelineno-232-4" name="__codelineno-232-4" href="#__codelineno-232-4"></a>
 <a id="__codelineno-232-5" name="__codelineno-232-5" href="#__codelineno-232-5"></a><span class="c1">// Getting the title of the last created invoice</span>
 <a id="__codelineno-232-6" name="__codelineno-232-6" href="#__codelineno-232-6"></a><span class="nv">$invoice</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchColumn</span><span class="p">(</span>
-<a id="__codelineno-232-7" name="__codelineno-232-7" href="#__codelineno-232-7"></a>    <span class="s2">&quot;SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC&quot;</span><span class="p">,</span>
+<a id="__codelineno-232-7" name="__codelineno-232-7" href="#__codelineno-232-7"></a>    <span class="s2">"SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC"</span><span class="p">,</span>
 <a id="__codelineno-232-8" name="__codelineno-232-8" href="#__codelineno-232-8"></a>    <span class="mi">1</span>
 <a id="__codelineno-232-9" name="__codelineno-232-9" href="#__codelineno-232-9"></a><span class="p">);</span>
 <a id="__codelineno-232-10" name="__codelineno-232-10" href="#__codelineno-232-10"></a><span class="nb">print_r</span><span class="p">(</span><span class="nv">$invoice</span><span class="p">);</span>
@@ -19987,7 +19987,7 @@ return any rows</p>
 <h4 id="contractsdbadapteradapter-forupdate"><code>forUpdate()</code><a class="headerlink" href="#contractsdbadapteradapter-forupdate" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-234-1" name="__codelineno-234-1" href="#__codelineno-234-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">forUpdate</span><span class="p">(</span>
 <a id="__codelineno-234-2" name="__codelineno-234-2" href="#__codelineno-234-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-234-3" name="__codelineno-234-3" href="#__codelineno-234-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-234-3" name="__codelineno-234-3" href="#__codelineno-234-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-234-4" name="__codelineno-234-4" href="#__codelineno-234-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a SQL modified with a FOR UPDATE clause</p>
@@ -20012,16 +20012,16 @@ return any rows</p>
 </code></pre></div>
 <p>Returns the default value to make the RBDM use the default value declared
 in the table definition</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-240-1" name="__codelineno-240-1" href="#__codelineno-240-1"></a><span class="c1">// Inserting a new invoice with a valid default value for the column &#39;inv_total&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-240-1" name="__codelineno-240-1" href="#__codelineno-240-1"></a><span class="c1">// Inserting a new invoice with a valid default value for the column 'inv_total'</span>
 <a id="__codelineno-240-2" name="__codelineno-240-2" href="#__codelineno-240-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
-<a id="__codelineno-240-3" name="__codelineno-240-3" href="#__codelineno-240-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-240-3" name="__codelineno-240-3" href="#__codelineno-240-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-240-4" name="__codelineno-240-4" href="#__codelineno-240-4"></a>    <span class="p">[</span>
-<a id="__codelineno-240-5" name="__codelineno-240-5" href="#__codelineno-240-5"></a>        <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-240-5" name="__codelineno-240-5" href="#__codelineno-240-5"></a>        <span class="s2">"Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-240-6" name="__codelineno-240-6" href="#__codelineno-240-6"></a>        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getDefaultValue</span><span class="p">()</span>
 <a id="__codelineno-240-7" name="__codelineno-240-7" href="#__codelineno-240-7"></a>    <span class="p">],</span>
 <a id="__codelineno-240-8" name="__codelineno-240-8" href="#__codelineno-240-8"></a>    <span class="p">[</span>
-<a id="__codelineno-240-9" name="__codelineno-240-9" href="#__codelineno-240-9"></a>        <span class="s2">&quot;inv_title&quot;</span><span class="p">,</span>
-<a id="__codelineno-240-10" name="__codelineno-240-10" href="#__codelineno-240-10"></a>        <span class="s2">&quot;inv_total&quot;</span><span class="p">,</span>
+<a id="__codelineno-240-9" name="__codelineno-240-9" href="#__codelineno-240-9"></a>        <span class="s2">"inv_title"</span><span class="p">,</span>
+<a id="__codelineno-240-10" name="__codelineno-240-10" href="#__codelineno-240-10"></a>        <span class="s2">"inv_total"</span><span class="p">,</span>
 <a id="__codelineno-240-11" name="__codelineno-240-11" href="#__codelineno-240-11"></a>    <span class="p">]</span>
 <a id="__codelineno-240-12" name="__codelineno-240-12" href="#__codelineno-240-12"></a><span class="p">);</span>
 </code></pre></div>
@@ -20084,15 +20084,15 @@ in the table definition</p>
 <p>Inserts data into a table using custom RBDM SQL syntax</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-253-1" name="__codelineno-253-1" href="#__codelineno-253-1"></a><span class="c1">// Inserting a new invoice</span>
 <a id="__codelineno-253-2" name="__codelineno-253-2" href="#__codelineno-253-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insertAsDict</span><span class="p">(</span>
-<a id="__codelineno-253-3" name="__codelineno-253-3" href="#__codelineno-253-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-253-3" name="__codelineno-253-3" href="#__codelineno-253-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-253-4" name="__codelineno-253-4" href="#__codelineno-253-4"></a>    <span class="p">[</span>
-<a id="__codelineno-253-5" name="__codelineno-253-5" href="#__codelineno-253-5"></a>        <span class="s2">&quot;inv_title&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
-<a id="__codelineno-253-6" name="__codelineno-253-6" href="#__codelineno-253-6"></a>        <span class="s2">&quot;inv_total&quot;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-253-5" name="__codelineno-253-5" href="#__codelineno-253-5"></a>        <span class="s2">"inv_title"</span> <span class="o">=&gt;</span> <span class="s2">"Test Invoice"</span><span class="p">,</span>
+<a id="__codelineno-253-6" name="__codelineno-253-6" href="#__codelineno-253-6"></a>        <span class="s2">"inv_total"</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
 <a id="__codelineno-253-7" name="__codelineno-253-7" href="#__codelineno-253-7"></a>    <span class="p">]</span>
 <a id="__codelineno-253-8" name="__codelineno-253-8" href="#__codelineno-253-8"></a><span class="p">);</span>
 <a id="__codelineno-253-9" name="__codelineno-253-9" href="#__codelineno-253-9"></a>
 <a id="__codelineno-253-10" name="__codelineno-253-10" href="#__codelineno-253-10"></a><span class="c1">// Next SQL sentence is sent to the database system</span>
-<a id="__codelineno-253-11" name="__codelineno-253-11" href="#__codelineno-253-11"></a><span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="sb">`co_invoices`</span> <span class="p">(</span><span class="sb">`inv_title`</span><span class="p">,</span> <span class="sb">`inv_total`</span><span class="p">)</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<a id="__codelineno-253-11" name="__codelineno-253-11" href="#__codelineno-253-11"></a><span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="sb">`co_invoices`</span> <span class="p">(</span><span class="sb">`inv_title`</span><span class="p">,</span> <span class="sb">`inv_total`</span><span class="p">)</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="s2">"Test Invoice"</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="contractsdbadapteradapter-isnestedtransactionswithsavepoints"><code>isNestedTransactionsWithSavepoints()</code><a class="headerlink" href="#contractsdbadapteradapter-isnestedtransactionswithsavepoints" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-254-1" name="__codelineno-254-1" href="#__codelineno-254-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isNestedTransactionsWithSavepoints</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
@@ -20160,7 +20160,7 @@ rows</p>
 <h4 id="contractsdbadapteradapter-sharedlock"><code>sharedLock()</code><a class="headerlink" href="#contractsdbadapteradapter-sharedlock" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-266-1" name="__codelineno-266-1" href="#__codelineno-266-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">sharedLock</span><span class="p">(</span>
 <a id="__codelineno-266-2" name="__codelineno-266-2" href="#__codelineno-266-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-266-3" name="__codelineno-266-3" href="#__codelineno-266-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-266-3" name="__codelineno-266-3" href="#__codelineno-266-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-266-4" name="__codelineno-266-4" href="#__codelineno-266-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a SQL modified with a LOCK IN SHARE MODE clause</p>
@@ -20209,15 +20209,15 @@ auto-numeric values</p>
 Another, more convenient syntax</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-273-1" name="__codelineno-273-1" href="#__codelineno-273-1"></a><span class="c1">// Updating existing invoice</span>
 <a id="__codelineno-273-2" name="__codelineno-273-2" href="#__codelineno-273-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">updateAsDict</span><span class="p">(</span>
-<a id="__codelineno-273-3" name="__codelineno-273-3" href="#__codelineno-273-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-273-3" name="__codelineno-273-3" href="#__codelineno-273-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-273-4" name="__codelineno-273-4" href="#__codelineno-273-4"></a>    <span class="p">[</span>
-<a id="__codelineno-273-5" name="__codelineno-273-5" href="#__codelineno-273-5"></a>        <span class="s2">&quot;inv_title&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;New Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-273-5" name="__codelineno-273-5" href="#__codelineno-273-5"></a>        <span class="s2">"inv_title"</span> <span class="o">=&gt;</span> <span class="s2">"New Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-273-6" name="__codelineno-273-6" href="#__codelineno-273-6"></a>    <span class="p">],</span>
-<a id="__codelineno-273-7" name="__codelineno-273-7" href="#__codelineno-273-7"></a>    <span class="s2">&quot;inv_id = 101&quot;</span>
+<a id="__codelineno-273-7" name="__codelineno-273-7" href="#__codelineno-273-7"></a>    <span class="s2">"inv_id = 101"</span>
 <a id="__codelineno-273-8" name="__codelineno-273-8" href="#__codelineno-273-8"></a><span class="p">);</span>
 <a id="__codelineno-273-9" name="__codelineno-273-9" href="#__codelineno-273-9"></a>
 <a id="__codelineno-273-10" name="__codelineno-273-10" href="#__codelineno-273-10"></a><span class="c1">// Next SQL sentence is sent to the database system</span>
-<a id="__codelineno-273-11" name="__codelineno-273-11" href="#__codelineno-273-11"></a><span class="nx">UPDATE</span> <span class="sb">`co_invoices`</span> <span class="nx">SET</span> <span class="sb">`inv_title`</span> <span class="o">=</span> <span class="s2">&quot;New Test Invoice&quot;</span> <span class="nx">WHERE</span> <span class="nx">inv_id</span> <span class="o">=</span> <span class="mi">101</span>
+<a id="__codelineno-273-11" name="__codelineno-273-11" href="#__codelineno-273-11"></a><span class="nx">UPDATE</span> <span class="sb">`co_invoices`</span> <span class="nx">SET</span> <span class="sb">`inv_title`</span> <span class="o">=</span> <span class="s2">"New Test Invoice"</span> <span class="nx">WHERE</span> <span class="nx">inv_id</span> <span class="o">=</span> <span class="mi">101</span>
 </code></pre></div>
 <h4 id="contractsdbadapteradapter-useexplicitidvalue"><code>useExplicitIdValue()</code><a class="headerlink" href="#contractsdbadapteradapter-useexplicitidvalue" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-274-1" name="__codelineno-274-1" href="#__codelineno-274-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">useExplicitIdValue</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
@@ -20842,7 +20842,7 @@ referenced column.</p>
 <h4 id="contractsdbdialect-forupdate"><code>forUpdate()</code><a class="headerlink" href="#contractsdbdialect-forupdate" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-310-1" name="__codelineno-310-1" href="#__codelineno-310-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">forUpdate</span><span class="p">(</span>
 <a id="__codelineno-310-2" name="__codelineno-310-2" href="#__codelineno-310-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-310-3" name="__codelineno-310-3" href="#__codelineno-310-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-310-3" name="__codelineno-310-3" href="#__codelineno-310-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-310-4" name="__codelineno-310-4" href="#__codelineno-310-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a SQL modified with a FOR UPDATE clause</p>
@@ -20861,7 +20861,7 @@ referenced column.</p>
 <h4 id="contractsdbdialect-getsqlexpression"><code>getSqlExpression()</code><a class="headerlink" href="#contractsdbdialect-getsqlexpression" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-314-1" name="__codelineno-314-1" href="#__codelineno-314-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getSqlExpression</span><span class="p">(</span>
 <a id="__codelineno-314-2" name="__codelineno-314-2" href="#__codelineno-314-2"></a>    <span class="k">array</span> <span class="nv">$expression</span><span class="p">,</span>
-<a id="__codelineno-314-3" name="__codelineno-314-3" href="#__codelineno-314-3"></a>    <span class="nx">string</span> <span class="nv">$escapeChar</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-314-3" name="__codelineno-314-3" href="#__codelineno-314-3"></a>    <span class="nx">string</span> <span class="nv">$escapeChar</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-314-4" name="__codelineno-314-4" href="#__codelineno-314-4"></a>    <span class="k">array</span> <span class="nv">$bindCounts</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-314-5" name="__codelineno-314-5" href="#__codelineno-314-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -20909,7 +20909,7 @@ database system valid expression</p>
 <h4 id="contractsdbdialect-sharedlock"><code>sharedLock()</code><a class="headerlink" href="#contractsdbdialect-sharedlock" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-322-1" name="__codelineno-322-1" href="#__codelineno-322-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">sharedLock</span><span class="p">(</span>
 <a id="__codelineno-322-2" name="__codelineno-322-2" href="#__codelineno-322-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-322-3" name="__codelineno-322-3" href="#__codelineno-322-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-322-3" name="__codelineno-322-3" href="#__codelineno-322-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-322-4" name="__codelineno-322-4" href="#__codelineno-322-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a SQL modified with a LOCK IN SHARE MODE clause</p>
@@ -24023,7 +24023,7 @@ producers and consumers.</p>
 <p>Creates a consumer for the given destination.</p>
 <h4 id="contractsqueuecontext-createmessage"><code>createMessage()</code><a class="headerlink" href="#contractsqueuecontext-createmessage" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-523-1" name="__codelineno-523-1" href="#__codelineno-523-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">createMessage</span><span class="p">(</span>
-<a id="__codelineno-523-2" name="__codelineno-523-2" href="#__codelineno-523-2"></a>    <span class="nx">string</span> <span class="nv">$body</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-523-2" name="__codelineno-523-2" href="#__codelineno-523-2"></a>    <span class="nx">string</span> <span class="nv">$body</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-523-3" name="__codelineno-523-3" href="#__codelineno-523-3"></a>    <span class="k">array</span> <span class="nv">$properties</span> <span class="o">=</span> <span class="p">[],</span>
 <a id="__codelineno-523-4" name="__codelineno-523-4" href="#__codelineno-523-4"></a>    <span class="k">array</span> <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-523-5" name="__codelineno-523-5" href="#__codelineno-523-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">Message</span><span class="p">;</span>
@@ -25205,7 +25205,7 @@ userland engines only need this one method to become a drop-in renderer.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

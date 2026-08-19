@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5572,8 +5572,8 @@ offering lower resource consumption and high performance.
 <p>A domain never speaks HTTP, so a redirect is expressed as a small value object, <code>Phalcon\ADR\Responder\Redirect</code>, carried on the payload result:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Responder\Redirect</span><span class="p">;</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">return</span> <span class="nx">Payload</span><span class="o">::</span><span class="na">found</span><span class="p">(</span><span class="k">new</span> <span class="nx">Redirect</span><span class="p">(</span><span class="s1">&#39;/invoices/42&#39;</span><span class="p">));</span>          <span class="c1">// 302 by default</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">return</span> <span class="nx">Payload</span><span class="o">::</span><span class="na">found</span><span class="p">(</span><span class="k">new</span> <span class="nx">Redirect</span><span class="p">(</span><span class="s1">&#39;/invoices/42&#39;</span><span class="p">,</span> <span class="mi">301</span><span class="p">));</span>     <span class="c1">// permanent</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">return</span> <span class="nx">Payload</span><span class="o">::</span><span class="na">found</span><span class="p">(</span><span class="k">new</span> <span class="nx">Redirect</span><span class="p">(</span><span class="s1">'/invoices/42'</span><span class="p">));</span>          <span class="c1">// 302 by default</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">return</span> <span class="nx">Payload</span><span class="o">::</span><span class="na">found</span><span class="p">(</span><span class="k">new</span> <span class="nx">Redirect</span><span class="p">(</span><span class="s1">'/invoices/42'</span><span class="p">,</span> <span class="mi">301</span><span class="p">));</span>     <span class="c1">// permanent</span>
 </code></pre></div>
 <p><code>RedirectResponder</code> reacts to a <code>Redirect</code> result by setting the status code and the <code>Location</code> header; for any other result it does nothing.</p>
 <h2 id="html-responses">HTML responses<a class="headerlink" href="#html-responses" title="Permanent link">&para;</a></h2>
@@ -5584,7 +5584,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\View\Simple</span><span class="p">;</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nv">$simple</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Simple</span><span class="p">();</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nv">$simple</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nv">$simple</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/views/'</span><span class="p">);</span>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nv">$responder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ViewResponder</span><span class="p">(</span><span class="nv">$simple</span><span class="p">,</span> <span class="k">new</span> <span class="nx">StatusMapper</span><span class="p">());</span>
 </code></pre></div>
@@ -5613,7 +5613,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>    <span class="p">{</span>
 <a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>        <span class="nv">$payload</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">domain</span><span class="p">)(</span><span class="nx">Input</span><span class="o">::</span><span class="na">fromRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">));</span>
 <a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>        <span class="k">return</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="o">-&gt;</span><span class="na">withTemplate</span><span class="p">(</span><span class="s1">&#39;invoices/view&#39;</span><span class="p">))(</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>        <span class="k">return</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="o">-&gt;</span><span class="na">withTemplate</span><span class="p">(</span><span class="s1">'invoices/view'</span><span class="p">))(</span>
 <a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>            <span class="nv">$request</span><span class="p">,</span>
 <a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>            <span class="k">new</span> <span class="nx">Response</span><span class="p">(),</span>
 <a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>            <span class="nv">$payload</span>
@@ -5680,7 +5680,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
 <a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$params</span> <span class="o">=</span> <span class="p">[])</span><span class="o">:</span> <span class="nx">string</span>
 <a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>    <span class="p">{</span>
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">twig</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$path</span> <span class="o">.</span> <span class="s1">&#39;.twig&#39;</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">twig</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$path</span> <span class="o">.</span> <span class="s1">'.twig'</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
 <a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>    <span class="p">}</span>
 <a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="p">}</span>
 </code></pre></div>
@@ -5692,7 +5692,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="nx">Renderer</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>        <span class="nv">$simple</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Simple</span><span class="p">();</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>        <span class="nv">$simple</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>        <span class="nv">$simple</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/views/'</span><span class="p">);</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>        <span class="k">return</span> <span class="nv">$simple</span><span class="p">;</span>
 <a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="p">}</span>
@@ -5723,7 +5723,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>        <span class="nx">Payload</span> <span class="nv">$payload</span>
 <a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>    <span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span> <span class="p">{</span>
 <a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>        <span class="k">return</span> <span class="nv">$response</span>
-<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>            <span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s1">&#39;text/csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>            <span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s1">'text/csv'</span><span class="p">)</span>
 <a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>            <span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">toCsv</span><span class="p">(</span><span class="nv">$payload</span><span class="o">-&gt;</span><span class="na">getResult</span><span class="p">()));</span>
 <a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>    <span class="p">}</span>
 <a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="p">}</span>
@@ -5913,7 +5913,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

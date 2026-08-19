@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5443,7 +5443,7 @@ offering lower resource consumption and high performance.
 <p>Matching is deterministic and order-independent: an exact class match is tried first, then the nearest ancestor (parent classes, then interfaces). A broad base class in the map can never shadow a more specific subclass.</p>
 <h2 id="what-the-client-sees-and-what-you-see">What the client sees, and what you see<a class="headerlink" href="#what-the-client-sees-and-what-you-see" title="Permanent link">&para;</a></h2>
 <p>By default the error responder does not leak internals. The response body carries a generic message and the correlation reference:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Internal Server Error&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a1b2c3d4e5f6a7b8&quot;</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal Server Error"</span><span class="p">,</span><span class="w"> </span><span class="nt">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1b2c3d4e5f6a7b8"</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>The full diagnostic (the exception class, message, file, line, and the exception object itself) goes to the <strong>log</strong>, not the client. Enable <code>debug</code> to include the real message and stack trace in the response during development.</p>
 <p>Every error carries that correlation <strong><code>ref</code></strong>: the request's <code>X-Request-Id</code> (set by <a href="../adr-middleware/">RequestIdMiddleware</a>) when one is present, otherwise a freshly generated value. The same <code>ref</code> appears in the log line and in the response body, so a user who reports a <code>ref</code> points you straight to the matching log entry.</p>
@@ -5642,7 +5642,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

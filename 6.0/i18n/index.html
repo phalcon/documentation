@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5453,9 +5453,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">use</span> <span class="nx">Locale</span><span class="p">;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">$locale</span> <span class="o">=</span> <span class="nx">Locale</span><span class="o">::</span><span class="na">acceptFromHttp</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_ACCEPT_LANGUAGE&#39;</span><span class="p">]);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">$locale</span> <span class="o">=</span> <span class="nx">Locale</span><span class="o">::</span><span class="na">acceptFromHttp</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_ACCEPT_LANGUAGE'</span><span class="p">]);</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">// Locale could be something like &#39;en_GB&#39; or &#39;en&#39;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">// Locale could be something like 'en_GB' or 'en'</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">echo</span> <span class="nv">$locale</span><span class="p">;</span>
 </code></pre></div>
 <p>The below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API.</p>
@@ -5494,15 +5494,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">use</span> <span class="nx">MessageFormatter</span><span class="p">;</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1">// € 4 560</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s1">&#39;fr_FR&#39;</span><span class="p">,</span> <span class="s1">&#39;€ {0, number, integer}&#39;</span><span class="p">);</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s1">'fr_FR'</span><span class="p">,</span> <span class="s1">'€ {0, number, integer}'</span><span class="p">);</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">([</span><span class="mi">4560</span><span class="p">]);</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">// USD$ 4,560.5</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="s1">&#39;USD$ {0, number}&#39;</span><span class="p">);</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s1">'en_US'</span><span class="p">,</span> <span class="s1">'USD$ {0, number}'</span><span class="p">);</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">([</span><span class="mf">4560.50</span><span class="p">]);</span>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1">// ARS$ 1.250,25</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s1">&#39;es_AR&#39;</span><span class="p">,</span> <span class="s1">&#39;ARS$ {0, number}&#39;</span><span class="p">);</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s1">'es_AR'</span><span class="p">,</span> <span class="s1">'ARS$ {0, number}'</span><span class="p">);</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">([</span><span class="mf">1250.25</span><span class="p">]);</span>
 </code></pre></div>
 <p>Message formatting using time and date patterns:</p>
@@ -5513,14 +5513,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">$time</span>   <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nv">$values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="nv">$time</span><span class="p">,</span> <span class="nv">$time</span><span class="p">];</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">// &#39;At 3:50:31 PM on Apr 19, 2015, there was a disturbance on planet 7.&#39;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nv">$pattern</span>   <span class="o">=</span> <span class="s1">&#39;At {1, time} on {1, date}, there was a disturbance on planet {0, number}.&#39;</span><span class="p">;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="nv">$pattern</span><span class="p">);</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">// 'At 3:50:31 PM on Apr 19, 2015, there was a disturbance on planet 7.'</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nv">$pattern</span>   <span class="o">=</span> <span class="s1">'At {1, time} on {1, date}, there was a disturbance on planet {0, number}.'</span><span class="p">;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s1">'en_US'</span><span class="p">,</span> <span class="nv">$pattern</span><span class="p">);</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$values</span><span class="p">);</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1">// &#39;À 15:53:01 le 19 avr. 2015, il y avait une perturbation sur la planète 7.&#39;</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nv">$pattern</span>   <span class="o">=</span> <span class="s1">&#39;À {1, time} le {1, date}, il y avait une perturbation sur la planète {0, number}.&#39;</span><span class="p">;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s1">&#39;fr_FR&#39;</span><span class="p">,</span> <span class="nv">$pattern</span><span class="p">);</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1">// 'À 15:53:01 le 19 avr. 2015, il y avait une perturbation sur la planète 7.'</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nv">$pattern</span>   <span class="o">=</span> <span class="s1">'À {1, time} le {1, date}, il y avait une perturbation sur la planète {0, number}.'</span><span class="p">;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s1">'fr_FR'</span><span class="p">,</span> <span class="nv">$pattern</span><span class="p">);</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$values</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="locale-sensitive-comparison">Locale-Sensitive Comparison<a class="headerlink" href="#locale-sensitive-comparison" title="Permanent link">&para;</a></h2>
@@ -5530,20 +5530,20 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">use</span> <span class="nx">Collator</span><span class="p">;</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1">// Create a collator using Spanish locale</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nv">$collator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Collator</span><span class="p">(</span><span class="s1">&#39;es&#39;</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nv">$collator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Collator</span><span class="p">(</span><span class="s1">'es'</span><span class="p">);</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">// Returns that the strings are equal, in spite of the emphasis on the &#39;o&#39;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">// Returns that the strings are equal, in spite of the emphasis on the 'o'</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">setStrength</span><span class="p">(</span><span class="nx">Collator</span><span class="o">::</span><span class="na">PRIMARY</span><span class="p">);</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nb">var_dump</span><span class="p">(</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">compare</span><span class="p">(</span><span class="s1">&#39;una canción&#39;</span><span class="p">,</span> <span class="s1">&#39;una cancion&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">compare</span><span class="p">(</span><span class="s1">'una canción'</span><span class="p">,</span> <span class="s1">'una cancion'</span><span class="p">)</span>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">);</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1">// Returns that the strings are not equal</span>
 <a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">setStrength</span><span class="p">(</span><span class="nx">Collator</span><span class="o">::</span><span class="na">DEFAULT_VALUE</span><span class="p">);</span>
 <a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
 <a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="nb">var_dump</span><span class="p">(</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">compare</span><span class="p">(</span><span class="s1">&#39;una canción&#39;</span><span class="p">,</span> <span class="s1">&#39;una cancion&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">compare</span><span class="p">(</span><span class="s1">'una canción'</span><span class="p">,</span> <span class="s1">'una cancion'</span><span class="p">)</span>
 <a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">);</span>
 </code></pre></div>
 <h2 id="transliteration">Transliteration<a class="headerlink" href="#transliteration" title="Permanent link">&para;</a></h2>
@@ -5552,10 +5552,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">use</span> <span class="nx">Transliterator</span><span class="p">;</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">$id</span> <span class="o">=</span> <span class="s1">&#39;Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();&#39;</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">$id</span> <span class="o">=</span> <span class="s1">'Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();'</span><span class="p">;</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">$transliterator</span> <span class="o">=</span> <span class="nx">Transliterator</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nv">$string</span> <span class="o">=</span> <span class="s2">&quot;garçon-étudiant-où-L&#39;école&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nv">$string</span> <span class="o">=</span> <span class="s2">"garçon-étudiant-où-L'école"</span><span class="p">;</span>
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">echo</span> <span class="nv">$transliterator</span><span class="o">-&gt;</span><span class="na">transliterate</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span> <span class="c1">// garconetudiantoulecole</span>
 </code></pre></div>
 
@@ -5743,7 +5743,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

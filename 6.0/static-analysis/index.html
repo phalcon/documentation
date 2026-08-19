@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5354,8 +5354,8 @@ before they are exposed.</p>
 </code></pre></div>
 <p>or by manually adding it to <code>composer.json</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;require-dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">&quot;vimeo/psalm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.7&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"require-dev"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">"vimeo/psalm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.7"</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
 </code></pre></div>
@@ -5367,8 +5367,8 @@ analyze the codebase. These files exist in the <a href="https://github.com/phalc
 </code></pre></div>
 <p>or by manually adding it to <code>composer.json</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;require-dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">&quot;phalcon/ide-stubs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;,^v5.0&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">"require-dev"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">"phalcon/ide-stubs"</span><span class="p">:</span><span class="w"> </span><span class="s2">",^v5.0"</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
 </code></pre></div>
@@ -5380,42 +5380,42 @@ project configuration file called <code>psalm.xml</code> at the root of your pro
 contents below and update any parameters applicable to your project settings.</p>
 <p>If you find that you need to stub additional Phalcon components, add them to the stub section of the configuration with
 the full path to their location in the <code>ide-stubs</code> package.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">&lt;psalm</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="na">name=</span><span class="s">&quot;Phalcon - Psalm Config&quot;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="na">totallyTyped=</span><span class="s">&quot;true&quot;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="na">errorLevel=</span><span class="s">&quot;3&quot;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="na">resolveFromConfigFile=</span><span class="s">&quot;true&quot;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="na">xmlns=</span><span class="s">&quot;https://getpsalm.org/schema/config&quot;</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd&quot;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="na">name=</span><span class="s">"Phalcon - Psalm Config"</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="na">totallyTyped=</span><span class="s">"true"</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="na">errorLevel=</span><span class="s">"3"</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="na">resolveFromConfigFile=</span><span class="s">"true"</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="na">xmlns=</span><span class="s">"https://getpsalm.org/schema/config"</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="na">xsi:schemaLocation=</span><span class="s">"https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"</span>
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nt">&gt;</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nt">&lt;stubs&gt;</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor/phalcon/ide-stubs/src/Phalcon/Di/Injectable.php&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor/phalcon/ide-stubs/src/Phalcon/Di/AbstractInjectionAware.php&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor/phalcon/ide-stubs/src/Phalcon/Mvc/Controller.php&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor/phalcon/ide-stubs/src/Phalcon/Mvc/Model.php&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor/phalcon/ide-stubs/src/Phalcon/Validation.php&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor/phalcon/ide-stubs/src/Phalcon/Http/Response.php&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor/phalcon/ide-stubs/src/Phalcon/Http/Request.php&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor/phalcon/ide-stubs/src/Phalcon/Di/Injectable.php"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor/phalcon/ide-stubs/src/Phalcon/Di/AbstractInjectionAware.php"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor/phalcon/ide-stubs/src/Phalcon/Mvc/Controller.php"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor/phalcon/ide-stubs/src/Phalcon/Mvc/Model.php"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor/phalcon/ide-stubs/src/Phalcon/Validation.php"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor/phalcon/ide-stubs/src/Phalcon/Http/Response.php"</span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor/phalcon/ide-stubs/src/Phalcon/Http/Request.php"</span><span class="nt">/&gt;</span>
 <a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="nt">&lt;/stubs&gt;</span>
 <a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="nt">&lt;projectFiles&gt;</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;app&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;src&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"app"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"src"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">        </span><span class="nt">&lt;ignoreFiles&gt;</span>
-<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;public&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"vendor"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"public"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="nt">&lt;/ignoreFiles&gt;</span>
 <a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">    </span><span class="nt">&lt;/projectFiles&gt;</span>
 <a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">    </span><span class="nt">&lt;issueHandlers&gt;</span>
 <a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">        </span><span class="nt">&lt;PropertyNotSetInConstructor&gt;</span>
-<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">            </span><span class="nt">&lt;errorLevel</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;suppress&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">                </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;src&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">            </span><span class="nt">&lt;errorLevel</span><span class="w"> </span><span class="na">type=</span><span class="s">"suppress"</span><span class="nt">&gt;</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">                </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"src"</span><span class="nt">/&gt;</span>
 <a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">            </span><span class="nt">&lt;/errorLevel&gt;</span>
 <a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">        </span><span class="nt">&lt;/PropertyNotSetInConstructor&gt;</span>
 <a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">        </span><span class="nt">&lt;MissingConstructor&gt;</span>
-<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">            </span><span class="nt">&lt;errorLevel</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;suppress&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">                </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;src/Controller&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">            </span><span class="nt">&lt;errorLevel</span><span class="w"> </span><span class="na">type=</span><span class="s">"suppress"</span><span class="nt">&gt;</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">                </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">"src/Controller"</span><span class="nt">/&gt;</span>
 <a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">            </span><span class="nt">&lt;/errorLevel&gt;</span>
 <a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">        </span><span class="nt">&lt;/MissingConstructor&gt;</span>
 <a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">    </span><span class="nt">&lt;/issueHandlers&gt;</span>
@@ -5589,7 +5589,7 @@ the full path to their location in the <code>ide-stubs</code> package.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

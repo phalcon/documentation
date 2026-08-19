@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -11561,15 +11561,15 @@ in <code>&lt;dt&gt;</code> tags, while the whole string is enclosed in <code>&lt
 <h4 id="htmlbreadcrumbs-add"><code>add()</code><a class="headerlink" href="#htmlbreadcrumbs-add" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="nx">string</span> <span class="nv">$label</span><span class="p">,</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nx">string</span> <span class="nv">$link</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nx">string</span> <span class="nv">$link</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a new crumb.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Adding a crumb with a link</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">);</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">"Home"</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">);</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1">// Adding a crumb without a link (normally the last one)</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;Users&quot;</span><span class="p">);</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">"Users"</span><span class="p">);</span>
 </code></pre></div>
 <p>Crumbs are stored keyed by their link, so adding two crumbs that share
 the same link - including two link-less crumbs, which share the empty
@@ -11588,7 +11588,7 @@ string key - keeps only the last one.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$link</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Removes crumb by url.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="s2">&quot;/admin/user/create&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="s2">"/admin/user/create"</span><span class="p">);</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1">// remove a crumb without an url (last link)</span>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">();</span>
@@ -11623,7 +11623,7 @@ so existing code keeps working.</p>
 with UTF-8 support.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Html\Escaper</span><span class="p">();</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nv">$escaped</span> <span class="o">=</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="s2">&quot;font-family: &lt;Verdana&gt;&quot;</span><span class="p">);</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nv">$escaped</span> <span class="o">=</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="s2">"font-family: &lt;Verdana&gt;"</span><span class="p">);</span>
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="k">echo</span> <span class="nv">$escaped</span><span class="p">;</span> <span class="c1">// font\2D family\3A \20 \3C Verdana\3E</span>
 </code></pre></div>
@@ -11834,7 +11834,7 @@ with UTF-8 support.</p>
 
 <h4 id="htmlescaper-__construct"><code>__construct()</code><a class="headerlink" href="#htmlescaper-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="nx">string</span> <span class="nv">$encoding</span> <span class="o">=</span> <span class="s2">"utf-8"</span><span class="p">,</span>
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="nx">int</span> <span class="nv">$flags</span><span class="p">,</span>
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="nx">bool</span> <span class="nv">$doubleEncode</span> <span class="o">=</span> <span class="k">true</span>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="p">);</span>
@@ -11919,7 +11919,7 @@ and fans them out to every sub-escaper so existing code keeps working.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setEncoding</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$encoding</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the encoding. Fans out to all sub-escapers.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">setEncoding</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">setEncoding</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="htmlescaper-setflags"><code>setFlags()</code><a class="headerlink" href="#htmlescaper-setflags" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setFlags</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$flags</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
@@ -12809,7 +12809,7 @@ with attributes as the second, returning the resulting string</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">renderTag</span><span class="p">(</span>
 <a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a>    <span class="nx">string</span> <span class="nv">$tag</span><span class="p">,</span>
 <a id="__codelineno-94-3" name="__codelineno-94-3" href="#__codelineno-94-3"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-94-4" name="__codelineno-94-4" href="#__codelineno-94-4"></a>    <span class="nx">string</span> <span class="nv">$close</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-94-4" name="__codelineno-94-4" href="#__codelineno-94-4"></a>    <span class="nx">string</span> <span class="nv">$close</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-94-5" name="__codelineno-94-5" href="#__codelineno-94-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Renders a tag</p>
@@ -12879,7 +12879,7 @@ with attributes as the second, returning the resulting string</p>
 
 <h4 id="htmlhelperabstractlist-__invoke"><code>__invoke()</code><a class="headerlink" href="#htmlhelperabstractlist-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
-<a id="__codelineno-96-2" name="__codelineno-96-2" href="#__codelineno-96-2"></a>    <span class="nx">string</span> <span class="nv">$indent</span> <span class="o">=</span> <span class="s2">&quot;    &quot;</span><span class="p">,</span>
+<a id="__codelineno-96-2" name="__codelineno-96-2" href="#__codelineno-96-2"></a>    <span class="nx">string</span> <span class="nv">$indent</span> <span class="o">=</span> <span class="s2">"    "</span><span class="p">,</span>
 <a id="__codelineno-96-3" name="__codelineno-96-3" href="#__codelineno-96-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-96-4" name="__codelineno-96-4" href="#__codelineno-96-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-96-5" name="__codelineno-96-5" href="#__codelineno-96-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
@@ -12963,7 +12963,7 @@ with attributes as the second, returning the resulting string</p>
 
 <h4 id="htmlhelperabstractseries-__invoke"><code>__invoke()</code><a class="headerlink" href="#htmlhelperabstractseries-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
-<a id="__codelineno-99-2" name="__codelineno-99-2" href="#__codelineno-99-2"></a>    <span class="nx">string</span> <span class="nv">$indent</span> <span class="o">=</span> <span class="s2">&quot;    &quot;</span><span class="p">,</span>
+<a id="__codelineno-99-2" name="__codelineno-99-2" href="#__codelineno-99-2"></a>    <span class="nx">string</span> <span class="nv">$indent</span> <span class="o">=</span> <span class="s2">"    "</span><span class="p">,</span>
 <a id="__codelineno-99-3" name="__codelineno-99-3" href="#__codelineno-99-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-99-4" name="__codelineno-99-4" href="#__codelineno-99-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
@@ -13253,7 +13253,7 @@ in <code>&lt;li&gt;</code> tags, while the whole string is enclosed in <code>&lt
 <p>AbstractHelper constructor.</p>
 <h4 id="htmlhelperbreadcrumbs-__invoke"><code>__invoke()</code><a class="headerlink" href="#htmlhelperbreadcrumbs-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-109-1" name="__codelineno-109-1" href="#__codelineno-109-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
-<a id="__codelineno-109-2" name="__codelineno-109-2" href="#__codelineno-109-2"></a>    <span class="nx">string</span> <span class="nv">$indent</span> <span class="o">=</span> <span class="s2">&quot;    &quot;</span><span class="p">,</span>
+<a id="__codelineno-109-2" name="__codelineno-109-2" href="#__codelineno-109-2"></a>    <span class="nx">string</span> <span class="nv">$indent</span> <span class="o">=</span> <span class="s2">"    "</span><span class="p">,</span>
 <a id="__codelineno-109-3" name="__codelineno-109-3" href="#__codelineno-109-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-109-4" name="__codelineno-109-4" href="#__codelineno-109-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
@@ -13261,20 +13261,20 @@ in <code>&lt;li&gt;</code> tags, while the whole string is enclosed in <code>&lt
 <h4 id="htmlhelperbreadcrumbs-add"><code>add()</code><a class="headerlink" href="#htmlhelperbreadcrumbs-add" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-110-1" name="__codelineno-110-1" href="#__codelineno-110-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span>
 <a id="__codelineno-110-2" name="__codelineno-110-2" href="#__codelineno-110-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-110-3" name="__codelineno-110-3" href="#__codelineno-110-3"></a>    <span class="nx">string</span> <span class="nv">$link</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<a id="__codelineno-110-4" name="__codelineno-110-4" href="#__codelineno-110-4"></a>    <span class="nx">string</span> <span class="nv">$icon</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-110-3" name="__codelineno-110-3" href="#__codelineno-110-3"></a>    <span class="nx">string</span> <span class="nv">$link</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+<a id="__codelineno-110-4" name="__codelineno-110-4" href="#__codelineno-110-4"></a>    <span class="nx">string</span> <span class="nv">$icon</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-110-5" name="__codelineno-110-5" href="#__codelineno-110-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-110-6" name="__codelineno-110-6" href="#__codelineno-110-6"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a new crumb.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-111-1" name="__codelineno-111-1" href="#__codelineno-111-1"></a><span class="c1">// Adding a crumb with a link</span>
-<a id="__codelineno-111-2" name="__codelineno-111-2" href="#__codelineno-111-2"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">);</span>
+<a id="__codelineno-111-2" name="__codelineno-111-2" href="#__codelineno-111-2"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">"Home"</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">);</span>
 <a id="__codelineno-111-3" name="__codelineno-111-3" href="#__codelineno-111-3"></a>
 <a id="__codelineno-111-4" name="__codelineno-111-4" href="#__codelineno-111-4"></a><span class="c1">// Adding a crumb with added attributes</span>
-<a id="__codelineno-111-5" name="__codelineno-111-5" href="#__codelineno-111-5"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;class&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;main&quot;</span><span class="p">]);</span>
+<a id="__codelineno-111-5" name="__codelineno-111-5" href="#__codelineno-111-5"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">"Home"</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"class"</span> <span class="o">=&gt;</span> <span class="s2">"main"</span><span class="p">]);</span>
 <a id="__codelineno-111-6" name="__codelineno-111-6" href="#__codelineno-111-6"></a>
 <a id="__codelineno-111-7" name="__codelineno-111-7" href="#__codelineno-111-7"></a><span class="c1">// Adding a crumb without a link (normally the last one)</span>
-<a id="__codelineno-111-8" name="__codelineno-111-8" href="#__codelineno-111-8"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;Users&quot;</span><span class="p">);</span>
+<a id="__codelineno-111-8" name="__codelineno-111-8" href="#__codelineno-111-8"></a><span class="nv">$breadcrumbs</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">"Users"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="htmlhelperbreadcrumbs-clear"><code>clear()</code><a class="headerlink" href="#htmlhelperbreadcrumbs-clear" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-112-1" name="__codelineno-112-1" href="#__codelineno-112-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">clear</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
@@ -13649,7 +13649,7 @@ When a Url service was injected, calling this method replaces it.</p>
 <h4 id="htmlhelperfriendlytitle-__invoke"><code>__invoke()</code><a class="headerlink" href="#htmlhelperfriendlytitle-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-138-1" name="__codelineno-138-1" href="#__codelineno-138-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-138-2" name="__codelineno-138-2" href="#__codelineno-138-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
-<a id="__codelineno-138-3" name="__codelineno-138-3" href="#__codelineno-138-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+<a id="__codelineno-138-3" name="__codelineno-138-3" href="#__codelineno-138-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">"-"</span><span class="p">,</span>
 <a id="__codelineno-138-4" name="__codelineno-138-4" href="#__codelineno-138-4"></a>    <span class="nx">bool</span> <span class="nv">$lowercase</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-138-5" name="__codelineno-138-5" href="#__codelineno-138-5"></a>    <span class="nx">mixed</span> <span class="nv">$replace</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-138-6" name="__codelineno-138-6" href="#__codelineno-138-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -14103,7 +14103,7 @@ changed after construction via <code>setType()</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-154-1" name="__codelineno-154-1" href="#__codelineno-154-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-154-2" name="__codelineno-154-2" href="#__codelineno-154-2"></a>    <span class="nx">EscaperInterface</span> <span class="nv">$escaper</span><span class="p">,</span>
 <a id="__codelineno-154-3" name="__codelineno-154-3" href="#__codelineno-154-3"></a>    <span class="nx">Doctype</span><span class="o">|</span><span class="k">null</span> <span class="nv">$doctype</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-154-4" name="__codelineno-154-4" href="#__codelineno-154-4"></a>    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s2">&quot;text&quot;</span>
+<a id="__codelineno-154-4" name="__codelineno-154-4" href="#__codelineno-154-4"></a>    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s2">"text"</span>
 <a id="__codelineno-154-5" name="__codelineno-154-5" href="#__codelineno-154-5"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="htmlhelperinputgeneric-settype"><code>setType()</code><a class="headerlink" href="#htmlhelperinputgeneric-settype" title="Permanent link">&para;</a></h4>
@@ -14868,7 +14868,7 @@ If a ResponseInterface is provided, also sets the HTTP Link header.</p>
 <h4 id="htmlhelperpreload-__invoke"><code>__invoke()</code><a class="headerlink" href="#htmlhelperpreload-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-190-1" name="__codelineno-190-1" href="#__codelineno-190-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-190-2" name="__codelineno-190-2" href="#__codelineno-190-2"></a>    <span class="nx">string</span> <span class="nv">$href</span><span class="p">,</span>
-<a id="__codelineno-190-3" name="__codelineno-190-3" href="#__codelineno-190-3"></a>    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s2">&quot;style&quot;</span><span class="p">,</span>
+<a id="__codelineno-190-3" name="__codelineno-190-3" href="#__codelineno-190-3"></a>    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s2">"style"</span><span class="p">,</span>
 <a id="__codelineno-190-4" name="__codelineno-190-4" href="#__codelineno-190-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-190-5" name="__codelineno-190-5" href="#__codelineno-190-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -15157,7 +15157,7 @@ use <code>VoidTag</code>.</p>
 
 <h4 id="htmlhelpertitle-__invoke"><code>__invoke()</code><a class="headerlink" href="#htmlhelpertitle-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-201-1" name="__codelineno-201-1" href="#__codelineno-201-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
-<a id="__codelineno-201-2" name="__codelineno-201-2" href="#__codelineno-201-2"></a>    <span class="nx">string</span> <span class="nv">$indent</span> <span class="o">=</span> <span class="s2">&quot;    &quot;</span><span class="p">,</span>
+<a id="__codelineno-201-2" name="__codelineno-201-2" href="#__codelineno-201-2"></a>    <span class="nx">string</span> <span class="nv">$indent</span> <span class="o">=</span> <span class="s2">"    "</span><span class="p">,</span>
 <a id="__codelineno-201-3" name="__codelineno-201-3" href="#__codelineno-201-3"></a>    <span class="nx">string</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="nx">PHP_EOL</span>
 <a id="__codelineno-201-4" name="__codelineno-201-4" href="#__codelineno-201-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
@@ -15373,8 +15373,8 @@ doctypes, matching the <code>Input/AbstractInput::__toString</code> convention.<
 
 <h4 id="htmllinkabstractlink-__construct"><code>__construct()</code><a class="headerlink" href="#htmllinkabstractlink-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-210-1" name="__codelineno-210-1" href="#__codelineno-210-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-210-2" name="__codelineno-210-2" href="#__codelineno-210-2"></a>    <span class="nx">string</span> <span class="nv">$rel</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<a id="__codelineno-210-3" name="__codelineno-210-3" href="#__codelineno-210-3"></a>    <span class="nx">string</span> <span class="nv">$href</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-210-2" name="__codelineno-210-2" href="#__codelineno-210-2"></a>    <span class="nx">string</span> <span class="nv">$rel</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+<a id="__codelineno-210-3" name="__codelineno-210-3" href="#__codelineno-210-3"></a>    <span class="nx">string</span> <span class="nv">$href</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-210-4" name="__codelineno-210-4" href="#__codelineno-210-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-210-5" name="__codelineno-210-5" href="#__codelineno-210-5"></a><span class="p">);</span>
 </code></pre></div>
@@ -16391,7 +16391,7 @@ fully-constructed helper instance. Services are built lazily and cached.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

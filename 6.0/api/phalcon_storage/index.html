@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -8812,7 +8812,7 @@ text (e.g. session ids).</span>
 </code></pre></div>
 <p>Name of the default serializer class</p>
 <h4 id="storageadapterabstractadapter-getkeys"><code>getKeys()</code><a class="headerlink" href="#storageadapterabstractadapter-getkeys" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns all the keys stored</p>
 <h4 id="storageadapterabstractadapter-getlifetime"><code>getLifetime()</code><a class="headerlink" href="#storageadapterabstractadapter-getlifetime" title="Permanent link">&para;</a></h4>
@@ -9069,7 +9069,7 @@ always returned unaltered.</p>
 </code></pre></div>
 <p>Returns the adapter - connects to the storage if not connected</p>
 <h4 id="storageadapteradapterinterface-getkeys"><code>getKeys()</code><a class="headerlink" href="#storageadapteradapterinterface-getkeys" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns all the keys stored</p>
 <h4 id="storageadapteradapterinterface-getprefix"><code>getPrefix()</code><a class="headerlink" href="#storageadapteradapterinterface-getprefix" title="Permanent link">&para;</a></h4>
@@ -9221,7 +9221,7 @@ from the adapter.</p>
 </code></pre></div>
 <p>Flushes/clears the cache</p>
 <h4 id="storageadapterapcu-getkeys"><code>getKeys()</code><a class="headerlink" href="#storageadapterapcu-getkeys" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Stores data in the adapter</p>
 <h4 id="storageadapterapcu-setforever"><code>setForever()</code><a class="headerlink" href="#storageadapterapcu-setforever" title="Permanent link">&para;</a></h4>
@@ -9395,7 +9395,7 @@ the <code>setForever()</code> method.</p>
 <p>Returns the already connected adapter or connects to the Memcached
 server(s)</p>
 <h4 id="storageadapterlibmemcached-getkeys"><code>getKeys()</code><a class="headerlink" href="#storageadapterlibmemcached-getkeys" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Stores data in the adapter</p>
 <h4 id="storageadapterlibmemcached-setforever"><code>setForever()</code><a class="headerlink" href="#storageadapterlibmemcached-setforever" title="Permanent link">&para;</a></h4>
@@ -9577,7 +9577,7 @@ value drops the oldest entry FIFO before a new key is stored.</span>
 </code></pre></div>
 <p>Flushes/clears the cache</p>
 <h4 id="storageadaptermemory-getkeys"><code>getKeys()</code><a class="headerlink" href="#storageadaptermemory-getkeys" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Stores data in the adapter</p>
 <h4 id="storageadaptermemory-getmaxitems"><code>getMaxItems()</code><a class="headerlink" href="#storageadaptermemory-getmaxitems" title="Permanent link">&para;</a></h4>
@@ -9765,7 +9765,7 @@ the <code>setForever()</code> method.</p>
 <p>Returns the already connected adapter or connects to the Redis
 server(s)</p>
 <h4 id="storageadapterredis-getkeys"><code>getKeys()</code><a class="headerlink" href="#storageadapterredis-getkeys" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns all the keys stored</p>
 <p>SCAN replaces the blocking KEYS command. SCAN_NOPREFIX keeps the prefix
@@ -9902,10 +9902,10 @@ these in redis.ini as a 'named' cluster.</p>
 <p>If you are connecting with the cluster by offering a name, that is configured in redis.ini:</p>
 <div class="highlight"><pre><span></span><code> ```
  # In redis.ini
- redis.clusters.seeds = &quot;mycluster[]=localhost:7000&amp;test[]=localhost:7001&quot;
- redis.clusters.timeout = &quot;mycluster=5&quot;
- redis.clusters.read_timeout = &quot;mycluster=10&quot;
- redis.clusters.auth = &quot;mycluster=password&quot;
+ redis.clusters.seeds = "mycluster[]=localhost:7000&amp;test[]=localhost:7001"
+ redis.clusters.timeout = "mycluster=5"
+ redis.clusters.read_timeout = "mycluster=10"
+ redis.clusters.auth = "mycluster=password"
  ```
 </code></pre></div>
 <p>you can use <code>$options = ["name" =&gt; "mycluster"]</code>.</p>
@@ -9927,7 +9927,7 @@ options eg <code>["verify_peer" =&gt; 0, "local_cert" =&gt; "file:///path/to/cer
 <p>Returns the already connected adapter or connects to the Redis
 server(s)</p>
 <h4 id="storageadapterrediscluster-getkeys"><code>getKeys()</code><a class="headerlink" href="#storageadapterrediscluster-getkeys" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns all the keys stored</p>
 <p>RedisCluster::scan() iterates one node at a time, so the blocking KEYS
@@ -10052,7 +10052,7 @@ per-node SCAN migration is left to the storage redesign.</p>
 </code></pre></div>
 <p>Flushes/clears the cache</p>
 <h4 id="storageadapterstream-getkeys"><code>getKeys()</code><a class="headerlink" href="#storageadapterstream-getkeys" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Stores data in the adapter</p>
 <h4 id="storageadapterstream-setforever"><code>setForever()</code><a class="headerlink" href="#storageadapterstream-setforever" title="Permanent link">&para;</a></h4>
@@ -10446,7 +10446,7 @@ the <code>setForever()</code> method.</p>
 </code></pre></div>
 <p>Flushes/clears the cache</p>
 <h4 id="storageadapterweak-getkeys"><code>getKeys()</code><a class="headerlink" href="#storageadapterweak-getkeys" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Stores data in the adapter</p>
 <h4 id="storageadapterweak-setdefaultserializer"><code>setDefaultSerializer()</code><a class="headerlink" href="#storageadapterweak-setdefaultserializer" title="Permanent link">&para;</a></h4>
@@ -11456,7 +11456,7 @@ the <code>setForever()</code> method.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

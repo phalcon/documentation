@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5839,7 +5839,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">$security</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Security</span><span class="p">();</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">echo</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="s1">&#39;Phalcon&#39;</span><span class="p">);</span> 
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">echo</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="s1">'Phalcon'</span><span class="p">);</span> 
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1">// $2y$08$ZUFGUUk5c3VpcHFoVUFXeOYoA4NPFEP4G9gcm6rdo3jFPaNFdR2/O</span>
 </code></pre></div>
 <p>We can now check if a value sent to us by a user through the UI of our application is identical to our hashed string:</p>
@@ -5847,10 +5847,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">use</span> <span class="nx">Phalcon\Encryption\Security</span><span class="p">;</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">$password</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span> <span class="o">??</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">$password</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'password'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">$security</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Security</span><span class="p">();</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nv">$hashed</span> <span class="o">=</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="s1">&#39;Phalcon&#39;</span><span class="p">);</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nv">$hashed</span> <span class="o">=</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="s1">'Phalcon'</span><span class="p">);</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">echo</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">checkHash</span><span class="p">(</span><span class="nv">$password</span><span class="p">,</span> <span class="nv">$hashed</span><span class="p">);</span> <span class="c1">// true / false</span>
 </code></pre></div>
@@ -5870,14 +5870,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">{</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">loginAction</span><span class="p">()</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="p">{</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="nv">$login</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">);</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>        <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">);</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="nv">$login</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'login'</span><span class="p">);</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>        <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'password'</span><span class="p">);</span>
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>        <span class="nv">$user</span> <span class="o">=</span> <span class="nx">Users</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>            <span class="p">[</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>                <span class="s1">&#39;conditions&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;login = :login:&#39;</span><span class="p">,</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>                <span class="s1">&#39;bind&#39;</span>       <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>                    <span class="s1">&#39;login&#39;</span> <span class="o">=&gt;</span> <span class="nv">$login</span><span class="p">,</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>                <span class="s1">'conditions'</span> <span class="o">=&gt;</span> <span class="s1">'login = :login:'</span><span class="p">,</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>                <span class="s1">'bind'</span>       <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>                    <span class="s1">'login'</span> <span class="o">=&gt;</span> <span class="nv">$login</span><span class="p">,</span>
 <a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>                <span class="p">],</span>
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>            <span class="p">]</span>
 <a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>        <span class="p">);</span>
@@ -5899,8 +5899,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>
 <a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerAction</span><span class="p">()</span>
 <a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>    <span class="p">{</span>
-<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>        <span class="nv">$login</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">);</span>
-<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>        <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">);</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>        <span class="nv">$login</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'login'</span><span class="p">,</span> <span class="s1">'string'</span><span class="p">);</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>        <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'password'</span><span class="p">,</span> <span class="s1">'string'</span><span class="p">);</span>
 <a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>
 <a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>        <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Users</span><span class="p">();</span>
 <a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a>
@@ -5940,9 +5940,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">use</span> <span class="nx">Phalcon\Encryption\Security</span><span class="p">;</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">$password</span> <span class="o">=</span> <span class="s1">&#39;password1&#39;</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">$password</span> <span class="o">=</span> <span class="s1">'password1'</span><span class="p">;</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">$security</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Security</span><span class="p">();</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nv">$hashed</span>   <span class="o">=</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;cost&#39;</span> <span class="o">=&gt;</span> <span class="mi">31</span><span class="p">]);</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nv">$hashed</span>   <span class="o">=</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="s1">'Phalcon'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'cost'</span> <span class="o">=&gt;</span> <span class="mi">31</span><span class="p">]);</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">echo</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">checkHash</span><span class="p">(</span><span class="nv">$password</span><span class="p">,</span> <span class="nv">$hashed</span><span class="p">);</span> <span class="c1">// true / false</span>
 </code></pre></div>
@@ -5957,15 +5957,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">use</span> <span class="nx">Phalcon\Encryption\Security</span><span class="p">;</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nv">$password</span> <span class="o">=</span> <span class="s1">&#39;password1&#39;</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nv">$password</span> <span class="o">=</span> <span class="s1">'password1'</span><span class="p">;</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nv">$security</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Security</span><span class="p">();</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">$security</span><span class="o">-&gt;</span><span class="na">setDefaultHash</span><span class="p">(</span><span class="nx">Security</span><span class="o">::</span><span class="na">CRYPT_ARGON2I</span><span class="p">);</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nv">$hashed</span>   <span class="o">=</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span> 
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="s1">'Phalcon'</span><span class="p">,</span> 
 <a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="p">[</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="s1">&#39;memory_cost&#39;</span> <span class="o">=&gt;</span> <span class="nx">PASSWORD_ARGON2_DEFAULT_MEMORY_COST</span><span class="p">,</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        <span class="s1">&#39;time_cost&#39;</span>   <span class="o">=&gt;</span> <span class="nx">PASSWORD_ARGON2_DEFAULT_TIME_COST</span><span class="p">,</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>        <span class="s1">&#39;threads&#39;</span>     <span class="o">=&gt;</span> <span class="nx">PASSWORD_ARGON2_DEFAULT_THREADS</span><span class="p">,</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="s1">'memory_cost'</span> <span class="o">=&gt;</span> <span class="nx">PASSWORD_ARGON2_DEFAULT_MEMORY_COST</span><span class="p">,</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        <span class="s1">'time_cost'</span>   <span class="o">=&gt;</span> <span class="nx">PASSWORD_ARGON2_DEFAULT_TIME_COST</span><span class="p">,</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>        <span class="s1">'threads'</span>     <span class="o">=&gt;</span> <span class="nx">PASSWORD_ARGON2_DEFAULT_THREADS</span><span class="p">,</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="p">]</span>
 <a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">);</span>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
@@ -5975,13 +5975,13 @@ offering lower resource consumption and high performance.
 <h2 id="csrf-protection">CSRF Protection<a class="headerlink" href="#csrf-protection" title="Permanent link">&para;</a></h2>
 <p>Cross-Site Request Forgery (CSRF) is another common attack against websites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.</p>
 <p>The idea is to prevent the form values from being sent outside our application. To fix this, we generate a <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">random nonce</a> (token) in each form, add the token in the session, and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&lt;</span><span class="nx">form</span> <span class="nx">method</span><span class="o">=</span><span class="s1">&#39;post&#39;</span> <span class="nx">action</span><span class="o">=</span><span class="s1">&#39;session/login&#39;</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&lt;</span><span class="nx">form</span> <span class="nx">method</span><span class="o">=</span><span class="s1">'post'</span> <span class="nx">action</span><span class="o">=</span><span class="s1">'session/login'</span><span class="o">&gt;</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="o">&lt;!--</span> <span class="nx">Login</span> <span class="k">and</span> <span class="nx">password</span> <span class="nx">inputs</span> <span class="o">...</span> <span class="o">--&gt;</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s1">&#39;hidden&#39;</span> 
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>           <span class="nx">name</span><span class="o">=</span><span class="s1">&#39;&lt;?php echo $this-&gt;security-&gt;getTokenKey() ?&gt;&#39;</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>           <span class="nx">value</span><span class="o">=</span><span class="s1">&#39;&lt;?php echo $this-&gt;security-&gt;getToken() ?&gt;&#39;</span><span class="o">/&gt;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s1">'hidden'</span> 
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>           <span class="nx">name</span><span class="o">=</span><span class="s1">'&lt;?php echo $this-&gt;security-&gt;getTokenKey() ?&gt;'</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>           <span class="nx">value</span><span class="o">=</span><span class="s1">'&lt;?php echo $this-&gt;security-&gt;getToken() ?&gt;'</span><span class="o">/&gt;</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
 </code></pre></div>
@@ -6026,7 +6026,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="nv">$security</span><span class="o">-&gt;</span><span class="na">setAutoRefresh</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 <a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
 <a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1">// All subsequent renders reuse the persisted token - no session write.</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="k">echo</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">();</span>      <span class="c1">// e.g. &quot;9k4Q...xZ&quot;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="k">echo</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">();</span>      <span class="c1">// e.g. "9k4Q...xZ"</span>
 <a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="k">echo</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">();</span>      <span class="c1">// same value</span>
 <a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="k">echo</span> <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">getTokenKey</span><span class="p">();</span>   <span class="c1">// same key</span>
 </code></pre></div>
@@ -6174,7 +6174,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nv">$bytes</span> <span class="o">=</span> <span class="nv">$random</span><span class="o">-&gt;</span><span class="na">bytes</span><span class="p">();</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nb">bin2hex</span><span class="p">(</span><span class="nv">$bytes</span><span class="p">));</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1">// Possible output: string(32) &quot;00f6c04b144b41fad6a59111c126e1ee&quot;</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1">// Possible output: string(32) "00f6c04b144b41fad6a59111c126e1ee"</span>
 </code></pre></div>
 <p><strong><code>hex()</code></strong></p>
 <p>Generates a random hex string. If <code>$len</code> is not specified, 16 is assumed. It may be larger in the future. The length of the result string is usually greater than <code>$len</code>.</p>
@@ -6273,14 +6273,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="k">echo</span> <span class="nv">$uuid</span><span class="o">-&gt;</span><span class="na">v1</span><span class="p">();</span> <span class="c1">// e.g. 6ba7b810-9dad-11d1-80b4-00c04fd430c8</span>
 <a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
 <a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="c1">// Version 3 - name-based MD5 (deterministic)</span>
-<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="k">echo</span> <span class="nv">$uuid</span><span class="o">-&gt;</span><span class="na">v3</span><span class="p">(</span><span class="nx">UuidInterface</span><span class="o">::</span><span class="na">NAMESPACE_DNS</span><span class="p">,</span> <span class="s1">&#39;phalcon.io&#39;</span><span class="p">);</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="k">echo</span> <span class="nv">$uuid</span><span class="o">-&gt;</span><span class="na">v3</span><span class="p">(</span><span class="nx">UuidInterface</span><span class="o">::</span><span class="na">NAMESPACE_DNS</span><span class="p">,</span> <span class="s1">'phalcon.io'</span><span class="p">);</span>
 <a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="c1">// always: aeb94720-3f71-35d3-9b9c-c0c7a6f55e1c</span>
 <a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>
 <a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="c1">// Version 4 - random</span>
 <a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="k">echo</span> <span class="nv">$uuid</span><span class="o">-&gt;</span><span class="na">v4</span><span class="p">();</span> <span class="c1">// e.g. f47ac10b-58cc-4372-a567-0e02b2c3d479</span>
 <a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>
 <a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="c1">// Version 5 - name-based SHA-1 (deterministic)</span>
-<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="k">echo</span> <span class="nv">$uuid</span><span class="o">-&gt;</span><span class="na">v5</span><span class="p">(</span><span class="nx">UuidInterface</span><span class="o">::</span><span class="na">NAMESPACE_URL</span><span class="p">,</span> <span class="s1">&#39;https://phalcon.io&#39;</span><span class="p">);</span>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="k">echo</span> <span class="nv">$uuid</span><span class="o">-&gt;</span><span class="na">v5</span><span class="p">(</span><span class="nx">UuidInterface</span><span class="o">::</span><span class="na">NAMESPACE_URL</span><span class="p">,</span> <span class="s1">'https://phalcon.io'</span><span class="p">);</span>
 <a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="c1">// always produces the same UUID for the same input</span>
 <a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a>
 <a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a><span class="c1">// Version 6 - reordered time-based (lexicographically sortable)</span>
@@ -6336,7 +6336,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
 <a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>
 <a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="s1">&#39;security&#39;</span><span class="p">,</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="s1">'security'</span><span class="p">,</span>
 <a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>        <span class="nv">$security</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Security</span><span class="p">();</span>
 <a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>
@@ -6380,7 +6380,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
 <a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>    <span class="p">{</span>
 <a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>        <span class="k">try</span> <span class="p">{</span>
-<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">);</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="s1">'123'</span><span class="p">);</span>
 <a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>            <span class="k">echo</span> <span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
 <a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>        <span class="p">}</span>
@@ -6595,7 +6595,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

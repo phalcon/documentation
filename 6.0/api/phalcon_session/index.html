@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -7350,11 +7350,11 @@ offering lower resource consumption and high performance.
 <p>Libmemcached constructor.</p>
 <div class="highlight"><pre><span></span><code>    ]
 ],
-&#39;defaultSerializer&#39; =&gt; &#39;Php&#39;,
-&#39;lifetime&#39; =&gt; 3600,
-&#39;serializer&#39; =&gt; null,
-&#39;prefix&#39; =&gt; &#39;sess-memc-&#39;,
-&#39;stripPrefix&#39; =&gt; false
+'defaultSerializer' =&gt; 'Php',
+'lifetime' =&gt; 3600,
+'serializer' =&gt; null,
+'prefix' =&gt; 'sess-memc-',
+'stripPrefix' =&gt; false
 </code></pre></div>
 <p>]</p>
 <h2 id="sessionadapternoop">Session\Adapter\Noop<a class="headerlink" href="#sessionadapternoop" title="Permanent link">&para;</a></h2>
@@ -7623,7 +7623,7 @@ between attempts, up to <code>lockRetries</code> times</p>
 <a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nv">$files</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span>
 <a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    <span class="p">[</span>
-<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>        <span class="s1">&#39;savePath&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp&#39;</span><span class="p">,</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>        <span class="s1">'savePath'</span> <span class="o">=&gt;</span> <span class="s1">'/tmp'</span><span class="p">,</span>
 <a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>    <span class="p">]</span>
 <a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="p">);</span>
 <a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="nv">$session</span><span class="o">-&gt;</span><span class="na">setAdapter</span><span class="p">(</span><span class="nv">$files</span><span class="p">);</span>
@@ -7775,9 +7775,9 @@ between attempts, up to <code>lockRetries</code> times</p>
 <p>This component helps to separate session data into "namespaces". Working by
 this way you can easily create groups of session variables into the
 application</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Session\Bag</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Session\Bag</span><span class="p">(</span><span class="s2">"user"</span><span class="p">);</span>
 <a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Kimbra Johnson&quot;</span><span class="p">;</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">"Kimbra Johnson"</span><span class="p">;</span>
 <a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">age</span>  <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
 </code></pre></div>
 <p>@property string           $name
@@ -8782,7 +8782,7 @@ started)</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

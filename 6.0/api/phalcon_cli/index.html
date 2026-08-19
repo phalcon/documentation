@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -7165,8 +7165,8 @@ it, and then instantiating a task and calling an action on it.</p>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setDi</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setTaskName</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">);</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">);</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setTaskName</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">);</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="s2">"index"</span><span class="p">);</span>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setParams</span><span class="p">([]);</span>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nv">$handle</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">();</span>
@@ -7413,9 +7413,9 @@ request.</p>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span>
 <a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="p">[</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>        <span class="s2">&quot;module&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>        <span class="s2">&quot;task&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;videos&quot;</span><span class="p">,</span>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;process&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>        <span class="s2">"module"</span> <span class="o">=&gt;</span> <span class="s2">"main"</span><span class="p">,</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>        <span class="s2">"task"</span>   <span class="o">=&gt;</span> <span class="s2">"videos"</span><span class="p">,</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>        <span class="s2">"action"</span> <span class="o">=&gt;</span> <span class="s2">"process"</span><span class="p">,</span>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="p">]</span>
 <a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="p">);</span>
 <a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>
@@ -7622,7 +7622,7 @@ request.</p>
 <a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">RouteInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a route to the router</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;/about&quot;</span><span class="p">,</span> <span class="s2">&quot;About::main&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">"/about"</span><span class="p">,</span> <span class="s2">"About::main"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="clirouter-getactionname"><code>getActionName()</code><a class="headerlink" href="#clirouter-getactionname" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getActionName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -7688,8 +7688,8 @@ will use the defined here. This method must not be used to set a 404
 route</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setDefaults</span><span class="p">(</span>
 <a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="p">[</span>
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>        <span class="s2">&quot;module&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;common&quot;</span><span class="p">,</span>
-<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>        <span class="s2">"module"</span> <span class="o">=&gt;</span> <span class="s2">"common"</span><span class="p">,</span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>        <span class="s2">"action"</span> <span class="o">=&gt;</span> <span class="s2">"index"</span><span class="p">,</span>
 <a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>    <span class="p">]</span>
 <a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="p">);</span>
 </code></pre></div>
@@ -7936,7 +7936,7 @@ though routing succeeded.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="clirouterexceptionsbeforematchnotcallable-__construct"><code>__construct()</code><a class="headerlink" href="#clirouterexceptionsbeforematchnotcallable-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$route</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$route</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="clirouterexceptionsinvalidroutepaths">Cli\Router\Exceptions\InvalidRoutePaths<a class="headerlink" href="#clirouterexceptionsinvalidroutepaths" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -7965,7 +7965,7 @@ though routing succeeded.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="clirouterexceptionsinvalidroutepaths-__construct"><code>__construct()</code><a class="headerlink" href="#clirouterexceptionsinvalidroutepaths-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$route</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$route</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="clirouterexceptionsrouterargumentsinvalidtype">Cli\Router\Exceptions\RouterArgumentsInvalidType<a class="headerlink" href="#clirouterexceptionsrouterargumentsinvalidtype" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -7994,7 +7994,7 @@ though routing succeeded.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="clirouterexceptionsrouterargumentsinvalidtype-__construct"><code>__construct()</code><a class="headerlink" href="#clirouterexceptionsrouterargumentsinvalidtype-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="clirouterroute">Cli\Router\Route<a class="headerlink" href="#clirouterroute" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -8301,11 +8301,11 @@ makes newly created routes overwrite existing entries.</p>
 </code></pre></div>
 <p>Sets the route's name</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
-<a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a>    <span class="s2">&quot;/about&quot;</span><span class="p">,</span>
+<a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a>    <span class="s2">"/about"</span><span class="p">,</span>
 <a id="__codelineno-81-3" name="__codelineno-81-3" href="#__codelineno-81-3"></a>    <span class="p">[</span>
-<a id="__codelineno-81-4" name="__codelineno-81-4" href="#__codelineno-81-4"></a>        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;about&quot;</span><span class="p">,</span>
+<a id="__codelineno-81-4" name="__codelineno-81-4" href="#__codelineno-81-4"></a>        <span class="s2">"controller"</span> <span class="o">=&gt;</span> <span class="s2">"about"</span><span class="p">,</span>
 <a id="__codelineno-81-5" name="__codelineno-81-5" href="#__codelineno-81-5"></a>    <span class="p">]</span>
-<a id="__codelineno-81-6" name="__codelineno-81-6" href="#__codelineno-81-6"></a><span class="p">)</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s2">&quot;about&quot;</span><span class="p">);</span>
+<a id="__codelineno-81-6" name="__codelineno-81-6" href="#__codelineno-81-6"></a><span class="p">)</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s2">"about"</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="clirouterrouteinterface">Cli\Router\RouteInterface<a class="headerlink" href="#clirouterrouteinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
@@ -8691,7 +8691,7 @@ arguments). Declare optional trailing parameters to read those options.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>
