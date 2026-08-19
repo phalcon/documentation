@@ -268,7 +268,7 @@ Phalcon\Session\Adapter\Libmemcached
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Storage\AdapterFactory`
+__Uses__ `Exception` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Storage\AdapterFactory`
 { .api-uses }
 
 ### Method Summary
@@ -481,7 +481,7 @@ Phalcon\Session\Adapter\Redis
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Storage\AdapterFactory`
+__Uses__ `Exception` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Storage\AdapterFactory` · `Redis`
 { .api-uses }
 
 ### Method Summary
@@ -657,10 +657,6 @@ $files = new Stream(
 $session->setAdapter($files);
 ```
 
-@property array  $options
-@property string $prefix
-@property string $path
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Session\Adapter\Noop`](#sessionadapternoop)
@@ -668,7 +664,7 @@ $session->setAdapter($files);
 
 </div>
 
-__Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+__Uses__ `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 { .api-uses }
 
 ### Method Summary
@@ -861,6 +857,8 @@ $user->age  = 22;
 @property string           $name
 @property ManagerInterface $session;
 
+@extends Collection<mixed>
+
 <div class="api-tree" markdown>
 
 - [`Phalcon\Support\Collection`](phalcon_support.md#supportcollection)
@@ -868,7 +866,7 @@ $user->age  = 22;
 
 </div>
 
-__Uses__ `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Support\Collection`
+__Uses__ `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Support\Collection`
 { .api-uses }
 
 ### Method Summary
@@ -965,6 +963,9 @@ Interface for Phalcon\Session\Bag
 - **`Phalcon\Session\BagInterface`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Session\SessionTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1310,11 +1311,13 @@ Session manager class
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Session\Manager`** - implements [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface), [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
+- `\stdClass`
+    - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
+        - **`Phalcon\Session\Manager`** - implements [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
 
 </div>
 
-__Uses__ `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`
+__Uses__ `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1661,7 +1664,7 @@ Interface for the Phalcon\Session\Manager
 
 </div>
 
-__Uses__ `InvalidArgumentException` · `SessionHandlerInterface`
+__Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Session\SessionTypes` · `SessionHandlerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1704,6 +1707,7 @@ __Uses__ `InvalidArgumentException` · `SessionHandlerInterface`
 </a>
 <a class="api-item" href="#sessionmanagerinterface-get">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remove</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a session variable from an application context</span>
 </a>
@@ -1872,7 +1876,7 @@ public function get(
     string $key,
     mixed $defaultValue = null,
     bool $remove = false
-);
+): mixed;
 ```
 
 Gets a session variable from an application context

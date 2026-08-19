@@ -118,13 +118,16 @@ Disconnects from the database.
 
 Manages Connection instances for default, read, and write connections.
 
+The locator gives its events manager to each connection that it returns,
+so connections that are built on demand also fire the DataMapper events.
+
 <div class="api-tree" markdown>
 
-- **`Phalcon\DataMapper\Pdo\ConnectionLocator`** - implements [`Phalcon\DataMapper\Pdo\ConnectionLocatorInterface`](#datamapperpdoconnectionlocatorinterface)
+- **`Phalcon\DataMapper\Pdo\ConnectionLocator`** - implements [`Phalcon\DataMapper\Pdo\ConnectionLocatorInterface`](#datamapperpdoconnectionlocatorinterface), [`Phalcon\Contracts\Events\EventsAware`](phalcon_contracts.md#contractseventseventsaware)
 
 </div>
 
-__Uses__ `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`
+__Uses__ `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound` · `Phalcon\Events\Traits\EventsAwareTrait`
 { .api-uses }
 
 ### Method Summary
@@ -418,15 +421,20 @@ Sets a write connection registry entry by name.
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
 
+Connections fire the lifecycle events in Phalcon\DataMapper\Pdo\Events when
+an events manager is set. ConnectionInterface does not declare the events
+manager methods; the EventsAware contract is applied here so that existing
+implementations of the interface keep working.
+
 <div class="api-tree" markdown>
 
-- **`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`** - implements [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface)
+- **`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`** - implements [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface), [`Phalcon\Contracts\Events\EventsAware`](phalcon_contracts.md#contractseventseventsaware)
     - [`Phalcon\DataMapper\Pdo\Connection`](#datamapperpdoconnection)
     - [`Phalcon\DataMapper\Pdo\Connection\Decorated`](#datamapperpdoconnectiondecorated)
 
 </div>
 
-__Uses__ `BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Throwable`
+__Uses__ `BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Events` · `Phalcon\DataMapper\Pdo\Exception\OperationCancelled` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -541,6 +549,7 @@ __Uses__ `BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` �
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchvalue">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">fetchValue</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches the very first value (i.e., first column of the first row).</span>
 </a>
@@ -552,6 +561,7 @@ __Uses__ `BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` �
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getattribute">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getAttribute</span>( <span class="st">int</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Retrieve a database connection attribute</span>
 </a>
@@ -617,13 +627,13 @@ __Uses__ `BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` �
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-prepare">
 <code class="vis vis-public">public</code>
-<code class="ret">bool|PDOStatement</code>
+<code class="ret">false|PDOStatement</code>
 <code class="sig"><span class="sf">prepare</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Prepares an SQL statement for execution.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-query">
 <code class="vis vis-public">public</code>
-<code class="ret">bool|PDOStatement</code>
+<code class="ret">false|PDOStatement</code>
 <code class="sig"><span class="sf">query</span>( <span class="st">string</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Queries the database and returns a PDOStatement. If the profiler is</span>
 </a>
@@ -663,6 +673,12 @@ __Uses__ `BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` �
 <code class="sig"><span class="sf">fetchData</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Helper method to get data from PDO based on the method passed</span>
 </a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-firebefore">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">fireBefore</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Fires a cancellable &quot;before&quot; event. A listener cancels by stopping the</span>
+</a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-isconnectionerror">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
@@ -689,7 +705,7 @@ because the connection was lost. Opt-in; off by default.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">PDO|null</code>
+<code class="ret">\PDO</code>
 <code class="sig"><span class="sv">$pdo</span></code>
 </div>
 <div class="api-item">
@@ -926,7 +942,7 @@ the key, second column is the value).
 public function fetchValue(
     string $statement,
     array $values = []
-);
+): mixed;
 ```
 
 Fetches the very first value (i.e., first column of the first row).
@@ -942,7 +958,7 @@ Return the inner PDO (if any)
 #### `getAttribute()` { #datamapperpdoconnectionabstractconnection-getattribute }
 
 ```php
-public function getAttribute( int $attribute );
+public function getAttribute( int $attribute ): mixed;
 ```
 
 Retrieve a database connection attribute
@@ -1043,7 +1059,7 @@ trivial query. Returns false if there is no handle or the probe fails.
 public function prepare(
     string $statement,
     array $options = []
-): bool|PDOStatement;
+): false|PDOStatement;
 ```
 
 Prepares an SQL statement for execution.
@@ -1051,7 +1067,7 @@ Prepares an SQL statement for execution.
 #### `query()` { #datamapperpdoconnectionabstractconnection-query }
 
 ```php
-public function query( string $statement ): bool|PDOStatement;
+public function query( string $statement ): false|PDOStatement;
 ```
 
 Queries the database and returns a PDOStatement. If the profiler is
@@ -1106,7 +1122,7 @@ public function setProfiler( ProfilerInterface $profiler ): static;
 
 Sets the Profiler instance.
 
-<div class="api-group">Protected · 3</div>
+<div class="api-group">Protected · 4</div>
 
 #### `fetchData()` { #datamapperpdoconnectionabstractconnection-fetchdata }
 
@@ -1120,6 +1136,19 @@ protected function fetchData(
 ```
 
 Helper method to get data from PDO based on the method passed
+
+#### `fireBefore()` { #datamapperpdoconnectionabstractconnection-firebefore }
+
+```php
+protected function fireBefore(
+    string $eventName,
+    mixed $data = null
+): void;
+```
+
+Fires a cancellable "before" event. A listener cancels by stopping the
+event and returning false; see Phalcon\DataMapper\Pdo\Events for the
+required idiom. The operation does not run when it is cancelled.
 
 #### `isConnectionError()` { #datamapperpdoconnectionabstractconnection-isconnectionerror }
 
@@ -1234,6 +1263,7 @@ __Uses__ `PDO` · `PDOStatement` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInt
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchvalue">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">fetchValue</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches the very first value (i.e., first column of the first row).</span>
 </a>
@@ -1422,7 +1452,7 @@ the key, second column is the value).
 public function fetchValue(
     string $statement,
     array $values = []
-);
+): mixed;
 ```
 
 Fetches the very first value (i.e., first column of the first row).
@@ -1600,6 +1630,7 @@ __Uses__ `PDO` · `PDOStatement`
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-getattribute">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getAttribute</span>( <span class="st">int</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Retrieve a database connection attribute</span>
 </a>
@@ -1623,13 +1654,13 @@ __Uses__ `PDO` · `PDOStatement`
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-prepare">
 <code class="vis vis-public">public</code>
-<code class="ret">bool|PDOStatement</code>
+<code class="ret">false|PDOStatement</code>
 <code class="sig"><span class="sf">prepare</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Prepares an SQL statement for execution.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-query">
 <code class="vis vis-public">public</code>
-<code class="ret">bool|PDOStatement</code>
+<code class="ret">false|PDOStatement</code>
 <code class="sig"><span class="sf">query</span>( <span class="st">string</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Queries the database and returns a PDOStatement. If the profiler is</span>
 </a>
@@ -1703,7 +1734,7 @@ the profiler is enabled, the operation will be recorded.
 #### `getAttribute()` { #datamapperpdoconnectionpdointerface-getattribute }
 
 ```php
-public function getAttribute( int $attribute );
+public function getAttribute( int $attribute ): mixed;
 ```
 
 Retrieve a database connection attribute
@@ -1741,7 +1772,7 @@ is enabled, the operation will be recorded.
 public function prepare(
     string $statement,
     array $options = []
-): bool|PDOStatement;
+): false|PDOStatement;
 ```
 
 Prepares an SQL statement for execution.
@@ -1749,7 +1780,7 @@ Prepares an SQL statement for execution.
 #### `query()` { #datamapperpdoconnectionpdointerface-query }
 
 ```php
-public function query( string $statement ): bool|PDOStatement;
+public function query( string $statement ): false|PDOStatement;
 ```
 
 Queries the database and returns a PDOStatement. If the profiler is
@@ -1787,6 +1818,125 @@ public function setAttribute(
 ```
 
 Set a database connection attribute
+
+
+## DataMapper\Pdo\Events
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Events.php){ .src-btn }
+
+Lifecycle event names fired by the DataMapper connections through
+Phalcon\Events\Manager. One public constant per event.
+
+The `before*` events are cancellable. To cancel an operation, a listener
+must stop the event and return false:
+
+    $manager->attach(
+        Events::BEFORE_PERFORM,
+        function ($event) {
+            $event->stop();
+
+            return false;
+        }
+    );
+
+Both parts are necessary. `stop()` alone abandons the queue but returns
+the listener's own value, which the connection cannot tell apart from
+"no listeners". `return false` alone is replaced by any later non-null
+return while the manager's stopOnFalse mode is off, which is the default.
+A cancelled operation throws
+Phalcon\DataMapper\Pdo\Exception\OperationCancelled.
+
+The `after*` events are not cancellable. The operation is complete when
+they fire.
+
+There are two groups of events. The operation events - perform, exec,
+query and the three transaction events - belong to one operation each.
+`prepare()` has no operation events because `perform()` calls it, and
+nested events for one logical operation give listeners two counts of the
+same work. The connection events - connect, disconnect and connectionLost
+- report a change of the connection state. They fire each time the state
+changes, whichever method causes it. An automatic reconnect from any
+method therefore reports the lost connection and the new one.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\DataMapper\Pdo\Events`**
+
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">AFTER_BEGIN_TRANSACTION</span><span class="sm"> = &quot;dm:afterBeginTransaction&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">AFTER_COMMIT</span><span class="sm"> = &quot;dm:afterCommit&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">AFTER_CONNECT</span><span class="sm"> = &quot;dm:afterConnect&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">AFTER_DISCONNECT</span><span class="sm"> = &quot;dm:afterDisconnect&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">AFTER_EXEC</span><span class="sm"> = &quot;dm:afterExec&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">AFTER_PERFORM</span><span class="sm"> = &quot;dm:afterPerform&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">AFTER_QUERY</span><span class="sm"> = &quot;dm:afterQuery&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">AFTER_ROLLBACK</span><span class="sm"> = &quot;dm:afterRollBack&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">BEFORE_BEGIN_TRANSACTION</span><span class="sm"> = &quot;dm:beforeBeginTransaction&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">BEFORE_COMMIT</span><span class="sm"> = &quot;dm:beforeCommit&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">BEFORE_CONNECT</span><span class="sm"> = &quot;dm:beforeConnect&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">BEFORE_DISCONNECT</span><span class="sm"> = &quot;dm:beforeDisconnect&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">BEFORE_EXEC</span><span class="sm"> = &quot;dm:beforeExec&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">BEFORE_PERFORM</span><span class="sm"> = &quot;dm:beforePerform&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">BEFORE_QUERY</span><span class="sm"> = &quot;dm:beforeQuery&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">BEFORE_ROLLBACK</span><span class="sm"> = &quot;dm:beforeRollBack&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">CONNECTION_LOST</span><span class="sm"> = &quot;dm:connectionLost&quot;</span></code>
+</div>
+</div>
 
 
 ## DataMapper\Pdo\Exception\CannotDisconnect
@@ -1870,8 +2020,46 @@ Base Exception class
     - **`Phalcon\DataMapper\Pdo\Exception\Exception`**
         - [`Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`](#datamapperpdoexceptioncannotdisconnect)
         - [`Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`](#datamapperpdoexceptionconnectionnotfound)
+        - [`Phalcon\DataMapper\Pdo\Exception\OperationCancelled`](#datamapperpdoexceptionoperationcancelled)
 
 </div>
+
+
+## DataMapper\Pdo\Exception\OperationCancelled
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/DataMapper/Pdo/Exception/OperationCancelled.php){ .src-btn }
+
+A listener cancelled a cancellable "before" event, so the operation did
+not run. This is a deliberate cancellation, not a database failure. Catch
+this class to tell the two apart.
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
+        - **`Phalcon\DataMapper\Pdo\Exception\OperationCancelled`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#datamapperpdoexceptionoperationcancelled-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #datamapperpdoexceptionoperationcancelled-__construct }
+
+```php
+public function __construct( string $eventName );
+```
 
 
 ## DataMapper\Pdo\Exception\UnknownDriverMethod
@@ -2856,7 +3044,7 @@ Class AbstractQuery
 
 </div>
 
-__Uses__ `PDO` · `Phalcon\DataMapper\Pdo\Connection`
+__Uses__ `PDO` · `PDOStatement` · `Phalcon\DataMapper\Pdo\Connection`
 { .api-uses }
 
 ### Method Summary
@@ -2899,6 +3087,7 @@ __Uses__ `PDO` · `Phalcon\DataMapper\Pdo\Connection`
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-perform">
 <code class="vis vis-public">public</code>
+<code class="ret">PDOStatement</code>
 <code class="sig"><span class="sf">perform</span>()</code>
 <span class="desc">Performs a statement in the connection</span>
 </a>
@@ -3072,7 +3261,7 @@ Return the generated statement
 #### `perform()` { #datamapperqueryabstractquery-perform }
 
 ```php
-public function perform();
+public function perform(): PDOStatement;
 ```
 
 Performs a statement in the connection

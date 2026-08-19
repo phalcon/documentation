@@ -3210,11 +3210,13 @@ Executes the validation
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Validation\ValidatorFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
+        - **`Phalcon\Filter\Validation\ValidatorFactory`**
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Filter\Validation\Validator\Alnum` · `Phalcon\Filter\Validation\Validator\Alpha` · `Phalcon\Filter\Validation\Validator\Between` · `Phalcon\Filter\Validation\Validator\Callback` · `Phalcon\Filter\Validation\Validator\Confirmation` · `Phalcon\Filter\Validation\Validator\CreditCard` · `Phalcon\Filter\Validation\Validator\Date` · `Phalcon\Filter\Validation\Validator\Digit` · `Phalcon\Filter\Validation\Validator\Email` · `Phalcon\Filter\Validation\Validator\Exception` · `Phalcon\Filter\Validation\Validator\ExclusionIn` · `Phalcon\Filter\Validation\Validator\File` · `Phalcon\Filter\Validation\Validator\Identical` · `Phalcon\Filter\Validation\Validator\InclusionIn` · `Phalcon\Filter\Validation\Validator\Ip` · `Phalcon\Filter\Validation\Validator\Numericality` · `Phalcon\Filter\Validation\Validator\PresenceOf` · `Phalcon\Filter\Validation\Validator\Regex` · `Phalcon\Filter\Validation\Validator\StringLength` · `Phalcon\Filter\Validation\Validator\Uniqueness` · `Phalcon\Filter\Validation\Validator\Url` · `Phalcon\Traits\Factory\FactoryTrait`
+__Uses__ `Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Filter\Validation\Validator\Alnum` · `Phalcon\Filter\Validation\Validator\Alpha` · `Phalcon\Filter\Validation\Validator\Between` · `Phalcon\Filter\Validation\Validator\Callback` · `Phalcon\Filter\Validation\Validator\Confirmation` · `Phalcon\Filter\Validation\Validator\CreditCard` · `Phalcon\Filter\Validation\Validator\Date` · `Phalcon\Filter\Validation\Validator\Digit` · `Phalcon\Filter\Validation\Validator\Email` · `Phalcon\Filter\Validation\Validator\Exception` · `Phalcon\Filter\Validation\Validator\ExclusionIn` · `Phalcon\Filter\Validation\Validator\File` · `Phalcon\Filter\Validation\Validator\Identical` · `Phalcon\Filter\Validation\Validator\InclusionIn` · `Phalcon\Filter\Validation\Validator\Ip` · `Phalcon\Filter\Validation\Validator\Numericality` · `Phalcon\Filter\Validation\Validator\PresenceOf` · `Phalcon\Filter\Validation\Validator\Regex` · `Phalcon\Filter\Validation\Validator\StringLength` · `Phalcon\Filter\Validation\Validator\Uniqueness` · `Phalcon\Filter\Validation\Validator\Url`
 { .api-uses }
 
 ### Method Summary
@@ -3772,7 +3774,7 @@ $validator->add(
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn` · `Phalcon\Filter\Validation\ValidatorInterface`
+__Uses__ `Closure` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn` · `Phalcon\Filter\Validation\ValidatorInterface` · `ReflectionFunction`
 { .api-uses }
 
 ### Method Summary
@@ -6460,6 +6462,11 @@ The test is passed if for a string's length L, min<=L<=max, i.e. L must
 be at least min, and at most max.
 Since Phalcon v4.0 this validator works like a container
 
+The "includedMinimum" and "includedMaximum" options are true by
+default. Set an option to false to exclude that boundary. The two
+options are independent of each other. The "included" option sets
+the two boundaries together and has precedence.
+
 ```php
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\StringLength as StringLength;
@@ -6558,6 +6565,11 @@ Constructor
 Validates that a string has the specified maximum constraints
 The test is passed if for a string's length L, L<=max, i.e. L must
 be at most max.
+
+The "included" option is true by default. Set the option to false
+for L<max, i.e. L must be less than max. The "includedMaximum" option
+is an alias of "included". If you set the two options, "included" has
+precedence.
 
 ```php
 use Phalcon\Filter\Validation;
@@ -6669,6 +6681,11 @@ Validates that a string has the specified minimum constraints
 The test is passed if for a string's length L, min<=L, i.e. L must
 be at least min.
 
+The "included" option is true by default. Set the option to false
+for min<L, i.e. L must be more than min. The "includedMinimum" option
+is an alias of "included". If you set the two options, "included" has
+precedence.
+
 ```php
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\StringLength\Min;
@@ -6681,7 +6698,7 @@ $validation->add(
         [
             "min"     => 2,
             "message" => "We want more than just their initials",
-            "included" => true
+            "included" => false
         ]
     )
 );

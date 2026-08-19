@@ -52,7 +52,7 @@ channels. For any given point they run in this order:
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatcher\Exception` · `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Mvc\Model\Binder` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Support\Collection`
+__Uses__ `Exception` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Contracts\Dispatcher\DispatcherTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\Exception` · `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Filter\FilterInterface` · `Phalcon\Mvc\Model\Binder` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Support\Collection`
 { .api-uses }
 
 ### Method Summary
@@ -65,6 +65,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatch
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-dispatch">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">dispatch</span>()</code>
 <span class="desc">Process the results of the router by calling into the appropriate</span>
 </a>
@@ -137,13 +138,13 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatch
 <a class="api-item" href="#dispatcherabstractdispatcher-getparam">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getparameters">
@@ -185,13 +186,13 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatch
 <a class="api-item" href="#dispatcherabstractdispatcher-hasparam">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">hasParam</span>( <span class="st">int|string</span> <span class="sv">$param</span> )</code>
+<code class="sig"><span class="sf">hasParam</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
 <span class="desc">Check if a param exists</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-hasparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">hasParameter</span>( <span class="st">int|string</span> <span class="sv">$param</span> )</code>
+<code class="sig"><span class="sf">hasParameter</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
 <span class="desc">Check if a param exists</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-isfinished">
@@ -251,13 +252,13 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatch
 <a class="api-item" href="#dispatcherabstractdispatcher-setparam">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setparameters">
@@ -287,7 +288,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatch
 <a class="api-item" href="#dispatcherabstractdispatcher-handleexception">
 <code class="vis vis-protected">protected</code>
 <code class="sig"><span class="sf">handleException</span>( <span class="st">Exception</span> <span class="sv">$exception</span> )</code>
-<span class="desc">Handles a user exception</span>
+<span class="desc">Handles a user exception triggered inside the dispatch loop.</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-resolveemptyproperties">
 <code class="vis vis-protected">protected</code>
@@ -298,7 +299,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatch
 <a class="api-item" href="#dispatcherabstractdispatcher-throwdispatchexception">
 <code class="vis vis-protected">protected</code>
 <code class="sig"><span class="sf">throwDispatchException</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$exceptionCode</span><span class="sm"> = 0</span></span>)</code>
-<span class="desc">Throws an internal exception</span>
+<span class="desc">Throws an internal dispatch exception.</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-tocamelcase">
 <code class="vis vis-protected">protected</code>
@@ -387,7 +388,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatch
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$lastHandler</span><span class="sm"> = null</span></code>
 </div>
 <div class="api-item">
@@ -402,7 +403,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatch
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$moduleName</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
@@ -432,8 +433,9 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Dispatch
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$returnedValue</span><span class="sm"> = null</span></code>
+<span class="desc">@todo fix the type in v7</span>
 </div>
 </div>
 
@@ -454,7 +456,7 @@ public function callActionMethod(
 #### `dispatch()` { #dispatcherabstractdispatcher-dispatch }
 
 ```php
-public function dispatch();
+public function dispatch(): mixed;
 ```
 
 Process the results of the router by calling into the appropriate
@@ -509,6 +511,17 @@ public function getBoundModels(): array;
 
 Returns bound models from binder instance
 
+```php
+class UserController extends Controller
+{
+    public function showAction(User $user)
+    {
+        // return array with $user
+        $boundModels = $this->dispatcher->getBoundModels();
+    }
+}
+```
+
 #### `getDefaultNamespace()` { #dispatcherabstractdispatcher-getdefaultnamespace }
 
 ```php
@@ -561,16 +574,16 @@ Gets a namespace to be prepended to the current handler name
 
 ```php
 public function getParam(
-    int|string $param,
-    array|string|null $filters = null,
+    mixed $param,
+    mixed $filters = null,
     mixed $defaultValue = null
 ): mixed;
 ```
 
 Gets a param by its name or numeric index
 
-Note: The interface declares `getParam($param, $filters = null)` without
-the `$defaultValue` argument, so code typed against `DispatcherInterface`
+Note: The interface declares `getParam(param, filters = null)` without the
+`defaultValue` argument, so code typed against `DispatcherInterface`
 cannot use the default-value feature. This signature drift is intentional
 for now; the interface and implementation will be aligned in the next
 major version.
@@ -579,8 +592,8 @@ major version.
 
 ```php
 public function getParameter(
-    int|string $param,
-    array|string|null $filters = null,
+    mixed $param,
+    mixed $filters = null,
     mixed $defaultValue = null
 ): mixed;
 ```
@@ -638,7 +651,7 @@ Returns value returned by the latest dispatched action
 #### `hasParam()` { #dispatcherabstractdispatcher-hasparam }
 
 ```php
-public function hasParam( int|string $param ): bool;
+public function hasParam( mixed $param ): bool;
 ```
 
 Check if a param exists
@@ -646,7 +659,7 @@ Check if a param exists
 #### `hasParameter()` { #dispatcherabstractdispatcher-hasparameter }
 
 ```php
-public function hasParameter( int|string $param ): bool;
+public function hasParameter( mixed $param ): bool;
 ```
 
 Check if a param exists
@@ -711,6 +724,22 @@ public function setModelBinder(
 
 Enable model binding during dispatch
 
+```php
+$di->set(
+    'dispatcher',
+    function() {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setModelBinder(
+            new Binder(),
+            'cache'
+        );
+
+        return $dispatcher;
+    }
+);
+```
+
 #### `setModuleName()` { #dispatcherabstractdispatcher-setmodulename }
 
 ```php
@@ -731,7 +760,7 @@ Sets the namespace where the controller class is
 
 ```php
 public function setParam(
-    int|string $param,
+    mixed $param,
     mixed $value
 ): void;
 ```
@@ -742,7 +771,7 @@ Set a param by its name or numeric index
 
 ```php
 public function setParameter(
-    int|string $param,
+    mixed $param,
     mixed $value
 ): void;
 ```
@@ -789,7 +818,11 @@ Check if the current executed action was forwarded by another one
 abstract protected function handleException( Exception $exception );
 ```
 
-Handles a user exception
+Handles a user exception triggered inside the dispatch loop.
+
+Subclasses implement the namespace-specific behavior (typically firing
+the `dispatch:beforeException` event so listeners may forward or swallow
+the exception).
 
 #### `resolveEmptyProperties()` { #dispatcherabstractdispatcher-resolveemptyproperties }
 
@@ -808,7 +841,10 @@ abstract protected function throwDispatchException(
 );
 ```
 
-Throws an internal exception
+Throws an internal dispatch exception.
+
+Subclasses build the namespace-specific exception and route it through
+handleException() before throwing it when it was not handled.
 
 #### `toCamelCase()` { #dispatcherabstractdispatcher-tocamelcase }
 

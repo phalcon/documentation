@@ -18,11 +18,13 @@ Phalcon\Storage\AdapterFactory.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Queue\AdapterFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
+        - **`Phalcon\Queue\AdapterFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory` · `Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory` · `Phalcon\Queue\Adapter\Redis\RedisConnectionFactory` · `Phalcon\Queue\Adapter\Stream\StreamConnectionFactory` · `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Factory\FactoryTrait`
+__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory` · `Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory` · `Phalcon\Queue\Adapter\Redis\RedisConnectionFactory` · `Phalcon\Queue\Adapter\Stream\StreamConnectionFactory` · `Phalcon\Queue\Exceptions\Exception`
 { .api-uses }
 
 ### Method Summary
@@ -43,6 +45,7 @@ __Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Queue\Adapter\B
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 <a class="api-item" href="#queueadapterfactory-getservices">
 <code class="vis vis-protected">protected</code>
@@ -82,6 +85,8 @@ Creates a new ConnectionFactory for the named adapter.
 ```php
 protected function getExceptionClass(): string;
 ```
+
+Returns the exception class for the factory
 
 #### `getServices()` { #queueadapterfactory-getservices }
 
@@ -488,7 +493,7 @@ from the original Phalcon\Queue\Beanstalk transport.
 
 </div>
 
-__Uses__ `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
+__Uses__ `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -800,7 +805,7 @@ Options:
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context`
+__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1571,7 +1576,7 @@ Builds a MemoryContext. The Memory transport takes no options.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context`
+__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`
 { .api-uses }
 
 ### Method Summary
@@ -2031,7 +2036,7 @@ adapter only supplies its own concrete message factory around `decode()`.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\Message`
+__Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\QueueTypes`
 { .api-uses }
 
 ### Method Summary
@@ -2146,7 +2151,7 @@ Options:
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Exception` · `Phalcon\Storage\SerializerFactory`
+__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Exception` · `Phalcon\Storage\SerializerFactory` · `Redis`
 { .api-uses }
 
 ### Method Summary
@@ -2664,7 +2669,7 @@ Options:
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context`
+__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`
 { .api-uses }
 
 ### Method Summary
@@ -3115,6 +3120,9 @@ for binary compatibility with the wider interop ecosystem.
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Queue\QueueTypes`
+{ .api-uses }
+
 __Used by__ [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
 { .api-used-by }
 
@@ -3479,7 +3487,7 @@ keep just the constructor that captures their context and poll interval.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\Consumer`
+__Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\QueueTypes`
 { .api-uses }
 
 __Used by__ [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
@@ -3601,7 +3609,7 @@ FactoryDefault.
 
 </div>
 
-__Uses__ `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Task` · `Phalcon\Queue\Consumer\QueueConsumer` · `Phalcon\Queue\Consumer\Worker` · `Phalcon\Queue\Consumer\WorkerOptions` · `Phalcon\Queue\QueueFactory`
+__Uses__ `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Task` · `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Processor` · `Phalcon\Di\DiInterface` · `Phalcon\Queue\Consumer\QueueConsumer` · `Phalcon\Queue\Consumer\Worker` · `Phalcon\Queue\Consumer\WorkerOptions` · `Phalcon\Queue\QueueFactory`
 { .api-uses }
 
 ### Method Summary
@@ -3850,7 +3858,7 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Context`
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, BoundProcessor&gt;</code>
 <code class="sig"><span class="sv">$bindings</span><span class="sm"> = []</span></code>
 <span class="desc">Bound processors keyed by queue name.</span>
 </div>
@@ -4488,11 +4496,12 @@ Phalcon\Cache\CacheFactory.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Queue\QueueFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - **`Phalcon\Queue\QueueFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Support\Traits\ConfigTrait`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Queue\Exceptions\Exception`
 { .api-uses }
 
 ### Method Summary
@@ -4506,7 +4515,7 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Context` �
 <a class="api-item" href="#queuequeuefactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">ContextInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Builds a Context from a config array/object.</span>
 </a>
 <a class="api-item" href="#queuequeuefactory-newinstance">
@@ -4519,6 +4528,7 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Context` �
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 </div>
 
@@ -4548,7 +4558,7 @@ factory is usable straight from the DI container.
 #### `load()` { #queuequeuefactory-load }
 
 ```php
-public function load( array|ConfigInterface $config ): ContextInterface;
+public function load( mixed $config ): ContextInterface;
 ```
 
 Builds a Context from a config array/object.
@@ -4571,3 +4581,5 @@ Builds a Context for the named adapter.
 ```php
 protected function getExceptionClass(): string;
 ```
+
+Returns the exception class for the factory

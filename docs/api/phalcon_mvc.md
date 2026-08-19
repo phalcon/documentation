@@ -448,7 +448,7 @@ $controller = $dispatcher->dispatch();
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Dispatcher\Exception` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Mvc\Dispatcher\Exception` · `Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`
+__Uses__ `Exception` · `Phalcon\Contracts\Dispatcher\DispatcherTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Dispatcher\Exception` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Dispatcher\Exception` · `Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`
 { .api-uses }
 
 ### Method Summary
@@ -4606,9 +4606,15 @@ public function setRelated(
 Stores related records in the relation cache, so that a subsequent
 getRelated() or property access returns them without querying.
 
-This is the write side of the cache getRelated() already reads. It does
-not mark the record dirty: the value lands in `related`, never in
-`dirtyRelated`, so save() is unaffected.
+This is the write side of the cache getRelated() already reads. The value
+lands in `related`, never in `dirtyRelated`.
+
+That is not the same as leaving save() untouched. collectRelatedToSave()
+promotes a `related` entry into `dirtyRelated` when the entry is a single
+ModelInterface that is new or has changed, so passing such a record here
+does cascade on the next save(). Arrays, resultsets, and unchanged
+records carrying snapshot data are skipped - which is why eager loading,
+the caller this exists for, never triggers a cascade.
 
 #### `setSnapshotData()` { #mvcmodel-setsnapshotdata }
 
@@ -7196,7 +7202,7 @@ public function createBuilder(): BuilderInterface;
 
 Creates a query builder from criteria.
 
-```
+```php
 <?php
 
 $invoices = Invoices::query()
@@ -17511,6 +17517,9 @@ $builder->groupBy(
     ]
 );
 ```
+
+Passing null (or an empty array) clears the clause; the PHQL generator
+treats both as "no GROUP BY".
 
 #### `having()` { #mvcmodelquerybuilder-having }
 
@@ -28360,7 +28369,7 @@ $router = (new RouterFactory())->load(
 
 </div>
 
-__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`
 { .api-uses }
 
 ### Method Summary
@@ -28369,7 +28378,7 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mv
 <a class="api-item" href="#mvcrouterrouterfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Builds a Router from a config array or ConfigInterface and loads routes.</span>
 </a>
 <a class="api-item" href="#mvcrouterrouterfactory-newinstance">
@@ -28387,7 +28396,7 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mv
 #### `load()` { #mvcrouterrouterfactory-load }
 
 ```php
-public function load( array|ConfigInterface $config ): RouterInterface;
+public function load( mixed $config ): RouterInterface;
 ```
 
 Builds a Router from a config array or ConfigInterface and loads routes.
@@ -28567,7 +28576,9 @@ echo $url->get(
     ]
 );
 
-// Generate an absolute URL by setting the third parameter as false.
+// A URI that already carries a scheme is detected as remote and is
+// returned untouched. The third parameter is only honored when it is
+// explicitly true - a false reads the same as leaving it out.
 echo $url->get(
     "https://phalcon.io/",
     null,

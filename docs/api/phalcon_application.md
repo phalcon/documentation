@@ -25,7 +25,7 @@ Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
+__Uses__ `Closure` · `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Contracts\Application\ApplicationTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 { .api-uses }
 
 ### Method Summary
@@ -84,7 +84,7 @@ __Uses__ `Closure` · `Phalcon\Application\Exceptions\ModuleNotRegistered` · `P
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TModule[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$modules</span><span class="sm"> = []</span></code>
 </div>
 </div>

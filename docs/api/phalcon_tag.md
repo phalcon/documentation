@@ -23,7 +23,7 @@ This component is a class that you can extend to add more helpers.
 
 </div>
 
-__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Tag\Exception` · `Phalcon\Tag\Select`
+__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Tag\Exception` · `Phalcon\Tag\Select` · `Stringable`
 { .api-uses }
 
 ### Method Summary
@@ -139,12 +139,13 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 </a>
 <a class="api-item" href="#tag-geturlservice">
 <code class="vis vis-public">public</code>
-<code class="ret">Url</code>
+<code class="ret">UrlInterface</code>
 <code class="sig"><span class="sf">getUrlService</span>()</code>
 <span class="desc">Returns a URL service from the default DI</span>
 </a>
 <a class="api-item" href="#tag-getvalue">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">getValue</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Every helper calls this function to check whether a component has a</span>
 </a>
@@ -364,6 +365,12 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="sig"><span class="sf">weekField</span>( <span class="st">array|string</span> <span class="sv">$parameters</span> )</code>
 <span class="desc">Builds an HTML input[type=&quot;week&quot;] tag</span>
 </a>
+<a class="api-item" href="#tag-getstaticurl">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getStaticUrl</span>( <span class="st">mixed</span> <span class="sv">$uri</span> )</code>
+<span class="desc">Resolves a static (asset) URL through the <code>url</code> service.</span>
+</a>
 <a class="api-item" href="#tag-inputfield">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
@@ -375,6 +382,12 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="ret">string</code>
 <code class="sig"><span class="sf">inputFieldChecked</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$parameters</span></span>)</code>
 <span class="desc">Builds INPUT tags that implements the checked attribute</span>
+</a>
+<a class="api-item" href="#tag-tostringvalue">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toStringValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<span class="desc">Reduces an arbitrary helper value to the string a tag attribute, id or</span>
 </a>
 </div>
 
@@ -439,13 +452,11 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-protected">protected</code>
 <code class="ret">DiInterface|null</code>
 <code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
-<span class="desc">DI Container</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$displayValues</span></code>
-<span class="desc">Pre-assigned values for components</span>
+<code class="sig"><span class="sv">$displayValues</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -461,7 +472,6 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\Es
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$documentTitle</span><span class="sm"> = &quot;&quot;</span></code>
-<span class="desc">HTML document title</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -647,7 +657,7 @@ Gets the current document title separator
 #### `getUrlService()` { #tag-geturlservice }
 
 ```php
-public static function getUrlService(): Url;
+public static function getUrlService(): UrlInterface;
 ```
 
 Returns a URL service from the default DI
@@ -658,7 +668,7 @@ Returns a URL service from the default DI
 public static function getValue(
     int|string $name,
     array $parameters = []
-);
+): mixed;
 ```
 
 Every helper calls this function to check whether a component has a
@@ -994,7 +1004,20 @@ public static function weekField( array|string $parameters ): string;
 
 Builds an HTML input[type="week"] tag
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 4</div>
+
+#### `getStaticUrl()` { #tag-getstaticurl }
+
+```php
+final protected static function getStaticUrl( mixed $uri ): string;
+```
+
+Resolves a static (asset) URL through the `url` service.
+
+`getStatic()` lives on Phalcon\Mvc\Url but is absent from
+Phalcon\Mvc\Url\UrlInterface, which is what getUrlService() is typed
+to return. A service that does not carry it falls back to `get()`
+rather than aborting the helper.
 
 #### `inputField()` { #tag-inputfield }
 
@@ -1008,13 +1031,6 @@ final protected static function inputField(
 
 Builds generic INPUT tags
 
-@option string "id"
-@option string "name"
-@option string "value"
-@option string "class"
-@option string "type"
-}
-
 #### `inputFieldChecked()` { #tag-inputfieldchecked }
 
 ```php
@@ -1025,6 +1041,17 @@ final protected static function inputFieldChecked(
 ```
 
 Builds INPUT tags that implements the checked attribute
+
+#### `toStringValue()` { #tag-tostringvalue }
+
+```php
+final protected static function toStringValue( mixed $value ): string;
+```
+
+Reduces an arbitrary helper value to the string a tag attribute, id or
+URI needs. Parameter bags are user supplied, so a value that cannot be
+expressed as a string - an array, an object without `__toString()` -
+reads back as an empty string rather than aborting the helper.
 
 
 ## Tag\Exception
@@ -1058,7 +1085,7 @@ Phalcon\Mvc\Model resultset
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Tag`
+__Uses__ `Closure` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Tag` · `Stringable`
 { .api-uses }
 
 ### Method Summary
@@ -1074,6 +1101,12 @@ __Uses__ `Closure` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Tag`
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">echoOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$selected</span><span class="sm"> = false</span></span>)</code>
+</a>
+<a class="api-item" href="#tagselect-tostringvalue">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toStringValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<span class="desc">Reduces an arbitrary option value to the string the markup needs.</span>
 </a>
 </div>
 
@@ -1105,7 +1138,7 @@ public static function selectField(
 
 Generates a SELECT tag
 
-<div class="api-group">Protected · 1</div>
+<div class="api-group">Protected · 2</div>
 
 #### `echoOption()` { #tagselect-echooption }
 
@@ -1115,3 +1148,13 @@ protected static function echoOption(
     bool $selected = false
 ): string;
 ```
+
+#### `toStringValue()` { #tagselect-tostringvalue }
+
+```php
+protected static function toStringValue( mixed $value ): string;
+```
+
+Reduces an arbitrary option value to the string the markup needs.
+Option data is user supplied, so anything that cannot be expressed as
+a string reads back as an empty string rather than aborting the tag.

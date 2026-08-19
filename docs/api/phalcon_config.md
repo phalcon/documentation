@@ -15,7 +15,7 @@ hide:
 
 Reads multiple files (or arrays) and merges them all together.
 
-See `Phalcon\Config\Factory::load` To load Config Adapter class using 'adapter' option.
+See `Phalcon\Config\ConfigFactory::load` To load Config Adapter class using 'adapter' option.
 
 ```php
 use Phalcon\Config\Adapter\Grouped;
@@ -71,7 +71,7 @@ $config = new Grouped(
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exceptions\GroupedAdapterRequiresArray` · `Phalcon\Contracts\Config\ConfigTypes`
 { .api-uses }
 
 ### Method Summary
@@ -106,7 +106,7 @@ Grouped constructor.
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Ini.php){ .src-btn }
 
-Reads ini files and converts them to Phalcon\Config objects.
+Reads ini files and converts them to Phalcon\Config\Config objects.
 
 Given the next configuration file:
 
@@ -155,7 +155,7 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Traits\Php\IniTrait`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Traits\Php\IniTrait`
 { .api-uses }
 
 ### Method Summary
@@ -168,6 +168,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 </a>
 <a class="api-item" href="#configadapterini-cast">
 <code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">cast</span>( <span class="st">mixed</span> <span class="sv">$ini</span> )</code>
 <span class="desc">We have to cast values manually because parse_ini_file() has a poor</span>
 </a>
@@ -204,7 +205,7 @@ Ini constructor.
 #### `cast()` { #configadapterini-cast }
 
 ```php
-protected function cast( mixed $ini );
+protected function cast( mixed $ini ): mixed;
 ```
 
 We have to cast values manually because parse_ini_file() has a poor
@@ -239,7 +240,7 @@ Build multidimensional array from string
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Json.php){ .src-btn }
 
-Reads JSON files and converts them to Phalcon\Config objects.
+Reads JSON files and converts them to Phalcon\Config\Config objects.
 
 Given the following configuration file:
 
@@ -266,7 +267,7 @@ echo $config->models->metadata;
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -297,7 +298,7 @@ Json constructor.
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Php.php){ .src-btn }
 
-Reads php files and converts them to Phalcon\Config objects.
+Reads php files and converts them to Phalcon\Config\Config objects.
 
 Given the next configuration file:
 
@@ -339,7 +340,7 @@ echo $config->database->username;
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Contracts\Config\ConfigTypes`
 { .api-uses }
 
 ### Method Summary
@@ -370,7 +371,7 @@ Php constructor.
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Yaml.php){ .src-btn }
 
-Reads YAML files and converts them to Phalcon\Config objects.
+Reads YAML files and converts them to Phalcon\Config\Config objects.
 
 Given the following configuration file:
 
@@ -454,7 +455,7 @@ based user interface for accessing this configuration data within application
 code.
 
 ```php
-$config = new \Phalcon\Config(
+$config = new \Phalcon\Config\Config(
     [
         "database" => [
             "adapter"  => "Mysql",
@@ -472,6 +473,8 @@ $config = new \Phalcon\Config(
 );
 ```
 
+@extends Collection<mixed>
+
 <div class="api-tree" markdown>
 
 - [`Phalcon\Support\Collection`](phalcon_support.md#supportcollection)
@@ -484,7 +487,7 @@ $config = new \Phalcon\Config(
 
 </div>
 
-__Uses__ `Phalcon\Support\Collection`
+__Uses__ `Phalcon\Config\Exceptions\InvalidMergeData` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Support\Collection`
 { .api-uses }
 
 ### Method Summary
@@ -499,11 +502,12 @@ __Uses__ `Phalcon\Support\Collection`
 <a class="api-item" href="#configconfig-merge">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">merge</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$toMerge</span> )</code>
+<code class="sig"><span class="sf">merge</span>( <span class="st">mixed</span> <span class="sv">$toMerge</span> )</code>
 <span class="desc">Merges a configuration into the current one</span>
 </a>
 <a class="api-item" href="#configconfig-path">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a value from current config using a dot separated path.</span>
 </a>
@@ -573,13 +577,13 @@ Gets the default path delimiter
 #### `merge()` { #configconfig-merge }
 
 ```php
-public function merge( array|ConfigInterface $toMerge ): ConfigInterface;
+public function merge( mixed $toMerge ): ConfigInterface;
 ```
 
 Merges a configuration into the current one
 
 ```php
-$appConfig = new \Phalcon\Config(
+$appConfig = new \Phalcon\Config\Config(
     [
         "database" => [
             "host" => "localhost",
@@ -597,7 +601,7 @@ public function path(
     string $path,
     mixed $defaultValue = null,
     string|null $delimiter = null
-);
+): mixed;
 ```
 
 Returns a value from current config using a dot separated path.
@@ -692,11 +696,13 @@ $config = (new ConfigFactory())->load($options);
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Config\ConfigFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
+        - **`Phalcon\Config\ConfigFactory`**
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Config\Adapter\Grouped` · `Phalcon\Config\Adapter\Ini` · `Phalcon\Config\Adapter\Json` · `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\Exceptions\MissingConfigOption` · `Phalcon\Config\Exceptions\MissingFileExtension` · `Phalcon\Traits\Factory\FactoryTrait`
+__Uses__ `Exception` · `Phalcon\Config\Adapter\Grouped` · `Phalcon\Config\Adapter\Ini` · `Phalcon\Config\Adapter\Json` · `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\Exceptions\ConfigNotArrayOrObject` · `Phalcon\Config\Exceptions\MissingConfigOption` · `Phalcon\Config\Exceptions\MissingFileExtension` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Factory\AbstractFactory`
 { .api-uses }
 
 ### Method Summary
@@ -710,13 +716,13 @@ __Uses__ `Exception` · `Phalcon\Config\Adapter\Grouped` · `Phalcon\Config\Adap
 <a class="api-item" href="#configconfigfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|Config|string</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Load a config to create a new instance</span>
 </a>
 <a class="api-item" href="#configconfigfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fileName</span>,</span><span class="prm"><span class="st">array|int|string|null</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fileName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a new Config instance</span>
 </a>
 <a class="api-item" href="#configconfigfactory-getadapteraliases">
@@ -745,7 +751,7 @@ __Uses__ `Exception` · `Phalcon\Config\Adapter\Grouped` · `Phalcon\Config\Adap
 <a class="api-item" href="#configconfigfactory-parseconfig">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">parseConfig</span>( <span class="st">array|ConfigInterface|string</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">parseConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 </a>
 </div>
 
@@ -764,7 +770,7 @@ ConfigFactory constructor.
 #### `load()` { #configconfigfactory-load }
 
 ```php
-public function load( array|Config|string $config ): ConfigInterface;
+public function load( mixed $config ): ConfigInterface;
 ```
 
 Load a config to create a new instance
@@ -775,7 +781,7 @@ Load a config to create a new instance
 public function newInstance(
     string $name,
     string $fileName,
-    array|int|string|null $params = null
+    mixed $params = null
 ): ConfigInterface;
 ```
 
@@ -819,7 +825,7 @@ Returns the available adapters
 #### `parseConfig()` { #configconfigfactory-parseconfig }
 
 ```php
-protected function parseConfig( array|ConfigInterface|string $config ): array;
+protected function parseConfig( mixed $config ): array;
 ```
 
 
@@ -830,7 +836,9 @@ protected function parseConfig( array|ConfigInterface|string $config ): array;
 
 Phalcon\Config\ConfigInterface
 
-Interface for Phalcon\Config class
+Interface for Phalcon\Config\Config class
+
+@extends CollectionInterface<mixed>
 
 <div class="api-tree" markdown>
 
@@ -841,7 +849,7 @@ Interface for Phalcon\Config class
 
 </div>
 
-__Uses__ `Phalcon\Support\Collection\CollectionInterface`
+__Uses__ `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Support\Collection\CollectionInterface`
 { .api-uses }
 
 ### Method Summary
@@ -855,10 +863,11 @@ __Uses__ `Phalcon\Support\Collection\CollectionInterface`
 <a class="api-item" href="#configconfiginterface-merge">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">merge</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$toMerge</span> )</code>
+<code class="sig"><span class="sf">merge</span>( <span class="st">mixed</span> <span class="sv">$toMerge</span> )</code>
 </a>
 <a class="api-item" href="#configconfiginterface-path">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#configconfiginterface-setpathdelimiter">
@@ -881,7 +890,7 @@ public function getPathDelimiter(): string;
 #### `merge()` { #configconfiginterface-merge }
 
 ```php
-public function merge( array|ConfigInterface $toMerge ): ConfigInterface;
+public function merge( mixed $toMerge ): ConfigInterface;
 ```
 
 #### `path()` { #configconfiginterface-path }
@@ -891,7 +900,7 @@ public function path(
     string $path,
     mixed $defaultValue = null,
     string|null $delimiter = null
-);
+): mixed;
 ```
 
 #### `setPathDelimiter()` { #configconfiginterface-setpathdelimiter }

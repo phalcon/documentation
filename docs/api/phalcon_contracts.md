@@ -8,6 +8,30 @@ hide:
     All classes are prefixed with `Phalcon`
 
 
+## Contracts\ADR\ADRTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/ADRTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the ADR namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `adr_` because PHPStan resolves imported
+type names per file and has no namespacing for them: the prefix is what
+keeps generic names such as `middleware_map` from clashing with an alias
+imported from another namespace into the same file.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\ADRTypes`**
+
+</div>
+
+
 ## Contracts\ADR\Action
 
 <span class="badge badge--interface">Interface</span>
@@ -559,6 +583,9 @@ named request attributes, driven by the matched Action's optional static
 
 </div>
 
+__Uses__ `Phalcon\Contracts\ADR\ADRTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -598,7 +625,7 @@ request attributes. No route table.
 
 </div>
 
-__Uses__ `Phalcon\Http\RequestInterface`
+__Uses__ `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Http\RequestInterface`
 { .api-uses }
 
 ### Method Summary
@@ -674,6 +701,9 @@ Every Action class this router would try for the given method and path,
 in the order it tries them. The first that exists wins at match time.
 Namespace descent consults the filesystem, so the list depends on the
 action directory.
+
+The names are derived, not resolved: a candidate is what the convention
+would call the class, whether or not that class exists.
 
 #### `classFor()` { #contractsadrrouterrouter-classfor }
 
@@ -765,6 +795,9 @@ extracted route attributes, the route's middleware and its optional name.
 - **`Phalcon\Contracts\ADR\Router\RouterMatch`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\ADR\ADRTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1434,6 +1467,23 @@ public function getRoleName(): string;
 Returns role name
 
 
+## Contracts\Application\ApplicationTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Application/ApplicationTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Application namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Application\ApplicationTypes`**
+
+</div>
+
+__Uses__ `Closure`
+{ .api-uses }
+
+
 ## Contracts\Assets\Asset
 
 <span class="badge badge--interface">Interface</span>
@@ -1615,7 +1665,7 @@ reference to the auth manager.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\Guard\Guard`
+__Uses__ `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard`
 { .api-uses }
 
 ### Method Summary
@@ -1739,7 +1789,7 @@ consumed only by validateCredentials().
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
+__Uses__ `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
 { .api-uses }
 
 ### Method Summary
@@ -1977,6 +2027,33 @@ Returns the remember token entry matching the given token value,
 or null if not found.
 
 
+## Contracts\Auth\AuthTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/AuthTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Auth namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `auth_` because PHPStan resolves imported
+type names per file and has no namespacing for them: the prefix is what
+keeps generic names such as `adapter_config` from clashing with an alias
+imported from another namespace into the same file.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Auth\AuthTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Auth\Access\Access`
+{ .api-uses }
+
+
 ## Contracts\Auth\AuthUser
 
 <span class="badge badge--interface">Interface</span>
@@ -2101,7 +2178,7 @@ or false on failure.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface`
+__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface`
 { .api-uses }
 
 ### Method Summary
@@ -2285,7 +2362,7 @@ Implemented by guards backed by persistent state (sessions/cookies).
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser`
+__Uses__ `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser`
 { .api-uses }
 
 ### Method Summary
@@ -2381,7 +2458,7 @@ public function viaRemember(): bool;
 
 </div>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Guard\Guard`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Guard\Guard`
 { .api-uses }
 
 ### Method Summary
@@ -2704,6 +2781,20 @@ public function getUserAgent(): string|null;
 Returns the user agent associated with this token, if any.
 
 
+## Contracts\Autoload\AutoloadTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Autoload/AutoloadTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Autoload namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Autoload\AutoloadTypes`**
+
+</div>
+
+
 ## Contracts\Cache\Cache
 
 <span class="badge badge--interface">Interface</span>
@@ -2745,13 +2836,13 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Exception\InvalidArgumentException`
 <a class="api-item" href="#contractscachecache-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$default</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
 <a class="api-item" href="#contractscachecache-getmultiple">
 <code class="vis vis-public">public</code>
 <code class="ret">iterable</code>
-<code class="sig"><span class="sf">getMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$default</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Obtains multiple cache items by their unique keys.</span>
 </a>
 <a class="api-item" href="#contractscachecache-has">
@@ -2807,7 +2898,7 @@ Deletes multiple cache items in a single operation.
 ```php
 public function get(
     string $key,
-    mixed $default = null
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -2818,7 +2909,7 @@ Fetches a value from the cache.
 ```php
 public function getMultiple(
     iterable $keys,
-    mixed $default = null
+    mixed $defaultValue = null
 ): iterable;
 ```
 
@@ -2855,6 +2946,23 @@ public function setMultiple(
 ```
 
 Persists a set of key => value pairs in the cache, with an optional TTL.
+
+
+## Contracts\Cli\CliTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Cli/CliTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Cli namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Cli\CliTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Cli\Router\Route`
+{ .api-uses }
 
 
 ## Contracts\Cli\Dispatcher
@@ -2894,7 +3002,6 @@ __Uses__ `Phalcon\Cli\TaskInterface` · `Phalcon\Contracts\Dispatcher\Dispatcher
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getOptions</span>()</code>
-<span class="desc">Get dispatched options</span>
 </a>
 <a class="api-item" href="#contractsclidispatcher-gettaskname">
 <code class="vis vis-public">public</code>
@@ -2918,7 +3025,6 @@ __Uses__ `Phalcon\Cli\TaskInterface` · `Phalcon\Contracts\Dispatcher\Dispatcher
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
-<span class="desc">Set the options to be dispatched</span>
 </a>
 <a class="api-item" href="#contractsclidispatcher-settaskname">
 <code class="vis vis-public">public</code>
@@ -2960,8 +3066,6 @@ Returns the latest dispatched controller
 public function getOptions(): array;
 ```
 
-Get dispatched options
-
 #### `getTaskName()` { #contractsclidispatcher-gettaskname }
 
 ```php
@@ -2992,8 +3096,6 @@ Sets the default task name
 public function setOptions( array $options ): void;
 ```
 
-Set the options to be dispatched
-
 #### `setTaskName()` { #contractsclidispatcher-settaskname }
 
 ```php
@@ -3009,6 +3111,23 @@ public function setTaskSuffix( string $taskSuffix ): void;
 ```
 
 Sets the default task suffix
+
+
+## Contracts\Config\ConfigTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Config/ConfigTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Config namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Config\ConfigTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Config\ConfigInterface`
+{ .api-uses }
 
 
 ## Contracts\Container\Ioc\IocContainer
@@ -6716,13 +6835,13 @@ are scheduled to be removed in the next major version in favor of their
 <a class="api-item" href="#contractsdispatcherdispatcher-getparam">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#contractsdispatcherdispatcher-getparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#contractsdispatcherdispatcher-getparameters">
@@ -6746,7 +6865,7 @@ are scheduled to be removed in the next major version in favor of their
 <a class="api-item" href="#contractsdispatcherdispatcher-hasparam">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">hasParam</span>( <span class="st">int|string</span> <span class="sv">$param</span> )</code>
+<code class="sig"><span class="sf">hasParam</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
 <span class="desc">Check if a param exists</span>
 </a>
 <a class="api-item" href="#contractsdispatcherdispatcher-isfinished">
@@ -6800,13 +6919,13 @@ are scheduled to be removed in the next major version in favor of their
 <a class="api-item" href="#contractsdispatcherdispatcher-setparam">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#contractsdispatcherdispatcher-setparams">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">setParams</span>( <span class="st">array</span> <span class="sv">$parameters</span> )</code>
+<code class="sig"><span class="sf">setParams</span>( <span class="st">array</span> <span class="sv">$params</span> )</code>
 <span class="desc">Sets action params to be dispatched</span>
 </a>
 </div>
@@ -6859,8 +6978,8 @@ Gets the default handler suffix
 
 ```php
 public function getParam(
-    int|string $param,
-    array|string|null $filters = null
+    mixed $param,
+    mixed $filters = null
 ): mixed;
 ```
 
@@ -6874,8 +6993,8 @@ version.
 
 ```php
 public function getParameter(
-    int|string $param,
-    array|string|null $filters = null
+    mixed $param,
+    mixed $filters = null
 ): mixed;
 ```
 
@@ -6908,7 +7027,7 @@ Returns value returned by the latest dispatched action
 #### `hasParam()` { #contractsdispatcherdispatcher-hasparam }
 
 ```php
-public function hasParam( int|string $param ): bool;
+public function hasParam( mixed $param ): bool;
 ```
 
 Check if a param exists
@@ -6982,7 +7101,7 @@ Sets the namespace which the controller belongs to
 
 ```php
 public function setParam(
-    int|string $param,
+    mixed $param,
     mixed $value
 ): void;
 ```
@@ -6992,10 +7111,24 @@ Set a param by its name or numeric index
 #### `setParams()` { #contractsdispatcherdispatcher-setparams }
 
 ```php
-public function setParams( array $parameters ): void;
+public function setParams( array $params ): void;
 ```
 
 Sets action params to be dispatched
+
+
+## Contracts\Dispatcher\DispatcherTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Dispatcher/DispatcherTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Dispatcher namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Dispatcher\DispatcherTypes`**
+
+</div>
 
 
 ## Contracts\Domain\Payload\Payload
@@ -9021,6 +9154,9 @@ Return format: [value => label] for flat options;
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -9058,6 +9194,48 @@ ordering, or rendering is performed here.
 ```php
 public function getOptions(): array;
 ```
+
+
+## Contracts\Html\HtmlTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Html/HtmlTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Html namespace.
+
+Attribute values stay scalar here. The array member that PSR-13 allows for
+link attributes lives in the Link registry instead, because the helper
+pipeline concatenates and escapes every value as a string.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Html\HtmlTypes`**
+
+</div>
+
+__Uses__ `Closure`
+{ .api-uses }
+
+
+## Contracts\Html\Link\LinkTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Html/Link/LinkTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Html\Link namespace.
+
+PSR-13 states that a link attribute value is "a PHP primitive or an array of
+PHP strings", so `link_attributes` keeps the array member that the plain
+Html attribute shape drops.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Html\Link\LinkTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface`
+{ .api-uses }
 
 
 ## Contracts\Http\AttributeRequest
@@ -9104,6 +9282,50 @@ public function getAttributes(): AttributeBag;
 ```
 
 Returns the request attribute bag.
+
+
+## Contracts\Http\HttpTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Http/HttpTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Http namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Http\HttpTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Request\FileInterface`
+{ .api-uses }
+
+
+## Contracts\Image\ImageTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Image/ImageTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Image namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `image_` because PHPStan resolves imported
+type names per file and has no namespacing for them: the prefix is what
+keeps generic names such as `config` from clashing with an alias imported
+from another namespace into the same file.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Image\ImageTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Image\Adapter\AdapterInterface`
+{ .api-uses }
 
 
 ## Contracts\Logger\Adapter\Adapter
@@ -9569,6 +9791,23 @@ Example: Use of deprecated APIs, poor use of an API, undesirable things
 that are not necessarily wrong.
 
 
+## Contracts\Logger\LoggerTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Logger/LoggerTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Logger namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Logger\LoggerTypes`**
+
+</div>
+
+__Uses__ `DateTimeZone` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Item`
+{ .api-uses }
+
+
 ## Contracts\Messages\Messages
 
 <span class="badge badge--interface">Interface</span>
@@ -9580,6 +9819,9 @@ The collection stores Phalcon\Messages\MessageInterface objects and is
 iterated by integer position. An entry added under a string key through the
 ArrayAccess interface stays reachable by that offset but is not visited
 during iteration (`foreach`), which walks the integer sequence only.
+
+@extends ArrayAccess<array-key, mixed>
+@extends Iterator<int, MessageInterface>
 
 <div class="api-tree" markdown>
 
@@ -9640,6 +9882,33 @@ public function filter( string $fieldName ): array;
 ```
 
 Filters the message collection by field name
+
+
+## Contracts\Messages\MessagesTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Messages/MessagesTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Messages namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `messages_` because PHPStan resolves imported
+type names per file and has no namespacing for them: the prefix is what
+keeps generic names such as `metadata` from clashing with an alias imported
+from another namespace into the same file.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Messages\MessagesTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Messages\MessageInterface`
+{ .api-uses }
 
 
 ## Contracts\Mvc\Dispatcher
@@ -9796,6 +10065,30 @@ Returns a string that uniquely identifies this model instance for
 use as the key in the reusable records cache.
 
 
+## Contracts\Mvc\MvcTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Mvc/MvcTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Mvc namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `mvc_` because PHPStan resolves imported
+type names per file and has no namespacing for them: the prefix is what
+keeps generic names such as `model_find_parameters` from clashing with an
+alias imported from another namespace into the same file.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Mvc\MvcTypes`**
+
+</div>
+
+
 ## Contracts\Paginator\Adapter
 
 <span class="badge badge--interface">Interface</span>
@@ -9874,6 +10167,33 @@ public function setLimit( int $limit ): Adapter;
 ```
 
 Set current rows limit
+
+
+## Contracts\Paginator\PaginatorTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Paginator/PaginatorTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Paginator namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `paginator_` because PHPStan resolves
+imported type names per file and has no namespacing for them: the prefix
+is what keeps generic names such as `config` from clashing with an alias
+imported from another namespace into the same file.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Paginator\PaginatorTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Query\Builder`
+{ .api-uses }
 
 
 ## Contracts\Paginator\Repository
@@ -11001,6 +11321,20 @@ public function getQueueName(): string;
 Returns the queue name.
 
 
+## Contracts\Queue\QueueTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/QueueTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Queue namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\QueueTypes`**
+
+</div>
+
+
 ## Contracts\Queue\SubscriptionConsumer
 
 <span class="badge badge--interface">Interface</span>
@@ -11138,6 +11472,40 @@ shape.
 - **`Phalcon\Contracts\Queue\VisibilityAware`**
 
 </div>
+
+
+## Contracts\Session\SessionTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Session/SessionTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Session namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Session\SessionTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Storage\Serializer\SerializerInterface`
+{ .api-uses }
+
+
+## Contracts\Storage\StorageTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Storage/StorageTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Storage namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Storage\StorageTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Storage\Serializer\SerializerInterface` · `WeakReference`
+{ .api-uses }
 
 
 ## Contracts\Support\Collection
@@ -11711,6 +12079,34 @@ public function setTemplate(
 ```
 
 Overrides the template for the given name.
+
+
+## Contracts\Support\SupportTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Support/SupportTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Support namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Support\SupportTypes`**
+
+</div>
+
+
+## Contracts\Translate\TranslateTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Translate/TranslateTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Translate namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Translate\TranslateTypes`**
+
+</div>
 
 
 ## Contracts\View\Renderer

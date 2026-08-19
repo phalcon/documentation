@@ -112,7 +112,7 @@ allowing the user to autoload files with different extensions than .php.
 
 </div>
 
-__Uses__ `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait`
+__Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Contracts\Autoload\AutoloadTypes` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait`
 { .api-uses }
 
 ### Method Summary
@@ -150,7 +150,7 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Event
 <a class="api-item" href="#autoloadloader-addnamespace">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addNamespace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$namespace</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$directories</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$prepend</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addNamespace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$directories</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$prepend</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#autoloadloader-autoload">
 <code class="vis vis-public">public</code>
@@ -210,7 +210,7 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Event
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isRegistered</span>()</code>
-<span class="desc">returns isRegistered</span>
+<span class="desc">Returns isRegistered</span>
 </a>
 <a class="api-item" href="#autoloadloader-loadfiles">
 <code class="vis vis-public">public</code>
@@ -305,7 +305,7 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Event
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TStrings</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$classes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -315,22 +315,24 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Event
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TStrings</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$directories</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TStrings</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$extensions</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">callable|string</code>
+<code class="ret">callable</code>
 <code class="sig"><span class="sv">$fileCheckingCallback</span><span class="sm"> = &quot;is_file&quot;</span></code>
+<span class="desc">Always holds a callable. The setter accepts a callable or a callable
+string and rejects anything else.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TStrings</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$files</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -350,7 +352,7 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Event
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TNamespaces</code>
+<code class="ret">autoload_namespaces</code>
 <code class="sig"><span class="sv">$namespaces</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -411,7 +413,7 @@ Adds a file to be added to the loader
 
 ```php
 public function addNamespace(
-    string $namespace,
+    string $name,
     mixed $directories,
     bool $prepend = false
 ): static;
@@ -495,7 +497,7 @@ Returns the namespaces currently registered in the autoloader
 public function isRegistered(): bool;
 ```
 
-returns isRegistered
+Returns isRegistered
 
 #### `loadFiles()` { #autoloadloader-loadfiles }
 

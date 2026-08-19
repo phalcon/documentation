@@ -1530,11 +1530,13 @@ __Uses__ `Phalcon\Contracts\Db\Adapter\Adapter`
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Db\Adapter\PdoFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
+        - **`Phalcon\Db\Adapter\PdoFactory`**
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Support\Exception` · `Phalcon\Support\Traits\ConfigTrait` · `Phalcon\Traits\Factory\FactoryTrait`
+__Uses__ `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Exception`
 { .api-uses }
 
 ### Method Summary
@@ -1548,7 +1550,7 @@ __Uses__ `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Db\Adapter\
 <a class="api-item" href="#dbadapterpdofactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#dbadapterpdofactory-newinstance">
@@ -1585,7 +1587,7 @@ Constructor.
 #### `load()` { #dbadapterpdofactory-load }
 
 ```php
-public function load( array|ConfigInterface $config ): AdapterInterface;
+public function load( mixed $config ): AdapterInterface;
 ```
 
 Factory to create an instance from a Config object

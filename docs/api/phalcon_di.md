@@ -28,6 +28,7 @@ This abstract class offers common access to the DI in a class
         - [`Phalcon\Mvc\Model`](phalcon_mvc.md#mvcmodel)
         - [`Phalcon\Mvc\Router`](phalcon_mvc.md#mvcrouter)
         - [`Phalcon\Mvc\Url`](phalcon_mvc.md#mvcurl)
+        - [`Phalcon\Session\Manager`](phalcon_session.md#sessionmanager)
 
 </div>
 
@@ -1757,7 +1758,6 @@ accessing a public property with the same name of a registered service
         - [`Phalcon\Cli\Task`](phalcon_cli.md#clitask)
         - [`Phalcon\Filter\Validation`](phalcon_filter.md#filtervalidation)
         - [`Phalcon\Forms\Form`](phalcon_forms.md#formsform)
-        - [`Phalcon\Http\Response`](phalcon_http.md#httpresponse)
         - [`Phalcon\Mvc\Controller`](phalcon_mvc.md#mvccontroller)
         - [`Phalcon\Mvc\Micro`](phalcon_mvc.md#mvcmicro)
         - [`Phalcon\Mvc\Model\MetaData`](phalcon_mvc.md#mvcmodelmetadata)
@@ -2720,7 +2720,7 @@ Class AbstractInjectionAware
 __Uses__ `Phalcon\Di\DiInterface`
 { .api-uses }
 
-__Used by__ [`Phalcon\Assets\Manager`](phalcon_assets.md#assetsmanager) · [`Phalcon\Di\AbstractInjectionAware`](#diabstractinjectionaware) · [`Phalcon\Di\Injectable`](#diinjectable) · [`Phalcon\Flash\AbstractFlash`](phalcon_flash.md#flashabstractflash) · [`Phalcon\Mvc\Model\Manager`](phalcon_mvc.md#mvcmodelmanager) · [`Phalcon\Mvc\Model\Query`](phalcon_mvc.md#mvcmodelquery) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](phalcon_mvc.md#mvcviewenginevoltcompiler) · [`Phalcon\Session\Bag`](phalcon_session.md#sessionbag) · [`Phalcon\Session\Manager`](phalcon_session.md#sessionmanager)
+__Used by__ [`Phalcon\Assets\Manager`](phalcon_assets.md#assetsmanager) · [`Phalcon\Di\AbstractInjectionAware`](#diabstractinjectionaware) · [`Phalcon\Di\Injectable`](#diinjectable) · [`Phalcon\Flash\AbstractFlash`](phalcon_flash.md#flashabstractflash) · [`Phalcon\Mvc\Model\Manager`](phalcon_mvc.md#mvcmodelmanager) · [`Phalcon\Mvc\Model\Query`](phalcon_mvc.md#mvcmodelquery) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](phalcon_mvc.md#mvcviewenginevoltcompiler) · [`Phalcon\Session\Bag`](phalcon_session.md#sessionbag)
 { .api-used-by }
 
 ### Method Summary

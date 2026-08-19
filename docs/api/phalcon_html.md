@@ -15,6 +15,8 @@ hide:
 
 This class helps to work with HTML Attributes
 
+@extends Collection<mixed>
+
 <div class="api-tree" markdown>
 
 - [`Phalcon\Support\Collection`](phalcon_support.md#supportcollection)
@@ -181,7 +183,6 @@ This component offers an easy way to create breadcrumbs for your application.
 The resulting HTML when calling `render()` will have each breadcrumb enclosed
 in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 
-@property array  $elements
 @property string $separator
 @property string $template
 
@@ -190,6 +191,9 @@ in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 - **`Phalcon\Html\Breadcrumbs`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -369,7 +373,7 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEscaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Escaper\HtmlEscaper` · `Phalcon\Html\Escaper\JsEscaper` · `Phalcon\Html\Escaper\UrlEscaper`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEscaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Escaper\HtmlEscaper` · `Phalcon\Html\Escaper\JsEscaper` · `Phalcon\Html\Escaper\UrlEscaper`
 { .api-uses }
 
 ### Method Summary
@@ -905,6 +909,9 @@ of attribute pairs. Boolean `true` becomes a bare key (e.g. `disabled`);
     - **`Phalcon\Html\Escaper\AttributeEscaper`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1694,7 +1701,7 @@ public function __construct();
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1942,6 +1949,9 @@ Class AbstractList
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -2020,9 +2030,6 @@ Returns the tag name.
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Helper/AbstractSeries.php){ .src-btn }
 
-@property array $attributes
-@property array $store
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
@@ -2032,6 +2039,9 @@ Returns the tag name.
         - [`Phalcon\Html\Helper\Style`](#htmlhelperstyle)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -2156,7 +2166,7 @@ Class Anchor
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 { .api-uses }
 
 ### Method Summary
@@ -2226,6 +2236,9 @@ Class Base
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -2266,6 +2279,9 @@ Class Body
     - **`Phalcon\Html\Helper\Body`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -2614,7 +2630,7 @@ Class Button
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 { .api-uses }
 
 ### Method Summary
@@ -2837,7 +2853,7 @@ Class Element
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 { .api-uses }
 
 ### Method Summary
@@ -2906,6 +2922,9 @@ Class Form
     - **`Phalcon\Html\Helper\Form`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -3008,6 +3027,9 @@ Class Img
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -3049,8 +3071,7 @@ The match between `checked` and `value` is loose (`==`) by default so that
 mixed int/string form input round-trips correctly (e.g. `value=0` against
 `checked="0"`). Strict (`===`) matching is available via `strict(true)`.
 
-@property array $label
-@property bool  $strict
+@property bool $strict
 
 <div class="api-tree" markdown>
 
@@ -3062,7 +3083,7 @@ mixed int/string form input round-trips correctly (e.g. `value=0` against
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype`
 { .api-uses }
 
 ### Method Summary
@@ -3109,7 +3130,7 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$label</span><span class="sm"> = []</span></code>
+<code class="sig"><span class="sv">$label</span><span class="sm"> = [...]</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -3213,7 +3234,7 @@ The $checked parameter is resolved by the concrete subclass:
 
 </div>
 
-__Uses__ `Phalcon\Html\Helper\AbstractHelper`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Helper\AbstractHelper`
 { .api-uses }
 
 ### Method Summary
@@ -3326,7 +3347,6 @@ Renders a single input + optional label pair.
 
 Class AbstractInput
 
-@property array  $attributes
 @property string $type
 @property string $value
 
@@ -3340,7 +3360,7 @@ Class AbstractInput
 
 </div>
 
-__Uses__ `Phalcon\Html\Helper\AbstractHelper` · `Phalcon\Html\Helper\Doctype`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Helper\AbstractHelper` · `Phalcon\Html\Helper\Doctype`
 { .api-uses }
 
 ### Method Summary
@@ -3650,7 +3670,7 @@ Class Select
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Html\Helper\AbstractList`
+__Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Helper\AbstractList`
 { .api-uses }
 
 ### Method Summary
@@ -3858,7 +3878,7 @@ array values define optgroups.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData`
+__Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Contracts\Html\HtmlTypes`
 { .api-uses }
 
 ### Method Summary
@@ -3932,7 +3952,7 @@ public function getOptions(): array;
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Html\Exceptions\InvalidResultsetValue` · `Phalcon\Html\Exceptions\UsingRequiresTwoValues` · `Phalcon\Mvc\Model\ResultsetInterface`
+__Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Exceptions\InvalidResultsetValue` · `Phalcon\Html\Exceptions\UsingRequiresTwoValues` · `Phalcon\Mvc\Model\ResultsetInterface`
 { .api-uses }
 
 ### Method Summary
@@ -4115,7 +4135,7 @@ Class Label
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 { .api-uses }
 
 ### Method Summary
@@ -4185,6 +4205,9 @@ Creates <link> tags
             - **`Phalcon\Html\Helper\Link`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -4258,6 +4281,9 @@ Class Meta
         - **`Phalcon\Html\Helper\Meta`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -4362,7 +4388,7 @@ Class Ol
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 { .api-uses }
 
 ### Method Summary
@@ -4445,7 +4471,7 @@ If a ResponseInterface is provided, also sets the HTTP Link header.
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Http\ResponseInterface`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Http\ResponseInterface`
 { .api-uses }
 
 ### Method Summary
@@ -4510,6 +4536,9 @@ Class Script
         - **`Phalcon\Html\Helper\Script`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -4621,6 +4650,9 @@ Class Style
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -4710,7 +4742,7 @@ use `VoidTag`.
 
 </div>
 
-__Uses__ `Phalcon\Html\Exception`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Exception`
 { .api-uses }
 
 ### Method Summary
@@ -4744,10 +4776,8 @@ public function __invoke(
 
 Class Title
 
-@property array  $append
 @property string $delimiter
 @property string $indent
-@property array  $prepend
 @property string $title
 @property string $separator
 
@@ -4958,7 +4988,7 @@ doctypes, matching the `Input/AbstractInput::__toString` convention.
 
 </div>
 
-__Uses__ `Phalcon\Html\Exception`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Exception`
 { .api-uses }
 
 ### Method Summary
@@ -4990,10 +5020,8 @@ public function __invoke(
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Link/AbstractLink.php){ .src-btn }
 
-@property Collection $attributes
-@property string     $href
-@property Collection $rels
-@property bool       $templated
+@property string $href
+@property bool   $templated
 
 <div class="api-tree" markdown>
 
@@ -5002,7 +5030,7 @@ public function __invoke(
 
 </div>
 
-__Uses__ `Phalcon\Support\Collection`
+__Uses__ `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Support\Collection`
 { .api-uses }
 
 ### Method Summary
@@ -5035,7 +5063,7 @@ __Uses__ `Phalcon\Support\Collection`
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doIsTemplated</span>()</code>
-<span class="desc">Returns whether this is a templated link.</span>
+<span class="desc">Returns whether this is a templated link. True if this link object is</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithattribute">
 <code class="vis vis-protected">protected</code>
@@ -5121,6 +5149,10 @@ protected function doGetAttributes(): array;
 
 Returns a list of attributes that describe the target URI.
 
+A key-value list of attributes, where the key is a string and the value
+is either a PHP primitive or an array of PHP strings. If no values are
+found an empty array MUST be returned.
+
 #### `doGetHref()` { #htmllinkabstractlink-dogethref }
 
 ```php
@@ -5154,7 +5186,8 @@ as an array of strings.
 protected function doIsTemplated(): bool;
 ```
 
-Returns whether this is a templated link.
+Returns whether this is a templated link. True if this link object is
+templated, False otherwise.
 
 #### `doWithAttribute()` { #htmllinkabstractlink-dowithattribute }
 
@@ -5205,8 +5238,6 @@ Determines if a href is a templated link or not.
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Link/AbstractLinkProvider.php){ .src-btn }
 
-@property array $links
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Html\Link\AbstractLinkProvider`**
@@ -5214,7 +5245,7 @@ Determines if a href is a templated link or not.
 
 </div>
 
-__Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface`
+__Uses__ `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\LinkInterface`
 { .api-uses }
 
 ### Method Summary
@@ -5278,6 +5309,9 @@ public function __construct( array $links = [] );
 ```
 
 LinkProvider constructor.
+
+The guard keeps foreign objects out of the collection. It stays live in
+the Zephir implementation, where the array is untyped.
 
 <div class="api-group">Protected · 5</div>
 
@@ -5353,7 +5387,7 @@ Class Phalcon\Html\Link\EvolvableLink
 
 </div>
 
-__Uses__ `Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`
+__Uses__ `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`
 { .api-uses }
 
 ### Method Summary
@@ -5461,8 +5495,6 @@ normally without errors.
 
 Class Phalcon\Html\Link\EvolvableLinkProvider
 
-@property LinkInterface[] $links
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Html\Link\AbstractLinkProvider`](#htmllinkabstractlinkprovider)
@@ -5471,7 +5503,7 @@ Class Phalcon\Html\Link\EvolvableLinkProvider
 
 </div>
 
-__Uses__ `Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface` · `Phalcon\Html\Link\Interfaces\LinkInterface`
+__Uses__ `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface` · `Phalcon\Html\Link\Interfaces\LinkInterface`
 { .api-uses }
 
 ### Method Summary
@@ -5706,6 +5738,9 @@ A readable link object.
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Html\Link\LinkTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -5746,6 +5781,10 @@ public function getAttributes(): array;
 ```
 
 Returns a list of attributes that describe the target URI.
+
+A key-value list of attributes, where the key is a string and the value
+is either a PHP primitive or an array of PHP strings. If no values are
+found an empty array MUST be returned.
 
 #### `getHref()` { #htmllinkinterfaceslinkinterface-gethref }
 
@@ -5796,6 +5835,9 @@ A link provider object.
     - [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Html\Link\LinkTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -5851,7 +5893,7 @@ Class Phalcon\Html\Link\Link
 
 </div>
 
-__Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface`
+__Uses__ `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\LinkInterface`
 { .api-uses }
 
 ### Method Summary
@@ -5895,6 +5937,10 @@ public function getAttributes(): array;
 
 Returns a list of attributes that describe the target URI.
 
+A key-value list of attributes, where the key is a string and the value
+is either a PHP primitive or an array of PHP strings. If no values are
+found an empty array MUST be returned.
+
 #### `getHref()` { #htmllinklink-gethref }
 
 ```php
@@ -5936,8 +5982,6 @@ Returns whether this is a templated link.
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Link/LinkProvider.php){ .src-btn }
 
-@property LinkInterface[] $links
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Html\Link\AbstractLinkProvider`](#htmllinkabstractlinkprovider)
@@ -5946,7 +5990,7 @@ Returns whether this is a templated link.
 
 </div>
 
-__Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface` · `Phalcon\Html\Link\Interfaces\LinkProviderInterface`
+__Uses__ `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\LinkProviderInterface`
 { .api-uses }
 
 ### Method Summary
@@ -6008,6 +6052,9 @@ Class Phalcon\Http\Link\Serializer\Header
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Html\Link\LinkTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -6044,6 +6091,9 @@ Class Phalcon\Http\Link\Serializer\SerializerInterface
 - **`Phalcon\Html\Link\Serializer\SerializerInterface`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Html\Link\LinkTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -6085,60 +6135,60 @@ Helpers are cached per name after first construction.
 so each entry in the @method block below describes the result of calling
 `$factory->serviceName(...)` rather than `newInstance("serviceName")`.
 
-@method string        a(string $href, string $text, array $attributes = [], bool $raw = false)
-@method string        aRaw(string $href, string $text, array $attributes = [])
-@method string        base(string $href, array $attributes = [])
-@method string        body(array $attributes = [])
+@method string        a(string $href, string $text, html_attributes $attributes = [], bool $raw = false)
+@method string        aRaw(string $href, string $text, html_attributes $attributes = [])
+@method string        base(string $href, html_attributes $attributes = [])
+@method string        body(html_attributes $attributes = [])
 @method Breadcrumbs   breadcrumbs(string $indent = '    ', string $delimiter = "\n")
-@method string        button(string $text, array $attributes = [], bool $raw = false)
-@method string        buttonRaw(string $text, array $attributes = [])
+@method string        button(string $text, html_attributes $attributes = [], bool $raw = false)
+@method string        buttonRaw(string $text, html_attributes $attributes = [])
 @method string        close(string $tag, bool $raw = false)
 @method Doctype       doctype(int $type = Doctype::HTML5, string $delimiter = "\n")
-@method string        element(string $tag, string $text, array $attributes = [], bool $raw = false)
-@method string        elementRaw(string $tag, string $text, array $attributes = [])
-@method string        form(array $attributes = [])
+@method string        element(string $tag, string $text, html_attributes $attributes = [], bool $raw = false)
+@method string        elementRaw(string $tag, string $text, html_attributes $attributes = [])
+@method string        form(html_attributes $attributes = [])
 @method string        friendlyTitle(string $text, string $separator = '-', bool $lower = true, mixed $replace = null)
-@method string        img(string $src, array $attributes = [])
-@method Checkbox      inputCheckbox(string $name, string $value = null, array $attributes = [])
+@method string        img(string $src, html_attributes $attributes = [])
+@method Checkbox      inputCheckbox(string $name, string $value = null, html_attributes $attributes = [])
 @method CheckboxGroup inputCheckboxGroup(string $name, array $options, mixed $checked = null, array $attributes = [])
-@method Generic       inputColor(string $name, string $value = null, array $attributes = [])
-@method Generic       inputDate(string $name, string $value = null, array $attributes = [])
-@method Generic       inputDateTime(string $name, string $value = null, array $attributes = [])
-@method Generic       inputDateTimeLocal(string $name, string $value = null, array $attributes = [])
-@method Generic       inputEmail(string $name, string $value = null, array $attributes = [])
-@method Generic       inputFile(string $name, string $value = null, array $attributes = [])
-@method Generic       inputHidden(string $name, string $value = null, array $attributes = [])
-@method Generic       inputImage(string $name, string $value = null, array $attributes = [])
-@method Generic       inputInput(string $name, string $value = null, array $attributes = [])
-@method Generic       inputMonth(string $name, string $value = null, array $attributes = [])
-@method Generic       inputNumeric(string $name, string $value = null, array $attributes = [])
-@method Generic       inputPassword(string $name, string $value = null, array $attributes = [])
-@method Radio         inputRadio(string $name, string $value = null, array $attributes = [])
+@method Generic       inputColor(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputDate(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputDateTime(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputDateTimeLocal(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputEmail(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputFile(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputHidden(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputImage(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputInput(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputMonth(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputNumeric(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputPassword(string $name, string $value = null, html_attributes $attributes = [])
+@method Radio         inputRadio(string $name, string $value = null, html_attributes $attributes = [])
 @method RadioGroup    inputRadioGroup(string $name, array $options, mixed $checked = null, array $attributes = [])
-@method Generic       inputRange(string $name, string $value = null, array $attributes = [])
-@method Generic       inputSearch(string $name, string $value = null, array $attributes = [])
-@method Select        inputSelect(string $name, string $value = null, array $attributes = [])
-@method Generic       inputSubmit(string $name, string $value = null, array $attributes = [])
-@method Generic       inputTel(string $name, string $value = null, array $attributes = [])
-@method Generic       inputText(string $name, string $value = null, array $attributes = [])
-@method Textarea      inputTextarea(string $name, string $value = null, array $attributes = [])
-@method Generic       inputTime(string $name, string $value = null, array $attributes = [])
-@method Generic       inputUrl(string $name, string $value = null, array $attributes = [])
-@method Generic       inputWeek(string $name, string $value = null, array $attributes = [])
-@method string        label(string $label, array $attributes = [], bool $raw = false)
-@method string        labelRaw(string $label, array $attributes = [])
+@method Generic       inputRange(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputSearch(string $name, string $value = null, html_attributes $attributes = [])
+@method Select        inputSelect(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputSubmit(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputTel(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputText(string $name, string $value = null, html_attributes $attributes = [])
+@method Textarea      inputTextarea(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputTime(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputUrl(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputWeek(string $name, string $value = null, html_attributes $attributes = [])
+@method string        label(string $label, html_attributes $attributes = [], bool $raw = false)
+@method string        labelRaw(string $label, html_attributes $attributes = [])
 @method Link          link(string $indent = '    ', string $delimiter = "\n")
 @method Meta          meta(string $indent = '    ', string $delimiter = "\n")
-@method Ol            ol(string $indent = '    ', string $delimiter = null, array $attributes = [])
-@method Ol            olRaw(string $indent = '    ', string $delimiter = null, array $attributes = [])
-@method string        preload(string $href, string $type = 'style', array $attributes = [])
+@method Ol            ol(string $indent = '    ', string $delimiter = null, html_attributes $attributes = [])
+@method Ol            olRaw(string $indent = '    ', string $delimiter = null, html_attributes $attributes = [])
+@method string        preload(string $href, string $type = 'style', html_attributes $attributes = [])
 @method Script        script(string $indent = '    ', string $delimiter = "\n")
 @method Style         style(string $indent = '    ', string $delimiter = "\n")
-@method string        tag(string $name, array $attributes = [])
+@method string        tag(string $name, html_attributes $attributes = [])
 @method Title         title(string $indent = '    ', string $delimiter = "\n")
-@method Ul            ul(string $indent = '    ', string $delimiter = null, array $attributes = [])
-@method Ul            ulRaw(string $indent = '    ', string $delimiter = null, array $attributes = [])
-@method string        voidTag(string $name, array $attributes = [])
+@method Ul            ul(string $indent = '    ', string $delimiter = null, html_attributes $attributes = [])
+@method Ul            ulRaw(string $indent = '    ', string $delimiter = null, html_attributes $attributes = [])
+@method string        voidTag(string $name, html_attributes $attributes = [])
 
 <div class="api-tree" markdown>
 
@@ -6146,7 +6196,7 @@ so each entry in the @method block below describes the result of calling
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exceptions\ServiceNotRegistered` · `Phalcon\Html\Helper\Anchor` · `Phalcon\Html\Helper\Base` · `Phalcon\Html\Helper\Body` · `Phalcon\Html\Helper\Breadcrumbs` · `Phalcon\Html\Helper\Button` · `Phalcon\Html\Helper\Close` · `Phalcon\Html\Helper\Doctype` · `Phalcon\Html\Helper\Element` · `Phalcon\Html\Helper\Form` · `Phalcon\Html\Helper\FriendlyTitle` · `Phalcon\Html\Helper\Img` · `Phalcon\Html\Helper\Input\Checkbox` · `Phalcon\Html\Helper\Input\CheckboxGroup` · `Phalcon\Html\Helper\Input\Generic` · `Phalcon\Html\Helper\Input\Radio` · `Phalcon\Html\Helper\Input\RadioGroup` · `Phalcon\Html\Helper\Input\Select` · `Phalcon\Html\Helper\Input\Textarea` · `Phalcon\Html\Helper\Label` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Meta` · `Phalcon\Html\Helper\Ol` · `Phalcon\Html\Helper\Preload` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\Helper\Style` · `Phalcon\Html\Helper\Tag` · `Phalcon\Html\Helper\Title` · `Phalcon\Html\Helper\Ul` · `Phalcon\Html\Helper\VoidTag` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Url\UrlInterface`
+__Uses__ `Closure` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exceptions\ServiceNotRegistered` · `Phalcon\Html\Helper\Anchor` · `Phalcon\Html\Helper\Base` · `Phalcon\Html\Helper\Body` · `Phalcon\Html\Helper\Breadcrumbs` · `Phalcon\Html\Helper\Button` · `Phalcon\Html\Helper\Close` · `Phalcon\Html\Helper\Doctype` · `Phalcon\Html\Helper\Element` · `Phalcon\Html\Helper\Form` · `Phalcon\Html\Helper\FriendlyTitle` · `Phalcon\Html\Helper\Img` · `Phalcon\Html\Helper\Input\Checkbox` · `Phalcon\Html\Helper\Input\CheckboxGroup` · `Phalcon\Html\Helper\Input\Generic` · `Phalcon\Html\Helper\Input\Radio` · `Phalcon\Html\Helper\Input\RadioGroup` · `Phalcon\Html\Helper\Input\Select` · `Phalcon\Html\Helper\Input\Textarea` · `Phalcon\Html\Helper\Label` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Meta` · `Phalcon\Html\Helper\Ol` · `Phalcon\Html\Helper\Preload` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\Helper\Style` · `Phalcon\Html\Helper\Tag` · `Phalcon\Html\Helper\Title` · `Phalcon\Html\Helper\Ul` · `Phalcon\Html\Helper\VoidTag` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Url\UrlInterface`
 { .api-uses }
 
 ### Method Summary
@@ -6230,6 +6280,9 @@ public function __construct(
 ```
 
 TagFactory constructor.
+
+`$services` maps a service name to a zero-arg Closure that returns the
+helper instance.
 
 #### `has()` { #htmltagfactory-has }
 

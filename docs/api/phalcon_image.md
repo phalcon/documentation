@@ -15,6 +15,8 @@ hide:
 
 All image adapters must use this class
 
+@template TImage of object
+
 <div class="api-tree" markdown>
 
 - **`Phalcon\Image\Adapter\AbstractAdapter`** - implements [`Phalcon\Image\Adapter\AdapterInterface`](#imageadapteradapterinterface)
@@ -23,7 +25,7 @@ All image adapters must use this class
 
 </div>
 
-__Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\InvalidColor` · `Phalcon\Image\Exceptions\MissingDimensions` · `Phalcon\Image\Exceptions\MissingHeight` · `Phalcon\Image\Exceptions\MissingWidth`
+__Uses__ `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\InvalidColor` · `Phalcon\Image\Exceptions\MissingDimensions` · `Phalcon\Image\Exceptions\MissingHeight` · `Phalcon\Image\Exceptions\MissingWidth`
 { .api-uses }
 
 ### Method Summary
@@ -243,18 +245,18 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$height</span></code>
-<span class="desc">Image height</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed|null</code>
+<code class="ret">TImage|null</code>
 <code class="sig"><span class="sv">$image</span><span class="sm"> = null</span></code>
+<span class="desc">The handle of the underlying backend. Every adapter assigns it in its
+constructor and releases it in its destructor.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$mime</span></code>
-<span class="desc">Image mime type</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -455,6 +457,9 @@ public function text(
 ```
 
 Add a text to an image with a specified opacity
+
+The offsets accept `false` to centre the text on that axis, so they are
+wider than the `int` the interface documents.
 
 #### `watermark()` { #imageadapterabstractadapter-watermark }
 
@@ -947,6 +952,8 @@ the Imagick adapter: blur() applies repeated 3x3 Gaussian convolutions
 (the radius is the number of passes), while sharpen and reflection use GD's
 own scales. Switching the factory backend can change the rendered output.
 
+@extends AbstractAdapter<GdImage>
+
 <div class="api-tree" markdown>
 
 - [`Phalcon\Image\Adapter\AbstractAdapter`](#imageadapterabstractadapter)
@@ -954,7 +961,7 @@ own scales. Switching the factory backend can change the rendered output.
 
 </div>
 
-__Uses__ `GdImage` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\TextRenderingFailed` · `Phalcon\Image\Exceptions\UnsupportedImageType` · `Phalcon\Image\Exceptions\VersionMismatch`
+__Uses__ `GdImage` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\TextRenderingFailed` · `Phalcon\Image\Exceptions\UnsupportedImageType` · `Phalcon\Image\Exceptions\VersionMismatch` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\InfoTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1021,6 +1028,7 @@ __Uses__ `GdImage` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phal
 </a>
 <a class="api-item" href="#imageadaptergd-processrender">
 <code class="vis vis-protected">protected</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sf">processRender</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
 </a>
 <a class="api-item" href="#imageadaptergd-processresize">
@@ -1176,7 +1184,7 @@ protected function processReflection(
 protected function processRender(
     string $extension,
     int $quality
-);
+): false|string;
 ```
 
 #### `processResize()` { #imageadaptergd-processresize }
@@ -1268,6 +1276,8 @@ Visual semantics differ from the Gd adapter: blur() maps the radius to a
 blur sigma, while sharpen and reflection use ImageMagick's own scales.
 Switching the factory backend can change the rendered output.
 
+@extends AbstractAdapter<ImagickNative>
+
 <div class="api-tree" markdown>
 
 - [`Phalcon\Image\Adapter\AbstractAdapter`](#imageadapterabstractadapter)
@@ -1275,7 +1285,7 @@ Switching the factory backend can change the rendered output.
 
 </div>
 
-__Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickException` · `ImagickPixel` · `ImagickPixelException` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\CompositeFailed` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\ResizeFailed` · `Phalcon\Image\Exceptions\ResourceTypeError`
+__Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickException` · `ImagickPixel` · `ImagickPixelException` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\CompositeFailed` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\ResizeFailed` · `Phalcon\Image\Exceptions\ResourceTypeError` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1393,79 +1403,6 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 <code class="sig"><span class="sf">processWatermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
 <span class="desc">Add Watermark</span>
 </a>
-</div>
-
-### Constants
-
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">ALPHACHANNEL_SET</span><span class="sm"> = 8</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CHANNEL_ALPHA</span><span class="sm"> = 8</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPOSITE_DISSOLVE</span><span class="sm"> = 28</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPOSITE_DSTIN</span><span class="sm"> = 23</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPOSITE_DSTOUT</span><span class="sm"> = 24</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPOSITE_OVER</span><span class="sm"> = 40</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPOSITE_SRC</span><span class="sm"> = 48</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPRESSION_JPEG</span><span class="sm"> = 8</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">EVALUATE_MULTIPLY</span><span class="sm"> = 7</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_CENTER</span><span class="sm"> = 5</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_EAST</span><span class="sm"> = 6</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_NORTH</span><span class="sm"> = 2</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_NORTHEAST</span><span class="sm"> = 3</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_SOUTH</span><span class="sm"> = 8</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_SOUTHEAST</span><span class="sm"> = 9</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_WEST</span><span class="sm"> = 4</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">IMAGICK_EXTNUM</span><span class="sm"> = 30700</span></code>
-</div>
 </div>
 
 ### Properties
@@ -2221,11 +2158,13 @@ Factory to create adapters for image manipulation
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Image\ImageFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
+        - **`Phalcon\Image\ImageFactory`**
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick` · `Phalcon\Support\Traits\ConfigTrait` · `Phalcon\Traits\Factory\FactoryTrait`
+__Uses__ `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -2239,7 +2178,7 @@ __Uses__ `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Image\Adapt
 <a class="api-item" href="#imageimagefactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#imageimagefactory-newinstance">
@@ -2276,7 +2215,7 @@ Constructor
 #### `load()` { #imageimagefactory-load }
 
 ```php
-public function load( array|ConfigInterface $config ): AdapterInterface;
+public function load( mixed $config ): AdapterInterface;
 ```
 
 Factory to create an instance from a Config object

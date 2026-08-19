@@ -19,11 +19,13 @@ Factory to create Annotations adapters
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Annotations\AdapterFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
+        - **`Phalcon\Annotations\AdapterFactory`**
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Libmemcached` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Redis` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Annotations\Adapter\Weak` · `Phalcon\Annotations\Parser\Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Traits\Factory\FactoryTrait`
+__Uses__ `Exception` · `Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Libmemcached` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Redis` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Annotations\Adapter\Weak` · `Phalcon\Annotations\Parser\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory`
 { .api-uses }
 
 ### Method Summary
@@ -1320,7 +1322,7 @@ reflection
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1355,7 +1357,7 @@ public function __construct( mixed $params );
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1390,7 +1392,7 @@ public function __construct( mixed $params );
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1425,7 +1427,7 @@ public function __construct( mixed $params );
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1460,7 +1462,7 @@ public function __construct( mixed $params );
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1495,7 +1497,7 @@ public function __construct( mixed $params );
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1530,7 +1532,7 @@ public function __construct( mixed $params );
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1565,7 +1567,7 @@ public function __construct( mixed $params );
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1600,7 +1602,7 @@ public function __construct( mixed $params );
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1644,7 +1646,7 @@ public function __construct( mixed $params );
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1765,7 +1767,7 @@ public function __construct( string $prefix );
 
 </div>
 
-__Uses__ `Attribute` · `Phalcon\Http\Message\Interfaces\RequestMethodInterface`
+__Uses__ `Attribute` · `Phalcon\Http\Message\RequestMethodInterface`
 { .api-uses }
 
 ### Method Summary

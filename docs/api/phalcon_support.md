@@ -61,7 +61,7 @@ __Uses__ `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInter
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
 <code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Retrieve a shared service instance from the container.</span>
+<span class="desc">Retrieve a service instance from the container.</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-register">
 <code class="vis vis-public">public</code>
@@ -105,7 +105,7 @@ __Uses__ `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInter
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, class-string&lt;T&gt;&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
 </div>
 </div>
@@ -154,7 +154,13 @@ Whether a service with the given name is registered.
 public function newInstance( string $name ): object;
 ```
 
-Retrieve a shared service instance from the container.
+Retrieve a service instance from the container.
+
+On the `DiInterface` path this returns the container's **shared**
+instance (`getShared()`) - despite the name, it is not a fresh build.
+Locators whose services carry per-activation state should override this
+method to resolve a fresh instance; see `Auth\Access\AccessLocator`, which uses
+`ContainerResolver::resolveFresh` for exactly that reason.
 
 #### `register()` { #supportabstractlocator-register }
 
@@ -218,25 +224,26 @@ It can be used in any part of the application that needs collection of data
 Such implementations are for instance accessing globals `$_GET`, `$_POST`
 etc.
 
-@property array       $data
-@property bool        $insensitive
-@property array       $lowerKeys
-@property bool        $strictNull
-@property string|null $type
+@implements CollectionInterface<T>
+
+@property array<string, T>      $data
+@property bool                  $insensitive
+@property array<string, string> $lowerKeys
+@property bool                  $strictNull
+@property string|null           $type
 
 <div class="api-tree" markdown>
 
 - **`Phalcon\Support\Collection`** - implements [`Phalcon\Support\Collection\CollectionInterface`](#supportcollectioncollectioninterface), `\Countable`, `\JsonSerializable`
     - [`Phalcon\Config\Config`](phalcon_config.md#configconfig)
     - [`Phalcon\Html\Attributes`](phalcon_html.md#htmlattributes)
-    - [`Phalcon\Http\Message\Headers`](phalcon_http.md#httpmessageheaders)
     - [`Phalcon\Session\Bag`](phalcon_session.md#sessionbag)
     - [`Phalcon\Support\Collection\ReadOnlyCollection`](#supportcollectionreadonlycollection)
     - [`Phalcon\Support\Registry`](#supportregistry)
 
 </div>
 
-__Uses__ `Countable` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Collection\Traits\ArrayAccessTrait` · `Phalcon\Support\Collection\Traits\GetSetHasTrait` · `Phalcon\Support\Helper\Json\Encode` · `Traversable`
+__Uses__ `ArrayIterator` · `Countable` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Collection\Traits\ArrayAccessTrait` · `Phalcon\Support\Collection\Traits\GetSetHasTrait` · `Phalcon\Support\Helper\Json\Encode` · `Traversable`
 { .api-uses }
 
 ### Method Summary
@@ -305,7 +312,7 @@ __Uses__ `Countable` · `JsonSerializable` · `Phalcon\Support\Collection\Collec
 <code class="vis vis-public">public</code>
 <code class="ret">Traversable</code>
 <code class="sig"><span class="sf">getIterator</span>()</code>
-<span class="desc">Returns the generator of the class</span>
+<span class="desc">Returns the iterator of the class</span>
 </a>
 <a class="api-item" href="#supportcollection-getkeys">
 <code class="vis vis-public">public</code>
@@ -470,7 +477,7 @@ __Uses__ `Countable` · `JsonSerializable` · `Phalcon\Support\Collection\Collec
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;int|string, mixed&gt;</code>
+<code class="ret">array&lt;string, T&gt;</code>
 <code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -480,8 +487,10 @@ __Uses__ `Countable` · `JsonSerializable` · `Phalcon\Support\Collection\Collec
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;int|string, mixed&gt;</code>
+<code class="ret">array&lt;string, string&gt;</code>
 <code class="sig"><span class="sv">$lowerKeys</span><span class="sm"> = []</span></code>
+<span class="desc">Maps the case-insensitive key back to the original one it was stored
+under.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -600,7 +609,7 @@ Get the element from the collection
 public function getIterator(): Traversable;
 ```
 
-Returns the generator of the class
+Returns the iterator of the class
 
 #### `getKeys()` { #supportcollection-getkeys }
 
@@ -657,8 +666,6 @@ public function jsonSerialize(): array;
 ```
 
 Specify data which should be serialized to JSON
-
-@link https://php.net/manual/en/jsonserializable.jsonserialize.php
 
 #### `keys()` { #supportcollection-keys }
 
@@ -860,6 +867,8 @@ is treated as a class/interface name and tested with `instanceof`.
 
 Phalcon\Support\Collection\CollectionInterface
 
+@extends CollectionContract<T>
+
 <div class="api-tree" markdown>
 
 - `\ArrayAccess`
@@ -974,6 +983,8 @@ public function __construct();
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Collection/ReadOnlyCollection.php){ .src-btn }
 
 A read only Collection object
+
+@extends Collection<T>
 
 <div class="api-tree" markdown>
 
@@ -1206,8 +1217,6 @@ public function offsetExists( mixed $element ): bool;
 
 Whether a offset exists
 
-@link https://php.net/manual/en/arrayaccess.offsetexists.php
-
 #### `offsetGet()` { #supportcollectiontraitsarrayaccesstrait-offsetget }
 
 ```php
@@ -1215,8 +1224,6 @@ public function offsetGet( mixed $element ): mixed;
 ```
 
 Offset to retrieve
-
-@link https://php.net/manual/en/arrayaccess.offsetget.php
 
 #### `offsetSet()` { #supportcollectiontraitsarrayaccesstrait-offsetset }
 
@@ -1229,8 +1236,6 @@ public function offsetSet(
 
 Offset to set
 
-@link https://php.net/manual/en/arrayaccess.offsetset.php
-
 #### `offsetUnset()` { #supportcollectiontraitsarrayaccesstrait-offsetunset }
 
 ```php
@@ -1238,8 +1243,6 @@ public function offsetUnset( mixed $element ): void;
 ```
 
 Offset to unset
-
-@link https://php.net/manual/en/arrayaccess.offsetunset.php
 
 #### `remove()` { #supportcollectiontraitsarrayaccesstrait-remove }
 
@@ -1415,24 +1418,13 @@ Set an element in the collection
 Listens for uncaught exceptions and renders them. Acts as a thin coordinator
 delegating data collection to ReportBuilder and presentation to a Renderer.
 
-@property array         $blacklist
-@property array         $data
-@property bool          $hideDocumentRoot
-@property bool          $isActive
-@property Renderer      $renderer
-@property ReportBuilder $reportBuilder
-@property bool          $showBackTrace
-@property bool          $showFileFragment
-@property bool          $showFiles
-@property string        $uri
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Support\Debug`**
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `Phalcon\Support\Debug\Renderer\HtmlRenderer` · `Phalcon\Support\Debug\ReportBuilder` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionException` · `Throwable`
+__Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `Phalcon\Support\Debug\Renderer\HtmlRenderer` · `Phalcon\Support\Debug\ReportBuilder` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionException` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -1806,17 +1798,13 @@ $baz = new stdClass();
 echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 ```
 
-@property bool  $detailed
-@property array $methods
-@property array $styles
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Support\Debug\Dump`** - implements [`Phalcon\Contracts\Support\Debug\TemplateAware`](phalcon_contracts.md#contractssupportdebugtemplateaware)
 
 </div>
 
-__Uses__ `InvalidArgumentException` · `JsonException` · `Phalcon\Container\Container` · `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Reflection` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty` · `stdClass`
+__Uses__ `InvalidArgumentException` · `JsonException` · `Phalcon\Container\Container` · `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Reflection` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty` · `stdClass`
 { .api-uses }
 
 ### Method Summary
@@ -1903,7 +1891,7 @@ __Uses__ `InvalidArgumentException` · `JsonException` · `Phalcon\Container\Con
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;array-key, class-string&gt;</code>
 <code class="sig"><span class="sv">$methods</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -2137,7 +2125,7 @@ external debug.css / debug.js assets.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+__Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2270,7 +2258,7 @@ logic.
 
 </div>
 
-__Uses__ `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
+__Uses__ `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -2314,6 +2302,9 @@ Represents a single resolved frame of an exception backtrace.
 - **`Phalcon\Support\Debug\Report\BacktraceItem`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Support\SupportTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -2469,6 +2460,9 @@ presentation logic.
 - **`Phalcon\Support\Debug\Report\ExceptionReport`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Support\SupportTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -2745,6 +2739,9 @@ these members in each class until Zephir supports traits.
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Support\SupportTypes`
+{ .api-uses }
+
 __Used by__ [`Phalcon\Support\Debug\Dump`](#supportdebugdump) · [`Phalcon\Support\Debug\Renderer\HtmlRenderer`](#supportdebugrendererhtmlrenderer)
 { .api-used-by }
 
@@ -2835,9 +2832,9 @@ Exceptions thrown in Phalcon\Support will use this class
 ServiceLocator implementation for helpers
 
 @method string basename(string $uri, string $suffix = null)
-@method array  blacklist(array $collection, array $blackList)
+@method support_collection blacklist(support_collection $collection, support_collection $blackList)
 @method string camelize(string $text, string $delimiters = null, bool $lowerFirst = false)
-@method array  chunk(array $collection, int $size, bool $preserveKeys = false)
+@method support_collection chunk(support_collection $collection, int $size, bool $preserveKeys = false)
 @method string concat(string $delimiter, string $first, string $second, string ...$arguments)
 @method int    countVowels(string $text)
 @method string decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8')
@@ -2848,59 +2845,61 @@ ServiceLocator implementation for helpers
 @method string dynamic(string $text, string $leftDel = "{", string $rightDel = "}", string $separator = "|")
 @method string encode($data, int $options = 0, int $depth = 512)
 @method bool   endsWith(string $haystack, string $needle, bool $ignoreCase = true)
-@method mixed  filter(array $collection, callable|null $method)
-@method mixed  first(array $collection, callable $method = null)
+@method mixed  filter(support_collection $collection, callable|null $method)
+@method mixed  first(support_collection $collection, callable $method = null)
 @method string firstBetween(string $text, string $start, string $end)
-@method mixed  firstKey(array $collection, callable $method = null)
+@method mixed  firstKey(support_collection $collection, callable $method = null)
 @method string friendly(string $text, string $separator = '-', bool $lowercase = true, $replace = null)
-@method array  flatten(array $collection, bool $deep = false)
-@method mixed  get(array $collection, $index, $defaultValue = null, string $cast = null)
-@method array  group(array $collection, $method)
-@method bool   has(array $collection, $index)
+@method support_collection flatten(support_collection $collection, bool $deep = false)
+@method mixed  get(support_collection $collection, $index, $defaultValue = null, string $cast = null)
+@method array<array-key, list<mixed>> group(support_collection $collection, $method)
+@method bool   has(support_collection $collection, $index)
 @method string humanize(string $text)
 @method bool   includes(string $haystack, string $needle)
 @method string increment(string $text, string $separator = '_')
-@method string interpolate(string $message, array $context = [], string $leftToken = "%", string $rightToken = "%")
+@method string interpolate(string $message, string[] $context=[], string $leftToken="%", string $rightToken="%")
 @method bool   isAnagram(string $first, string $second)
 @method bool   isBetween(int $value, int $start, int $end)
 @method bool   isLower(string $text, string $encoding = 'UTF-8')
 @method bool   isPalindrome(string $text)
-@method bool   isUnique(array $collection)
+@method bool   isUnique(support_collection $collection)
 @method bool   isUpper(string $text, string $encoding = 'UTF-8')
 @method string kebabCase(string $text, string $delimiters = null)
-@method mixed  last(array $collection, callable $method = null)
-@method mixed  lastKey(array $collection, callable $method = null)
+@method mixed  last(support_collection $collection, callable $method = null)
+@method mixed  lastKey(support_collection $collection, callable $method = null)
 @method int    len(string $text, string $encoding = 'UTF-8')
 @method string lower(string $text, string $encoding = 'UTF-8')
-@method array  order(array $collection, $attribute, string $order = 'asc')
+@method support_collection order(support_collection $collection, $attribute, string $order = 'asc')
 @method string pascalCase(string $text, string $delimiters = null)
-@method array  pluck(array $collection, string $element)
+@method support_collection pluck(support_collection $collection, string $element)
 @method string prefix(string $text, string $prefix)
 @method string random(int $type = 0, int $length = 8)
 @method string reduceSlashes(string $text)
-@method array  set(array $collection, $value, $index = null)
-@method array  sliceLeft(array $collection, int $elements = 1)
-@method array  sliceRight(array $collection, int $elements = 1)
+@method support_collection set(support_collection $collection, $value, $index = null)
+@method support_collection sliceLeft(support_collection $collection, int $elements = 1)
+@method support_collection sliceRight(support_collection $collection, int $elements = 1)
 @method string snakeCase(string $text, string $delimiters = null)
-@method array  split(array $collection)
+@method support_collection split(support_collection $collection)
 @method bool   startsWith(string $haystack, string $needle, bool $ignoreCase = true)
 @method string suffix(string $text, string $suffix)
-@method object toObject(array $collection)
-@method bool   validateAll(array $collection, callable $method)
-@method bool   validateAny(array $collection, callable $method)
+@method object toObject(support_collection $collection)
+@method bool   validateAll(support_collection $collection, callable $method)
+@method bool   validateAny(support_collection $collection, callable $method)
 @method string ucwords(string $text, string $encoding = 'UTF-8')
 @method string uncamelize(string $text, string $delimiters = '_')
 @method string underscore(string $text)
 @method string upper(string $text, string $encoding = 'UTF-8')
-@method array  whitelist(array $collection, array $whiteList)
+@method support_collection whitelist(support_collection $collection, support_collection $whiteList)
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\HelperFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
+        - **`Phalcon\Support\HelperFactory`**
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper` · `Phalcon\Traits\Factory\FactoryTrait`
+__Uses__ `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -2976,6 +2975,36 @@ protected function getServices(): array;
 Returns the available adapters
 
 
+## Support\Helper\Arr\AbstractArr
+
+<span class="badge badge--abstract">Abstract</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Helper/Arr/AbstractArr.php){ .src-btn }
+
+@internal
+
+@todo Remove in v7. Kept only for backwards compatibility; compose
+Phalcon\Traits\Support\Helper\Arr\FilterTrait directly instead of extending
+this.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Support\Helper\Arr\AbstractArr`**
+    - [`Phalcon\Support\Helper\Arr\Blacklist`](#supporthelperarrblacklist)
+    - [`Phalcon\Support\Helper\Arr\Filter`](#supporthelperarrfilter)
+    - [`Phalcon\Support\Helper\Arr\First`](#supporthelperarrfirst)
+    - [`Phalcon\Support\Helper\Arr\FirstKey`](#supporthelperarrfirstkey)
+    - [`Phalcon\Support\Helper\Arr\Last`](#supporthelperarrlast)
+    - [`Phalcon\Support\Helper\Arr\LastKey`](#supporthelperarrlastkey)
+    - [`Phalcon\Support\Helper\Arr\ValidateAll`](#supporthelperarrvalidateall)
+    - [`Phalcon\Support\Helper\Arr\ValidateAny`](#supporthelperarrvalidateany)
+    - [`Phalcon\Support\Helper\Arr\Whitelist`](#supporthelperarrwhitelist)
+
+</div>
+
+__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
+{ .api-uses }
+
+
 ## Support\Helper\Arr\Blacklist
 
 <span class="badge badge--class">Class</span>
@@ -2986,12 +3015,10 @@ by the keys obtained from the elements of a blacklist
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Arr\Blacklist`**
+- [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
+    - **`Phalcon\Support\Helper\Arr\Blacklist`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -3065,18 +3092,17 @@ used.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Arr\Filter`**
+- [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
+    - **`Phalcon\Support\Helper\Arr\Filter`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
-{ .api-uses }
 
 ### Method Summary
 
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrfilter-__invoke">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
@@ -3091,7 +3117,7 @@ __Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
 public function __invoke(
     array $collection,
     callable|null $method = null
-);
+): mixed;
 ```
 
 
@@ -3105,18 +3131,17 @@ element returned is the first that validates true
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Arr\First`**
+- [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
+    - **`Phalcon\Support\Helper\Arr\First`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
-{ .api-uses }
 
 ### Method Summary
 
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrfirst-__invoke">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
@@ -3131,7 +3156,7 @@ __Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
 public function __invoke(
     array $collection,
     callable|null $method = null
-);
+): mixed;
 ```
 
 
@@ -3145,18 +3170,17 @@ is passed, the element returned is the first that validates true
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Arr\FirstKey`**
+- [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
+    - **`Phalcon\Support\Helper\Arr\FirstKey`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
-{ .api-uses }
 
 ### Method Summary
 
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrfirstkey-__invoke">
 <code class="vis vis-public">public</code>
+<code class="ret">int|string|null</code>
 <code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
@@ -3171,7 +3195,7 @@ __Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
 public function __invoke(
     array $collection,
     callable|null $method = null
-);
+): int|string|null;
 ```
 
 
@@ -3279,7 +3303,7 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait`
 <a class="api-item" href="#supporthelperarrgroup-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$method</span></span>)</code>
 </a>
 </div>
 
@@ -3292,7 +3316,7 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait`
 ```php
 public function __invoke(
     array $collection,
-    mixed $method
+    callable|string $method
 ): array;
 ```
 
@@ -3349,6 +3373,9 @@ values exist and false if values are all unique.
 
 </div>
 
+__Uses__ `Stringable`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -3380,12 +3407,10 @@ element returned is the first that validates true
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Arr\Last`**
+- [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
+    - **`Phalcon\Support\Helper\Arr\Last`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -3420,18 +3445,17 @@ passed, the element returned is the first that validates true
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Arr\LastKey`**
+- [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
+    - **`Phalcon\Support\Helper\Arr\LastKey`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
-{ .api-uses }
 
 ### Method Summary
 
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrlastkey-__invoke">
 <code class="vis vis-public">public</code>
+<code class="ret">int|string|null</code>
 <code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
@@ -3446,7 +3470,7 @@ __Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
 public function __invoke(
     array $collection,
     callable|null $method = null
-);
+): int|string|null;
 ```
 
 
@@ -3560,7 +3584,7 @@ Sets an array element. Using a key is optional
 <a class="api-item" href="#supporthelperarrset-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int|string|null</span> <span class="sv">$index</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -3574,7 +3598,7 @@ Sets an array element. Using a key is optional
 public function __invoke(
     array $collection,
     mixed $value,
-    mixed $index = null
+    int|string|null $index = null
 ): array;
 ```
 
@@ -3732,12 +3756,10 @@ the collection, `false` otherwise.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Arr\ValidateAll`**
+- [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
+    - **`Phalcon\Support\Helper\Arr\ValidateAll`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -3773,12 +3795,10 @@ element of the collection, `false` otherwise.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Arr\ValidateAny`**
+- [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
+    - **`Phalcon\Support\Helper\Arr\ValidateAny`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -3814,12 +3834,10 @@ obtained from the elements of a whitelist
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Arr\Whitelist`**
+- [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
+    - **`Phalcon\Support\Helper\Arr\Whitelist`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -4128,6 +4146,38 @@ public function __invoke(
 ```
 
 
+## Support\Helper\Str\AbstractStr
+
+<span class="badge badge--abstract">Abstract</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Helper/Str/AbstractStr.php){ .src-btn }
+
+Abstract class offering methods to help with the Str namespace.
+
+@internal
+
+@todo Remove in v7. Kept only for backwards compatibility; compose the
+      individual Phalcon\Traits\Support\Helper\Str\* traits directly instead
+      of extending this.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Support\Helper\Str\AbstractStr`**
+    - [`Phalcon\Support\Helper\Str\Concat`](#supporthelperstrconcat)
+    - [`Phalcon\Support\Helper\Str\Decapitalize`](#supporthelperstrdecapitalize)
+    - [`Phalcon\Support\Helper\Str\EndsWith`](#supporthelperstrendswith)
+    - [`Phalcon\Support\Helper\Str\Friendly`](#supporthelperstrfriendly)
+    - [`Phalcon\Support\Helper\Str\IsLower`](#supporthelperstrislower)
+    - [`Phalcon\Support\Helper\Str\IsUpper`](#supporthelperstrisupper)
+    - [`Phalcon\Support\Helper\Str\Lower`](#supporthelperstrlower)
+    - [`Phalcon\Support\Helper\Str\StartsWith`](#supporthelperstrstartswith)
+    - [`Phalcon\Support\Helper\Str\Upper`](#supporthelperstrupper)
+
+</div>
+
+__Uses__ `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Phalcon\Traits\Support\Helper\Str\LowerTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait` · `Phalcon\Traits\Support\Helper\Str\UpperTrait`
+{ .api-uses }
+
+
 ## Support\Helper\Str\Camelize
 
 <span class="badge badge--class">Class</span>
@@ -4179,9 +4229,13 @@ places concatenation
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Str\Concat`**
+- [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
+    - **`Phalcon\Support\Helper\Str\Concat`**
 
 </div>
+
+__Uses__ `Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`
+{ .api-uses }
 
 ### Method Summary
 
@@ -4189,7 +4243,7 @@ places concatenation
 <a class="api-item" href="#supporthelperstrconcat-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$first</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$second</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$arguments</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$many</span></span>)</code>
 </a>
 </div>
 
@@ -4202,9 +4256,7 @@ places concatenation
 ```php
 public function __invoke(
     string $delimiter,
-    string $first,
-    string $second,
-    string $arguments
+    string $many
 ): string;
 ```
 
@@ -4255,12 +4307,10 @@ string intact, or set it to true to convert to uppercase.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Str\Decapitalize`**
+- [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
+    - **`Phalcon\Support\Helper\Str\Decapitalize`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\LowerTrait` · `Phalcon\Traits\Support\Helper\Str\UpperTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -4454,12 +4504,10 @@ Check if a string ends with a given string
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Str\EndsWith`**
+- [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
+    - **`Phalcon\Support\Helper\Str\EndsWith`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\EndsWithTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -4607,11 +4655,12 @@ is passed, it will also be used to replace those characters with a space.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Str\Friendly`**
+- [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
+    - **`Phalcon\Support\Helper\Str\Friendly`**
 
 </div>
 
-__Uses__ `Phalcon\Traits\Support\Helper\Str\LowerTrait`
+__Uses__ `Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`
 { .api-uses }
 
 ### Method Summary
@@ -4620,7 +4669,7 @@ __Uses__ `Phalcon\Traits\Support\Helper\Str\LowerTrait`
 <a class="api-item" href="#supporthelperstrfriendly-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;-&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowercase</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$replace</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;-&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowercase</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$replace</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -4635,7 +4684,7 @@ public function __invoke(
     string $text,
     string $separator = "-",
     bool $lowercase = true,
-    mixed $replace = null
+    array|string|null $replace = null
 ): string;
 ```
 
@@ -4841,12 +4890,10 @@ Returns `true` if the given string is in lower case, `false` otherwise.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Str\IsLower`**
+- [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
+    - **`Phalcon\Support\Helper\Str\IsLower`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\LowerTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -4915,12 +4962,10 @@ Returns `true` if the given string is in upper case, `false` otherwise.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Str\IsUpper`**
+- [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
+    - **`Phalcon\Support\Helper\Str\IsUpper`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\UpperTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -5030,12 +5075,10 @@ Converts a string to lowercase using mbstring
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Str\Lower`**
+- [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
+    - **`Phalcon\Support\Helper\Str\Lower`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\LowerTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -5122,6 +5165,7 @@ protected function processArray(
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Helper/Str/Prefix.php){ .src-btn }
 
 Prefixes the text with the supplied prefix
+@todo v7 make text string
 
 <div class="api-tree" markdown>
 
@@ -5129,13 +5173,16 @@ Prefixes the text with the supplied prefix
 
 </div>
 
+__Uses__ `Stringable`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrprefix-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
 </a>
 </div>
 
@@ -5147,7 +5194,7 @@ Prefixes the text with the supplied prefix
 
 ```php
 public function __invoke(
-    string $text,
+    mixed $text,
     string $prefix
 ): string;
 ```
@@ -5308,12 +5355,10 @@ Check if a string starts with a given string
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Str\StartsWith`**
+- [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
+    - **`Phalcon\Support\Helper\Str\StartsWith`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\StartsWithTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -5353,13 +5398,16 @@ Suffixes the text with the supplied suffix
 
 </div>
 
+__Uses__ `Stringable`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrsuffix-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span></span>)</code>
 </a>
 </div>
 
@@ -5371,7 +5419,7 @@ Suffixes the text with the supplied suffix
 
 ```php
 public function __invoke(
-    string $text,
+    mixed $text,
     string $suffix
 ): string;
 ```
@@ -5497,12 +5545,10 @@ Converts a string to uppercase using mbstring
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Helper\Str\Upper`**
+- [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
+    - **`Phalcon\Support\Helper\Str\Upper`**
 
 </div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\UpperTrait`
-{ .api-uses }
 
 ### Method Summary
 
@@ -5579,6 +5625,8 @@ is several times slower than $registry->property.
 Internally all the magic methods (and interfaces except JsonSerializable)
 are implemented using object handlers or similar techniques: this allows to
 bypass relatively slow method calls.
+
+@extends Collection<mixed>
 
 <div class="api-tree" markdown>
 
@@ -5721,8 +5769,8 @@ __Uses__ `Traversable`
 <a class="api-item" href="#supportregistry-unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$serialized</span> )</code>
-<span class="desc">Constructs the object</span>
+<code class="sig"><span class="sf">unserialize</span>( <span class="st">string</span> <span class="sv">$serialized</span> )</code>
+<span class="desc">Unserializes the object</span>
 </a>
 </div>
 
@@ -5789,8 +5837,6 @@ final public function count(): int;
 
 Count elements of an object
 
-@link https://php.net/manual/en/countable.count.php
-
 #### `get()` { #supportregistry-get }
 
 ```php
@@ -5835,8 +5881,6 @@ final public function jsonSerialize(): array;
 
 Specify data which should be serialized to JSON
 
-@link https://php.net/manual/en/jsonserializable.jsonserialize.php
-
 #### `offsetExists()` { #supportregistry-offsetexists }
 
 ```php
@@ -5845,8 +5889,6 @@ final public function offsetExists( mixed $element ): bool;
 
 Whether a offset exists
 
-@link https://php.net/manual/en/arrayaccess.offsetexists.php
-
 #### `offsetGet()` { #supportregistry-offsetget }
 
 ```php
@@ -5854,8 +5896,6 @@ final public function offsetGet( mixed $element ): mixed;
 ```
 
 Offset to retrieve
-
-@link https://php.net/manual/en/arrayaccess.offsetget.php
 
 #### `offsetSet()` { #supportregistry-offsetset }
 
@@ -5868,8 +5908,6 @@ final public function offsetSet(
 
 Offset to set
 
-@link https://php.net/manual/en/arrayaccess.offsetset.php
-
 #### `offsetUnset()` { #supportregistry-offsetunset }
 
 ```php
@@ -5877,8 +5915,6 @@ final public function offsetUnset( mixed $element ): void;
 ```
 
 Offset to unset
-
-@link https://php.net/manual/en/arrayaccess.offsetunset.php
 
 #### `remove()` { #supportregistry-remove }
 
@@ -5895,8 +5931,6 @@ final public function serialize(): string|null;
 ```
 
 String representation of object
-
-@link https://php.net/manual/en/serializable.serialize.php
 
 #### `set()` { #supportregistry-set }
 
@@ -5929,17 +5963,13 @@ The default string uses the following options for json_encode
 
 JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
 
-@see https://www.ietf.org/rfc/rfc4627.txt
-
 #### `unserialize()` { #supportregistry-unserialize }
 
 ```php
-final public function unserialize( mixed $serialized ): void;
+final public function unserialize( string $serialized ): void;
 ```
 
-Constructs the object
-
-@link https://php.net/manual/en/serializable.unserialize.php
+Unserializes the object
 
 
 ## Support\Settings
@@ -5999,7 +6029,7 @@ those keys to their ini_get() fallback values.
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, bool|int&gt;</code>
 <code class="sig"><span class="sv">$overrides</span><span class="sm"> = []</span></code>
 <span class="desc">PHP-level overrides. Keys stored here take priority over ini_get().</span>
 </div>
@@ -6061,10 +6091,10 @@ Unknown keys are silently ignored.
 
 </div>
 
-__Uses__ `Phalcon\Config\ConfigInterface`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Throwable`
 { .api-uses }
 
-__Used by__ [`Phalcon\Cache\CacheFactory`](phalcon_cache.md#cachecachefactory) · [`Phalcon\Db\Adapter\PdoFactory`](phalcon_db.md#dbadapterpdofactory) · [`Phalcon\Image\ImageFactory`](phalcon_image.md#imageimagefactory) · [`Phalcon\Logger\LoggerFactory`](phalcon_logger.md#loggerloggerfactory) · [`Phalcon\Paginator\PaginatorFactory`](phalcon_paginator.md#paginatorpaginatorfactory) · [`Phalcon\Queue\QueueFactory`](phalcon_queue.md#queuequeuefactory) · [`Phalcon\Translate\TranslateFactory`](phalcon_translate.md#translatetranslatefactory)
+__Used by__ [`Phalcon\Auth\ManagerFactory`](phalcon_auth.md#authmanagerfactory)
 { .api-used-by }
 
 ### Method Summary
@@ -6073,7 +6103,8 @@ __Used by__ [`Phalcon\Cache\CacheFactory`](phalcon_cache.md#cachecachefactory) �
 <a class="api-item" href="#supporttraitsconfigtrait-checkconfig">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">checkConfig</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">checkConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<span class="desc">Normalizes the factory configuration. The parameter is <code>mixed</code> on</span>
 </a>
 <a class="api-item" href="#supporttraitsconfigtrait-checkconfigelement">
 <code class="vis vis-protected">protected</code>
@@ -6096,8 +6127,12 @@ __Used by__ [`Phalcon\Cache\CacheFactory`](phalcon_cache.md#cachecachefactory) �
 #### `checkConfig()` { #supporttraitsconfigtrait-checkconfig }
 
 ```php
-protected function checkConfig( array|ConfigInterface $config ): array;
+protected function checkConfig( mixed $config ): array;
 ```
+
+Normalizes the factory configuration. The parameter is `mixed` on
+purpose: anything that is neither an array nor a `ConfigInterface` is
+rejected here at runtime.
 
 #### `checkConfigElement()` { #supporttraitsconfigtrait-checkconfigelement }
 

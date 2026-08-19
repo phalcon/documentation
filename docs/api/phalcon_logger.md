@@ -21,10 +21,8 @@ the built in AdapterFactory. A LoggerFactory is also available that allows
 developers to create new instances of the Logger or load them from config
 files (see Phalcon\Config\Config object).
 
-@package Phalcon\Logger
-
 @property AdapterInterface[] $adapters
-@property array              $excluded
+@property array<array-key, bool> $excluded
 @property int                $logLevel
 @property string             $name
 @property DateTimeZone       $timezone
@@ -36,7 +34,7 @@ files (see Phalcon\Config\Config object).
 
 </div>
 
-__Uses__ `DateTimeZone` · `Exception` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Exceptions\AdapterNotFound` · `Phalcon\Logger\Exceptions\NoAdaptersConfigured` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
+__Uses__ `DateTimeZone` · `Exception` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Exceptions\AdapterNotFound` · `Phalcon\Logger\Exceptions\NoAdaptersConfigured` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
 { .api-uses }
 
 ### Method Summary
@@ -144,7 +142,7 @@ __Uses__ `DateTimeZone` · `Exception` · `Phalcon\Logger\Adapter\AdapterInterfa
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">AdapterInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$adapters</span><span class="sm"> = []</span></code>
 <span class="desc">The adapter stack</span>
 </div>
@@ -164,7 +162,6 @@ __Uses__ `DateTimeZone` · `Exception` · `Phalcon\Logger\Adapter\AdapterInterfa
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$logLevel</span><span class="sm"> = Enum::CUSTOM</span></code>
-<span class="desc">Minimum log level for the logger</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -338,11 +335,13 @@ Factory used to create adapters used for Logging
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Logger\AdapterFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
+        - **`Phalcon\Logger\AdapterFactory`**
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog` · `Phalcon\Traits\Factory\FactoryTrait`
+__Uses__ `Exception` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -420,12 +419,6 @@ Returns the available adapters
 
 Class AbstractAdapter
 
-@property string             $defaultFormatter
-@property FormatterInterface $formatter
-@property bool               $inTransaction
-@property array              $queue
-@property int                $queueLimit
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Logger\Adapter\AbstractAdapter`** - implements [`Phalcon\Logger\Adapter\AdapterInterface`](#loggeradapteradapterinterface)
@@ -435,7 +428,7 @@ Class AbstractAdapter
 
 </div>
 
-__Uses__ `Phalcon\Logger\Exception` · `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Exceptions\SerializationFailed` · `Phalcon\Logger\Exceptions\TransactionAlreadyActive` · `Phalcon\Logger\Exceptions\TransactionNotActive` · `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Formatter\Line` · `Phalcon\Logger\Item`
+__Uses__ `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Exceptions\SerializationFailed` · `Phalcon\Logger\Exceptions\TransactionAlreadyActive` · `Phalcon\Logger\Exceptions\TransactionNotActive` · `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Formatter\Line` · `Phalcon\Logger\Item`
 { .api-uses }
 
 ### Method Summary
@@ -450,25 +443,23 @@ __Uses__ `Phalcon\Logger\Exception` · `Phalcon\Logger\Exceptions\Deserializatio
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">__serialize</span>()</code>
-<span class="desc">Prevent serialization</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-__unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
-<span class="desc">Prevent unserialization</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-add">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">add</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
-<span class="desc">Add a message to the queue</span>
+<span class="desc">Adds a message to the queue</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-begin">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">begin</span>()</code>
-<span class="desc">Start a transaction</span>
+<span class="desc">Starts a transaction</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-close">
 <code class="vis vis-public">public</code>
@@ -480,7 +471,7 @@ __Uses__ `Phalcon\Logger\Exception` · `Phalcon\Logger\Exceptions\Deserializatio
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">commit</span>()</code>
-<span class="desc">Commit the internal transaction</span>
+<span class="desc">Commits the internal transaction</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-getformatter">
 <code class="vis vis-public">public</code>
@@ -537,7 +528,7 @@ __Uses__ `Phalcon\Logger\Exception` · `Phalcon\Logger\Exceptions\Deserializatio
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
+<code class="ret">class-string&lt;FormatterInterface&gt;</code>
 <code class="sig"><span class="sv">$defaultFormatter</span><span class="sm"> = Line::class</span></code>
 <span class="desc">Name of the default formatter class</span>
 </div>
@@ -592,15 +583,11 @@ than throwing.
 public function __serialize(): array;
 ```
 
-Prevent serialization
-
 #### `__unserialize()` { #loggeradapterabstractadapter-__unserialize }
 
 ```php
 public function __unserialize( array $data ): void;
 ```
-
-Prevent unserialization
 
 #### `add()` { #loggeradapterabstractadapter-add }
 
@@ -608,7 +595,7 @@ Prevent unserialization
 public function add( Item $item ): AdapterInterface;
 ```
 
-Add a message to the queue
+Adds a message to the queue
 
 #### `begin()` { #loggeradapterabstractadapter-begin }
 
@@ -616,7 +603,7 @@ Add a message to the queue
 public function begin(): AdapterInterface;
 ```
 
-Start a transaction
+Starts a transaction
 
 #### `close()` { #loggeradapterabstractadapter-close }
 
@@ -632,7 +619,7 @@ Closes the logger
 public function commit(): AdapterInterface;
 ```
 
-Commit the internal transaction
+Commits the internal transaction
 
 #### `getFormatter()` { #loggeradapterabstractadapter-getformatter }
 
@@ -908,7 +895,7 @@ Adapter to store logs in plain text files
 $logger = new \Phalcon\Logger\Adapter\Stream('app/logs/test.log');
 
 $logger->log('This is a message');
-$logger->log(\Phalcon\Logger::ERROR, 'This is an error');
+$logger->log(\Phalcon\Logger\Enum::ERROR, 'This is an error');
 $logger->error('This is another error');
 
 $logger->close();
@@ -925,7 +912,7 @@ $logger->close();
 
 </div>
 
-__Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode` · `Phalcon\Logger\Exception` · `Phalcon\Logger\Item` · `Phalcon\Traits\Php\FileTrait`
+__Uses__ `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode` · `Phalcon\Logger\Item` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1038,7 +1025,7 @@ Class Syslog
 
 </div>
 
-__Uses__ `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger\Enum` · `Phalcon\Logger\Item`
+__Uses__ `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger\Enum` · `Phalcon\Logger\Item`
 { .api-uses }
 
 ### Method Summary
@@ -1138,8 +1125,6 @@ protected function openlog(
 ```
 
 Open connection to system logger
-
-@link https://php.net/manual/en/function.openlog.php
 
 
 ## Logger\Enum
@@ -1454,8 +1439,6 @@ public function __construct();
 
 Class AbstractFormatter
 
-@property string $dateFormat
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Logger\Formatter\AbstractFormatter`** - implements [`Phalcon\Logger\Formatter\FormatterInterface`](#loggerformatterformatterinterface)
@@ -1464,7 +1447,7 @@ Class AbstractFormatter
 
 </div>
 
-__Uses__ `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+__Uses__ `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Stringable`
 { .api-uses }
 
 ### Method Summary
@@ -1491,6 +1474,12 @@ __Uses__ `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Str\Interpolate
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getInterpolatedMessage</span>(<span class="prm"><span class="st">Item</span> <span class="sv">$item</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span></span>)</code>
 <span class="desc">Returns the interpolated message, replacing context placeholders.</span>
+</a>
+<a class="api-item" href="#loggerformatterabstractformatter-stringifycontext">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">stringifyContext</span>( <span class="st">array</span> <span class="sv">$context</span> )</code>
+<span class="desc">Reduces the log context to the string map interpolation requires.</span>
 </a>
 </div>
 
@@ -1531,7 +1520,7 @@ public function getDateFormat(): string;
 public function setDateFormat( string $format ): void;
 ```
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 3</div>
 
 #### `getFormattedDate()` { #loggerformatterabstractformatter-getformatteddate }
 
@@ -1551,6 +1540,21 @@ protected function getInterpolatedMessage(
 ```
 
 Returns the interpolated message, replacing context placeholders.
+
+#### `stringifyContext()` { #loggerformatterabstractformatter-stringifycontext }
+
+```php
+protected function stringifyContext( array $context ): array;
+```
+
+Reduces the log context to the string map interpolation requires.
+
+Log context is PSR-3 shaped, so its values are arbitrary, while
+interpolation replaces a placeholder with a string. Anything that
+cannot be expressed as one - an array, an object without
+`__toString()` - substitutes as an empty string, so a placeholder is
+never left dangling and a non-stringable value can never abort the
+formatter mid-log.
 
 
 ## Logger\Formatter\FormatterInterface
@@ -1578,8 +1582,6 @@ __Uses__ `Phalcon\Contracts\Logger\Formatter\Formatter`
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Formatter/Json.php){ .src-btn }
 
-Phalcon\Logger\Formatter\Json
-
 Formats messages using JSON encoding
 
 <div class="api-tree" markdown>
@@ -1589,7 +1591,7 @@ Formats messages using JSON encoding
 
 </div>
 
-__Uses__ `JsonException` · `Phalcon\Logger\Item`
+__Uses__ `JsonException` · `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Json\EncodeTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1639,8 +1641,6 @@ Applies a format to a message before sent it to the internal log
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Formatter/Line.php){ .src-btn }
 
 Class Line
-
-@property string $format
 
 <div class="api-tree" markdown>
 
@@ -1741,7 +1741,7 @@ Phalcon\Logger\Item
 
 Represents each item in a logging transaction
 
-@property array             $context
+@property array<string, mixed> $context
 @property string            $message
 @property int               $level
 @property string            $levelName
@@ -1753,7 +1753,7 @@ Represents each item in a logging transaction
 
 </div>
 
-__Uses__ `DateTimeImmutable`
+__Uses__ `DateTimeImmutable` · `Phalcon\Contracts\Logger\LoggerTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1889,6 +1889,9 @@ from config files (see Phalcon\Config\Config object).
     - **`Phalcon\Logger\Logger`** - implements [`Phalcon\Logger\LoggerInterface`](#loggerloggerinterface)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Logger\LoggerTypes`
+{ .api-uses }
 
 ### Method Summary
 
@@ -2098,11 +2101,12 @@ Factory creating logger objects
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Logger\LoggerFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - **`Phalcon\Logger\LoggerFactory`**
 
 </div>
 
-__Uses__ `DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Support\Traits\ConfigTrait`
+__Uses__ `DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -2111,6 +2115,7 @@ __Uses__ `DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `P
 <a class="api-item" href="#loggerloggerfactory-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory</span> <span class="sv">$factory</span> )</code>
+<span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#loggerloggerfactory-load">
 <code class="vis vis-public">public</code>
@@ -2141,6 +2146,8 @@ __Uses__ `DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `P
 public function __construct( AdapterFactory $factory );
 ```
 
+Constructor
+
 #### `load()` { #loggerloggerfactory-load }
 
 ```php
@@ -2149,19 +2156,7 @@ public function load( mixed $config ): Logger;
 
 Factory to create an instance from a Config object
 
-@option string "'name"
-@option array  "adapters"' = {
-@option string "adapter-name" = {
-@option string "adapter"
-@option string "name"
-@option string "options" = {
-@option string "mode" = "ab"
-@option string "option"
-@option string "facility"
-             }
-         }
-     }
-}
+The adapter list lives under `options`, not at the top level.
 
 #### `newInstance()` { #loggerloggerfactory-newinstance }
 

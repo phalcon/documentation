@@ -112,7 +112,7 @@ Stores a message from various components
 
 </div>
 
-__Uses__ `JsonSerializable`
+__Uses__ `JsonSerializable` · `Phalcon\Contracts\Messages\MessagesTypes`
 { .api-uses }
 
 ### Method Summary
@@ -340,6 +340,9 @@ Interface for Phalcon\Messages\Message
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Messages\MessagesTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -524,7 +527,7 @@ must take part in iteration.
 
 </div>
 
-__Uses__ `Iterator` · `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Phalcon\Messages\Traits\MessagesHelperTrait` · `Traversable`
+__Uses__ `Iterator` · `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Phalcon\Messages\Traits\MessagesHelperTrait` · `Traversable`
 { .api-uses }
 
 ### Method Summary
@@ -543,7 +546,6 @@ __Uses__ `Iterator` · `JsonSerializable` · `Phalcon\Contracts\Messages\Message
 </a>
 <a class="api-item" href="#messagesmessages-appendmessages">
 <code class="vis vis-public">public</code>
-<code class="ret">void</code>
 <code class="sig"><span class="sf">appendMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
 <span class="desc">Appends an array of messages to the collection</span>
 </a>
@@ -590,7 +592,7 @@ $messages->appendMessage(
 #### `appendMessages()` { #messagesmessages-appendmessages }
 
 ```php
-public function appendMessages( mixed $messages ): void;
+public function appendMessages( mixed $messages );
 ```
 
 Appends an array of messages to the collection
@@ -598,6 +600,11 @@ Appends an array of messages to the collection
 ```php
 $messages->appendMessages($messagesArray);
 ```
+
+Accepts an array of MessageInterface objects or an Iterator yielding
+them. The parameter stays untyped so that a non-iterable argument
+reaches the guard below and raises MessagesNotIterable rather than a
+TypeError.
 
 #### `filter()` { #messagesmessages-filter }
 
@@ -635,7 +642,7 @@ Trait MessagesHelperTrait
 
 </div>
 
-__Uses__ `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface`
+__Uses__ `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\MessageInterface`
 { .api-uses }
 
 __Used by__ [`Phalcon\Messages\Messages`](#messagesmessages)
@@ -711,7 +718,7 @@ __Used by__ [`Phalcon\Messages\Messages`](#messagesmessages)
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">messages_list</code>
 <code class="sig"><span class="sv">$messages</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">

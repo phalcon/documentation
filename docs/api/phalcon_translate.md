@@ -13,9 +13,7 @@ hide:
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Translate/Adapter/AbstractAdapter.php){ .src-btn }
 
-@template TKey of string
-@template TValue of string
-@implements ArrayAccess<TKey, TValue>
+@implements ArrayAccess<string, string>
 
 <div class="api-tree" markdown>
 
@@ -26,7 +24,7 @@ hide:
 
 </div>
 
-__Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Phalcon\Translate\Exceptions\KeyNotFound` · `Phalcon\Translate\InterpolatorFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
+__Uses__ `ArrayAccess` · `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Phalcon\Translate\Exceptions\KeyNotFound` · `Phalcon\Translate\InterpolatorFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
 { .api-uses }
 
 ### Method Summary
@@ -57,7 +55,7 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Ex
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-offsetget">
 <code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Returns the translation related to the given key</span>
 </a>
@@ -157,7 +155,7 @@ Check whether a translation key exists
 #### `offsetGet()` { #translateadapterabstractadapter-offsetget }
 
 ```php
-public function offsetGet( mixed $offset ): mixed;
+public function offsetGet( mixed $offset ): string;
 ```
 
 Returns the translation related to the given key
@@ -302,7 +300,7 @@ Returns the translation string of the given key
 
 </div>
 
-__Uses__ `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -344,7 +342,7 @@ __Uses__ `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Pha
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$translate</span><span class="sm"> = []</span></code>
 </div>
 </div>
@@ -429,7 +427,7 @@ Allows translations using gettext
 
 </div>
 
-__Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -543,7 +541,7 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Pha
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string&gt;|string</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sv">$directory</span></code>
 </div>
 <div class="api-item">
@@ -743,7 +741,7 @@ Defines translation lists using PHP arrays
 
 </div>
 
-__Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidDataType` · `Phalcon\Translate\Exceptions\MissingContent` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidDataType` · `Phalcon\Translate\Exceptions\MissingContent` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -1159,11 +1157,13 @@ __Uses__ `Phalcon\Translate\Exception`
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Translate\InterpolatorFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
+        - **`Phalcon\Translate\InterpolatorFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Traits\Factory\FactoryTrait` · `Phalcon\Translate\Exceptions\InterpolatorNotRegistered` · `Phalcon\Translate\Interpolator\AssociativeArray` · `Phalcon\Translate\Interpolator\IndexedArray` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
+__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Exceptions\InterpolatorNotRegistered` · `Phalcon\Translate\Interpolator\AssociativeArray` · `Phalcon\Translate\Interpolator\IndexedArray` · `Phalcon\Translate\Interpolator\InterpolatorInterface` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -1359,11 +1359,13 @@ Replaces placeholders by the values passed
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Translate\TranslateFactory`**
+- [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](phalcon_factory.md#factoryabstractfactory)
+        - **`Phalcon\Translate\TranslateFactory`**
 
 </div>
 
-__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Support\Traits\ConfigTrait` · `Phalcon\Traits\Factory\FactoryTrait` · `Phalcon\Translate\Adapter\AdapterInterface` · `Phalcon\Translate\Adapter\Csv` · `Phalcon\Translate\Adapter\Gettext` · `Phalcon\Translate\Adapter\NativeArray` · `Phalcon\Translate\Exceptions\TranslatorNotRegistered`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Adapter\AdapterInterface` · `Phalcon\Translate\Adapter\Csv` · `Phalcon\Translate\Adapter\Gettext` · `Phalcon\Translate\Adapter\NativeArray` · `Phalcon\Translate\Exceptions\TranslatorNotRegistered` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -1376,7 +1378,7 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Support\Traits\ConfigTrait
 <a class="api-item" href="#translatetranslatefactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#translatetranslatefactory-newinstance">
@@ -1414,7 +1416,7 @@ public function __construct(
 #### `load()` { #translatetranslatefactory-load }
 
 ```php
-public function load( array|ConfigInterface $config ): AdapterInterface;
+public function load( mixed $config ): AdapterInterface;
 ```
 
 Factory to create an instance from a Config object
