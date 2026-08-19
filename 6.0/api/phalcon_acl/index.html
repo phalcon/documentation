@@ -6422,17 +6422,6 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
-  <a href="#properties_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Properties
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#methods_13" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -6528,6 +6517,11 @@ offering lower resource consumption and high performance.
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Acl/Adapter/AbstractAdapter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Functionality common to all adapters</p>
+<p>@property string|null $activeAccess
+@property string|null $activeComponent
+@property string|null $activeRole
+@property bool        $accessGranted
+@property int         $defaultAccess</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Acl\Adapter\AbstractAdapter</code></strong> - implements <a href="#acladapteradapterinterface"><code>Phalcon\Acl\Adapter\AdapterInterface</code></a>, <a href="../phalcon_events/#eventseventsawareinterface"><code>Phalcon\Events\EventsAwareInterface</code></a><ul>
@@ -6840,8 +6834,8 @@ component/access</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, int&gt;</code>
-<code class="sig"><span class="sv">$access</span><span class="sm"> = []</span></code>
+<code class="ret">array&lt;string, int&gt;|null</code>
+<code class="sig"><span class="sv">$access</span><span class="sm"> = null</span></code>
 <span class="desc">Access</span>
 </div>
 <div class="api-item">
@@ -6865,44 +6859,44 @@ active function</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">string|null</code>
 <code class="sig"><span class="sv">$activeKey</span><span class="sm"> = null</span></code>
 <span class="desc">Returns the latest key used to acquire access</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, ComponentInterface&gt;|null</code>
 <code class="sig"><span class="sv">$components</span><span class="sm"> = []</span></code>
 <span class="desc">Components</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, bool&gt;</code>
 <code class="sig"><span class="sv">$componentsNames</span><span class="sm"> = []</span></code>
 <span class="desc">Component Names</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$functions</span><span class="sm"> = []</span></code>
+<code class="ret">array&lt;string, callable|string&gt;|null</code>
+<code class="sig"><span class="sv">$functions</span><span class="sm"> = null</span></code>
 <span class="desc">Function List</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$noArgumentsDefaultAction</span><span class="sm"> = Enum::DENY</span></code>
-<span class="desc">Default action for no arguments is <code>allow</code></span>
+<span class="desc">Default action for no arguments is <code>deny</code></span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, array&lt;int, string&gt;&gt;</code>
-<code class="sig"><span class="sv">$roleInherits</span><span class="sm"> = []</span></code>
+<code class="ret">array&lt;string, array&lt;int, string&gt;&gt;|null</code>
+<code class="sig"><span class="sv">$roleInherits</span><span class="sm"> = null</span></code>
 <span class="desc">Role Inherits</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, RoleInterface&gt;</code>
-<code class="sig"><span class="sv">$roles</span><span class="sm"> = []</span></code>
+<code class="ret">array&lt;string, RoleInterface&gt;|null</code>
+<code class="sig"><span class="sv">$roles</span><span class="sm"> = null</span></code>
 <span class="desc">Roles</span>
 </div>
 </div>
@@ -7642,6 +7636,8 @@ description maps for serializer independence.</p>
 <p><span class="badge badge--trait">Trait</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Acl/Traits/ItemTrait.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>This class defines role/component names and their descriptions</p>
+<p>@property string      $name
+@property string|null $description</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Acl\Traits\ItemTrait</code></strong></li>
@@ -7665,22 +7661,6 @@ description maps for serializer independence.</p>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getName</span>()</code>
 </a>
-</div>
-
-<h3 id="properties_3">Properties<a class="headerlink" href="#properties_3" title="Permanent link">&para;</a></h3>
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$description</span><span class="sm"> = null</span></code>
-<span class="desc">Role/Component description</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$name</span></code>
-<span class="desc">Role/Component name</span>
-</div>
 </div>
 
 <h3 id="methods_13">Methods<a class="headerlink" href="#methods_13" title="Permanent link">&para;</a></h3>

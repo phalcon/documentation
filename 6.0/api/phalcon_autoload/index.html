@@ -5822,7 +5822,7 @@ allowing the user to autoload files with different extensions than .php.</p>
 <li><strong><code>Phalcon\Autoload\Loader</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Autoload\Exceptions\LoaderMethodNotCallable</code> · <code>Phalcon\Events\Exception</code> · <code>Phalcon\Events\Traits\EventsAwareTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\StartsWithTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray</code> · <code>Phalcon\Autoload\Exceptions\LoaderMethodNotCallable</code> · <code>Phalcon\Contracts\Autoload\AutoloadTypes</code> · <code>Phalcon\Events\Exception</code> · <code>Phalcon\Events\Traits\EventsAwareTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\StartsWithTrait</code></p>
 <h3 id="method-summary_2">Method Summary<a class="headerlink" href="#method-summary_2" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#autoloadloader-__construct">
@@ -5857,7 +5857,7 @@ allowing the user to autoload files with different extensions than .php.</p>
 <a class="api-item" href="#autoloadloader-addnamespace">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addNamespace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$namespace</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$directories</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$prepend</span><span class="sm"> = false</span></span>)</code>
+<code class="sig"><span class="sf">addNamespace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$directories</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$prepend</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#autoloadloader-autoload">
 <code class="vis vis-public">public</code>
@@ -5917,7 +5917,7 @@ allowing the user to autoload files with different extensions than .php.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isRegistered</span>()</code>
-<span class="desc">returns isRegistered</span>
+<span class="desc">Returns isRegistered</span>
 </a>
 <a class="api-item" href="#autoloadloader-loadfiles">
 <code class="vis vis-public">public</code>
@@ -6010,7 +6010,7 @@ allowing the user to autoload files with different extensions than .php.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TStrings</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$classes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -6020,22 +6020,24 @@ allowing the user to autoload files with different extensions than .php.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TStrings</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$directories</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TStrings</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$extensions</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">callable|string</code>
+<code class="ret">callable</code>
 <code class="sig"><span class="sv">$fileCheckingCallback</span><span class="sm"> = &quot;is_file&quot;</span></code>
+<span class="desc">Always holds a callable. The setter accepts a callable or a callable
+string and rejects anything else.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TStrings</code>
+<code class="ret">autoload_strings</code>
 <code class="sig"><span class="sv">$files</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -6055,7 +6057,7 @@ allowing the user to autoload files with different extensions than .php.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">TNamespaces</code>
+<code class="ret">autoload_namespaces</code>
 <code class="sig"><span class="sv">$namespaces</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -6093,7 +6095,7 @@ allowing the user to autoload files with different extensions than .php.</p>
 <p>Adds a file to be added to the loader</p>
 <h4 id="autoloadloader-addnamespace"><code>addNamespace()</code><a class="headerlink" href="#autoloadloader-addnamespace" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addNamespace</span><span class="p">(</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nx">string</span> <span class="nv">$namespace</span><span class="p">,</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="nx">mixed</span> <span class="nv">$directories</span><span class="p">,</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="nx">bool</span> <span class="nv">$prepend</span> <span class="o">=</span> <span class="k">false</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
@@ -6137,7 +6139,7 @@ allowing the user to autoload files with different extensions than .php.</p>
 <h4 id="autoloadloader-isregistered"><code>isRegistered()</code><a class="headerlink" href="#autoloadloader-isregistered" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isRegistered</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
-<p>returns isRegistered</p>
+<p>Returns isRegistered</p>
 <h4 id="autoloadloader-loadfiles"><code>loadFiles()</code><a class="headerlink" href="#autoloadloader-loadfiles" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">loadFiles</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>

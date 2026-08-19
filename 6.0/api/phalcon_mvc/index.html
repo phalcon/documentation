@@ -33830,7 +33830,7 @@ controller.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Dispatcher\AbstractDispatcher</code> · <code>Phalcon\Dispatcher\Exception</code> · <code>Phalcon\Events\Exception</code> · <code>Phalcon\Events\Traits\EventsAwareTrait</code> · <code>Phalcon\Mvc\Dispatcher\Exception</code> · <code>Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Contracts\Dispatcher\DispatcherTypes</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Dispatcher\AbstractDispatcher</code> · <code>Phalcon\Dispatcher\Exception</code> · <code>Phalcon\Events\Exception</code> · <code>Phalcon\Events\Traits\EventsAwareTrait</code> · <code>Phalcon\Http\ResponseInterface</code> · <code>Phalcon\Mvc\Dispatcher\Exception</code> · <code>Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable</code></p>
 <h3 id="method-summary_6">Method Summary<a class="headerlink" href="#method-summary_6" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#mvcdispatcher-forward">
@@ -37191,9 +37191,14 @@ was set up to keep snapshot data</p>
 </code></pre></div>
 <p>Stores related records in the relation cache, so that a subsequent
 getRelated() or property access returns them without querying.</p>
-<p>This is the write side of the cache getRelated() already reads. It does
-not mark the record dirty: the value lands in <code>related</code>, never in
-<code>dirtyRelated</code>, so save() is unaffected.</p>
+<p>This is the write side of the cache getRelated() already reads. The value
+lands in <code>related</code>, never in <code>dirtyRelated</code>.</p>
+<p>That is not the same as leaving save() untouched. collectRelatedToSave()
+promotes a <code>related</code> entry into <code>dirtyRelated</code> when the entry is a single
+ModelInterface that is new or has changed, so passing such a record here
+does cascade on the next save(). Arrays, resultsets, and unchanged
+records carrying snapshot data are skipped - which is why eager loading,
+the caller this exists for, never triggers a cascade.</p>
 <h4 id="mvcmodel-setsnapshotdata"><code>setSnapshotData()</code><a class="headerlink" href="#mvcmodel-setsnapshotdata" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-199-1" name="__codelineno-199-1" href="#__codelineno-199-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setSnapshotData</span><span class="p">(</span>
 <a id="__codelineno-199-2" name="__codelineno-199-2" href="#__codelineno-199-2"></a>    <span class="k">array</span> <span class="nv">$data</span><span class="p">,</span>
@@ -39184,12 +39189,12 @@ be used as the alias in the query</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-335-1" name="__codelineno-335-1" href="#__codelineno-335-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">createBuilder</span><span class="p">()</span><span class="o">:</span> <span class="nx">BuilderInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Creates a query builder from criteria.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-336-1" name="__codelineno-336-1" href="#__codelineno-336-1"></a>&lt;?php
+<div class="highlight"><pre><span></span><code><a id="__codelineno-336-1" name="__codelineno-336-1" href="#__codelineno-336-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-336-2" name="__codelineno-336-2" href="#__codelineno-336-2"></a>
-<a id="__codelineno-336-3" name="__codelineno-336-3" href="#__codelineno-336-3"></a>$invoices = Invoices::query()
-<a id="__codelineno-336-4" name="__codelineno-336-4" href="#__codelineno-336-4"></a>    -&gt;where("inv_cst_id = :customerId:")
-<a id="__codelineno-336-5" name="__codelineno-336-5" href="#__codelineno-336-5"></a>    -&gt;bind(["customerId" =&gt; 1])
-<a id="__codelineno-336-6" name="__codelineno-336-6" href="#__codelineno-336-6"></a>    -&gt;createBuilder();
+<a id="__codelineno-336-3" name="__codelineno-336-3" href="#__codelineno-336-3"></a><span class="nv">$invoices</span> <span class="o">=</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+<a id="__codelineno-336-4" name="__codelineno-336-4" href="#__codelineno-336-4"></a>    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">"inv_cst_id = :customerId:"</span><span class="p">)</span>
+<a id="__codelineno-336-5" name="__codelineno-336-5" href="#__codelineno-336-5"></a>    <span class="o">-&gt;</span><span class="na">bind</span><span class="p">([</span><span class="s2">"customerId"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-336-6" name="__codelineno-336-6" href="#__codelineno-336-6"></a>    <span class="o">-&gt;</span><span class="na">createBuilder</span><span class="p">();</span>
 </code></pre></div>
 <h4 id="mvcmodelcriteria-distinct"><code>distinct()</code><a class="headerlink" href="#mvcmodelcriteria-distinct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-337-1" name="__codelineno-337-1" href="#__codelineno-337-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">distinct</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$distinct</span> <span class="p">)</span><span class="o">:</span> <span class="nx">CriteriaInterface</span><span class="p">;</span>
@@ -47314,6 +47319,8 @@ Phalcon\Mvc\Model\Row is used.</p>
 <a id="__codelineno-843-4" name="__codelineno-843-4" href="#__codelineno-843-4"></a>    <span class="p">]</span>
 <a id="__codelineno-843-5" name="__codelineno-843-5" href="#__codelineno-843-5"></a><span class="p">);</span>
 </code></pre></div>
+<p>Passing null (or an empty array) clears the clause; the PHQL generator
+treats both as "no GROUP BY".</p>
 <h4 id="mvcmodelquerybuilder-having"><code>having()</code><a class="headerlink" href="#mvcmodelquerybuilder-having" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-844-1" name="__codelineno-844-1" href="#__codelineno-844-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">having</span><span class="p">(</span>
 <a id="__codelineno-844-2" name="__codelineno-844-2" href="#__codelineno-844-2"></a>    <span class="nx">string</span> <span class="nv">$conditions</span><span class="p">,</span>
@@ -55708,13 +55715,13 @@ Router::loadFromConfig.</p>
 <li><strong><code>Phalcon\Mvc\Router\RouterFactory</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Mvc\Router</code> · <code>Phalcon\Mvc\RouterInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Mvc\Router</code> · <code>Phalcon\Mvc\RouterInterface</code> · <code>Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig</code></p>
 <h3 id="method-summary_216">Method Summary<a class="headerlink" href="#method-summary_216" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#mvcrouterrouterfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Builds a Router from a config array or ConfigInterface and loads routes.</span>
 </a>
 <a class="api-item" href="#mvcrouterrouterfactory-newinstance">
@@ -55729,7 +55736,7 @@ Router::loadFromConfig.</p>
 <div class="api-group">Public · 2</div>
 
 <h4 id="mvcrouterrouterfactory-load"><code>load()</code><a class="headerlink" href="#mvcrouterrouterfactory-load" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1377-1" name="__codelineno-1377-1" href="#__codelineno-1377-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">ConfigInterface</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1377-1" name="__codelineno-1377-1" href="#__codelineno-1377-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Builds a Router from a config array or ConfigInterface and loads routes.</p>
 <h4 id="mvcrouterrouterfactory-newinstance"><code>newInstance()</code><a class="headerlink" href="#mvcrouterrouterfactory-newinstance" title="Permanent link">&para;</a></h4>
@@ -55887,12 +55894,14 @@ Router::loadFromConfig.</p>
 <a id="__codelineno-1382-19" name="__codelineno-1382-19" href="#__codelineno-1382-19"></a>    <span class="p">]</span>
 <a id="__codelineno-1382-20" name="__codelineno-1382-20" href="#__codelineno-1382-20"></a><span class="p">);</span>
 <a id="__codelineno-1382-21" name="__codelineno-1382-21" href="#__codelineno-1382-21"></a>
-<a id="__codelineno-1382-22" name="__codelineno-1382-22" href="#__codelineno-1382-22"></a><span class="c1">// Generate an absolute URL by setting the third parameter as false.</span>
-<a id="__codelineno-1382-23" name="__codelineno-1382-23" href="#__codelineno-1382-23"></a><span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
-<a id="__codelineno-1382-24" name="__codelineno-1382-24" href="#__codelineno-1382-24"></a>    <span class="s2">"https://phalcon.io/"</span><span class="p">,</span>
-<a id="__codelineno-1382-25" name="__codelineno-1382-25" href="#__codelineno-1382-25"></a>    <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-1382-26" name="__codelineno-1382-26" href="#__codelineno-1382-26"></a>    <span class="k">false</span>
-<a id="__codelineno-1382-27" name="__codelineno-1382-27" href="#__codelineno-1382-27"></a><span class="p">);</span>
+<a id="__codelineno-1382-22" name="__codelineno-1382-22" href="#__codelineno-1382-22"></a><span class="c1">// A URI that already carries a scheme is detected as remote and is</span>
+<a id="__codelineno-1382-23" name="__codelineno-1382-23" href="#__codelineno-1382-23"></a><span class="c1">// returned untouched. The third parameter is only honored when it is</span>
+<a id="__codelineno-1382-24" name="__codelineno-1382-24" href="#__codelineno-1382-24"></a><span class="c1">// explicitly true - a false reads the same as leaving it out.</span>
+<a id="__codelineno-1382-25" name="__codelineno-1382-25" href="#__codelineno-1382-25"></a><span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
+<a id="__codelineno-1382-26" name="__codelineno-1382-26" href="#__codelineno-1382-26"></a>    <span class="s2">"https://phalcon.io/"</span><span class="p">,</span>
+<a id="__codelineno-1382-27" name="__codelineno-1382-27" href="#__codelineno-1382-27"></a>    <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-1382-28" name="__codelineno-1382-28" href="#__codelineno-1382-28"></a>    <span class="k">false</span>
+<a id="__codelineno-1382-29" name="__codelineno-1382-29" href="#__codelineno-1382-29"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="mvcurl-getbasepath"><code>getBasePath()</code><a class="headerlink" href="#mvcurl-getbasepath" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1383-1" name="__codelineno-1383-1" href="#__codelineno-1383-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getBasePath</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>

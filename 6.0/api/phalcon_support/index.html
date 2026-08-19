@@ -7771,6 +7771,17 @@ offering lower resource consumption and high performance.
 </li>
       
         <li class="md-nav__item">
+  <a href="#supporthelperarrabstractarr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Support\Helper\Arr\AbstractArr
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporthelperarrblacklist" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -9357,6 +9368,17 @@ offering lower resource consumption and high performance.
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporthelperstrabstractstr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Support\Helper\Str\AbstractStr
+      </span>
+    </span>
+  </a>
   
 </li>
       
@@ -12012,7 +12034,7 @@ from a DI container, with support for both legacy Di and new Container.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
 <code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Retrieve a shared service instance from the container.</span>
+<span class="desc">Retrieve a service instance from the container.</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-register">
 <code class="vis vis-public">public</code>
@@ -12055,7 +12077,7 @@ from a DI container, with support for both legacy Di and new Container.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, class-string&lt;T&gt;&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
 </div>
 </div>
@@ -12085,7 +12107,12 @@ register()).</p>
 <h4 id="supportabstractlocator-newinstance"><code>newInstance()</code><a class="headerlink" href="#supportabstractlocator-newinstance" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">newInstance</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 </code></pre></div>
-<p>Retrieve a shared service instance from the container.</p>
+<p>Retrieve a service instance from the container.</p>
+<p>On the <code>DiInterface</code> path this returns the container's <strong>shared</strong>
+instance (<code>getShared()</code>) - despite the name, it is not a fresh build.
+Locators whose services carry per-activation state should override this
+method to resolve a fresh instance; see <code>Auth\Access\AccessLocator</code>, which uses
+<code>ContainerResolver::resolveFresh</code> for exactly that reason.</p>
 <h4 id="supportabstractlocator-register"><code>register()</code><a class="headerlink" href="#supportabstractlocator-register" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
@@ -12123,17 +12150,17 @@ This allows different locators to enforce different contracts.</p>
 <p>It can be used in any part of the application that needs collection of data
 Such implementations are for instance accessing globals <code>$_GET</code>, <code>$_POST</code>
 etc.</p>
-<p>@property array       $data
-@property bool        $insensitive
-@property array       $lowerKeys
-@property bool        $strictNull
-@property string|null $type</p>
+<p>@implements CollectionInterface<T></p>
+<p>@property array<string, T>      $data
+@property bool                  $insensitive
+@property array<string, string> $lowerKeys
+@property bool                  $strictNull
+@property string|null           $type</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Support\Collection</code></strong> - implements <a href="#supportcollectioncollectioninterface"><code>Phalcon\Support\Collection\CollectionInterface</code></a>, <code>\Countable</code>, <code>\JsonSerializable</code><ul>
 <li><a href="../phalcon_config/#configconfig"><code>Phalcon\Config\Config</code></a></li>
 <li><a href="../phalcon_html/#htmlattributes"><code>Phalcon\Html\Attributes</code></a></li>
-<li><a href="../phalcon_http/#httpmessageheaders"><code>Phalcon\Http\Message\Headers</code></a></li>
 <li><a href="../phalcon_session/#sessionbag"><code>Phalcon\Session\Bag</code></a></li>
 <li><a href="#supportcollectionreadonlycollection"><code>Phalcon\Support\Collection\ReadOnlyCollection</code></a></li>
 <li><a href="#supportregistry"><code>Phalcon\Support\Registry</code></a></li>
@@ -12141,7 +12168,7 @@ etc.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Countable</code> · <code>JsonSerializable</code> · <code>Phalcon\Support\Collection\CollectionInterface</code> · <code>Phalcon\Support\Collection\Exceptions\InvalidValueType</code> · <code>Phalcon\Support\Collection\Traits\ArrayAccessTrait</code> · <code>Phalcon\Support\Collection\Traits\GetSetHasTrait</code> · <code>Phalcon\Support\Helper\Json\Encode</code> · <code>Traversable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>ArrayIterator</code> · <code>Countable</code> · <code>JsonSerializable</code> · <code>Phalcon\Support\Collection\CollectionInterface</code> · <code>Phalcon\Support\Collection\Exceptions\InvalidValueType</code> · <code>Phalcon\Support\Collection\Traits\ArrayAccessTrait</code> · <code>Phalcon\Support\Collection\Traits\GetSetHasTrait</code> · <code>Phalcon\Support\Helper\Json\Encode</code> · <code>Traversable</code></p>
 <h3 id="method-summary_1">Method Summary<a class="headerlink" href="#method-summary_1" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supportcollection-__construct">
@@ -12207,7 +12234,7 @@ etc.</p>
 <code class="vis vis-public">public</code>
 <code class="ret">Traversable</code>
 <code class="sig"><span class="sf">getIterator</span>()</code>
-<span class="desc">Returns the generator of the class</span>
+<span class="desc">Returns the iterator of the class</span>
 </a>
 <a class="api-item" href="#supportcollection-getkeys">
 <code class="vis vis-public">public</code>
@@ -12371,7 +12398,7 @@ etc.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;int|string, mixed&gt;</code>
+<code class="ret">array&lt;string, T&gt;</code>
 <code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -12381,8 +12408,10 @@ etc.</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;int|string, mixed&gt;</code>
+<code class="ret">array&lt;string, string&gt;</code>
 <code class="sig"><span class="sv">$lowerKeys</span><span class="sm"> = []</span></code>
+<span class="desc">Maps the case-insensitive key back to the original one it was stored
+under.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -12457,7 +12486,7 @@ Keys are preserved.</p>
 <h4 id="supportcollection-getiterator"><code>getIterator()</code><a class="headerlink" href="#supportcollection-getiterator" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getIterator</span><span class="p">()</span><span class="o">:</span> <span class="nx">Traversable</span><span class="p">;</span>
 </code></pre></div>
-<p>Returns the generator of the class</p>
+<p>Returns the iterator of the class</p>
 <h4 id="supportcollection-getkeys"><code>getKeys()</code><a class="headerlink" href="#supportcollection-getkeys" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getKeys</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$insensitive</span> <span class="o">=</span> <span class="k">true</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
@@ -12486,7 +12515,6 @@ Keys are preserved.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">jsonSerialize</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Specify data which should be serialized to JSON</p>
-<p>@link https://php.net/manual/en/jsonserializable.jsonserialize.php</p>
 <h4 id="supportcollection-keys"><code>keys()</code><a class="headerlink" href="#supportcollection-keys" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">keys</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$insensitive</span> <span class="o">=</span> <span class="k">true</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
@@ -12604,6 +12632,7 @@ is treated as a class/interface name and tested with <code>instanceof</code>.</p
 <p><span class="badge badge--interface">Interface</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Collection/CollectionInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Phalcon\Support\Collection\CollectionInterface</p>
+<p>@extends CollectionContract<T></p>
 <div class="api-tree">
 <ul>
 <li><code>\ArrayAccess</code><ul>
@@ -12703,6 +12732,7 @@ is treated as a class/interface name and tested with <code>instanceof</code>.</p
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Collection/ReadOnlyCollection.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>A read only Collection object</p>
+<p>@extends Collection<T></p>
 <div class="api-tree">
 <ul>
 <li><a href="#supportcollection"><code>Phalcon\Support\Collection</code></a><ul>
@@ -12883,12 +12913,10 @@ the collection state. The guard is re-enabled before the method returns.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">offsetExists</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$element</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Whether a offset exists</p>
-<p>@link https://php.net/manual/en/arrayaccess.offsetexists.php</p>
 <h4 id="supportcollectiontraitsarrayaccesstrait-offsetget"><code>offsetGet()</code><a class="headerlink" href="#supportcollectiontraitsarrayaccesstrait-offsetget" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$element</span> <span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Offset to retrieve</p>
-<p>@link https://php.net/manual/en/arrayaccess.offsetget.php</p>
 <h4 id="supportcollectiontraitsarrayaccesstrait-offsetset"><code>offsetSet()</code><a class="headerlink" href="#supportcollectiontraitsarrayaccesstrait-offsetset" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">offsetSet</span><span class="p">(</span>
 <a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>    <span class="nx">mixed</span> <span class="nv">$element</span><span class="p">,</span>
@@ -12896,12 +12924,10 @@ the collection state. The guard is re-enabled before the method returns.</p>
 <a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Offset to set</p>
-<p>@link https://php.net/manual/en/arrayaccess.offsetset.php</p>
 <h4 id="supportcollectiontraitsarrayaccesstrait-offsetunset"><code>offsetUnset()</code><a class="headerlink" href="#supportcollectiontraitsarrayaccesstrait-offsetunset" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">offsetUnset</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$element</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Offset to unset</p>
-<p>@link https://php.net/manual/en/arrayaccess.offsetunset.php</p>
 <h4 id="supportcollectiontraitsarrayaccesstrait-remove"><code>remove()</code><a class="headerlink" href="#supportcollectiontraitsarrayaccesstrait-remove" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$element</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
@@ -13024,22 +13050,12 @@ the collection state. The guard is re-enabled before the method returns.</p>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Debug.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Listens for uncaught exceptions and renders them. Acts as a thin coordinator
 delegating data collection to ReportBuilder and presentation to a Renderer.</p>
-<p>@property array         $blacklist
-@property array         $data
-@property bool          $hideDocumentRoot
-@property bool          $isActive
-@property Renderer      $renderer
-@property ReportBuilder $reportBuilder
-@property bool          $showBackTrace
-@property bool          $showFileFragment
-@property bool          $showFiles
-@property string        $uri</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Support\Debug</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Support\Debug\Renderer</code> · <code>Phalcon\Support\Debug\Exceptions\RequestHalted</code> · <code>Phalcon\Support\Debug\Exceptions\RuntimeWarning</code> · <code>Phalcon\Support\Debug\Renderer\HtmlRenderer</code> · <code>Phalcon\Support\Debug\ReportBuilder</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>ReflectionException</code> · <code>Throwable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Support\Debug\Renderer</code> · <code>Phalcon\Contracts\Support\SupportTypes</code> · <code>Phalcon\Support\Debug\Exceptions\RequestHalted</code> · <code>Phalcon\Support\Debug\Exceptions\RuntimeWarning</code> · <code>Phalcon\Support\Debug\Renderer\HtmlRenderer</code> · <code>Phalcon\Support\Debug\ReportBuilder</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>ReflectionException</code> · <code>Throwable</code></p>
 <h3 id="method-summary_7">Method Summary<a class="headerlink" href="#method-summary_7" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supportdebug-__construct">
@@ -13321,15 +13337,12 @@ or just the fragment related to the exception</p>
 <a id="__codelineno-93-4" name="__codelineno-93-4" href="#__codelineno-93-4"></a>
 <a id="__codelineno-93-5" name="__codelineno-93-5" href="#__codelineno-93-5"></a><span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">\Phalcon\Debug\Dump</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">variables</span><span class="p">(</span><span class="nv">$foo</span><span class="p">,</span> <span class="nv">$bar</span><span class="p">,</span> <span class="nv">$baz</span><span class="p">);</span>
 </code></pre></div>
-<p>@property bool  $detailed
-@property array $methods
-@property array $styles</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Support\Debug\Dump</code></strong> - implements <a href="../phalcon_contracts/#contractssupportdebugtemplateaware"><code>Phalcon\Contracts\Support\Debug\TemplateAware</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>JsonException</code> · <code>Phalcon\Container\Container</code> · <code>Phalcon\Contracts\Support\Debug\TemplateAware</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Support\Debug\Traits\TemplateAwareTrait</code> · <code>Phalcon\Support\Helper\Json\Encode</code> · <code>Phalcon\Traits\Support\Helper\Str\InterpolateTrait</code> · <code>Reflection</code> · <code>ReflectionClass</code> · <code>ReflectionException</code> · <code>ReflectionProperty</code> · <code>stdClass</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>JsonException</code> · <code>Phalcon\Container\Container</code> · <code>Phalcon\Contracts\Support\Debug\TemplateAware</code> · <code>Phalcon\Contracts\Support\SupportTypes</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Support\Debug\Traits\TemplateAwareTrait</code> · <code>Phalcon\Support\Helper\Json\Encode</code> · <code>Phalcon\Traits\Support\Helper\Str\InterpolateTrait</code> · <code>Reflection</code> · <code>ReflectionClass</code> · <code>ReflectionException</code> · <code>ReflectionProperty</code> · <code>stdClass</code></p>
 <h3 id="method-summary_8">Method Summary<a class="headerlink" href="#method-summary_8" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supportdebugdump-__construct">
@@ -13412,7 +13425,7 @@ or just the fragment related to the exception</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;array-key, class-string&gt;</code>
 <code class="sig"><span class="sv">$methods</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -13580,7 +13593,7 @@ external debug.css / debug.js assets.</p>
 <li><strong><code>Phalcon\Support\Debug\Renderer\HtmlRenderer</code></strong> - implements <a href="../phalcon_contracts/#contractssupportdebugrenderer"><code>Phalcon\Contracts\Support\Debug\Renderer</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Support\Debug\Renderer</code> · <code>Phalcon\Support\Debug\Report\BacktraceItem</code> · <code>Phalcon\Support\Debug\Report\ExceptionReport</code> · <code>Phalcon\Support\Debug\Traits\TemplateAwareTrait</code> · <code>Phalcon\Support\Version</code> · <code>Phalcon\Traits\Support\Helper\Str\InterpolateTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Support\Debug\Renderer</code> · <code>Phalcon\Contracts\Support\SupportTypes</code> · <code>Phalcon\Support\Debug\Report\BacktraceItem</code> · <code>Phalcon\Support\Debug\Report\ExceptionReport</code> · <code>Phalcon\Support\Debug\Traits\TemplateAwareTrait</code> · <code>Phalcon\Support\Version</code> · <code>Phalcon\Traits\Support\Helper\Str\InterpolateTrait</code></p>
 <h3 id="method-summary_10">Method Summary<a class="headerlink" href="#method-summary_10" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supportdebugrendererhtmlrenderer-getcsssources">
@@ -13676,7 +13689,7 @@ logic.</p>
 <li><strong><code>Phalcon\Support\Debug\ReportBuilder</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Support\Debug\Report\BacktraceItem</code> · <code>Phalcon\Support\Debug\Report\ExceptionReport</code> · <code>Phalcon\Traits\Php\InfoTrait</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>ReflectionClass</code> · <code>ReflectionException</code> · <code>ReflectionFunction</code> · <code>Throwable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Support\SupportTypes</code> · <code>Phalcon\Support\Debug\Report\BacktraceItem</code> · <code>Phalcon\Support\Debug\Report\ExceptionReport</code> · <code>Phalcon\Traits\Php\InfoTrait</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>ReflectionClass</code> · <code>ReflectionException</code> · <code>ReflectionFunction</code> · <code>Throwable</code></p>
 <h3 id="method-summary_11">Method Summary<a class="headerlink" href="#method-summary_11" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supportdebugreportbuilder-build">
@@ -13709,6 +13722,7 @@ logic.</p>
 <li><strong><code>Phalcon\Support\Debug\Report\BacktraceItem</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Support\SupportTypes</code></p>
 <h3 id="method-summary_12">Method Summary<a class="headerlink" href="#method-summary_12" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supportdebugreportbacktraceitem-__construct">
@@ -13824,6 +13838,7 @@ presentation logic.</p>
 <li><strong><code>Phalcon\Support\Debug\Report\ExceptionReport</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Support\SupportTypes</code></p>
 <h3 id="method-summary_13">Method Summary<a class="headerlink" href="#method-summary_13" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supportdebugreportexceptionreport-__construct">
@@ -14025,6 +14040,7 @@ these members in each class until Zephir supports traits.</p>
 <li><strong><code>Phalcon\Support\Debug\Traits\TemplateAwareTrait</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Support\SupportTypes</code></p>
 <p class="api-used-by"><strong>Used by</strong> <a href="#supportdebugdump"><code>Phalcon\Support\Debug\Dump</code></a> · <a href="#supportdebugrendererhtmlrenderer"><code>Phalcon\Support\Debug\Renderer\HtmlRenderer</code></a></p>
 <h3 id="method-summary_14">Method Summary<a class="headerlink" href="#method-summary_14" title="Permanent link">&para;</a></h3>
 <div class="api-list">
@@ -14095,9 +14111,9 @@ these members in each class until Zephir supports traits.</p>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/HelperFactory.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>ServiceLocator implementation for helpers</p>
 <p>@method string basename(string $uri, string $suffix = null)
-@method array  blacklist(array $collection, array $blackList)
+@method support_collection blacklist(support_collection $collection, support_collection $blackList)
 @method string camelize(string $text, string $delimiters = null, bool $lowerFirst = false)
-@method array  chunk(array $collection, int $size, bool $preserveKeys = false)
+@method support_collection chunk(support_collection $collection, int $size, bool $preserveKeys = false)
 @method string concat(string $delimiter, string $first, string $second, string ...$arguments)
 @method int    countVowels(string $text)
 @method string decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8')
@@ -14108,57 +14124,63 @@ these members in each class until Zephir supports traits.</p>
 @method string dynamic(string $text, string $leftDel = "{", string $rightDel = "}", string $separator = "|")
 @method string encode($data, int $options = 0, int $depth = 512)
 @method bool   endsWith(string $haystack, string $needle, bool $ignoreCase = true)
-@method mixed  filter(array $collection, callable|null $method)
-@method mixed  first(array $collection, callable $method = null)
+@method mixed  filter(support_collection $collection, callable|null $method)
+@method mixed  first(support_collection $collection, callable $method = null)
 @method string firstBetween(string $text, string $start, string $end)
-@method mixed  firstKey(array $collection, callable $method = null)
+@method mixed  firstKey(support_collection $collection, callable $method = null)
 @method string friendly(string $text, string $separator = '-', bool $lowercase = true, $replace = null)
-@method array  flatten(array $collection, bool $deep = false)
-@method mixed  get(array $collection, $index, $defaultValue = null, string $cast = null)
-@method array  group(array $collection, $method)
-@method bool   has(array $collection, $index)
+@method support_collection flatten(support_collection $collection, bool $deep = false)
+@method mixed  get(support_collection $collection, $index, $defaultValue = null, string $cast = null)
+@method array<array-key, list\<mixed>> group(support_collection $collection, $method)
+@method bool   has(support_collection $collection, $index)
 @method string humanize(string $text)
 @method bool   includes(string $haystack, string $needle)
 @method string increment(string $text, string $separator = '</em>')
-@method string interpolate(string $message, array $context = [], string $leftToken = "%", string $rightToken = "%")
+@method string interpolate(string $message, string[] $context=[], string $leftToken="%", string $rightToken="%")
 @method bool   isAnagram(string $first, string $second)
 @method bool   isBetween(int $value, int $start, int $end)
 @method bool   isLower(string $text, string $encoding = 'UTF-8')
 @method bool   isPalindrome(string $text)
-@method bool   isUnique(array $collection)
+@method bool   isUnique(support_collection $collection)
 @method bool   isUpper(string $text, string $encoding = 'UTF-8')
 @method string kebabCase(string $text, string $delimiters = null)
-@method mixed  last(array $collection, callable $method = null)
-@method mixed  lastKey(array $collection, callable $method = null)
+@method mixed  last(support_collection $collection, callable $method = null)
+@method mixed  lastKey(support_collection $collection, callable $method = null)
 @method int    len(string $text, string $encoding = 'UTF-8')
 @method string lower(string $text, string $encoding = 'UTF-8')
-@method array  order(array $collection, $attribute, string $order = 'asc')
+@method support_collection order(support_collection $collection, $attribute, string $order = 'asc')
 @method string pascalCase(string $text, string $delimiters = null)
-@method array  pluck(array $collection, string $element)
+@method support_collection pluck(support_collection $collection, string $element)
 @method string prefix(string $text, string $prefix)
 @method string random(int $type = 0, int $length = 8)
 @method string reduceSlashes(string $text)
-@method array  set(array $collection, $value, $index = null)
-@method array  sliceLeft(array $collection, int $elements = 1)
-@method array  sliceRight(array $collection, int $elements = 1)
+@method support_collection set(support_collection $collection, $value, $index = null)
+@method support_collection sliceLeft(support_collection $collection, int $elements = 1)
+@method support_collection sliceRight(support_collection $collection, int $elements = 1)
 @method string snakeCase(string $text, string $delimiters = null)
-@method array  split(array $collection)
+@method support_collection split(support_collection $collection)
 @method bool   startsWith(string $haystack, string $needle, bool $ignoreCase = true)
 @method string suffix(string $text, string $suffix)
-@method object toObject(array $collection)
-@method bool   validateAll(array $collection, callable $method)
-@method bool   validateAny(array $collection, callable $method)
+@method object toObject(support_collection $collection)
+@method bool   validateAll(support_collection $collection, callable $method)
+@method bool   validateAny(support_collection $collection, callable $method)
 @method string ucwords(string $text, string $encoding = 'UTF-8')
 @method string uncamelize(string $text, string $delimiters = '_')
 @method string underscore(string $text)
 @method string upper(string $text, string $encoding = 'UTF-8')
-@method array  whitelist(array $collection, array $whiteList)</p>
+@method support_collection whitelist(support_collection $collection, support_collection $whiteList)</p>
 <div class="api-tree">
 <ul>
+<li><a href="../phalcon_factory/#factoryabstractconfigfactory"><code>Phalcon\Factory\AbstractConfigFactory</code></a><ul>
+<li><a href="../phalcon_factory/#factoryabstractfactory"><code>Phalcon\Factory\AbstractFactory</code></a><ul>
 <li><strong><code>Phalcon\Support\HelperFactory</code></strong></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Support\Helper\Arr\Blacklist</code> · <code>Phalcon\Support\Helper\Arr\Chunk</code> · <code>Phalcon\Support\Helper\Arr\Filter</code> · <code>Phalcon\Support\Helper\Arr\First</code> · <code>Phalcon\Support\Helper\Arr\FirstKey</code> · <code>Phalcon\Support\Helper\Arr\Flatten</code> · <code>Phalcon\Support\Helper\Arr\Get</code> · <code>Phalcon\Support\Helper\Arr\Group</code> · <code>Phalcon\Support\Helper\Arr\Has</code> · <code>Phalcon\Support\Helper\Arr\IsUnique</code> · <code>Phalcon\Support\Helper\Arr\Last</code> · <code>Phalcon\Support\Helper\Arr\LastKey</code> · <code>Phalcon\Support\Helper\Arr\Order</code> · <code>Phalcon\Support\Helper\Arr\Pluck</code> · <code>Phalcon\Support\Helper\Arr\Set</code> · <code>Phalcon\Support\Helper\Arr\SliceLeft</code> · <code>Phalcon\Support\Helper\Arr\SliceRight</code> · <code>Phalcon\Support\Helper\Arr\Split</code> · <code>Phalcon\Support\Helper\Arr\ToObject</code> · <code>Phalcon\Support\Helper\Arr\ValidateAll</code> · <code>Phalcon\Support\Helper\Arr\ValidateAny</code> · <code>Phalcon\Support\Helper\Arr\Whitelist</code> · <code>Phalcon\Support\Helper\File\Basename</code> · <code>Phalcon\Support\Helper\Json\Decode</code> · <code>Phalcon\Support\Helper\Json\Encode</code> · <code>Phalcon\Support\Helper\Number\IsBetween</code> · <code>Phalcon\Support\Helper\Str\Camelize</code> · <code>Phalcon\Support\Helper\Str\Concat</code> · <code>Phalcon\Support\Helper\Str\CountVowels</code> · <code>Phalcon\Support\Helper\Str\Decapitalize</code> · <code>Phalcon\Support\Helper\Str\Decrement</code> · <code>Phalcon\Support\Helper\Str\DirFromFile</code> · <code>Phalcon\Support\Helper\Str\DirSeparator</code> · <code>Phalcon\Support\Helper\Str\Dynamic</code> · <code>Phalcon\Support\Helper\Str\EndsWith</code> · <code>Phalcon\Support\Helper\Str\FirstBetween</code> · <code>Phalcon\Support\Helper\Str\Friendly</code> · <code>Phalcon\Support\Helper\Str\Humanize</code> · <code>Phalcon\Support\Helper\Str\Includes</code> · <code>Phalcon\Support\Helper\Str\Increment</code> · <code>Phalcon\Support\Helper\Str\Interpolate</code> · <code>Phalcon\Support\Helper\Str\IsAnagram</code> · <code>Phalcon\Support\Helper\Str\IsLower</code> · <code>Phalcon\Support\Helper\Str\IsPalindrome</code> · <code>Phalcon\Support\Helper\Str\IsUpper</code> · <code>Phalcon\Support\Helper\Str\KebabCase</code> · <code>Phalcon\Support\Helper\Str\Len</code> · <code>Phalcon\Support\Helper\Str\Lower</code> · <code>Phalcon\Support\Helper\Str\PascalCase</code> · <code>Phalcon\Support\Helper\Str\Prefix</code> · <code>Phalcon\Support\Helper\Str\Random</code> · <code>Phalcon\Support\Helper\Str\ReduceSlashes</code> · <code>Phalcon\Support\Helper\Str\SnakeCase</code> · <code>Phalcon\Support\Helper\Str\StartsWith</code> · <code>Phalcon\Support\Helper\Str\Suffix</code> · <code>Phalcon\Support\Helper\Str\Ucwords</code> · <code>Phalcon\Support\Helper\Str\Uncamelize</code> · <code>Phalcon\Support\Helper\Str\Underscore</code> · <code>Phalcon\Support\Helper\Str\Upper</code> · <code>Phalcon\Traits\Factory\FactoryTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Support\SupportTypes</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Support\Helper\Arr\Blacklist</code> · <code>Phalcon\Support\Helper\Arr\Chunk</code> · <code>Phalcon\Support\Helper\Arr\Filter</code> · <code>Phalcon\Support\Helper\Arr\First</code> · <code>Phalcon\Support\Helper\Arr\FirstKey</code> · <code>Phalcon\Support\Helper\Arr\Flatten</code> · <code>Phalcon\Support\Helper\Arr\Get</code> · <code>Phalcon\Support\Helper\Arr\Group</code> · <code>Phalcon\Support\Helper\Arr\Has</code> · <code>Phalcon\Support\Helper\Arr\IsUnique</code> · <code>Phalcon\Support\Helper\Arr\Last</code> · <code>Phalcon\Support\Helper\Arr\LastKey</code> · <code>Phalcon\Support\Helper\Arr\Order</code> · <code>Phalcon\Support\Helper\Arr\Pluck</code> · <code>Phalcon\Support\Helper\Arr\Set</code> · <code>Phalcon\Support\Helper\Arr\SliceLeft</code> · <code>Phalcon\Support\Helper\Arr\SliceRight</code> · <code>Phalcon\Support\Helper\Arr\Split</code> · <code>Phalcon\Support\Helper\Arr\ToObject</code> · <code>Phalcon\Support\Helper\Arr\ValidateAll</code> · <code>Phalcon\Support\Helper\Arr\ValidateAny</code> · <code>Phalcon\Support\Helper\Arr\Whitelist</code> · <code>Phalcon\Support\Helper\File\Basename</code> · <code>Phalcon\Support\Helper\Json\Decode</code> · <code>Phalcon\Support\Helper\Json\Encode</code> · <code>Phalcon\Support\Helper\Number\IsBetween</code> · <code>Phalcon\Support\Helper\Str\Camelize</code> · <code>Phalcon\Support\Helper\Str\Concat</code> · <code>Phalcon\Support\Helper\Str\CountVowels</code> · <code>Phalcon\Support\Helper\Str\Decapitalize</code> · <code>Phalcon\Support\Helper\Str\Decrement</code> · <code>Phalcon\Support\Helper\Str\DirFromFile</code> · <code>Phalcon\Support\Helper\Str\DirSeparator</code> · <code>Phalcon\Support\Helper\Str\Dynamic</code> · <code>Phalcon\Support\Helper\Str\EndsWith</code> · <code>Phalcon\Support\Helper\Str\FirstBetween</code> · <code>Phalcon\Support\Helper\Str\Friendly</code> · <code>Phalcon\Support\Helper\Str\Humanize</code> · <code>Phalcon\Support\Helper\Str\Includes</code> · <code>Phalcon\Support\Helper\Str\Increment</code> · <code>Phalcon\Support\Helper\Str\Interpolate</code> · <code>Phalcon\Support\Helper\Str\IsAnagram</code> · <code>Phalcon\Support\Helper\Str\IsLower</code> · <code>Phalcon\Support\Helper\Str\IsPalindrome</code> · <code>Phalcon\Support\Helper\Str\IsUpper</code> · <code>Phalcon\Support\Helper\Str\KebabCase</code> · <code>Phalcon\Support\Helper\Str\Len</code> · <code>Phalcon\Support\Helper\Str\Lower</code> · <code>Phalcon\Support\Helper\Str\PascalCase</code> · <code>Phalcon\Support\Helper\Str\Prefix</code> · <code>Phalcon\Support\Helper\Str\Random</code> · <code>Phalcon\Support\Helper\Str\ReduceSlashes</code> · <code>Phalcon\Support\Helper\Str\SnakeCase</code> · <code>Phalcon\Support\Helper\Str\StartsWith</code> · <code>Phalcon\Support\Helper\Str\Suffix</code> · <code>Phalcon\Support\Helper\Str\Ucwords</code> · <code>Phalcon\Support\Helper\Str\Uncamelize</code> · <code>Phalcon\Support\Helper\Str\Underscore</code> · <code>Phalcon\Support\Helper\Str\Upper</code> · <code>Throwable</code></p>
 <h3 id="method-summary_15">Method Summary<a class="headerlink" href="#method-summary_15" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperfactory-__call">
@@ -14212,6 +14234,30 @@ these members in each class until Zephir supports traits.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-159-1" name="__codelineno-159-1" href="#__codelineno-159-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getServices</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the available adapters</p>
+<h2 id="supporthelperarrabstractarr">Support\Helper\Arr\AbstractArr<a class="headerlink" href="#supporthelperarrabstractarr" title="Permanent link">&para;</a></h2>
+<p><span class="badge badge--abstract">Abstract</span>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Helper/Arr/AbstractArr.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<p>@internal</p>
+<p>@todo Remove in v7. Kept only for backwards compatibility; compose
+Phalcon\Traits\Support\Helper\Arr\FilterTrait directly instead of extending
+this.</p>
+<div class="api-tree">
+<ul>
+<li><strong><code>Phalcon\Support\Helper\Arr\AbstractArr</code></strong><ul>
+<li><a href="#supporthelperarrblacklist"><code>Phalcon\Support\Helper\Arr\Blacklist</code></a></li>
+<li><a href="#supporthelperarrfilter"><code>Phalcon\Support\Helper\Arr\Filter</code></a></li>
+<li><a href="#supporthelperarrfirst"><code>Phalcon\Support\Helper\Arr\First</code></a></li>
+<li><a href="#supporthelperarrfirstkey"><code>Phalcon\Support\Helper\Arr\FirstKey</code></a></li>
+<li><a href="#supporthelperarrlast"><code>Phalcon\Support\Helper\Arr\Last</code></a></li>
+<li><a href="#supporthelperarrlastkey"><code>Phalcon\Support\Helper\Arr\LastKey</code></a></li>
+<li><a href="#supporthelperarrvalidateall"><code>Phalcon\Support\Helper\Arr\ValidateAll</code></a></li>
+<li><a href="#supporthelperarrvalidateany"><code>Phalcon\Support\Helper\Arr\ValidateAny</code></a></li>
+<li><a href="#supporthelperarrwhitelist"><code>Phalcon\Support\Helper\Arr\Whitelist</code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Arr\FilterTrait</code></p>
 <h2 id="supporthelperarrblacklist">Support\Helper\Arr\Blacklist<a class="headerlink" href="#supporthelperarrblacklist" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Helper/Arr/Blacklist.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -14219,10 +14265,12 @@ these members in each class until Zephir supports traits.</p>
 by the keys obtained from the elements of a blacklist</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperarrabstractarr"><code>Phalcon\Support\Helper\Arr\AbstractArr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Arr\Blacklist</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Arr\FilterTrait</code></p>
 <h3 id="method-summary_16">Method Summary<a class="headerlink" href="#method-summary_16" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrblacklist-__invoke">
@@ -14276,14 +14324,17 @@ by the keys obtained from the elements of a blacklist</p>
 used.</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperarrabstractarr"><code>Phalcon\Support\Helper\Arr\AbstractArr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Arr\Filter</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Arr\FilterTrait</code></p>
 <h3 id="method-summary_18">Method Summary<a class="headerlink" href="#method-summary_18" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrfilter-__invoke">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
@@ -14295,7 +14346,7 @@ used.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-162-2" name="__codelineno-162-2" href="#__codelineno-162-2"></a>    <span class="k">array</span> <span class="nv">$collection</span><span class="p">,</span>
 <a id="__codelineno-162-3" name="__codelineno-162-3" href="#__codelineno-162-3"></a>    <span class="nx">callable</span><span class="o">|</span><span class="k">null</span> <span class="nv">$method</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-162-4" name="__codelineno-162-4" href="#__codelineno-162-4"></a><span class="p">);</span>
+<a id="__codelineno-162-4" name="__codelineno-162-4" href="#__codelineno-162-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperarrfirst">Support\Helper\Arr\First<a class="headerlink" href="#supporthelperarrfirst" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -14304,14 +14355,17 @@ used.</p>
 element returned is the first that validates true</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperarrabstractarr"><code>Phalcon\Support\Helper\Arr\AbstractArr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Arr\First</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Arr\FilterTrait</code></p>
 <h3 id="method-summary_19">Method Summary<a class="headerlink" href="#method-summary_19" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrfirst-__invoke">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
@@ -14323,7 +14377,7 @@ element returned is the first that validates true</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-163-1" name="__codelineno-163-1" href="#__codelineno-163-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-163-2" name="__codelineno-163-2" href="#__codelineno-163-2"></a>    <span class="k">array</span> <span class="nv">$collection</span><span class="p">,</span>
 <a id="__codelineno-163-3" name="__codelineno-163-3" href="#__codelineno-163-3"></a>    <span class="nx">callable</span><span class="o">|</span><span class="k">null</span> <span class="nv">$method</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-163-4" name="__codelineno-163-4" href="#__codelineno-163-4"></a><span class="p">);</span>
+<a id="__codelineno-163-4" name="__codelineno-163-4" href="#__codelineno-163-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperarrfirstkey">Support\Helper\Arr\FirstKey<a class="headerlink" href="#supporthelperarrfirstkey" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -14332,14 +14386,17 @@ element returned is the first that validates true</p>
 is passed, the element returned is the first that validates true</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperarrabstractarr"><code>Phalcon\Support\Helper\Arr\AbstractArr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Arr\FirstKey</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Arr\FilterTrait</code></p>
 <h3 id="method-summary_20">Method Summary<a class="headerlink" href="#method-summary_20" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrfirstkey-__invoke">
 <code class="vis vis-public">public</code>
+<code class="ret">int|string|null</code>
 <code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
@@ -14351,7 +14408,7 @@ is passed, the element returned is the first that validates true</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-164-1" name="__codelineno-164-1" href="#__codelineno-164-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-164-2" name="__codelineno-164-2" href="#__codelineno-164-2"></a>    <span class="k">array</span> <span class="nv">$collection</span><span class="p">,</span>
 <a id="__codelineno-164-3" name="__codelineno-164-3" href="#__codelineno-164-3"></a>    <span class="nx">callable</span><span class="o">|</span><span class="k">null</span> <span class="nv">$method</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-164-4" name="__codelineno-164-4" href="#__codelineno-164-4"></a><span class="p">);</span>
+<a id="__codelineno-164-4" name="__codelineno-164-4" href="#__codelineno-164-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">int</span><span class="o">|</span><span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperarrflatten">Support\Helper\Arr\Flatten<a class="headerlink" href="#supporthelperarrflatten" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -14428,7 +14485,7 @@ It also allows for casting the returned value to a specific type using
 <a class="api-item" href="#supporthelperarrgroup-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">callable|string</span> <span class="sv">$method</span></span>)</code>
 </a>
 </div>
 
@@ -14438,7 +14495,7 @@ It also allows for casting the returned value to a specific type using
 <h4 id="supporthelperarrgroup-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperarrgroup-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-167-2" name="__codelineno-167-2" href="#__codelineno-167-2"></a>    <span class="k">array</span> <span class="nv">$collection</span><span class="p">,</span>
-<a id="__codelineno-167-3" name="__codelineno-167-3" href="#__codelineno-167-3"></a>    <span class="nx">mixed</span> <span class="nv">$method</span>
+<a id="__codelineno-167-3" name="__codelineno-167-3" href="#__codelineno-167-3"></a>    <span class="nx">callable</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$method</span>
 <a id="__codelineno-167-4" name="__codelineno-167-4" href="#__codelineno-167-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperarrhas">Support\Helper\Arr\Has<a class="headerlink" href="#supporthelperarrhas" title="Permanent link">&para;</a></h2>
@@ -14479,6 +14536,7 @@ values exist and false if values are all unique.</p>
 <li><strong><code>Phalcon\Support\Helper\Arr\IsUnique</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Stringable</code></p>
 <h3 id="method-summary_25">Method Summary<a class="headerlink" href="#method-summary_25" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrisunique-__invoke">
@@ -14501,10 +14559,12 @@ values exist and false if values are all unique.</p>
 element returned is the first that validates true</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperarrabstractarr"><code>Phalcon\Support\Helper\Arr\AbstractArr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Arr\Last</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Arr\FilterTrait</code></p>
 <h3 id="method-summary_26">Method Summary<a class="headerlink" href="#method-summary_26" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrlast-__invoke">
@@ -14529,14 +14589,17 @@ element returned is the first that validates true</p>
 passed, the element returned is the first that validates true</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperarrabstractarr"><code>Phalcon\Support\Helper\Arr\AbstractArr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Arr\LastKey</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Arr\FilterTrait</code></p>
 <h3 id="method-summary_27">Method Summary<a class="headerlink" href="#method-summary_27" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrlastkey-__invoke">
 <code class="vis vis-public">public</code>
+<code class="ret">int|string|null</code>
 <code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
@@ -14548,7 +14611,7 @@ passed, the element returned is the first that validates true</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-171-1" name="__codelineno-171-1" href="#__codelineno-171-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-171-2" name="__codelineno-171-2" href="#__codelineno-171-2"></a>    <span class="k">array</span> <span class="nv">$collection</span><span class="p">,</span>
 <a id="__codelineno-171-3" name="__codelineno-171-3" href="#__codelineno-171-3"></a>    <span class="nx">callable</span><span class="o">|</span><span class="k">null</span> <span class="nv">$method</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-171-4" name="__codelineno-171-4" href="#__codelineno-171-4"></a><span class="p">);</span>
+<a id="__codelineno-171-4" name="__codelineno-171-4" href="#__codelineno-171-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">int</span><span class="o">|</span><span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperarrorder">Support\Helper\Arr\Order<a class="headerlink" href="#supporthelperarrorder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -14634,7 +14697,7 @@ the ones used by <code>ksort</code> and <code>krsort</code></p>
 <a class="api-item" href="#supporthelperarrset-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int|string|null</span> <span class="sv">$index</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -14645,7 +14708,7 @@ the ones used by <code>ksort</code> and <code>krsort</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-174-1" name="__codelineno-174-1" href="#__codelineno-174-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-174-2" name="__codelineno-174-2" href="#__codelineno-174-2"></a>    <span class="k">array</span> <span class="nv">$collection</span><span class="p">,</span>
 <a id="__codelineno-174-3" name="__codelineno-174-3" href="#__codelineno-174-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">,</span>
-<a id="__codelineno-174-4" name="__codelineno-174-4" href="#__codelineno-174-4"></a>    <span class="nx">mixed</span> <span class="nv">$index</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-174-4" name="__codelineno-174-4" href="#__codelineno-174-4"></a>    <span class="nx">int</span><span class="o">|</span><span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$index</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-174-5" name="__codelineno-174-5" href="#__codelineno-174-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperarrsliceleft">Support\Helper\Arr\SliceLeft<a class="headerlink" href="#supporthelperarrsliceleft" title="Permanent link">&para;</a></h2>
@@ -14758,10 +14821,12 @@ as another</p>
 the collection, <code>false</code> otherwise.</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperarrabstractarr"><code>Phalcon\Support\Helper\Arr\AbstractArr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Arr\ValidateAll</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Arr\FilterTrait</code></p>
 <h3 id="method-summary_35">Method Summary<a class="headerlink" href="#method-summary_35" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrvalidateall-__invoke">
@@ -14787,10 +14852,12 @@ the collection, <code>false</code> otherwise.</p>
 element of the collection, <code>false</code> otherwise.</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperarrabstractarr"><code>Phalcon\Support\Helper\Arr\AbstractArr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Arr\ValidateAny</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Arr\FilterTrait</code></p>
 <h3 id="method-summary_36">Method Summary<a class="headerlink" href="#method-summary_36" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrvalidateany-__invoke">
@@ -14816,10 +14883,12 @@ element of the collection, <code>false</code> otherwise.</p>
 obtained from the elements of a whitelist</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperarrabstractarr"><code>Phalcon\Support\Helper\Arr\AbstractArr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Arr\Whitelist</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Arr\FilterTrait</code></p>
 <h3 id="method-summary_37">Method Summary<a class="headerlink" href="#method-summary_37" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperarrwhitelist-__invoke">
@@ -15050,6 +15119,31 @@ JsonEncodeError</p>
 <a id="__codelineno-187-4" name="__codelineno-187-4" href="#__codelineno-187-4"></a>    <span class="nx">int</span> <span class="nv">$end</span>
 <a id="__codelineno-187-5" name="__codelineno-187-5" href="#__codelineno-187-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
+<h2 id="supporthelperstrabstractstr">Support\Helper\Str\AbstractStr<a class="headerlink" href="#supporthelperstrabstractstr" title="Permanent link">&para;</a></h2>
+<p><span class="badge badge--abstract">Abstract</span>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Helper/Str/AbstractStr.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<p>Abstract class offering methods to help with the Str namespace.</p>
+<p>@internal</p>
+<p>@todo Remove in v7. Kept only for backwards compatibility; compose the
+      individual Phalcon\Traits\Support\Helper\Str* traits directly instead
+      of extending this.</p>
+<div class="api-tree">
+<ul>
+<li><strong><code>Phalcon\Support\Helper\Str\AbstractStr</code></strong><ul>
+<li><a href="#supporthelperstrconcat"><code>Phalcon\Support\Helper\Str\Concat</code></a></li>
+<li><a href="#supporthelperstrdecapitalize"><code>Phalcon\Support\Helper\Str\Decapitalize</code></a></li>
+<li><a href="#supporthelperstrendswith"><code>Phalcon\Support\Helper\Str\EndsWith</code></a></li>
+<li><a href="#supporthelperstrfriendly"><code>Phalcon\Support\Helper\Str\Friendly</code></a></li>
+<li><a href="#supporthelperstrislower"><code>Phalcon\Support\Helper\Str\IsLower</code></a></li>
+<li><a href="#supporthelperstrisupper"><code>Phalcon\Support\Helper\Str\IsUpper</code></a></li>
+<li><a href="#supporthelperstrlower"><code>Phalcon\Support\Helper\Str\Lower</code></a></li>
+<li><a href="#supporthelperstrstartswith"><code>Phalcon\Support\Helper\Str\StartsWith</code></a></li>
+<li><a href="#supporthelperstrupper"><code>Phalcon\Support\Helper\Str\Upper</code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Str\EndsWithTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\InterpolateTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\LowerTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\StartsWithTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\UpperTrait</code></p>
 <h2 id="supporthelperstrcamelize">Support\Helper\Str\Camelize<a class="headerlink" href="#supporthelperstrcamelize" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Helper/Str/Camelize.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -15086,15 +15180,19 @@ JsonEncodeError</p>
 places concatenation</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperstrabstractstr"><code>Phalcon\Support\Helper\Str\AbstractStr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Str\Concat</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments</code></p>
 <h3 id="method-summary_45">Method Summary<a class="headerlink" href="#method-summary_45" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrconcat-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$first</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$second</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$arguments</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$many</span></span>)</code>
 </a>
 </div>
 
@@ -15104,10 +15202,8 @@ places concatenation</p>
 <h4 id="supporthelperstrconcat-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrconcat-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-189-1" name="__codelineno-189-1" href="#__codelineno-189-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
 <a id="__codelineno-189-2" name="__codelineno-189-2" href="#__codelineno-189-2"></a>    <span class="nx">string</span> <span class="nv">$delimiter</span><span class="p">,</span>
-<a id="__codelineno-189-3" name="__codelineno-189-3" href="#__codelineno-189-3"></a>    <span class="nx">string</span> <span class="nv">$first</span><span class="p">,</span>
-<a id="__codelineno-189-4" name="__codelineno-189-4" href="#__codelineno-189-4"></a>    <span class="nx">string</span> <span class="nv">$second</span><span class="p">,</span>
-<a id="__codelineno-189-5" name="__codelineno-189-5" href="#__codelineno-189-5"></a>    <span class="nx">string</span> <span class="nv">$arguments</span>
-<a id="__codelineno-189-6" name="__codelineno-189-6" href="#__codelineno-189-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<a id="__codelineno-189-3" name="__codelineno-189-3" href="#__codelineno-189-3"></a>    <span class="nx">string</span> <span class="nv">$many</span>
+<a id="__codelineno-189-4" name="__codelineno-189-4" href="#__codelineno-189-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrcountvowels">Support\Helper\Str\CountVowels<a class="headerlink" href="#supporthelperstrcountvowels" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -15142,10 +15238,12 @@ of the string. Omit the upperRest parameter to keep the rest of the
 string intact, or set it to true to convert to uppercase.</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperstrabstractstr"><code>Phalcon\Support\Helper\Str\AbstractStr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Str\Decapitalize</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Str\LowerTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\UpperTrait</code></p>
 <h3 id="method-summary_47">Method Summary<a class="headerlink" href="#method-summary_47" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrdecapitalize-__invoke">
@@ -15283,10 +15381,12 @@ by the separator</p>
 <p>Check if a string ends with a given string</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperstrabstractstr"><code>Phalcon\Support\Helper\Str\AbstractStr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Str\EndsWith</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Str\EndsWithTrait</code></p>
 <h3 id="method-summary_52">Method Summary<a class="headerlink" href="#method-summary_52" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrendswith-__invoke">
@@ -15405,16 +15505,19 @@ characters with their Latin equivalents. If a <code>replace</code> string or arr
 is passed, it will also be used to replace those characters with a space.</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperstrabstractstr"><code>Phalcon\Support\Helper\Str\AbstractStr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Str\Friendly</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Str\LowerTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat</code></p>
 <h3 id="method-summary_55">Method Summary<a class="headerlink" href="#method-summary_55" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrfriendly-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;-&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowercase</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$replace</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;-&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowercase</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array|string|null</span> <span class="sv">$replace</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -15426,7 +15529,7 @@ is passed, it will also be used to replace those characters with a space.</p>
 <a id="__codelineno-199-2" name="__codelineno-199-2" href="#__codelineno-199-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
 <a id="__codelineno-199-3" name="__codelineno-199-3" href="#__codelineno-199-3"></a>    <span class="nx">string</span> <span class="nv">$separator</span> <span class="o">=</span> <span class="s2">"-"</span><span class="p">,</span>
 <a id="__codelineno-199-4" name="__codelineno-199-4" href="#__codelineno-199-4"></a>    <span class="nx">bool</span> <span class="nv">$lowercase</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-199-5" name="__codelineno-199-5" href="#__codelineno-199-5"></a>    <span class="nx">mixed</span> <span class="nv">$replace</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-199-5" name="__codelineno-199-5" href="#__codelineno-199-5"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$replace</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-199-6" name="__codelineno-199-6" href="#__codelineno-199-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="supporthelperstrhumanize">Support\Helper\Str\Humanize<a class="headerlink" href="#supporthelperstrhumanize" title="Permanent link">&para;</a></h2>
@@ -15574,10 +15677,12 @@ right and left tokens are <code>%</code></p>
 <p>Returns <code>true</code> if the given string is in lower case, <code>false</code> otherwise.</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperstrabstractstr"><code>Phalcon\Support\Helper\Str\AbstractStr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Str\IsLower</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Str\LowerTrait</code></p>
 <h3 id="method-summary_61">Method Summary<a class="headerlink" href="#method-summary_61" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrislower-__invoke">
@@ -15626,10 +15731,12 @@ right and left tokens are <code>%</code></p>
 <p>Returns <code>true</code> if the given string is in upper case, <code>false</code> otherwise.</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperstrabstractstr"><code>Phalcon\Support\Helper\Str\AbstractStr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Str\IsUpper</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Str\UpperTrait</code></p>
 <h3 id="method-summary_63">Method Summary<a class="headerlink" href="#method-summary_63" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrisupper-__invoke">
@@ -15711,10 +15818,12 @@ right and left tokens are <code>%</code></p>
 <p>Converts a string to lowercase using mbstring</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperstrabstractstr"><code>Phalcon\Support\Helper\Str\AbstractStr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Str\Lower</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Str\LowerTrait</code></p>
 <h3 id="method-summary_66">Method Summary<a class="headerlink" href="#method-summary_66" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrlower-__invoke">
@@ -15780,18 +15889,20 @@ right and left tokens are <code>%</code></p>
 <h2 id="supporthelperstrprefix">Support\Helper\Str\Prefix<a class="headerlink" href="#supporthelperstrprefix" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Helper/Str/Prefix.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Prefixes the text with the supplied prefix</p>
+<p>Prefixes the text with the supplied prefix
+@todo v7 make text string</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Support\Helper\Str\Prefix</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Stringable</code></p>
 <h3 id="method-summary_68">Method Summary<a class="headerlink" href="#method-summary_68" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrprefix-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
 </a>
 </div>
 
@@ -15800,7 +15911,7 @@ right and left tokens are <code>%</code></p>
 
 <h4 id="supporthelperstrprefix-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrprefix-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-213-1" name="__codelineno-213-1" href="#__codelineno-213-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
-<a id="__codelineno-213-2" name="__codelineno-213-2" href="#__codelineno-213-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
+<a id="__codelineno-213-2" name="__codelineno-213-2" href="#__codelineno-213-2"></a>    <span class="nx">mixed</span> <span class="nv">$text</span><span class="p">,</span>
 <a id="__codelineno-213-3" name="__codelineno-213-3" href="#__codelineno-213-3"></a>    <span class="nx">string</span> <span class="nv">$prefix</span>
 <a id="__codelineno-213-4" name="__codelineno-213-4" href="#__codelineno-213-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -15927,10 +16038,12 @@ characters [2345679ACDEFHJKLMNPRSTUVWXYZ]</span>
 <p>Check if a string starts with a given string</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperstrabstractstr"><code>Phalcon\Support\Helper\Str\AbstractStr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Str\StartsWith</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Str\StartsWithTrait</code></p>
 <h3 id="method-summary_72">Method Summary<a class="headerlink" href="#method-summary_72" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrstartswith-__invoke">
@@ -15959,12 +16072,13 @@ characters [2345679ACDEFHJKLMNPRSTUVWXYZ]</span>
 <li><strong><code>Phalcon\Support\Helper\Str\Suffix</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Stringable</code></p>
 <h3 id="method-summary_73">Method Summary<a class="headerlink" href="#method-summary_73" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrsuffix-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span></span>)</code>
 </a>
 </div>
 
@@ -15973,7 +16087,7 @@ characters [2345679ACDEFHJKLMNPRSTUVWXYZ]</span>
 
 <h4 id="supporthelperstrsuffix-__invoke"><code>__invoke()</code><a class="headerlink" href="#supporthelperstrsuffix-__invoke" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-218-1" name="__codelineno-218-1" href="#__codelineno-218-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
-<a id="__codelineno-218-2" name="__codelineno-218-2" href="#__codelineno-218-2"></a>    <span class="nx">string</span> <span class="nv">$text</span><span class="p">,</span>
+<a id="__codelineno-218-2" name="__codelineno-218-2" href="#__codelineno-218-2"></a>    <span class="nx">mixed</span> <span class="nv">$text</span><span class="p">,</span>
 <a id="__codelineno-218-3" name="__codelineno-218-3" href="#__codelineno-218-3"></a>    <span class="nx">string</span> <span class="nv">$suffix</span>
 <a id="__codelineno-218-4" name="__codelineno-218-4" href="#__codelineno-218-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -16062,10 +16176,12 @@ characters [2345679ACDEFHJKLMNPRSTUVWXYZ]</span>
 <p>Converts a string to uppercase using mbstring</p>
 <div class="api-tree">
 <ul>
+<li><a href="#supporthelperstrabstractstr"><code>Phalcon\Support\Helper\Str\AbstractStr</code></a><ul>
 <li><strong><code>Phalcon\Support\Helper\Str\Upper</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Traits\Support\Helper\Str\UpperTrait</code></p>
 <h3 id="method-summary_77">Method Summary<a class="headerlink" href="#method-summary_77" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrupper-__invoke">
@@ -16127,6 +16243,7 @@ is several times slower than $registry-&gt;property.</p>
 <p>Internally all the magic methods (and interfaces except JsonSerializable)
 are implemented using object handlers or similar techniques: this allows to
 bypass relatively slow method calls.</p>
+<p>@extends Collection<mixed></p>
 <div class="api-tree">
 <ul>
 <li><a href="#supportcollection"><code>Phalcon\Support\Collection</code></a><ul>
@@ -16266,8 +16383,8 @@ bypass relatively slow method calls.</p>
 <a class="api-item" href="#supportregistry-unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$serialized</span> )</code>
-<span class="desc">Constructs the object</span>
+<code class="sig"><span class="sf">unserialize</span>( <span class="st">string</span> <span class="sv">$serialized</span> )</code>
+<span class="desc">Unserializes the object</span>
 </a>
 </div>
 
@@ -16305,7 +16422,6 @@ bypass relatively slow method calls.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-230-1" name="__codelineno-230-1" href="#__codelineno-230-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">count</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Count elements of an object</p>
-<p>@link https://php.net/manual/en/countable.count.php</p>
 <h4 id="supportregistry-get"><code>get()</code><a class="headerlink" href="#supportregistry-get" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-231-1" name="__codelineno-231-1" href="#__codelineno-231-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span>
 <a id="__codelineno-231-2" name="__codelineno-231-2" href="#__codelineno-231-2"></a>    <span class="nx">string</span> <span class="nv">$element</span><span class="p">,</span>
@@ -16330,17 +16446,14 @@ bypass relatively slow method calls.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-235-1" name="__codelineno-235-1" href="#__codelineno-235-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">jsonSerialize</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Specify data which should be serialized to JSON</p>
-<p>@link https://php.net/manual/en/jsonserializable.jsonserialize.php</p>
 <h4 id="supportregistry-offsetexists"><code>offsetExists()</code><a class="headerlink" href="#supportregistry-offsetexists" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-236-1" name="__codelineno-236-1" href="#__codelineno-236-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">offsetExists</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$element</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Whether a offset exists</p>
-<p>@link https://php.net/manual/en/arrayaccess.offsetexists.php</p>
 <h4 id="supportregistry-offsetget"><code>offsetGet()</code><a class="headerlink" href="#supportregistry-offsetget" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-237-1" name="__codelineno-237-1" href="#__codelineno-237-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">offsetGet</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$element</span> <span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Offset to retrieve</p>
-<p>@link https://php.net/manual/en/arrayaccess.offsetget.php</p>
 <h4 id="supportregistry-offsetset"><code>offsetSet()</code><a class="headerlink" href="#supportregistry-offsetset" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-238-1" name="__codelineno-238-1" href="#__codelineno-238-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">offsetSet</span><span class="p">(</span>
 <a id="__codelineno-238-2" name="__codelineno-238-2" href="#__codelineno-238-2"></a>    <span class="nx">mixed</span> <span class="nv">$element</span><span class="p">,</span>
@@ -16348,12 +16461,10 @@ bypass relatively slow method calls.</p>
 <a id="__codelineno-238-4" name="__codelineno-238-4" href="#__codelineno-238-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Offset to set</p>
-<p>@link https://php.net/manual/en/arrayaccess.offsetset.php</p>
 <h4 id="supportregistry-offsetunset"><code>offsetUnset()</code><a class="headerlink" href="#supportregistry-offsetunset" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-239-1" name="__codelineno-239-1" href="#__codelineno-239-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">offsetUnset</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$element</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Offset to unset</p>
-<p>@link https://php.net/manual/en/arrayaccess.offsetunset.php</p>
 <h4 id="supportregistry-remove"><code>remove()</code><a class="headerlink" href="#supportregistry-remove" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-240-1" name="__codelineno-240-1" href="#__codelineno-240-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$element</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
@@ -16362,7 +16473,6 @@ bypass relatively slow method calls.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-241-1" name="__codelineno-241-1" href="#__codelineno-241-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">serialize</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>String representation of object</p>
-<p>@link https://php.net/manual/en/serializable.serialize.php</p>
 <h4 id="supportregistry-set"><code>set()</code><a class="headerlink" href="#supportregistry-set" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-242-1" name="__codelineno-242-1" href="#__codelineno-242-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">set</span><span class="p">(</span>
 <a id="__codelineno-242-2" name="__codelineno-242-2" href="#__codelineno-242-2"></a>    <span class="nx">string</span> <span class="nv">$element</span><span class="p">,</span>
@@ -16380,12 +16490,10 @@ bypass relatively slow method calls.</p>
 <p>Returns the object in a JSON format</p>
 <p>The default string uses the following options for json_encode</p>
 <p>JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES</p>
-<p>@see https://www.ietf.org/rfc/rfc4627.txt</p>
 <h4 id="supportregistry-unserialize"><code>unserialize()</code><a class="headerlink" href="#supportregistry-unserialize" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-245-1" name="__codelineno-245-1" href="#__codelineno-245-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">unserialize</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$serialized</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-245-1" name="__codelineno-245-1" href="#__codelineno-245-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">unserialize</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$serialized</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
-<p>Constructs the object</p>
-<p>@link https://php.net/manual/en/serializable.unserialize.php</p>
+<p>Unserializes the object</p>
 <h2 id="supportsettings">Support\Settings<a class="headerlink" href="#supportsettings" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Settings.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -16433,7 +16541,7 @@ those keys to their ini_get() fallback values.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, bool|int&gt;</code>
 <code class="sig"><span class="sv">$overrides</span><span class="sm"> = []</span></code>
 <span class="desc">PHP-level overrides. Keys stored here take priority over ini_get().</span>
 </div>
@@ -16475,14 +16583,15 @@ no other project sharing this PHP process is affected.</p>
 <li><strong><code>Phalcon\Support\Traits\ConfigTrait</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\ConfigInterface</code></p>
-<p class="api-used-by"><strong>Used by</strong> <a href="../phalcon_cache/#cachecachefactory"><code>Phalcon\Cache\CacheFactory</code></a> · <a href="../phalcon_db/#dbadapterpdofactory"><code>Phalcon\Db\Adapter\PdoFactory</code></a> · <a href="../phalcon_image/#imageimagefactory"><code>Phalcon\Image\ImageFactory</code></a> · <a href="../phalcon_logger/#loggerloggerfactory"><code>Phalcon\Logger\LoggerFactory</code></a> · <a href="../phalcon_paginator/#paginatorpaginatorfactory"><code>Phalcon\Paginator\PaginatorFactory</code></a> · <a href="../phalcon_queue/#queuequeuefactory"><code>Phalcon\Queue\QueueFactory</code></a> · <a href="../phalcon_translate/#translatetranslatefactory"><code>Phalcon\Translate\TranslateFactory</code></a></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\ConfigInterface</code> · <code>Throwable</code></p>
+<p class="api-used-by"><strong>Used by</strong> <a href="../phalcon_auth/#authmanagerfactory"><code>Phalcon\Auth\ManagerFactory</code></a></p>
 <h3 id="method-summary_80">Method Summary<a class="headerlink" href="#method-summary_80" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#supporttraitsconfigtrait-checkconfig">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">checkConfig</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">checkConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
+<span class="desc">Normalizes the factory configuration. The parameter is <code>mixed</code> on</span>
 </a>
 <a class="api-item" href="#supporttraitsconfigtrait-checkconfigelement">
 <code class="vis vis-protected">protected</code>
@@ -16502,8 +16611,11 @@ no other project sharing this PHP process is affected.</p>
 <div class="api-group">Protected · 3</div>
 
 <h4 id="supporttraitsconfigtrait-checkconfig"><code>checkConfig()</code><a class="headerlink" href="#supporttraitsconfigtrait-checkconfig" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-249-1" name="__codelineno-249-1" href="#__codelineno-249-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">checkConfig</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">ConfigInterface</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-249-1" name="__codelineno-249-1" href="#__codelineno-249-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">checkConfig</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
+<p>Normalizes the factory configuration. The parameter is <code>mixed</code> on
+purpose: anything that is neither an array nor a <code>ConfigInterface</code> is
+rejected here at runtime.</p>
 <h4 id="supporttraitsconfigtrait-checkconfigelement"><code>checkConfigElement()</code><a class="headerlink" href="#supporttraitsconfigtrait-checkconfigelement" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-250-1" name="__codelineno-250-1" href="#__codelineno-250-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">checkConfigElement</span><span class="p">(</span>
 <a id="__codelineno-250-2" name="__codelineno-250-2" href="#__codelineno-250-2"></a>    <span class="k">array</span> <span class="nv">$config</span><span class="p">,</span>

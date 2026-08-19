@@ -7328,7 +7328,7 @@ offering lower resource consumption and high performance.
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Storage\AdapterFactory</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>Phalcon\Storage\AdapterFactory</code></p>
 <h3 id="method-summary_3">Method Summary<a class="headerlink" href="#method-summary_3" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionadapterlibmemcached-__construct">
@@ -7488,7 +7488,7 @@ other purpose that no session needs to be invoked</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError</code> · <code>Phalcon\Storage\AdapterFactory</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError</code> · <code>Phalcon\Storage\AdapterFactory</code> · <code>Redis</code></p>
 <h3 id="method-summary_5">Method Summary<a class="headerlink" href="#method-summary_5" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionadapterredis-__construct">
@@ -7628,9 +7628,6 @@ between attempts, up to <code>lockRetries</code> times</p>
 <a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="p">);</span>
 <a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="nv">$session</span><span class="o">-&gt;</span><span class="na">setAdapter</span><span class="p">(</span><span class="nv">$files</span><span class="p">);</span>
 </code></pre></div>
-<p>@property array  $options
-@property string $prefix
-@property string $path</p>
 <div class="api-tree">
 <ul>
 <li><a href="#sessionadapternoop"><code>Phalcon\Session\Adapter\Noop</code></a><ul>
@@ -7639,7 +7636,7 @@ between attempts, up to <code>lockRetries</code> times</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError</code> · <code>Phalcon\Session\Adapter\Exceptions\InvalidSavePath</code> · <code>Phalcon\Session\Adapter\Exceptions\SavePathUnavailable</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Phalcon\Traits\Php\IniTrait</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError</code> · <code>Phalcon\Session\Adapter\Exceptions\InvalidSavePath</code> · <code>Phalcon\Session\Adapter\Exceptions\SavePathUnavailable</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Phalcon\Traits\Php\IniTrait</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait</code></p>
 <h3 id="method-summary_6">Method Summary<a class="headerlink" href="#method-summary_6" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionadapterstream-__construct">
@@ -7782,6 +7779,7 @@ application</p>
 </code></pre></div>
 <p>@property string           $name
 @property ManagerInterface $session;</p>
+<p>@extends Collection<mixed></p>
 <div class="api-tree">
 <ul>
 <li><a href="../phalcon_support/#supportcollection"><code>Phalcon\Support\Collection</code></a><ul>
@@ -7790,7 +7788,7 @@ application</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Di\InjectionAwareInterface</code> · <code>Phalcon\Di\Traits\InjectionAwareTrait</code> · <code>Phalcon\Support\Collection</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Di\InjectionAwareInterface</code> · <code>Phalcon\Di\Traits\InjectionAwareTrait</code> · <code>Phalcon\Support\Collection</code></p>
 <h3 id="method-summary_7">Method Summary<a class="headerlink" href="#method-summary_7" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionbag-__construct">
@@ -7860,6 +7858,7 @@ application</p>
 <li><strong><code>Phalcon\Session\BagInterface</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Session\SessionTypes</code></p>
 <h3 id="method-summary_8">Method Summary<a class="headerlink" href="#method-summary_8" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionbaginterface-__get">
@@ -8131,10 +8130,16 @@ application</p>
 <p>Session manager class</p>
 <div class="api-tree">
 <ul>
-<li><strong><code>Phalcon\Session\Manager</code></strong> - implements <a href="../phalcon_di/#diinjectionawareinterface"><code>Phalcon\Di\InjectionAwareInterface</code></a>, <a href="#sessionmanagerinterface"><code>Phalcon\Session\ManagerInterface</code></a></li>
+<li><code>\stdClass</code><ul>
+<li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
+<li><strong><code>Phalcon\Session\Manager</code></strong> - implements <a href="#sessionmanagerinterface"><code>Phalcon\Session\ManagerInterface</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Di\InjectionAwareInterface</code> · <code>Phalcon\Di\Traits\InjectionAwareTrait</code> · <code>Phalcon\Session\Exceptions\InvalidSessionAdapter</code> · <code>Phalcon\Session\Exceptions\InvalidSessionId</code> · <code>Phalcon\Session\Exceptions\InvalidSessionName</code> · <code>Phalcon\Session\Exceptions\SessionAlreadyStarted</code> · <code>Phalcon\Session\Exceptions\SessionModificationDenied</code> · <code>Phalcon\Traits\Php\HeaderTrait</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>SessionHandlerInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Session\Exceptions\InvalidSessionAdapter</code> · <code>Phalcon\Session\Exceptions\InvalidSessionId</code> · <code>Phalcon\Session\Exceptions\InvalidSessionName</code> · <code>Phalcon\Session\Exceptions\SessionAlreadyStarted</code> · <code>Phalcon\Session\Exceptions\SessionModificationDenied</code> · <code>Phalcon\Traits\Php\HeaderTrait</code> · <code>Phalcon\Traits\Support\Helper\Arr\GetTrait</code> · <code>SessionHandlerInterface</code></p>
 <h3 id="method-summary_14">Method Summary<a class="headerlink" href="#method-summary_14" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionmanager-__construct">
@@ -8384,7 +8389,7 @@ started)</p>
 <li><strong><code>Phalcon\Session\ManagerInterface</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>SessionHandlerInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>Phalcon\Contracts\Session\SessionTypes</code> · <code>SessionHandlerInterface</code></p>
 <h3 id="method-summary_15">Method Summary<a class="headerlink" href="#method-summary_15" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#sessionmanagerinterface-__get">
@@ -8424,6 +8429,7 @@ started)</p>
 </a>
 <a class="api-item" href="#sessionmanagerinterface-get">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remove</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a session variable from an application context</span>
 </a>
@@ -8564,7 +8570,7 @@ started)</p>
 <a id="__codelineno-86-2" name="__codelineno-86-2" href="#__codelineno-86-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
 <a id="__codelineno-86-3" name="__codelineno-86-3" href="#__codelineno-86-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-86-4" name="__codelineno-86-4" href="#__codelineno-86-4"></a>    <span class="nx">bool</span> <span class="nv">$remove</span> <span class="o">=</span> <span class="k">false</span>
-<a id="__codelineno-86-5" name="__codelineno-86-5" href="#__codelineno-86-5"></a><span class="p">);</span>
+<a id="__codelineno-86-5" name="__codelineno-86-5" href="#__codelineno-86-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets a session variable from an application context</p>
 <h4 id="sessionmanagerinterface-getadapter"><code>getAdapter()</code><a class="headerlink" href="#sessionmanagerinterface-getadapter" title="Permanent link">&para;</a></h4>

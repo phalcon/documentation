@@ -6164,17 +6164,6 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
-  <a href="#constants" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Constants
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#properties_1" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -6429,7 +6418,7 @@ offering lower resource consumption and high performance.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#constants_1" class="md-nav__link">
+  <a href="#constants" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         Constants
@@ -7268,6 +7257,7 @@ offering lower resource consumption and high performance.
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Image/Adapter/AbstractAdapter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>All image adapters must use this class</p>
+<p>@template TImage of object</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Image\Adapter\AbstractAdapter</code></strong> - implements <a href="#imageadapteradapterinterface"><code>Phalcon\Image\Adapter\AdapterInterface</code></a><ul>
@@ -7277,7 +7267,7 @@ offering lower resource consumption and high performance.
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Image\Enum</code> · <code>Phalcon\Image\Exception</code> · <code>Phalcon\Image\Exceptions\InvalidColor</code> · <code>Phalcon\Image\Exceptions\MissingDimensions</code> · <code>Phalcon\Image\Exceptions\MissingHeight</code> · <code>Phalcon\Image\Exceptions\MissingWidth</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Image\ImageTypes</code> · <code>Phalcon\Image\Enum</code> · <code>Phalcon\Image\Exception</code> · <code>Phalcon\Image\Exceptions\InvalidColor</code> · <code>Phalcon\Image\Exceptions\MissingDimensions</code> · <code>Phalcon\Image\Exceptions\MissingHeight</code> · <code>Phalcon\Image\Exceptions\MissingWidth</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#imageadapterabstractadapter-background">
@@ -7493,18 +7483,18 @@ offering lower resource consumption and high performance.
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$height</span></code>
-<span class="desc">Image height</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed|null</code>
+<code class="ret">TImage|null</code>
 <code class="sig"><span class="sv">$image</span><span class="sm"> = null</span></code>
+<span class="desc">The handle of the underlying backend. Every adapter assigns it in its
+constructor and releases it in its destructor.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$mime</span></code>
-<span class="desc">Image mime type</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -7634,6 +7624,8 @@ worth knowing inside loops.</p>
 <a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Add a text to an image with a specified opacity</p>
+<p>The offsets accept <code>false</code> to centre the text on that axis, so they are
+wider than the <code>int</code> the interface documents.</p>
 <h4 id="imageadapterabstractadapter-watermark"><code>watermark()</code><a class="headerlink" href="#imageadapterabstractadapter-watermark" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">watermark</span><span class="p">(</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nx">AdapterInterface</span> <span class="nv">$watermark</span><span class="p">,</span>
@@ -8000,6 +7992,7 @@ Phalcon\Image\Exceptions\UnsupportedImageType. Visual semantics differ from
 the Imagick adapter: blur() applies repeated 3x3 Gaussian convolutions
 (the radius is the number of passes), while sharpen and reflection use GD's
 own scales. Switching the factory backend can change the rendered output.</p>
+<p>@extends AbstractAdapter<GdImage></p>
 <div class="api-tree">
 <ul>
 <li><a href="#imageadapterabstractadapter"><code>Phalcon\Image\Adapter\AbstractAdapter</code></a><ul>
@@ -8008,7 +8001,7 @@ own scales. Switching the factory backend can change the rendered output.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>GdImage</code> · <code>Phalcon\Image\Enum</code> · <code>Phalcon\Image\Exception</code> · <code>Phalcon\Image\Exceptions\ExtensionNotLoaded</code> · <code>Phalcon\Image\Exceptions\ImageLoadFailed</code> · <code>Phalcon\Image\Exceptions\TextRenderingFailed</code> · <code>Phalcon\Image\Exceptions\UnsupportedImageType</code> · <code>Phalcon\Image\Exceptions\VersionMismatch</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>GdImage</code> · <code>Phalcon\Contracts\Image\ImageTypes</code> · <code>Phalcon\Image\Enum</code> · <code>Phalcon\Image\Exception</code> · <code>Phalcon\Image\Exceptions\ExtensionNotLoaded</code> · <code>Phalcon\Image\Exceptions\ImageLoadFailed</code> · <code>Phalcon\Image\Exceptions\TextRenderingFailed</code> · <code>Phalcon\Image\Exceptions\UnsupportedImageType</code> · <code>Phalcon\Image\Exceptions\VersionMismatch</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Phalcon\Traits\Php\InfoTrait</code></p>
 <h3 id="method-summary_2">Method Summary<a class="headerlink" href="#method-summary_2" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#imageadaptergd-__construct">
@@ -8072,6 +8065,7 @@ own scales. Switching the factory backend can change the rendered output.</p>
 </a>
 <a class="api-item" href="#imageadaptergd-processrender">
 <code class="vis vis-protected">protected</code>
+<code class="ret">false|string</code>
 <code class="sig"><span class="sf">processRender</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
 </a>
 <a class="api-item" href="#imageadaptergd-processresize">
@@ -8184,7 +8178,7 @@ load-or-create ambiguity of the constructor.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">processRender</span><span class="p">(</span>
 <a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>    <span class="nx">string</span> <span class="nv">$extension</span><span class="p">,</span>
 <a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>    <span class="nx">int</span> <span class="nv">$quality</span>
-<a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="p">);</span>
+<a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">false</span><span class="o">|</span><span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="imageadaptergd-processresize"><code>processResize()</code><a class="headerlink" href="#imageadaptergd-processresize" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">processResize</span><span class="p">(</span>
@@ -8264,6 +8258,7 @@ load-or-create ambiguity of the constructor.</p>
 <p>Visual semantics differ from the Gd adapter: blur() maps the radius to a
 blur sigma, while sharpen and reflection use ImageMagick's own scales.
 Switching the factory backend can change the rendered output.</p>
+<p>@extends AbstractAdapter<ImagickNative></p>
 <div class="api-tree">
 <ul>
 <li><a href="#imageadapterabstractadapter"><code>Phalcon\Image\Adapter\AbstractAdapter</code></a><ul>
@@ -8272,7 +8267,7 @@ Switching the factory backend can change the rendered output.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Imagick</code> · <code>ImagickDraw</code> · <code>ImagickDrawException</code> · <code>ImagickException</code> · <code>ImagickPixel</code> · <code>ImagickPixelException</code> · <code>Phalcon\Image\Enum</code> · <code>Phalcon\Image\Exception</code> · <code>Phalcon\Image\Exceptions\CompositeFailed</code> · <code>Phalcon\Image\Exceptions\ExtensionNotLoaded</code> · <code>Phalcon\Image\Exceptions\ImageLoadFailed</code> · <code>Phalcon\Image\Exceptions\ResizeFailed</code> · <code>Phalcon\Image\Exceptions\ResourceTypeError</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Imagick</code> · <code>ImagickDraw</code> · <code>ImagickDrawException</code> · <code>ImagickException</code> · <code>ImagickPixel</code> · <code>ImagickPixelException</code> · <code>Phalcon\Image\Enum</code> · <code>Phalcon\Image\Exception</code> · <code>Phalcon\Image\Exceptions\CompositeFailed</code> · <code>Phalcon\Image\Exceptions\ExtensionNotLoaded</code> · <code>Phalcon\Image\Exceptions\ImageLoadFailed</code> · <code>Phalcon\Image\Exceptions\ResizeFailed</code> · <code>Phalcon\Image\Exceptions\ResourceTypeError</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
 <h3 id="method-summary_3">Method Summary<a class="headerlink" href="#method-summary_3" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#imageadapterimagick-__construct">
@@ -8387,78 +8382,6 @@ Switching the factory backend can change the rendered output.</p>
 <code class="sig"><span class="sf">processWatermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
 <span class="desc">Add Watermark</span>
 </a>
-</div>
-
-<h3 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h3>
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">ALPHACHANNEL_SET</span><span class="sm"> = 8</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CHANNEL_ALPHA</span><span class="sm"> = 8</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPOSITE_DISSOLVE</span><span class="sm"> = 28</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPOSITE_DSTIN</span><span class="sm"> = 23</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPOSITE_DSTOUT</span><span class="sm"> = 24</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPOSITE_OVER</span><span class="sm"> = 40</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPOSITE_SRC</span><span class="sm"> = 48</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">COMPRESSION_JPEG</span><span class="sm"> = 8</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">EVALUATE_MULTIPLY</span><span class="sm"> = 7</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_CENTER</span><span class="sm"> = 5</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_EAST</span><span class="sm"> = 6</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_NORTH</span><span class="sm"> = 2</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_NORTHEAST</span><span class="sm"> = 3</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_SOUTH</span><span class="sm"> = 8</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_SOUTHEAST</span><span class="sm"> = 9</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">GRAVITY_WEST</span><span class="sm"> = 4</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">IMAGICK_EXTNUM</span><span class="sm"> = 30700</span></code>
-</div>
 </div>
 
 <h3 id="properties_1">Properties<a class="headerlink" href="#properties_1" title="Permanent link">&para;</a></h3>
@@ -8620,7 +8543,7 @@ Imagick</p>
 <li><strong><code>Phalcon\Image\Enum</code></strong></li>
 </ul>
 </div>
-<h3 id="constants_1">Constants<a class="headerlink" href="#constants_1" title="Permanent link">&para;</a></h3>
+<h3 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <div class="api-item">
 <code class="ret">int</code>
@@ -9040,10 +8963,16 @@ Imagick</p>
 <p>Factory to create adapters for image manipulation</p>
 <div class="api-tree">
 <ul>
+<li><a href="../phalcon_factory/#factoryabstractconfigfactory"><code>Phalcon\Factory\AbstractConfigFactory</code></a><ul>
+<li><a href="../phalcon_factory/#factoryabstractfactory"><code>Phalcon\Factory\AbstractFactory</code></a><ul>
 <li><strong><code>Phalcon\Image\ImageFactory</code></strong></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Image\Adapter\AdapterInterface</code> · <code>Phalcon\Image\Adapter\Gd</code> · <code>Phalcon\Image\Adapter\Imagick</code> · <code>Phalcon\Support\Traits\ConfigTrait</code> · <code>Phalcon\Traits\Factory\FactoryTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Image\ImageTypes</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Image\Adapter\AdapterInterface</code> · <code>Phalcon\Image\Adapter\Gd</code> · <code>Phalcon\Image\Adapter\Imagick</code> · <code>Throwable</code></p>
 <h3 id="method-summary_16">Method Summary<a class="headerlink" href="#method-summary_16" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#imageimagefactory-__construct">
@@ -9054,7 +8983,7 @@ Imagick</p>
 <a class="api-item" href="#imageimagefactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#imageimagefactory-newinstance">
@@ -9084,7 +9013,7 @@ Imagick</p>
 </code></pre></div>
 <p>Constructor</p>
 <h4 id="imageimagefactory-load"><code>load()</code><a class="headerlink" href="#imageimagefactory-load" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">ConfigInterface</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Factory to create an instance from a Config object</p>
 <h4 id="imageimagefactory-newinstance"><code>newInstance()</code><a class="headerlink" href="#imageimagefactory-newinstance" title="Permanent link">&para;</a></h4>

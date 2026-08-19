@@ -6099,7 +6099,7 @@ offering lower resource consumption and high performance.
 <li><strong><code>Phalcon\Messages\Message</code></strong> - implements <a href="#messagesmessageinterface"><code>Phalcon\Messages\MessageInterface</code></a>, <code>\JsonSerializable</code></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>JsonSerializable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>JsonSerializable</code> · <code>Phalcon\Contracts\Messages\MessagesTypes</code></p>
 <h3 id="method-summary_2">Method Summary<a class="headerlink" href="#method-summary_2" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#messagesmessage-__construct">
@@ -6270,6 +6270,7 @@ offering lower resource consumption and high performance.
 <li><strong><code>Phalcon\Messages\MessageInterface</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Messages\MessagesTypes</code></p>
 <h3 id="method-summary_3">Method Summary<a class="headerlink" href="#method-summary_3" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#messagesmessageinterface-__tostring">
@@ -6402,7 +6403,7 @@ must take part in iteration.</p>
 <li><strong><code>Phalcon\Messages\Messages</code></strong> - implements <a href="../phalcon_contracts/#contractsmessagesmessages"><code>Phalcon\Contracts\Messages\Messages</code></a>, <code>\JsonSerializable</code></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Iterator</code> · <code>JsonSerializable</code> · <code>Phalcon\Contracts\Messages\Messages</code> · <code>Phalcon\Messages\Exceptions\MessagesNotIterable</code> · <code>Phalcon\Messages\Traits\MessagesHelperTrait</code> · <code>Traversable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Iterator</code> · <code>JsonSerializable</code> · <code>Phalcon\Contracts\Messages\Messages</code> · <code>Phalcon\Contracts\Messages\MessagesTypes</code> · <code>Phalcon\Messages\Exceptions\MessagesNotIterable</code> · <code>Phalcon\Messages\Traits\MessagesHelperTrait</code> · <code>Traversable</code></p>
 <h3 id="method-summary_4">Method Summary<a class="headerlink" href="#method-summary_4" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#messagesmessages-__construct">
@@ -6418,7 +6419,6 @@ must take part in iteration.</p>
 </a>
 <a class="api-item" href="#messagesmessages-appendmessages">
 <code class="vis vis-public">public</code>
-<code class="ret">void</code>
 <code class="sig"><span class="sf">appendMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
 <span class="desc">Appends an array of messages to the collection</span>
 </a>
@@ -6452,11 +6452,15 @@ must take part in iteration.</p>
 <a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="messagesmessages-appendmessages"><code>appendMessages()</code><a class="headerlink" href="#messagesmessages-appendmessages" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">appendMessages</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$messages</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">appendMessages</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$messages</span> <span class="p">);</span>
 </code></pre></div>
 <p>Appends an array of messages to the collection</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nv">$messages</span><span class="o">-&gt;</span><span class="na">appendMessages</span><span class="p">(</span><span class="nv">$messagesArray</span><span class="p">);</span>
 </code></pre></div>
+<p>Accepts an array of MessageInterface objects or an Iterator yielding
+them. The parameter stays untyped so that a non-iterable argument
+reaches the guard below and raises MessagesNotIterable rather than a
+TypeError.</p>
 <h4 id="messagesmessages-filter"><code>filter()</code><a class="headerlink" href="#messagesmessages-filter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$fieldName</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
@@ -6478,7 +6482,7 @@ jsonSerialize on each object if present</p>
 <li><strong><code>Phalcon\Messages\Traits\MessagesHelperTrait</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Messages\Exceptions\MessageNotObject</code> · <code>Phalcon\Messages\Message</code> · <code>Phalcon\Messages\MessageInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Messages\MessagesTypes</code> · <code>Phalcon\Messages\Exceptions\MessageNotObject</code> · <code>Phalcon\Messages\MessageInterface</code></p>
 <p class="api-used-by"><strong>Used by</strong> <a href="#messagesmessages"><code>Phalcon\Messages\Messages</code></a></p>
 <h3 id="method-summary_5">Method Summary<a class="headerlink" href="#method-summary_5" title="Permanent link">&para;</a></h3>
 <div class="api-list">
@@ -6548,7 +6552,7 @@ jsonSerialize on each object if present</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">messages_list</code>
 <code class="sig"><span class="sv">$messages</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">

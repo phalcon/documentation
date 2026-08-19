@@ -9863,10 +9863,16 @@ offering lower resource consumption and high performance.
 Phalcon\Storage\AdapterFactory.</p>
 <div class="api-tree">
 <ul>
+<li><a href="../phalcon_factory/#factoryabstractconfigfactory"><code>Phalcon\Factory\AbstractConfigFactory</code></a><ul>
+<li><a href="../phalcon_factory/#factoryabstractfactory"><code>Phalcon\Factory\AbstractFactory</code></a><ul>
 <li><strong><code>Phalcon\Queue\AdapterFactory</code></strong></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Redis\RedisConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Stream\StreamConnectionFactory</code> · <code>Phalcon\Queue\Exceptions\Exception</code> · <code>Phalcon\Traits\Factory\FactoryTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Redis\RedisConnectionFactory</code> · <code>Phalcon\Queue\Adapter\Stream\StreamConnectionFactory</code> · <code>Phalcon\Queue\Exceptions\Exception</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterfactory-__construct">
@@ -9884,6 +9890,7 @@ Phalcon\Storage\AdapterFactory.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 <a class="api-item" href="#queueadapterfactory-getservices">
 <code class="vis vis-protected">protected</code>
@@ -9912,6 +9919,7 @@ Phalcon\Storage\AdapterFactory.</p>
 <h4 id="queueadapterfactory-getexceptionclass"><code>getExceptionClass()</code><a class="headerlink" href="#queueadapterfactory-getexceptionclass" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Returns the exception class for the factory</p>
 <h4 id="queueadapterfactory-getservices"><code>getServices()</code><a class="headerlink" href="#queueadapterfactory-getservices" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getServices</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
@@ -10216,7 +10224,7 @@ from the original Phalcon\Queue\Beanstalk transport.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnection</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Queue\Exceptions\Exception</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\QueueTypes</code> · <code>Phalcon\Queue\Exceptions\Exception</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
 <h3 id="method-summary_4">Method Summary<a class="headerlink" href="#method-summary_4" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnection-__construct">
@@ -10454,7 +10462,7 @@ false when the tube does not exist.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory</code></strong> - implements <a href="../phalcon_contracts/#contractsqueueconnectionfactory"><code>Phalcon\Contracts\Queue\ConnectionFactory</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <h3 id="method-summary_5">Method Summary<a class="headerlink" href="#method-summary_5" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterbeanstalkbeanstalkconnectionfactory-__construct">
@@ -11050,7 +11058,7 @@ specific subclass.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory</code></strong> - implements <a href="../phalcon_contracts/#contractsqueueconnectionfactory"><code>Phalcon\Contracts\Queue\ConnectionFactory</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <h3 id="method-summary_13">Method Summary<a class="headerlink" href="#method-summary_13" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadaptermemorymemoryconnectionfactory-__construct">
@@ -11397,7 +11405,7 @@ adapter only supplies its own concrete message factory around <code>decode()</co
 <li><strong><code>Phalcon\Queue\Adapter\MessageEnvelope</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Message</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Message</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <h3 id="method-summary_18">Method Summary<a class="headerlink" href="#method-summary_18" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadaptermessageenvelope-decode">
@@ -11481,7 +11489,7 @@ connection handling instead of re-implementing it.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Redis\RedisConnectionFactory</code></strong> - implements <a href="../phalcon_contracts/#contractsqueueconnectionfactory"><code>Phalcon\Contracts\Queue\ConnectionFactory</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Queue\Exceptions\Exception</code> · <code>Phalcon\Storage\Adapter\Redis</code> · <code>Phalcon\Storage\Exception</code> · <code>Phalcon\Storage\SerializerFactory</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code> · <code>Phalcon\Queue\Exceptions\Exception</code> · <code>Phalcon\Storage\Adapter\Redis</code> · <code>Phalcon\Storage\Exception</code> · <code>Phalcon\Storage\SerializerFactory</code> · <code>Redis</code></p>
 <h3 id="method-summary_20">Method Summary<a class="headerlink" href="#method-summary_20" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterredisredisconnectionfactory-__construct">
@@ -11880,7 +11888,7 @@ native multi-queue receive; the shared poll loop does not use it.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Stream\StreamConnectionFactory</code></strong> - implements <a href="../phalcon_contracts/#contractsqueueconnectionfactory"><code>Phalcon\Contracts\Queue\ConnectionFactory</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\ConnectionFactory</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <h3 id="method-summary_25">Method Summary<a class="headerlink" href="#method-summary_25" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queueadapterstreamstreamconnectionfactory-__construct">
@@ -12225,6 +12233,7 @@ for binary compatibility with the wider interop ecosystem.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Traits\MessageTrait</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <p class="api-used-by"><strong>Used by</strong> <a href="#queueadapterabstractmessage"><code>Phalcon\Queue\Adapter\AbstractMessage</code></a></p>
 <h3 id="method-summary_30">Method Summary<a class="headerlink" href="#method-summary_30" title="Permanent link">&para;</a></h3>
 <div class="api-list">
@@ -12495,7 +12504,7 @@ keep just the constructor that captures their context and poll interval.</p>
 <li><strong><code>Phalcon\Queue\Adapter\Traits\SubscriptionConsumerTrait</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Consumer</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Queue\Consumer</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code></p>
 <p class="api-used-by"><strong>Used by</strong> <a href="#queueadapterabstractsubscriptionconsumer"><code>Phalcon\Queue\Adapter\AbstractSubscriptionConsumer</code></a></p>
 <h3 id="method-summary_31">Method Summary<a class="headerlink" href="#method-summary_31" title="Permanent link">&para;</a></h3>
 <div class="api-list">
@@ -12593,7 +12602,7 @@ FactoryDefault.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cli\Dispatcher</code> · <code>Phalcon\Cli\Task</code> · <code>Phalcon\Queue\Consumer\QueueConsumer</code> · <code>Phalcon\Queue\Consumer\Worker</code> · <code>Phalcon\Queue\Consumer\WorkerOptions</code> · <code>Phalcon\Queue\QueueFactory</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Cli\Dispatcher</code> · <code>Phalcon\Cli\Task</code> · <code>Phalcon\Config\Config</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Queue\Processor</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Queue\Consumer\QueueConsumer</code> · <code>Phalcon\Queue\Consumer\Worker</code> · <code>Phalcon\Queue\Consumer\WorkerOptions</code> · <code>Phalcon\Queue\QueueFactory</code></p>
 <h3 id="method-summary_32">Method Summary<a class="headerlink" href="#method-summary_32" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queuecliconsumertask-mainaction">
@@ -12800,7 +12809,7 @@ stop signal through <code>stop()</code> / <code>isStopRequested()</code>.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array&lt;string, BoundProcessor&gt;</code>
 <code class="sig"><span class="sv">$bindings</span><span class="sm"> = []</span></code>
 <span class="desc">Bound processors keyed by queue name.</span>
 </div>
@@ -13298,10 +13307,13 @@ implements it, so callers can catch all queue errors with a single type.</p>
 Phalcon\Cache\CacheFactory.</p>
 <div class="api-tree">
 <ul>
+<li><a href="../phalcon_factory/#factoryabstractconfigfactory"><code>Phalcon\Factory\AbstractConfigFactory</code></a><ul>
 <li><strong><code>Phalcon\Queue\QueueFactory</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Queue\Exceptions\Exception</code> · <code>Phalcon\Support\Traits\ConfigTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Queue\Context</code> · <code>Phalcon\Contracts\Queue\QueueTypes</code> · <code>Phalcon\Factory\AbstractConfigFactory</code> · <code>Phalcon\Queue\Exceptions\Exception</code></p>
 <h3 id="method-summary_45">Method Summary<a class="headerlink" href="#method-summary_45" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#queuequeuefactory-__construct">
@@ -13312,7 +13324,7 @@ Phalcon\Cache\CacheFactory.</p>
 <a class="api-item" href="#queuequeuefactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">ContextInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Builds a Context from a config array/object.</span>
 </a>
 <a class="api-item" href="#queuequeuefactory-newinstance">
@@ -13325,6 +13337,7 @@ Phalcon\Cache\CacheFactory.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+<span class="desc">Returns the exception class for the factory</span>
 </a>
 </div>
 
@@ -13346,7 +13359,7 @@ Phalcon\Cache\CacheFactory.</p>
 <p>A default AdapterFactory is created when none is supplied, so the
 factory is usable straight from the DI container.</p>
 <h4 id="queuequeuefactory-load"><code>load()</code><a class="headerlink" href="#queuequeuefactory-load" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-183-1" name="__codelineno-183-1" href="#__codelineno-183-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">ConfigInterface</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ContextInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-183-1" name="__codelineno-183-1" href="#__codelineno-183-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ContextInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Builds a Context from a config array/object.</p>
 <h4 id="queuequeuefactory-newinstance"><code>newInstance()</code><a class="headerlink" href="#queuequeuefactory-newinstance" title="Permanent link">&para;</a></h4>
@@ -13361,6 +13374,7 @@ factory is usable straight from the DI container.</p>
 <h4 id="queuequeuefactory-getexceptionclass"><code>getExceptionClass()</code><a class="headerlink" href="#queuequeuefactory-getexceptionclass" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-185-1" name="__codelineno-185-1" href="#__codelineno-185-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
+<p>Returns the exception class for the factory</p>
 
   
 

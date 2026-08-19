@@ -6380,7 +6380,7 @@ offering lower resource consumption and high performance.
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Grouped.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Reads multiple files (or arrays) and merges them all together.</p>
-<p>See <code>Phalcon\Config\Factory::load</code> To load Config Adapter class using 'adapter' option.</p>
+<p>See <code>Phalcon\Config\ConfigFactory::load</code> To load Config Adapter class using 'adapter' option.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">use</span> <span class="nx">Phalcon\Config\Adapter\Grouped</span><span class="p">;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Grouped</span><span class="p">(</span>
@@ -6432,7 +6432,7 @@ offering lower resource consumption and high performance.
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\Config</code> · <code>Phalcon\Config\ConfigFactory</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Config\Exception</code> · <code>Phalcon\Config\Exceptions\GroupedAdapterRequiresArray</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\Config</code> · <code>Phalcon\Config\ConfigFactory</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Config\Exceptions\GroupedAdapterRequiresArray</code> · <code>Phalcon\Contracts\Config\ConfigTypes</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#configadaptergrouped-__construct">
@@ -6456,7 +6456,7 @@ offering lower resource consumption and high performance.
 <h2 id="configadapterini">Config\Adapter\Ini<a class="headerlink" href="#configadapterini" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Ini.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Reads ini files and converts them to Phalcon\Config objects.</p>
+<p>Reads ini files and converts them to Phalcon\Config\Config objects.</p>
 <p>Given the next configuration file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[database]</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">adapter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Mysql</span>
@@ -6498,7 +6498,7 @@ second parameter as <code>INI_SCANNER_NORMAL</code> when calling the constructor
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\Config</code> · <code>Phalcon\Config\Exception</code> · <code>Phalcon\Config\Exceptions\CannotLoadConfigFile</code> · <code>Phalcon\Traits\Php\IniTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\Config</code> · <code>Phalcon\Config\Exception</code> · <code>Phalcon\Config\Exceptions\CannotLoadConfigFile</code> · <code>Phalcon\Contracts\Config\ConfigTypes</code> · <code>Phalcon\Traits\Php\IniTrait</code></p>
 <h3 id="method-summary_1">Method Summary<a class="headerlink" href="#method-summary_1" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#configadapterini-__construct">
@@ -6508,6 +6508,7 @@ second parameter as <code>INI_SCANNER_NORMAL</code> when calling the constructor
 </a>
 <a class="api-item" href="#configadapterini-cast">
 <code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">cast</span>( <span class="st">mixed</span> <span class="sv">$ini</span> )</code>
 <span class="desc">We have to cast values manually because parse_ini_file() has a poor</span>
 </a>
@@ -6537,7 +6538,7 @@ second parameter as <code>INI_SCANNER_NORMAL</code> when calling the constructor
 <div class="api-group">Protected · 3</div>
 
 <h4 id="configadapterini-cast"><code>cast()</code><a class="headerlink" href="#configadapterini-cast" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">cast</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$ini</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">cast</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$ini</span> <span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>We have to cast values manually because parse_ini_file() has a poor
 implementation.</p>
@@ -6559,7 +6560,7 @@ from their parsers and perform no casting.</p>
 <h2 id="configadapterjson">Config\Adapter\Json<a class="headerlink" href="#configadapterjson" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Json.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Reads JSON files and converts them to Phalcon\Config objects.</p>
+<p>Reads JSON files and converts them to Phalcon\Config\Config objects.</p>
 <p>Given the following configuration file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span><span class="nt">"phalcon"</span><span class="p">:{</span><span class="nt">"baseuri"</span><span class="p">:</span><span class="s2">"\/phalcon\/"</span><span class="p">},</span><span class="nt">"models"</span><span class="p">:{</span><span class="nt">"metadata"</span><span class="p">:</span><span class="s2">"memory"</span><span class="p">}}</span>
 </code></pre></div>
@@ -6582,7 +6583,7 @@ from their parsers and perform no casting.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\Config</code> · <code>Phalcon\Config\Exceptions\CannotLoadConfigFile</code> · <code>Phalcon\Support\Helper\Json\Decode</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\Config</code> · <code>Phalcon\Config\Exceptions\CannotLoadConfigFile</code> · <code>Phalcon\Contracts\Config\ConfigTypes</code> · <code>Phalcon\Support\Helper\Json\Decode</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
 <h3 id="method-summary_2">Method Summary<a class="headerlink" href="#method-summary_2" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#configadapterjson-__construct">
@@ -6602,7 +6603,7 @@ from their parsers and perform no casting.</p>
 <h2 id="configadapterphp">Config\Adapter\Php<a class="headerlink" href="#configadapterphp" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Php.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Reads php files and converts them to Phalcon\Config objects.</p>
+<p>Reads php files and converts them to Phalcon\Config\Config objects.</p>
 <p>Given the next configuration file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
@@ -6640,7 +6641,7 @@ from their parsers and perform no casting.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\Config</code> · <code>Phalcon\Config\Exceptions\CannotLoadConfigFile</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\Config</code> · <code>Phalcon\Config\Exceptions\CannotLoadConfigFile</code> · <code>Phalcon\Contracts\Config\ConfigTypes</code></p>
 <h3 id="method-summary_3">Method Summary<a class="headerlink" href="#method-summary_3" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#configadapterphp-__construct">
@@ -6660,7 +6661,7 @@ from their parsers and perform no casting.</p>
 <h2 id="configadapteryaml">Config\Adapter\Yaml<a class="headerlink" href="#configadapteryaml" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/Adapter/Yaml.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Reads YAML files and converts them to Phalcon\Config objects.</p>
+<p>Reads YAML files and converts them to Phalcon\Config\Config objects.</p>
 <p>Given the following configuration file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nt">phalcon</span><span class="p">:</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="nt">baseuri</span><span class="p">:</span><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">/phalcon/</span>
@@ -6727,7 +6728,7 @@ from their parsers and perform no casting.</p>
 configuration data within applications. It provides a nested object property
 based user interface for accessing this configuration data within application
 code.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Config</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Config\Config</span><span class="p">(</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="p">[</span>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>        <span class="s2">"database"</span> <span class="o">=&gt;</span> <span class="p">[</span>
 <a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>            <span class="s2">"adapter"</span>  <span class="o">=&gt;</span> <span class="s2">"Mysql"</span><span class="p">,</span>
@@ -6744,6 +6745,7 @@ code.</p>
 <a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>    <span class="p">]</span>
 <a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="p">);</span>
 </code></pre></div>
+<p>@extends Collection<mixed></p>
 <div class="api-tree">
 <ul>
 <li><a href="../phalcon_support/#supportcollection"><code>Phalcon\Support\Collection</code></a><ul>
@@ -6759,7 +6761,7 @@ code.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Support\Collection</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Config\Exceptions\InvalidMergeData</code> · <code>Phalcon\Contracts\Config\ConfigTypes</code> · <code>Phalcon\Support\Collection</code></p>
 <h3 id="method-summary_5">Method Summary<a class="headerlink" href="#method-summary_5" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#configconfig-getpathdelimiter">
@@ -6771,11 +6773,12 @@ code.</p>
 <a class="api-item" href="#configconfig-merge">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">merge</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$toMerge</span> )</code>
+<code class="sig"><span class="sf">merge</span>( <span class="st">mixed</span> <span class="sv">$toMerge</span> )</code>
 <span class="desc">Merges a configuration into the current one</span>
 </a>
 <a class="api-item" href="#configconfig-path">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a value from current config using a dot separated path.</span>
 </a>
@@ -6836,10 +6839,10 @@ code.</p>
 </code></pre></div>
 <p>Gets the default path delimiter</p>
 <h4 id="configconfig-merge"><code>merge()</code><a class="headerlink" href="#configconfig-merge" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">merge</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">ConfigInterface</span> <span class="nv">$toMerge</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">merge</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$toMerge</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Merges a configuration into the current one</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nv">$appConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Config</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nv">$appConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Config\Config</span><span class="p">(</span>
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="p">[</span>
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>        <span class="s2">"database"</span> <span class="o">=&gt;</span> <span class="p">[</span>
 <a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>            <span class="s2">"host"</span> <span class="o">=&gt;</span> <span class="s2">"localhost"</span><span class="p">,</span>
@@ -6854,7 +6857,7 @@ code.</p>
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="p">);</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a value from current config using a dot separated path.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">echo</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">path</span><span class="p">(</span><span class="s2">"unknown.path"</span><span class="p">,</span> <span class="s2">"default"</span><span class="p">,</span> <span class="s2">"."</span><span class="p">);</span>
@@ -6916,10 +6919,16 @@ provided it will be added to filePath</p>
 </code></pre></div>
 <div class="api-tree">
 <ul>
+<li><a href="../phalcon_factory/#factoryabstractconfigfactory"><code>Phalcon\Factory\AbstractConfigFactory</code></a><ul>
+<li><a href="../phalcon_factory/#factoryabstractfactory"><code>Phalcon\Factory\AbstractFactory</code></a><ul>
 <li><strong><code>Phalcon\Config\ConfigFactory</code></strong></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Config\Adapter\Grouped</code> · <code>Phalcon\Config\Adapter\Ini</code> · <code>Phalcon\Config\Adapter\Json</code> · <code>Phalcon\Config\Adapter\Php</code> · <code>Phalcon\Config\Adapter\Yaml</code> · <code>Phalcon\Config\Exceptions\MissingConfigOption</code> · <code>Phalcon\Config\Exceptions\MissingFileExtension</code> · <code>Phalcon\Traits\Factory\FactoryTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Config\Adapter\Grouped</code> · <code>Phalcon\Config\Adapter\Ini</code> · <code>Phalcon\Config\Adapter\Json</code> · <code>Phalcon\Config\Adapter\Php</code> · <code>Phalcon\Config\Adapter\Yaml</code> · <code>Phalcon\Config\Exceptions\ConfigNotArrayOrObject</code> · <code>Phalcon\Config\Exceptions\MissingConfigOption</code> · <code>Phalcon\Config\Exceptions\MissingFileExtension</code> · <code>Phalcon\Contracts\Config\ConfigTypes</code> · <code>Phalcon\Factory\AbstractFactory</code></p>
 <h3 id="method-summary_6">Method Summary<a class="headerlink" href="#method-summary_6" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#configconfigfactory-__construct">
@@ -6930,13 +6939,13 @@ provided it will be added to filePath</p>
 <a class="api-item" href="#configconfigfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|Config|string</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Load a config to create a new instance</span>
 </a>
 <a class="api-item" href="#configconfigfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fileName</span>,</span><span class="prm"><span class="st">array|int|string|null</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fileName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a new Config instance</span>
 </a>
 <a class="api-item" href="#configconfigfactory-getadapteraliases">
@@ -6965,7 +6974,7 @@ provided it will be added to filePath</p>
 <a class="api-item" href="#configconfigfactory-parseconfig">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">parseConfig</span>( <span class="st">array|ConfigInterface|string</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">parseConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 </a>
 </div>
 
@@ -6977,14 +6986,14 @@ provided it will be added to filePath</p>
 </code></pre></div>
 <p>ConfigFactory constructor.</p>
 <h4 id="configconfigfactory-load"><code>load()</code><a class="headerlink" href="#configconfigfactory-load" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">Config</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Load a config to create a new instance</p>
 <h4 id="configconfigfactory-newinstance"><code>newInstance()</code><a class="headerlink" href="#configconfigfactory-newinstance" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">newInstance</span><span class="p">(</span>
 <a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="nx">string</span> <span class="nv">$fileName</span><span class="p">,</span>
-<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">int</span><span class="o">|</span><span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$params</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>    <span class="nx">mixed</span> <span class="nv">$params</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a new Config instance</p>
@@ -7009,13 +7018,14 @@ parameter-forwarding knowledge used by <code>load()</code> and <code>newInstance
 </code></pre></div>
 <p>Returns the available adapters</p>
 <h4 id="configconfigfactory-parseconfig"><code>parseConfig()</code><a class="headerlink" href="#configconfigfactory-parseconfig" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">parseConfig</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">ConfigInterface</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">parseConfig</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="configconfiginterface">Config\ConfigInterface<a class="headerlink" href="#configconfiginterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Config/ConfigInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Phalcon\Config\ConfigInterface</p>
-<p>Interface for Phalcon\Config class</p>
+<p>Interface for Phalcon\Config\Config class</p>
+<p>@extends CollectionInterface<mixed></p>
 <div class="api-tree">
 <ul>
 <li><code>\ArrayAccess</code><ul>
@@ -7030,7 +7040,7 @@ parameter-forwarding knowledge used by <code>load()</code> and <code>newInstance
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Support\Collection\CollectionInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Config\ConfigTypes</code> · <code>Phalcon\Support\Collection\CollectionInterface</code></p>
 <h3 id="method-summary_7">Method Summary<a class="headerlink" href="#method-summary_7" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#configconfiginterface-getpathdelimiter">
@@ -7041,10 +7051,11 @@ parameter-forwarding knowledge used by <code>load()</code> and <code>newInstance
 <a class="api-item" href="#configconfiginterface-merge">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig"><span class="sf">merge</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$toMerge</span> )</code>
+<code class="sig"><span class="sf">merge</span>( <span class="st">mixed</span> <span class="sv">$toMerge</span> )</code>
 </a>
 <a class="api-item" href="#configconfiginterface-path">
 <code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#configconfiginterface-setpathdelimiter">
@@ -7061,14 +7072,14 @@ parameter-forwarding knowledge used by <code>load()</code> and <code>newInstance
 <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPathDelimiter</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="configconfiginterface-merge"><code>merge()</code><a class="headerlink" href="#configconfiginterface-merge" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">merge</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">ConfigInterface</span> <span class="nv">$toMerge</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">merge</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$toMerge</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="configconfiginterface-path"><code>path()</code><a class="headerlink" href="#configconfiginterface-path" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">path</span><span class="p">(</span>
 <a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
 <a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="p">);</span>
+<a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="configconfiginterface-setpathdelimiter"><code>setPathDelimiter()</code><a class="headerlink" href="#configconfiginterface-setpathdelimiter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setPathDelimiter</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$delimiter</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConfigInterface</span><span class="p">;</span>

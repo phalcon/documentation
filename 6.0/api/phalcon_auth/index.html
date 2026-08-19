@@ -9409,6 +9409,17 @@ offering lower resource consumption and high performance.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#authmanagerfactory-getexceptionclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getExceptionClass()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -9633,7 +9644,7 @@ dispatches in the same request until it is replaced.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Exceptions\AccessDenied</code> · <code>Phalcon\Contracts\Auth\Access\Access</code> · <code>Phalcon\Contracts\Auth\Manager</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Exceptions\AccessDenied</code> · <code>Phalcon\Contracts\Auth\Access\Access</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\Manager</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authabstractauthdispatcherlistener-__construct">
@@ -9701,7 +9712,7 @@ path works without a default guard.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Auth\Access\Access</code> · <code>Phalcon\Contracts\Auth\Guard\Guard</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Auth\Access\Access</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\Guard\Guard</code></p>
 <h3 id="method-summary_1">Method Summary<a class="headerlink" href="#method-summary_1" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authaccessabstractaccess-getexceptactions">
@@ -9875,7 +9886,7 @@ other user is rejected with an exception.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Adapter\AdapterInterface</code> · <code>Phalcon\Acl\RoleAwareInterface</code> · <code>Phalcon\Auth\Exception</code> · <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> · <code>Phalcon\Auth\Exceptions\MissingHandlerContext</code> · <code>Phalcon\Contracts\Auth\Access\Access</code> · <code>Phalcon\Contracts\Auth\Guard\Guard</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Adapter\AdapterInterface</code> · <code>Phalcon\Acl\RoleAwareInterface</code> · <code>Phalcon\Auth\Exception</code> · <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> · <code>Phalcon\Auth\Exceptions\MissingHandlerContext</code> · <code>Phalcon\Contracts\Auth\Access\Access</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\Guard\Guard</code></p>
 <h3 id="method-summary_3">Method Summary<a class="headerlink" href="#method-summary_3" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authaccessacl-__construct">
@@ -10012,7 +10023,7 @@ satisfy the abstract.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\Adapter\AdapterConfig</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Encryption\Security\Security</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\Adapter\AdapterConfig</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Encryption\Security\Security</code></p>
 <h3 id="method-summary_6">Method Summary<a class="headerlink" href="#method-summary_6" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authadapterabstractadapter-__construct">
@@ -10125,7 +10136,7 @@ guard, and a default linear retrieveById - is shared here.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\AuthUser</code> · <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> · <code>Phalcon\Contracts\Auth\Adapter\AdapterConfig</code> · <code>Phalcon\Contracts\Auth\AuthUser</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\AuthUser</code> · <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> · <code>Phalcon\Contracts\Auth\Adapter\AdapterConfig</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\AuthUser</code></p>
 <h3 id="method-summary_7">Method Summary<a class="headerlink" href="#method-summary_7" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authadapterabstractarrayadapter-retrievebycredentials">
@@ -10295,6 +10306,7 @@ to be used here.</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Auth\AuthTypes</code></p>
 <h3 id="method-summary_10">Method Summary<a class="headerlink" href="#method-summary_10" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authadapterconfigmemoryadapterconfig-__construct">
@@ -10479,7 +10491,7 @@ to be used here.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Adapter\Config\MemoryAdapterConfig</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Encryption\Security\Security</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Adapter\Config\MemoryAdapterConfig</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Encryption\Security\Security</code></p>
 <h3 id="method-summary_14">Method Summary<a class="headerlink" href="#method-summary_14" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authadaptermemory-__construct">
@@ -10541,7 +10553,7 @@ to be used here.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Adapter\Config\ModelAdapterConfig</code> · <code>Phalcon\Auth\Exception</code> · <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Contracts\Auth\Adapter\RememberAdapter</code> · <code>Phalcon\Contracts\Auth\AuthRemember</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Auth\RememberToken</code> · <code>Phalcon\Contracts\Encryption\Security\Security</code> · <code>Phalcon\Mvc\ModelInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Adapter\Config\ModelAdapterConfig</code> · <code>Phalcon\Auth\Exception</code> · <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Contracts\Auth\Adapter\RememberAdapter</code> · <code>Phalcon\Contracts\Auth\AuthRemember</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Auth\RememberToken</code> · <code>Phalcon\Contracts\Encryption\Security\Security</code> · <code>Phalcon\Contracts\Mvc\MvcTypes</code> · <code>Phalcon\Mvc\ModelInterface</code></p>
 <h3 id="method-summary_15">Method Summary<a class="headerlink" href="#method-summary_15" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authadaptermodel-__construct">
@@ -10630,7 +10642,7 @@ to be used here.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>Phalcon\Auth\Adapter\Config\StreamAdapterConfig</code> · <code>Phalcon\Auth\Exception</code> · <code>Phalcon\Auth\Exceptions\FileCannotRead</code> · <code>Phalcon\Auth\Exceptions\FileDoesNotContainJson</code> · <code>Phalcon\Auth\Exceptions\FileDoesNotExist</code> · <code>Phalcon\Auth\Exceptions\FileNotValidJson</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Contracts\Encryption\Security\Security</code> · <code>Phalcon\Support\Helper\Json\Decode</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>Phalcon\Auth\Adapter\Config\StreamAdapterConfig</code> · <code>Phalcon\Auth\Exception</code> · <code>Phalcon\Auth\Exceptions\FileCannotRead</code> · <code>Phalcon\Auth\Exceptions\FileDoesNotContainJson</code> · <code>Phalcon\Auth\Exceptions\FileDoesNotExist</code> · <code>Phalcon\Auth\Exceptions\FileNotValidJson</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Encryption\Security\Security</code> · <code>Phalcon\Support\Helper\Json\Decode</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
 <h3 id="method-summary_16">Method Summary<a class="headerlink" href="#method-summary_16" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authadapterstream-__construct">
@@ -11412,7 +11424,7 @@ in one place.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Auth\Guard\Guard</code> · <code>Phalcon\Contracts\Auth\Guard\GuardConfig</code> · <code>Phalcon\Events\Traits\EventsAwareTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Auth\Guard\Guard</code> · <code>Phalcon\Contracts\Auth\Guard\GuardConfig</code> · <code>Phalcon\Events\Traits\EventsAwareTrait</code></p>
 <h3 id="method-summary_37">Method Summary<a class="headerlink" href="#method-summary_37" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authguardabstractguard-__construct">
@@ -11743,7 +11755,7 @@ Phalcon\Di\Di, register the guards in it before resolution.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Exception</code> · <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> · <code>Phalcon\Auth\Guard\Config\SessionGuardConfig</code> · <code>Phalcon\Auth\Internal\ContainerResolver</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\Adapter\RememberAdapter</code> · <code>Phalcon\Contracts\Auth\AuthRemember</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Auth\Guard\BasicAuth</code> · <code>Phalcon\Contracts\Auth\Guard\GuardStateful</code> · <code>Phalcon\Contracts\Auth\RememberToken</code> · <code>Phalcon\Http\RequestInterface</code> · <code>Phalcon\Http\Response\CookiesInterface</code> · <code>Phalcon\Session\ManagerInterface</code> · <code>Phalcon\Support\Helper\Json\Encode</code> · <code>Phalcon\Time\Clock\ClockInterface</code> · <code>Phalcon\Time\Clock\SystemClock</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Exception</code> · <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> · <code>Phalcon\Auth\Guard\Config\SessionGuardConfig</code> · <code>Phalcon\Auth\Internal\ContainerResolver</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\Adapter\RememberAdapter</code> · <code>Phalcon\Contracts\Auth\AuthRemember</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Auth\Guard\BasicAuth</code> · <code>Phalcon\Contracts\Auth\Guard\GuardStateful</code> · <code>Phalcon\Contracts\Auth\RememberToken</code> · <code>Phalcon\Http\RequestInterface</code> · <code>Phalcon\Http\Response\CookiesInterface</code> · <code>Phalcon\Session\ManagerInterface</code> · <code>Phalcon\Support\Helper\Json\Encode</code> · <code>Phalcon\Time\Clock\ClockInterface</code> · <code>Phalcon\Time\Clock\SystemClock</code></p>
 <h3 id="method-summary_41">Method Summary<a class="headerlink" href="#method-summary_41" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authguardsession-__construct">
@@ -11982,7 +11994,7 @@ Phalcon\Di\Di, register the guards in it before resolution.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Guard\Config\TokenGuardConfig</code> · <code>Phalcon\Auth\Internal\ContainerResolver</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Http\RequestInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Guard\Config\TokenGuardConfig</code> · <code>Phalcon\Auth\Internal\ContainerResolver</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Http\RequestInterface</code></p>
 <h3 id="method-summary_42">Method Summary<a class="headerlink" href="#method-summary_42" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authguardtoken-__construct">
@@ -12063,7 +12075,7 @@ Phalcon\Di\Di, register the guards in it before resolution.</p>
 <li><strong><code>Phalcon\Auth\Guard\UserRemember</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>Phalcon\Support\Helper\Json\Decode</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>InvalidArgumentException</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Support\Helper\Json\Decode</code></p>
 <h3 id="method-summary_43">Method Summary<a class="headerlink" href="#method-summary_43" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authguarduserremember-__construct">
@@ -12240,7 +12252,7 @@ implementations. Not part of the public API.</p>
 <li><strong><code>Phalcon\Auth\Internal\Options</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Exception</code> · <code>Phalcon\Auth\Exceptions\OptionRequiresArray</code> · <code>Phalcon\Auth\Exceptions\OptionRequiresString</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Exception</code> · <code>Phalcon\Auth\Exceptions\OptionRequiresArray</code> · <code>Phalcon\Auth\Exceptions\OptionRequiresString</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code></p>
 <h3 id="method-summary_45">Method Summary<a class="headerlink" href="#method-summary_45" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authinternaloptions-arrayoption">
@@ -12307,7 +12319,7 @@ relevant capability interface (GuardStateful, BasicAuth, etc.).</p>
 <li><strong><code>Phalcon\Auth\Manager</code></strong> - implements <a href="../phalcon_contracts/#contractsauthmanager"><code>Phalcon\Contracts\Auth\Manager</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Access\AccessLocator</code> · <code>Phalcon\Auth\Exceptions\AccessNotRegistered</code> · <code>Phalcon\Auth\Exceptions\ActiveAccessRequired</code> · <code>Phalcon\Auth\Exceptions\DefaultGuardNotRegistered</code> · <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> · <code>Phalcon\Auth\Exceptions\GuardNotDefined</code> · <code>Phalcon\Contracts\Auth\Access\Access</code> · <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Auth\Guard\Guard</code> · <code>Phalcon\Contracts\Auth\Guard\GuardStateful</code> · <code>Phalcon\Contracts\Auth\Manager</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Access\AccessLocator</code> · <code>Phalcon\Auth\Exceptions\AccessNotRegistered</code> · <code>Phalcon\Auth\Exceptions\ActiveAccessRequired</code> · <code>Phalcon\Auth\Exceptions\DefaultGuardNotRegistered</code> · <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> · <code>Phalcon\Auth\Exceptions\GuardNotDefined</code> · <code>Phalcon\Contracts\Auth\Access\Access</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\AuthUser</code> · <code>Phalcon\Contracts\Auth\Guard\Guard</code> · <code>Phalcon\Contracts\Auth\Guard\GuardStateful</code> · <code>Phalcon\Contracts\Auth\Manager</code></p>
 <h3 id="method-summary_46">Method Summary<a class="headerlink" href="#method-summary_46" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authmanager-__construct">
@@ -12542,7 +12554,7 @@ not separately constructed copies.</p>
 <li><strong><code>Phalcon\Auth\ManagerFactory</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Access\AccessLocator</code> · <code>Phalcon\Auth\Adapter\AdapterLocator</code> · <code>Phalcon\Auth\Exceptions\UnknownAdapter</code> · <code>Phalcon\Auth\Exceptions\UnknownGuard</code> · <code>Phalcon\Auth\Guard\GuardLocator</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Auth\Access\Access</code> · <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\Guard\Guard</code> · <code>Phalcon\Contracts\Container\Service\Collection</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Encryption\Security</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Auth\Access\AccessLocator</code> · <code>Phalcon\Auth\Adapter\AdapterLocator</code> · <code>Phalcon\Auth\Exceptions\UnknownAdapter</code> · <code>Phalcon\Auth\Exceptions\UnknownGuard</code> · <code>Phalcon\Auth\Guard\GuardLocator</code> · <code>Phalcon\Auth\Internal\Options</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Auth\Adapter\Adapter</code> · <code>Phalcon\Contracts\Auth\AuthTypes</code> · <code>Phalcon\Contracts\Auth\Guard\Guard</code> · <code>Phalcon\Contracts\Container\Service\Collection</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Encryption\Security</code> · <code>Phalcon\Support\Traits\ConfigTrait</code> · <code>Throwable</code></p>
 <h3 id="method-summary_47">Method Summary<a class="headerlink" href="#method-summary_47" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#authmanagerfactory-__construct">
@@ -12552,7 +12564,7 @@ not separately constructed copies.</p>
 <a class="api-item" href="#authmanagerfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">Manager</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">array|ConfigInterface</span> <span class="sv">$config</span> )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 </a>
 <a class="api-item" href="#authmanagerfactory-buildadapter">
 <code class="vis vis-protected">protected</code>
@@ -12563,6 +12575,11 @@ not separately constructed copies.</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">Guard</code>
 <code class="sig"><span class="sf">buildGuard</span>(<span class="prm"><span class="st">GuardLocator</span> <span class="sv">$locator</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
+</a>
+<a class="api-item" href="#authmanagerfactory-getexceptionclass">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 </div>
 
@@ -12608,9 +12625,9 @@ not separately constructed copies.</p>
 <a id="__codelineno-161-7" name="__codelineno-161-7" href="#__codelineno-161-7"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="authmanagerfactory-load"><code>load()</code><a class="headerlink" href="#authmanagerfactory-load" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">ConfigInterface</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Manager</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Manager</span><span class="p">;</span>
 </code></pre></div>
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 3</div>
 
 <h4 id="authmanagerfactory-buildadapter"><code>buildAdapter()</code><a class="headerlink" href="#authmanagerfactory-buildadapter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-163-1" name="__codelineno-163-1" href="#__codelineno-163-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">buildAdapter</span><span class="p">(</span>
@@ -12625,6 +12642,9 @@ not separately constructed copies.</p>
 <a id="__codelineno-164-4" name="__codelineno-164-4" href="#__codelineno-164-4"></a>    <span class="nx">Adapter</span> <span class="nv">$adapter</span><span class="p">,</span>
 <a id="__codelineno-164-5" name="__codelineno-164-5" href="#__codelineno-164-5"></a>    <span class="k">array</span> <span class="nv">$options</span>
 <a id="__codelineno-164-6" name="__codelineno-164-6" href="#__codelineno-164-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">Guard</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="authmanagerfactory-getexceptionclass"><code>getExceptionClass()</code><a class="headerlink" href="#authmanagerfactory-getexceptionclass" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-165-1" name="__codelineno-165-1" href="#__codelineno-165-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="authmicroauthmicrolistener">Auth\Micro\AuthMicroListener<a class="headerlink" href="#authmicroauthmicrolistener" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -12678,21 +12698,21 @@ forward mechanism.</p>
 <div class="api-group">Public · 2</div>
 
 <h4 id="authmicroauthmicrolistener-__construct"><code>__construct()</code><a class="headerlink" href="#authmicroauthmicrolistener-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-165-1" name="__codelineno-165-1" href="#__codelineno-165-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-165-2" name="__codelineno-165-2" href="#__codelineno-165-2"></a>    <span class="nx">Manager</span> <span class="nv">$manager</span><span class="p">,</span>
-<a id="__codelineno-165-3" name="__codelineno-165-3" href="#__codelineno-165-3"></a>    <span class="nx">string</span> <span class="nv">$componentName</span> <span class="o">=</span> <span class="s2">"Micro"</span>
-<a id="__codelineno-165-4" name="__codelineno-165-4" href="#__codelineno-165-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-166-2" name="__codelineno-166-2" href="#__codelineno-166-2"></a>    <span class="nx">Manager</span> <span class="nv">$manager</span><span class="p">,</span>
+<a id="__codelineno-166-3" name="__codelineno-166-3" href="#__codelineno-166-3"></a>    <span class="nx">string</span> <span class="nv">$componentName</span> <span class="o">=</span> <span class="s2">"Micro"</span>
+<a id="__codelineno-166-4" name="__codelineno-166-4" href="#__codelineno-166-4"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="authmicroauthmicrolistener-beforeexecuteroute"><code>beforeExecuteRoute()</code><a class="headerlink" href="#authmicroauthmicrolistener-beforeexecuteroute" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span>
-<a id="__codelineno-166-2" name="__codelineno-166-2" href="#__codelineno-166-2"></a>    <span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span>
-<a id="__codelineno-166-3" name="__codelineno-166-3" href="#__codelineno-166-3"></a>    <span class="nx">Micro</span> <span class="nv">$application</span>
-<a id="__codelineno-166-4" name="__codelineno-166-4" href="#__codelineno-166-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span>
+<a id="__codelineno-167-2" name="__codelineno-167-2" href="#__codelineno-167-2"></a>    <span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span>
+<a id="__codelineno-167-3" name="__codelineno-167-3" href="#__codelineno-167-3"></a>    <span class="nx">Micro</span> <span class="nv">$application</span>
+<a id="__codelineno-167-4" name="__codelineno-167-4" href="#__codelineno-167-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <div class="api-group">Protected · 1</div>
 
 <h4 id="authmicroauthmicrolistener-getactiontype"><code>getActionType()</code><a class="headerlink" href="#authmicroauthmicrolistener-getactiontype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getActionType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-168-1" name="__codelineno-168-1" href="#__codelineno-168-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getActionType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="authmvcauthdispatcherlistener">Auth\Mvc\AuthDispatcherListener<a class="headerlink" href="#authmvcauthdispatcherlistener" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -12728,15 +12748,15 @@ dispatch. Attach to the events manager:</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="authmvcauthdispatcherlistener-beforeexecuteroute"><code>beforeExecuteRoute()</code><a class="headerlink" href="#authmvcauthdispatcherlistener-beforeexecuteroute" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-168-1" name="__codelineno-168-1" href="#__codelineno-168-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span>
-<a id="__codelineno-168-2" name="__codelineno-168-2" href="#__codelineno-168-2"></a>    <span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span>
-<a id="__codelineno-168-3" name="__codelineno-168-3" href="#__codelineno-168-3"></a>    <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span>
-<a id="__codelineno-168-4" name="__codelineno-168-4" href="#__codelineno-168-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span>
+<a id="__codelineno-169-2" name="__codelineno-169-2" href="#__codelineno-169-2"></a>    <span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span>
+<a id="__codelineno-169-3" name="__codelineno-169-3" href="#__codelineno-169-3"></a>    <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span>
+<a id="__codelineno-169-4" name="__codelineno-169-4" href="#__codelineno-169-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <div class="api-group">Protected · 1</div>
 
 <h4 id="authmvcauthdispatcherlistener-getactiontype"><code>getActionType()</code><a class="headerlink" href="#authmvcauthdispatcherlistener-getactiontype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getActionType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-170-1" name="__codelineno-170-1" href="#__codelineno-170-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getActionType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 
   

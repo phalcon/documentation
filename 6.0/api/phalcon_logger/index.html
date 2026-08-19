@@ -6677,6 +6677,17 @@ offering lower resource consumption and high performance.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#loggerformatterabstractformatter-stringifycontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>stringifyContext()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -7288,9 +7299,8 @@ is available as well as an adapter one. Adapters can be created easily using
 the built in AdapterFactory. A LoggerFactory is also available that allows
 developers to create new instances of the Logger or load them from config
 files (see Phalcon\Config\Config object).</p>
-<p>@package Phalcon\Logger</p>
 <p>@property AdapterInterface[] $adapters
-@property array              $excluded
+@property array<array-key, bool> $excluded
 @property int                $logLevel
 @property string             $name
 @property DateTimeZone       $timezone</p>
@@ -7302,7 +7312,7 @@ files (see Phalcon\Config\Config object).</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>DateTimeZone</code> · <code>Exception</code> · <code>Phalcon\Logger\Adapter\AdapterInterface</code> · <code>Phalcon\Logger\Exceptions\AdapterNotFound</code> · <code>Phalcon\Logger\Exceptions\NoAdaptersConfigured</code> · <code>Phalcon\Time\Clock\ClockInterface</code> · <code>Phalcon\Time\Clock\SystemClock</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>DateTimeZone</code> · <code>Exception</code> · <code>Phalcon\Contracts\Logger\LoggerTypes</code> · <code>Phalcon\Logger\Adapter\AdapterInterface</code> · <code>Phalcon\Logger\Exceptions\AdapterNotFound</code> · <code>Phalcon\Logger\Exceptions\NoAdaptersConfigured</code> · <code>Phalcon\Time\Clock\ClockInterface</code> · <code>Phalcon\Time\Clock\SystemClock</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggerabstractlogger-__construct">
@@ -7406,7 +7416,7 @@ files (see Phalcon\Config\Config object).</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">AdapterInterface[]</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$adapters</span><span class="sm"> = []</span></code>
 <span class="desc">The adapter stack</span>
 </div>
@@ -7426,7 +7436,6 @@ files (see Phalcon\Config\Config object).</p>
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$logLevel</span><span class="sm"> = Enum::CUSTOM</span></code>
-<span class="desc">Minimum log level for the logger</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -7530,10 +7539,16 @@ between DEBUG and TRACE in the ordering, so the threshold becomes
 <p>Factory used to create adapters used for Logging</p>
 <div class="api-tree">
 <ul>
+<li><a href="../phalcon_factory/#factoryabstractconfigfactory"><code>Phalcon\Factory\AbstractConfigFactory</code></a><ul>
+<li><a href="../phalcon_factory/#factoryabstractfactory"><code>Phalcon\Factory\AbstractFactory</code></a><ul>
 <li><strong><code>Phalcon\Logger\AdapterFactory</code></strong></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Logger\Adapter\AdapterInterface</code> · <code>Phalcon\Logger\Adapter\Noop</code> · <code>Phalcon\Logger\Adapter\Stream</code> · <code>Phalcon\Logger\Adapter\Syslog</code> · <code>Phalcon\Traits\Factory\FactoryTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Contracts\Logger\LoggerTypes</code> · <code>Phalcon\Factory\AbstractFactory</code> · <code>Phalcon\Logger\Adapter\AdapterInterface</code> · <code>Phalcon\Logger\Adapter\Noop</code> · <code>Phalcon\Logger\Adapter\Stream</code> · <code>Phalcon\Logger\Adapter\Syslog</code> · <code>Throwable</code></p>
 <h3 id="method-summary_1">Method Summary<a class="headerlink" href="#method-summary_1" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggeradapterfactory-__construct">
@@ -7588,11 +7603,6 @@ between DEBUG and TRACE in the ordering, so the threshold becomes
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Adapter/AbstractAdapter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Class AbstractAdapter</p>
-<p>@property string             $defaultFormatter
-@property FormatterInterface $formatter
-@property bool               $inTransaction
-@property array              $queue
-@property int                $queueLimit</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Logger\Adapter\AbstractAdapter</code></strong> - implements <a href="#loggeradapteradapterinterface"><code>Phalcon\Logger\Adapter\AdapterInterface</code></a><ul>
@@ -7603,7 +7613,7 @@ between DEBUG and TRACE in the ordering, so the threshold becomes
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Logger\Exception</code> · <code>Phalcon\Logger\Exceptions\DeserializationFailed</code> · <code>Phalcon\Logger\Exceptions\SerializationFailed</code> · <code>Phalcon\Logger\Exceptions\TransactionAlreadyActive</code> · <code>Phalcon\Logger\Exceptions\TransactionNotActive</code> · <code>Phalcon\Logger\Formatter\FormatterInterface</code> · <code>Phalcon\Logger\Formatter\Line</code> · <code>Phalcon\Logger\Item</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Logger\LoggerTypes</code> · <code>Phalcon\Logger\Exceptions\DeserializationFailed</code> · <code>Phalcon\Logger\Exceptions\SerializationFailed</code> · <code>Phalcon\Logger\Exceptions\TransactionAlreadyActive</code> · <code>Phalcon\Logger\Exceptions\TransactionNotActive</code> · <code>Phalcon\Logger\Formatter\FormatterInterface</code> · <code>Phalcon\Logger\Formatter\Line</code> · <code>Phalcon\Logger\Item</code></p>
 <h3 id="method-summary_2">Method Summary<a class="headerlink" href="#method-summary_2" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggeradapterabstractadapter-__destruct">
@@ -7615,25 +7625,23 @@ between DEBUG and TRACE in the ordering, so the threshold becomes
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">__serialize</span>()</code>
-<span class="desc">Prevent serialization</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-__unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
-<span class="desc">Prevent unserialization</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-add">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">add</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
-<span class="desc">Add a message to the queue</span>
+<span class="desc">Adds a message to the queue</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-begin">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">begin</span>()</code>
-<span class="desc">Start a transaction</span>
+<span class="desc">Starts a transaction</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-close">
 <code class="vis vis-public">public</code>
@@ -7645,7 +7653,7 @@ between DEBUG and TRACE in the ordering, so the threshold becomes
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">commit</span>()</code>
-<span class="desc">Commit the internal transaction</span>
+<span class="desc">Commits the internal transaction</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-getformatter">
 <code class="vis vis-public">public</code>
@@ -7701,7 +7709,7 @@ between DEBUG and TRACE in the ordering, so the threshold becomes
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
+<code class="ret">class-string&lt;FormatterInterface&gt;</code>
 <code class="sig"><span class="sv">$defaultFormatter</span><span class="sm"> = Line::class</span></code>
 <span class="desc">Name of the default formatter class</span>
 </div>
@@ -7747,19 +7755,17 @@ than throwing.</p>
 <h4 id="loggeradapterabstractadapter-__serialize"><code>__serialize()</code><a class="headerlink" href="#loggeradapterabstractadapter-__serialize" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">__serialize</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
-<p>Prevent serialization</p>
 <h4 id="loggeradapterabstractadapter-__unserialize"><code>__unserialize()</code><a class="headerlink" href="#loggeradapterabstractadapter-__unserialize" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">__unserialize</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$data</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
-<p>Prevent unserialization</p>
 <h4 id="loggeradapterabstractadapter-add"><code>add()</code><a class="headerlink" href="#loggeradapterabstractadapter-add" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span> <span class="nx">Item</span> <span class="nv">$item</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
-<p>Add a message to the queue</p>
+<p>Adds a message to the queue</p>
 <h4 id="loggeradapterabstractadapter-begin"><code>begin()</code><a class="headerlink" href="#loggeradapterabstractadapter-begin" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">begin</span><span class="p">()</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
-<p>Start a transaction</p>
+<p>Starts a transaction</p>
 <h4 id="loggeradapterabstractadapter-close"><code>close()</code><a class="headerlink" href="#loggeradapterabstractadapter-close" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">close</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
@@ -7767,7 +7773,7 @@ than throwing.</p>
 <h4 id="loggeradapterabstractadapter-commit"><code>commit()</code><a class="headerlink" href="#loggeradapterabstractadapter-commit" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">commit</span><span class="p">()</span><span class="o">:</span> <span class="nx">AdapterInterface</span><span class="p">;</span>
 </code></pre></div>
-<p>Commit the internal transaction</p>
+<p>Commits the internal transaction</p>
 <h4 id="loggeradapterabstractadapter-getformatter"><code>getFormatter()</code><a class="headerlink" href="#loggeradapterabstractadapter-getformatter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFormatter</span><span class="p">()</span><span class="o">:</span> <span class="nx">FormatterInterface</span><span class="p">;</span>
 </code></pre></div>
@@ -7961,7 +7967,7 @@ unbounded behavior).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Logger\Adapter\Stream</span><span class="p">(</span><span class="s1">'app/logs/test.log'</span><span class="p">);</span>
 <a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>
 <a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s1">'This is a message'</span><span class="p">);</span>
-<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">\Phalcon\Logger</span><span class="o">::</span><span class="na">ERROR</span><span class="p">,</span> <span class="s1">'This is an error'</span><span class="p">);</span>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">\Phalcon\Logger\Enum</span><span class="o">::</span><span class="na">ERROR</span><span class="p">,</span> <span class="s1">'This is an error'</span><span class="p">);</span>
 <a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'This is another error'</span><span class="p">);</span>
 <a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>
 <a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
@@ -7977,7 +7983,7 @@ unbounded behavior).</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Logger\Adapter\Exceptions\FileOpenFailed</code> · <code>Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode</code> · <code>Phalcon\Logger\Exception</code> · <code>Phalcon\Logger\Item</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Logger\LoggerTypes</code> · <code>Phalcon\Logger\Adapter\Exceptions\FileOpenFailed</code> · <code>Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode</code> · <code>Phalcon\Logger\Item</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
 <h3 id="method-summary_7">Method Summary<a class="headerlink" href="#method-summary_7" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggeradapterstream-__construct">
@@ -8065,7 +8071,7 @@ unbounded behavior).</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed</code> · <code>Phalcon\Logger\Enum</code> · <code>Phalcon\Logger\Item</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Logger\LoggerTypes</code> · <code>Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed</code> · <code>Phalcon\Logger\Enum</code> · <code>Phalcon\Logger\Item</code></p>
 <h3 id="method-summary_8">Method Summary<a class="headerlink" href="#method-summary_8" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggeradaptersyslog-__construct">
@@ -8145,7 +8151,6 @@ unbounded behavior).</p>
 <a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Open connection to system logger</p>
-<p>@link https://php.net/manual/en/function.openlog.php</p>
 <h2 id="loggerenum">Logger\Enum<a class="headerlink" href="#loggerenum" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Enum.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -8405,7 +8410,6 @@ setLogLevel() values.</span>
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Formatter/AbstractFormatter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Class AbstractFormatter</p>
-<p>@property string $dateFormat</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Logger\Formatter\AbstractFormatter</code></strong> - implements <a href="#loggerformatterformatterinterface"><code>Phalcon\Logger\Formatter\FormatterInterface</code></a><ul>
@@ -8415,7 +8419,7 @@ setLogLevel() values.</span>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Logger\Item</code> · <code>Phalcon\Traits\Support\Helper\Str\InterpolateTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Logger\LoggerTypes</code> · <code>Phalcon\Logger\Item</code> · <code>Phalcon\Traits\Support\Helper\Str\InterpolateTrait</code> · <code>Stringable</code></p>
 <h3 id="method-summary_15">Method Summary<a class="headerlink" href="#method-summary_15" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggerformatterabstractformatter-getdateformat">
@@ -8439,6 +8443,12 @@ setLogLevel() values.</span>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getInterpolatedMessage</span>(<span class="prm"><span class="st">Item</span> <span class="sv">$item</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span></span>)</code>
 <span class="desc">Returns the interpolated message, replacing context placeholders.</span>
+</a>
+<a class="api-item" href="#loggerformatterabstractformatter-stringifycontext">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">stringifyContext</span>( <span class="st">array</span> <span class="sv">$context</span> )</code>
+<span class="desc">Reduces the log context to the string map interpolation requires.</span>
 </a>
 </div>
 
@@ -8471,7 +8481,7 @@ setLogLevel() values.</span>
 <h4 id="loggerformatterabstractformatter-setdateformat"><code>setDateFormat()</code><a class="headerlink" href="#loggerformatterabstractformatter-setdateformat" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setDateFormat</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$format</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 3</div>
 
 <h4 id="loggerformatterabstractformatter-getformatteddate"><code>getFormattedDate()</code><a class="headerlink" href="#loggerformatterabstractformatter-getformatteddate" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getFormattedDate</span><span class="p">(</span> <span class="nx">Item</span> <span class="nv">$item</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -8484,6 +8494,16 @@ setLogLevel() values.</span>
 <a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the interpolated message, replacing context placeholders.</p>
+<h4 id="loggerformatterabstractformatter-stringifycontext"><code>stringifyContext()</code><a class="headerlink" href="#loggerformatterabstractformatter-stringifycontext" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">stringifyContext</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$context</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+</code></pre></div>
+<p>Reduces the log context to the string map interpolation requires.</p>
+<p>Log context is PSR-3 shaped, so its values are arbitrary, while
+interpolation replaces a placeholder with a string. Anything that
+cannot be expressed as one - an array, an object without
+<code>__toString()</code> - substitutes as an empty string, so a placeholder is
+never left dangling and a non-stringable value can never abort the
+formatter mid-log.</p>
 <h2 id="loggerformatterformatterinterface">Logger\Formatter\FormatterInterface<a class="headerlink" href="#loggerformatterformatterinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Formatter/FormatterInterface.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
@@ -8501,7 +8521,6 @@ setLogLevel() values.</span>
 <h2 id="loggerformatterjson">Logger\Formatter\Json<a class="headerlink" href="#loggerformatterjson" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Formatter/Json.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>Phalcon\Logger\Formatter\Json</p>
 <p>Formats messages using JSON encoding</p>
 <div class="api-tree">
 <ul>
@@ -8511,7 +8530,7 @@ setLogLevel() values.</span>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>JsonException</code> · <code>Phalcon\Logger\Item</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>JsonException</code> · <code>Phalcon\Logger\Item</code> · <code>Phalcon\Traits\Support\Helper\Json\EncodeTrait</code></p>
 <h3 id="method-summary_16">Method Summary<a class="headerlink" href="#method-summary_16" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggerformatterjson-__construct">
@@ -8531,22 +8550,21 @@ setLogLevel() values.</span>
 <div class="api-group">Public · 2</div>
 
 <h4 id="loggerformatterjson-__construct"><code>__construct()</code><a class="headerlink" href="#loggerformatterjson-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>    <span class="nx">string</span> <span class="nv">$dateFormat</span> <span class="o">=</span> <span class="s2">"c"</span><span class="p">,</span>
-<a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a>    <span class="nx">string</span> <span class="nv">$interpolatorLeft</span> <span class="o">=</span> <span class="s2">"%"</span><span class="p">,</span>
-<a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a>    <span class="nx">string</span> <span class="nv">$interpolatorRight</span> <span class="o">=</span> <span class="s2">"%"</span>
-<a id="__codelineno-59-5" name="__codelineno-59-5" href="#__codelineno-59-5"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>    <span class="nx">string</span> <span class="nv">$dateFormat</span> <span class="o">=</span> <span class="s2">"c"</span><span class="p">,</span>
+<a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>    <span class="nx">string</span> <span class="nv">$interpolatorLeft</span> <span class="o">=</span> <span class="s2">"%"</span><span class="p">,</span>
+<a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>    <span class="nx">string</span> <span class="nv">$interpolatorRight</span> <span class="o">=</span> <span class="s2">"%"</span>
+<a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a><span class="p">);</span>
 </code></pre></div>
 <p>Json constructor.</p>
 <h4 id="loggerformatterjson-format"><code>format()</code><a class="headerlink" href="#loggerformatterjson-format" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">format</span><span class="p">(</span> <span class="nx">Item</span> <span class="nv">$item</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">format</span><span class="p">(</span> <span class="nx">Item</span> <span class="nv">$item</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Applies a format to a message before sent it to the internal log</p>
 <h2 id="loggerformatterline">Logger\Formatter\Line<a class="headerlink" href="#loggerformatterline" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Formatter/Line.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Class Line</p>
-<p>@property string $format</p>
 <div class="api-tree">
 <ul>
 <li><a href="#loggerformatterabstractformatter"><code>Phalcon\Logger\Formatter\AbstractFormatter</code></a><ul>
@@ -8596,24 +8614,24 @@ setLogLevel() values.</span>
 <div class="api-group">Public · 4</div>
 
 <h4 id="loggerformatterline-__construct"><code>__construct()</code><a class="headerlink" href="#loggerformatterline-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>    <span class="nx">string</span> <span class="nv">$format</span> <span class="o">=</span> <span class="s2">"[%date%][%level%] %message%"</span><span class="p">,</span>
-<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>    <span class="nx">string</span> <span class="nv">$dateFormat</span> <span class="o">=</span> <span class="s2">"c"</span><span class="p">,</span>
-<a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a>    <span class="nx">string</span> <span class="nv">$interpolatorLeft</span> <span class="o">=</span> <span class="s2">"%"</span><span class="p">,</span>
-<a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a>    <span class="nx">string</span> <span class="nv">$interpolatorRight</span> <span class="o">=</span> <span class="s2">"%"</span>
-<a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>    <span class="nx">string</span> <span class="nv">$format</span> <span class="o">=</span> <span class="s2">"[%date%][%level%] %message%"</span><span class="p">,</span>
+<a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a>    <span class="nx">string</span> <span class="nv">$dateFormat</span> <span class="o">=</span> <span class="s2">"c"</span><span class="p">,</span>
+<a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a>    <span class="nx">string</span> <span class="nv">$interpolatorLeft</span> <span class="o">=</span> <span class="s2">"%"</span><span class="p">,</span>
+<a id="__codelineno-62-5" name="__codelineno-62-5" href="#__codelineno-62-5"></a>    <span class="nx">string</span> <span class="nv">$interpolatorRight</span> <span class="o">=</span> <span class="s2">"%"</span>
+<a id="__codelineno-62-6" name="__codelineno-62-6" href="#__codelineno-62-6"></a><span class="p">);</span>
 </code></pre></div>
 <p>Line constructor.</p>
 <h4 id="loggerformatterline-format"><code>format()</code><a class="headerlink" href="#loggerformatterline-format" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">format</span><span class="p">(</span> <span class="nx">Item</span> <span class="nv">$item</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">format</span><span class="p">(</span> <span class="nx">Item</span> <span class="nv">$item</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Applies a format to a message before sent it to the internal log</p>
 <h4 id="loggerformatterline-getformat"><code>getFormat()</code><a class="headerlink" href="#loggerformatterline-getformat" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFormat</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFormat</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Return the format applied to each message</p>
 <h4 id="loggerformatterline-setformat"><code>setFormat()</code><a class="headerlink" href="#loggerformatterline-setformat" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setFormat</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$format</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setFormat</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$format</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Set the format applied to each message</p>
 <h2 id="loggeritem">Logger\Item<a class="headerlink" href="#loggeritem" title="Permanent link">&para;</a></h2>
@@ -8621,7 +8639,7 @@ setLogLevel() values.</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Logger/Item.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Phalcon\Logger\Item</p>
 <p>Represents each item in a logging transaction</p>
-<p>@property array             $context
+<p>@property array<string, mixed> $context
 @property string            $message
 @property int               $level
 @property string            $levelName
@@ -8631,7 +8649,7 @@ setLogLevel() values.</span>
 <li><strong><code>Phalcon\Logger\Item</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>DateTimeImmutable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>DateTimeImmutable</code> · <code>Phalcon\Contracts\Logger\LoggerTypes</code></p>
 <h3 id="method-summary_18">Method Summary<a class="headerlink" href="#method-summary_18" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggeritem-__construct">
@@ -8699,29 +8717,29 @@ setLogLevel() values.</span>
 <div class="api-group">Public · 6</div>
 
 <h4 id="loggeritem-__construct"><code>__construct()</code><a class="headerlink" href="#loggeritem-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
-<a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a>    <span class="nx">string</span> <span class="nv">$levelName</span><span class="p">,</span>
-<a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a>    <span class="nx">int</span> <span class="nv">$level</span><span class="p">,</span>
-<a id="__codelineno-65-5" name="__codelineno-65-5" href="#__codelineno-65-5"></a>    <span class="nx">DateTimeImmutable</span> <span class="nv">$dateTime</span><span class="p">,</span>
-<a id="__codelineno-65-6" name="__codelineno-65-6" href="#__codelineno-65-6"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-65-7" name="__codelineno-65-7" href="#__codelineno-65-7"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
+<a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>    <span class="nx">string</span> <span class="nv">$levelName</span><span class="p">,</span>
+<a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>    <span class="nx">int</span> <span class="nv">$level</span><span class="p">,</span>
+<a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>    <span class="nx">DateTimeImmutable</span> <span class="nv">$dateTime</span><span class="p">,</span>
+<a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-66-7" name="__codelineno-66-7" href="#__codelineno-66-7"></a><span class="p">);</span>
 </code></pre></div>
 <p>Item constructor.</p>
 <h4 id="loggeritem-getcontext"><code>getContext()</code><a class="headerlink" href="#loggeritem-getcontext" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getContext</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getContext</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="loggeritem-getdatetime"><code>getDateTime()</code><a class="headerlink" href="#loggeritem-getdatetime" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getDateTime</span><span class="p">()</span><span class="o">:</span> <span class="nx">DateTimeImmutable</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getDateTime</span><span class="p">()</span><span class="o">:</span> <span class="nx">DateTimeImmutable</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="loggeritem-getlevel"><code>getLevel()</code><a class="headerlink" href="#loggeritem-getlevel" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getLevel</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getLevel</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="loggeritem-getlevelname"><code>getLevelName()</code><a class="headerlink" href="#loggeritem-getlevelname" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getLevelName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getLevelName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="loggeritem-getmessage"><code>getMessage()</code><a class="headerlink" href="#loggeritem-getmessage" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getMessage</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getMessage</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="loggerlogger">Logger\Logger<a class="headerlink" href="#loggerlogger" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -8740,6 +8758,7 @@ from config files (see Phalcon\Config\Config object).</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Logger\LoggerTypes</code></p>
 <h3 id="method-summary_19">Method Summary<a class="headerlink" href="#method-summary_19" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggerlogger-alert">
@@ -8808,84 +8827,84 @@ from config files (see Phalcon\Config\Config object).</p>
 <div class="api-group">Public · 10</div>
 
 <h4 id="loggerlogger-alert"><code>alert()</code><a class="headerlink" href="#loggerlogger-alert" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">alert</span><span class="p">(</span>
-<a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
-<a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">alert</span><span class="p">(</span>
+<a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
+<a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Action must be taken immediately.</p>
 <p>Example: Entire website down, database unavailable, etc. This should
 trigger the SMS alerts and wake you up.</p>
 <h4 id="loggerlogger-critical"><code>critical()</code><a class="headerlink" href="#loggerlogger-critical" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">critical</span><span class="p">(</span>
-<a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
-<a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
-</code></pre></div>
-<p>Critical conditions.</p>
-<p>Example: Application component unavailable, unexpected exception.</p>
-<h4 id="loggerlogger-debug"><code>debug()</code><a class="headerlink" href="#loggerlogger-debug" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">debug</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">critical</span><span class="p">(</span>
 <a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
 <a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
-<p>Detailed debug information.</p>
-<h4 id="loggerlogger-emergency"><code>emergency()</code><a class="headerlink" href="#loggerlogger-emergency" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">emergency</span><span class="p">(</span>
+<p>Critical conditions.</p>
+<p>Example: Application component unavailable, unexpected exception.</p>
+<h4 id="loggerlogger-debug"><code>debug()</code><a class="headerlink" href="#loggerlogger-debug" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">debug</span><span class="p">(</span>
 <a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
 <a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
-<p>System is unusable.</p>
-<h4 id="loggerlogger-error"><code>error()</code><a class="headerlink" href="#loggerlogger-error" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">error</span><span class="p">(</span>
+<p>Detailed debug information.</p>
+<h4 id="loggerlogger-emergency"><code>emergency()</code><a class="headerlink" href="#loggerlogger-emergency" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">emergency</span><span class="p">(</span>
 <a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
 <a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
-<p>Runtime errors that do not require immediate action but should typically
-be logged and monitored.</p>
-<h4 id="loggerlogger-info"><code>info()</code><a class="headerlink" href="#loggerlogger-info" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">info</span><span class="p">(</span>
+<p>System is unusable.</p>
+<h4 id="loggerlogger-error"><code>error()</code><a class="headerlink" href="#loggerlogger-error" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">error</span><span class="p">(</span>
 <a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
 <a id="__codelineno-76-3" name="__codelineno-76-3" href="#__codelineno-76-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-76-4" name="__codelineno-76-4" href="#__codelineno-76-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
+<p>Runtime errors that do not require immediate action but should typically
+be logged and monitored.</p>
+<h4 id="loggerlogger-info"><code>info()</code><a class="headerlink" href="#loggerlogger-info" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">info</span><span class="p">(</span>
+<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
+<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+</code></pre></div>
 <p>Interesting events.</p>
 <p>Example: User logs in, SQL logs.</p>
 <h4 id="loggerlogger-log"><code>log()</code><a class="headerlink" href="#loggerlogger-log" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">log</span><span class="p">(</span>
-<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>    <span class="nx">mixed</span> <span class="nv">$level</span><span class="p">,</span>
-<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
-<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">log</span><span class="p">(</span>
+<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>    <span class="nx">mixed</span> <span class="nv">$level</span><span class="p">,</span>
+<a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
+<a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Logs with an arbitrary level.</p>
 <p>An unknown level (a typo or an unmapped value) is not rejected; it maps
 to the CUSTOM level and is logged, rather than raising an exception.</p>
 <h4 id="loggerlogger-notice"><code>notice()</code><a class="headerlink" href="#loggerlogger-notice" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">notice</span><span class="p">(</span>
-<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
-<a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
-</code></pre></div>
-<p>Normal but significant events.</p>
-<h4 id="loggerlogger-trace"><code>trace()</code><a class="headerlink" href="#loggerlogger-trace" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">trace</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">notice</span><span class="p">(</span>
 <a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
 <a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+</code></pre></div>
+<p>Normal but significant events.</p>
+<h4 id="loggerlogger-trace"><code>trace()</code><a class="headerlink" href="#loggerlogger-trace" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">trace</span><span class="p">(</span>
+<a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
+<a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Extra-verbose diagnostic output.</p>
 <p>Use for high-frequency, fine-grained events such as raw socket frames,
 HTTP response bodies, or internal state transitions that are too noisy
 for DEBUG.</p>
 <h4 id="loggerlogger-warning"><code>warning()</code><a class="headerlink" href="#loggerlogger-warning" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">warning</span><span class="p">(</span>
-<a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
-<a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">warning</span><span class="p">(</span>
+<a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
+<a id="__codelineno-81-3" name="__codelineno-81-3" href="#__codelineno-81-3"></a>    <span class="k">array</span> <span class="nv">$context</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-81-4" name="__codelineno-81-4" href="#__codelineno-81-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Exceptional occurrences that are not errors.</p>
 <p>Example: Use of deprecated APIs, poor use of an API, undesirable things
@@ -8896,15 +8915,19 @@ that are not necessarily wrong.</p>
 <p>Factory creating logger objects</p>
 <div class="api-tree">
 <ul>
+<li><a href="../phalcon_factory/#factoryabstractconfigfactory"><code>Phalcon\Factory\AbstractConfigFactory</code></a><ul>
 <li><strong><code>Phalcon\Logger\LoggerFactory</code></strong></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>DateTimeZone</code> · <code>Exception</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Support\Traits\ConfigTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>DateTimeZone</code> · <code>Exception</code> · <code>Phalcon\Config\ConfigInterface</code> · <code>Phalcon\Contracts\Logger\LoggerTypes</code> · <code>Phalcon\Factory\AbstractConfigFactory</code> · <code>Throwable</code></p>
 <h3 id="method-summary_20">Method Summary<a class="headerlink" href="#method-summary_20" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#loggerloggerfactory-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory</span> <span class="sv">$factory</span> )</code>
+<span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#loggerloggerfactory-load">
 <code class="vis vis-public">public</code>
@@ -8929,37 +8952,26 @@ that are not necessarily wrong.</p>
 <div class="api-group">Public · 3</div>
 
 <h4 id="loggerloggerfactory-__construct"><code>__construct()</code><a class="headerlink" href="#loggerloggerfactory-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">AdapterFactory</span> <span class="nv">$factory</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">AdapterFactory</span> <span class="nv">$factory</span> <span class="p">);</span>
 </code></pre></div>
+<p>Constructor</p>
 <h4 id="loggerloggerfactory-load"><code>load()</code><a class="headerlink" href="#loggerloggerfactory-load" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Logger</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$config</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Logger</span><span class="p">;</span>
 </code></pre></div>
 <p>Factory to create an instance from a Config object</p>
-<p>@option string "'name"
-@option array  "adapters"' = {
-@option string "adapter-name" = {
-@option string "adapter"
-@option string "name"
-@option string "options" = {
-@option string "mode" = "ab"
-@option string "option"
-@option string "facility"
-             }
-         }
-     }
-}</p>
+<p>The adapter list lives under <code>options</code>, not at the top level.</p>
 <h4 id="loggerloggerfactory-newinstance"><code>newInstance()</code><a class="headerlink" href="#loggerloggerfactory-newinstance" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">newInstance</span><span class="p">(</span>
-<a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-83-3" name="__codelineno-83-3" href="#__codelineno-83-3"></a>    <span class="k">array</span> <span class="nv">$adapters</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-83-4" name="__codelineno-83-4" href="#__codelineno-83-4"></a>    <span class="nx">DateTimeZone</span><span class="o">|</span><span class="k">null</span> <span class="nv">$timezone</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-83-5" name="__codelineno-83-5" href="#__codelineno-83-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">Logger</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">newInstance</span><span class="p">(</span>
+<a id="__codelineno-84-2" name="__codelineno-84-2" href="#__codelineno-84-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
+<a id="__codelineno-84-3" name="__codelineno-84-3" href="#__codelineno-84-3"></a>    <span class="k">array</span> <span class="nv">$adapters</span> <span class="o">=</span> <span class="p">[],</span>
+<a id="__codelineno-84-4" name="__codelineno-84-4" href="#__codelineno-84-4"></a>    <span class="nx">DateTimeZone</span><span class="o">|</span><span class="k">null</span> <span class="nv">$timezone</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-84-5" name="__codelineno-84-5" href="#__codelineno-84-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">Logger</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a Logger object</p>
 <div class="api-group">Protected · 1</div>
 
 <h4 id="loggerloggerfactory-getexceptionclass"><code>getExceptionClass()</code><a class="headerlink" href="#loggerloggerfactory-getexceptionclass" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getExceptionClass</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="loggerloggerinterface">Logger\LoggerInterface<a class="headerlink" href="#loggerloggerinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>

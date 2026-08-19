@@ -11383,6 +11383,7 @@ offering lower resource consumption and high performance.
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Attributes.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>This class helps to work with HTML Attributes</p>
+<p>@extends Collection<mixed></p>
 <div class="api-tree">
 <ul>
 <li><a href="../phalcon_support/#supportcollection"><code>Phalcon\Support\Collection</code></a><ul>
@@ -11501,14 +11502,14 @@ offering lower resource consumption and high performance.
 <p>This component offers an easy way to create breadcrumbs for your application.
 The resulting HTML when calling <code>render()</code> will have each breadcrumb enclosed
 in <code>&lt;dt&gt;</code> tags, while the whole string is enclosed in <code>&lt;dl&gt;</code> tags.</p>
-<p>@property array  $elements
-@property string $separator
+<p>@property string $separator
 @property string $template</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Html\Breadcrumbs</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_3">Method Summary<a class="headerlink" href="#method-summary_3" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlbreadcrumbs-add">
@@ -11637,7 +11638,7 @@ with UTF-8 support.</p>
 <li><strong><code>Phalcon\Html\Escaper</code></strong> - implements <a href="#htmlescaperescaperinterface"><code>Phalcon\Html\Escaper\EscaperInterface</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\AttributeEscaper</code> · <code>Phalcon\Html\Escaper\CssEscaper</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Html\Escaper\HtmlEscaper</code> · <code>Phalcon\Html\Escaper\JsEscaper</code> · <code>Phalcon\Html\Escaper\UrlEscaper</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Escaper\AttributeEscaper</code> · <code>Phalcon\Html\Escaper\CssEscaper</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Html\Escaper\HtmlEscaper</code> · <code>Phalcon\Html\Escaper\JsEscaper</code> · <code>Phalcon\Html\Escaper\UrlEscaper</code></p>
 <h3 id="method-summary_4">Method Summary<a class="headerlink" href="#method-summary_4" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlescaper-__construct">
@@ -12033,6 +12034,7 @@ of attribute pairs. Boolean <code>true</code> becomes a bare key (e.g. <code>dis
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_7">Method Summary<a class="headerlink" href="#method-summary_7" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlescaperattributeescaper-__invoke">
@@ -12638,7 +12640,7 @@ escapers before invoking the escape routines.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
 <h3 id="method-summary_19">Method Summary<a class="headerlink" href="#method-summary_19" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperabstracthelper-__construct">
@@ -12836,6 +12838,7 @@ with attributes as the second, returning the resulting string</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_20">Method Summary<a class="headerlink" href="#method-summary_20" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperabstractlist-__invoke">
@@ -12897,8 +12900,6 @@ with attributes as the second, returning the resulting string</p>
 <h2 id="htmlhelperabstractseries">Html\Helper\AbstractSeries<a class="headerlink" href="#htmlhelperabstractseries" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Helper/AbstractSeries.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>@property array $attributes
-@property array $store</p>
 <div class="api-tree">
 <ul>
 <li><a href="#htmlhelperabstracthelper"><code>Phalcon\Html\Helper\AbstractHelper</code></a><ul>
@@ -12912,6 +12913,7 @@ with attributes as the second, returning the resulting string</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_21">Method Summary<a class="headerlink" href="#method-summary_21" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperabstractseries-__invoke">
@@ -13009,7 +13011,7 @@ existing entries are not overwritten. The store is ksort()ed in
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
 <h3 id="method-summary_22">Method Summary<a class="headerlink" href="#method-summary_22" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperanchor-__construct">
@@ -13064,6 +13066,7 @@ existing entries are not overwritten. The store is ksort()ed in
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_23">Method Summary<a class="headerlink" href="#method-summary_23" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperbase-__invoke">
@@ -13096,6 +13099,7 @@ existing entries are not overwritten. The store is ksort()ed in
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_24">Method Summary<a class="headerlink" href="#method-summary_24" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperbody-__invoke">
@@ -13353,7 +13357,7 @@ When a Url service was injected, calling this method replaces it.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
 <h3 id="method-summary_26">Method Summary<a class="headerlink" href="#method-summary_26" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperbutton-__construct">
@@ -13533,7 +13537,7 @@ When a Url service was injected, calling this method replaces it.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
 <h3 id="method-summary_29">Method Summary<a class="headerlink" href="#method-summary_29" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperelement-__construct">
@@ -13588,6 +13592,7 @@ When a Url service was injected, calling this method replaces it.</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_30">Method Summary<a class="headerlink" href="#method-summary_30" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperform-__invoke">
@@ -13666,6 +13671,7 @@ When a Url service was injected, calling this method replaces it.</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_32">Method Summary<a class="headerlink" href="#method-summary_32" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperimg-__invoke">
@@ -13696,8 +13702,7 @@ the rendered tag carries <code>checked="checked"</code>.</p>
 <p>The match between <code>checked</code> and <code>value</code> is loose (<code>==</code>) by default so that
 mixed int/string form input round-trips correctly (e.g. <code>value=0</code> against
 <code>checked="0"</code>). Strict (<code>===</code>) matching is available via <code>strict(true)</code>.</p>
-<p>@property array $label
-@property bool  $strict</p>
+<p>@property bool $strict</p>
 <div class="api-tree">
 <ul>
 <li><a href="#htmlhelperabstracthelper"><code>Phalcon\Html\Helper\AbstractHelper</code></a><ul>
@@ -13713,7 +13718,7 @@ mixed int/string form input round-trips correctly (e.g. <code>value=0</code> aga
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Html\Helper\Doctype</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Html\Helper\Doctype</code></p>
 <h3 id="method-summary_33">Method Summary<a class="headerlink" href="#method-summary_33" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputabstractchecked-__construct">
@@ -13756,7 +13761,7 @@ mixed int/string form input round-trips correctly (e.g. <code>value=0</code> aga
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$label</span><span class="sm"> = []</span></code>
+<code class="sig"><span class="sv">$label</span><span class="sm"> = [...]</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -13833,7 +13838,7 @@ from an options array.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Helper\AbstractHelper</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Helper\AbstractHelper</code></p>
 <h3 id="method-summary_34">Method Summary<a class="headerlink" href="#method-summary_34" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputabstractgroup-__invoke">
@@ -13922,8 +13927,7 @@ from an options array.</p>
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Helper/Input/AbstractInput.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Class AbstractInput</p>
-<p>@property array  $attributes
-@property string $type
+<p>@property string $type
 @property string $value</p>
 <div class="api-tree">
 <ul>
@@ -13938,7 +13942,7 @@ from an options array.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Helper\AbstractHelper</code> · <code>Phalcon\Html\Helper\Doctype</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Helper\AbstractHelper</code> · <code>Phalcon\Html\Helper\Doctype</code></p>
 <h3 id="method-summary_35">Method Summary<a class="headerlink" href="#method-summary_35" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputabstractinput-__invoke">
@@ -14200,7 +14204,7 @@ option's value attribute.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Helper\Input\SelectData</code> · <code>Phalcon\Html\Helper\AbstractList</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Helper\Input\SelectData</code> · <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Helper\AbstractList</code></p>
 <h3 id="method-summary_39">Method Summary<a class="headerlink" href="#method-summary_39" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputselect-add">
@@ -14360,7 +14364,7 @@ array values define optgroups.</p>
 <li><strong><code>Phalcon\Html\Helper\Input\Select\ArrayData</code></strong> - implements <a href="../phalcon_contracts/#contractshtmlhelperinputselectdata"><code>Phalcon\Contracts\Html\Helper\Input\SelectData</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Helper\Input\SelectData</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Helper\Input\SelectData</code> · <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_40">Method Summary<a class="headerlink" href="#method-summary_40" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputselectarraydata-__construct">
@@ -14416,7 +14420,7 @@ array values define optgroups.</p>
 <li><strong><code>Phalcon\Html\Helper\Input\Select\ResultsetData</code></strong> - implements <a href="../phalcon_contracts/#contractshtmlhelperinputselectdata"><code>Phalcon\Contracts\Html\Helper\Input\SelectData</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Helper\Input\SelectData</code> · <code>Phalcon\Html\Exceptions\InvalidResultsetValue</code> · <code>Phalcon\Html\Exceptions\UsingRequiresTwoValues</code> · <code>Phalcon\Mvc\Model\ResultsetInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Helper\Input\SelectData</code> · <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Exceptions\InvalidResultsetValue</code> · <code>Phalcon\Html\Exceptions\UsingRequiresTwoValues</code> · <code>Phalcon\Mvc\Model\ResultsetInterface</code></p>
 <h3 id="method-summary_41">Method Summary<a class="headerlink" href="#method-summary_41" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputselectresultsetdata-__construct">
@@ -14564,7 +14568,7 @@ receive the current row; static values are passed through.
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
 <h3 id="method-summary_43">Method Summary<a class="headerlink" href="#method-summary_43" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperlabel-__construct">
@@ -14624,6 +14628,7 @@ receive the current row; static values are passed through.
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_44">Method Summary<a class="headerlink" href="#method-summary_44" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperlink-add">
@@ -14683,6 +14688,7 @@ receive the current row; static values are passed through.
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_45">Method Summary<a class="headerlink" href="#method-summary_45" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelpermeta-add">
@@ -14768,7 +14774,7 @@ receive the current row; static values are passed through.
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code></p>
 <h3 id="method-summary_46">Method Summary<a class="headerlink" href="#method-summary_46" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperol-__construct">
@@ -14833,7 +14839,7 @@ If a ResponseInterface is provided, also sets the HTTP Link header.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Html\Link\Link</code> · <code>Phalcon\Html\Link\Serializer\Header</code> · <code>Phalcon\Http\ResponseInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Html\Link\Link</code> · <code>Phalcon\Html\Link\Serializer\Header</code> · <code>Phalcon\Http\ResponseInterface</code></p>
 <h3 id="method-summary_47">Method Summary<a class="headerlink" href="#method-summary_47" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperpreload-__construct">
@@ -14887,6 +14893,7 @@ If a ResponseInterface is provided, also sets the HTTP Link header.</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_48">Method Summary<a class="headerlink" href="#method-summary_48" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperscript-add">
@@ -14977,6 +14984,7 @@ is treated as raw HTML (it is JavaScript, not user-supplied text).</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code></p>
 <h3 id="method-summary_49">Method Summary<a class="headerlink" href="#method-summary_49" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelperstyle-add">
@@ -15046,7 +15054,7 @@ use <code>VoidTag</code>.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Exception</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Exception</code></p>
 <h3 id="method-summary_50">Method Summary<a class="headerlink" href="#method-summary_50" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelpertag-__invoke">
@@ -15069,10 +15077,8 @@ use <code>VoidTag</code>.</p>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Helper/Title.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Class Title</p>
-<p>@property array  $append
-@property string $delimiter
+<p>@property string $delimiter
 @property string $indent
-@property array  $prepend
 @property string $title
 @property string $separator</p>
 <div class="api-tree">
@@ -15245,7 +15251,7 @@ doctypes, matching the <code>Input/AbstractInput::__toString</code> convention.<
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Exception</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Exception</code></p>
 <h3 id="method-summary_53">Method Summary<a class="headerlink" href="#method-summary_53" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmlhelpervoidtag-__invoke">
@@ -15267,10 +15273,8 @@ doctypes, matching the <code>Input/AbstractInput::__toString</code> convention.<
 <h2 id="htmllinkabstractlink">Html\Link\AbstractLink<a class="headerlink" href="#htmllinkabstractlink" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Link/AbstractLink.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>@property Collection $attributes
-@property string     $href
-@property Collection $rels
-@property bool       $templated</p>
+<p>@property string $href
+@property bool   $templated</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Html\Link\AbstractLink</code></strong><ul>
@@ -15279,7 +15283,7 @@ doctypes, matching the <code>Input/AbstractInput::__toString</code> convention.<
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Support\Collection</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Link\LinkTypes</code> · <code>Phalcon\Support\Collection</code></p>
 <h3 id="method-summary_54">Method Summary<a class="headerlink" href="#method-summary_54" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmllinkabstractlink-__construct">
@@ -15309,7 +15313,7 @@ doctypes, matching the <code>Input/AbstractInput::__toString</code> convention.<
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">doIsTemplated</span>()</code>
-<span class="desc">Returns whether this is a templated link.</span>
+<span class="desc">Returns whether this is a templated link. True if this link object is</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithattribute">
 <code class="vis vis-protected">protected</code>
@@ -15385,6 +15389,9 @@ doctypes, matching the <code>Input/AbstractInput::__toString</code> convention.<
 <div class="highlight"><pre><span></span><code><a id="__codelineno-211-1" name="__codelineno-211-1" href="#__codelineno-211-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doGetAttributes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a list of attributes that describe the target URI.</p>
+<p>A key-value list of attributes, where the key is a string and the value
+is either a PHP primitive or an array of PHP strings. If no values are
+found an empty array MUST be returned.</p>
 <h4 id="htmllinkabstractlink-dogethref"><code>doGetHref()</code><a class="headerlink" href="#htmllinkabstractlink-dogethref" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-212-1" name="__codelineno-212-1" href="#__codelineno-212-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doGetHref</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -15404,7 +15411,8 @@ as an array of strings.</p>
 <h4 id="htmllinkabstractlink-doistemplated"><code>doIsTemplated()</code><a class="headerlink" href="#htmllinkabstractlink-doistemplated" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-214-1" name="__codelineno-214-1" href="#__codelineno-214-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doIsTemplated</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
-<p>Returns whether this is a templated link.</p>
+<p>Returns whether this is a templated link. True if this link object is
+templated, False otherwise.</p>
 <h4 id="htmllinkabstractlink-dowithattribute"><code>doWithAttribute()</code><a class="headerlink" href="#htmllinkabstractlink-dowithattribute" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-215-1" name="__codelineno-215-1" href="#__codelineno-215-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">doWithAttribute</span><span class="p">(</span>
 <a id="__codelineno-215-2" name="__codelineno-215-2" href="#__codelineno-215-2"></a>    <span class="nx">string</span> <span class="nv">$key</span><span class="p">,</span>
@@ -15431,7 +15439,6 @@ as an array of strings.</p>
 <h2 id="htmllinkabstractlinkprovider">Html\Link\AbstractLinkProvider<a class="headerlink" href="#htmllinkabstractlinkprovider" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Link/AbstractLinkProvider.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>@property array $links</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Html\Link\AbstractLinkProvider</code></strong><ul>
@@ -15440,7 +15447,7 @@ as an array of strings.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Link\Interfaces\LinkInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Link\LinkTypes</code> · <code>Phalcon\Html\Link\Interfaces\LinkInterface</code></p>
 <h3 id="method-summary_55">Method Summary<a class="headerlink" href="#method-summary_55" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmllinkabstractlinkprovider-__construct">
@@ -15496,6 +15503,8 @@ as an array of strings.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-221-1" name="__codelineno-221-1" href="#__codelineno-221-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$links</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">);</span>
 </code></pre></div>
 <p>LinkProvider constructor.</p>
+<p>The guard keeps foreign objects out of the collection. It stays live in
+the Zephir implementation, where the array is untyped.</p>
 <div class="api-group">Protected · 5</div>
 
 <h4 id="htmllinkabstractlinkprovider-dogetlinks"><code>doGetLinks()</code><a class="headerlink" href="#htmllinkabstractlinkprovider-dogetlinks" title="Permanent link">&para;</a></h4>
@@ -15545,7 +15554,7 @@ object already in the collection.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Link\Interfaces\EvolvableLinkInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Link\LinkTypes</code> · <code>Phalcon\Html\Link\Interfaces\EvolvableLinkInterface</code></p>
 <h3 id="method-summary_56">Method Summary<a class="headerlink" href="#method-summary_56" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmllinkevolvablelink-withattribute">
@@ -15620,7 +15629,6 @@ normally without errors.</p>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Link/EvolvableLinkProvider.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Class Phalcon\Html\Link\EvolvableLinkProvider</p>
-<p>@property LinkInterface[] $links</p>
 <div class="api-tree">
 <ul>
 <li><a href="#htmllinkabstractlinkprovider"><code>Phalcon\Html\Link\AbstractLinkProvider</code></a><ul>
@@ -15632,7 +15640,7 @@ normally without errors.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface</code> · <code>Phalcon\Html\Link\Interfaces\LinkInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Link\LinkTypes</code> · <code>Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface</code> · <code>Phalcon\Html\Link\Interfaces\LinkInterface</code></p>
 <h3 id="method-summary_57">Method Summary<a class="headerlink" href="#method-summary_57" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmllinkevolvablelinkprovider-withlink">
@@ -15805,6 +15813,7 @@ object already in the collection.</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Link\LinkTypes</code></p>
 <h3 id="method-summary_60">Method Summary<a class="headerlink" href="#method-summary_60" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmllinkinterfaceslinkinterface-getattributes">
@@ -15840,6 +15849,9 @@ object already in the collection.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-241-1" name="__codelineno-241-1" href="#__codelineno-241-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAttributes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a list of attributes that describe the target URI.</p>
+<p>A key-value list of attributes, where the key is a string and the value
+is either a PHP primitive or an array of PHP strings. If no values are
+found an empty array MUST be returned.</p>
 <h4 id="htmllinkinterfaceslinkinterface-gethref"><code>getHref()</code><a class="headerlink" href="#htmllinkinterfaceslinkinterface-gethref" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-242-1" name="__codelineno-242-1" href="#__codelineno-242-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getHref</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -15872,6 +15884,7 @@ as an array of strings.</p>
 </li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Link\LinkTypes</code></p>
 <h3 id="method-summary_61">Method Summary<a class="headerlink" href="#method-summary_61" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmllinkinterfaceslinkproviderinterface-getlinks">
@@ -15915,7 +15928,7 @@ relationship.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Link\Interfaces\LinkInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Link\LinkTypes</code> · <code>Phalcon\Html\Link\Interfaces\LinkInterface</code></p>
 <h3 id="method-summary_62">Method Summary<a class="headerlink" href="#method-summary_62" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmllinklink-getattributes">
@@ -15951,6 +15964,9 @@ relationship.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-247-1" name="__codelineno-247-1" href="#__codelineno-247-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAttributes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a list of attributes that describe the target URI.</p>
+<p>A key-value list of attributes, where the key is a string and the value
+is either a PHP primitive or an array of PHP strings. If no values are
+found an empty array MUST be returned.</p>
 <h4 id="htmllinklink-gethref"><code>getHref()</code><a class="headerlink" href="#htmllinklink-gethref" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-248-1" name="__codelineno-248-1" href="#__codelineno-248-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getHref</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
@@ -15974,7 +15990,6 @@ as an array of strings.</p>
 <h2 id="htmllinklinkprovider">Html\Link\LinkProvider<a class="headerlink" href="#htmllinklinkprovider" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Link/LinkProvider.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
-<p>@property LinkInterface[] $links</p>
 <div class="api-tree">
 <ul>
 <li><a href="#htmllinkabstractlinkprovider"><code>Phalcon\Html\Link\AbstractLinkProvider</code></a><ul>
@@ -15986,7 +16001,7 @@ as an array of strings.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Html\Link\Interfaces\LinkInterface</code> · <code>Phalcon\Html\Link\Interfaces\LinkProviderInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Link\LinkTypes</code> · <code>Phalcon\Html\Link\Interfaces\LinkProviderInterface</code></p>
 <h3 id="method-summary_63">Method Summary<a class="headerlink" href="#method-summary_63" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmllinklinkprovider-getlinks">
@@ -16029,6 +16044,7 @@ MUST be returned.</p>
 <li><strong><code>Phalcon\Html\Link\Serializer\Header</code></strong> - implements <a href="#htmllinkserializerserializerinterface"><code>Phalcon\Html\Link\Serializer\SerializerInterface</code></a></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Link\LinkTypes</code></p>
 <h3 id="method-summary_64">Method Summary<a class="headerlink" href="#method-summary_64" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmllinkserializerheader-serialize">
@@ -16055,6 +16071,7 @@ MUST be returned.</p>
 <li><strong><code>Phalcon\Html\Link\Serializer\SerializerInterface</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Html\Link\LinkTypes</code></p>
 <h3 id="method-summary_65">Method Summary<a class="headerlink" href="#method-summary_65" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmllinkserializerserializerinterface-serialize">
@@ -16082,66 +16099,66 @@ services via <code>set()</code>, passing a Closure that returns the helper insta
 <p><code>__call()</code> resolves the named helper and dispatches to its <code>__invoke()</code>,
 so each entry in the @method block below describes the result of calling
 <code>$factory-&gt;serviceName(...)</code> rather than <code>newInstance("serviceName")</code>.</p>
-<p>@method string        a(string $href, string $text, array $attributes = [], bool $raw = false)
-@method string        aRaw(string $href, string $text, array $attributes = [])
-@method string        base(string $href, array $attributes = [])
-@method string        body(array $attributes = [])
+<p>@method string        a(string $href, string $text, html_attributes $attributes = [], bool $raw = false)
+@method string        aRaw(string $href, string $text, html_attributes $attributes = [])
+@method string        base(string $href, html_attributes $attributes = [])
+@method string        body(html_attributes $attributes = [])
 @method Breadcrumbs   breadcrumbs(string $indent = '    ', string $delimiter = "\n")
-@method string        button(string $text, array $attributes = [], bool $raw = false)
-@method string        buttonRaw(string $text, array $attributes = [])
+@method string        button(string $text, html_attributes $attributes = [], bool $raw = false)
+@method string        buttonRaw(string $text, html_attributes $attributes = [])
 @method string        close(string $tag, bool $raw = false)
 @method Doctype       doctype(int $type = Doctype::HTML5, string $delimiter = "\n")
-@method string        element(string $tag, string $text, array $attributes = [], bool $raw = false)
-@method string        elementRaw(string $tag, string $text, array $attributes = [])
-@method string        form(array $attributes = [])
+@method string        element(string $tag, string $text, html_attributes $attributes = [], bool $raw = false)
+@method string        elementRaw(string $tag, string $text, html_attributes $attributes = [])
+@method string        form(html_attributes $attributes = [])
 @method string        friendlyTitle(string $text, string $separator = '-', bool $lower = true, mixed $replace = null)
-@method string        img(string $src, array $attributes = [])
-@method Checkbox      inputCheckbox(string $name, string $value = null, array $attributes = [])
+@method string        img(string $src, html_attributes $attributes = [])
+@method Checkbox      inputCheckbox(string $name, string $value = null, html_attributes $attributes = [])
 @method CheckboxGroup inputCheckboxGroup(string $name, array $options, mixed $checked = null, array $attributes = [])
-@method Generic       inputColor(string $name, string $value = null, array $attributes = [])
-@method Generic       inputDate(string $name, string $value = null, array $attributes = [])
-@method Generic       inputDateTime(string $name, string $value = null, array $attributes = [])
-@method Generic       inputDateTimeLocal(string $name, string $value = null, array $attributes = [])
-@method Generic       inputEmail(string $name, string $value = null, array $attributes = [])
-@method Generic       inputFile(string $name, string $value = null, array $attributes = [])
-@method Generic       inputHidden(string $name, string $value = null, array $attributes = [])
-@method Generic       inputImage(string $name, string $value = null, array $attributes = [])
-@method Generic       inputInput(string $name, string $value = null, array $attributes = [])
-@method Generic       inputMonth(string $name, string $value = null, array $attributes = [])
-@method Generic       inputNumeric(string $name, string $value = null, array $attributes = [])
-@method Generic       inputPassword(string $name, string $value = null, array $attributes = [])
-@method Radio         inputRadio(string $name, string $value = null, array $attributes = [])
+@method Generic       inputColor(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputDate(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputDateTime(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputDateTimeLocal(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputEmail(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputFile(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputHidden(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputImage(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputInput(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputMonth(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputNumeric(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputPassword(string $name, string $value = null, html_attributes $attributes = [])
+@method Radio         inputRadio(string $name, string $value = null, html_attributes $attributes = [])
 @method RadioGroup    inputRadioGroup(string $name, array $options, mixed $checked = null, array $attributes = [])
-@method Generic       inputRange(string $name, string $value = null, array $attributes = [])
-@method Generic       inputSearch(string $name, string $value = null, array $attributes = [])
-@method Select        inputSelect(string $name, string $value = null, array $attributes = [])
-@method Generic       inputSubmit(string $name, string $value = null, array $attributes = [])
-@method Generic       inputTel(string $name, string $value = null, array $attributes = [])
-@method Generic       inputText(string $name, string $value = null, array $attributes = [])
-@method Textarea      inputTextarea(string $name, string $value = null, array $attributes = [])
-@method Generic       inputTime(string $name, string $value = null, array $attributes = [])
-@method Generic       inputUrl(string $name, string $value = null, array $attributes = [])
-@method Generic       inputWeek(string $name, string $value = null, array $attributes = [])
-@method string        label(string $label, array $attributes = [], bool $raw = false)
-@method string        labelRaw(string $label, array $attributes = [])
+@method Generic       inputRange(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputSearch(string $name, string $value = null, html_attributes $attributes = [])
+@method Select        inputSelect(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputSubmit(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputTel(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputText(string $name, string $value = null, html_attributes $attributes = [])
+@method Textarea      inputTextarea(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputTime(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputUrl(string $name, string $value = null, html_attributes $attributes = [])
+@method Generic       inputWeek(string $name, string $value = null, html_attributes $attributes = [])
+@method string        label(string $label, html_attributes $attributes = [], bool $raw = false)
+@method string        labelRaw(string $label, html_attributes $attributes = [])
 @method Link          link(string $indent = '    ', string $delimiter = "\n")
 @method Meta          meta(string $indent = '    ', string $delimiter = "\n")
-@method Ol            ol(string $indent = '    ', string $delimiter = null, array $attributes = [])
-@method Ol            olRaw(string $indent = '    ', string $delimiter = null, array $attributes = [])
-@method string        preload(string $href, string $type = 'style', array $attributes = [])
+@method Ol            ol(string $indent = '    ', string $delimiter = null, html_attributes $attributes = [])
+@method Ol            olRaw(string $indent = '    ', string $delimiter = null, html_attributes $attributes = [])
+@method string        preload(string $href, string $type = 'style', html_attributes $attributes = [])
 @method Script        script(string $indent = '    ', string $delimiter = "\n")
 @method Style         style(string $indent = '    ', string $delimiter = "\n")
-@method string        tag(string $name, array $attributes = [])
+@method string        tag(string $name, html_attributes $attributes = [])
 @method Title         title(string $indent = '    ', string $delimiter = "\n")
-@method Ul            ul(string $indent = '    ', string $delimiter = null, array $attributes = [])
-@method Ul            ulRaw(string $indent = '    ', string $delimiter = null, array $attributes = [])
-@method string        voidTag(string $name, array $attributes = [])</p>
+@method Ul            ul(string $indent = '    ', string $delimiter = null, html_attributes $attributes = [])
+@method Ul            ulRaw(string $indent = '    ', string $delimiter = null, html_attributes $attributes = [])
+@method string        voidTag(string $name, html_attributes $attributes = [])</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Html\TagFactory</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Html\Exceptions\ServiceNotRegistered</code> · <code>Phalcon\Html\Helper\Anchor</code> · <code>Phalcon\Html\Helper\Base</code> · <code>Phalcon\Html\Helper\Body</code> · <code>Phalcon\Html\Helper\Breadcrumbs</code> · <code>Phalcon\Html\Helper\Button</code> · <code>Phalcon\Html\Helper\Close</code> · <code>Phalcon\Html\Helper\Doctype</code> · <code>Phalcon\Html\Helper\Element</code> · <code>Phalcon\Html\Helper\Form</code> · <code>Phalcon\Html\Helper\FriendlyTitle</code> · <code>Phalcon\Html\Helper\Img</code> · <code>Phalcon\Html\Helper\Input\Checkbox</code> · <code>Phalcon\Html\Helper\Input\CheckboxGroup</code> · <code>Phalcon\Html\Helper\Input\Generic</code> · <code>Phalcon\Html\Helper\Input\Radio</code> · <code>Phalcon\Html\Helper\Input\RadioGroup</code> · <code>Phalcon\Html\Helper\Input\Select</code> · <code>Phalcon\Html\Helper\Input\Textarea</code> · <code>Phalcon\Html\Helper\Label</code> · <code>Phalcon\Html\Helper\Link</code> · <code>Phalcon\Html\Helper\Meta</code> · <code>Phalcon\Html\Helper\Ol</code> · <code>Phalcon\Html\Helper\Preload</code> · <code>Phalcon\Html\Helper\Script</code> · <code>Phalcon\Html\Helper\Style</code> · <code>Phalcon\Html\Helper\Tag</code> · <code>Phalcon\Html\Helper\Title</code> · <code>Phalcon\Html\Helper\Ul</code> · <code>Phalcon\Html\Helper\VoidTag</code> · <code>Phalcon\Http\ResponseInterface</code> · <code>Phalcon\Mvc\Url\UrlInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\Contracts\Html\HtmlTypes</code> · <code>Phalcon\Html\Escaper\EscaperInterface</code> · <code>Phalcon\Html\Exceptions\ServiceNotRegistered</code> · <code>Phalcon\Html\Helper\Anchor</code> · <code>Phalcon\Html\Helper\Base</code> · <code>Phalcon\Html\Helper\Body</code> · <code>Phalcon\Html\Helper\Breadcrumbs</code> · <code>Phalcon\Html\Helper\Button</code> · <code>Phalcon\Html\Helper\Close</code> · <code>Phalcon\Html\Helper\Doctype</code> · <code>Phalcon\Html\Helper\Element</code> · <code>Phalcon\Html\Helper\Form</code> · <code>Phalcon\Html\Helper\FriendlyTitle</code> · <code>Phalcon\Html\Helper\Img</code> · <code>Phalcon\Html\Helper\Input\Checkbox</code> · <code>Phalcon\Html\Helper\Input\CheckboxGroup</code> · <code>Phalcon\Html\Helper\Input\Generic</code> · <code>Phalcon\Html\Helper\Input\Radio</code> · <code>Phalcon\Html\Helper\Input\RadioGroup</code> · <code>Phalcon\Html\Helper\Input\Select</code> · <code>Phalcon\Html\Helper\Input\Textarea</code> · <code>Phalcon\Html\Helper\Label</code> · <code>Phalcon\Html\Helper\Link</code> · <code>Phalcon\Html\Helper\Meta</code> · <code>Phalcon\Html\Helper\Ol</code> · <code>Phalcon\Html\Helper\Preload</code> · <code>Phalcon\Html\Helper\Script</code> · <code>Phalcon\Html\Helper\Style</code> · <code>Phalcon\Html\Helper\Tag</code> · <code>Phalcon\Html\Helper\Title</code> · <code>Phalcon\Html\Helper\Ul</code> · <code>Phalcon\Html\Helper\VoidTag</code> · <code>Phalcon\Http\ResponseInterface</code> · <code>Phalcon\Mvc\Url\UrlInterface</code></p>
 <h3 id="method-summary_66">Method Summary<a class="headerlink" href="#method-summary_66" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#htmltagfactory-__call">
@@ -16213,6 +16230,8 @@ so each entry in the @method block below describes the result of calling
 <a id="__codelineno-256-6" name="__codelineno-256-6" href="#__codelineno-256-6"></a><span class="p">);</span>
 </code></pre></div>
 <p>TagFactory constructor.</p>
+<p><code>$services</code> maps a service name to a zero-arg Closure that returns the
+helper instance.</p>
 <h4 id="htmltagfactory-has"><code>has()</code><a class="headerlink" href="#htmltagfactory-has" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-257-1" name="__codelineno-257-1" href="#__codelineno-257-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
