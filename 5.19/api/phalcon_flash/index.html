@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5948,8 +5948,8 @@ offering lower resource consumption and high performance.
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/AbstractFlash.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Shows HTML notifications related to different circumstances. Classes can be
 stylized using CSS</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s2">&quot;The record was successfully deleted&quot;</span><span class="p">);</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;Cannot open the file&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s2">"The record was successfully deleted"</span><span class="p">);</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">"Cannot open the file"</span><span class="p">);</span>
 </code></pre></div>
 <p>Class AbstractFlash</p>
 <p>@package Phalcon\Flash</p>
@@ -6165,7 +6165,7 @@ stylized using CSS</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">error</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$message</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Shows a HTML error message</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;This is an error&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">"This is an error"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="flashabstractflash-getautoescape"><code>getAutoescape()</code><a class="headerlink" href="#flashabstractflash-getautoescape" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAutoescape</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
@@ -6199,7 +6199,7 @@ message for output on a later request.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">notice</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$message</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Shows a HTML notice/information message</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span><span class="s2">&quot;This is an information&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span><span class="s2">"This is an information"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="flashabstractflash-outputmessage"><code>outputMessage()</code><a class="headerlink" href="#flashabstractflash-outputmessage" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputMessage</span><span class="p">(</span>
@@ -6208,7 +6208,7 @@ message for output on a later request.</p>
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Outputs a message formatting it with HTML</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">outputMessage</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">outputMessage</span><span class="p">(</span><span class="s2">"error"</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="flashabstractflash-setautoescape"><code>setAutoescape()</code><a class="headerlink" href="#flashabstractflash-setautoescape" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAutoescape</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$autoescape</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
@@ -6246,13 +6246,13 @@ the rendered string while <code>output()</code> does not emit it.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">success</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$message</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Shows a HTML success message</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s2">&quot;The process was finished successfully&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s2">"The process was finished successfully"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="flashabstractflash-warning"><code>warning()</code><a class="headerlink" href="#flashabstractflash-warning" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">warning</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$message</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Shows a HTML warning message</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">&quot;Hey, this is important&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">"Hey, this is important"</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="flashdirect">Flash\Direct<a class="headerlink" href="#flashdirect" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -6725,7 +6725,7 @@ the next request.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -6793,7 +6793,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>
 <a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="nv">$upper</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;upper&#39;</span><span class="p">);</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="nv">$upper</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'upper'</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
 <p>The methods can be called directly from the helper factory.</p>
@@ -6803,7 +6803,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;abcde&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'abcde'</span><span class="p">;</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">upper</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// ABCDE</span>
@@ -6818,14 +6818,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="s1">&#39;value-1&#39;</span><span class="p">,</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="s1">&#39;key-2&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;value-2&#39;</span><span class="p">,</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="s1">&#39;key-3&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;value-3&#39;</span><span class="p">,</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="mi">9</span>         <span class="o">=&gt;</span> <span class="s1">&#39;value-4&#39;</span><span class="p">,</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="mi">12</span>        <span class="o">=&gt;</span> <span class="s1">&#39;value-5&#39;</span><span class="p">,</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="s1">&#39; key-6 &#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;value-6&#39;</span><span class="p">,</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="mi">99</span>        <span class="o">=&gt;</span> <span class="s1">&#39;value-7&#39;</span><span class="p">,</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="s1">&#39;key-8&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;value-8&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="s1">'value-1'</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="s1">'key-2'</span>   <span class="o">=&gt;</span> <span class="s1">'value-2'</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="s1">'key-3'</span>   <span class="o">=&gt;</span> <span class="s1">'value-3'</span><span class="p">,</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="mi">9</span>         <span class="o">=&gt;</span> <span class="s1">'value-4'</span><span class="p">,</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="mi">12</span>        <span class="o">=&gt;</span> <span class="s1">'value-5'</span><span class="p">,</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="s1">' key-6 '</span> <span class="o">=&gt;</span> <span class="s1">'value-6'</span><span class="p">,</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="mi">99</span>        <span class="o">=&gt;</span> <span class="s1">'value-7'</span><span class="p">,</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="s1">'key-8'</span>   <span class="o">=&gt;</span> <span class="s1">'value-8'</span><span class="p">,</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">];</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nv">$blackList</span> <span class="o">=</span> <span class="p">[</span>
@@ -6833,25 +6833,25 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="mi">48</span><span class="p">,</span>
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    <span class="mi">31</span><span class="p">,</span>
 <a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="mi">9</span><span class="p">,</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="s1">&#39;key-45&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="s1">'key-45'</span><span class="p">,</span>
 <a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    <span class="o">-</span><span class="mi">228</span><span class="p">,</span>
 <a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    <span class="k">new</span> <span class="k">stdClass</span><span class="p">(),</span>
 <a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>    <span class="p">[],</span>
 <a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    <span class="mf">3.501</span><span class="p">,</span>
 <a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>    <span class="k">false</span><span class="p">,</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>    <span class="s1">&#39;key-2&#39;</span><span class="p">,</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>    <span class="s1">&#39;key-3&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>    <span class="s1">'key-2'</span><span class="p">,</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>    <span class="s1">'key-3'</span><span class="p">,</span>
 <a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="p">];</span>
 <a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>
 <a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">blacklist</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="nv">$blackList</span><span class="p">);</span>
 <a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
 <a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="c1">// [</span>
-<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="c1">//     &#39;value-1&#39;,</span>
-<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="c1">//     12        =&gt; &#39;value-5&#39;,</span>
-<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="c1">//     &#39; key-6 &#39; =&gt; &#39;value-6&#39;,</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="c1">//     &#39;key-8&#39;   =&gt; &#39;value-8&#39;,</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="c1">//     'value-1',</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="c1">//     12        =&gt; 'value-5',</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="c1">//     ' key-6 ' =&gt; 'value-6',</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="c1">//     'key-8'   =&gt; 'value-8',</span>
 <a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="c1">// ]</span>
 </code></pre></div>
 <h3 id="chunk"><code>chunk</code><a class="headerlink" href="#chunk" title="Permanent link">&para;</a></h3>
@@ -6864,21 +6864,21 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="s1">&#39;k1&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="s1">&#39;k2&#39;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="s1">&#39;k3&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="s1">&#39;k4&#39;</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="s1">&#39;k5&#39;</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="s1">&#39;k6&#39;</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="s1">'k1'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="s1">'k2'</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="s1">'k3'</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="s1">'k4'</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="s1">'k5'</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="s1">'k6'</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">,</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">];</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
 <a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">chunk</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
 <a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1">// [</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="c1">//     [&#39;k1&#39; =&gt; 1, &#39;k2&#39; =&gt; 2],</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="c1">//     [&#39;k3&#39; =&gt; 3, &#39;k4&#39; =&gt; 4],</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="c1">//     [&#39;k5&#39; =&gt; 5, &#39;k6&#39; =&gt; 6],</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="c1">//     ['k1' =&gt; 1, 'k2' =&gt; 2],</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="c1">//     ['k3' =&gt; 3, 'k4' =&gt; 4],</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="c1">//     ['k5' =&gt; 5, 'k6' =&gt; 6],</span>
 <a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="c1">// ]</span>
 </code></pre></div>
 <h3 id="filter"><code>filter</code><a class="headerlink" href="#filter" title="Permanent link">&para;</a></h3>
@@ -6929,13 +6929,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="s1">&#39;one&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="s1">&#39;two&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Framework&#39;</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="s1">'one'</span> <span class="o">=&gt;</span> <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="s1">'two'</span> <span class="o">=&gt;</span> <span class="s1">'Framework'</span><span class="p">,</span>
 <a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">];</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;Phalcon&#39;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'Phalcon'</span>
 </code></pre></div>
 <h3 id="firstkey"><code>firstKey</code><a class="headerlink" href="#firstkey" title="Permanent link">&para;</a></h3>
 <p><code>firstKey(array $collection, callable $method = null): mixed</code></p>
@@ -6947,13 +6947,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="s1">&#39;one&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="s1">&#39;two&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Framework&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="s1">'one'</span> <span class="o">=&gt;</span> <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="s1">'two'</span> <span class="o">=&gt;</span> <span class="s1">'Framework'</span><span class="p">,</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="p">];</span>
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">firstKey</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;one&#39;</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'one'</span>
 </code></pre></div>
 <h3 id="flatten"><code>flatten</code><a class="headerlink" href="#flatten" title="Permanent link">&para;</a></h3>
 <p><code>flatten(array $collection, bool $deep = false): array</code></p>
@@ -6981,13 +6981,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="s1">&#39;one&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="s1">&#39;two&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="s1">'one'</span> <span class="o">=&gt;</span> <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="s1">'two'</span> <span class="o">=&gt;</span> <span class="s1">'1'</span><span class="p">,</span>
 <a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">];</span>
 <a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>               <span class="c1">// &#39;Phalcon&#39;</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Unknown&#39;</span><span class="p">);</span>    <span class="c1">// &#39;Unknown&#39;</span>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">);</span>  <span class="c1">// 1</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>               <span class="c1">// 'Phalcon'</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'Unknown'</span><span class="p">);</span>    <span class="c1">// 'Unknown'</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">'int'</span><span class="p">);</span>  <span class="c1">// 1</span>
 </code></pre></div>
 <h3 id="group"><code>group</code><a class="headerlink" href="#group" title="Permanent link">&para;</a></h3>
 <p><code>group(array $collection, mixed $method): array</code></p>
@@ -7000,38 +7000,38 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="p">[</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Paul&#39;</span><span class="p">,</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>        <span class="s1">&#39;age&#39;</span>  <span class="o">=&gt;</span> <span class="mi">34</span><span class="p">,</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Paul'</span><span class="p">,</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>        <span class="s1">'age'</span>  <span class="o">=&gt;</span> <span class="mi">34</span><span class="p">,</span>
 <a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="p">],</span>
 <a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="p">[</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Peter&#39;</span><span class="p">,</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>        <span class="s1">&#39;age&#39;</span>  <span class="o">=&gt;</span> <span class="mi">31</span><span class="p">,</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Peter'</span><span class="p">,</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>        <span class="s1">'age'</span>  <span class="o">=&gt;</span> <span class="mi">31</span><span class="p">,</span>
 <a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>    <span class="p">],</span>
 <a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>    <span class="p">[</span>
-<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span>
-<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>        <span class="s1">&#39;age&#39;</span>  <span class="o">=&gt;</span> <span class="mi">29</span><span class="p">,</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John'</span><span class="p">,</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>        <span class="s1">'age'</span>  <span class="o">=&gt;</span> <span class="mi">29</span><span class="p">,</span>
 <a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>    <span class="p">],</span>
 <a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="p">];</span>
 <a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>
-<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">group</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">group</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'age'</span><span class="p">);</span>
 <a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>
 <a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="c1">// [</span>
 <a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="c1">//     34 =&gt; [</span>
 <a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="c1">//         [</span>
-<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="c1">//             &#39;name&#39; =&gt; &#39;Paul&#39;,</span>
-<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="c1">//             &#39;age&#39;  =&gt; 34,</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="c1">//             'name' =&gt; 'Paul',</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="c1">//             'age'  =&gt; 34,</span>
 <a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="c1">//         ],</span>
 <a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="c1">//     ],</span>
 <a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="c1">//     31 =&gt; [</span>
 <a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="c1">//         [</span>
-<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="c1">//             &#39;name&#39; =&gt; &#39;Peter&#39;,</span>
-<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="c1">//             &#39;age&#39;  =&gt; 31,</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="c1">//             'name' =&gt; 'Peter',</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="c1">//             'age'  =&gt; 31,</span>
 <a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="c1">//         ],</span>
 <a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="c1">//     ],</span>
 <a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="c1">//     29 =&gt; [</span>
 <a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a><span class="c1">//         [</span>
-<a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="c1">//             &#39;name&#39; =&gt; &#39;John&#39;,</span>
-<a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="c1">//             &#39;age&#39;  =&gt; 29,</span>
+<a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="c1">//             'name' =&gt; 'John',</span>
+<a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="c1">//             'age'  =&gt; 29,</span>
 <a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="c1">//         ],</span>
 <a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="c1">//     ],</span>
 <a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a><span class="c1">// ]</span>
@@ -7046,13 +7046,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="mi">1</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="s1">&#39;two&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Framework&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="mi">1</span>     <span class="o">=&gt;</span> <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="s1">'two'</span> <span class="o">=&gt;</span> <span class="s1">'Framework'</span><span class="p">,</span>
 <a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="p">];</span>
 <a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>         <span class="c1">// true</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">);</span>     <span class="c1">// true</span>
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">);</span> <span class="c1">// false</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">);</span>     <span class="c1">// true</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'unknown'</span><span class="p">);</span> <span class="c1">// false</span>
 </code></pre></div>
 <h3 id="isunique"><code>isUnique</code><a class="headerlink" href="#isunique" title="Permanent link">&para;</a></h3>
 <p><code>isUnique(array $collection): bool</code></p>
@@ -7064,16 +7064,16 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="s1">&#39;Framework&#39;</span><span class="p">,</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="s1">'Framework'</span><span class="p">,</span>
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="p">];</span>
 <a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
 <a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">isUnique</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span> <span class="c1">// true</span>
 <a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
 <a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>    <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>    <span class="s1">&#39;Framework&#39;</span><span class="p">,</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>    <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>    <span class="s1">'Framework'</span><span class="p">,</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    <span class="s1">'Phalcon'</span><span class="p">,</span>
 <a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="p">];</span>
 <a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>
 <a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="k">echo</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">isUnique</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span> <span class="c1">// false</span>
@@ -7088,13 +7088,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="s1">&#39;one&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="s1">&#39;two&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Framework&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="s1">'one'</span> <span class="o">=&gt;</span> <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="s1">'two'</span> <span class="o">=&gt;</span> <span class="s1">'Framework'</span><span class="p">,</span>
 <a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="p">];</span>
 <a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
 <a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">last</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;Framework&#39;</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'Framework'</span>
 </code></pre></div>
 <h3 id="lastkey"><code>lastKey</code><a class="headerlink" href="#lastkey" title="Permanent link">&para;</a></h3>
 <p><code>lastKey(array $collection, callable $method = null): mixed</code></p>
@@ -7106,13 +7106,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    <span class="s1">&#39;one&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="s1">&#39;two&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Framework&#39;</span><span class="p">,</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    <span class="s1">'one'</span> <span class="o">=&gt;</span> <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="s1">'two'</span> <span class="o">=&gt;</span> <span class="s1">'Framework'</span><span class="p">,</span>
 <a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="p">];</span>
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
 <a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">lastKey</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;two&#39;</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'two'</span>
 </code></pre></div>
 <h3 id="order"><code>order</code><a class="headerlink" href="#order" title="Permanent link">&para;</a></h3>
 <p><code>order(array $collection, mixed $attribute, string $order = 'asc'): array</code></p>
@@ -7126,85 +7126,85 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
 <a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
 <a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="p">[</span>
-<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>        <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Paul&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>        <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Paul'</span><span class="p">,</span>
 <a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    <span class="p">],</span>
 <a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>    <span class="p">[</span>
-<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>        <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
-<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Peter&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>        <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Peter'</span><span class="p">,</span>
 <a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>    <span class="p">],</span>
 <a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>    <span class="p">[</span>
-<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>        <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>        <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John'</span><span class="p">,</span>
 <a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>    <span class="p">],</span>
 <a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="p">];</span>
 <a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>
-<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">order</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">);</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">order</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">);</span>
 <a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>
 <a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="c1">// [</span>
 <a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a><span class="c1">//     [</span>
-<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a><span class="c1">//         &#39;id&#39;   =&gt; 1,</span>
-<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="c1">//         &#39;name&#39; =&gt; &#39;John&#39;,</span>
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a><span class="c1">//         'id'   =&gt; 1,</span>
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="c1">//         'name' =&gt; 'John',</span>
 <a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a><span class="c1">//     ],</span>
 <a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="c1">//     [</span>
-<a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a><span class="c1">//         &#39;id&#39;   =&gt; 2,</span>
-<a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a><span class="c1">//         &#39;name&#39; =&gt; &#39;Paul&#39;,</span>
+<a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a><span class="c1">//         'id'   =&gt; 2,</span>
+<a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a><span class="c1">//         'name' =&gt; 'Paul',</span>
 <a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a><span class="c1">//     ],</span>
 <a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a><span class="c1">//     [</span>
-<a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a><span class="c1">//         &#39;id&#39;   =&gt; 3,</span>
-<a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a><span class="c1">//         &#39;name&#39; =&gt; &#39;Peter&#39;,</span>
+<a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a><span class="c1">//         'id'   =&gt; 3,</span>
+<a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a><span class="c1">//         'name' =&gt; 'Peter',</span>
 <a id="__codelineno-14-38" name="__codelineno-14-38" href="#__codelineno-14-38"></a><span class="c1">//     ],</span>
 <a id="__codelineno-14-39" name="__codelineno-14-39" href="#__codelineno-14-39"></a><span class="c1">// ]</span>
 <a id="__codelineno-14-40" name="__codelineno-14-40" href="#__codelineno-14-40"></a>
-<a id="__codelineno-14-41" name="__codelineno-14-41" href="#__codelineno-14-41"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">order</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">Order</span><span class="o">::</span><span class="na">ORDER_DESC</span><span class="p">);</span>
+<a id="__codelineno-14-41" name="__codelineno-14-41" href="#__codelineno-14-41"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">order</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">,</span> <span class="nx">Order</span><span class="o">::</span><span class="na">ORDER_DESC</span><span class="p">);</span>
 <a id="__codelineno-14-42" name="__codelineno-14-42" href="#__codelineno-14-42"></a>
 <a id="__codelineno-14-43" name="__codelineno-14-43" href="#__codelineno-14-43"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-14-44" name="__codelineno-14-44" href="#__codelineno-14-44"></a><span class="c1">// [</span>
 <a id="__codelineno-14-45" name="__codelineno-14-45" href="#__codelineno-14-45"></a><span class="c1">//     [</span>
-<a id="__codelineno-14-46" name="__codelineno-14-46" href="#__codelineno-14-46"></a><span class="c1">//         &#39;id&#39;   =&gt; 3,</span>
-<a id="__codelineno-14-47" name="__codelineno-14-47" href="#__codelineno-14-47"></a><span class="c1">//         &#39;name&#39; =&gt; &#39;Peter&#39;,</span>
+<a id="__codelineno-14-46" name="__codelineno-14-46" href="#__codelineno-14-46"></a><span class="c1">//         'id'   =&gt; 3,</span>
+<a id="__codelineno-14-47" name="__codelineno-14-47" href="#__codelineno-14-47"></a><span class="c1">//         'name' =&gt; 'Peter',</span>
 <a id="__codelineno-14-48" name="__codelineno-14-48" href="#__codelineno-14-48"></a><span class="c1">//     ],</span>
 <a id="__codelineno-14-49" name="__codelineno-14-49" href="#__codelineno-14-49"></a><span class="c1">//     [</span>
-<a id="__codelineno-14-50" name="__codelineno-14-50" href="#__codelineno-14-50"></a><span class="c1">//         &#39;id&#39;   =&gt; 2,</span>
-<a id="__codelineno-14-51" name="__codelineno-14-51" href="#__codelineno-14-51"></a><span class="c1">//         &#39;name&#39; =&gt; &#39;Paul&#39;,</span>
+<a id="__codelineno-14-50" name="__codelineno-14-50" href="#__codelineno-14-50"></a><span class="c1">//         'id'   =&gt; 2,</span>
+<a id="__codelineno-14-51" name="__codelineno-14-51" href="#__codelineno-14-51"></a><span class="c1">//         'name' =&gt; 'Paul',</span>
 <a id="__codelineno-14-52" name="__codelineno-14-52" href="#__codelineno-14-52"></a><span class="c1">//     ],</span>
 <a id="__codelineno-14-53" name="__codelineno-14-53" href="#__codelineno-14-53"></a><span class="c1">//     [</span>
-<a id="__codelineno-14-54" name="__codelineno-14-54" href="#__codelineno-14-54"></a><span class="c1">//         &#39;id&#39;   =&gt; 1,</span>
-<a id="__codelineno-14-55" name="__codelineno-14-55" href="#__codelineno-14-55"></a><span class="c1">//         &#39;name&#39; =&gt; &#39;John&#39;,</span>
+<a id="__codelineno-14-54" name="__codelineno-14-54" href="#__codelineno-14-54"></a><span class="c1">//         'id'   =&gt; 1,</span>
+<a id="__codelineno-14-55" name="__codelineno-14-55" href="#__codelineno-14-55"></a><span class="c1">//         'name' =&gt; 'John',</span>
 <a id="__codelineno-14-56" name="__codelineno-14-56" href="#__codelineno-14-56"></a><span class="c1">//     ],</span>
 <a id="__codelineno-14-57" name="__codelineno-14-57" href="#__codelineno-14-57"></a><span class="c1">// ]</span>
 <a id="__codelineno-14-58" name="__codelineno-14-58" href="#__codelineno-14-58"></a>
 <a id="__codelineno-14-59" name="__codelineno-14-59" href="#__codelineno-14-59"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
 <a id="__codelineno-14-60" name="__codelineno-14-60" href="#__codelineno-14-60"></a>    <span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="p">[</span>
-<a id="__codelineno-14-61" name="__codelineno-14-61" href="#__codelineno-14-61"></a>        <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
-<a id="__codelineno-14-62" name="__codelineno-14-62" href="#__codelineno-14-62"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Paul&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-61" name="__codelineno-14-61" href="#__codelineno-14-61"></a>        <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-14-62" name="__codelineno-14-62" href="#__codelineno-14-62"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Paul'</span><span class="p">,</span>
 <a id="__codelineno-14-63" name="__codelineno-14-63" href="#__codelineno-14-63"></a>    <span class="p">],</span>
 <a id="__codelineno-14-64" name="__codelineno-14-64" href="#__codelineno-14-64"></a>    <span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="p">[</span>
-<a id="__codelineno-14-65" name="__codelineno-14-65" href="#__codelineno-14-65"></a>        <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
-<a id="__codelineno-14-66" name="__codelineno-14-66" href="#__codelineno-14-66"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Peter&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-65" name="__codelineno-14-65" href="#__codelineno-14-65"></a>        <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-14-66" name="__codelineno-14-66" href="#__codelineno-14-66"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Peter'</span><span class="p">,</span>
 <a id="__codelineno-14-67" name="__codelineno-14-67" href="#__codelineno-14-67"></a>    <span class="p">],</span>
 <a id="__codelineno-14-68" name="__codelineno-14-68" href="#__codelineno-14-68"></a>    <span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="p">[</span>
-<a id="__codelineno-14-69" name="__codelineno-14-69" href="#__codelineno-14-69"></a>        <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-14-70" name="__codelineno-14-70" href="#__codelineno-14-70"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-69" name="__codelineno-14-69" href="#__codelineno-14-69"></a>        <span class="s1">'id'</span>   <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-14-70" name="__codelineno-14-70" href="#__codelineno-14-70"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John'</span><span class="p">,</span>
 <a id="__codelineno-14-71" name="__codelineno-14-71" href="#__codelineno-14-71"></a>    <span class="p">],</span>
 <a id="__codelineno-14-72" name="__codelineno-14-72" href="#__codelineno-14-72"></a><span class="p">];</span>
 <a id="__codelineno-14-73" name="__codelineno-14-73" href="#__codelineno-14-73"></a>
-<a id="__codelineno-14-74" name="__codelineno-14-74" href="#__codelineno-14-74"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">order</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">);</span>
+<a id="__codelineno-14-74" name="__codelineno-14-74" href="#__codelineno-14-74"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">order</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">);</span>
 <a id="__codelineno-14-75" name="__codelineno-14-75" href="#__codelineno-14-75"></a>
 <a id="__codelineno-14-76" name="__codelineno-14-76" href="#__codelineno-14-76"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-14-77" name="__codelineno-14-77" href="#__codelineno-14-77"></a><span class="c1">// [</span>
 <a id="__codelineno-14-78" name="__codelineno-14-78" href="#__codelineno-14-78"></a><span class="c1">//     (object) [</span>
-<a id="__codelineno-14-79" name="__codelineno-14-79" href="#__codelineno-14-79"></a><span class="c1">//         &#39;id&#39;   =&gt; 1,</span>
-<a id="__codelineno-14-80" name="__codelineno-14-80" href="#__codelineno-14-80"></a><span class="c1">//         &#39;name&#39; =&gt; &#39;John&#39;,</span>
+<a id="__codelineno-14-79" name="__codelineno-14-79" href="#__codelineno-14-79"></a><span class="c1">//         'id'   =&gt; 1,</span>
+<a id="__codelineno-14-80" name="__codelineno-14-80" href="#__codelineno-14-80"></a><span class="c1">//         'name' =&gt; 'John',</span>
 <a id="__codelineno-14-81" name="__codelineno-14-81" href="#__codelineno-14-81"></a><span class="c1">//     ],</span>
 <a id="__codelineno-14-82" name="__codelineno-14-82" href="#__codelineno-14-82"></a><span class="c1">//     (object) [</span>
-<a id="__codelineno-14-83" name="__codelineno-14-83" href="#__codelineno-14-83"></a><span class="c1">//         &#39;id&#39;   =&gt; 2,</span>
-<a id="__codelineno-14-84" name="__codelineno-14-84" href="#__codelineno-14-84"></a><span class="c1">//         &#39;name&#39; =&gt; &#39;Paul&#39;,</span>
+<a id="__codelineno-14-83" name="__codelineno-14-83" href="#__codelineno-14-83"></a><span class="c1">//         'id'   =&gt; 2,</span>
+<a id="__codelineno-14-84" name="__codelineno-14-84" href="#__codelineno-14-84"></a><span class="c1">//         'name' =&gt; 'Paul',</span>
 <a id="__codelineno-14-85" name="__codelineno-14-85" href="#__codelineno-14-85"></a><span class="c1">//     ],</span>
 <a id="__codelineno-14-86" name="__codelineno-14-86" href="#__codelineno-14-86"></a><span class="c1">//     (object) [</span>
-<a id="__codelineno-14-87" name="__codelineno-14-87" href="#__codelineno-14-87"></a><span class="c1">//         &#39;id&#39;   =&gt; 3,</span>
-<a id="__codelineno-14-88" name="__codelineno-14-88" href="#__codelineno-14-88"></a><span class="c1">//         &#39;name&#39; =&gt; &#39;Peter&#39;,</span>
+<a id="__codelineno-14-87" name="__codelineno-14-87" href="#__codelineno-14-87"></a><span class="c1">//         'id'   =&gt; 3,</span>
+<a id="__codelineno-14-88" name="__codelineno-14-88" href="#__codelineno-14-88"></a><span class="c1">//         'name' =&gt; 'Peter',</span>
 <a id="__codelineno-14-89" name="__codelineno-14-89" href="#__codelineno-14-89"></a><span class="c1">//     ],</span>
 <a id="__codelineno-14-90" name="__codelineno-14-90" href="#__codelineno-14-90"></a><span class="c1">// ]</span>
 </code></pre></div>
@@ -7218,29 +7218,29 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="p">[</span><span class="s1">&#39;product_id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;prod-100&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Desk&#39;</span><span class="p">],</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>    <span class="p">[</span><span class="s1">&#39;product_id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;prod-200&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Chair&#39;</span><span class="p">],</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="p">[</span><span class="s1">'product_id'</span> <span class="o">=&gt;</span> <span class="s1">'prod-100'</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Desk'</span><span class="p">],</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>    <span class="p">[</span><span class="s1">'product_id'</span> <span class="o">=&gt;</span> <span class="s1">'prod-200'</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Chair'</span><span class="p">],</span>
 <a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="p">];</span>
 <a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">pluck</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">);</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">pluck</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">);</span>
 <a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
 <a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="c1">// [</span>
-<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="c1">//     &#39;Desk&#39;,</span>
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="c1">//     &#39;Chair&#39;,</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="c1">//     'Desk',</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="c1">//     'Chair',</span>
 <a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="c1">// ]</span>
 <a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
 <a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>    <span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="p">[</span><span class="s1">&#39;product_id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;prod-100&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Desk&#39;</span><span class="p">],</span>
-<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>    <span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="p">[</span><span class="s1">&#39;product_id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;prod-200&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Chair&#39;</span><span class="p">],</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>    <span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="p">[</span><span class="s1">'product_id'</span> <span class="o">=&gt;</span> <span class="s1">'prod-100'</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Desk'</span><span class="p">],</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>    <span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="p">[</span><span class="s1">'product_id'</span> <span class="o">=&gt;</span> <span class="s1">'prod-200'</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Chair'</span><span class="p">],</span>
 <a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="p">];</span>
 <a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>
-<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">pluck</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">);</span>
+<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">pluck</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">);</span>
 <a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>
 <a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="c1">// [</span>
-<a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="c1">//     &#39;Desk&#39;,</span>
-<a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="c1">//     &#39;Chair&#39;,</span>
+<a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="c1">//     'Desk',</span>
+<a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="c1">//     'Chair',</span>
 <a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="c1">// ]</span>
 </code></pre></div>
 <h3 id="set"><code>set</code><a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
@@ -7253,24 +7253,24 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="s1">&#39;one&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="s1">'one'</span> <span class="o">=&gt;</span> <span class="s1">'Phalcon'</span><span class="p">,</span>
 <a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="p">];</span>
 <a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;Framework&#39;</span><span class="p">);</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'Framework'</span><span class="p">);</span>
 <a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
 <a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="c1">// [</span>
-<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="c1">//     &#39;one&#39; =&gt; &#39;Phalcon&#39;,</span>
-<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="c1">//     1     =&gt; &#39;Framework&#39;,</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="c1">//     'one' =&gt; 'Phalcon',</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="c1">//     1     =&gt; 'Framework',</span>
 <a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="c1">// ]</span>
 <a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>
-<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;abcde&#39;</span><span class="p">,</span> <span class="s1">&#39;suffix&#39;</span><span class="p">);</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'abcde'</span><span class="p">,</span> <span class="s1">'suffix'</span><span class="p">);</span>
 <a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>
 <a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="c1">// [</span>
-<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="c1">//     &#39;one&#39;    =&gt; &#39;Phalcon&#39;,</span>
-<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="c1">//     1        =&gt; &#39;Framework&#39;,</span>
-<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="c1">//     &#39;suffix&#39; =&gt; &#39;abcde&#39;,</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="c1">//     'one'    =&gt; 'Phalcon',</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="c1">//     1        =&gt; 'Framework',</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="c1">//     'suffix' =&gt; 'abcde',</span>
 <a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="c1">// ]</span>
 </code></pre></div>
 <h3 id="sliceleft"><code>sliceLeft</code><a class="headerlink" href="#sliceleft" title="Permanent link">&para;</a></h3>
@@ -7283,26 +7283,26 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="s1">&#39;Framework&#39;</span><span class="p">,</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="s1">&#39;for&#39;</span><span class="p">,</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="s1">&#39;PHP&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="s1">'Framework'</span><span class="p">,</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="s1">'for'</span><span class="p">,</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="s1">'PHP'</span><span class="p">,</span>
 <a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="p">];</span>
 <a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
 <a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">sliceLeft</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>
 <a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="c1">// [</span>
-<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="c1">//     &#39;Phalcon&#39;,</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="c1">//     'Phalcon',</span>
 <a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="c1">// ]</span>
 <a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>
 <a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">sliceLeft</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 <a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>
 <a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="c1">// [</span>
-<a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="c1">//     &#39;Phalcon&#39;,</span>
-<a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="c1">//     &#39;Framework&#39;,</span>
-<a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="c1">//     &#39;for&#39;,</span>
+<a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="c1">//     'Phalcon',</span>
+<a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="c1">//     'Framework',</span>
+<a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="c1">//     'for',</span>
 <a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a><span class="c1">// ]</span>
 </code></pre></div>
 <h3 id="sliceright"><code>sliceRight</code><a class="headerlink" href="#sliceright" title="Permanent link">&para;</a></h3>
@@ -7315,26 +7315,26 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
 <a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="s1">&#39;Framework&#39;</span><span class="p">,</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="s1">&#39;for&#39;</span><span class="p">,</span>
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="s1">&#39;PHP&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="s1">'Framework'</span><span class="p">,</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="s1">'for'</span><span class="p">,</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="s1">'PHP'</span><span class="p">,</span>
 <a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="p">];</span>
 <a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
 <a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">sliceRight</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>
 <a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="c1">// [</span>
-<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="c1">//     &#39;PHP&#39;,</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="c1">//     'PHP',</span>
 <a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="c1">// ]</span>
 <a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>
 <a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">sliceRight</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 <a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>
 <a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a><span class="c1">// [</span>
-<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a><span class="c1">//     &#39;Framework&#39;,</span>
-<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a><span class="c1">//     &#39;for&#39;,</span>
-<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="c1">//     &#39;PHP&#39;,</span>
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a><span class="c1">//     'Framework',</span>
+<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a><span class="c1">//     'for',</span>
+<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="c1">//     'PHP',</span>
 <a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a><span class="c1">// ]</span>
 </code></pre></div>
 <h3 id="split"><code>split</code><a class="headerlink" href="#split" title="Permanent link">&para;</a></h3>
@@ -7347,8 +7347,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span>
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">&#39;Framework&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">'Phalcon'</span><span class="p">,</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">'Framework'</span><span class="p">,</span>
 <a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="p">];</span>
 <a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
 <a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">split</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
@@ -7356,7 +7356,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="c1">// [</span>
 <a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="c1">//     [1, 3],</span>
-<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="c1">//     [&#39;Phalcon&#39;, &#39;Framework&#39;],</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="c1">//     ['Phalcon', 'Framework'],</span>
 <a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="c1">// ];</span>
 </code></pre></div>
 <h3 id="toobject"><code>toObject</code><a class="headerlink" href="#toobject" title="Permanent link">&para;</a></h3>
@@ -7369,8 +7369,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
 <a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="s1">&#39;one&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="s1">&#39;three&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="s1">'one'</span>   <span class="o">=&gt;</span> <span class="s1">'two'</span><span class="p">,</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="s1">'three'</span> <span class="o">=&gt;</span> <span class="s1">'four'</span><span class="p">,</span>
 <a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="p">];</span>
 <a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>
 <a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">toObject</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
@@ -7378,9 +7378,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="c1">// class stdClass#1 (2) {</span>
 <a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="c1">//   public $one =&gt;</span>
-<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="c1">//   string(3) &quot;two&quot;</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="c1">//   string(3) "two"</span>
 <a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="c1">//   public $three =&gt;</span>
-<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="c1">//   string(4) &quot;four&quot;</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="c1">//   string(4) "four"</span>
 <a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a><span class="c1">// }</span>
 </code></pre></div>
 <h3 id="validateall"><code>validateAll</code><a class="headerlink" href="#validateall" title="Permanent link">&para;</a></h3>
@@ -7433,21 +7433,21 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
 <a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="nv">$source</span>  <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    <span class="s1">&#39;value-1&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="s1">&#39; key &#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;value-2&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>    <span class="mi">5</span>        <span class="o">=&gt;</span> <span class="s1">&#39;value-3&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    <span class="mi">6</span>        <span class="o">=&gt;</span> <span class="s1">&#39;value-4&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>    <span class="mi">7</span>        <span class="o">=&gt;</span> <span class="s1">&#39;value-5&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    <span class="s1">&#39; key-2&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;value-6&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    <span class="s1">&#39;key-3 &#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;value-7&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    <span class="s1">&#39;key-4&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;value-8&#39;</span><span class="p">,</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    <span class="s1">'value-1'</span><span class="p">,</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="s1">' key '</span>  <span class="o">=&gt;</span> <span class="s1">'value-2'</span><span class="p">,</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>    <span class="mi">5</span>        <span class="o">=&gt;</span> <span class="s1">'value-3'</span><span class="p">,</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    <span class="mi">6</span>        <span class="o">=&gt;</span> <span class="s1">'value-4'</span><span class="p">,</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>    <span class="mi">7</span>        <span class="o">=&gt;</span> <span class="s1">'value-5'</span><span class="p">,</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    <span class="s1">' key-2'</span> <span class="o">=&gt;</span> <span class="s1">'value-6'</span><span class="p">,</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    <span class="s1">'key-3 '</span> <span class="o">=&gt;</span> <span class="s1">'value-7'</span><span class="p">,</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    <span class="s1">'key-4'</span>  <span class="o">=&gt;</span> <span class="s1">'value-8'</span><span class="p">,</span>
 <a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="p">];</span>
 <a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>
 <a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="nv">$whiteList</span> <span class="o">=</span> <span class="p">[</span>
 <a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>    <span class="mi">7</span><span class="p">,</span>
 <a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>    <span class="mi">5</span><span class="p">,</span>
 <a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>    <span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>    <span class="s1">&#39;key-3 &#39;</span><span class="p">,</span>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>    <span class="s1">'key-3 '</span><span class="p">,</span>
 <a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>    <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>    <span class="o">-</span><span class="mi">13</span><span class="p">,</span>
 <a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>    <span class="k">new</span> <span class="k">stdClass</span><span class="p">(),</span>
@@ -7459,10 +7459,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>
 <a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a><span class="c1">// [</span>
-<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a><span class="c1">//     0        =&gt; &#39;value-1&#39;,</span>
-<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a><span class="c1">//     5        =&gt; &#39;value-3&#39;,</span>
-<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a><span class="c1">//     7        =&gt; &#39;value-5&#39;,</span>
-<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a><span class="c1">//     &#39;key-3 &#39; =&gt; &#39;value-7&#39;,</span>
+<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a><span class="c1">//     0        =&gt; 'value-1',</span>
+<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a><span class="c1">//     5        =&gt; 'value-3',</span>
+<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a><span class="c1">//     7        =&gt; 'value-5',</span>
+<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a><span class="c1">//     'key-3 ' =&gt; 'value-7',</span>
 <a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a><span class="c1">// ];</span>
 </code></pre></div>
 <h3 id="basename"><code>basename</code><a class="headerlink" href="#basename" title="Permanent link">&para;</a></h3>
@@ -7474,17 +7474,17 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
 <a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;/etc/sudoers.d&#39;</span><span class="p">;</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'/etc/sudoers.d'</span><span class="p">;</span>
 <a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>
 <a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">basename</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>
 <a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// .d</span>
 <a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
-<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;/root/ελληνικά.txt&#39;</span><span class="p">;</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'/root/ελληνικά.txt'</span><span class="p">;</span>
 <a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>
 <a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">basename</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>
-<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;ελληνικά.txt&#39;</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'ελληνικά.txt'</span>
 </code></pre></div>
 <h3 id="decode"><code>decode</code><a class="headerlink" href="#decode" title="Permanent link">&para;</a></h3>
 <p><code>decode(string $data, bool $associative = false, int $depth = 512, int $options = 0): string</code></p>
@@ -7495,14 +7495,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
 <a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;{&quot;one&quot;:&quot;two&quot;,&quot;0&quot;:&quot;three&quot;}&#39;</span><span class="p">;</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'{"one":"two","0":"three"}'</span><span class="p">;</span>
 <a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
 <a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">decode</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
 <a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 <a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="c1">// [</span>
-<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="c1">//     &#39;one&#39; =&gt; &#39;two&#39;,</span>
-<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="c1">//     &#39;three&#39;,</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="c1">//     'one' =&gt; 'two',</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="c1">//     'three',</span>
 <a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="c1">// ];</span>
 </code></pre></div>
 <h3 id="encode"><code>encode</code><a class="headerlink" href="#encode" title="Permanent link">&para;</a></h3>
@@ -7524,13 +7524,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
 <a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    <span class="s1">&#39;one&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span>
-<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>    <span class="s1">&#39;three&#39;</span><span class="p">,</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    <span class="s1">'one'</span> <span class="o">=&gt;</span> <span class="s1">'two'</span><span class="p">,</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>    <span class="s1">'three'</span><span class="p">,</span>
 <a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="p">];</span>
 <a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>
 <a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">encode</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>
-<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;{&quot;one&quot;:&quot;two&quot;,&quot;0&quot;:&quot;three&quot;}&#39;</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// '{"one":"two","0":"three"}'</span>
 </code></pre></div>
 <h3 id="isbetween"><code>isBetween</code><a class="headerlink" href="#isbetween" title="Permanent link">&para;</a></h3>
 <p><code>isBetween(int $value, int $start, int $end): bool</code></p>
@@ -7554,7 +7554,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
 <a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
-<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;came-li-ze&#39;</span><span class="p">;</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'came-li-ze'</span><span class="p">;</span>
 <a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>
 <a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">camelize</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>
@@ -7570,16 +7570,16 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>
 <a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">concat</span><span class="p">(</span>
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="s1">&#39;.&#39;</span><span class="p">,</span>
-<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>    <span class="s1">&#39;@test.&#39;</span><span class="p">,</span>
-<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>    <span class="s1">&#39;.test2.&#39;</span><span class="p">,</span>
-<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>    <span class="s1">&#39;.test&#39;</span><span class="p">,</span>
-<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>    <span class="s1">&#39;.34&#39;</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="s1">'.'</span><span class="p">,</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>    <span class="s1">'@test.'</span><span class="p">,</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>    <span class="s1">'.test2.'</span><span class="p">,</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>    <span class="s1">'.test'</span><span class="p">,</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>    <span class="s1">'.34'</span>
 <a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="p">);</span>
 <a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>
 <a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">concat</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>
-<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;@test.test2.test.34&#39;</span>
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// '@test.test2.test.34'</span>
 </code></pre></div>
 <h3 id="countvowels"><code>countVowels</code><a class="headerlink" href="#countvowels" title="Permanent link">&para;</a></h3>
 <p><code>countVowels(string $text): int</code></p>
@@ -7590,7 +7590,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>
 <a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
-<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;Luke, I am your father!&#39;</span><span class="p">;</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'Luke, I am your father!'</span><span class="p">;</span>
 <a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>
 <a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">countVowels</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>
@@ -7605,11 +7605,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>
 <a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>
-<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;BeetleJuice&#39;</span><span class="p">;</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'BeetleJuice'</span><span class="p">;</span>
 <a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>
 <a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">decapitalize</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>
-<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;beetleJuice&#39;</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'beetleJuice'</span>
 </code></pre></div>
 <h3 id="decrement"><code>decrement</code><a class="headerlink" href="#decrement" title="Permanent link">&para;</a></h3>
 <p><code>decrement(string $text, string $separator = '_'): string</code></p>
@@ -7620,11 +7620,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>
 <a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>
-<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;file_2&#39;</span><span class="p">;</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'file_2'</span><span class="p">;</span>
 <a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>
 <a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">decrement</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>
-<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;file_1&#39;</span>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'file_1'</span>
 </code></pre></div>
 <h3 id="dirfromfile"><code>dirFromFile</code><a class="headerlink" href="#dirfromfile" title="Permanent link">&para;</a></h3>
 <p><code>dirFromFile(string $file): string</code></p>
@@ -7635,11 +7635,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
 <a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
-<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;abcdef12345.jpg&#39;</span><span class="p">;</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'abcdef12345.jpg'</span><span class="p">;</span>
 <a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>
 <a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">dirFromFile</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>
-<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;ab/cd/ef/12/3/&#39;</span>
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'ab/cd/ef/12/3/'</span>
 </code></pre></div>
 <h3 id="dirseparator"><code>dirSeparator</code><a class="headerlink" href="#dirseparator" title="Permanent link">&para;</a></h3>
 <p><code>dirSeparator(string $directory): string</code></p>
@@ -7650,11 +7650,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
 <a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>
-<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;/home/phalcon//&#39;</span><span class="p">;</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'/home/phalcon//'</span><span class="p">;</span>
 <a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>
 <a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">dirSeparator</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>
-<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;/home/phalcon/&#39;</span>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// '/home/phalcon/'</span>
 </code></pre></div>
 <h3 id="dynamic"><code>dynamic</code><a class="headerlink" href="#dynamic" title="Permanent link">&para;</a></h3>
 <p><code>dynamic(string $text, string $leftDelimiter = "{", string $rightDelimiter = "}", string $separator = "|"): string</code></p>
@@ -7665,15 +7665,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>
 <a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>
-<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;{Hi|Hello}, my name is Bob!&#39;</span><span class="p">;</span>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'{Hi|Hello}, my name is Bob!'</span><span class="p">;</span>
 <a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>
 <a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">dynamic</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>
-<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;Hi, my name is Bob!&#39;</span>
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'Hi, my name is Bob!'</span>
 <a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>
 <a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">dynamic</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>
-<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;Hello, my name is Bob!&#39;</span>
+<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'Hello, my name is Bob!'</span>
 </code></pre></div>
 <h3 id="endswith"><code>endsWith</code><a class="headerlink" href="#endswith" title="Permanent link">&para;</a></h3>
 <p><code>endsWith(string $haystack, string $needle, bool $ignoreCase = true): bool</code></p>
@@ -7684,9 +7684,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>
 <a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>
-<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">;</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'abcdef'</span><span class="p">;</span>
 <a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>
-<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">endsWith</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;ef&#39;</span><span class="p">);</span>
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">endsWith</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'ef'</span><span class="p">);</span>
 <a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>
 <a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// true</span>
 </code></pre></div>
@@ -7699,11 +7699,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>
 <a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>
-<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;This is a [custom] string&#39;</span><span class="p">;</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'This is a [custom] string'</span><span class="p">;</span>
 <a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>
-<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">firstBetween</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;[&#39;</span><span class="p">,</span> <span class="s1">&#39;]&#39;</span><span class="p">);</span>
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">firstBetween</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'['</span><span class="p">,</span> <span class="s1">']'</span><span class="p">);</span>
 <a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>
-<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;custom&#39;</span>
+<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'custom'</span>
 </code></pre></div>
 <h3 id="friendly"><code>friendly</code><a class="headerlink" href="#friendly" title="Permanent link">&para;</a></h3>
 <p><code>friendly(string $text, string $separator = '-', bool $lowercase = true, mixed $replace = null): string</code></p>
@@ -7714,11 +7714,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>
 <a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>
-<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;This is a Test&#39;</span><span class="p">;</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'This is a Test'</span><span class="p">;</span>
 <a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>
 <a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">friendly</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a>
-<a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;this-is-a-test&#39;</span>
+<a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'this-is-a-test'</span>
 </code></pre></div>
 <h3 id="humanize"><code>humanize</code><a class="headerlink" href="#humanize" title="Permanent link">&para;</a></h3>
 <p><code>humanize(string $text): string</code></p>
@@ -7729,11 +7729,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>
 <a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>
-<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;kittens-are_cats&#39;</span><span class="p">;</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'kittens-are_cats'</span><span class="p">;</span>
 <a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>
 <a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">humanize</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>
-<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;kittens are cats&#39;</span>
+<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'kittens are cats'</span>
 </code></pre></div>
 <h3 id="includes"><code>includes</code><a class="headerlink" href="#includes" title="Permanent link">&para;</a></h3>
 <p><code>includes(string $haystack, string $needle): bool</code></p>
@@ -7744,9 +7744,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>
 <a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>
-<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;Phalcon Framework&#39;</span><span class="p">;</span>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'Phalcon Framework'</span><span class="p">;</span>
 <a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>
-<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">includes</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;Framework&#39;</span><span class="p">);</span>
+<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">includes</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'Framework'</span><span class="p">);</span>
 <a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>
 <a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// true</span>
 </code></pre></div>
@@ -7759,11 +7759,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>
 <a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>
-<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;file_1&#39;</span><span class="p">;</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'file_1'</span><span class="p">;</span>
 <a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>
 <a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">increment</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a>
-<a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;file_2&#39;</span>
+<a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'file_2'</span>
 </code></pre></div>
 <h3 id="interpolate"><code>interpolate</code><a class="headerlink" href="#interpolate" title="Permanent link">&para;</a></h3>
 <p><code>interpolate(string $message, array $context = [], string $leftToken = "%", string $rightToken = "%"): string</code></p>
@@ -7774,15 +7774,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>
 <a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>
-<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;%date% (YYYY-MM-DD) %level% (0-9)&#39;</span><span class="p">;</span>
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'%date% (YYYY-MM-DD) %level% (0-9)'</span><span class="p">;</span>
 <a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a><span class="nv">$data</span>   <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>    <span class="s1">&#39;date&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;2020-09-09&#39;</span><span class="p">,</span>
-<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>    <span class="s1">&#39;level&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;CRITICAL&#39;</span><span class="p">,</span>
+<a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>    <span class="s1">'date'</span>  <span class="o">=&gt;</span> <span class="s1">'2020-09-09'</span><span class="p">,</span>
+<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>    <span class="s1">'level'</span> <span class="o">=&gt;</span> <span class="s1">'CRITICAL'</span><span class="p">,</span>
 <a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a><span class="p">];</span>
 <a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>
 <a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">interpolate</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
 <a id="__codelineno-42-14" name="__codelineno-42-14" href="#__codelineno-42-14"></a>
-<a id="__codelineno-42-15" name="__codelineno-42-15" href="#__codelineno-42-15"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;2020-09-09 (YYYY-MM-DD) CRITICAL (0-9)&#39;</span>
+<a id="__codelineno-42-15" name="__codelineno-42-15" href="#__codelineno-42-15"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// '2020-09-09 (YYYY-MM-DD) CRITICAL (0-9)'</span>
 </code></pre></div>
 <h3 id="isanagram"><code>isAnagram</code><a class="headerlink" href="#isanagram" title="Permanent link">&para;</a></h3>
 <p><code>isAnagram(string $first, string $second): bool</code></p>
@@ -7793,8 +7793,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>
 <a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a>
-<a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;rail safety&#39;</span><span class="p">;</span>
-<a id="__codelineno-43-8" name="__codelineno-43-8" href="#__codelineno-43-8"></a><span class="nv">$target</span> <span class="o">=</span> <span class="s1">&#39;fairy tales&#39;</span><span class="p">;</span>
+<a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'rail safety'</span><span class="p">;</span>
+<a id="__codelineno-43-8" name="__codelineno-43-8" href="#__codelineno-43-8"></a><span class="nv">$target</span> <span class="o">=</span> <span class="s1">'fairy tales'</span><span class="p">;</span>
 <a id="__codelineno-43-9" name="__codelineno-43-9" href="#__codelineno-43-9"></a>
 <a id="__codelineno-43-10" name="__codelineno-43-10" href="#__codelineno-43-10"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">isAnagram</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="nv">$target</span><span class="p">);</span>
 <a id="__codelineno-43-11" name="__codelineno-43-11" href="#__codelineno-43-11"></a>
@@ -7809,7 +7809,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>
 <a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a>
-<a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;phalcon framework&#39;</span><span class="p">;</span>
+<a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'phalcon framework'</span><span class="p">;</span>
 <a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a>
 <a id="__codelineno-44-9" name="__codelineno-44-9" href="#__codelineno-44-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">isLower</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-44-10" name="__codelineno-44-10" href="#__codelineno-44-10"></a>
@@ -7824,7 +7824,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>
 <a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a>
-<a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;racecar&#39;</span><span class="p">;</span>
+<a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'racecar'</span><span class="p">;</span>
 <a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a>
 <a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">isPalindrome</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-45-10" name="__codelineno-45-10" href="#__codelineno-45-10"></a>
@@ -7839,7 +7839,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>
 <a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>
-<a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;PHALCON FRAMEWORK&#39;</span><span class="p">;</span>
+<a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'PHALCON FRAMEWORK'</span><span class="p">;</span>
 <a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a>
 <a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">isUpper</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a>
@@ -7854,11 +7854,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>
 <a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a>
-<a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;customer_session&#39;</span><span class="p">;</span>
+<a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'customer_session'</span><span class="p">;</span>
 <a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a>
 <a id="__codelineno-47-9" name="__codelineno-47-9" href="#__codelineno-47-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">kebabCase</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-47-10" name="__codelineno-47-10" href="#__codelineno-47-10"></a>
-<a id="__codelineno-47-11" name="__codelineno-47-11" href="#__codelineno-47-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;customer-session&#39;</span>
+<a id="__codelineno-47-11" name="__codelineno-47-11" href="#__codelineno-47-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'customer-session'</span>
 </code></pre></div>
 <h3 id="len"><code>len</code><a class="headerlink" href="#len" title="Permanent link">&para;</a></h3>
 <p><code>len(string $text, string $encoding = 'UTF-8'): int</code></p>
@@ -7869,7 +7869,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>
 <a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a>
-<a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">;</span>
+<a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'abcdef'</span><span class="p">;</span>
 <a id="__codelineno-48-8" name="__codelineno-48-8" href="#__codelineno-48-8"></a>
 <a id="__codelineno-48-9" name="__codelineno-48-9" href="#__codelineno-48-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">len</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-48-10" name="__codelineno-48-10" href="#__codelineno-48-10"></a>
@@ -7884,11 +7884,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>
 <a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a>
-<a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;Phalcon Framework&#39;</span><span class="p">;</span>
+<a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'Phalcon Framework'</span><span class="p">;</span>
 <a id="__codelineno-49-8" name="__codelineno-49-8" href="#__codelineno-49-8"></a>
 <a id="__codelineno-49-9" name="__codelineno-49-9" href="#__codelineno-49-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">lower</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-49-10" name="__codelineno-49-10" href="#__codelineno-49-10"></a>
-<a id="__codelineno-49-11" name="__codelineno-49-11" href="#__codelineno-49-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;phalcon framework&#39;</span>
+<a id="__codelineno-49-11" name="__codelineno-49-11" href="#__codelineno-49-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'phalcon framework'</span>
 </code></pre></div>
 <h3 id="pascalcase"><code>pascalCase</code><a class="headerlink" href="#pascalcase" title="Permanent link">&para;</a></h3>
 <p><code>pascalCase(string $text, string $delimiters = null): string</code></p>
@@ -7899,11 +7899,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>
 <a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>
-<a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;customer-session&#39;</span><span class="p">;</span>
+<a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'customer-session'</span><span class="p">;</span>
 <a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>
 <a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">pascalCase</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-50-10" name="__codelineno-50-10" href="#__codelineno-50-10"></a>
-<a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;CustomerSession&#39;</span>
+<a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'CustomerSession'</span>
 </code></pre></div>
 <h3 id="prefix"><code>prefix</code><a class="headerlink" href="#prefix" title="Permanent link">&para;</a></h3>
 <p><code>prefix($text, string $prefix): string</code></p>
@@ -7914,11 +7914,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>
 <a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a>
-<a id="__codelineno-51-7" name="__codelineno-51-7" href="#__codelineno-51-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;Framework&#39;</span><span class="p">;</span>
+<a id="__codelineno-51-7" name="__codelineno-51-7" href="#__codelineno-51-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'Framework'</span><span class="p">;</span>
 <a id="__codelineno-51-8" name="__codelineno-51-8" href="#__codelineno-51-8"></a>
-<a id="__codelineno-51-9" name="__codelineno-51-9" href="#__codelineno-51-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">prefix</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">);</span>
+<a id="__codelineno-51-9" name="__codelineno-51-9" href="#__codelineno-51-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">prefix</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'Phalcon'</span><span class="p">);</span>
 <a id="__codelineno-51-10" name="__codelineno-51-10" href="#__codelineno-51-10"></a>
-<a id="__codelineno-51-11" name="__codelineno-51-11" href="#__codelineno-51-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;PhalconFramework&#39;</span>
+<a id="__codelineno-51-11" name="__codelineno-51-11" href="#__codelineno-51-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'PhalconFramework'</span>
 </code></pre></div>
 <h3 id="random"><code>random</code><a class="headerlink" href="#random" title="Permanent link">&para;</a></h3>
 <p><code>random(int $type = 0, int $length = 8): string</code></p>
@@ -7978,11 +7978,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>
 <a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>
-<a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;app/controllers//IndexController&#39;</span><span class="p">;</span>
+<a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'app/controllers//IndexController'</span><span class="p">;</span>
 <a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a>
 <a id="__codelineno-53-9" name="__codelineno-53-9" href="#__codelineno-53-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">reduceSlashes</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-53-10" name="__codelineno-53-10" href="#__codelineno-53-10"></a>
-<a id="__codelineno-53-11" name="__codelineno-53-11" href="#__codelineno-53-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;app/controllers/IndexController&#39;</span>
+<a id="__codelineno-53-11" name="__codelineno-53-11" href="#__codelineno-53-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'app/controllers/IndexController'</span>
 </code></pre></div>
 <h3 id="snakecase"><code>snakeCase</code><a class="headerlink" href="#snakecase" title="Permanent link">&para;</a></h3>
 <p><code>snakeCase(string $text, string $delimiters = null): string</code></p>
@@ -7993,11 +7993,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>
 <a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a>
-<a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;customer-session&#39;</span><span class="p">;</span>
+<a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'customer-session'</span><span class="p">;</span>
 <a id="__codelineno-54-8" name="__codelineno-54-8" href="#__codelineno-54-8"></a>
 <a id="__codelineno-54-9" name="__codelineno-54-9" href="#__codelineno-54-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">snakeCase</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-54-10" name="__codelineno-54-10" href="#__codelineno-54-10"></a>
-<a id="__codelineno-54-11" name="__codelineno-54-11" href="#__codelineno-54-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;customer_session&#39;</span>
+<a id="__codelineno-54-11" name="__codelineno-54-11" href="#__codelineno-54-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'customer_session'</span>
 </code></pre></div>
 <h3 id="startswith"><code>startsWith</code><a class="headerlink" href="#startswith" title="Permanent link">&para;</a></h3>
 <p><code>startsWith(string $haystack, string $needle, bool $ignoreCase = true): bool</code></p>
@@ -8008,9 +8008,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>
 <a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a>
-<a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">;</span>
+<a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'abcdef'</span><span class="p">;</span>
 <a id="__codelineno-55-8" name="__codelineno-55-8" href="#__codelineno-55-8"></a>
-<a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">startsWith</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;ab&#39;</span><span class="p">);</span>
+<a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">startsWith</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'ab'</span><span class="p">);</span>
 <a id="__codelineno-55-10" name="__codelineno-55-10" href="#__codelineno-55-10"></a>
 <a id="__codelineno-55-11" name="__codelineno-55-11" href="#__codelineno-55-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// true</span>
 </code></pre></div>
@@ -8023,11 +8023,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a>
 <a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-56-6" name="__codelineno-56-6" href="#__codelineno-56-6"></a>
-<a id="__codelineno-56-7" name="__codelineno-56-7" href="#__codelineno-56-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">;</span>
+<a id="__codelineno-56-7" name="__codelineno-56-7" href="#__codelineno-56-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'Phalcon'</span><span class="p">;</span>
 <a id="__codelineno-56-8" name="__codelineno-56-8" href="#__codelineno-56-8"></a>
-<a id="__codelineno-56-9" name="__codelineno-56-9" href="#__codelineno-56-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">suffix</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">&#39;Framework&#39;</span><span class="p">);</span>
+<a id="__codelineno-56-9" name="__codelineno-56-9" href="#__codelineno-56-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">suffix</span><span class="p">(</span><span class="nv">$source</span><span class="p">,</span> <span class="s1">'Framework'</span><span class="p">);</span>
 <a id="__codelineno-56-10" name="__codelineno-56-10" href="#__codelineno-56-10"></a>
-<a id="__codelineno-56-11" name="__codelineno-56-11" href="#__codelineno-56-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;PhalconFramework&#39;</span>
+<a id="__codelineno-56-11" name="__codelineno-56-11" href="#__codelineno-56-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'PhalconFramework'</span>
 </code></pre></div>
 <h3 id="ucwords"><code>ucwords</code><a class="headerlink" href="#ucwords" title="Permanent link">&para;</a></h3>
 <p><code>ucwords(string $text, string $encoding = 'UTF-8'): string</code></p>
@@ -8038,11 +8038,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a>
 <a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a>
-<a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;phalcon framework&#39;</span><span class="p">;</span>
+<a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'phalcon framework'</span><span class="p">;</span>
 <a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a>
 <a id="__codelineno-57-9" name="__codelineno-57-9" href="#__codelineno-57-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">ucwords</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-57-10" name="__codelineno-57-10" href="#__codelineno-57-10"></a>
-<a id="__codelineno-57-11" name="__codelineno-57-11" href="#__codelineno-57-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;Phalcon Framework&#39;</span>
+<a id="__codelineno-57-11" name="__codelineno-57-11" href="#__codelineno-57-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'Phalcon Framework'</span>
 </code></pre></div>
 <h3 id="uncamelize"><code>uncamelize</code><a class="headerlink" href="#uncamelize" title="Permanent link">&para;</a></h3>
 <p><code>uncamelize(string $text, string $delimiters = '_'): string</code></p>
@@ -8053,7 +8053,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>
 <a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-58-6" name="__codelineno-58-6" href="#__codelineno-58-6"></a>
-<a id="__codelineno-58-7" name="__codelineno-58-7" href="#__codelineno-58-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;CameLiZe&#39;</span><span class="p">;</span>
+<a id="__codelineno-58-7" name="__codelineno-58-7" href="#__codelineno-58-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'CameLiZe'</span><span class="p">;</span>
 <a id="__codelineno-58-8" name="__codelineno-58-8" href="#__codelineno-58-8"></a>
 <a id="__codelineno-58-9" name="__codelineno-58-9" href="#__codelineno-58-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">uncamelize</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-58-10" name="__codelineno-58-10" href="#__codelineno-58-10"></a>
@@ -8068,11 +8068,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a>
 <a id="__codelineno-59-5" name="__codelineno-59-5" href="#__codelineno-59-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-59-6" name="__codelineno-59-6" href="#__codelineno-59-6"></a>
-<a id="__codelineno-59-7" name="__codelineno-59-7" href="#__codelineno-59-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;Phalcon Framework&#39;</span><span class="p">;</span>
+<a id="__codelineno-59-7" name="__codelineno-59-7" href="#__codelineno-59-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'Phalcon Framework'</span><span class="p">;</span>
 <a id="__codelineno-59-8" name="__codelineno-59-8" href="#__codelineno-59-8"></a>
 <a id="__codelineno-59-9" name="__codelineno-59-9" href="#__codelineno-59-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">underscore</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-59-10" name="__codelineno-59-10" href="#__codelineno-59-10"></a>
-<a id="__codelineno-59-11" name="__codelineno-59-11" href="#__codelineno-59-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;Phalcon_Framework&#39;</span>
+<a id="__codelineno-59-11" name="__codelineno-59-11" href="#__codelineno-59-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'Phalcon_Framework'</span>
 </code></pre></div>
 <h3 id="upper"><code>upper</code><a class="headerlink" href="#upper" title="Permanent link">&para;</a></h3>
 <p><code>upper(string $text, string $encoding = 'UTF-8'): string</code></p>
@@ -8083,11 +8083,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>
 <a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a><span class="nv">$helper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelperFactory</span><span class="p">();</span>
 <a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a>
-<a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">&#39;Phalcon Framework&#39;</span><span class="p">;</span>
+<a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a><span class="nv">$source</span> <span class="o">=</span> <span class="s1">'Phalcon Framework'</span><span class="p">;</span>
 <a id="__codelineno-60-8" name="__codelineno-60-8" href="#__codelineno-60-8"></a>
 <a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">upper</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 <a id="__codelineno-60-10" name="__codelineno-60-10" href="#__codelineno-60-10"></a>
-<a id="__codelineno-60-11" name="__codelineno-60-11" href="#__codelineno-60-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// &#39;PHALCON FRAMEWORK&#39;</span>
+<a id="__codelineno-60-11" name="__codelineno-60-11" href="#__codelineno-60-11"></a><span class="k">echo</span> <span class="nv">$result</span><span class="p">;</span> <span class="c1">// 'PHALCON FRAMEWORK'</span>
 </code></pre></div>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <p>Any exception thrown in the <code>Phalcon\Support\Helper</code> namespace will be of type <code>Phalcon\Support\Exception</code>. You can use this exception to selectively catch exceptions thrown only from this component.</p>
@@ -8314,7 +8314,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

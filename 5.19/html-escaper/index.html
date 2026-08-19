@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5820,19 +5820,19 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">$title</span> <span class="o">=</span> <span class="s1">&#39;&lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">$title</span> <span class="o">=</span> <span class="s1">'&lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;'</span><span class="p">;</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">html</span><span class="p">(</span><span class="nv">$title</span><span class="p">);</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1">// &amp;lt;/title&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nv">$css</span> <span class="o">=</span> <span class="s1">&#39;;`(&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nv">$css</span> <span class="o">=</span> <span class="s1">';`('</span><span class="p">;</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="nv">$css</span><span class="p">);</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1">// &amp;#x3c &amp;#x2f style&amp;#x3e</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nv">$fontName</span> <span class="o">=</span> <span class="s1">&#39;Verdana\&quot;&lt;/style&gt;&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nv">$fontName</span> <span class="o">=</span> <span class="s1">'Verdana\"&lt;/style&gt;'</span><span class="p">;</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="nv">$fontName</span><span class="p">);</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1">// Verdana\22 \3c \2f style\3e</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nv">$js</span> <span class="o">=</span> <span class="s2">&quot;&#39;;&lt;/script&gt;Hello&quot;</span><span class="p">;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nv">$js</span> <span class="o">=</span> <span class="s2">"';&lt;/script&gt;Hello"</span><span class="p">;</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">js</span><span class="p">(</span><span class="nv">$js</span><span class="p">);</span>
 <a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="c1">// \x27\x3b\x3c\2fscript\x3eHello</span>
 </code></pre></div>
@@ -5844,7 +5844,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">$title</span> <span class="o">=</span> <span class="s1">&#39;&lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">$title</span> <span class="o">=</span> <span class="s1">'&lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;'</span><span class="p">;</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">html</span><span class="p">(</span><span class="nv">$title</span><span class="p">);</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">// &amp;lt;/title&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;</span>
 </code></pre></div>
@@ -5857,8 +5857,8 @@ offering lower resource consumption and high performance.
 <h2 id="html-attributes">HTML Attributes<a class="headerlink" href="#html-attributes" title="Permanent link">&para;</a></h2>
 <p>Escaping attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric character to a safe format. It uses <a href="https://www.php.net/manual/en/function.htmlspecialchars.php">htmlspecialchars</a> internally. This kind of escaping is intended escape excluding complex ones such as <code>href</code> or <code>url</code>. To escape attributes, you can use the <code>attributes()</code> method. This method has been renamed. The old method <code>escapeHtmlAttr()</code> will be removed in the future and emit a <code>@deprecated</code> warning.</p>
 <p>The method also accepts an array as a parameter. The keys are the attribute names and the values are attribute values. A value of <code>true</code> renders the attribute as a bare key, while a value of <code>null</code> or <code>false</code> skips the attribute entirely:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[&#39;disabled&#39; =&gt; true]  -&gt; &#39;disabled&#39;
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>[&#39;checked&#39;  =&gt; false] -&gt; &#39;&#39;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>['disabled' =&gt; true]  -&gt; 'disabled'
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>['checked'  =&gt; false] -&gt; ''
 </code></pre></div>
 <p>The resulting string will have attribute pairs separated by a space. Passing <code>null</code> instead of a string or array returns an empty string.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -5867,7 +5867,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">$attr</span> <span class="o">=</span> <span class="s1">&#39;&quot;&gt;&lt;h1&gt;Hello&lt;/table&#39;</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nv">$attr</span> <span class="o">=</span> <span class="s1">'"&gt;&lt;h1&gt;Hello&lt;/table'</span><span class="p">;</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="p">(</span><span class="nv">$attr</span><span class="p">);</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1">// &amp;#x22;&amp;#x3e;&amp;#x3c;h1&amp;#x3e;Hello&amp;#x3c;&amp;#x2f;table</span>
 </code></pre></div>
@@ -5885,7 +5885,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">$url</span> <span class="o">=</span> <span class="s1">&#39;&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;a href=&quot;#&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'"&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;a href="#'</span><span class="p">;</span>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">url</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
 <a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1">// %22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23</span>
 </code></pre></div>
@@ -5901,7 +5901,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nv">$css</span> <span class="o">=</span> <span class="s1">&#39;&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;a href=&quot;#&#39;</span><span class="p">;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nv">$css</span> <span class="o">=</span> <span class="s1">'"&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;a href="#'</span><span class="p">;</span>
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">css</span><span class="p">(</span><span class="nv">$css</span><span class="p">);</span>
 <a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1">// \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 </span>
 </code></pre></div>
@@ -5920,7 +5920,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$js</span> <span class="o">=</span> <span class="s2">&quot;&#39;; alert(100); var x=&#39;&quot;</span><span class="p">;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$js</span> <span class="o">=</span> <span class="s2">"'; alert(100); var x='"</span><span class="p">;</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">js</span><span class="p">(</span><span class="nv">$js</span><span class="p">);</span>
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="c1">// \x27; alert(100); var x\x3d\x27</span>
 </code></pre></div>
@@ -5940,7 +5940,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">detectEncoding</span><span class="p">(</span><span class="s1">&#39;ḂḃĊċḊḋḞḟĠġṀṁ&#39;</span><span class="p">);</span> <span class="c1">// UTF-8</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">detectEncoding</span><span class="p">(</span><span class="s1">'ḂḃĊċḊḋḞḟĠġṀṁ'</span><span class="p">);</span> <span class="c1">// UTF-8</span>
 </code></pre></div>
 <h3 id="getencoding"><code>getEncoding()</code><a class="headerlink" href="#getencoding" title="Permanent link">&para;</a></h3>
 <p>Returns the internal encoding used by the escaper</p>
@@ -5960,7 +5960,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">normalizeEncoding</span><span class="p">(</span><span class="s1">&#39;ḂḃĊċḊḋḞḟĠġṀṁ&#39;</span><span class="p">);</span>  
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">normalizeEncoding</span><span class="p">(</span><span class="s1">'ḂḃĊċḊḋḞḟĠġṀṁ'</span><span class="p">);</span>  
 </code></pre></div>
 <h3 id="setencoding"><code>setEncoding()</code><a class="headerlink" href="#setencoding" title="Permanent link">&para;</a></h3>
 <p>Sets the encoding to be used by the escaper</p>
@@ -5970,9 +5970,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
 <a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">setEncoding</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">);</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">setEncoding</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">);</span>
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">getEncoding</span><span class="p">();</span> <span class="c1">// &#39;utf-8&#39;</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">getEncoding</span><span class="p">();</span> <span class="c1">// 'utf-8'</span>
 </code></pre></div>
 <h3 id="setdoubleencode"><code>setDoubleEncode()</code><a class="headerlink" href="#setdoubleencode" title="Permanent link">&para;</a></h3>
 <p>Sets the escaper to use double encoding or not (default <code>true</code>)</p>
@@ -6022,7 +6022,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="nv">$jsEscaper</span>   <span class="o">=</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">getJsEscaper</span><span class="p">();</span>
 <a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="nv">$urlEscaper</span>  <span class="o">=</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">getUrlEscaper</span><span class="p">();</span>
 <a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>
-<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="k">echo</span> <span class="nv">$htmlEscaper</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s1">&#39;&lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;&#39;</span><span class="p">);</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="k">echo</span> <span class="nv">$htmlEscaper</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s1">'&lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;'</span><span class="p">);</span>
 <a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="c1">// &amp;lt;/title&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;</span>
 </code></pre></div>
 <h3 id="swapping-a-sub-escaper">Swapping a Sub-Escaper<a class="headerlink" href="#swapping-a-sub-escaper" title="Permanent link">&para;</a></h3>
@@ -6037,7 +6037,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">{</span>
 <a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">escape</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$input</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
 <a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>    <span class="p">{</span>
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>        <span class="nb">error_log</span><span class="p">(</span><span class="s1">&#39;Escaping HTML: &#39;</span> <span class="o">.</span> <span class="nv">$input</span><span class="p">);</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>        <span class="nb">error_log</span><span class="p">(</span><span class="s1">'Escaping HTML: '</span> <span class="o">.</span> <span class="nv">$input</span><span class="p">);</span>
 <a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>
 <a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>        <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">escape</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
 <a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    <span class="p">}</span>
@@ -6051,7 +6051,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">setHtmlEscaper</span><span class="p">(</span><span class="k">new</span> <span class="nx">LoggingHtmlEscaper</span><span class="p">());</span>
 <a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">html</span><span class="p">(</span><span class="s1">&#39;&lt;b&gt;hello&lt;/b&gt;&#39;</span><span class="p">);</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="k">echo</span> <span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">html</span><span class="p">(</span><span class="s1">'&lt;b&gt;hello&lt;/b&gt;'</span><span class="p">);</span>
 <a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="c1">// Logs the input and returns &amp;lt;b&amp;gt;hello&amp;lt;/b&amp;gt;</span>
 </code></pre></div>
 <p>The available accessor pairs are:</p>
@@ -6099,7 +6099,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
 <a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">setEncoding</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">);</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">setEncoding</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">);</span>
 <a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">setFlags</span><span class="p">(</span><span class="nx">ENT_QUOTES</span> <span class="o">|</span> <span class="nx">ENT_HTML5</span><span class="p">);</span>
 <a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="nv">$escaper</span><span class="o">-&gt;</span><span class="na">setDoubleEncode</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 <a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
@@ -6115,11 +6115,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="k">use</span> <span class="nx">Phalcon\Html\Escaper\JsEscaper</span><span class="p">;</span>
 <a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="k">use</span> <span class="nx">Phalcon\Html\Escaper\UrlEscaper</span><span class="p">;</span>
 <a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
-<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="nv">$html</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">HtmlEscaper</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s1">&#39;&lt;b&gt;hi&lt;/b&gt;&#39;</span><span class="p">);</span>
-<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="nv">$attr</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">AttributeEscaper</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s1">&#39;&quot;&gt;&lt;h1&gt;Hi&#39;</span><span class="p">);</span>
-<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="nv">$css</span>  <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">CssEscaper</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s1">&#39;;`(&#39;</span><span class="p">);</span>
-<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="nv">$js</span>   <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">JsEscaper</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s2">&quot;&#39;; alert(1)&quot;</span><span class="p">);</span>
-<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="nv">$url</span>  <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">UrlEscaper</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s1">&#39;&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&#39;</span><span class="p">);</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="nv">$html</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">HtmlEscaper</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s1">'&lt;b&gt;hi&lt;/b&gt;'</span><span class="p">);</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="nv">$attr</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">AttributeEscaper</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s1">'"&gt;&lt;h1&gt;Hi'</span><span class="p">);</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="nv">$css</span>  <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">CssEscaper</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s1">';`('</span><span class="p">);</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="nv">$js</span>   <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">JsEscaper</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s2">"'; alert(1)"</span><span class="p">);</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="nv">$url</span>  <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">UrlEscaper</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="s1">'"&gt;&lt;script&gt;alert(1)&lt;/script&gt;'</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <p>Any exceptions thrown in the Escaper component will be of type <a href="../api/phalcon_html/#htmlescaperexception">Phalcon\Html\Escaper\Exception</a>. It is thrown when the data supplied to the component is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.</p>
@@ -6137,7 +6137,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
 <a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>    <span class="p">{</span>
 <a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>        <span class="k">try</span> <span class="p">{</span>
-<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>            <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">escaper</span><span class="o">-&gt;</span><span class="na">normalizeEncoding</span><span class="p">(</span><span class="s1">&#39;ḂḃĊċḊḋḞḟĠġṀṁ&#39;</span><span class="p">);</span>  
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>            <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">escaper</span><span class="o">-&gt;</span><span class="na">normalizeEncoding</span><span class="p">(</span><span class="s1">'ḂḃĊċḊḋḞḟĠġṀṁ'</span><span class="p">);</span>  
 <a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a>            <span class="k">echo</span> <span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
 <a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>        <span class="p">}</span>
@@ -6155,7 +6155,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Di</span><span class="p">();</span>
 <a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
 <a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>    <span class="s1">&#39;escaper&#39;</span><span class="p">,</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>    <span class="s1">'escaper'</span><span class="p">,</span>
 <a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>    <span class="p">}</span>
@@ -6183,7 +6183,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a>
 <a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
 <a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>    <span class="p">{</span>
-<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a>        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">escaper</span><span class="o">-&gt;</span><span class="na">html</span><span class="p">(</span><span class="s1">&#39;The post was correctly saved!&#39;</span><span class="p">);</span>
+<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a>        <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">escaper</span><span class="o">-&gt;</span><span class="na">html</span><span class="p">(</span><span class="s1">'The post was correctly saved!'</span><span class="p">);</span>
 <a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a>    <span class="p">}</span>
 <a id="__codelineno-29-24" name="__codelineno-29-24" href="#__codelineno-29-24"></a><span class="p">}</span>
 </code></pre></div>
@@ -6399,7 +6399,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

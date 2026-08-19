@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -6183,8 +6183,8 @@ offering lower resource consumption and high performance.
 <h4 id="messagesmessage-__construct"><code>__construct()</code><a class="headerlink" href="#messagesmessage-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="nx">int</span> <span class="nv">$code</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">array</span> <span class="nv">$metaData</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">);</span>
@@ -6420,7 +6420,7 @@ must take part in iteration.</p>
 </code></pre></div>
 <p>Appends a message to the collection</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nv">$messages</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="k">new</span> <span class="nx">\Phalcon\Messages\Message</span><span class="p">(</span><span class="s2">&quot;This is a message&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="k">new</span> <span class="nx">\Phalcon\Messages\Message</span><span class="p">(</span><span class="s2">"This is a message"</span><span class="p">)</span>
 <a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="messagesmessages-appendmessages"><code>appendMessages()</code><a class="headerlink" href="#messagesmessages-appendmessages" title="Permanent link">&para;</a></h4>
@@ -6558,7 +6558,7 @@ jsonSerialize on each object if present</p>
 </code></pre></div>
 <p>Checks if an index exists</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nb">var_dump</span><span class="p">(</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="nb">isset</span><span class="p">(</span><span class="nv">$message</span><span class="p">[</span><span class="s2">&quot;database&quot;</span><span class="p">])</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="nb">isset</span><span class="p">(</span><span class="nv">$message</span><span class="p">[</span><span class="s2">"database"</span><span class="p">])</span>
 <a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="messagestraitsmessageshelpertrait-offsetget"><code>offsetGet()</code><a class="headerlink" href="#messagestraitsmessageshelpertrait-offsetget" title="Permanent link">&para;</a></h4>
@@ -6576,13 +6576,13 @@ jsonSerialize on each object if present</p>
 <a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets an attribute using the array-syntax</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nv">$messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Messages\Message</span><span class="p">(</span><span class="s2">&quot;This is a message&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nv">$messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Messages\Message</span><span class="p">(</span><span class="s2">"This is a message"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="messagestraitsmessageshelpertrait-offsetunset"><code>offsetUnset()</code><a class="headerlink" href="#messagestraitsmessageshelpertrait-offsetunset" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">offsetUnset</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$offset</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Removes a message from the list</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nb">unset</span><span class="p">(</span><span class="nv">$message</span><span class="p">[</span><span class="s2">&quot;database&quot;</span><span class="p">]);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nb">unset</span><span class="p">(</span><span class="nv">$message</span><span class="p">[</span><span class="s2">"database"</span><span class="p">]);</span>
 </code></pre></div>
 <h4 id="messagestraitsmessageshelpertrait-rewind"><code>rewind()</code><a class="headerlink" href="#messagestraitsmessageshelpertrait-rewind" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">rewind</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
@@ -6746,7 +6746,7 @@ jsonSerialize on each object if present</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -10355,9 +10355,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nx">int</span> <span class="nv">$expire</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nx">string</span> <span class="nv">$path</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nx">string</span> <span class="nv">$path</span> <span class="o">=</span> <span class="s2">"/"</span><span class="p">,</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="nx">bool</span> <span class="nv">$secure</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="nx">string</span> <span class="nv">$domain</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="nx">string</span> <span class="nv">$domain</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="nx">bool</span> <span class="nv">$httpOnly</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">);</span>
@@ -11271,11 +11271,11 @@ dispatcher and controller classes. It packages the HTTP request environment.</p>
 <a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">();</span>
 <a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>
 <a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">isPost</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">isAjax</span><span class="p">())</span> <span class="p">{</span>
-<a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>    <span class="k">echo</span> <span class="s2">&quot;Request was made using POST and AJAX&quot;</span><span class="p">;</span>
+<a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>    <span class="k">echo</span> <span class="s2">"Request was made using POST and AJAX"</span><span class="p">;</span>
 <a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="p">}</span>
 <a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a>
 <a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a><span class="c1">// Retrieve SERVER variables</span>
-<a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getServer</span><span class="p">(</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">);</span>
+<a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getServer</span><span class="p">(</span><span class="s2">"HTTP_HOST"</span><span class="p">);</span>
 <a id="__codelineno-46-11" name="__codelineno-46-11" href="#__codelineno-46-11"></a>
 <a id="__codelineno-46-12" name="__codelineno-46-12" href="#__codelineno-46-12"></a><span class="c1">// GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH, PURGE, TRACE, CONNECT</span>
 <a id="__codelineno-46-13" name="__codelineno-46-13" href="#__codelineno-46-13"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getMethod</span><span class="p">();</span>
@@ -11818,11 +11818,11 @@ dispatcher and controller classes. It packages the HTTP request environment.</p>
 </code></pre></div>
 <p>Gets a variable from the $_REQUEST superglobal applying filters if
 needed. If no parameters are given the $_REQUEST superglobal is returned</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="c1">// Returns value from $_REQUEST[&quot;user_email&quot;] without sanitizing</span>
-<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="c1">// Returns value from $_REQUEST["user_email"] without sanitizing</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">);</span>
 <a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>
-<a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="c1">// Returns value from $_REQUEST[&quot;user_email&quot;] with sanitizing</span>
-<a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span>
+<a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="c1">// Returns value from $_REQUEST["user_email"] with sanitizing</span>
+<a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">);</span>
 </code></pre></div>
 <p>@todo check the filters</p>
 <h4 id="httprequest-getacceptablecontent"><code>getAcceptableContent()</code><a class="headerlink" href="#httprequest-getacceptablecontent" title="Permanent link">&para;</a></h4>
@@ -11838,9 +11838,9 @@ application-defined values attached to the request during its
 lifecycle (router, dispatcher, security components etc.). The bag
 is created empty on first access and the same instance is returned
 on every subsequent call.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="nv">$user</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">"user"</span><span class="p">,</span> <span class="nv">$user</span><span class="p">);</span>
 <a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>
-<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="nv">$user</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">);</span>
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="nv">$user</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"user"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httprequest-getbasicauth"><code>getBasicAuth()</code><a class="headerlink" href="#httprequest-getbasicauth" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getBasicAuth</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
@@ -11876,7 +11876,7 @@ _SERVER["HTTP_ACCEPT_LANGUAGE"]</p>
 </code></pre></div>
 Using user provided trusted header, header should only ever contain 1 IP address, eg. HTTP_CLIENT_IP
 <div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>$request
-<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>    -&gt;setTrustedProxyHeader(&#39;HTTP_CLIENT_IP&#39;)
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>    -&gt;setTrustedProxyHeader('HTTP_CLIENT_IP')
 <a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>    -&gt;setTrustedProxies($trustedProxies)
 <a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>    -&gt;getClientAddress(true);
 </code></pre></div></p>
@@ -11979,17 +11979,17 @@ they use regular expressions.</p>
 <a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>
 <a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">;</span>
 <a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>
-<a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;example.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"example.com"</span><span class="p">;</span>
 <a id="__codelineno-71-6" name="__codelineno-71-6" href="#__codelineno-71-6"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// example.com</span>
 <a id="__codelineno-71-7" name="__codelineno-71-7" href="#__codelineno-71-7"></a>
-<a id="__codelineno-71-8" name="__codelineno-71-8" href="#__codelineno-71-8"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;example.com:8080&quot;</span><span class="p">;</span>
+<a id="__codelineno-71-8" name="__codelineno-71-8" href="#__codelineno-71-8"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"example.com:8080"</span><span class="p">;</span>
 <a id="__codelineno-71-9" name="__codelineno-71-9" href="#__codelineno-71-9"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// example.com:8080</span>
 <a id="__codelineno-71-10" name="__codelineno-71-10" href="#__codelineno-71-10"></a>
 <a id="__codelineno-71-11" name="__codelineno-71-11" href="#__codelineno-71-11"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setStrictHostCheck</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
-<a id="__codelineno-71-12" name="__codelineno-71-12" href="#__codelineno-71-12"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ex=am~ple.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-71-12" name="__codelineno-71-12" href="#__codelineno-71-12"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ex=am~ple.com"</span><span class="p">;</span>
 <a id="__codelineno-71-13" name="__codelineno-71-13" href="#__codelineno-71-13"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// UnexpectedValueException</span>
 <a id="__codelineno-71-14" name="__codelineno-71-14" href="#__codelineno-71-14"></a>
-<a id="__codelineno-71-15" name="__codelineno-71-15" href="#__codelineno-71-15"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ExAmPlE.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-71-15" name="__codelineno-71-15" href="#__codelineno-71-15"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ExAmPlE.com"</span><span class="p">;</span>
 <a id="__codelineno-71-16" name="__codelineno-71-16" href="#__codelineno-71-16"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// example.com</span>
 </code></pre></div>
 <h4 id="httprequest-gethttpmethodparameteroverride"><code>getHttpMethodParameterOverride()</code><a class="headerlink" href="#httprequest-gethttpmethodparameteroverride" title="Permanent link">&para;</a></h4>
@@ -12024,11 +12024,11 @@ method, but only if setHttpMethodParameterOverride(true) has been called.</p>
 <a id="__codelineno-76-7" name="__codelineno-76-7" href="#__codelineno-76-7"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets a variable from put request</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="c1">// Returns value from $_PATCH[&quot;user_email&quot;] without sanitizing</span>
-<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPatch</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="c1">// Returns value from $_PATCH["user_email"] without sanitizing</span>
+<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPatch</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">);</span>
 <a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>
-<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a><span class="c1">// Returns value from $_PATCH[&quot;user_email&quot;] with sanitizing</span>
-<a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPatch</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span>
+<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a><span class="c1">// Returns value from $_PATCH["user_email"] with sanitizing</span>
+<a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPatch</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httprequest-getport"><code>getPort()</code><a class="headerlink" href="#httprequest-getport" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPort</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
@@ -12045,11 +12045,11 @@ method, but only if setHttpMethodParameterOverride(true) has been called.</p>
 </code></pre></div>
 <p>Gets a variable from the $_POST superglobal applying filters if needed
 If no parameters are given the $_POST superglobal is returned</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="c1">// Returns value from $_POST[&quot;user_email&quot;] without sanitizing</span>
-<a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="c1">// Returns value from $_POST["user_email"] without sanitizing</span>
+<a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">);</span>
 <a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a>
-<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a><span class="c1">// Returns value from $_POST[&quot;user_email&quot;] with sanitizing</span>
-<a id="__codelineno-80-5" name="__codelineno-80-5" href="#__codelineno-80-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span>
+<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a><span class="c1">// Returns value from $_POST["user_email"] with sanitizing</span>
+<a id="__codelineno-80-5" name="__codelineno-80-5" href="#__codelineno-80-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httprequest-getpreferredisolocalevariant"><code>getPreferredIsoLocaleVariant()</code><a class="headerlink" href="#httprequest-getpreferredisolocalevariant" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPreferredIsoLocaleVariant</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -12072,10 +12072,10 @@ header.</p>
 </code></pre></div>
 <p>Gets a variable from the PUT request</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="c1">// Returns value from PUT stream without sanitizing</span>
-<a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">);</span>
+<a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">);</span>
 <a id="__codelineno-83-3" name="__codelineno-83-3" href="#__codelineno-83-3"></a>
 <a id="__codelineno-83-4" name="__codelineno-83-4" href="#__codelineno-83-4"></a><span class="c1">// Returns value from PUT stream with sanitizing</span>
-<a id="__codelineno-83-5" name="__codelineno-83-5" href="#__codelineno-83-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span>
+<a id="__codelineno-83-5" name="__codelineno-83-5" href="#__codelineno-83-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httprequest-getquery"><code>getQuery()</code><a class="headerlink" href="#httprequest-getquery" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getQuery</span><span class="p">(</span>
@@ -12088,14 +12088,14 @@ header.</p>
 </code></pre></div>
 <p>Gets variable from $_GET superglobal applying filters if needed.
 If no parameters are given the $_GET superglobal is returned</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="c1">// Returns value from $_GET[&quot;id&quot;] without sanitizing</span>
-<a id="__codelineno-85-2" name="__codelineno-85-2" href="#__codelineno-85-2"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="c1">// Returns value from $_GET["id"] without sanitizing</span>
+<a id="__codelineno-85-2" name="__codelineno-85-2" href="#__codelineno-85-2"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">"id"</span><span class="p">);</span>
 <a id="__codelineno-85-3" name="__codelineno-85-3" href="#__codelineno-85-3"></a>
-<a id="__codelineno-85-4" name="__codelineno-85-4" href="#__codelineno-85-4"></a><span class="c1">// Returns value from $_GET[&quot;id&quot;] with sanitizing</span>
-<a id="__codelineno-85-5" name="__codelineno-85-5" href="#__codelineno-85-5"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">);</span>
+<a id="__codelineno-85-4" name="__codelineno-85-4" href="#__codelineno-85-4"></a><span class="c1">// Returns value from $_GET["id"] with sanitizing</span>
+<a id="__codelineno-85-5" name="__codelineno-85-5" href="#__codelineno-85-5"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"int"</span><span class="p">);</span>
 <a id="__codelineno-85-6" name="__codelineno-85-6" href="#__codelineno-85-6"></a>
-<a id="__codelineno-85-7" name="__codelineno-85-7" href="#__codelineno-85-7"></a><span class="c1">// Returns value from $_GET[&quot;id&quot;] with a default value</span>
-<a id="__codelineno-85-8" name="__codelineno-85-8" href="#__codelineno-85-8"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span>
+<a id="__codelineno-85-7" name="__codelineno-85-7" href="#__codelineno-85-7"></a><span class="c1">// Returns value from $_GET["id"] with a default value</span>
+<a id="__codelineno-85-8" name="__codelineno-85-8" href="#__codelineno-85-8"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httprequest-getrawbody"><code>getRawBody()</code><a class="headerlink" href="#httprequest-getrawbody" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRawBody</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -12674,11 +12674,11 @@ qualities</p>
 </code></pre></div>
 <p>Gets a variable from the $_REQUEST superglobal applying filters if
 needed. If no parameters are given the $_REQUEST superglobal is returned</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-134-1" name="__codelineno-134-1" href="#__codelineno-134-1"></a><span class="c1">// Returns value from $_REQUEST[&quot;user_email&quot;] without sanitizing</span>
-<a id="__codelineno-134-2" name="__codelineno-134-2" href="#__codelineno-134-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-134-1" name="__codelineno-134-1" href="#__codelineno-134-1"></a><span class="c1">// Returns value from $_REQUEST["user_email"] without sanitizing</span>
+<a id="__codelineno-134-2" name="__codelineno-134-2" href="#__codelineno-134-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">);</span>
 <a id="__codelineno-134-3" name="__codelineno-134-3" href="#__codelineno-134-3"></a>
-<a id="__codelineno-134-4" name="__codelineno-134-4" href="#__codelineno-134-4"></a><span class="c1">// Returns value from $_REQUEST[&quot;user_email&quot;] with sanitizing</span>
-<a id="__codelineno-134-5" name="__codelineno-134-5" href="#__codelineno-134-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span>
+<a id="__codelineno-134-4" name="__codelineno-134-4" href="#__codelineno-134-4"></a><span class="c1">// Returns value from $_REQUEST["user_email"] with sanitizing</span>
+<a id="__codelineno-134-5" name="__codelineno-134-5" href="#__codelineno-134-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">);</span>
 </code></pre></div>
 <p>@todo check the filters here</p>
 <h4 id="httprequestinterface-getacceptablecontent"><code>getAcceptableContent()</code><a class="headerlink" href="#httprequestinterface-getacceptablecontent" title="Permanent link">&para;</a></h4>
@@ -12739,13 +12739,13 @@ $_SERVER["PHP_AUTH_DIGEST"]</p>
 </code></pre></div>
 <p>Returns the available headers in the request</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-147-1" name="__codelineno-147-1" href="#__codelineno-147-1"></a><span class="nv">$_SERVER</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-147-2" name="__codelineno-147-2" href="#__codelineno-147-2"></a>    <span class="s2">&quot;PHP_AUTH_USER&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;phalcon&quot;</span><span class="p">,</span>
-<a id="__codelineno-147-3" name="__codelineno-147-3" href="#__codelineno-147-3"></a>    <span class="s2">&quot;PHP_AUTH_PW&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+<a id="__codelineno-147-2" name="__codelineno-147-2" href="#__codelineno-147-2"></a>    <span class="s2">"PHP_AUTH_USER"</span> <span class="o">=&gt;</span> <span class="s2">"phalcon"</span><span class="p">,</span>
+<a id="__codelineno-147-3" name="__codelineno-147-3" href="#__codelineno-147-3"></a>    <span class="s2">"PHP_AUTH_PW"</span>   <span class="o">=&gt;</span> <span class="s2">"secret"</span><span class="p">,</span>
 <a id="__codelineno-147-4" name="__codelineno-147-4" href="#__codelineno-147-4"></a><span class="p">];</span>
 <a id="__codelineno-147-5" name="__codelineno-147-5" href="#__codelineno-147-5"></a>
 <a id="__codelineno-147-6" name="__codelineno-147-6" href="#__codelineno-147-6"></a><span class="nv">$headers</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHeaders</span><span class="p">();</span>
 <a id="__codelineno-147-7" name="__codelineno-147-7" href="#__codelineno-147-7"></a>
-<a id="__codelineno-147-8" name="__codelineno-147-8" href="#__codelineno-147-8"></a><span class="k">echo</span> <span class="nv">$headers</span><span class="p">[</span><span class="s2">&quot;Authorization&quot;</span><span class="p">];</span> <span class="c1">// Basic cGhhbGNvbjpzZWNyZXQ=</span>
+<a id="__codelineno-147-8" name="__codelineno-147-8" href="#__codelineno-147-8"></a><span class="k">echo</span> <span class="nv">$headers</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">];</span> <span class="c1">// Basic cGhhbGNvbjpzZWNyZXQ=</span>
 </code></pre></div>
 <h4 id="httprequestinterface-gethttphost"><code>getHttpHost()</code><a class="headerlink" href="#httprequestinterface-gethttphost" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getHttpHost</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -12765,17 +12765,17 @@ they use regular expressions.</p>
 <a id="__codelineno-149-2" name="__codelineno-149-2" href="#__codelineno-149-2"></a>
 <a id="__codelineno-149-3" name="__codelineno-149-3" href="#__codelineno-149-3"></a><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">;</span>
 <a id="__codelineno-149-4" name="__codelineno-149-4" href="#__codelineno-149-4"></a>
-<a id="__codelineno-149-5" name="__codelineno-149-5" href="#__codelineno-149-5"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;example.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-149-5" name="__codelineno-149-5" href="#__codelineno-149-5"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"example.com"</span><span class="p">;</span>
 <a id="__codelineno-149-6" name="__codelineno-149-6" href="#__codelineno-149-6"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// example.com</span>
 <a id="__codelineno-149-7" name="__codelineno-149-7" href="#__codelineno-149-7"></a>
-<a id="__codelineno-149-8" name="__codelineno-149-8" href="#__codelineno-149-8"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;example.com:8080&quot;</span><span class="p">;</span>
+<a id="__codelineno-149-8" name="__codelineno-149-8" href="#__codelineno-149-8"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"example.com:8080"</span><span class="p">;</span>
 <a id="__codelineno-149-9" name="__codelineno-149-9" href="#__codelineno-149-9"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// example.com:8080</span>
 <a id="__codelineno-149-10" name="__codelineno-149-10" href="#__codelineno-149-10"></a>
 <a id="__codelineno-149-11" name="__codelineno-149-11" href="#__codelineno-149-11"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setStrictHostCheck</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
-<a id="__codelineno-149-12" name="__codelineno-149-12" href="#__codelineno-149-12"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ex=am~ple.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-149-12" name="__codelineno-149-12" href="#__codelineno-149-12"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ex=am~ple.com"</span><span class="p">;</span>
 <a id="__codelineno-149-13" name="__codelineno-149-13" href="#__codelineno-149-13"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// UnexpectedValueException</span>
 <a id="__codelineno-149-14" name="__codelineno-149-14" href="#__codelineno-149-14"></a>
-<a id="__codelineno-149-15" name="__codelineno-149-15" href="#__codelineno-149-15"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_HOST&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ExAmPlE.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-149-15" name="__codelineno-149-15" href="#__codelineno-149-15"></a><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_HOST"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ExAmPlE.com"</span><span class="p">;</span>
 <a id="__codelineno-149-16" name="__codelineno-149-16" href="#__codelineno-149-16"></a><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHttpHost</span><span class="p">();</span> <span class="c1">// example.com</span>
 </code></pre></div>
 <h4 id="httprequestinterface-getjsonrawbody"><code>getJsonRawBody()</code><a class="headerlink" href="#httprequestinterface-getjsonrawbody" title="Permanent link">&para;</a></h4>
@@ -12811,11 +12811,11 @@ method, but only if setHttpMethodParameterOverride(true) has been called.</p>
 </code></pre></div>
 <p>Return a variable from the $_POST superglobal applying filters if needed.
 If no parameters are given the $_POST superglobal is returned</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-155-1" name="__codelineno-155-1" href="#__codelineno-155-1"></a><span class="c1">// Returns value from $_POST[&quot;user_email&quot;] without sanitizing</span>
-<a id="__codelineno-155-2" name="__codelineno-155-2" href="#__codelineno-155-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-155-1" name="__codelineno-155-1" href="#__codelineno-155-1"></a><span class="c1">// Returns value from $_POST["user_email"] without sanitizing</span>
+<a id="__codelineno-155-2" name="__codelineno-155-2" href="#__codelineno-155-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">);</span>
 <a id="__codelineno-155-3" name="__codelineno-155-3" href="#__codelineno-155-3"></a>
-<a id="__codelineno-155-4" name="__codelineno-155-4" href="#__codelineno-155-4"></a><span class="c1">// Returns value from $_POST[&quot;user_email&quot;] with sanitizing</span>
-<a id="__codelineno-155-5" name="__codelineno-155-5" href="#__codelineno-155-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span>
+<a id="__codelineno-155-4" name="__codelineno-155-4" href="#__codelineno-155-4"></a><span class="c1">// Returns value from $_POST["user_email"] with sanitizing</span>
+<a id="__codelineno-155-5" name="__codelineno-155-5" href="#__codelineno-155-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">);</span>
 </code></pre></div>
 <p>@todo check the filters</p>
 <h4 id="httprequestinterface-getput"><code>getPut()</code><a class="headerlink" href="#httprequestinterface-getput" title="Permanent link">&para;</a></h4>
@@ -12829,10 +12829,10 @@ If no parameters are given the $_POST superglobal is returned</p>
 </code></pre></div>
 <p>Return a variable from put request</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-157-1" name="__codelineno-157-1" href="#__codelineno-157-1"></a><span class="c1">// Returns value from PUT stream without sanitizing</span>
-<a id="__codelineno-157-2" name="__codelineno-157-2" href="#__codelineno-157-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">);</span>
+<a id="__codelineno-157-2" name="__codelineno-157-2" href="#__codelineno-157-2"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">);</span>
 <a id="__codelineno-157-3" name="__codelineno-157-3" href="#__codelineno-157-3"></a>
 <a id="__codelineno-157-4" name="__codelineno-157-4" href="#__codelineno-157-4"></a><span class="c1">// Returns value from PUT stream with sanitizing</span>
-<a id="__codelineno-157-5" name="__codelineno-157-5" href="#__codelineno-157-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s2">&quot;user_email&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span>
+<a id="__codelineno-157-5" name="__codelineno-157-5" href="#__codelineno-157-5"></a><span class="nv">$userEmail</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getPut</span><span class="p">(</span><span class="s2">"user_email"</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">);</span>
 </code></pre></div>
 <p>@todo check the filters</p>
 <h4 id="httprequestinterface-getquery"><code>getQuery()</code><a class="headerlink" href="#httprequestinterface-getquery" title="Permanent link">&para;</a></h4>
@@ -12846,14 +12846,14 @@ If no parameters are given the $_POST superglobal is returned</p>
 </code></pre></div>
 <p>Return a variable from $_GET superglobal applying filters if needed.
 If no parameters are given the $_GET superglobal is returned</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-159-1" name="__codelineno-159-1" href="#__codelineno-159-1"></a><span class="c1">// Returns value from $_GET[&quot;id&quot;] without sanitizing</span>
-<a id="__codelineno-159-2" name="__codelineno-159-2" href="#__codelineno-159-2"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-159-1" name="__codelineno-159-1" href="#__codelineno-159-1"></a><span class="c1">// Returns value from $_GET["id"] without sanitizing</span>
+<a id="__codelineno-159-2" name="__codelineno-159-2" href="#__codelineno-159-2"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">"id"</span><span class="p">);</span>
 <a id="__codelineno-159-3" name="__codelineno-159-3" href="#__codelineno-159-3"></a>
-<a id="__codelineno-159-4" name="__codelineno-159-4" href="#__codelineno-159-4"></a><span class="c1">// Returns value from $_GET[&quot;id&quot;] with sanitizing</span>
-<a id="__codelineno-159-5" name="__codelineno-159-5" href="#__codelineno-159-5"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">);</span>
+<a id="__codelineno-159-4" name="__codelineno-159-4" href="#__codelineno-159-4"></a><span class="c1">// Returns value from $_GET["id"] with sanitizing</span>
+<a id="__codelineno-159-5" name="__codelineno-159-5" href="#__codelineno-159-5"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"int"</span><span class="p">);</span>
 <a id="__codelineno-159-6" name="__codelineno-159-6" href="#__codelineno-159-6"></a>
-<a id="__codelineno-159-7" name="__codelineno-159-7" href="#__codelineno-159-7"></a><span class="c1">// Returns value from $_GET[&quot;id&quot;] with a default value</span>
-<a id="__codelineno-159-8" name="__codelineno-159-8" href="#__codelineno-159-8"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span>
+<a id="__codelineno-159-7" name="__codelineno-159-7" href="#__codelineno-159-7"></a><span class="c1">// Returns value from $_GET["id"] with a default value</span>
+<a id="__codelineno-159-8" name="__codelineno-159-8" href="#__codelineno-159-8"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span>
 </code></pre></div>
 <p>@todo check the filters</p>
 <h4 id="httprequestinterface-getrawbody"><code>getRawBody()</code><a class="headerlink" href="#httprequestinterface-getrawbody" title="Permanent link">&para;</a></h4>
@@ -13204,7 +13204,7 @@ it is not set</p>
 <h4 id="httprequestbagabstractbag-getstring"><code>getString()</code><a class="headerlink" href="#httprequestbagabstractbag-getstring" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-199-1" name="__codelineno-199-1" href="#__codelineno-199-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getString</span><span class="p">(</span>
 <a id="__codelineno-199-2" name="__codelineno-199-2" href="#__codelineno-199-2"></a>    <span class="nx">mixed</span> <span class="nv">$key</span><span class="p">,</span>
-<a id="__codelineno-199-3" name="__codelineno-199-3" href="#__codelineno-199-3"></a>    <span class="nx">string</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-199-3" name="__codelineno-199-3" href="#__codelineno-199-3"></a>    <span class="nx">string</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-199-4" name="__codelineno-199-4" href="#__codelineno-199-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns an element of the bag cast to string, or the default value if
@@ -13481,7 +13481,7 @@ auto-indexed write could never be addressed by the caller.</p>
 <a id="__codelineno-215-8" name="__codelineno-215-8" href="#__codelineno-215-8"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">hasFiles</span><span class="p">()</span> <span class="o">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-215-9" name="__codelineno-215-9" href="#__codelineno-215-9"></a>            <span class="c1">// Print the real file names and their sizes</span>
 <a id="__codelineno-215-10" name="__codelineno-215-10" href="#__codelineno-215-10"></a>            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getUploadedFiles</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-215-11" name="__codelineno-215-11" href="#__codelineno-215-11"></a>                <span class="k">echo</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getSize</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-215-11" name="__codelineno-215-11" href="#__codelineno-215-11"></a>                <span class="k">echo</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="s2">" "</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getSize</span><span class="p">(),</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <a id="__codelineno-215-12" name="__codelineno-215-12" href="#__codelineno-215-12"></a>            <span class="p">}</span>
 <a id="__codelineno-215-13" name="__codelineno-215-13" href="#__codelineno-215-13"></a>        <span class="p">}</span>
 <a id="__codelineno-215-14" name="__codelineno-215-14" href="#__codelineno-215-14"></a>    <span class="p">}</span>
@@ -13609,7 +13609,7 @@ auto-indexed write could never be addressed by the caller.</p>
 <h4 id="httprequestfile-__construct"><code>__construct()</code><a class="headerlink" href="#httprequestfile-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-216-1" name="__codelineno-216-1" href="#__codelineno-216-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-216-2" name="__codelineno-216-2" href="#__codelineno-216-2"></a>    <span class="k">array</span> <span class="nv">$file</span><span class="p">,</span>
-<a id="__codelineno-216-3" name="__codelineno-216-3" href="#__codelineno-216-3"></a>    <span class="nx">string</span> <span class="nv">$key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-216-3" name="__codelineno-216-3" href="#__codelineno-216-3"></a>    <span class="nx">string</span> <span class="nv">$key</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-216-4" name="__codelineno-216-4" href="#__codelineno-216-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>Constructor</p>
@@ -13746,8 +13746,8 @@ Phalcon\HTTP\Response is the Phalcon component responsible to achieve this
 task. HTTP responses are usually composed by headers and body.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-234-1" name="__codelineno-234-1" href="#__codelineno-234-1"></a><span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Http\Response</span><span class="p">();</span>
 <a id="__codelineno-234-2" name="__codelineno-234-2" href="#__codelineno-234-2"></a>
-<a id="__codelineno-234-3" name="__codelineno-234-3" href="#__codelineno-234-3"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;OK&quot;</span><span class="p">);</span>
-<a id="__codelineno-234-4" name="__codelineno-234-4" href="#__codelineno-234-4"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s2">&quot;&lt;html&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="p">);</span>
+<a id="__codelineno-234-3" name="__codelineno-234-3" href="#__codelineno-234-3"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s2">"OK"</span><span class="p">);</span>
+<a id="__codelineno-234-4" name="__codelineno-234-4" href="#__codelineno-234-4"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s2">"&lt;html&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/html&gt;"</span><span class="p">);</span>
 <a id="__codelineno-234-5" name="__codelineno-234-5" href="#__codelineno-234-5"></a>
 <a id="__codelineno-234-6" name="__codelineno-234-6" href="#__codelineno-234-6"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </code></pre></div>
@@ -14038,7 +14038,7 @@ task. HTTP responses are usually composed by headers and body.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-245-1" name="__codelineno-245-1" href="#__codelineno-245-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">hasHeader</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Checks if a header exists</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-246-1" name="__codelineno-246-1" href="#__codelineno-246-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">hasHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-246-1" name="__codelineno-246-1" href="#__codelineno-246-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">hasHeader</span><span class="p">(</span><span class="s2">"Content-Type"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httpresponse-issent"><code>isSent()</code><a class="headerlink" href="#httpresponse-issent" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-247-1" name="__codelineno-247-1" href="#__codelineno-247-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isSent</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
@@ -14053,16 +14053,16 @@ task. HTTP responses are usually composed by headers and body.</p>
 </code></pre></div>
 <p>Redirect by HTTP to another action or URL</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-249-1" name="__codelineno-249-1" href="#__codelineno-249-1"></a><span class="c1">// Using a string redirect (internal/external)</span>
-<a id="__codelineno-249-2" name="__codelineno-249-2" href="#__codelineno-249-2"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;posts/index&quot;</span><span class="p">);</span>
-<a id="__codelineno-249-3" name="__codelineno-249-3" href="#__codelineno-249-3"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;https://en.wikipedia.org&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
-<a id="__codelineno-249-4" name="__codelineno-249-4" href="#__codelineno-249-4"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;http://www.example.com/new-location&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">301</span><span class="p">);</span>
+<a id="__codelineno-249-2" name="__codelineno-249-2" href="#__codelineno-249-2"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">"posts/index"</span><span class="p">);</span>
+<a id="__codelineno-249-3" name="__codelineno-249-3" href="#__codelineno-249-3"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">"https://en.wikipedia.org"</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<a id="__codelineno-249-4" name="__codelineno-249-4" href="#__codelineno-249-4"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">"http://www.example.com/new-location"</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">301</span><span class="p">);</span>
 <a id="__codelineno-249-5" name="__codelineno-249-5" href="#__codelineno-249-5"></a>
 <a id="__codelineno-249-6" name="__codelineno-249-6" href="#__codelineno-249-6"></a><span class="c1">// Making a redirection based on a named route</span>
 <a id="__codelineno-249-7" name="__codelineno-249-7" href="#__codelineno-249-7"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span>
 <a id="__codelineno-249-8" name="__codelineno-249-8" href="#__codelineno-249-8"></a>    <span class="p">[</span>
-<a id="__codelineno-249-9" name="__codelineno-249-9" href="#__codelineno-249-9"></a>        <span class="s2">&quot;for&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;index-lang&quot;</span><span class="p">,</span>
-<a id="__codelineno-249-10" name="__codelineno-249-10" href="#__codelineno-249-10"></a>        <span class="s2">&quot;lang&quot;</span>       <span class="o">=&gt;</span> <span class="s2">&quot;jp&quot;</span><span class="p">,</span>
-<a id="__codelineno-249-11" name="__codelineno-249-11" href="#__codelineno-249-11"></a>        <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+<a id="__codelineno-249-9" name="__codelineno-249-9" href="#__codelineno-249-9"></a>        <span class="s2">"for"</span>        <span class="o">=&gt;</span> <span class="s2">"index-lang"</span><span class="p">,</span>
+<a id="__codelineno-249-10" name="__codelineno-249-10" href="#__codelineno-249-10"></a>        <span class="s2">"lang"</span>       <span class="o">=&gt;</span> <span class="s2">"jp"</span><span class="p">,</span>
+<a id="__codelineno-249-11" name="__codelineno-249-11" href="#__codelineno-249-11"></a>        <span class="s2">"controller"</span> <span class="o">=&gt;</span> <span class="s2">"index"</span><span class="p">,</span>
 <a id="__codelineno-249-12" name="__codelineno-249-12" href="#__codelineno-249-12"></a>    <span class="p">]</span>
 <a id="__codelineno-249-13" name="__codelineno-249-13" href="#__codelineno-249-13"></a><span class="p">);</span>
 </code></pre></div>
@@ -14070,7 +14070,7 @@ task. HTTP responses are usually composed by headers and body.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-250-1" name="__codelineno-250-1" href="#__codelineno-250-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">removeHeader</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Remove a header in the response</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-251-1" name="__codelineno-251-1" href="#__codelineno-251-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">removeHeader</span><span class="p">(</span><span class="s2">&quot;Expires&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-251-1" name="__codelineno-251-1" href="#__codelineno-251-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">removeHeader</span><span class="p">(</span><span class="s2">"Expires"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httpresponse-resetheaders"><code>resetHeaders()</code><a class="headerlink" href="#httpresponse-resetheaders" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-252-1" name="__codelineno-252-1" href="#__codelineno-252-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">resetHeaders</span><span class="p">()</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
@@ -14098,7 +14098,7 @@ task. HTTP responses are usually composed by headers and body.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-258-1" name="__codelineno-258-1" href="#__codelineno-258-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setContent</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$content</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets HTTP response body</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-259-1" name="__codelineno-259-1" href="#__codelineno-259-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s2">&quot;&lt;h1&gt;Hello!&lt;/h1&gt;&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-259-1" name="__codelineno-259-1" href="#__codelineno-259-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s2">"&lt;h1&gt;Hello!&lt;/h1&gt;"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httpresponse-setcontentlength"><code>setContentLength()</code><a class="headerlink" href="#httpresponse-setcontentlength" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-260-1" name="__codelineno-260-1" href="#__codelineno-260-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setContentLength</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$contentLength</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
@@ -14113,8 +14113,8 @@ task. HTTP responses are usually composed by headers and body.</p>
 <a id="__codelineno-262-4" name="__codelineno-262-4" href="#__codelineno-262-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the response content-type mime, optionally the charset</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-263-1" name="__codelineno-263-1" href="#__codelineno-263-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s2">&quot;application/pdf&quot;</span><span class="p">);</span>
-<a id="__codelineno-263-2" name="__codelineno-263-2" href="#__codelineno-263-2"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-263-1" name="__codelineno-263-1" href="#__codelineno-263-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s2">"application/pdf"</span><span class="p">);</span>
+<a id="__codelineno-263-2" name="__codelineno-263-2" href="#__codelineno-263-2"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s2">"text/plain"</span><span class="p">,</span> <span class="s2">"UTF-8"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httpresponse-setcookies"><code>setCookies()</code><a class="headerlink" href="#httpresponse-setcookies" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-264-1" name="__codelineno-264-1" href="#__codelineno-264-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setCookies</span><span class="p">(</span> <span class="nx">CookiesInterface</span> <span class="nv">$cookies</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
@@ -14157,7 +14157,7 @@ task. HTTP responses are usually composed by headers and body.</p>
 <a id="__codelineno-271-4" name="__codelineno-271-4" href="#__codelineno-271-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Overwrites a header in the response</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-272-1" name="__codelineno-272-1" href="#__codelineno-272-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-272-1" name="__codelineno-272-1" href="#__codelineno-272-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeader</span><span class="p">(</span><span class="s2">"Content-Type"</span><span class="p">,</span> <span class="s2">"text/plain"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httpresponse-setheaders"><code>setHeaders()</code><a class="headerlink" href="#httpresponse-setheaders" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-273-1" name="__codelineno-273-1" href="#__codelineno-273-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setHeaders</span><span class="p">(</span> <span class="nx">HeadersInterface</span> <span class="nv">$headers</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
@@ -14174,7 +14174,7 @@ task. HTTP responses are usually composed by headers and body.</p>
 and also sets default header: Content-Type: "application/json; charset=UTF-8"</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-275-1" name="__codelineno-275-1" href="#__codelineno-275-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span>
 <a id="__codelineno-275-2" name="__codelineno-275-2" href="#__codelineno-275-2"></a>    <span class="p">[</span>
-<a id="__codelineno-275-3" name="__codelineno-275-3" href="#__codelineno-275-3"></a>        <span class="s2">&quot;status&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+<a id="__codelineno-275-3" name="__codelineno-275-3" href="#__codelineno-275-3"></a>        <span class="s2">"status"</span> <span class="o">=&gt;</span> <span class="s2">"OK"</span><span class="p">,</span>
 <a id="__codelineno-275-4" name="__codelineno-275-4" href="#__codelineno-275-4"></a>    <span class="p">]</span>
 <a id="__codelineno-275-5" name="__codelineno-275-5" href="#__codelineno-275-5"></a><span class="p">);</span>
 </code></pre></div>
@@ -14194,7 +14194,7 @@ and also sets default header: Content-Type: "application/json; charset=UTF-8"</p
 <div class="highlight"><pre><span></span><code><a id="__codelineno-279-1" name="__codelineno-279-1" href="#__codelineno-279-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setRawHeader</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$header</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Send a raw header to the response</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-280-1" name="__codelineno-280-1" href="#__codelineno-280-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setRawHeader</span><span class="p">(</span><span class="s2">&quot;HTTP/1.1 404 Not Found&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-280-1" name="__codelineno-280-1" href="#__codelineno-280-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setRawHeader</span><span class="p">(</span><span class="s2">"HTTP/1.1 404 Not Found"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="httpresponse-setstatuscode"><code>setStatusCode()</code><a class="headerlink" href="#httpresponse-setstatuscode" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-281-1" name="__codelineno-281-1" href="#__codelineno-281-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setStatusCode</span><span class="p">(</span>
@@ -14203,7 +14203,7 @@ and also sets default header: Content-Type: "application/json; charset=UTF-8"</p
 <a id="__codelineno-281-4" name="__codelineno-281-4" href="#__codelineno-281-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the HTTP response code</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-282-1" name="__codelineno-282-1" href="#__codelineno-282-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s2">&quot;Not Found&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-282-1" name="__codelineno-282-1" href="#__codelineno-282-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s2">"Not Found"</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="httpresponseinterface">Http\ResponseInterface<a class="headerlink" href="#httpresponseinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
@@ -14438,7 +14438,7 @@ and also sets default header: Content-Type: "application/json; charset=UTF-8"</p
 <p>Sets HTTP response body. The parameter is automatically converted to JSON</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-301-1" name="__codelineno-301-1" href="#__codelineno-301-1"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span>
 <a id="__codelineno-301-2" name="__codelineno-301-2" href="#__codelineno-301-2"></a>    <span class="p">[</span>
-<a id="__codelineno-301-3" name="__codelineno-301-3" href="#__codelineno-301-3"></a>        <span class="s2">&quot;status&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+<a id="__codelineno-301-3" name="__codelineno-301-3" href="#__codelineno-301-3"></a>        <span class="s2">"status"</span> <span class="o">=&gt;</span> <span class="s2">"OK"</span><span class="p">,</span>
 <a id="__codelineno-301-4" name="__codelineno-301-4" href="#__codelineno-301-4"></a>    <span class="p">]</span>
 <a id="__codelineno-301-5" name="__codelineno-301-5" href="#__codelineno-301-5"></a><span class="p">);</span>
 </code></pre></div>
@@ -14475,14 +14475,14 @@ used to generate a message authentication code use
 <a id="__codelineno-305-5" name="__codelineno-305-5" href="#__codelineno-305-5"></a><span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Di</span><span class="p">();</span>
 <a id="__codelineno-305-6" name="__codelineno-305-6" href="#__codelineno-305-6"></a>
 <a id="__codelineno-305-7" name="__codelineno-305-7" href="#__codelineno-305-7"></a><span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-305-8" name="__codelineno-305-8" href="#__codelineno-305-8"></a>    <span class="s1">&#39;crypt&#39;</span><span class="p">,</span>
+<a id="__codelineno-305-8" name="__codelineno-305-8" href="#__codelineno-305-8"></a>    <span class="s1">'crypt'</span><span class="p">,</span>
 <a id="__codelineno-305-9" name="__codelineno-305-9" href="#__codelineno-305-9"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-305-10" name="__codelineno-305-10" href="#__codelineno-305-10"></a>        <span class="nv">$crypt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Crypt</span><span class="p">();</span>
 <a id="__codelineno-305-11" name="__codelineno-305-11" href="#__codelineno-305-11"></a>
-<a id="__codelineno-305-12" name="__codelineno-305-12" href="#__codelineno-305-12"></a>        <span class="c1">// The `$key&#39; should have been previously generated in a</span>
+<a id="__codelineno-305-12" name="__codelineno-305-12" href="#__codelineno-305-12"></a>        <span class="c1">// The `$key' should have been previously generated in a</span>
 <a id="__codelineno-305-13" name="__codelineno-305-13" href="#__codelineno-305-13"></a>        <span class="c1">// cryptographically safe way.</span>
 <a id="__codelineno-305-14" name="__codelineno-305-14" href="#__codelineno-305-14"></a>        <span class="nv">$key</span> <span class="o">=</span>
-<a id="__codelineno-305-15" name="__codelineno-305-15" href="#__codelineno-305-15"></a>        <span class="s2">&quot;T4</span><span class="se">\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07</span><span class="s2">&amp;[</span><span class="se">\x99\x18\xa4</span><span class="s2">~Lc1</span><span class="se">\xbe</span><span class="s2">W</span><span class="se">\xb3</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-305-15" name="__codelineno-305-15" href="#__codelineno-305-15"></a>        <span class="s2">"T4</span><span class="se">\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07</span><span class="s2">&amp;[</span><span class="se">\x99\x18\xa4</span><span class="s2">~Lc1</span><span class="se">\xbe</span><span class="s2">W</span><span class="se">\xb3</span><span class="s2">"</span><span class="p">;</span>
 <a id="__codelineno-305-16" name="__codelineno-305-16" href="#__codelineno-305-16"></a>
 <a id="__codelineno-305-17" name="__codelineno-305-17" href="#__codelineno-305-17"></a>        <span class="nv">$crypt</span><span class="o">-&gt;</span><span class="na">setKey</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
 <a id="__codelineno-305-18" name="__codelineno-305-18" href="#__codelineno-305-18"></a>
@@ -14491,14 +14491,14 @@ used to generate a message authentication code use
 <a id="__codelineno-305-21" name="__codelineno-305-21" href="#__codelineno-305-21"></a><span class="p">);</span>
 <a id="__codelineno-305-22" name="__codelineno-305-22" href="#__codelineno-305-22"></a>
 <a id="__codelineno-305-23" name="__codelineno-305-23" href="#__codelineno-305-23"></a><span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-305-24" name="__codelineno-305-24" href="#__codelineno-305-24"></a>    <span class="s1">&#39;cookies&#39;</span><span class="p">,</span>
+<a id="__codelineno-305-24" name="__codelineno-305-24" href="#__codelineno-305-24"></a>    <span class="s1">'cookies'</span><span class="p">,</span>
 <a id="__codelineno-305-25" name="__codelineno-305-25" href="#__codelineno-305-25"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-305-26" name="__codelineno-305-26" href="#__codelineno-305-26"></a>        <span class="nv">$cookies</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cookies</span><span class="p">();</span>
 <a id="__codelineno-305-27" name="__codelineno-305-27" href="#__codelineno-305-27"></a>
-<a id="__codelineno-305-28" name="__codelineno-305-28" href="#__codelineno-305-28"></a>        <span class="c1">// The `$key&#39; MUST be at least 32 characters long and generated</span>
+<a id="__codelineno-305-28" name="__codelineno-305-28" href="#__codelineno-305-28"></a>        <span class="c1">// The `$key' MUST be at least 32 characters long and generated</span>
 <a id="__codelineno-305-29" name="__codelineno-305-29" href="#__codelineno-305-29"></a>        <span class="c1">// using a cryptographically secure pseudo random generator.</span>
 <a id="__codelineno-305-30" name="__codelineno-305-30" href="#__codelineno-305-30"></a>        <span class="nv">$key</span> <span class="o">=</span>
-<a id="__codelineno-305-31" name="__codelineno-305-31" href="#__codelineno-305-31"></a>        <span class="s2">&quot;#1dj8$=dp?.ak//j1V$~%*0XaK</span><span class="se">\xb1\x8d\xa9\x98\x05</span><span class="s2">4t7w!z%C*F-Jk</span><span class="se">\x98\x05\\\x5c</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-305-31" name="__codelineno-305-31" href="#__codelineno-305-31"></a>        <span class="s2">"#1dj8$=dp?.ak//j1V$~%*0XaK</span><span class="se">\xb1\x8d\xa9\x98\x05</span><span class="s2">4t7w!z%C*F-Jk</span><span class="se">\x98\x05\\\x5c</span><span class="s2">"</span><span class="p">;</span>
 <a id="__codelineno-305-32" name="__codelineno-305-32" href="#__codelineno-305-32"></a>
 <a id="__codelineno-305-33" name="__codelineno-305-33" href="#__codelineno-305-33"></a>        <span class="nv">$cookies</span><span class="o">-&gt;</span><span class="na">setSignKey</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
 <a id="__codelineno-305-34" name="__codelineno-305-34" href="#__codelineno-305-34"></a>
@@ -14658,9 +14658,9 @@ Cookies aren't sent if headers are sent in the current request</p>
 <a id="__codelineno-314-2" name="__codelineno-314-2" href="#__codelineno-314-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-314-3" name="__codelineno-314-3" href="#__codelineno-314-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-314-4" name="__codelineno-314-4" href="#__codelineno-314-4"></a>    <span class="nx">int</span> <span class="nv">$expire</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-314-5" name="__codelineno-314-5" href="#__codelineno-314-5"></a>    <span class="nx">string</span> <span class="nv">$path</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<a id="__codelineno-314-5" name="__codelineno-314-5" href="#__codelineno-314-5"></a>    <span class="nx">string</span> <span class="nv">$path</span> <span class="o">=</span> <span class="s2">"/"</span><span class="p">,</span>
 <a id="__codelineno-314-6" name="__codelineno-314-6" href="#__codelineno-314-6"></a>    <span class="nx">bool</span> <span class="nv">$secure</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span>
-<a id="__codelineno-314-7" name="__codelineno-314-7" href="#__codelineno-314-7"></a>    <span class="nx">string</span> <span class="nv">$domain</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-314-7" name="__codelineno-314-7" href="#__codelineno-314-7"></a>    <span class="nx">string</span> <span class="nv">$domain</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-314-8" name="__codelineno-314-8" href="#__codelineno-314-8"></a>    <span class="nx">bool</span> <span class="nv">$httpOnly</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span>
 <a id="__codelineno-314-9" name="__codelineno-314-9" href="#__codelineno-314-9"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-314-10" name="__codelineno-314-10" href="#__codelineno-314-10"></a><span class="p">)</span><span class="o">:</span> <span class="nx">CookiesInterface</span><span class="p">;</span>
@@ -14670,13 +14670,13 @@ Cookies aren't sent if headers are sent in the current request</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-315-1" name="__codelineno-315-1" href="#__codelineno-315-1"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response\Cookies</span><span class="p">;</span>
 <a id="__codelineno-315-2" name="__codelineno-315-2" href="#__codelineno-315-2"></a>
 <a id="__codelineno-315-3" name="__codelineno-315-3" href="#__codelineno-315-3"></a><span class="nv">$now</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTimeImmutable</span><span class="p">();</span>
-<a id="__codelineno-315-4" name="__codelineno-315-4" href="#__codelineno-315-4"></a><span class="nv">$tomorrow</span> <span class="o">=</span> <span class="nv">$now</span><span class="o">-&gt;</span><span class="na">modify</span><span class="p">(</span><span class="s1">&#39;tomorrow&#39;</span><span class="p">);</span>
+<a id="__codelineno-315-4" name="__codelineno-315-4" href="#__codelineno-315-4"></a><span class="nv">$tomorrow</span> <span class="o">=</span> <span class="nv">$now</span><span class="o">-&gt;</span><span class="na">modify</span><span class="p">(</span><span class="s1">'tomorrow'</span><span class="p">);</span>
 <a id="__codelineno-315-5" name="__codelineno-315-5" href="#__codelineno-315-5"></a>
 <a id="__codelineno-315-6" name="__codelineno-315-6" href="#__codelineno-315-6"></a><span class="nv">$cookies</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cookies</span><span class="p">();</span>
 <a id="__codelineno-315-7" name="__codelineno-315-7" href="#__codelineno-315-7"></a><span class="nv">$cookies</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-315-8" name="__codelineno-315-8" href="#__codelineno-315-8"></a>    <span class="s1">&#39;remember-me&#39;</span><span class="p">,</span>
-<a id="__codelineno-315-9" name="__codelineno-315-9" href="#__codelineno-315-9"></a>    <span class="nb">json_encode</span><span class="p">([</span><span class="s1">&#39;user_id&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">]),</span>
-<a id="__codelineno-315-10" name="__codelineno-315-10" href="#__codelineno-315-10"></a>    <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$tomorrow</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">),</span>
+<a id="__codelineno-315-8" name="__codelineno-315-8" href="#__codelineno-315-8"></a>    <span class="s1">'remember-me'</span><span class="p">,</span>
+<a id="__codelineno-315-9" name="__codelineno-315-9" href="#__codelineno-315-9"></a>    <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'user_id'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">]),</span>
+<a id="__codelineno-315-10" name="__codelineno-315-10" href="#__codelineno-315-10"></a>    <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$tomorrow</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">'U'</span><span class="p">),</span>
 <a id="__codelineno-315-11" name="__codelineno-315-11" href="#__codelineno-315-11"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="httpresponsecookies-setsignkey"><code>setSignKey()</code><a class="headerlink" href="#httpresponsecookies-setsignkey" title="Permanent link">&para;</a></h4>
@@ -14786,9 +14786,9 @@ This method does not removes cookies from the _COOKIE superglobal</p>
 <a id="__codelineno-324-2" name="__codelineno-324-2" href="#__codelineno-324-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-324-3" name="__codelineno-324-3" href="#__codelineno-324-3"></a>    <span class="nx">mixed</span> <span class="nv">$value</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-324-4" name="__codelineno-324-4" href="#__codelineno-324-4"></a>    <span class="nx">int</span> <span class="nv">$expire</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-324-5" name="__codelineno-324-5" href="#__codelineno-324-5"></a>    <span class="nx">string</span> <span class="nv">$path</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<a id="__codelineno-324-5" name="__codelineno-324-5" href="#__codelineno-324-5"></a>    <span class="nx">string</span> <span class="nv">$path</span> <span class="o">=</span> <span class="s2">"/"</span><span class="p">,</span>
 <a id="__codelineno-324-6" name="__codelineno-324-6" href="#__codelineno-324-6"></a>    <span class="nx">bool</span> <span class="nv">$secure</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span>
-<a id="__codelineno-324-7" name="__codelineno-324-7" href="#__codelineno-324-7"></a>    <span class="nx">string</span> <span class="nv">$domain</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-324-7" name="__codelineno-324-7" href="#__codelineno-324-7"></a>    <span class="nx">string</span> <span class="nv">$domain</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-324-8" name="__codelineno-324-8" href="#__codelineno-324-8"></a>    <span class="nx">bool</span> <span class="nv">$httpOnly</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span>
 <a id="__codelineno-324-9" name="__codelineno-324-9" href="#__codelineno-324-9"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-324-10" name="__codelineno-324-10" href="#__codelineno-324-10"></a><span class="p">)</span><span class="o">:</span> <span class="nx">CookiesInterface</span><span class="p">;</span>
@@ -15364,7 +15364,7 @@ cookie classes.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

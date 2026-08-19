@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5632,7 +5632,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">$flash</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Direct</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">);</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="session">Session<a class="headerlink" href="#session" title="Permanent link">&para;</a></h3>
 <p><a href="../api/phalcon_flash/#flashsession">Phalcon\Flash\Session</a> can be used to output messages set in the component. The component transparently stores the messages in the session to be used after a redirect.</p>
@@ -5646,7 +5646,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nv">$files</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="p">[</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="s1">&#39;savePath&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="s1">'savePath'</span> <span class="o">=&gt;</span> <span class="s1">'/tmp'</span><span class="p">,</span>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="p">]</span>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">);</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nv">$session</span><span class="o">-&gt;</span><span class="na">setAdapter</span><span class="p">(</span><span class="nv">$files</span><span class="p">);</span>
@@ -5654,7 +5654,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nv">$flash</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">FlashSession</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">,</span> <span class="nv">$session</span><span class="p">);</span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
 </code></pre></div>
 <p>and in your view</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">output</span><span class="p">();</span> <span class="cp">?&gt;</span>
@@ -5715,19 +5715,19 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a>                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flashSession</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
 <a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>                    <span class="p">}</span>
 <a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>                    <span class="nv">$email</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">);</span>
-<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>                    <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">);</span>
-<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>                    <span class="nv">$remember</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;remember&#39;</span><span class="p">);</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>                    <span class="nv">$email</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'email'</span><span class="p">);</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>                    <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'password'</span><span class="p">);</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>                    <span class="nv">$remember</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">'remember'</span><span class="p">);</span>
 <a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a>
 <a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">auth</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">(</span>
 <a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a>                        <span class="p">[</span>
-<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a>                            <span class="s1">&#39;email&#39;</span>    <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
-<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>                            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="nv">$password</span><span class="p">,</span>
-<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>                            <span class="s1">&#39;remember&#39;</span> <span class="o">=&gt;</span> <span class="nv">$remember</span><span class="p">,</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a>                            <span class="s1">'email'</span>    <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>                            <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="nv">$password</span><span class="p">,</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>                            <span class="s1">'remember'</span> <span class="o">=&gt;</span> <span class="nv">$remember</span><span class="p">,</span>
 <a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a>                        <span class="p">]</span>
 <a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a>                    <span class="p">);</span>
 <a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a>
-<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a>                    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">);</span>
+<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a>                    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s1">'users'</span><span class="p">);</span>
 <a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a>                <span class="p">}</span>
 <a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a>            <span class="p">}</span>
 <a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a>        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">AuthException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
@@ -5763,18 +5763,18 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nv">$session</span><span class="o">-&gt;</span><span class="na">setAdapter</span><span class="p">(</span>
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>        <span class="p">[</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>            <span class="s1">&#39;savePath&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>            <span class="s1">'savePath'</span> <span class="o">=&gt;</span> <span class="s1">'/tmp'</span><span class="p">,</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="p">]</span>
 <a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="p">)</span>
 <a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="p">);</span>
 <a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
 <a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="nv">$adminFlash</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FlashSession</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">,</span> <span class="nv">$session</span><span class="p">,</span> <span class="s1">&#39;_flashAdmin&#39;</span><span class="p">);</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="nv">$shopFlash</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">FlashSession</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">,</span> <span class="nv">$session</span><span class="p">,</span> <span class="s1">&#39;_flashShop&#39;</span><span class="p">);</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="nv">$adminFlash</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FlashSession</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">,</span> <span class="nv">$session</span><span class="p">,</span> <span class="s1">'_flashAdmin'</span><span class="p">);</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="nv">$shopFlash</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">FlashSession</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">,</span> <span class="nv">$session</span><span class="p">,</span> <span class="s1">'_flashShop'</span><span class="p">);</span>
 <a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="nv">$adminFlash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Admin error&#39;</span><span class="p">);</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="nv">$shopFlash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s1">&#39;Order placed&#39;</span><span class="p">);</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="nv">$adminFlash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Admin error'</span><span class="p">);</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="nv">$shopFlash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s1">'Order placed'</span><span class="p">);</span>
 </code></pre></div>
 <p>Each flasher reads and writes only its own key, so the two message sets stay independent across the redirect.</p>
 <h2 id="styling">Styling<a class="headerlink" href="#styling" title="Permanent link">&para;</a></h2>
@@ -5807,10 +5807,10 @@ offering lower resource consumption and high performance.
 </table>
 <p>By using the default classes, you can style <code>errorMessage</code> accordingly in the stylesheet of your application to make it appear the way you want it to. It is common for error messages to have a red background for instance so that they stand out.</p>
 <p>An error message:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Error message&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Error message'</span><span class="p">);</span>
 </code></pre></div>
 <p>will produce:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;errorMessage&quot;</span><span class="p">&gt;</span>Error message<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"errorMessage"</span><span class="p">&gt;</span>Error message<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>If you do not wish to use the default classes, you can use the <code>setCssClasses()</code> method to replace the mapping of the type of message to the class name.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -5826,27 +5826,27 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="p">);</span>
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
 <a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="c1">// [</span>
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1">//     &quot;error&quot;   =&gt; &quot;errorMessage&quot;,</span>
-<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="c1">//     &quot;notice&quot;  =&gt; &quot;noticeMessage&quot;,</span>
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="c1">//     &quot;success&quot; =&gt; &quot;successMessage&quot;,</span>
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="c1">//     &quot;warning&quot; =&gt; &quot;warningMessage&quot;,</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1">//     "error"   =&gt; "errorMessage",</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="c1">//     "notice"  =&gt; "noticeMessage",</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="c1">//     "success" =&gt; "successMessage",</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="c1">//     "warning" =&gt; "warningMessage",</span>
 <a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="c1">// ];</span>
 <a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>
 <a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>
 <a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="nv">$cssClasses</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>    <span class="s1">&#39;error&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-danger&#39;</span><span class="p">,</span>
-<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>    <span class="s1">&#39;success&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-success&#39;</span><span class="p">,</span>
-<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>    <span class="s1">&#39;notice&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-info&#39;</span><span class="p">,</span>
-<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>    <span class="s1">&#39;warning&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-warning&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>    <span class="s1">'error'</span>   <span class="o">=&gt;</span> <span class="s1">'alert alert-danger'</span><span class="p">,</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>    <span class="s1">'success'</span> <span class="o">=&gt;</span> <span class="s1">'alert alert-success'</span><span class="p">,</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>    <span class="s1">'notice'</span>  <span class="o">=&gt;</span> <span class="s1">'alert alert-info'</span><span class="p">,</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>    <span class="s1">'warning'</span> <span class="o">=&gt;</span> <span class="s1">'alert alert-warning'</span><span class="p">,</span>
 <a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="p">];</span>
 <a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>
 <a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">setCssClasses</span><span class="p">(</span><span class="nv">$cssClasses</span><span class="p">);</span>
 </code></pre></div>
 <p>and then calling</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Error message&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Error message'</span><span class="p">);</span>
 </code></pre></div>
 <p>will produce:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-danger&quot;</span><span class="p">&gt;</span>Error message<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"alert alert-danger"</span><span class="p">&gt;</span>Error message<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
@@ -5879,15 +5879,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$flash</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Direct</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">);</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="nv">$template</span> <span class="o">=</span> <span class="s1">&#39;&lt;span class=&quot;%cssClass%&quot;&gt;%message%&lt;/span&gt;&#39;</span><span class="p">;</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="nv">$template</span> <span class="o">=</span> <span class="s1">'&lt;span class="%cssClass%"&gt;%message%&lt;/span&gt;'</span><span class="p">;</span>
 <a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">setCustomTemplate</span><span class="p">(</span><span class="nv">$template</span><span class="p">);</span>
 </code></pre></div>
 <p>and then calling</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Error message&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Error message'</span><span class="p">);</span>
 </code></pre></div>
 <p>will produce:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;myErrorClass&quot;</span><span class="p">&gt;</span>Error message<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"myErrorClass"</span><span class="p">&gt;</span>Error message<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
@@ -5903,19 +5903,19 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nv">$flash</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Direct</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">);</span>
 <a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
 <a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="nv">$iconClasses</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="s1">&#39;error&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-error&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="s1">&#39;success&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-success&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="s1">&#39;notice&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-notice&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="s1">&#39;warning&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;alert alert-warning&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="s1">'error'</span>   <span class="o">=&gt;</span> <span class="s1">'alert alert-error'</span><span class="p">,</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="s1">'success'</span> <span class="o">=&gt;</span> <span class="s1">'alert alert-success'</span><span class="p">,</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="s1">'notice'</span>  <span class="o">=&gt;</span> <span class="s1">'alert alert-notice'</span><span class="p">,</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="s1">'warning'</span> <span class="o">=&gt;</span> <span class="s1">'alert alert-warning'</span><span class="p">,</span>
 <a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="p">];</span>
 <a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
 <a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">setCssIconClasses</span><span class="p">(</span><span class="nv">$iconClasses</span><span class="p">);</span>
 </code></pre></div>
 <p>and then calling</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Error message&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Error message'</span><span class="p">);</span>
 </code></pre></div>
 <p>will produce:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;errorMessage&quot;</span><span class="p">&gt;&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-error&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>Error message
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"errorMessage"</span><span class="p">&gt;&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">"alert alert-error"</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>Error message
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
@@ -5930,34 +5930,34 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="s1">&#39;flashSession&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="s1">'flashSession'</span><span class="p">,</span>
 <a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>        <span class="nv">$flash</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Session</span><span class="p">();</span>
 <a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>
 <a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>        <span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">setCssClasses</span><span class="p">(</span>
 <a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>            <span class="p">[</span>
-<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>                <span class="s1">&#39;error&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;error_message callout alert radius flashSession&#39;</span><span class="p">,</span>
-<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>                <span class="s1">&#39;success&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;success_message callout success radius flashSession&#39;</span><span class="p">,</span>
-<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>                <span class="s1">&#39;warning&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;warning_message callout warning radius flashSession&#39;</span><span class="p">,</span>
-<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>                <span class="s1">&#39;notice&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;notice_message callout secondary radius flashSession&#39;</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>                <span class="s1">'error'</span>   <span class="o">=&gt;</span> <span class="s1">'error_message callout alert radius flashSession'</span><span class="p">,</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>                <span class="s1">'success'</span> <span class="o">=&gt;</span> <span class="s1">'success_message callout success radius flashSession'</span><span class="p">,</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>                <span class="s1">'warning'</span> <span class="o">=&gt;</span> <span class="s1">'warning_message callout warning radius flashSession'</span><span class="p">,</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>                <span class="s1">'notice'</span>  <span class="o">=&gt;</span> <span class="s1">'notice_message callout secondary radius flashSession'</span>
 <a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>            <span class="p">]</span>
 <a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>        <span class="p">);</span>
 <a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>
 <a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>        <span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">setCssIconClasses</span><span class="p">(</span>
 <a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>            <span class="p">[</span>
-<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>                <span class="s1">&#39;error&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;fi-alert&#39;</span><span class="p">,</span>
-<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>                <span class="s1">&#39;success&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;fi-check&#39;</span><span class="p">,</span>
-<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>                <span class="s1">&#39;notice&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;fi-star&#39;</span><span class="p">,</span>
-<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a>                <span class="s1">&#39;warning&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;fi-flag&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>                <span class="s1">'error'</span>   <span class="o">=&gt;</span> <span class="s1">'fi-alert'</span><span class="p">,</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>                <span class="s1">'success'</span> <span class="o">=&gt;</span> <span class="s1">'fi-check'</span><span class="p">,</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>                <span class="s1">'notice'</span>  <span class="o">=&gt;</span> <span class="s1">'fi-star'</span><span class="p">,</span>
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a>                <span class="s1">'warning'</span> <span class="o">=&gt;</span> <span class="s1">'fi-flag'</span><span class="p">,</span>
 <a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a>            <span class="p">]</span>
 <a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a>        <span class="p">);</span>
 <a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a>
-<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a>        <span class="nv">$template</span> <span class="o">=</span> <span class="s1">&#39;&lt;div class=&quot;%cssClass%&quot;&gt;</span>
-<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="s1">    &lt;i class=&quot;%cssIconClass%&quot;&gt;&lt;/i&gt; %message%</span>
-<a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a><span class="s1">    &lt;button class=&quot;close-button&quot; aria-label=&quot;Close&quot; type=&quot;button&quot; data-close&gt;</span>
-<a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a><span class="s1">        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;</span>
+<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a>        <span class="nv">$template</span> <span class="o">=</span> <span class="s1">'&lt;div class="%cssClass%"&gt;</span>
+<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="s1">    &lt;i class="%cssIconClass%"&gt;&lt;/i&gt; %message%</span>
+<a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a><span class="s1">    &lt;button class="close-button" aria-label="Close" type="button" data-close&gt;</span>
+<a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a><span class="s1">        &lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;</span>
 <a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a><span class="s1">    &lt;/button&gt;</span>
-<a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a><span class="s1">&lt;/div&gt;&#39;</span><span class="p">;</span>
+<a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a><span class="s1">&lt;/div&gt;'</span><span class="p">;</span>
 <a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a>        <span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">setCustomTemplate</span><span class="p">(</span><span class="nv">$template</span><span class="p">);</span>
 <a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a>
 <a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a>        <span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">setAutoescape</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
@@ -5967,13 +5967,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a><span class="p">);</span>
 </code></pre></div>
 <p>If you then call:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flashSession</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;An error has occurred. Please contact support.&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flashSession</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'An error has occurred. Please contact support.'</span><span class="p">)</span>
 </code></pre></div>
 <p>will produce the following HTML snippet in your view (when calling <code>$flashSession-&gt;output()</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;error_message callout alert radius flashSession&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fi-alert&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> An error has occurred. Please contact support.
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;close-button&quot;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&quot;Close&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">data-close</span><span class="p">&gt;</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span><span class="ni">&amp;times;</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"error_message callout alert radius flashSession"</span><span class="p">&gt;</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">"fi-alert"</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> An error has occurred. Please contact support.
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"close-button"</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">"Close"</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">data-close</span><span class="p">&gt;</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">"true"</span><span class="p">&gt;</span><span class="ni">&amp;times;</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 <a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -5993,7 +5993,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="nv">$flash</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Direct</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">);</span>
 <a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>
-<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="s1">&#39;Error message&#39;</span><span class="p">);</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="s1">'Error message'</span><span class="p">);</span>
 </code></pre></div>
 <p>While you can pass the type as the first parameter when calling <code>message()</code> you can also use the relevant helper methods that do that for you:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -6004,10 +6004,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="nv">$flash</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Direct</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">);</span>
 <a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Error message&#39;</span><span class="p">);</span>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span><span class="s1">&#39;Notice message&#39;</span><span class="p">);</span>
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s1">&#39;Success message&#39;</span><span class="p">);</span>
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">&#39;Warning message&#39;</span><span class="p">);</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Error message'</span><span class="p">);</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">notice</span><span class="p">(</span><span class="s1">'Notice message'</span><span class="p">);</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s1">'Success message'</span><span class="p">);</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">'Warning message'</span><span class="p">);</span>
 </code></pre></div>
 <p>If your application requires it, you might want to clear the messages at some point when building the response. To do so you can use the <code>clear()</code> method.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -6018,7 +6018,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="nv">$escaper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="nv">$flash</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Direct</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">);</span>
 <a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Error message&#39;</span><span class="p">);</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Error message'</span><span class="p">);</span>
 <a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>
 <a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">clear</span><span class="p">();</span>
 </code></pre></div>
@@ -6038,11 +6038,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
 <a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="k">echo</span> <span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">getImplicitFlush</span><span class="p">();</span> <span class="c1">// true</span>
 <a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
-<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">);</span> <span class="c1">// No output</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Error'</span><span class="p">);</span> <span class="c1">// No output</span>
 <a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>
 <a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="k">echo</span> <span class="nv">$flash</span>
 <a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>    <span class="o">-&gt;</span><span class="na">setImplicitFlush</span><span class="p">(</span><span class="k">false</span><span class="p">)</span> 
-<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>    <span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Error Message&#39;</span><span class="p">)</span> <span class="c1">// &#39;Error Message&#39;</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>    <span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Error Message'</span><span class="p">)</span> <span class="c1">// 'Error Message'</span>
 <a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="p">;</span>
 </code></pre></div>
 <div class="admonition info">
@@ -6071,11 +6071,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>
 <a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="nv">$flash</span>
 <a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>    <span class="o">-&gt;</span><span class="na">setAutoescape</span><span class="p">(</span><span class="k">false</span><span class="p">)</span>
-<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>    <span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;Error&lt;/h1&gt;&#39;</span><span class="p">)</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>    <span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'&lt;h1&gt;Error&lt;/h1&gt;'</span><span class="p">)</span>
 <a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="p">;</span>
 </code></pre></div>
 <p>will produce</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;errorMessage&quot;</span><span class="p">&gt;</span><span class="ni">&amp;lt;</span>h1<span class="ni">&amp;gt;</span>Error<span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"errorMessage"</span><span class="p">&gt;</span><span class="ni">&amp;lt;</span>h1<span class="ni">&amp;gt;</span>Error<span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
@@ -6095,7 +6095,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="nv">$escaper</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Escaper</span><span class="p">();</span>
 <a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>
 <a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>    <span class="s1">&#39;flash&#39;</span><span class="p">,</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>    <span class="s1">'flash'</span><span class="p">,</span>
 <a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>    <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$escaper</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Direct</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">);</span>
 <a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>    <span class="p">}</span>
@@ -6115,13 +6115,13 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="nv">$session</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="nv">$files</span>     <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span>
 <a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>    <span class="p">[</span>
-<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>        <span class="s1">&#39;savePath&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp&#39;</span><span class="p">,</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>        <span class="s1">'savePath'</span> <span class="o">=&gt;</span> <span class="s1">'/tmp'</span><span class="p">,</span>
 <a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>    <span class="p">]</span>
 <a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="p">);</span>
 <a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="nv">$session</span><span class="o">-&gt;</span><span class="na">setAdapter</span><span class="p">(</span><span class="nv">$files</span><span class="p">);</span>
 <a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a>
 <a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>    <span class="s1">&#39;flashSession&#39;</span><span class="p">,</span>
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>    <span class="s1">'flashSession'</span><span class="p">,</span>
 <a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>    <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$escaper</span><span class="p">,</span> <span class="nv">$session</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">FlashSession</span><span class="p">(</span><span class="nv">$escaper</span><span class="p">,</span> <span class="nv">$session</span><span class="p">);</span>
 <a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a>    <span class="p">}</span>
@@ -6153,7 +6153,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a>
 <a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
 <a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a>    <span class="p">{</span>
-<a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s1">&#39;The post was correctly saved!&#39;</span><span class="p">);</span>
+<a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s1">'The post was correctly saved!'</span><span class="p">);</span>
 <a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a>    <span class="p">}</span>
 <a id="__codelineno-30-24" name="__codelineno-30-24" href="#__codelineno-30-24"></a><span class="p">}</span>
 </code></pre></div>
@@ -6388,7 +6388,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

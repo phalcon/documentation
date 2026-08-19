@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5710,7 +5710,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> <span class="o">*</span> <span class="k">This</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">property</span> <span class="nx">with</span> <span class="nx">a</span> <span class="nx">special</span> <span class="nx">feature</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a> <span class="o">*</span> <span class="nx">More</span> <span class="nx">comments</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a> <span class="o">*</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SpecialFeature</span><span class="p">({</span><span class="nx">someParameter</span><span class="o">=</span><span class="s1">&#39;the value&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">})</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SpecialFeature</span><span class="p">({</span><span class="nx">someParameter</span><span class="o">=</span><span class="s1">'the value'</span><span class="p">,</span> <span class="k">false</span><span class="p">})</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">AnotherSpecialFeature</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
 </code></pre></div>
 <p>An example for a model is:</p>
@@ -5723,25 +5723,25 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="sd"> *</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="sd"> * Represents a customer record</span>
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="sd"> *</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="sd"> * @Source(&#39;co_customers&#39;);</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="sd"> * @HasMany(&quot;cst_id&quot;, &quot;Invoices&quot;, &quot;inv_cst_id&quot;)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="sd"> * @Source('co_customers');</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="sd"> * @HasMany("cst_id", "Invoices", "inv_cst_id")</span>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="sd"> */</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="k">class</span> <span class="nc">Customers</span> <span class="k">extends</span> <span class="nx">Model</span>
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">{</span>
 <a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="sd">/**</span>
 <a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="sd">     * @Primary</span>
 <a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="sd">     * @Identity</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="sd">     * @Column(type=&quot;integer&quot;, nullable=false, column=&quot;cst_id&quot;)</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="sd">     * @Column(type="integer", nullable=false, column="cst_id")</span>
 <a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="sd">     */</span>
 <a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
 <a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
 <a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="sd">/**</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="sd">     * @Column(type=&quot;string&quot;, nullable=false, column=&quot;cst_name_first&quot;)</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="sd">     * @Column(type="string", nullable=false, column="cst_name_first")</span>
 <a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="sd">     */</span>
 <a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>    <span class="k">public</span> <span class="nv">$nameFirst</span><span class="p">;</span>
 <a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
 <a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>    <span class="sd">/**</span>
-<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="sd">     * @Column(type=&quot;string&quot;, nullable=false, column=&quot;cst_name_last&quot;)</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="sd">     * @Column(type="string", nullable=false, column="cst_name_last")</span>
 <a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="sd">     */</span>
 <a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>    <span class="k">public</span> <span class="nv">$nameLast</span><span class="p">;</span>
 <a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="p">}</span>
@@ -5753,12 +5753,12 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>Simple Annotation</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">/**</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s1">'world'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span>
 </code></pre></div>
 <p>Annotation with parameters</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">/**</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">(</span><span class="nx">first</span><span class="o">=</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="nx">second</span><span class="o">=</span><span class="s1">&#39;world&#39;</span><span class="p">,</span> <span class="nx">third</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">(</span><span class="nx">first</span><span class="o">:</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="nx">second</span><span class="o">:</span> <span class="s1">&#39;world&#39;</span><span class="p">,</span> <span class="nx">third</span><span class="o">:</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">(</span><span class="nx">first</span><span class="o">=</span><span class="s1">'hello'</span><span class="p">,</span> <span class="nx">second</span><span class="o">=</span><span class="s1">'world'</span><span class="p">,</span> <span class="nx">third</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">(</span><span class="nx">first</span><span class="o">:</span> <span class="s1">'hello'</span><span class="p">,</span> <span class="nx">second</span><span class="o">:</span> <span class="s1">'world'</span><span class="p">,</span> <span class="nx">third</span><span class="o">:</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <p>Annotation with named parameters</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">/**</span>
@@ -5768,14 +5768,14 @@ offering lower resource consumption and high performance.
 <p>Passing an array</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">/**</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">({</span><span class="nx">first</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nx">second</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nx">third</span><span class="o">=</span><span class="mi">3</span><span class="p">})</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">({</span><span class="s1">&#39;first&#39;</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;second&#39;</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;third&#39;</span><span class="o">=</span><span class="mi">3</span><span class="p">})</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">({</span><span class="s1">&#39;first&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;second&#39;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;third&#39;</span><span class="o">:</span> <span class="mi">3</span><span class="p">})</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">([</span><span class="s1">&#39;first&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;second&#39;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;third&#39;</span><span class="o">:</span> <span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">({</span><span class="s1">'first'</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'second'</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'third'</span><span class="o">=</span><span class="mi">3</span><span class="p">})</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">({</span><span class="s1">'first'</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'second'</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'third'</span><span class="o">:</span> <span class="mi">3</span><span class="p">})</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">([</span><span class="s1">'first'</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'second'</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'third'</span><span class="o">:</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
 <p>Passing a hash as a parameter</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">/**</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="o">=</span><span class="s1">&#39;SomeName&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="o">=</span><span class="p">{</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a> <span class="o">*</span>     <span class="s1">&#39;foo1&#39;</span><span class="o">:</span> <span class="s1">&#39;bar1&#39;</span><span class="p">,</span> <span class="s1">&#39;foo2&#39;</span><span class="o">:</span> <span class="s1">&#39;bar2&#39;</span><span class="p">,</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a> <span class="o">*</span> <span class="o">@</span><span class="nx">SomeAnnotation</span><span class="p">({</span><span class="s1">'name'</span><span class="o">=</span><span class="s1">'SomeName'</span><span class="p">,</span> <span class="s1">'other'</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a> <span class="o">*</span>     <span class="s1">'foo1'</span><span class="o">:</span> <span class="s1">'bar1'</span><span class="p">,</span> <span class="s1">'foo2'</span><span class="o">:</span> <span class="s1">'bar2'</span><span class="p">,</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a> <span class="o">*</span> <span class="p">}})</span>
 </code></pre></div>
 <p>Nested arrays/hashes</p>
@@ -5819,8 +5819,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Apcu</span><span class="p">(</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="p">[</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>        <span class="s1">&#39;prefix&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;my-prefix&#39;</span><span class="p">,</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        <span class="s1">&#39;lifetime&#39;</span> <span class="o">=&gt;</span> <span class="mi">3600</span><span class="p">,</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>        <span class="s1">'prefix'</span>   <span class="o">=&gt;</span> <span class="s1">'my-prefix'</span><span class="p">,</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        <span class="s1">'lifetime'</span> <span class="o">=&gt;</span> <span class="mi">3600</span><span class="p">,</span>
 <a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="p">]</span>
 <a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="p">);</span>
 </code></pre></div>
@@ -5830,7 +5830,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">use</span> <span class="nx">APCuIterator</span><span class="p">;</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nv">$result</span>   <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">$pattern</span>  <span class="o">=</span> <span class="s2">&quot;/^_PHAN/&quot;</span><span class="p">;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">$pattern</span>  <span class="o">=</span> <span class="s2">"/^_PHAN/"</span><span class="p">;</span>
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$iterator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">APCuIterator</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">);</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="k">if</span> <span class="p">(</span><span class="k">true</span> <span class="o">===</span> <span class="nb">is_object</span><span class="p">(</span><span class="nv">$iterator</span><span class="p">))</span> <span class="p">{</span>
@@ -5838,7 +5838,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="p">}</span>
 <a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
 <a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$iterator</span> <span class="k">as</span> <span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>    <span class="k">if</span> <span class="p">(</span><span class="k">true</span> <span class="o">!==</span> <span class="nb">apcu_delete</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]))</span> <span class="p">{</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>    <span class="k">if</span> <span class="p">(</span><span class="k">true</span> <span class="o">!==</span> <span class="nb">apcu_delete</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s2">"key"</span><span class="p">]))</span> <span class="p">{</span>
 <a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>        <span class="nv">$result</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
 <a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>    <span class="p">}</span>
 <a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="p">}</span>
@@ -5864,7 +5864,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stream</span><span class="p">(</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="p">[</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>        <span class="s1">&#39;annotationsDir&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/app/storage/cache/annotations&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>        <span class="s1">'annotationsDir'</span> <span class="o">=&gt;</span> <span class="s1">'/app/storage/cache/annotations'</span><span class="p">,</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="p">]</span>
 <a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="p">);</span>
 </code></pre></div>
@@ -5894,11 +5894,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
 <a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="s1">&#39;annotations&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="s1">'annotations'</span><span class="p">,</span>
 <a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Apcu</span><span class="p">(</span>
 <a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>            <span class="p">[</span>
-<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>                <span class="s1">&#39;lifetime&#39;</span> <span class="o">=&gt;</span> <span class="mi">86400</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>                <span class="s1">'lifetime'</span> <span class="o">=&gt;</span> <span class="mi">86400</span>
 <a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>            <span class="p">]</span>
 <a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>        <span class="p">);</span>
 <a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    <span class="p">}</span>
@@ -5939,7 +5939,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a>
 <a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a>        <span class="nv">$exists</span> <span class="o">=</span> <span class="nv">$annotations</span>
 <a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a>            <span class="o">-&gt;</span><span class="na">getClassAnnotations</span><span class="p">()</span>
-<a id="__codelineno-18-35" name="__codelineno-18-35" href="#__codelineno-18-35"></a>            <span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s1">&#39;Private&#39;</span><span class="p">)</span>
+<a id="__codelineno-18-35" name="__codelineno-18-35" href="#__codelineno-18-35"></a>            <span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s1">'Private'</span><span class="p">)</span>
 <a id="__codelineno-18-36" name="__codelineno-18-36" href="#__codelineno-18-36"></a>        <span class="p">;</span>
 <a id="__codelineno-18-37" name="__codelineno-18-37" href="#__codelineno-18-37"></a>
 <a id="__codelineno-18-38" name="__codelineno-18-38" href="#__codelineno-18-38"></a>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$exists</span><span class="p">)</span> <span class="p">{</span>
@@ -5952,8 +5952,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-18-45" name="__codelineno-18-45" href="#__codelineno-18-45"></a>
 <a id="__codelineno-18-46" name="__codelineno-18-46" href="#__codelineno-18-46"></a>        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
 <a id="__codelineno-18-47" name="__codelineno-18-47" href="#__codelineno-18-47"></a>            <span class="p">[</span>
-<a id="__codelineno-18-48" name="__codelineno-18-48" href="#__codelineno-18-48"></a>                <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;session&#39;</span><span class="p">,</span>
-<a id="__codelineno-18-49" name="__codelineno-18-49" href="#__codelineno-18-49"></a>                <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-48" name="__codelineno-18-48" href="#__codelineno-18-48"></a>                <span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'session'</span><span class="p">,</span>
+<a id="__codelineno-18-49" name="__codelineno-18-49" href="#__codelineno-18-49"></a>                <span class="s1">'action'</span>     <span class="o">=&gt;</span> <span class="s1">'login'</span><span class="p">,</span>
 <a id="__codelineno-18-50" name="__codelineno-18-50" href="#__codelineno-18-50"></a>            <span class="p">]</span>
 <a id="__codelineno-18-51" name="__codelineno-18-51" href="#__codelineno-18-51"></a>        <span class="p">);</span>
 <a id="__codelineno-18-52" name="__codelineno-18-52" href="#__codelineno-18-52"></a>
@@ -5989,11 +5989,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="nx">a</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
 <a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
 <a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="s1">&#39;annotations&#39;</span><span class="p">,</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="s1">'annotations'</span><span class="p">,</span>
 <a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 <a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Apcu</span><span class="p">(</span>
 <a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>            <span class="p">[</span>
-<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>                <span class="s1">&#39;lifetime&#39;</span> <span class="o">=&gt;</span> <span class="mi">86400</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>                <span class="s1">'lifetime'</span> <span class="o">=&gt;</span> <span class="mi">86400</span>
 <a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>            <span class="p">]</span>
 <a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>        <span class="p">);</span>
 <a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>    <span class="p">}</span>
@@ -6026,17 +6026,17 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>        <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span>
 <a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a>    <span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a>        <span class="nv">$controllerName</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getControllerClass</span><span class="p">();</span>
-<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a>        <span class="nv">$actionName</span>     <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;Action&#39;</span><span class="p">;</span>
+<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a>        <span class="nv">$actionName</span>     <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">()</span> <span class="o">.</span> <span class="s1">'Action'</span><span class="p">;</span>
 <a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a>
 <a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a>        <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$this</span>
 <a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a>            <span class="o">-&gt;</span><span class="na">annotations</span>
 <a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a>            <span class="o">-&gt;</span><span class="na">getMethod</span><span class="p">(</span><span class="nv">$controllerName</span><span class="p">,</span> <span class="nv">$actionName</span><span class="p">)</span>
 <a id="__codelineno-21-32" name="__codelineno-21-32" href="#__codelineno-21-32"></a>        <span class="p">;</span>
-<a id="__codelineno-21-33" name="__codelineno-21-33" href="#__codelineno-21-33"></a>        <span class="nv">$access</span>    <span class="o">=</span> <span class="nv">$data</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;Access&#39;</span><span class="p">);</span>
+<a id="__codelineno-21-33" name="__codelineno-21-33" href="#__codelineno-21-33"></a>        <span class="nv">$access</span>    <span class="o">=</span> <span class="nv">$data</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'Access'</span><span class="p">);</span>
 <a id="__codelineno-21-34" name="__codelineno-21-34" href="#__codelineno-21-34"></a>        <span class="nv">$aclGroups</span> <span class="o">=</span> <span class="nv">$access</span><span class="o">-&gt;</span><span class="na">getArguments</span><span class="p">();</span>
 <a id="__codelineno-21-35" name="__codelineno-21-35" href="#__codelineno-21-35"></a>
 <a id="__codelineno-21-36" name="__codelineno-21-36" href="#__codelineno-21-36"></a>        <span class="nv">$user</span>   <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">acl</span><span class="o">-&gt;</span><span class="na">getUser</span><span class="p">();</span>
-<a id="__codelineno-21-37" name="__codelineno-21-37" href="#__codelineno-21-37"></a>        <span class="nv">$groups</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getRelated</span><span class="p">(</span><span class="s1">&#39;groups&#39;</span><span class="p">);</span>
+<a id="__codelineno-21-37" name="__codelineno-21-37" href="#__codelineno-21-37"></a>        <span class="nv">$groups</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getRelated</span><span class="p">(</span><span class="s1">'groups'</span><span class="p">);</span>
 <a id="__codelineno-21-38" name="__codelineno-21-38" href="#__codelineno-21-38"></a>
 <a id="__codelineno-21-39" name="__codelineno-21-39" href="#__codelineno-21-39"></a>        <span class="nv">$userGroups</span> <span class="o">=</span> <span class="p">[];</span>
 <a id="__codelineno-21-40" name="__codelineno-21-40" href="#__codelineno-21-40"></a>        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$groups</span> <span class="k">as</span> <span class="nv">$group</span><span class="p">)</span> <span class="p">{</span>
@@ -6052,8 +6052,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-21-50" name="__codelineno-21-50" href="#__codelineno-21-50"></a>
 <a id="__codelineno-21-51" name="__codelineno-21-51" href="#__codelineno-21-51"></a>        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
 <a id="__codelineno-21-52" name="__codelineno-21-52" href="#__codelineno-21-52"></a>            <span class="p">[</span>
-<a id="__codelineno-21-53" name="__codelineno-21-53" href="#__codelineno-21-53"></a>                <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;session&#39;</span><span class="p">,</span>
-<a id="__codelineno-21-54" name="__codelineno-21-54" href="#__codelineno-21-54"></a>                <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span>
+<a id="__codelineno-21-53" name="__codelineno-21-53" href="#__codelineno-21-53"></a>                <span class="s1">'controller'</span> <span class="o">=&gt;</span> <span class="s1">'session'</span><span class="p">,</span>
+<a id="__codelineno-21-54" name="__codelineno-21-54" href="#__codelineno-21-54"></a>                <span class="s1">'action'</span>     <span class="o">=&gt;</span> <span class="s1">'login'</span><span class="p">,</span>
 <a id="__codelineno-21-55" name="__codelineno-21-55" href="#__codelineno-21-55"></a>            <span class="p">]</span>
 <a id="__codelineno-21-56" name="__codelineno-21-56" href="#__codelineno-21-56"></a>        <span class="p">);</span>
 <a id="__codelineno-21-57" name="__codelineno-21-57" href="#__codelineno-21-57"></a>
@@ -6075,10 +6075,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="p">{</span>
 <a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>    <span class="sd">/**</span>
 <a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="sd">     * @Access(</span>
-<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="sd">     *     &#39;Administrators&#39;,</span>
-<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="sd">     *     &#39;Accounting&#39;,</span>
-<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="sd">     *     &#39;Users&#39;,</span>
-<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="sd">     *     &#39;Guests&#39;</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="sd">     *     'Administrators',</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="sd">     *     'Accounting',</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="sd">     *     'Users',</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="sd">     *     'Guests'</span>
 <a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="sd">     * )</span>
 <a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="sd">     */</span>
 <a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
@@ -6087,8 +6087,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a>
 <a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a>    <span class="sd">/**</span>
 <a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a><span class="sd">     * @Access(</span>
-<a id="__codelineno-22-26" name="__codelineno-22-26" href="#__codelineno-22-26"></a><span class="sd">     *     &#39;Administrators&#39;,</span>
-<a id="__codelineno-22-27" name="__codelineno-22-27" href="#__codelineno-22-27"></a><span class="sd">     *     &#39;Accounting&#39;,</span>
+<a id="__codelineno-22-26" name="__codelineno-22-26" href="#__codelineno-22-26"></a><span class="sd">     *     'Administrators',</span>
+<a id="__codelineno-22-27" name="__codelineno-22-27" href="#__codelineno-22-27"></a><span class="sd">     *     'Accounting',</span>
 <a id="__codelineno-22-28" name="__codelineno-22-28" href="#__codelineno-22-28"></a><span class="sd">     * )</span>
 <a id="__codelineno-22-29" name="__codelineno-22-29" href="#__codelineno-22-29"></a><span class="sd">     */</span>
 <a id="__codelineno-22-30" name="__codelineno-22-30" href="#__codelineno-22-30"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">listAction</span><span class="p">()</span>
@@ -6097,8 +6097,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-22-33" name="__codelineno-22-33" href="#__codelineno-22-33"></a>
 <a id="__codelineno-22-34" name="__codelineno-22-34" href="#__codelineno-22-34"></a>    <span class="sd">/**</span>
 <a id="__codelineno-22-35" name="__codelineno-22-35" href="#__codelineno-22-35"></a><span class="sd">     * @Access(</span>
-<a id="__codelineno-22-36" name="__codelineno-22-36" href="#__codelineno-22-36"></a><span class="sd">     *     &#39;Administrators&#39;,</span>
-<a id="__codelineno-22-37" name="__codelineno-22-37" href="#__codelineno-22-37"></a><span class="sd">     *     &#39;Accounting&#39;,</span>
+<a id="__codelineno-22-36" name="__codelineno-22-36" href="#__codelineno-22-36"></a><span class="sd">     *     'Administrators',</span>
+<a id="__codelineno-22-37" name="__codelineno-22-37" href="#__codelineno-22-37"></a><span class="sd">     *     'Accounting',</span>
 <a id="__codelineno-22-38" name="__codelineno-22-38" href="#__codelineno-22-38"></a><span class="sd">     * )</span>
 <a id="__codelineno-22-39" name="__codelineno-22-39" href="#__codelineno-22-39"></a><span class="sd">     */</span>
 <a id="__codelineno-22-40" name="__codelineno-22-40" href="#__codelineno-22-40"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">viewAction</span><span class="p">()</span>
@@ -6125,11 +6125,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>        <span class="k">try</span> <span class="p">{</span>
 <a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>            <span class="nv">$adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Memory</span><span class="p">();</span>
 <a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>
-<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>            <span class="nv">$reflector</span>   <span class="o">=</span> <span class="nv">$adapter</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;Invoices&#39;</span><span class="p">);</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>            <span class="nv">$reflector</span>   <span class="o">=</span> <span class="nv">$adapter</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'Invoices'</span><span class="p">);</span>
 <a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>            <span class="nv">$annotations</span> <span class="o">=</span> <span class="nv">$reflector</span><span class="o">-&gt;</span><span class="na">getClassAnnotations</span><span class="p">();</span>
 <a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>
 <a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$annotations</span> <span class="k">as</span> <span class="nv">$annotation</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>                <span class="k">echo</span> <span class="nv">$annotation</span><span class="o">-&gt;</span><span class="na">getExpression</span><span class="p">(</span><span class="s1">&#39;unknown-expression&#39;</span><span class="p">);</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>                <span class="k">echo</span> <span class="nv">$annotation</span><span class="o">-&gt;</span><span class="na">getExpression</span><span class="p">(</span><span class="s1">'unknown-expression'</span><span class="p">);</span>
 <a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>            <span class="p">}</span>
 <a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>            <span class="k">echo</span> <span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
@@ -6355,7 +6355,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

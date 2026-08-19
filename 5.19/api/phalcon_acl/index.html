@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -6659,8 +6659,8 @@ component/access</p>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1">// Register roles</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nv">$roles</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="s2">&quot;users&quot;</span>  <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">&quot;Users&quot;</span><span class="p">),</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="s2">&quot;guests&quot;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">),</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="s2">"users"</span>  <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">"Users"</span><span class="p">),</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="s2">"guests"</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">\Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">"Guests"</span><span class="p">),</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">];</span>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$roles</span> <span class="k">as</span> <span class="nv">$role</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="nv">$role</span><span class="p">);</span>
@@ -6668,9 +6668,9 @@ component/access</p>
 <a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1">// Private area components</span>
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="nv">$privateComponents</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="s2">&quot;companies&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span> <span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="s2">&quot;products&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span> <span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="s2">&quot;invoices&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;profile&quot;</span><span class="p">],</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="s2">"companies"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"index"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">,</span> <span class="s2">"new"</span><span class="p">,</span> <span class="s2">"edit"</span><span class="p">,</span> <span class="s2">"save"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">,</span> <span class="s2">"delete"</span><span class="p">],</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="s2">"products"</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"index"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">,</span> <span class="s2">"new"</span><span class="p">,</span> <span class="s2">"edit"</span><span class="p">,</span> <span class="s2">"save"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">,</span> <span class="s2">"delete"</span><span class="p">],</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="s2">"invoices"</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"index"</span><span class="p">,</span> <span class="s2">"profile"</span><span class="p">],</span>
 <a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="p">];</span>
 <a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
 <a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$privateComponents</span> <span class="k">as</span> <span class="nv">$componentName</span> <span class="o">=&gt;</span> <span class="nv">$actions</span><span class="p">)</span> <span class="p">{</span>
@@ -6682,10 +6682,10 @@ component/access</p>
 <a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>
 <a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="c1">// Public area components</span>
 <a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="nv">$publicComponents</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>    <span class="s2">&quot;index&quot;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">],</span>
-<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>    <span class="s2">&quot;about&quot;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">],</span>
-<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>    <span class="s2">&quot;session&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;register&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">],</span>
-<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>    <span class="s2">&quot;contact&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;send&quot;</span><span class="p">],</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>    <span class="s2">"index"</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"index"</span><span class="p">],</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>    <span class="s2">"about"</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"index"</span><span class="p">],</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>    <span class="s2">"session"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"index"</span><span class="p">,</span> <span class="s2">"register"</span><span class="p">,</span> <span class="s2">"start"</span><span class="p">,</span> <span class="s2">"end"</span><span class="p">],</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>    <span class="s2">"contact"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"index"</span><span class="p">,</span> <span class="s2">"send"</span><span class="p">],</span>
 <a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="p">];</span>
 <a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>
 <a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$publicComponents</span> <span class="k">as</span> <span class="nv">$componentName</span> <span class="o">=&gt;</span> <span class="nv">$actions</span><span class="p">)</span> <span class="p">{</span>
@@ -6698,14 +6698,14 @@ component/access</p>
 <a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="c1">// Grant access to public areas to both users and guests</span>
 <a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$roles</span> <span class="k">as</span> <span class="nv">$role</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a>    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$publicComponents</span> <span class="k">as</span> <span class="nv">$component</span> <span class="o">=&gt;</span> <span class="nv">$actions</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a>        <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="nv">$role</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="nv">$component</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">);</span>
+<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a>        <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="nv">$role</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="nv">$component</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">);</span>
 <a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a>    <span class="p">}</span>
 <a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a><span class="p">}</span>
 <a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a>
 <a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="c1">// Grant access to private area to role Users</span>
 <a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$privateComponents</span> <span class="k">as</span> <span class="nv">$component</span> <span class="o">=&gt;</span> <span class="nv">$actions</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a>    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$actions</span> <span class="k">as</span> <span class="nv">$action</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a>        <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;Users&quot;</span><span class="p">,</span> <span class="nv">$component</span><span class="p">,</span> <span class="nv">$action</span><span class="p">);</span>
+<a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a>        <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"Users"</span><span class="p">,</span> <span class="nv">$component</span><span class="p">,</span> <span class="nv">$action</span><span class="p">);</span>
 <a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a>    <span class="p">}</span>
 <a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a><span class="p">}</span>
 </code></pre></div>
@@ -6930,26 +6930,26 @@ search, update, delete, etc. or a list of them</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// Add a component to the list allowing access to an action</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Component</span><span class="p">(</span><span class="s2">&quot;customers&quot;</span><span class="p">),</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="s2">&quot;search&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Component</span><span class="p">(</span><span class="s2">"customers"</span><span class="p">),</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="s2">"search"</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">);</span>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span><span class="s2">&quot;customers&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span><span class="s2">"customers"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">);</span>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
 <a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1">// Add a component  with an access list</span>
 <a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Component</span><span class="p">(</span><span class="s2">&quot;customers&quot;</span><span class="p">),</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Component</span><span class="p">(</span><span class="s2">"customers"</span><span class="p">),</span>
 <a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="p">[</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>        <span class="s2">&quot;create&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>        <span class="s2">&quot;search&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>        <span class="s2">"create"</span><span class="p">,</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>        <span class="s2">"search"</span><span class="p">,</span>
 <a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>    <span class="p">]</span>
 <a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="p">);</span>
 <a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
 <a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span>
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>    <span class="s2">&quot;customers&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>    <span class="s2">"customers"</span><span class="p">,</span>
 <a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>    <span class="p">[</span>
-<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>        <span class="s2">&quot;create&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>        <span class="s2">&quot;search&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>        <span class="s2">"create"</span><span class="p">,</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>        <span class="s2">"search"</span><span class="p">,</span>
 <a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>    <span class="p">]</span>
 <a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="p">);</span>
 </code></pre></div></p>
@@ -6967,8 +6967,8 @@ search, update, delete, etc. or a list of them</p>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Do a role inherit from another existing role</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">&quot;administrator&quot;</span><span class="p">,</span> <span class="s2">&quot;consultant&quot;</span><span class="p">);</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">&quot;administrator&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;consultant&quot;</span><span class="p">,</span> <span class="s2">&quot;consultant2&quot;</span><span class="p">]);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="s2">"consultant"</span><span class="p">);</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"consultant"</span><span class="p">,</span> <span class="s2">"consultant2"</span><span class="p">]);</span>
 </code></pre></div>
 <h4 id="acladaptermemory-addrole"><code>addRole()</code><a class="headerlink" href="#acladaptermemory-addrole" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addRole</span><span class="p">(</span>
@@ -6981,12 +6981,12 @@ search, update, delete, etc. or a list of them</p>
 <code>accessInherits</code> argument is ignored; the existing role is left
 unchanged.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">&quot;administrator&quot;</span><span class="p">),</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="s2">&quot;consultant&quot;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">),</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="s2">"consultant"</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">);</span>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">&quot;administrator&quot;</span><span class="p">,</span> <span class="s2">&quot;consultant&quot;</span><span class="p">);</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">&quot;administrator&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;consultant&quot;</span><span class="p">,</span> <span class="s2">&quot;consultant2&quot;</span><span class="p">]);</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="s2">"consultant"</span><span class="p">);</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"consultant"</span><span class="p">,</span> <span class="s2">"consultant2"</span><span class="p">]);</span>
 </code></pre></div>
 <h4 id="acladaptermemory-allow"><code>allow()</code><a class="headerlink" href="#acladaptermemory-allow" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">allow</span><span class="p">(</span>
@@ -7000,16 +7000,16 @@ unchanged.</p>
 <p>A <code>*</code> role is an eager snapshot: it expands to the roles that exist when
 <code>allow()</code> is called, so roles added afterwards do not inherit the grant.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// Allow access to guests to search on customers</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;guests&quot;</span><span class="p">,</span> <span class="s2">&quot;customers&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">);</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">);</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1">// Allow access to guests to search or create on customers</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;guests&quot;</span><span class="p">,</span> <span class="s2">&quot;customers&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">]);</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"search"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">]);</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1">// Allow access to any role to browse on products</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;products&quot;</span><span class="p">,</span> <span class="s2">&quot;browse&quot;</span><span class="p">);</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"products"</span><span class="p">,</span> <span class="s2">"browse"</span><span class="p">);</span>
 <a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
 <a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1">// Allow access to any role to perform any action on any component</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">);</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="acladaptermemory-deny"><code>deny()</code><a class="headerlink" href="#acladaptermemory-deny" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">deny</span><span class="p">(</span>
@@ -7023,16 +7023,16 @@ unchanged.</p>
 <p>A <code>*</code> role is an eager snapshot: it expands to the roles that exist when
 <code>deny()</code> is called, so roles added afterwards do not inherit the rule.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">// Deny access to guests to search on customers</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">&quot;guests&quot;</span><span class="p">,</span> <span class="s2">&quot;customers&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">);</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">);</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1">// Deny access to guests to search or create on customers</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">&quot;guests&quot;</span><span class="p">,</span> <span class="s2">&quot;customers&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">]);</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"search"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">]);</span>
 <a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1">// Deny access to any role to browse on products</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;products&quot;</span><span class="p">,</span> <span class="s2">&quot;browse&quot;</span><span class="p">);</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"products"</span><span class="p">,</span> <span class="s2">"browse"</span><span class="p">);</span>
 <a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
 <a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="c1">// Deny access to any role to perform any action on any component</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">);</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="acladaptermemory-dropcomponentaccess"><code>dropComponentAccess()</code><a class="headerlink" href="#acladaptermemory-dropcomponentaccess" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">dropComponentAccess</span><span class="p">(</span>
@@ -7058,7 +7058,7 @@ unchanged.</p>
 </code></pre></div>
 <p>Return an array with every component registered in the list</p>
 <h4 id="acladaptermemory-getinheritedroles"><code>getInheritedRoles()</code><a class="headerlink" href="#acladaptermemory-getinheritedroles" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getInheritedRoles</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getInheritedRoles</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the inherited roles for a passed role name. If no role name
 has been specified it will return the whole array. If the role has not
@@ -7082,10 +7082,10 @@ been found it returns an empty array</p>
 </code></pre></div>
 <p>Check whether a role is allowed to access an action from a component</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1">// Does andres have access to the customers component to create?</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">&quot;andres&quot;</span><span class="p">,</span> <span class="s2">&quot;Products&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">);</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">"andres"</span><span class="p">,</span> <span class="s2">"Products"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">);</span>
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
 <a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1">// Do guests have access to any component to edit?</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">&quot;guests&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">);</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"edit"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="acladaptermemory-iscomponent"><code>isComponent()</code><a class="headerlink" href="#acladaptermemory-iscomponent" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isComponent</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$componentName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
@@ -7179,7 +7179,7 @@ Use external locking when multiple processes write the same key.</p>
 <h4 id="acladapterstorage-__construct"><code>__construct()</code><a class="headerlink" href="#acladapterstorage-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="nx">StorageInterface</span> <span class="nv">$storage</span><span class="p">,</span>
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="nx">string</span> <span class="nv">$key</span> <span class="o">=</span> <span class="s2">&quot;acl-data&quot;</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="nx">string</span> <span class="nv">$key</span> <span class="o">=</span> <span class="s2">"acl-data"</span>
 <a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="acladapterstorage-load"><code>load()</code><a class="headerlink" href="#acladapterstorage-load" title="Permanent link">&para;</a></h4>
@@ -7864,7 +7864,7 @@ description maps for serializer independence.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

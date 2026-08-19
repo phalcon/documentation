@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5418,8 +5418,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">use</span> <span class="nx">Phalcon\Support\Settings</span><span class="p">;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nx">Settings</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;orm.events&#39;</span><span class="p">);</span>                  <span class="c1">// mixed</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nx">Settings</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;orm.events&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>           <span class="c1">// void</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nx">Settings</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">'orm.events'</span><span class="p">);</span>                  <span class="c1">// mixed</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nx">Settings</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">'orm.events'</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>           <span class="c1">// void</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nx">Settings</span><span class="o">::</span><span class="na">reset</span><span class="p">();</span>                            <span class="c1">// void</span>
 </code></pre></div>
 <h2 id="resolution-order">Resolution order<a class="headerlink" href="#resolution-order" title="Permanent link">&para;</a></h2>
@@ -5564,7 +5564,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">use</span> <span class="nx">Phalcon\Support\Settings</span><span class="p">;</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">if</span> <span class="p">(</span><span class="nx">Settings</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;orm.dynamic_update&#39;</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">if</span> <span class="p">(</span><span class="nx">Settings</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">'orm.dynamic_update'</span><span class="p">))</span> <span class="p">{</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="c1">// The ORM is configured to issue partial UPDATE statements</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
 </code></pre></div>
@@ -5573,11 +5573,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">use</span> <span class="nx">Phalcon\Support\Settings</span><span class="p">;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nx">Settings</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;orm.events&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nx">Settings</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">'orm.events'</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">// ... do bulk work that should not fire model events ...</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nx">Settings</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;orm.events&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nx">Settings</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">'orm.events'</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 </code></pre></div>
 <p>Restore every override to its <code>php.ini</code> fallback at once:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -5795,7 +5795,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

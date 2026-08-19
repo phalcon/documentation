@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5896,16 +5896,16 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">$uri</span> <span class="o">=</span> <span class="nb">urldecode</span><span class="p">(</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_URI&#39;</span><span class="p">],</span> <span class="nx">PHP_URL_PATH</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_URI'</span><span class="p">],</span> <span class="nx">PHP_URL_PATH</span><span class="p">)</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">);</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$uri</span> <span class="o">!==</span> <span class="s1">&#39;/&#39;</span> <span class="o">&amp;&amp;</span> <span class="nb">file_exists</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/public&#39;</span> <span class="o">.</span> <span class="nv">$uri</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$uri</span> <span class="o">!==</span> <span class="s1">'/'</span> <span class="o">&amp;&amp;</span> <span class="nb">file_exists</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/public'</span> <span class="o">.</span> <span class="nv">$uri</span><span class="p">))</span> <span class="p">{</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">}</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_URI&#39;</span><span class="p">];</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'_url'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_URI'</span><span class="p">];</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/public/index.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/public/index.php'</span><span class="p">;</span>
 </code></pre></div>
 <p>If your entry point is not <code>public/index.php</code>, then adjust the <code>.htrouter.php</code> file accordingly (last line) as well as the script call. You can also change the port if you like as well as the network interface that it binds to.</p>
 <p>After executing the command above, navigating to <code>http://localhost:8000/</code> will show your site.</p>
@@ -5961,7 +5961,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>    # Represents the root of the domain
 <a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>    # https://localhost:8000/[index.php]
 <a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>    location / {
-<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>        # Matches URLS `$_GET[&#39;_url&#39;]`
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>        # Matches URLS `$_GET['_url']`
 <a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>        try_files $uri $uri/ /index.php?_url=$uri&amp;$args;
 <a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>    }
 <a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>
@@ -6065,13 +6065,13 @@ offering lower resource consumption and high performance.
 <p>If you do not want to use <code>.htaccess</code> files, you can move the relevant directives to apache's main configuration file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>&lt;IfModule mod_rewrite.c&gt;
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    &lt;Directory &quot;/var/www/test&quot;&gt;
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    &lt;Directory "/var/www/test"&gt;
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>        RewriteEngine on
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        RewriteRule  ^$ public/    [L]
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        RewriteRule  ((?s).*) public/$1 [L]
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    &lt;/Directory&gt;
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    &lt;Directory &quot;/var/www/tutorial/public&quot;&gt;
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    &lt;Directory "/var/www/tutorial/public"&gt;
 <a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        RewriteEngine On
 <a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>        RewriteCond   %{REQUEST_FILENAME} !-d
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>        RewriteCond   %{REQUEST_FILENAME} !-f
@@ -6085,12 +6085,12 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>&lt;VirtualHost *:80&gt;
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    ServerAdmin    admin@example.host
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    DocumentRoot   &quot;/var/vhosts/tutorial/public&quot;
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    DocumentRoot   "/var/vhosts/tutorial/public"
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    DirectoryIndex index.php
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    ServerName     example.host
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    ServerAlias    www.example.host
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    &lt;Directory &quot;/var/vhosts/tutorial/public&quot;&gt;
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    &lt;Directory "/var/vhosts/tutorial/public"&gt;
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>        Options       All
 <a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>        AllowOverride All
 <a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>        Require       all granted
@@ -6104,58 +6104,58 @@ offering lower resource consumption and high performance.
 <p><a href="https://redmine.lighttpd.net/projects/lighttpd/wiki/GetLighttpd">lighttpd Official Site</a></p>
 <p>You can use the following potential configuration to set up <code>lighttpd</code> with Phalcon:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">server.modules</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">(</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">        </span><span class="s">&quot;mod_indexfile&quot;,</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="s">&quot;mod_access&quot;,</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">        </span><span class="s">&quot;mod_alias&quot;,</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="s">&quot;mod_redirect&quot;,</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span><span class="s">&quot;mod_rewrite&quot;,</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">        </span><span class="s">"mod_indexfile",</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="s">"mod_access",</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">        </span><span class="s">"mod_alias",</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="s">"mod_redirect",</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span><span class="s">"mod_rewrite",</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="s">)</span>
 <a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="s">server.document-root</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/var/www/html/public&quot;</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="s">server.upload-dirs</span><span class="w">          </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">&quot;/var/cache/lighttpd/uploads&quot;</span><span class="w"> </span><span class="s">)</span>
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="s">server.errorlog</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/var/log/lighttpd/error.log&quot;</span>
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="s">server.pid-file</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/var/run/lighttpd.pid&quot;</span>
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="s">server.username</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;www-data&quot;</span>
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="s">server.groupname</span><span class="w">            </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;www-data&quot;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="s">server.document-root</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">"/var/www/html/public"</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="s">server.upload-dirs</span><span class="w">          </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">"/var/cache/lighttpd/uploads"</span><span class="w"> </span><span class="s">)</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="s">server.errorlog</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">"/var/log/lighttpd/error.log"</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="s">server.pid-file</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">"/var/run/lighttpd.pid"</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="s">server.username</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">"www-data"</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="s">server.groupname</span><span class="w">            </span><span class="p">=</span><span class="w"> </span><span class="s">"www-data"</span>
 <a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="s">server.port</span><span class="w">                 </span><span class="p">=</span><span class="w"> </span><span class="mi">80</span>
 <a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>
 <a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="c1"># strict parsing and normalization of URL for consistency and security</span>
 <a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="c1"># https://redmine.lighttpd.net/projects/lighttpd/wiki/Server_http-parseoptsDetails</span>
-<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="c1"># (might need to explicitly set &quot;url-path-2f-decode&quot; = &quot;disable&quot;</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="c1"># (might need to explicitly set "url-path-2f-decode" = "disable"</span>
 <a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="c1">#  if a specific application is encoding URLs inside url-path)</span>
 <a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="s">server.http-parseopts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">(</span>
-<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">  </span><span class="s">&quot;header-strict&quot;</span><span class="w">           </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">&quot;enable&quot;,</span><span class="c1"># default</span>
-<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">  </span><span class="s">&quot;host-strict&quot;</span><span class="w">             </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">&quot;enable&quot;,</span><span class="c1"># default</span>
-<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">  </span><span class="s">&quot;host-normalize&quot;</span><span class="w">          </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">&quot;enable&quot;,</span><span class="c1"># default</span>
-<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">  </span><span class="s">&quot;url-normalize-unreserved&quot;=&gt;</span><span class="w"> </span><span class="s">&quot;enable&quot;,</span><span class="c1"># recommended highly</span>
-<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">  </span><span class="s">&quot;url-normalize-required&quot;</span><span class="w">  </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">&quot;enable&quot;,</span><span class="c1"># recommended</span>
-<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">  </span><span class="s">&quot;url-ctrls-reject&quot;</span><span class="w">        </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">&quot;enable&quot;,</span><span class="c1"># recommended</span>
-<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="w">  </span><span class="s">&quot;url-path-2f-decode&quot;</span><span class="w">      </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">&quot;enable&quot;,</span><span class="c1"># recommended highly (unless breaks app)</span>
-<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="w">  </span><span class="s">&quot;url-path-dotseg-remove&quot;</span><span class="w">  </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">&quot;enable&quot;,</span><span class="c1"># recommended highly (unless breaks app)</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">  </span><span class="s">"header-strict"</span><span class="w">           </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">"enable",</span><span class="c1"># default</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">  </span><span class="s">"host-strict"</span><span class="w">             </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">"enable",</span><span class="c1"># default</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">  </span><span class="s">"host-normalize"</span><span class="w">          </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">"enable",</span><span class="c1"># default</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">  </span><span class="s">"url-normalize-unreserved"=&gt;</span><span class="w"> </span><span class="s">"enable",</span><span class="c1"># recommended highly</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">  </span><span class="s">"url-normalize-required"</span><span class="w">  </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">"enable",</span><span class="c1"># recommended</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">  </span><span class="s">"url-ctrls-reject"</span><span class="w">        </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">"enable",</span><span class="c1"># recommended</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="w">  </span><span class="s">"url-path-2f-decode"</span><span class="w">      </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">"enable",</span><span class="c1"># recommended highly (unless breaks app)</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="w">  </span><span class="s">"url-path-dotseg-remove"</span><span class="w">  </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">"enable",</span><span class="c1"># recommended highly (unless breaks app)</span>
 <a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="s">)</span>
 <a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>
-<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="s">index-file.names</span><span class="w">            </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">&quot;index.php&quot;,</span><span class="w"> </span><span class="s">&quot;index.html&quot;</span><span class="w"> </span><span class="s">)</span>
-<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="s">url.access-deny</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">&quot;~&quot;,</span><span class="w"> </span><span class="s">&quot;.inc&quot;</span><span class="w"> </span><span class="s">)</span>
-<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="s">static-file.exclude-extensions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">&quot;.php&quot;,</span><span class="w"> </span><span class="s">&quot;.pl&quot;,</span><span class="w"> </span><span class="s">&quot;.fcgi&quot;</span><span class="w"> </span><span class="s">)</span>
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="s">index-file.names</span><span class="w">            </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">"index.php",</span><span class="w"> </span><span class="s">"index.html"</span><span class="w"> </span><span class="s">)</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="s">url.access-deny</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">"~",</span><span class="w"> </span><span class="s">".inc"</span><span class="w"> </span><span class="s">)</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="s">static-file.exclude-extensions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">".php",</span><span class="w"> </span><span class="s">".pl",</span><span class="w"> </span><span class="s">".fcgi"</span><span class="w"> </span><span class="s">)</span>
 <a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>
-<a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="s">compress.cache-dir</span><span class="w">          </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/var/cache/lighttpd/compress/&quot;</span>
-<a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="s">compress.filetype</span><span class="w">           </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">&quot;application/javascript&quot;,</span><span class="w"> </span><span class="s">&quot;text/css&quot;,</span><span class="w"> </span><span class="s">&quot;text/html&quot;,</span><span class="w"> </span><span class="s">&quot;text/plain&quot;</span><span class="w"> </span><span class="s">)</span>
+<a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="s">compress.cache-dir</span><span class="w">          </span><span class="p">=</span><span class="w"> </span><span class="s">"/var/cache/lighttpd/compress/"</span>
+<a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="s">compress.filetype</span><span class="w">           </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">"application/javascript",</span><span class="w"> </span><span class="s">"text/css",</span><span class="w"> </span><span class="s">"text/html",</span><span class="w"> </span><span class="s">"text/plain"</span><span class="w"> </span><span class="s">)</span>
 <a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>
 <a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="c1"># default listening port for IPv6 falls back to the IPv4 port</span>
-<a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="s">include_shell</span><span class="w"> </span><span class="s">&quot;/usr/share/lighttpd/use-ipv6.pl</span><span class="w"> </span><span class="s">&quot;</span><span class="w"> </span><span class="s">+</span><span class="w"> </span><span class="s">server.port</span>
-<a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="s">include_shell</span><span class="w"> </span><span class="s">&quot;/usr/share/lighttpd/create-mime.conf.pl&quot;</span>
-<a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="s">include</span><span class="w"> </span><span class="s">&quot;/etc/lighttpd/conf-enabled/*.conf&quot;</span>
+<a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="s">include_shell</span><span class="w"> </span><span class="s">"/usr/share/lighttpd/use-ipv6.pl</span><span class="w"> </span><span class="s">"</span><span class="w"> </span><span class="s">+</span><span class="w"> </span><span class="s">server.port</span>
+<a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="s">include_shell</span><span class="w"> </span><span class="s">"/usr/share/lighttpd/create-mime.conf.pl"</span>
+<a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="s">include</span><span class="w"> </span><span class="s">"/etc/lighttpd/conf-enabled/*.conf"</span>
 <a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a>
-<a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="c1">#server.compat-module-load   = &quot;disable&quot;</span>
+<a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="c1">#server.compat-module-load   = "disable"</span>
 <a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="s">server.modules</span><span class="w"> </span><span class="s">+=</span><span class="w"> </span><span class="s">(</span>
-<a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="w">        </span><span class="s">&quot;mod_compress&quot;,</span>
-<a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="w">        </span><span class="s">&quot;mod_dirlisting&quot;,</span>
-<a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="w">        </span><span class="s">&quot;mod_staticfile&quot;,</span>
+<a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="w">        </span><span class="s">"mod_compress",</span>
+<a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="w">        </span><span class="s">"mod_dirlisting",</span>
+<a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="w">        </span><span class="s">"mod_staticfile",</span>
 <a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a><span class="s">)</span>
 <a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a>
-<a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="s">url.rewrite-once</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">&quot;^(/(?!(favicon.ico</span><span class="nv">$|css/|js/|img/</span><span class="s">)).*)&quot;</span><span class="w"> </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">&quot;/index.php?_url=</span><span class="nv">$1&quot;</span><span class="w"> </span><span class="s">)</span>
+<a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="s">url.rewrite-once</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">(</span><span class="w"> </span><span class="s">"^(/(?!(favicon.ico</span><span class="nv">$|css/|js/|img/</span><span class="s">)).*)"</span><span class="w"> </span><span class="p">=</span><span class="s">&gt;</span><span class="w"> </span><span class="s">"/index.php?_url=</span><span class="nv">$1"</span><span class="w"> </span><span class="s">)</span>
 <a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="c1"># or</span>
-<a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="c1">#url.rewrite-if-not-file = ( &quot;/&quot; =&gt; &quot;/index.php?_rl=$1&quot; )</span>
+<a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="c1">#url.rewrite-if-not-file = ( "/" =&gt; "/index.php?_rl=$1" )</span>
 </code></pre></div>
 <h2 id="wamp">WAMP<a class="headerlink" href="#wamp" title="Permanent link">&para;</a></h2>
 <p><a href="https://www.wampserver.com/en/">WampServer</a> is a Windows web development environment. It allows you to create web applications with Apache2, PHP, and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.</p>
@@ -6434,7 +6434,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

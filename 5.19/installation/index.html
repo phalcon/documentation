@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -6235,14 +6235,14 @@ offering lower resource consumption and high performance.
 <p class="admonition-title">WARNING</p>
 <p>For newer versions of Linux (for instance Debian 13) Phalcon might not compile. To resolve this issue you will need to issue the following command:</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>export CFLAGS=&quot;-Wno-incompatible-pointer-types&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>export CFLAGS="-Wno-incompatible-pointer-types"
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo -E pie install phalcon/cphalcon
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
 <p>If you are trying to install Phalcon in Docker and you face the same issue as above, you can try:</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ARG CFLAGS=&quot;-Wno-incompatible-pointer-types&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ARG CFLAGS="-Wno-incompatible-pointer-types"
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>pie install phalcon/cphalcon
 </code></pre></div>
 <h3 id="pie">PIE<a class="headerlink" href="#pie" title="Permanent link">&para;</a></h3>
@@ -6428,7 +6428,7 @@ offering lower resource consumption and high performance.
 <p>If you use the above method you will need to add the <code>extension=phalcon.so</code> in your <code>php.ini</code> both for CLI and the web server.</p>
 <h4 id="tuning-build">Tuning Build<a class="headerlink" href="#tuning-build" title="Permanent link">&para;</a></h4>
 <p>By default, we compile to be as compatible as possible with all processors ( <code>gcc -mtune=native -O2 -fomit-frame-pointer</code>). If you would like to instruct the compiler to generate optimized machine code that matches the processor where it is currently running you can set your own compile flags by exporting CFLAGS before the build. For example</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>export CFLAGS=&quot;-march=native -O2 -fomit-frame-pointer&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>export CFLAGS="-march=native -O2 -fomit-frame-pointer"
 <a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>zephir build
 </code></pre></div>
 <p>This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.</p>
@@ -6623,7 +6623,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

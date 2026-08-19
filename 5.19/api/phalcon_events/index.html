@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -6427,7 +6427,7 @@ offering lower resource consumption and high performance.
 EventsManager</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">$event</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Event</span><span class="p">(</span><span class="s2">&quot;db:afterQuery&quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;data&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mydata&quot;</span><span class="p">],</span> <span class="k">true</span><span class="p">);</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">$event</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Event</span><span class="p">(</span><span class="s2">"db:afterQuery"</span><span class="p">,</span> <span class="nv">$this</span><span class="p">,</span> <span class="p">[</span><span class="s2">"data"</span> <span class="o">=&gt;</span> <span class="s2">"mydata"</span><span class="p">],</span> <span class="k">true</span><span class="p">);</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">isCancelable</span><span class="p">())</span> <span class="p">{</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">stop</span><span class="p">();</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
@@ -7216,7 +7216,7 @@ lower priority.</p>
 </code></pre></div>
 <p>Fires an event in the events manager causing the active listeners to be
 notified about it</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">fire</span><span class="p">(</span><span class="s2">&quot;db&quot;</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">fire</span><span class="p">(</span><span class="s2">"db"</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="eventsmanager-fireall"><code>fireAll()</code><a class="headerlink" href="#eventsmanager-fireall" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fireAll</span><span class="p">(</span>
@@ -7230,7 +7230,7 @@ notified about it</p>
 indexed array. Independent of collectResponses(); the caller's
 collected state on <code>$this-&gt;responses</code> is preserved (stashed and
 restored across the call).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nv">$results</span> <span class="o">=</span> <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">fireAll</span><span class="p">(</span><span class="s2">&quot;db:beforeQuery&quot;</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nv">$results</span> <span class="o">=</span> <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">fireAll</span><span class="p">(</span><span class="s2">"db:beforeQuery"</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="eventsmanager-firequeue"><code>fireQueue()</code><a class="headerlink" href="#eventsmanager-firequeue" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">final</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">fireQueue</span><span class="p">(</span>
@@ -7601,7 +7601,7 @@ with no locally attached listeners.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

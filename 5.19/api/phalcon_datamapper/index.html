@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -9059,13 +9059,13 @@ so connections that are built on demand also fire the DataMapper events.</p>
 </code></pre></div>
 <p>Returns the default connection object.</p>
 <h4 id="datamapperpdoconnectionlocator-getread"><code>getRead()</code><a class="headerlink" href="#datamapperpdoconnectionlocator-getread" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRead</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConnectionInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRead</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConnectionInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a read connection by name; if no name is given, picks a
 random connection; if no read connections are present, returns the
 default connection.</p>
 <h4 id="datamapperpdoconnectionlocator-getwrite"><code>getWrite()</code><a class="headerlink" href="#datamapperpdoconnectionlocator-getwrite" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getWrite</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConnectionInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getWrite</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConnectionInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a write connection by name; if no name is given, picks a
 random connection; if no write connections are present, returns the
@@ -9093,7 +9093,7 @@ default connection.</p>
 <h4 id="datamapperpdoconnectionlocator-getconnection"><code>getConnection()</code><a class="headerlink" href="#datamapperpdoconnectionlocator-getconnection" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getConnection</span><span class="p">(</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ConnectionInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a connection by name.</p>
@@ -9155,13 +9155,13 @@ default connection.</p>
 </code></pre></div>
 <p>Returns the default connection object.</p>
 <h4 id="datamapperpdoconnectionlocatorinterface-getread"><code>getRead()</code><a class="headerlink" href="#datamapperpdoconnectionlocatorinterface-getread" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRead</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConnectionInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRead</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConnectionInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a read connection by name; if no name is given, picks a
 random connection; if no read connections are present, returns the
 default connection.</p>
 <h4 id="datamapperpdoconnectionlocatorinterface-getwrite"><code>getWrite()</code><a class="headerlink" href="#datamapperpdoconnectionlocatorinterface-getwrite" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getWrite</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConnectionInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getWrite</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="nx">ConnectionInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a write connection by name; if no name is given, picks a
 random connection; if no write connections are present, returns the
@@ -9583,7 +9583,7 @@ PDO::FETCH_ASSOC | PDO::FETCH_GROUP</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fetchObject</span><span class="p">(</span>
 <a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="nx">string</span> <span class="nv">$statement</span><span class="p">,</span>
 <a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    <span class="k">array</span> <span class="nv">$values</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="nx">string</span> <span class="nv">$className</span> <span class="o">=</span> <span class="s2">&quot;stdClass&quot;</span><span class="p">,</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="nx">string</span> <span class="nv">$className</span> <span class="o">=</span> <span class="s2">"stdClass"</span><span class="p">,</span>
 <a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="k">array</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 </code></pre></div>
@@ -9597,7 +9597,7 @@ constructor, will override the values that have been injected by
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fetchObjects</span><span class="p">(</span>
 <a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="nx">string</span> <span class="nv">$statement</span><span class="p">,</span>
 <a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="k">array</span> <span class="nv">$values</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    <span class="nx">string</span> <span class="nv">$className</span> <span class="o">=</span> <span class="s2">&quot;stdClass&quot;</span><span class="p">,</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    <span class="nx">string</span> <span class="nv">$className</span> <span class="o">=</span> <span class="s2">"stdClass"</span><span class="p">,</span>
 <a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="k">array</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
@@ -9655,7 +9655,7 @@ the key, second column is the value).</p>
 </code></pre></div>
 <p>Returns the Profiler instance.</p>
 <h4 id="datamapperpdoconnectionabstractconnection-getquotenames"><code>getQuoteNames()</code><a class="headerlink" href="#datamapperpdoconnectionabstractconnection-getquotenames" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getQuoteNames</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$driver</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getQuoteNames</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$driver</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets the quote parameters based on the driver</p>
 <h4 id="datamapperpdoconnectionabstractconnection-intransaction"><code>inTransaction()</code><a class="headerlink" href="#datamapperpdoconnectionabstractconnection-intransaction" title="Permanent link">&para;</a></h4>
@@ -9943,7 +9943,7 @@ PDO::FETCH_ASSOC | PDO::FETCH_GROUP</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fetchObject</span><span class="p">(</span>
 <a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a>    <span class="nx">string</span> <span class="nv">$statement</span><span class="p">,</span>
 <a id="__codelineno-67-3" name="__codelineno-67-3" href="#__codelineno-67-3"></a>    <span class="k">array</span> <span class="nv">$values</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-67-4" name="__codelineno-67-4" href="#__codelineno-67-4"></a>    <span class="nx">string</span> <span class="nv">$className</span> <span class="o">=</span> <span class="s2">&quot;stdClass&quot;</span><span class="p">,</span>
+<a id="__codelineno-67-4" name="__codelineno-67-4" href="#__codelineno-67-4"></a>    <span class="nx">string</span> <span class="nv">$className</span> <span class="o">=</span> <span class="s2">"stdClass"</span><span class="p">,</span>
 <a id="__codelineno-67-5" name="__codelineno-67-5" href="#__codelineno-67-5"></a>    <span class="k">array</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-67-6" name="__codelineno-67-6" href="#__codelineno-67-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 </code></pre></div>
@@ -9957,7 +9957,7 @@ constructor, will override the values that have been injected by
 <div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fetchObjects</span><span class="p">(</span>
 <a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a>    <span class="nx">string</span> <span class="nv">$statement</span><span class="p">,</span>
 <a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a>    <span class="k">array</span> <span class="nv">$values</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a>    <span class="nx">string</span> <span class="nv">$className</span> <span class="o">=</span> <span class="s2">&quot;stdClass&quot;</span><span class="p">,</span>
+<a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a>    <span class="nx">string</span> <span class="nv">$className</span> <span class="o">=</span> <span class="s2">"stdClass"</span><span class="p">,</span>
 <a id="__codelineno-68-5" name="__codelineno-68-5" href="#__codelineno-68-5"></a>    <span class="k">array</span> <span class="nv">$arguments</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-68-6" name="__codelineno-68-6" href="#__codelineno-68-6"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
@@ -11449,7 +11449,7 @@ this class to tell the two apart.</p>
 <h4 id="datamapperqueryabstractquery-indent"><code>indent()</code><a class="headerlink" href="#datamapperqueryabstractquery-indent" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">indent</span><span class="p">(</span>
 <a id="__codelineno-169-2" name="__codelineno-169-2" href="#__codelineno-169-2"></a>    <span class="k">array</span> <span class="nv">$collection</span><span class="p">,</span>
-<a id="__codelineno-169-3" name="__codelineno-169-3" href="#__codelineno-169-3"></a>    <span class="nx">string</span> <span class="nv">$glue</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-169-3" name="__codelineno-169-3" href="#__codelineno-169-3"></a>    <span class="nx">string</span> <span class="nv">$glue</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-169-4" name="__codelineno-169-4" href="#__codelineno-169-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Indents a collection</p>
@@ -11818,7 +11818,7 @@ this class to tell the two apart.</p>
 <div class="api-group">Public · 6</div>
 
 <h4 id="datamapperqueryqueryfactory-__construct"><code>__construct()</code><a class="headerlink" href="#datamapperqueryqueryfactory-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-191-1" name="__codelineno-191-1" href="#__codelineno-191-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$selectClass</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-191-1" name="__codelineno-191-1" href="#__codelineno-191-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$selectClass</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">);</span>
 </code></pre></div>
 <p>QueryFactory constructor.</p>
 <h4 id="datamapperqueryqueryfactory-newbind"><code>newBind()</code><a class="headerlink" href="#datamapperqueryqueryfactory-newbind" title="Permanent link">&para;</a></h4>
@@ -12124,7 +12124,7 @@ key will be used as the alias</p>
 <div class="api-group">Protected · 1</div>
 
 <h4 id="datamapperqueryselect-getcurrentstatement"><code>getCurrentStatement()</code><a class="headerlink" href="#datamapperqueryselect-getcurrentstatement" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-216-1" name="__codelineno-216-1" href="#__codelineno-216-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getCurrentStatement</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$suffix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-216-1" name="__codelineno-216-1" href="#__codelineno-216-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getCurrentStatement</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$suffix</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Statement builder</p>
 <h2 id="datamapperqueryupdate">DataMapper\Query\Update<a class="headerlink" href="#datamapperqueryupdate" title="Permanent link">&para;</a></h2>
@@ -12401,7 +12401,7 @@ key will be used as the alias</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

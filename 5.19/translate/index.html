@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5787,7 +5787,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="p">{</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;Mike&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">'Mike'</span><span class="p">;</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">t</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getTranslator</span><span class="p">();</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="p">}</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
@@ -5799,10 +5799,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="nv">$language</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getBestLanguage</span><span class="p">();</span>
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="nv">$messages</span> <span class="o">=</span> <span class="p">[];</span>
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="nv">$translationFile</span> <span class="o">=</span> <span class="s1">&#39;app/messages/&#39;</span> <span class="o">.</span> <span class="nv">$language</span> <span class="o">.</span> <span class="s1">&#39;.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="nv">$translationFile</span> <span class="o">=</span> <span class="s1">'app/messages/'</span> <span class="o">.</span> <span class="nv">$language</span> <span class="o">.</span> <span class="s1">'.php'</span><span class="p">;</span>
 <a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
 <a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        <span class="k">if</span> <span class="p">(</span><span class="k">true</span> <span class="o">!==</span> <span class="nb">file_exists</span><span class="p">(</span><span class="nv">$translationFile</span><span class="p">))</span> <span class="p">{</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>            <span class="nv">$translationFile</span> <span class="o">=</span> <span class="s1">&#39;app/messages/en.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>            <span class="nv">$translationFile</span> <span class="o">=</span> <span class="s1">'app/messages/en.php'</span><span class="p">;</span>
 <a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        <span class="p">}</span>
 <a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
 <a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        <span class="k">require</span> <span class="nv">$translationFile</span><span class="p">;</span>
@@ -5811,9 +5811,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="nv">$factory</span>      <span class="o">=</span> <span class="k">new</span> <span class="nx">TranslateFactory</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">);</span>
 <a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
 <a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="k">return</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>            <span class="s1">&#39;array&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>            <span class="s1">'array'</span><span class="p">,</span>
 <a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>            <span class="p">[</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>                <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$messages</span><span class="p">,</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>                <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="nv">$messages</span><span class="p">,</span>
 <a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>            <span class="p">]</span>
 <a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>        <span class="p">);</span>
 <a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>    <span class="p">}</span>
@@ -5822,11 +5822,11 @@ offering lower resource consumption and high performance.
 <p>The <code>getTranslator()</code> method is available in the controller for all actions that require it. You could of course introduce a caching mechanism to store the translation adapter in your cache (based on the language selected i.e. <code>en.cache</code>, <code>de.cache</code> etc.)</p>
 <p>The <code>t</code> variable is passed then in the view and with it, we can perform translations in the view layer.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&lt;!--</span> <span class="nx">welcome</span> <span class="o">--&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">&lt;!--</span> <span class="nx">String</span><span class="o">:</span> <span class="nx">hi</span> <span class="o">=&gt;</span> <span class="s1">&#39;Hello&#39;</span> <span class="o">--&gt;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">),</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nv">$name</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">&lt;!--</span> <span class="nx">String</span><span class="o">:</span> <span class="nx">hi</span> <span class="o">=&gt;</span> <span class="s1">'Hello'</span> <span class="o">--&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s1">'hi'</span><span class="p">),</span> <span class="s1">' '</span><span class="p">,</span> <span class="nv">$name</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
 </code></pre></div>
 <p>and for Volt:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">&lt;p&gt;</span><span class="cp">{{</span> <span class="nv">t._</span><span class="o">(</span><span class="s1">&#39;hi&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x"> </span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="x">&lt;p&gt;</span><span class="cp">{{</span> <span class="nv">t._</span><span class="o">(</span><span class="s1">'hi'</span><span class="o">)</span> <span class="cp">}}</span><span class="x"> </span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
 </code></pre></div>
 <h3 id="placeholders">Placeholders<a class="headerlink" href="#placeholders" title="Permanent link">&para;</a></h3>
 <p>The <code>_()</code> method will return the translated string of the key passed. In the above example, it will return the value stored for the key <code>hi</code>. The component can also parse placeholders using <a href="../api/phalcon_support/#supporthelperstrinterpolate">interpolation</a>. Therefore, for a translation of:</p>
@@ -5834,11 +5834,11 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>you will need to pass the <code>$name</code> variable in the <code>_()</code> call and the component will perform the replacement for you.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">&lt;!--</span> <span class="nx">welcome</span> <span class="o">--&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">&lt;!--</span> <span class="nx">String</span><span class="o">:</span> <span class="nx">hi</span><span class="o">-</span><span class="nx">name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Hello %name%&#39;</span> <span class="o">--&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s1">&#39;hi-name&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">&lt;!--</span> <span class="nx">String</span><span class="o">:</span> <span class="nx">hi</span><span class="o">-</span><span class="nx">name</span> <span class="o">=&gt;</span> <span class="s1">'Hello %name%'</span> <span class="o">--&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s1">'hi-name'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
 </code></pre></div>
 <p>and for Volt:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">&lt;p&gt;</span><span class="cp">{{</span> <span class="nv">t._</span><span class="o">(</span><span class="s1">&#39;hi-name&#39;</span><span class="o">,</span> <span class="o">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">name</span><span class="o">])</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="x">&lt;p&gt;</span><span class="cp">{{</span> <span class="nv">t._</span><span class="o">(</span><span class="s1">'hi-name'</span><span class="o">,</span> <span class="o">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">name</span><span class="o">])</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
 </code></pre></div>
 <h3 id="plugin">Plugin<a class="headerlink" href="#plugin" title="Permanent link">&para;</a></h3>
 <p>The implementation above can be extended to offer translation capabilities throughout the application. We can of course move the <code>getTranslator()</code> method in a base controller and change its visibility to <code>protected</code>. However, we might want to use translations in other components that are outside the scope of a controller.</p>
@@ -5863,10 +5863,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>        <span class="nv">$language</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getBestLanguage</span><span class="p">();</span>
 <a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>        <span class="nv">$messages</span> <span class="o">=</span> <span class="p">[];</span>
 <a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>        <span class="nv">$translationFile</span> <span class="o">=</span> <span class="s1">&#39;app/messages/&#39;</span> <span class="o">.</span> <span class="nv">$language</span> <span class="o">.</span> <span class="s1">&#39;.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>        <span class="nv">$translationFile</span> <span class="o">=</span> <span class="s1">'app/messages/'</span> <span class="o">.</span> <span class="nv">$language</span> <span class="o">.</span> <span class="s1">'.php'</span><span class="p">;</span>
 <a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
 <a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>        <span class="k">if</span> <span class="p">(</span><span class="k">true</span> <span class="o">!==</span> <span class="nb">file_exists</span><span class="p">(</span><span class="nv">$translationFile</span><span class="p">))</span> <span class="p">{</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>            <span class="nv">$translationFile</span> <span class="o">=</span> <span class="s1">&#39;app/messages/en.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>            <span class="nv">$translationFile</span> <span class="o">=</span> <span class="s1">'app/messages/en.php'</span><span class="p">;</span>
 <a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>        <span class="p">}</span>
 <a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
 <a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>        <span class="k">require</span> <span class="nv">$translationFile</span><span class="p">;</span>
@@ -5875,9 +5875,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>        <span class="nv">$factory</span>      <span class="o">=</span> <span class="k">new</span> <span class="nx">TranslateFactory</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">);</span>
 <a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>
 <a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>        <span class="k">return</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span>
-<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>            <span class="s1">&#39;array&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>            <span class="s1">'array'</span><span class="p">,</span>
 <a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>            <span class="p">[</span>
-<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>                <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$messages</span><span class="p">,</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>                <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="nv">$messages</span><span class="p">,</span>
 <a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>            <span class="p">]</span>
 <a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>        <span class="p">);</span>
 <a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>    <span class="p">}</span>
@@ -5888,7 +5888,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">use</span> <span class="nx">MyApp\Locale</span><span class="p">;</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;locale&#39;</span><span class="p">,</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Locale</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">getTranslator</span><span class="p">());</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">'locale'</span><span class="p">,</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Locale</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">getTranslator</span><span class="p">());</span>
 </code></pre></div>
 <p>And now you can access the <code>Locale</code> plugin from your controllers, and anywhere you need to.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -5902,12 +5902,12 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">{</span>
 <a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
 <a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="p">{</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>        <span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;Mike&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>        <span class="nv">$name</span> <span class="o">=</span> <span class="s1">'Mike'</span><span class="p">;</span>
 <a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
 <a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>        <span class="nv">$text</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">locale</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>            <span class="s1">&#39;hi-name&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>            <span class="s1">'hi-name'</span><span class="p">,</span>
 <a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>            <span class="p">[</span>
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>                <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>            <span class="p">]</span>
 <a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>        <span class="p">);</span>
 <a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
@@ -5916,10 +5916,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="p">}</span>
 </code></pre></div>
 <p>or in a view directly</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$locale</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s1">&#39;hi-name&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Mike&#39;</span><span class="p">]);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$locale</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s1">'hi-name'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Mike'</span><span class="p">]);</span>
 </code></pre></div>
 <p>and for Volt:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="x">&lt;p&gt;</span><span class="cp">{{</span> <span class="nv">locale._</span><span class="o">(</span><span class="s1">&#39;hi-name&#39;</span><span class="o">,</span> <span class="o">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Mike&#39;</span><span class="o">])</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="x">&lt;p&gt;</span><span class="cp">{{</span> <span class="nv">locale._</span><span class="o">(</span><span class="s1">'hi-name'</span><span class="o">,</span> <span class="o">[</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Mike'</span><span class="o">])</span> <span class="cp">}}</span><span class="x">&lt;/p&gt;</span>
 </code></pre></div>
 <h3 id="routing">Routing<a class="headerlink" href="#routing" title="Permanent link">&para;</a></h3>
 <p>Some applications use the URL of the request to distinguish content based on different languages, in order to help with SEO. A sample URL is:</p>
@@ -5941,13 +5941,13 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>$factory      = new TranslateFactory($interpolator);
 <a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
 <a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>$options = [
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    &#39;content&#39; =&gt; [
-<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>        &#39;hi&#39;  =&gt; &#39;Hello&#39;,
-<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>        &#39;bye&#39; =&gt; &#39;Good Bye&#39;,
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    'content' =&gt; [
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>        'hi'  =&gt; 'Hello',
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>        'bye' =&gt; 'Good Bye',
 <a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>    ],
 <a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>];
 <a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>
-<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>$translator = $factory-&gt;newInstance(&#39;array&#39;, $options);
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>$translator = $factory-&gt;newInstance('array', $options);
 </code></pre></div></p>
 <h2 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link">&para;</a></h2>
 <p>This component makes use of adapters to read translation messages from different sources in a unified way.</p>
@@ -5984,13 +5984,13 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nv">$factory</span>      <span class="o">=</span> <span class="k">new</span> <span class="nx">TranslateFactory</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">);</span>
 <a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
 <a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>        <span class="s1">&#39;hi&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Hello&#39;</span><span class="p">,</span>
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>        <span class="s1">&#39;bye&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Good Bye&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>        <span class="s1">'hi'</span>  <span class="o">=&gt;</span> <span class="s1">'Hello'</span><span class="p">,</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>        <span class="s1">'bye'</span> <span class="o">=&gt;</span> <span class="s1">'Good Bye'</span><span class="p">,</span>
 <a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>    <span class="p">],</span>
 <a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="p">];</span>
 <a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
-<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'array'</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 </code></pre></div>
 <p>The recommended usage would be to create one file per language and store it in the file system. After that, you can load the relevant file, based on the language selected. A sample structure can be:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>app/messages/en.php
@@ -6009,20 +6009,20 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1">// app/messages/en.php</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nv">$messages</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="s1">&#39;hi&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;Hello&#39;</span><span class="p">,</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="s1">&#39;bye&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Good Bye&#39;</span><span class="p">,</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="s1">&#39;hi-name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Hello %name%&#39;</span><span class="p">,</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="s1">&#39;song&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;This song is %song%&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="s1">'hi'</span>      <span class="o">=&gt;</span> <span class="s1">'Hello'</span><span class="p">,</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="s1">'bye'</span>     <span class="o">=&gt;</span> <span class="s1">'Good Bye'</span><span class="p">,</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="s1">'hi-name'</span> <span class="o">=&gt;</span> <span class="s1">'Hello %name%'</span><span class="p">,</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="s1">'song'</span>    <span class="o">=&gt;</span> <span class="s1">'This song is %song%'</span><span class="p">,</span>
 <a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="p">];</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1">// app/messages/fr.php</span>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nv">$messages</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="s1">&#39;hi&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;Bonjour&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="s1">&#39;bye&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;Au revoir&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="s1">&#39;hi-name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Bonjour %name%&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="s1">&#39;song&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;La chanson est %song%&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="s1">'hi'</span>      <span class="o">=&gt;</span> <span class="s1">'Bonjour'</span><span class="p">,</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="s1">'bye'</span>     <span class="o">=&gt;</span> <span class="s1">'Au revoir'</span><span class="p">,</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="s1">'hi-name'</span> <span class="o">=&gt;</span> <span class="s1">'Bonjour %name%'</span><span class="p">,</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="s1">'song'</span>    <span class="o">=&gt;</span> <span class="s1">'La chanson est %song%'</span><span class="p">,</span>
 <a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="p">];</span>
 </code></pre></div>
 <p>Creating this adapter can be achieved by using the <a href="../api/phalcon_translate/#translatetranslatefactory">Translate Factory</a>, but you can instantiate it directly:</p>
@@ -6033,9 +6033,9 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
 <a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="nv">$interpolator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InterpolatorFactory</span><span class="p">();</span>
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="nv">$options</span>      <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>        <span class="s1">&#39;hi&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Hello&#39;</span><span class="p">,</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="s1">&#39;bye&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Good Bye&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>        <span class="s1">'hi'</span>  <span class="o">=&gt;</span> <span class="s1">'Hello'</span><span class="p">,</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="s1">'bye'</span> <span class="o">=&gt;</span> <span class="s1">'Good Bye'</span><span class="p">,</span>
 <a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="p">],</span>
 <a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="p">];</span>
 <a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
@@ -6052,16 +6052,16 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="nv">$factory</span>      <span class="o">=</span> <span class="k">new</span> <span class="nx">TranslateFactory</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">);</span>
 <a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
 <a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="s1">&#39;content&#39;</span>      <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>        <span class="s1">&#39;hi&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Hello&#39;</span><span class="p">,</span>
-<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>        <span class="s1">&#39;bye&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Good Bye&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="s1">'content'</span>      <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>        <span class="s1">'hi'</span>  <span class="o">=&gt;</span> <span class="s1">'Hello'</span><span class="p">,</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>        <span class="s1">'bye'</span> <span class="o">=&gt;</span> <span class="s1">'Good Bye'</span><span class="p">,</span>
 <a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="p">],</span>
-<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="s1">&#39;triggerError&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="s1">'triggerError'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="p">];</span>
 <a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>
-<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'array'</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 <a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>
-<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="k">echo</span> <span class="nv">$translator</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;unknown&#39;</span><span class="p">);</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="k">echo</span> <span class="nv">$translator</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">'unknown'</span><span class="p">);</span>
 </code></pre></div>
 <p>The code above throws <code>Phalcon\Translate\Exceptions\KeyNotFound</code> when the <code>unknown</code> entry is requested.</p>
 <h3 id="csv">Csv<a class="headerlink" href="#csv" title="Permanent link">&para;</a></h3>
@@ -6098,12 +6098,12 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
 <a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="c1">// `sample-key`|`sample-translated-text`</span>
 <a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="s1">&#39;content&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/translation-file.csv&#39;</span><span class="p">,</span>
-<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>    <span class="s1">&#39;delimiter&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;|&#39;</span><span class="p">,</span>
-<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>    <span class="s1">&#39;enclosure&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;`&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="s1">'content'</span>   <span class="o">=&gt;</span> <span class="s1">'/path/to/translation-file.csv'</span><span class="p">,</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>    <span class="s1">'delimiter'</span> <span class="o">=&gt;</span> <span class="s1">'|'</span><span class="p">,</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>    <span class="s1">'enclosure'</span> <span class="o">=&gt;</span> <span class="s1">'`'</span><span class="p">,</span>
 <a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="p">];</span>
 <a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>
-<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'csv'</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 </code></pre></div>
 <p>In the above example, you can see the usage of <code>delimiter</code> and <code>enclosure</code>. In most cases, you will not need to supply these options but in case your CSV files are somewhat different, you have the option to instruct the adapter as to how it will parse the contents of the translation file.</p>
 <p>Lines whose first column begins with a <code>#</code> are treated as comments and are skipped while the file is parsed.</p>
@@ -6115,9 +6115,9 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
 <a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="nv">$interpolator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InterpolatorFactory</span><span class="p">();</span>
 <a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="nv">$options</span>      <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="s1">&#39;content&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/translation-file.csv&#39;</span><span class="p">,</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="s1">&#39;delimiter&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;|&#39;</span><span class="p">,</span>
-<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="s1">&#39;enclosure&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;`&#39;</span><span class="p">,</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="s1">'content'</span>   <span class="o">=&gt;</span> <span class="s1">'/path/to/translation-file.csv'</span><span class="p">,</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="s1">'delimiter'</span> <span class="o">=&gt;</span> <span class="s1">'|'</span><span class="p">,</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="s1">'enclosure'</span> <span class="o">=&gt;</span> <span class="s1">'`'</span><span class="p">,</span>
 <a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="p">];</span>
 <a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>
 <a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Csv</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
@@ -6163,13 +6163,13 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="nv">$factory</span>      <span class="o">=</span> <span class="k">new</span> <span class="nx">TranslateFactory</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">);</span>
 <a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
 <a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>    <span class="s1">&#39;locale&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;de_DE.UTF-8&#39;</span><span class="p">,</span>
-<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>    <span class="s1">&#39;defaultDomain&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;translations&#39;</span><span class="p">,</span>
-<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>    <span class="s1">&#39;directory&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/application/locales&#39;</span><span class="p">,</span>
-<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>    <span class="s1">&#39;category&#39;</span>      <span class="o">=&gt;</span> <span class="nx">LC_MESSAGES</span><span class="p">,</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>    <span class="s1">'locale'</span>        <span class="o">=&gt;</span> <span class="s1">'de_DE.UTF-8'</span><span class="p">,</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>    <span class="s1">'defaultDomain'</span> <span class="o">=&gt;</span> <span class="s1">'translations'</span><span class="p">,</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>    <span class="s1">'directory'</span>     <span class="o">=&gt;</span> <span class="s1">'/path/to/application/locales'</span><span class="p">,</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>    <span class="s1">'category'</span>      <span class="o">=&gt;</span> <span class="nx">LC_MESSAGES</span><span class="p">,</span>
 <a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="p">];</span>
 <a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>
-<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;gettext&#39;</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'gettext'</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">NOTE</p>
@@ -6194,10 +6194,10 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
 <a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nv">$interpolator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InterpolatorFactory</span><span class="p">();</span>
 <a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="nv">$options</span>      <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    <span class="s1">&#39;locale&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;de_DE.UTF-8&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="s1">&#39;defaultDomain&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;translations&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>    <span class="s1">&#39;directory&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/application/locales&#39;</span><span class="p">,</span>
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    <span class="s1">&#39;category&#39;</span>      <span class="o">=&gt;</span> <span class="nx">LC_MESSAGES</span><span class="p">,</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    <span class="s1">'locale'</span>        <span class="o">=&gt;</span> <span class="s1">'de_DE.UTF-8'</span><span class="p">,</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="s1">'defaultDomain'</span> <span class="o">=&gt;</span> <span class="s1">'translations'</span><span class="p">,</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>    <span class="s1">'directory'</span>     <span class="o">=&gt;</span> <span class="s1">'/path/to/application/locales'</span><span class="p">,</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    <span class="s1">'category'</span>      <span class="o">=&gt;</span> <span class="nx">LC_MESSAGES</span><span class="p">,</span>
 <a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="p">];</span>
 <a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>
 <a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gettext</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
@@ -6239,14 +6239,14 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
 <a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="nv">$interpolator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InterpolatorFactory</span><span class="p">();</span>
 <a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="nv">$options</span>      <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>    <span class="s1">&#39;content&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/translation-file.csv&#39;</span><span class="p">,</span>
-<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>    <span class="s1">&#39;triggerError&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>    <span class="s1">'content'</span>      <span class="o">=&gt;</span> <span class="s1">'/path/to/translation-file.csv'</span><span class="p">,</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>    <span class="s1">'triggerError'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="p">];</span>
 <a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
 <a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Csv</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 <a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>
 <a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="k">try</span> <span class="p">{</span>
-<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>    <span class="k">echo</span> <span class="nv">$translator</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;unknown&#39;</span><span class="p">);</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>    <span class="k">echo</span> <span class="nv">$translator</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">'unknown'</span><span class="p">);</span>
 <a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">KeyNotFound</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>    <span class="k">echo</span> <span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
 <a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="p">}</span>
@@ -6317,13 +6317,13 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="nv">$factory</span>      <span class="o">=</span> <span class="k">new</span> <span class="nx">TranslateFactory</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">);</span>
 <a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>
 <a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="s1">&#39;defaultInterpolator&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;indexedArray&#39;</span><span class="p">,</span>
-<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>    <span class="s1">&#39;content&#39;</span>             <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>        <span class="s1">&#39;hi-name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Hello %1$s, it\&#39;s %2$d o\&#39;clock&#39;</span><span class="p">,</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="s1">'defaultInterpolator'</span> <span class="o">=&gt;</span> <span class="s1">'indexedArray'</span><span class="p">,</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>    <span class="s1">'content'</span>             <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>        <span class="s1">'hi-name'</span> <span class="o">=&gt;</span> <span class="s1">'Hello %1$s, it\'s %2$d o\'clock'</span><span class="p">,</span>
 <a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>    <span class="p">],</span>
 <a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="p">];</span>
 <a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>
-<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'array'</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="associatedarray">AssociatedArray<a class="headerlink" href="#associatedarray" title="Permanent link">&para;</a></h3>
 <p><a href="../api/phalcon_translate/#translateinterpolatorassociativearray">Phalcon\Translate\Interpolator\AssociativeArray</a> is the default interpolator. It allows you to do a key/value replacement of the placeholders.</p>
@@ -6336,28 +6336,28 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="nv">$factory</span>      <span class="o">=</span> <span class="k">new</span> <span class="nx">TranslateFactory</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">);</span>
 <a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>
 <a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>    <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>        <span class="s1">&#39;hi-name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Hello %name%, good %time% !&#39;</span><span class="p">,</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>    <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>        <span class="s1">'hi-name'</span> <span class="o">=&gt;</span> <span class="s1">'Hello %name%, good %time% !'</span><span class="p">,</span>
 <a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>    <span class="p">],</span>
 <a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="p">];</span>
 <a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>
-<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'array'</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 <a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>
-<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;Henry&#39;</span><span class="p">;</span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="nv">$name</span> <span class="o">=</span> <span class="s1">'Henry'</span><span class="p">;</span>
 <a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>
 <a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a><span class="nv">$translator</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span>
-<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>    <span class="s1">&#39;hi-name&#39;</span><span class="p">,</span>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>    <span class="s1">'hi-name'</span><span class="p">,</span>
 <a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a>    <span class="p">[</span>
-<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>        <span class="s1">&#39;time&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;day&#39;</span><span class="p">,</span>
+<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
+<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>        <span class="s1">'time'</span> <span class="o">=&gt;</span> <span class="s1">'day'</span><span class="p">,</span>
 <a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a>    <span class="p">]</span>
 <a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a><span class="p">);</span> <span class="c1">// Hello Henry, good day!</span>
 <a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a>
 <a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a><span class="nv">$translator</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span>
-<a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a>    <span class="s1">&#39;hi-name&#39;</span><span class="p">,</span>
+<a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a>    <span class="s1">'hi-name'</span><span class="p">,</span>
 <a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a>    <span class="p">[</span>
-<a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a>        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-28-31" name="__codelineno-28-31" href="#__codelineno-28-31"></a>        <span class="s1">&#39;time&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;night&#39;</span><span class="p">,</span>
+<a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a>        <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
+<a id="__codelineno-28-31" name="__codelineno-28-31" href="#__codelineno-28-31"></a>        <span class="s1">'time'</span> <span class="o">=&gt;</span> <span class="s1">'night'</span><span class="p">,</span>
 <a id="__codelineno-28-32" name="__codelineno-28-32" href="#__codelineno-28-32"></a>    <span class="p">]</span>
 <a id="__codelineno-28-33" name="__codelineno-28-33" href="#__codelineno-28-33"></a><span class="p">);</span> <span class="c1">// Hello Henry, good night!</span>
 </code></pre></div>
@@ -6372,23 +6372,23 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="nv">$factory</span>      <span class="o">=</span> <span class="k">new</span> <span class="nx">TranslateFactory</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">);</span>
 <a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>
 <a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>    <span class="s1">&#39;defaultInterpolator&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;indexedArray&#39;</span><span class="p">,</span>
-<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>    <span class="s1">&#39;content&#39;</span>             <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>        <span class="s1">&#39;hi-name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Hello %1$s, it\&#39;s %2$d o\&#39;clock&#39;</span><span class="p">,</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>    <span class="s1">'defaultInterpolator'</span> <span class="o">=&gt;</span> <span class="s1">'indexedArray'</span><span class="p">,</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>    <span class="s1">'content'</span>             <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>        <span class="s1">'hi-name'</span> <span class="o">=&gt;</span> <span class="s1">'Hello %1$s, it\'s %2$d o\'clock'</span><span class="p">,</span>
 <a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>    <span class="p">],</span>
 <a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="p">];</span>
 <a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>
-<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span><span class="s1">'array'</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
 <a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>
-<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;Henry&#39;</span><span class="p">;</span>
+<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="nv">$name</span> <span class="o">=</span> <span class="s1">'Henry'</span><span class="p">;</span>
 <a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a>
 <a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="nv">$translator</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span>
-<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>    <span class="s1">&#39;hi-name&#39;</span><span class="p">,</span>
+<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>    <span class="s1">'hi-name'</span><span class="p">,</span>
 <a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a>    <span class="p">[</span>
 <a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a>        <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-29-24" name="__codelineno-29-24" href="#__codelineno-29-24"></a>        <span class="mi">8</span><span class="p">,</span>
 <a id="__codelineno-29-25" name="__codelineno-29-25" href="#__codelineno-29-25"></a>    <span class="p">]</span>
-<a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a><span class="p">);</span> <span class="c1">// Hello Henry, it&#39;s 8 o&#39;clock</span>
+<a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a><span class="p">);</span> <span class="c1">// Hello Henry, it's 8 o'clock</span>
 </code></pre></div>
 <h3 id="custom-interpolators">Custom Interpolators<a class="headerlink" href="#custom-interpolators" title="Permanent link">&para;</a></h3>
 <p>The <a href="../api/phalcon_translate/#translateinterpolatorinterpolatorinterface">Phalcon\Translate\Interpolator\InterpolatorInterface</a> interface must be implemented in order to create your own interpolators or extend the existing ones:</p>
@@ -6403,11 +6403,11 @@ https://mozilla.org/es-ES/firefox/
 <a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="nv">$factory</span>      <span class="o">=</span> <span class="k">new</span> <span class="nx">TranslateFactory</span><span class="p">(</span><span class="nv">$interpolator</span><span class="p">);</span>
 <a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>
 <a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="nv">$translator</span> <span class="o">=</span> <span class="nv">$factory</span><span class="o">-&gt;</span><span class="na">newInstance</span><span class="p">(</span>
-<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>    <span class="s1">&#39;array&#39;</span><span class="p">,</span>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>    <span class="s1">'array'</span><span class="p">,</span>
 <a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>    <span class="p">[</span>
-<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>        <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>            <span class="s1">&#39;hi&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Hello&#39;</span><span class="p">,</span>
-<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>            <span class="s1">&#39;bye&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Good Bye&#39;</span><span class="p">,</span>
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>        <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>            <span class="s1">'hi'</span>  <span class="o">=&gt;</span> <span class="s1">'Hello'</span><span class="p">,</span>
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>            <span class="s1">'bye'</span> <span class="o">=&gt;</span> <span class="s1">'Good Bye'</span><span class="p">,</span>
 <a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>        <span class="p">],</span>
 <a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>    <span class="p">]</span>
 <a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="p">);</span>
@@ -6657,7 +6657,7 @@ https://mozilla.org/es-ES/firefox/
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

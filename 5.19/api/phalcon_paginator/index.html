@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -6623,53 +6623,53 @@ base.</p>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="p">[</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        <span class="s2">"model"</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        <span class="s2">"limit"</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="s2">"page"</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="p">]</span>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">);</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="p">[</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="s2">&quot;parameters&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>             <span class="s2">&quot;columns&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;inv_id, inv_title&quot;</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="s2">"model"</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="s2">"parameters"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>             <span class="s2">"columns"</span> <span class="o">=&gt;</span> <span class="s2">"inv_id, inv_title"</span>
 <a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>        <span class="p">],</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>        <span class="s2">"limit"</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>        <span class="s2">"page"</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
 <a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="p">]</span>
 <a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="p">);</span>
 <a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
 <a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span>
 <a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>    <span class="p">[</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>        <span class="s2">&quot;parameters&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>             <span class="s2">&quot;inv_status_flag = :flag:&quot;</span><span class="p">,</span>
-<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>             <span class="s2">&quot;bind&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>                 <span class="s2">&quot;flag&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>        <span class="s2">"model"</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>        <span class="s2">"parameters"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>             <span class="s2">"inv_status_flag = :flag:"</span><span class="p">,</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>             <span class="s2">"bind"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>                 <span class="s2">"flag"</span> <span class="o">=&gt;</span> <span class="mi">1</span>
 <a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>             <span class="p">],</span>
-<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>             <span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;inv_title&quot;</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>             <span class="s2">"order"</span> <span class="o">=&gt;</span> <span class="s2">"inv_title"</span>
 <a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>        <span class="p">],</span>
-<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">16</span><span class="p">,</span>
-<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>        <span class="s2">"limit"</span> <span class="o">=&gt;</span> <span class="mi">16</span><span class="p">,</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>        <span class="s2">"page"</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
 <a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>    <span class="p">]</span>
 <a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="p">);</span>
 <a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>
 <a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span>
 <a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>    <span class="p">[</span>
-<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>        <span class="s2">&quot;parameters&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;(inv_id % 2) = 0&quot;</span><span class="p">,</span>
-<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span>
-<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>        <span class="s2">"model"</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>        <span class="s2">"parameters"</span> <span class="o">=&gt;</span> <span class="s2">"(inv_id % 2) = 0"</span><span class="p">,</span>
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>        <span class="s2">"limit"</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>        <span class="s2">"page"</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
 <a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a>    <span class="p">]</span>
 <a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="p">);</span>
 <a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a>
 <a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">(</span>
 <a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a>    <span class="p">[</span>
-<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a>        <span class="s2">&quot;model&quot;</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
-<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a>        <span class="s2">&quot;parameters&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;(inv_id % 2) = 0&quot;</span> <span class="p">],</span>
-<a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span>
-<a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
+<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a>        <span class="s2">"model"</span> <span class="o">=&gt;</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a>        <span class="s2">"parameters"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"(inv_id % 2) = 0"</span> <span class="p">],</span>
+<a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a>        <span class="s2">"limit"</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span>
+<a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a>        <span class="s2">"page"</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
 <a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a>    <span class="p">]</span>
 <a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a><span class="p">);</span>
 <a id="__codelineno-6-54" name="__codelineno-6-54" href="#__codelineno-6-54"></a>
@@ -6718,15 +6718,15 @@ base.</p>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NativeArray</span><span class="p">(</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="p">[</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        <span class="s2">&quot;data&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>            <span class="p">[</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Artichoke&quot;</span><span class="p">],</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>            <span class="p">[</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Carrots&quot;</span><span class="p">],</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>            <span class="p">[</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Beet&quot;</span><span class="p">],</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>            <span class="p">[</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Lettuce&quot;</span><span class="p">],</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>            <span class="p">[</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">],</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        <span class="s2">"data"</span>  <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>            <span class="p">[</span><span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Artichoke"</span><span class="p">],</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>            <span class="p">[</span><span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Carrots"</span><span class="p">],</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>            <span class="p">[</span><span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Beet"</span><span class="p">],</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>            <span class="p">[</span><span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Lettuce"</span><span class="p">],</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>            <span class="p">[</span><span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">],</span>
 <a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        <span class="p">],</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        <span class="s2">&quot;limit&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="s2">&quot;page&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        <span class="s2">"limit"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="s2">"page"</span>  <span class="o">=&gt;</span> <span class="nv">$currentPage</span><span class="p">,</span>
 <a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>    <span class="p">]</span>
 <a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">);</span>
 </code></pre></div>
@@ -6763,15 +6763,15 @@ base.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">use</span> <span class="nx">Phalcon\Paginator\Adapter\QueryBuilder</span><span class="p">;</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nv">$builder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">createBuilder</span><span class="p">()</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>                <span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="s2">&quot;inv_id, inv_title&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>                <span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="s2">"inv_id, inv_title"</span><span class="p">)</span>
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>                <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>                <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s2">&quot;inv_title&quot;</span><span class="p">);</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>                <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s2">"inv_title"</span><span class="p">);</span>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QueryBuilder</span><span class="p">(</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="p">[</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>        <span class="s2">&quot;builder&quot;</span> <span class="o">=&gt;</span> <span class="nv">$builder</span><span class="p">,</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>        <span class="s2">&quot;limit&quot;</span>   <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>        <span class="s2">&quot;page&quot;</span>    <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>        <span class="s2">"builder"</span> <span class="o">=&gt;</span> <span class="nv">$builder</span><span class="p">,</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>        <span class="s2">"limit"</span>   <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>        <span class="s2">"page"</span>    <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
 <a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>    <span class="p">]</span>
 <a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="p">);</span>
 </code></pre></div>
@@ -6882,16 +6882,16 @@ page is an O(1) index seek regardless of depth.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">use</span> <span class="nx">Phalcon\Paginator\Adapter\QueryBuilderCursor</span><span class="p">;</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nv">$builder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">createBuilder</span><span class="p">()</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>                <span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="s2">&quot;inv_id, inv_title&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>                <span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="s2">"inv_id, inv_title"</span><span class="p">)</span>
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>                <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>                <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s2">&quot;inv_id&quot;</span><span class="p">);</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>                <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s2">"inv_id"</span><span class="p">);</span>
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
 <a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QueryBuilderCursor</span><span class="p">(</span>
 <a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="p">[</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="s2">&quot;builder&quot;</span>      <span class="o">=&gt;</span> <span class="nv">$builder</span><span class="p">,</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="s2">&quot;limit&quot;</span>        <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
-<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>        <span class="s2">&quot;cursorColumn&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;inv_id&quot;</span><span class="p">,</span>
-<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>        <span class="s2">&quot;cursor&quot;</span>       <span class="o">=&gt;</span> <span class="k">null</span><span class="p">,</span>  <span class="c1">// first page; pass $page-&gt;getNext() for subsequent pages</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="s2">"builder"</span>      <span class="o">=&gt;</span> <span class="nv">$builder</span><span class="p">,</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="s2">"limit"</span>        <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>        <span class="s2">"cursorColumn"</span> <span class="o">=&gt;</span> <span class="s2">"inv_id"</span><span class="p">,</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>        <span class="s2">"cursor"</span>       <span class="o">=&gt;</span> <span class="k">null</span><span class="p">,</span>  <span class="c1">// first page; pass $page-&gt;getNext() for subsequent pages</span>
 <a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    <span class="p">]</span>
 <a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="p">);</span>
 <a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>
@@ -7319,15 +7319,15 @@ next page, or null to restart from the first page.</p>
 <a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="nv">$builder</span> <span class="o">=</span> <span class="nv">$this</span>
 <a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>     <span class="o">-&gt;</span><span class="na">modelsManager</span>
 <a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>     <span class="o">-&gt;</span><span class="na">createBuilder</span><span class="p">()</span>
-<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>     <span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="s2">&quot;inv_id, inv_title&quot;</span><span class="p">)</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>     <span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="s2">"inv_id, inv_title"</span><span class="p">)</span>
 <a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>     <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nx">Invoices</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>     <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s2">&quot;inv_title&quot;</span><span class="p">);</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>     <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s2">"inv_title"</span><span class="p">);</span>
 <a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>
 <a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>    <span class="s2">&quot;builder&quot;</span> <span class="o">=&gt;</span> <span class="nv">$builder</span><span class="p">,</span>
-<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>    <span class="s2">&quot;limit&quot;</span>   <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
-<a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>    <span class="s2">&quot;page&quot;</span>    <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a>    <span class="s2">&quot;adapter&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;queryBuilder&quot;</span><span class="p">,</span>
+<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>    <span class="s2">"builder"</span> <span class="o">=&gt;</span> <span class="nv">$builder</span><span class="p">,</span>
+<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>    <span class="s2">"limit"</span>   <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
+<a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>    <span class="s2">"page"</span>    <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a>    <span class="s2">"adapter"</span> <span class="o">=&gt;</span> <span class="s2">"queryBuilder"</span><span class="p">,</span>
 <a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a><span class="p">];</span>
 <a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a>
 <a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a><span class="nv">$paginator</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">PaginatorFactory</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">load</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
@@ -7677,7 +7677,7 @@ int back.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

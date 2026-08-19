@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -14194,16 +14194,16 @@ database adapter like Phalcon\Db\Adapter\Pdo</p>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">try</span> <span class="p">{</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MysqlConnection</span><span class="p">(</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="p">[</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;192.168.0.11&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sigma&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            <span class="s2">&quot;port&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;3306&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="s2">"host"</span>     <span class="o">=&gt;</span> <span class="s2">"192.168.0.11"</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            <span class="s2">"username"</span> <span class="o">=&gt;</span> <span class="s2">"sigma"</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="s2">"password"</span> <span class="o">=&gt;</span> <span class="s2">"secret"</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="s2">"dbname"</span>   <span class="o">=&gt;</span> <span class="s2">"blog"</span><span class="p">,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            <span class="s2">"port"</span>     <span class="o">=&gt;</span> <span class="s2">"3306"</span><span class="p">,</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="p">]</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="p">);</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="s2">&quot;SELECT * FROM co_invoices LIMIT 5&quot;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="s2">"SELECT * FROM co_invoices LIMIT 5"</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="p">);</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">setFetchMode</span><span class="p">(</span><span class="nx">Enum</span><span class="o">::</span><span class="na">FETCH_NUM</span><span class="p">);</span>
@@ -14795,8 +14795,8 @@ throw via the dialect).</p>
 <p>Deletes data from a table using custom RBDM SQL syntax</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Deleting existing invoice</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="s2">&quot;inv_id = 101&quot;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="s2">"inv_id = 101"</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">);</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1">// Next SQL sentence is generated</span>
@@ -14811,7 +14811,7 @@ throw via the dialect).</p>
 </code></pre></div>
 <p>Lists table indexes</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeIndexes</span><span class="p">(</span><span class="s2">&quot;co_orders_x_products&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeIndexes</span><span class="p">(</span><span class="s2">"co_orders_x_products"</span><span class="p">)</span>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">);</span>
 </code></pre></div>
 <p>This base implementation consumes the dialect's <code>describeIndexes()</code> SQL
@@ -14828,7 +14828,7 @@ override it.</p>
 </code></pre></div>
 <p>Lists table references</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeReferences</span><span class="p">(</span><span class="s2">&quot;co_orders_x_products&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeReferences</span><span class="p">(</span><span class="s2">"co_orders_x_products"</span><span class="p">)</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">);</span>
 </code></pre></div>
 <p>This base implementation consumes the dialect's <code>describeReferences()</code>
@@ -14907,13 +14907,13 @@ in-tree caller and effectively assumes the PostgreSQL row shape.</p>
 </code></pre></div>
 <p>Escapes a column/table/schema name</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nv">$escapedTable</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">escapeIdentifier</span><span class="p">(</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="s2">&quot;co_invoices&quot;</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="s2">"co_invoices"</span>
 <a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="p">);</span>
 <a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
 <a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="nv">$escapedTable</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">escapeIdentifier</span><span class="p">(</span>
 <a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="p">[</span>
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>        <span class="s2">&quot;store&quot;</span><span class="p">,</span>
-<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>        <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>        <span class="s2">"store"</span><span class="p">,</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>        <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>    <span class="p">]</span>
 <a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="p">);</span>
 </code></pre></div>
@@ -14928,7 +14928,7 @@ in-tree caller and effectively assumes the PostgreSQL row shape.</p>
 <p>Dumps the complete result of a query into an array</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1">// Getting all invoices with associative indexes only</span>
 <a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nv">$invoices</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="s2">"SELECT * FROM co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="nx">\Phalcon\Db\Enum</span><span class="o">::</span><span class="na">FETCH_ASSOC</span>
 <a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="p">);</span>
 <a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
@@ -14936,12 +14936,12 @@ in-tree caller and effectively assumes the PostgreSQL row shape.</p>
 <a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$invoice</span><span class="p">);</span>
 <a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="p">}</span>
 <a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>
-<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a> <span class="c1">// Getting all invoices whose title contains the word &quot;Test&quot;</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a> <span class="c1">// Getting all invoices whose title contains the word "Test"</span>
 <a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="nv">$invoices</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span>
-<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>    <span class="s2">&quot;SELECT * FROM co_invoices WHERE inv_title LIKE :inv_title&quot;</span><span class="p">,</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>    <span class="s2">"SELECT * FROM co_invoices WHERE inv_title LIKE :inv_title"</span><span class="p">,</span>
 <a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>    <span class="nx">\Phalcon\Db\Enum</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">,</span>
 <a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>    <span class="p">[</span>
-<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>        <span class="s2">&quot;inv_title&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;%Test%&quot;</span><span class="p">,</span>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>        <span class="s2">"inv_title"</span> <span class="o">=&gt;</span> <span class="s2">"%Test%"</span><span class="p">,</span>
 <a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a>    <span class="p">]</span>
 <a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="p">);</span>
 <a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a><span class="k">foreach</span><span class="p">(</span><span class="nv">$invoices</span> <span class="k">as</span> <span class="nv">$invoice</span><span class="p">)</span> <span class="p">{</span>
@@ -14957,12 +14957,12 @@ in-tree caller and effectively assumes the PostgreSQL row shape.</p>
 </code></pre></div>
 <p>Returns the n'th field of first row in a SQL query result</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1">// Getting count of invoices</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nv">$invoicesCount</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchColumn</span><span class="p">(</span><span class="s2">&quot;SELECT count(*) FROM co_invoices&quot;</span><span class="p">);</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nv">$invoicesCount</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchColumn</span><span class="p">(</span><span class="s2">"SELECT count(*) FROM co_invoices"</span><span class="p">);</span>
 <a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="nb">print_r</span><span class="p">(</span><span class="nv">$invoicesCount</span><span class="p">);</span>
 <a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>
 <a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="c1">// Getting the title of the last created invoice</span>
 <a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="nv">$invoice</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchColumn</span><span class="p">(</span>
-<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>    <span class="s2">&quot;SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC&quot;</span><span class="p">,</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>    <span class="s2">"SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC"</span><span class="p">,</span>
 <a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>    <span class="mi">1</span>
 <a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="p">);</span>
 <a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="nb">print_r</span><span class="p">(</span><span class="nv">$invoice</span><span class="p">);</span>
@@ -14977,12 +14977,12 @@ in-tree caller and effectively assumes the PostgreSQL row shape.</p>
 </code></pre></div>
 <p>Returns the first row in a SQL query result</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1">// Getting first invoice</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nv">$invoice</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">);</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nv">$invoice</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="s2">"SELECT * FROM co_invoices"</span><span class="p">);</span>
 <a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="nb">print_r</span><span class="p">(</span><span class="nv">$invoice</span><span class="p">);</span>
 <a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>
 <a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="c1">// Getting first invoice with associative indexes only</span>
 <a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="nv">$invoice</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span>
-<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    <span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    <span class="s2">"SELECT * FROM co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    <span class="nx">\Phalcon\Db\Enum</span><span class="o">::</span><span class="na">FETCH_ASSOC</span>
 <a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="p">);</span>
 <a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="nb">print_r</span><span class="p">(</span><span class="nv">$invoice</span><span class="p">);</span>
@@ -14990,7 +14990,7 @@ in-tree caller and effectively assumes the PostgreSQL row shape.</p>
 <h4 id="dbadapterabstractadapter-forupdate"><code>forUpdate()</code><a class="headerlink" href="#dbadapterabstractadapter-forupdate" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">forUpdate</span><span class="p">(</span>
 <a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a SQL modified with a FOR UPDATE clause. The optional
@@ -15012,18 +15012,18 @@ in-tree caller and effectively assumes the PostgreSQL row shape.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaultIdValue</span><span class="p">()</span><span class="o">:</span> <span class="nx">RawValue</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the default identity value to be inserted in an identity column</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1">// Inserting a new invoice with a valid default value for the column &#39;inv_id&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1">// Inserting a new invoice with a valid default value for the column 'inv_id'</span>
 <a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
-<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>    <span class="p">[</span>
 <a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getDefaultIdValue</span><span class="p">(),</span>
-<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>        <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>        <span class="s2">"Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>        <span class="mi">100</span><span class="p">,</span>
 <a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>    <span class="p">],</span>
 <a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>    <span class="p">[</span>
-<a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a>        <span class="s2">&quot;inv_id&quot;</span><span class="p">,</span>
-<a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>        <span class="s2">&quot;inv_title&quot;</span><span class="p">,</span>
-<a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>        <span class="s2">&quot;inv_total&quot;</span><span class="p">,</span>
+<a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a>        <span class="s2">"inv_id"</span><span class="p">,</span>
+<a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>        <span class="s2">"inv_title"</span><span class="p">,</span>
+<a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>        <span class="s2">"inv_total"</span><span class="p">,</span>
 <a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a>    <span class="p">]</span>
 <a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a><span class="p">);</span>
 </code></pre></div>
@@ -15032,16 +15032,16 @@ in-tree caller and effectively assumes the PostgreSQL row shape.</p>
 </code></pre></div>
 <p>Returns the default value to make the RBDM use the default value declared
 in the table definition</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1">// Inserting a new invoice with a valid default value for the column &#39;inv_total&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1">// Inserting a new invoice with a valid default value for the column 'inv_total'</span>
 <a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
-<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>    <span class="p">[</span>
-<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>        <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>        <span class="s2">"Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getDefaultValue</span><span class="p">()</span>
 <a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>    <span class="p">],</span>
 <a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>    <span class="p">[</span>
-<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>        <span class="s2">&quot;inv_title&quot;</span><span class="p">,</span>
-<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>        <span class="s2">&quot;inv_total&quot;</span><span class="p">,</span>
+<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>        <span class="s2">"inv_title"</span><span class="p">,</span>
+<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>        <span class="s2">"inv_total"</span><span class="p">,</span>
 <a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a>    <span class="p">]</span>
 <a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a><span class="p">);</span>
 </code></pre></div>
@@ -15097,13 +15097,13 @@ in the table definition</p>
 <p>Inserts data into a table using custom RDBMS SQL syntax</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="c1">// Inserting a new invoice</span>
 <a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
-<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
-<a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a>    <span class="p">[</span><span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
-<a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>    <span class="p">[</span><span class="s2">&quot;inv_title&quot;</span><span class="p">,</span> <span class="s2">&quot;inv_total&quot;</span><span class="p">]</span>
+<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
+<a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a>    <span class="p">[</span><span class="s2">"Test Invoice"</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+<a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>    <span class="p">[</span><span class="s2">"inv_title"</span><span class="p">,</span> <span class="s2">"inv_total"</span><span class="p">]</span>
 <a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a><span class="p">);</span>
 <a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a>
 <a id="__codelineno-52-8" name="__codelineno-52-8" href="#__codelineno-52-8"></a><span class="c1">// Next SQL sentence is sent to the database system</span>
-<a id="__codelineno-52-9" name="__codelineno-52-9" href="#__codelineno-52-9"></a><span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="sb">`co_invoices`</span> <span class="p">(</span><span class="sb">`inv_title`</span><span class="p">,</span> <span class="sb">`inv_total`</span><span class="p">)</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<a id="__codelineno-52-9" name="__codelineno-52-9" href="#__codelineno-52-9"></a><span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="sb">`co_invoices`</span> <span class="p">(</span><span class="sb">`inv_title`</span><span class="p">,</span> <span class="sb">`inv_total`</span><span class="p">)</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="s2">"Test Invoice"</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterabstractadapter-insertasdict"><code>insertAsDict()</code><a class="headerlink" href="#dbadapterabstractadapter-insertasdict" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">insertAsDict</span><span class="p">(</span>
@@ -15115,15 +15115,15 @@ in the table definition</p>
 <p>Inserts data into a table using custom RBDM SQL syntax</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="c1">// Inserting a new invoice</span>
 <a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insertAsDict</span><span class="p">(</span>
-<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>    <span class="p">[</span>
-<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>        <span class="s2">&quot;inv_title&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
-<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a>        <span class="s2">&quot;inv_total&quot;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>        <span class="s2">"inv_title"</span> <span class="o">=&gt;</span> <span class="s2">"Test Invoice"</span><span class="p">,</span>
+<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a>        <span class="s2">"inv_total"</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
 <a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a>    <span class="p">]</span>
 <a id="__codelineno-54-8" name="__codelineno-54-8" href="#__codelineno-54-8"></a><span class="p">);</span>
 <a id="__codelineno-54-9" name="__codelineno-54-9" href="#__codelineno-54-9"></a>
 <a id="__codelineno-54-10" name="__codelineno-54-10" href="#__codelineno-54-10"></a><span class="c1">// Next SQL sentence is sent to the database system</span>
-<a id="__codelineno-54-11" name="__codelineno-54-11" href="#__codelineno-54-11"></a><span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="sb">`co_invoices`</span> <span class="p">(</span><span class="sb">`inv_title`</span><span class="p">,</span> <span class="sb">`inv_total`</span><span class="p">)</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<a id="__codelineno-54-11" name="__codelineno-54-11" href="#__codelineno-54-11"></a><span class="nx">INSERT</span> <span class="nx">INTO</span> <span class="sb">`co_invoices`</span> <span class="p">(</span><span class="sb">`inv_title`</span><span class="p">,</span> <span class="sb">`inv_total`</span><span class="p">)</span> <span class="nx">VALUES</span> <span class="p">(</span><span class="s2">"Test Invoice"</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterabstractadapter-isnestedtransactionswithsavepoints"><code>isNestedTransactionsWithSavepoints()</code><a class="headerlink" href="#dbadapterabstractadapter-isnestedtransactionswithsavepoints" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isNestedTransactionsWithSavepoints</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
@@ -15136,14 +15136,14 @@ in the table definition</p>
 <a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Appends a LIMIT clause to $sqlQuery argument</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">echo</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">echo</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="s2">"SELECT * FROM co_invoices"</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterabstractadapter-listtables"><code>listTables()</code><a class="headerlink" href="#dbadapterabstractadapter-listtables" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">listTables</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$schemaName</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>List all tables on a database</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">)</span>
+<a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">"blog"</span><span class="p">)</span>
 <a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterabstractadapter-listviews"><code>listViews()</code><a class="headerlink" href="#dbadapterabstractadapter-listviews" title="Permanent link">&para;</a></h4>
@@ -15151,7 +15151,7 @@ in the table definition</p>
 </code></pre></div>
 <p>List all views on a database</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listViews</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">)</span>
+<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listViews</span><span class="p">(</span><span class="s2">"blog"</span><span class="p">)</span>
 <a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterabstractadapter-modifycolumn"><code>modifyColumn()</code><a class="headerlink" href="#dbadapterabstractadapter-modifycolumn" title="Permanent link">&para;</a></h4>
@@ -15225,7 +15225,7 @@ already-configured connection generates.</p>
 <h4 id="dbadapterabstractadapter-sharedlock"><code>sharedLock()</code><a class="headerlink" href="#dbadapterabstractadapter-sharedlock" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">sharedLock</span><span class="p">(</span>
 <a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a SQL modified with a shared-lock clause. The optional
@@ -15249,7 +15249,7 @@ keyword (SQLite does not support it)</p>
 </code></pre></div>
 <p>Generates SQL checking for the existence of a schema.table</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="nb">var_dump</span><span class="p">(</span>
-<a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">,</span> <span class="s2">&quot;posts&quot;</span><span class="p">)</span>
+<a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">"blog"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">)</span>
 <a id="__codelineno-76-3" name="__codelineno-76-3" href="#__codelineno-76-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterabstractadapter-tableoptions"><code>tableOptions()</code><a class="headerlink" href="#dbadapterabstractadapter-tableoptions" title="Permanent link">&para;</a></h4>
@@ -15260,7 +15260,7 @@ keyword (SQLite does not support it)</p>
 </code></pre></div>
 <p>Gets creation options from a table</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">tableOptions</span><span class="p">(</span><span class="s2">&quot;co_invoices&quot;</span><span class="p">)</span>
+<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">tableOptions</span><span class="p">(</span><span class="s2">"co_invoices"</span><span class="p">)</span>
 <a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterabstractadapter-update"><code>update()</code><a class="headerlink" href="#dbadapterabstractadapter-update" title="Permanent link">&para;</a></h4>
@@ -15275,24 +15275,24 @@ keyword (SQLite does not support it)</p>
 <p>Updates data on a table using custom RBDM SQL syntax</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="c1">// Updating existing invoice</span>
 <a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span>
-<a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
-<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a>    <span class="p">[</span><span class="s2">&quot;inv_title&quot;</span><span class="p">],</span>
-<a id="__codelineno-80-5" name="__codelineno-80-5" href="#__codelineno-80-5"></a>    <span class="p">[</span><span class="s2">&quot;New Test Invoice&quot;</span><span class="p">],</span>
-<a id="__codelineno-80-6" name="__codelineno-80-6" href="#__codelineno-80-6"></a>    <span class="s2">&quot;inv_id = 101&quot;</span>
+<a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
+<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a>    <span class="p">[</span><span class="s2">"inv_title"</span><span class="p">],</span>
+<a id="__codelineno-80-5" name="__codelineno-80-5" href="#__codelineno-80-5"></a>    <span class="p">[</span><span class="s2">"New Test Invoice"</span><span class="p">],</span>
+<a id="__codelineno-80-6" name="__codelineno-80-6" href="#__codelineno-80-6"></a>    <span class="s2">"inv_id = 101"</span>
 <a id="__codelineno-80-7" name="__codelineno-80-7" href="#__codelineno-80-7"></a><span class="p">);</span>
 <a id="__codelineno-80-8" name="__codelineno-80-8" href="#__codelineno-80-8"></a>
 <a id="__codelineno-80-9" name="__codelineno-80-9" href="#__codelineno-80-9"></a><span class="c1">// Next SQL sentence is sent to the database system</span>
-<a id="__codelineno-80-10" name="__codelineno-80-10" href="#__codelineno-80-10"></a><span class="nx">UPDATE</span> <span class="sb">`co_invoices`</span> <span class="nx">SET</span> <span class="sb">`inv_title`</span> <span class="o">=</span> <span class="s2">&quot;New Test Invoice&quot;</span> <span class="nx">WHERE</span> <span class="nx">inv_id</span> <span class="o">=</span> <span class="mi">101</span>
+<a id="__codelineno-80-10" name="__codelineno-80-10" href="#__codelineno-80-10"></a><span class="nx">UPDATE</span> <span class="sb">`co_invoices`</span> <span class="nx">SET</span> <span class="sb">`inv_title`</span> <span class="o">=</span> <span class="s2">"New Test Invoice"</span> <span class="nx">WHERE</span> <span class="nx">inv_id</span> <span class="o">=</span> <span class="mi">101</span>
 <a id="__codelineno-80-11" name="__codelineno-80-11" href="#__codelineno-80-11"></a>
 <a id="__codelineno-80-12" name="__codelineno-80-12" href="#__codelineno-80-12"></a><span class="c1">// Updating existing invoice with array condition and $dataTypes</span>
 <a id="__codelineno-80-13" name="__codelineno-80-13" href="#__codelineno-80-13"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span>
-<a id="__codelineno-80-14" name="__codelineno-80-14" href="#__codelineno-80-14"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
-<a id="__codelineno-80-15" name="__codelineno-80-15" href="#__codelineno-80-15"></a>    <span class="p">[</span><span class="s2">&quot;inv_title&quot;</span><span class="p">],</span>
-<a id="__codelineno-80-16" name="__codelineno-80-16" href="#__codelineno-80-16"></a>    <span class="p">[</span><span class="s2">&quot;New Test Invoice&quot;</span><span class="p">],</span>
+<a id="__codelineno-80-14" name="__codelineno-80-14" href="#__codelineno-80-14"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
+<a id="__codelineno-80-15" name="__codelineno-80-15" href="#__codelineno-80-15"></a>    <span class="p">[</span><span class="s2">"inv_title"</span><span class="p">],</span>
+<a id="__codelineno-80-16" name="__codelineno-80-16" href="#__codelineno-80-16"></a>    <span class="p">[</span><span class="s2">"New Test Invoice"</span><span class="p">],</span>
 <a id="__codelineno-80-17" name="__codelineno-80-17" href="#__codelineno-80-17"></a>    <span class="p">[</span>
-<a id="__codelineno-80-18" name="__codelineno-80-18" href="#__codelineno-80-18"></a>        <span class="s2">&quot;conditions&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;inv_id = ?&quot;</span><span class="p">,</span>
-<a id="__codelineno-80-19" name="__codelineno-80-19" href="#__codelineno-80-19"></a>        <span class="s2">&quot;bind&quot;</span>       <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$some_unsafe_id</span><span class="p">],</span>
-<a id="__codelineno-80-20" name="__codelineno-80-20" href="#__codelineno-80-20"></a>        <span class="s2">&quot;bindTypes&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">PDO</span><span class="o">::</span><span class="na">PARAM_INT</span><span class="p">],</span> <span class="c1">// use only if you use $dataTypes param</span>
+<a id="__codelineno-80-18" name="__codelineno-80-18" href="#__codelineno-80-18"></a>        <span class="s2">"conditions"</span> <span class="o">=&gt;</span> <span class="s2">"inv_id = ?"</span><span class="p">,</span>
+<a id="__codelineno-80-19" name="__codelineno-80-19" href="#__codelineno-80-19"></a>        <span class="s2">"bind"</span>       <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$some_unsafe_id</span><span class="p">],</span>
+<a id="__codelineno-80-20" name="__codelineno-80-20" href="#__codelineno-80-20"></a>        <span class="s2">"bindTypes"</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">PDO</span><span class="o">::</span><span class="na">PARAM_INT</span><span class="p">],</span> <span class="c1">// use only if you use $dataTypes param</span>
 <a id="__codelineno-80-21" name="__codelineno-80-21" href="#__codelineno-80-21"></a>    <span class="p">],</span>
 <a id="__codelineno-80-22" name="__codelineno-80-22" href="#__codelineno-80-22"></a>    <span class="p">[</span>
 <a id="__codelineno-80-23" name="__codelineno-80-23" href="#__codelineno-80-23"></a>        <span class="nx">PDO</span><span class="o">::</span><span class="na">PARAM_STR</span>
@@ -15312,15 +15312,15 @@ keyword (SQLite does not support it)</p>
 Another, more convenient syntax</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="c1">// Updating existing invoice</span>
 <a id="__codelineno-82-2" name="__codelineno-82-2" href="#__codelineno-82-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">updateAsDict</span><span class="p">(</span>
-<a id="__codelineno-82-3" name="__codelineno-82-3" href="#__codelineno-82-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-82-3" name="__codelineno-82-3" href="#__codelineno-82-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-82-4" name="__codelineno-82-4" href="#__codelineno-82-4"></a>    <span class="p">[</span>
-<a id="__codelineno-82-5" name="__codelineno-82-5" href="#__codelineno-82-5"></a>        <span class="s2">&quot;inv_title&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;New Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-82-5" name="__codelineno-82-5" href="#__codelineno-82-5"></a>        <span class="s2">"inv_title"</span> <span class="o">=&gt;</span> <span class="s2">"New Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-82-6" name="__codelineno-82-6" href="#__codelineno-82-6"></a>    <span class="p">],</span>
-<a id="__codelineno-82-7" name="__codelineno-82-7" href="#__codelineno-82-7"></a>    <span class="s2">&quot;inv_id = 101&quot;</span>
+<a id="__codelineno-82-7" name="__codelineno-82-7" href="#__codelineno-82-7"></a>    <span class="s2">"inv_id = 101"</span>
 <a id="__codelineno-82-8" name="__codelineno-82-8" href="#__codelineno-82-8"></a><span class="p">);</span>
 <a id="__codelineno-82-9" name="__codelineno-82-9" href="#__codelineno-82-9"></a>
 <a id="__codelineno-82-10" name="__codelineno-82-10" href="#__codelineno-82-10"></a><span class="c1">// Next SQL sentence is sent to the database system</span>
-<a id="__codelineno-82-11" name="__codelineno-82-11" href="#__codelineno-82-11"></a><span class="nx">UPDATE</span> <span class="sb">`co_invoices`</span> <span class="nx">SET</span> <span class="sb">`inv_title`</span> <span class="o">=</span> <span class="s2">&quot;New Test Invoice&quot;</span> <span class="nx">WHERE</span> <span class="nx">inv_id</span> <span class="o">=</span> <span class="mi">101</span>
+<a id="__codelineno-82-11" name="__codelineno-82-11" href="#__codelineno-82-11"></a><span class="nx">UPDATE</span> <span class="sb">`co_invoices`</span> <span class="nx">SET</span> <span class="sb">`inv_title`</span> <span class="o">=</span> <span class="s2">"New Test Invoice"</span> <span class="nx">WHERE</span> <span class="nx">inv_id</span> <span class="o">=</span> <span class="mi">101</span>
 </code></pre></div>
 <h4 id="dbadapterabstractadapter-useexplicitidvalue"><code>useExplicitIdValue()</code><a class="headerlink" href="#dbadapterabstractadapter-useexplicitidvalue" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">useExplicitIdValue</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
@@ -15335,7 +15335,7 @@ columns</p>
 </code></pre></div>
 <p>Generates SQL checking for the existence of a schema.view</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="nb">var_dump</span><span class="p">(</span>
-<a id="__codelineno-85-2" name="__codelineno-85-2" href="#__codelineno-85-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">viewExists</span><span class="p">(</span><span class="s2">&quot;active_users&quot;</span><span class="p">,</span> <span class="s2">&quot;posts&quot;</span><span class="p">)</span>
+<a id="__codelineno-85-2" name="__codelineno-85-2" href="#__codelineno-85-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">viewExists</span><span class="p">(</span><span class="s2">"active_users"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">)</span>
 <a id="__codelineno-85-3" name="__codelineno-85-3" href="#__codelineno-85-3"></a><span class="p">);</span>
 </code></pre></div>
 <h2 id="dbadapteradapterinterface">Db\Adapter\AdapterInterface<a class="headerlink" href="#dbadapteradapterinterface" title="Permanent link">&para;</a></h2>
@@ -15433,11 +15433,11 @@ to a database</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">;</span>
 <a id="__codelineno-91-2" name="__codelineno-91-2" href="#__codelineno-91-2"></a>
 <a id="__codelineno-91-3" name="__codelineno-91-3" href="#__codelineno-91-3"></a><span class="nv">$config</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-91-4" name="__codelineno-91-4" href="#__codelineno-91-4"></a>    <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-<a id="__codelineno-91-5" name="__codelineno-91-5" href="#__codelineno-91-5"></a>    <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
-<a id="__codelineno-91-6" name="__codelineno-91-6" href="#__codelineno-91-6"></a>    <span class="s2">&quot;port&quot;</span>     <span class="o">=&gt;</span> <span class="mi">3306</span><span class="p">,</span>
-<a id="__codelineno-91-7" name="__codelineno-91-7" href="#__codelineno-91-7"></a>    <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sigma&quot;</span><span class="p">,</span>
-<a id="__codelineno-91-8" name="__codelineno-91-8" href="#__codelineno-91-8"></a>    <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+<a id="__codelineno-91-4" name="__codelineno-91-4" href="#__codelineno-91-4"></a>    <span class="s2">"host"</span>     <span class="o">=&gt;</span> <span class="s2">"localhost"</span><span class="p">,</span>
+<a id="__codelineno-91-5" name="__codelineno-91-5" href="#__codelineno-91-5"></a>    <span class="s2">"dbname"</span>   <span class="o">=&gt;</span> <span class="s2">"blog"</span><span class="p">,</span>
+<a id="__codelineno-91-6" name="__codelineno-91-6" href="#__codelineno-91-6"></a>    <span class="s2">"port"</span>     <span class="o">=&gt;</span> <span class="mi">3306</span><span class="p">,</span>
+<a id="__codelineno-91-7" name="__codelineno-91-7" href="#__codelineno-91-7"></a>    <span class="s2">"username"</span> <span class="o">=&gt;</span> <span class="s2">"sigma"</span><span class="p">,</span>
+<a id="__codelineno-91-8" name="__codelineno-91-8" href="#__codelineno-91-8"></a>    <span class="s2">"password"</span> <span class="o">=&gt;</span> <span class="s2">"secret"</span><span class="p">,</span>
 <a id="__codelineno-91-9" name="__codelineno-91-9" href="#__codelineno-91-9"></a><span class="p">];</span>
 <a id="__codelineno-91-10" name="__codelineno-91-10" href="#__codelineno-91-10"></a>
 <a id="__codelineno-91-11" name="__codelineno-91-11" href="#__codelineno-91-11"></a><span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mysql</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
@@ -15653,10 +15653,10 @@ because the connection was lost. Opt-in; off by default.</span>
 <p>Returns the number of affected rows by the latest INSERT/UPDATE/DELETE
 executed in the database system</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span>
-<a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a>    <span class="s2">&quot;DELETE FROM co_invoices&quot;</span>
+<a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a>    <span class="s2">"DELETE FROM co_invoices"</span>
 <a id="__codelineno-94-3" name="__codelineno-94-3" href="#__codelineno-94-3"></a><span class="p">);</span>
 <a id="__codelineno-94-4" name="__codelineno-94-4" href="#__codelineno-94-4"></a>
-<a id="__codelineno-94-5" name="__codelineno-94-5" href="#__codelineno-94-5"></a><span class="k">echo</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">affectedRows</span><span class="p">(),</span> <span class="s2">&quot; were deleted&quot;</span><span class="p">;</span>
+<a id="__codelineno-94-5" name="__codelineno-94-5" href="#__codelineno-94-5"></a><span class="k">echo</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">affectedRows</span><span class="p">(),</span> <span class="s2">" were deleted"</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="dbadapterpdoabstractpdo-begin"><code>begin()</code><a class="headerlink" href="#dbadapterpdoabstractpdo-begin" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">begin</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$nesting</span> <span class="o">=</span> <span class="k">true</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
@@ -15682,11 +15682,11 @@ constructor.</p>
 <a id="__codelineno-99-3" name="__codelineno-99-3" href="#__codelineno-99-3"></a><span class="c1">// Make a connection</span>
 <a id="__codelineno-99-4" name="__codelineno-99-4" href="#__codelineno-99-4"></a><span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mysql</span><span class="p">(</span>
 <a id="__codelineno-99-5" name="__codelineno-99-5" href="#__codelineno-99-5"></a>    <span class="p">[</span>
-<a id="__codelineno-99-6" name="__codelineno-99-6" href="#__codelineno-99-6"></a>        <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-<a id="__codelineno-99-7" name="__codelineno-99-7" href="#__codelineno-99-7"></a>        <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sigma&quot;</span><span class="p">,</span>
-<a id="__codelineno-99-8" name="__codelineno-99-8" href="#__codelineno-99-8"></a>        <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
-<a id="__codelineno-99-9" name="__codelineno-99-9" href="#__codelineno-99-9"></a>        <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
-<a id="__codelineno-99-10" name="__codelineno-99-10" href="#__codelineno-99-10"></a>        <span class="s2">&quot;port&quot;</span>     <span class="o">=&gt;</span> <span class="mi">3306</span><span class="p">,</span>
+<a id="__codelineno-99-6" name="__codelineno-99-6" href="#__codelineno-99-6"></a>        <span class="s2">"host"</span>     <span class="o">=&gt;</span> <span class="s2">"localhost"</span><span class="p">,</span>
+<a id="__codelineno-99-7" name="__codelineno-99-7" href="#__codelineno-99-7"></a>        <span class="s2">"username"</span> <span class="o">=&gt;</span> <span class="s2">"sigma"</span><span class="p">,</span>
+<a id="__codelineno-99-8" name="__codelineno-99-8" href="#__codelineno-99-8"></a>        <span class="s2">"password"</span> <span class="o">=&gt;</span> <span class="s2">"secret"</span><span class="p">,</span>
+<a id="__codelineno-99-9" name="__codelineno-99-9" href="#__codelineno-99-9"></a>        <span class="s2">"dbname"</span>   <span class="o">=&gt;</span> <span class="s2">"blog"</span><span class="p">,</span>
+<a id="__codelineno-99-10" name="__codelineno-99-10" href="#__codelineno-99-10"></a>        <span class="s2">"port"</span>     <span class="o">=&gt;</span> <span class="mi">3306</span><span class="p">,</span>
 <a id="__codelineno-99-11" name="__codelineno-99-11" href="#__codelineno-99-11"></a>    <span class="p">]</span>
 <a id="__codelineno-99-12" name="__codelineno-99-12" href="#__codelineno-99-12"></a><span class="p">);</span>
 <a id="__codelineno-99-13" name="__codelineno-99-13" href="#__codelineno-99-13"></a>
@@ -15702,9 +15702,9 @@ constructor.</p>
 <p>Converts bound parameters such as :name: or ?1 into PDO bind params ?</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="nb">print_r</span><span class="p">(</span>
 <a id="__codelineno-101-2" name="__codelineno-101-2" href="#__codelineno-101-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">convertBoundParams</span><span class="p">(</span>
-<a id="__codelineno-101-3" name="__codelineno-101-3" href="#__codelineno-101-3"></a>        <span class="s2">&quot;SELECT * FROM co_invoices WHERE inv_title = :inv_title:&quot;</span><span class="p">,</span>
+<a id="__codelineno-101-3" name="__codelineno-101-3" href="#__codelineno-101-3"></a>        <span class="s2">"SELECT * FROM co_invoices WHERE inv_title = :inv_title:"</span><span class="p">,</span>
 <a id="__codelineno-101-4" name="__codelineno-101-4" href="#__codelineno-101-4"></a>        <span class="p">[</span>
-<a id="__codelineno-101-5" name="__codelineno-101-5" href="#__codelineno-101-5"></a>            <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-101-5" name="__codelineno-101-5" href="#__codelineno-101-5"></a>            <span class="s2">"Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-101-6" name="__codelineno-101-6" href="#__codelineno-101-6"></a>        <span class="p">]</span>
 <a id="__codelineno-101-7" name="__codelineno-101-7" href="#__codelineno-101-7"></a>    <span class="p">)</span>
 <a id="__codelineno-101-8" name="__codelineno-101-8" href="#__codelineno-101-8"></a><span class="p">);</span>
@@ -15718,7 +15718,7 @@ constructor.</p>
 </code></pre></div>
 <p>Escapes a value to avoid SQL injections according to the active charset
 in the connection</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a><span class="nv">$escapedStr</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">escapeString</span><span class="p">(</span><span class="s2">&quot;some dangerous value&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a><span class="nv">$escapedStr</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">escapeString</span><span class="p">(</span><span class="s2">"some dangerous value"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterpdoabstractpdo-execute"><code>execute()</code><a class="headerlink" href="#dbadapterpdoabstractpdo-execute" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">(</span>
@@ -15732,14 +15732,14 @@ Use this method only when the SQL statement sent to the server does not
 return any rows</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a><span class="c1">// Inserting data</span>
 <a id="__codelineno-106-2" name="__codelineno-106-2" href="#__codelineno-106-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span>
-<a id="__codelineno-106-3" name="__codelineno-106-3" href="#__codelineno-106-3"></a>    <span class="s2">&quot;INSERT INTO co_invoices VALUES (1, &#39;Test Invoice&#39;)&quot;</span>
+<a id="__codelineno-106-3" name="__codelineno-106-3" href="#__codelineno-106-3"></a>    <span class="s2">"INSERT INTO co_invoices VALUES (1, 'Test Invoice')"</span>
 <a id="__codelineno-106-4" name="__codelineno-106-4" href="#__codelineno-106-4"></a><span class="p">);</span>
 <a id="__codelineno-106-5" name="__codelineno-106-5" href="#__codelineno-106-5"></a>
 <a id="__codelineno-106-6" name="__codelineno-106-6" href="#__codelineno-106-6"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span>
-<a id="__codelineno-106-7" name="__codelineno-106-7" href="#__codelineno-106-7"></a>    <span class="s2">&quot;INSERT INTO co_invoices VALUES (?, ?)&quot;</span><span class="p">,</span>
+<a id="__codelineno-106-7" name="__codelineno-106-7" href="#__codelineno-106-7"></a>    <span class="s2">"INSERT INTO co_invoices VALUES (?, ?)"</span><span class="p">,</span>
 <a id="__codelineno-106-8" name="__codelineno-106-8" href="#__codelineno-106-8"></a>    <span class="p">[</span>
 <a id="__codelineno-106-9" name="__codelineno-106-9" href="#__codelineno-106-9"></a>        <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-106-10" name="__codelineno-106-10" href="#__codelineno-106-10"></a>        <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-106-10" name="__codelineno-106-10" href="#__codelineno-106-10"></a>        <span class="s2">"Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-106-11" name="__codelineno-106-11" href="#__codelineno-106-11"></a>    <span class="p">]</span>
 <a id="__codelineno-106-12" name="__codelineno-106-12" href="#__codelineno-106-12"></a><span class="p">);</span>
 </code></pre></div>
@@ -15755,16 +15755,16 @@ starting from zero</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-108-1" name="__codelineno-108-1" href="#__codelineno-108-1"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
 <a id="__codelineno-108-2" name="__codelineno-108-2" href="#__codelineno-108-2"></a>
 <a id="__codelineno-108-3" name="__codelineno-108-3" href="#__codelineno-108-3"></a><span class="nv">$statement</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span>
-<a id="__codelineno-108-4" name="__codelineno-108-4" href="#__codelineno-108-4"></a>    <span class="s2">&quot;SELECT * FROM co_invoices WHERE inv_title = :inv_title&quot;</span>
+<a id="__codelineno-108-4" name="__codelineno-108-4" href="#__codelineno-108-4"></a>    <span class="s2">"SELECT * FROM co_invoices WHERE inv_title = :inv_title"</span>
 <a id="__codelineno-108-5" name="__codelineno-108-5" href="#__codelineno-108-5"></a><span class="p">);</span>
 <a id="__codelineno-108-6" name="__codelineno-108-6" href="#__codelineno-108-6"></a>
 <a id="__codelineno-108-7" name="__codelineno-108-7" href="#__codelineno-108-7"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">executePrepared</span><span class="p">(</span>
 <a id="__codelineno-108-8" name="__codelineno-108-8" href="#__codelineno-108-8"></a>    <span class="nv">$statement</span><span class="p">,</span>
 <a id="__codelineno-108-9" name="__codelineno-108-9" href="#__codelineno-108-9"></a>    <span class="p">[</span>
-<a id="__codelineno-108-10" name="__codelineno-108-10" href="#__codelineno-108-10"></a>        <span class="s2">&quot;inv_title&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-108-10" name="__codelineno-108-10" href="#__codelineno-108-10"></a>        <span class="s2">"inv_title"</span> <span class="o">=&gt;</span> <span class="s2">"Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-108-11" name="__codelineno-108-11" href="#__codelineno-108-11"></a>    <span class="p">],</span>
 <a id="__codelineno-108-12" name="__codelineno-108-12" href="#__codelineno-108-12"></a>    <span class="p">[</span>
-<a id="__codelineno-108-13" name="__codelineno-108-13" href="#__codelineno-108-13"></a>        <span class="s2">&quot;inv_title&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">BIND_PARAM_STR</span><span class="p">,</span>
+<a id="__codelineno-108-13" name="__codelineno-108-13" href="#__codelineno-108-13"></a>        <span class="s2">"inv_title"</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">BIND_PARAM_STR</span><span class="p">,</span>
 <a id="__codelineno-108-14" name="__codelineno-108-14" href="#__codelineno-108-14"></a>    <span class="p">]</span>
 <a id="__codelineno-108-15" name="__codelineno-108-15" href="#__codelineno-108-15"></a><span class="p">);</span>
 </code></pre></div>
@@ -15802,14 +15802,14 @@ starting from zero</p>
 the latest executed SQL statement</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-116-1" name="__codelineno-116-1" href="#__codelineno-116-1"></a><span class="c1">// Inserting a new invoice</span>
 <a id="__codelineno-116-2" name="__codelineno-116-2" href="#__codelineno-116-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
-<a id="__codelineno-116-3" name="__codelineno-116-3" href="#__codelineno-116-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-116-3" name="__codelineno-116-3" href="#__codelineno-116-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-116-4" name="__codelineno-116-4" href="#__codelineno-116-4"></a>    <span class="p">[</span>
-<a id="__codelineno-116-5" name="__codelineno-116-5" href="#__codelineno-116-5"></a>        <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-116-5" name="__codelineno-116-5" href="#__codelineno-116-5"></a>        <span class="s2">"Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-116-6" name="__codelineno-116-6" href="#__codelineno-116-6"></a>        <span class="mi">100</span><span class="p">,</span>
 <a id="__codelineno-116-7" name="__codelineno-116-7" href="#__codelineno-116-7"></a>    <span class="p">],</span>
 <a id="__codelineno-116-8" name="__codelineno-116-8" href="#__codelineno-116-8"></a>    <span class="p">[</span>
-<a id="__codelineno-116-9" name="__codelineno-116-9" href="#__codelineno-116-9"></a>        <span class="s2">&quot;inv_title&quot;</span><span class="p">,</span>
-<a id="__codelineno-116-10" name="__codelineno-116-10" href="#__codelineno-116-10"></a>        <span class="s2">&quot;inv_total&quot;</span><span class="p">,</span>
+<a id="__codelineno-116-9" name="__codelineno-116-9" href="#__codelineno-116-9"></a>        <span class="s2">"inv_title"</span><span class="p">,</span>
+<a id="__codelineno-116-10" name="__codelineno-116-10" href="#__codelineno-116-10"></a>        <span class="s2">"inv_total"</span><span class="p">,</span>
 <a id="__codelineno-116-11" name="__codelineno-116-11" href="#__codelineno-116-11"></a>    <span class="p">]</span>
 <a id="__codelineno-116-12" name="__codelineno-116-12" href="#__codelineno-116-12"></a><span class="p">);</span>
 <a id="__codelineno-116-13" name="__codelineno-116-13" href="#__codelineno-116-13"></a>
@@ -15828,16 +15828,16 @@ trivial query. Returns false if there is no handle or the probe fails.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-119-1" name="__codelineno-119-1" href="#__codelineno-119-1"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
 <a id="__codelineno-119-2" name="__codelineno-119-2" href="#__codelineno-119-2"></a>
 <a id="__codelineno-119-3" name="__codelineno-119-3" href="#__codelineno-119-3"></a><span class="nv">$statement</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span>
-<a id="__codelineno-119-4" name="__codelineno-119-4" href="#__codelineno-119-4"></a>    <span class="s2">&quot;SELECT * FROM co_invoices WHERE inv_title = :inv_title&quot;</span>
+<a id="__codelineno-119-4" name="__codelineno-119-4" href="#__codelineno-119-4"></a>    <span class="s2">"SELECT * FROM co_invoices WHERE inv_title = :inv_title"</span>
 <a id="__codelineno-119-5" name="__codelineno-119-5" href="#__codelineno-119-5"></a><span class="p">);</span>
 <a id="__codelineno-119-6" name="__codelineno-119-6" href="#__codelineno-119-6"></a>
 <a id="__codelineno-119-7" name="__codelineno-119-7" href="#__codelineno-119-7"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">executePrepared</span><span class="p">(</span>
 <a id="__codelineno-119-8" name="__codelineno-119-8" href="#__codelineno-119-8"></a>    <span class="nv">$statement</span><span class="p">,</span>
 <a id="__codelineno-119-9" name="__codelineno-119-9" href="#__codelineno-119-9"></a>    <span class="p">[</span>
-<a id="__codelineno-119-10" name="__codelineno-119-10" href="#__codelineno-119-10"></a>        <span class="s2">&quot;inv_title&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-119-10" name="__codelineno-119-10" href="#__codelineno-119-10"></a>        <span class="s2">"inv_title"</span> <span class="o">=&gt;</span> <span class="s2">"Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-119-11" name="__codelineno-119-11" href="#__codelineno-119-11"></a>    <span class="p">],</span>
 <a id="__codelineno-119-12" name="__codelineno-119-12" href="#__codelineno-119-12"></a>    <span class="p">[</span>
-<a id="__codelineno-119-13" name="__codelineno-119-13" href="#__codelineno-119-13"></a>        <span class="s2">&quot;inv_title&quot;</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">BIND_PARAM_INT</span><span class="p">,</span>
+<a id="__codelineno-119-13" name="__codelineno-119-13" href="#__codelineno-119-13"></a>        <span class="s2">"inv_title"</span> <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">BIND_PARAM_INT</span><span class="p">,</span>
 <a id="__codelineno-119-14" name="__codelineno-119-14" href="#__codelineno-119-14"></a>    <span class="p">]</span>
 <a id="__codelineno-119-15" name="__codelineno-119-15" href="#__codelineno-119-15"></a><span class="p">);</span>
 </code></pre></div>
@@ -15853,11 +15853,11 @@ Use this method only when the SQL statement sent to the server is
 returning rows</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-121-1" name="__codelineno-121-1" href="#__codelineno-121-1"></a><span class="c1">// Querying data</span>
 <a id="__codelineno-121-2" name="__codelineno-121-2" href="#__codelineno-121-2"></a><span class="nv">$resultset</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span>
-<a id="__codelineno-121-3" name="__codelineno-121-3" href="#__codelineno-121-3"></a>    <span class="s2">&quot;SELECT * FROM co_invoices WHERE inv_status_flag = 1&quot;</span>
+<a id="__codelineno-121-3" name="__codelineno-121-3" href="#__codelineno-121-3"></a>    <span class="s2">"SELECT * FROM co_invoices WHERE inv_status_flag = 1"</span>
 <a id="__codelineno-121-4" name="__codelineno-121-4" href="#__codelineno-121-4"></a><span class="p">);</span>
 <a id="__codelineno-121-5" name="__codelineno-121-5" href="#__codelineno-121-5"></a>
 <a id="__codelineno-121-6" name="__codelineno-121-6" href="#__codelineno-121-6"></a><span class="nv">$resultset</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span>
-<a id="__codelineno-121-7" name="__codelineno-121-7" href="#__codelineno-121-7"></a>    <span class="s2">&quot;SELECT * FROM co_invoices WHERE inv_status_flag = ?&quot;</span><span class="p">,</span>
+<a id="__codelineno-121-7" name="__codelineno-121-7" href="#__codelineno-121-7"></a>    <span class="s2">"SELECT * FROM co_invoices WHERE inv_status_flag = ?"</span><span class="p">,</span>
 <a id="__codelineno-121-8" name="__codelineno-121-8" href="#__codelineno-121-8"></a>    <span class="p">[</span>
 <a id="__codelineno-121-9" name="__codelineno-121-9" href="#__codelineno-121-9"></a>        <span class="mi">1</span><span class="p">,</span>
 <a id="__codelineno-121-10" name="__codelineno-121-10" href="#__codelineno-121-10"></a>    <span class="p">]</span>
@@ -15898,11 +15898,11 @@ returns false; concrete adapters override this.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">;</span>
 <a id="__codelineno-127-2" name="__codelineno-127-2" href="#__codelineno-127-2"></a>
 <a id="__codelineno-127-3" name="__codelineno-127-3" href="#__codelineno-127-3"></a><span class="nv">$config</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-127-4" name="__codelineno-127-4" href="#__codelineno-127-4"></a>    <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-<a id="__codelineno-127-5" name="__codelineno-127-5" href="#__codelineno-127-5"></a>    <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
-<a id="__codelineno-127-6" name="__codelineno-127-6" href="#__codelineno-127-6"></a>    <span class="s2">&quot;port&quot;</span>     <span class="o">=&gt;</span> <span class="mi">3306</span><span class="p">,</span>
-<a id="__codelineno-127-7" name="__codelineno-127-7" href="#__codelineno-127-7"></a>    <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sigma&quot;</span><span class="p">,</span>
-<a id="__codelineno-127-8" name="__codelineno-127-8" href="#__codelineno-127-8"></a>    <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+<a id="__codelineno-127-4" name="__codelineno-127-4" href="#__codelineno-127-4"></a>    <span class="s2">"host"</span>     <span class="o">=&gt;</span> <span class="s2">"localhost"</span><span class="p">,</span>
+<a id="__codelineno-127-5" name="__codelineno-127-5" href="#__codelineno-127-5"></a>    <span class="s2">"dbname"</span>   <span class="o">=&gt;</span> <span class="s2">"blog"</span><span class="p">,</span>
+<a id="__codelineno-127-6" name="__codelineno-127-6" href="#__codelineno-127-6"></a>    <span class="s2">"port"</span>     <span class="o">=&gt;</span> <span class="mi">3306</span><span class="p">,</span>
+<a id="__codelineno-127-7" name="__codelineno-127-7" href="#__codelineno-127-7"></a>    <span class="s2">"username"</span> <span class="o">=&gt;</span> <span class="s2">"sigma"</span><span class="p">,</span>
+<a id="__codelineno-127-8" name="__codelineno-127-8" href="#__codelineno-127-8"></a>    <span class="s2">"password"</span> <span class="o">=&gt;</span> <span class="s2">"secret"</span><span class="p">,</span>
 <a id="__codelineno-127-9" name="__codelineno-127-9" href="#__codelineno-127-9"></a><span class="p">];</span>
 <a id="__codelineno-127-10" name="__codelineno-127-10" href="#__codelineno-127-10"></a>
 <a id="__codelineno-127-11" name="__codelineno-127-11" href="#__codelineno-127-11"></a><span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mysql</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
@@ -15992,7 +15992,7 @@ returns false; concrete adapters override this.</p>
 </code></pre></div>
 <p>Returns an array of Phalcon\Db\Column objects describing a table</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-130-1" name="__codelineno-130-1" href="#__codelineno-130-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-130-2" name="__codelineno-130-2" href="#__codelineno-130-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">)</span>
+<a id="__codelineno-130-2" name="__codelineno-130-2" href="#__codelineno-130-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">)</span>
 <a id="__codelineno-130-3" name="__codelineno-130-3" href="#__codelineno-130-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterpdomysql-describeindexes"><code>describeIndexes()</code><a class="headerlink" href="#dbadapterpdomysql-describeindexes" title="Permanent link">&para;</a></h4>
@@ -16003,7 +16003,7 @@ returns false; concrete adapters override this.</p>
 </code></pre></div>
 <p>Lists table indexes</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-132-1" name="__codelineno-132-1" href="#__codelineno-132-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-132-2" name="__codelineno-132-2" href="#__codelineno-132-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeIndexes</span><span class="p">(</span><span class="s2">&quot;co_orders_x_products&quot;</span><span class="p">)</span>
+<a id="__codelineno-132-2" name="__codelineno-132-2" href="#__codelineno-132-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeIndexes</span><span class="p">(</span><span class="s2">"co_orders_x_products"</span><span class="p">)</span>
 <a id="__codelineno-132-3" name="__codelineno-132-3" href="#__codelineno-132-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterpdomysql-describereferences"><code>describeReferences()</code><a class="headerlink" href="#dbadapterpdomysql-describereferences" title="Permanent link">&para;</a></h4>
@@ -16014,7 +16014,7 @@ returns false; concrete adapters override this.</p>
 </code></pre></div>
 <p>Lists table references</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-134-1" name="__codelineno-134-1" href="#__codelineno-134-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-134-2" name="__codelineno-134-2" href="#__codelineno-134-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeReferences</span><span class="p">(</span><span class="s2">&quot;co_orders_x_products&quot;</span><span class="p">)</span>
+<a id="__codelineno-134-2" name="__codelineno-134-2" href="#__codelineno-134-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeReferences</span><span class="p">(</span><span class="s2">"co_orders_x_products"</span><span class="p">)</span>
 <a id="__codelineno-134-3" name="__codelineno-134-3" href="#__codelineno-134-3"></a><span class="p">);</span>
 </code></pre></div>
 <div class="api-group">Protected · 2</div>
@@ -16035,11 +16035,11 @@ by the driver error code (2006 / 2013) with a message fallback.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-137-1" name="__codelineno-137-1" href="#__codelineno-137-1"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Postgresql</span><span class="p">;</span>
 <a id="__codelineno-137-2" name="__codelineno-137-2" href="#__codelineno-137-2"></a>
 <a id="__codelineno-137-3" name="__codelineno-137-3" href="#__codelineno-137-3"></a><span class="nv">$config</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-137-4" name="__codelineno-137-4" href="#__codelineno-137-4"></a>    <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-<a id="__codelineno-137-5" name="__codelineno-137-5" href="#__codelineno-137-5"></a>    <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;blog&quot;</span><span class="p">,</span>
-<a id="__codelineno-137-6" name="__codelineno-137-6" href="#__codelineno-137-6"></a>    <span class="s2">&quot;port&quot;</span>     <span class="o">=&gt;</span> <span class="mi">5432</span><span class="p">,</span>
-<a id="__codelineno-137-7" name="__codelineno-137-7" href="#__codelineno-137-7"></a>    <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
-<a id="__codelineno-137-8" name="__codelineno-137-8" href="#__codelineno-137-8"></a>    <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+<a id="__codelineno-137-4" name="__codelineno-137-4" href="#__codelineno-137-4"></a>    <span class="s2">"host"</span>     <span class="o">=&gt;</span> <span class="s2">"localhost"</span><span class="p">,</span>
+<a id="__codelineno-137-5" name="__codelineno-137-5" href="#__codelineno-137-5"></a>    <span class="s2">"dbname"</span>   <span class="o">=&gt;</span> <span class="s2">"blog"</span><span class="p">,</span>
+<a id="__codelineno-137-6" name="__codelineno-137-6" href="#__codelineno-137-6"></a>    <span class="s2">"port"</span>     <span class="o">=&gt;</span> <span class="mi">5432</span><span class="p">,</span>
+<a id="__codelineno-137-7" name="__codelineno-137-7" href="#__codelineno-137-7"></a>    <span class="s2">"username"</span> <span class="o">=&gt;</span> <span class="s2">"postgres"</span><span class="p">,</span>
+<a id="__codelineno-137-8" name="__codelineno-137-8" href="#__codelineno-137-8"></a>    <span class="s2">"password"</span> <span class="o">=&gt;</span> <span class="s2">"secret"</span><span class="p">,</span>
 <a id="__codelineno-137-9" name="__codelineno-137-9" href="#__codelineno-137-9"></a><span class="p">];</span>
 <a id="__codelineno-137-10" name="__codelineno-137-10" href="#__codelineno-137-10"></a>
 <a id="__codelineno-137-11" name="__codelineno-137-11" href="#__codelineno-137-11"></a><span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Postgresql</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
@@ -16167,7 +16167,7 @@ constructor. Call it when you need to restore a database connection.</p>
 </code></pre></div>
 <p>Returns an array of Phalcon\Db\Column objects describing a table</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-142-1" name="__codelineno-142-1" href="#__codelineno-142-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-142-2" name="__codelineno-142-2" href="#__codelineno-142-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">)</span>
+<a id="__codelineno-142-2" name="__codelineno-142-2" href="#__codelineno-142-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">)</span>
 <a id="__codelineno-142-3" name="__codelineno-142-3" href="#__codelineno-142-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterpdopostgresql-describereferences"><code>describeReferences()</code><a class="headerlink" href="#dbadapterpdopostgresql-describereferences" title="Permanent link">&para;</a></h4>
@@ -16178,25 +16178,25 @@ constructor. Call it when you need to restore a database connection.</p>
 </code></pre></div>
 <p>Lists table references</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-144-1" name="__codelineno-144-1" href="#__codelineno-144-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-144-2" name="__codelineno-144-2" href="#__codelineno-144-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeReferences</span><span class="p">(</span><span class="s2">&quot;co_orders_x_products&quot;</span><span class="p">)</span>
+<a id="__codelineno-144-2" name="__codelineno-144-2" href="#__codelineno-144-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeReferences</span><span class="p">(</span><span class="s2">"co_orders_x_products"</span><span class="p">)</span>
 <a id="__codelineno-144-3" name="__codelineno-144-3" href="#__codelineno-144-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterpdopostgresql-getdefaultidvalue"><code>getDefaultIdValue()</code><a class="headerlink" href="#dbadapterpdopostgresql-getdefaultidvalue" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-145-1" name="__codelineno-145-1" href="#__codelineno-145-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getDefaultIdValue</span><span class="p">()</span><span class="o">:</span> <span class="nx">RawValue</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the default identity value to be inserted in an identity column</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-146-1" name="__codelineno-146-1" href="#__codelineno-146-1"></a><span class="c1">// Inserting a new invoice with a valid default value for the column &#39;inv_id&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-146-1" name="__codelineno-146-1" href="#__codelineno-146-1"></a><span class="c1">// Inserting a new invoice with a valid default value for the column 'inv_id'</span>
 <a id="__codelineno-146-2" name="__codelineno-146-2" href="#__codelineno-146-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
-<a id="__codelineno-146-3" name="__codelineno-146-3" href="#__codelineno-146-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-146-3" name="__codelineno-146-3" href="#__codelineno-146-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-146-4" name="__codelineno-146-4" href="#__codelineno-146-4"></a>    <span class="p">[</span>
 <a id="__codelineno-146-5" name="__codelineno-146-5" href="#__codelineno-146-5"></a>        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getDefaultIdValue</span><span class="p">(),</span>
-<a id="__codelineno-146-6" name="__codelineno-146-6" href="#__codelineno-146-6"></a>        <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-146-6" name="__codelineno-146-6" href="#__codelineno-146-6"></a>        <span class="s2">"Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-146-7" name="__codelineno-146-7" href="#__codelineno-146-7"></a>        <span class="mi">100</span><span class="p">,</span>
 <a id="__codelineno-146-8" name="__codelineno-146-8" href="#__codelineno-146-8"></a>    <span class="p">],</span>
 <a id="__codelineno-146-9" name="__codelineno-146-9" href="#__codelineno-146-9"></a>    <span class="p">[</span>
-<a id="__codelineno-146-10" name="__codelineno-146-10" href="#__codelineno-146-10"></a>        <span class="s2">&quot;inv_id&quot;</span><span class="p">,</span>
-<a id="__codelineno-146-11" name="__codelineno-146-11" href="#__codelineno-146-11"></a>        <span class="s2">&quot;inv_title&quot;</span><span class="p">,</span>
-<a id="__codelineno-146-12" name="__codelineno-146-12" href="#__codelineno-146-12"></a>        <span class="s2">&quot;inv_total&quot;</span><span class="p">,</span>
+<a id="__codelineno-146-10" name="__codelineno-146-10" href="#__codelineno-146-10"></a>        <span class="s2">"inv_id"</span><span class="p">,</span>
+<a id="__codelineno-146-11" name="__codelineno-146-11" href="#__codelineno-146-11"></a>        <span class="s2">"inv_title"</span><span class="p">,</span>
+<a id="__codelineno-146-12" name="__codelineno-146-12" href="#__codelineno-146-12"></a>        <span class="s2">"inv_total"</span><span class="p">,</span>
 <a id="__codelineno-146-13" name="__codelineno-146-13" href="#__codelineno-146-13"></a>    <span class="p">]</span>
 <a id="__codelineno-146-14" name="__codelineno-146-14" href="#__codelineno-146-14"></a><span class="p">);</span>
 </code></pre></div>
@@ -16239,7 +16239,7 @@ message fallback.</p>
 <a id="__codelineno-152-2" name="__codelineno-152-2" href="#__codelineno-152-2"></a>
 <a id="__codelineno-152-3" name="__codelineno-152-3" href="#__codelineno-152-3"></a><span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sqlite</span><span class="p">(</span>
 <a id="__codelineno-152-4" name="__codelineno-152-4" href="#__codelineno-152-4"></a>    <span class="p">[</span>
-<a id="__codelineno-152-5" name="__codelineno-152-5" href="#__codelineno-152-5"></a>        <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;/tmp/test.sqlite&quot;</span><span class="p">,</span>
+<a id="__codelineno-152-5" name="__codelineno-152-5" href="#__codelineno-152-5"></a>        <span class="s2">"dbname"</span> <span class="o">=&gt;</span> <span class="s2">"/tmp/test.sqlite"</span><span class="p">,</span>
 <a id="__codelineno-152-6" name="__codelineno-152-6" href="#__codelineno-152-6"></a>    <span class="p">]</span>
 <a id="__codelineno-152-7" name="__codelineno-152-7" href="#__codelineno-152-7"></a><span class="p">);</span>
 </code></pre></div>
@@ -16346,7 +16346,7 @@ constructor. Call it when you need to restore a database connection.</p>
 </code></pre></div>
 <p>Returns an array of Phalcon\Db\Column objects describing a table</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-156-1" name="__codelineno-156-1" href="#__codelineno-156-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-156-2" name="__codelineno-156-2" href="#__codelineno-156-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">)</span>
+<a id="__codelineno-156-2" name="__codelineno-156-2" href="#__codelineno-156-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">)</span>
 <a id="__codelineno-156-3" name="__codelineno-156-3" href="#__codelineno-156-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterpdosqlite-describeindexes"><code>describeIndexes()</code><a class="headerlink" href="#dbadapterpdosqlite-describeindexes" title="Permanent link">&para;</a></h4>
@@ -16357,7 +16357,7 @@ constructor. Call it when you need to restore a database connection.</p>
 </code></pre></div>
 <p>Lists table indexes</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-158-1" name="__codelineno-158-1" href="#__codelineno-158-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-158-2" name="__codelineno-158-2" href="#__codelineno-158-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeIndexes</span><span class="p">(</span><span class="s2">&quot;co_orders_x_products&quot;</span><span class="p">)</span>
+<a id="__codelineno-158-2" name="__codelineno-158-2" href="#__codelineno-158-2"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeIndexes</span><span class="p">(</span><span class="s2">"co_orders_x_products"</span><span class="p">)</span>
 <a id="__codelineno-158-3" name="__codelineno-158-3" href="#__codelineno-158-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbadapterpdosqlite-describereferences"><code>describeReferences()</code><a class="headerlink" href="#dbadapterpdosqlite-describereferences" title="Permanent link">&para;</a></h4>
@@ -16372,16 +16372,16 @@ constructor. Call it when you need to restore a database connection.</p>
 </code></pre></div>
 <p>Returns the default value to make the RBDM use the default value declared
 in the table definition</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-161-1" name="__codelineno-161-1" href="#__codelineno-161-1"></a><span class="c1">// Inserting a new invoice with a valid default value for the column &#39;inv_total&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-161-1" name="__codelineno-161-1" href="#__codelineno-161-1"></a><span class="c1">// Inserting a new invoice with a valid default value for the column 'inv_total'</span>
 <a id="__codelineno-161-2" name="__codelineno-161-2" href="#__codelineno-161-2"></a><span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
-<a id="__codelineno-161-3" name="__codelineno-161-3" href="#__codelineno-161-3"></a>    <span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-161-3" name="__codelineno-161-3" href="#__codelineno-161-3"></a>    <span class="s2">"co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-161-4" name="__codelineno-161-4" href="#__codelineno-161-4"></a>    <span class="p">[</span>
-<a id="__codelineno-161-5" name="__codelineno-161-5" href="#__codelineno-161-5"></a>        <span class="s2">&quot;Test Invoice&quot;</span><span class="p">,</span>
+<a id="__codelineno-161-5" name="__codelineno-161-5" href="#__codelineno-161-5"></a>        <span class="s2">"Test Invoice"</span><span class="p">,</span>
 <a id="__codelineno-161-6" name="__codelineno-161-6" href="#__codelineno-161-6"></a>        <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getDefaultValue</span><span class="p">(),</span>
 <a id="__codelineno-161-7" name="__codelineno-161-7" href="#__codelineno-161-7"></a>    <span class="p">],</span>
 <a id="__codelineno-161-8" name="__codelineno-161-8" href="#__codelineno-161-8"></a>    <span class="p">[</span>
-<a id="__codelineno-161-9" name="__codelineno-161-9" href="#__codelineno-161-9"></a>        <span class="s2">&quot;inv_title&quot;</span><span class="p">,</span>
-<a id="__codelineno-161-10" name="__codelineno-161-10" href="#__codelineno-161-10"></a>        <span class="s2">&quot;inv_total&quot;</span><span class="p">,</span>
+<a id="__codelineno-161-9" name="__codelineno-161-9" href="#__codelineno-161-9"></a>        <span class="s2">"inv_title"</span><span class="p">,</span>
+<a id="__codelineno-161-10" name="__codelineno-161-10" href="#__codelineno-161-10"></a>        <span class="s2">"inv_total"</span><span class="p">,</span>
 <a id="__codelineno-161-11" name="__codelineno-161-11" href="#__codelineno-161-11"></a>    <span class="p">]</span>
 <a id="__codelineno-161-12" name="__codelineno-161-12" href="#__codelineno-161-12"></a><span class="p">);</span>
 </code></pre></div>
@@ -16409,25 +16409,25 @@ predicate are rejected at INSERT/UPDATE time.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-165-1" name="__codelineno-165-1" href="#__codelineno-165-1"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Check</span><span class="p">;</span>
 <a id="__codelineno-165-2" name="__codelineno-165-2" href="#__codelineno-165-2"></a>
 <a id="__codelineno-165-3" name="__codelineno-165-3" href="#__codelineno-165-3"></a><span class="nv">$positivePrice</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Check</span><span class="p">(</span>
-<a id="__codelineno-165-4" name="__codelineno-165-4" href="#__codelineno-165-4"></a>    <span class="s2">&quot;chk_price_positive&quot;</span><span class="p">,</span>
+<a id="__codelineno-165-4" name="__codelineno-165-4" href="#__codelineno-165-4"></a>    <span class="s2">"chk_price_positive"</span><span class="p">,</span>
 <a id="__codelineno-165-5" name="__codelineno-165-5" href="#__codelineno-165-5"></a>    <span class="p">[</span>
-<a id="__codelineno-165-6" name="__codelineno-165-6" href="#__codelineno-165-6"></a>        <span class="s2">&quot;expression&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;price &gt; 0&quot;</span><span class="p">,</span>
+<a id="__codelineno-165-6" name="__codelineno-165-6" href="#__codelineno-165-6"></a>        <span class="s2">"expression"</span> <span class="o">=&gt;</span> <span class="s2">"price &gt; 0"</span><span class="p">,</span>
 <a id="__codelineno-165-7" name="__codelineno-165-7" href="#__codelineno-165-7"></a>    <span class="p">]</span>
 <a id="__codelineno-165-8" name="__codelineno-165-8" href="#__codelineno-165-8"></a><span class="p">);</span>
 <a id="__codelineno-165-9" name="__codelineno-165-9" href="#__codelineno-165-9"></a>
 <a id="__codelineno-165-10" name="__codelineno-165-10" href="#__codelineno-165-10"></a><span class="c1">// Used inside a createTable() definition</span>
 <a id="__codelineno-165-11" name="__codelineno-165-11" href="#__codelineno-165-11"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span>
-<a id="__codelineno-165-12" name="__codelineno-165-12" href="#__codelineno-165-12"></a>    <span class="s2">&quot;products&quot;</span><span class="p">,</span>
+<a id="__codelineno-165-12" name="__codelineno-165-12" href="#__codelineno-165-12"></a>    <span class="s2">"products"</span><span class="p">,</span>
 <a id="__codelineno-165-13" name="__codelineno-165-13" href="#__codelineno-165-13"></a>    <span class="k">null</span><span class="p">,</span>
 <a id="__codelineno-165-14" name="__codelineno-165-14" href="#__codelineno-165-14"></a>    <span class="p">[</span>
-<a id="__codelineno-165-15" name="__codelineno-165-15" href="#__codelineno-165-15"></a>        <span class="s2">&quot;columns&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
-<a id="__codelineno-165-16" name="__codelineno-165-16" href="#__codelineno-165-16"></a>        <span class="s2">&quot;checks&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$positivePrice</span><span class="p">],</span>
+<a id="__codelineno-165-15" name="__codelineno-165-15" href="#__codelineno-165-15"></a>        <span class="s2">"columns"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
+<a id="__codelineno-165-16" name="__codelineno-165-16" href="#__codelineno-165-16"></a>        <span class="s2">"checks"</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$positivePrice</span><span class="p">],</span>
 <a id="__codelineno-165-17" name="__codelineno-165-17" href="#__codelineno-165-17"></a>    <span class="p">]</span>
 <a id="__codelineno-165-18" name="__codelineno-165-18" href="#__codelineno-165-18"></a><span class="p">);</span>
 <a id="__codelineno-165-19" name="__codelineno-165-19" href="#__codelineno-165-19"></a>
 <a id="__codelineno-165-20" name="__codelineno-165-20" href="#__codelineno-165-20"></a><span class="c1">// Or added to an existing table (MySQL 8.0.16+ and PostgreSQL).</span>
 <a id="__codelineno-165-21" name="__codelineno-165-21" href="#__codelineno-165-21"></a><span class="c1">// SQLite cannot add CHECK constraints to existing tables.</span>
-<a id="__codelineno-165-22" name="__codelineno-165-22" href="#__codelineno-165-22"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addCheck</span><span class="p">(</span><span class="s2">&quot;products&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$positivePrice</span><span class="p">);</span>
+<a id="__codelineno-165-22" name="__codelineno-165-22" href="#__codelineno-165-22"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addCheck</span><span class="p">(</span><span class="s2">"products"</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$positivePrice</span><span class="p">);</span>
 </code></pre></div>
 <div class="api-tree">
 <ul>
@@ -16513,20 +16513,20 @@ prefix in that case.</span>
 <a id="__codelineno-169-2" name="__codelineno-169-2" href="#__codelineno-169-2"></a>
 <a id="__codelineno-169-3" name="__codelineno-169-3" href="#__codelineno-169-3"></a><span class="c1">// Column definition</span>
 <a id="__codelineno-169-4" name="__codelineno-169-4" href="#__codelineno-169-4"></a><span class="nv">$column</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
-<a id="__codelineno-169-5" name="__codelineno-169-5" href="#__codelineno-169-5"></a>    <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+<a id="__codelineno-169-5" name="__codelineno-169-5" href="#__codelineno-169-5"></a>    <span class="s2">"id"</span><span class="p">,</span>
 <a id="__codelineno-169-6" name="__codelineno-169-6" href="#__codelineno-169-6"></a>    <span class="p">[</span>
-<a id="__codelineno-169-7" name="__codelineno-169-7" href="#__codelineno-169-7"></a>        <span class="s2">&quot;type&quot;</span>          <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
-<a id="__codelineno-169-8" name="__codelineno-169-8" href="#__codelineno-169-8"></a>        <span class="s2">&quot;size&quot;</span>          <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-169-9" name="__codelineno-169-9" href="#__codelineno-169-9"></a>        <span class="s2">&quot;unsigned&quot;</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-169-10" name="__codelineno-169-10" href="#__codelineno-169-10"></a>        <span class="s2">&quot;notNull&quot;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-169-11" name="__codelineno-169-11" href="#__codelineno-169-11"></a>        <span class="s2">&quot;autoIncrement&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-169-12" name="__codelineno-169-12" href="#__codelineno-169-12"></a>        <span class="s2">&quot;first&quot;</span>         <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-169-13" name="__codelineno-169-13" href="#__codelineno-169-13"></a>        <span class="s2">&quot;comment&quot;</span>       <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-169-7" name="__codelineno-169-7" href="#__codelineno-169-7"></a>        <span class="s2">"type"</span>          <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
+<a id="__codelineno-169-8" name="__codelineno-169-8" href="#__codelineno-169-8"></a>        <span class="s2">"size"</span>          <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-169-9" name="__codelineno-169-9" href="#__codelineno-169-9"></a>        <span class="s2">"unsigned"</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-169-10" name="__codelineno-169-10" href="#__codelineno-169-10"></a>        <span class="s2">"notNull"</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-169-11" name="__codelineno-169-11" href="#__codelineno-169-11"></a>        <span class="s2">"autoIncrement"</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-169-12" name="__codelineno-169-12" href="#__codelineno-169-12"></a>        <span class="s2">"first"</span>         <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-169-13" name="__codelineno-169-13" href="#__codelineno-169-13"></a>        <span class="s2">"comment"</span>       <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
 <a id="__codelineno-169-14" name="__codelineno-169-14" href="#__codelineno-169-14"></a>    <span class="p">]</span>
 <a id="__codelineno-169-15" name="__codelineno-169-15" href="#__codelineno-169-15"></a><span class="p">);</span>
 <a id="__codelineno-169-16" name="__codelineno-169-16" href="#__codelineno-169-16"></a>
 <a id="__codelineno-169-17" name="__codelineno-169-17" href="#__codelineno-169-17"></a><span class="c1">// Add column to existing table</span>
-<a id="__codelineno-169-18" name="__codelineno-169-18" href="#__codelineno-169-18"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$column</span><span class="p">);</span>
+<a id="__codelineno-169-18" name="__codelineno-169-18" href="#__codelineno-169-18"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s2">"co_invoices"</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$column</span><span class="p">);</span>
 </code></pre></div>
 <div class="api-tree">
 <ul>
@@ -17613,22 +17613,22 @@ this throw - MySQL and SQLite have no materialized-view concept.</p>
 <h4 id="dbdialect-forupdate"><code>forUpdate()</code><a class="headerlink" href="#dbdialect-forupdate" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-198-1" name="__codelineno-198-1" href="#__codelineno-198-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">forUpdate</span><span class="p">(</span>
 <a id="__codelineno-198-2" name="__codelineno-198-2" href="#__codelineno-198-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-198-3" name="__codelineno-198-3" href="#__codelineno-198-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-198-3" name="__codelineno-198-3" href="#__codelineno-198-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-198-4" name="__codelineno-198-4" href="#__codelineno-198-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a SQL modified with a FOR UPDATE clause. The optional <code>modifier</code>
 appends a row-lock disposition keyword.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-199-1" name="__codelineno-199-1" href="#__codelineno-199-1"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">forUpdate</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-199-1" name="__codelineno-199-1" href="#__codelineno-199-1"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">forUpdate</span><span class="p">(</span><span class="s2">"SELECT * FROM co_invoices"</span><span class="p">);</span>
 <a id="__codelineno-199-2" name="__codelineno-199-2" href="#__codelineno-199-2"></a><span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM co_invoices FOR UPDATE</span>
 <a id="__codelineno-199-3" name="__codelineno-199-3" href="#__codelineno-199-3"></a>
 <a id="__codelineno-199-4" name="__codelineno-199-4" href="#__codelineno-199-4"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">forUpdate</span><span class="p">(</span>
-<a id="__codelineno-199-5" name="__codelineno-199-5" href="#__codelineno-199-5"></a>    <span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-199-5" name="__codelineno-199-5" href="#__codelineno-199-5"></a>    <span class="s2">"SELECT * FROM co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-199-6" name="__codelineno-199-6" href="#__codelineno-199-6"></a>    <span class="nx">Dialect</span><span class="o">::</span><span class="na">LOCK_NOWAIT</span>
 <a id="__codelineno-199-7" name="__codelineno-199-7" href="#__codelineno-199-7"></a><span class="p">);</span>
 <a id="__codelineno-199-8" name="__codelineno-199-8" href="#__codelineno-199-8"></a><span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM co_invoices FOR UPDATE NOWAIT</span>
 <a id="__codelineno-199-9" name="__codelineno-199-9" href="#__codelineno-199-9"></a>
 <a id="__codelineno-199-10" name="__codelineno-199-10" href="#__codelineno-199-10"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">forUpdate</span><span class="p">(</span>
-<a id="__codelineno-199-11" name="__codelineno-199-11" href="#__codelineno-199-11"></a>    <span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-199-11" name="__codelineno-199-11" href="#__codelineno-199-11"></a>    <span class="s2">"SELECT * FROM co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-199-12" name="__codelineno-199-12" href="#__codelineno-199-12"></a>    <span class="nx">Dialect</span><span class="o">::</span><span class="na">LOCK_SKIP_LOCKED</span>
 <a id="__codelineno-199-13" name="__codelineno-199-13" href="#__codelineno-199-13"></a><span class="p">);</span>
 <a id="__codelineno-199-14" name="__codelineno-199-14" href="#__codelineno-199-14"></a><span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM co_invoices FOR UPDATE SKIP LOCKED</span>
@@ -17643,8 +17643,8 @@ appends a row-lock disposition keyword.</p>
 <p>Gets a list of columns with escaped identifiers</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-201-1" name="__codelineno-201-1" href="#__codelineno-201-1"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">getColumnList</span><span class="p">(</span>
 <a id="__codelineno-201-2" name="__codelineno-201-2" href="#__codelineno-201-2"></a>    <span class="p">[</span>
-<a id="__codelineno-201-3" name="__codelineno-201-3" href="#__codelineno-201-3"></a>        <span class="s2">&quot;column1&quot;</span><span class="p">,</span>
-<a id="__codelineno-201-4" name="__codelineno-201-4" href="#__codelineno-201-4"></a>        <span class="s2">&quot;column&quot;</span><span class="p">,</span>
+<a id="__codelineno-201-3" name="__codelineno-201-3" href="#__codelineno-201-3"></a>        <span class="s2">"column1"</span><span class="p">,</span>
+<a id="__codelineno-201-4" name="__codelineno-201-4" href="#__codelineno-201-4"></a>        <span class="s2">"column"</span><span class="p">,</span>
 <a id="__codelineno-201-5" name="__codelineno-201-5" href="#__codelineno-201-5"></a>    <span class="p">]</span>
 <a id="__codelineno-201-6" name="__codelineno-201-6" href="#__codelineno-201-6"></a><span class="p">);</span>
 </code></pre></div>
@@ -17685,13 +17685,13 @@ database system valid expression</p>
 <p>Generates the SQL for LIMIT clause</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-207-1" name="__codelineno-207-1" href="#__codelineno-207-1"></a><span class="c1">// SELECT * FROM co_invoices LIMIT 10</span>
 <a id="__codelineno-207-2" name="__codelineno-207-2" href="#__codelineno-207-2"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span>
-<a id="__codelineno-207-3" name="__codelineno-207-3" href="#__codelineno-207-3"></a>    <span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-207-3" name="__codelineno-207-3" href="#__codelineno-207-3"></a>    <span class="s2">"SELECT * FROM co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-207-4" name="__codelineno-207-4" href="#__codelineno-207-4"></a>    <span class="mi">10</span>
 <a id="__codelineno-207-5" name="__codelineno-207-5" href="#__codelineno-207-5"></a><span class="p">);</span>
 <a id="__codelineno-207-6" name="__codelineno-207-6" href="#__codelineno-207-6"></a>
 <a id="__codelineno-207-7" name="__codelineno-207-7" href="#__codelineno-207-7"></a><span class="c1">// SELECT * FROM co_invoices LIMIT 10 OFFSET 50</span>
 <a id="__codelineno-207-8" name="__codelineno-207-8" href="#__codelineno-207-8"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span>
-<a id="__codelineno-207-9" name="__codelineno-207-9" href="#__codelineno-207-9"></a>    <span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-207-9" name="__codelineno-207-9" href="#__codelineno-207-9"></a>    <span class="s2">"SELECT * FROM co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-207-10" name="__codelineno-207-10" href="#__codelineno-207-10"></a>    <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 <a id="__codelineno-207-11" name="__codelineno-207-11" href="#__codelineno-207-11"></a><span class="p">);</span>
 </code></pre></div>
@@ -17792,7 +17792,7 @@ returns false; <code>returning()</code> throws there.</p>
 <h4 id="dbdialect-getcheckclause"><code>getCheckClause()</code><a class="headerlink" href="#dbdialect-getcheckclause" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-223-1" name="__codelineno-223-1" href="#__codelineno-223-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getCheckClause</span><span class="p">(</span>
 <a id="__codelineno-223-2" name="__codelineno-223-2" href="#__codelineno-223-2"></a>    <span class="nx">CheckInterface</span> <span class="nv">$check</span><span class="p">,</span>
-<a id="__codelineno-223-3" name="__codelineno-223-3" href="#__codelineno-223-3"></a>    <span class="nx">string</span> <span class="nv">$escapeChar</span> <span class="o">=</span> <span class="s2">&quot;`&quot;</span>
+<a id="__codelineno-223-3" name="__codelineno-223-3" href="#__codelineno-223-3"></a>    <span class="nx">string</span> <span class="nv">$escapeChar</span> <span class="o">=</span> <span class="s2">"`"</span>
 <a id="__codelineno-223-4" name="__codelineno-223-4" href="#__codelineno-223-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Builds a CHECK constraint clause from a <code>CheckInterface</code>, using the
@@ -18289,7 +18289,7 @@ Enforced by MySQL 8.0.16+.</p>
 </code></pre></div>
 <p>Generates SQL describing a table</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-257-1" name="__codelineno-257-1" href="#__codelineno-257-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-257-2" name="__codelineno-257-2" href="#__codelineno-257-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">)</span>
+<a id="__codelineno-257-2" name="__codelineno-257-2" href="#__codelineno-257-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">)</span>
 <a id="__codelineno-257-3" name="__codelineno-257-3" href="#__codelineno-257-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbdialectmysql-describeindexes"><code>describeIndexes()</code><a class="headerlink" href="#dbdialectmysql-describeindexes" title="Permanent link">&para;</a></h4>
@@ -18374,7 +18374,7 @@ Enforced by MySQL 8.0.16+.</p>
 </code></pre></div>
 <p>List all tables in database</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-270-1" name="__codelineno-270-1" href="#__codelineno-270-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-270-2" name="__codelineno-270-2" href="#__codelineno-270-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">)</span>
+<a id="__codelineno-270-2" name="__codelineno-270-2" href="#__codelineno-270-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">"blog"</span><span class="p">)</span>
 <a id="__codelineno-270-3" name="__codelineno-270-3" href="#__codelineno-270-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbdialectmysql-listviews"><code>listViews()</code><a class="headerlink" href="#dbdialectmysql-listviews" title="Permanent link">&para;</a></h4>
@@ -18405,7 +18405,7 @@ SQL on MySQL connections.</p>
 <h4 id="dbdialectmysql-sharedlock"><code>sharedLock()</code><a class="headerlink" href="#dbdialectmysql-sharedlock" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-274-1" name="__codelineno-274-1" href="#__codelineno-274-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">sharedLock</span><span class="p">(</span>
 <a id="__codelineno-274-2" name="__codelineno-274-2" href="#__codelineno-274-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-274-3" name="__codelineno-274-3" href="#__codelineno-274-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-274-3" name="__codelineno-274-3" href="#__codelineno-274-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-274-4" name="__codelineno-274-4" href="#__codelineno-274-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a SQL modified with a LOCK IN SHARE MODE clause. The <code>modifier</code>
@@ -18413,7 +18413,7 @@ argument is accepted for signature parity with the contract but is
 silently ignored on MySQL - its legacy <code>LOCK IN SHARE MODE</code> syntax has
 no <code>NOWAIT</code> / <code>SKIP LOCKED</code> variant. Callers needing those modifiers
 should target PostgreSQL or stay on <code>forUpdate()</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-275-1" name="__codelineno-275-1" href="#__codelineno-275-1"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">sharedLock</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-275-1" name="__codelineno-275-1" href="#__codelineno-275-1"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">sharedLock</span><span class="p">(</span><span class="s2">"SELECT * FROM co_invoices"</span><span class="p">);</span>
 <a id="__codelineno-275-2" name="__codelineno-275-2" href="#__codelineno-275-2"></a>
 <a id="__codelineno-275-3" name="__codelineno-275-3" href="#__codelineno-275-3"></a><span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM co_invoices LOCK IN SHARE MODE</span>
 </code></pre></div>
@@ -18429,9 +18429,9 @@ upsert clause; <code>onConflictUpdate()</code> throws.</p>
 <a id="__codelineno-277-4" name="__codelineno-277-4" href="#__codelineno-277-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Generates SQL checking for the existence of a schema.table</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-278-1" name="__codelineno-278-1" href="#__codelineno-278-1"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">,</span> <span class="s2">&quot;blog&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-278-1" name="__codelineno-278-1" href="#__codelineno-278-1"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">);</span>
 <a id="__codelineno-278-2" name="__codelineno-278-2" href="#__codelineno-278-2"></a>
-<a id="__codelineno-278-3" name="__codelineno-278-3" href="#__codelineno-278-3"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">);</span>
+<a id="__codelineno-278-3" name="__codelineno-278-3" href="#__codelineno-278-3"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbdialectmysql-tableoptions"><code>tableOptions()</code><a class="headerlink" href="#dbdialectmysql-tableoptions" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-279-1" name="__codelineno-279-1" href="#__codelineno-279-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">tableOptions</span><span class="p">(</span>
@@ -18768,7 +18768,7 @@ upsert clause; <code>onConflictUpdate()</code> throws.</p>
 </code></pre></div>
 <p>Generates SQL describing a table</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-292-1" name="__codelineno-292-1" href="#__codelineno-292-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-292-2" name="__codelineno-292-2" href="#__codelineno-292-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">)</span>
+<a id="__codelineno-292-2" name="__codelineno-292-2" href="#__codelineno-292-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">)</span>
 <a id="__codelineno-292-3" name="__codelineno-292-3" href="#__codelineno-292-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbdialectpostgresql-describeindexes"><code>describeIndexes()</code><a class="headerlink" href="#dbdialectpostgresql-describeindexes" title="Permanent link">&para;</a></h4>
@@ -18857,7 +18857,7 @@ upsert clause; <code>onConflictUpdate()</code> throws.</p>
 </code></pre></div>
 <p>List all tables in database</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-305-1" name="__codelineno-305-1" href="#__codelineno-305-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-305-2" name="__codelineno-305-2" href="#__codelineno-305-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">)</span>
+<a id="__codelineno-305-2" name="__codelineno-305-2" href="#__codelineno-305-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">"blog"</span><span class="p">)</span>
 <a id="__codelineno-305-3" name="__codelineno-305-3" href="#__codelineno-305-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbdialectpostgresql-listviews"><code>listViews()</code><a class="headerlink" href="#dbdialectpostgresql-listviews" title="Permanent link">&para;</a></h4>
@@ -18894,18 +18894,18 @@ statement. Pass <code>["*"]</code> for <code>RETURNING *</code>, or a list of co
 <h4 id="dbdialectpostgresql-sharedlock"><code>sharedLock()</code><a class="headerlink" href="#dbdialectpostgresql-sharedlock" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-310-1" name="__codelineno-310-1" href="#__codelineno-310-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">sharedLock</span><span class="p">(</span>
 <a id="__codelineno-310-2" name="__codelineno-310-2" href="#__codelineno-310-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-310-3" name="__codelineno-310-3" href="#__codelineno-310-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-310-3" name="__codelineno-310-3" href="#__codelineno-310-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-310-4" name="__codelineno-310-4" href="#__codelineno-310-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a SQL modified with a <code>FOR SHARE</code> clause - PostgreSQL's
 equivalent of MySQL's <code>LOCK IN SHARE MODE</code>. The optional <code>modifier</code>
 appends a row-lock disposition keyword (pass <code>Dialect::LOCK_NOWAIT</code>
 or <code>Dialect::LOCK_SKIP_LOCKED</code>).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-311-1" name="__codelineno-311-1" href="#__codelineno-311-1"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">sharedLock</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-311-1" name="__codelineno-311-1" href="#__codelineno-311-1"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">sharedLock</span><span class="p">(</span><span class="s2">"SELECT * FROM co_invoices"</span><span class="p">);</span>
 <a id="__codelineno-311-2" name="__codelineno-311-2" href="#__codelineno-311-2"></a><span class="c1">// SELECT * FROM co_invoices FOR SHARE</span>
 <a id="__codelineno-311-3" name="__codelineno-311-3" href="#__codelineno-311-3"></a>
 <a id="__codelineno-311-4" name="__codelineno-311-4" href="#__codelineno-311-4"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">sharedLock</span><span class="p">(</span>
-<a id="__codelineno-311-5" name="__codelineno-311-5" href="#__codelineno-311-5"></a>    <span class="s2">&quot;SELECT * FROM co_invoices&quot;</span><span class="p">,</span>
+<a id="__codelineno-311-5" name="__codelineno-311-5" href="#__codelineno-311-5"></a>    <span class="s2">"SELECT * FROM co_invoices"</span><span class="p">,</span>
 <a id="__codelineno-311-6" name="__codelineno-311-6" href="#__codelineno-311-6"></a>    <span class="nx">Dialect</span><span class="o">::</span><span class="na">LOCK_NOWAIT</span>
 <a id="__codelineno-311-7" name="__codelineno-311-7" href="#__codelineno-311-7"></a><span class="p">);</span>
 <a id="__codelineno-311-8" name="__codelineno-311-8" href="#__codelineno-311-8"></a><span class="c1">// SELECT * FROM co_invoices FOR SHARE NOWAIT</span>
@@ -18925,9 +18925,9 @@ or <code>Dialect::LOCK_SKIP_LOCKED</code>).</p>
 <a id="__codelineno-314-4" name="__codelineno-314-4" href="#__codelineno-314-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Generates SQL checking for the existence of a schema.table</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-315-1" name="__codelineno-315-1" href="#__codelineno-315-1"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">,</span> <span class="s2">&quot;blog&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-315-1" name="__codelineno-315-1" href="#__codelineno-315-1"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">);</span>
 <a id="__codelineno-315-2" name="__codelineno-315-2" href="#__codelineno-315-2"></a>
-<a id="__codelineno-315-3" name="__codelineno-315-3" href="#__codelineno-315-3"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">);</span>
+<a id="__codelineno-315-3" name="__codelineno-315-3" href="#__codelineno-315-3"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbdialectpostgresql-tableoptions"><code>tableOptions()</code><a class="headerlink" href="#dbdialectpostgresql-tableoptions" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-316-1" name="__codelineno-316-1" href="#__codelineno-316-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">tableOptions</span><span class="p">(</span>
@@ -19249,7 +19249,7 @@ the constraint must be declared at CREATE TABLE time.</p>
 </code></pre></div>
 <p>Generates SQL describing a table</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-329-1" name="__codelineno-329-1" href="#__codelineno-329-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-329-2" name="__codelineno-329-2" href="#__codelineno-329-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">)</span>
+<a id="__codelineno-329-2" name="__codelineno-329-2" href="#__codelineno-329-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">)</span>
 <a id="__codelineno-329-3" name="__codelineno-329-3" href="#__codelineno-329-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbdialectsqlite-describeindex"><code>describeIndex()</code><a class="headerlink" href="#dbdialectsqlite-describeindex" title="Permanent link">&para;</a></h4>
@@ -19332,7 +19332,7 @@ callers on 3.35+ can use the feature.</p>
 <h4 id="dbdialectsqlite-forupdate"><code>forUpdate()</code><a class="headerlink" href="#dbdialectsqlite-forupdate" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-340-1" name="__codelineno-340-1" href="#__codelineno-340-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">forUpdate</span><span class="p">(</span>
 <a id="__codelineno-340-2" name="__codelineno-340-2" href="#__codelineno-340-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-340-3" name="__codelineno-340-3" href="#__codelineno-340-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-340-3" name="__codelineno-340-3" href="#__codelineno-340-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-340-4" name="__codelineno-340-4" href="#__codelineno-340-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a SQL modified with a FOR UPDATE clause. SQLite has no
@@ -19352,7 +19352,7 @@ silently ignored).</p>
 </code></pre></div>
 <p>Generates the SQL to get query list of indexes</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-343-1" name="__codelineno-343-1" href="#__codelineno-343-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-343-2" name="__codelineno-343-2" href="#__codelineno-343-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listIndexesSql</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">)</span>
+<a id="__codelineno-343-2" name="__codelineno-343-2" href="#__codelineno-343-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listIndexesSql</span><span class="p">(</span><span class="s2">"blog"</span><span class="p">)</span>
 <a id="__codelineno-343-3" name="__codelineno-343-3" href="#__codelineno-343-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbdialectsqlite-listtables"><code>listTables()</code><a class="headerlink" href="#dbdialectsqlite-listtables" title="Permanent link">&para;</a></h4>
@@ -19360,7 +19360,7 @@ silently ignored).</p>
 </code></pre></div>
 <p>List all tables in database</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-345-1" name="__codelineno-345-1" href="#__codelineno-345-1"></a><span class="nb">print_r</span><span class="p">(</span>
-<a id="__codelineno-345-2" name="__codelineno-345-2" href="#__codelineno-345-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">)</span>
+<a id="__codelineno-345-2" name="__codelineno-345-2" href="#__codelineno-345-2"></a>    <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">"blog"</span><span class="p">)</span>
 <a id="__codelineno-345-3" name="__codelineno-345-3" href="#__codelineno-345-3"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbdialectsqlite-listviews"><code>listViews()</code><a class="headerlink" href="#dbdialectsqlite-listviews" title="Permanent link">&para;</a></h4>
@@ -19388,7 +19388,7 @@ or a list of column names.</p>
 <h4 id="dbdialectsqlite-sharedlock"><code>sharedLock()</code><a class="headerlink" href="#dbdialectsqlite-sharedlock" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-349-1" name="__codelineno-349-1" href="#__codelineno-349-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">sharedLock</span><span class="p">(</span>
 <a id="__codelineno-349-2" name="__codelineno-349-2" href="#__codelineno-349-2"></a>    <span class="nx">string</span> <span class="nv">$sqlQuery</span><span class="p">,</span>
-<a id="__codelineno-349-3" name="__codelineno-349-3" href="#__codelineno-349-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-349-3" name="__codelineno-349-3" href="#__codelineno-349-3"></a>    <span class="nx">string</span> <span class="nv">$modifier</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-349-4" name="__codelineno-349-4" href="#__codelineno-349-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>SQLite has no row-level shared-lock construct, so the original query
@@ -19410,9 +19410,9 @@ a dedicated <code>Sqlite*NotSupported</code> exception.</p>
 <a id="__codelineno-352-4" name="__codelineno-352-4" href="#__codelineno-352-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Generates SQL checking for the existence of a schema.table</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-353-1" name="__codelineno-353-1" href="#__codelineno-353-1"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">,</span> <span class="s2">&quot;blog&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-353-1" name="__codelineno-353-1" href="#__codelineno-353-1"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"blog"</span><span class="p">);</span>
 <a id="__codelineno-353-2" name="__codelineno-353-2" href="#__codelineno-353-2"></a>
-<a id="__codelineno-353-3" name="__codelineno-353-3" href="#__codelineno-353-3"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">);</span>
+<a id="__codelineno-353-3" name="__codelineno-353-3" href="#__codelineno-353-3"></a><span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">"posts"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="dbdialectsqlite-tableoptions"><code>tableOptions()</code><a class="headerlink" href="#dbdialectsqlite-tableoptions" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-354-1" name="__codelineno-354-1" href="#__codelineno-354-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">tableOptions</span><span class="p">(</span>
@@ -21794,33 +21794,33 @@ of column names) or a definition-array form (an associative array with a
 will extend.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-454-1" name="__codelineno-454-1" href="#__codelineno-454-1"></a><span class="c1">// Legacy positional form</span>
 <a id="__codelineno-454-2" name="__codelineno-454-2" href="#__codelineno-454-2"></a><span class="nv">$unique</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Index</span><span class="p">(</span>
-<a id="__codelineno-454-3" name="__codelineno-454-3" href="#__codelineno-454-3"></a>    <span class="s1">&#39;column_UNIQUE&#39;</span><span class="p">,</span>
+<a id="__codelineno-454-3" name="__codelineno-454-3" href="#__codelineno-454-3"></a>    <span class="s1">'column_UNIQUE'</span><span class="p">,</span>
 <a id="__codelineno-454-4" name="__codelineno-454-4" href="#__codelineno-454-4"></a>    <span class="p">[</span>
-<a id="__codelineno-454-5" name="__codelineno-454-5" href="#__codelineno-454-5"></a>        <span class="s1">&#39;column&#39;</span><span class="p">,</span>
+<a id="__codelineno-454-5" name="__codelineno-454-5" href="#__codelineno-454-5"></a>        <span class="s1">'column'</span><span class="p">,</span>
 <a id="__codelineno-454-6" name="__codelineno-454-6" href="#__codelineno-454-6"></a>    <span class="p">],</span>
-<a id="__codelineno-454-7" name="__codelineno-454-7" href="#__codelineno-454-7"></a>    <span class="s1">&#39;UNIQUE&#39;</span>
+<a id="__codelineno-454-7" name="__codelineno-454-7" href="#__codelineno-454-7"></a>    <span class="s1">'UNIQUE'</span>
 <a id="__codelineno-454-8" name="__codelineno-454-8" href="#__codelineno-454-8"></a><span class="p">);</span>
 <a id="__codelineno-454-9" name="__codelineno-454-9" href="#__codelineno-454-9"></a>
 <a id="__codelineno-454-10" name="__codelineno-454-10" href="#__codelineno-454-10"></a><span class="nv">$primary</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Index</span><span class="p">(</span>
-<a id="__codelineno-454-11" name="__codelineno-454-11" href="#__codelineno-454-11"></a>    <span class="s1">&#39;PRIMARY&#39;</span><span class="p">,</span>
+<a id="__codelineno-454-11" name="__codelineno-454-11" href="#__codelineno-454-11"></a>    <span class="s1">'PRIMARY'</span><span class="p">,</span>
 <a id="__codelineno-454-12" name="__codelineno-454-12" href="#__codelineno-454-12"></a>    <span class="p">[</span>
-<a id="__codelineno-454-13" name="__codelineno-454-13" href="#__codelineno-454-13"></a>        <span class="s1">&#39;column&#39;</span><span class="p">,</span>
+<a id="__codelineno-454-13" name="__codelineno-454-13" href="#__codelineno-454-13"></a>        <span class="s1">'column'</span><span class="p">,</span>
 <a id="__codelineno-454-14" name="__codelineno-454-14" href="#__codelineno-454-14"></a>    <span class="p">]</span>
 <a id="__codelineno-454-15" name="__codelineno-454-15" href="#__codelineno-454-15"></a><span class="p">);</span>
 <a id="__codelineno-454-16" name="__codelineno-454-16" href="#__codelineno-454-16"></a>
 <a id="__codelineno-454-17" name="__codelineno-454-17" href="#__codelineno-454-17"></a><span class="c1">// Definition-array form (MySQL 8.0+ invisible index)</span>
 <a id="__codelineno-454-18" name="__codelineno-454-18" href="#__codelineno-454-18"></a><span class="nv">$hidden</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Index</span><span class="p">(</span>
-<a id="__codelineno-454-19" name="__codelineno-454-19" href="#__codelineno-454-19"></a>    <span class="s1">&#39;idx_hidden&#39;</span><span class="p">,</span>
+<a id="__codelineno-454-19" name="__codelineno-454-19" href="#__codelineno-454-19"></a>    <span class="s1">'idx_hidden'</span><span class="p">,</span>
 <a id="__codelineno-454-20" name="__codelineno-454-20" href="#__codelineno-454-20"></a>    <span class="p">[</span>
-<a id="__codelineno-454-21" name="__codelineno-454-21" href="#__codelineno-454-21"></a>        <span class="s1">&#39;columns&#39;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">],</span>
-<a id="__codelineno-454-22" name="__codelineno-454-22" href="#__codelineno-454-22"></a>        <span class="s1">&#39;type&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-<a id="__codelineno-454-23" name="__codelineno-454-23" href="#__codelineno-454-23"></a>        <span class="s1">&#39;invisible&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-454-21" name="__codelineno-454-21" href="#__codelineno-454-21"></a>        <span class="s1">'columns'</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'col1'</span><span class="p">],</span>
+<a id="__codelineno-454-22" name="__codelineno-454-22" href="#__codelineno-454-22"></a>        <span class="s1">'type'</span>      <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
+<a id="__codelineno-454-23" name="__codelineno-454-23" href="#__codelineno-454-23"></a>        <span class="s1">'invisible'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-454-24" name="__codelineno-454-24" href="#__codelineno-454-24"></a>    <span class="p">]</span>
 <a id="__codelineno-454-25" name="__codelineno-454-25" href="#__codelineno-454-25"></a><span class="p">);</span>
 <a id="__codelineno-454-26" name="__codelineno-454-26" href="#__codelineno-454-26"></a>
-<a id="__codelineno-454-27" name="__codelineno-454-27" href="#__codelineno-454-27"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$unique</span><span class="p">);</span>
-<a id="__codelineno-454-28" name="__codelineno-454-28" href="#__codelineno-454-28"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$primary</span><span class="p">);</span>
-<a id="__codelineno-454-29" name="__codelineno-454-29" href="#__codelineno-454-29"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s2">&quot;co_invoices&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$hidden</span><span class="p">);</span>
+<a id="__codelineno-454-27" name="__codelineno-454-27" href="#__codelineno-454-27"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s2">"co_invoices"</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$unique</span><span class="p">);</span>
+<a id="__codelineno-454-28" name="__codelineno-454-28" href="#__codelineno-454-28"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s2">"co_invoices"</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$primary</span><span class="p">);</span>
+<a id="__codelineno-454-29" name="__codelineno-454-29" href="#__codelineno-454-29"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s2">"co_invoices"</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$hidden</span><span class="p">);</span>
 </code></pre></div>
 <div class="api-tree">
 <ul>
@@ -21944,7 +21944,7 @@ predicate.</span>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-455-1" name="__codelineno-455-1" href="#__codelineno-455-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-455-2" name="__codelineno-455-2" href="#__codelineno-455-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
 <a id="__codelineno-455-3" name="__codelineno-455-3" href="#__codelineno-455-3"></a>    <span class="k">array</span> <span class="nv">$columnsOrDefinition</span><span class="p">,</span>
-<a id="__codelineno-455-4" name="__codelineno-455-4" href="#__codelineno-455-4"></a>    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-455-4" name="__codelineno-455-4" href="#__codelineno-455-4"></a>    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-455-5" name="__codelineno-455-5" href="#__codelineno-455-5"></a><span class="p">);</span>
 </code></pre></div>
 <p>Phalcon\Db\Index constructor.</p>
@@ -22018,16 +22018,16 @@ This helps you to identify bottlenecks in your applications.</p>
 <a id="__codelineno-463-6" name="__codelineno-463-6" href="#__codelineno-463-6"></a><span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">();</span>
 <a id="__codelineno-463-7" name="__codelineno-463-7" href="#__codelineno-463-7"></a>
 <a id="__codelineno-463-8" name="__codelineno-463-8" href="#__codelineno-463-8"></a><span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span>
-<a id="__codelineno-463-9" name="__codelineno-463-9" href="#__codelineno-463-9"></a>    <span class="s2">&quot;db&quot;</span><span class="p">,</span>
+<a id="__codelineno-463-9" name="__codelineno-463-9" href="#__codelineno-463-9"></a>    <span class="s2">"db"</span><span class="p">,</span>
 <a id="__codelineno-463-10" name="__codelineno-463-10" href="#__codelineno-463-10"></a>    <span class="k">function</span> <span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$profiler</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-463-11" name="__codelineno-463-11" href="#__codelineno-463-11"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">===</span> <span class="s2">&quot;beforeQuery&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-463-11" name="__codelineno-463-11" href="#__codelineno-463-11"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">===</span> <span class="s2">"beforeQuery"</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-463-12" name="__codelineno-463-12" href="#__codelineno-463-12"></a>            <span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">();</span>
 <a id="__codelineno-463-13" name="__codelineno-463-13" href="#__codelineno-463-13"></a>
 <a id="__codelineno-463-14" name="__codelineno-463-14" href="#__codelineno-463-14"></a>            <span class="c1">// Start a profile with the active connection</span>
 <a id="__codelineno-463-15" name="__codelineno-463-15" href="#__codelineno-463-15"></a>            <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">startProfile</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
 <a id="__codelineno-463-16" name="__codelineno-463-16" href="#__codelineno-463-16"></a>        <span class="p">}</span>
 <a id="__codelineno-463-17" name="__codelineno-463-17" href="#__codelineno-463-17"></a>
-<a id="__codelineno-463-18" name="__codelineno-463-18" href="#__codelineno-463-18"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">===</span> <span class="s2">&quot;afterQuery&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-463-18" name="__codelineno-463-18" href="#__codelineno-463-18"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">===</span> <span class="s2">"afterQuery"</span><span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-463-19" name="__codelineno-463-19" href="#__codelineno-463-19"></a>            <span class="c1">// Stop the active profile</span>
 <a id="__codelineno-463-20" name="__codelineno-463-20" href="#__codelineno-463-20"></a>            <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">stopProfile</span><span class="p">();</span>
 <a id="__codelineno-463-21" name="__codelineno-463-21" href="#__codelineno-463-21"></a>        <span class="p">}</span>
@@ -22037,9 +22037,9 @@ This helps you to identify bottlenecks in your applications.</p>
 <a id="__codelineno-463-25" name="__codelineno-463-25" href="#__codelineno-463-25"></a><span class="c1">// Set the event manager on the connection</span>
 <a id="__codelineno-463-26" name="__codelineno-463-26" href="#__codelineno-463-26"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
 <a id="__codelineno-463-27" name="__codelineno-463-27" href="#__codelineno-463-27"></a>
-<a id="__codelineno-463-28" name="__codelineno-463-28" href="#__codelineno-463-28"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT buyer_name, quantity, product_name</span>
+<a id="__codelineno-463-28" name="__codelineno-463-28" href="#__codelineno-463-28"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"SELECT buyer_name, quantity, product_name</span>
 <a id="__codelineno-463-29" name="__codelineno-463-29" href="#__codelineno-463-29"></a><span class="s2">FROM buyers LEFT JOIN products ON</span>
-<a id="__codelineno-463-30" name="__codelineno-463-30" href="#__codelineno-463-30"></a><span class="s2">buyers.pid=products.id&quot;</span><span class="p">;</span>
+<a id="__codelineno-463-30" name="__codelineno-463-30" href="#__codelineno-463-30"></a><span class="s2">buyers.pid=products.id"</span><span class="p">;</span>
 <a id="__codelineno-463-31" name="__codelineno-463-31" href="#__codelineno-463-31"></a>
 <a id="__codelineno-463-32" name="__codelineno-463-32" href="#__codelineno-463-32"></a><span class="c1">// Execute a SQL statement</span>
 <a id="__codelineno-463-33" name="__codelineno-463-33" href="#__codelineno-463-33"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
@@ -22047,10 +22047,10 @@ This helps you to identify bottlenecks in your applications.</p>
 <a id="__codelineno-463-35" name="__codelineno-463-35" href="#__codelineno-463-35"></a><span class="c1">// Get the last profile in the profiler</span>
 <a id="__codelineno-463-36" name="__codelineno-463-36" href="#__codelineno-463-36"></a><span class="nv">$profile</span> <span class="o">=</span> <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">getLastProfile</span><span class="p">();</span>
 <a id="__codelineno-463-37" name="__codelineno-463-37" href="#__codelineno-463-37"></a>
-<a id="__codelineno-463-38" name="__codelineno-463-38" href="#__codelineno-463-38"></a><span class="k">echo</span> <span class="s2">&quot;SQL Statement: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-463-39" name="__codelineno-463-39" href="#__codelineno-463-39"></a><span class="k">echo</span> <span class="s2">&quot;Start Time: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getInitialTime</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-463-40" name="__codelineno-463-40" href="#__codelineno-463-40"></a><span class="k">echo</span> <span class="s2">&quot;Final Time: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getFinalTime</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<a id="__codelineno-463-41" name="__codelineno-463-41" href="#__codelineno-463-41"></a><span class="k">echo</span> <span class="s2">&quot;Total Elapsed Time: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getTotalElapsedSeconds</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<a id="__codelineno-463-38" name="__codelineno-463-38" href="#__codelineno-463-38"></a><span class="k">echo</span> <span class="s2">"SQL Statement: "</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">(),</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-463-39" name="__codelineno-463-39" href="#__codelineno-463-39"></a><span class="k">echo</span> <span class="s2">"Start Time: "</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getInitialTime</span><span class="p">(),</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-463-40" name="__codelineno-463-40" href="#__codelineno-463-40"></a><span class="k">echo</span> <span class="s2">"Final Time: "</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getFinalTime</span><span class="p">(),</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-463-41" name="__codelineno-463-41" href="#__codelineno-463-41"></a><span class="k">echo</span> <span class="s2">"Total Elapsed Time: "</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getTotalElapsedSeconds</span><span class="p">(),</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div>
 <div class="api-tree">
 <ul>
@@ -22359,8 +22359,8 @@ profile FIFO before a new one is appended.</span>
 <p>The next example shows how to use the MySQL now() function as a field value.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-484-1" name="__codelineno-484-1" href="#__codelineno-484-1"></a><span class="nv">$subscriber</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Subscribers</span><span class="p">();</span>
 <a id="__codelineno-484-2" name="__codelineno-484-2" href="#__codelineno-484-2"></a>
-<a id="__codelineno-484-3" name="__codelineno-484-3" href="#__codelineno-484-3"></a><span class="nv">$subscriber</span><span class="o">-&gt;</span><span class="na">email</span>     <span class="o">=</span> <span class="s2">&quot;andres@phalcon.io&quot;</span><span class="p">;</span>
-<a id="__codelineno-484-4" name="__codelineno-484-4" href="#__codelineno-484-4"></a><span class="nv">$subscriber</span><span class="o">-&gt;</span><span class="na">createdAt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\RawValue</span><span class="p">(</span><span class="s2">&quot;now()&quot;</span><span class="p">);</span>
+<a id="__codelineno-484-3" name="__codelineno-484-3" href="#__codelineno-484-3"></a><span class="nv">$subscriber</span><span class="o">-&gt;</span><span class="na">email</span>     <span class="o">=</span> <span class="s2">"andres@phalcon.io"</span><span class="p">;</span>
+<a id="__codelineno-484-4" name="__codelineno-484-4" href="#__codelineno-484-4"></a><span class="nv">$subscriber</span><span class="o">-&gt;</span><span class="na">createdAt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\RawValue</span><span class="p">(</span><span class="s2">"now()"</span><span class="p">);</span>
 <a id="__codelineno-484-5" name="__codelineno-484-5" href="#__codelineno-484-5"></a>
 <a id="__codelineno-484-6" name="__codelineno-484-6" href="#__codelineno-484-6"></a><span class="nv">$subscriber</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
 </code></pre></div>
@@ -22416,17 +22416,17 @@ profile FIFO before a new one is appended.</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Reference.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Allows to define reference constraints on tables</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-488-1" name="__codelineno-488-1" href="#__codelineno-488-1"></a><span class="nv">$reference</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Db\Reference</span><span class="p">(</span>
-<a id="__codelineno-488-2" name="__codelineno-488-2" href="#__codelineno-488-2"></a>    <span class="s2">&quot;field_fk&quot;</span><span class="p">,</span>
+<a id="__codelineno-488-2" name="__codelineno-488-2" href="#__codelineno-488-2"></a>    <span class="s2">"field_fk"</span><span class="p">,</span>
 <a id="__codelineno-488-3" name="__codelineno-488-3" href="#__codelineno-488-3"></a>    <span class="p">[</span>
-<a id="__codelineno-488-4" name="__codelineno-488-4" href="#__codelineno-488-4"></a>        <span class="s2">&quot;referencedSchema&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;invoicing&quot;</span><span class="p">,</span>
-<a id="__codelineno-488-5" name="__codelineno-488-5" href="#__codelineno-488-5"></a>        <span class="s2">&quot;referencedTable&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;products&quot;</span><span class="p">,</span>
-<a id="__codelineno-488-6" name="__codelineno-488-6" href="#__codelineno-488-6"></a>        <span class="s2">&quot;columns&quot;</span>           <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-488-7" name="__codelineno-488-7" href="#__codelineno-488-7"></a>            <span class="s2">&quot;producttype&quot;</span><span class="p">,</span>
-<a id="__codelineno-488-8" name="__codelineno-488-8" href="#__codelineno-488-8"></a>            <span class="s2">&quot;product_code&quot;</span><span class="p">,</span>
+<a id="__codelineno-488-4" name="__codelineno-488-4" href="#__codelineno-488-4"></a>        <span class="s2">"referencedSchema"</span>  <span class="o">=&gt;</span> <span class="s2">"invoicing"</span><span class="p">,</span>
+<a id="__codelineno-488-5" name="__codelineno-488-5" href="#__codelineno-488-5"></a>        <span class="s2">"referencedTable"</span>   <span class="o">=&gt;</span> <span class="s2">"products"</span><span class="p">,</span>
+<a id="__codelineno-488-6" name="__codelineno-488-6" href="#__codelineno-488-6"></a>        <span class="s2">"columns"</span>           <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-488-7" name="__codelineno-488-7" href="#__codelineno-488-7"></a>            <span class="s2">"producttype"</span><span class="p">,</span>
+<a id="__codelineno-488-8" name="__codelineno-488-8" href="#__codelineno-488-8"></a>            <span class="s2">"product_code"</span><span class="p">,</span>
 <a id="__codelineno-488-9" name="__codelineno-488-9" href="#__codelineno-488-9"></a>        <span class="p">],</span>
-<a id="__codelineno-488-10" name="__codelineno-488-10" href="#__codelineno-488-10"></a>        <span class="s2">&quot;referencedColumns&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-488-11" name="__codelineno-488-11" href="#__codelineno-488-11"></a>            <span class="s2">&quot;type&quot;</span><span class="p">,</span>
-<a id="__codelineno-488-12" name="__codelineno-488-12" href="#__codelineno-488-12"></a>            <span class="s2">&quot;code&quot;</span><span class="p">,</span>
+<a id="__codelineno-488-10" name="__codelineno-488-10" href="#__codelineno-488-10"></a>        <span class="s2">"referencedColumns"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-488-11" name="__codelineno-488-11" href="#__codelineno-488-11"></a>            <span class="s2">"type"</span><span class="p">,</span>
+<a id="__codelineno-488-12" name="__codelineno-488-12" href="#__codelineno-488-12"></a>            <span class="s2">"code"</span><span class="p">,</span>
 <a id="__codelineno-488-13" name="__codelineno-488-13" href="#__codelineno-488-13"></a>        <span class="p">],</span>
 <a id="__codelineno-488-14" name="__codelineno-488-14" href="#__codelineno-488-14"></a>    <span class="p">]</span>
 <a id="__codelineno-488-15" name="__codelineno-488-15" href="#__codelineno-488-15"></a><span class="p">);</span>
@@ -22618,7 +22618,7 @@ profile FIFO before a new one is appended.</span>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Result/PdoResult.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Encapsulates the resultset internals</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-498-1" name="__codelineno-498-1" href="#__codelineno-498-1"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM co_invoices ORDER BY inv_title&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-498-1" name="__codelineno-498-1" href="#__codelineno-498-1"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">"SELECT * FROM co_invoices ORDER BY inv_title"</span><span class="p">);</span>
 <a id="__codelineno-498-2" name="__codelineno-498-2" href="#__codelineno-498-2"></a>
 <a id="__codelineno-498-3" name="__codelineno-498-3" href="#__codelineno-498-3"></a><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">setFetchMode</span><span class="p">(</span>
 <a id="__codelineno-498-4" name="__codelineno-498-4" href="#__codelineno-498-4"></a>    <span class="nx">\Phalcon\Db\Enum</span><span class="o">::</span><span class="na">FETCH_NUM</span>
@@ -22754,7 +22754,7 @@ profile FIFO before a new one is appended.</span>
 <p>Moves internal resultset cursor to another position letting us to fetch a
 certain row</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-501-1" name="__codelineno-501-1" href="#__codelineno-501-1"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span>
-<a id="__codelineno-501-2" name="__codelineno-501-2" href="#__codelineno-501-2"></a>    <span class="s2">&quot;SELECT * FROM co_invoices ORDER BY inv_title&quot;</span>
+<a id="__codelineno-501-2" name="__codelineno-501-2" href="#__codelineno-501-2"></a>    <span class="s2">"SELECT * FROM co_invoices ORDER BY inv_title"</span>
 <a id="__codelineno-501-3" name="__codelineno-501-3" href="#__codelineno-501-3"></a><span class="p">);</span>
 <a id="__codelineno-501-4" name="__codelineno-501-4" href="#__codelineno-501-4"></a>
 <a id="__codelineno-501-5" name="__codelineno-501-5" href="#__codelineno-501-5"></a><span class="c1">// Move to third row on result</span>
@@ -22779,7 +22779,7 @@ execute the cursor again to fetch rows from the beginning</p>
 <p>Fetches an array/object of strings that corresponds to the fetched row,
 or FALSE if there are no more rows. This method is affected by the active
 fetch flag set using <code>Phalcon\Db\Result\Pdo::setFetchMode()</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-504-1" name="__codelineno-504-1" href="#__codelineno-504-1"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM co_invoices ORDER BY inv_title&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-504-1" name="__codelineno-504-1" href="#__codelineno-504-1"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">"SELECT * FROM co_invoices ORDER BY inv_title"</span><span class="p">);</span>
 <a id="__codelineno-504-2" name="__codelineno-504-2" href="#__codelineno-504-2"></a>
 <a id="__codelineno-504-3" name="__codelineno-504-3" href="#__codelineno-504-3"></a><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">setFetchMode</span><span class="p">(</span>
 <a id="__codelineno-504-4" name="__codelineno-504-4" href="#__codelineno-504-4"></a>    <span class="nx">\Phalcon\Enum</span><span class="o">::</span><span class="na">FETCH_OBJ</span>
@@ -22800,7 +22800,7 @@ fetch flag set using <code>Phalcon\Db\Result\Pdo::setFetchMode()</code></p>
 This method is affected by the active fetch flag set using
 <code>Phalcon\Db\Result\Pdo::setFetchMode()</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-506-1" name="__codelineno-506-1" href="#__codelineno-506-1"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span>
-<a id="__codelineno-506-2" name="__codelineno-506-2" href="#__codelineno-506-2"></a>    <span class="s2">&quot;SELECT * FROM co_invoices ORDER BY inv_title&quot;</span>
+<a id="__codelineno-506-2" name="__codelineno-506-2" href="#__codelineno-506-2"></a>    <span class="s2">"SELECT * FROM co_invoices ORDER BY inv_title"</span>
 <a id="__codelineno-506-3" name="__codelineno-506-3" href="#__codelineno-506-3"></a><span class="p">);</span>
 <a id="__codelineno-506-4" name="__codelineno-506-4" href="#__codelineno-506-4"></a>
 <a id="__codelineno-506-5" name="__codelineno-506-5" href="#__codelineno-506-5"></a><span class="nv">$invoices</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">();</span>
@@ -22811,7 +22811,7 @@ This method is affected by the active fetch flag set using
 <p>Returns an array of strings that corresponds to the fetched row, or FALSE
 if there are no more rows. This method is affected by the active fetch
 flag set using <code>Phalcon\Db\Result\Pdo::setFetchMode()</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-508-1" name="__codelineno-508-1" href="#__codelineno-508-1"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM co_invoices ORDER BY inv_title&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-508-1" name="__codelineno-508-1" href="#__codelineno-508-1"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">"SELECT * FROM co_invoices ORDER BY inv_title"</span><span class="p">);</span>
 <a id="__codelineno-508-2" name="__codelineno-508-2" href="#__codelineno-508-2"></a>
 <a id="__codelineno-508-3" name="__codelineno-508-3" href="#__codelineno-508-3"></a><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">setFetchMode</span><span class="p">(</span>
 <a id="__codelineno-508-4" name="__codelineno-508-4" href="#__codelineno-508-4"></a>    <span class="nx">\Phalcon\Enum</span><span class="o">::</span><span class="na">FETCH_NUM</span>
@@ -22830,10 +22830,10 @@ flag set using <code>Phalcon\Db\Result\Pdo::setFetchMode()</code></p>
 </code></pre></div>
 <p>Gets number of rows returned by a resultset</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-511-1" name="__codelineno-511-1" href="#__codelineno-511-1"></a><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span>
-<a id="__codelineno-511-2" name="__codelineno-511-2" href="#__codelineno-511-2"></a>    <span class="s2">&quot;SELECT * FROM co_invoices ORDER BY inv_title&quot;</span>
+<a id="__codelineno-511-2" name="__codelineno-511-2" href="#__codelineno-511-2"></a>    <span class="s2">"SELECT * FROM co_invoices ORDER BY inv_title"</span>
 <a id="__codelineno-511-3" name="__codelineno-511-3" href="#__codelineno-511-3"></a><span class="p">);</span>
 <a id="__codelineno-511-4" name="__codelineno-511-4" href="#__codelineno-511-4"></a>
-<a id="__codelineno-511-5" name="__codelineno-511-5" href="#__codelineno-511-5"></a><span class="k">echo</span> <span class="s2">&quot;There are &quot;</span><span class="p">,</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">numRows</span><span class="p">(),</span> <span class="s2">&quot; rows in the resultset&quot;</span><span class="p">;</span>
+<a id="__codelineno-511-5" name="__codelineno-511-5" href="#__codelineno-511-5"></a><span class="k">echo</span> <span class="s2">"There are "</span><span class="p">,</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">numRows</span><span class="p">(),</span> <span class="s2">" rows in the resultset"</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="dbresultpdoresult-setfetchmode"><code>setFetchMode()</code><a class="headerlink" href="#dbresultpdoresult-setfetchmode" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-512-1" name="__codelineno-512-1" href="#__codelineno-512-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setFetchMode</span><span class="p">(</span>
@@ -23066,7 +23066,7 @@ by the using class.</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

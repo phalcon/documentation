@@ -74,7 +74,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -10360,7 +10360,7 @@ extending this.</p>
 <h4 id="authadapterconfigmodeladapterconfig-__construct"><code>__construct()</code><a class="headerlink" href="#authadapterconfigmodeladapterconfig-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="nx">string</span> <span class="nv">$model</span><span class="p">,</span>
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>    <span class="nx">string</span> <span class="nv">$idColumn</span> <span class="o">=</span> <span class="s2">&quot;id&quot;</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>    <span class="nx">string</span> <span class="nv">$idColumn</span> <span class="o">=</span> <span class="s2">"id"</span>
 <a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="authadapterconfigmodeladapterconfig-getidcolumn"><code>getIdColumn()</code><a class="headerlink" href="#authadapterconfigmodeladapterconfig-getidcolumn" title="Permanent link">&para;</a></h4>
@@ -10920,7 +10920,7 @@ when no application model class is configured.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a>    <span class="nx">string</span> <span class="nv">$configName</span><span class="p">,</span>
 <a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a>    <span class="nx">string</span> <span class="nv">$configKey</span><span class="p">,</span>
-<a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a>    <span class="nx">string</span> <span class="nv">$suffix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a>    <span class="nx">string</span> <span class="nv">$suffix</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-65-5" name="__codelineno-65-5" href="#__codelineno-65-5"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="authexceptionsconfigrequiresnonemptyvalue-assert"><code>assert()</code><a class="headerlink" href="#authexceptionsconfigrequiresnonemptyvalue-assert" title="Permanent link">&para;</a></h4>
@@ -10928,7 +10928,7 @@ when no application model class is configured.</p>
 <a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>    <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">,</span>
 <a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>    <span class="nx">string</span> <span class="nv">$configName</span><span class="p">,</span>
 <a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>    <span class="nx">string</span> <span class="nv">$configKey</span><span class="p">,</span>
-<a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>    <span class="nx">string</span> <span class="nv">$suffix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>    <span class="nx">string</span> <span class="nv">$suffix</span> <span class="o">=</span> <span class="s2">""</span>
 <a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Throws when the value is an empty string. A null value is treated as
@@ -11882,7 +11882,7 @@ Phalcon\Di\Di, register the guards in it before resolution.</p>
 </code></pre></div>
 <h4 id="authguardsession-basic"><code>basic()</code><a class="headerlink" href="#authguardsession-basic" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">basic</span><span class="p">(</span>
-<a id="__codelineno-105-2" name="__codelineno-105-2" href="#__codelineno-105-2"></a>    <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<a id="__codelineno-105-2" name="__codelineno-105-2" href="#__codelineno-105-2"></a>    <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="s2">"email"</span><span class="p">,</span>
 <a id="__codelineno-105-3" name="__codelineno-105-3" href="#__codelineno-105-3"></a>    <span class="k">array</span> <span class="nv">$extraConditions</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-105-4" name="__codelineno-105-4" href="#__codelineno-105-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
@@ -11919,7 +11919,7 @@ Phalcon\Di\Di, register the guards in it before resolution.</p>
 </code></pre></div>
 <h4 id="authguardsession-oncebasic"><code>onceBasic()</code><a class="headerlink" href="#authguardsession-oncebasic" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-113-1" name="__codelineno-113-1" href="#__codelineno-113-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">onceBasic</span><span class="p">(</span>
-<a id="__codelineno-113-2" name="__codelineno-113-2" href="#__codelineno-113-2"></a>    <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<a id="__codelineno-113-2" name="__codelineno-113-2" href="#__codelineno-113-2"></a>    <span class="nx">string</span> <span class="nv">$field</span> <span class="o">=</span> <span class="s2">"email"</span><span class="p">,</span>
 <a id="__codelineno-113-3" name="__codelineno-113-3" href="#__codelineno-113-3"></a>    <span class="k">array</span> <span class="nv">$extraConditions</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-113-4" name="__codelineno-113-4" href="#__codelineno-113-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AuthUser</span><span class="o">|</span><span class="k">false</span><span class="p">;</span>
 </code></pre></div>
@@ -12673,7 +12673,7 @@ forward mechanism.</p>
 <h4 id="authmicroauthmicrolistener-__construct"><code>__construct()</code><a class="headerlink" href="#authmicroauthmicrolistener-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-166-2" name="__codelineno-166-2" href="#__codelineno-166-2"></a>    <span class="nx">Manager</span> <span class="nv">$manager</span><span class="p">,</span>
-<a id="__codelineno-166-3" name="__codelineno-166-3" href="#__codelineno-166-3"></a>    <span class="nx">string</span> <span class="nv">$componentName</span> <span class="o">=</span> <span class="s2">&quot;Micro&quot;</span>
+<a id="__codelineno-166-3" name="__codelineno-166-3" href="#__codelineno-166-3"></a>    <span class="nx">string</span> <span class="nv">$componentName</span> <span class="o">=</span> <span class="s2">"Micro"</span>
 <a id="__codelineno-166-4" name="__codelineno-166-4" href="#__codelineno-166-4"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="authmicroauthmicrolistener-beforeexecuteroute"><code>beforeExecuteRoute()</code><a class="headerlink" href="#authmicroauthmicrolistener-beforeexecuteroute" title="Permanent link">&para;</a></h4>
@@ -12885,7 +12885,7 @@ dispatch. Attach to the events manager:</p>
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"../..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>

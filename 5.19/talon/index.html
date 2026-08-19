@@ -78,7 +78,7 @@ offering lower resource consumption and high performance.
       
       
       <link rel="icon" href="../assets/images/favicon.ico">
-      <meta name="generator" content="zensical-0.0.53">
+      <meta name="generator" content="zensical-0.0.56">
     
 
     
@@ -5848,7 +5848,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// tests/bootstrap.php</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../vendor/autoload.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/../vendor/autoload.php'</span><span class="p">;</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">use</span> <span class="nx">Phalcon\Talon\Settings</span><span class="p">;</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">use</span> <span class="nx">Phalcon\Talon\Talon</span><span class="p">;</span>
@@ -5862,9 +5862,9 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">use</span> <span class="nx">Phalcon\Talon\Bootstrap\Stage</span><span class="p">;</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">use</span> <span class="nx">Phalcon\Talon\Settings</span><span class="p">;</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nx">Runner</span><span class="o">::</span><span class="na">for</span><span class="p">(</span><span class="nx">Settings</span><span class="o">::</span><span class="na">fromArray</span><span class="p">([</span><span class="s1">&#39;root&#39;</span> <span class="o">=&gt;</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/..&#39;</span><span class="p">]))</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="o">-&gt;</span><span class="na">before</span><span class="p">(</span><span class="nx">Stage</span><span class="o">::</span><span class="na">Environment</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">ini_set</span><span class="p">(</span><span class="s1">&#39;memory_limit&#39;</span><span class="p">,</span> <span class="s1">&#39;512M&#39;</span><span class="p">))</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="o">-&gt;</span><span class="na">after</span><span class="p">(</span><span class="nx">Stage</span><span class="o">::</span><span class="na">Directories</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nv">$settings</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">mkdir</span><span class="p">(</span><span class="nv">$settings</span><span class="o">-&gt;</span><span class="na">outputPath</span><span class="p">(</span><span class="s1">&#39;screens&#39;</span><span class="p">),</span> <span class="mo">0777</span><span class="p">,</span> <span class="k">true</span><span class="p">))</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nx">Runner</span><span class="o">::</span><span class="na">for</span><span class="p">(</span><span class="nx">Settings</span><span class="o">::</span><span class="na">fromArray</span><span class="p">([</span><span class="s1">'root'</span> <span class="o">=&gt;</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/..'</span><span class="p">]))</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="o">-&gt;</span><span class="na">before</span><span class="p">(</span><span class="nx">Stage</span><span class="o">::</span><span class="na">Environment</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">ini_set</span><span class="p">(</span><span class="s1">'memory_limit'</span><span class="p">,</span> <span class="s1">'512M'</span><span class="p">))</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="o">-&gt;</span><span class="na">after</span><span class="p">(</span><span class="nx">Stage</span><span class="o">::</span><span class="na">Directories</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nv">$settings</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">mkdir</span><span class="p">(</span><span class="nv">$settings</span><span class="o">-&gt;</span><span class="na">outputPath</span><span class="p">(</span><span class="s1">'screens'</span><span class="p">),</span> <span class="mo">0777</span><span class="p">,</span> <span class="k">true</span><span class="p">))</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
 </code></pre></div>
 <h2 id="the-command-line-runner">The Command-Line Runner<a class="headerlink" href="#the-command-line-runner" title="Permanent link">&para;</a></h2>
@@ -5883,15 +5883,15 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">return</span> <span class="p">[</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="s1">&#39;php&#39;</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;extension=ext/modules/phalcon.so&#39;</span><span class="p">],</span>   <span class="c1">// global ini flags, optional</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="s1">&#39;suites&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="s1">&#39;unit&#39;</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.xml.dist&#39;</span><span class="p">],</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="s1">&#39;mariadb&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.mariadb.xml&#39;</span><span class="p">],</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="s1">&#39;mysql&#39;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.mysql.xml&#39;</span><span class="p">],</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="s1">&#39;pgsql&#39;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.pgsql.xml&#39;</span><span class="p">],</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s1">&#39;sqlite&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.sqlite.xml&#39;</span><span class="p">],</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="s1">'php'</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'extension=ext/modules/phalcon.so'</span><span class="p">],</span>   <span class="c1">// global ini flags, optional</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="s1">'suites'</span>  <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="s1">'unit'</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'config'</span> <span class="o">=&gt;</span> <span class="s1">'resources/phpunit.xml.dist'</span><span class="p">],</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="s1">'mariadb'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'config'</span> <span class="o">=&gt;</span> <span class="s1">'resources/phpunit.mariadb.xml'</span><span class="p">],</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="s1">'mysql'</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'config'</span> <span class="o">=&gt;</span> <span class="s1">'resources/phpunit.mysql.xml'</span><span class="p">],</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="s1">'pgsql'</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'config'</span> <span class="o">=&gt;</span> <span class="s1">'resources/phpunit.pgsql.xml'</span><span class="p">],</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s1">'sqlite'</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'config'</span> <span class="o">=&gt;</span> <span class="s1">'resources/phpunit.sqlite.xml'</span><span class="p">],</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="p">],</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="s1">'default'</span> <span class="o">=&gt;</span> <span class="s1">'unit'</span><span class="p">,</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">];</span>
 </code></pre></div>
 <p>Per-suite keys:</p>
@@ -5977,7 +5977,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">{</span>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">testInternal</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="p">{</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">callProtectedMethod</span><span class="p">(</span><span class="k">new</span> <span class="nx">Calculator</span><span class="p">(),</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">callProtectedMethod</span><span class="p">(</span><span class="k">new</span> <span class="nx">Calculator</span><span class="p">(),</span> <span class="s1">'add'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="p">}</span>
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="p">}</span>
 </code></pre></div>
@@ -5991,7 +5991,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">{</span>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSeeded</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="p">{</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertInDatabase</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;john.connor@skynet.dev&#39;</span><span class="p">]);</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertInDatabase</span><span class="p">(</span><span class="s1">'users'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'john.connor@skynet.dev'</span><span class="p">]);</span>
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="p">}</span>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">}</span>
 </code></pre></div>
@@ -6158,14 +6158,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">appFactory</span><span class="p">()</span><span class="o">:</span> <span class="nx">callable</span>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="p">{</span>
 <a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>        <span class="c1">// returns a configured Application or Micro</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>        <span class="k">return</span> <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../app/bootstrap.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>        <span class="k">return</span> <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/../app/bootstrap.php'</span><span class="p">;</span>
 <a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="p">}</span>
 <a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
 <a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">testHome</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
 <a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>    <span class="p">{</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
-<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertController</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">);</span>
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertResponseContentContains</span><span class="p">(</span><span class="s1">&#39;Welcome&#39;</span><span class="p">);</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="s1">'/'</span><span class="p">);</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertController</span><span class="p">(</span><span class="s1">'index'</span><span class="p">);</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertResponseContentContains</span><span class="p">(</span><span class="s1">'Welcome'</span><span class="p">);</span>
 <a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>    <span class="p">}</span>
 <a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="p">}</span>
 </code></pre></div>
@@ -6179,17 +6179,17 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">{</span>
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">appFactory</span><span class="p">()</span><span class="o">:</span> <span class="nx">callable</span>
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="p">{</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="k">return</span> <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../app/bootstrap.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="k">return</span> <span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/../app/bootstrap.php'</span><span class="p">;</span>
 <a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    <span class="p">}</span>
 <a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
 <a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">testLogin</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
 <a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="p">{</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">visitPage</span><span class="p">(</span><span class="s1">&#39;/session/login&#39;</span><span class="p">);</span>
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fillField</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;sarah.connor@skynet.dev&#39;</span><span class="p">);</span>
-<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fillField</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;password1&#39;</span><span class="p">);</span>
-<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pressButton</span><span class="p">(</span><span class="s1">&#39;Log In&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">visitPage</span><span class="p">(</span><span class="s1">'/session/login'</span><span class="p">);</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fillField</span><span class="p">(</span><span class="s1">'email'</span><span class="p">,</span> <span class="s1">'sarah.connor@skynet.dev'</span><span class="p">);</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fillField</span><span class="p">(</span><span class="s1">'password'</span><span class="p">,</span> <span class="s1">'password1'</span><span class="p">);</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pressButton</span><span class="p">(</span><span class="s1">'Log In'</span><span class="p">);</span>
 <a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
-<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertPageContainsText</span><span class="p">(</span><span class="s1">&#39;Search users&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertPageContainsText</span><span class="p">(</span><span class="s1">'Search users'</span><span class="p">);</span>
 <a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>    <span class="p">}</span>
 <a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="p">}</span>
 </code></pre></div>
@@ -6203,8 +6203,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">{</span>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">testRedis</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="p">{</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setRedisKey</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">);</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRedisKey</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">));</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setRedisKey</span><span class="p">(</span><span class="s1">'key'</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">);</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="s1">'value'</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRedisKey</span><span class="p">(</span><span class="s1">'key'</span><span class="p">));</span>
 <a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="p">}</span>
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">}</span>
 </code></pre></div>
@@ -6316,48 +6316,48 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">InvoicesSchema</span> <span class="k">extends</span> <span class="nx">AbstractSchema</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="p">{</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s1">&#39;co_invoices&#39;</span><span class="p">;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s1">'co_invoices'</span><span class="p">;</span>
 <a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
 <a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">insert</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">float</span> <span class="nv">$total</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span>
 <a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="p">{</span>
 <a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span>
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>            <span class="s1">&#39;INSERT INTO co_invoices (inv_id, inv_title, inv_total) &#39;</span>
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>            <span class="o">.</span> <span class="s1">&#39;VALUES (:id, :title, :total)&#39;</span><span class="p">,</span>
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>            <span class="p">[</span><span class="s1">&#39;:id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span> <span class="s1">&#39;:title&#39;</span> <span class="o">=&gt;</span> <span class="nv">$title</span><span class="p">,</span> <span class="s1">&#39;:total&#39;</span> <span class="o">=&gt;</span> <span class="nv">$total</span><span class="p">]</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>            <span class="s1">'INSERT INTO co_invoices (inv_id, inv_title, inv_total) '</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>            <span class="o">.</span> <span class="s1">'VALUES (:id, :title, :total)'</span><span class="p">,</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>            <span class="p">[</span><span class="s1">':id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span> <span class="s1">':title'</span> <span class="o">=&gt;</span> <span class="nv">$title</span><span class="p">,</span> <span class="s1">':total'</span> <span class="o">=&gt;</span> <span class="nv">$total</span><span class="p">]</span>
 <a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>        <span class="p">);</span>
 <a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>    <span class="p">}</span>
 <a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>
 <a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">getStatementsMysql</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
 <a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>    <span class="p">{</span>
 <a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>        <span class="k">return</span> <span class="p">[</span>
-<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>            <span class="s1">&#39;CREATE TABLE `co_invoices` (&#39;</span>
-<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>            <span class="o">.</span> <span class="s1">&#39;`inv_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, &#39;</span>
-<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>            <span class="o">.</span> <span class="s1">&#39;`inv_title` VARCHAR(100) NULL, &#39;</span>
-<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>            <span class="o">.</span> <span class="s1">&#39;`inv_total` DECIMAL(10,2) NOT NULL, &#39;</span>
-<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>            <span class="o">.</span> <span class="s1">&#39;PRIMARY KEY (`inv_id`)&#39;</span>
-<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>            <span class="o">.</span> <span class="s1">&#39;) ENGINE=InnoDB;&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>            <span class="s1">'CREATE TABLE `co_invoices` ('</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>            <span class="o">.</span> <span class="s1">'`inv_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, '</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>            <span class="o">.</span> <span class="s1">'`inv_title` VARCHAR(100) NULL, '</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>            <span class="o">.</span> <span class="s1">'`inv_total` DECIMAL(10,2) NOT NULL, '</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>            <span class="o">.</span> <span class="s1">'PRIMARY KEY (`inv_id`)'</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>            <span class="o">.</span> <span class="s1">') ENGINE=InnoDB;'</span><span class="p">,</span>
 <a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>        <span class="p">];</span>
 <a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>    <span class="p">}</span>
 <a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>
 <a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">getStatementsPgsql</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
 <a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>    <span class="p">{</span>
 <a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>        <span class="k">return</span> <span class="p">[</span>
-<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>            <span class="s1">&#39;CREATE TABLE co_invoices (&#39;</span>
-<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>            <span class="o">.</span> <span class="s1">&#39;inv_id SERIAL PRIMARY KEY, &#39;</span>
-<a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>            <span class="o">.</span> <span class="s1">&#39;inv_title VARCHAR(100) NULL, &#39;</span>
-<a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>            <span class="o">.</span> <span class="s1">&#39;inv_total NUMERIC(10,2) NOT NULL&#39;</span>
-<a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a>            <span class="o">.</span> <span class="s1">&#39;);&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>            <span class="s1">'CREATE TABLE co_invoices ('</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>            <span class="o">.</span> <span class="s1">'inv_id SERIAL PRIMARY KEY, '</span>
+<a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>            <span class="o">.</span> <span class="s1">'inv_title VARCHAR(100) NULL, '</span>
+<a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>            <span class="o">.</span> <span class="s1">'inv_total NUMERIC(10,2) NOT NULL'</span>
+<a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a>            <span class="o">.</span> <span class="s1">');'</span><span class="p">,</span>
 <a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>        <span class="p">];</span>
 <a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>    <span class="p">}</span>
 <a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a>
 <a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">getStatementsSqlite</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
 <a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a>    <span class="p">{</span>
 <a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a>        <span class="k">return</span> <span class="p">[</span>
-<a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a>            <span class="s1">&#39;CREATE TABLE co_invoices (&#39;</span>
-<a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a>            <span class="o">.</span> <span class="s1">&#39;inv_id INTEGER PRIMARY KEY AUTOINCREMENT, &#39;</span>
-<a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a>            <span class="o">.</span> <span class="s1">&#39;inv_title TEXT NULL, &#39;</span>
-<a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a>            <span class="o">.</span> <span class="s1">&#39;inv_total REAL NOT NULL&#39;</span>
-<a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a>            <span class="o">.</span> <span class="s1">&#39;);&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a>            <span class="s1">'CREATE TABLE co_invoices ('</span>
+<a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a>            <span class="o">.</span> <span class="s1">'inv_id INTEGER PRIMARY KEY AUTOINCREMENT, '</span>
+<a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a>            <span class="o">.</span> <span class="s1">'inv_title TEXT NULL, '</span>
+<a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a>            <span class="o">.</span> <span class="s1">'inv_total REAL NOT NULL'</span>
+<a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a>            <span class="o">.</span> <span class="s1">');'</span><span class="p">,</span>
 <a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a>        <span class="p">];</span>
 <a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a>    <span class="p">}</span>
 <a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="p">}</span>
@@ -6398,14 +6398,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">InvoiceLinesSchema</span> <span class="k">extends</span> <span class="nx">AbstractSchema</span>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p">{</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s1">&#39;co_invoice_lines&#39;</span><span class="p">;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s1">'co_invoice_lines'</span><span class="p">;</span>
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="sd">/**</span>
 <a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="sd">     * @return list&lt;string&gt;</span>
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="sd">     */</span>
 <a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDependencies</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
 <a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>    <span class="p">{</span>
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;co_invoices&#39;</span><span class="p">];</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>        <span class="k">return</span> <span class="p">[</span><span class="s1">'co_invoices'</span><span class="p">];</span>
 <a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>    <span class="p">}</span>
 <a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
 <a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>    <span class="c1">// getStatementsMysql(), getStatementsPgsql(), getStatementsSqlite() omitted</span>
@@ -6449,14 +6449,14 @@ offering lower resource consumption and high performance.
 <p><code>schema_pre</code> and <code>schema_post</code> are ordinary <code>AbstractSchema</code> subclasses with an empty <code>$table</code>. Use them for statements that belong to the load as a whole, such as <code>SET FOREIGN_KEY_CHECKS=0</code> on MySQL or <code>CREATE SCHEMA IF NOT EXISTS</code> on PostgreSQL.</p>
 <p>Each dialect is written to its own directory:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>schema/mysql/_preSchema.sql     session setup
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>schema/mysql/co_invoices.sql    the table&#39;s DROP, then its creation statements
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>schema/mysql/co_invoices.sql    the table's DROP, then its creation statements
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>schema/mysql/manifest.json      load order, dependencies, per-dialect presence
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>schema/mysql/_postSchema.sql    closes what _preSchema opened
 </code></pre></div>
 <p>File names follow your table names, so a schema-qualified name keeps its dot: <code>private.co_orders.sql</code>. The manifest is generated, never hand-edited. When it is wrong, correct a fixture class and regenerate.</p>
 <h3 id="loading-a-schema">Loading a schema<a class="headerlink" href="#loading-a-schema" title="Permanent link">&para;</a></h3>
 <p>Point <code>dump_file</code> at the dialect directory. <code>AbstractDatabaseTestCase</code> loads it on the first connection, in this order: <code>_preSchema.sql</code>, the manifest's tables, <code>_postSchema.sql</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">&lt;env</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dump_file&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;resources/schema/mysql&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">&lt;env</span><span class="w"> </span><span class="na">name=</span><span class="s">"dump_file"</span><span class="w"> </span><span class="na">value=</span><span class="s">"resources/schema/mysql"</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p><code>Connection::loadSchema()</code> also accepts a single flat <code>.sql</code> file, so a project can move to the directory format on its own schedule.</p>
 <h3 id="rebuilding-one-table">Rebuilding one table<a class="headerlink" href="#rebuilding-one-table" title="Permanent link">&para;</a></h3>
@@ -6469,15 +6469,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="p">{</span>
 <a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">testRebuild</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
 <a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="p">{</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addTable</span><span class="p">(</span><span class="s1">&#39;co_invoices&#39;</span><span class="p">);</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addTable</span><span class="p">(</span><span class="s1">'co_invoices'</span><span class="p">);</span>
 <a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getConnection</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s1">&#39;co_invoices&#39;</span><span class="p">));</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getConnection</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s1">'co_invoices'</span><span class="p">));</span>
 <a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>    <span class="p">}</span>
 <a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="p">}</span>
 </code></pre></div>
 <p><code>addTable()</code> is standalone only, and that is enforced. A declared dependency that does not yet exist throws <code>SchemaDependencyMissing</code>. Dependencies are never resolved for you, so call the method once per table, dependency first:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addTable</span><span class="p">(</span><span class="s1">&#39;co_invoices&#39;</span><span class="p">);</span>       <span class="c1">// the dependency</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addTable</span><span class="p">(</span><span class="s1">&#39;co_invoice_lines&#39;</span><span class="p">);</span>  <span class="c1">// the dependent</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addTable</span><span class="p">(</span><span class="s1">'co_invoices'</span><span class="p">);</span>       <span class="c1">// the dependency</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addTable</span><span class="p">(</span><span class="s1">'co_invoice_lines'</span><span class="p">);</span>  <span class="c1">// the dependent</span>
 </code></pre></div>
 <p>The restriction is deliberate. <code>schema_pre</code> is in effect only during the bulk load. By the time a test runs, <code>schema_post</code> has restored <code>FOREIGN_KEY_CHECKS=1</code>, so a table with foreign keys that loads correctly in bulk can fail on its own, on MySQL, for reasons the calling test does not suggest.</p>
 <h2 id="traits">Traits<a class="headerlink" href="#traits" title="Permanent link">&para;</a></h2>
@@ -6538,17 +6538,17 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="nx">Talon</span><span class="o">::</span><span class="na">boot</span><span class="p">(</span>
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="nx">Settings</span><span class="o">::</span><span class="na">fromArray</span><span class="p">(</span>
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>        <span class="p">[</span>
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>            <span class="s1">&#39;root&#39;</span> <span class="o">=&gt;</span> <span class="nb">dirname</span><span class="p">(</span><span class="no">__DIR__</span><span class="p">),</span>
-<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>            <span class="s1">&#39;db&#39;</span>   <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>                <span class="s1">&#39;mysql&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>                    <span class="s1">&#39;host&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> 
-<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>                    <span class="s1">&#39;port&#39;</span>     <span class="o">=&gt;</span> <span class="mi">3306</span><span class="p">,</span> 
-<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>                    <span class="s1">&#39;dbname&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span> 
-<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>                    <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span> 
-<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>                    <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>            <span class="s1">'root'</span> <span class="o">=&gt;</span> <span class="nb">dirname</span><span class="p">(</span><span class="no">__DIR__</span><span class="p">),</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>            <span class="s1">'db'</span>   <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>                <span class="s1">'mysql'</span>  <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>                    <span class="s1">'host'</span>     <span class="o">=&gt;</span> <span class="s1">'127.0.0.1'</span><span class="p">,</span> 
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>                    <span class="s1">'port'</span>     <span class="o">=&gt;</span> <span class="mi">3306</span><span class="p">,</span> 
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>                    <span class="s1">'dbname'</span>   <span class="o">=&gt;</span> <span class="s1">'app'</span><span class="p">,</span> 
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>                    <span class="s1">'username'</span> <span class="o">=&gt;</span> <span class="s1">'root'</span><span class="p">,</span> 
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>                    <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
 <a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>                <span class="p">],</span>
-<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>                <span class="s1">&#39;sqlite&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>                    <span class="s1">&#39;dbname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;:memory:&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>                <span class="s1">'sqlite'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>                    <span class="s1">'dbname'</span> <span class="o">=&gt;</span> <span class="s1">':memory:'</span><span class="p">,</span>
 <a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>                <span class="p">],</span>
 <a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>            <span class="p">],</span>
 <a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>        <span class="p">]</span>
@@ -6751,7 +6751,7 @@ offering lower resource consumption and high performance.
       <script id="__config" type="application/json">{"annotate":{"json":[".s2"]},"base":"..","features":["announce.dismiss","content.action.edit","content.action.view","content.code.annotate","content.code.copy","content.code.select","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.progress","navigation.sections","navigation.tabs","navigation.tabs.sticky","navigation.top","navigation.tracking","search.highlight","search.share","search.suggest","toc.follow"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.e886cdf1.min.js"></script>
       
     
   </body>
