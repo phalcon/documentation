@@ -6,7 +6,7 @@
 
 ### PHP 8.1
 
-Phalcon v5.19 supports only PHP 8.1 and above.
+Phalcon v5.20 supports only PHP 8.1 and above.
 
 Although PHP 8.1 was released several years ago and its [active support][php-support] as well as security updates have expired, Phalcon still supports it, in order to offer enough time for developers to upgrade their applications.
 
@@ -220,7 +220,7 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.19.0 ./
+git checkout tags/v5.20.0 ./
 zephir fullclean
 zephir build
 ```
@@ -353,7 +353,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.19.0 ./
+git checkout tags/v5.20.0 ./
 zephir fullclean
 zephir build
 ```
@@ -378,7 +378,7 @@ The instructions above will compile **and** install the module on your system. Y
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.19.0 ./
+git checkout tags/v5.20.0 ./
 zephir fullclean
 zephir compile
 cd ext

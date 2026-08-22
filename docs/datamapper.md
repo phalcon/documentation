@@ -63,12 +63,12 @@ $dsn = sprintf(
 $connection = new Connection($dsn, $username, $password);
 
 $sql = '
-    SELECT 
-        inv_id, 
-        inv_title 
-    FROM 
-        co_invoices 
-    WHERE 
+    SELECT
+        inv_id,
+        inv_title
+    FROM
+        co_invoices
+    WHERE
         inv_cst_id = :cst_id
 ';
 
@@ -183,7 +183,7 @@ public function fetchGroup(
     string $statement,
     array $values = [],
     int $flags = \PDO::FETCH_ASSOC
-): array 
+): array
 ```
 
 Fetches multiple from the database as an associative array. The first column will be the index key. The default flags are `PDO::FETCH_ASSOC` | `PDO::FETCH_GROUP`
@@ -194,7 +194,7 @@ public function fetchObject(
     array $values = [],
     string $className = "stdClass",
     array $arguments = []
-): object 
+): object
 ```
 
 Fetches one row from the database as an object where the column values are mapped to object properties.
@@ -514,7 +514,7 @@ $locator = new ConnectionLocator(
     function () use ($options) {
         return new Connection(
             'mysql:host=10.4.6.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-            'username', 
+            'username',
             'password'
         );
     }
@@ -532,7 +532,7 @@ $locator->addRead(
     function () {
         return new Connection(
             'mysql:host=10.4.4.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-            'username', 
+            'username',
             'password'
         );
     }
@@ -544,7 +544,7 @@ $locator->addRead(
     function () {
         return new Connection(
             'mysql:host=10.4.8.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-            'username', 
+            'username',
             'password'
         );
     }
@@ -556,7 +556,7 @@ $locator->addRead(
     function () {
         return new Connection(
             'mysql:host=10.4.8.2;dbname=phalcon_db;charset=utf8mb4;port=3306',
-            'username', 
+            'username',
             'password'
         );
     }
@@ -568,7 +568,7 @@ $locator->addRead(
     function () {
         return new Connection(
             'mysql:host=10.4.8.3;dbname=phalcon_db;charset=utf8mb4;port=3306',
-            'username', 
+            'username',
             'password'
         );
     }
@@ -587,7 +587,7 @@ $write = [
     'master' => function () {
         return new Connection(
             'mysql:host=10.4.4.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-            'username', 
+            'username',
             'password'
         );
     }
@@ -598,21 +598,21 @@ $read = [
     'slave01' => function () {
         return new Connection(
             'mysql:host=10.4.8.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-            'username', 
+            'username',
             'password'
         );
     },
     'slave02' => function () {
         return new Connection(
             'mysql:host=10.4.8.2;dbname=phalcon_db;charset=utf8mb4;port=3306',
-            'username', 
+            'username',
             'password'
         );
     },
     'slave03' => function () {
         return new Connection(
             'mysql:host=10.4.8.3;dbname=phalcon_db;charset=utf8mb4;port=3306',
-            'username', 
+            'username',
             'password'
         );
     }
@@ -622,7 +622,7 @@ $locator = new ConnectionLocator(
     function () use ($options) {
         return new Connection(
             'mysql:host=10.4.6.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-            'username', 
+            'username',
             'password'
         );
     },
@@ -671,8 +671,8 @@ $dsn = sprintf(
 
 $profiler   = new Profiler(new MemoryLogger());
 $connection = new Connection(
-    $dsn, 
-    $username, 
+    $dsn,
+    $username,
     $password,
     [
         PDO::ATTR_EMULATE_PREPARES => true, // PDO options
@@ -732,7 +732,7 @@ The parameters available are:
 
 ### Events
 
-As of 5.19 the connections fire lifecycle events through the [Phalcon\Events\Manager][events-manager]. The events report every connection and statement operation, and the `before*` events can cancel the operation before it runs.
+As of 5.20 the connections fire lifecycle events through the [Phalcon\Events\Manager][events-manager]. The events report every connection and statement operation, and the `before*` events can cancel the operation before it runs.
 
 Events are only fired when an events manager is set on the connection. Call `setEventsManager()` with the manager, and `getEventsManager()` to read it back. The event names are constants on [Phalcon\DataMapper\Pdo\Events][datamapper-pdo-events], so you do not have to repeat the strings.
 
@@ -996,8 +996,8 @@ Delete constructor.
 
 ```php
 public function andWhere(
-    string $condition, 
-    mixed $value = null, 
+    string $condition,
+    mixed $value = null,
     int $type = -1
 ): Delete
 ```
@@ -1006,8 +1006,8 @@ Sets a `AND` for a `WHERE` condition
 
 ```php
 public function appendWhere(
-    string $condition, 
-    mixed $value = null, 
+    string $condition,
+    mixed $value = null,
     int $type = -1
 ): Delete
 ```
@@ -1070,8 +1070,8 @@ Sets the `ORDER BY`
 
 ```php
 public function orWhere(
-    string $condition, 
-    mixed $value = null, 
+    string $condition,
+    mixed $value = null,
     int $type = -1
 ): Delete
 ```
@@ -1086,9 +1086,9 @@ Performs a statement in the connection
 
 ```php
 public function quoteIdentifier(
-    string $name, 
+    string $name,
     int $type = \PDO::PARAM_STR
-): string 
+): string
 ```
 
 Quotes the identifier
@@ -1161,8 +1161,8 @@ Sets a flag for the query such as "DISTINCT"
 
 ```php
 public function where(
-    string $condition, 
-    mixed $value = null, 
+    string $condition,
+    mixed $value = null,
     int $type = -1
 ): Delete
 ```
@@ -1177,23 +1177,23 @@ sw
 
 ```php
 protected function addCondition(
-    string $store, 
-    string $andor, 
-    string $condition, 
-    mixed $value = null, 
+    string $store,
+    string $andor,
+    string $condition,
+    mixed $value = null,
     int $type = -1
-): void 
+): void
 ```
 
 Appends a conditional
 
 ```php
 protected function appendCondition(
-    string $store, 
-    string $condition, 
-    mixed $value = null, 
+    string $store,
+    string $condition,
+    mixed $value = null,
     int $type = -1
-): void 
+): void
 ```
 
 Concatenates a conditional
@@ -1295,10 +1295,10 @@ The `from()` method is used to specify the table to delete data from.
 ```php
 $delete
     ->from('co_invoices')
-; 
+;
 
 $delete->perform();
-// DELETE 
+// DELETE
 // FROM co_invoices
 ```
 
@@ -1310,7 +1310,7 @@ The `where()` method(s) are used to specify conditions for the `DELETE` statemen
 $delete
     ->from('co_invoices')
     ->where('inv_cst_id = ', 1)
-; 
+;
 
 $delete->perform();
 
@@ -1329,7 +1329,7 @@ $delete
     ->from('co_invoices')
     ->where('inv_cst_id = ', 1)
     ->orderBy('inv_id')
-; 
+;
 
 $delete->perform();
 
@@ -1350,7 +1350,7 @@ $delete
     ->orderBy('inv_id')
     ->limit(10)
     ->offset(40)
-; 
+;
 
 $delete->perform();
 
@@ -1373,7 +1373,7 @@ $delete
     ->limit(10)
     ->offset(40)
     ->returning(['inv_id', 'inv_cst_id'])
-; 
+;
 
 $delete->perform();
 
@@ -1398,7 +1398,7 @@ $delete
     ->offset(40)
     ->returning(['inv_id', 'inv_cst_id'])
     ->setFlag('LOW_PRIORITY')
-; 
+;
 
 $delete->perform();
 
@@ -1662,7 +1662,7 @@ $insert
     ->into('co_invoices')
     ->columns(
         [
-            'inv_cst_id' => 2, 
+            'inv_cst_id' => 2,
             'inv_total'  => 100.12
         ]
     )
@@ -1733,7 +1733,7 @@ $insert
     ->into('co_invoices')
     ->columns(
         [
-            'inv_cst_id', 
+            'inv_cst_id',
             'inv_total' => 100.12
         ]
     )
@@ -1747,7 +1747,7 @@ $insert
     )
     ->returning(
         [
-            'inv_id', 
+            'inv_id',
             'inv_cst_id'
         ]
     )
@@ -1761,18 +1761,18 @@ $insert
 
 $insert->perform();
 // INSERT INTO co_invoices (
-//      inv_cst_id, 
-//      inv_total, 
-//      inv_id, 
-//      inv_status_flag, 
+//      inv_cst_id,
+//      inv_total,
+//      inv_id,
+//      inv_status_flag,
 //      inv_created_date
 // ) VALUES (
-//      :inv_cst_id, 
-//      :inv_total, 
-//      NULL, 
-//      1, 
+//      :inv_cst_id,
+//      :inv_total,
+//      NULL,
+//      1,
 //      NOW()
-// ) 
+// )
 // RETURNING inv_id, inv_cst_id, inv_total
 ```
 
@@ -1872,11 +1872,11 @@ To add columns to the Select, use the `columns()` method and pass the columns as
 <?php
 
 $columns = [
-    'inv_id', 
-    'inv_cst_id', 
-    'inv_status_flag', 
-    'inv_title', 
-    'inv_total', 
+    'inv_id',
+    'inv_cst_id',
+    'inv_status_flag',
+    'inv_title',
+    'inv_total',
     'inv_created_at',
 ];
 
@@ -1897,22 +1897,22 @@ $select->columns($columns);
 <?php
 
 $columns = [
-    'id'         => 'inv_id', 
-    'customerId' => 'inv_cst_id', 
-    'status'     => 'inv_status_flag', 
-    'title'      => 'inv_title', 
-    'total'      => 'inv_total', 
+    'id'         => 'inv_id',
+    'customerId' => 'inv_cst_id',
+    'status'     => 'inv_status_flag',
+    'title'      => 'inv_title',
+    'total'      => 'inv_total',
     'createdAt'  => 'inv_created_at',
 ];
 
 $select->columns($columns);
 
-// SELECT 
-//      id, 
-//      customerId, 
-//      status, 
-//      title, 
-//      total, 
+// SELECT
+//      id,
+//      customerId,
+//      status,
+//      title,
+//      total,
 //      createdAt
 ```
 
@@ -1922,14 +1922,14 @@ $select->columns($columns);
 <?php
 
 $columns = [
-    'customerId' => 'inv_cst_id', 
+    'customerId' => 'inv_cst_id',
     'totalCount' => 'COUNT(inv_total)'
 ];
 
 $select->columns($columns);
 
-// SELECT 
-//      customerId, 
+// SELECT
+//      customerId,
 //      COUNT(inv_total) AS totalCount
 ```
 
@@ -1975,7 +1975,7 @@ $select
     ->join($select::JOIN_LEFT, 'co_customers', 'inv_cst_id = cst_id')
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  LEFT JOIN co_customers ON inv_cst_id = cst_id
 ```
 
@@ -1989,7 +1989,7 @@ $select
     ->join($select::JOIN_RIGHT, 'co_customers', 'inv_cst_id = cst_id')
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  RIGHT JOIN co_customers ON inv_cst_id = cst_id
 ```
 
@@ -2003,7 +2003,7 @@ $select
     ->join($select::JOIN_INNER, 'co_customers', 'inv_cst_id = cst_id')
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  INNER JOIN co_customers ON inv_cst_id = cst_id
 ```
 
@@ -2017,7 +2017,7 @@ $select
     ->join($select::JOIN_NATURAL, 'co_customers', 'inv_cst_id = cst_id')
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  NATURAL JOIN co_customers ON inv_cst_id = cst_id
 ```
 
@@ -2030,16 +2030,16 @@ $status = 1;
 $select
     ->from('co_invoices')
     ->join(
-        $select::JOIN_LEFT, 
-        'co_customers', 
+        $select::JOIN_LEFT,
+        'co_customers',
         'inv_cst_id = cst_id AND cst_status_flag = ',
         $status
     )
     ->appendJoin(' AND cst_name LIKE ', '%john%')
 ;
 
-// SELECT * FROM co_invoices 
-//  LEFT JOIN co_customers ON inv_cst_id = cst_id 
+// SELECT * FROM co_invoices
+//  LEFT JOIN co_customers ON inv_cst_id = cst_id
 //      AND cst_status_flag = :__1__
 //      AND cst_name LIKE :__2__
 ```
@@ -2059,7 +2059,7 @@ $select
     ->where('inv_id > ', $invoiceId)
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  WHERE inv_id > :__1__
 ```
 
@@ -2080,10 +2080,10 @@ $select
     ->bindValue('total', $totalValue)
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  WHERE inv_id > 1
-//      AND inv_total > :total 
-//      AND inv_cst_id IN (:__1__, :__2__, :__3__) 
+//      AND inv_total > :total
+//      AND inv_cst_id IN (:__1__, :__2__, :__3__)
 //      AND inv_status_flag = :__4__
 ```
 
@@ -2101,7 +2101,7 @@ $select
     ->bindValue('status', $status)
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  WHERE inv_total > :__1__ "
 //      OR inv_status_flag = :status
 ```
@@ -2132,10 +2132,10 @@ $select
     )
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  WHERE inv_id IN (:__1__, :__2__, :__3__)
-//      AND inv_cst_id IS NULL 
-//      AND inv_title = :__4__ 
+//      AND inv_cst_id IS NULL
+//      AND inv_title = :__4__
 //      AND inv_created_at = NOW()
 ```
 
@@ -2152,7 +2152,7 @@ $select
     ->groupBy('inv_status_flag')
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  GROUP BY inv_cst_id, inv_status_flag
 ```
 
@@ -2181,7 +2181,7 @@ $select
     )
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  ORDER BY inv_cst_id, UPPER(inv_title) DESC
 ```
 
@@ -2197,7 +2197,7 @@ $select
     ->limit(10)
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  LIMIT 10
 
 $select
@@ -2206,7 +2206,7 @@ $select
     ->offset(50)
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  LIMIT 10 OFFSET 50
 ```
 
@@ -2223,7 +2223,7 @@ $select
     ->perPage(10)
 ;
 
-// SELECT * FROM co_invoices 
+// SELECT * FROM co_invoices
 //  LIMIT 10 OFFSET 5
 ```
 
@@ -2239,7 +2239,7 @@ $select
     ->from('co_invoices')
     ->columns(
         [
-            'inv_id', 
+            'inv_id',
             'inc_cst_id'
         ]
     )
@@ -2314,7 +2314,7 @@ $select
 ;
 
 // SELECT * FROM co_invoices WHERE inv_id = 1
-// UNION 
+// UNION
 // SELECT * FROM co_invoices WHERE inv_id = 2
 // UNION
 // SELECT * FROM co_invoices WHERE inv_id = 3
@@ -2328,8 +2328,8 @@ $select
 ;
 
 // SELECT * FROM co_invoices WHERE inv_id = 1
-// UNION ALL 
-// SELECT * FROM co_invoices WHERE inv_id = 2 
+// UNION ALL
+// SELECT * FROM co_invoices WHERE inv_id = 2
 ```
 
 #### Reset
@@ -2366,7 +2366,7 @@ $select
 ;
 
 // SELECT *
-// FROM (SELECT inv_id FROM co_invoices) AS inv 
+// FROM (SELECT inv_id FROM co_invoices) AS inv
 ```
 
 When we need to pass parameters, we can add them to the subselect.
@@ -2391,7 +2391,7 @@ $select
 
 // SELECT *
 // FROM (SELECT inv_id FROM co_invoices WHERE inv_id > __1__) AS inv
-// WHERE inv_id < __2__ 
+// WHERE inv_id < __2__
 ```
 
 Subselects can be used also in `JOIN` and `WHERE` conditions as follows:
@@ -2424,7 +2424,7 @@ $select
         [
             'inv_id',
             'inv_total'
-        ]   
+        ]
     )
     ->from('co_invoices')
     ->where(
@@ -2443,7 +2443,7 @@ $select
 
 // SELECT inv_id, inv_total
 // FROM co_invoices
-// WHERE inv_id IN (SELECT cst_inv_id FROM co_customers WHERE inv_total > __1__) 
+// WHERE inv_id IN (SELECT cst_inv_id FROM co_customers WHERE inv_total > __1__)
 ```
 
 ### Update
@@ -2494,8 +2494,8 @@ Binds an array of values
 
 ```php
 public function column(
-    string $column, 
-    mixed $value = null, 
+    string $column,
+    mixed $value = null,
     int $type = -1
 ): Update
 ```
@@ -2856,7 +2856,7 @@ $update
     )
     ->where('inv_cst_id = ', 1)
     ->orderBy('inv_id')
-; 
+;
 
 $update->perform();
 
@@ -2886,7 +2886,7 @@ $update
     ->orderBy('inv_id')
     ->limit(10)
     ->offset(40)
-; 
+;
 
 $update->perform();
 
@@ -2918,7 +2918,7 @@ $update
     ->limit(10)
     ->offset(40)
     ->returning(['inv_id', 'inv_cst_id'])
-; 
+;
 
 $update->perform();
 
@@ -2951,7 +2951,7 @@ $update
     ->offset(40)
     ->returning(['inv_id', 'inv_cst_id'])
     ->setFlag('LOW_PRIORITY')
-; 
+;
 
 $update->perform();
 
@@ -2970,7 +2970,7 @@ Any exceptions thrown in the [Phalcon\DataMapper\Pdo][datamapper-pdo-connection]
 
 ### Granular Exceptions
 
-The component raises granular subclasses under `Phalcon\DataMapper\Pdo\Exception\` so callers can catch a specific failure mode. `DriverNotSupported`, `UnknownDriverMethod` and `UnknownQueryMethod` were added in 5.14, and `OperationCancelled` in 5.19. Existing `catch (Phalcon\DataMapper\Pdo\Exception\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses under `Phalcon\DataMapper\Pdo\Exception\` so callers can catch a specific failure mode. `DriverNotSupported`, `UnknownDriverMethod` and `UnknownQueryMethod` were added in 5.14, and `OperationCancelled` in 5.20. Existing `catch (Phalcon\DataMapper\Pdo\Exception\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                  | Parent                                       | Thrown when                                                                                       |
 |--------------------------------------------------------|----------------------------------------------|---------------------------------------------------------------------------------------------------|
