@@ -6036,6 +6036,10 @@ offering lower resource consumption and high performance.
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">SECURITY</p>
+<p>Image files are decoded from untrusted bytes. Two precautions apply. First, the <code>$file</code> argument passed to an adapter constructor (load) and to <code>save()</code> (write) is used as a filesystem path as-is; the framework does not sanitize or contain it. Validate any request-derived filename before passing it, otherwise a crafted path can read or write files outside the intended directory. Second, both adapters reject an image whose pixel count exceeds a configurable limit (a generous default, or the fourth constructor argument) to bound decompression-bomb and pixel-flood memory use. When using the Imagick adapter, also harden the ImageMagick <code>policy.xml</code> on the server to disable coders such as <code>MSL</code>, <code>MVG</code>, <code>URL</code>, and <code>HTTPS</code>; those coders are enforced by ImageMagick, not by Phalcon.</p>
+</div>
 <h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <p><a href="../api/phalcon_image/#imageenum">Phalcon\Image\Enum</a> holds constants for image resizing and flipping. The available constants are:</p>
 <p><strong>Resize</strong></p>

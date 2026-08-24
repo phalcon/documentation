@@ -6497,6 +6497,10 @@ offering lower resource consumption and high performance.
 <li><code>$_SERVER["SERVER_ADDR"]</code></li>
 </ul>
 <p>Optionally <code>getHttpHost()</code> validates and performs a strict check on the hostname. To achieve that you can use the <code>setStrictHostCheck()</code> method.</p>
+<div class="admonition warning">
+<p class="admonition-title">SECURITY</p>
+<p><code>getHttpHost()</code> returns the <code>Host</code> header sent by the client, which is attacker-controlled. <code>setStrictHostCheck()</code> only validates that the host is well-formed; it does not confirm that the host belongs to your application. Before using the returned value to build absolute URLs, password-reset links, or cache keys, validate it against your own list of expected hostnames.</p>
+</div>
 <h2 id="uploaded-files">Uploaded Files<a class="headerlink" href="#uploaded-files" title="Permanent link">&para;</a></h2>
 <p>Another common task is file uploading. <a href="../api/phalcon_http/#httprequest">Phalcon\Http\Request</a> offers an object-oriented way to work with files. For the whole upload process to work, you will need to make the necessary changes to your <code>php.ini</code> ( see <a href="https://www.php.net/manual/en/ini.core.php#ini.file-uploads">php-uploads</a>).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="o">&lt;?</span><span class="nx">php</span>

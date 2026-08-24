@@ -7541,6 +7541,10 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <h2 id="query-builder">Query Builder<a class="headerlink" href="#query-builder" title="Permanent link">&para;</a></h2>
 <p><a href="../api/phalcon_mvc/#mvcmodelquerybuilder">Phalcon\Mvc\Model\Query\Builder</a> is a very handy builder that allows you to construct PHQL statements in an object-oriented way. Most methods return the builder object, allowing you to use a fluent interface, and is flexible enough allowing you to add conditionals if you need to without having to create complex <code>if</code> statements and string concatenations constructing the PHQL statement.</p>
+<div class="admonition warning">
+<p class="admonition-title">SECURITY</p>
+<p>String fragments passed to the builder — <code>where()</code>, <code>having()</code>, <code>orderBy()</code>, the column list, and join conditions — are concatenated into the PHQL statement verbatim. Pass untrusted values only through bind parameters (<code>:name:</code> placeholders supplied through <code>bind</code>), never by concatenating them into a fragment string.</p>
+</div>
 <p>The PHQL query:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="k">SELECT</span><span class="w"> </span>
 <a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a><span class="w">    </span><span class="o">*</span><span class="w"> </span>
