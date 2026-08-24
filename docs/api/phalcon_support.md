@@ -6165,7 +6165,7 @@ Returns the exception class for the factory
 
 </div>
 
-__Used by__ [`Phalcon\Mvc\Model\MetaData\Stream`](phalcon_mvc.md#mvcmodelmetadatastream) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](phalcon_mvc.md#mvcviewenginevoltcompiler)
+__Used by__ [`Phalcon\Mvc\Model\MetaData\Stream`](phalcon_mvc.md#mvcmodelmetadatastream) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](phalcon_mvc.md#mvcviewenginevoltcompiler) · [`Phalcon\Storage\Adapter\Stream`](phalcon_storage.md#storageadapterstream)
 { .api-used-by }
 
 ### Method Summary

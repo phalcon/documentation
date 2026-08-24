@@ -27,7 +27,7 @@ $asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
 
 </div>
 
-__Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\HashTrait`
+__Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\HashTrait`
 { .api-uses }
 
 ### Method Summary
@@ -43,12 +43,6 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\A
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getAssetKey</span>()</code>
 <span class="desc">Gets the asset&#039;s key.</span>
-</a>
-<a class="api-item" href="#assetsasset-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-<span class="desc">Gets extra HTML attributes.</span>
 </a>
 <a class="api-item" href="#assetsasset-getcontent">
 <code class="vis vis-public">public</code>
@@ -173,7 +167,7 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\A
 
 ### Methods
 
-<div class="api-group">Public · 18</div>
+<div class="api-group">Public · 17</div>
 
 #### `__construct()` { #assetsasset-__construct }
 
@@ -198,14 +192,6 @@ public function getAssetKey(): string;
 ```
 
 Gets the asset's key.
-
-#### `getAttributes()` { #assetsasset-getattributes }
-
-```php
-public function getAttributes(): array;
-```
-
-Gets extra HTML attributes.
 
 #### `getContent()` { #assetsasset-getcontent }
 
@@ -446,9 +432,7 @@ Js constructor.
 
 Collection of asset objects
 
-@template TKey of array-key
-@template TValue of AssetInterface
-@implements IteratorAggregate<TKey, TValue>
+@implements IteratorAggregate<string, AssetInterface>
 
 <div class="api-tree" markdown>
 
@@ -456,7 +440,7 @@ Collection of asset objects
 
 </div>
 
-__Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Traits\Php\FileTrait` · `Traversable`
+__Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\FileTrait` · `Traversable`
 { .api-uses }
 
 ### Method Summary
@@ -629,7 +613,7 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Asset
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, AssetInterface&gt;</code>
+<code class="ret">assets_asset_map</code>
 <code class="sig"><span class="sv">$assets</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -640,12 +624,12 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Asset
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">AssetInterface[]</code>
+<code class="ret">assets_codes</code>
 <code class="sig"><span class="sv">$codes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">FilterInterface[]</code>
+<code class="ret">assets_filters</code>
 <code class="sig"><span class="sv">$filters</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -759,8 +743,6 @@ public function count(): int;
 ```
 
 Return the count of the assets
-
-@link https://php.net/manual/en/countable.count.php
 
 #### `getAssets()` { #assetscollection-getassets }
 
@@ -1398,7 +1380,7 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 </div>
 
-__Uses__ `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Traits\Php\HashTrait`
+__Uses__ `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\HashTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1414,12 +1396,6 @@ __Uses__ `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Traits\Php\HashTrai
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getAssetKey</span>()</code>
 <span class="desc">Gets the asset&#039;s key.</span>
-</a>
-<a class="api-item" href="#assetsinline-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-<span class="desc">Gets extra HTML attributes.</span>
 </a>
 <a class="api-item" href="#assetsinline-getcontent">
 <code class="vis vis-public">public</code>
@@ -1481,7 +1457,7 @@ __Uses__ `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Traits\Php\HashTrai
 
 ### Methods
 
-<div class="api-group">Public · 9</div>
+<div class="api-group">Public · 8</div>
 
 #### `__construct()` { #assetsinline-__construct }
 
@@ -1503,14 +1479,6 @@ public function getAssetKey(): string;
 ```
 
 Gets the asset's key.
-
-#### `getAttributes()` { #assetsinline-getattributes }
-
-```php
-public function getAttributes(): array;
-```
-
-Gets extra HTML attributes.
 
 #### `getContent()` { #assetsinline-getcontent }
 
@@ -1575,7 +1543,7 @@ Represents an inlined CSS
 
 </div>
 
-__Uses__ `Phalcon\Assets\Inline`
+__Uses__ `Phalcon\Assets\Inline` · `Phalcon\Contracts\Assets\AssetsTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1619,7 +1587,7 @@ Represents an inline JavaScript
 
 </div>
 
-__Uses__ `Phalcon\Assets\Inline`
+__Uses__ `Phalcon\Assets\Inline` · `Phalcon\Contracts\Assets\AssetsTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1658,11 +1626,13 @@ Manages collections of CSS/JavaScript assets
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Assets\Manager`** - implements [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
+- `\stdClass`
+    - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
+        - **`Phalcon\Assets\Manager`**
 
 </div>
 
-__Uses__ `Exception` · `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory` · `Phalcon\Traits\Php\FileTrait`
+__Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Url` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1790,7 +1760,7 @@ __Uses__ `Exception` · `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` 
 <a class="api-item" href="#assetsmanager-outputinline">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">outputInline</span>(<span class="prm"><span class="st">Collection</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
+<code class="sig"><span class="sf">outputInline</span>(<span class="prm"><span class="st">Collection</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$type</span></span>)</code>
 <span class="desc">Traverses a collection and generate its HTML</span>
 </a>
 <a class="api-item" href="#assetsmanager-outputinlinecss">
@@ -1836,7 +1806,7 @@ __Uses__ `Exception` · `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` 
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, Collection&gt;</code>
+<code class="ret">assets_collections</code>
 <code class="sig"><span class="sv">$collections</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -1987,6 +1957,9 @@ public function collectionAssetsByType(
 
 Creates/Returns a collection of assets by type
 
+The `instanceof` guard below is the validation, so the parameter stays a
+plain array here.
+
 #### `exists()` { #assetsmanager-exists }
 
 ```php
@@ -2085,7 +2058,7 @@ Prints the HTML for CSS assets
 ```php
 public function outputInline(
     Collection $collection,
-    string $type
+    mixed $type
 ): string;
 ```
 
@@ -2155,14 +2128,17 @@ Sets if the HTML generated must be directly printed or returned
 Shared HTML-attributes state for asset objects (`Asset`, `Inline`,
 `Collection`).
 
-@todo v7 - share setAttributes here too (blocked: Collection is not an
-      AssetInterface, so the return type diverges)
+@todo set attributes to have a default array when introduced in zephir
+@todo v7 - share setAttributes here too (blocked: Collection is not an AssetInterface, so the return type diverges)
 
 <div class="api-tree" markdown>
 
 - **`Phalcon\Assets\Traits\AttributesTrait`**
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Assets\AssetsTypes`
+{ .api-uses }
 
 __Used by__ [`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collection`](#assetscollection) · [`Phalcon\Assets\Inline`](#assetsinline)
 { .api-used-by }
@@ -2183,8 +2159,8 @@ __Used by__ [`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collectio
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string&gt;</code>
-<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
+<code class="ret">assets_attributes|null</code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = null</span></code>
 </div>
 </div>
 

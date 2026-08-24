@@ -14,6 +14,10 @@ The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Se
 
     The default serializer for all adapters is `Phalcon\Storage\Serializer\Php` which uses PHP's `serialize` and `unserialize` methods. These methods can suit most applications. However, the developer might want to use something more efficient such as [igbinary][igbinary] which is faster and achieves better compression.
 
+!!! danger "WARNING"
+
+    The `Php` serializer uses PHP's native `unserialize()`, which instantiates any class contained in the stored bytes. If an attacker can influence those bytes (for example a shared or writable cache backend), this allows PHP object injection and possibly remote code execution. For data that can be attacker-influenced, use the `Json` or `Msgpack` serializer instead of `Php`.
+
 The storage adapter can be configured to use a different serializer. The available serializers are:
 
 ### `Base64`

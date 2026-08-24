@@ -183,9 +183,6 @@ This component offers an easy way to create breadcrumbs for your application.
 The resulting HTML when calling `render()` will have each breadcrumb enclosed
 in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 
-@property string $separator
-@property string $template
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Html\Breadcrumbs`**
@@ -360,12 +357,6 @@ $escaped = $escaper->css("font-family: <Verdana>");
 
 echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 ```
-
-@property AttributeEscaper $attributeEscaper
-@property CssEscaper       $cssEscaper
-@property HtmlEscaper      $htmlEscaper
-@property JsEscaper        $jsEscaper
-@property UrlEscaper       $urlEscaper
 
 <div class="api-tree" markdown>
 
@@ -730,10 +721,6 @@ public function setDoubleEncode( bool $doubleEncode ): static;
 
 Sets the double_encode flag. Fans out to all sub-escapers.
 
-```php
-$escaper->setDoubleEncode(false);
-```
-
 #### `setEncoding()` { #htmlescaper-setencoding }
 
 ```php
@@ -742,10 +729,6 @@ public function setEncoding( string $encoding ): static;
 
 Sets the encoding. Fans out to all sub-escapers.
 
-```php
-$escaper->setEncoding("utf-8");
-```
-
 #### `setFlags()` { #htmlescaper-setflags }
 
 ```php
@@ -753,10 +736,6 @@ public function setFlags( int $flags ): static;
 ```
 
 Sets the htmlspecialchars flags. Fans out to all sub-escapers.
-
-```php
-$escaper->setFlags(ENT_XHTML);
-```
 
 #### `setHtmlEscaper()` { #htmlescaper-sethtmlescaper }
 
@@ -771,10 +750,6 @@ public function setHtmlQuoteType( int $flags ): static;
 ```
 
 Sets the HTML quoting type for htmlspecialchars.
-
-```php
-$escaper->setHtmlQuoteType(ENT_XHTML);
-```
 
 #### `setJsEscaper()` { #htmlescaper-setjsescaper }
 
@@ -846,10 +821,6 @@ detection / normalization utilities used by the CSS and JS escapers.
 Each concrete context (`HtmlEscaper`, `AttributeEscaper`, `CssEscaper`,
 `JsEscaper`, `UrlEscaper`) extends this so that callers can configure
 one context without affecting the others.
-
-@property bool   $doubleEncode
-@property string $encoding
-@property int    $flags
 
 <div class="api-tree" markdown>
 
@@ -1277,10 +1248,6 @@ Shared encoding/flags state and the encoding detection/normalization
 utilities used by the per-context escaper objects (`HtmlEscaper`,
 `AttributeEscaper`, `CssEscaper`, `JsEscaper`, `UrlEscaper`).
 
-@property bool   $doubleEncode
-@property string $encoding
-@property int    $flags
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Html\Escaper\Traits\EscaperTrait`**
@@ -1671,11 +1638,6 @@ public function __construct();
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Helper/AbstractHelper.php){ .src-btn }
 
-@property string           $delimiter
-@property EscaperInterface $escaper
-@property string           $indent
-@property int              $indentLevel
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Html\Helper\AbstractHelper`**
@@ -1717,6 +1679,12 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInte
 <code class="ret">string</code>
 <code class="sig"><span class="sf">close</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Produces a closing tag</span>
+</a>
+<a class="api-item" href="#htmlhelperabstracthelper-escapename">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">escapeName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+<span class="desc">Removes the characters that end a tag or attribute name (white space,</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-indent">
 <code class="vis vis-protected">protected</code>
@@ -1819,7 +1787,7 @@ public function __construct(
 
 AbstractHelper constructor.
 
-<div class="api-group">Protected · 10</div>
+<div class="api-group">Protected · 11</div>
 
 #### `close()` { #htmlhelperabstracthelper-close }
 
@@ -1831,6 +1799,16 @@ protected function close(
 ```
 
 Produces a closing tag
+
+#### `escapeName()` { #htmlhelperabstracthelper-escapename }
+
+```php
+protected function escapeName( string $name ): string;
+```
+
+Removes the characters that end a tag or attribute name (white space,
+"/", "=") and escapes the rest, so a crafted name cannot break out of
+its position.
 
 #### `indent()` { #htmlhelperabstracthelper-indent }
 
@@ -1967,6 +1945,7 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 </a>
 <a class="api-item" href="#htmlhelperabstractlist-gettag">
 <code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sf">getTag</span>()</code>
 <span class="desc">Returns the tag name.</span>
 </a>
@@ -2019,7 +1998,7 @@ Generates and returns the HTML for the list.
 #### `getTag()` { #htmlhelperabstractlist-gettag }
 
 ```php
-abstract protected function getTag();
+abstract protected function getTag(): string;
 ```
 
 Returns the tag name.
@@ -2071,7 +2050,7 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 <a class="api-item" href="#htmlhelperabstractseries-pushorplace">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">pushOrPlace</span>(<span class="prm"><span class="st">array</span> <span class="sv">$entry</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pos</span><span class="sm"> = -1</span></span>)</code>
+<code class="sig"><span class="sf">pushOrPlace</span>(<span class="prm"><span class="st">array</span> <span class="sv">$entry</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Appends an entry to the store, optionally at a specific integer</span>
 </a>
 </div>
@@ -2138,7 +2117,7 @@ Returns the tag name.
 ```php
 protected function pushOrPlace(
     array $entry,
-    int $pos = -1
+    int $position = -1
 ): void;
 ```
 
@@ -2156,8 +2135,6 @@ existing entries are not overwritten. The store is ksort()ed in
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Helper/Anchor.php){ .src-btn }
 
 Class Anchor
-
-@property bool $forceRaw
 
 <div class="api-tree" markdown>
 
@@ -2323,7 +2300,7 @@ in `<li>` tags, while the whole string is enclosed in `<nav>` and `<ol>` tags.
 
 </div>
 
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2424,21 +2401,6 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Url\UrlInterfac
 <code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the internal breadcrumbs array</span>
 </a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$delimiter</span><span class="sm"> = PHP_EOL</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span></code>
-</div>
 </div>
 
 ### Methods
@@ -2621,8 +2583,6 @@ Returns the internal breadcrumbs array
 
 Class Button
 
-@property bool $forceRaw
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
@@ -2745,7 +2705,8 @@ Creates Doctype tags
 <a class="api-item" href="#htmlhelperdoctype-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = self::HTML5</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = PHP_EOL</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = self::HTML5</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = &quot;
+&quot;</span></span>)</code>
 <span class="desc">Produce a &lt;doctype&gt; tag</span>
 </a>
 <a class="api-item" href="#htmlhelperdoctype-__tostring">
@@ -2818,7 +2779,8 @@ Creates Doctype tags
 ```php
 public function __invoke(
     int $type = self::HTML5,
-    string $delimiter = PHP_EOL
+    string $delimiter = "
+"
 ): static;
 ```
 
@@ -2843,8 +2805,6 @@ public function getType(): int;
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Helper/Element.php){ .src-btn }
 
 Class Element
-
-@property bool $forceRaw
 
 <div class="api-tree" markdown>
 
@@ -3071,8 +3031,6 @@ The match between `checked` and `value` is loose (`==`) by default so that
 mixed int/string form input round-trips correctly (e.g. `value=0` against
 `checked="0"`). Strict (`===`) matching is available via `strict(true)`.
 
-@property bool $strict
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
@@ -3083,16 +3041,12 @@ mixed int/string form input round-trips correctly (e.g. `value=0` against
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 { .api-uses }
 
 ### Method Summary
 
 <div class="api-list">
-<a class="api-item" href="#htmlhelperinputabstractchecked-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype|null</span> <span class="sv">$doctype</span><span class="sm"> = null</span></span>)</code>
-</a>
 <a class="api-item" href="#htmlhelperinputabstractchecked-__tostring">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__toString</span>()</code>
@@ -3141,16 +3095,7 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInte
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
-
-#### `__construct()` { #htmlhelperinputabstractchecked-__construct }
-
-```php
-public function __construct(
-    EscaperInterface $escaper,
-    Doctype|null $doctype = null
-);
-```
+<div class="api-group">Public · 3</div>
 
 #### `__toString()` { #htmlhelperinputabstractchecked-__tostring }
 
@@ -3260,7 +3205,7 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Helper\AbstractHelp
 <a class="api-item" href="#htmlhelperinputabstractgroup-renderitem">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">renderItem</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$definition</span></span>)</code>
+<code class="sig"><span class="sf">renderItem</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Renders a single input + optional label pair.</span>
 </a>
 </div>
@@ -3333,7 +3278,7 @@ Determines whether the given value is considered checked.
 ```php
 protected function renderItem(
     string $value,
-    array|string $definition
+    mixed $definition
 ): string;
 ```
 
@@ -3346,9 +3291,6 @@ Renders a single input + optional label pair.
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Helper/Input/AbstractInput.php){ .src-btn }
 
 Class AbstractInput
-
-@property string $type
-@property string $value
 
 <div class="api-tree" markdown>
 
@@ -3656,11 +3598,6 @@ Returns true when $value loosely equals the checked scalar.
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Helper/Input/Select.php){ .src-btn }
 
 Class Select
-
-@property string $elementTag
-@property bool   $inOptGroup
-@property string $selected
-@property bool   $strict
 
 <div class="api-tree" markdown>
 
@@ -4126,8 +4063,6 @@ Returns the HTML for the input.
 
 Class Label
 
-@property bool $forceRaw
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
@@ -4215,13 +4150,13 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 <a class="api-item" href="#htmlhelperlink-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$href</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Add an element to the list</span>
 </a>
 <a class="api-item" href="#htmlhelperlink-getattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$href</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
+<code class="sig"><span class="sf">getAttributes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Returns the necessary attributes</span>
 </a>
 <a class="api-item" href="#htmlhelperlink-gettag">
@@ -4239,7 +4174,7 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 
 ```php
 public function add(
-    string $href,
+    string $url,
     array $attributes = [],
     int $position = -1
 ): static;
@@ -4253,7 +4188,7 @@ Add an element to the list
 
 ```php
 protected function getAttributes(
-    string $href,
+    string $url,
     array $attributes
 ): array;
 ```
@@ -4291,23 +4226,23 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 <a class="api-item" href="#htmlhelpermeta-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pos</span><span class="sm"> = -1</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Add an element to the list</span>
 </a>
 <a class="api-item" href="#htmlhelpermeta-addhttp">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addHttp</span>(<span class="prm"><span class="st">string</span> <span class="sv">$httpEquiv</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pos</span><span class="sm"> = -1</span></span>)</code>
+<code class="sig"><span class="sf">addHttp</span>(<span class="prm"><span class="st">string</span> <span class="sv">$httpEquiv</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelpermeta-addname">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addName</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pos</span><span class="sm"> = -1</span></span>)</code>
+<code class="sig"><span class="sf">addName</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelpermeta-addproperty">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">addProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$pos</span><span class="sm"> = -1</span></span>)</code>
+<code class="sig"><span class="sf">addProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelpermeta-gettag">
 <code class="vis vis-protected">protected</code>
@@ -4325,7 +4260,7 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 ```php
 public function add(
     array $attributes = [],
-    int $pos = -1
+    int $position = -1
 ): static;
 ```
 
@@ -4337,7 +4272,7 @@ Add an element to the list
 public function addHttp(
     string $httpEquiv,
     string $content,
-    int $pos = -1
+    int $position = -1
 ): static;
 ```
 
@@ -4347,7 +4282,7 @@ public function addHttp(
 public function addName(
     string $name,
     string $content,
-    int $pos = -1
+    int $position = -1
 ): static;
 ```
 
@@ -4357,7 +4292,7 @@ public function addName(
 public function addProperty(
     string $name,
     string $content,
-    int $pos = -1
+    int $position = -1
 ): static;
 ```
 
@@ -4376,8 +4311,6 @@ protected function getTag(): string;
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Helper/Ol.php){ .src-btn }
 
 Class Ol
-
-@property bool $forceRaw
 
 <div class="api-tree" markdown>
 
@@ -4546,7 +4479,7 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 <a class="api-item" href="#htmlhelperscript-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$href</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Add an element to the list</span>
 </a>
 <a class="api-item" href="#htmlhelperscript-begininternal">
@@ -4564,7 +4497,7 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 <a class="api-item" href="#htmlhelperscript-getattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$src</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
+<code class="sig"><span class="sf">getAttributes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Returns the necessary attributes</span>
 </a>
 <a class="api-item" href="#htmlhelperscript-gettag">
@@ -4582,7 +4515,7 @@ __Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 
 ```php
 public function add(
-    string $href,
+    string $url,
     array $attributes = [],
     int $position = -1
 ): static;
@@ -4620,7 +4553,7 @@ is treated as raw HTML (it is JavaScript, not user-supplied text).
 
 ```php
 protected function getAttributes(
-    string $src,
+    string $url,
     array $attributes
 ): array;
 ```
@@ -4742,7 +4675,7 @@ use `VoidTag`.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Exception`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 { .api-uses }
 
 ### Method Summary
@@ -4776,11 +4709,6 @@ public function __invoke(
 
 Class Title
 
-@property string $delimiter
-@property string $indent
-@property string $title
-@property string $separator
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
@@ -4794,7 +4722,7 @@ Class Title
 <a class="api-item" href="#htmlhelpertitle-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = PHP_EOL</span></span>)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the separator and returns the object back</span>
 </a>
 <a class="api-item" href="#htmlhelpertitle-__tostring">
@@ -4868,7 +4796,7 @@ Class Title
 ```php
 public function __invoke(
     string $indent = "    ",
-    string $delimiter = PHP_EOL
+    string|null $delimiter = null
 ): static;
 ```
 
@@ -4988,7 +4916,7 @@ doctypes, matching the `Input/AbstractInput::__toString` convention.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Exception`
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
 { .api-uses }
 
 ### Method Summary
@@ -5019,9 +4947,6 @@ public function __invoke(
 
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Html/Link/AbstractLink.php){ .src-btn }
-
-@property string $href
-@property bool   $templated
 
 <div class="api-tree" markdown>
 
@@ -5067,27 +4992,27 @@ __Uses__ `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Support\Collection`
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithattribute">
 <code class="vis vis-protected">protected</code>
-<code class="ret">self</code>
+<code class="ret">static</code>
 <code class="sig"><span class="sf">doWithAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithhref">
 <code class="vis vis-protected">protected</code>
-<code class="ret">self</code>
+<code class="ret">static</code>
 <code class="sig"><span class="sf">doWithHref</span>( <span class="st">string</span> <span class="sv">$href</span> )</code>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithrel">
 <code class="vis vis-protected">protected</code>
-<code class="ret">self</code>
+<code class="ret">static</code>
 <code class="sig"><span class="sf">doWithRel</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithoutattribute">
 <code class="vis vis-protected">protected</code>
-<code class="ret">self</code>
+<code class="ret">static</code>
 <code class="sig"><span class="sf">doWithoutAttribute</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithoutrel">
 <code class="vis vis-protected">protected</code>
-<code class="ret">self</code>
+<code class="ret">static</code>
 <code class="sig"><span class="sf">doWithoutRel</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-hrefistemplated">
@@ -5195,31 +5120,31 @@ templated, False otherwise.
 protected function doWithAttribute(
     string $key,
     mixed $value
-): self;
+): static;
 ```
 
 #### `doWithHref()` { #htmllinkabstractlink-dowithhref }
 
 ```php
-protected function doWithHref( string $href ): self;
+protected function doWithHref( string $href ): static;
 ```
 
 #### `doWithRel()` { #htmllinkabstractlink-dowithrel }
 
 ```php
-protected function doWithRel( string $key ): self;
+protected function doWithRel( string $key ): static;
 ```
 
 #### `doWithoutAttribute()` { #htmllinkabstractlink-dowithoutattribute }
 
 ```php
-protected function doWithoutAttribute( string $key ): self;
+protected function doWithoutAttribute( string $key ): static;
 ```
 
 #### `doWithoutRel()` { #htmllinkabstractlink-dowithoutrel }
 
 ```php
-protected function doWithoutRel( string $key ): self;
+protected function doWithoutRel( string $key ): static;
 ```
 
 #### `hrefIsTemplated()` { #htmllinkabstractlink-hrefistemplated }
@@ -5396,7 +5321,7 @@ __Uses__ `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interface
 <a class="api-item" href="#htmllinkevolvablelink-withattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">withAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<code class="sig"><span class="sf">withAttribute</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Returns an instance with the specified attribute added.</span>
 </a>
 <a class="api-item" href="#htmllinkevolvablelink-withhref">
@@ -5433,7 +5358,7 @@ __Uses__ `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interface
 
 ```php
 public function withAttribute(
-    string $attribute,
+    mixed $attribute,
     mixed $value
 ): static;
 ```
@@ -5484,7 +5409,7 @@ public function withoutRel( string $rel ): static;
 
 Returns an instance with the specified relationship excluded.
 
-If the specified rel is already not present, this method MUST return
+If the specified rel is not present, this method MUST return
 normally without errors.
 
 

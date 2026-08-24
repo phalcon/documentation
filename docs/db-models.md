@@ -3536,7 +3536,7 @@ class Invoices extends Model
 
 !!! warning "WARNING"
 
-    Never use a [Phalcon\Db\RawValue][db-rawvalue] to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used for SQL injection attacks.
+    Never use a [Phalcon\Db\RawValue][db-rawvalue] to hold external or otherwise variable data (such as user input). A `RawValue` is emitted into the SQL verbatim, with no quoting or escaping - both when written as a model attribute and when passed as a query bind-parameter value (it is spliced into the compiled statement instead of being bound). Wrapping untrusted data in a `RawValue` allows SQL injection.
 
 ## Dynamic Updates
 

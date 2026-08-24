@@ -1973,7 +1973,7 @@ Capabilities:
 
 </div>
 
-__Uses__ `FilesystemIterator` · `Iterator` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator` · `SplFileInfo`
+__Uses__ `FilesystemIterator` · `Iterator` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Traits\FilePathTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator` · `SplFileInfo`
 { .api-uses }
 
 ### Method Summary

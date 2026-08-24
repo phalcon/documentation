@@ -110,6 +110,10 @@ var_dump($validator->getErrors());
 
 The above example gives a general view on how the component can be used to generate, parse, and validate JSON Web Tokens.
 
+!!! danger "WARNING"
+
+    `Token::validate()` checks the token claims only (audience, expiration, issuer, and so on). It does not verify the signature. A token accepted by `validate()` alone is unauthenticated. Always also call `Validator::validateSignature($signer, $passphrase)` (or `Token::verify($signer, $key)`), and treat an empty error array as valid only after the signature check passes.
+
 ## Objects
 
 There are several utility components that live in the `Phalcon\Encryption\Security\JWT\Token` namespace, that help with the issuing, parsing, and validating of JWT tokens

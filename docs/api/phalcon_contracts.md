@@ -853,6 +853,23 @@ public function getName(): string|null;
 ```
 
 
+## Contracts\Acl\AclTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/AclTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Acl namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\AclTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface`
+{ .api-uses }
+
+
 ## Contracts\Acl\Adapter\Adapter
 
 <span class="badge badge--interface">Interface</span>
@@ -867,7 +884,7 @@ Canonical contract for Phalcon\Acl adapters
 
 </div>
 
-__Uses__ `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface`
+__Uses__ `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1608,6 +1625,23 @@ public function setType( string $type ): Asset;
 ```
 
 Sets the asset's type.
+
+
+## Contracts\Assets\AssetsTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Assets/AssetsTypes.php){ .src-btn }
+
+Central registry of the array shapes used across the Assets namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Assets\AssetsTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Assets\AssetInterface` · `Phalcon\Assets\Collection` · `Phalcon\Assets\FilterInterface` · `Phalcon\Assets\Manager`
+{ .api-uses }
 
 
 ## Contracts\Assets\Filter

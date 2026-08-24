@@ -238,6 +238,10 @@ The session key and remember-cookie name are configurable through the guard `opt
 
 `Phalcon\Auth\Guard\Token` authenticates API requests by a token. It reads the token from the request input key, or from an `Authorization: Bearer <token>` header. It is stateless - it has no `login()`/`logout()`.
 
+!!! warning "WARNING"
+
+    The token guard reads the token from the query string and request body (the configured `inputKey`) before it reads the `Authorization` header. Never place an API token in a URL: it leaks through server logs, browser history, and the `Referer` header. Send the token in the `Authorization: Bearer <token>` header.
+
 ```php
 <?php
 

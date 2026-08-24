@@ -19,6 +19,7 @@ This abstract class offers common access to the DI in a class
 
 - `\stdClass`
     - **`Phalcon\Di\AbstractInjectionAware`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
+        - [`Phalcon\Assets\Manager`](phalcon_assets.md#assetsmanager)
         - [`Phalcon\Cli\Router`](phalcon_cli.md#clirouter)
         - [`Phalcon\Dispatcher\AbstractDispatcher`](phalcon_dispatcher.md#dispatcherabstractdispatcher)
         - [`Phalcon\Encryption\Security`](phalcon_encryption.md#encryptionsecurity)
@@ -2720,7 +2721,7 @@ Class AbstractInjectionAware
 __Uses__ `Phalcon\Di\DiInterface`
 { .api-uses }
 
-__Used by__ [`Phalcon\Assets\Manager`](phalcon_assets.md#assetsmanager) · [`Phalcon\Di\AbstractInjectionAware`](#diabstractinjectionaware) · [`Phalcon\Di\Injectable`](#diinjectable) · [`Phalcon\Flash\AbstractFlash`](phalcon_flash.md#flashabstractflash) · [`Phalcon\Mvc\Model\Manager`](phalcon_mvc.md#mvcmodelmanager) · [`Phalcon\Mvc\Model\Query`](phalcon_mvc.md#mvcmodelquery) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](phalcon_mvc.md#mvcviewenginevoltcompiler) · [`Phalcon\Session\Bag`](phalcon_session.md#sessionbag)
+__Used by__ [`Phalcon\Di\AbstractInjectionAware`](#diabstractinjectionaware) · [`Phalcon\Di\Injectable`](#diinjectable) · [`Phalcon\Flash\AbstractFlash`](phalcon_flash.md#flashabstractflash) · [`Phalcon\Mvc\Model\Manager`](phalcon_mvc.md#mvcmodelmanager) · [`Phalcon\Mvc\Model\Query`](phalcon_mvc.md#mvcmodelquery) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](phalcon_mvc.md#mvcviewenginevoltcompiler) · [`Phalcon\Session\Bag`](phalcon_session.md#sessionbag)
 { .api-used-by }
 
 ### Method Summary
