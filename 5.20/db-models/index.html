@@ -9181,7 +9181,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
-<p>Never use a <a href="../api/phalcon_db/#dbrawvalue">Phalcon\Db\RawValue</a> to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used for SQL injection attacks.</p>
+<p>Never use a <a href="../api/phalcon_db/#dbrawvalue">Phalcon\Db\RawValue</a> to hold external or otherwise variable data (such as user input). A <code>RawValue</code> is emitted into the SQL verbatim, with no quoting or escaping - both when written as a model attribute and when passed as a query bind-parameter value (it is spliced into the compiled statement instead of being bound). Wrapping untrusted data in a <code>RawValue</code> allows SQL injection.</p>
 </div>
 <h2 id="dynamic-updates">Dynamic Updates<a class="headerlink" href="#dynamic-updates" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">

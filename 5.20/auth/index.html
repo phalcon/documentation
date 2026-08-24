@@ -6027,6 +6027,10 @@ offering lower resource consumption and high performance.
 </table>
 <h3 id="token-guard">Token Guard<a class="headerlink" href="#token-guard" title="Permanent link">&para;</a></h3>
 <p><code>Phalcon\Auth\Guard\Token</code> authenticates API requests by a token. It reads the token from the request input key, or from an <code>Authorization: Bearer &lt;token&gt;</code> header. It is stateless - it has no <code>login()</code>/<code>logout()</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">WARNING</p>
+<p>The token guard reads the token from the query string and request body (the configured <code>inputKey</code>) before it reads the <code>Authorization</code> header. Never place an API token in a URL: it leaks through server logs, browser history, and the <code>Referer</code> header. Send the token in the <code>Authorization: Bearer &lt;token&gt;</code> header.</p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">$api</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">guard</span><span class="p">(</span><span class="s1">'api'</span><span class="p">);</span>

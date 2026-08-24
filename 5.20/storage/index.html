@@ -6025,6 +6025,10 @@ offering lower resource consumption and high performance.
 <p class="admonition-title">NOTE</p>
 <p>The default serializer for all adapters is <code>Phalcon\Storage\Serializer\Php</code> which uses PHP's <code>serialize</code> and <code>unserialize</code> methods. These methods can suit most applications. However, the developer might want to use something more efficient such as <a href="https://github.com/igbinary/igbinary7">igbinary</a> which is faster and achieves better compression.</p>
 </div>
+<div class="admonition danger">
+<p class="admonition-title">WARNING</p>
+<p>The <code>Php</code> serializer uses PHP's native <code>unserialize()</code>, which instantiates any class contained in the stored bytes. If an attacker can influence those bytes (for example a shared or writable cache backend), this allows PHP object injection and possibly remote code execution. For data that can be attacker-influenced, use the <code>Json</code> or <code>Msgpack</code> serializer instead of <code>Php</code>.</p>
+</div>
 <p>The storage adapter can be configured to use a different serializer. The available serializers are:</p>
 <h3 id="base64"><code>Base64</code><a class="headerlink" href="#base64" title="Permanent link">&para;</a></h3>
 <p>This serializer uses the <code>base64_encode</code> and <code>base64_decode</code> methods to serialize data. The input must be of type <code>string</code>, therefore this serializer has obvious limitations</p>
