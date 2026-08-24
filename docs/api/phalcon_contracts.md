@@ -847,6 +847,23 @@ public function getName(): string|null;
 ```
 
 
+## Contracts\Acl\AclTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Acl/AclTypes.zep){ .src-btn }
+
+Central registry of the array shapes used across the Acl namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\AclTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface`
+{ .api-uses }
+
+
 ## Contracts\Acl\Adapter\Adapter
 
 <span class="badge badge--interface">Interface</span>
@@ -861,7 +878,7 @@ Canonical contract for Phalcon\Acl adapters
 
 </div>
 
-__Uses__ `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface`
+__Uses__ `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1601,6 +1618,23 @@ public function setType( string $type ): Asset;
 ```
 
 Sets the asset's type.
+
+
+## Contracts\Assets\AssetsTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Assets/AssetsTypes.zep){ .src-btn }
+
+Central registry of the array shapes used across the Assets namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Assets\AssetsTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Assets\AssetInterface` · `Phalcon\Assets\Collection` · `Phalcon\Assets\FilterInterface` · `Phalcon\Assets\Manager`
+{ .api-uses }
 
 
 ## Contracts\Assets\Filter
@@ -3081,6 +3115,23 @@ public function setTaskSuffix( string $taskSuffix ): void;
 ```
 
 Sets the default task suffix
+
+
+## Contracts\Config\ConfigTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Config/ConfigTypes.zep){ .src-btn }
+
+Central registry of the array shapes used across the Config namespace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Config\ConfigTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Config\ConfigInterface`
+{ .api-uses }
 
 
 ## Contracts\Container\Ioc\IocContainer
@@ -9106,6 +9157,9 @@ Return format: [value => label] for flat options;
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -9143,6 +9197,48 @@ ordering, or rendering is performed here.
 ```php
 public function getOptions(): array;
 ```
+
+
+## Contracts\Html\HtmlTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Html/HtmlTypes.zep){ .src-btn }
+
+Central registry of the array shapes used across the Html namespace.
+
+Attribute values stay scalar here. The array member that PSR-13 allows for
+link attributes lives in the Link registry instead, because the helper
+pipeline concatenates and escapes every value as a string.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Html\HtmlTypes`**
+
+</div>
+
+__Uses__ `Closure`
+{ .api-uses }
+
+
+## Contracts\Html\Link\LinkTypes
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Html/Link/LinkTypes.zep){ .src-btn }
+
+Central registry of the array shapes used across the Html\Link namespace.
+
+PSR-13 states that a link attribute value is "a PHP primitive or an array of
+PHP strings", so `link_attributes` keeps the array member that the plain
+Html attribute shape drops.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Html\Link\LinkTypes`**
+
+</div>
+
+__Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface`
+{ .api-uses }
 
 
 ## Contracts\Http\AttributeRequest

@@ -13,7 +13,7 @@ hide:
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Asset.zep){ .src-btn }
 
-Represents an asset
+Object representation of an asset
 
 ```php
 $asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
@@ -27,7 +27,7 @@ $asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
 
 </div>
 
-__Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\HashTrait`
+__Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\HashTrait`
 { .api-uses }
 
 ### Method Summary
@@ -90,7 +90,7 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\A
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sf">getVersion</span>()</code>
-<span class="desc">Version of resource</span>
+<span class="desc">Gets the asset&#039;s version.</span>
 </a>
 <a class="api-item" href="#assetsasset-isautoversion">
 <code class="vis vis-public">public</code>
@@ -160,9 +160,8 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\A
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
+<code class="ret">string</code>
 <code class="sig"><span class="sv">$version</span></code>
-<span class="desc">Version of resource</span>
 </div>
 </div>
 
@@ -257,7 +256,7 @@ Gets the asset's type.
 public function getVersion(): string|null;
 ```
 
-Version of resource
+Gets the asset's version.
 
 #### `isAutoVersion()` { #assetsasset-isautoversion }
 
@@ -355,7 +354,7 @@ __Uses__ `Phalcon\Assets\Asset`
 <a class="api-item" href="#assetsassetcss-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Phalcon\Assets\Asset\Css constructor</span>
+<span class="desc">Css constructor.</span>
 </a>
 </div>
 
@@ -376,7 +375,7 @@ public function __construct(
 );
 ```
 
-Phalcon\Assets\Asset\Css constructor
+Css constructor.
 
 
 ## Assets\Asset\Js
@@ -402,7 +401,7 @@ __Uses__ `Phalcon\Assets\Asset`
 <a class="api-item" href="#assetsassetjs-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Phalcon\Assets\Asset\Js constructor</span>
+<span class="desc">Js constructor.</span>
 </a>
 </div>
 
@@ -423,7 +422,7 @@ public function __construct(
 );
 ```
 
-Phalcon\Assets\Asset\Js constructor
+Js constructor.
 
 
 ## Assets\Collection
@@ -439,7 +438,7 @@ Collection of asset objects
 
 </div>
 
-__Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Traits\Php\FileTrait`
+__Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\FileTrait` · `Traversable`
 { .api-uses }
 
 ### Method Summary
@@ -513,9 +512,9 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Asset
 </a>
 <a class="api-item" href="#assetscollection-getiterator">
 <code class="vis vis-public">public</code>
-<code class="ret">\Traversable</code>
+<code class="ret">Traversable</code>
 <code class="sig"><span class="sf">getIterator</span>()</code>
-<span class="desc">Returns the generator of the class</span>
+<span class="desc">Returns the iterator of the class</span>
 </a>
 <a class="api-item" href="#assetscollection-getjoin">
 <code class="vis vis-public">public</code>
@@ -612,7 +611,7 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Asset
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">assets_asset_map</code>
 <code class="sig"><span class="sv">$assets</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -623,12 +622,12 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Asset
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">assets_codes</code>
 <code class="sig"><span class="sv">$codes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">assets_filters</code>
 <code class="sig"><span class="sv">$filters</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -743,8 +742,6 @@ public function count(): int;
 
 Return the count of the assets
 
-@link https://php.net/manual/en/countable.count.php
-
 #### `getAssets()` { #assetscollection-getassets }
 
 ```php
@@ -772,12 +769,10 @@ Return the stored filters
 #### `getIterator()` { #assetscollection-getiterator }
 
 ```php
-public function getIterator(): \Traversable;
+public function getIterator(): Traversable;
 ```
 
-Returns the generator of the class
-
-@link https://php.net/manual/en/iteratoraggregate.getiterator.php
+Returns the iterator of the class
 
 #### `getJoin()` { #assetscollection-getjoin }
 
@@ -1391,7 +1386,7 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 </div>
 
-__Uses__ `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Traits\Php\HashTrait`
+__Uses__ `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\HashTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1400,7 +1395,7 @@ __Uses__ `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Traits\Php\HashTrai
 <a class="api-item" href="#assetsinline-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Phalcon\Assets\Inline constructor</span>
+<span class="desc">Inline constructor.</span>
 </a>
 <a class="api-item" href="#assetsinline-getassetkey">
 <code class="vis vis-public">public</code>
@@ -1481,7 +1476,7 @@ public function __construct(
 );
 ```
 
-Phalcon\Assets\Inline constructor
+Inline constructor.
 
 #### `getAssetKey()` { #assetsinline-getassetkey }
 
@@ -1554,7 +1549,7 @@ Represents an inlined CSS
 
 </div>
 
-__Uses__ `Phalcon\Assets\Inline`
+__Uses__ `Phalcon\Assets\Inline` · `Phalcon\Contracts\Assets\AssetsTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1563,7 +1558,7 @@ __Uses__ `Phalcon\Assets\Inline`
 <a class="api-item" href="#assetsinlinecss-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Phalcon\Assets\Inline\Css constructor</span>
+<span class="desc">Css constructor.</span>
 </a>
 </div>
 
@@ -1581,7 +1576,7 @@ public function __construct(
 );
 ```
 
-Phalcon\Assets\Inline\Css constructor
+Css constructor.
 
 
 ## Assets\Inline\Js
@@ -1598,7 +1593,7 @@ Represents an inline JavaScript
 
 </div>
 
-__Uses__ `Phalcon\Assets\Inline`
+__Uses__ `Phalcon\Assets\Inline` · `Phalcon\Contracts\Assets\AssetsTypes`
 { .api-uses }
 
 ### Method Summary
@@ -1607,7 +1602,7 @@ __Uses__ `Phalcon\Assets\Inline`
 <a class="api-item" href="#assetsinlinejs-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Phalcon\Assets\Inline\Js constructor</span>
+<span class="desc">Js constructor.</span>
 </a>
 </div>
 
@@ -1625,7 +1620,7 @@ public function __construct(
 );
 ```
 
-Phalcon\Assets\Inline\Js constructor
+Js constructor.
 
 
 ## Assets\Manager
@@ -1643,7 +1638,7 @@ Manages collections of CSS/JavaScript assets
 
 </div>
 
-__Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Html\Helper\Element` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory` · `Phalcon\Traits\Php\FileTrait`
+__Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Url` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1664,7 +1659,7 @@ __Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Ass
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">addAssetByType</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">Asset</span> <span class="sv">$asset</span></span>)</code>
-<span class="desc">Adds a asset by its type</span>
+<span class="desc">Adds an asset by its type</span>
 </a>
 <a class="api-item" href="#assetsmanager-addcss">
 <code class="vis vis-public">public</code>
@@ -1817,7 +1812,7 @@ __Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Ass
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">assets_collections</code>
 <code class="sig"><span class="sv">$collections</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -1869,7 +1864,7 @@ public function addAssetByType(
 ): static;
 ```
 
-Adds a asset by its type
+Adds an asset by its type
 
 #### `addCss()` { #assetsmanager-addcss }
 
@@ -1946,7 +1941,7 @@ Adds a JavaScript asset to the 'js' collection
 
 ```php
 $assets->addJs("scripts/jquery.js");
-$assets->addJs("http://jquery.my-cdn.com/jquery.js", false);
+$assets->addJs("https://jquery.my-cdn.com/jquery.js", false);
 ```
 
 #### `collection()` { #assetsmanager-collection }
@@ -1967,6 +1962,9 @@ public function collectionAssetsByType(
 ```
 
 Creates/Returns a collection of assets by type
+
+The `instanceof` guard below is the validation, so the parameter stays a
+plain array here.
 
 #### `exists()` { #assetsmanager-exists }
 
@@ -2145,6 +2143,9 @@ Shared HTML-attributes state for asset objects (`Asset`, `Inline`,
 
 </div>
 
+__Uses__ `Phalcon\Contracts\Assets\AssetsTypes`
+{ .api-uses }
+
 __Used by__ [`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collection`](#assetscollection) · [`Phalcon\Assets\Inline`](#assetsinline)
 { .api-used-by }
 
@@ -2164,7 +2165,7 @@ __Used by__ [`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collectio
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">assets_attributes|null</code>
 <code class="sig"><span class="sv">$attributes</span><span class="sm"> = null</span></code>
 </div>
 </div>

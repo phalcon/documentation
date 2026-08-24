@@ -3991,6 +3991,12 @@ __Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exc
 <code class="sig"><span class="sf">checkColumnTypeSql</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Checks the column type and returns the updated SQL statement</span>
 </a>
+<a class="api-item" href="#dbdialect-escapestringliteral">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">escapeStringLiteral</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
+<span class="desc">Escape a string literal for a single quoted SQL string. The standard</span>
+</a>
 <a class="api-item" href="#dbdialect-getcheckclause">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
@@ -4493,7 +4499,7 @@ public function supportsSavepoints(): bool;
 
 Checks whether the platform supports savepoints
 
-<div class="api-group">Protected · 28</div>
+<div class="api-group">Protected · 29</div>
 
 #### `checkColumnType()` { #dbdialect-checkcolumntype }
 
@@ -4510,6 +4516,16 @@ protected function checkColumnTypeSql( ColumnInterface $column ): string;
 ```
 
 Checks the column type and returns the updated SQL statement
+
+#### `escapeStringLiteral()` { #dbdialect-escapestringliteral }
+
+```php
+protected function escapeStringLiteral( string $value ): string;
+```
+
+Escape a string literal for a single quoted SQL string. The standard
+way doubles the single quotes. A dialect where the backslash is an
+escape character must override this method.
 
 #### `getCheckClause()` { #dbdialect-getcheckclause }
 
@@ -5036,6 +5052,12 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 <code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.view</span>
 </a>
+<a class="api-item" href="#dbdialectmysql-escapestringliteral">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">escapeStringLiteral</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
+<span class="desc">Escape a string literal for a single quoted SQL string. MySQL treats the</span>
+</a>
 <a class="api-item" href="#dbdialectmysql-gettableoptions">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
@@ -5417,7 +5439,17 @@ public function viewExists(
 
 Generates SQL checking for the existence of a schema.view
 
-<div class="api-group">Protected · 1</div>
+<div class="api-group">Protected · 2</div>
+
+#### `escapeStringLiteral()` { #dbdialectmysql-escapestringliteral }
+
+```php
+protected function escapeStringLiteral( string $value ): string;
+```
+
+Escape a string literal for a single quoted SQL string. MySQL treats the
+backslash as an escape character, so it must be doubled together with the
+single quote.
 
 #### `getTableOptions()` { #dbdialectmysql-gettableoptions }
 
@@ -9493,7 +9525,7 @@ __Uses__ `Phalcon\Db\Exceptions\InvalidWkb`
 <a class="api-item" href="#dbgeometrywkbparser-readgeometry">
 <code class="vis vis-protected">protected</code>
 <code class="ret">GeometryInterface</code>
-<code class="sig"><span class="sf">readGeometry</span>( <span class="st">int</span> <span class="sv">$outerSrid</span> )</code>
+<code class="sig"><span class="sf">readGeometry</span>(<span class="prm"><span class="st">int</span> <span class="sv">$outerSrid</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$depth</span><span class="sm"> = 0</span></span>)</code>
 </a>
 <a class="api-item" href="#dbgeometrywkbparser-readpoint">
 <code class="vis vis-protected">protected</code>
@@ -9569,7 +9601,10 @@ protected function readDouble( bool $little ): float;
 #### `readGeometry()` { #dbgeometrywkbparser-readgeometry }
 
 ```php
-protected function readGeometry( int $outerSrid ): GeometryInterface;
+protected function readGeometry(
+    int $outerSrid,
+    int $depth = 0
+): GeometryInterface;
 ```
 
 #### `readPoint()` { #dbgeometrywkbparser-readpoint }
@@ -10361,6 +10396,13 @@ $subscriber->createdAt = new \Phalcon\Db\RawValue("now()");
 
 $subscriber->save();
 ```
+
+WARNING: a RawValue is emitted into the SQL verbatim, with no quoting or
+escaping - including a RawValue passed as a query bind-parameter value, which
+is spliced into the compiled SQL string rather than bound. Never wrap
+request-derived or otherwise untrusted data in a RawValue; use ordinary bind
+parameters for those. RawValue is only for developer-authored SQL fragments
+(for example database functions such as now()).
 
 <div class="api-tree" markdown>
 
