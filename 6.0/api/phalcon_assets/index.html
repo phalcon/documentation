@@ -5293,17 +5293,6 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
-  <a href="#assetsasset-getattributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <code>getAttributes()</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#assetsasset-getcontent" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -6661,17 +6650,6 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
-  <a href="#assetsinline-getattributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <code>getAttributes()</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#assetsinline-getcontent" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -7475,7 +7453,7 @@ offering lower resource consumption and high performance.
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Assets\Exceptions\CannotReadAsset</code> · <code>Phalcon\Assets\Traits\AttributesTrait</code> · <code>Phalcon\Assets\Traits\SourceTargetTrait</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Phalcon\Traits\Php\HashTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Assets\Exceptions\CannotReadAsset</code> · <code>Phalcon\Assets\Traits\AttributesTrait</code> · <code>Phalcon\Assets\Traits\SourceTargetTrait</code> · <code>Phalcon\Contracts\Assets\AssetsTypes</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Phalcon\Traits\Php\HashTrait</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#assetsasset-__construct">
@@ -7488,12 +7466,6 @@ offering lower resource consumption and high performance.
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getAssetKey</span>()</code>
 <span class="desc">Gets the asset&#039;s key.</span>
-</a>
-<a class="api-item" href="#assetsasset-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-<span class="desc">Gets extra HTML attributes.</span>
 </a>
 <a class="api-item" href="#assetsasset-getcontent">
 <code class="vis vis-public">public</code>
@@ -7616,7 +7588,7 @@ offering lower resource consumption and high performance.
 </div>
 
 <h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
-<div class="api-group">Public · 18</div>
+<div class="api-group">Public · 17</div>
 
 <h4 id="assetsasset-__construct"><code>__construct()</code><a class="headerlink" href="#assetsasset-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
@@ -7634,68 +7606,64 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAssetKey</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets the asset's key.</p>
-<h4 id="assetsasset-getattributes"><code>getAttributes()</code><a class="headerlink" href="#assetsasset-getattributes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAttributes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
-</code></pre></div>
-<p>Gets extra HTML attributes.</p>
 <h4 id="assetsasset-getcontent"><code>getContent()</code><a class="headerlink" href="#assetsasset-getcontent" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getContent</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getContent</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the content of the asset as an string
 Optionally a base path where the asset is located can be set</p>
 <h4 id="assetsasset-getfilter"><code>getFilter()</code><a class="headerlink" href="#assetsasset-getfilter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilter</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilter</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets if the asset must be filtered or not.</p>
 <h4 id="assetsasset-getpath"><code>getPath()</code><a class="headerlink" href="#assetsasset-getpath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPath</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPath</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the path for this asset</p>
 <h4 id="assetsasset-getrealsourcepath"><code>getRealSourcePath()</code><a class="headerlink" href="#assetsasset-getrealsourcepath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealSourcePath</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealSourcePath</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the complete location where the asset is located</p>
 <h4 id="assetsasset-getrealtargetpath"><code>getRealTargetPath()</code><a class="headerlink" href="#assetsasset-getrealtargetpath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealTargetPath</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealTargetPath</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$basePath</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the complete location where the asset must be written</p>
 <h4 id="assetsasset-getrealtargeturi"><code>getRealTargetUri()</code><a class="headerlink" href="#assetsasset-getrealtargeturi" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealTargetUri</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealTargetUri</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the real target uri for the generated HTML</p>
 <h4 id="assetsasset-gettype"><code>getType()</code><a class="headerlink" href="#assetsasset-gettype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets the asset's type.</p>
 <h4 id="assetsasset-getversion"><code>getVersion()</code><a class="headerlink" href="#assetsasset-getversion" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getVersion</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getVersion</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets the asset's version.</p>
 <h4 id="assetsasset-isautoversion"><code>isAutoVersion()</code><a class="headerlink" href="#assetsasset-isautoversion" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isAutoVersion</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isAutoVersion</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Checks if the asset is using auto version</p>
 <h4 id="assetsasset-setattributes"><code>setAttributes()</code><a class="headerlink" href="#assetsasset-setattributes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAttributes</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$attributes</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAttributes</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$attributes</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets extra HTML attributes</p>
 <h4 id="assetsasset-setautoversion"><code>setAutoVersion()</code><a class="headerlink" href="#assetsasset-setautoversion" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAutoVersion</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAutoVersion</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="assetsasset-setfilter"><code>setFilter()</code><a class="headerlink" href="#assetsasset-setfilter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setFilter</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$filter</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setFilter</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$filter</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets if the asset must be filtered or not</p>
 <h4 id="assetsasset-setpath"><code>setPath()</code><a class="headerlink" href="#assetsasset-setpath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setPath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setPath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the asset's path</p>
 <h4 id="assetsasset-settype"><code>setType()</code><a class="headerlink" href="#assetsasset-settype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setType</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setType</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the asset's type</p>
 <h4 id="assetsasset-setversion"><code>setVersion()</code><a class="headerlink" href="#assetsasset-setversion" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setVersion</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$version</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setVersion</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$version</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the asset's version</p>
 <h2 id="assetsassetinterface">Assets\AssetInterface<a class="headerlink" href="#assetsassetinterface" title="Permanent link">&para;</a></h2>
@@ -7737,14 +7705,14 @@ Optionally a base path where the asset is located can be set</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsassetcss-__construct"><code>__construct()</code><a class="headerlink" href="#assetsassetcss-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="p">);</span>
 </code></pre></div>
 <p>Css constructor.</p>
 <h2 id="assetsassetjs">Assets\Asset\Js<a class="headerlink" href="#assetsassetjs" title="Permanent link">&para;</a></h2>
@@ -7773,29 +7741,27 @@ Optionally a base path where the asset is located can be set</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsassetjs-__construct"><code>__construct()</code><a class="headerlink" href="#assetsassetjs-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="p">);</span>
 </code></pre></div>
 <p>Js constructor.</p>
 <h2 id="assetscollection">Assets\Collection<a class="headerlink" href="#assetscollection" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Assets/Collection.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Collection of asset objects</p>
-<p>@template TKey of array-key
-@template TValue of AssetInterface
-@implements IteratorAggregate<TKey, TValue></p>
+<p>@implements IteratorAggregate<string, AssetInterface></p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Assets\Collection</code></strong> - implements <code>\Countable</code>, <code>\IteratorAggregate</code></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>ArrayIterator</code> · <code>Countable</code> · <code>IteratorAggregate</code> · <code>Phalcon\Assets\Traits\AttributesTrait</code> · <code>Phalcon\Assets\Traits\SourceTargetTrait</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Traversable</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>ArrayIterator</code> · <code>Countable</code> · <code>IteratorAggregate</code> · <code>Phalcon\Assets\Traits\AttributesTrait</code> · <code>Phalcon\Assets\Traits\SourceTargetTrait</code> · <code>Phalcon\Contracts\Assets\AssetsTypes</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>Traversable</code></p>
 <h3 id="method-summary_3">Method Summary<a class="headerlink" href="#method-summary_3" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#assetscollection-add">
@@ -7964,7 +7930,7 @@ Optionally a base path where the asset is located can be set</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, AssetInterface&gt;</code>
+<code class="ret">assets_asset_map</code>
 <code class="sig"><span class="sv">$assets</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -7975,12 +7941,12 @@ Optionally a base path where the asset is located can be set</p>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">AssetInterface[]</code>
+<code class="ret">assets_codes</code>
 <code class="sig"><span class="sv">$codes</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">FilterInterface[]</code>
+<code class="ret">assets_filters</code>
 <code class="sig"><span class="sv">$filters</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -8009,146 +7975,145 @@ Optionally a base path where the asset is located can be set</p>
 <div class="api-group">Public · 26</div>
 
 <h4 id="assetscollection-add"><code>add()</code><a class="headerlink" href="#assetscollection-add" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span> <span class="nx">AssetInterface</span> <span class="nv">$asset</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span> <span class="nx">AssetInterface</span> <span class="nv">$asset</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds an asset to the collection</p>
 <h4 id="assetscollection-addcss"><code>addCss()</code><a class="headerlink" href="#assetscollection-addcss" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addCss</span><span class="p">(</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="nx">bool</span><span class="o">|</span><span class="k">null</span> <span class="nv">$isLocal</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addCss</span><span class="p">(</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="nx">bool</span><span class="o">|</span><span class="k">null</span> <span class="nv">$isLocal</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a CSS asset to the collection</p>
 <h4 id="assetscollection-addfilter"><code>addFilter()</code><a class="headerlink" href="#assetscollection-addfilter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addFilter</span><span class="p">(</span> <span class="nx">FilterInterface</span> <span class="nv">$filter</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addFilter</span><span class="p">(</span> <span class="nx">FilterInterface</span> <span class="nv">$filter</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a filter to the collection</p>
 <h4 id="assetscollection-addinline"><code>addInline()</code><a class="headerlink" href="#assetscollection-addinline" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInline</span><span class="p">(</span> <span class="nx">Inline</span> <span class="nv">$code</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInline</span><span class="p">(</span> <span class="nx">Inline</span> <span class="nv">$code</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds an inline code to the collection</p>
 <h4 id="assetscollection-addinlinecss"><code>addInlineCss()</code><a class="headerlink" href="#assetscollection-addinlinecss" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineCss</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineCss</span><span class="p">(</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+</code></pre></div>
+<p>Adds an inline CSS to the collection</p>
+<h4 id="assetscollection-addinlinejs"><code>addInlineJs()</code><a class="headerlink" href="#assetscollection-addinlinejs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineJs</span><span class="p">(</span>
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
 <a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
 <a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
-<p>Adds an inline CSS to the collection</p>
-<h4 id="assetscollection-addinlinejs"><code>addInlineJs()</code><a class="headerlink" href="#assetscollection-addinlinejs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineJs</span><span class="p">(</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
-</code></pre></div>
 <p>Adds an inline JavaScript to the collection</p>
 <h4 id="assetscollection-addjs"><code>addJs()</code><a class="headerlink" href="#assetscollection-addjs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addJs</span><span class="p">(</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="nx">bool</span><span class="o">|</span><span class="k">null</span> <span class="nv">$isLocal</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
-<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addJs</span><span class="p">(</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="nx">bool</span><span class="o">|</span><span class="k">null</span> <span class="nv">$isLocal</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a JavaScript asset to the collection</p>
 <h4 id="assetscollection-count"><code>count()</code><a class="headerlink" href="#assetscollection-count" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">count</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">count</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Return the count of the assets</p>
-<p>@link https://php.net/manual/en/countable.count.php</p>
 <h4 id="assetscollection-getassets"><code>getAssets()</code><a class="headerlink" href="#assetscollection-getassets" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAssets</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAssets</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Return the stored assets</p>
 <h4 id="assetscollection-getcodes"><code>getCodes()</code><a class="headerlink" href="#assetscollection-getcodes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getCodes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getCodes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Return the stored codes</p>
 <h4 id="assetscollection-getfilters"><code>getFilters()</code><a class="headerlink" href="#assetscollection-getfilters" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilters</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilters</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Return the stored filters</p>
 <h4 id="assetscollection-getiterator"><code>getIterator()</code><a class="headerlink" href="#assetscollection-getiterator" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getIterator</span><span class="p">()</span><span class="o">:</span> <span class="nx">Traversable</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getIterator</span><span class="p">()</span><span class="o">:</span> <span class="nx">Traversable</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the iterator of the class</p>
 <h4 id="assetscollection-getjoin"><code>getJoin()</code><a class="headerlink" href="#assetscollection-getjoin" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getJoin</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getJoin</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="assetscollection-getprefix"><code>getPrefix()</code><a class="headerlink" href="#assetscollection-getprefix" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPrefix</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getPrefix</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the prefix</p>
 <h4 id="assetscollection-getrealtargetpath"><code>getRealTargetPath()</code><a class="headerlink" href="#assetscollection-getrealtargetpath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealTargetPath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$basePath</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRealTargetPath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$basePath</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the complete location where the joined/filtered collection must
 be written</p>
 <h4 id="assetscollection-gettargetislocal"><code>getTargetIsLocal()</code><a class="headerlink" href="#assetscollection-gettargetislocal" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTargetIsLocal</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTargetIsLocal</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns whether the target is local or not</p>
 <h4 id="assetscollection-getversion"><code>getVersion()</code><a class="headerlink" href="#assetscollection-getversion" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getVersion</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getVersion</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the version</p>
 <h4 id="assetscollection-has"><code>has()</code><a class="headerlink" href="#assetscollection-has" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span> <span class="nx">AssetInterface</span> <span class="nv">$asset</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span> <span class="nx">AssetInterface</span> <span class="nv">$asset</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Checks this the asset is added to the collection.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">use</span> <span class="nx">Phalcon\Assets\Asset</span><span class="p">;</span>
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="k">use</span> <span class="nx">Phalcon\Assets\Collection</span><span class="p">;</span>
-<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>
-<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="nv">$collection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Collection</span><span class="p">();</span>
-<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>
-<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="nv">$asset</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Asset</span><span class="p">(</span><span class="s2">"js"</span><span class="p">,</span> <span class="s2">"js/jquery.js"</span><span class="p">);</span>
-<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>
-<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$asset</span><span class="p">);</span>
-<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="nv">$asset</span><span class="p">);</span> <span class="c1">// true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">use</span> <span class="nx">Phalcon\Assets\Asset</span><span class="p">;</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="k">use</span> <span class="nx">Phalcon\Assets\Collection</span><span class="p">;</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="nv">$collection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Collection</span><span class="p">();</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="nv">$asset</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Asset</span><span class="p">(</span><span class="s2">"js"</span><span class="p">,</span> <span class="s2">"js/jquery.js"</span><span class="p">);</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>
+<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$asset</span><span class="p">);</span>
+<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="nv">$asset</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre></div>
 <h4 id="assetscollection-isautoversion"><code>isAutoVersion()</code><a class="headerlink" href="#assetscollection-isautoversion" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isAutoVersion</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isAutoVersion</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Checks if collection is using auto version</p>
 <h4 id="assetscollection-join"><code>join()</code><a class="headerlink" href="#assetscollection-join" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">join</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">join</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets if all filtered assets in the collection must be joined in a single
 result file</p>
 <h4 id="assetscollection-setattributes"><code>setAttributes()</code><a class="headerlink" href="#assetscollection-setattributes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAttributes</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$attributes</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAttributes</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$attributes</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets extra HTML attributes</p>
 <h4 id="assetscollection-setautoversion"><code>setAutoVersion()</code><a class="headerlink" href="#assetscollection-setautoversion" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAutoVersion</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAutoVersion</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="assetscollection-setfilters"><code>setFilters()</code><a class="headerlink" href="#assetscollection-setfilters" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setFilters</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$filters</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setFilters</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$filters</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets an array of filters in the collection</p>
 <h4 id="assetscollection-setprefix"><code>setPrefix()</code><a class="headerlink" href="#assetscollection-setprefix" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setPrefix</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setPrefix</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$prefix</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets a common prefix for all the assets</p>
 <h4 id="assetscollection-settargetislocal"><code>setTargetIsLocal()</code><a class="headerlink" href="#assetscollection-settargetislocal" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setTargetIsLocal</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setTargetIsLocal</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets if the target local or not</p>
 <h4 id="assetscollection-setversion"><code>setVersion()</code><a class="headerlink" href="#assetscollection-setversion" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setVersion</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$version</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setVersion</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$version</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the version</p>
 <div class="api-group">Protected · 1</div>
 
 <h4 id="assetscollection-addasset"><code>addAsset()</code><a class="headerlink" href="#assetscollection-addasset" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">final</span> <span class="k">protected</span> <span class="k">function</span> <span class="nf">addAsset</span><span class="p">(</span> <span class="nx">AssetInterface</span> <span class="nv">$asset</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">final</span> <span class="k">protected</span> <span class="k">function</span> <span class="nf">addAsset</span><span class="p">(</span> <span class="nx">AssetInterface</span> <span class="nv">$asset</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds an asset or inline-code to the collection</p>
 <h2 id="assetsexception">Assets\Exception<a class="headerlink" href="#assetsexception" title="Permanent link">&para;</a></h2>
@@ -8200,7 +8165,7 @@ result file</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionsassetsourcetargetcollision-__construct"><code>__construct()</code><a class="headerlink" href="#assetsexceptionsassetsourcetargetcollision-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="assetsexceptionscannotreadasset">Assets\Exceptions\CannotReadAsset<a class="headerlink" href="#assetsexceptionscannotreadasset" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -8229,7 +8194,7 @@ result file</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionscannotreadasset-__construct"><code>__construct()</code><a class="headerlink" href="#assetsexceptionscannotreadasset-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="assetsexceptionscollectionnotfound">Assets\Exceptions\CollectionNotFound<a class="headerlink" href="#assetsexceptionscollectionnotfound" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -8258,7 +8223,7 @@ result file</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionscollectionnotfound-__construct"><code>__construct()</code><a class="headerlink" href="#assetsexceptionscollectionnotfound-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="assetsexceptionsinvalidassetsourcepath">Assets\Exceptions\InvalidAssetSourcePath<a class="headerlink" href="#assetsexceptionsinvalidassetsourcepath" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -8287,7 +8252,7 @@ result file</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionsinvalidassetsourcepath-__construct"><code>__construct()</code><a class="headerlink" href="#assetsexceptionsinvalidassetsourcepath-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="assetsexceptionsinvalidassettargetpath">Assets\Exceptions\InvalidAssetTargetPath<a class="headerlink" href="#assetsexceptionsinvalidassettargetpath" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -8316,7 +8281,7 @@ result file</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionsinvalidassettargetpath-__construct"><code>__construct()</code><a class="headerlink" href="#assetsexceptionsinvalidassettargetpath-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="assetsexceptionsinvalidfilter">Assets\Exceptions\InvalidFilter<a class="headerlink" href="#assetsexceptionsinvalidfilter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -8345,7 +8310,7 @@ result file</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionsinvalidfilter-__construct"><code>__construct()</code><a class="headerlink" href="#assetsexceptionsinvalidfilter-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
 </code></pre></div>
 <h2 id="assetsexceptionsinvalidtargetpath">Assets\Exceptions\InvalidTargetPath<a class="headerlink" href="#assetsexceptionsinvalidtargetpath" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -8374,7 +8339,7 @@ result file</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionsinvalidtargetpath-__construct"><code>__construct()</code><a class="headerlink" href="#assetsexceptionsinvalidtargetpath-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="assetsexceptionstargetpathisdirectory">Assets\Exceptions\TargetPathIsDirectory<a class="headerlink" href="#assetsexceptionstargetpathisdirectory" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -8403,7 +8368,7 @@ result file</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionstargetpathisdirectory-__construct"><code>__construct()</code><a class="headerlink" href="#assetsexceptionstargetpathisdirectory-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$path</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="assetsfilterinterface">Assets\FilterInterface<a class="headerlink" href="#assetsfilterinterface" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--interface">Interface</span>
@@ -8443,7 +8408,7 @@ removes last semicolon from last property</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsfilterscssmin-filter"><code>filter()</code><a class="headerlink" href="#assetsfilterscssmin-filter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$content</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$content</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Filters the content using CSSMIN</p>
 <h2 id="assetsfiltersjsmin">Assets\Filters\JsMin<a class="headerlink" href="#assetsfiltersjsmin" title="Permanent link">&para;</a></h2>
@@ -8472,7 +8437,7 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsfiltersjsmin-filter"><code>filter()</code><a class="headerlink" href="#assetsfiltersjsmin-filter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$content</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$content</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Filters the content using JSMIN</p>
 <h2 id="assetsfiltersnone">Assets\Filters\None<a class="headerlink" href="#assetsfiltersnone" title="Permanent link">&para;</a></h2>
@@ -8499,14 +8464,14 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsfiltersnone-filter"><code>filter()</code><a class="headerlink" href="#assetsfiltersnone-filter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$content</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$content</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the content as is</p>
 <h2 id="assetsinline">Assets\Inline<a class="headerlink" href="#assetsinline" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Assets/Inline.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Represents an inline asset</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="nv">$inline</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Assets\Inline</span><span class="p">(</span><span class="s2">"js"</span><span class="p">,</span> <span class="s2">"alert('hello world');"</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="nv">$inline</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Assets\Inline</span><span class="p">(</span><span class="s2">"js"</span><span class="p">,</span> <span class="s2">"alert('hello world');"</span><span class="p">);</span>
 </code></pre></div>
 <div class="api-tree">
 <ul>
@@ -8517,7 +8482,7 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Assets\Traits\AttributesTrait</code> · <code>Phalcon\Traits\Php\HashTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Assets\Traits\AttributesTrait</code> · <code>Phalcon\Contracts\Assets\AssetsTypes</code> · <code>Phalcon\Traits\Php\HashTrait</code></p>
 <h3 id="method-summary_15">Method Summary<a class="headerlink" href="#method-summary_15" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#assetsinline-__construct">
@@ -8530,12 +8495,6 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getAssetKey</span>()</code>
 <span class="desc">Gets the asset&#039;s key.</span>
-</a>
-<a class="api-item" href="#assetsinline-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-<span class="desc">Gets extra HTML attributes.</span>
 </a>
 <a class="api-item" href="#assetsinline-getcontent">
 <code class="vis vis-public">public</code>
@@ -8595,47 +8554,43 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 </div>
 
 <h3 id="methods_15">Methods<a class="headerlink" href="#methods_15" title="Permanent link">&para;</a></h3>
-<div class="api-group">Public · 9</div>
+<div class="api-group">Public · 8</div>
 
 <h4 id="assetsinline-__construct"><code>__construct()</code><a class="headerlink" href="#assetsinline-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
-<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
-<a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
+<a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
+<a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a><span class="p">);</span>
 </code></pre></div>
 <p>Inline constructor.</p>
 <h4 id="assetsinline-getassetkey"><code>getAssetKey()</code><a class="headerlink" href="#assetsinline-getassetkey" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAssetKey</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAssetKey</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets the asset's key.</p>
-<h4 id="assetsinline-getattributes"><code>getAttributes()</code><a class="headerlink" href="#assetsinline-getattributes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAttributes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
-</code></pre></div>
-<p>Gets extra HTML attributes.</p>
 <h4 id="assetsinline-getcontent"><code>getContent()</code><a class="headerlink" href="#assetsinline-getcontent" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getContent</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getContent</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets if the asset content</p>
 <h4 id="assetsinline-getfilter"><code>getFilter()</code><a class="headerlink" href="#assetsinline-getfilter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilter</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilter</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets if the asset must be filtered or not.</p>
 <h4 id="assetsinline-gettype"><code>getType()</code><a class="headerlink" href="#assetsinline-gettype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getType</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets the asset's type.</p>
 <h4 id="assetsinline-setattributes"><code>setAttributes()</code><a class="headerlink" href="#assetsinline-setattributes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAttributes</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$attributes</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAttributes</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$attributes</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets extra HTML attributes</p>
 <h4 id="assetsinline-setfilter"><code>setFilter()</code><a class="headerlink" href="#assetsinline-setfilter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setFilter</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$filter</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setFilter</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$filter</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets if the asset must be filtered or not</p>
 <h4 id="assetsinline-settype"><code>setType()</code><a class="headerlink" href="#assetsinline-settype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setType</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setType</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="p">)</span><span class="o">:</span> <span class="nx">AssetInterface</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the inline's type</p>
 <h2 id="assetsinlinecss">Assets\Inline\Css<a class="headerlink" href="#assetsinlinecss" title="Permanent link">&para;</a></h2>
@@ -8650,7 +8605,7 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Assets\Inline</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Assets\Inline</code> · <code>Phalcon\Contracts\Assets\AssetsTypes</code></p>
 <h3 id="method-summary_16">Method Summary<a class="headerlink" href="#method-summary_16" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#assetsinlinecss-__construct">
@@ -8664,11 +8619,11 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsinlinecss-__construct"><code>__construct()</code><a class="headerlink" href="#assetsinlinecss-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
-<a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-70-5" name="__codelineno-70-5" href="#__codelineno-70-5"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
+<a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-68-5" name="__codelineno-68-5" href="#__codelineno-68-5"></a><span class="p">);</span>
 </code></pre></div>
 <p>Css constructor.</p>
 <h2 id="assetsinlinejs">Assets\Inline\Js<a class="headerlink" href="#assetsinlinejs" title="Permanent link">&para;</a></h2>
@@ -8683,7 +8638,7 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Assets\Inline</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Assets\Inline</code> · <code>Phalcon\Contracts\Assets\AssetsTypes</code></p>
 <h3 id="method-summary_17">Method Summary<a class="headerlink" href="#method-summary_17" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#assetsinlinejs-__construct">
@@ -8697,11 +8652,11 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetsinlinejs-__construct"><code>__construct()</code><a class="headerlink" href="#assetsinlinejs-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
-<a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
+<a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a><span class="p">);</span>
 </code></pre></div>
 <p>Js constructor.</p>
 <h2 id="assetsmanager">Assets\Manager<a class="headerlink" href="#assetsmanager" title="Permanent link">&para;</a></h2>
@@ -8710,10 +8665,16 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <p>Manages collections of CSS/JavaScript assets</p>
 <div class="api-tree">
 <ul>
-<li><strong><code>Phalcon\Assets\Manager</code></strong> - implements <a href="../phalcon_di/#diinjectionawareinterface"><code>Phalcon\Di\InjectionAwareInterface</code></a></li>
+<li><code>\stdClass</code><ul>
+<li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
+<li><strong><code>Phalcon\Assets\Manager</code></strong></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Exception</code> · <code>Phalcon\Assets\Asset\Css</code> · <code>Phalcon\Assets\Asset\Js</code> · <code>Phalcon\Assets\Exceptions\AssetSourceTargetCollision</code> · <code>Phalcon\Assets\Exceptions\CollectionNotFound</code> · <code>Phalcon\Assets\Exceptions\InvalidAssetSourcePath</code> · <code>Phalcon\Assets\Exceptions\InvalidAssetTargetPath</code> · <code>Phalcon\Assets\Exceptions\InvalidFilter</code> · <code>Phalcon\Assets\Exceptions\InvalidTargetPath</code> · <code>Phalcon\Assets\Exceptions\TargetPathIsDirectory</code> · <code>Phalcon\Assets\Inline\Css</code> · <code>Phalcon\Assets\Inline\Js</code> · <code>Phalcon\Di\InjectionAwareInterface</code> · <code>Phalcon\Di\Traits\InjectionAwareTrait</code> · <code>Phalcon\Html\Helper\Link</code> · <code>Phalcon\Html\Helper\Script</code> · <code>Phalcon\Html\TagFactory</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Assets\Asset\Css</code> · <code>Phalcon\Assets\Asset\Js</code> · <code>Phalcon\Assets\Exceptions\AssetSourceTargetCollision</code> · <code>Phalcon\Assets\Exceptions\CollectionNotFound</code> · <code>Phalcon\Assets\Exceptions\InvalidAssetSourcePath</code> · <code>Phalcon\Assets\Exceptions\InvalidAssetTargetPath</code> · <code>Phalcon\Assets\Exceptions\InvalidFilter</code> · <code>Phalcon\Assets\Exceptions\InvalidTargetPath</code> · <code>Phalcon\Assets\Exceptions\TargetPathIsDirectory</code> · <code>Phalcon\Assets\Inline\Css</code> · <code>Phalcon\Assets\Inline\Js</code> · <code>Phalcon\Contracts\Assets\AssetsTypes</code> · <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Html\Helper\Link</code> · <code>Phalcon\Html\Helper\Script</code> · <code>Phalcon\Html\TagFactory</code> · <code>Phalcon\Mvc\Url</code> · <code>Phalcon\Traits\Php\FileTrait</code></p>
 <h3 id="method-summary_18">Method Summary<a class="headerlink" href="#method-summary_18" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#assetsmanager-__construct">
@@ -8838,7 +8799,7 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <a class="api-item" href="#assetsmanager-outputinline">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">outputInline</span>(<span class="prm"><span class="st">Collection</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
+<code class="sig"><span class="sf">outputInline</span>(<span class="prm"><span class="st">Collection</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$type</span></span>)</code>
 <span class="desc">Traverses a collection and generate its HTML</span>
 </a>
 <a class="api-item" href="#assetsmanager-outputinlinecss">
@@ -8883,7 +8844,7 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, Collection&gt;</code>
+<code class="ret">assets_collections</code>
 <code class="sig"><span class="sv">$collections</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -8907,171 +8868,173 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <div class="api-group">Public · 27</div>
 
 <h4 id="assetsmanager-__construct"><code>__construct()</code><a class="headerlink" href="#assetsmanager-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>    <span class="nx">TagFactory</span> <span class="nv">$tagFactory</span><span class="p">,</span>
-<a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a>    <span class="nx">TagFactory</span> <span class="nv">$tagFactory</span><span class="p">,</span>
+<a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>Manager constructor.</p>
 <h4 id="assetsmanager-addasset"><code>addAsset()</code><a class="headerlink" href="#assetsmanager-addasset" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addAsset</span><span class="p">(</span> <span class="nx">Asset</span> <span class="nv">$asset</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addAsset</span><span class="p">(</span> <span class="nx">Asset</span> <span class="nv">$asset</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a raw asset to the manager</p>
 <h4 id="assetsmanager-addassetbytype"><code>addAssetByType()</code><a class="headerlink" href="#assetsmanager-addassetbytype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addAssetByType</span><span class="p">(</span>
-<a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
-<a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>    <span class="nx">Asset</span> <span class="nv">$asset</span>
-<a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addAssetByType</span><span class="p">(</span>
+<a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
+<a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>    <span class="nx">Asset</span> <span class="nv">$asset</span>
+<a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds an asset by its type</p>
 <h4 id="assetsmanager-addcss"><code>addCss()</code><a class="headerlink" href="#assetsmanager-addcss" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addCss</span><span class="p">(</span>
-<a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
-<a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-75-5" name="__codelineno-75-5" href="#__codelineno-75-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-75-6" name="__codelineno-75-6" href="#__codelineno-75-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-75-7" name="__codelineno-75-7" href="#__codelineno-75-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
-<a id="__codelineno-75-8" name="__codelineno-75-8" href="#__codelineno-75-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addCss</span><span class="p">(</span>
+<a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
+<a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-73-5" name="__codelineno-73-5" href="#__codelineno-73-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
+<a id="__codelineno-73-6" name="__codelineno-73-6" href="#__codelineno-73-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-73-7" name="__codelineno-73-7" href="#__codelineno-73-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-73-8" name="__codelineno-73-8" href="#__codelineno-73-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a CSS asset to the 'css' collection</p>
 <h4 id="assetsmanager-addinlinecode"><code>addInlineCode()</code><a class="headerlink" href="#assetsmanager-addinlinecode" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineCode</span><span class="p">(</span> <span class="nx">Inline</span> <span class="nv">$code</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineCode</span><span class="p">(</span> <span class="nx">Inline</span> <span class="nv">$code</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a raw inline code to the manager</p>
 <h4 id="assetsmanager-addinlinecodebytype"><code>addInlineCodeByType()</code><a class="headerlink" href="#assetsmanager-addinlinecodebytype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineCodeByType</span><span class="p">(</span>
-<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
-<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>    <span class="nx">Inline</span> <span class="nv">$code</span>
-<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineCodeByType</span><span class="p">(</span>
+<a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>    <span class="nx">string</span> <span class="nv">$type</span><span class="p">,</span>
+<a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>    <span class="nx">Inline</span> <span class="nv">$code</span>
+<a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds an inline code by its type</p>
 <h4 id="assetsmanager-addinlinecss"><code>addInlineCss()</code><a class="headerlink" href="#assetsmanager-addinlinecss" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineCss</span><span class="p">(</span>
-<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
-<a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineCss</span><span class="p">(</span>
+<a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
+<a id="__codelineno-76-3" name="__codelineno-76-3" href="#__codelineno-76-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-76-4" name="__codelineno-76-4" href="#__codelineno-76-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-76-5" name="__codelineno-76-5" href="#__codelineno-76-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds an inline CSS to the 'css' collection</p>
 <h4 id="assetsmanager-addinlinejs"><code>addInlineJs()</code><a class="headerlink" href="#assetsmanager-addinlinejs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineJs</span><span class="p">(</span>
-<a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
-<a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-79-5" name="__codelineno-79-5" href="#__codelineno-79-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInlineJs</span><span class="p">(</span>
+<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>    <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
+<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds an inline JavaScript to the 'js' collection</p>
 <h4 id="assetsmanager-addjs"><code>addJs()</code><a class="headerlink" href="#assetsmanager-addjs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addJs</span><span class="p">(</span>
-<a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
-<a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-80-5" name="__codelineno-80-5" href="#__codelineno-80-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-80-6" name="__codelineno-80-6" href="#__codelineno-80-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-80-7" name="__codelineno-80-7" href="#__codelineno-80-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
-<a id="__codelineno-80-8" name="__codelineno-80-8" href="#__codelineno-80-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addJs</span><span class="p">(</span>
+<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
+<a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>    <span class="nx">bool</span> <span class="nv">$local</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a>    <span class="nx">bool</span> <span class="nv">$filter</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
+<a id="__codelineno-78-6" name="__codelineno-78-6" href="#__codelineno-78-6"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$version</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-78-7" name="__codelineno-78-7" href="#__codelineno-78-7"></a>    <span class="nx">bool</span> <span class="nv">$autoVersion</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-78-8" name="__codelineno-78-8" href="#__codelineno-78-8"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a JavaScript asset to the 'js' collection</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="nv">$assets</span><span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s2">"scripts/jquery.js"</span><span class="p">);</span>
-<a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a><span class="nv">$assets</span><span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s2">"https://jquery.my-cdn.com/jquery.js"</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="nv">$assets</span><span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s2">"scripts/jquery.js"</span><span class="p">);</span>
+<a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a><span class="nv">$assets</span><span class="o">-&gt;</span><span class="na">addJs</span><span class="p">(</span><span class="s2">"https://jquery.my-cdn.com/jquery.js"</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="assetsmanager-collection"><code>collection()</code><a class="headerlink" href="#assetsmanager-collection" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">collection</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Collection</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">collection</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Collection</span><span class="p">;</span>
 </code></pre></div>
 <p>Creates/Returns a collection of assets</p>
 <h4 id="assetsmanager-collectionassetsbytype"><code>collectionAssetsByType()</code><a class="headerlink" href="#assetsmanager-collectionassetsbytype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">collectionAssetsByType</span><span class="p">(</span>
-<a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a>    <span class="k">array</span> <span class="nv">$assets</span><span class="p">,</span>
-<a id="__codelineno-83-3" name="__codelineno-83-3" href="#__codelineno-83-3"></a>    <span class="nx">string</span> <span class="nv">$type</span>
-<a id="__codelineno-83-4" name="__codelineno-83-4" href="#__codelineno-83-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">collectionAssetsByType</span><span class="p">(</span>
+<a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a>    <span class="k">array</span> <span class="nv">$assets</span><span class="p">,</span>
+<a id="__codelineno-81-3" name="__codelineno-81-3" href="#__codelineno-81-3"></a>    <span class="nx">string</span> <span class="nv">$type</span>
+<a id="__codelineno-81-4" name="__codelineno-81-4" href="#__codelineno-81-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Creates/Returns a collection of assets by type</p>
+<p>The <code>instanceof</code> guard below is the validation, so the parameter stays a
+plain array here.</p>
 <h4 id="assetsmanager-exists"><code>exists()</code><a class="headerlink" href="#assetsmanager-exists" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">exists</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">exists</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns true or false if collection exists.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">exists</span><span class="p">(</span><span class="s2">"jsHeader"</span><span class="p">))</span> <span class="p">{</span>
-<a id="__codelineno-85-2" name="__codelineno-85-2" href="#__codelineno-85-2"></a>    <span class="c1">// \Phalcon\Assets\Collection</span>
-<a id="__codelineno-85-3" name="__codelineno-85-3" href="#__codelineno-85-3"></a>    <span class="nv">$collection</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"jsHeader"</span><span class="p">);</span>
-<a id="__codelineno-85-4" name="__codelineno-85-4" href="#__codelineno-85-4"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">exists</span><span class="p">(</span><span class="s2">"jsHeader"</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a>    <span class="c1">// \Phalcon\Assets\Collection</span>
+<a id="__codelineno-83-3" name="__codelineno-83-3" href="#__codelineno-83-3"></a>    <span class="nv">$collection</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"jsHeader"</span><span class="p">);</span>
+<a id="__codelineno-83-4" name="__codelineno-83-4" href="#__codelineno-83-4"></a><span class="p">}</span>
 </code></pre></div>
 <h4 id="assetsmanager-get"><code>get()</code><a class="headerlink" href="#assetsmanager-get" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Collection</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Collection</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a collection by its id.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a><span class="nv">$scripts</span> <span class="o">=</span> <span class="nv">$assets</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"js"</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="nv">$scripts</span> <span class="o">=</span> <span class="nv">$assets</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"js"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="assetsmanager-getcollections"><code>getCollections()</code><a class="headerlink" href="#assetsmanager-getcollections" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getCollections</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getCollections</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns existing collections in the manager</p>
 <h4 id="assetsmanager-getcss"><code>getCss()</code><a class="headerlink" href="#assetsmanager-getcss" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getCss</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getCss</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the CSS collection of assets</p>
 <h4 id="assetsmanager-getjs"><code>getJs()</code><a class="headerlink" href="#assetsmanager-getjs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getJs</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getJs</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the CSS collection of assets</p>
 <h4 id="assetsmanager-getoptions"><code>getOptions()</code><a class="headerlink" href="#assetsmanager-getoptions" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptions</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptions</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the manager options</p>
 <h4 id="assetsmanager-has"><code>has()</code><a class="headerlink" href="#assetsmanager-has" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns true or false if collection exists.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s2">"jsHeader"</span><span class="p">))</span> <span class="p">{</span>
-<a id="__codelineno-93-2" name="__codelineno-93-2" href="#__codelineno-93-2"></a>    <span class="c1">// \Phalcon\Assets\Collection</span>
-<a id="__codelineno-93-3" name="__codelineno-93-3" href="#__codelineno-93-3"></a>    <span class="nv">$collection</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"jsHeader"</span><span class="p">);</span>
-<a id="__codelineno-93-4" name="__codelineno-93-4" href="#__codelineno-93-4"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s2">"jsHeader"</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-91-2" name="__codelineno-91-2" href="#__codelineno-91-2"></a>    <span class="c1">// \Phalcon\Assets\Collection</span>
+<a id="__codelineno-91-3" name="__codelineno-91-3" href="#__codelineno-91-3"></a>    <span class="nv">$collection</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"jsHeader"</span><span class="p">);</span>
+<a id="__codelineno-91-4" name="__codelineno-91-4" href="#__codelineno-91-4"></a><span class="p">}</span>
 </code></pre></div>
 <h4 id="assetsmanager-output"><code>output()</code><a class="headerlink" href="#assetsmanager-output" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">output</span><span class="p">(</span>
-<a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a>    <span class="nx">Collection</span> <span class="nv">$collection</span><span class="p">,</span>
-<a id="__codelineno-94-3" name="__codelineno-94-3" href="#__codelineno-94-3"></a>    <span class="nx">string</span> <span class="nv">$type</span>
-<a id="__codelineno-94-4" name="__codelineno-94-4" href="#__codelineno-94-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">output</span><span class="p">(</span>
+<a id="__codelineno-92-2" name="__codelineno-92-2" href="#__codelineno-92-2"></a>    <span class="nx">Collection</span> <span class="nv">$collection</span><span class="p">,</span>
+<a id="__codelineno-92-3" name="__codelineno-92-3" href="#__codelineno-92-3"></a>    <span class="nx">string</span> <span class="nv">$type</span>
+<a id="__codelineno-92-4" name="__codelineno-92-4" href="#__codelineno-92-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Traverses a collection calling the callback to generate its HTML</p>
 <h4 id="assetsmanager-outputcss"><code>outputCss()</code><a class="headerlink" href="#assetsmanager-outputcss" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputCss</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputCss</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Prints the HTML for CSS assets</p>
 <h4 id="assetsmanager-outputinline"><code>outputInline()</code><a class="headerlink" href="#assetsmanager-outputinline" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputInline</span><span class="p">(</span>
-<a id="__codelineno-96-2" name="__codelineno-96-2" href="#__codelineno-96-2"></a>    <span class="nx">Collection</span> <span class="nv">$collection</span><span class="p">,</span>
-<a id="__codelineno-96-3" name="__codelineno-96-3" href="#__codelineno-96-3"></a>    <span class="nx">string</span> <span class="nv">$type</span>
-<a id="__codelineno-96-4" name="__codelineno-96-4" href="#__codelineno-96-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputInline</span><span class="p">(</span>
+<a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a>    <span class="nx">Collection</span> <span class="nv">$collection</span><span class="p">,</span>
+<a id="__codelineno-94-3" name="__codelineno-94-3" href="#__codelineno-94-3"></a>    <span class="nx">mixed</span> <span class="nv">$type</span>
+<a id="__codelineno-94-4" name="__codelineno-94-4" href="#__codelineno-94-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Traverses a collection and generate its HTML</p>
 <h4 id="assetsmanager-outputinlinecss"><code>outputInlineCss()</code><a class="headerlink" href="#assetsmanager-outputinlinecss" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputInlineCss</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputInlineCss</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Prints the HTML for inline CSS</p>
 <h4 id="assetsmanager-outputinlinejs"><code>outputInlineJs()</code><a class="headerlink" href="#assetsmanager-outputinlinejs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputInlineJs</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputInlineJs</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Prints the HTML for inline JS</p>
 <h4 id="assetsmanager-outputjs"><code>outputJs()</code><a class="headerlink" href="#assetsmanager-outputjs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputJs</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">outputJs</span><span class="p">(</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>Prints the HTML for JS assets</p>
 <h4 id="assetsmanager-set"><code>set()</code><a class="headerlink" href="#assetsmanager-set" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">set</span><span class="p">(</span>
-<a id="__codelineno-100-2" name="__codelineno-100-2" href="#__codelineno-100-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-100-3" name="__codelineno-100-3" href="#__codelineno-100-3"></a>    <span class="nx">Collection</span> <span class="nv">$collection</span>
-<a id="__codelineno-100-4" name="__codelineno-100-4" href="#__codelineno-100-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">set</span><span class="p">(</span>
+<a id="__codelineno-98-2" name="__codelineno-98-2" href="#__codelineno-98-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
+<a id="__codelineno-98-3" name="__codelineno-98-3" href="#__codelineno-98-3"></a>    <span class="nx">Collection</span> <span class="nv">$collection</span>
+<a id="__codelineno-98-4" name="__codelineno-98-4" href="#__codelineno-98-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets a collection in the Assets Manager</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="nv">$assets</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">"js"</span><span class="p">,</span> <span class="nv">$collection</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a><span class="nv">$assets</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s2">"js"</span><span class="p">,</span> <span class="nv">$collection</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="assetsmanager-setoptions"><code>setOptions()</code><a class="headerlink" href="#assetsmanager-setoptions" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setOptions</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$options</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setOptions</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$options</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the manager options</p>
 <h4 id="assetsmanager-useimplicitoutput"><code>useImplicitOutput()</code><a class="headerlink" href="#assetsmanager-useimplicitoutput" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">useImplicitOutput</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$implicitOutput</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">useImplicitOutput</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$implicitOutput</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets if the HTML generated must be directly printed or returned</p>
 <h2 id="assetstraitsattributestrait">Assets\Traits\AttributesTrait<a class="headerlink" href="#assetstraitsattributestrait" title="Permanent link">&para;</a></h2>
@@ -9079,13 +9042,14 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Assets/Traits/AttributesTrait.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Shared HTML-attributes state for asset objects (<code>Asset</code>, <code>Inline</code>,
 <code>Collection</code>).</p>
-<p>@todo v7 - share setAttributes here too (blocked: Collection is not an
-      AssetInterface, so the return type diverges)</p>
+<p>@todo set attributes to have a default array when introduced in zephir
+@todo v7 - share setAttributes here too (blocked: Collection is not an AssetInterface, so the return type diverges)</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Assets\Traits\AttributesTrait</code></strong></li>
 </ul>
 </div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Assets\AssetsTypes</code></p>
 <p class="api-used-by"><strong>Used by</strong> <a href="#assetsasset"><code>Phalcon\Assets\Asset</code></a> · <a href="#assetscollection"><code>Phalcon\Assets\Collection</code></a> · <a href="#assetsinline"><code>Phalcon\Assets\Inline</code></a></p>
 <h3 id="method-summary_19">Method Summary<a class="headerlink" href="#method-summary_19" title="Permanent link">&para;</a></h3>
 <div class="api-list">
@@ -9101,8 +9065,8 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string&gt;</code>
-<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
+<code class="ret">assets_attributes|null</code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = null</span></code>
 </div>
 </div>
 
@@ -9110,7 +9074,7 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="assetstraitsattributestrait-getattributes"><code>getAttributes()</code><a class="headerlink" href="#assetstraitsattributestrait-getattributes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAttributes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAttributes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Gets extra HTML attributes.</p>
 <h2 id="assetstraitssourcetargettrait">Assets\Traits\SourceTargetTrait<a class="headerlink" href="#assetstraitssourcetargettrait" title="Permanent link">&para;</a></h2>
@@ -9201,32 +9165,32 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.</p>
 <div class="api-group">Public · 8</div>
 
 <h4 id="assetstraitssourcetargettrait-getsourcepath"><code>getSourcePath()</code><a class="headerlink" href="#assetstraitssourcetargettrait-getsourcepath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getSourcePath</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getSourcePath</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="assetstraitssourcetargettrait-gettargetpath"><code>getTargetPath()</code><a class="headerlink" href="#assetstraitssourcetargettrait-gettargetpath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTargetPath</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTargetPath</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="assetstraitssourcetargettrait-gettargeturi"><code>getTargetUri()</code><a class="headerlink" href="#assetstraitssourcetargettrait-gettargeturi" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-107-1" name="__codelineno-107-1" href="#__codelineno-107-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTargetUri</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTargetUri</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="assetstraitssourcetargettrait-islocal"><code>isLocal()</code><a class="headerlink" href="#assetstraitssourcetargettrait-islocal" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-108-1" name="__codelineno-108-1" href="#__codelineno-108-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isLocal</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isLocal</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Checks if the asset is local or not</p>
 <h4 id="assetstraitssourcetargettrait-setislocal"><code>setIsLocal()</code><a class="headerlink" href="#assetstraitssourcetargettrait-setislocal" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-109-1" name="__codelineno-109-1" href="#__codelineno-109-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setIsLocal</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-107-1" name="__codelineno-107-1" href="#__codelineno-107-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setIsLocal</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets if the asset is local or external</p>
 <h4 id="assetstraitssourcetargettrait-setsourcepath"><code>setSourcePath()</code><a class="headerlink" href="#assetstraitssourcetargettrait-setsourcepath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-110-1" name="__codelineno-110-1" href="#__codelineno-110-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setSourcePath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$sourcePath</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-108-1" name="__codelineno-108-1" href="#__codelineno-108-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setSourcePath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$sourcePath</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the asset's source path</p>
 <h4 id="assetstraitssourcetargettrait-settargetpath"><code>setTargetPath()</code><a class="headerlink" href="#assetstraitssourcetargettrait-settargetpath" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-111-1" name="__codelineno-111-1" href="#__codelineno-111-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setTargetPath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$targetPath</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-109-1" name="__codelineno-109-1" href="#__codelineno-109-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setTargetPath</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$targetPath</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the asset's target path</p>
 <h4 id="assetstraitssourcetargettrait-settargeturi"><code>setTargetUri()</code><a class="headerlink" href="#assetstraitssourcetargettrait-settargeturi" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-112-1" name="__codelineno-112-1" href="#__codelineno-112-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setTargetUri</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$targetUri</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-110-1" name="__codelineno-110-1" href="#__codelineno-110-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setTargetUri</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$targetUri</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets a target uri for the generated HTML</p>
 

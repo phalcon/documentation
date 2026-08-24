@@ -149,7 +149,7 @@ offering lower resource consumption and high performance.
     <div data-md-component="skip">
       
         
-        <a href="#acladapterabstractadapter" class="md-skip">
+        <a href="#aclabstractelement" class="md-skip">
           Skip to content
         </a>
       
@@ -5225,6 +5225,17 @@ offering lower resource consumption and high performance.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#aclabstractelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Acl\AbstractElement
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#acladapterabstractadapter" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -5391,17 +5402,6 @@ offering lower resource consumption and high performance.
   
     <nav class="md-nav" aria-label="Methods">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#acladaptermemory-__construct" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        <code>__construct()</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#acladaptermemory-addcomponent" class="md-nav__link">
@@ -6422,6 +6422,17 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
+  <a href="#properties_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Properties
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#methods_13" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -6513,24 +6524,40 @@ offering lower resource consumption and high performance.
 <p class="admonition-title">NOTE</p>
 <p>All classes are prefixed with <code>Phalcon</code></p>
 </div>
+<h2 id="aclabstractelement">Acl\AbstractElement<a class="headerlink" href="#aclabstractelement" title="Permanent link">&para;</a></h2>
+<p><span class="badge badge--abstract">Abstract</span>
+<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Acl/AbstractElement.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<p>Shared base for ACL Role and Component entities: a name and an optional
+description.</p>
+<p>@todo Remove in v7. Kept only for backwards compatibility; the logic now
+      lives in <code>Phalcon\Acl\Traits\ItemTrait</code> - compose that trait directly
+      instead of extending this class.</p>
+<div class="api-tree">
+<ul>
+<li><strong><code>Phalcon\Acl\AbstractElement</code></strong><ul>
+<li><a href="#aclcomponent"><code>Phalcon\Acl\Component</code></a></li>
+<li><a href="#aclrole"><code>Phalcon\Acl\Role</code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Traits\ItemTrait</code></p>
 <h2 id="acladapterabstractadapter">Acl\Adapter\AbstractAdapter<a class="headerlink" href="#acladapterabstractadapter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--abstract">Abstract</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Acl/Adapter/AbstractAdapter.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>Functionality common to all adapters</p>
-<p>@property string|null $activeAccess
-@property string|null $activeComponent
-@property string|null $activeRole
-@property bool        $accessGranted
-@property int         $defaultAccess</p>
 <div class="api-tree">
 <ul>
+<li><a href="../phalcon_events/#eventsabstracteventsaware"><code>Phalcon\Events\AbstractEventsAware</code></a><ul>
 <li><strong><code>Phalcon\Acl\Adapter\AbstractAdapter</code></strong> - implements <a href="#acladapteradapterinterface"><code>Phalcon\Acl\Adapter\AdapterInterface</code></a>, <a href="../phalcon_events/#eventseventsawareinterface"><code>Phalcon\Events\EventsAwareInterface</code></a><ul>
 <li><a href="#acladaptermemory"><code>Phalcon\Acl\Adapter\Memory</code></a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Enum</code> · <code>Phalcon\Events\EventsAwareInterface</code> · <code>Phalcon\Events\Traits\EventsAwareTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Enum</code> · <code>Phalcon\Events\AbstractEventsAware</code> · <code>Phalcon\Events\EventsAwareInterface</code></p>
 <h3 id="method-summary">Method Summary<a class="headerlink" href="#method-summary" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#acladapterabstractadapter-getactiveaccess">
@@ -6703,6 +6730,7 @@ component/access</p>
 </code></pre></div>
 <div class="api-tree">
 <ul>
+<li><a href="../phalcon_events/#eventsabstracteventsaware"><code>Phalcon\Events\AbstractEventsAware</code></a><ul>
 <li><a href="#acladapterabstractadapter"><code>Phalcon\Acl\Adapter\AbstractAdapter</code></a><ul>
 <li><strong><code>Phalcon\Acl\Adapter\Memory</code></strong><ul>
 <li><a href="#acladapterstorage"><code>Phalcon\Acl\Adapter\Storage</code></a></li>
@@ -6711,19 +6739,16 @@ component/access</p>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Component</code> · <code>Phalcon\Acl\ComponentAwareInterface</code> · <code>Phalcon\Acl\ComponentInterface</code> · <code>Phalcon\Acl\Enum</code> · <code>Phalcon\Acl\Exceptions\AccessRuleNotFound</code> · <code>Phalcon\Acl\Exceptions\CircularInheritanceError</code> · <code>Phalcon\Acl\Exceptions\ElementNotFound</code> · <code>Phalcon\Acl\Exceptions\InvalidAccessList</code> · <code>Phalcon\Acl\Exceptions\InvalidComponentImplementation</code> · <code>Phalcon\Acl\Exceptions\InvalidRoleImplementation</code> · <code>Phalcon\Acl\Exceptions\InvalidRoleType</code> · <code>Phalcon\Acl\Exceptions\MissingFunctionParameters</code> · <code>Phalcon\Acl\Exceptions\ParameterTypeMismatch</code> · <code>Phalcon\Acl\Exceptions\RoleNotFoundException</code> · <code>Phalcon\Acl\Role</code> · <code>Phalcon\Acl\RoleAwareInterface</code> · <code>Phalcon\Acl\RoleInterface</code> · <code>Phalcon\Contracts\Acl\Adapter\Adapter</code> · <code>Phalcon\Events\Exception</code> · <code>ReflectionClass</code> · <code>ReflectionException</code> · <code>ReflectionFunction</code> · <code>ReflectionNamedType</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Component</code> · <code>Phalcon\Acl\ComponentAwareInterface</code> · <code>Phalcon\Acl\ComponentInterface</code> · <code>Phalcon\Acl\Enum</code> · <code>Phalcon\Acl\Exceptions\AccessRuleNotFound</code> · <code>Phalcon\Acl\Exceptions\CircularInheritanceError</code> · <code>Phalcon\Acl\Exceptions\ElementNotFound</code> · <code>Phalcon\Acl\Exceptions\InvalidAccessList</code> · <code>Phalcon\Acl\Exceptions\InvalidComponentImplementation</code> · <code>Phalcon\Acl\Exceptions\InvalidRoleImplementation</code> · <code>Phalcon\Acl\Exceptions\InvalidRoleType</code> · <code>Phalcon\Acl\Exceptions\MissingFunctionParameters</code> · <code>Phalcon\Acl\Exceptions\ParameterTypeMismatch</code> · <code>Phalcon\Acl\Exceptions\RoleNotFoundException</code> · <code>Phalcon\Acl\Role</code> · <code>Phalcon\Acl\RoleAwareInterface</code> · <code>Phalcon\Acl\RoleInterface</code> · <code>Phalcon\Contracts\Acl\AclTypes</code> · <code>ReflectionClass</code> · <code>ReflectionException</code> · <code>ReflectionFunction</code> · <code>ReflectionNamedType</code></p>
 <h3 id="method-summary_1">Method Summary<a class="headerlink" href="#method-summary_1" title="Permanent link">&para;</a></h3>
 <div class="api-list">
-<a class="api-item" href="#acladaptermemory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-<span class="desc">Memory constructor.</span>
-</a>
 <a class="api-item" href="#acladaptermemory-addcomponent">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">addComponent</span>(<span class="prm"><span class="st">ComponentInterface|string</span> <span class="sv">$componentObject</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$accessList</span></span>)</code>
+<code class="sig"><span class="sf">addComponent</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$componentValue</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
 <span class="desc">Adds a component to the ACL list</span>
 </a>
 <a class="api-item" href="#acladaptermemory-addcomponentaccess">
@@ -6741,25 +6766,25 @@ component/access</p>
 <a class="api-item" href="#acladaptermemory-addrole">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sf">addRole</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleObject</span>,</span><span class="prm"><span class="st">array|RoleInterface|string|null</span> <span class="sv">$accessInherits</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">addRole</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$role</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessInherits</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a role to the ACL list. The second parameter lets to inherit access</span>
 </a>
 <a class="api-item" href="#acladaptermemory-allow">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">allow</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$function</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">allow</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$func</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Allow access to a role on a component. You can use <code>*</code> as wildcard</span>
 </a>
 <a class="api-item" href="#acladaptermemory-deny">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">deny</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$function</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">deny</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$func</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Deny access to a role on a component. You can use <code>*</code> as wildcard</span>
 </a>
 <a class="api-item" href="#acladaptermemory-dropcomponentaccess">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">dropComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$accessList</span></span>)</code>
+<code class="sig"><span class="sf">dropComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
 <span class="desc">Removes access from a component</span>
 </a>
 <a class="api-item" href="#acladaptermemory-getactivefunction">
@@ -6788,7 +6813,7 @@ component/access</p>
 </a>
 <a class="api-item" href="#acladaptermemory-getinheritedroles">
 <code class="vis vis-public">public</code>
-<code class="ret">array|null</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getInheritedRoles</span>( <span class="st">string</span> <span class="sv">$roleName</span><span class="sm"> = &quot;&quot;</span> )</code>
 <span class="desc">Returns the inherited roles for a passed role name. If no role name</span>
 </a>
@@ -6800,7 +6825,7 @@ component/access</p>
 </a>
 <a class="api-item" href="#acladaptermemory-getroles">
 <code class="vis vis-public">public</code>
-<code class="ret">array|null</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sf">getRoles</span>()</code>
 <span class="desc">Return an array with every role registered in the list</span>
 </a>
@@ -6834,14 +6859,14 @@ component/access</p>
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, int&gt;|null</code>
-<code class="sig"><span class="sv">$access</span><span class="sm"> = null</span></code>
+<code class="ret">array&lt;string, int&gt;</code>
+<code class="sig"><span class="sv">$access</span><span class="sm"> = []</span></code>
 <span class="desc">Access</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array&lt;string, bool&gt;</code>
-<code class="sig"><span class="sv">$accessList</span><span class="sm"> = []</span></code>
+<code class="sig"><span class="sv">$accessList</span><span class="sm"> = [...]</span></code>
 <span class="desc">Access List</span>
 </div>
 <div class="api-item">
@@ -6865,20 +6890,20 @@ active function</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, ComponentInterface&gt;|null</code>
+<code class="ret">acl_components</code>
 <code class="sig"><span class="sv">$components</span><span class="sm"> = []</span></code>
 <span class="desc">Components</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array&lt;string, bool&gt;</code>
-<code class="sig"><span class="sv">$componentsNames</span><span class="sm"> = []</span></code>
+<code class="sig"><span class="sv">$componentsNames</span><span class="sm"> = [...]</span></code>
 <span class="desc">Component Names</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, callable|string&gt;|null</code>
-<code class="sig"><span class="sv">$functions</span><span class="sm"> = null</span></code>
+<code class="ret">array&lt;string, callable|string&gt;</code>
+<code class="sig"><span class="sv">$functions</span><span class="sm"> = []</span></code>
 <span class="desc">Function List</span>
 </div>
 <div class="api-item">
@@ -6889,202 +6914,200 @@ active function</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, array&lt;int, string&gt;&gt;|null</code>
-<code class="sig"><span class="sv">$roleInherits</span><span class="sm"> = null</span></code>
+<code class="ret">array&lt;string, array&lt;int, string&gt;&gt;</code>
+<code class="sig"><span class="sv">$roleInherits</span><span class="sm"> = []</span></code>
 <span class="desc">Role Inherits</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, RoleInterface&gt;|null</code>
-<code class="sig"><span class="sv">$roles</span><span class="sm"> = null</span></code>
+<code class="ret">array&lt;string, RoleInterface&gt;</code>
+<code class="sig"><span class="sv">$roles</span><span class="sm"> = []</span></code>
 <span class="desc">Roles</span>
 </div>
 </div>
 
 <h3 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h3>
-<div class="api-group">Public · 19</div>
+<div class="api-group">Public · 18</div>
 
-<h4 id="acladaptermemory-__construct"><code>__construct()</code><a class="headerlink" href="#acladaptermemory-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
-</code></pre></div>
-<p>Memory constructor.</p>
 <h4 id="acladaptermemory-addcomponent"><code>addComponent()</code><a class="headerlink" href="#acladaptermemory-addcomponent" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addComponent</span><span class="p">(</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="nx">ComponentInterface</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$componentObject</span><span class="p">,</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$accessList</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addComponent</span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="nx">mixed</span> <span class="nv">$componentValue</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nx">mixed</span> <span class="nv">$accessList</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a component to the ACL list</p>
 <p>Access names can be a particular action, for instance <code>search</code>, <code>update</code>
 <code>delete</code> etc. or a list of them.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// Add a component to the list allowing access to an action</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Component</span><span class="p">(</span><span class="s2">"customers"</span><span class="p">),</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="s2">"search"</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">);</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span><span class="s2">"customers"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">);</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1">// Add a component  with an access list</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Component</span><span class="p">(</span><span class="s2">"customers"</span><span class="p">),</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="p">[</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>        <span class="s2">"create"</span><span class="p">,</span>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>        <span class="s2">"search"</span><span class="p">,</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>    <span class="p">]</span>
-<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="p">);</span>
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
-<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span>
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>    <span class="s2">"customers"</span><span class="p">,</span>
-<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>    <span class="p">[</span>
-<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>        <span class="s2">"create"</span><span class="p">,</span>
-<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>        <span class="s2">"search"</span><span class="p">,</span>
-<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>    <span class="p">]</span>
-<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Add a component to the list allowing access to an action</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Component</span><span class="p">(</span><span class="s2">"customers"</span><span class="p">),</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="s2">"search"</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">);</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span><span class="s2">"customers"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1">// Add a component  with an access list</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Component</span><span class="p">(</span><span class="s2">"customers"</span><span class="p">),</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="p">[</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="s2">"create"</span><span class="p">,</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="s2">"search"</span><span class="p">,</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="p">]</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="p">);</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addComponent</span><span class="p">(</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>    <span class="s2">"customers"</span><span class="p">,</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>    <span class="p">[</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>        <span class="s2">"create"</span><span class="p">,</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>        <span class="s2">"search"</span><span class="p">,</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>    <span class="p">]</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="p">);</span>
 </code></pre></div></p>
 <h4 id="acladaptermemory-addcomponentaccess"><code>addComponentAccess()</code><a class="headerlink" href="#acladaptermemory-addcomponentaccess" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addComponentAccess</span><span class="p">(</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nx">string</span> <span class="nv">$componentName</span><span class="p">,</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="nx">mixed</span> <span class="nv">$accessList</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addComponentAccess</span><span class="p">(</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="nx">string</span> <span class="nv">$componentName</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="nx">mixed</span> <span class="nv">$accessList</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds access to components</p>
+<p>The guard below is the validation, so the parameter stays <code>mixed</code> here.
+The accepted values are documented on the contract.</p>
 <h4 id="acladaptermemory-addinherit"><code>addInherit()</code><a class="headerlink" href="#acladaptermemory-addinherit" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInherit</span><span class="p">(</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nx">string</span> <span class="nv">$roleName</span><span class="p">,</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">RoleInterface</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$roleToInherit</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addInherit</span><span class="p">(</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nx">string</span> <span class="nv">$roleName</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">RoleInterface</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$roleToInherit</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Add a role which inherits from an existing role</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="s2">"consultant"</span><span class="p">);</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"consultant"</span><span class="p">,</span> <span class="s2">"consultant2"</span><span class="p">]);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="s2">"consultant"</span><span class="p">);</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"consultant"</span><span class="p">,</span> <span class="s2">"consultant2"</span><span class="p">]);</span>
 </code></pre></div>
 <h4 id="acladaptermemory-addrole"><code>addRole()</code><a class="headerlink" href="#acladaptermemory-addrole" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addRole</span><span class="p">(</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="nx">mixed</span> <span class="nv">$roleObject</span><span class="p">,</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">RoleInterface</span><span class="o">|</span><span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$accessInherits</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addRole</span><span class="p">(</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="nx">mixed</span> <span class="nv">$role</span><span class="p">,</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="nx">mixed</span> <span class="nv">$accessInherits</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Adds a role to the ACL list. The second parameter lets to inherit access
 from an existing role</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">),</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="s2">"consultant"</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">);</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="s2">"consultant"</span><span class="p">);</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"consultant"</span><span class="p">,</span> <span class="s2">"consultant2"</span><span class="p">]);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="k">new</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">),</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="s2">"consultant"</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">);</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="s2">"consultant"</span><span class="p">);</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s2">"administrator"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"consultant"</span><span class="p">,</span> <span class="s2">"consultant2"</span><span class="p">]);</span>
 </code></pre></div>
 <h4 id="acladaptermemory-allow"><code>allow()</code><a class="headerlink" href="#acladaptermemory-allow" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">allow</span><span class="p">(</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="nx">string</span> <span class="nv">$roleName</span><span class="p">,</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="nx">string</span> <span class="nv">$componentName</span><span class="p">,</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$access</span><span class="p">,</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="nx">callable</span><span class="o">|</span><span class="k">null</span> <span class="nv">$function</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">allow</span><span class="p">(</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="nx">string</span> <span class="nv">$roleName</span><span class="p">,</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="nx">string</span> <span class="nv">$componentName</span><span class="p">,</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="nx">mixed</span> <span class="nv">$access</span><span class="p">,</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="nx">mixed</span> <span class="nv">$func</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Allow access to a role on a component. You can use <code>*</code> as wildcard</p>
 <p>A <code>*</code> role is an eager snapshot: it expands to the roles that exist when
 <code>allow()</code> is called, so roles added afterwards do not inherit the grant.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// Allow access to guests to search on customers</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">);</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1">// Allow access to guests to search or create on customers</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"search"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">]);</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1">// Allow access to any role to browse on products</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"products"</span><span class="p">,</span> <span class="s2">"browse"</span><span class="p">);</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1">// Allow access to any role to perform any action on any component</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// Allow access to guests to search on customers</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">);</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">// Allow access to guests to search or create on customers</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"search"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">]);</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1">// Allow access to any role to browse on products</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"products"</span><span class="p">,</span> <span class="s2">"browse"</span><span class="p">);</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c1">// Allow access to any role to perform any action on any component</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="acladaptermemory-deny"><code>deny()</code><a class="headerlink" href="#acladaptermemory-deny" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">deny</span><span class="p">(</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="nx">string</span> <span class="nv">$roleName</span><span class="p">,</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="nx">string</span> <span class="nv">$componentName</span><span class="p">,</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$access</span><span class="p">,</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="nx">callable</span><span class="o">|</span><span class="k">null</span> <span class="nv">$function</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">deny</span><span class="p">(</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="nx">string</span> <span class="nv">$roleName</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="nx">string</span> <span class="nv">$componentName</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="nx">mixed</span> <span class="nv">$access</span><span class="p">,</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="nx">mixed</span> <span class="nv">$func</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Deny access to a role on a component. You can use <code>*</code> as wildcard</p>
 <p>A <code>*</code> role is an eager snapshot: it expands to the roles that exist when
 <code>deny()</code> is called, so roles added afterwards do not inherit the rule.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">// Deny access to guests to search on customers</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">);</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1">// Deny access to guests to search or create on customers</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"search"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">]);</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1">// Deny access to any role to browse on products</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"products"</span><span class="p">,</span> <span class="s2">"browse"</span><span class="p">);</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="c1">// Deny access to any role to perform any action on any component</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">// Deny access to guests to search on customers</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">);</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1">// Deny access to guests to search or create on customers</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"customers"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"search"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">]);</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1">// Deny access to any role to browse on products</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"products"</span><span class="p">,</span> <span class="s2">"browse"</span><span class="p">);</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="c1">// Deny access to any role to perform any action on any component</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="acladaptermemory-dropcomponentaccess"><code>dropComponentAccess()</code><a class="headerlink" href="#acladaptermemory-dropcomponentaccess" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">dropComponentAccess</span><span class="p">(</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="nx">string</span> <span class="nv">$componentName</span><span class="p">,</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="k">array</span><span class="o">|</span><span class="nx">string</span> <span class="nv">$accessList</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">dropComponentAccess</span><span class="p">(</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="nx">string</span> <span class="nv">$componentName</span><span class="p">,</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="nx">mixed</span> <span class="nv">$accessList</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Removes access from a component</p>
 <h4 id="acladaptermemory-getactivefunction"><code>getActiveFunction()</code><a class="headerlink" href="#acladaptermemory-getactivefunction" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveFunction</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveFunction</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the latest function used to acquire access</p>
 <h4 id="acladaptermemory-getactivefunctioncustomargumentscount"><code>getActiveFunctionCustomArgumentsCount()</code><a class="headerlink" href="#acladaptermemory-getactivefunctioncustomargumentscount" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveFunctionCustomArgumentsCount</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveFunctionCustomArgumentsCount</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns number of additional arguments(excluding role and resource) for active function</p>
 <h4 id="acladaptermemory-getactivekey"><code>getActiveKey()</code><a class="headerlink" href="#acladaptermemory-getactivekey" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveKey</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getActiveKey</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the last composite key used to acquire access.</p>
 <h4 id="acladaptermemory-getcomponents"><code>getComponents()</code><a class="headerlink" href="#acladaptermemory-getcomponents" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getComponents</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getComponents</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>Return an array with every component registered in the list</p>
 <h4 id="acladaptermemory-getinheritedroles"><code>getInheritedRoles()</code><a class="headerlink" href="#acladaptermemory-getinheritedroles" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getInheritedRoles</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getInheritedRoles</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="o">=</span> <span class="s2">""</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the inherited roles for a passed role name. If no role name
 has been specified it will return the whole array. If the role has not
 been found it returns an empty array</p>
 <h4 id="acladaptermemory-getnoargumentsdefaultaction"><code>getNoArgumentsDefaultAction()</code><a class="headerlink" href="#acladaptermemory-getnoargumentsdefaultaction" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getNoArgumentsDefaultAction</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getNoArgumentsDefaultAction</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the default ACL access level for no arguments provided in
-<code>isAllowed</code> action if a <code>function</code> (callable) exists for <code>accessKey</code></p>
+<code>isAllowed</code> action if a <code>func</code> (callable) exists for <code>accessKey</code></p>
 <h4 id="acladaptermemory-getroles"><code>getRoles()</code><a class="headerlink" href="#acladaptermemory-getroles" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRoles</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getRoles</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Return an array with every role registered in the list</p>
 <h4 id="acladaptermemory-isallowed"><code>isAllowed()</code><a class="headerlink" href="#acladaptermemory-isallowed" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isAllowed</span><span class="p">(</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>    <span class="nx">mixed</span> <span class="nv">$roleName</span><span class="p">,</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="nx">mixed</span> <span class="nv">$componentName</span><span class="p">,</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>    <span class="nx">string</span> <span class="nv">$access</span><span class="p">,</span>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>    <span class="k">array</span><span class="o">|</span><span class="k">null</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isAllowed</span><span class="p">(</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    <span class="nx">mixed</span> <span class="nv">$roleName</span><span class="p">,</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="nx">mixed</span> <span class="nv">$componentName</span><span class="p">,</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    <span class="nx">string</span> <span class="nv">$access</span><span class="p">,</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>    <span class="k">array</span><span class="o">|</span><span class="k">null</span> <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Check whether a role is allowed to access an action from a component</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1">// Does andres have access to the customers component to create?</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">"andres"</span><span class="p">,</span> <span class="s2">"Products"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">);</span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1">// Do guests have access to any component to edit?</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"edit"</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1">// Does andres have access to the customers component to create?</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">"andres"</span><span class="p">,</span> <span class="s2">"Products"</span><span class="p">,</span> <span class="s2">"create"</span><span class="p">);</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="c1">// Do guests have access to any component to edit?</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">"guests"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"edit"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="acladaptermemory-iscomponent"><code>isComponent()</code><a class="headerlink" href="#acladaptermemory-iscomponent" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isComponent</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$componentName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isComponent</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$componentName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Check whether component exist in the components list</p>
 <h4 id="acladaptermemory-isrole"><code>isRole()</code><a class="headerlink" href="#acladaptermemory-isrole" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isRole</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isRole</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Check whether role exist in the roles list</p>
 <h4 id="acladaptermemory-setnoargumentsdefaultaction"><code>setNoArgumentsDefaultAction()</code><a class="headerlink" href="#acladaptermemory-setnoargumentsdefaultaction" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setNoArgumentsDefaultAction</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$defaultAccess</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setNoArgumentsDefaultAction</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$defaultAccess</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Sets the default access level (<code>Phalcon\Enum::ALLOW</code> or
 <code>Phalcon\Enum::DENY</code>) for no arguments provided in isAllowed action if
@@ -7106,6 +7129,7 @@ Use external locking when multiple processes write the same key.</p>
 <p>@see Persistable</p>
 <div class="api-tree">
 <ul>
+<li><a href="../phalcon_events/#eventsabstracteventsaware"><code>Phalcon\Events\AbstractEventsAware</code></a><ul>
 <li><a href="#acladapterabstractadapter"><code>Phalcon\Acl\Adapter\AbstractAdapter</code></a><ul>
 <li><a href="#acladaptermemory"><code>Phalcon\Acl\Adapter\Memory</code></a><ul>
 <li><strong><code>Phalcon\Acl\Adapter\Storage</code></strong> - implements <a href="../phalcon_contracts/#contractsacladapterpersistable"><code>Phalcon\Contracts\Acl\Adapter\Persistable</code></a></li>
@@ -7114,8 +7138,10 @@ Use external locking when multiple processes write the same key.</p>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Component</code> · <code>Phalcon\Acl\Enum</code> · <code>Phalcon\Acl\Exceptions\InvalidSnapshot</code> · <code>Phalcon\Acl\Role</code> · <code>Phalcon\Contracts\Acl\Adapter\Persistable</code> · <code>Phalcon\Storage\Adapter\AdapterInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Component</code> · <code>Phalcon\Acl\Enum</code> · <code>Phalcon\Acl\Exceptions\InvalidSnapshot</code> · <code>Phalcon\Acl\Role</code> · <code>Phalcon\Contracts\Acl\AclTypes</code> · <code>Phalcon\Contracts\Acl\Adapter\Persistable</code> · <code>Phalcon\Storage\Adapter\AdapterInterface</code></p>
 <h3 id="method-summary_2">Method Summary<a class="headerlink" href="#method-summary_2" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#acladapterstorage-__construct">
@@ -7162,20 +7188,20 @@ Use external locking when multiple processes write the same key.</p>
 <div class="api-group">Public · 3</div>
 
 <h4 id="acladapterstorage-__construct"><code>__construct()</code><a class="headerlink" href="#acladapterstorage-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="nx">StorageInterface</span> <span class="nv">$storage</span><span class="p">,</span>
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="nx">string</span> <span class="nv">$key</span> <span class="o">=</span> <span class="s2">"acl-data"</span>
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="nx">StorageInterface</span> <span class="nv">$storage</span><span class="p">,</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="nx">string</span> <span class="nv">$key</span> <span class="o">=</span> <span class="s2">"acl-data"</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="acladapterstorage-load"><code>load()</code><a class="headerlink" href="#acladapterstorage-load" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Loads the policy snapshot from the backing store, replacing current
 in-memory state. Returns false when no compatible snapshot exists; throws
 Phalcon\Acl\Exceptions\InvalidSnapshot on an incompatible version or a
 malformed structure.</p>
 <h4 id="acladapterstorage-save"><code>save()</code><a class="headerlink" href="#acladapterstorage-save" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Persists the policy snapshot. Closure-backed access keys are written as
 DENY (fail closed); roles/components are written as scalar name =&gt;
@@ -7186,10 +7212,13 @@ description maps for serializer independence.</p>
 <p>This class defines component entity and its description</p>
 <div class="api-tree">
 <ul>
+<li><a href="#aclabstractelement"><code>Phalcon\Acl\AbstractElement</code></a><ul>
 <li><strong><code>Phalcon\Acl\Component</code></strong> - implements <a href="#aclcomponentinterface"><code>Phalcon\Acl\ComponentInterface</code></a></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Exceptions\ForbiddenWildcard</code> · <code>Phalcon\Acl\Traits\ItemTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Exceptions\ForbiddenWildcard</code></p>
 <h3 id="method-summary_3">Method Summary<a class="headerlink" href="#method-summary_3" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#aclcomponent-__construct">
@@ -7203,10 +7232,10 @@ description maps for serializer independence.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="aclcomponent-__construct"><code>__construct()</code><a class="headerlink" href="#aclcomponent-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>Component constructor.</p>
 <h2 id="aclcomponentawareinterface">Acl\ComponentAwareInterface<a class="headerlink" href="#aclcomponentawareinterface" title="Permanent link">&para;</a></h2>
@@ -7309,10 +7338,10 @@ description maps for serializer independence.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="aclexceptionsaccessrulenotfound-__construct"><code>__construct()</code><a class="headerlink" href="#aclexceptionsaccessrulenotfound-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="nx">string</span> <span class="nv">$accessName</span><span class="p">,</span>
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="nx">string</span> <span class="nv">$componentName</span>
-<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="nx">string</span> <span class="nv">$accessName</span><span class="p">,</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="nx">string</span> <span class="nv">$componentName</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="p">);</span>
 </code></pre></div>
 <h2 id="aclexceptionscircularinheritanceerror">Acl\Exceptions\CircularInheritanceError<a class="headerlink" href="#aclexceptionscircularinheritanceerror" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -7341,7 +7370,7 @@ description maps for serializer independence.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="aclexceptionscircularinheritanceerror-__construct"><code>__construct()</code><a class="headerlink" href="#aclexceptionscircularinheritanceerror-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="aclexceptionselementnotfound">Acl\Exceptions\ElementNotFound<a class="headerlink" href="#aclexceptionselementnotfound" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -7385,7 +7414,7 @@ description maps for serializer independence.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="aclexceptionsforbiddenwildcard-__construct"><code>__construct()</code><a class="headerlink" href="#aclexceptionsforbiddenwildcard-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$elementType</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$elementType</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="aclexceptionsinvalidaccesslist">Acl\Exceptions\InvalidAccessList<a class="headerlink" href="#aclexceptionsinvalidaccesslist" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -7414,7 +7443,7 @@ description maps for serializer independence.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="aclexceptionsinvalidaccesslist-__construct"><code>__construct()</code><a class="headerlink" href="#aclexceptionsinvalidaccesslist-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
 </code></pre></div>
 <h2 id="aclexceptionsinvalidcomponentimplementation">Acl\Exceptions\InvalidComponentImplementation<a class="headerlink" href="#aclexceptionsinvalidcomponentimplementation" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -7443,7 +7472,7 @@ description maps for serializer independence.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="aclexceptionsinvalidcomponentimplementation-__construct"><code>__construct()</code><a class="headerlink" href="#aclexceptionsinvalidcomponentimplementation-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
 </code></pre></div>
 <h2 id="aclexceptionsinvalidroleimplementation">Acl\Exceptions\InvalidRoleImplementation<a class="headerlink" href="#aclexceptionsinvalidroleimplementation" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -7472,7 +7501,7 @@ description maps for serializer independence.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="aclexceptionsinvalidroleimplementation-__construct"><code>__construct()</code><a class="headerlink" href="#aclexceptionsinvalidroleimplementation-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
 </code></pre></div>
 <h2 id="aclexceptionsinvalidroletype">Acl\Exceptions\InvalidRoleType<a class="headerlink" href="#aclexceptionsinvalidroletype" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -7501,7 +7530,7 @@ description maps for serializer independence.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="aclexceptionsinvalidroletype-__construct"><code>__construct()</code><a class="headerlink" href="#aclexceptionsinvalidroletype-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
 </code></pre></div>
 <h2 id="aclexceptionsinvalidsnapshot">Acl\Exceptions\InvalidSnapshot<a class="headerlink" href="#aclexceptionsinvalidsnapshot" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -7575,7 +7604,7 @@ description maps for serializer independence.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="aclexceptionsrolenotfoundexception-__construct"><code>__construct()</code><a class="headerlink" href="#aclexceptionsrolenotfoundexception-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$roleName</span> <span class="p">);</span>
 </code></pre></div>
 <h2 id="aclrole">Acl\Role<a class="headerlink" href="#aclrole" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -7583,10 +7612,13 @@ description maps for serializer independence.</p>
 <p>This class defines role entity and its description</p>
 <div class="api-tree">
 <ul>
+<li><a href="#aclabstractelement"><code>Phalcon\Acl\AbstractElement</code></a><ul>
 <li><strong><code>Phalcon\Acl\Role</code></strong> - implements <a href="#aclroleinterface"><code>Phalcon\Acl\RoleInterface</code></a></li>
 </ul>
+</li>
+</ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Exceptions\ForbiddenWildcard</code> · <code>Phalcon\Acl\Traits\ItemTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Acl\Exceptions\ForbiddenWildcard</code></p>
 <h3 id="method-summary_12">Method Summary<a class="headerlink" href="#method-summary_12" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#aclrole-__construct">
@@ -7600,10 +7632,10 @@ description maps for serializer independence.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="aclrole-__construct"><code>__construct()</code><a class="headerlink" href="#aclrole-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>    <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="p">);</span>
 </code></pre></div>
 <p>Role constructor.</p>
 <h2 id="aclroleawareinterface">Acl\RoleAwareInterface<a class="headerlink" href="#aclroleawareinterface" title="Permanent link">&para;</a></h2>
@@ -7636,14 +7668,12 @@ description maps for serializer independence.</p>
 <p><span class="badge badge--trait">Trait</span>
 <a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Acl/Traits/ItemTrait.php"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
 <p>This class defines role/component names and their descriptions</p>
-<p>@property string      $name
-@property string|null $description</p>
 <div class="api-tree">
 <ul>
 <li><strong><code>Phalcon\Acl\Traits\ItemTrait</code></strong></li>
 </ul>
 </div>
-<p class="api-used-by"><strong>Used by</strong> <a href="#aclcomponent"><code>Phalcon\Acl\Component</code></a> · <a href="#aclrole"><code>Phalcon\Acl\Role</code></a></p>
+<p class="api-used-by"><strong>Used by</strong> <a href="#aclabstractelement"><code>Phalcon\Acl\AbstractElement</code></a></p>
 <h3 id="method-summary_13">Method Summary<a class="headerlink" href="#method-summary_13" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#acltraitsitemtrait-__tostring">
@@ -7663,17 +7693,33 @@ description maps for serializer independence.</p>
 </a>
 </div>
 
+<h3 id="properties_3">Properties<a class="headerlink" href="#properties_3" title="Permanent link">&para;</a></h3>
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$description</span><span class="sm"> = null</span></code>
+<span class="desc">Role/Component description</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+<span class="desc">Role/Component name</span>
+</div>
+</div>
+
 <h3 id="methods_13">Methods<a class="headerlink" href="#methods_13" title="Permanent link">&para;</a></h3>
 <div class="api-group">Public · 3</div>
 
 <h4 id="acltraitsitemtrait-__tostring"><code>__toString()</code><a class="headerlink" href="#acltraitsitemtrait-__tostring" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="acltraitsitemtrait-getdescription"><code>getDescription()</code><a class="headerlink" href="#acltraitsitemtrait-getdescription" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getDescription</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getDescription</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="acltraitsitemtrait-getname"><code>getName()</code><a class="headerlink" href="#acltraitsitemtrait-getname" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 
   

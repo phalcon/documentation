@@ -5941,6 +5941,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$validator</span><span class="o">-&gt;</span><span class="na">getErrors</span><span class="p">());</span>
 </code></pre></div>
 <p>The above example gives a general view on how the component can be used to generate, parse, and validate JSON Web Tokens.</p>
+<div class="admonition danger">
+<p class="admonition-title">WARNING</p>
+<p><code>Token::validate()</code> checks the token claims only (audience, expiration, issuer, and so on). It does not verify the signature. A token accepted by <code>validate()</code> alone is unauthenticated. Always also call <code>Validator::validateSignature($signer, $passphrase)</code> (or <code>Token::verify($signer, $key)</code>), and treat an empty error array as valid only after the signature check passes.</p>
+</div>
 <h2 id="objects">Objects<a class="headerlink" href="#objects" title="Permanent link">&para;</a></h2>
 <p>There are several utility components that live in the <code>Phalcon\Encryption\Security\JWT\Token</code> namespace, that help with the issuing, parsing, and validating of JWT tokens</p>
 <h3 id="enum">Enum<a class="headerlink" href="#enum" title="Permanent link">&para;</a></h3>
