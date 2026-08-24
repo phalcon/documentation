@@ -291,6 +291,10 @@ The [Phalcon\Http\Response][http-response] offers a collection to store and mani
 
 To set up cookies you will need to instantiate a [Phalcon\Http\Response\Cookies][http-response-cookies] object or any object that implements the [Phalcon\Http\Response\CookiesInterface][http-response-cookiesinterface].
 
+!!! warning "SECURITY"
+
+    Cookies are created without the `Secure`, `HttpOnly`, and `SameSite` attributes by default. For any cookie that carries sensitive data, such as a session identifier or a token, set `Secure` and `HttpOnly` explicitly, and set `SameSite` (see below). Without these attributes the cookie is readable from JavaScript and can be sent over plain HTTP.
+
 ```php
 <?php
 

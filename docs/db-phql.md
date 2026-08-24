@@ -1780,6 +1780,10 @@ if (false === $result->success()) {
 
 [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] is a very handy builder that allows you to construct PHQL statements in an object-oriented way. Most methods return the builder object, allowing you to use a fluent interface, and is flexible enough allowing you to add conditionals if you need to without having to create complex `if` statements and string concatenations constructing the PHQL statement.
 
+!!! warning "SECURITY"
+
+    String fragments passed to the builder — `where()`, `having()`, `orderBy()`, the column list, and join conditions — are concatenated into the PHQL statement verbatim. Pass untrusted values only through bind parameters (`:name:` placeholders supplied through `bind`), never by concatenating them into a fragment string.
+
 The PHQL query:
 
 ```sql

@@ -367,6 +367,10 @@ $filter->url(string $input): string|null
 
 Sanitizing is the process that removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input, we ensure that application integrity will be intact.
 
+!!! warning "SECURITY"
+
+    Sanitizers are best-effort transforms, not validators. Validate untrusted input in addition to sanitizing it. The `url` sanitizer drops dangerous schemes such as `javascript:` and `data:`, but does not guarantee a well-formed URL. The `special` sanitizer does not encode the single quote, so use `specialFull` or `stringVal` for a value placed inside an HTML attribute. The `striptags` sanitizer removes tags, but its output is not guaranteed to be safe against cross-site scripting. The `email` sanitizer removes disallowed characters, but does not validate the address. An unknown or misspelled sanitizer name returns the input unchanged and emits a notice. Do not build a sanitizer name from untrusted input.
+
 ```php
 <?php
 
