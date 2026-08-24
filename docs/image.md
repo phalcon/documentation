@@ -15,6 +15,10 @@ This component uses adapters that offer methods to manipulate images. You can cr
 | [Phalcon\Image\Adapter\Gd][image-adapter-gd]           | Requires the [GD PHP extension][gd]               |
 | [Phalcon\Image\Adapter\Imagick][image-adapter-imagick] | Requires the [ImageMagick PHP extension][imagick] |
 
+!!! warning "SECURITY"
+
+    Image files are decoded from untrusted bytes. Two precautions apply. First, the `$file` argument passed to an adapter constructor (load) and to `save()` (write) is used as a filesystem path as-is; the framework does not sanitize or contain it. Validate any request-derived filename before passing it, otherwise a crafted path can read or write files outside the intended directory. Second, both adapters reject an image whose pixel count exceeds a configurable limit (a generous default, or the fourth constructor argument) to bound decompression-bomb and pixel-flood memory use. When using the Imagick adapter, also harden the ImageMagick `policy.xml` on the server to disable coders such as `MSL`, `MVG`, `URL`, and `HTTPS`; those coders are enforced by ImageMagick, not by Phalcon.
+
 ## Constants
 
 [Phalcon\Image\Enum][image-enum] holds constants for image resizing and flipping. The available constants are:

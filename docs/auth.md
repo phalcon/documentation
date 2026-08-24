@@ -283,6 +283,10 @@ Adapters load user rows and verify passwords. All three share password verificat
 
 A configured `model` that does not implement `Phalcon\Contracts\Auth\AuthUser` throws `Phalcon\Auth\Exceptions\DoesNotImplement` when a user is hydrated. The `memory` and `stream` adapters accept the same optional `model` key and enforce the contract identically.
 
+!!! warning "SECURITY"
+
+    The remember-me token is matched by your model's `getRememberToken()` implementation, which the framework calls with the token from the cookie. Store a hash of the token, not the plaintext value, and look it up in constant time, for example with an indexed exact-match query or `hash_equals()` when comparing in PHP. A plaintext token column turns a database or backup leak into account takeover.
+
 ### Memory Adapter
 
 `Phalcon\Auth\Adapter\Memory` serves an in-memory list of user rows. It is useful for tests and small read-only user sets.

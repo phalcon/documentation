@@ -757,6 +757,10 @@ Escaping identifiers is enabled by default. However, if you need to disable this
 );
 ```
 
+!!! warning "SECURITY"
+
+    `CHECK` constraint expressions, generated-column expressions, and view definition bodies are emitted into the DDL verbatim, exactly as provided. They are treated as developer-authored SQL, the same as [Phalcon\Db\RawValue][db-rawvalue]. Never build these from untrusted input.
+
 ## Factory
 
 ### `newInstance()`
