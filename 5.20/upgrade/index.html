@@ -5262,23 +5262,40 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>// pie install phalcon/cphalcon-5.20.2
 </code></pre></div>
 <p><strong>Alternative installation</strong></p>
-<p>Download the latest <code>zephir.phar</code> from <a href="https://github.com/phalcon/zephir/releases">here</a>. Add it to a folder that can be accessed by your system.</p>
-<p>Clone the repository</p>
+<p>Every release of the repository ships the generated C sources of the extension in the <code>ext/</code> folder. You do <strong>not</strong> need Zephir to compile Phalcon.</p>
+<p>Clone the repository to a location on your file system and check out the release you want to install.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/phalcon/cphalcon
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.2<span class="w"> </span>./
 </code></pre></div>
-<p>Compile Phalcon</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.2<span class="w"> </span>./
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>zephir<span class="w"> </span>fullclean
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>zephir<span class="w"> </span>build
+<p>Compile and install Phalcon with the bundled <code>install</code> script</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>ext/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>./install
 </code></pre></div>
-<p>You will need to add the following line to your <code>php.ini</code> (in some cases both the CLI and web versions of it)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">extension</span><span class="o">=</span>phalcon.so
-</code></pre></div>
+<p>The script runs <code>phpize</code>, <code>./configure --enable-phalcon</code>, <code>make</code> and <code>make install</code> for you. Outside a container it uses <code>sudo</code> for the <code>make install</code> step.</p>
 <p>Check the module</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>php<span class="w"> </span>-m<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>phalcon
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>php<span class="w"> </span>-m<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>phalcon
 </code></pre></div>
-<p>If the above does not work, check the <code>php.ini</code> that your CLI is looking for. If you are using <code>phpinfo()</code> and a web browser to check if Phalcon has been loaded, make sure that your <code>php.ini</code> file that your web server is looking for contains the <code>extension=phalcon.so</code>. You will need to restart your web server after you add the new line in <code>php.ini</code>.</p>
+<p>You will now need to enable Phalcon. Create a file called <code>phalcon.ini</code> with <code>extension=phalcon.so</code> as its content. The file should be present in:</p>
+<ul>
+<li>Suse: <code>/etc/php8/conf.d/phalcon.ini</code></li>
+<li>CentOS/RedHat/Fedora: <code>/etc/php.d/phalcon.ini</code></li>
+<li>Ubuntu/Debian with Apache2: <code>/etc/php8/apache2/conf.d/30-phalcon.ini</code> with this Content:</li>
+<li>Ubuntu/Debian with Php8-FPM: <code>/etc/php8/fpm/conf.d/30-phalcon.ini</code></li>
+<li>Ubuntu/Debian with Php8-CLI: <code>/etc/php8/cli/conf.d/30-phalcon.ini</code></li>
+</ul>
+<p>For PHP 8.+ the above paths might differ slightly.</p>
+<p>If you prefer to run the build steps yourself (for instance to pass your own <code>configure</code> or compiler options), use the standard PHP extension workflow in the same folder:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/ext/
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>phpize
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>./configure<span class="w"> </span>--enable-phalcon
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>make<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<p>If you use the above method you will need to add the <code>extension=phalcon.so</code> in your <code>php.ini</code> both for CLI and the web server.</p>
+<div class="admonition warning">
+<p class="admonition-title">Zephir</p>
+<p>Do <strong>not</strong> use <code>zephir fullclean</code> or <code>zephir build</code> with a released <code>zephir.phar</code>. <code>zephir fullclean</code> deletes the bundled C sources in <code>ext/</code>, and the <code>.zep</code> sources of the framework require the development version of [Zephir][zephir]. Building from the <code>.zep</code> sources is only needed when you change the framework itself: run <code>composer install</code> in the repository (which installs the pinned <code>phalcon/zephir:dev-development</code>) and then <code>vendor/bin/zephir fullclean &amp;&amp; vendor/bin/zephir build</code>.</p>
+</div>
 <hr />
 <h2 id="general-notes">General Notes<a class="headerlink" href="#general-notes" title="Permanent link">&para;</a></h2>
 <p>One of the biggest changes with this release is that we no longer have top-level classes. All top-level classes have been moved into relevant namespaces (except <code>Phalcon\Tag</code>). For instance <code>Phalcon\Loader</code> has been moved to <code>Phalcon\Autoload\Loader</code>. This change was necessary for the future expansion of the project.</p>
