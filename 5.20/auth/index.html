@@ -6074,6 +6074,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">],</span>
 </code></pre></div>
 <p>A configured <code>model</code> that does not implement <code>Phalcon\Contracts\Auth\AuthUser</code> throws <code>Phalcon\Auth\Exceptions\DoesNotImplement</code> when a user is hydrated. The <code>memory</code> and <code>stream</code> adapters accept the same optional <code>model</code> key and enforce the contract identically.</p>
+<div class="admonition warning">
+<p class="admonition-title">SECURITY</p>
+<p>The remember-me token is matched by your model's <code>getRememberToken()</code> implementation, which the framework calls with the token from the cookie. Store a hash of the token, not the plaintext value, and look it up in constant time, for example with an indexed exact-match query or <code>hash_equals()</code> when comparing in PHP. A plaintext token column turns a database or backup leak into account takeover.</p>
+</div>
 <h3 id="memory-adapter">Memory Adapter<a class="headerlink" href="#memory-adapter" title="Permanent link">&para;</a></h3>
 <p><code>Phalcon\Auth\Adapter\Memory</code> serves an in-memory list of user rows. It is useful for tests and small read-only user sets.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="s1">'adapter'</span> <span class="o">=&gt;</span> <span class="p">[</span>

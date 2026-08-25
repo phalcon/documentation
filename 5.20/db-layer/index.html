@@ -7402,6 +7402,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-71-6" name="__codelineno-71-6" href="#__codelineno-71-6"></a>    <span class="p">]</span>
 <a id="__codelineno-71-7" name="__codelineno-71-7" href="#__codelineno-71-7"></a><span class="p">);</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">SECURITY</p>
+<p><code>CHECK</code> constraint expressions, generated-column expressions, and view definition bodies are emitted into the DDL verbatim, exactly as provided. They are treated as developer-authored SQL, the same as <a href="../api/phalcon_db/#dbrawvalue">Phalcon\Db\RawValue</a>. Never build these from untrusted input.</p>
+</div>
 <h2 id="factory">Factory<a class="headerlink" href="#factory" title="Permanent link">&para;</a></h2>
 <h3 id="newinstance"><code>newInstance()</code><a class="headerlink" href="#newinstance" title="Permanent link">&para;</a></h3>
 <p>Although all adapter classes can be instantiated using the <code>new</code> keyword, Phalcon offers the <a href="../api/phalcon_db/#dbadapterpdofactory">Phalcon\Db\Adapter\PdoFactory</a> class, so that you can instantiate PDO adapter instances. All the above adapters are registered in the factory and lazy loaded when called. The factory allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the <code>newInstance()</code> method with the same parameters during the same request, you will get the same object back.</p>

@@ -6008,6 +6008,10 @@ offering lower resource consumption and high performance.
 <h2 id="cookies">Cookies<a class="headerlink" href="#cookies" title="Permanent link">&para;</a></h2>
 <p>The <a href="../api/phalcon_http/#httpresponse">Phalcon\Http\Response</a> offers a collection to store and manipulate cookies. You can then send those cookies back with the response.</p>
 <p>To set up cookies you will need to instantiate a <a href="../api/phalcon_http/#httpresponsecookies">Phalcon\Http\Response\Cookies</a> object or any object that implements the <a href="../api/phalcon_http/#httpresponsecookiesinterface">Phalcon\Http\Response\CookiesInterface</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">SECURITY</p>
+<p>Cookies are created without the <code>Secure</code>, <code>HttpOnly</code>, and <code>SameSite</code> attributes by default. For any cookie that carries sensitive data, such as a session identifier or a token, set <code>Secure</code> and <code>HttpOnly</code> explicitly, and set <code>SameSite</code> (see below). Without these attributes the cookie is readable from JavaScript and can be sent over plain HTTP.</p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
