@@ -220,7 +220,7 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.20.1 ./
+git checkout tags/v5.20.2 ./
 cd ext/
 ./install
 ```
@@ -335,7 +335,7 @@ Clone the repository to a location on your file system and check out the release
 ```bash
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.20.1 ./
+git checkout tags/v21 ./
 ```
 
 Compile and install Phalcon with the bundled `install` script
