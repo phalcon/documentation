@@ -335,7 +335,7 @@ Clone the repository to a location on your file system and check out the release
 ```bash
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v21 ./
+git checkout tags/v5.20.2 ./
 ```
 
 Compile and install Phalcon with the bundled `install` script

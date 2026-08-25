@@ -29,28 +29,24 @@ pie install phalcon
 
 **Alternative installation**
 
-Download the latest `zephir.phar` from [here][zephir-phar]. Add it to a folder that can be accessed by your system.
+Every release of the repository ships the generated C sources of the extension in the `ext/` folder. You do **not** need Zephir to compile Phalcon.
 
-Clone the repository
+Clone the repository to a location on your file system and check out the release you want to install.
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
-```
-
-Compile Phalcon
-
-```bash
 cd cphalcon/
 git checkout tags/v5.20.2 ./
-zephir fullclean
-zephir build
 ```
 
-You will need to add the following line to your `php.ini` (in some cases both the CLI and web versions of it)
+Compile and install Phalcon with the bundled `install` script
 
 ```bash
-extension=phalcon.so
+cd ext/
+./install
 ```
+
+The script runs `phpize`, `./configure --enable-phalcon`, `make` and `make install` for you. Outside a container it uses `sudo` for the `make install` step.
 
 Check the module
 
@@ -58,7 +54,31 @@ Check the module
 php -m | grep phalcon
 ```
 
-If the above does not work, check the `php.ini` that your CLI is looking for. If you are using `phpinfo()` and a web browser to check if Phalcon has been loaded, make sure that your `php.ini` file that your web server is looking for contains the `extension=phalcon.so`. You will need to restart your web server after you add the new line in `php.ini`.
+You will now need to enable Phalcon. Create a file called `phalcon.ini` with `extension=phalcon.so` as its content. The file should be present in:
+
+- Suse: `/etc/php8/conf.d/phalcon.ini`
+- CentOS/RedHat/Fedora: `/etc/php.d/phalcon.ini`
+- Ubuntu/Debian with Apache2: `/etc/php8/apache2/conf.d/30-phalcon.ini` with this Content:
+- Ubuntu/Debian with Php8-FPM: `/etc/php8/fpm/conf.d/30-phalcon.ini`
+- Ubuntu/Debian with Php8-CLI: `/etc/php8/cli/conf.d/30-phalcon.ini`
+
+For PHP 8.+ the above paths might differ slightly.
+
+If you prefer to run the build steps yourself (for instance to pass your own `configure` or compiler options), use the standard PHP extension workflow in the same folder:
+
+```bash
+cd cphalcon/ext/
+phpize
+./configure --enable-phalcon
+make && make install
+```
+
+If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and the web server.
+
+!!! warning "Zephir"
+
+    Do **not** use `zephir fullclean` or `zephir build` with a released `zephir.phar`. `zephir fullclean` deletes the bundled C sources in `ext/`, and the `.zep` sources of the framework require the development version of [Zephir][zephir]. Building from the `.zep` sources is only needed when you change the framework itself: run `composer install` in the repository (which installs the pinned `phalcon/zephir:dev-development`) and then `vendor/bin/zephir fullclean && vendor/bin/zephir build`.
+
 
 - - -
 
