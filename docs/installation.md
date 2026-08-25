@@ -376,7 +376,7 @@ If you use the above method you will need to add the `extension=phalcon.so` in y
 
 !!! warning "Zephir"
 
-    Do **not** use `zephir fullclean` or `zephir build` with a released `zephir.phar`. `zephir fullclean` deletes the bundled C sources in `ext/`, and the `.zep` sources of the framework require the development version of [Zephir][zephir]. Building from the `.zep` sources is only needed when you change the framework itself: run `composer install` in the repository (which installs the pinned `phalcon/zephir:dev-development`) and then `vendor/bin/zephir fullclean && vendor/bin/zephir build`.
+    Unless you are making changes to your local copy of the framework and wish to compile those changes, you do not need to use Zephir. However, if you want to, you will have to issue `zephir fullclean` and then `zephir build` with a released `zephir.phar`. `zephir fullclean` deletes the bundled C sources in `ext/`, and regenerates it. The changelog lists which version of Zephir was used to compile Phalcon, so you can download that particular phar file and compile the extension that way. 
 
 #### Tuning Build
 
