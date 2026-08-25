@@ -5294,7 +5294,7 @@ offering lower resource consumption and high performance.
 <p>If you use the above method you will need to add the <code>extension=phalcon.so</code> in your <code>php.ini</code> both for CLI and the web server.</p>
 <div class="admonition warning">
 <p class="admonition-title">Zephir</p>
-<p>Do <strong>not</strong> use <code>zephir fullclean</code> or <code>zephir build</code> with a released <code>zephir.phar</code>. <code>zephir fullclean</code> deletes the bundled C sources in <code>ext/</code>, and the <code>.zep</code> sources of the framework require the development version of [Zephir][zephir]. Building from the <code>.zep</code> sources is only needed when you change the framework itself: run <code>composer install</code> in the repository (which installs the pinned <code>phalcon/zephir:dev-development</code>) and then <code>vendor/bin/zephir fullclean &amp;&amp; vendor/bin/zephir build</code>.</p>
+<p>Unless you are making changes to your local copy of the framework and wish to compile those changes, you do not need to use Zephir. However, if you want to, you will have to issue <code>zephir fullclean</code> and then <code>zephir build</code> with a released <code>zephir.phar</code>. <code>zephir fullclean</code> deletes the bundled C sources in <code>ext/</code>, and regenerates it. The changelog lists which version of Zephir was used to compile Phalcon, so you can download that particular phar file and compile the extension that way.</p>
 </div>
 <hr />
 <h2 id="general-notes">General Notes<a class="headerlink" href="#general-notes" title="Permanent link">&para;</a></h2>
