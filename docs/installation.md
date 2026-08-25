@@ -220,9 +220,9 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.20.0 ./
-zephir fullclean
-zephir build
+git checkout tags/v5.20.1 ./
+cd ext/
+./install
 ```
 
 It is also necessary to increase the swap file from the default 100 MB to at least 2000 MB. Because the compiler lacks RAM.
@@ -328,35 +328,24 @@ Compiling from source is similar to most environments (Linux/macOS).
 
 #### Compilation
 
-If you wish to compile Phalcon you can do so by using [Zephir][zephir-phar]. You will need to download the latest `zephir.phar` from [here][zephir-phar]. Move the file to a folder that is available in your `PATH`, such as `/usr/local/bin` for example, and make it executable:
+Every release of the repository ships the generated C sources of the extension in the `ext/` folder. You do **not** need Zephir to compile Phalcon.
 
-```bash
-mv zephir.phar /usr/local/bin
-cd /usr/local/bin/
-mv zephir.phar zephir
-chmod a+x zephir
-```
-
-You might also need to change the ownership of the file, depending on your environment.
-
-!!! note "NOTE"
-
-    Zephir can also be installed using `composer require phalcon/zephir:dev-development`
-
-Clone the repository to a location on your file system.
+Clone the repository to a location on your file system and check out the release you want to install.
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
+cd cphalcon/
+git checkout tags/v5.20.1 ./
 ```
 
-Compile Phalcon
+Compile and install Phalcon with the bundled `install` script
 
 ```bash
-cd cphalcon/
-git checkout tags/v5.20.0 ./
-zephir fullclean
-zephir build
+cd ext/
+./install
 ```
+
+The script runs `phpize`, `./configure --enable-phalcon`, `make` and `make install` for you. Outside a container it uses `sudo` for the `make install` step.
 
 Check the module
 
@@ -374,28 +363,30 @@ You will now need to enable Phalcon. Create a file called `phalcon.ini` with `ex
 
 For PHP 8.+ the above paths might differ slightly.
 
-The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
+If you prefer to run the build steps yourself (for instance to pass your own `configure` or compiler options), use the standard PHP extension workflow in the same folder:
 
 ```bash
-cd cphalcon/
-git checkout tags/v5.20.0 ./
-zephir fullclean
-zephir compile
-cd ext
+cd cphalcon/ext/
 phpize
-./configure
+./configure --enable-phalcon
 make && make install
 ```
 
 If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and the web server.
 
+!!! warning "Zephir"
+
+    Do **not** use `zephir fullclean` or `zephir build` with a released `zephir.phar`. `zephir fullclean` deletes the bundled C sources in `ext/`, and the `.zep` sources of the framework require the development version of [Zephir][zephir]. Building from the `.zep` sources is only needed when you change the framework itself: run `composer install` in the repository (which installs the pinned `phalcon/zephir:dev-development`) and then `vendor/bin/zephir fullclean && vendor/bin/zephir build`.
+
 #### Tuning Build
 
-By default, we compile to be as compatible as possible with all processors ( `gcc -mtune=native -O2 -fomit-frame-pointer`). If you would like to instruct the compiler to generate optimized machine code that matches the processor where it is currently running you can set your own compile flags by exporting CFLAGS before the build. For example
+The `install` script compiles with `-O2 -fvisibility=hidden -flto` so that the module runs on any processor of the same architecture. If you would like to instruct the compiler to generate optimized machine code that matches the processor where it is currently running, use the manual workflow above and pass your own compile flags to `configure`. For example
 
-```
-export CFLAGS="-march=native -O2 -fomit-frame-pointer"
-zephir build
+```bash
+cd cphalcon/ext/
+phpize
+./configure --enable-phalcon CFLAGS="-march=native -O2 -fomit-frame-pointer"
+make && make install
 ```
 
 This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
@@ -436,4 +427,4 @@ The plesk control panel doesn't have Phalcon support, but you can find installat
 [postgresql]: https://php.net/manual/en/ref.pdo-pgsql.php
 [remi]: https://github.com/remicollet
 [remi-config]: https://blog.remirepo.net/pages/Config-en
-[zephir-phar]: https://github.com/phalcon/zephir/releases
+[zephir]: https://github.com/phalcon/zephir
