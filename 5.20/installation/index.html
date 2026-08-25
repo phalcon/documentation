@@ -6292,9 +6292,9 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>-s
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/phalcon/cphalcon
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.0<span class="w"> </span>./
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>zephir<span class="w"> </span>fullclean
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>zephir<span class="w"> </span>build
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.1<span class="w"> </span>./
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nb">cd</span><span class="w"> </span>ext/
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>./install
 </code></pre></div>
 <p>It is also necessary to increase the swap file from the default 100 MB to at least 2000 MB. Because the compiler lacks RAM.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>-s
@@ -6383,28 +6383,19 @@ offering lower resource consumption and high performance.
 <li>libpcre-dev</li>
 </ul>
 <h4 id="compilation">Compilation<a class="headerlink" href="#compilation" title="Permanent link">&para;</a></h4>
-<p>If you wish to compile Phalcon you can do so by using <a href="https://github.com/phalcon/zephir/releases">Zephir</a>. You will need to download the latest <code>zephir.phar</code> from <a href="https://github.com/phalcon/zephir/releases">here</a>. Move the file to a folder that is available in your <code>PATH</code>, such as <code>/usr/local/bin</code> for example, and make it executable:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>mv<span class="w"> </span>zephir.phar<span class="w"> </span>/usr/local/bin
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nb">cd</span><span class="w"> </span>/usr/local/bin/
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>mv<span class="w"> </span>zephir.phar<span class="w"> </span>zephir
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>chmod<span class="w"> </span>a+x<span class="w"> </span>zephir
+<p>Every release of the repository ships the generated C sources of the extension in the <code>ext/</code> folder. You do <strong>not</strong> need Zephir to compile Phalcon.</p>
+<p>Clone the repository to a location on your file system and check out the release you want to install.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/phalcon/cphalcon
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.1<span class="w"> </span>./
 </code></pre></div>
-<p>You might also need to change the ownership of the file, depending on your environment.</p>
-<div class="admonition note">
-<p class="admonition-title">NOTE</p>
-<p>Zephir can also be installed using <code>composer require phalcon/zephir:dev-development</code></p>
-</div>
-<p>Clone the repository to a location on your file system.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/phalcon/cphalcon
+<p>Compile and install Phalcon with the bundled <code>install</code> script</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">cd</span><span class="w"> </span>ext/
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>./install
 </code></pre></div>
-<p>Compile Phalcon</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.0<span class="w"> </span>./
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>zephir<span class="w"> </span>fullclean
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>zephir<span class="w"> </span>build
-</code></pre></div>
+<p>The script runs <code>phpize</code>, <code>./configure --enable-phalcon</code>, <code>make</code> and <code>make install</code> for you. Outside a container it uses <code>sudo</code> for the <code>make install</code> step.</p>
 <p>Check the module</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>php<span class="w"> </span>-m<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>phalcon
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>php<span class="w"> </span>-m<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>phalcon
 </code></pre></div>
 <p>You will now need to enable Phalcon. Create a file called <code>phalcon.ini</code> with <code>extension=phalcon.so</code> as its content. The file should be present in:</p>
 <ul>
@@ -6415,21 +6406,23 @@ offering lower resource consumption and high performance.
 <li>Ubuntu/Debian with Php8-CLI: <code>/etc/php8/cli/conf.d/30-phalcon.ini</code></li>
 </ul>
 <p>For PHP 8.+ the above paths might differ slightly.</p>
-<p>The instructions above will compile <strong>and</strong> install the module on your system. You can also compile the extension and then add it manually in your <code>ini</code> file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.0<span class="w"> </span>./
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>zephir<span class="w"> </span>fullclean
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>zephir<span class="w"> </span>compile
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="nb">cd</span><span class="w"> </span>ext
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>phpize
-<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>./configure
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>make<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install
+<p>If you prefer to run the build steps yourself (for instance to pass your own <code>configure</code> or compiler options), use the standard PHP extension workflow in the same folder:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/ext/
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>phpize
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>./configure<span class="w"> </span>--enable-phalcon
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>make<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 <p>If you use the above method you will need to add the <code>extension=phalcon.so</code> in your <code>php.ini</code> both for CLI and the web server.</p>
+<div class="admonition warning">
+<p class="admonition-title">Zephir</p>
+<p>Do <strong>not</strong> use <code>zephir fullclean</code> or <code>zephir build</code> with a released <code>zephir.phar</code>. <code>zephir fullclean</code> deletes the bundled C sources in <code>ext/</code>, and the <code>.zep</code> sources of the framework require the development version of <a href="https://github.com/phalcon/zephir">Zephir</a>. Building from the <code>.zep</code> sources is only needed when you change the framework itself: run <code>composer install</code> in the repository (which installs the pinned <code>phalcon/zephir:dev-development</code>) and then <code>vendor/bin/zephir fullclean &amp;&amp; vendor/bin/zephir build</code>.</p>
+</div>
 <h4 id="tuning-build">Tuning Build<a class="headerlink" href="#tuning-build" title="Permanent link">&para;</a></h4>
-<p>By default, we compile to be as compatible as possible with all processors ( <code>gcc -mtune=native -O2 -fomit-frame-pointer</code>). If you would like to instruct the compiler to generate optimized machine code that matches the processor where it is currently running you can set your own compile flags by exporting CFLAGS before the build. For example</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>export CFLAGS="-march=native -O2 -fomit-frame-pointer"
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>zephir build
+<p>The <code>install</code> script compiles with <code>-O2 -fvisibility=hidden -flto</code> so that the module runs on any processor of the same architecture. If you would like to instruct the compiler to generate optimized machine code that matches the processor where it is currently running, use the manual workflow above and pass your own compile flags to <code>configure</code>. For example</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/ext/
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>phpize
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>./configure<span class="w"> </span>--enable-phalcon<span class="w"> </span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">"-march=native -O2 -fomit-frame-pointer"</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>make<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 <p>This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.</p>
 <h3 id="shared-hosting">Shared Hosting<a class="headerlink" href="#shared-hosting" title="Permanent link">&para;</a></h3>
