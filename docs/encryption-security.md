@@ -295,13 +295,17 @@ Getter and setter for the default hash that the component will use. By default, 
 * `CRYPT_BLOWFISH_X`
 * `CRYPT_BLOWFISH_Y` (deprecated)
 * `CRYPT_MD5` (deprecated)
-* `CRYPT_SHA256`
-* `CRYPT_SHA512`
+* `CRYPT_SHA256` (deprecated)
+* `CRYPT_SHA512` (deprecated)
 * `CRYPT_DEFAULT`
 
 !!! warning "DEPRECATED"
 
-    `CRYPT_STD_DES`, `CRYPT_EXT_DES`, `CRYPT_BLOWFISH`, and `CRYPT_BLOWFISH_Y` are deprecated and will be removed in a future major version. They were never implemented and resolve to bcrypt. `CRYPT_MD5` is also deprecated as a weak legacy algorithm. Any `defaultHash` value that is not explicitly handled resolves to bcrypt.
+    `CRYPT_STD_DES`, `CRYPT_EXT_DES`, `CRYPT_BLOWFISH`, and `CRYPT_BLOWFISH_Y` are deprecated and will be removed in a future major version. They were never implemented and resolve to bcrypt. Any `defaultHash` value that is not explicitly handled resolves to bcrypt.
+
+!!! danger "Weak legacy password hashes"
+
+    `CRYPT_MD5`, `CRYPT_SHA256` and `CRYPT_SHA512` produce MD5-crypt and SHA-crypt hashes. These are materially easier to brute-force than bcrypt or Argon2 and will be removed in a future major version. Do not select them for new applications. Existing hashes keep validating through `checkHash()` (it uses `password_verify()`), so migrate by keeping bcrypt/Argon2 as the default and rehashing each password on the next successful login (`password_needs_rehash()`).
 
 **hash()**
 

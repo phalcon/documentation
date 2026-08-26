@@ -672,6 +672,10 @@ $container->set(
 );
 ```
 
+!!! danger "Keep the cache directory outside the document root"
+
+    The adapter writes one file per model, named after the model class, containing the metadata as PHP arrays. Point `metaDataDir` to a directory outside the document root (for example `/app/storage/cache/metaData`), never to `./` or a public path, and do not make it writable by other users.
+
 You can use the `orm.exception_on_failed_metadata_save` option in your `php.ini` file to force the component to throw an exception if there is an error storing the metadata or if the target directory is not writeable.
 
 ```ini

@@ -237,6 +237,10 @@ $adapter = new Stream(
 );
 ```
 
+!!! danger "Keep the cache directory outside the document root"
+
+    The adapter writes one file per class, named after the class, containing the serialized annotation data. The files have a `.php` extension but no PHP opening tag, so a web server that can reach the directory returns their content verbatim. Point `storageDir` to a directory outside the document root (for example `/app/storage/cache/annotations`), never to `./` or a public path, and do not make it writable by other users.
+
 The default `annotations` service uses the `Memory` adapter, which is rebuilt on every request. This reflects source changes immediately while you develop. For production, register the service against a persistent adapter so classes are reflected only once.
 
 ```php
