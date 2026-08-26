@@ -176,6 +176,10 @@ $acl->addComponent(
 );
 ```
 
+!!! warning "Reserved character"
+
+    Role, component and access names cannot contain the `!` character. It separates the role, component and access parts of the keys that the adapter stores internally, so a name that contains it would make two different rules share one key. `Phalcon\Acl\Exceptions\ForbiddenDelimiter` is thrown for such a name.
+
 ## Defining Access Controls
 
 After defining both the `Roles` and `Components`, the next step is to tie them together to create the access list. This is a critical step, as a small mistake here can inadvertently allow access to roles for components that the developer did not intend to. As mentioned earlier, the default access action for [Phalcon\Acl][acl-acl] is `Phalcon\Acl\Enum::DENY`, following the [whitelist][whitelist] approach.

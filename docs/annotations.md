@@ -257,6 +257,10 @@ $adapter = new Stream(
 );
 ```
 
+!!! danger "Keep the cache directory outside the document root"
+
+    The adapter writes one file per class, named after the class, containing the serialized annotation data. The files have a `.php` extension but no PHP opening tag, so a web server that can reach the directory returns their content verbatim. Point `annotationsDir` to a directory outside the document root (for example `/app/storage/cache/annotations`), never to `./` or a public path, and do not make it writable by other users.
+
 If there is a problem with storing the data in the folder due to permissions or any other reason, a [Phalcon\Annotations\Exception][annotations-exception] will be thrown.
 
 ### Custom

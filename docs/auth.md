@@ -231,6 +231,7 @@ The session key and remember-cookie name are configurable through the guard `opt
 |----------------|------------|--------------------------------------------------------------------------|
 | `name`         | `auth`     | Session key holding the authenticated identifier                         |
 | `rememberName` | `remember` | Remember-me cookie name                                                  |
+| `rememberSecure` | `true`   | `Secure` flag of the remember-me cookie. Set to `false` only for a deployment that serves plain HTTP on purpose; it does not depend on the scheme the backend sees |
 | `rememberTtl`  | `31536000` | Remember-me cookie lifetime in seconds (365 days)                       |
 | `suffix`       | none       | Derives `auth_<suffix>` / `remember_<suffix>` names for multi-guard apps |
 

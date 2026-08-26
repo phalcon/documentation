@@ -18,6 +18,8 @@ The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Se
 
     The `Php` serializer uses PHP's native `unserialize()`, which instantiates any class contained in the stored bytes. If an attacker can influence those bytes (for example a shared or writable cache backend), this allows PHP object injection and possibly remote code execution. For data that can be attacker-influenced, use the `Json` or `Msgpack` serializer instead of `Php`.
 
+    If you must keep the `Php` serializer, restrict the classes it may instantiate with the `allowedClasses` adapter option (`false` for none, or a list of class names) - it is passed to `Phalcon\Storage\Serializer\Php::setAllowedClasses()` and also covers the nested content of the `Stream` adapter. Anything outside the list is reported as a failed read. The `Igbinary` serializer has no such option: it instantiates whatever class the stored bytes name, so use it only with a store you fully trust. The store itself is not an integrity boundary; if the backend is shared, sign the stored values (for example an HMAC over the serialized bytes) and verify the signature before reading them.
+
 The storage adapter can be configured to use a different serializer. The available serializers are:
 
 ### `Base64`

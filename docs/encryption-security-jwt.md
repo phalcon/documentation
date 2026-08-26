@@ -69,6 +69,10 @@ echo $tokenObject->getToken();
 // BPlPyOeEAkMbg
 ```
 
+!!! warning "Passphrase strength"
+
+    The passphrase is the HMAC key. `setPassphrase()` enforces a length and character-class floor (16 characters, mixed case, digit, symbol) but that is not an entropy guarantee: a human-chosen phrase that passes the check can still be recovered offline from a captured token. Generate the passphrase with a CSPRNG, at least 32 bytes (for example `base64_encode(random_bytes(32))`), never reuse it across environments, and rotate it if it is ever exposed.
+
 ```php
 // $tokenReceived is what we received
 $tokenReceived = getMyTokenFromTheApplication();
@@ -566,6 +570,10 @@ public function validateExpiration(int $timestamp): Validator
 ```
 
 Validates the expiration time. If the `exp` value stored in the token is less than now, a `Validation: the token has expired` error is added.
+
+!!! warning "Expiration boundary"
+
+    The comparison is strict: a token whose `exp` equals the current second is still accepted. RFC 7519 states that a token must not be accepted **on or after** `exp`. A future major version rejects the token at the exact `exp` second; until then, issue tokens with the expiration you need minus one second if that boundary matters to you, or add a negative `timeShift` in the validator.
 
 ```php
 public function validateId(string|null $id = null): Validator

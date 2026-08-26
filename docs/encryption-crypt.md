@@ -207,6 +207,10 @@ If the cipher selected is of type `gcm` or `ccm` (what the cipher name ends with
 
 `setAuthTagLength()` accepts a value between `4` and `16` bytes. A value outside that range throws `Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`.
 
+!!! warning "Short authentication tags"
+
+    The tag is what authenticates a GCM/CCM ciphertext. A 4-byte tag gives only 32 bits of forgery resistance, so an attacker who can submit ciphertexts to a decrypting endpoint can forge one after about 2^32 attempts. NIST SP 800-38D recommends 12 to 16 bytes for general use. Keep the default of `16`; do not go below `12` unless a protocol you must interoperate with requires it. A future major version raises the minimum to `12`.
+
 The auth data, auth tag, and auth tag length are stored on the instance and shared by every `encrypt()` and `decrypt()` call. A `Crypt` instance shared through the [Phalcon\Di][di] container is therefore not safe for interleaved AEAD operations; use a dedicated instance per operation in that case.
 
 For reference, a signed payload produced by `encrypt()` has the layout `iv ‖ hmac ‖ ciphertext ‖ tag`, where `hmac` is present only when signing is enabled and `tag` is present only for `gcm` / `ccm` ciphers.

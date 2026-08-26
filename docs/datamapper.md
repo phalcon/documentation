@@ -647,6 +647,10 @@ The [Phalcon\DataMapper\Profiler\Profiler][datamapper-pdo-profiler-profiler] is 
 
 The [Phalcon\DataMapper\Profiler\Profiler][datamapper-pdo-profiler-profiler] can be activated by calling the `setActive()` method. The method accepts a boolean flag, which serves also as the deactivation method. Data is only logged when the profiler is active.
 
+!!! warning "Bound values are logged"
+
+    When the profiler is active, every statement is logged together with its bound values in the `values` context entry (JSON encoded). Passwords, tokens and personal data that your queries bind end up in whatever the configured logger persists. The default `MemoryLogger` keeps them in memory for the request only and its default format does not print `{values}`; before enabling the profiler with a file or remote logger, use a log format that omits `{values}` or do not enable it in production at all.
+
 ```php
 <?php
 
