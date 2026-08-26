@@ -5903,6 +5903,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="c1">// LdYevRZaQDZ2lul4CCQ5DymeP2ubcapTtgeezOZGIq7Meu7rFF1pv32b-AMWOxCS63CQz_jpm</span>
 <a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="c1">// BPlPyOeEAkMbg</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Passphrase strength</p>
+<p>The passphrase is the HMAC key. <code>setPassphrase()</code> enforces a length and character-class floor (16 characters, mixed case, digit, symbol) but that is not an entropy guarantee: a human-chosen phrase that passes the check can still be recovered offline from a captured token. Generate the passphrase with a CSPRNG, at least 32 bytes (for example <code>base64_encode(random_bytes(32))</code>), never reuse it across environments, and rotate it if it is ever exposed.</p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// $tokenReceived is what we received</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$tokenReceived</span> <span class="o">=</span> <span class="nx">getMyTokenFromTheApplication</span><span class="p">();</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">$audience</span>      <span class="o">=</span> <span class="s1">'https://target.phalcon.io'</span><span class="p">;</span>
@@ -6244,6 +6248,10 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateExpiration</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$timestamp</span><span class="p">)</span><span class="o">:</span> <span class="nx">Validator</span>
 </code></pre></div>
 <p>Validates the expiration time. If the <code>exp</code> value stored in the token is less than now, a <code>Validation: the token has expired</code> error is added.</p>
+<div class="admonition warning">
+<p class="admonition-title">Expiration boundary</p>
+<p>The comparison is strict: a token whose <code>exp</code> equals the current second is still accepted. RFC 7519 states that a token must not be accepted <strong>on or after</strong> <code>exp</code>. A future major version rejects the token at the exact <code>exp</code> second; until then, issue tokens with the expiration you need minus one second if that boundary matters to you, or add a negative <code>timeShift</code> in the validator.</p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">validateId</span><span class="p">(</span><span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$jwtId</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">Validator</span>
 </code></pre></div>
 <p>Validates the id. If it is not the same as the <code>jti</code> value stored in the token, a <code>Validation: incorrect Id</code> error is added. A <code>null</code> id is not validated.</p>

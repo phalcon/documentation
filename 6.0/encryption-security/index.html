@@ -6056,13 +6056,17 @@ offering lower resource consumption and high performance.
 <li><code>CRYPT_BLOWFISH_X</code></li>
 <li><code>CRYPT_BLOWFISH_Y</code> (deprecated)</li>
 <li><code>CRYPT_MD5</code> (deprecated)</li>
-<li><code>CRYPT_SHA256</code></li>
-<li><code>CRYPT_SHA512</code></li>
+<li><code>CRYPT_SHA256</code> (deprecated)</li>
+<li><code>CRYPT_SHA512</code> (deprecated)</li>
 <li><code>CRYPT_DEFAULT</code></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">DEPRECATED</p>
-<p><code>CRYPT_STD_DES</code>, <code>CRYPT_EXT_DES</code>, <code>CRYPT_BLOWFISH</code>, and <code>CRYPT_BLOWFISH_Y</code> are deprecated and will be removed in a future major version. They were never implemented and resolve to bcrypt. <code>CRYPT_MD5</code> is also deprecated as a weak legacy algorithm. Any <code>defaultHash</code> value that is not explicitly handled resolves to bcrypt.</p>
+<p><code>CRYPT_STD_DES</code>, <code>CRYPT_EXT_DES</code>, <code>CRYPT_BLOWFISH</code>, and <code>CRYPT_BLOWFISH_Y</code> are deprecated and will be removed in a future major version. They were never implemented and resolve to bcrypt. Any <code>defaultHash</code> value that is not explicitly handled resolves to bcrypt.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Weak legacy password hashes</p>
+<p><code>CRYPT_MD5</code>, <code>CRYPT_SHA256</code> and <code>CRYPT_SHA512</code> produce MD5-crypt and SHA-crypt hashes. These are materially easier to brute-force than bcrypt or Argon2 and will be removed in a future major version. Do not select them for new applications. Existing hashes keep validating through <code>checkHash()</code> (it uses <code>password_verify()</code>), so migrate by keeping bcrypt/Argon2 as the default and rehashing each password on the next successful login (<code>password_needs_rehash()</code>).</p>
 </div>
 <p><strong>hash()</strong></p>
 <p>Hashes a string or password and returns the hashed string back. The second parameter is optional and allows you to set temporarily a specific <code>workFactor</code> or pass that overrides the default one.</p>

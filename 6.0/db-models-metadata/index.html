@@ -6279,6 +6279,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-61-15" name="__codelineno-61-15" href="#__codelineno-61-15"></a>    <span class="p">}</span>
 <a id="__codelineno-61-16" name="__codelineno-61-16" href="#__codelineno-61-16"></a><span class="p">);</span>
 </code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Keep the cache directory outside the document root</p>
+<p>The adapter writes one file per model, named after the model class, containing the metadata as PHP arrays. Point <code>metaDataDir</code> to a directory outside the document root (for example <code>/app/storage/cache/metaData</code>), never to <code>./</code> or a public path, and do not make it writable by other users.</p>
+</div>
 <p>You can use the <code>orm.exception_on_failed_metadata_save</code> option in your <code>php.ini</code> file to force the component to throw an exception if there is an error storing the metadata or if the target directory is not writeable.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="na">orm.exception_on_failed_metadata_save</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
 </code></pre></div>

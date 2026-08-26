@@ -5974,6 +5974,10 @@ offering lower resource consumption and high performance.
 <li><code>setAuthTagLength()</code> - (<code>16</code>)</li>
 </ul>
 <p><code>setAuthTagLength()</code> accepts a value between <code>4</code> and <code>16</code> bytes. A value outside that range throws <code>Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Short authentication tags</p>
+<p>The tag is what authenticates a GCM/CCM ciphertext. A 4-byte tag gives only 32 bits of forgery resistance, so an attacker who can submit ciphertexts to a decrypting endpoint can forge one after about 2^32 attempts. NIST SP 800-38D recommends 12 to 16 bytes for general use. Keep the default of <code>16</code>; do not go below <code>12</code> unless a protocol you must interoperate with requires it. A future major version raises the minimum to <code>12</code>.</p>
+</div>
 <p>The auth data, auth tag, and auth tag length are stored on the instance and shared by every <code>encrypt()</code> and <code>decrypt()</code> call. A <code>Crypt</code> instance shared through the <a href="../di/">Phalcon\Di</a> container is therefore not safe for interleaved AEAD operations; use a dedicated instance per operation in that case.</p>
 <p>For reference, a signed payload produced by <code>encrypt()</code> has the layout <code>iv ‖ hmac ‖ ciphertext ‖ tag</code>, where <code>hmac</code> is present only when signing is enabled and <code>tag</code> is present only for <code>gcm</code> / <code>ccm</code> ciphers.</p>
 <h3 id="padding">Padding<a class="headerlink" href="#padding" title="Permanent link">&para;</a></h3>

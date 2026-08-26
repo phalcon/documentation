@@ -6010,6 +6010,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="p">]</span>
 <a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="p">);</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Reserved character</p>
+<p>Role, component and access names cannot contain the <code>!</code> character. It separates the role, component and access parts of the keys that the adapter stores internally, so a name that contains it would make two different rules share one key. <code>Phalcon\Acl\Exceptions\ForbiddenDelimiter</code> is thrown for such a name.</p>
+</div>
 <h2 id="defining-access-controls">Defining Access Controls<a class="headerlink" href="#defining-access-controls" title="Permanent link">&para;</a></h2>
 <p>After defining both the <code>Roles</code> and <code>Components</code>, the next step is to tie them together to create the access list. This is a critical step, as a small mistake here can inadvertently allow access to roles for components that the developer did not intend to. As mentioned earlier, the default access action for <a href="../api/phalcon_acl/">Phalcon\Acl</a> is <code>Phalcon\Acl\Enum::DENY</code>, following the <a href="https://en.wikipedia.org/wiki/Whitelisting">whitelist</a> approach.</p>
 <p>To associate Roles and Components, you use the <code>allow()</code> and <code>deny()</code> methods provided by the <a href="../api/phalcon_acl/#acladaptermemory">Phalcon\Acl\Memory</a> class.</p>

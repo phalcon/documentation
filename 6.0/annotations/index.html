@@ -5983,6 +5983,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="p">]</span>
 <a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="p">);</span>
 </code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Keep the cache directory outside the document root</p>
+<p>The adapter writes one file per class, named after the class, containing the serialized annotation data. The files have a <code>.php</code> extension but no PHP opening tag, so a web server that can reach the directory returns their content verbatim. Point <code>storageDir</code> to a directory outside the document root (for example <code>/app/storage/cache/annotations</code>), never to <code>./</code> or a public path, and do not make it writable by other users.</p>
+</div>
 <p>The default <code>annotations</code> service uses the <code>Memory</code> adapter, which is rebuilt on every request. This reflects source changes immediately while you develop. For production, register the service against a persistent adapter so classes are reflected only once.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>

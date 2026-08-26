@@ -6056,6 +6056,7 @@ offering lower resource consumption and high performance.
 <div class="admonition danger">
 <p class="admonition-title">WARNING</p>
 <p>The <code>Php</code> serializer uses PHP's native <code>unserialize()</code>, which instantiates any class contained in the stored bytes. If an attacker can influence those bytes (for example a shared or writable cache backend), this allows PHP object injection and possibly remote code execution. For data that can be attacker-influenced, use the <code>Json</code> or <code>Msgpack</code> serializer instead of <code>Php</code>.</p>
+<p>If you must keep the <code>Php</code> serializer, restrict the classes it may instantiate with the <code>allowedClasses</code> adapter option (<code>false</code> for none, or a list of class names) - it is passed to <code>Phalcon\Storage\Serializer\Php::setAllowedClasses()</code> and also covers the nested content of the <code>Stream</code> adapter. Anything outside the list is reported as a failed read. The <code>Igbinary</code> serializer has no such option: it instantiates whatever class the stored bytes name, so use it only with a store you fully trust. The store itself is not an integrity boundary; if the backend is shared, sign the stored values (for example an HMAC over the serialized bytes) and verify the signature before reading them.</p>
 </div>
 <p>The storage adapter can be configured to use a different serializer. The available serializers are:</p>
 <h3 id="base64"><code>Base64</code><a class="headerlink" href="#base64" title="Permanent link">&para;</a></h3>
