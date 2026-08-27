@@ -6292,7 +6292,7 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>-s
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/phalcon/cphalcon
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.2<span class="w"> </span>./
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.3<span class="w"> </span>./
 <a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nb">cd</span><span class="w"> </span>ext/
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>./install
 </code></pre></div>
@@ -6387,7 +6387,7 @@ offering lower resource consumption and high performance.
 <p>Clone the repository to a location on your file system and check out the release you want to install.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/phalcon/cphalcon
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nb">cd</span><span class="w"> </span>cphalcon/
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.2<span class="w"> </span>./
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>tags/v5.20.3<span class="w"> </span>./
 </code></pre></div>
 <p>Compile and install Phalcon with the bundled <code>install</code> script</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">cd</span><span class="w"> </span>ext/
@@ -6415,7 +6415,7 @@ offering lower resource consumption and high performance.
 <p>If you use the above method you will need to add the <code>extension=phalcon.so</code> in your <code>php.ini</code> both for CLI and the web server.</p>
 <div class="admonition warning">
 <p class="admonition-title">Zephir</p>
-<p>Unless you are making changes to your local copy of the framework and wish to compile those changes, you do not need to use Zephir. However, if you want to, you will have to issue <code>zephir fullclean</code> and then <code>zephir build</code> with a released <code>zephir.phar</code>. <code>zephir fullclean</code> deletes the bundled C sources in <code>ext/</code>, and regenerates it. The changelog lists which version of Zephir was used to compile Phalcon, so you can download that particular phar file and compile the extension that way. </p>
+<p>Unless you are making changes to your local copy of the framework and wish to compile those changes, you do not need to use Zephir. However, if you want to, you will have to issue <code>zephir fullclean</code> and then <code>zephir build</code> with a released <code>zephir.phar</code>. <code>zephir fullclean</code> deletes the bundled C sources in <code>ext/</code>, and regenerates it. The changelog lists which version of Zephir was used to compile Phalcon, so you can download that particular phar file and compile the extension that way.</p>
 </div>
 <h4 id="tuning-build">Tuning Build<a class="headerlink" href="#tuning-build" title="Permanent link">&para;</a></h4>
 <p>The <code>install</code> script compiles with <code>-O2 -fvisibility=hidden -flto</code> so that the module runs on any processor of the same architecture. If you would like to instruct the compiler to generate optimized machine code that matches the processor where it is currently running, use the manual workflow above and pass your own compile flags to <code>configure</code>. For example</p>
