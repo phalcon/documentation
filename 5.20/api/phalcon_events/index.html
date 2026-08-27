@@ -6385,7 +6385,7 @@ offering lower resource consumption and high performance.
 <a class="api-item" href="#eventsabstracteventsaware-firemanagerevent">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed|bool</code>
-<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$stopOnFalse</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Helper method to fire an event</span>
 </a>
 </div>
@@ -6416,8 +6416,9 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">fireManagerEvent</span><span class="p">(</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nx">string</span> <span class="nv">$eventName</span><span class="p">,</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nx">bool</span> <span class="nv">$cancellable</span> <span class="o">=</span> <span class="k">true</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="o">|</span><span class="nx">bool</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nx">bool</span> <span class="nv">$cancellable</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="nx">bool</span> <span class="nv">$stopOnFalse</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="o">|</span><span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Helper method to fire an event</p>
 <h2 id="eventsevent">Events\Event<a class="headerlink" href="#eventsevent" title="Permanent link">&para;</a></h2>
@@ -6879,7 +6880,7 @@ conditional execution and much more.</p>
 </a>
 <a class="api-item" href="#eventsmanager-fire">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$stopOnFalse</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fires an event in the events manager causing the active listeners to be</span>
 </a>
 <a class="api-item" href="#eventsmanager-fireall">
@@ -7211,8 +7212,9 @@ lower priority.</p>
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="nx">object</span> <span class="nv">$source</span><span class="p">,</span>
 <a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span>
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="p">);</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    <span class="nx">mixed</span> <span class="nv">$stopOnFalse</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="p">);</span>
 </code></pre></div>
 <p>Fires an event in the events manager causing the active listeners to be
 notified about it</p>
@@ -7412,7 +7414,7 @@ with no locally attached listeners.</p>
 <a class="api-item" href="#eventstraitseventsawaretrait-firemanagerevent">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$stopOnFalse</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Helper method to fire an event</span>
 </a>
 </div>
@@ -7443,8 +7445,9 @@ with no locally attached listeners.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">fireManagerEvent</span><span class="p">(</span>
 <a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>    <span class="nx">string</span> <span class="nv">$eventName</span><span class="p">,</span>
 <a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a>    <span class="nx">bool</span> <span class="nv">$cancellable</span> <span class="o">=</span> <span class="k">true</span>
-<a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a>    <span class="nx">bool</span> <span class="nv">$cancellable</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a>    <span class="nx">bool</span> <span class="nv">$stopOnFalse</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Helper method to fire an event</p>
 
