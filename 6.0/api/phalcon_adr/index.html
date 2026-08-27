@@ -8005,6 +8005,17 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
+  <a href="#adrresponderredirect-external" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>external()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#adrresponderredirect-permanent" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -11070,7 +11081,13 @@ RedirectResponder turns it into a <code>Location</code> header and status code.<
 <div class="api-list">
 <a class="api-item" href="#adrresponderredirect-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$status</span><span class="sm"> = 302</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$status</span><span class="sm"> = 302</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$external</span><span class="sm"> = false</span></span>)</code>
+</a>
+<a class="api-item" href="#adrresponderredirect-external">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">external</span>()</code>
+<span class="desc">Whether the target is an explicit external redirect. Internal (the</span>
 </a>
 <a class="api-item" href="#adrresponderredirect-permanent">
 <code class="vis vis-public">public</code>
@@ -11103,6 +11120,11 @@ RedirectResponder turns it into a <code>Location</code> header and status code.<
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$external</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$status</span><span class="sm"> = 302</span></code>
 </div>
@@ -11114,28 +11136,35 @@ RedirectResponder turns it into a <code>Location</code> header and status code.<
 </div>
 
 <h3 id="methods_27">Methods<a class="headerlink" href="#methods_27" title="Permanent link">&para;</a></h3>
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 7</div>
 
 <h4 id="adrresponderredirect-__construct"><code>__construct()</code><a class="headerlink" href="#adrresponderredirect-__construct" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-118-1" name="__codelineno-118-1" href="#__codelineno-118-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
 <a id="__codelineno-118-2" name="__codelineno-118-2" href="#__codelineno-118-2"></a>    <span class="nx">string</span> <span class="nv">$url</span><span class="p">,</span>
-<a id="__codelineno-118-3" name="__codelineno-118-3" href="#__codelineno-118-3"></a>    <span class="nx">int</span> <span class="nv">$status</span> <span class="o">=</span> <span class="mi">302</span>
-<a id="__codelineno-118-4" name="__codelineno-118-4" href="#__codelineno-118-4"></a><span class="p">);</span>
+<a id="__codelineno-118-3" name="__codelineno-118-3" href="#__codelineno-118-3"></a>    <span class="nx">int</span> <span class="nv">$status</span> <span class="o">=</span> <span class="mi">302</span><span class="p">,</span>
+<a id="__codelineno-118-4" name="__codelineno-118-4" href="#__codelineno-118-4"></a>    <span class="nx">bool</span> <span class="nv">$external</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-118-5" name="__codelineno-118-5" href="#__codelineno-118-5"></a><span class="p">);</span>
 </code></pre></div>
+<h4 id="adrresponderredirect-external"><code>external()</code><a class="headerlink" href="#adrresponderredirect-external" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-119-1" name="__codelineno-119-1" href="#__codelineno-119-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">external</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+</code></pre></div>
+<p>Whether the target is an explicit external redirect. Internal (the
+default) redirects refuse an absolute or protocol-relative target so a
+request-derived value cannot become an open redirect (CWE-601).</p>
 <h4 id="adrresponderredirect-permanent"><code>permanent()</code><a class="headerlink" href="#adrresponderredirect-permanent" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-119-1" name="__codelineno-119-1" href="#__codelineno-119-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">permanent</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$url</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Redirect</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-120-1" name="__codelineno-120-1" href="#__codelineno-120-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">permanent</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$url</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Redirect</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrresponderredirect-seeother"><code>seeOther()</code><a class="headerlink" href="#adrresponderredirect-seeother" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-120-1" name="__codelineno-120-1" href="#__codelineno-120-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">seeOther</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$url</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Redirect</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-121-1" name="__codelineno-121-1" href="#__codelineno-121-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">seeOther</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$url</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Redirect</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrresponderredirect-status"><code>status()</code><a class="headerlink" href="#adrresponderredirect-status" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-121-1" name="__codelineno-121-1" href="#__codelineno-121-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">status</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-122-1" name="__codelineno-122-1" href="#__codelineno-122-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">status</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrresponderredirect-temporary"><code>temporary()</code><a class="headerlink" href="#adrresponderredirect-temporary" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-122-1" name="__codelineno-122-1" href="#__codelineno-122-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">temporary</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$url</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Redirect</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-123-1" name="__codelineno-123-1" href="#__codelineno-123-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">temporary</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$url</span> <span class="p">)</span><span class="o">:</span> <span class="nx">Redirect</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrresponderredirect-url"><code>url()</code><a class="headerlink" href="#adrresponderredirect-url" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-123-1" name="__codelineno-123-1" href="#__codelineno-123-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">url</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-124-1" name="__codelineno-124-1" href="#__codelineno-124-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">url</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="adrresponderredirectresponder">ADR\Responder\RedirectResponder<a class="headerlink" href="#adrresponderredirectresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -11162,11 +11191,11 @@ redirect.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="adrresponderredirectresponder-__invoke"><code>__invoke()</code><a class="headerlink" href="#adrresponderredirectresponder-__invoke" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-124-1" name="__codelineno-124-1" href="#__codelineno-124-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
-<a id="__codelineno-124-2" name="__codelineno-124-2" href="#__codelineno-124-2"></a>    <span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span>
-<a id="__codelineno-124-3" name="__codelineno-124-3" href="#__codelineno-124-3"></a>    <span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span>
-<a id="__codelineno-124-4" name="__codelineno-124-4" href="#__codelineno-124-4"></a>    <span class="nx">Payload</span> <span class="nv">$payload</span>
-<a id="__codelineno-124-5" name="__codelineno-124-5" href="#__codelineno-124-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-125-1" name="__codelineno-125-1" href="#__codelineno-125-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
+<a id="__codelineno-125-2" name="__codelineno-125-2" href="#__codelineno-125-2"></a>    <span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span>
+<a id="__codelineno-125-3" name="__codelineno-125-3" href="#__codelineno-125-3"></a>    <span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span>
+<a id="__codelineno-125-4" name="__codelineno-125-4" href="#__codelineno-125-4"></a>    <span class="nx">Payload</span> <span class="nv">$payload</span>
+<a id="__codelineno-125-5" name="__codelineno-125-5" href="#__codelineno-125-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="adrresponderstatusmapper">ADR\Responder\StatusMapper<a class="headerlink" href="#adrresponderstatusmapper" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
@@ -11208,10 +11237,10 @@ silent 200. Every entry can be overridden through the constructor.</p>
 <div class="api-group">Public · 2</div>
 
 <h4 id="adrresponderstatusmapper-__construct"><code>__construct()</code><a class="headerlink" href="#adrresponderstatusmapper-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-125-1" name="__codelineno-125-1" href="#__codelineno-125-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$overrides</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-126-1" name="__codelineno-126-1" href="#__codelineno-126-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$overrides</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">);</span>
 </code></pre></div>
 <h4 id="adrresponderstatusmapper-tohttpcode"><code>toHttpCode()</code><a class="headerlink" href="#adrresponderstatusmapper-tohttpcode" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-126-1" name="__codelineno-126-1" href="#__codelineno-126-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">toHttpCode</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$status</span> <span class="p">)</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">toHttpCode</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$status</span> <span class="p">)</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the HTTP status code for the given domain status.</p>
 <p>An unmapped status resolves to 500 (server error), never a silent 200.</p>
@@ -11253,14 +11282,14 @@ string - an array, an object - leaves the response status code untouched.</p>
 <div class="api-group">Public · 2</div>
 
 <h4 id="adrresponderstatusresponder-__construct"><code>__construct()</code><a class="headerlink" href="#adrresponderstatusresponder-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">StatusMapper</span><span class="o">|</span><span class="k">null</span> <span class="nv">$mapper</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-128-1" name="__codelineno-128-1" href="#__codelineno-128-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span> <span class="nx">StatusMapper</span><span class="o">|</span><span class="k">null</span> <span class="nv">$mapper</span> <span class="o">=</span> <span class="k">null</span> <span class="p">);</span>
 </code></pre></div>
 <h4 id="adrresponderstatusresponder-__invoke"><code>__invoke()</code><a class="headerlink" href="#adrresponderstatusresponder-__invoke" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-128-1" name="__codelineno-128-1" href="#__codelineno-128-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
-<a id="__codelineno-128-2" name="__codelineno-128-2" href="#__codelineno-128-2"></a>    <span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span>
-<a id="__codelineno-128-3" name="__codelineno-128-3" href="#__codelineno-128-3"></a>    <span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span>
-<a id="__codelineno-128-4" name="__codelineno-128-4" href="#__codelineno-128-4"></a>    <span class="nx">Payload</span> <span class="nv">$payload</span>
-<a id="__codelineno-128-5" name="__codelineno-128-5" href="#__codelineno-128-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-129-1" name="__codelineno-129-1" href="#__codelineno-129-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
+<a id="__codelineno-129-2" name="__codelineno-129-2" href="#__codelineno-129-2"></a>    <span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span>
+<a id="__codelineno-129-3" name="__codelineno-129-3" href="#__codelineno-129-3"></a>    <span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span>
+<a id="__codelineno-129-4" name="__codelineno-129-4" href="#__codelineno-129-4"></a>    <span class="nx">Payload</span> <span class="nv">$payload</span>
+<a id="__codelineno-129-5" name="__codelineno-129-5" href="#__codelineno-129-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="adrrespondertextresponder">ADR\Responder\TextResponder<a class="headerlink" href="#adrrespondertextresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--class">Class</span>
@@ -11290,7 +11319,7 @@ string - an array, an object - leaves the response status code untouched.</p>
 <div class="api-group">Public · 1</div>
 
 <h4 id="adrrespondertextresponder-__construct"><code>__construct()</code><a class="headerlink" href="#adrrespondertextresponder-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-129-1" name="__codelineno-129-1" href="#__codelineno-129-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-130-1" name="__codelineno-130-1" href="#__codelineno-130-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">();</span>
 </code></pre></div>
 <h2 id="adrresponderviewresponder">ADR\Responder\ViewResponder<a class="headerlink" href="#adrresponderviewresponder" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
@@ -11354,28 +11383,28 @@ MVC view.</p>
 <div class="api-group">Public · 3</div>
 
 <h4 id="adrresponderviewresponder-__construct"><code>__construct()</code><a class="headerlink" href="#adrresponderviewresponder-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-130-1" name="__codelineno-130-1" href="#__codelineno-130-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-130-2" name="__codelineno-130-2" href="#__codelineno-130-2"></a>    <span class="nx">Renderer</span> <span class="nv">$renderer</span><span class="p">,</span>
-<a id="__codelineno-130-3" name="__codelineno-130-3" href="#__codelineno-130-3"></a>    <span class="nx">StatusMapper</span> <span class="nv">$statusMapper</span><span class="p">,</span>
-<a id="__codelineno-130-4" name="__codelineno-130-4" href="#__codelineno-130-4"></a>    <span class="nx">string</span> <span class="nv">$template</span> <span class="o">=</span> <span class="s2">""</span>
-<a id="__codelineno-130-5" name="__codelineno-130-5" href="#__codelineno-130-5"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-131-1" name="__codelineno-131-1" href="#__codelineno-131-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-131-2" name="__codelineno-131-2" href="#__codelineno-131-2"></a>    <span class="nx">Renderer</span> <span class="nv">$renderer</span><span class="p">,</span>
+<a id="__codelineno-131-3" name="__codelineno-131-3" href="#__codelineno-131-3"></a>    <span class="nx">StatusMapper</span> <span class="nv">$statusMapper</span><span class="p">,</span>
+<a id="__codelineno-131-4" name="__codelineno-131-4" href="#__codelineno-131-4"></a>    <span class="nx">string</span> <span class="nv">$template</span> <span class="o">=</span> <span class="s2">""</span>
+<a id="__codelineno-131-5" name="__codelineno-131-5" href="#__codelineno-131-5"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="adrresponderviewresponder-__invoke"><code>__invoke()</code><a class="headerlink" href="#adrresponderviewresponder-__invoke" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-131-1" name="__codelineno-131-1" href="#__codelineno-131-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
-<a id="__codelineno-131-2" name="__codelineno-131-2" href="#__codelineno-131-2"></a>    <span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span>
-<a id="__codelineno-131-3" name="__codelineno-131-3" href="#__codelineno-131-3"></a>    <span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span>
-<a id="__codelineno-131-4" name="__codelineno-131-4" href="#__codelineno-131-4"></a>    <span class="nx">Payload</span> <span class="nv">$payload</span>
-<a id="__codelineno-131-5" name="__codelineno-131-5" href="#__codelineno-131-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-132-1" name="__codelineno-132-1" href="#__codelineno-132-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
+<a id="__codelineno-132-2" name="__codelineno-132-2" href="#__codelineno-132-2"></a>    <span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span>
+<a id="__codelineno-132-3" name="__codelineno-132-3" href="#__codelineno-132-3"></a>    <span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span>
+<a id="__codelineno-132-4" name="__codelineno-132-4" href="#__codelineno-132-4"></a>    <span class="nx">Payload</span> <span class="nv">$payload</span>
+<a id="__codelineno-132-5" name="__codelineno-132-5" href="#__codelineno-132-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrresponderviewresponder-withtemplate"><code>withTemplate()</code><a class="headerlink" href="#adrresponderviewresponder-withtemplate" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-132-1" name="__codelineno-132-1" href="#__codelineno-132-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">withTemplate</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$template</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-133-1" name="__codelineno-133-1" href="#__codelineno-133-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">withTemplate</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$template</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns a copy of the responder bound to the given template. The action
 names the view; the payload stays free of presentation concerns.</p>
 <div class="api-group">Protected · 1</div>
 
 <h4 id="adrresponderviewresponder-viewdata"><code>viewData()</code><a class="headerlink" href="#adrresponderviewresponder-viewdata" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-133-1" name="__codelineno-133-1" href="#__codelineno-133-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">viewData</span><span class="p">(</span> <span class="nx">Payload</span> <span class="nv">$payload</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-134-1" name="__codelineno-134-1" href="#__codelineno-134-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">viewData</span><span class="p">(</span> <span class="nx">Payload</span> <span class="nv">$payload</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Flattens the payload into the variables handed to the template. The
 extras travel as they are, so an action can hand the view whatever the
@@ -11413,18 +11442,18 @@ segments pass through under their positional keys. An Action without
 <div class="api-group">Public · 1</div>
 
 <h4 id="adrrouterattributefilter-filter"><code>filter()</code><a class="headerlink" href="#adrrouterattributefilter-filter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-134-1" name="__codelineno-134-1" href="#__codelineno-134-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span>
-<a id="__codelineno-134-2" name="__codelineno-134-2" href="#__codelineno-134-2"></a>    <span class="nx">string</span> <span class="nv">$actionClass</span><span class="p">,</span>
-<a id="__codelineno-134-3" name="__codelineno-134-3" href="#__codelineno-134-3"></a>    <span class="k">array</span> <span class="nv">$attributes</span>
-<a id="__codelineno-134-4" name="__codelineno-134-4" href="#__codelineno-134-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-135-1" name="__codelineno-135-1" href="#__codelineno-135-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">filter</span><span class="p">(</span>
+<a id="__codelineno-135-2" name="__codelineno-135-2" href="#__codelineno-135-2"></a>    <span class="nx">string</span> <span class="nv">$actionClass</span><span class="p">,</span>
+<a id="__codelineno-135-3" name="__codelineno-135-3" href="#__codelineno-135-3"></a>    <span class="k">array</span> <span class="nv">$attributes</span>
+<a id="__codelineno-135-4" name="__codelineno-135-4" href="#__codelineno-135-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <div class="api-group">Protected · 1</div>
 
 <h4 id="adrrouterattributefilter-cast"><code>cast()</code><a class="headerlink" href="#adrrouterattributefilter-cast" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-135-1" name="__codelineno-135-1" href="#__codelineno-135-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">cast</span><span class="p">(</span>
-<a id="__codelineno-135-2" name="__codelineno-135-2" href="#__codelineno-135-2"></a>    <span class="nx">string</span> <span class="nv">$value</span><span class="p">,</span>
-<a id="__codelineno-135-3" name="__codelineno-135-3" href="#__codelineno-135-3"></a>    <span class="nx">string</span> <span class="nv">$type</span>
-<a id="__codelineno-135-4" name="__codelineno-135-4" href="#__codelineno-135-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">float</span><span class="o">|</span><span class="nx">int</span><span class="o">|</span><span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-136-1" name="__codelineno-136-1" href="#__codelineno-136-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">cast</span><span class="p">(</span>
+<a id="__codelineno-136-2" name="__codelineno-136-2" href="#__codelineno-136-2"></a>    <span class="nx">string</span> <span class="nv">$value</span><span class="p">,</span>
+<a id="__codelineno-136-3" name="__codelineno-136-3" href="#__codelineno-136-3"></a>    <span class="nx">string</span> <span class="nv">$type</span>
+<a id="__codelineno-136-4" name="__codelineno-136-4" href="#__codelineno-136-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">float</span><span class="o">|</span><span class="nx">int</span><span class="o">|</span><span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="adrrouterrouter">ADR\Router\Router<a class="headerlink" href="#adrrouterrouter" title="Permanent link">&para;</a></h2>
 <p><span class="badge badge--final">Final</span>
@@ -11445,6 +11474,8 @@ POST /session/forgot-password -&gt; Session\ForgotPassword\PostSessionForgotPass
 <h2 id="guarantees">Guarantees<a class="headerlink" href="#guarantees" title="Permanent link">&para;</a></h2>
 <ul>
 <li>One path names exactly one class; that class names exactly one path.</li>
+<li>The derived name must equal the declared class name byte for byte. A
+  class that only resolves case-insensitively is not a match.</li>
 <li><code>classFor()</code> and <code>pathFor()</code> are pure functions of their input. Neither
   touches the filesystem, and neither consults any Action but the one it was
   given, so adding or deleting an Action can never move another one's URL.</li>
@@ -11479,7 +11510,7 @@ RFC 9110 both leave path structure entirely to the origin server.</p>
 <li><strong><code>Phalcon\ADR\Router\Router</code></strong> - implements <a href="../phalcon_contracts/#contractsadrrouterrouter"><code>Phalcon\Contracts\ADR\Router\Router</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Exceptions\ActionDirectoryNotSet</code> · <code>Phalcon\ADR\Exceptions\MethodNotAllowed</code> · <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Router\Router</code> · <code>Phalcon\Contracts\ADR\Router\RouterMatch</code> · <code>Phalcon\Http\RequestInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\ADR\Exceptions\ActionDirectoryNotSet</code> · <code>Phalcon\ADR\Exceptions\MethodNotAllowed</code> · <code>Phalcon\Contracts\ADR\ADRTypes</code> · <code>Phalcon\Contracts\ADR\Router\Router</code> · <code>Phalcon\Contracts\ADR\Router\RouterMatch</code> · <code>Phalcon\Http\RequestInterface</code> · <code>ReflectionClass</code></p>
 <h3 id="method-summary_34">Method Summary<a class="headerlink" href="#method-summary_34" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#adrrouterrouter-candidatesfor">
@@ -11609,10 +11640,10 @@ RFC 9110 both leave path structure entirely to the origin server.</p>
 <div class="api-group">Public · 9</div>
 
 <h4 id="adrrouterrouter-candidatesfor"><code>candidatesFor()</code><a class="headerlink" href="#adrrouterrouter-candidatesfor" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-136-1" name="__codelineno-136-1" href="#__codelineno-136-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">candidatesFor</span><span class="p">(</span>
-<a id="__codelineno-136-2" name="__codelineno-136-2" href="#__codelineno-136-2"></a>    <span class="nx">string</span> <span class="nv">$method</span><span class="p">,</span>
-<a id="__codelineno-136-3" name="__codelineno-136-3" href="#__codelineno-136-3"></a>    <span class="nx">string</span> <span class="nv">$path</span>
-<a id="__codelineno-136-4" name="__codelineno-136-4" href="#__codelineno-136-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-137-1" name="__codelineno-137-1" href="#__codelineno-137-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">candidatesFor</span><span class="p">(</span>
+<a id="__codelineno-137-2" name="__codelineno-137-2" href="#__codelineno-137-2"></a>    <span class="nx">string</span> <span class="nv">$method</span><span class="p">,</span>
+<a id="__codelineno-137-3" name="__codelineno-137-3" href="#__codelineno-137-3"></a>    <span class="nx">string</span> <span class="nv">$path</span>
+<a id="__codelineno-137-4" name="__codelineno-137-4" href="#__codelineno-137-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Every Action class this router would try for the given method and path,
 in the order it tries them. The first that exists wins at match time.
@@ -11621,10 +11652,10 @@ action directory.</p>
 <p>The names are derived, not resolved: a candidate is what the convention
 would call the class, whether or not that class exists.</p>
 <h4 id="adrrouterrouter-classfor"><code>classFor()</code><a class="headerlink" href="#adrrouterrouter-classfor" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-137-1" name="__codelineno-137-1" href="#__codelineno-137-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">classFor</span><span class="p">(</span>
-<a id="__codelineno-137-2" name="__codelineno-137-2" href="#__codelineno-137-2"></a>    <span class="nx">string</span> <span class="nv">$method</span><span class="p">,</span>
-<a id="__codelineno-137-3" name="__codelineno-137-3" href="#__codelineno-137-3"></a>    <span class="nx">string</span> <span class="nv">$path</span>
-<a id="__codelineno-137-4" name="__codelineno-137-4" href="#__codelineno-137-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-138-1" name="__codelineno-138-1" href="#__codelineno-138-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">classFor</span><span class="p">(</span>
+<a id="__codelineno-138-2" name="__codelineno-138-2" href="#__codelineno-138-2"></a>    <span class="nx">string</span> <span class="nv">$method</span><span class="p">,</span>
+<a id="__codelineno-138-3" name="__codelineno-138-3" href="#__codelineno-138-3"></a>    <span class="nx">string</span> <span class="nv">$path</span>
+<a id="__codelineno-138-4" name="__codelineno-138-4" href="#__codelineno-138-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <p>The class this convention names for a fully static path, derived without
 consulting the filesystem.</p>
@@ -11635,30 +11666,30 @@ create them. Every static segment is a namespace segment, so the answer
 is unambiguous and pathFor() inverts it exactly.</p>
 <p>Placeholders are the caller's concern: pass the static prefix only.</p>
 <h4 id="adrrouterrouter-match"><code>match()</code><a class="headerlink" href="#adrrouterrouter-match" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-138-1" name="__codelineno-138-1" href="#__codelineno-138-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">match</span><span class="p">(</span> <span class="nx">RequestInterface</span> <span class="nv">$request</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterMatchInterface</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-139-1" name="__codelineno-139-1" href="#__codelineno-139-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">match</span><span class="p">(</span> <span class="nx">RequestInterface</span> <span class="nv">$request</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterMatchInterface</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterrouter-methodfor"><code>methodFor()</code><a class="headerlink" href="#adrrouterrouter-methodfor" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-139-1" name="__codelineno-139-1" href="#__codelineno-139-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">methodFor</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$className</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-140-1" name="__codelineno-140-1" href="#__codelineno-140-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">methodFor</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$className</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterrouter-pathfor"><code>pathFor()</code><a class="headerlink" href="#adrrouterrouter-pathfor" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-140-1" name="__codelineno-140-1" href="#__codelineno-140-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">pathFor</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$className</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-141-1" name="__codelineno-141-1" href="#__codelineno-141-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">pathFor</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$className</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterrouter-setactiondirectory"><code>setActionDirectory()</code><a class="headerlink" href="#adrrouterrouter-setactiondirectory" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-141-1" name="__codelineno-141-1" href="#__codelineno-141-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setActionDirectory</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$actionDirectory</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-142-1" name="__codelineno-142-1" href="#__codelineno-142-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setActionDirectory</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$actionDirectory</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterrouter-setbasenamespace"><code>setBaseNamespace()</code><a class="headerlink" href="#adrrouterrouter-setbasenamespace" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-142-1" name="__codelineno-142-1" href="#__codelineno-142-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setBaseNamespace</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$baseNamespace</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-143-1" name="__codelineno-143-1" href="#__codelineno-143-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setBaseNamespace</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$baseNamespace</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterrouter-setmiddlewaremap"><code>setMiddlewareMap()</code><a class="headerlink" href="#adrrouterrouter-setmiddlewaremap" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-143-1" name="__codelineno-143-1" href="#__codelineno-143-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setMiddlewareMap</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$middlewareMap</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-144-1" name="__codelineno-144-1" href="#__codelineno-144-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setMiddlewareMap</span><span class="p">(</span> <span class="k">array</span> <span class="nv">$middlewareMap</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterrouter-setwordseparator"><code>setWordSeparator()</code><a class="headerlink" href="#adrrouterrouter-setwordseparator" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-144-1" name="__codelineno-144-1" href="#__codelineno-144-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setWordSeparator</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$wordSeparator</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-145-1" name="__codelineno-145-1" href="#__codelineno-145-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setWordSeparator</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$wordSeparator</span> <span class="p">)</span><span class="o">:</span> <span class="nx">RouterInterface</span><span class="p">;</span>
 </code></pre></div>
 <div class="api-group">Protected · 9</div>
 
 <h4 id="adrrouterrouter-actionparams"><code>actionParams()</code><a class="headerlink" href="#adrrouterrouter-actionparams" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-145-1" name="__codelineno-145-1" href="#__codelineno-145-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">actionParams</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$className</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-146-1" name="__codelineno-146-1" href="#__codelineno-146-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">actionParams</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$className</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>An Action's declared positional parameters, or an empty array when it
 declares none.</p>
@@ -11668,16 +11699,16 @@ carry on matching. <code>params()</code> is static and already exists for filter
 and casting, so nothing new is asked of an Action - but declaring it now
 decides routing, not just validation.</p>
 <h4 id="adrrouterrouter-camelize"><code>camelize()</code><a class="headerlink" href="#adrrouterrouter-camelize" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-146-1" name="__codelineno-146-1" href="#__codelineno-146-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">camelize</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$segment</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-147-1" name="__codelineno-147-1" href="#__codelineno-147-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">camelize</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$segment</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterrouter-decamelize"><code>decamelize()</code><a class="headerlink" href="#adrrouterrouter-decamelize" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-147-1" name="__codelineno-147-1" href="#__codelineno-147-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">decamelize</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$part</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">decamelize</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$part</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterrouter-derivecandidates"><code>deriveCandidates()</code><a class="headerlink" href="#adrrouterrouter-derivecandidates" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">deriveCandidates</span><span class="p">(</span>
-<a id="__codelineno-148-2" name="__codelineno-148-2" href="#__codelineno-148-2"></a>    <span class="nx">string</span> <span class="nv">$method</span><span class="p">,</span>
-<a id="__codelineno-148-3" name="__codelineno-148-3" href="#__codelineno-148-3"></a>    <span class="nx">string</span> <span class="nv">$path</span>
-<a id="__codelineno-148-4" name="__codelineno-148-4" href="#__codelineno-148-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-149-1" name="__codelineno-149-1" href="#__codelineno-149-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">deriveCandidates</span><span class="p">(</span>
+<a id="__codelineno-149-2" name="__codelineno-149-2" href="#__codelineno-149-2"></a>    <span class="nx">string</span> <span class="nv">$method</span><span class="p">,</span>
+<a id="__codelineno-149-3" name="__codelineno-149-3" href="#__codelineno-149-3"></a>    <span class="nx">string</span> <span class="nv">$path</span>
+<a id="__codelineno-149-4" name="__codelineno-149-4" href="#__codelineno-149-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>The single derivation of the routing convention.</p>
 <p>Every static path segment becomes a namespace segment, and the class name
@@ -11689,21 +11720,21 @@ remains is a dynamic argument. That walk decides where static ends and
 dynamic begins - it no longer chooses between competing class shapes,
 because there is only one.</p>
 <h4 id="adrrouterrouter-hassubnamespace"><code>hasSubNamespace()</code><a class="headerlink" href="#adrrouterrouter-hassubnamespace" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-149-1" name="__codelineno-149-1" href="#__codelineno-149-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">hasSubNamespace</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$subNamespace</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-150-1" name="__codelineno-150-1" href="#__codelineno-150-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">hasSubNamespace</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$subNamespace</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterrouter-locate"><code>locate()</code><a class="headerlink" href="#adrrouterrouter-locate" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-150-1" name="__codelineno-150-1" href="#__codelineno-150-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">locate</span><span class="p">(</span>
-<a id="__codelineno-150-2" name="__codelineno-150-2" href="#__codelineno-150-2"></a>    <span class="nx">string</span> <span class="nv">$method</span><span class="p">,</span>
-<a id="__codelineno-150-3" name="__codelineno-150-3" href="#__codelineno-150-3"></a>    <span class="nx">string</span> <span class="nv">$path</span>
-<a id="__codelineno-150-4" name="__codelineno-150-4" href="#__codelineno-150-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">locate</span><span class="p">(</span>
+<a id="__codelineno-151-2" name="__codelineno-151-2" href="#__codelineno-151-2"></a>    <span class="nx">string</span> <span class="nv">$method</span><span class="p">,</span>
+<a id="__codelineno-151-3" name="__codelineno-151-3" href="#__codelineno-151-3"></a>    <span class="nx">string</span> <span class="nv">$path</span>
+<a id="__codelineno-151-4" name="__codelineno-151-4" href="#__codelineno-151-4"></a><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>The first derived candidate whose class actually exists, together with
 the segments the walk did not consume.</p>
 <h4 id="adrrouterrouter-middlewarefor"><code>middlewareFor()</code><a class="headerlink" href="#adrrouterrouter-middlewarefor" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">middlewareFor</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$className</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-152-1" name="__codelineno-152-1" href="#__codelineno-152-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">middlewareFor</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$className</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterrouter-verbof"><code>verbOf()</code><a class="headerlink" href="#adrrouterrouter-verbof" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-152-1" name="__codelineno-152-1" href="#__codelineno-152-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">verbOf</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$className</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">verbOf</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$className</span> <span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <p>The class-name-form verb the given Action class carries, or null when the
 class is not one this convention would have produced.</p>
@@ -11713,7 +11744,7 @@ to agree with it. Anything that does not agree is not a class this
 convention would ever have produced.</p>
 <p>Shared by pathFor() and methodFor() so that rule is stated once.</p>
 <h4 id="adrrouterrouter-verbs"><code>verbs()</code><a class="headerlink" href="#adrrouterrouter-verbs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">verbs</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-154-1" name="__codelineno-154-1" href="#__codelineno-154-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">verbs</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>The HTTP verbs the convention recognizes, in class-name form.</p>
 <h2 id="adrrouterroutermatch">ADR\Router\RouterMatch<a class="headerlink" href="#adrrouterroutermatch" title="Permanent link">&para;</a></h2>
@@ -11782,24 +11813,24 @@ convention would ever have produced.</p>
 <div class="api-group">Public · 5</div>
 
 <h4 id="adrrouterroutermatch-__construct"><code>__construct()</code><a class="headerlink" href="#adrrouterroutermatch-__construct" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-154-1" name="__codelineno-154-1" href="#__codelineno-154-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-154-2" name="__codelineno-154-2" href="#__codelineno-154-2"></a>    <span class="nx">string</span> <span class="nv">$action</span><span class="p">,</span>
-<a id="__codelineno-154-3" name="__codelineno-154-3" href="#__codelineno-154-3"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-154-4" name="__codelineno-154-4" href="#__codelineno-154-4"></a>    <span class="k">array</span> <span class="nv">$middleware</span> <span class="o">=</span> <span class="p">[],</span>
-<a id="__codelineno-154-5" name="__codelineno-154-5" href="#__codelineno-154-5"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span>
-<a id="__codelineno-154-6" name="__codelineno-154-6" href="#__codelineno-154-6"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-155-1" name="__codelineno-155-1" href="#__codelineno-155-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-155-2" name="__codelineno-155-2" href="#__codelineno-155-2"></a>    <span class="nx">string</span> <span class="nv">$action</span><span class="p">,</span>
+<a id="__codelineno-155-3" name="__codelineno-155-3" href="#__codelineno-155-3"></a>    <span class="k">array</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[],</span>
+<a id="__codelineno-155-4" name="__codelineno-155-4" href="#__codelineno-155-4"></a>    <span class="k">array</span> <span class="nv">$middleware</span> <span class="o">=</span> <span class="p">[],</span>
+<a id="__codelineno-155-5" name="__codelineno-155-5" href="#__codelineno-155-5"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">null</span> <span class="nv">$name</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-155-6" name="__codelineno-155-6" href="#__codelineno-155-6"></a><span class="p">);</span>
 </code></pre></div>
 <h4 id="adrrouterroutermatch-getaction"><code>getAction()</code><a class="headerlink" href="#adrrouterroutermatch-getaction" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-155-1" name="__codelineno-155-1" href="#__codelineno-155-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAction</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-156-1" name="__codelineno-156-1" href="#__codelineno-156-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAction</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterroutermatch-getattributes"><code>getAttributes()</code><a class="headerlink" href="#adrrouterroutermatch-getattributes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-156-1" name="__codelineno-156-1" href="#__codelineno-156-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAttributes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-157-1" name="__codelineno-157-1" href="#__codelineno-157-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAttributes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterroutermatch-getmiddleware"><code>getMiddleware()</code><a class="headerlink" href="#adrrouterroutermatch-getmiddleware" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-157-1" name="__codelineno-157-1" href="#__codelineno-157-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getMiddleware</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-158-1" name="__codelineno-158-1" href="#__codelineno-158-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getMiddleware</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="adrrouterroutermatch-getname"><code>getName()</code><a class="headerlink" href="#adrrouterroutermatch-getname" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-158-1" name="__codelineno-158-1" href="#__codelineno-158-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-159-1" name="__codelineno-159-1" href="#__codelineno-159-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 
   

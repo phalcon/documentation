@@ -7997,6 +7997,17 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
+  <a href="#properties_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Properties
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#methods_21" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -8009,10 +8020,32 @@ offering lower resource consumption and high performance.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#storageserializerphp-getallowedclasses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getAllowedClasses()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#storageserializerphp-serialize" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         <code>serialize()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storageserializerphp-setallowedclasses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>setAllowedClasses()</code>
       </span>
     </span>
   </a>
@@ -8498,6 +8531,13 @@ offering lower resource consumption and high performance.
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sv">$adapter</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;int, string&gt;|bool</code>
+<code class="sig"><span class="sv">$allowedClasses</span><span class="sm"> = true</span></code>
+<span class="desc">Classes the &quot;php&quot; serializer may instantiate: true, false or a list
+of class names (the &quot;allowedClasses&quot; option)</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -10720,14 +10760,25 @@ the <code>setForever()</code> method.</p>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput</code> · <code>Phalcon\Traits\Php\SerializeTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput</code> · <code>Phalcon\Traits\Php\SerializeTrait</code> · <code>__PHP_Incomplete_Class</code></p>
 <h3 id="method-summary_21">Method Summary<a class="headerlink" href="#method-summary_21" title="Permanent link">&para;</a></h3>
 <div class="api-list">
+<a class="api-item" href="#storageserializerphp-getallowedclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">array|bool</code>
+<code class="sig"><span class="sf">getAllowedClasses</span>()</code>
+</a>
 <a class="api-item" href="#storageserializerphp-serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">serialize</span>()</code>
 <span class="desc">Serializes data</span>
+</a>
+<a class="api-item" href="#storageserializerphp-setallowedclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setAllowedClasses</span>( <span class="st">array|bool</span> <span class="sv">$allowedClasses</span> )</code>
+<span class="desc">Restricts the classes that unserialize() may instantiate (see the</span>
 </a>
 <a class="api-item" href="#storageserializerphp-unserialize">
 <code class="vis vis-public">public</code>
@@ -10737,15 +10788,35 @@ the <code>setForever()</code> method.</p>
 </a>
 </div>
 
-<h3 id="methods_21">Methods<a class="headerlink" href="#methods_21" title="Permanent link">&para;</a></h3>
-<div class="api-group">Public · 2</div>
+<h3 id="properties_9">Properties<a class="headerlink" href="#properties_9" title="Permanent link">&para;</a></h3>
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;int, string&gt;|bool</code>
+<code class="sig"><span class="sv">$allowedClasses</span><span class="sm"> = true</span></code>
+<span class="desc">Classes that unserialize() may instantiate: true (any class, the PHP
+default), false (none) or a list of class names. Stored bytes that
+try to build another class are rejected on read.</span>
+</div>
+</div>
 
+<h3 id="methods_21">Methods<a class="headerlink" href="#methods_21" title="Permanent link">&para;</a></h3>
+<div class="api-group">Public · 4</div>
+
+<h4 id="storageserializerphp-getallowedclasses"><code>getAllowedClasses()</code><a class="headerlink" href="#storageserializerphp-getallowedclasses" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getAllowedClasses</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="o">|</span><span class="nx">bool</span><span class="p">;</span>
+</code></pre></div>
 <h4 id="storageserializerphp-serialize"><code>serialize()</code><a class="headerlink" href="#storageserializerphp-serialize" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">serialize</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-149-1" name="__codelineno-149-1" href="#__codelineno-149-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">serialize</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Serializes data</p>
+<h4 id="storageserializerphp-setallowedclasses"><code>setAllowedClasses()</code><a class="headerlink" href="#storageserializerphp-setallowedclasses" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-150-1" name="__codelineno-150-1" href="#__codelineno-150-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAllowedClasses</span><span class="p">(</span> <span class="k">array</span><span class="o">|</span><span class="nx">bool</span> <span class="nv">$allowedClasses</span> <span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+</code></pre></div>
+<p>Restricts the classes that unserialize() may instantiate (see the
+"allowed_classes" option of unserialize()).</p>
 <h4 id="storageserializerphp-unserialize"><code>unserialize()</code><a class="headerlink" href="#storageserializerphp-unserialize" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-149-1" name="__codelineno-149-1" href="#__codelineno-149-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">unserialize</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$data</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">unserialize</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$data</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Unserializes data</p>
 <h2 id="storageserializerredisigbinary">Storage\Serializer\RedisIgbinary<a class="headerlink" href="#storageserializerredisigbinary" title="Permanent link">&para;</a></h2>
@@ -10861,17 +10932,17 @@ the <code>setForever()</code> method.</p>
 <div class="api-group">Public · 4</div>
 
 <h4 id="storageserializerserializerinterface-getdata"><code>getData()</code><a class="headerlink" href="#storageserializerserializerinterface-getdata" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-150-1" name="__codelineno-150-1" href="#__codelineno-150-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getData</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-152-1" name="__codelineno-152-1" href="#__codelineno-152-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getData</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="storageserializerserializerinterface-serialize"><code>serialize()</code><a class="headerlink" href="#storageserializerserializerinterface-serialize" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">serialize</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">serialize</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Serializes data</p>
 <h4 id="storageserializerserializerinterface-setdata"><code>setData()</code><a class="headerlink" href="#storageserializerserializerinterface-setdata" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-152-1" name="__codelineno-152-1" href="#__codelineno-152-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setData</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$data</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-154-1" name="__codelineno-154-1" href="#__codelineno-154-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setData</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$data</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="storageserializerserializerinterface-unserialize"><code>unserialize()</code><a class="headerlink" href="#storageserializerserializerinterface-unserialize" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">unserialize</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$data</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-155-1" name="__codelineno-155-1" href="#__codelineno-155-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">unserialize</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$data</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Unserializes data</p>
 

@@ -6434,7 +6434,7 @@ offering lower resource consumption and high performance.
 <a class="api-item" href="#eventsabstracteventsaware-firemanagerevent">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$stopOnFalse</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Helper method to fire an event</span>
 </a>
 </div>
@@ -6465,8 +6465,9 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">fireManagerEvent</span><span class="p">(</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nx">string</span> <span class="nv">$eventName</span><span class="p">,</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nx">bool</span> <span class="nv">$cancellable</span> <span class="o">=</span> <span class="k">true</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nx">bool</span> <span class="nv">$cancellable</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="nx">bool</span> <span class="nv">$stopOnFalse</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Helper method to fire an event</p>
 <h2 id="eventsevent">Events\Event<a class="headerlink" href="#eventsevent" title="Permanent link">&para;</a></h2>
@@ -6928,7 +6929,7 @@ conditional execution and much more.</p>
 <a class="api-item" href="#eventsmanager-fire">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool|null</span> <span class="sv">$stopOnFalse</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fires an event in the events manager causing the active listeners to be</span>
 </a>
 <a class="api-item" href="#eventsmanager-fireall">
@@ -7226,8 +7227,9 @@ Propagation stops when the event implements
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="nx">object</span> <span class="nv">$source</span><span class="p">,</span>
 <a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span>
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    <span class="nx">bool</span><span class="o">|</span><span class="k">null</span> <span class="nv">$stopOnFalse</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Fires an event in the events manager causing the active listeners to be
 notified about it</p>
@@ -7384,7 +7386,7 @@ aborts the dispatch entirely.</p>
 <li><strong><code>Phalcon\Events\Traits\EventsAwareTrait</code></strong></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Events\Exception</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Phalcon\Events\PsrEventInterface</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Events\Exception</code> · <code>Phalcon\Events\Manager</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Phalcon\Events\PsrEventInterface</code></p>
 <p class="api-used-by"><strong>Used by</strong> <a href="../phalcon_application/#applicationabstractapplication"><code>Phalcon\Application\AbstractApplication</code></a> · <a href="../phalcon_auth/#authguardabstractguard"><code>Phalcon\Auth\Guard\AbstractGuard</code></a> · <a href="../phalcon_autoload/#autoloadloader"><code>Phalcon\Autoload\Loader</code></a> · <a href="../phalcon_cache/#cacheabstractcache"><code>Phalcon\Cache\AbstractCache</code></a> · <a href="../phalcon_cli/#clitask"><code>Phalcon\Cli\Task</code></a> · <a href="../phalcon_datamapper/#datamapperpdoconnectionlocator"><code>Phalcon\DataMapper\Pdo\ConnectionLocator</code></a> · <a href="../phalcon_datamapper/#datamapperpdoconnectionabstractconnection"><code>Phalcon\DataMapper\Pdo\Connection\AbstractConnection</code></a> · <a href="../phalcon_db/#dbadapterabstractadapter"><code>Phalcon\Db\Adapter\AbstractAdapter</code></a> · <a href="../phalcon_di/#didi"><code>Phalcon\Di\Di</code></a> · <a href="../phalcon_dispatcher/#dispatcherabstractdispatcher"><code>Phalcon\Dispatcher\AbstractDispatcher</code></a> · <a href="../phalcon_http/#httprequest"><code>Phalcon\Http\Request</code></a> · <a href="../phalcon_http/#httpresponse"><code>Phalcon\Http\Response</code></a> · <a href="../phalcon_mvc/#mvccontroller"><code>Phalcon\Mvc\Controller</code></a> · <a href="../phalcon_mvc/#mvcdispatcher"><code>Phalcon\Mvc\Dispatcher</code></a> · <a href="../phalcon_mvc/#mvcmicro"><code>Phalcon\Mvc\Micro</code></a> · <a href="../phalcon_mvc/#mvcmodelmanager"><code>Phalcon\Mvc\Model\Manager</code></a> · <a href="../phalcon_mvc/#mvcrouter"><code>Phalcon\Mvc\Router</code></a> · <a href="../phalcon_mvc/#mvcview"><code>Phalcon\Mvc\View</code></a> · <a href="../phalcon_mvc/#mvcviewengineabstractengine"><code>Phalcon\Mvc\View\Engine\AbstractEngine</code></a> · <a href="../phalcon_mvc/#mvcviewsimple"><code>Phalcon\Mvc\View\Simple</code></a> · <a href="../phalcon_storage/#storageadapterabstractadapter"><code>Phalcon\Storage\Adapter\AbstractAdapter</code></a></p>
 <h3 id="method-summary_9">Method Summary<a class="headerlink" href="#method-summary_9" title="Permanent link">&para;</a></h3>
 <div class="api-list">
@@ -7402,7 +7404,7 @@ aborts the dispatch entirely.</p>
 </a>
 <a class="api-item" href="#eventstraitseventsawaretrait-firemanagerevent">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$stopOnFalse</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Helper method to fire an event</span>
 </a>
 <a class="api-item" href="#eventstraitseventsawaretrait-firepsrevent">
@@ -7438,8 +7440,9 @@ aborts the dispatch entirely.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">fireManagerEvent</span><span class="p">(</span>
 <a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>    <span class="nx">string</span> <span class="nv">$eventName</span><span class="p">,</span>
 <a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a>    <span class="nx">bool</span> <span class="nv">$cancellable</span> <span class="o">=</span> <span class="k">true</span>
-<a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="p">);</span>
+<a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a>    <span class="nx">bool</span> <span class="nv">$cancellable</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a>    <span class="nx">bool</span> <span class="nv">$stopOnFalse</span> <span class="o">=</span> <span class="k">false</span>
+<a id="__codelineno-56-6" name="__codelineno-56-6" href="#__codelineno-56-6"></a><span class="p">);</span>
 </code></pre></div>
 <p>Helper method to fire an event</p>
 <h4 id="eventstraitseventsawaretrait-firepsrevent"><code>firePsrEvent()</code><a class="headerlink" href="#eventstraitseventsawaretrait-firepsrevent" title="Permanent link">&para;</a></h4>
