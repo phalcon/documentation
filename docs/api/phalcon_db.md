@@ -368,7 +368,7 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon
 <a class="api-item" href="#dbadapterabstractadapter-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array|int</span> <span class="sv">$number</span></span>)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$number</span></span>)</code>
 <span class="desc">Appends a LIMIT clause to $sqlQuery argument</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-listtables">
@@ -1196,7 +1196,7 @@ Returns if nested transactions should use savepoints
 ```php
 public function limit(
     string $sqlQuery,
-    array|int $number
+    mixed $number
 ): string;
 ```
 
@@ -3897,7 +3897,7 @@ __Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exc
 <a class="api-item" href="#dbdialect-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array|int</span> <span class="sv">$number</span></span>)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$number</span></span>)</code>
 <span class="desc">Generates the SQL for LIMIT clause</span>
 </a>
 <a class="api-item" href="#dbdialect-onconflictupdate">
@@ -4025,6 +4025,12 @@ __Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exc
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getIndexColumnList</span>(<span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$wrapExpressions</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Builds the per-index parenthesized column list, honoring per-column</span>
+</a>
+<a class="api-item" href="#dbdialect-getlimitvalue">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getLimitValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<span class="desc">Renders a LIMIT/OFFSET value: a bound placeholder passes through, any</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionall">
 <code class="vis vis-protected">protected</code>
@@ -4336,7 +4342,7 @@ database system valid expression
 ```php
 public function limit(
     string $sqlQuery,
-    array|int $number
+    mixed $number
 ): string;
 ```
 
@@ -4485,7 +4491,7 @@ public function supportsSavepoints(): bool;
 
 Checks whether the platform supports savepoints
 
-<div class="api-group">Protected · 29</div>
+<div class="api-group">Protected · 30</div>
 
 #### `checkColumnType()` { #dbdialect-checkcolumntype }
 
@@ -4566,6 +4572,15 @@ protected function getIndexColumnList(
 
 Builds the per-index parenthesized column list, honoring per-column
 sort directions and `RawValue` expression entries.
+
+#### `getLimitValue()` { #dbdialect-getlimitvalue }
+
+```php
+protected function getLimitValue( mixed $value ): string;
+```
+
+Renders a LIMIT/OFFSET value: a bound placeholder passes through, any
+other value is coerced to an integer to prevent SQL injection.
 
 #### `getSqlExpressionAll()` { #dbdialect-getsqlexpressionall }
 
@@ -4852,7 +4867,7 @@ Generates database specific SQL for the MySQL RDBMS
 
 </div>
 
-__Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
+__Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
 { .api-uses }
 
 ### Method Summary

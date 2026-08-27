@@ -1903,6 +1903,12 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\Fi
 <code class="sig"><span class="sf">prepareLabel</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Prepares a label for the field.</span>
 </a>
+<a class="api-item" href="#filtervalidationabstractvalidator-rejectnonstringable">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">rejectNonStringable</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Rejects a value that cannot be a string: an array, or an object without</span>
+</a>
 </div>
 
 ### Properties
@@ -2047,7 +2053,7 @@ abstract public function validate(
 
 Executes the validation
 
-<div class="api-group">Protected · 4</div>
+<div class="api-group">Protected · 5</div>
 
 #### `allowEmpty()` { #filtervalidationabstractvalidator-allowempty }
 
@@ -2090,6 +2096,21 @@ protected function prepareLabel(
 ```
 
 Prepares a label for the field.
+
+#### `rejectNonStringable()` { #filtervalidationabstractvalidator-rejectnonstringable }
+
+```php
+protected function rejectNonStringable(
+    Validation $validation,
+    mixed $field,
+    mixed $value
+): bool;
+```
+
+Rejects a value that cannot be a string: an array, or an object without
+__toString(). A cast would turn an array into the constant "Array",
+which satisfies the string checks. Appends the message and returns
+true when the value is rejected.
 
 
 ## Filter\Validation\AbstractValidatorComposite

@@ -41,7 +41,7 @@ This abstract class offers access to the events manager
 <a class="api-item" href="#eventsabstracteventsaware-firemanagerevent">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$stopOnFalse</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Helper method to fire an event</span>
 </a>
 </div>
@@ -84,7 +84,8 @@ Sets the events manager
 protected function fireManagerEvent(
     string $eventName,
     mixed $data = null,
-    bool $cancellable = true
+    bool $cancellable = true,
+    bool $stopOnFalse = false
 ): mixed;
 ```
 
@@ -665,7 +666,7 @@ __Uses__ `Closure` · `Phalcon\Contracts\Events\Enumerable` · `Phalcon\Contract
 <a class="api-item" href="#eventsmanager-fire">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool|null</span> <span class="sv">$stopOnFalse</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fires an event in the events manager causing the active listeners to be</span>
 </a>
 <a class="api-item" href="#eventsmanager-fireall">
@@ -1004,7 +1005,8 @@ public function fire(
     string $eventType,
     object $source,
     mixed $data = null,
-    bool $cancelable = true
+    bool $cancelable = true,
+    bool|null $stopOnFalse = null
 ): mixed;
 ```
 
@@ -1264,7 +1266,7 @@ __Uses__ `Phalcon\Contracts\Events\Manager`
 
 </div>
 
-__Uses__ `Phalcon\Events\Exception` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\PsrEventInterface`
+__Uses__ `Phalcon\Events\Exception` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\PsrEventInterface`
 { .api-uses }
 
 __Used by__ [`Phalcon\Application\AbstractApplication`](phalcon_application.md#applicationabstractapplication) · [`Phalcon\Auth\Guard\AbstractGuard`](phalcon_auth.md#authguardabstractguard) · [`Phalcon\Autoload\Loader`](phalcon_autoload.md#autoloadloader) · [`Phalcon\Cache\AbstractCache`](phalcon_cache.md#cacheabstractcache) · [`Phalcon\Cli\Task`](phalcon_cli.md#clitask) · [`Phalcon\DataMapper\Pdo\ConnectionLocator`](phalcon_datamapper.md#datamapperpdoconnectionlocator) · [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](phalcon_datamapper.md#datamapperpdoconnectionabstractconnection) · [`Phalcon\Db\Adapter\AbstractAdapter`](phalcon_db.md#dbadapterabstractadapter) · [`Phalcon\Di\Di`](phalcon_di.md#didi) · [`Phalcon\Dispatcher\AbstractDispatcher`](phalcon_dispatcher.md#dispatcherabstractdispatcher) · [`Phalcon\Http\Request`](phalcon_http.md#httprequest) · [`Phalcon\Http\Response`](phalcon_http.md#httpresponse) · [`Phalcon\Mvc\Controller`](phalcon_mvc.md#mvccontroller) · [`Phalcon\Mvc\Dispatcher`](phalcon_mvc.md#mvcdispatcher) · [`Phalcon\Mvc\Micro`](phalcon_mvc.md#mvcmicro) · [`Phalcon\Mvc\Model\Manager`](phalcon_mvc.md#mvcmodelmanager) · [`Phalcon\Mvc\Router`](phalcon_mvc.md#mvcrouter) · [`Phalcon\Mvc\View`](phalcon_mvc.md#mvcview) · [`Phalcon\Mvc\View\Engine\AbstractEngine`](phalcon_mvc.md#mvcviewengineabstractengine) · [`Phalcon\Mvc\View\Simple`](phalcon_mvc.md#mvcviewsimple) · [`Phalcon\Storage\Adapter\AbstractAdapter`](phalcon_storage.md#storageadapterabstractadapter)
@@ -1287,7 +1289,7 @@ __Used by__ [`Phalcon\Application\AbstractApplication`](phalcon_application.md#a
 </a>
 <a class="api-item" href="#eventstraitseventsawaretrait-firemanagerevent">
 <code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
+<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$stopOnFalse</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Helper method to fire an event</span>
 </a>
 <a class="api-item" href="#eventstraitseventsawaretrait-firepsrevent">
@@ -1335,7 +1337,8 @@ Sets the events manager
 protected function fireManagerEvent(
     string $eventName,
     mixed $data = null,
-    bool $cancellable = true
+    bool $cancellable = true,
+    bool $stopOnFalse = false
 );
 ```
 

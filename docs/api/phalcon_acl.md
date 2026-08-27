@@ -263,7 +263,7 @@ foreach ($privateComponents as $component => $actions) {
 
 </div>
 
-__Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\AccessRuleNotFound` · `Phalcon\Acl\Exceptions\CircularInheritanceError` · `Phalcon\Acl\Exceptions\ElementNotFound` · `Phalcon\Acl\Exceptions\InvalidAccessList` · `Phalcon\Acl\Exceptions\InvalidComponentImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleType` · `Phalcon\Acl\Exceptions\MissingFunctionParameters` · `Phalcon\Acl\Exceptions\ParameterTypeMismatch` · `Phalcon\Acl\Exceptions\RoleNotFoundException` · `Phalcon\Acl\Role` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionNamedType`
+__Uses__ `Closure` · `Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\AccessRuleNotFound` · `Phalcon\Acl\Exceptions\CircularInheritanceError` · `Phalcon\Acl\Exceptions\ElementNotFound` · `Phalcon\Acl\Exceptions\ForbiddenDelimiter` · `Phalcon\Acl\Exceptions\InvalidAccessList` · `Phalcon\Acl\Exceptions\InvalidComponentImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleType` · `Phalcon\Acl\Exceptions\MissingFunctionParameters` · `Phalcon\Acl\Exceptions\ParameterTypeMismatch` · `Phalcon\Acl\Exceptions\RoleNotFoundException` · `Phalcon\Acl\Role` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionNamedType`
 { .api-uses }
 
 ### Method Summary
@@ -758,7 +758,7 @@ Use external locking when multiple processes write the same key.
 
 </div>
 
-__Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\InvalidSnapshot` · `Phalcon\Acl\Role` · `Phalcon\Contracts\Acl\AclTypes` · `Phalcon\Contracts\Acl\Adapter\Persistable` · `Phalcon\Storage\Adapter\AdapterInterface`
+__Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\InvalidSnapshot` · `Phalcon\Acl\Role` · `Phalcon\Contracts\Acl\AclTypes` · `Phalcon\Contracts\Acl\Adapter\Persistable` · `Phalcon\Storage\Adapter\AdapterInterface` · `Throwable`
 { .api-uses }
 
 ### Method Summary
@@ -855,7 +855,7 @@ This class defines component entity and its description
 
 </div>
 
-__Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
+__Uses__ `Phalcon\Acl\Exceptions\ForbiddenDelimiter` · `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 { .api-uses }
 
 ### Method Summary
@@ -961,6 +961,7 @@ Class for exceptions thrown by Phalcon\Acl
         - [`Phalcon\Acl\Exceptions\AccessRuleNotFound`](#aclexceptionsaccessrulenotfound)
         - [`Phalcon\Acl\Exceptions\CircularInheritanceError`](#aclexceptionscircularinheritanceerror)
         - [`Phalcon\Acl\Exceptions\ElementNotFound`](#aclexceptionselementnotfound)
+        - [`Phalcon\Acl\Exceptions\ForbiddenDelimiter`](#aclexceptionsforbiddendelimiter)
         - [`Phalcon\Acl\Exceptions\ForbiddenWildcard`](#aclexceptionsforbiddenwildcard)
         - [`Phalcon\Acl\Exceptions\InvalidAccessList`](#aclexceptionsinvalidaccesslist)
         - [`Phalcon\Acl\Exceptions\InvalidComponentImplementation`](#aclexceptionsinvalidcomponentimplementation)
@@ -1064,6 +1065,46 @@ public function __construct( string $roleName );
 
 __Uses__ `Phalcon\Acl\Exception`
 { .api-uses }
+
+
+## Acl\Exceptions\ForbiddenDelimiter
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/phalcon/blob/v6.0.x/src/Acl/Exceptions/ForbiddenDelimiter.php){ .src-btn }
+
+The "!" character separates the role, component and access parts of the
+internal ACL keys, so a name that contains it would make two different
+tuples share one key.
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\ForbiddenDelimiter`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclexceptionsforbiddendelimiter-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$elementType</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #aclexceptionsforbiddendelimiter-__construct }
+
+```php
+public function __construct( string $elementType );
+```
 
 
 ## Acl\Exceptions\ForbiddenWildcard
@@ -1347,7 +1388,7 @@ This class defines role entity and its description
 
 </div>
 
-__Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
+__Uses__ `Phalcon\Acl\Exceptions\ForbiddenDelimiter` · `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 { .api-uses }
 
 ### Method Summary

@@ -3732,6 +3732,12 @@ __Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate` 
 <code class="sig"><span class="sf">all</span>()</code>
 <span class="desc">Returns all the elements of the bag</span>
 </a>
+<a class="api-item" href="#httprequestbagabstractbag-clear">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">clear</span>()</code>
+<span class="desc">Removes all the elements of the bag</span>
+</a>
 <a class="api-item" href="#httprequestbagabstractbag-count">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
@@ -3848,7 +3854,7 @@ __Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate` 
 
 ### Methods
 
-<div class="api-group">Public · 17</div>
+<div class="api-group">Public · 18</div>
 
 #### `__construct()` { #httprequestbagabstractbag-__construct }
 
@@ -3865,6 +3871,14 @@ public function all(): array;
 ```
 
 Returns all the elements of the bag
+
+#### `clear()` { #httprequestbagabstractbag-clear }
+
+```php
+public function clear(): void;
+```
+
+Removes all the elements of the bag
 
 #### `count()` { #httprequestbagabstractbag-count }
 
