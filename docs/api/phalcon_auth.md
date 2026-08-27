@@ -297,8 +297,8 @@ Resolve a fresh gate instance from the container.
 Gates carry per-activation state (the only/except action filters), so
 resolution must yield a fresh instance: new() on the Container
 bypasses the instance cache; on the legacy Di, get() builds
-unregistered classes and non-shared services fresh (register gates
-non-shared).
+unregistered classes and non-shared services fresh, and a shared
+service is rebuilt from its definition.
 
 <div class="api-group">Protected · 3</div>
 
@@ -1213,7 +1213,7 @@ Phalcon Model-backed adapter.
 
 </div>
 
-__Uses__ `Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Mvc\ModelInterface`
+__Uses__ `Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\InvalidCredentialKey` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Mvc\ModelInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1545,6 +1545,7 @@ Exceptions thrown in Phalcon\Auth will use this class
         - [`Phalcon\Auth\Exceptions\FileDoesNotExist`](#authexceptionsfiledoesnotexist)
         - [`Phalcon\Auth\Exceptions\FileNotValidJson`](#authexceptionsfilenotvalidjson)
         - [`Phalcon\Auth\Exceptions\GuardNotDefined`](#authexceptionsguardnotdefined)
+        - [`Phalcon\Auth\Exceptions\InvalidCredentialKey`](#authexceptionsinvalidcredentialkey)
         - [`Phalcon\Auth\Exceptions\MissingHandlerContext`](#authexceptionsmissinghandlercontext)
         - [`Phalcon\Auth\Exceptions\OptionRequiresArray`](#authexceptionsoptionrequiresarray)
         - [`Phalcon\Auth\Exceptions\OptionRequiresString`](#authexceptionsoptionrequiresstring)
@@ -2067,6 +2068,45 @@ public function __construct( string $name );
 ```
 
 
+## Auth\Exceptions\InvalidCredentialKey
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Exceptions/InvalidCredentialKey.zep){ .src-btn }
+
+A credential key is not a plain identifier and cannot be used as a query
+column
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\InvalidCredentialKey`**
+
+</div>
+
+__Uses__ `Phalcon\Auth\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authexceptionsinvalidcredentialkey-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #authexceptionsinvalidcredentialkey-__construct }
+
+```php
+public function __construct( string $key );
+```
+
+
 ## Auth\Exceptions\MissingHandlerContext
 
 <span class="badge badge--class">Class</span>
@@ -2531,7 +2571,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 <div class="api-list">
 <a class="api-item" href="#authguardconfigsessionguardconfig-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$suffix</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$rememberName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$rememberTtl</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$suffix</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$rememberName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$rememberTtl</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$rememberSecure</span><span class="sm"> = true</span></span>)</code>
 </a>
 <a class="api-item" href="#authguardconfigsessionguardconfig-getname">
 <code class="vis vis-public">public</code>
@@ -2542,6 +2582,12 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getRememberName</span>()</code>
+</a>
+<a class="api-item" href="#authguardconfigsessionguardconfig-getremembersecure">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">getRememberSecure</span>()</code>
+<span class="desc">Whether the remember-me cookie carries the Secure flag. Defaults to</span>
 </a>
 <a class="api-item" href="#authguardconfigsessionguardconfig-getrememberttl">
 <code class="vis vis-public">public</code>
@@ -2562,7 +2608,7 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<div class="api-group">Public · 5</div>
 
 #### `__construct()` { #authguardconfigsessionguardconfig-__construct }
 
@@ -2571,7 +2617,8 @@ public function __construct(
     string|null $suffix = null,
     string|null $name = null,
     string|null $rememberName = null,
-    int|null $rememberTtl = null
+    int|null $rememberTtl = null,
+    bool $rememberSecure = true
 );
 ```
 
@@ -2586,6 +2633,16 @@ public function getName(): string;
 ```php
 public function getRememberName(): string;
 ```
+
+#### `getRememberSecure()` { #authguardconfigsessionguardconfig-getremembersecure }
+
+```php
+public function getRememberSecure(): bool;
+```
+
+Whether the remember-me cookie carries the Secure flag. Defaults to
+true: the cookie is a bearer credential. Set it to false only for a
+deployment that serves plain HTTP on purpose.
 
 #### `getRememberTtl()` { #authguardconfigsessionguardconfig-getrememberttl }
 
@@ -3277,7 +3334,7 @@ callers and userland catch a single exception family.
 
 </div>
 
-__Uses__ `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `TypeError`
+__Uses__ `Closure` · `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Service` · `TypeError`
 { .api-uses }
 
 ### Method Summary
@@ -3370,9 +3427,10 @@ public static function resolveFresh(
 ```
 
 Resolves a fresh instance: new() on the Container (bypasses the
-instance cache); get() on the legacy Di (fresh for unregistered or
-non-shared services). On Di, an unregistered but existing class is
-still built via the class builder.
+instance cache); on the legacy Di, get() for unregistered or
+non-shared services, and a rebuild from the definition for shared
+services (Di::get() would return the cached instance). On Di, an
+unregistered but existing class is still built via the class builder.
 
 #### `serviceCandidates()` { #authinternalcontainerresolver-servicecandidates }
 

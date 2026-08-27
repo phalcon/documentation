@@ -1780,14 +1780,23 @@ __Uses__ `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\Abstrac
 <div class="api-item">
 <code class="ret">int</code>
 <code class="sig"><span class="sc">CRYPT_MD5</span><span class="sm"> = 3</span></code>
+<span class="desc">Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
+<code>CRYPT_DEFAULT</code> (bcrypt) or the Argon2 algorithms and rehash stored
+passwords on login. To be removed in a future major version.</span>
 </div>
 <div class="api-item">
 <code class="ret">int</code>
 <code class="sig"><span class="sc">CRYPT_SHA256</span><span class="sm"> = 8</span></code>
+<span class="desc">Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
+<code>CRYPT_DEFAULT</code> (bcrypt) or the Argon2 algorithms and rehash stored
+passwords on login. To be removed in a future major version.</span>
 </div>
 <div class="api-item">
 <code class="ret">int</code>
 <code class="sig"><span class="sc">CRYPT_SHA512</span><span class="sm"> = 9</span></code>
+<span class="desc">Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
+<code>CRYPT_DEFAULT</code> (bcrypt) or the Argon2 algorithms and rehash stored
+passwords on login. To be removed in a future major version.</span>
 </div>
 <div class="api-item">
 <code class="ret">int</code>
@@ -3651,6 +3660,12 @@ Validate the token against the claims registered in the validator.
 
 Only claims that have a value in the validator are checked. A claim left
 as null expresses no expectation and is skipped.
+
+Security note: this method checks the claims only. It does not verify
+the signature. A token accepted by validate() alone is unauthenticated.
+Always also call verify() (or Validator::validateSignature()) and treat
+an empty error array as valid only after the signature check passes.
+A signature-aware default is planned for a future major version.
 
 #### `verify()` { #encryptionsecurityjwttokentoken-verify }
 

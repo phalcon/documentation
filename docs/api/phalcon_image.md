@@ -25,7 +25,7 @@ All image adapters must use this class
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\InvalidColor` · `Phalcon\Image\Exceptions\MissingDimensions` · `Phalcon\Image\Exceptions\MissingHeight` · `Phalcon\Image\Exceptions\MissingWidth`
+__Uses__ `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ImageTooLarge` · `Phalcon\Image\Exceptions\InvalidColor` · `Phalcon\Image\Exceptions\MissingDimensions` · `Phalcon\Image\Exceptions\MissingHeight` · `Phalcon\Image\Exceptions\MissingWidth`
 { .api-uses }
 
 ### Method Summary
@@ -144,6 +144,12 @@ __Uses__ `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalco
 <code class="sig"><span class="sf">watermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span></span>)</code>
 <span class="desc">Add a watermark to an image with the specified opacity</span>
 </a>
+<a class="api-item" href="#imageadapterabstractadapter-assertpixellimit">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">assertPixelLimit</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
+<span class="desc">Rejects an image whose pixel count exceeds the configured limit before</span>
+</a>
 <a class="api-item" href="#imageadapterabstractadapter-checkhighlow">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
@@ -233,6 +239,19 @@ __Uses__ `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalco
 </a>
 </div>
 
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">DEFAULT_MAX_PIXELS</span><span class="sm"> = 50000000</span></code>
+<span class="desc">Default cap on the pixel count (width * height) of a loaded image, used
+when the constructor is not given an explicit limit. Bounds the memory a
+crafted image (decompression bomb / pixel flood) can force the backend to
+allocate (CWE-409). Generous by default; override per instance.</span>
+</div>
+</div>
+
 ### Properties
 
 <div class="api-list">
@@ -252,6 +271,13 @@ __Uses__ `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalco
 <code class="sig"><span class="sv">$image</span><span class="sm"> = null</span></code>
 <span class="desc">The handle of the underlying backend. Every adapter assigns it in its
 constructor and releases it in its destructor.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$maxPixels</span><span class="sm"> = 0</span></code>
+<span class="desc">Maximum allowed pixel count (width * height) for a loaded image. Zero
+disables the check.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -479,7 +505,20 @@ internal handle, so a watermark created with a different backend
 composites correctly. The cost is one encode/decode round trip per call,
 which is worth knowing inside loops.
 
-<div class="api-group">Protected · 15</div>
+<div class="api-group">Protected · 16</div>
+
+#### `assertPixelLimit()` { #imageadapterabstractadapter-assertpixellimit }
+
+```php
+protected function assertPixelLimit(
+    int $width,
+    int $height
+): void;
+```
+
+Rejects an image whose pixel count exceeds the configured limit before
+the backend allocates it, bounding decompression-bomb / pixel-flood
+memory use (CWE-409). A zero limit disables the check.
 
 #### `checkHighLow()` { #imageadapterabstractadapter-checkhighlow }
 
@@ -969,7 +1008,7 @@ __Uses__ `GdImage` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enu
 <div class="api-list">
 <a class="api-item" href="#imageadaptergd-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$maxPixels</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Loads an image from a file, or creates a blank canvas.</span>
 </a>
 <a class="api-item" href="#imageadaptergd-__destruct">
@@ -1073,7 +1112,8 @@ __Uses__ `GdImage` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enu
 public function __construct(
     string $file,
     int|null $width = null,
-    int|null $height = null
+    int|null $height = null,
+    int $maxPixels = 0
 );
 ```
 
@@ -1293,7 +1333,7 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 <div class="api-list">
 <a class="api-item" href="#imageadapterimagick-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$maxPixels</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Loads an image from a file, or creates a blank canvas.</span>
 </a>
 <a class="api-item" href="#imageadapterimagick-__destruct">
@@ -1425,7 +1465,8 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 public function __construct(
     string $file,
     int|null $width = null,
-    int|null $height = null
+    int|null $height = null,
+    int $maxPixels = 0
 );
 ```
 
@@ -1704,6 +1745,7 @@ Exceptions thrown in Phalcon\Image will use this class
         - [`Phalcon\Image\Exceptions\CompositeFailed`](#imageexceptionscompositefailed)
         - [`Phalcon\Image\Exceptions\ExtensionNotLoaded`](#imageexceptionsextensionnotloaded)
         - [`Phalcon\Image\Exceptions\ImageLoadFailed`](#imageexceptionsimageloadfailed)
+        - [`Phalcon\Image\Exceptions\ImageTooLarge`](#imageexceptionsimagetoolarge)
         - [`Phalcon\Image\Exceptions\InvalidColor`](#imageexceptionsinvalidcolor)
         - [`Phalcon\Image\Exceptions\MissingDimensions`](#imageexceptionsmissingdimensions)
         - [`Phalcon\Image\Exceptions\MissingHeight`](#imageexceptionsmissingheight)
@@ -1822,6 +1864,45 @@ __Uses__ `Phalcon\Image\Exception`
 
 ```php
 public function __construct( string $file );
+```
+
+
+## Image\Exceptions\ImageTooLarge
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ImageTooLarge.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\ImageTooLarge`**
+
+</div>
+
+__Uses__ `Phalcon\Image\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#imageexceptionsimagetoolarge-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">int</span> <span class="sv">$pixels</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$maxPixels</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #imageexceptionsimagetoolarge-__construct }
+
+```php
+public function __construct(
+    int $pixels,
+    int $maxPixels
+);
 ```
 
 

@@ -4027,6 +4027,12 @@ __Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exc
 <code class="sig"><span class="sf">getIndexColumnList</span>(<span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$wrapExpressions</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Builds the per-index parenthesized column list, honoring per-column</span>
 </a>
+<a class="api-item" href="#dbdialect-getlimitvalue">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getLimitValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<span class="desc">Renders a LIMIT/OFFSET value: a bound placeholder passes through, any</span>
+</a>
 <a class="api-item" href="#dbdialect-getsqlexpressionall">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
@@ -4499,7 +4505,7 @@ public function supportsSavepoints(): bool;
 
 Checks whether the platform supports savepoints
 
-<div class="api-group">Protected · 29</div>
+<div class="api-group">Protected · 30</div>
 
 #### `checkColumnType()` { #dbdialect-checkcolumntype }
 
@@ -4588,6 +4594,15 @@ comma-separated `getColumnList()` output when no directions are set,
 preserving the legacy rendering exactly. When directions are set,
 each column is followed by ` ASC` or ` DESC`; trailing positions
 absent from the directions array default to `ASC`.
+
+#### `getLimitValue()` { #dbdialect-getlimitvalue }
+
+```php
+protected function getLimitValue( mixed $value ): string;
+```
+
+Renders a LIMIT/OFFSET value: a bound placeholder passes through, any
+other value is coerced to an integer to prevent SQL injection.
 
 #### `getSqlExpressionAll()` { #dbdialect-getsqlexpressionall }
 

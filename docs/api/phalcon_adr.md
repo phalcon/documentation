@@ -2791,7 +2791,13 @@ RedirectResponder turns it into a `Location` header and status code.
 <div class="api-list">
 <a class="api-item" href="#adrresponderredirect-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$status</span><span class="sm"> = 302</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$status</span><span class="sm"> = 302</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$external</span><span class="sm"> = false</span></span>)</code>
+</a>
+<a class="api-item" href="#adrresponderredirect-external">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">external</span>()</code>
+<span class="desc">Whether the target is an explicit external redirect. Internal (the</span>
 </a>
 <a class="api-item" href="#adrresponderredirect-permanent">
 <code class="vis vis-public">public</code>
@@ -2825,6 +2831,11 @@ RedirectResponder turns it into a `Location` header and status code.
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$external</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$status</span><span class="sm"> = 302</span></code>
 </div>
@@ -2837,16 +2848,27 @@ RedirectResponder turns it into a `Location` header and status code.
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 7</div>
 
 #### `__construct()` { #adrresponderredirect-__construct }
 
 ```php
 public function __construct(
     string $url,
-    int $status = 302
+    int $status = 302,
+    bool $external = false
 );
 ```
+
+#### `external()` { #adrresponderredirect-external }
+
+```php
+public function external(): bool;
+```
+
+Whether the target is an explicit external redirect. Internal (the
+default) redirects refuse an absolute or protocol-relative target so a
+request-derived value cannot become an open redirect (CWE-601).
 
 #### `permanent()` { #adrresponderredirect-permanent }
 
@@ -3285,6 +3307,8 @@ verb followed by all of those segments concatenated:
 ## Guarantees
 
 - One path names exactly one class; that class names exactly one path.
+- The derived name must equal the declared class name byte for byte. A
+  class that only resolves case-insensitively is not a match.
 - `classFor()` and `pathFor()` are pure functions of their input. Neither
   touches the filesystem, and neither consults any Action but the one it was
   given, so adding or deleting an Action can never move another one's URL.

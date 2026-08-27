@@ -313,6 +313,13 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Contracts\Stora
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool|array&lt;int, string&gt;</code>
+<code class="sig"><span class="sv">$allowedClasses</span><span class="sm"> = true</span></code>
+<span class="desc">Classes the &quot;php&quot; serializer may instantiate: true, false or a list
+of class names (the &quot;allowedClasses&quot; option)</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$defaultSerializer</span><span class="sm"> = &quot;php&quot;</span></code>
 <span class="desc">Name of the default serializer class</span>
@@ -3220,11 +3227,22 @@ __Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · 
 ### Method Summary
 
 <div class="api-list">
+<a class="api-item" href="#storageserializerphp-getallowedclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getAllowedClasses</span>()</code>
+</a>
 <a class="api-item" href="#storageserializerphp-serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">serialize</span>()</code>
 <span class="desc">Serializes data</span>
+</a>
+<a class="api-item" href="#storageserializerphp-setallowedclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setAllowedClasses</span>( <span class="st">mixed</span> <span class="sv">$allowedClasses</span> )</code>
+<span class="desc">Restricts the classes that unserialize() may instantiate (see the</span>
 </a>
 <a class="api-item" href="#storageserializerphp-unserialize">
 <code class="vis vis-public">public</code>
@@ -3234,9 +3252,28 @@ __Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · 
 </a>
 </div>
 
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$allowedClasses</span><span class="sm"> = true</span></code>
+<span class="desc">Classes that unserialize() may instantiate: true (any class, the PHP
+default), false (none) or a list of class names. Stored bytes that
+try to build another class are rejected on read.</span>
+</div>
+</div>
+
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<div class="api-group">Public · 4</div>
+
+#### `getAllowedClasses()` { #storageserializerphp-getallowedclasses }
+
+```php
+public function getAllowedClasses(): mixed;
+```
 
 #### `serialize()` { #storageserializerphp-serialize }
 
@@ -3245,6 +3282,15 @@ public function serialize(): mixed;
 ```
 
 Serializes data
+
+#### `setAllowedClasses()` { #storageserializerphp-setallowedclasses }
+
+```php
+public function setAllowedClasses( mixed $allowedClasses ): static;
+```
+
+Restricts the classes that unserialize() may instantiate (see the
+"allowed_classes" option of unserialize()).
 
 #### `unserialize()` { #storageserializerphp-unserialize }
 
