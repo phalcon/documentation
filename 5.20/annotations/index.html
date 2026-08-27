@@ -5868,6 +5868,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="p">]</span>
 <a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="p">);</span>
 </code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Keep the cache directory outside the document root</p>
+<p>The adapter writes one file per class, named after the class, containing the serialized annotation data. The files have a <code>.php</code> extension but no PHP opening tag, so a web server that can reach the directory returns their content verbatim. Point <code>annotationsDir</code> to a directory outside the document root (for example <code>/app/storage/cache/annotations</code>), never to <code>./</code> or a public path, and do not make it writable by other users.</p>
+</div>
 <p>If there is a problem with storing the data in the folder due to permissions or any other reason, a <a href="../api/phalcon_annotations/#annotationsexception">Phalcon\Annotations\Exception</a> will be thrown.</p>
 <h3 id="custom">Custom<a class="headerlink" href="#custom" title="Permanent link">&para;</a></h3>
 <p><a href="../api/phalcon_annotations/#annotationsadapteradapterinterface">Phalcon\Annotations\Adapter\AdapterInterface</a> is available</p>
