@@ -24,7 +24,7 @@ Phalcon can be installed using PIE.
 
 ```
 pie install phalcon
-// pie install phalcon/cphalcon-5.20.2
+// pie install phalcon/cphalcon-5.20.3
 ```
 
 **Alternative installation**
@@ -36,7 +36,7 @@ Clone the repository to a location on your file system and check out the release
 ```bash
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.20.2 ./
+git checkout tags/v5.20.3 ./
 ```
 
 Compile and install Phalcon with the bundled `install` script

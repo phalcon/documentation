@@ -220,7 +220,7 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.20.2 ./
+git checkout tags/v5.20.3 ./
 cd ext/
 ./install
 ```
@@ -335,7 +335,7 @@ Clone the repository to a location on your file system and check out the release
 ```bash
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.20.2 ./
+git checkout tags/v5.20.3 ./
 ```
 
 Compile and install Phalcon with the bundled `install` script
@@ -376,7 +376,7 @@ If you use the above method you will need to add the `extension=phalcon.so` in y
 
 !!! warning "Zephir"
 
-    Unless you are making changes to your local copy of the framework and wish to compile those changes, you do not need to use Zephir. However, if you want to, you will have to issue `zephir fullclean` and then `zephir build` with a released `zephir.phar`. `zephir fullclean` deletes the bundled C sources in `ext/`, and regenerates it. The changelog lists which version of Zephir was used to compile Phalcon, so you can download that particular phar file and compile the extension that way. 
+    Unless you are making changes to your local copy of the framework and wish to compile those changes, you do not need to use Zephir. However, if you want to, you will have to issue `zephir fullclean` and then `zephir build` with a released `zephir.phar`. `zephir fullclean` deletes the bundled C sources in `ext/`, and regenerates it. The changelog lists which version of Zephir was used to compile Phalcon, so you can download that particular phar file and compile the extension that way.
 
 #### Tuning Build
 
