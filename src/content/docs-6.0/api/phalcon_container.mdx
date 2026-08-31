@@ -1,293 +1,160 @@
 ---
 title: "Phalcon Container"
-sidebar: false
 ---
-
 
 :::info[NOTE]
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Container\Container
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Container.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Container.php" />
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Container\Container`** - implements [`Phalcon\Contracts\Container\Service\Collection`](/6.0/api/phalcon_contracts/#contractscontainerservicecollection), [`Phalcon\Contracts\Container\Service\Enumerable`](/6.0/api/phalcon_contracts/#contractscontainerserviceenumerable)
+- **`Phalcon\Container\Container`** - implements [`Phalcon\Contracts\Container\Service\Collection`](../phalcon_contracts/#contractscontainerservicecollection), [`Phalcon\Contracts\Container\Service\Enumerable`](../phalcon_contracts/#contractscontainerserviceenumerable)
 
-</div>
+</ApiTree>
 
-__Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` · `Phalcon\Container\Definition\Processor\ObjectProcessor` · `Phalcon\Container\Definition\Processor\Processor` · `Phalcon\Container\Definition\Processor\StringProcessor` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Definition\ServiceLifetime` · `Phalcon\Container\Exceptions\CannotExtendResolved` · `Phalcon\Container\Exceptions\CircularAliasFound` · `Phalcon\Container\Exceptions\InstanceNotFound` · `Phalcon\Container\Exceptions\NoProcessorFound` · `Phalcon\Container\Exceptions\ParameterNotFound` · `Phalcon\Container\Exceptions\ServiceNotFound` · `Phalcon\Container\Exceptions\ServiceNotRegistered` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Enumerable` · `Phalcon\Di\InjectionAwareInterface` · `ReflectionException`
-
+<ApiUses>`Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` · `Phalcon\Container\Definition\Processor\ObjectProcessor` · `Phalcon\Container\Definition\Processor\Processor` · `Phalcon\Container\Definition\Processor\StringProcessor` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Definition\ServiceLifetime` · `Phalcon\Container\Exceptions\CannotExtendResolved` · `Phalcon\Container\Exceptions\CircularAliasFound` · `Phalcon\Container\Exceptions\InstanceNotFound` · `Phalcon\Container\Exceptions\NoProcessorFound` · `Phalcon\Container\Exceptions\ParameterNotFound` · `Phalcon\Container\Exceptions\ServiceNotFound` · `Phalcon\Container\Exceptions\ServiceNotRegistered` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Enumerable` · `Phalcon\Di\InjectionAwareInterface` · `ReflectionException`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containercontainer-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-<a class="api-item" href="#containercontainer-bind">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">string</span> <span class="sv">$interfaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$concrete</span></span>)</code>
-<span class="desc">Bind an interface to a concrete class</span>
-</a>
-<a class="api-item" href="#containercontainer-callableget">
-<code class="vis vis-public">public</code>
-<code class="ret">Closure</code>
-<code class="sig"><span class="sf">callableGet</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Resolve to a closure on a get()</span>
-</a>
-<a class="api-item" href="#containercontainer-callablenew">
-<code class="vis vis-public">public</code>
-<code class="ret">Closure</code>
-<code class="sig"><span class="sf">callableNew</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Resolve to a closure on a new()</span>
-</a>
-<a class="api-item" href="#containercontainer-extend">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">extend</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span></span>)</code>
-<span class="desc">Extends the definition</span>
-</a>
-<a class="api-item" href="#containercontainer-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Resolve and return an element registerd in the container</span>
-</a>
-<a class="api-item" href="#containercontainer-getalias">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Return an alias</span>
-</a>
-<a class="api-item" href="#containercontainer-getbytag">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getByTag</span>( <span class="st">string</span> <span class="sv">$tag</span> )</code>
-<span class="desc">Return services by tag</span>
-</a>
-<a class="api-item" href="#containercontainer-getdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">getDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Return the service definition</span>
-</a>
-<a class="api-item" href="#containercontainer-getinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">getInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Return a stored instance</span>
-</a>
-<a class="api-item" href="#containercontainer-getparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Return a parameter</span>
-</a>
-<a class="api-item" href="#containercontainer-getresolver">
-<code class="vis vis-public">public</code>
-<code class="ret">Resolver</code>
-<code class="sig"><span class="sf">getResolver</span>()</code>
-<span class="desc">Return the resolver</span>
-</a>
-<a class="api-item" href="#containercontainer-getservice">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
-<span class="desc">Resolve an return a service</span>
-</a>
-<a class="api-item" href="#containercontainer-getservicenames">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServiceNames</span>()</code>
-<span class="desc">Returns the names of every registered service definition. Names that</span>
-</a>
-<a class="api-item" href="#containercontainer-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Does the container have a particular service</span>
-</a>
-<a class="api-item" href="#containercontainer-hasalias">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Does the service have an alias</span>
-</a>
-<a class="api-item" href="#containercontainer-hasdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Does the service have a definition</span>
-</a>
-<a class="api-item" href="#containercontainer-hasinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Does the service have an instance</span>
-</a>
-<a class="api-item" href="#containercontainer-hasparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Does the service have a parameter</span>
-</a>
-<a class="api-item" href="#containercontainer-hasservice">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
-<span class="desc">Does the container have a particular service</span>
-</a>
-<a class="api-item" href="#containercontainer-isautowireenabled">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAutowireEnabled</span>()</code>
-<span class="desc">Is AutoWiring enabled</span>
-</a>
-<a class="api-item" href="#containercontainer-new">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">new</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Resolve and return a new service</span>
-</a>
-<a class="api-item" href="#containercontainer-newdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">newDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Return a new service definition</span>
-</a>
-<a class="api-item" href="#containercontainer-set">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
-<span class="desc">Set a service</span>
-</a>
-<a class="api-item" href="#containercontainer-setalias">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
-<span class="desc">Set an alias</span>
-</a>
-<a class="api-item" href="#containercontainer-setautowire">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setAutowire</span>( <span class="st">bool</span> <span class="sv">$enabled</span> )</code>
-<span class="desc">Set AutoWire</span>
-</a>
-<a class="api-item" href="#containercontainer-setdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setDefinition</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">ServiceDefinition</span> <span class="sv">$definition</span></span>)</code>
-<span class="desc">Set a definition</span>
-</a>
-<a class="api-item" href="#containercontainer-setinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$instance</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$lifetime</span></span>)</code>
-<span class="desc">Set an instance</span>
-</a>
-<a class="api-item" href="#containercontainer-setparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set a parameter</span>
-</a>
-<a class="api-item" href="#containercontainer-settag">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setTag</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$serviceName</span></span>)</code>
-<span class="desc">Register a tag with a service</span>
-</a>
-<a class="api-item" href="#containercontainer-unsetalias">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsetAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Remove an alias</span>
-</a>
-<a class="api-item" href="#containercontainer-unsetdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsetDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Remove a definition</span>
-</a>
-<a class="api-item" href="#containercontainer-unsetinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsetInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Remove an instance</span>
-</a>
-<a class="api-item" href="#containercontainer-unsetinstances">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsetInstances</span>( <span class="st">string</span> <span class="sv">$lifetime</span> )</code>
-<span class="desc">Remove instances based on lifetime</span>
-</a>
-<a class="api-item" href="#containercontainer-unsetparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsetParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Remove a parameter</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containercontainer-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+<ApiItem href="#containercontainer-bind" visibility="public" name="bind" returnType="ServiceDefinition" params={[{"type":"string","name":"interfaceName","default":null},{"type":"string","name":"concrete","default":null}]}>
+Bind an interface to a concrete class
+</ApiItem>
+<ApiItem href="#containercontainer-callableget" visibility="public" name="callableGet" returnType="Closure" params={[{"type":"string","name":"name","default":null}]}>
+Resolve to a closure on a get()
+</ApiItem>
+<ApiItem href="#containercontainer-callablenew" visibility="public" name="callableNew" returnType="Closure" params={[{"type":"string","name":"name","default":null}]}>
+Resolve to a closure on a new()
+</ApiItem>
+<ApiItem href="#containercontainer-extend" visibility="public" name="extend" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
+Extends the definition
+</ApiItem>
+<ApiItem href="#containercontainer-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+Resolve and return an element registerd in the container
+</ApiItem>
+<ApiItem href="#containercontainer-getalias" visibility="public" name="getAlias" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Return an alias
+</ApiItem>
+<ApiItem href="#containercontainer-getbytag" visibility="public" name="getByTag" returnType="array" params={[{"type":"string","name":"tag","default":null}]}>
+Return services by tag
+</ApiItem>
+<ApiItem href="#containercontainer-getdefinition" visibility="public" name="getDefinition" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null}]}>
+Return the service definition
+</ApiItem>
+<ApiItem href="#containercontainer-getinstance" visibility="public" name="getInstance" returnType="object" params={[{"type":"string","name":"name","default":null}]}>
+Return a stored instance
+</ApiItem>
+<ApiItem href="#containercontainer-getparameter" visibility="public" name="getParameter" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+Return a parameter
+</ApiItem>
+<ApiItem href="#containercontainer-getresolver" visibility="public" name="getResolver" returnType="Resolver" params={[]}>
+Return the resolver
+</ApiItem>
+<ApiItem href="#containercontainer-getservice" visibility="public" name="getService" returnType="object" params={[{"type":"string","name":"serviceName","default":null}]}>
+Resolve an return a service
+</ApiItem>
+<ApiItem href="#containercontainer-getservicenames" visibility="public" name="getServiceNames" returnType="array" params={[]}>
+Returns the names of every registered service definition. Names that
+</ApiItem>
+<ApiItem href="#containercontainer-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Does the container have a particular service
+</ApiItem>
+<ApiItem href="#containercontainer-hasalias" visibility="public" name="hasAlias" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Does the service have an alias
+</ApiItem>
+<ApiItem href="#containercontainer-hasdefinition" visibility="public" name="hasDefinition" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Does the service have a definition
+</ApiItem>
+<ApiItem href="#containercontainer-hasinstance" visibility="public" name="hasInstance" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Does the service have an instance
+</ApiItem>
+<ApiItem href="#containercontainer-hasparameter" visibility="public" name="hasParameter" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Does the service have a parameter
+</ApiItem>
+<ApiItem href="#containercontainer-hasservice" visibility="public" name="hasService" returnType="bool" params={[{"type":"string","name":"serviceName","default":null}]}>
+Does the container have a particular service
+</ApiItem>
+<ApiItem href="#containercontainer-isautowireenabled" visibility="public" name="isAutowireEnabled" returnType="bool" params={[]}>
+Is AutoWiring enabled
+</ApiItem>
+<ApiItem href="#containercontainer-new" visibility="public" name="new" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+Resolve and return a new service
+</ApiItem>
+<ApiItem href="#containercontainer-newdefinition" visibility="public" name="newDefinition" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null}]}>
+Return a new service definition
+</ApiItem>
+<ApiItem href="#containercontainer-set" visibility="public" name="set" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
+Set a service
+</ApiItem>
+<ApiItem href="#containercontainer-setalias" visibility="public" name="setAlias" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"alias","default":null}]}>
+Set an alias
+</ApiItem>
+<ApiItem href="#containercontainer-setautowire" visibility="public" name="setAutowire" returnType="static" params={[{"type":"bool","name":"enabled","default":null}]}>
+Set AutoWire
+</ApiItem>
+<ApiItem href="#containercontainer-setdefinition" visibility="public" name="setDefinition" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"ServiceDefinition","name":"definition","default":null}]}>
+Set a definition
+</ApiItem>
+<ApiItem href="#containercontainer-setinstance" visibility="public" name="setInstance" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"object","name":"instance","default":null},{"type":"string","name":"lifetime","default":null}]}>
+Set an instance
+</ApiItem>
+<ApiItem href="#containercontainer-setparameter" visibility="public" name="setParameter" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
+Set a parameter
+</ApiItem>
+<ApiItem href="#containercontainer-settag" visibility="public" name="setTag" returnType="void" params={[{"type":"string","name":"tag","default":null},{"type":"string","name":"serviceName","default":null}]}>
+Register a tag with a service
+</ApiItem>
+<ApiItem href="#containercontainer-unsetalias" visibility="public" name="unsetAlias" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+Remove an alias
+</ApiItem>
+<ApiItem href="#containercontainer-unsetdefinition" visibility="public" name="unsetDefinition" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+Remove a definition
+</ApiItem>
+<ApiItem href="#containercontainer-unsetinstance" visibility="public" name="unsetInstance" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+Remove an instance
+</ApiItem>
+<ApiItem href="#containercontainer-unsetinstances" visibility="public" name="unsetInstances" returnType="void" params={[{"type":"string","name":"lifetime","default":null}]}>
+Remove instances based on lifetime
+</ApiItem>
+<ApiItem href="#containercontainer-unsetparameter" visibility="public" name="unsetParameter" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+Remove a parameter
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string&gt;</code>
-<code class="sig"><span class="sv">$aliases</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$autowire</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string&gt;</code>
-<code class="sig"><span class="sv">$instanceLifetimes</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, object&gt;</code>
-<code class="sig"><span class="sv">$instances</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, mixed&gt;</code>
-<code class="sig"><span class="sv">$parameters</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, Processor&gt;</code>
-<code class="sig"><span class="sv">$processors</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Resolver</code>
-<code class="sig"><span class="sv">$resolver</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, ServiceDefinition&gt;</code>
-<code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, list&lt;string&gt;&gt;</code>
-<code class="sig"><span class="sv">$tags</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="aliases" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="autowire" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="instanceLifetimes" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="instances" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="parameters" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="processors" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="resolver" type="Resolver" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="services" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="tags" type="array" default="[]">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 35</div>
+<ApiGroup label="Public" count="35" />
 
 <h4 id="containercontainer-__construct"><code>__construct()</code></h4>
 
@@ -597,48 +464,38 @@ Remove a parameter
 
 ## Container\ContainerFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/ContainerFactory.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/ContainerFactory.php" />
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Container\ContainerFactory`** - implements [`Phalcon\Contracts\Container\Ioc\IocContainerFactory`](/6.0/api/phalcon_contracts/#contractscontaineriocioccontainerfactory)
+- **`Phalcon\Container\ContainerFactory`** - implements [`Phalcon\Contracts\Container\Ioc\IocContainerFactory`](../phalcon_contracts/#contractscontaineriocioccontainerfactory)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Container\Ioc\IocContainerFactory` · `Phalcon\Contracts\Container\Service\Provider`
-
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainerFactory` · `Phalcon\Contracts\Container\Service\Provider`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containercontainerfactory-addprovider">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addProvider</span>( <span class="st">Provider</span> <span class="sv">$provider</span> )</code>
-<span class="desc">Adds a provider</span>
-</a>
-<a class="api-item" href="#containercontainerfactory-newcontainer">
-<code class="vis vis-public">public</code>
-<code class="ret">Container</code>
-<code class="sig"><span class="sf">newContainer</span>()</code>
-<span class="desc">Returns a new container</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containercontainerfactory-addprovider" visibility="public" name="addProvider" returnType="static" params={[{"type":"Provider","name":"provider","default":null}]}>
+Adds a provider
+</ApiItem>
+<ApiItem href="#containercontainerfactory-newcontainer" visibility="public" name="newContainer" returnType="Container" params={[]}>
+Returns a new container
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;array-key, Provider&gt;</code>
-<code class="sig"><span class="sv">$providers</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="providers" type="array" default="[]">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containercontainerfactory-addprovider"><code>addProvider()</code></h4>
 
@@ -659,71 +516,56 @@ Returns a new container
 
 ## Container\Definition\DefinitionType
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/DefinitionType.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/DefinitionType.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Container\Definition\DefinitionType`**
 
-</div>
+</ApiTree>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">CLOSURE_TYPE</span><span class="sm"> = &quot;closure&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">OBJECT_TYPE</span><span class="sm"> = &quot;object&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">PARAMETER_TYPE</span><span class="sm"> = &quot;parameter&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">STRING_TYPE</span><span class="sm"> = &quot;string&quot;</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="constant" name="CLOSURE_TYPE" type="string" default="&quot;closure&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="OBJECT_TYPE" type="string" default="&quot;object&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PARAMETER_TYPE" type="string" default="&quot;parameter&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="STRING_TYPE" type="string" default="&quot;string&quot;">
+</ApiItem>
+</ApiList>
 
 
 ## Container\Definition\Processor\ClosureProcessor
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/ClosureProcessor.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/ClosureProcessor.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Container\Definition\Processor\ClosureProcessor`** - implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
 
-</div>
+</ApiTree>
 
-__Uses__ `Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`
-
+<ApiUses>`Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerdefinitionprocessorclosureprocessor-canprocess">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">canProcess</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
-<span class="desc">Wheteher the definition is a Closure</span>
-</a>
-<a class="api-item" href="#containerdefinitionprocessorclosureprocessor-process">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$container</span></span>)</code>
-<span class="desc">Process the Closure</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerdefinitionprocessorclosureprocessor-canprocess" visibility="public" name="canProcess" returnType="bool" params={[{"type":"mixed","name":"definition","default":null}]}>
+Wheteher the definition is a Closure
+</ApiItem>
+<ApiItem href="#containerdefinitionprocessorclosureprocessor-process" visibility="public" name="process" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"object","name":"container","default":null}]}>
+Process the Closure
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerdefinitionprocessorclosureprocessor-canprocess"><code>canProcess()</code></h4>
 
@@ -748,38 +590,31 @@ Process the Closure
 
 ## Container\Definition\Processor\ObjectProcessor
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/ObjectProcessor.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/ObjectProcessor.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Container\Definition\Processor\ObjectProcessor`** - implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
 
-</div>
+</ApiTree>
 
-__Uses__ `Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`
-
+<ApiUses>`Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerdefinitionprocessorobjectprocessor-canprocess">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">canProcess</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
-<span class="desc">Whether the definition is an Object (not Closure)</span>
-</a>
-<a class="api-item" href="#containerdefinitionprocessorobjectprocessor-process">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$container</span></span>)</code>
-<span class="desc">Process the Object</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerdefinitionprocessorobjectprocessor-canprocess" visibility="public" name="canProcess" returnType="bool" params={[{"type":"mixed","name":"definition","default":null}]}>
+Whether the definition is an Object (not Closure)
+</ApiItem>
+<ApiItem href="#containerdefinitionprocessorobjectprocessor-process" visibility="public" name="process" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"object","name":"container","default":null}]}>
+Process the Object
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerdefinitionprocessorobjectprocessor-canprocess"><code>canProcess()</code></h4>
 
@@ -804,38 +639,31 @@ Process the Object
 
 ## Container\Definition\Processor\ParameterProcessor
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/ParameterProcessor.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/ParameterProcessor.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Container\Definition\Processor\ParameterProcessor`** - implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
 
-</div>
+</ApiTree>
 
-__Uses__ `Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`
-
+<ApiUses>`Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerdefinitionprocessorparameterprocessor-canprocess">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">canProcess</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
-<span class="desc">Whetehr the definition is a parameter</span>
-</a>
-<a class="api-item" href="#containerdefinitionprocessorparameterprocessor-process">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$container</span></span>)</code>
-<span class="desc">Process the parameter</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerdefinitionprocessorparameterprocessor-canprocess" visibility="public" name="canProcess" returnType="bool" params={[{"type":"mixed","name":"definition","default":null}]}>
+Whetehr the definition is a parameter
+</ApiItem>
+<ApiItem href="#containerdefinitionprocessorparameterprocessor-process" visibility="public" name="process" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"object","name":"container","default":null}]}>
+Process the parameter
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerdefinitionprocessorparameterprocessor-canprocess"><code>canProcess()</code></h4>
 
@@ -860,38 +688,31 @@ Process the parameter
 
 ## Container\Definition\Processor\Processor
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/Processor.php">Source on GitHub</a>
+<ApiBadge variant="interface">Interface</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/Processor.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Container\Definition\Processor\Processor`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Container\Definition\ServiceDefinition`
-
+<ApiUses>`Phalcon\Container\Definition\ServiceDefinition`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerdefinitionprocessorprocessor-canprocess">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">canProcess</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
-<span class="desc">Can this definition be processed?</span>
-</a>
-<a class="api-item" href="#containerdefinitionprocessorprocessor-process">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$container</span></span>)</code>
-<span class="desc">Process the definition</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerdefinitionprocessorprocessor-canprocess" visibility="public" name="canProcess" returnType="bool" params={[{"type":"mixed","name":"definition","default":null}]}>
+Can this definition be processed?
+</ApiItem>
+<ApiItem href="#containerdefinitionprocessorprocessor-process" visibility="public" name="process" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"object","name":"container","default":null}]}>
+Process the definition
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerdefinitionprocessorprocessor-canprocess"><code>canProcess()</code></h4>
 
@@ -916,38 +737,31 @@ Process the definition
 
 ## Container\Definition\Processor\StringProcessor
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/StringProcessor.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/Processor/StringProcessor.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Container\Definition\Processor\StringProcessor`** - implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`
-
+<ApiUses>`Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerdefinitionprocessorstringprocessor-canprocess">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">canProcess</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
-<span class="desc">Whether the definition is a class string</span>
-</a>
-<a class="api-item" href="#containerdefinitionprocessorstringprocessor-process">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$container</span></span>)</code>
-<span class="desc">Process the class string</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerdefinitionprocessorstringprocessor-canprocess" visibility="public" name="canProcess" returnType="bool" params={[{"type":"mixed","name":"definition","default":null}]}>
+Whether the definition is a class string
+</ApiItem>
+<ApiItem href="#containerdefinitionprocessorstringprocessor-process" visibility="public" name="process" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"object","name":"container","default":null}]}>
+Process the class string
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerdefinitionprocessorstringprocessor-canprocess"><code>canProcess()</code></h4>
 
@@ -972,274 +786,145 @@ Process the class string
 
 ## Container\Definition\ServiceDefinition
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/ServiceDefinition.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/ServiceDefinition.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Container\Definition\ServiceDefinition`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `Phalcon\Contracts\Container\Resolver\Resolvable` · `ReflectionClass` · `ReflectionException`
-
+<ApiUses>`Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Container\Resolver\Resolvable` · `Phalcon\Contracts\Container\Service\Collection` · `ReflectionClass` · `ReflectionException`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerdefinitionservicedefinition-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$serviceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$raw</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-addextender">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addExtender</span>( <span class="st">callable</span> <span class="sv">$extender</span> )</code>
-<span class="desc">Adds an extender</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-addtag">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addTag</span>( <span class="st">string</span> <span class="sv">$tag</span> )</code>
-<span class="desc">Adds a tag</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-buildservice">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">buildService</span>( <span class="st">object</span> <span class="sv">$container</span> )</code>
-<span class="desc">Builds a service and returns the instance back</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-freeze">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">freeze</span>( <span class="st">object</span> <span class="sv">$container</span> )</code>
-<span class="desc">Freezes the container</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-getarguments">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getArguments</span>()</code>
-<span class="desc">Returns the arguments</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-getclass">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getClass</span>()</code>
-<span class="desc">Returns the class</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-getconstructorargs">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getConstructorArgs</span>()</code>
-<span class="desc">Returns the constructor arguments</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-getextenders">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getExtenders</span>()</code>
-<span class="desc">Returns the extenders</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-getfactory">
-<code class="vis vis-public">public</code>
-<code class="ret">callable</code>
-<code class="sig"><span class="sf">getFactory</span>()</code>
-<span class="desc">Returns the factory</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-getlifetime">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getLifetime</span>()</code>
-<span class="desc">Returns the lifetime</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-getservicename">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getServiceName</span>()</code>
-<span class="desc">Returns the name of the service</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-gettags">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getTags</span>()</code>
-<span class="desc">Returns the tags</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Returns the type</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-hasclass">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasClass</span>()</code>
-<span class="desc">Does it have a class</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-hasextenders">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasExtenders</span>()</code>
-<span class="desc">Do we have extenders</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-hasfactory">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasFactory</span>()</code>
-<span class="desc">Does it have a factory</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-iscacheable">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isCacheable</span>()</code>
-<span class="desc">Is it cacheable</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-isfrozen">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isFrozen</span>()</code>
-<span class="desc">Is it frozen</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-setargument">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setArgument</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set an argument</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-setclass">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setClass</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Set a class</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-setcontainer">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setContainer</span>( <span class="st">object</span> <span class="sv">$container</span> )</code>
-<span class="desc">Set the container</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-setextenders">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setExtenders</span>( <span class="st">array</span> <span class="sv">$extenders</span> )</code>
-<span class="desc">Set extenders</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-setfactory">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setFactory</span>( <span class="st">callable</span> <span class="sv">$factory</span> )</code>
-<span class="desc">Set a factory</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-setiscacheable">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setIsCacheable</span>( <span class="st">bool</span> <span class="sv">$isCacheable</span> )</code>
-<span class="desc">Set cachable</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-setlifetime">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setLifetime</span>( <span class="st">string</span> <span class="sv">$lifetime</span> )</code>
-<span class="desc">Set lifetime</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-unsetclass">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">unsetClass</span>()</code>
-<span class="desc">Unset class</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-unsetextenders">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">unsetExtenders</span>()</code>
-<span class="desc">Unset extenders</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-unsetfactory">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">unsetFactory</span>()</code>
-<span class="desc">Unset the factory</span>
-</a>
-<a class="api-item" href="#containerdefinitionservicedefinition-checkfrozen">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">checkFrozen</span>()</code>
-<span class="desc">Check if frozen</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerdefinitionservicedefinition-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"serviceName","default":null},{"type":"string","name":"type","default":null},{"type":"mixed","name":"raw","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-addextender" visibility="public" name="addExtender" returnType="static" params={[{"type":"callable","name":"extender","default":null}]}>
+Adds an extender
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-addtag" visibility="public" name="addTag" returnType="static" params={[{"type":"string","name":"tag","default":null}]}>
+Adds a tag
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-buildservice" visibility="public" name="buildService" returnType="object" params={[{"type":"object","name":"container","default":null}]}>
+Builds a service and returns the instance back
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-freeze" visibility="public" name="freeze" returnType="void" params={[{"type":"object","name":"container","default":null}]}>
+Freezes the container
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-getarguments" visibility="public" name="getArguments" returnType="array" params={[]}>
+Returns the arguments
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-getclass" visibility="public" name="getClass" returnType="string" params={[]}>
+Returns the class
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-getconstructorargs" visibility="public" name="getConstructorArgs" returnType="array" params={[]}>
+Returns the constructor arguments
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-getextenders" visibility="public" name="getExtenders" returnType="array" params={[]}>
+Returns the extenders
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-getfactory" visibility="public" name="getFactory" returnType="callable" params={[]}>
+Returns the factory
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-getlifetime" visibility="public" name="getLifetime" returnType="string" params={[]}>
+Returns the lifetime
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-getservicename" visibility="public" name="getServiceName" returnType="string" params={[]}>
+Returns the name of the service
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-gettags" visibility="public" name="getTags" returnType="array" params={[]}>
+Returns the tags
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+Returns the type
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-hasclass" visibility="public" name="hasClass" returnType="bool" params={[]}>
+Does it have a class
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-hasextenders" visibility="public" name="hasExtenders" returnType="bool" params={[]}>
+Do we have extenders
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-hasfactory" visibility="public" name="hasFactory" returnType="bool" params={[]}>
+Does it have a factory
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-iscacheable" visibility="public" name="isCacheable" returnType="bool" params={[]}>
+Is it cacheable
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-isfrozen" visibility="public" name="isFrozen" returnType="bool" params={[]}>
+Is it frozen
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-setargument" visibility="public" name="setArgument" returnType="static" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"value","default":null}]}>
+Set an argument
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-setclass" visibility="public" name="setClass" returnType="static" params={[{"type":"string","name":"className","default":null}]}>
+Set a class
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-setcontainer" visibility="public" name="setContainer" returnType="static" params={[{"type":"object","name":"container","default":null}]}>
+Set the container
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-setextenders" visibility="public" name="setExtenders" returnType="static" params={[{"type":"array","name":"extenders","default":null}]}>
+Set extenders
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-setfactory" visibility="public" name="setFactory" returnType="static" params={[{"type":"callable","name":"factory","default":null}]}>
+Set a factory
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-setiscacheable" visibility="public" name="setIsCacheable" returnType="static" params={[{"type":"bool","name":"isCacheable","default":null}]}>
+Set cachable
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-setlifetime" visibility="public" name="setLifetime" returnType="static" params={[{"type":"string","name":"lifetime","default":null}]}>
+Set lifetime
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-unsetclass" visibility="public" name="unsetClass" returnType="static" params={[]}>
+Unset class
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-unsetextenders" visibility="public" name="unsetExtenders" returnType="static" params={[]}>
+Unset extenders
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-unsetfactory" visibility="public" name="unsetFactory" returnType="static" params={[]}>
+Unset the factory
+</ApiItem>
+<ApiItem href="#containerdefinitionservicedefinition-checkfrozen" visibility="protected" name="checkFrozen" returnType="void" params={[]}>
+Check if frozen
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;array-key, mixed&gt;</code>
-<code class="sig"><span class="sv">$arguments</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$className</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$constructorArgs</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">object|null</code>
-<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;array-key, callable&gt;</code>
-<code class="sig"><span class="sv">$extenders</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$factory</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$frozen</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$isCacheable</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$lifetime</span><span class="sm"> = ServiceLifetime::SCOPED</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$raw</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$serviceName</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;array-key, string&gt;</code>
-<code class="sig"><span class="sv">$tags</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$type</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="className" type="string|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="constructorArgs" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="container" type="object|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="extenders" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="factory" type="callable|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="frozen" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="isCacheable" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="lifetime" type="string" default="ServiceLifetime::SCOPED">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="raw" type="mixed" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="serviceName" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="tags" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="type" type="string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 29</div>
+<ApiGroup label="Public" count="29" />
 
 <h4 id="containerdefinitionservicedefinition-__construct"><code>__construct()</code></h4>
 
@@ -1399,7 +1084,7 @@ Is it frozen
 
 ```php
 public function setArgument(
-    int|string $param,
+    mixed $param,
     mixed $value
 ): static;
 ```
@@ -1478,7 +1163,7 @@ public function unsetFactory(): static;
 
 Unset the factory
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="containerdefinitionservicedefinition-checkfrozen"><code>checkFrozen()</code></h4>
 
@@ -1491,59 +1176,51 @@ Check if frozen
 
 ## Container\Definition\ServiceLifetime
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/ServiceLifetime.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Definition/ServiceLifetime.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Container\Definition\ServiceLifetime`**
 
-</div>
+</ApiTree>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">SCOPED</span><span class="sm"> = &quot;SCOPED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">SINGLETON</span><span class="sm"> = &quot;SINGLETON&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">TRANSIENT</span><span class="sm"> = &quot;TRANSIENT&quot;</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="constant" name="SCOPED" type="string" default="&quot;SCOPED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="SINGLETON" type="string" default="&quot;SINGLETON&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="TRANSIENT" type="string" default="&quot;TRANSIENT&quot;">
+</ApiItem>
+</ApiList>
 
 
 ## Container\Exceptions\CannotExtendResolved
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/CannotExtendResolved.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/CannotExtendResolved.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\CannotExtendResolved`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionscannotextendresolved-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Cannot extend a resolved service</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionscannotextendresolved-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+Cannot extend a resolved service
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionscannotextendresolved-__construct"><code>__construct()</code></h4>
 
@@ -1556,30 +1233,28 @@ Cannot extend a resolved service
 
 ## Container\Exceptions\CannotResolveParameter
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/CannotResolveParameter.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/CannotResolveParameter.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\CannotResolveParameter`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionscannotresolveparameter-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
-<span class="desc">Cannot resolve a parameter</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionscannotresolveparameter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"param","default":null},{"type":"string","name":"className","default":null}]}>
+Cannot resolve a parameter
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionscannotresolveparameter-__construct"><code>__construct()</code></h4>
 
@@ -1595,30 +1270,28 @@ Cannot resolve a parameter
 
 ## Container\Exceptions\CircularAliasFound
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/CircularAliasFound.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/CircularAliasFound.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\CircularAliasFound`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionscircularaliasfound-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Circular Alias found</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionscircularaliasfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+Circular Alias found
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionscircularaliasfound-__construct"><code>__construct()</code></h4>
 
@@ -1631,46 +1304,43 @@ Circular Alias found
 
 ## Container\Exceptions\ContainerThrowable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ContainerThrowable.php">Source on GitHub</a>
+<ApiBadge variant="interface">Interface</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ContainerThrowable.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Throwable`
-    - [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/6.0/api/phalcon_contracts/#contractscontaineriociocthrowable)
-        - **`Phalcon\Container\Exceptions\ContainerThrowable`** - extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/6.0/api/phalcon_contracts/#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](/6.0/api/phalcon_contracts/#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](/6.0/api/phalcon_contracts/#contractscontainerservicethrowable)
+    - [`Phalcon\Contracts\Container\Ioc\IocThrowable`](../phalcon_contracts/#contractscontaineriociocthrowable)
+        - **`Phalcon\Container\Exceptions\ContainerThrowable`** - extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](../phalcon_contracts/#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](../phalcon_contracts/#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](../phalcon_contracts/#contractscontainerservicethrowable)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Container\Ioc\IocThrowable` · `Phalcon\Contracts\Container\Resolver\ResolverThrowable` · `Phalcon\Contracts\Container\Service\Throwable`
-
+<ApiUses>`Phalcon\Contracts\Container\Ioc\IocThrowable` · `Phalcon\Contracts\Container\Resolver\ResolverThrowable` · `Phalcon\Contracts\Container\Service\Throwable`</ApiUses>
 
 
 ## Container\Exceptions\EnvNotDefined
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/EnvNotDefined.php">Source on GitHub</a>
+<ApiBadge variant="final">Final</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/EnvNotDefined.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\EnvNotDefined`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionsenvnotdefined-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$varname</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionsenvnotdefined-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"varname","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionsenvnotdefined-__construct"><code>__construct()</code></h4>
 
@@ -1681,10 +1351,10 @@ public function __construct( string $varname );
 
 ## Container\Exceptions\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/Exception.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/Exception.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - **`Phalcon\Container\Exceptions\Exception`** - implements [`Phalcon\Container\Exceptions\ContainerThrowable`](#containerexceptionscontainerthrowable)
@@ -1702,38 +1372,35 @@ public function __construct( string $varname );
         - [`Phalcon\Container\Exceptions\ServiceNotFound`](#containerexceptionsservicenotfound)
         - [`Phalcon\Container\Exceptions\ServiceNotRegistered`](#containerexceptionsservicenotregistered)
 
-</div>
+</ApiTree>
 
-__Uses__ `Exception`
-
+<ApiUses>`Exception`</ApiUses>
 
 
 ## Container\Exceptions\FrozenDefinition
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/FrozenDefinition.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/FrozenDefinition.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\FrozenDefinition`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionsfrozendefinition-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Definition is frozen</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionsfrozendefinition-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+Definition is frozen
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionsfrozendefinition-__construct"><code>__construct()</code></h4>
 
@@ -1746,29 +1413,27 @@ Definition is frozen
 
 ## Container\Exceptions\InstanceNotFound
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/InstanceNotFound.php">Source on GitHub</a>
+<ApiBadge variant="final">Final</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/InstanceNotFound.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\InstanceNotFound`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionsinstancenotfound-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionsinstancenotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionsinstancenotfound-__construct"><code>__construct()</code></h4>
 
@@ -1779,30 +1444,28 @@ public function __construct( string $name );
 
 ## Container\Exceptions\InvalidExtender
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/InvalidExtender.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/InvalidExtender.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\InvalidExtender`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionsinvalidextender-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$service</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
-<span class="desc">Invalid extender (not callable)</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionsinvalidextender-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"service","default":null},{"type":"string","name":"key","default":null}]}>
+Invalid extender (not callable)
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionsinvalidextender-__construct"><code>__construct()</code></h4>
 
@@ -1818,30 +1481,28 @@ Invalid extender (not callable)
 
 ## Container\Exceptions\NoClassSet
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/NoClassSet.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/NoClassSet.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\NoClassSet`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionsnoclassset-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">No set for service</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionsnoclassset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+No set for service
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionsnoclassset-__construct"><code>__construct()</code></h4>
 
@@ -1854,30 +1515,28 @@ No set for service
 
 ## Container\Exceptions\NoFactorySet
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/NoFactorySet.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/NoFactorySet.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\NoFactorySet`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionsnofactoryset-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">No factory for service</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionsnofactoryset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+No factory for service
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionsnofactoryset-__construct"><code>__construct()</code></h4>
 
@@ -1890,30 +1549,28 @@ No factory for service
 
 ## Container\Exceptions\NoProcessorFound
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/NoProcessorFound.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/NoProcessorFound.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\NoProcessorFound`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionsnoprocessorfound-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-<span class="desc">No processor found</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionsnoprocessorfound-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+No processor found
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionsnoprocessorfound-__construct"><code>__construct()</code></h4>
 
@@ -1926,29 +1583,27 @@ No processor found
 
 ## Container\Exceptions\ParameterNotFound
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ParameterNotFound.php">Source on GitHub</a>
+<ApiBadge variant="final">Final</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ParameterNotFound.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\ParameterNotFound`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionsparameternotfound-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionsparameternotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionsparameternotfound-__construct"><code>__construct()</code></h4>
 
@@ -1959,30 +1614,28 @@ public function __construct( string $name );
 
 ## Container\Exceptions\ServiceNotFound
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ServiceNotFound.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ServiceNotFound.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\ServiceNotFound`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionsservicenotfound-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Service not found</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionsservicenotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+Service not found
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionsservicenotfound-__construct"><code>__construct()</code></h4>
 
@@ -1995,30 +1648,28 @@ Service not found
 
 ## Container\Exceptions\ServiceNotRegistered
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ServiceNotRegistered.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Exceptions/ServiceNotRegistered.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
         - **`Phalcon\Container\Exceptions\ServiceNotRegistered`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerexceptionsservicenotregistered-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Service not registered</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerexceptionsservicenotregistered-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+Service not registered
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerexceptionsservicenotregistered-__construct"><code>__construct()</code></h4>
 
@@ -2031,32 +1682,28 @@ Service not registered
 
 ## Container\Provider\Cli
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Provider/Cli.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Provider/Cli.php" />
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Container\Provider\Cli`** - implements [`Phalcon\Contracts\Container\Service\Provider`](/6.0/api/phalcon_contracts/#contractscontainerserviceprovider)
+- **`Phalcon\Container\Provider\Cli`** - implements [`Phalcon\Contracts\Container\Service\Provider`](../phalcon_contracts/#contractscontainerserviceprovider)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\DispatcherInterface` · `Phalcon\Cli\Router` · `Phalcon\Cli\RouterInterface` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
-
+<ApiUses>`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\DispatcherInterface` · `Phalcon\Cli\Router` · `Phalcon\Cli\RouterInterface` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerprovidercli-provide">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">provide</span>( <span class="st">Collection</span> <span class="sv">$services</span> )</code>
-<span class="desc">Provider for commonly used CLI applications</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerprovidercli-provide" visibility="public" name="provide" returnType="void" params={[{"type":"Collection","name":"services","default":null}]}>
+Provider for commonly used CLI applications
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerprovidercli-provide"><code>provide()</code></h4>
 
@@ -2069,32 +1716,28 @@ Provider for commonly used CLI applications
 
 ## Container\Provider\Web
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Provider/Web.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Provider/Web.php" />
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Container\Provider\Web`** - implements [`Phalcon\Contracts\Container\Service\Provider`](/6.0/api/phalcon_contracts/#contractscontainerserviceprovider)
+- **`Phalcon\Container\Provider\Web`** - implements [`Phalcon\Contracts\Container\Service\Provider`](../phalcon_contracts/#contractscontainerserviceprovider)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Assets\Manager` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Container\Resolver\Lazy\LazyFactory` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Db\Event\Factory` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Http\Response\Cookies` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\DispatcherInterface` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
-
+<ApiUses>`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Assets\Manager` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Container\Resolver\Lazy\LazyFactory` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Db\Event\Factory` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Http\Response\Cookies` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\DispatcherInterface` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerproviderweb-provide">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">provide</span>( <span class="st">Collection</span> <span class="sv">$services</span> )</code>
-<span class="desc">Provider for commonly used Web applications</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerproviderweb-provide" visibility="public" name="provide" returnType="void" params={[{"type":"Collection","name":"services","default":null}]}>
+Provider for commonly used Web applications
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerproviderweb-provide"><code>provide()</code></h4>
 
@@ -2107,92 +1750,59 @@ Provider for commonly used Web applications
 
 ## Container\Resolver\Lazy\ArrayValues
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/ArrayValues.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/ArrayValues.php" />
 
-<div class="api-tree">
+@implements ArrayAccess&lt;array-key, mixed>
+@implements IteratorAggregate&lt;array-key, mixed>
+
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\ArrayValues`** - implements `\ArrayAccess`, `\Countable`, `\IteratorAggregate`
 
-</div>
+</ApiTree>
 
-__Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate`
-
+<ApiUses>`ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Contracts\Container\ContainerTypes`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazyarrayvalues-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazyarrayvalues-count">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">count</span>()</code>
-</a>
-<a class="api-item" href="#containerresolverlazyarrayvalues-getiterator">
-<code class="vis vis-public">public</code>
-<code class="ret">ArrayIterator</code>
-<code class="sig"><span class="sf">getIterator</span>()</code>
-</a>
-<a class="api-item" href="#containerresolverlazyarrayvalues-merge">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">merge</span>( <span class="st">iterable</span> <span class="sv">$values</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazyarrayvalues-offsetexists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazyarrayvalues-offsetget">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazyarrayvalues-offsetset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazyarrayvalues-offsetunset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazyarrayvalues-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve to an array, where each element has itself been lazy-resolved.</span>
-</a>
-<a class="api-item" href="#containerresolverlazyarrayvalues-resolvevalue">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolveValue</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazyarrayvalues-resolvevalues">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">resolveValues</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazyarrayvalues-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"values","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyarrayvalues-count" visibility="public" name="count" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyarrayvalues-getiterator" visibility="public" name="getIterator" returnType="ArrayIterator" params={[]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyarrayvalues-merge" visibility="public" name="merge" returnType="void" params={[{"type":"iterable","name":"values","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyarrayvalues-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"offset","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyarrayvalues-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"offset","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyarrayvalues-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyarrayvalues-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"offset","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyarrayvalues-resolve" visibility="public" name="resolve" returnType="array" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve to an array, where each element has itself been lazy-resolved.
+</ApiItem>
+<ApiItem href="#containerresolverlazyarrayvalues-resolvevalue" visibility="protected" name="resolveValue" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"mixed","name":"value","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyarrayvalues-resolvevalues" visibility="protected" name="resolveValues" returnType="array" params={[{"type":"object","name":"ioc","default":null},{"type":"array","name":"values","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$values</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="values" type="array" default="[]">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 9</div>
+<ApiGroup label="Public" count="9" />
 
 <h4 id="containerresolverlazyarrayvalues-__construct"><code>__construct()</code></h4>
 
@@ -2253,7 +1863,7 @@ public function resolve( object $ioc ): array;
 
 Resolve to an array, where each element has itself been lazy-resolved.
 
-<div class="api-group">Protected · 2</div>
+<ApiGroup label="Protected" count="2" />
 
 <h4 id="containerresolverlazyarrayvalues-resolvevalue"><code>resolveValue()</code></h4>
 
@@ -2276,44 +1886,36 @@ protected function resolveValues(
 
 ## Container\Resolver\Lazy\Call
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Call.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Call.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\Call`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazycall-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$callableObject</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazycall-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve the callable</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazycall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"callableObject","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazycall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve the callable
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$callableObject</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="callableObject" type="mixed" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazycall-__construct"><code>__construct()</code></h4>
 
@@ -2332,44 +1934,38 @@ Resolve the callable
 
 ## Container\Resolver\Lazy\CallableGet
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/CallableGet.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/CallableGet.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\CallableGet`**
 
-</div>
+</ApiTree>
+
+<ApiUses>`Phalcon\Contracts\Container\Service\Collection`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazycallableget-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Lazy|string</span> <span class="sv">$id</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazycallableget-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve to a closure on a get()</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazycallableget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazycallableget-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve to a closure on a get()
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Lazy|string</code>
-<code class="sig"><span class="sv">$id</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazycallableget-__construct"><code>__construct()</code></h4>
 
@@ -2388,44 +1984,38 @@ Resolve to a closure on a get()
 
 ## Container\Resolver\Lazy\CallableNew
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/CallableNew.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/CallableNew.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\CallableNew`**
 
-</div>
+</ApiTree>
+
+<ApiUses>`Phalcon\Contracts\Container\Service\Collection`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazycallablenew-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Lazy|string</span> <span class="sv">$id</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazycallablenew-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve to a closure on a new()</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazycallablenew-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazycallablenew-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve to a closure on a new()
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Lazy|string</code>
-<code class="sig"><span class="sv">$id</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazycallablenew-__construct"><code>__construct()</code></h4>
 
@@ -2444,34 +2034,30 @@ Resolve to a closure on a new()
 
 ## Container\Resolver\Lazy\CsEnv
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/CsEnv.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/CsEnv.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
         - **`Phalcon\Container\Resolver\Lazy\CsEnv`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
-
+<ApiUses>`Phalcon\Container\Exceptions\EnvNotDefined` · `Phalcon\Contracts\Container\ContainerTypes`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazycsenv-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve the getEnv() from keys as a comma separated list</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazycsenv-resolve" visibility="public" name="resolve" returnType="array" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve the getEnv() from keys as a comma separated list
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="containerresolverlazycsenv-resolve"><code>resolve()</code></h4>
 
@@ -2484,66 +2070,48 @@ Resolve the getEnv() from keys as a comma separated list
 
 ## Container\Resolver\Lazy\Env
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Env.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Env.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\Env`**
         - [`Phalcon\Container\Resolver\Lazy\CsEnv`](#containerresolverlazycsenv)
         - [`Phalcon\Container\Resolver\Lazy\EnvDefault`](#containerresolverlazyenvdefault)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
-
+<ApiUses>`Phalcon\Container\Exceptions\EnvNotDefined`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazyenv-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazyenv-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve an environment variable</span>
-</a>
-<a class="api-item" href="#containerresolverlazyenv-cast">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">cast</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
-<span class="desc">Cast a value to the defined type (if any)</span>
-</a>
-<a class="api-item" href="#containerresolverlazyenv-getenv">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getEnv</span>()</code>
-<span class="desc">Return the env value</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazyenv-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"varname","default":null},{"type":"string|null","name":"vartype","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyenv-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve an environment variable
+</ApiItem>
+<ApiItem href="#containerresolverlazyenv-cast" visibility="protected" name="cast" returnType="mixed" params={[{"type":"mixed","name":"value","default":null}]}>
+Cast a value to the defined type (if any)
+</ApiItem>
+<ApiItem href="#containerresolverlazyenv-getenv" visibility="protected" name="getEnv" returnType="string" params={[]}>
+Return the env value
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$varname</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$vartype</span><span class="sm"> = null</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="varname" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="vartype" type="string|null" default="null">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazyenv-__construct"><code>__construct()</code></h4>
 
@@ -2562,12 +2130,12 @@ public function resolve( object $ioc ): mixed;
 
 Resolve an environment variable
 
-<div class="api-group">Protected · 2</div>
+<ApiGroup label="Protected" count="2" />
 
 <h4 id="containerresolverlazyenv-cast"><code>cast()</code></h4>
 
 ```php
-protected function cast( string $value ): mixed;
+protected function cast( mixed $value ): mixed;
 ```
 
 Cast a value to the defined type (if any)
@@ -2583,38 +2151,32 @@ Return the env value
 
 ## Container\Resolver\Lazy\EnvDefault
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/EnvDefault.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/EnvDefault.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
         - **`Phalcon\Container\Resolver\Lazy\EnvDefault`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
-
+<ApiUses>`Phalcon\Container\Exceptions\EnvNotDefined`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazyenvdefault-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazyenvdefault-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve an environment variable, returning the default if not defined</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazyenvdefault-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"varname","default":null},{"type":"mixed","name":"defaultValue","default":null},{"type":"string|null","name":"vartype","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyenvdefault-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve an environment variable, returning the default if not defined
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazyenvdefault-__construct"><code>__construct()</code></h4>
 
@@ -2637,49 +2199,40 @@ Resolve an environment variable, returning the default if not defined
 
 ## Container\Resolver\Lazy\FunctionCall
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/FunctionCall.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/FunctionCall.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\FunctionCall`**
 
-</div>
+</ApiTree>
+
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazyfunctioncall-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$functionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazyfunctioncall-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve a function</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazyfunctioncall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"functionName","default":null},{"type":"array","name":"arguments","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyfunctioncall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve a function
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$arguments</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$functionName</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="functionName" type="string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazyfunctioncall-__construct"><code>__construct()</code></h4>
 
@@ -2701,44 +2254,38 @@ Resolve a function
 
 ## Container\Resolver\Lazy\Get
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Get.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Get.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\Get`**
 
-</div>
+</ApiTree>
+
+<ApiUses>`Phalcon\Contracts\Container\Service\Collection`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazyget-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Lazy|string</span> <span class="sv">$id</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazyget-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve a shared instance</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazyget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazyget-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve a shared instance
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Lazy|string</code>
-<code class="sig"><span class="sv">$id</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazyget-__construct"><code>__construct()</code></h4>
 
@@ -2757,54 +2304,42 @@ Resolve a shared instance
 
 ## Container\Resolver\Lazy\GetCall
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/GetCall.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/GetCall.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\GetCall`**
 
-</div>
+</ApiTree>
+
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Service\Collection`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazygetcall-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Lazy|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazygetcall-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve a shared instance method call</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazygetcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazygetcall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve a shared instance method call
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$arguments</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Lazy|string</code>
-<code class="sig"><span class="sv">$id</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$method</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="method" type="string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazygetcall-__construct"><code>__construct()</code></h4>
 
@@ -2827,12 +2362,12 @@ Resolve a shared instance method call
 
 ## Container\Resolver\Lazy\Lazy
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Lazy.php">Source on GitHub</a>
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/Lazy.php" />
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Container\Resolver\Lazy\Lazy`** - implements [`Phalcon\Contracts\Container\Resolver\Resolvable`](/6.0/api/phalcon_contracts/#contractscontainerresolverresolvable)
+- **`Phalcon\Container\Resolver\Lazy\Lazy`** - implements [`Phalcon\Contracts\Container\Resolver\Resolvable`](../phalcon_contracts/#contractscontainerresolverresolvable)
     - [`Phalcon\Container\Resolver\Lazy\ArrayValues`](#containerresolverlazyarrayvalues)
     - [`Phalcon\Container\Resolver\Lazy\Call`](#containerresolverlazycall)
     - [`Phalcon\Container\Resolver\Lazy\CallableGet`](#containerresolverlazycallableget)
@@ -2845,39 +2380,26 @@ Resolve a shared instance method call
     - [`Phalcon\Container\Resolver\Lazy\NewInstance`](#containerresolverlazynewinstance)
     - [`Phalcon\Container\Resolver\Lazy\StaticCall`](#containerresolverlazystaticcall)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Container\Resolver\Resolvable`
-
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\Resolvable`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazylazy-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazy-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazy-resolveargument">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolveArgument</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$argument</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazy-resolvearguments">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">resolveArguments</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazylazy-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazy-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazy-resolveargument" visibility="protected" name="resolveArgument" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"mixed","name":"argument","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazy-resolvearguments" visibility="protected" name="resolveArguments" returnType="array" params={[{"type":"object","name":"ioc","default":null},{"type":"array","name":"arguments","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazylazy-__invoke"><code>__invoke()</code></h4>
 
@@ -2891,7 +2413,7 @@ public function __invoke( object $ioc ): mixed;
 abstract public function resolve( object $ioc ): mixed;
 ```
 
-<div class="api-group">Protected · 2</div>
+<ApiGroup label="Protected" count="2" />
 
 <h4 id="containerresolverlazylazy-resolveargument"><code>resolveArgument()</code></h4>
 
@@ -2914,88 +2436,51 @@ protected function resolveArguments(
 
 ## Container\Resolver\Lazy\LazyFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/LazyFactory.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/LazyFactory.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Container\Resolver\Lazy\LazyFactory`**
 
-</div>
+</ApiTree>
+
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazylazyfactory-arrayvalues">
-<code class="vis vis-public">public</code>
-<code class="ret">ArrayValues</code>
-<code class="sig"><span class="sf">arrayValues</span>( <span class="st">array</span> <span class="sv">$values</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-call">
-<code class="vis vis-public">public</code>
-<code class="ret">Call</code>
-<code class="sig"><span class="sf">call</span>( <span class="st">callable</span> <span class="sv">$callableObject</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-callableget">
-<code class="vis vis-public">public</code>
-<code class="ret">CallableGet</code>
-<code class="sig"><span class="sf">callableGet</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-callablenew">
-<code class="vis vis-public">public</code>
-<code class="ret">CallableNew</code>
-<code class="sig"><span class="sf">callableNew</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-csenv">
-<code class="vis vis-public">public</code>
-<code class="ret">CsEnv</code>
-<code class="sig"><span class="sf">csEnv</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-env">
-<code class="vis vis-public">public</code>
-<code class="ret">Env</code>
-<code class="sig"><span class="sf">env</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-envdefault">
-<code class="vis vis-public">public</code>
-<code class="ret">EnvDefault</code>
-<code class="sig"><span class="sf">envDefault</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-functioncall">
-<code class="vis vis-public">public</code>
-<code class="ret">FunctionCall</code>
-<code class="sig"><span class="sf">functionCall</span>(<span class="prm"><span class="st">string</span> <span class="sv">$functionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-get">
-<code class="vis vis-public">public</code>
-<code class="ret">Get</code>
-<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-getcall">
-<code class="vis vis-public">public</code>
-<code class="ret">GetCall</code>
-<code class="sig"><span class="sf">getCall</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-newcall">
-<code class="vis vis-public">public</code>
-<code class="ret">NewCall</code>
-<code class="sig"><span class="sf">newCall</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">NewInstance</code>
-<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazylazyfactory-staticcall">
-<code class="vis vis-public">public</code>
-<code class="ret">StaticCall</code>
-<code class="sig"><span class="sf">staticCall</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazylazyfactory-arrayvalues" visibility="public" name="arrayValues" returnType="ArrayValues" params={[{"type":"array","name":"values","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-call" visibility="public" name="call" returnType="Call" params={[{"type":"callable","name":"callableObject","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-callableget" visibility="public" name="callableGet" returnType="CallableGet" params={[{"type":"string","name":"id","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-callablenew" visibility="public" name="callableNew" returnType="CallableNew" params={[{"type":"string","name":"id","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-csenv" visibility="public" name="csEnv" returnType="CsEnv" params={[{"type":"string","name":"name","default":null},{"type":"string|null","name":"type","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-env" visibility="public" name="env" returnType="Env" params={[{"type":"string","name":"name","default":null},{"type":"string|null","name":"type","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-envdefault" visibility="public" name="envDefault" returnType="EnvDefault" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"defaultValue","default":null},{"type":"string|null","name":"type","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-functioncall" visibility="public" name="functionCall" returnType="FunctionCall" params={[{"type":"string","name":"functionName","default":null},{"type":"array","name":"args","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-get" visibility="public" name="get" returnType="Get" params={[{"type":"string","name":"id","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-getcall" visibility="public" name="getCall" returnType="GetCall" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"args","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-newcall" visibility="public" name="newCall" returnType="NewCall" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"args","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-newinstance" visibility="public" name="newInstance" returnType="NewInstance" params={[{"type":"string","name":"id","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazyfactory-staticcall" visibility="public" name="staticCall" returnType="StaticCall" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"args","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 13</div>
+<ApiGroup label="Public" count="13" />
 
 <h4 id="containerresolverlazylazyfactory-arrayvalues"><code>arrayValues()</code></h4>
 
@@ -3103,54 +2588,42 @@ public static function staticCall(
 
 ## Container\Resolver\Lazy\NewCall
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/NewCall.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/NewCall.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\NewCall`**
 
-</div>
+</ApiTree>
+
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Service\Collection`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazynewcall-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Lazy|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazynewcall-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve a new instance method call</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazynewcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazynewcall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve a new instance method call
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$arguments</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Lazy|string</code>
-<code class="sig"><span class="sv">$id</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$method</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="method" type="string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazynewcall-__construct"><code>__construct()</code></h4>
 
@@ -3173,44 +2646,38 @@ Resolve a new instance method call
 
 ## Container\Resolver\Lazy\NewInstance
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/NewInstance.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/NewInstance.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\NewInstance`**
 
-</div>
+</ApiTree>
+
+<ApiUses>`Phalcon\Contracts\Container\Service\Collection`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazynewinstance-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Lazy|string</span> <span class="sv">$id</span> )</code>
-</a>
-<a class="api-item" href="#containerresolverlazynewinstance-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve a new instance</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazynewinstance-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazynewinstance-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve a new instance
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Lazy|string</code>
-<code class="sig"><span class="sv">$id</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazynewinstance-__construct"><code>__construct()</code></h4>
 
@@ -3229,54 +2696,42 @@ Resolve a new instance
 
 ## Container\Resolver\Lazy\StaticCall
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/StaticCall.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Lazy/StaticCall.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
     - **`Phalcon\Container\Resolver\Lazy\StaticCall`**
 
-</div>
+</ApiTree>
+
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverlazystaticcall-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Lazy|string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverlazystaticcall-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
-<span class="desc">Resolve a static method call</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverlazystaticcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"className","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazystaticcall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
+Resolve a static method call
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$arguments</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Lazy|string</code>
-<code class="sig"><span class="sv">$className</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$method</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="className" type="Lazy|string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="method" type="string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="containerresolverlazystaticcall-__construct"><code>__construct()</code></h4>
 
@@ -3299,67 +2754,46 @@ Resolve a static method call
 
 ## Container\Resolver\Resolver
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Resolver.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Container/Resolver/Resolver.php" />
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Container\Resolver\Resolver`** - implements [`Phalcon\Contracts\Container\Resolver\ResolverService`](/6.0/api/phalcon_contracts/#contractscontainerresolverresolverservice)
+- **`Phalcon\Container\Resolver\Resolver`** - implements [`Phalcon\Contracts\Container\Resolver\ResolverService`](../phalcon_contracts/#contractscontainerresolverresolverservice)
 
-</div>
+</ApiTree>
 
-__Uses__ `Closure` · `Phalcon\Container\Exceptions\CannotResolveParameter` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Contracts\Container\Resolver\ResolverService` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType` · `ReflectionParameter` · `ReflectionType`
-
+<ApiUses>`Closure` · `Phalcon\Container\Exceptions\CannotResolveParameter` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\ResolverService` · `Phalcon\Contracts\Container\Service\Collection` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType` · `ReflectionParameter` · `ReflectionType`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#containerresolverresolver-isresolvableclass">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isResolvableClass</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Is this a resolvable class?</span>
-</a>
-<a class="api-item" href="#containerresolverresolver-resolvecall">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolveCall</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-<span class="desc">Resolve a call</span>
-</a>
-<a class="api-item" href="#containerresolverresolver-resolveclass">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">resolveClass</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-<span class="desc">Resolve a class</span>
-</a>
-<a class="api-item" href="#containerresolverresolver-resolvemethod">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">resolveMethod</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionMethod</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$instance</span></span>)</code>
-<span class="desc">Resolve a method</span>
-</a>
-<a class="api-item" href="#containerresolverresolver-resolveparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolveParameter</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionParameter</span> <span class="sv">$parameter</span></span>)</code>
-<span class="desc">Resolve parameters</span>
-</a>
-<a class="api-item" href="#containerresolverresolver-resolveparameters">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">resolveParameters</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-</a>
-<a class="api-item" href="#containerresolverresolver-resolvetype">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolveType</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionType</span> <span class="sv">$type</span></span>)</code>
-<span class="desc">type is ReflectionType</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#containerresolverresolver-isresolvableclass" visibility="public" name="isResolvableClass" returnType="bool" params={[{"type":"string","name":"className","default":null}]}>
+Is this a resolvable class?
+</ApiItem>
+<ApiItem href="#containerresolverresolver-resolvecall" visibility="public" name="resolveCall" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"callable","name":"callableObject","default":null},{"type":"array","name":"arguments","default":null}]}>
+Resolve a call
+</ApiItem>
+<ApiItem href="#containerresolverresolver-resolveclass" visibility="public" name="resolveClass" returnType="object" params={[{"type":"object","name":"ioc","default":null},{"type":"string","name":"className","default":null},{"type":"array","name":"arguments","default":null}]}>
+Resolve a class
+</ApiItem>
+<ApiItem href="#containerresolverresolver-resolvemethod" visibility="public" name="resolveMethod" returnType="void" params={[{"type":"object","name":"ioc","default":null},{"type":"ReflectionMethod","name":"method","default":null},{"type":"object","name":"instance","default":null}]}>
+Resolve a method
+</ApiItem>
+<ApiItem href="#containerresolverresolver-resolveparameter" visibility="public" name="resolveParameter" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"ReflectionParameter","name":"parameter","default":null}]}>
+Resolve parameters
+</ApiItem>
+<ApiItem href="#containerresolverresolver-resolveparameters" visibility="public" name="resolveParameters" returnType="array" params={[{"type":"object","name":"ioc","default":null},{"type":"array","name":"parameters","default":null},{"type":"array","name":"arguments","default":null}]}>
+Resolve parameters
+</ApiItem>
+<ApiItem href="#containerresolverresolver-resolvetype" visibility="public" name="resolveType" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"ReflectionType","name":"type","default":null}]}>
+type is ReflectionType
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 7</div>
+<ApiGroup label="Public" count="7" />
 
 <h4 id="containerresolverresolver-isresolvableclass"><code>isResolvableClass()</code></h4>
 
@@ -3425,6 +2859,8 @@ public function resolveParameters(
     array $arguments
 ): array;
 ```
+
+Resolve parameters
 
 <h4 id="containerresolverresolver-resolvetype"><code>resolveType()</code></h4>
 

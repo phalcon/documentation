@@ -1,0 +1,32 @@
+---
+/**
+ * The kind of a declaration. Colours come from the `--api-*` custom
+ * properties, which api.css already defines for every theme.
+ */
+interface Props {
+  variant: "abstract" | "class" | "final" | "interface" | "trait";
+}
+
+const { variant } = Astro.props;
+---
+
+<span class="api-badge" data-variant={variant}><slot /></span>
+
+<style>
+  .api-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 0.15em 0.8em;
+    border-radius: 2em;
+    vertical-align: middle;
+  }
+
+  .api-badge[data-variant="abstract"]  { background: var(--api-abstract-bg);  color: var(--api-abstract-fg); }
+  .api-badge[data-variant="class"]     { background: var(--api-class-bg);     color: var(--api-class-fg); }
+  .api-badge[data-variant="final"]     { background: var(--api-final-bg);     color: var(--api-final-fg); }
+  .api-badge[data-variant="interface"] { background: var(--api-interface-bg); color: var(--api-interface-fg); }
+  .api-badge[data-variant="trait"]     { background: var(--api-trait-bg);     color: var(--api-trait-fg); }
+</style>

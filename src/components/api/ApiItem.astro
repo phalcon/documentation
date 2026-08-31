@@ -1,0 +1,172 @@
+---
+/**
+ * One member row: a constant, a property, or a method in the summary.
+ *
+ * Quill hands every part as a property rather than as markup, so the shape of
+ * a row is decided here and not in the generator. `params` arrives as a JSON
+ * array, which JSX reads as an expression.
+ *
+ * The layout is the one api.css gave the MkDocs pages: the visibility chip
+ * floats left, the type chip floats right, and the signature flows between
+ * them with the description below.
+ *
+ * Empty strings mean "absent": the templates cannot leave an attribute out.
+ */
+interface Parameter {
+  type: string;
+  name: string;
+  default: string | null;
+}
+
+interface Props {
+  /** Absent for a method summary row. */
+  kind?: "constant" | "property";
+  href?: string;
+  visibility?: string;
+  name?: string;
+  /** Constants and properties. */
+  type?: string;
+  /** Methods. */
+  returnType?: string;
+  default?: string;
+  params?: Parameter[];
+}
+
+const {
+  kind,
+  href,
+  visibility,
+  name,
+  type,
+  returnType,
+  default: defaultValue,
+  params = [],
+} = Astro.props;
+
+const declaredType = (type ?? returnType ?? "").trim();
+const hasDefault = (defaultValue ?? "").trim() !== "";
+const Tag = href ? "a" : "div";
+---
+
+<Tag class="api-item" href={href}>
+  {visibility && <code class="api-vis" data-visibility={visibility}>{visibility}</code>}
+  {declaredType !== "" && <code class="api-type">{declaredType}</code>}
+
+  <code class="api-sig">
+    {kind === "constant" && <span class="api-const">{name}</span>}
+    {kind === "property" && <span class="api-var">${name}</span>}
+    {!kind && (
+      <>
+        <span class="api-fn">{name}</span>(
+        {params.map((parameter, index) => (
+          <span class="api-prm">
+            <span class="api-type-token">{parameter.type}</span>{" "}
+            <span class="api-var">${parameter.name}</span>
+            {parameter.default !== null && <span class="api-muted"> = {parameter.default}</span>}
+            {index < params.length - 1 && ","}
+          </span>
+        ))}
+        )
+      </>
+    )}
+    {hasDefault && <span class="api-muted"> = {defaultValue}</span>}
+  </code>
+
+  <span class="api-desc"><slot /></span>
+</Tag>
+
+<style>
+  .api-item {
+    display: flow-root;
+    margin: 0;
+    padding: 0.5em 0.9em 0.55em;
+    border-bottom: 1px solid var(--api-line);
+    color: var(--nb-foreground);
+    text-decoration: none;
+  }
+
+  .api-item:last-child {
+    border-bottom: none;
+  }
+
+  a.api-item:hover {
+    background: var(--api-code-bg);
+  }
+
+  /* Visibility chip, floated left. */
+  .api-vis {
+    float: left;
+    margin-right: 0.8em;
+    margin-top: 0.15em;
+    padding: 0.1em 0.5em;
+    border-radius: 0.2em;
+    min-width: 4.6em;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .api-vis[data-visibility="public"] {
+    background: var(--api-abstract-bg);
+    color: var(--api-abstract-fg);
+  }
+
+  .api-vis[data-visibility="protected"] {
+    background: var(--api-protected-bg);
+    color: var(--api-protected-fg);
+  }
+
+  /* Type chip, floated right. */
+  .api-type {
+    float: right;
+    margin-left: 0.75em;
+    margin-top: 0.15em;
+    padding: 0.1em 0.5em;
+    border-radius: 0.2em;
+    background: var(--api-code-bg);
+    color: var(--api-type-fg);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .api-sig {
+    background: none;
+    padding: 0;
+    font-size: 0.875rem;
+    white-space: pre-wrap;
+  }
+
+  /* Token colours, close to the Shiki github themes. */
+  .api-fn { color: #8250df; }
+  .api-type-token { color: #0550ae; }
+  .api-var { color: #953800; }
+  .api-const { color: #0550ae; }
+  .api-muted { color: var(--api-fg-light); }
+
+  :global([data-mode="dark"]) .api-fn { color: #d2a8ff; }
+  :global([data-mode="dark"]) .api-type-token { color: #79c0ff; }
+  :global([data-mode="dark"]) .api-var { color: #ffa657; }
+  :global([data-mode="dark"]) .api-const { color: #79c0ff; }
+
+  /* One parameter per line once there are two or more. Quill always emits a
+     span per parameter, so the count is asked for here rather than there. */
+  .api-sig:has(.api-prm ~ .api-prm) .api-prm {
+    display: block;
+    padding-left: 1.6em;
+  }
+
+  .api-desc {
+    display: block;
+    clear: left;
+    margin: 0.25em 0 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--api-fg-light);
+  }
+
+  .api-desc :global(p) {
+    margin: 0;
+  }
+</style>

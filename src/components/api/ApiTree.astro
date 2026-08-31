@@ -1,0 +1,18 @@
+---
+/**
+ * The inheritance list under a class heading. The children stay markdown, so
+ * the list itself is styled by `.docs-content .api-tree` in api.css - the
+ * nested indentation and the connector elbows are already there. Only the
+ * panel around it belongs to this component.
+ */
+---
+
+<div class="api-tree"><slot /></div>
+
+<style>
+  .api-tree {
+    background: var(--api-code-bg);
+    border-radius: 0.4em;
+    padding: 0.7em 1em;
+  }
+</style>

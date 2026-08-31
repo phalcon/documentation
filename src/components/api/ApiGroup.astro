@@ -1,0 +1,20 @@
+---
+/** The "Public - 5" divider above a run of methods. */
+interface Props {
+  label: string;
+  count: string | number;
+}
+
+const { label, count } = Astro.props;
+---
+
+<div class="api-group">{label} &middot; {count}</div>
+
+<style>
+  .api-group {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--api-fg-light);
+    margin: 1.2em 0 0.4em;
+  }
+</style>

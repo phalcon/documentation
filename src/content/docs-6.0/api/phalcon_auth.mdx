@@ -1,17 +1,16 @@
 ---
 title: "Phalcon Auth"
-sidebar: false
 ---
-
 
 :::info[NOTE]
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Auth\AbstractAuthDispatcherListener
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/AbstractAuthDispatcherListener.php">Source on GitHub</a>
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/AbstractAuthDispatcherListener.php" />
 
 Shared enforcement algorithm for the Cli, Mvc and Micro auth listeners.
 The subclass provides the action name and context from its event source,
@@ -23,52 +22,40 @@ Enforcement is fail-open: when the manager has no active access
 activated via Manager::access() persists across forwards and nested
 dispatches in the same request until it is replaced.
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Auth\AbstractAuthDispatcherListener`**
     - [`Phalcon\Auth\Cli\AuthDispatcherListener`](#authcliauthdispatcherlistener)
     - [`Phalcon\Auth\Micro\AuthMicroListener`](#authmicroauthmicrolistener)
     - [`Phalcon\Auth\Mvc\AuthDispatcherListener`](#authmvcauthdispatcherlistener)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Manager`
-
+<ApiUses>`Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Manager`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authabstractauthdispatcherlistener-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Manager</span> <span class="sv">$manager</span> )</code>
-</a>
-<a class="api-item" href="#authabstractauthdispatcherlistener-enforce">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">enforce</span>(<span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$forwardHandler</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Runs the access check for the given action name. Returns true when</span>
-</a>
-<a class="api-item" href="#authabstractauthdispatcherlistener-getactiontype">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getActionType</span>()</code>
-<span class="desc">Returns the kind label used by AccessDenied (e.g. &#039;task&#039;, &#039;action&#039;,</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authabstractauthdispatcherlistener-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Manager","name":"manager","default":null}]}>
+</ApiItem>
+<ApiItem href="#authabstractauthdispatcherlistener-enforce" visibility="protected" name="enforce" returnType="bool" params={[{"type":"string","name":"actionName","default":null},{"type":"array","name":"context","default":"[]"},{"type":"callable|null","name":"forwardHandler","default":"null"}]}>
+Runs the access check for the given action name. Returns true when
+</ApiItem>
+<ApiItem href="#authabstractauthdispatcherlistener-getactiontype" visibility="protected" name="getActionType" returnType="string" params={[]}>
+Returns the kind label used by AccessDenied (e.g. 'task', 'action',
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Manager</code>
-<code class="sig"><span class="sv">$manager</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="manager" type="Manager" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authabstractauthdispatcherlistener-__construct"><code>__construct()</code></h4>
 
@@ -76,7 +63,7 @@ __Uses__ `Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Acces
 public function __construct( Manager $manager );
 ```
 
-<div class="api-group">Protected · 2</div>
+<ApiGroup label="Protected" count="2" />
 
 <h4 id="authabstractauthdispatcherlistener-enforce"><code>enforce()</code></h4>
 
@@ -107,80 +94,52 @@ Returns the kind label used by AccessDenied (e.g. 'task', 'action',
 
 ## Auth\Access\AbstractAccess
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/AbstractAccess.php">Source on GitHub</a>
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/AbstractAccess.php" />
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Auth\Access\AbstractAccess`** - implements [`Phalcon\Contracts\Auth\Access\Access`](/6.0/api/phalcon_contracts/#contractsauthaccessaccess)
+- **`Phalcon\Auth\Access\AbstractAccess`** - implements [`Phalcon\Contracts\Auth\Access\Access`](../phalcon_contracts/#contractsauthaccessaccess)
     - [`Phalcon\Auth\Access\Acl`](#authaccessacl)
     - [`Phalcon\Auth\Access\Auth`](#authaccessauth)
     - [`Phalcon\Auth\Access\Guest`](#authaccessguest)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard`
-
+<ApiUses>`Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authaccessabstractaccess-getexceptactions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getExceptActions</span>()</code>
-</a>
-<a class="api-item" href="#authaccessabstractaccess-getonlyactions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getOnlyActions</span>()</code>
-</a>
-<a class="api-item" href="#authaccessabstractaccess-isallowed">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">Guard</span> <span class="sv">$guard</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-</a>
-<a class="api-item" href="#authaccessabstractaccess-redirectto">
-<code class="vis vis-public">public</code>
-<code class="ret">array|null</code>
-<code class="sig"><span class="sf">redirectTo</span>()</code>
-</a>
-<a class="api-item" href="#authaccessabstractaccess-setexceptactions">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setExceptActions</span>( <span class="st">array</span> <span class="sv">$exceptActions</span><span class="sm"> = []</span> )</code>
-</a>
-<a class="api-item" href="#authaccessabstractaccess-setonlyactions">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setOnlyActions</span>( <span class="st">array</span> <span class="sv">$onlyActions</span><span class="sm"> = []</span> )</code>
-</a>
-<a class="api-item" href="#authaccessabstractaccess-allowedif">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">allowedIf</span>( <span class="st">Guard</span> <span class="sv">$guard</span> )</code>
-<span class="desc">Whether the gate&#039;s base condition holds for the given identity.</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authaccessabstractaccess-getexceptactions" visibility="public" name="getExceptActions" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#authaccessabstractaccess-getonlyactions" visibility="public" name="getOnlyActions" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#authaccessabstractaccess-isallowed" visibility="public" name="isAllowed" returnType="bool" params={[{"type":"Guard","name":"guard","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"context","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#authaccessabstractaccess-redirectto" visibility="public" name="redirectTo" returnType="array|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authaccessabstractaccess-setexceptactions" visibility="public" name="setExceptActions" returnType="void" params={[{"type":"array","name":"exceptActions","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#authaccessabstractaccess-setonlyactions" visibility="public" name="setOnlyActions" returnType="void" params={[{"type":"array","name":"onlyActions","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#authaccessabstractaccess-allowedif" visibility="protected" name="allowedIf" returnType="bool" params={[{"type":"Guard","name":"guard","default":null}]}>
+Whether the gate's base condition holds for the given identity.
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">list&lt;string&gt;</code>
-<code class="sig"><span class="sv">$exceptActions</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">list&lt;string&gt;</code>
-<code class="sig"><span class="sv">$onlyActions</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="exceptActions" type="list&lt;string&gt;" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="onlyActions" type="list&lt;string&gt;" default="[]">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<ApiGroup label="Public" count="6" />
 
 <h4 id="authaccessabstractaccess-getexceptactions"><code>getExceptActions()</code></h4>
 
@@ -222,7 +181,7 @@ public function setExceptActions( array $exceptActions = [] ): void;
 public function setOnlyActions( array $onlyActions = [] ): void;
 ```
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="authaccessabstractaccess-allowedif"><code>allowedIf()</code></h4>
 
@@ -235,8 +194,8 @@ Whether the gate's base condition holds for the given identity.
 
 ## Auth\Access\AccessLocator
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/AccessLocator.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/AccessLocator.php" />
 
 Service locator for Phalcon\Auth access gates. Utilizes the container to
 obtain the service. For the Phalcon\Container\Container one can use
@@ -246,45 +205,32 @@ class builder).
 
 @extends AbstractLocator&lt;Access>
 
-<div class="api-tree">
+<ApiTree>
 
-- [`Phalcon\Support\AbstractLocator`](/6.0/api/phalcon_support/#supportabstractlocator)
+- [`Phalcon\Support\AbstractLocator`](../phalcon_support/#supportabstractlocator)
     - **`Phalcon\Auth\Access\AccessLocator`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Support\AbstractLocator`
-
+<ApiUses>`Phalcon\Auth\Exception` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Support\AbstractLocator`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authaccessaccesslocator-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Resolve a fresh gate instance from the container.</span>
-</a>
-<a class="api-item" href="#authaccessaccesslocator-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#authaccessaccesslocator-getinterfaceclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getInterfaceClass</span>()</code>
-</a>
-<a class="api-item" href="#authaccessaccesslocator-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authaccessaccesslocator-newinstance" visibility="public" name="newInstance" returnType="object" params={[{"type":"string","name":"name","default":null}]}>
+Resolve a fresh gate instance from the container.
+</ApiItem>
+<ApiItem href="#authaccessaccesslocator-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authaccessaccesslocator-getinterfaceclass" visibility="protected" name="getInterfaceClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authaccessaccesslocator-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authaccessaccesslocator-newinstance"><code>newInstance()</code></h4>
 
@@ -300,7 +246,7 @@ bypasses the instance cache; on the legacy Di, get() builds
 unregistered classes and non-shared services fresh, and a shared
 service is rebuilt from its definition.
 
-<div class="api-group">Protected · 3</div>
+<ApiGroup label="Protected" count="3" />
 
 <h4 id="authaccessaccesslocator-getexceptionclass"><code>getExceptionClass()</code></h4>
 
@@ -323,8 +269,8 @@ protected function getServices(): array;
 
 ## Auth\Access\Acl
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/Acl.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/Acl.php" />
 
 ACL-backed access gate. Checks the authenticated user's role against a
 Phalcon\Acl adapter: the ACL component is taken from the 'handler' context
@@ -340,64 +286,43 @@ Role resolution: no user resolves to the configured guest role; a user
 implementing Phalcon\Acl\RoleAwareInterface supplies its role name; any
 other user is rejected with an exception.
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Access\AbstractAccess`](#authaccessabstractaccess)
     - **`Phalcon\Auth\Access\Acl`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Acl\Adapter\AdapterInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\MissingHandlerContext` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard`
-
+<ApiUses>`Phalcon\Acl\Adapter\AdapterInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\MissingHandlerContext` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authaccessacl-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$acl</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-</a>
-<a class="api-item" href="#authaccessacl-isallowed">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">Guard</span> <span class="sv">$guard</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-</a>
-<a class="api-item" href="#authaccessacl-allowedif">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">allowedIf</span>( <span class="st">Guard</span> <span class="sv">$guard</span> )</code>
-<span class="desc">Unused: this gate overrides isAllowed() in full. Fail closed to</span>
-</a>
-<a class="api-item" href="#authaccessacl-resolverole">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">resolveRole</span>( <span class="st">Guard</span> <span class="sv">$guard</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authaccessacl-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterInterface","name":"acl","default":null},{"type":"array","name":"options","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#authaccessacl-isallowed" visibility="public" name="isAllowed" returnType="bool" params={[{"type":"Guard","name":"guard","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"context","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#authaccessacl-allowedif" visibility="protected" name="allowedIf" returnType="bool" params={[{"type":"Guard","name":"guard","default":null}]}>
+Unused: this gate overrides isAllowed() in full. Fail closed to
+</ApiItem>
+<ApiItem href="#authaccessacl-resolverole" visibility="protected" name="resolveRole" returnType="string" params={[{"type":"Guard","name":"guard","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sv">$acl</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$guestRole</span><span class="sm"> = &quot;guest&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$moduleSeparator</span><span class="sm"> = &quot;:&quot;</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="acl" type="AdapterInterface" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="guestRole" type="string" default="&quot;guest&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="moduleSeparator" type="string" default="&quot;:&quot;">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="authaccessacl-__construct"><code>__construct()</code></h4>
 
@@ -418,7 +343,7 @@ public function isAllowed(
 ): bool;
 ```
 
-<div class="api-group">Protected · 2</div>
+<ApiGroup label="Protected" count="2" />
 
 <h4 id="authaccessacl-allowedif"><code>allowedIf()</code></h4>
 
@@ -438,32 +363,28 @@ protected function resolveRole( Guard $guard ): string;
 
 ## Auth\Access\Auth
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/Auth.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/Auth.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Access\AbstractAccess`](#authaccessabstractaccess)
     - **`Phalcon\Auth\Access\Auth`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Auth\Guard\Guard`
-
+<ApiUses>`Phalcon\Contracts\Auth\Guard\Guard`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authaccessauth-allowedif">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">allowedIf</span>( <span class="st">Guard</span> <span class="sv">$guard</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authaccessauth-allowedif" visibility="protected" name="allowedIf" returnType="bool" params={[{"type":"Guard","name":"guard","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="authaccessauth-allowedif"><code>allowedIf()</code></h4>
 
@@ -474,32 +395,28 @@ protected function allowedIf( Guard $guard ): bool;
 
 ## Auth\Access\Guest
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/Guest.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Access/Guest.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Access\AbstractAccess`](#authaccessabstractaccess)
     - **`Phalcon\Auth\Access\Guest`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Auth\Guard\Guard`
-
+<ApiUses>`Phalcon\Contracts\Auth\Guard\Guard`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authaccessguest-allowedif">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">allowedIf</span>( <span class="st">Guard</span> <span class="sv">$guard</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authaccessguest-allowedif" visibility="protected" name="allowedIf" returnType="bool" params={[{"type":"Guard","name":"guard","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="authaccessguest-allowedif"><code>allowedIf()</code></h4>
 
@@ -510,83 +427,62 @@ protected function allowedIf( Guard $guard ): bool;
 
 ## Auth\Adapter\AbstractAdapter
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/AbstractAdapter.php">Source on GitHub</a>
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/AbstractAdapter.php" />
 
 @template TConfig of AdapterConfig
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Auth\Adapter\AbstractAdapter`** - implements [`Phalcon\Contracts\Auth\Adapter\Adapter`](/6.0/api/phalcon_contracts/#contractsauthadapteradapter)
+- **`Phalcon\Auth\Adapter\AbstractAdapter`** - implements [`Phalcon\Contracts\Auth\Adapter\Adapter`](../phalcon_contracts/#contractsauthadapteradapter)
     - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
     - [`Phalcon\Auth\Adapter\Model`](#authadaptermodel)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
-
+<ApiUses>`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadapterabstractadapter-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">AdapterConfig</span> <span class="sv">$config</span></span>)</code>
-</a>
-<a class="api-item" href="#authadapterabstractadapter-getconfig">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterConfig</code>
-<code class="sig"><span class="sf">getConfig</span>()</code>
-<span class="desc">Returns the adapter configuration object.</span>
-</a>
-<a class="api-item" href="#authadapterabstractadapter-getmodel">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getModel</span>()</code>
-<span class="desc">Returns the model class name, if configured.</span>
-</a>
-<a class="api-item" href="#authadapterabstractadapter-validatecredentials">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validateCredentials</span>(<span class="prm"><span class="st">AuthUser</span> <span class="sv">$user</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$credentials</span></span>)</code>
-<span class="desc">Validates the supplied plaintext password against the user&#039;s stored hash.</span>
-</a>
-<a class="api-item" href="#authadapterabstractadapter-burnhash">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">burnHash</span>()</code>
-<span class="desc">Runs a throwaway password verification against a fixed dummy hash so the</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadapterabstractadapter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Security","name":"hasher","default":null},{"type":"AdapterConfig","name":"config","default":null}]}>
+</ApiItem>
+<ApiItem href="#authadapterabstractadapter-getconfig" visibility="public" name="getConfig" returnType="AdapterConfig" params={[]}>
+Returns the adapter configuration object.
+</ApiItem>
+<ApiItem href="#authadapterabstractadapter-getmodel" visibility="public" name="getModel" returnType="string|null" params={[]}>
+Returns the model class name, if configured.
+</ApiItem>
+<ApiItem href="#authadapterabstractadapter-validatecredentials" visibility="public" name="validateCredentials" returnType="bool" params={[{"type":"AuthUser","name":"user","default":null},{"type":"array","name":"credentials","default":null}]}>
+Validates the supplied plaintext password against the user's stored hash.
+</ApiItem>
+<ApiItem href="#authadapterabstractadapter-burnhash" visibility="protected" name="burnHash" returnType="void" params={[]}>
+Runs a throwaway password verification against a fixed dummy hash so the
+</ApiItem>
+</ApiList>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">DUMMY_HASH</span><span class="sm"> = &quot;$2y$10$YMmGMSXz.5U3bjjJ2qx45uElzUrlaBiS8L70VaVnmsKYFJVcam8gW&quot;</span></code>
-<span class="desc">Dummy bcrypt hash used to equalize timing on the user-not-found path so a failed lookup costs the same as a real password check (prevents login-timing user enumeration).</span>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="constant" name="DUMMY_HASH" type="string" default="&quot;$2y$10$YMmGMSXz.5U3bjjJ2qx45uElzUrlaBiS8L70VaVnmsKYFJVcam8gW&quot;">
+Dummy bcrypt hash used to equalize timing on the user-not-found path so
+a failed lookup costs the same as a real password check (prevents
+login-timing user enumeration).
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">AdapterConfig</code>
-<code class="sig"><span class="sv">$config</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Security</code>
-<code class="sig"><span class="sv">$hasher</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="config" type="AdapterConfig" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="hasher" type="Security" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<ApiGroup label="Public" count="4" />
 
 <h4 id="authadapterabstractadapter-__construct"><code>__construct()</code></h4>
 
@@ -626,7 +522,7 @@ Validates the supplied plaintext password against the user's stored hash.
 Concrete adapters share this implementation; if your data source needs
 a different verification strategy, override it.
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="authadapterabstractadapter-burnhash"><code>burnHash()</code></h4>
 
@@ -641,8 +537,8 @@ when a credential lookup misses to keep response time constant.
 
 ## Auth\Adapter\AbstractArrayAdapter
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/AbstractArrayAdapter.php">Source on GitHub</a>
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/AbstractArrayAdapter.php" />
 
 Common base for adapters whose user records come from an in-memory list
 (Memory and Stream). Subclasses provide the row source via loadUsers();
@@ -652,62 +548,43 @@ guard, and a default linear retrieveById - is shared here.
 @template TConfig of AdapterConfig
 @extends AbstractAdapter&lt;TConfig>
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
     - **`Phalcon\Auth\Adapter\AbstractArrayAdapter`**
         - [`Phalcon\Auth\Adapter\Memory`](#authadaptermemory)
         - [`Phalcon\Auth\Adapter\Stream`](#authadapterstream)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\AuthUser` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser`
-
+<ApiUses>`Phalcon\Auth\AuthUser` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadapterabstractarrayadapter-retrievebycredentials">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUserContract|null</code>
-<code class="sig"><span class="sf">retrieveByCredentials</span>( <span class="st">array</span> <span class="sv">$credentials</span> )</code>
-<span class="desc">Walks the user list and returns the first row whose non-&#039;password&#039;</span>
-</a>
-<a class="api-item" href="#authadapterabstractarrayadapter-retrievebyid">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUserContract|null</code>
-<code class="sig"><span class="sf">retrieveById</span>( <span class="st">int|string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Default linear-scan implementation. Memory overrides this for an O(1)</span>
-</a>
-<a class="api-item" href="#authadapterabstractarrayadapter-hasidentifyingfield">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasIdentifyingField</span>( <span class="st">array</span> <span class="sv">$credentials</span> )</code>
-<span class="desc">Tests whether a credentials payload carries at least one identifying</span>
-</a>
-<a class="api-item" href="#authadapterabstractarrayadapter-hydrate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">AuthUserContract</code>
-<code class="sig"><span class="sf">hydrate</span>( <span class="st">array</span> <span class="sv">$row</span> )</code>
-<span class="desc">Hydrates a raw user row into either the configured model class or a</span>
-</a>
-<a class="api-item" href="#authadapterabstractarrayadapter-loadusers">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">loadUsers</span>()</code>
-<span class="desc">Returns the source list of user rows. Concrete subclasses decide</span>
-</a>
-<a class="api-item" href="#authadapterabstractarrayadapter-matchesrow">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">matchesRow</span>(<span class="prm"><span class="st">array</span> <span class="sv">$row</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$credentials</span></span>)</code>
-<span class="desc">Per-key match of a row against credentials, skipping &#039;password&#039;. Values</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadapterabstractarrayadapter-retrievebycredentials" visibility="public" name="retrieveByCredentials" returnType="AuthUserContract|null" params={[{"type":"array","name":"credentials","default":null}]}>
+Walks the user list and returns the first row whose non-'password'
+</ApiItem>
+<ApiItem href="#authadapterabstractarrayadapter-retrievebyid" visibility="public" name="retrieveById" returnType="AuthUserContract|null" params={[{"type":"int|string","name":"id","default":null}]}>
+Default linear-scan implementation. Memory overrides this for an O(1)
+</ApiItem>
+<ApiItem href="#authadapterabstractarrayadapter-hasidentifyingfield" visibility="protected" name="hasIdentifyingField" returnType="bool" params={[{"type":"array","name":"credentials","default":null}]}>
+Tests whether a credentials payload carries at least one identifying
+</ApiItem>
+<ApiItem href="#authadapterabstractarrayadapter-hydrate" visibility="protected" name="hydrate" returnType="AuthUserContract" params={[{"type":"array","name":"row","default":null}]}>
+Hydrates a raw user row into either the configured model class or a
+</ApiItem>
+<ApiItem href="#authadapterabstractarrayadapter-loadusers" visibility="protected" name="loadUsers" returnType="array" params={[]}>
+Returns the source list of user rows. Concrete subclasses decide
+</ApiItem>
+<ApiItem href="#authadapterabstractarrayadapter-matchesrow" visibility="protected" name="matchesRow" returnType="bool" params={[{"type":"array","name":"row","default":null},{"type":"array","name":"credentials","default":null}]}>
+Per-key match of a row against credentials, skipping 'password'. Values
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="authadapterabstractarrayadapter-retrievebycredentials"><code>retrieveByCredentials()</code></h4>
 
@@ -729,7 +606,7 @@ public function retrieveById( int|string $id ): AuthUserContract|null;
 Default linear-scan implementation. Memory overrides this for an O(1)
 id-keyed lookup; Stream uses this as-is.
 
-<div class="api-group">Protected · 4</div>
+<ApiGroup label="Protected" count="4" />
 
 <h4 id="authadapterabstractarrayadapter-hasidentifyingfield"><code>hasIdentifyingField()</code></h4>
 
@@ -775,8 +652,8 @@ match the string input that arrives from an HTTP request.
 
 ## Auth\Adapter\AdapterLocator
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/AdapterLocator.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/AdapterLocator.php" />
 
 Service locator for Phalcon\Auth adapters. Utilizes the container to
 obtain the service. For the Phalcon\Container\Container one can use
@@ -785,39 +662,29 @@ to be used here.
 
 @extends AbstractLocator&lt;Adapter>
 
-<div class="api-tree">
+<ApiTree>
 
-- [`Phalcon\Support\AbstractLocator`](/6.0/api/phalcon_support/#supportabstractlocator)
+- [`Phalcon\Support\AbstractLocator`](../phalcon_support/#supportabstractlocator)
     - **`Phalcon\Auth\Adapter\AdapterLocator`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Support\AbstractLocator`
-
+<ApiUses>`Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Support\AbstractLocator`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadapteradapterlocator-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#authadapteradapterlocator-getinterfaceclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getInterfaceClass</span>()</code>
-</a>
-<a class="api-item" href="#authadapteradapterlocator-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadapteradapterlocator-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authadapteradapterlocator-getinterfaceclass" visibility="protected" name="getInterfaceClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authadapteradapterlocator-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Protected · 3</div>
+<ApiGroup label="Protected" count="3" />
 
 <h4 id="authadapteradapterlocator-getexceptionclass"><code>getExceptionClass()</code></h4>
 
@@ -840,33 +707,30 @@ protected function getServices(): array;
 
 ## Auth\Adapter\Config\AbstractAdapterConfig
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/AbstractAdapterConfig.php">Source on GitHub</a>
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/AbstractAdapterConfig.php" />
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`** - implements [`Phalcon\Contracts\Auth\Adapter\AdapterConfig`](/6.0/api/phalcon_contracts/#contractsauthadapteradapterconfig)
+- **`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`** - implements [`Phalcon\Contracts\Auth\Adapter\AdapterConfig`](../phalcon_contracts/#contractsauthadapteradapterconfig)
     - [`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`](#authadapterconfigmemoryadapterconfig)
     - [`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`](#authadapterconfigmodeladapterconfig)
     - [`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`](#authadapterconfigstreamadapterconfig)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig`
-
+<ApiUses>`Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadapterconfigabstractadapterconfig-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string|null</span> <span class="sv">$model</span><span class="sm"> = null</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadapterconfigabstractadapterconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string|null","name":"model","default":"null"}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authadapterconfigabstractadapterconfig-__construct"><code>__construct()</code></h4>
 
@@ -877,46 +741,37 @@ public function __construct( string|null $model = null );
 
 ## Auth\Adapter\Config\MemoryAdapterConfig
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/MemoryAdapterConfig.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/MemoryAdapterConfig.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
     - **`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Auth\AuthTypes`
-
+<ApiUses>`Phalcon\Contracts\Auth\AuthTypes`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadapterconfigmemoryadapterconfig-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$users</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#authadapterconfigmemoryadapterconfig-getusers">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getUsers</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadapterconfigmemoryadapterconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"users","default":"[]"},{"type":"string|null","name":"model","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#authadapterconfigmemoryadapterconfig-getusers" visibility="public" name="getUsers" returnType="array" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$users</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="users" type="array" default="[]">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="authadapterconfigmemoryadapterconfig-__construct"><code>__construct()</code></h4>
 
@@ -936,51 +791,39 @@ public function getUsers(): array;
 
 ## Auth\Adapter\Config\ModelAdapterConfig
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/ModelAdapterConfig.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/ModelAdapterConfig.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
     - **`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`
-
+<ApiUses>`Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadapterconfigmodeladapterconfig-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$idColumn</span><span class="sm"> = &quot;id&quot;</span></span>)</code>
-</a>
-<a class="api-item" href="#authadapterconfigmodeladapterconfig-getidcolumn">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getIdColumn</span>()</code>
-</a>
-<a class="api-item" href="#authadapterconfigmodeladapterconfig-getmodel">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getModel</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadapterconfigmodeladapterconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"model","default":null},{"type":"string","name":"idColumn","default":"\"id\""}]}>
+</ApiItem>
+<ApiItem href="#authadapterconfigmodeladapterconfig-getidcolumn" visibility="public" name="getIdColumn" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authadapterconfigmodeladapterconfig-getmodel" visibility="public" name="getModel" returnType="string" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$idColumn</span><span class="sm"> = &quot;id&quot;</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="idColumn" type="string" default="&quot;id&quot;">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 3</div>
+<ApiGroup label="Public" count="3" />
 
 <h4 id="authadapterconfigmodeladapterconfig-__construct"><code>__construct()</code></h4>
 
@@ -1006,46 +849,37 @@ public function getModel(): string;
 
 ## Auth\Adapter\Config\StreamAdapterConfig
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/StreamAdapterConfig.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/StreamAdapterConfig.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
     - **`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`
-
+<ApiUses>`Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadapterconfigstreamadapterconfig-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#authadapterconfigstreamadapterconfig-getfile">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getFile</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadapterconfigstreamadapterconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"file","default":null},{"type":"string|null","name":"model","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#authadapterconfigstreamadapterconfig-getfile" visibility="public" name="getFile" returnType="string" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$file</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="file" type="string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="authadapterconfigstreamadapterconfig-__construct"><code>__construct()</code></h4>
 
@@ -1065,43 +899,36 @@ public function getFile(): string;
 
 ## Auth\Adapter\Config\Traits\ModelConfigTrait
 
-<span class="badge badge--trait">Trait</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/Traits/ModelConfigTrait.php">Source on GitHub</a>
+<ApiBadge variant="trait">Trait</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Config/Traits/ModelConfigTrait.php" />
 
 Shared model-name state and accessor for auth adapter configurations.
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait`**
 
-</div>
+</ApiTree>
 
-__Used by__ [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
-
+<ApiUsedBy>[`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)</ApiUsedBy>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadapterconfigtraitsmodelconfigtrait-getmodel">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getModel</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadapterconfigtraitsmodelconfigtrait-getmodel" visibility="public" name="getModel" returnType="string|null" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$model</span><span class="sm"> = null</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="model" type="string|null" default="null">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authadapterconfigtraitsmodelconfigtrait-getmodel"><code>getModel()</code></h4>
 
@@ -1112,52 +939,40 @@ public function getModel(): string|null;
 
 ## Auth\Adapter\Memory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Memory.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Memory.php" />
 
 In-memory adapter - useful for tests and small read-only user lists.
 
 @extends AbstractArrayAdapter&lt;MemoryAdapterConfig>
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
     - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
         - **`Phalcon\Auth\Adapter\Memory`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Adapter\Config\MemoryAdapterConfig` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
-
+<ApiUses>`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadaptermemory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">MemoryAdapterConfig</span> <span class="sv">$config</span></span>)</code>
-</a>
-<a class="api-item" href="#authadaptermemory-fromoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">fromOptions</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
-</a>
-<a class="api-item" href="#authadaptermemory-retrievebyid">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveById</span>( <span class="st">int|string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Overridden for O(1) lookup via the id index built in the constructor.</span>
-</a>
-<a class="api-item" href="#authadaptermemory-loadusers">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">loadUsers</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadaptermemory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Security","name":"hasher","default":null},{"type":"MemoryAdapterConfig","name":"config","default":null}]}>
+</ApiItem>
+<ApiItem href="#authadaptermemory-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Security","name":"hasher","default":null},{"type":"array","name":"options","default":null}]}>
+</ApiItem>
+<ApiItem href="#authadaptermemory-retrievebyid" visibility="public" name="retrieveById" returnType="AuthUser|null" params={[{"type":"int|string","name":"id","default":null}]}>
+Overridden for O(1) lookup via the id index built in the constructor.
+</ApiItem>
+<ApiItem href="#authadaptermemory-loadusers" visibility="protected" name="loadUsers" returnType="array" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 3</div>
+<ApiGroup label="Public" count="3" />
 
 <h4 id="authadaptermemory-__construct"><code>__construct()</code></h4>
 
@@ -1185,7 +1000,7 @@ public function retrieveById( int|string $id ): AuthUser|null;
 
 Overridden for O(1) lookup via the id index built in the constructor.
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="authadaptermemory-loadusers"><code>loadUsers()</code></h4>
 
@@ -1196,63 +1011,45 @@ protected function loadUsers(): array;
 
 ## Auth\Adapter\Model
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Model.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Model.php" />
 
 Phalcon Model-backed adapter.
 
 @extends AbstractAdapter&lt;ModelAdapterConfig>
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-    - **`Phalcon\Auth\Adapter\Model`** - implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](/6.0/api/phalcon_contracts/#contractsauthadapterrememberadapter)
+    - **`Phalcon\Auth\Adapter\Model`** - implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](../phalcon_contracts/#contractsauthadapterrememberadapter)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\InvalidCredentialKey` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\ModelInterface`
-
+<ApiUses>`Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\InvalidCredentialKey` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\ModelInterface`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadaptermodel-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">ModelAdapterConfig</span> <span class="sv">$config</span></span>)</code>
-</a>
-<a class="api-item" href="#authadaptermodel-createremembertoken">
-<code class="vis vis-public">public</code>
-<code class="ret">RememberToken</code>
-<code class="sig"><span class="sf">createRememberToken</span>( <span class="st">AuthUser</span> <span class="sv">$user</span> )</code>
-<span class="desc">Create and persist a new remember token for the user.</span>
-</a>
-<a class="api-item" href="#authadaptermodel-fromoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">fromOptions</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
-</a>
-<a class="api-item" href="#authadaptermodel-retrievebycredentials">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveByCredentials</span>( <span class="st">array</span> <span class="sv">$credentials</span> )</code>
-<span class="desc">Find a user matching the given credentials (excluding &#039;password&#039; key).</span>
-</a>
-<a class="api-item" href="#authadaptermodel-retrievebyid">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveById</span>( <span class="st">int|string</span> <span class="sv">$id</span> )</code>
-</a>
-<a class="api-item" href="#authadaptermodel-retrievebytoken">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveByToken</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Retrieve a user by the remember-me cookie payload.</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadaptermodel-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Security","name":"hasher","default":null},{"type":"ModelAdapterConfig","name":"config","default":null}]}>
+</ApiItem>
+<ApiItem href="#authadaptermodel-createremembertoken" visibility="public" name="createRememberToken" returnType="RememberToken" params={[{"type":"AuthUser","name":"user","default":null}]}>
+Create and persist a new remember token for the user.
+</ApiItem>
+<ApiItem href="#authadaptermodel-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Security","name":"hasher","default":null},{"type":"array","name":"options","default":null}]}>
+</ApiItem>
+<ApiItem href="#authadaptermodel-retrievebycredentials" visibility="public" name="retrieveByCredentials" returnType="AuthUser|null" params={[{"type":"array","name":"credentials","default":null}]}>
+Find a user matching the given credentials (excluding 'password' key).
+</ApiItem>
+<ApiItem href="#authadaptermodel-retrievebyid" visibility="public" name="retrieveById" returnType="AuthUser|null" params={[{"type":"int|string","name":"id","default":null}]}>
+</ApiItem>
+<ApiItem href="#authadaptermodel-retrievebytoken" visibility="public" name="retrieveByToken" returnType="AuthUser|null" params={[{"type":"int|string","name":"id","default":null},{"type":"string","name":"token","default":null},{"type":"string|null","name":"userAgent","default":"null"}]}>
+Retrieve a user by the remember-me cookie payload.
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<ApiGroup label="Public" count="6" />
 
 <h4 id="authadaptermodel-__construct"><code>__construct()</code></h4>
 
@@ -1309,8 +1106,8 @@ Retrieve a user by the remember-me cookie payload.
 
 ## Auth\Adapter\Stream
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Stream.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Adapter/Stream.php" />
 
 JSON file-backed adapter.
 
@@ -1319,40 +1116,31 @@ The file must contain a JSON array of user records:
 
 @extends AbstractArrayAdapter&lt;StreamAdapterConfig>
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
     - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
         - **`Phalcon\Auth\Adapter\Stream`**
 
-</div>
+</ApiTree>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Auth\Adapter\Config\StreamAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\FileCannotRead` · `Phalcon\Auth\Exceptions\FileDoesNotContainJson` · `Phalcon\Auth\Exceptions\FileDoesNotExist` · `Phalcon\Auth\Exceptions\FileNotValidJson` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
-
+<ApiUses>`InvalidArgumentException` · `Phalcon\Auth\Adapter\Config\StreamAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\FileCannotRead` · `Phalcon\Auth\Exceptions\FileDoesNotContainJson` · `Phalcon\Auth\Exceptions\FileDoesNotExist` · `Phalcon\Auth\Exceptions\FileNotValidJson` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authadapterstream-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">StreamAdapterConfig</span> <span class="sv">$config</span></span>)</code>
-</a>
-<a class="api-item" href="#authadapterstream-fromoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">fromOptions</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
-</a>
-<a class="api-item" href="#authadapterstream-loadusers">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">loadUsers</span>()</code>
-<span class="desc">Loads and decodes the JSON users file. Re-read on every call - if you</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authadapterstream-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Security","name":"hasher","default":null},{"type":"StreamAdapterConfig","name":"config","default":null}]}>
+</ApiItem>
+<ApiItem href="#authadapterstream-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Security","name":"hasher","default":null},{"type":"array","name":"options","default":null}]}>
+</ApiItem>
+<ApiItem href="#authadapterstream-loadusers" visibility="protected" name="loadUsers" returnType="array" params={[]}>
+Loads and decodes the JSON users file. Re-read on every call - if you
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="authadapterstream-__construct"><code>__construct()</code></h4>
 
@@ -1372,7 +1160,7 @@ public static function fromOptions(
 ): static;
 ```
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="authadapterstream-loadusers"><code>loadUsers()</code></h4>
 
@@ -1386,59 +1174,44 @@ need caching, wrap it.
 
 ## Auth\AuthUser
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/AuthUser.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/AuthUser.php" />
 
 Lightweight value object returned by array-backed adapters (Memory, Stream)
 when no application model class is configured.
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Auth\AuthUser`** - implements [`Phalcon\Contracts\Auth\AuthUser`](/6.0/api/phalcon_contracts/#contractsauthauthuser)
+- **`Phalcon\Auth\AuthUser`** - implements [`Phalcon\Contracts\Auth\AuthUser`](../phalcon_contracts/#contractsauthauthuser)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exceptions\DataMustContainIdKey` · `Phalcon\Contracts\Auth\AuthUser`
-
+<ApiUses>`Phalcon\Auth\Exceptions\DataMustContainIdKey` · `Phalcon\Contracts\Auth\AuthUser`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authauthuser-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
-</a>
-<a class="api-item" href="#authauthuser-getauthidentifier">
-<code class="vis vis-public">public</code>
-<code class="ret">int|string</code>
-<code class="sig"><span class="sf">getAuthIdentifier</span>()</code>
-</a>
-<a class="api-item" href="#authauthuser-getauthpassword">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAuthPassword</span>()</code>
-</a>
-<a class="api-item" href="#authauthuser-toarray">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">toArray</span>()</code>
-<span class="desc">Returns the underlying data array.</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authauthuser-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"data","default":null}]}>
+</ApiItem>
+<ApiItem href="#authauthuser-getauthidentifier" visibility="public" name="getAuthIdentifier" returnType="int|string" params={[]}>
+</ApiItem>
+<ApiItem href="#authauthuser-getauthpassword" visibility="public" name="getAuthPassword" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authauthuser-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
+Returns the underlying data array.
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$data</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="data" type="array" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<ApiGroup label="Public" count="4" />
 
 <h4 id="authauthuser-__construct"><code>__construct()</code></h4>
 
@@ -1469,37 +1242,30 @@ Returns the underlying data array.
 
 ## Auth\Cli\AuthDispatcherListener
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Cli/AuthDispatcherListener.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Cli/AuthDispatcherListener.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\AbstractAuthDispatcherListener`](#authabstractauthdispatcherlistener)
     - **`Phalcon\Auth\Cli\AuthDispatcherListener`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Cli\Dispatcher` · `Phalcon\Events\Event`
-
+<ApiUses>`Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Cli\Dispatcher` · `Phalcon\Events\Event`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authcliauthdispatcherlistener-beforeexecuteroute">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">beforeExecuteRoute</span>(<span class="prm"><span class="st">Event</span> <span class="sv">$event</span>,</span><span class="prm"><span class="st">Dispatcher</span> <span class="sv">$dispatcher</span></span>)</code>
-</a>
-<a class="api-item" href="#authcliauthdispatcherlistener-getactiontype">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getActionType</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authcliauthdispatcherlistener-beforeexecuteroute" visibility="public" name="beforeExecuteRoute" returnType="bool" params={[{"type":"Event","name":"event","default":null},{"type":"Dispatcher","name":"dispatcher","default":null}]}>
+</ApiItem>
+<ApiItem href="#authcliauthdispatcherlistener-getactiontype" visibility="protected" name="getActionType" returnType="string" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authcliauthdispatcherlistener-beforeexecuteroute"><code>beforeExecuteRoute()</code></h4>
 
@@ -1510,7 +1276,7 @@ public function beforeExecuteRoute(
 ): bool;
 ```
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="authcliauthdispatcherlistener-getactiontype"><code>getActionType()</code></h4>
 
@@ -1521,12 +1287,12 @@ protected function getActionType(): string;
 
 ## Auth\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exception.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exception.php" />
 
 Exceptions thrown in Phalcon\Auth will use this class
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - **`Phalcon\Auth\Exception`**
@@ -1550,39 +1316,36 @@ Exceptions thrown in Phalcon\Auth will use this class
         - [`Phalcon\Auth\Exceptions\UnknownAdapter`](#authexceptionsunknownadapter)
         - [`Phalcon\Auth\Exceptions\UnknownGuard`](#authexceptionsunknownguard)
 
-</div>
+</ApiTree>
 
 
 ## Auth\Exceptions\AccessDenied
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/AccessDenied.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/AccessDenied.php" />
 
 Access denied exception
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\AccessDenied`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsaccessdenied-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsaccessdenied-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsaccessdenied-__construct"><code>__construct()</code></h4>
 
@@ -1596,34 +1359,31 @@ public function __construct(
 
 ## Auth\Exceptions\AccessNotRegistered
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/AccessNotRegistered.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/AccessNotRegistered.php" />
 
 Access gate name is not registered
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\AccessNotRegistered`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsaccessnotregistered-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsaccessnotregistered-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsaccessnotregistered-__construct"><code>__construct()</code></h4>
 
@@ -1634,34 +1394,31 @@ public function __construct( string $name );
 
 ## Auth\Exceptions\ActiveAccessRequired
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/ActiveAccessRequired.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/ActiveAccessRequired.php" />
 
 No active access has been set on the manager
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\ActiveAccessRequired`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsactiveaccessrequired-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsactiveaccessrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsactiveaccessrequired-__construct"><code>__construct()</code></h4>
 
@@ -1672,40 +1429,34 @@ public function __construct();
 
 ## Auth\Exceptions\ConfigRequiresNonEmptyValue
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/ConfigRequiresNonEmptyValue.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/ConfigRequiresNonEmptyValue.php" />
 
 Config requires non-empty value
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsconfigrequiresnonemptyvalue-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$configName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$configKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-</a>
-<a class="api-item" href="#authexceptionsconfigrequiresnonemptyvalue-assert">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">assert</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$configName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$configKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-<span class="desc">Throws when the value is an empty string. A null value is treated as</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsconfigrequiresnonemptyvalue-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"configName","default":null},{"type":"string","name":"configKey","default":null},{"type":"string","name":"suffix","default":"\"\""}]}>
+</ApiItem>
+<ApiItem href="#authexceptionsconfigrequiresnonemptyvalue-assert" visibility="public" name="assert" returnType="void" params={[{"type":"string|null","name":"value","default":null},{"type":"string","name":"configName","default":null},{"type":"string","name":"configKey","default":null},{"type":"string","name":"suffix","default":"\"\""}]}>
+Throws when the value is an empty string. A null value is treated as
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="authexceptionsconfigrequiresnonemptyvalue-__construct"><code>__construct()</code></h4>
 
@@ -1736,34 +1487,31 @@ empty-value check shared by every config class in one place.
 
 ## Auth\Exceptions\DataMustContainIdKey
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/DataMustContainIdKey.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/DataMustContainIdKey.php" />
 
 AuthUser data must contain "id"
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\DataMustContainIdKey`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsdatamustcontainidkey-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsdatamustcontainidkey-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsdatamustcontainidkey-__construct"><code>__construct()</code></h4>
 
@@ -1774,34 +1522,31 @@ public function __construct();
 
 ## Auth\Exceptions\DefaultGuardNotRegistered
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/DefaultGuardNotRegistered.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/DefaultGuardNotRegistered.php" />
 
 No default guard registered
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsdefaultguardnotregistered-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsdefaultguardnotregistered-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsdefaultguardnotregistered-__construct"><code>__construct()</code></h4>
 
@@ -1812,40 +1557,34 @@ public function __construct();
 
 ## Auth\Exceptions\DoesNotImplement
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/DoesNotImplement.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/DoesNotImplement.php" />
 
 Does not implement interface
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\DoesNotImplement`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsdoesnotimplement-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-</a>
-<a class="api-item" href="#authexceptionsdoesnotimplement-assert">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">assert</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$interfaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-<span class="desc">Throws when value is not an instance of the given interface. Keeps the</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsdoesnotimplement-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#authexceptionsdoesnotimplement-assert" visibility="public" name="assert" returnType="void" params={[{"type":"mixed","name":"value","default":null},{"type":"string","name":"interfaceName","default":null},{"type":"string","name":"type","default":null},{"type":"string","name":"name","default":null}]}>
+Throws when value is not an instance of the given interface. Keeps the
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="authexceptionsdoesnotimplement-__construct"><code>__construct()</code></h4>
 
@@ -1876,34 +1615,31 @@ in one place.
 
 ## Auth\Exceptions\FileCannotRead
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileCannotRead.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileCannotRead.php" />
 
 Cannot read file
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\FileCannotRead`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsfilecannotread-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsfilecannotread-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsfilecannotread-__construct"><code>__construct()</code></h4>
 
@@ -1914,34 +1650,31 @@ public function __construct( string $path );
 
 ## Auth\Exceptions\FileDoesNotContainJson
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileDoesNotContainJson.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileDoesNotContainJson.php" />
 
 File does not contain a JSON array
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\FileDoesNotContainJson`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsfiledoesnotcontainjson-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsfiledoesnotcontainjson-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsfiledoesnotcontainjson-__construct"><code>__construct()</code></h4>
 
@@ -1952,34 +1685,31 @@ public function __construct( string $path );
 
 ## Auth\Exceptions\FileDoesNotExist
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileDoesNotExist.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileDoesNotExist.php" />
 
 File does not exist
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\FileDoesNotExist`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsfiledoesnotexist-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsfiledoesnotexist-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsfiledoesnotexist-__construct"><code>__construct()</code></h4>
 
@@ -1990,34 +1720,31 @@ public function __construct( string $path );
 
 ## Auth\Exceptions\FileNotValidJson
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileNotValidJson.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/FileNotValidJson.php" />
 
 Not a valid JSON
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\FileNotValidJson`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception` · `Throwable`
-
+<ApiUses>`Phalcon\Auth\Exception` · `Throwable`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsfilenotvalidjson-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">Throwable</span> <span class="sv">$ex</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsfilenotvalidjson-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null},{"type":"Throwable","name":"ex","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsfilenotvalidjson-__construct"><code>__construct()</code></h4>
 
@@ -2031,34 +1758,31 @@ public function __construct(
 
 ## Auth\Exceptions\GuardNotDefined
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/GuardNotDefined.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/GuardNotDefined.php" />
 
 Guard name is not defined on the manager
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\GuardNotDefined`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsguardnotdefined-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsguardnotdefined-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsguardnotdefined-__construct"><code>__construct()</code></h4>
 
@@ -2069,35 +1793,32 @@ public function __construct( string $name );
 
 ## Auth\Exceptions\InvalidCredentialKey
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/InvalidCredentialKey.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/InvalidCredentialKey.php" />
 
 A credential key is not a plain identifier and cannot be used as a query
 column
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\InvalidCredentialKey`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsinvalidcredentialkey-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsinvalidcredentialkey-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"key","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsinvalidcredentialkey-__construct"><code>__construct()</code></h4>
 
@@ -2108,34 +1829,31 @@ public function __construct( string $key );
 
 ## Auth\Exceptions\MissingHandlerContext
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/MissingHandlerContext.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/MissingHandlerContext.php" />
 
 The Acl access gate is missing the required 'handler' context key
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\MissingHandlerContext`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsmissinghandlercontext-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsmissinghandlercontext-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsmissinghandlercontext-__construct"><code>__construct()</code></h4>
 
@@ -2146,34 +1864,31 @@ public function __construct();
 
 ## Auth\Exceptions\OptionRequiresArray
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/OptionRequiresArray.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/OptionRequiresArray.php" />
 
 Option must be a non-empty array
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\OptionRequiresArray`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsoptionrequiresarray-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$context</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsoptionrequiresarray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"context","default":null},{"type":"string","name":"key","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsoptionrequiresarray-__construct"><code>__construct()</code></h4>
 
@@ -2187,34 +1902,31 @@ public function __construct(
 
 ## Auth\Exceptions\OptionRequiresString
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/OptionRequiresString.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/OptionRequiresString.php" />
 
 Option must be a non-empty string
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\OptionRequiresString`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsoptionrequiresstring-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$context</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsoptionrequiresstring-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"context","default":null},{"type":"string","name":"key","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsoptionrequiresstring-__construct"><code>__construct()</code></h4>
 
@@ -2228,34 +1940,31 @@ public function __construct(
 
 ## Auth\Exceptions\SessionNamesMustDiffer
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/SessionNamesMustDiffer.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/SessionNamesMustDiffer.php" />
 
 Session guard 'name' and 'rememberName' must differ
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionssessionnamesmustdiffer-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionssessionnamesmustdiffer-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionssessionnamesmustdiffer-__construct"><code>__construct()</code></h4>
 
@@ -2266,34 +1975,31 @@ public function __construct();
 
 ## Auth\Exceptions\UnknownAdapter
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/UnknownAdapter.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/UnknownAdapter.php" />
 
 Unknown auth adapter requested from the factory
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\UnknownAdapter`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsunknownadapter-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsunknownadapter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsunknownadapter-__construct"><code>__construct()</code></h4>
 
@@ -2304,34 +2010,31 @@ public function __construct( string $name );
 
 ## Auth\Exceptions\UnknownGuard
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/UnknownGuard.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Exceptions/UnknownGuard.php" />
 
 Unknown auth guard type requested from the factory
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Auth\Exception`](#authexception)
         - **`Phalcon\Auth\Exceptions\UnknownGuard`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception`
-
+<ApiUses>`Phalcon\Auth\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authexceptionsunknownguard-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authexceptionsunknownguard-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authexceptionsunknownguard-__construct"><code>__construct()</code></h4>
 
@@ -2342,111 +2045,66 @@ public function __construct( string $type );
 
 ## Auth\Guard\AbstractGuard
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/AbstractGuard.php">Source on GitHub</a>
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/AbstractGuard.php" />
 
 @template TConfig of GuardConfig
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](/6.0/api/phalcon_contracts/#contractsauthguardguard)
+- **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](../phalcon_contracts/#contractsauthguardguard)
     - [`Phalcon\Auth\Guard\Session`](#authguardsession)
     - [`Phalcon\Auth\Guard\Token`](#authguardtoken)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardConfig` · `Phalcon\Events\Traits\EventsAwareTrait`
-
+<ApiUses>`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardConfig` · `Phalcon\Events\Traits\EventsAwareTrait`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authguardabstractguard-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">GuardConfig</span> <span class="sv">$config</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardabstractguard-check">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">check</span>()</code>
-</a>
-<a class="api-item" href="#authguardabstractguard-getadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sf">getAdapter</span>()</code>
-</a>
-<a class="api-item" href="#authguardabstractguard-getconfig">
-<code class="vis vis-public">public</code>
-<code class="ret">GuardConfig</code>
-<code class="sig"><span class="sf">getConfig</span>()</code>
-<span class="desc">Returns the guard configuration object.</span>
-</a>
-<a class="api-item" href="#authguardabstractguard-getlastuserattempted">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">getLastUserAttempted</span>()</code>
-</a>
-<a class="api-item" href="#authguardabstractguard-guest">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">guest</span>()</code>
-</a>
-<a class="api-item" href="#authguardabstractguard-hasuser">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasUser</span>()</code>
-</a>
-<a class="api-item" href="#authguardabstractguard-id">
-<code class="vis vis-public">public</code>
-<code class="ret">int|string|null</code>
-<code class="sig"><span class="sf">id</span>()</code>
-</a>
-<a class="api-item" href="#authguardabstractguard-setadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setAdapter</span>( <span class="st">Adapter</span> <span class="sv">$adapter</span> )</code>
-</a>
-<a class="api-item" href="#authguardabstractguard-setuser">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setUser</span>( <span class="st">AuthUser</span> <span class="sv">$user</span> )</code>
-</a>
-<a class="api-item" href="#authguardabstractguard-hasvalidcredentials">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasValidCredentials</span>(<span class="prm"><span class="st">AuthUser|null</span> <span class="sv">$user</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$credentials</span></span>)</code>
-<span class="desc">user should be ?AuthUser</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authguardabstractguard-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"GuardConfig","name":"config","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardabstractguard-check" visibility="public" name="check" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardabstractguard-getadapter" visibility="public" name="getAdapter" returnType="Adapter" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardabstractguard-getconfig" visibility="public" name="getConfig" returnType="GuardConfig" params={[]}>
+Returns the guard configuration object.
+</ApiItem>
+<ApiItem href="#authguardabstractguard-getlastuserattempted" visibility="public" name="getLastUserAttempted" returnType="AuthUser|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardabstractguard-guest" visibility="public" name="guest" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardabstractguard-hasuser" visibility="public" name="hasUser" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardabstractguard-id" visibility="public" name="id" returnType="int|string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardabstractguard-setadapter" visibility="public" name="setAdapter" returnType="static" params={[{"type":"Adapter","name":"adapter","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardabstractguard-setuser" visibility="public" name="setUser" returnType="static" params={[{"type":"AuthUser","name":"user","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardabstractguard-hasvalidcredentials" visibility="protected" name="hasValidCredentials" returnType="bool" params={[{"type":"AuthUser|null","name":"user","default":null},{"type":"array","name":"credentials","default":null}]}>
+user should be ?AuthUser
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sv">$adapter</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">GuardConfig</code>
-<code class="sig"><span class="sv">$config</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sv">$lastUserAttempted</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sv">$user</span><span class="sm"> = null</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="adapter" type="Adapter" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="config" type="GuardConfig" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="lastUserAttempted" type="AuthUser|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="user" type="AuthUser|null" default="null">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 10</div>
+<ApiGroup label="Public" count="10" />
 
 <h4 id="authguardabstractguard-__construct"><code>__construct()</code></h4>
 
@@ -2513,7 +2171,7 @@ public function setAdapter( Adapter $adapter ): static;
 public function setUser( AuthUser $user ): static;
 ```
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="authguardabstractguard-hasvalidcredentials"><code>hasValidCredentials()</code></h4>
 
@@ -2529,25 +2187,24 @@ user should be ?AuthUser
 
 ## Auth\Guard\Config\AbstractGuardConfig
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Config/AbstractGuardConfig.php">Source on GitHub</a>
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Config/AbstractGuardConfig.php" />
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Auth\Guard\Config\AbstractGuardConfig`** - implements [`Phalcon\Contracts\Auth\Guard\GuardConfig`](/6.0/api/phalcon_contracts/#contractsauthguardguardconfig)
+- **`Phalcon\Auth\Guard\Config\AbstractGuardConfig`** - implements [`Phalcon\Contracts\Auth\Guard\GuardConfig`](../phalcon_contracts/#contractsauthguardguardconfig)
     - [`Phalcon\Auth\Guard\Config\SessionGuardConfig`](#authguardconfigsessionguardconfig)
     - [`Phalcon\Auth\Guard\Config\TokenGuardConfig`](#authguardconfigtokenguardconfig)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Auth\Guard\GuardConfig`
-
+<ApiUses>`Phalcon\Contracts\Auth\Guard\GuardConfig`</ApiUses>
 
 
 ## Auth\Guard\Config\SessionGuardConfig
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Config/SessionGuardConfig.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Config/SessionGuardConfig.php" />
 
 Configuration for the Session guard. Holds the names under which the
 session key and remember-me cookie are stored. Defaults to 'auth' and
@@ -2555,59 +2212,42 @@ session key and remember-me cookie are stored. Defaults to 'auth' and
 to derive 'auth_web' / 'remember_web' style names, or override either
 full name explicitly.
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Guard\Config\AbstractGuardConfig`](#authguardconfigabstractguardconfig)
     - **`Phalcon\Auth\Guard\Config\SessionGuardConfig`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue` · `Phalcon\Auth\Exceptions\SessionNamesMustDiffer`
-
+<ApiUses>`Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue` · `Phalcon\Auth\Exceptions\SessionNamesMustDiffer`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authguardconfigsessionguardconfig-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$suffix</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$rememberName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$rememberTtl</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$rememberSecure</span><span class="sm"> = true</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardconfigsessionguardconfig-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-</a>
-<a class="api-item" href="#authguardconfigsessionguardconfig-getremembername">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getRememberName</span>()</code>
-</a>
-<a class="api-item" href="#authguardconfigsessionguardconfig-getremembersecure">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getRememberSecure</span>()</code>
-<span class="desc">Whether the remember-me cookie carries the Secure flag. Defaults to</span>
-</a>
-<a class="api-item" href="#authguardconfigsessionguardconfig-getrememberttl">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getRememberTtl</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authguardconfigsessionguardconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string|null","name":"suffix","default":"null"},{"type":"string|null","name":"name","default":"null"},{"type":"string|null","name":"rememberName","default":"null"},{"type":"int|null","name":"rememberTtl","default":"null"},{"type":"bool","name":"rememberSecure","default":"true"}]}>
+</ApiItem>
+<ApiItem href="#authguardconfigsessionguardconfig-getname" visibility="public" name="getName" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardconfigsessionguardconfig-getremembername" visibility="public" name="getRememberName" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardconfigsessionguardconfig-getremembersecure" visibility="public" name="getRememberSecure" returnType="bool" params={[]}>
+Whether the remember-me cookie carries the Secure flag. Defaults to
+</ApiItem>
+<ApiItem href="#authguardconfigsessionguardconfig-getrememberttl" visibility="public" name="getRememberTtl" returnType="int" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">DEFAULT_REMEMBER_TTL</span><span class="sm"> = 31536000</span></code>
-<span class="desc">Default remember-me cookie lifetime, in seconds (365 days).</span>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="constant" name="DEFAULT_REMEMBER_TTL" type="int" default="31536000">
+Default remember-me cookie lifetime, in seconds (365 days).
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 5</div>
+<ApiGroup label="Public" count="5" />
 
 <h4 id="authguardconfigsessionguardconfig-__construct"><code>__construct()</code></h4>
 
@@ -2652,56 +2292,41 @@ public function getRememberTtl(): int;
 
 ## Auth\Guard\Config\TokenGuardConfig
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Config/TokenGuardConfig.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Config/TokenGuardConfig.php" />
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Guard\Config\AbstractGuardConfig`](#authguardconfigabstractguardconfig)
     - **`Phalcon\Auth\Guard\Config\TokenGuardConfig`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`
-
+<ApiUses>`Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authguardconfigtokenguardconfig-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$inputKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$storageKey</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardconfigtokenguardconfig-getinputkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getInputKey</span>()</code>
-</a>
-<a class="api-item" href="#authguardconfigtokenguardconfig-getstoragekey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getStorageKey</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authguardconfigtokenguardconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"inputKey","default":null},{"type":"string","name":"storageKey","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardconfigtokenguardconfig-getinputkey" visibility="public" name="getInputKey" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardconfigtokenguardconfig-getstoragekey" visibility="public" name="getStorageKey" returnType="string" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$inputKey</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$storageKey</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="inputKey" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="storageKey" type="string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 3</div>
+<ApiGroup label="Public" count="3" />
 
 <h4 id="authguardconfigtokenguardconfig-__construct"><code>__construct()</code></h4>
 
@@ -2727,8 +2352,8 @@ public function getStorageKey(): string;
 
 ## Auth\Guard\GuardLocator
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/GuardLocator.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/GuardLocator.php" />
 
 Service locator for Phalcon\Auth guards. Utilizes the container to obtain
 the service. For Phalcon\Container\Container one can use autowiring; for
@@ -2736,39 +2361,29 @@ Phalcon\Di\Di, register the guards in it before resolution.
 
 @extends AbstractLocator&lt;Guard>
 
-<div class="api-tree">
+<ApiTree>
 
-- [`Phalcon\Support\AbstractLocator`](/6.0/api/phalcon_support/#supportabstractlocator)
+- [`Phalcon\Support\AbstractLocator`](../phalcon_support/#supportabstractlocator)
     - **`Phalcon\Auth\Guard\GuardLocator`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Support\AbstractLocator`
-
+<ApiUses>`Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Support\AbstractLocator`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authguardguardlocator-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#authguardguardlocator-getinterfaceclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getInterfaceClass</span>()</code>
-</a>
-<a class="api-item" href="#authguardguardlocator-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authguardguardlocator-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardguardlocator-getinterfaceclass" visibility="protected" name="getInterfaceClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardguardlocator-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Protected · 3</div>
+<ApiGroup label="Protected" count="3" />
 
 <h4 id="authguardguardlocator-getexceptionclass"><code>getExceptionClass()</code></h4>
 
@@ -2791,158 +2406,83 @@ protected function getServices(): array;
 
 ## Auth\Guard\Session
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Session.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Session.php" />
 
 @extends AbstractGuard&lt;SessionGuardConfig>
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-    - **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](/6.0/api/phalcon_contracts/#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](/6.0/api/phalcon_contracts/#contractsauthguardbasicauth)
+    - **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](../phalcon_contracts/#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](../phalcon_contracts/#contractsauthguardbasicauth)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
-
+<ApiUses>`Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authguardsession-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">CookiesInterface</span> <span class="sv">$cookies</span>,</span><span class="prm"><span class="st">SessionManagerInterface</span> <span class="sv">$session</span>,</span><span class="prm"><span class="st">SessionGuardConfig</span> <span class="sv">$config</span>,</span><span class="prm"><span class="st">ClockInterface|null</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardsession-attempt">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">attempt</span>(<span class="prm"><span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardsession-basic">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">basic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;email&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$extraConditions</span><span class="sm"> = []</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardsession-fromoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">fromOptions</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardsession-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-</a>
-<a class="api-item" href="#authguardsession-getremembername">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getRememberName</span>()</code>
-</a>
-<a class="api-item" href="#authguardsession-login">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">login</span>(<span class="prm"><span class="st">AuthUser</span> <span class="sv">$user</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardsession-loginbyid">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|false</code>
-<code class="sig"><span class="sf">loginById</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardsession-logout">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">logout</span>()</code>
-</a>
-<a class="api-item" href="#authguardsession-once">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">once</span>( <span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span> )</code>
-</a>
-<a class="api-item" href="#authguardsession-oncebasic">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|false</code>
-<code class="sig"><span class="sf">onceBasic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;email&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$extraConditions</span><span class="sm"> = []</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardsession-user">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">user</span>()</code>
-</a>
-<a class="api-item" href="#authguardsession-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>( <span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span> )</code>
-</a>
-<a class="api-item" href="#authguardsession-viaremember">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">viaRemember</span>()</code>
-</a>
-<a class="api-item" href="#authguardsession-attemptbasic">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">attemptBasic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$extraConditions</span><span class="sm"> = []</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardsession-basiccredentials">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array|null</code>
-<code class="sig"><span class="sf">basicCredentials</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
-</a>
-<a class="api-item" href="#authguardsession-createremembertoken">
-<code class="vis vis-protected">protected</code>
-<code class="ret">RememberToken</code>
-<code class="sig"><span class="sf">createRememberToken</span>( <span class="st">AuthUser</span> <span class="sv">$user</span> )</code>
-</a>
-<a class="api-item" href="#authguardsession-recaller">
-<code class="vis vis-protected">protected</code>
-<code class="ret">UserRemember|null</code>
-<code class="sig"><span class="sf">recaller</span>()</code>
-</a>
-<a class="api-item" href="#authguardsession-rememberuser">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">rememberUser</span>( <span class="st">AuthUser</span> <span class="sv">$user</span> )</code>
-</a>
-<a class="api-item" href="#authguardsession-userfromrecaller">
-<code class="vis vis-protected">protected</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">userFromRecaller</span>( <span class="st">UserRemember</span> <span class="sv">$recaller</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authguardsession-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"RequestInterface","name":"request","default":null},{"type":"CookiesInterface","name":"cookies","default":null},{"type":"SessionManagerInterface","name":"session","default":null},{"type":"SessionGuardConfig","name":"config","default":null},{"type":"ClockInterface|null","name":"clock","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-attempt" visibility="public" name="attempt" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"},{"type":"bool","name":"remember","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-basic" visibility="public" name="basic" returnType="bool" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"mixed","name":"container","default":null},{"type":"array","name":"options","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-getname" visibility="public" name="getName" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardsession-getremembername" visibility="public" name="getRememberName" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardsession-login" visibility="public" name="login" returnType="void" params={[{"type":"AuthUser","name":"user","default":null},{"type":"bool","name":"remember","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-loginbyid" visibility="public" name="loginById" returnType="AuthUser|false" params={[{"type":"int|string","name":"id","default":null},{"type":"bool","name":"remember","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-logout" visibility="public" name="logout" returnType="void" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardsession-once" visibility="public" name="once" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-oncebasic" visibility="public" name="onceBasic" returnType="AuthUser|false" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-user" visibility="public" name="user" returnType="AuthUser|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardsession-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-viaremember" visibility="public" name="viaRemember" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardsession-attemptbasic" visibility="protected" name="attemptBasic" returnType="bool" params={[{"type":"string","name":"field","default":null},{"type":"array","name":"extraConditions","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-basiccredentials" visibility="protected" name="basicCredentials" returnType="array|null" params={[{"type":"string","name":"field","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-createremembertoken" visibility="protected" name="createRememberToken" returnType="RememberToken" params={[{"type":"AuthUser","name":"user","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-recaller" visibility="protected" name="recaller" returnType="UserRemember|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardsession-rememberuser" visibility="protected" name="rememberUser" returnType="void" params={[{"type":"AuthUser","name":"user","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardsession-userfromrecaller" visibility="protected" name="userFromRecaller" returnType="AuthUser|null" params={[{"type":"UserRemember","name":"recaller","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ClockInterface</code>
-<code class="sig"><span class="sv">$clock</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">CookiesInterface</code>
-<code class="sig"><span class="sv">$cookies</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">RequestInterface</code>
-<code class="sig"><span class="sv">$request</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">SessionManagerInterface</code>
-<code class="sig"><span class="sv">$session</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$viaRemember</span><span class="sm"> = false</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="clock" type="ClockInterface" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="cookies" type="CookiesInterface" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="request" type="RequestInterface" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="session" type="SessionManagerInterface" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="viaRemember" type="bool" default="false">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 14</div>
+<ApiGroup label="Public" count="14" />
 
 <h4 id="authguardsession-__construct"><code>__construct()</code></h4>
 
@@ -3054,7 +2594,7 @@ public function validate( array $credentials = [] ): bool;
 public function viaRemember(): bool;
 ```
 
-<div class="api-group">Protected · 6</div>
+<ApiGroup label="Protected" count="6" />
 
 <h4 id="authguardsession-attemptbasic"><code>attemptBasic()</code></h4>
 
@@ -3098,69 +2638,48 @@ protected function userFromRecaller( UserRemember $recaller ): AuthUser|null;
 
 ## Auth\Guard\Token
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Token.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/Token.php" />
 
 @extends AbstractGuard&lt;TokenGuardConfig>
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
     - **`Phalcon\Auth\Guard\Token`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Guard\Config\TokenGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Http\RequestInterface`
-
+<ApiUses>`Phalcon\Auth\Guard\Config\TokenGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Http\RequestInterface`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authguardtoken-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">TokenGuardConfig</span> <span class="sv">$config</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardtoken-fromoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">fromOptions</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
-</a>
-<a class="api-item" href="#authguardtoken-gettokenforrequest">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getTokenForRequest</span>()</code>
-<span class="desc">Returns the bearer token for the request.</span>
-</a>
-<a class="api-item" href="#authguardtoken-setrequest">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setRequest</span>( <span class="st">RequestInterface</span> <span class="sv">$request</span> )</code>
-</a>
-<a class="api-item" href="#authguardtoken-user">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">user</span>()</code>
-</a>
-<a class="api-item" href="#authguardtoken-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>( <span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authguardtoken-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"RequestInterface","name":"request","default":null},{"type":"TokenGuardConfig","name":"config","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardtoken-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"mixed","name":"container","default":null},{"type":"array","name":"options","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardtoken-gettokenforrequest" visibility="public" name="getTokenForRequest" returnType="string|null" params={[]}>
+Returns the bearer token for the request.
+</ApiItem>
+<ApiItem href="#authguardtoken-setrequest" visibility="public" name="setRequest" returnType="static" params={[{"type":"RequestInterface","name":"request","default":null}]}>
+</ApiItem>
+<ApiItem href="#authguardtoken-user" visibility="public" name="user" returnType="AuthUser|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authguardtoken-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">RequestInterface</code>
-<code class="sig"><span class="sv">$request</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="request" type="RequestInterface" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<ApiGroup label="Public" count="6" />
 
 <h4 id="authguardtoken-__construct"><code>__construct()</code></h4>
 
@@ -3218,68 +2737,47 @@ public function validate( array $credentials = [] ): bool;
 
 ## Auth\Guard\UserRemember
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/UserRemember.php">Source on GitHub</a>
+<ApiBadge variant="final">Final</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Guard/UserRemember.php" />
 
 Value object representing the contents of a remember-me cookie.
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Auth\Guard\UserRemember`**
 
-</div>
+</ApiTree>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Support\Helper\Json\Decode`
-
+<ApiUses>`InvalidArgumentException` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Support\Helper\Json\Decode`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authguarduserremember-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array|string</span> <span class="sv">$payload</span> )</code>
-<span class="desc">Accepts either the raw JSON cookie value (string) or the already</span>
-</a>
-<a class="api-item" href="#authguarduserremember-getid">
-<code class="vis vis-public">public</code>
-<code class="ret">int|string|null</code>
-<code class="sig"><span class="sf">getId</span>()</code>
-</a>
-<a class="api-item" href="#authguarduserremember-gettoken">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getToken</span>()</code>
-</a>
-<a class="api-item" href="#authguarduserremember-getuseragent">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getUserAgent</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authguarduserremember-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array|string","name":"payload","default":null}]}>
+Accepts either the raw JSON cookie value (string) or the already
+</ApiItem>
+<ApiItem href="#authguarduserremember-getid" visibility="public" name="getId" returnType="int|string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authguarduserremember-gettoken" visibility="public" name="getToken" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#authguarduserremember-getuseragent" visibility="public" name="getUserAgent" returnType="string" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int|string|null</code>
-<code class="sig"><span class="sv">$id</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$token</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$userAgent</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="id" type="int|string|null" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="token" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="userAgent" type="string" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<ApiGroup label="Public" count="4" />
 
 <h4 id="authguarduserremember-__construct"><code>__construct()</code></h4>
 
@@ -3312,8 +2810,8 @@ public function getUserAgent(): string;
 
 ## Auth\Internal\ContainerResolver
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Internal/ContainerResolver.php">Source on GitHub</a>
+<ApiBadge variant="final">Final</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Internal/ContainerResolver.php" />
 
 Internal single source of truth for resolving services from either the
 new Phalcon\Container\Container or the legacy Phalcon\Di\Di. Not part of
@@ -3327,53 +2825,37 @@ class via its class builder.
 All legacy-Di failures are normalized to Phalcon\Container\Exceptions so
 callers and userland catch a single exception family.
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Auth\Internal\ContainerResolver`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Closure` · `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Service` · `TypeError`
-
+<ApiUses>`Closure` · `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Service` · `TypeError`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authinternalcontainerresolver-ensurecontainer">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">ensureContainer</span>( <span class="st">mixed</span> <span class="sv">$container</span> )</code>
-<span class="desc">Validates that the value is a supported container.</span>
-</a>
-<a class="api-item" href="#authinternalcontainerresolver-requireservice">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">requireService</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$candidates</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$context</span></span>)</code>
-<span class="desc">Resolves the first candidate service name that the container can</span>
-</a>
-<a class="api-item" href="#authinternalcontainerresolver-resolvecandidate">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">resolveCandidate</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fqn</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$shortName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$context</span></span>)</code>
-<span class="desc">Convenience composition of serviceCandidates() + requireService():</span>
-</a>
-<a class="api-item" href="#authinternalcontainerresolver-resolvefresh">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">resolveFresh</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-<span class="desc">Resolves a fresh instance: new() on the Container (bypasses the</span>
-</a>
-<a class="api-item" href="#authinternalcontainerresolver-servicecandidates">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">serviceCandidates</span>(<span class="prm"><span class="st">array</span> <span class="sv">$options</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fqn</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$shortName</span></span>)</code>
-<span class="desc">Builds the ordered candidate list for a framework service:</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authinternalcontainerresolver-ensurecontainer" visibility="public" name="ensureContainer" returnType="void" params={[{"type":"mixed","name":"container","default":null}]}>
+Validates that the value is a supported container.
+</ApiItem>
+<ApiItem href="#authinternalcontainerresolver-requireservice" visibility="public" name="requireService" returnType="object" params={[{"type":"mixed","name":"container","default":null},{"type":"array","name":"candidates","default":null},{"type":"string","name":"context","default":null}]}>
+Resolves the first candidate service name that the container can
+</ApiItem>
+<ApiItem href="#authinternalcontainerresolver-resolvecandidate" visibility="public" name="resolveCandidate" returnType="object" params={[{"type":"mixed","name":"container","default":null},{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"fqn","default":null},{"type":"string","name":"shortName","default":null},{"type":"string","name":"context","default":null}]}>
+Convenience composition of serviceCandidates() + requireService():
+</ApiItem>
+<ApiItem href="#authinternalcontainerresolver-resolvefresh" visibility="public" name="resolveFresh" returnType="object" params={[{"type":"mixed","name":"container","default":null},{"type":"string","name":"name","default":null}]}>
+Resolves a fresh instance: new() on the Container (bypasses the
+</ApiItem>
+<ApiItem href="#authinternalcontainerresolver-servicecandidates" visibility="public" name="serviceCandidates" returnType="array" params={[{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"fqn","default":null},{"type":"string","name":"shortName","default":null}]}>
+Builds the ordered candidate list for a framework service:
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 5</div>
+<ApiGroup label="Public" count="5" />
 
 <h4 id="authinternalcontainerresolver-ensurecontainer"><code>ensureContainer()</code></h4>
 
@@ -3449,49 +2931,36 @@ otherwise the interface FQN followed by the conventional short name.
 
 ## Auth\Internal\Options
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Internal/Options.php">Source on GitHub</a>
+<ApiBadge variant="final">Final</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Internal/Options.php" />
 
 Internal option-parsing helpers shared by adapter / guard fromOptions()
 implementations. Not part of the public API.
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Auth\Internal\Options`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\OptionRequiresArray` · `Phalcon\Auth\Exceptions\OptionRequiresString` · `Phalcon\Contracts\Auth\AuthTypes`
-
+<ApiUses>`Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\OptionRequiresArray` · `Phalcon\Auth\Exceptions\OptionRequiresString` · `Phalcon\Contracts\Auth\AuthTypes`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authinternaloptions-arrayoption">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">arrayOption</span>(<span class="prm"><span class="st">array</span> <span class="sv">$options</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$defaultValue</span></span>)</code>
-</a>
-<a class="api-item" href="#authinternaloptions-requirearray">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">requireArray</span>(<span class="prm"><span class="st">array</span> <span class="sv">$options</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$context</span></span>)</code>
-</a>
-<a class="api-item" href="#authinternaloptions-requirestring">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">requireString</span>(<span class="prm"><span class="st">array</span> <span class="sv">$options</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$context</span></span>)</code>
-</a>
-<a class="api-item" href="#authinternaloptions-stringornull">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">stringOrNull</span>(<span class="prm"><span class="st">array</span> <span class="sv">$options</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authinternaloptions-arrayoption" visibility="public" name="arrayOption" returnType="array" params={[{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null},{"type":"array","name":"defaultValue","default":null}]}>
+</ApiItem>
+<ApiItem href="#authinternaloptions-requirearray" visibility="public" name="requireArray" returnType="array" params={[{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"context","default":null}]}>
+</ApiItem>
+<ApiItem href="#authinternaloptions-requirestring" visibility="public" name="requireString" returnType="string" params={[{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"context","default":null}]}>
+</ApiItem>
+<ApiItem href="#authinternaloptions-stringornull" visibility="public" name="stringOrNull" returnType="string|null" params={[{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<ApiGroup label="Public" count="4" />
 
 <h4 id="authinternaloptions-arrayoption"><code>arrayOption()</code></h4>
 
@@ -3535,150 +3004,81 @@ public static function stringOrNull(
 
 ## Auth\Manager
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Manager.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Manager.php" />
 
 Composes guards (authentication) and access gates (authorization)
 behind a single facade. Guard-specific behavior is reached through
 Manager::guard(); callers narrow with instanceof against the
 relevant capability interface (GuardStateful, BasicAuth, etc.).
 
-<div class="api-tree">
+<ApiTree>
 
-- **`Phalcon\Auth\Manager`** - implements [`Phalcon\Contracts\Auth\Manager`](/6.0/api/phalcon_contracts/#contractsauthmanager)
+- **`Phalcon\Auth\Manager`** - implements [`Phalcon\Contracts\Auth\Manager`](../phalcon_contracts/#contractsauthmanager)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\AccessNotRegistered` · `Phalcon\Auth\Exceptions\ActiveAccessRequired` · `Phalcon\Auth\Exceptions\DefaultGuardNotRegistered` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\GuardNotDefined` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\Manager`
-
+<ApiUses>`Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\AccessNotRegistered` · `Phalcon\Auth\Exceptions\ActiveAccessRequired` · `Phalcon\Auth\Exceptions\DefaultGuardNotRegistered` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\GuardNotDefined` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\Manager`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authmanager-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">AccessLocator</span> <span class="sv">$accessFactory</span> )</code>
-</a>
-<a class="api-item" href="#authmanager-access">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">access</span>( <span class="st">string</span> <span class="sv">$accessName</span> )</code>
-</a>
-<a class="api-item" href="#authmanager-addaccesslist">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">addAccessList</span>( <span class="st">array</span> <span class="sv">$accessList</span> )</code>
-</a>
-<a class="api-item" href="#authmanager-addguard">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">addGuard</span>(<span class="prm"><span class="st">string</span> <span class="sv">$nameGuard</span>,</span><span class="prm"><span class="st">Guard</span> <span class="sv">$guard</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isDefault</span><span class="sm"> = false</span></span>)</code>
-</a>
-<a class="api-item" href="#authmanager-attempt">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">attempt</span>(<span class="prm"><span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
-</a>
-<a class="api-item" href="#authmanager-check">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">check</span>()</code>
-</a>
-<a class="api-item" href="#authmanager-except">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">except</span>( <span class="st">string</span> <span class="sv">$actions</span> )</code>
-</a>
-<a class="api-item" href="#authmanager-getaccess">
-<code class="vis vis-public">public</code>
-<code class="ret">Access|null</code>
-<code class="sig"><span class="sf">getAccess</span>()</code>
-</a>
-<a class="api-item" href="#authmanager-getaccesslist">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAccessList</span>()</code>
-</a>
-<a class="api-item" href="#authmanager-getdefaultguard">
-<code class="vis vis-public">public</code>
-<code class="ret">Guard|null</code>
-<code class="sig"><span class="sf">getDefaultGuard</span>()</code>
-</a>
-<a class="api-item" href="#authmanager-getguards">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getGuards</span>()</code>
-</a>
-<a class="api-item" href="#authmanager-guard">
-<code class="vis vis-public">public</code>
-<code class="ret">Guard</code>
-<code class="sig"><span class="sf">guard</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
-</a>
-<a class="api-item" href="#authmanager-id">
-<code class="vis vis-public">public</code>
-<code class="ret">int|string|null</code>
-<code class="sig"><span class="sf">id</span>()</code>
-</a>
-<a class="api-item" href="#authmanager-logout">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">logout</span>()</code>
-</a>
-<a class="api-item" href="#authmanager-only">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">only</span>( <span class="st">string</span> <span class="sv">$actions</span> )</code>
-</a>
-<a class="api-item" href="#authmanager-setaccess">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">setAccess</span>( <span class="st">Access</span> <span class="sv">$access</span> )</code>
-</a>
-<a class="api-item" href="#authmanager-setdefaultguard">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">setDefaultGuard</span>( <span class="st">Guard</span> <span class="sv">$guard</span> )</code>
-</a>
-<a class="api-item" href="#authmanager-user">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">user</span>()</code>
-</a>
-<a class="api-item" href="#authmanager-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>( <span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authmanager-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AccessLocator","name":"accessFactory","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmanager-access" visibility="public" name="access" returnType="self" params={[{"type":"string","name":"accessName","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmanager-addaccesslist" visibility="public" name="addAccessList" returnType="self" params={[{"type":"array","name":"accessList","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmanager-addguard" visibility="public" name="addGuard" returnType="self" params={[{"type":"string","name":"nameGuard","default":null},{"type":"Guard","name":"guard","default":null},{"type":"bool","name":"isDefault","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#authmanager-attempt" visibility="public" name="attempt" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"},{"type":"bool","name":"remember","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#authmanager-check" visibility="public" name="check" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#authmanager-except" visibility="public" name="except" returnType="self" params={[{"type":"string","name":"actions","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmanager-getaccess" visibility="public" name="getAccess" returnType="Access|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authmanager-getaccesslist" visibility="public" name="getAccessList" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#authmanager-getdefaultguard" visibility="public" name="getDefaultGuard" returnType="Guard|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authmanager-getguards" visibility="public" name="getGuards" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#authmanager-guard" visibility="public" name="guard" returnType="Guard" params={[{"type":"string|null","name":"name","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#authmanager-id" visibility="public" name="id" returnType="int|string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authmanager-logout" visibility="public" name="logout" returnType="void" params={[]}>
+</ApiItem>
+<ApiItem href="#authmanager-only" visibility="public" name="only" returnType="self" params={[{"type":"string","name":"actions","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmanager-setaccess" visibility="public" name="setAccess" returnType="self" params={[{"type":"Access","name":"access","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmanager-setdefaultguard" visibility="public" name="setDefaultGuard" returnType="self" params={[{"type":"Guard","name":"guard","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmanager-user" visibility="public" name="user" returnType="AuthUser|null" params={[]}>
+</ApiItem>
+<ApiItem href="#authmanager-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">AccessLocator</code>
-<code class="sig"><span class="sv">$accessFactory</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Access|null</code>
-<code class="sig"><span class="sv">$activeAccess</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Guard|null</code>
-<code class="sig"><span class="sv">$defaultGuard</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, Guard&gt;</code>
-<code class="sig"><span class="sv">$guards</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="accessFactory" type="AccessLocator" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="activeAccess" type="Access|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="defaultGuard" type="Guard|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="guards" type="array&lt;string, Guard&gt;" default="[]">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 19</div>
+<ApiGroup label="Public" count="19" />
 
 <h4 id="authmanager-__construct"><code>__construct()</code></h4>
 
@@ -3804,8 +3204,8 @@ public function validate( array $credentials = [] ): bool;
 
 ## Auth\ManagerFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/ManagerFactory.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/ManagerFactory.php" />
 
 Single entry-point factory that builds a fully wired Phalcon\Auth\Manager
 from a config tree. Framework-shared services (RequestInterface,
@@ -3846,77 +3246,47 @@ not separately constructed copies.
      ],
  ]
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Auth\ManagerFactory`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLocator` · `Phalcon\Auth\Exceptions\UnknownAdapter` · `Phalcon\Auth\Exceptions\UnknownGuard` · `Phalcon\Auth\Guard\GuardLocator` · `Phalcon\Auth\Internal\Options` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security` · `Phalcon\Support\Traits\ConfigTrait` · `Throwable`
-
+<ApiUses>`Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLocator` · `Phalcon\Auth\Exceptions\UnknownAdapter` · `Phalcon\Auth\Exceptions\UnknownGuard` · `Phalcon\Auth\Guard\GuardLocator` · `Phalcon\Auth\Internal\Options` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security` · `Phalcon\Support\Traits\ConfigTrait` · `Throwable`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authmanagerfactory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">Collection|DiInterface</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">AdapterLocator|null</span> <span class="sv">$adapterLocator</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">GuardLocator|null</span> <span class="sv">$guardLocator</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">AccessLocator|null</span> <span class="sv">$accessLocator</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#authmanagerfactory-load">
-<code class="vis vis-public">public</code>
-<code class="ret">Manager</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
-</a>
-<a class="api-item" href="#authmanagerfactory-buildadapter">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sf">buildAdapter</span>(<span class="prm"><span class="st">AdapterLocator</span> <span class="sv">$locator</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$cfg</span></span>)</code>
-</a>
-<a class="api-item" href="#authmanagerfactory-buildguard">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Guard</code>
-<code class="sig"><span class="sf">buildGuard</span>(<span class="prm"><span class="st">GuardLocator</span> <span class="sv">$locator</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
-</a>
-<a class="api-item" href="#authmanagerfactory-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authmanagerfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Security","name":"hasher","default":null},{"type":"Collection|DiInterface","name":"container","default":null},{"type":"AdapterLocator|null","name":"adapterLocator","default":"null"},{"type":"GuardLocator|null","name":"guardLocator","default":"null"},{"type":"AccessLocator|null","name":"accessLocator","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#authmanagerfactory-load" visibility="public" name="load" returnType="Manager" params={[{"type":"mixed","name":"config","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmanagerfactory-buildadapter" visibility="protected" name="buildAdapter" returnType="Adapter" params={[{"type":"AdapterLocator","name":"locator","default":null},{"type":"array","name":"cfg","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmanagerfactory-buildguard" visibility="protected" name="buildGuard" returnType="Guard" params={[{"type":"GuardLocator","name":"locator","default":null},{"type":"string","name":"type","default":null},{"type":"Adapter","name":"adapter","default":null},{"type":"array","name":"options","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmanagerfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">AccessLocator</code>
-<code class="sig"><span class="sv">$accessLocator</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">AdapterLocator</code>
-<code class="sig"><span class="sv">$adapterLocator</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Collection|DiInterface</code>
-<code class="sig"><span class="sv">$container</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">GuardLocator</code>
-<code class="sig"><span class="sv">$guardLocator</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Security</code>
-<code class="sig"><span class="sv">$hasher</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="accessLocator" type="AccessLocator" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="adapterLocator" type="AdapterLocator" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="container" type="Collection|DiInterface" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="guardLocator" type="GuardLocator" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="hasher" type="Security" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="authmanagerfactory-__construct"><code>__construct()</code></h4>
 
@@ -3936,7 +3306,7 @@ public function __construct(
 public function load( mixed $config ): Manager;
 ```
 
-<div class="api-group">Protected · 3</div>
+<ApiGroup label="Protected" count="3" />
 
 <h4 id="authmanagerfactory-buildadapter"><code>buildAdapter()</code></h4>
 
@@ -3967,8 +3337,8 @@ protected function getExceptionClass(): string;
 
 ## Auth\Micro\AuthMicroListener
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Micro/AuthMicroListener.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Micro/AuthMicroListener.php" />
 
 Listener that enforces the active Phalcon\Auth access gate on each Micro
 route execution. Attach to the events manager:
@@ -3983,48 +3353,36 @@ forward mechanism.
 
 No-op when no active access has been set on the manager.
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\AbstractAuthDispatcherListener`](#authabstractauthdispatcherlistener)
     - **`Phalcon\Auth\Micro\AuthMicroListener`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Manager` · `Phalcon\Events\Event` · `Phalcon\Mvc\Micro`
-
+<ApiUses>`Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Manager` · `Phalcon\Events\Event` · `Phalcon\Mvc\Micro`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authmicroauthmicrolistener-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Manager</span> <span class="sv">$manager</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span><span class="sm"> = &quot;Micro&quot;</span></span>)</code>
-</a>
-<a class="api-item" href="#authmicroauthmicrolistener-beforeexecuteroute">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">beforeExecuteRoute</span>(<span class="prm"><span class="st">Event</span> <span class="sv">$event</span>,</span><span class="prm"><span class="st">Micro</span> <span class="sv">$application</span></span>)</code>
-</a>
-<a class="api-item" href="#authmicroauthmicrolistener-getactiontype">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getActionType</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authmicroauthmicrolistener-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Manager","name":"manager","default":null},{"type":"string","name":"componentName","default":"\"Micro\""}]}>
+</ApiItem>
+<ApiItem href="#authmicroauthmicrolistener-beforeexecuteroute" visibility="public" name="beforeExecuteRoute" returnType="bool" params={[{"type":"Event","name":"event","default":null},{"type":"Micro","name":"application","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmicroauthmicrolistener-getactiontype" visibility="protected" name="getActionType" returnType="string" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$componentName</span><span class="sm"> = &quot;Micro&quot;</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="componentName" type="string" default="&quot;Micro&quot;">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<ApiGroup label="Public" count="2" />
 
 <h4 id="authmicroauthmicrolistener-__construct"><code>__construct()</code></h4>
 
@@ -4044,7 +3402,7 @@ public function beforeExecuteRoute(
 ): bool;
 ```
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="authmicroauthmicrolistener-getactiontype"><code>getActionType()</code></h4>
 
@@ -4055,8 +3413,8 @@ protected function getActionType(): string;
 
 ## Auth\Mvc\AuthDispatcherListener
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Mvc/AuthDispatcherListener.php">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Auth/Mvc/AuthDispatcherListener.php" />
 
 Listener that enforces the active Phalcon\Auth access gate on each MVC
 dispatch. Attach to the events manager:
@@ -4065,34 +3423,27 @@ dispatch. Attach to the events manager:
 
 No-op when no active access has been set on the manager.
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Auth\AbstractAuthDispatcherListener`](#authabstractauthdispatcherlistener)
     - **`Phalcon\Auth\Mvc\AuthDispatcherListener`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Events\Event` · `Phalcon\Mvc\Dispatcher`
-
+<ApiUses>`Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Events\Event` · `Phalcon\Mvc\Dispatcher`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#authmvcauthdispatcherlistener-beforeexecuteroute">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">beforeExecuteRoute</span>(<span class="prm"><span class="st">Event</span> <span class="sv">$event</span>,</span><span class="prm"><span class="st">Dispatcher</span> <span class="sv">$dispatcher</span></span>)</code>
-</a>
-<a class="api-item" href="#authmvcauthdispatcherlistener-getactiontype">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getActionType</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#authmvcauthdispatcherlistener-beforeexecuteroute" visibility="public" name="beforeExecuteRoute" returnType="bool" params={[{"type":"Event","name":"event","default":null},{"type":"Dispatcher","name":"dispatcher","default":null}]}>
+</ApiItem>
+<ApiItem href="#authmvcauthdispatcherlistener-getactiontype" visibility="protected" name="getActionType" returnType="string" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="authmvcauthdispatcherlistener-beforeexecuteroute"><code>beforeExecuteRoute()</code></h4>
 
@@ -4103,7 +3454,7 @@ public function beforeExecuteRoute(
 ): bool;
 ```
 
-<div class="api-group">Protected · 1</div>
+<ApiGroup label="Protected" count="1" />
 
 <h4 id="authmvcauthdispatcherlistener-getactiontype"><code>getActionType()</code></h4>
 

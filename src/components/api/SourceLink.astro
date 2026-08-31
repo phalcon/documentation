@@ -1,0 +1,35 @@
+---
+import Icon from "@cloudflare/nimbus-docs/components/Icon.astro";
+
+/** The "Source on GitHub" button quill puts under every class heading. */
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a class="api-source" href={href} target="_blank" rel="noopener">
+  <Icon name="ph:github-logo" class="w-4 h-4" />
+  <span>Source on GitHub</span>
+</a>
+
+<style>
+  .api-source {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 0.8125rem;
+    padding: 0.2em 0.7em;
+    border: 1px solid var(--api-line);
+    border-radius: 0.4em;
+    color: var(--api-fg-light);
+    text-decoration: none;
+    vertical-align: middle;
+  }
+
+  .api-source:hover {
+    color: var(--nb-foreground);
+    border-color: var(--nb-foreground);
+  }
+</style>
