@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+      # Trial of the new site: deploys straight from this branch. Remove
+      # once the branch is merged into master.
+      - nimbus
   workflow_dispatch:
 
 env:
