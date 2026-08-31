@@ -1,0 +1,330 @@
+---
+title: "ADR - Router"
+---
+
+## Overview
+
+The ADR router maps an incoming request to an action class by convention, with no route table to maintain. Every static path segment is a namespace segment, and the class name is the HTTP method followed by all of those segments concatenated. Segments that do not correspond to a namespace become request attributes.
+
+```
+GET   /invoices             ->  MyApp\Action\Invoices\GetInvoices
+POST  /invoices             ->  MyApp\Action\Invoices\PostInvoices
+GET   /invoices/42          ->  MyApp\Action\Invoices\GetInvoices             (attribute 0 = "42")
+GET   /invoices/lines       ->  MyApp\Action\Invoices\Lines\GetInvoicesLines
+POST  /invoices/cancel/42   ->  MyApp\Action\Invoices\Cancel\PostInvoicesCancel  (attribute 0 = "42")
+```
+
+One path names exactly one class, and that class names exactly one path. There is no candidate list and no first-that-exists, so an action cannot be shadowed by another that happens to exist. Adding or deleting an action never changes the URL of a different one.
+
+A leading area nests the namespace like any other segment: `POST /accounting/invoices/cancel/42` resolves to `MyApp\Action\Accounting\Invoices\Cancel\PostAccountingInvoicesCancel`.
+
+The recognized HTTP methods are `GET`, `POST`, `PUT`, `PATCH` and `DELETE`.
+
+## Configuration
+
+`Phalcon\ADR\Router\Router` has four settings. All of them are fluent:
+
+| Method | Required | Default | Purpose |
+|---|---|---|---|
+| `setBaseNamespace()` | yes | `''` | Namespace under which your actions live |
+| `setActionDirectory()` | yes | `''` | Filesystem directory that mirrors the base namespace |
+| `setWordSeparator()` | no | `'-'` | Delimiter joining words in a path segment |
+| `setMiddlewareMap()` | no | `[]` | Middleware attached by namespace prefix |
+
+```php
+$router = $container->get('router');
+
+$router
+    ->setBaseNamespace('MyApp\\Action')
+    ->setActionDirectory(__DIR__ . '/Action')
+    ->setWordSeparator('-')
+    ->setMiddlewareMap([
+        '\\Admin\\' => [RequireAdmin::class],
+    ]);
+```
+
+`setBaseNamespace()` strips a trailing `\`, and `setActionDirectory()` strips a trailing directory separator, so both accept either form.
+
+The action directory is not optional. The router reads it to decide which path segments are namespaces, so `match()` throws `Phalcon\ADR\Exceptions\ActionDirectoryNotSet` when it has not been set. It must point at the directory that mirrors the base namespace: if `MyApp\Action\Invoices\GetInvoices` lives at `/app/src/Action/Invoices/GetInvoices.php`, the action directory is `/app/src/Action`.
+
+Both setters are also available on `Phalcon\ADR\Application`, which forwards them to the router.
+
+## Namespace descent
+
+The router walks the path one segment at a time and consumes a segment as a namespace only while the matching directory exists on disk. Where that walk stops decides the class: everything consumed forms the namespace and the class name, and everything left over becomes an attribute.
+
+Given this tree:
+
+```
+/app/src/Action/
+    Get.php                          ->  MyApp\Action\Get
+    Invoices/
+        GetInvoices.php
+        PostInvoices.php
+        Cancel/
+            PostInvoicesCancel.php
+        Lines/
+            GetInvoicesLines.php
+```
+
+the descent resolves as follows:
+
+| Request | Descends into | Class | Attributes |
+|---|---|---|---|
+| `GET /` | nothing | `MyApp\Action\Get` | none |
+| `GET /invoices` | `Invoices` | `MyApp\Action\Invoices\GetInvoices` | none |
+| `GET /invoices/lines` | `Invoices`, `Lines` | `MyApp\Action\Invoices\Lines\GetInvoicesLines` | none |
+| `POST /invoices/cancel/42` | `Invoices`, `Cancel` | `MyApp\Action\Invoices\Cancel\PostInvoicesCancel` | `0 = "42"` |
+| `GET /invoices/42` | `Invoices` | `MyApp\Action\Invoices\GetInvoices` | `0 = "42"` |
+| `GET /invoices/42/lines` | `Invoices` | `MyApp\Action\Invoices\GetInvoices` | `0 = "42"`, `1 = "lines"` |
+| `GET /nope` | nothing | none - a **404** | |
+
+Exactly one class is derived per request. If the first segment does not correspond to a directory, the descent stops immediately and the router produces no class at all, which `match()` reports as a **404**.
+
+The descent reads directories, so creating one changes how existing paths resolve. Before `Invoices/Lines/` exists, `GET /invoices/lines` reaches `GetInvoices` with `lines` as attribute `0`. After it exists, the same request looks for `MyApp\Action\Invoices\Lines\GetInvoicesLines` and returns a **404** until that class is written.
+
+## What the convention accepts
+
+The class name must repeat every segment of its own namespace, in order, after the verb. Anything else is not a name the convention would produce, and the class is unreachable.
+
+| Class | Path it answers |
+|---|---|
+| `MyApp\Action\Invoices\GetInvoices` | `/invoices` |
+| `MyApp\Action\Invoices\Lines\GetInvoicesLines` | `/invoices/lines` |
+| `MyApp\Action\Invoices\Lines\GetLines` | none - drops `Invoices` |
+| `MyApp\Action\Invoices\GetInvoicesLines` | none - `Lines` is not in its namespace |
+| `MyApp\Action\Invoices\GetSomethingElse` | none - does not repeat `Invoices` |
+
+An action named for an operation on its parent - `MyApp\Action\Invoices\GetInvoicesList` directly inside `Invoices/` - is not routed to. Move it into its own directory as `MyApp\Action\Invoices\List\GetInvoicesList` and the same URL resolves again.
+
+Arguments trail the static path. The descent finds the boundary between static and dynamic once, so an argument cannot sit between two static segments:
+
+```
+works          POST /invoices/cancel/42  ->  Invoices\Cancel\PostInvoicesCancel  with "42"
+does not work  POST /invoices/42/cancel  ->  Invoices\PostInvoices  with "42" and "cancel"
+```
+
+The second form still routes, but it reaches the resource action with two positional attributes rather than the action you intended. Order the path so the static part comes first.
+
+## Matching
+
+`match()` receives the request and returns a `Phalcon\Contracts\ADR\Router\RouterMatch`, or reports that nothing matched:
+
+* it returns `null` when no class matches the path (a **404**);
+* it throws `Phalcon\ADR\Exceptions\MethodNotAllowed` when the path exists under a different HTTP method (a **405**);
+* it throws `Phalcon\ADR\Exceptions\ActionDirectoryNotSet` when `setActionDirectory()` has not been called.
+
+The match carries the resolved action class, the positional attributes, and the middleware that applies. Trailing path segments arrive as positional attributes (`0`, `1`, and so on), which the action reads from the request:
+
+```php
+$id = $request->getAttributes()->get(0);
+```
+
+By default attributes arrive as raw strings, leaving casting and validation to the action or domain. An action may instead declare its parameters up front, so the router validates, casts and names them before they reach the request - see [Typed parameters](#typed-parameters).
+
+## Word separator
+
+A single separator joins words in a path segment, and the same separator applies in both directions: path to class, and class back to path. The default is `-`.
+
+```
+/user-profiles  ->  MyApp\Action\UserProfiles\GetUserProfiles
+```
+
+Any other character is literal. With the default separator, `/user_profiles` and `/user-profiles` are distinct paths and resolve to different classes.
+
+`setWordSeparator()` changes it:
+
+```php
+$router
+    ->setBaseNamespace('MyApp\\Action')
+    ->setActionDirectory(__DIR__ . '/Action')
+    ->setWordSeparator('_');
+```
+
+```
+/user_profiles  ->  MyApp\Action\UserProfiles\GetUserProfiles
+```
+
+Changing the separator changes the directory names the descent looks for, so pick one for the application and keep it.
+
+## Generating paths
+
+`pathFor()` is the inverse of the convention: give it an action class and it returns the path that action answers, or `null` when the class is not routable. Use it to build links without hard-coding URLs.
+
+```php
+$router = $container->get('router');
+
+$router
+    ->setBaseNamespace('MyApp\\Action')
+    ->setActionDirectory(__DIR__ . '/Action');
+
+$router->pathFor(Get::class);                // '/'
+$router->pathFor(GetInvoices::class);        // '/invoices'
+$router->pathFor(GetInvoicesLines::class);   // '/invoices/lines'
+```
+
+Those three actions declare no parameters, so each reverses to a static path. An action that declares [typed parameters](#typed-parameters) reverses to a path with a placeholder for each one, in declaration order, so the result is the route as it is written rather than only its static part:
+
+```php
+namespace MyApp\Action\Customers;
+
+final class GetCustomers implements Action
+{
+    public static function params(): array
+    {
+        return [
+            'id' => ['match' => '\d+', 'type' => 'int'],
+        ];
+    }
+
+    // ...
+}
+```
+
+```php
+$router->pathFor(GetCustomers::class);   // '/customers/{id}'
+```
+
+For an action without `params()`, append trailing values yourself:
+
+```php
+$url = $router->pathFor(GetInvoices::class) . '/42';   // '/invoices/42'
+```
+
+`pathFor()` returns `null` in two cases: the class is outside the configured base namespace, or its name does not repeat every segment of its namespace after the verb. See [What the convention accepts](#what-the-convention-accepts).
+
+Only the class you pass is consulted - never a parent and never a sibling - so adding or removing any other action cannot change the path this one answers.
+
+## Naming a method
+
+`methodFor()` is the other half of the inverse. Give it an action class and it returns the HTTP method that action answers, uppercased, or `null` when the class is not routable.
+
+```php
+$router = $container->get('router');
+
+$router->setBaseNamespace('MyApp\\Action');
+
+$router->methodFor(GetInvoices::class);           // 'GET'
+$router->methodFor(PostInvoices::class);          // 'POST'
+$router->methodFor(DeleteInvoicesLines::class);   // 'DELETE'
+```
+
+It takes the same argument as `pathFor()` and returns `null` on exactly the same inputs, so a caller that accepts one answer accepts the other. Together they recover the whole request an action answers, which is what a link builder, a route-listing command or an OpenAPI generator needs:
+
+```php
+$method = $router->methodFor(GetInvoices::class);   // 'GET'
+$path   = $router->pathFor(GetInvoices::class);     // '/invoices'
+```
+
+Like `pathFor()`, it derives the answer from the class name alone and never consults the filesystem, so the action directory does not have to be set.
+
+Both methods are declared on the `Phalcon\Contracts\ADR\Router\Router` contract, so a replacement router supplies them too.
+
+## Naming a class
+
+`classFor()` returns the class name the convention gives a method and a static path. The class does not have to exist.
+
+```php
+$router = $container->get('router');
+
+$router->setBaseNamespace('MyApp\\Action');
+
+$router->classFor('GET', '/invoices');
+// 'MyApp\Action\Invoices\GetInvoices'
+
+$router->classFor('GET', '/invoices/lines');
+// 'MyApp\Action\Invoices\Lines\GetInvoicesLines'
+
+$router->classFor('POST', '/session/forgot-password');
+// 'MyApp\Action\Session\ForgotPassword\PostSessionForgotPassword'
+```
+
+It reads neither the filesystem nor the class, so it needs no action directory and works for code that has not been written yet. That makes it the call for generators, linters, and "no action found; expected `X`" diagnostics.
+
+Pass the static prefix only. Placeholders are the caller's concern - `classFor()` treats `{id}` as a literal segment and would fold it into the class name.
+
+For an action that declares no parameters, `classFor()` and `pathFor()` are exact inverses:
+
+```php
+$path = $router->pathFor(GetInvoicesLines::class);   // '/invoices/lines'
+$router->classFor('GET', $path);                     // 'MyApp\Action\Invoices\Lines\GetInvoicesLines'
+```
+
+## Listing candidates
+
+`candidatesFor()` returns the action classes the router would try for a given method and path. Because the convention derives exactly one class, the list holds one entry, or none when the descent finds no matching directory for the first segment.
+
+```php
+$router = $container->get('router');
+
+$router
+    ->setBaseNamespace('MyApp\\Action')
+    ->setActionDirectory(__DIR__ . '/Action');
+
+$candidates = $router->candidatesFor('GET', '/invoices/lines');
+
+// [
+//     'MyApp\Action\Invoices\Lines\GetInvoicesLines',
+// ]
+```
+
+The entry reflects the convention, not the filesystem contents: the class in it may not exist. Because the descent consults the filesystem, the result depends on the configured action directory. This is a diagnostic tool - use it to answer "why did this path 404?" in a console command or a debug panel. Compare it against `classFor()` to tell the two failure modes apart: an empty list means no directory matched, while a single entry for a class that does not exist means the directories are there and the action is missing.
+
+## Typed parameters
+
+An action may declare a static `params()` method to have its trailing segments validated, cast and named before they reach the request. The method returns an ordered, name-keyed map; every entry is optional and may set a `match` regex, a scalar `type` (`int`, `float` or `string`) and a `convert` closure:
+
+```php
+final class GetInvoices implements Action
+{
+    public static function params(): array
+    {
+        return [
+            'id' => ['match' => '\d+', 'type' => 'int'],
+        ];
+    }
+
+    public function __invoke(AttributeRequest $request): ResponseInterface
+    {
+        // already validated as \d+ and cast to int, and read by name
+        $id = $request->getAttributes()->get('id');
+        // ...
+    }
+}
+```
+
+The declaration keys map to the positional segments in order: the first parameter names segment `0`, the second names segment `1`, and so on. For each segment the router checks it against `match` (a miss is treated as a route miss, a **404**), casts it to `type` (an unknown or omitted type leaves it a string), passes the cast value through `convert` when one is given, and stores the result under the declared name.
+
+Because `convert` receives the already-cast value, it doubles as a hydration hook - trimming a slug, resolving an enum, or building a value object:
+
+```php
+public static function params(): array
+{
+    return [
+        'on' => [
+            'match'   => '\d{4}-\d{2}-\d{2}',
+            'convert' => fn (string $value) => new DateTimeImmutable($value),
+        ],
+    ];
+}
+```
+
+A declared parameter with no matching segment is skipped - no attribute is set and no default is applied - and any segments beyond the declared parameters pass through unchanged under their positional keys. An action without a `params()` method is untouched: its segments arrive as raw, positional strings.
+
+`params()` does not take part in routing. It constrains, casts and converts attributes after a class has already been chosen, and it supplies the placeholder names that `pathFor()` emits. A wrong declaration is a validation error, never a different action.
+
+## Middleware by namespace
+
+The middleware map attaches middleware to a namespace prefix, giving you "group" semantics without a route table: every action whose class falls under the prefix inherits that middleware.
+
+```php
+$router->setMiddlewareMap([
+    '\\Admin\\'  => [RequireAdmin::class],
+    '\\Portal\\' => [RequireCustomer::class],
+]);
+```
+
+An action at `MyApp\Action\Admin\Products\DeleteAdminProducts` picks up `RequireAdmin` because its class lives under the `\Admin\` prefix. Prefixes stack, so an action nested under several of them inherits all of their middleware. Global middleware, which applies to every request regardless of namespace, is configured on the [dispatcher][dispatcher] instead. See [Middleware][middleware].
+
+[dispatcher]: /5.20/adr-dispatcher/
+[middleware]: /5.20/adr-middleware/

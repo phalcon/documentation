@@ -1,0 +1,199 @@
+---
+/** Picker for switching between docs versions. */
+import Icon from "@cloudflare/nimbus-docs/components/Icon.astro";
+import {
+  getCurrentVersion,
+  getVersionAlternates,
+  getVersionLandingUrl,
+  getVersions,
+} from "@cloudflare/nimbus-docs";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover";
+import { cn } from "@/lib/cn";
+import { STABLE_VERSION, versionTag } from "@/lib/site.mjs";
+
+interface Props {
+  collection?: string;
+  entryId?: string;
+  variant?: "header" | "sidebar";
+  class?: string;
+}
+
+const { collection, entryId, variant = "header", class: className } = Astro.props;
+
+const versions = await getVersions();
+
+let entries: {
+  version: string;
+  href: string;
+  isCurrent: boolean;
+  isActive: boolean;
+  isDeprecated: boolean;
+  tag?: string;
+}[] = [];
+let activeLabel = "";
+
+if (versions && versions.all.length >= 2) {
+  const currentPageVersion =
+    collection ? await getCurrentVersion(collection) : null;
+  const record =
+    collection && entryId
+      ? await getVersionAlternates(collection, entryId)
+      : null;
+
+  const alternateByVersion = new Map<string, string>();
+  if (record) {
+    alternateByVersion.set(record.self.version, record.self.url);
+    for (const alt of record.alternates) alternateByVersion.set(alt.version, alt.url);
+  }
+
+  const visible = versions.all.filter((v) => !versions.hidden.includes(v));
+
+  // Fallback landing URL per version, used when the current page has no same-logical-page sibling.
+  const landingByVersion = new Map<string, string | null>(
+    await Promise.all(
+      visible.map(async (v) => [v, await getVersionLandingUrl(v)] as const),
+    ),
+  );
+
+  entries = visible
+    // Drop entries with no resolvable destination — that version has
+    // no indexed pages, so there's nowhere to send the reader. Two
+    // exceptions are always kept:
+    //   - The currently-active version (reader is already on a page
+    //     in it; the picker entry is a no-op nav).
+    //   - The current version overall (the home page `/` is the
+    //     canonical landing and is shipped by the starter).
+    // The primary collection (`versions.current`) holds no documentation
+    // here: every published version is in `others`. The stable release and
+    // the pre-releases are declared in src/lib/site.mjs.
+    .filter((v) =>
+      v !== versions.current &&
+      (v === currentPageVersion || landingByVersion.get(v) != null),
+    )
+    .map((v) => {
+      const isCurrent = v === STABLE_VERSION;
+      const isActive = v === currentPageVersion;
+      const isDeprecated = versions.deprecated.includes(v);
+      const tag = versionTag(v);
+
+      let href: string;
+      const altHref = alternateByVersion.get(v);
+      if (isActive) {
+        // No-op nav: stay on this page.
+        href = Astro.url.pathname;
+      } else if (altHref) {
+        href = altHref;
+      } else if (isCurrent) {
+        // Current version always lands at the site root. `/` is the
+        // canonical "go to current" target — readers expect the home
+        // page, not a deep link into the first-by-URL indexed entry.
+        href = "/";
+      } else {
+        // No same page in that version: its root redirects to its
+        // introduction (see `redirects` in astro.config.ts).
+        href = `/${v}/`;
+      }
+
+      return { version: v, href, isCurrent, isActive, isDeprecated, tag };
+    });
+
+  const activeEntry = entries.find((e) => e.isActive);
+  activeLabel = activeEntry
+    ? activeEntry.version + (activeEntry.tag ? ` · ${activeEntry.tag}` : "")
+    : (entries[0]?.version ?? "");
+}
+---
+
+{entries.length >= 1 && variant ==="header" && (
+  <Popover class={cn("hidden md:inline-block", className)}>
+    <PopoverTrigger
+      class="inline-flex items-center gap-1.5 h-8 px-2.5 rounded-md text-[0.8125rem] font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors aria-[expanded=true]:bg-accent aria-[expanded=true]:text-foreground"
+      aria-label={`Switch docs version (current: ${activeLabel})`}
+    >
+      <Icon name="ph:git-branch" class="w-3.5 h-3.5" />
+      <span>{activeLabel}</span>
+      <Icon name="ph:caret-down" class="w-3 h-3 opacity-60" />
+    </PopoverTrigger>
+    <PopoverContent placement="bottom-end" class="min-w-[12rem] p-1">
+      <ul class="flex flex-col list-none m-0 p-0" role="listbox" aria-label="Docs versions">
+        {entries.map((entry) => (
+          <li>
+            <a
+              href={entry.href}
+              role="option"
+              aria-current={entry.isActive ? "page" : undefined}
+              aria-selected={entry.isActive}
+              class:list={[
+                "flex items-center justify-between gap-3 px-3 py-2 rounded-md text-sm no-underline transition-colors",
+                entry.isActive
+                  ? "bg-accent text-foreground font-medium"
+                  : "text-muted-foreground hover:bg-accent/60 hover:text-foreground",
+              ]}
+            >
+              <span class="flex items-center gap-2">
+                <span>{entry.version}</span>
+                {entry.tag && (
+                  <span class="text-[0.6875rem] uppercase tracking-wide text-muted-foreground/70">
+                    {entry.tag}
+                  </span>
+                )}
+              </span>
+              {entry.isDeprecated && (
+                <span class="text-[0.6875rem] uppercase tracking-wide font-mono px-1.5 py-0.5 rounded-md bg-warning/15 text-warning border border-warning/20">
+                  deprecated
+                </span>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </PopoverContent>
+  </Popover>
+)}
+
+{entries.length >= 1 && variant ==="sidebar" && (
+  <section
+    class={cn("md:hidden mb-4 pb-4 border-b border-border", className)}
+    aria-labelledby="version-picker-label"
+  >
+    <h3
+      id="version-picker-label"
+      class="flex items-center gap-1.5 text-[0.6875rem] uppercase tracking-wide font-semibold text-muted-foreground/80 mb-2 px-2"
+    >
+      <Icon name="ph:git-branch" class="w-3 h-3" />
+      Version
+    </h3>
+    <ul class="flex flex-col list-none m-0 p-0" role="listbox" aria-label="Docs versions">
+      {entries.map((entry) => (
+        <li>
+          <a
+            href={entry.href}
+            role="option"
+            aria-current={entry.isActive ? "page" : undefined}
+            aria-selected={entry.isActive}
+            class:list={[
+              "flex items-center justify-between gap-3 px-3 py-2 rounded-md text-sm no-underline transition-colors",
+              entry.isActive
+                ? "bg-accent text-foreground font-medium"
+                : "text-muted-foreground hover:bg-accent/60 hover:text-foreground",
+            ]}
+          >
+            <span class="flex items-center gap-2">
+              <span>{entry.version}</span>
+              {entry.tag && (
+                <span class="text-[0.6875rem] uppercase tracking-wide text-muted-foreground/70">
+                  {entry.tag}
+                </span>
+              )}
+            </span>
+            {entry.isDeprecated && (
+              <span class="text-[0.6875rem] uppercase tracking-wide font-mono px-1.5 py-0.5 rounded-md bg-warning/15 text-warning border border-warning/20">
+                deprecated
+              </span>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

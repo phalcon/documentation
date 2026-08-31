@@ -1,0 +1,232 @@
+---
+title: "Model Validation"
+---
+
+## Overview
+
+[Phalcon\Mvc\Model][mvc-model] provides several events to validate data and implement business rules.
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Uniqueness;
+
+class Customers extends Model
+{
+    public function validation()
+    {
+        $validator = new Validation();
+
+        $validator->add(
+            'cst_email',
+            new Uniqueness(
+                [
+                    'message' => 'The customer email must be unique',
+                ]
+            )
+        );
+
+        return $this->validate($validator);
+    }
+}
+```
+
+## Data Integrity
+
+Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforces your business rules.
+
+The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Filter\Validation][filter-validation] namespace.
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Uniqueness;
+use Phalcon\Filter\Validation\Validator\InclusionIn;
+
+class Invoices extends Model
+{
+    public function validation()
+    {
+        $validator = new Validation();
+
+        $validator->add(
+            'inv_status_flag',
+            new InclusionIn(
+                [
+                    'domain'  => [
+                        'Paid',
+                        'Unpaid',
+                    ],
+                    'message' => 'The invoice must be ' .
+                                 'either paid or unpaid',
+                ]
+            )
+        );
+
+        $validator->add(
+            'inv_number',
+            new Uniqueness(
+                [
+                    'message' => 'The invoice number must be unique',
+                ]
+            )
+        );
+
+        return $this->validate($validator);
+    }
+}
+```
+
+The above example performs a validation using the built-in validator [Phalcon\Filter\Validation\Validator\InclusionIn][validation-validator-inclusionin]. It checks the value of the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail and return `false`.
+
+:::warning[WARNING]
+For more information on validators, see the [Validation documentation][filter-validation]
+:::
+
+## Messages
+
+[Phalcon\Mvc\Model][mvc-model] utilizes the [Phalcon\Messages\Messages][messages-messages] collection to store any validation messages that have been generated during the validation process.
+
+Each message is an instance of [Phalcon\Messages\Message][messages-message] and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides additional information such as the field name that generated the message or the message type:
+
+```php
+<?php
+
+if (false === $invoice->save()) {
+    $messages = $invoice->getMessages();
+
+    foreach ($messages as $message) {
+        echo 'Message: ', $message->getMessage();
+        echo 'Field: ', $message->getField();
+        echo 'Type: ', $message->getType();
+    }
+}
+```
+
+[Phalcon\Mvc\Model][mvc-model] can generate the following types of validation messages:
+
+| Type                   | Generated when                                                                                                         |
+|------------------------|------------------------------------------------------------------------------------------------------------------------|
+| `ConstraintViolation`  | A field, part of a virtual foreign key, is trying to insert/update a value that does not exist in the referenced model |
+| `InvalidCreateAttempt` | Trying to create a record that already exists                                                                          |
+| `InvalidUpdateAttempt` | Trying to update a record that does not exist                                                                          |
+| `InvalidValue`         | A validator failed because of an invalid value                                                                         |
+| `PresenceOf`           | A field with a non `null` attribute on the database is trying to insert/update a `null` value                          |
+
+The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
+{
+    public function getMessages()
+    {
+        $messages = [];
+
+        foreach (parent::getMessages() as $message) {
+            switch ($message->getType()) {
+                case 'InvalidCreateAttempt':
+                    $messages[] = 'The record cannot be created '
+                                . 'because it already exists';
+                    break;
+
+                case 'InvalidUpdateAttempt':
+                    $messages[] = 'The record cannot be updated '
+                                . 'because it does not exist';
+                    break;
+
+                case 'PresenceOf':
+                    $messages[] = 'The field ' 
+                                . $message->getField() 
+                                . ' is mandatory';
+                    break;
+            }
+        }
+
+        return $messages;
+    }
+}
+```
+
+### Iteration and Type Enforcement
+The collection returned by `getMessages()` is a [Phalcon\Messages\Messages][messages-messages] instance. It is iterated by integer position. A message stored under a string key through the array-access interface stays reachable by that offset but is not visited during a `foreach` loop.
+
+```php
+<?php
+
+use Phalcon\Messages\Message;
+use Phalcon\Messages\Messages;
+
+$messages = new Messages();
+
+$messages->appendMessage(new Message('Visited during iteration'));
+$messages['summary'] = new Message('Reachable by offset only');
+
+foreach ($messages as $message) {
+    echo $message->getMessage(), "\n"; // "Visited during iteration"
+}
+```
+
+Every entry must implement `Phalcon\Messages\MessageInterface`. Assigning any other type through the array-access interface throws `Phalcon\Messages\Exceptions\MessageNotObject` with the message `The message must be an instance of MessageInterface`. The `appendMessages()` method throws `Phalcon\Messages\Exceptions\MessagesNotIterable` when its argument is neither an array nor a `Traversable`. The collection implements the `Phalcon\Contracts\Messages\Messages` contract, which application code can type-hint against instead of the concrete class.
+
+## Failed Events
+
+Additional events are available when the data validation process finds any inconsistencies:
+
+| Operation                | Name                | Explanation                                                            |
+|--------------------------|---------------------|------------------------------------------------------------------------|
+| Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
+| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
+
+## Custom
+
+The [validation][filter-validation] document explains in detail how you can create your own validators. You can use such validators and reuse them among several models. A validator also can be as simple as:
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Messages\Message;
+
+class Invoices extends Model
+{
+    public function validation()
+    {
+        if ('Unpaid' === $this->inv_type_flag) {
+            $message = new Message(
+                'Unpaid invoices are not allowed',
+                'inv_type_flag',
+                'UnpaidInvoiceType'
+            );
+
+            $this->appendMessage($message);
+
+            return false;
+        }
+
+        return true;
+    }
+}
+```
+
+[filter-validation]: /5.19/filter-validation/
+[messages-message]: /5.19/api/phalcon_messages/#messagesmessage
+[messages-messages]: /5.19/api/phalcon_messages/#messagesmessages
+[mvc-model]: /5.19/api/phalcon_mvc/#mvcmodel
+[mvc-model-validationfailed]: /5.19/api/phalcon_mvc/#mvcmodelvalidationfailed
+[validation-validator-inclusionin]: /5.19/api/phalcon_filter/#filtervalidationvalidatorinclusionin
