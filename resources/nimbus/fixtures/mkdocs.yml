@@ -1,0 +1,15 @@
+site_name: Fixture
+markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+nav:
+  - Home:
+      - Introduction: introduction.md
+plugins:
+  - search
+  - redirects:
+      redirect_maps:
+        'index.md': 'introduction.md'
+        'loader.md': 'autoload.md'
+        'old.md': 'new.md#section'
