@@ -4,10 +4,6 @@ title: "Dependency Injection / Service Location"
 
 ## Overview
 
-:::info[NOTE]
-Phalcon also provides `Phalcon\Container\Container` - a modern dependency injection container with autowiring, service lifetimes, lazy values, service tags, and decorator support. It is the recommended choice for new projects and can be used as a full drop-in replacement for `Di`. See the [Container documentation][container] for details.
-:::
-
 [Phalcon\Di\Di][di] is a container that stores services or components (classes). These services are available throughout
 the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that
 performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record
@@ -1887,7 +1883,6 @@ mode. Existing `catch (Phalcon\Di\Exception $e)` blocks continue to work unchang
 | `Phalcon\Di\Exceptions\SetterParametersMustBeArray`       | `Phalcon\Di\Exception` | A setter-injection entry's parameter list is not an array.                           |
 | `Phalcon\Di\Exceptions\UnknownServiceType`                | `Phalcon\Di\Exception` | A service-resolution argument has an unrecognized `type`.                            |
 
-[container]: /5.13/container/
 
 [di]: /5.13/api/phalcon_di/#didi
 
