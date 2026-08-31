@@ -1027,6 +1027,91 @@ $connection = new Mysql(
 );
 ```
 
+## Connection Liveness and Auto-Reconnect
+
+Long-running processes such as queue workers, daemons, and CLI loops can hold a connection open longer than the database server permits. When the server closes an idle connection (for example through the MySQL `wait_timeout` setting), the next query fails with a "server has gone away" error. The PDO adapters provide a liveness probe, an in-place reconnect, and an opt-in transparent retry to handle this.
+
+- MySQL recognizes a lost connection from driver error codes `2006` and `2013`
+- PostgreSQL recognizes it from SQLSTATE `08003`, `08006`, `57P01`, `57P02`, and `57P03`, with a message fallback
+- SQLite is file-based and has no "gone away" condition, so auto-reconnect is a no-op
+
+**Checking the connection**
+
+`ping()` runs a `SELECT 1` and returns `true` when the connection is alive, or `false` when there is no handle or the probe fails. `ensureConnection()` calls `ping()` and reconnects in place when the probe fails. Call it at the top of a long-running loop iteration.
+
+```php
+<?php
+
+use Phalcon\Db\Adapter\Pdo\Mysql;
+
+$connection = new Mysql(
+[
+    'host'     => 'localhost',
+    'username' => 'root',
+    'password' => 'secret',
+    'dbname'   => 'tutorial',
+]
+);
+
+$connection->ensureConnection();
+
+$invoices = $connection->fetchAll('SELECT * FROM co_invoices');
+```
+
+**Automatic reconnect**
+
+Auto-reconnect is disabled by default. Enable it with the `autoReconnect` descriptor key or the `setAutoReconnect()` method. When it is enabled and a query fails on a lost connection outside a transaction, `execute()` and `query()` reconnect and retry the statement once. A failure inside a transaction is re-thrown without a retry, because the transaction state is lost when the connection drops and only the caller can restart it. `getAutoReconnect()` returns the current setting.
+
+```php
+<?php
+
+use Phalcon\Db\Adapter\Pdo\Mysql;
+
+$connection = new Mysql(
+[
+    'host'          => 'localhost',
+    'username'      => 'root',
+    'password'      => 'secret',
+    'dbname'        => 'tutorial',
+    'autoReconnect' => true,
+]
+);
+
+// Or toggle it at runtime
+$connection->setAutoReconnect(true);
+```
+
+When a lost connection is detected and auto-reconnect is enabled, the adapter fires the `db:connectionLost` event before it reconnects. Bind an [Events Manager][events] to act on it.
+
+```php
+<?php
+
+use Phalcon\Db\Adapter\Pdo\Mysql;
+use Phalcon\Events\Event;
+use Phalcon\Events\Manager;
+
+$manager = new Manager();
+
+$manager->attach(
+'db:connectionLost',
+function (Event $event, $connection) {
+    // log the loss, increment a metric, etc.
+}
+);
+
+$connection = new Mysql(
+[
+    'host'          => 'localhost',
+    'username'      => 'root',
+    'password'      => 'secret',
+    'dbname'        => 'tutorial',
+    'autoReconnect' => true,
+]
+);
+
+$connection->setEventsManager($manager);
+```
+
 ## Create
 
 To insert a row in the database, you can use raw SQL or use the methods presented by the adapter:

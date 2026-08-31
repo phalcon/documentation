@@ -119,7 +119,6 @@
 - [Version Component](https://docs.phalcon.io/5.12/support-version/index.md)
 - [Tag (View Helpers)](https://docs.phalcon.io/5.12/tag/index.md)
 - [Testing Environment](https://docs.phalcon.io/5.12/testing-environment/index.md)
-- [Clock Component](https://docs.phalcon.io/5.12/time-clock/index.md)
 - [Translation Component](https://docs.phalcon.io/5.12/translate/index.md)
 - [Tutorial - Basic](https://docs.phalcon.io/5.12/tutorial-basic/index.md)
 - [Tutorial - INVO](https://docs.phalcon.io/5.12/tutorial-invo/index.md)

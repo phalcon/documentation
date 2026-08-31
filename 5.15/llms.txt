@@ -108,7 +108,7 @@
 - [New Feature Request](https://docs.phalcon.io/5.15/new-feature-request/index.md)
 - [New Pull Request](https://docs.phalcon.io/5.15/new-pull-request/index.md)
 - [Performance](https://docs.phalcon.io/5.15/performance/index.md)
-- [Queueing](https://docs.phalcon.io/5.15/queue/index.md)
+- [Queue Component](https://docs.phalcon.io/5.15/queue/index.md)
 - [Release History](https://docs.phalcon.io/5.15/releases/index.md)
 - [Reproducible Tests](https://docs.phalcon.io/5.15/reproducible-tests/index.md)
 - [Request Component](https://docs.phalcon.io/5.15/request/index.md)
