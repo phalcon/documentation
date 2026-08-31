@@ -11,10 +11,6 @@ version: "5.11"
 
 ## Overview
 
-:::info[NOTE]
-Phalcon also provides `Phalcon\Container\Container` — a modern dependency injection container with autowiring, service lifetimes, lazy values, service tags, and decorator support. It is the recommended choice for new projects and can be used as a full drop-in replacement for `Di`. See the [Container documentation][container] for details.
-:::
-
 [Phalcon\Di\Di][di] is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
 
 Our component can be implemented as follows:
@@ -1635,7 +1631,6 @@ echo $ex->getMessage();
 ## Custom
 The [Phalcon\Di\DiInterface][di-diinterface] interface must be implemented to create your own DI replacing the one provided by Phalcon or extending the current one. You can also utilize the [Phalcon\Di\ServiceInterface][di-serviceinterface] to create your own implementations of services and how they resolve in the DI container.
 
-[container]: /5.11/container/
 [di]: /5.11/api/phalcon_di/#didi
 [di-abstractinjectionaware]: /5.11/api/phalcon_di/#diabstractinjectionaware
 [di-diinterface]: /5.11/api/phalcon_di/#didiinterface
