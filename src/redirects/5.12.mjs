@@ -121,7 +121,6 @@ export default {
   "/5.12/en/support-version/": "/5.12/support-version/",
   "/5.12/en/tag/": "/5.12/tag/",
   "/5.12/en/testing-environment/": "/5.12/testing-environment/",
-  "/5.12/en/time-clock/": "/5.12/time-clock/",
   "/5.12/en/translate/": "/5.12/translate/",
   "/5.12/en/tutorial-basic/": "/5.12/tutorial-basic/",
   "/5.12/en/tutorial-invo/": "/5.12/tutorial-invo/",
