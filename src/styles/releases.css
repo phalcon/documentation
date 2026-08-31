@@ -1,0 +1,85 @@
+/* ============================================================
+   Release history page - the version table and its legend.
+
+   Port of the "Releases page" rules of docs/assets/css/extra.css.
+   The colour of a row says what the version is: green the latest,
+   yellow an older version that is still maintained. The legend
+   repeats the same colours as a swatch on the left of each label,
+   and adds red for an old version and blue for a future release.
+
+   The cell rules are restated here because prose.css styles the
+   cells of a table that carry no class (`td:not([class])`), and
+   every cell of this table carries one.
+   ============================================================ */
+
+:root {
+    --release-latest: #d4f4b4;
+    --release-maintained: #fef8c6;
+    --release-old: #fdb3ab;
+    --release-future: #c1e6f5;
+}
+
+/* Muted for the dark theme: the same four colours, dark enough for the
+   text of the theme to stay readable on a coloured row. */
+[data-mode="dark"] {
+    --release-latest: #2c4a1f;
+    --release-maintained: #4a4318;
+    --release-old: #52241f;
+    --release-future: #17394d;
+}
+
+.docs-content .version-th-center,
+.docs-content .version-th-right,
+.docs-content .version-td-center,
+.docs-content .version-td-right {
+    padding: 0.625rem 0.75rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--nb-border);
+}
+
+.docs-content .version-th-center,
+.docs-content .version-th-right {
+    background: var(--nb-muted);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    white-space: nowrap;
+}
+
+.docs-content .version-th-center,
+.docs-content .version-td-center {
+    text-align: center;
+}
+
+.docs-content .version-th-right,
+.docs-content .version-td-right {
+    text-align: right;
+}
+
+.docs-content .current-version {
+    background-color: var(--release-latest);
+}
+
+.docs-content .previous-version {
+    background-color: var(--release-maintained);
+}
+
+.docs-content .legend {
+    padding-left: 0.3em;
+    white-space: nowrap;
+}
+
+.docs-content .legend-old-version {
+    border-left: 1.2em solid var(--release-old);
+}
+
+.docs-content .legend-old-version-supported {
+    border-left: 1.2em solid var(--release-maintained);
+}
+
+.docs-content .legend-latest {
+    border-left: 1.2em solid var(--release-latest);
+}
+
+.docs-content .legend-future {
+    border-left: 1.2em solid var(--release-future);
+}

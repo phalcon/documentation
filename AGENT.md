@@ -43,7 +43,7 @@ src/
 ├── components/                 # AgentDirective, Header, Render + ui/<slug>/ (registry components)
 ├── content/
 │   ├── docs/index.mdx          # placeholder only — the primary collection is empty on purpose
-│   ├── docs-<version>/*.mdx    # the pages of a version (6.0, 5.20 … 5.11, 5.9 … 5.4; no 5.10)
+│   ├── docs-<version>/*.mdx    # the pages of a version (6.0, 5.20 … 5.11, 5.9 … 5.4, 4.2, 3.4)
 │   └── partials/*.mdx          # referenced with <Render file="..." />
 ├── content.config.ts           # GENERATED — registers docs-<version> collections
 ├── versions.generated.mjs      # GENERATED — the sidebar/redirect registry
@@ -57,7 +57,7 @@ src/
 │   ├── llms.txt.ts, llms-full.txt.ts, robots.txt.ts, og.png.ts, og/, 404.astro
 ├── layouts/                    # BaseLayout (head, fan art, AgentDirective), DocsLayout
 ├── lib/
-│   ├── site.mjs                # STABLE_VERSIONS, PRERELEASES, versionBanner, versionTag, analytics
+│   ├── site.mjs                # STABLE_VERSIONS, PRERELEASES, DEPRECATED, versionBanner, analytics
 │   ├── mkdocs-heading-ids.mjs  # the MkDocs heading ids
 │   ├── version-sidebar.mjs     # the rail of one version
 │   └── cn.ts                   # Tailwind className merger
@@ -66,7 +66,6 @@ src/
 
 public/assets/images/           # images, shared by all versions, referenced as /assets/images/...
 resources/nimbus/               # convert.py, its tests, templates, per-version overrides, parity.sh
-resources/legacy/{3.4,4.1,4.2}/ # MkDocs sources not converted yet
 scripts/                        # new-version.sh, update-nfr.mjs
 patches/                        # nimbus patch that allows the dot in `docs-5.20`
 ```
@@ -123,9 +122,9 @@ Rules:
 | Add an image | Put it in `public/assets/images/content/` and reference `/assets/images/content/<file>`. |
 | Add a partial | Create `src/content/partials/<slug>.mdx`, use `<Render file="<slug>" />`. |
 | Cut a new version | `scripts/new-version.sh 5.20 5.21`, then set `STABLE_VERSIONS` or `PRERELEASES` in `src/lib/site.mjs` when it is published. |
-| Publish a version | `STABLE_VERSIONS[0]` in `src/lib/site.mjs` is where `/` and `/latest/` lead and carries the "latest" tag. Stable versions show no banner; every other version gets the caution banner from `versionBanner()`. |
+| Publish a version | `STABLE_VERSIONS[0]` in `src/lib/site.mjs` is where `/` and `/latest/` lead and carries the "latest" tag. Stable versions show no banner; a version in `DEPRECATED` gets nimbus's deprecation banner and the Pagefind `status:deprecated` facet; every other version gets the caution banner from `versionBanner()`. |
 | Refresh the NFR page | `docker run --rm -v "$PWD":/docs phalcon-docs pnpm run update-nfr` (writes it in every version). |
-| Convert a legacy version | `convert.py --version 4.2 --source resources/legacy/4.2/docs --nav resources/legacy/4.2/mkdocs.yml`, then `convert.py --register`. Replace a converted page by hand from `resources/nimbus/overrides/` (see its README). |
+| Convert a MkDocs version | `convert.py --version <v> --source <checkout>/docs --nav <checkout>/mkdocs.yml --skip-locale-redirects`, then `convert.py --register`. Every version is converted already; the converter stays for a branch still in MkDocs form. Replace a converted page by hand from `resources/nimbus/overrides/` (see its README). |
 | Compare with the old site | `resources/nimbus/parity.sh <version>` — URLs and heading ids of `dist/<version>` against `gh-pages/<version>`. |
 | Install a registry component | `pnpm exec nimbus-docs add <slug>`, then register it in `src/components.ts` if `.mdx` uses it. |
 | Upgrade nimbus | Re-check `patches/@cloudflare__nimbus-docs@<version>.patch` (it allows the dot in a collection key). `pnpm exec nimbus-docs outdated`, `diff <file>`, `add <slug> --overwrite`. |

@@ -3,7 +3,7 @@
 Usage (in the converter image, repository root as work dir):
 
     docker run --rm -v "$PWD":/docs phalcon-docs-converter resources/nimbus/convert.py \
-        --version 4.2 --source resources/legacy/4.2/docs --nav resources/legacy/4.2/mkdocs.yml
+        --version 4.2 --source <mkdocs checkout>/docs --nav <mkdocs checkout>/mkdocs.yml
     docker run --rm -v "$PWD":/docs phalcon-docs-converter resources/nimbus/convert.py --register
 
 A conversion:

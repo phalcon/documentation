@@ -49,7 +49,7 @@ export const PRERELEASES = { "6.0": "beta" };
  * deprecation banner, a sidebar badge and the Pagefind `status:deprecated`
  * facet, so `versionBanner()` adds nothing for them.
  */
-export const DEPRECATED = ["3.4"];
+export const DEPRECATED = ["4.2", "3.4"];
 
 /** The picker tag of a version, or undefined. */
 export function versionTag(version, stable = STABLE_VERSIONS, prereleases = PRERELEASES) {

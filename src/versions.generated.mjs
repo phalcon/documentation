@@ -33,11 +33,13 @@ import sidebar_5_5 from "./sidebar/5.5.mjs";
 import redirects_5_5 from "./redirects/5.5.mjs";
 import sidebar_5_4 from "./sidebar/5.4.mjs";
 import redirects_5_4 from "./redirects/5.4.mjs";
+import sidebar_4_2 from "./sidebar/4.2.mjs";
+import redirects_4_2 from "./redirects/4.2.mjs";
 import sidebar_3_4 from "./sidebar/3.4.mjs";
 import redirects_3_4 from "./redirects/3.4.mjs";
 
 /** Published versions, newest first: the order of the version picker. */
-export const versions = ["6.0", "5.20", "5.19", "5.18", "5.17", "5.16", "5.15", "5.14", "5.13", "5.12", "5.11", "5.9", "5.8", "5.7", "5.6", "5.5", "5.4", "3.4"];
+export const versions = ["6.0", "5.20", "5.19", "5.18", "5.17", "5.16", "5.15", "5.14", "5.13", "5.12", "5.11", "5.9", "5.8", "5.7", "5.6", "5.5", "5.4", "4.2", "3.4"];
 
 export const sidebars = {
   "6.0": sidebar_6_0,
@@ -57,6 +59,7 @@ export const sidebars = {
   "5.6": sidebar_5_6,
   "5.5": sidebar_5_5,
   "5.4": sidebar_5_4,
+  "4.2": sidebar_4_2,
   "3.4": sidebar_3_4,
 };
 
@@ -78,5 +81,6 @@ export const redirects = {
   ...redirects_5_6,
   ...redirects_5_5,
   ...redirects_5_4,
+  ...redirects_4_2,
   ...redirects_3_4,
 };

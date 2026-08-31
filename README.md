@@ -18,10 +18,9 @@ The site is an [Astro](https://astro.build) project using [nimbus-docs](https://
 | `src/redirects/<version>.mjs` | The redirects of a version (old URLs) |
 | `src/pages/<version>/` | The routes of a version (generated, do not edit) |
 | `src/versions.generated.mjs`, `src/content.config.ts` | Generated registry of the versions (do not edit) |
-| `src/lib/site.mjs` | Stable releases, pre-releases, analytics |
+| `src/lib/site.mjs` | Stable releases, pre-releases, deprecated versions, analytics |
 | `public/assets/images/` | Images, shared by all versions |
 | `resources/nimbus/` | Converter from the former MkDocs sources, templates, tests |
-| `resources/legacy/` | MkDocs sources of 3.4, 4.1 and 4.2, not converted yet |
 
 All tooling runs in Docker; nothing needs to be installed on the host.
 
@@ -51,14 +50,20 @@ Then edit `src/content/docs-5.21/`, and set `STABLE_VERSIONS` (or
 `PRERELEASES`) in `src/lib/site.mjs` when the version is published. The
 first entry of `STABLE_VERSIONS` is where `/` and `/latest/` lead.
 
-### Convert a MkDocs version (legacy)
+### Convert a MkDocs version
+
+Every version is converted; the converter is kept for a version that is still
+in MkDocs form. Point it at a checkout of that branch:
 
 ```bash
 docker build -t phalcon-docs-converter resources/docker/converter
 docker run --rm -v "$PWD":/docs phalcon-docs-converter resources/nimbus/convert.py \
-    --version 4.2 --source resources/legacy/4.2/docs --nav resources/legacy/4.2/mkdocs.yml
+    --version 4.2 --source <checkout>/docs --nav <checkout>/mkdocs.yml --skip-locale-redirects
 docker run --rm -v "$PWD":/docs phalcon-docs-converter resources/nimbus/convert.py --register
 ```
+
+`--skip-locale-redirects` drops the redirects of the translations of the old
+multilingual site (one per page per language, one file each in the build).
 
 ### Deployment
 

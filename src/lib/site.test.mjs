@@ -26,7 +26,8 @@ test("with two stable releases, an older 5.x points to 5.20 and nothing shows on
   assert.equal(versionBanner("6.0", stable, {}), null);
   assert.equal(versionBanner("5.20", stable, {}), null);
   assert.match(versionBanner("5.19", stable, {}).content, /<a href="\/5.20\/">5.20<\/a>/);
-  assert.match(versionBanner("4.2", stable, {}).content, /<a href="\/6.0\/">6.0<\/a>/);
+  // 4.2 is deprecated in production, so the fallback is asserted on its own.
+  assert.match(versionBanner("4.2", stable, {}, []).content, /<a href="\/6.0\/">6.0<\/a>/);
 });
 
 test("a deprecated version has no banner of ours; nimbus shows its own", () => {
