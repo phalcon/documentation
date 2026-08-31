@@ -15,8 +15,7 @@ All classes are prefixed with `Phalcon`
 
 ## Encryption\Crypt
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt.php">Source on GitHub</a>
+Class
 
 Provides encryption capabilities to Phalcon applications.
 
@@ -36,306 +35,154 @@ $encrypted = $crypt->encrypt($input, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Crypt`** - implements [`Phalcon\Encryption\Crypt\CryptInterface`](#encryptioncryptcryptinterface)
 
-</div>
-
-__Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\Exception\DecryptionFailed` · `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey` · `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey` · `Phalcon\Encryption\Crypt\Exception\EncryptionFailed` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength` · `Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength` · `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize` · `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed` · `Phalcon\Encryption\Crypt\Exception\Mismatch` · `Phalcon\Encryption\Crypt\Exception\MissingAuthData` · `Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension` · `Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed` · `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm` · `Phalcon\Encryption\Crypt\PadFactory` · `Phalcon\Traits\Php\HashTrait` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\OpensslTrait` · `Throwable`
+`Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\Exception\DecryptionFailed` · `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey` · `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey` · `Phalcon\Encryption\Crypt\Exception\EncryptionFailed` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength` · `Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength` · `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize` · `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed` · `Phalcon\Encryption\Crypt\Exception\Mismatch` · `Phalcon\Encryption\Crypt\Exception\MissingAuthData` · `Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension` · `Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed` · `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm` · `Phalcon\Encryption\Crypt\PadFactory` · `Phalcon\Traits\Php\HashTrait` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\OpensslTrait` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncrypt-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$cipher</span><span class="sm"> = self::DEFAULT_CIPHER</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useSigning</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">PadFactory|null</span> <span class="sv">$padFactory</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Crypt constructor.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-decrypt">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">decrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Decrypts an encrypted text.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-decryptbase64">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">decryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$safe</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Decrypt a text that is coded as a base64 string.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-encrypt">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">encrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Encrypts a text.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-encryptbase64">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">encryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$safe</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Encrypts a text returning the result as a base64 string.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-getauthdata">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAuthData</span>()</code>
-<span class="desc">Returns the auth data</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-getauthtag">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAuthTag</span>()</code>
-<span class="desc">Returns the auth tag</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-getauthtaglength">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getAuthTagLength</span>()</code>
-<span class="desc">Returns the auth tag length</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-getavailableciphers">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAvailableCiphers</span>()</code>
-<span class="desc">Returns a list of available ciphers.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-getavailablehashalgorithms">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAvailableHashAlgorithms</span>()</code>
-<span class="desc">Return a list of registered hashing algorithms suitable for hash_hmac.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-getcipher">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getCipher</span>()</code>
-<span class="desc">Returns the current cipher</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-gethashalgorithm">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getHashAlgorithm</span>()</code>
-<span class="desc">Get the name of hashing algorithm.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-getkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getKey</span>()</code>
-<span class="desc">Returns the encryption key</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-isvaliddecryptlength">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isValidDecryptLength</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-<span class="desc">Returns if the input length for decryption is valid or not</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-setauthdata">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setAuthData</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncrypt-setauthtag">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setAuthTag</span>( <span class="st">string</span> <span class="sv">$tag</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncrypt-setauthtaglength">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setAuthTagLength</span>( <span class="st">int</span> <span class="sv">$length</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncrypt-setcipher">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setCipher</span>( <span class="st">string</span> <span class="sv">$cipher</span> )</code>
-<span class="desc">Sets the cipher algorithm for data encryption and decryption.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-sethashalgorithm">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setHashAlgorithm</span>( <span class="st">string</span> <span class="sv">$hashAlgorithm</span> )</code>
-<span class="desc">Set the name of hashing algorithm.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-setkey">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setKey</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Sets the encryption key.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-setpadding">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setPadding</span>( <span class="st">int</span> <span class="sv">$scheme</span> )</code>
-<span class="desc">Changes the padding scheme used.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-usesigning">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">useSigning</span>( <span class="st">bool</span> <span class="sv">$useSigning</span> )</code>
-<span class="desc">Sets if the calculating message digest must used.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-checkcipherhashisavailable">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">checkCipherHashIsAvailable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$cipher</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
-<span class="desc">Checks if a cipher or a hash algorithm is available</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-cryptpadtext">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">cryptPadText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$paddingType</span></span>)</code>
-<span class="desc">Pads texts before encryption. See</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-cryptunpadtext">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">cryptUnpadText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$paddingType</span></span>)</code>
-<span class="desc">Removes a padding from a text.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-decryptgcmccmauth">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">decryptGcmCcmAuth</span>(<span class="prm"><span class="st">string</span> <span class="sv">$mode</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cipherText</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$decryptKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$iv</span></span>)</code>
-</a>
-<a class="api-item" href="#encryptioncrypt-decryptgetunpadded">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">decryptGetUnpadded</span>(<span class="prm"><span class="st">string</span> <span class="sv">$mode</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$decrypted</span></span>)</code>
-</a>
-<a class="api-item" href="#encryptioncrypt-encryptgcmccm">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">encryptGcmCcm</span>(<span class="prm"><span class="st">string</span> <span class="sv">$mode</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$padded</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encryptKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$iv</span></span>)</code>
-</a>
-<a class="api-item" href="#encryptioncrypt-encryptgetpadded">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">encryptGetPadded</span>(<span class="prm"><span class="st">string</span> <span class="sv">$mode</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span></span>)</code>
-</a>
-<a class="api-item" href="#encryptioncrypt-initializeavailableciphers">
-<code class="vis vis-protected">protected</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">initializeAvailableCiphers</span>()</code>
-<span class="desc">Initialize available cipher algorithms.</span>
-</a>
-</div>
+<ApiItem href="#encryptioncrypt-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"cipher","default":"self::DEFAULT_CIPHER"},{"type":"bool","name":"useSigning","default":"true"},{"type":"PadFactory|null","name":"padFactory","default":"null"}]}>
+Crypt constructor.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-decrypt" visibility="public" name="decrypt" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
+Decrypts an encrypted text.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-decryptbase64" visibility="public" name="decryptBase64" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"},{"type":"bool","name":"safe","default":"false"}]}>
+Decrypt a text that is coded as a base64 string.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-encrypt" visibility="public" name="encrypt" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
+Encrypts a text.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-encryptbase64" visibility="public" name="encryptBase64" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"},{"type":"bool","name":"safe","default":"false"}]}>
+Encrypts a text returning the result as a base64 string.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-getauthdata" visibility="public" name="getAuthData" returnType="string" params={[]}>
+Returns the auth data
+</ApiItem>
+<ApiItem href="#encryptioncrypt-getauthtag" visibility="public" name="getAuthTag" returnType="string" params={[]}>
+Returns the auth tag
+</ApiItem>
+<ApiItem href="#encryptioncrypt-getauthtaglength" visibility="public" name="getAuthTagLength" returnType="int" params={[]}>
+Returns the auth tag length
+</ApiItem>
+<ApiItem href="#encryptioncrypt-getavailableciphers" visibility="public" name="getAvailableCiphers" returnType="array" params={[]}>
+Returns a list of available ciphers.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-getavailablehashalgorithms" visibility="public" name="getAvailableHashAlgorithms" returnType="array" params={[]}>
+Return a list of registered hashing algorithms suitable for hash_hmac.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-getcipher" visibility="public" name="getCipher" returnType="string" params={[]}>
+Returns the current cipher
+</ApiItem>
+<ApiItem href="#encryptioncrypt-gethashalgorithm" visibility="public" name="getHashAlgorithm" returnType="string" params={[]}>
+Get the name of hashing algorithm.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-getkey" visibility="public" name="getKey" returnType="string" params={[]}>
+Returns the encryption key
+</ApiItem>
+<ApiItem href="#encryptioncrypt-isvaliddecryptlength" visibility="public" name="isValidDecryptLength" returnType="bool" params={[{"type":"string","name":"input","default":null}]}>
+Returns if the input length for decryption is valid or not
+</ApiItem>
+<ApiItem href="#encryptioncrypt-setauthdata" visibility="public" name="setAuthData" returnType="CryptInterface" params={[{"type":"string","name":"data","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncrypt-setauthtag" visibility="public" name="setAuthTag" returnType="CryptInterface" params={[{"type":"string","name":"tag","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncrypt-setauthtaglength" visibility="public" name="setAuthTagLength" returnType="CryptInterface" params={[{"type":"int","name":"length","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncrypt-setcipher" visibility="public" name="setCipher" returnType="CryptInterface" params={[{"type":"string","name":"cipher","default":null}]}>
+Sets the cipher algorithm for data encryption and decryption.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-sethashalgorithm" visibility="public" name="setHashAlgorithm" returnType="static" params={[{"type":"string","name":"hashAlgorithm","default":null}]}>
+Set the name of hashing algorithm.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-setkey" visibility="public" name="setKey" returnType="CryptInterface" params={[{"type":"string","name":"key","default":null}]}>
+Sets the encryption key.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-setpadding" visibility="public" name="setPadding" returnType="CryptInterface" params={[{"type":"int","name":"scheme","default":null}]}>
+Changes the padding scheme used.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-usesigning" visibility="public" name="useSigning" returnType="CryptInterface" params={[{"type":"bool","name":"useSigning","default":null}]}>
+Sets if the calculating message digest must used.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-checkcipherhashisavailable" visibility="protected" name="checkCipherHashIsAvailable" returnType="void" params={[{"type":"string","name":"cipher","default":null},{"type":"string","name":"type","default":null}]}>
+Checks if a cipher or a hash algorithm is available
+</ApiItem>
+<ApiItem href="#encryptioncrypt-cryptpadtext" visibility="protected" name="cryptPadText" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string","name":"mode","default":null},{"type":"int","name":"blockSize","default":null},{"type":"int","name":"paddingType","default":null}]}>
+Pads texts before encryption. See
+</ApiItem>
+<ApiItem href="#encryptioncrypt-cryptunpadtext" visibility="protected" name="cryptUnpadText" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string","name":"mode","default":null},{"type":"int","name":"blockSize","default":null},{"type":"int","name":"paddingType","default":null}]}>
+Removes a padding from a text.
+</ApiItem>
+<ApiItem href="#encryptioncrypt-decryptgcmccmauth" visibility="protected" name="decryptGcmCcmAuth" returnType="string" params={[{"type":"string","name":"mode","default":null},{"type":"string","name":"cipherText","default":null},{"type":"string","name":"decryptKey","default":null},{"type":"string","name":"iv","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncrypt-decryptgetunpadded" visibility="protected" name="decryptGetUnpadded" returnType="string" params={[{"type":"string","name":"mode","default":null},{"type":"int","name":"blockSize","default":null},{"type":"string","name":"decrypted","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncrypt-encryptgcmccm" visibility="protected" name="encryptGcmCcm" returnType="string" params={[{"type":"string","name":"mode","default":null},{"type":"string","name":"padded","default":null},{"type":"string","name":"encryptKey","default":null},{"type":"string","name":"iv","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncrypt-encryptgetpadded" visibility="protected" name="encryptGetPadded" returnType="string" params={[{"type":"string","name":"mode","default":null},{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncrypt-initializeavailableciphers" visibility="protected" name="initializeAvailableCiphers" returnType="static" params={[]}>
+Initialize available cipher algorithms.
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">DEFAULT_ALGORITHM</span><span class="sm"> = &quot;sha256&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">DEFAULT_CIPHER</span><span class="sm"> = &quot;aes-256-cfb&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">PADDING_ANSI_X_923</span><span class="sm"> = 1</span></code>
-<span class="desc">Padding</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">PADDING_DEFAULT</span><span class="sm"> = 0</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">PADDING_ISO_10126</span><span class="sm"> = 3</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">PADDING_ISO_IEC_7816_4</span><span class="sm"> = 4</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">PADDING_PKCS7</span><span class="sm"> = 2</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">PADDING_SPACE</span><span class="sm"> = 6</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">PADDING_ZERO</span><span class="sm"> = 5</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="DEFAULT_ALGORITHM" type="string" default="&quot;sha256&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="DEFAULT_CIPHER" type="string" default="&quot;aes-256-cfb&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PADDING_ANSI_X_923" type="int" default="1">
+Padding
+</ApiItem>
+<ApiItem kind="constant" name="PADDING_DEFAULT" type="int" default="0">
+</ApiItem>
+<ApiItem kind="constant" name="PADDING_ISO_10126" type="int" default="3">
+</ApiItem>
+<ApiItem kind="constant" name="PADDING_ISO_IEC_7816_4" type="int" default="4">
+</ApiItem>
+<ApiItem kind="constant" name="PADDING_PKCS7" type="int" default="2">
+</ApiItem>
+<ApiItem kind="constant" name="PADDING_SPACE" type="int" default="6">
+</ApiItem>
+<ApiItem kind="constant" name="PADDING_ZERO" type="int" default="5">
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$authData</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$authTag</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$authTagLength</span><span class="sm"> = 16</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$availableCiphers</span><span class="sm"> = []</span></code>
-<span class="desc">Available cipher methods.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$cipher</span><span class="sm"> = self::DEFAULT_CIPHER</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$hashAlgorithm</span><span class="sm"> = self::DEFAULT_ALGORITHM</span></code>
-<span class="desc">The name of hashing algorithm.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$hashLengthCache</span><span class="sm"> = []</span></code>
-<span class="desc">Memoized <code>strlen(hash($algo, &quot;&quot;, true))</code> results, keyed by algorithm name. The hash output length is deterministic for a given algorithm, so this collapses the per-decrypt strlen+hash call to a single hash lookup after warm-up.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$ivLength</span><span class="sm"> = 16</span></code>
-<span class="desc">The cipher iv length.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$key</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">PadFactory</code>
-<code class="sig"><span class="sv">$padFactory</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$padding</span><span class="sm"> = 0</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$useSigning</span><span class="sm"> = true</span></code>
-<span class="desc">Whether calculating message digest enabled or not.</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="authData" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="authTag" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="authTagLength" type="int" default="16">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="availableCiphers" type="array" default="[]">
+Available cipher methods.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="cipher" type="string" default="self::DEFAULT_CIPHER">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="hashAlgorithm" type="string" default="self::DEFAULT_ALGORITHM">
+The name of hashing algorithm.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="hashLengthCache" type="array" default="[]">
+Memoized `strlen(hash($algo, "", true))` results, keyed by
+algorithm name. The hash output length is deterministic for a
+given algorithm, so this collapses the per-decrypt strlen+hash
+call to a single hash lookup after warm-up.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="ivLength" type="int" default="16">
+The cipher iv length.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="key" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="padFactory" type="PadFactory" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="padding" type="int" default="0">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="useSigning" type="bool" default="true">
+Whether calculating message digest enabled or not.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 22</div>
 
 <h4 id="encryptioncrypt-__construct"><code>__construct()</code></h4>
 
@@ -552,8 +399,6 @@ public function useSigning( bool $useSigning ): CryptInterface;
 
 Sets if the calculating message digest must used.
 
-<div class="api-group">Protected · 8</div>
-
 <h4 id="encryptioncrypt-checkcipherhashisavailable"><code>checkCipherHashIsAvailable()</code></h4>
 
 ```php
@@ -647,45 +492,29 @@ Initialize available cipher algorithms.
 
 ## Encryption\Crypt\CryptInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/CryptInterface.php">Source on GitHub</a>
+Interface
 
 Interface for Phalcon\Encryption\Crypt
 
-<div class="api-tree">
-
-- [`Phalcon\Contracts\Encryption\Crypt\Crypt`](/6.0/api/phalcon_contracts/#contractsencryptioncryptcrypt)
+- [`Phalcon\Contracts\Encryption\Crypt\Crypt`](../phalcon_contracts/#contractsencryptioncryptcrypt)
 - **`Phalcon\Encryption\Crypt\CryptInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Encryption\Crypt\Crypt`
+`Phalcon\Contracts\Encryption\Crypt\Crypt`
 
 ## Encryption\Crypt\Exception\DecryptionFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/DecryptionFailed.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\DecryptionFailed`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptiondecryptionfailed-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptiondecryptionfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptiondecryptionfailed-__construct"><code>__construct()</code></h4>
 
@@ -695,29 +524,18 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\EmptyDecryptionKey
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/EmptyDecryptionKey.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptionemptydecryptionkey-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptionemptydecryptionkey-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptionemptydecryptionkey-__construct"><code>__construct()</code></h4>
 
@@ -727,29 +545,18 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\EmptyEncryptionKey
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/EmptyEncryptionKey.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptionemptyencryptionkey-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptionemptyencryptionkey-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptionemptyencryptionkey-__construct"><code>__construct()</code></h4>
 
@@ -759,29 +566,18 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\EncryptionFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/EncryptionFailed.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\EncryptionFailed`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptionencryptionfailed-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptionencryptionfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptionencryptionfailed-__construct"><code>__construct()</code></h4>
 
@@ -791,12 +587,9 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/Exception.php">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Encryption\Crypt use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Encryption\Crypt\Exception\Exception`**
@@ -814,33 +607,20 @@ Exceptions thrown in Phalcon\Encryption\Crypt use this class
 - [`Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`](#encryptioncryptexceptionrandombytesgenerationfailed)
 - [`Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`](#encryptioncryptexceptionunsupportedalgorithm)
 
-</div>
-
 ## Encryption\Crypt\Exception\InvalidAuthTagLength
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/InvalidAuthTagLength.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptioninvalidauthtaglength-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptioninvalidauthtaglength-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptioninvalidauthtaglength-__construct"><code>__construct()</code></h4>
 
@@ -850,29 +630,18 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\InvalidDecryptLength
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/InvalidDecryptLength.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptioninvaliddecryptlength-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptioninvaliddecryptlength-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptioninvaliddecryptlength-__construct"><code>__construct()</code></h4>
 
@@ -882,29 +651,18 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\InvalidPaddingSize
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/InvalidPaddingSize.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptioninvalidpaddingsize-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptioninvalidpaddingsize-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptioninvalidpaddingsize-__construct"><code>__construct()</code></h4>
 
@@ -914,29 +672,18 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\IvLengthCalculationFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/IvLengthCalculationFailed.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptionivlengthcalculationfailed-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptionivlengthcalculationfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptionivlengthcalculationfailed-__construct"><code>__construct()</code></h4>
 
@@ -946,44 +693,28 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\Mismatch
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/Mismatch.php">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Encryption\Crypt will use this class.
-
-<div class="api-tree">
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\Mismatch`**
 
-</div>
-
 ## Encryption\Crypt\Exception\MissingAuthData
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/MissingAuthData.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\MissingAuthData`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptionmissingauthdata-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptionmissingauthdata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptionmissingauthdata-__construct"><code>__construct()</code></h4>
 
@@ -993,29 +724,18 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\MissingOpensslExtension
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/MissingOpensslExtension.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptionmissingopensslextension-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptionmissingopensslextension-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptionmissingopensslextension-__construct"><code>__construct()</code></h4>
 
@@ -1025,29 +745,18 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\RandomBytesGenerationFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/RandomBytesGenerationFailed.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptionrandombytesgenerationfailed-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptionrandombytesgenerationfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptionrandombytesgenerationfailed-__construct"><code>__construct()</code></h4>
 
@@ -1057,29 +766,18 @@ public function __construct();
 
 ## Encryption\Crypt\Exception\UnsupportedAlgorithm
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Exception/UnsupportedAlgorithm.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
 - **`Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptexceptionunsupportedalgorithm-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cipher</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptexceptionunsupportedalgorithm-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"cipher","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptioncryptexceptionunsupportedalgorithm-__construct"><code>__construct()</code></h4>
 
@@ -1092,56 +790,33 @@ string $cipher
 
 ## Encryption\Crypt\PadFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/PadFactory.php">Source on GitHub</a>
+Class
 
 Factory for creating pad classes
 
-<div class="api-tree">
-
-- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Encryption\Crypt\PadFactory`**
 
-</div>
-
-__Uses__ `Exception` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Padding\Ansi` · `Phalcon\Encryption\Crypt\Padding\Iso10126` · `Phalcon\Encryption\Crypt\Padding\IsoIek` · `Phalcon\Encryption\Crypt\Padding\Noop` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Encryption\Crypt\Padding\Pkcs7` · `Phalcon\Encryption\Crypt\Padding\Space` · `Phalcon\Encryption\Crypt\Padding\Zero` · `Phalcon\Factory\AbstractFactory`
+`Exception` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Padding\Ansi` · `Phalcon\Encryption\Crypt\Padding\Iso10126` · `Phalcon\Encryption\Crypt\Padding\IsoIek` · `Phalcon\Encryption\Crypt\Padding\Noop` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Encryption\Crypt\Padding\Pkcs7` · `Phalcon\Encryption\Crypt\Padding\Space` · `Phalcon\Encryption\Crypt\Padding\Zero` · `Phalcon\Factory\AbstractFactory`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptpadfactory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
-<span class="desc">AdapterFactory constructor.</span>
-</a>
-<a class="api-item" href="#encryptioncryptpadfactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">PadInterface</code>
-<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Create a new instance of the adapter</span>
-</a>
-<a class="api-item" href="#encryptioncryptpadfactory-padnumbertoservice">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">padNumberToService</span>( <span class="st">int</span> <span class="sv">$number</span> )</code>
-<span class="desc">Gets a Crypt pad constant and returns the unique service name for the</span>
-</a>
-<a class="api-item" href="#encryptioncryptpadfactory-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#encryptioncryptpadfactory-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptpadfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
+AdapterFactory constructor.
+</ApiItem>
+<ApiItem href="#encryptioncryptpadfactory-newinstance" visibility="public" name="newInstance" returnType="PadInterface" params={[{"type":"string","name":"name","default":null}]}>
+Create a new instance of the adapter
+</ApiItem>
+<ApiItem href="#encryptioncryptpadfactory-padnumbertoservice" visibility="public" name="padNumberToService" returnType="string" params={[{"type":"int","name":"number","default":null}]}>
+Gets a Crypt pad constant and returns the unique service name for the
+</ApiItem>
+<ApiItem href="#encryptioncryptpadfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptioncryptpadfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="encryptioncryptpadfactory-__construct"><code>__construct()</code></h4>
 
@@ -1168,8 +843,6 @@ public function padNumberToService( int $number ): string;
 Gets a Crypt pad constant and returns the unique service name for the
 padding class
 
-<div class="api-group">Protected · 2</div>
-
 <h4 id="encryptioncryptpadfactory-getexceptionclass"><code>getExceptionClass()</code></h4>
 
 ```php
@@ -1184,35 +857,20 @@ protected function getServices(): array;
 
 ## Encryption\Crypt\Padding\Ansi
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Padding/Ansi.php">Source on GitHub</a>
+Class
 
 Padding based on Ansi
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Crypt\Padding\Ansi`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptpaddingansi-pad">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">pad</span>( <span class="st">int</span> <span class="sv">$paddingSize</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncryptpaddingansi-unpad">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">unpad</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptpaddingansi-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncryptpaddingansi-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="encryptioncryptpaddingansi-pad"><code>pad()</code></h4>
 
@@ -1231,35 +889,20 @@ int $blockSize
 
 ## Encryption\Crypt\Padding\Iso10126
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Padding/Iso10126.php">Source on GitHub</a>
+Class
 
 Padding based on ISO10126
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Crypt\Padding\Iso10126`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptpaddingiso10126-pad">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">pad</span>( <span class="st">int</span> <span class="sv">$paddingSize</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncryptpaddingiso10126-unpad">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">unpad</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptpaddingiso10126-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncryptpaddingiso10126-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="encryptioncryptpaddingiso10126-pad"><code>pad()</code></h4>
 
@@ -1278,35 +921,20 @@ int $blockSize
 
 ## Encryption\Crypt\Padding\IsoIek
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Padding/IsoIek.php">Source on GitHub</a>
+Class
 
 Padding based on ISO-IEK
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Crypt\Padding\IsoIek`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptpaddingisoiek-pad">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">pad</span>( <span class="st">int</span> <span class="sv">$paddingSize</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncryptpaddingisoiek-unpad">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">unpad</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptpaddingisoiek-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncryptpaddingisoiek-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="encryptioncryptpaddingisoiek-pad"><code>pad()</code></h4>
 
@@ -1325,35 +953,20 @@ int $blockSize
 
 ## Encryption\Crypt\Padding\Noop
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Padding/Noop.php">Source on GitHub</a>
+Class
 
 No padding adapter
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Crypt\Padding\Noop`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptpaddingnoop-pad">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">pad</span>( <span class="st">int</span> <span class="sv">$paddingSize</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncryptpaddingnoop-unpad">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">unpad</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptpaddingnoop-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncryptpaddingnoop-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="encryptioncryptpaddingnoop-pad"><code>pad()</code></h4>
 
@@ -1372,51 +985,31 @@ int $blockSize
 
 ## Encryption\Crypt\Padding\PadInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Padding/PadInterface.php">Source on GitHub</a>
+Interface
 
 Interface for Phalcon\Encryption\Crypt\Padding
 
-<div class="api-tree">
-
-- [`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`](/6.0/api/phalcon_contracts/#contractsencryptioncryptpaddingpad)
+- [`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`](../phalcon_contracts/#contractsencryptioncryptpaddingpad)
 - **`Phalcon\Encryption\Crypt\Padding\PadInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Encryption\Crypt\Padding\Pad`
+`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`
 
 ## Encryption\Crypt\Padding\Pkcs7
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Padding/Pkcs7.php">Source on GitHub</a>
+Class
 
 Padding based on Pkcs7
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Crypt\Padding\Pkcs7`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptpaddingpkcs7-pad">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">pad</span>( <span class="st">int</span> <span class="sv">$paddingSize</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncryptpaddingpkcs7-unpad">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">unpad</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptpaddingpkcs7-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncryptpaddingpkcs7-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="encryptioncryptpaddingpkcs7-pad"><code>pad()</code></h4>
 
@@ -1435,35 +1028,20 @@ int $blockSize
 
 ## Encryption\Crypt\Padding\Space
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Padding/Space.php">Source on GitHub</a>
+Class
 
 Padding based on spaces
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Crypt\Padding\Space`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptpaddingspace-pad">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">pad</span>( <span class="st">int</span> <span class="sv">$paddingSize</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncryptpaddingspace-unpad">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">unpad</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptpaddingspace-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncryptpaddingspace-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="encryptioncryptpaddingspace-pad"><code>pad()</code></h4>
 
@@ -1482,35 +1060,20 @@ int $blockSize
 
 ## Encryption\Crypt\Padding\Zero
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Crypt/Padding/Zero.php">Source on GitHub</a>
+Class
 
 Padding based on Zeros
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Crypt\Padding\Zero`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptpaddingzero-pad">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">pad</span>( <span class="st">int</span> <span class="sv">$paddingSize</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncryptpaddingzero-unpad">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">unpad</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#encryptioncryptpaddingzero-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptioncryptpaddingzero-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="encryptioncryptpaddingzero-pad"><code>pad()</code></h4>
 
@@ -1529,8 +1092,7 @@ int $blockSize
 
 ## Encryption\Security
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security.php">Source on GitHub</a>
+Class
 
 This component provides a set of functions to improve the security in Phalcon
 applications
@@ -1548,273 +1110,144 @@ if ($this->security->checkHash($password, $user->password)) {
 }
 ```
 
-<div class="api-tree">
-
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Encryption\Security`** - implements [`Phalcon\Contracts\Encryption\Security\Security`](/6.0/api/phalcon_contracts/#contractsencryptionsecuritysecurity)
+- [`Phalcon\Di\AbstractInjectionAware`](../phalcon_di/#diabstractinjectionaware)
+- **`Phalcon\Encryption\Security`** - implements [`Phalcon\Contracts\Encryption\Security\Security`](../phalcon_contracts/#contractsencryptionsecuritysecurity)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Php\HashTrait` · `ValueError`
+`Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Php\HashTrait` · `ValueError`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurity-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SessionInterface|null</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">RequestInterface|null</span> <span class="sv">$request</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Security constructor.</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-checkhash">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">checkHash</span>(<span class="prm"><span class="st">string</span> <span class="sv">$password</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passwordHash</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$maxPassLength</span><span class="sm"> = 0</span></span>)</code>
-<span class="desc">Checks a plain text password and its hash version to check if the</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-checktoken">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">checkToken</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$tokenKey</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$tokenValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$destroyIfValid</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Check if the CSRF token sent in the request is the same that the current</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-computehmac">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">computeHmac</span>(<span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$algorithm</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Computes a HMAC</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-destroytoken">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">destroyToken</span>()</code>
-<span class="desc">Removes the value of the CSRF token and key from session</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-getdefaulthash">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getDefaultHash</span>()</code>
-<span class="desc">Returns the default hash</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-gethashinformation">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getHashInformation</span>( <span class="st">string</span> <span class="sv">$hash</span> )</code>
-<span class="desc">Returns information regarding a hash</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-getrandom">
-<code class="vis vis-public">public</code>
-<code class="ret">Random</code>
-<code class="sig"><span class="sf">getRandom</span>()</code>
-<span class="desc">Returns a secure random number generator instance</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-getrandombytes">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getRandomBytes</span>()</code>
-<span class="desc">Returns a number of bytes to be generated by the openssl pseudo random</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-getrequesttoken">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getRequestToken</span>()</code>
-<span class="desc">Returns the value of the CSRF token for the current request.</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-getsaltbytes">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getSaltBytes</span>( <span class="st">int</span> <span class="sv">$numberBytes</span><span class="sm"> = 0</span> )</code>
-<span class="desc">Generate a &gt;22-length pseudo random string to be used as salt for</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-getsessiontoken">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getSessionToken</span>()</code>
-<span class="desc">Returns the value of the CSRF token in session</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-gettoken">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getToken</span>()</code>
-<span class="desc">Generates a pseudo random token value to be used as input&#039;s value in a</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-gettokenkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getTokenKey</span>()</code>
-<span class="desc">Generates a pseudo random token key to be used as input&#039;s name in a CSRF</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-getworkfactor">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getWorkFactor</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurity-hash">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">hash</span>(<span class="prm"><span class="st">string</span> <span class="sv">$password</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Creates a password hash using bcrypt with a pseudo random salt</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-islegacyhash">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isLegacyHash</span>( <span class="st">string</span> <span class="sv">$passwordHash</span> )</code>
-<span class="desc">Checks if a password hash is a valid bcrypt&#039;s hash</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-refreshtoken">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">refreshToken</span>()</code>
-<span class="desc">Forces the regeneration of the CSRF token and key, writing the new</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-setautorefresh">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setAutoRefresh</span>( <span class="st">bool</span> <span class="sv">$autoRefresh</span> )</code>
-<span class="desc">Toggles automatic regeneration of the CSRF token on every call to</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-setdefaulthash">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setDefaultHash</span>( <span class="st">int</span> <span class="sv">$defaultHash</span> )</code>
-<span class="desc">Sets the default hash</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-setrandombytes">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setRandomBytes</span>( <span class="st">int</span> <span class="sv">$randomBytes</span> )</code>
-<span class="desc">Sets a number of bytes to be generated by the openssl pseudo random</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-setworkfactor">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setWorkFactor</span>( <span class="st">int</span> <span class="sv">$workFactor</span> )</code>
-<span class="desc">Sets the work factor</span>
-</a>
-<a class="api-item" href="#encryptionsecurity-getlocalservice">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getLocalService</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurity-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SessionInterface|null","name":"session","default":"null"},{"type":"RequestInterface|null","name":"request","default":"null"}]}>
+Security constructor.
+</ApiItem>
+<ApiItem href="#encryptionsecurity-checkhash" visibility="public" name="checkHash" returnType="bool" params={[{"type":"string","name":"password","default":null},{"type":"string","name":"passwordHash","default":null},{"type":"int","name":"maxPassLength","default":"0"}]}>
+Checks a plain text password and its hash version to check if the
+</ApiItem>
+<ApiItem href="#encryptionsecurity-checktoken" visibility="public" name="checkToken" returnType="bool" params={[{"type":"string|null","name":"tokenKey","default":"null"},{"type":"mixed","name":"tokenValue","default":"null"},{"type":"bool","name":"destroyIfValid","default":"true"}]}>
+Check if the CSRF token sent in the request is the same that the current
+</ApiItem>
+<ApiItem href="#encryptionsecurity-computehmac" visibility="public" name="computeHmac" returnType="string" params={[{"type":"string","name":"data","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"algorithm","default":null},{"type":"bool","name":"raw","default":"false"}]}>
+Computes a HMAC
+</ApiItem>
+<ApiItem href="#encryptionsecurity-destroytoken" visibility="public" name="destroyToken" returnType="static" params={[]}>
+Removes the value of the CSRF token and key from session
+</ApiItem>
+<ApiItem href="#encryptionsecurity-getdefaulthash" visibility="public" name="getDefaultHash" returnType="int" params={[]}>
+Returns the default hash
+</ApiItem>
+<ApiItem href="#encryptionsecurity-gethashinformation" visibility="public" name="getHashInformation" returnType="array" params={[{"type":"string","name":"hash","default":null}]}>
+Returns information regarding a hash
+</ApiItem>
+<ApiItem href="#encryptionsecurity-getrandom" visibility="public" name="getRandom" returnType="Random" params={[]}>
+Returns a secure random number generator instance
+</ApiItem>
+<ApiItem href="#encryptionsecurity-getrandombytes" visibility="public" name="getRandomBytes" returnType="int" params={[]}>
+Returns a number of bytes to be generated by the openssl pseudo random
+</ApiItem>
+<ApiItem href="#encryptionsecurity-getrequesttoken" visibility="public" name="getRequestToken" returnType="string|null" params={[]}>
+Returns the value of the CSRF token for the current request.
+</ApiItem>
+<ApiItem href="#encryptionsecurity-getsaltbytes" visibility="public" name="getSaltBytes" returnType="string" params={[{"type":"int","name":"numberBytes","default":"0"}]}>
+Generate a >22-length pseudo random string to be used as salt for
+</ApiItem>
+<ApiItem href="#encryptionsecurity-getsessiontoken" visibility="public" name="getSessionToken" returnType="string|null" params={[]}>
+Returns the value of the CSRF token in session
+</ApiItem>
+<ApiItem href="#encryptionsecurity-gettoken" visibility="public" name="getToken" returnType="string|null" params={[]}>
+Generates a pseudo random token value to be used as input's value in a
+</ApiItem>
+<ApiItem href="#encryptionsecurity-gettokenkey" visibility="public" name="getTokenKey" returnType="string|null" params={[]}>
+Generates a pseudo random token key to be used as input's name in a CSRF
+</ApiItem>
+<ApiItem href="#encryptionsecurity-getworkfactor" visibility="public" name="getWorkFactor" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurity-hash" visibility="public" name="hash" returnType="string" params={[{"type":"string","name":"password","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Creates a password hash using bcrypt with a pseudo random salt
+</ApiItem>
+<ApiItem href="#encryptionsecurity-islegacyhash" visibility="public" name="isLegacyHash" returnType="bool" params={[{"type":"string","name":"passwordHash","default":null}]}>
+Checks if a password hash is a valid bcrypt's hash
+</ApiItem>
+<ApiItem href="#encryptionsecurity-refreshtoken" visibility="public" name="refreshToken" returnType="static" params={[]}>
+Forces the regeneration of the CSRF token and key, writing the new
+</ApiItem>
+<ApiItem href="#encryptionsecurity-setautorefresh" visibility="public" name="setAutoRefresh" returnType="static" params={[{"type":"bool","name":"autoRefresh","default":null}]}>
+Toggles automatic regeneration of the CSRF token on every call to
+</ApiItem>
+<ApiItem href="#encryptionsecurity-setdefaulthash" visibility="public" name="setDefaultHash" returnType="static" params={[{"type":"int","name":"defaultHash","default":null}]}>
+Sets the default hash
+</ApiItem>
+<ApiItem href="#encryptionsecurity-setrandombytes" visibility="public" name="setRandomBytes" returnType="static" params={[{"type":"int","name":"randomBytes","default":null}]}>
+Sets a number of bytes to be generated by the openssl pseudo random
+</ApiItem>
+<ApiItem href="#encryptionsecurity-setworkfactor" visibility="public" name="setWorkFactor" returnType="static" params={[{"type":"int","name":"workFactor","default":null}]}>
+Sets the work factor
+</ApiItem>
+<ApiItem href="#encryptionsecurity-getlocalservice" visibility="protected" name="getLocalService" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_ARGON2I</span><span class="sm"> = 10</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_ARGON2ID</span><span class="sm"> = 11</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_BCRYPT</span><span class="sm"> = 0</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_BLOWFISH</span><span class="sm"> = 4</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_BLOWFISH_A</span><span class="sm"> = 5</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_BLOWFISH_X</span><span class="sm"> = 6</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_BLOWFISH_Y</span><span class="sm"> = 7</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_DEFAULT</span><span class="sm"> = 0</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_EXT_DES</span><span class="sm"> = 2</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_MD5</span><span class="sm"> = 3</span></code>
-<span class="desc">Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use <code>CRYPT_DEFAULT</code> (bcrypt) or the Argon2 algorithms and rehash stored passwords on login. To be removed in a future major version.</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_SHA256</span><span class="sm"> = 8</span></code>
-<span class="desc">Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use <code>CRYPT_DEFAULT</code> (bcrypt) or the Argon2 algorithms and rehash stored passwords on login. To be removed in a future major version.</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_SHA512</span><span class="sm"> = 9</span></code>
-<span class="desc">Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use <code>CRYPT_DEFAULT</code> (bcrypt) or the Argon2 algorithms and rehash stored passwords on login. To be removed in a future major version.</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">CRYPT_STD_DES</span><span class="sm"> = 1</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="CRYPT_ARGON2I" type="int" default="10">
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_ARGON2ID" type="int" default="11">
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_BCRYPT" type="int" default="0">
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_BLOWFISH" type="int" default="4">
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_BLOWFISH_A" type="int" default="5">
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_BLOWFISH_X" type="int" default="6">
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_BLOWFISH_Y" type="int" default="7">
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_DEFAULT" type="int" default="0">
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_EXT_DES" type="int" default="2">
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_MD5" type="int" default="3">
+Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
+`CRYPT_DEFAULT` (bcrypt) or the Argon2 algorithms and rehash stored
+passwords on login. To be removed in a future major version.
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_SHA256" type="int" default="8">
+Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
+`CRYPT_DEFAULT` (bcrypt) or the Argon2 algorithms and rehash stored
+passwords on login. To be removed in a future major version.
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_SHA512" type="int" default="9">
+Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
+`CRYPT_DEFAULT` (bcrypt) or the Argon2 algorithms and rehash stored
+passwords on login. To be removed in a future major version.
+</ApiItem>
+<ApiItem kind="constant" name="CRYPT_STD_DES" type="int" default="1">
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$autoRefresh</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$defaultHash</span><span class="sm"> = self::CRYPT_DEFAULT</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$numberBytes</span><span class="sm"> = 16</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Random</code>
-<code class="sig"><span class="sv">$random</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$requestToken</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$token</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$tokenKey</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$tokenKeySessionId</span><span class="sm"> = &quot;$PHALCON/CSRF/KEY$&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$tokenValueSessionId</span><span class="sm"> = &quot;$PHALCON/CSRF$&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$workFactor</span><span class="sm"> = 10</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="autoRefresh" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="defaultHash" type="int" default="self::CRYPT_DEFAULT">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="numberBytes" type="int" default="16">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="random" type="Random" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="requestToken" type="string|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="token" type="string|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="tokenKey" type="string|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="tokenKeySessionId" type="string" default="&quot;$PHALCON/CSRF/KEY$&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="tokenValueSessionId" type="string" default="&quot;$PHALCON/CSRF$&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="workFactor" type="int" default="10">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 22</div>
 
 <h4 id="encryptionsecurity-__construct"><code>__construct()</code></h4>
 
@@ -2025,8 +1458,6 @@ public function setWorkFactor( int $workFactor ): static;
 
 Sets the work factor
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="encryptionsecurity-getlocalservice"><code>getLocalService()</code></h4>
 
 ```php
@@ -2035,49 +1466,33 @@ protected function getLocalService( string $name );
 
 ## Encryption\Security\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Exception.php">Source on GitHub</a>
+Class
 
 Phalcon\Encryption\Security\Exception
 
 Exceptions thrown in Phalcon\Security will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Encryption\Security\Exception`**
 - [`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`](#encryptionsecurityexceptionsinvalidrandominput)
 - [`Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`](#encryptionsecurityexceptionsunknownhashalgorithm)
 
-</div>
-
 ## Encryption\Security\Exceptions\InvalidRandomInput
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Exceptions/InvalidRandomInput.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Security\Exception`](#encryptionsecurityexception)
 - **`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`**
 
-</div>
-
-__Uses__ `Phalcon\Encryption\Security\Exception`
+`Phalcon\Encryption\Security\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityexceptionsinvalidrandominput-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityexceptionsinvalidrandominput-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityexceptionsinvalidrandominput-__construct"><code>__construct()</code></h4>
 
@@ -2087,31 +1502,20 @@ public function __construct();
 
 ## Encryption\Security\Exceptions\UnknownHashAlgorithm
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Exceptions/UnknownHashAlgorithm.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Security\Exception`](#encryptionsecurityexception)
 - **`Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`**
 
-</div>
-
-__Uses__ `Phalcon\Encryption\Security\Exception`
+`Phalcon\Encryption\Security\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityexceptionsunknownhashalgorithm-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$algo</span> )</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityexceptionsunknownhashalgorithm-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"algo","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityexceptionsunknownhashalgorithm-__construct"><code>__construct()</code></h4>
 
@@ -2121,170 +1525,84 @@ public function __construct( string $algo );
 
 ## Encryption\Security\JWT\Builder
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Builder.php">Source on GitHub</a>
+Class
 
 JWT Builder
 
 @link https://tools.ietf.org/html/rfc7519
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\JWT\Builder`**
 
-</div>
-
-__Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Item` · `Phalcon\Encryption\Security\JWT\Token\Signature` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Php\Base64Trait`
+`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Item` · `Phalcon\Encryption\Security\JWT\Token\Signature` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Php\Base64Trait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtbuilder-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">SignerInterface</span> <span class="sv">$signer</span> )</code>
-<span class="desc">Builder constructor.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-addclaim">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addClaim</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Adds a custom claim</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-addheader">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Adds a custom claim</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getaudience">
-<code class="vis vis-public">public</code>
-<code class="ret">array|string</code>
-<code class="sig"><span class="sf">getAudience</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getclaims">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getClaims</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getcontenttype">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getContentType</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getexpirationtime">
-<code class="vis vis-public">public</code>
-<code class="ret">int|null</code>
-<code class="sig"><span class="sf">getExpirationTime</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getheaders">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getHeaders</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getid">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getId</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getissuedat">
-<code class="vis vis-public">public</code>
-<code class="ret">int|null</code>
-<code class="sig"><span class="sf">getIssuedAt</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getissuer">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getIssuer</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getnotbefore">
-<code class="vis vis-public">public</code>
-<code class="ret">int|null</code>
-<code class="sig"><span class="sf">getNotBefore</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getpassphrase">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getPassphrase</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-getsubject">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getSubject</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-gettoken">
-<code class="vis vis-public">public</code>
-<code class="ret">Token</code>
-<code class="sig"><span class="sf">getToken</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-init">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">init</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-setaudience">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setAudience</span>( <span class="st">array|string</span> <span class="sv">$audience</span> )</code>
-<span class="desc">The &quot;aud&quot; (audience) claim identifies the recipients that the JWT is</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-setcontenttype">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setContentType</span>( <span class="st">string</span> <span class="sv">$contentType</span> )</code>
-<span class="desc">Sets the content type header &#039;cty&#039;</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-setexpirationtime">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setExpirationTime</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
-<span class="desc">The &quot;exp&quot; (expiration time) claim identifies the expiration time on</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-setid">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setId</span>( <span class="st">string</span> <span class="sv">$jwtId</span> )</code>
-<span class="desc">The &quot;jti&quot; (JWT ID) claim provides a unique identifier for the JWT.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-setissuedat">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setIssuedAt</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
-<span class="desc">The &quot;iat&quot; (issued at) claim identifies the time at which the JWT was</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-setissuer">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setIssuer</span>( <span class="st">string</span> <span class="sv">$issuer</span> )</code>
-<span class="desc">The &quot;iss&quot; (issuer) claim identifies the principal that issued the</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-setnotbefore">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setNotBefore</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
-<span class="desc">The &quot;nbf&quot; (not before) claim identifies the time before which the JWT</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-setpassphrase">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setPassphrase</span>( <span class="st">string</span> <span class="sv">$passphrase</span> )</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-setsubject">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setSubject</span>( <span class="st">string</span> <span class="sv">$subject</span> )</code>
-<span class="desc">The &quot;sub&quot; (subject) claim identifies the principal that is the</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtbuilder-setclaim">
-<code class="vis vis-protected">protected</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setClaim</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Sets a registered claim</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtbuilder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SignerInterface","name":"signer","default":null}]}>
+Builder constructor.
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-addclaim" visibility="public" name="addClaim" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
+Adds a custom claim
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-addheader" visibility="public" name="addHeader" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
+Adds a custom claim
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getaudience" visibility="public" name="getAudience" returnType="array|string" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getclaims" visibility="public" name="getClaims" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getcontenttype" visibility="public" name="getContentType" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getexpirationtime" visibility="public" name="getExpirationTime" returnType="int|null" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getheaders" visibility="public" name="getHeaders" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getid" visibility="public" name="getId" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getissuedat" visibility="public" name="getIssuedAt" returnType="int|null" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getissuer" visibility="public" name="getIssuer" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getnotbefore" visibility="public" name="getNotBefore" returnType="int|null" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getpassphrase" visibility="public" name="getPassphrase" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-getsubject" visibility="public" name="getSubject" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-gettoken" visibility="public" name="getToken" returnType="Token" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-init" visibility="public" name="init" returnType="static" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-setaudience" visibility="public" name="setAudience" returnType="static" params={[{"type":"array|string","name":"audience","default":null}]}>
+The "aud" (audience) claim identifies the recipients that the JWT is
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-setcontenttype" visibility="public" name="setContentType" returnType="static" params={[{"type":"string","name":"contentType","default":null}]}>
+Sets the content type header 'cty'
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-setexpirationtime" visibility="public" name="setExpirationTime" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
+The "exp" (expiration time) claim identifies the expiration time on
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-setid" visibility="public" name="setId" returnType="static" params={[{"type":"string","name":"jwtId","default":null}]}>
+The "jti" (JWT ID) claim provides a unique identifier for the JWT.
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-setissuedat" visibility="public" name="setIssuedAt" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
+The "iat" (issued at) claim identifies the time at which the JWT was
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-setissuer" visibility="public" name="setIssuer" returnType="static" params={[{"type":"string","name":"issuer","default":null}]}>
+The "iss" (issuer) claim identifies the principal that issued the
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-setnotbefore" visibility="public" name="setNotBefore" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
+The "nbf" (not before) claim identifies the time before which the JWT
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-setpassphrase" visibility="public" name="setPassphrase" returnType="static" params={[{"type":"string","name":"passphrase","default":null}]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-setsubject" visibility="public" name="setSubject" returnType="static" params={[{"type":"string","name":"subject","default":null}]}>
+The "sub" (subject) claim identifies the principal that is the
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtbuilder-setclaim" visibility="protected" name="setClaim" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
+Sets a registered claim
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 25</div>
 
 <h4 id="encryptionsecurityjwtbuilder-__construct"><code>__construct()</code></h4>
 
@@ -2505,8 +1823,6 @@ The processing of this claim is generally application specific.  The
 "sub" value is a case-sensitive string containing a StringOrURI
 value.  Use of this claim is OPTIONAL.
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="encryptionsecurityjwtbuilder-setclaim"><code>setClaim()</code></h4>
 
 ```php
@@ -2520,29 +1836,18 @@ Sets a registered claim
 
 ## Encryption\Security\JWT\Exceptions\EmptyPassphrase
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/EmptyPassphrase.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
 - **`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtexceptionsemptypassphrase-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtexceptionsemptypassphrase-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtexceptionsemptypassphrase-__construct"><code>__construct()</code></h4>
 
@@ -2552,29 +1857,18 @@ public function __construct();
 
 ## Encryption\Security\JWT\Exceptions\InvalidAudience
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/InvalidAudience.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
 - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtexceptionsinvalidaudience-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtexceptionsinvalidaudience-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtexceptionsinvalidaudience-__construct"><code>__construct()</code></h4>
 
@@ -2584,30 +1878,19 @@ public function __construct();
 
 ## Encryption\Security\JWT\Exceptions\InvalidClaims
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/InvalidClaims.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\InvalidArgumentException`
 - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims`**
 
-</div>
-
-__Uses__ `InvalidArgumentException`
+`InvalidArgumentException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtexceptionsinvalidclaims-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtexceptionsinvalidclaims-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtexceptionsinvalidclaims-__construct"><code>__construct()</code></h4>
 
@@ -2617,29 +1900,18 @@ public function __construct();
 
 ## Encryption\Security\JWT\Exceptions\InvalidExpirationTime
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/InvalidExpirationTime.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
 - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtexceptionsinvalidexpirationtime-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtexceptionsinvalidexpirationtime-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtexceptionsinvalidexpirationtime-__construct"><code>__construct()</code></h4>
 
@@ -2649,30 +1921,19 @@ public function __construct();
 
 ## Encryption\Security\JWT\Exceptions\InvalidHeader
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/InvalidHeader.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\InvalidArgumentException`
 - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader`**
 
-</div>
-
-__Uses__ `InvalidArgumentException`
+`InvalidArgumentException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtexceptionsinvalidheader-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtexceptionsinvalidheader-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtexceptionsinvalidheader-__construct"><code>__construct()</code></h4>
 
@@ -2682,29 +1943,18 @@ public function __construct();
 
 ## Encryption\Security\JWT\Exceptions\InvalidNotBefore
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/InvalidNotBefore.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
 - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtexceptionsinvalidnotbefore-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtexceptionsinvalidnotbefore-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtexceptionsinvalidnotbefore-__construct"><code>__construct()</code></h4>
 
@@ -2714,30 +1964,19 @@ public function __construct();
 
 ## Encryption\Security\JWT\Exceptions\MalformedJwtString
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/MalformedJwtString.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\InvalidArgumentException`
 - **`Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString`**
 
-</div>
-
-__Uses__ `InvalidArgumentException`
+`InvalidArgumentException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtexceptionsmalformedjwtstring-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtexceptionsmalformedjwtstring-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtexceptionsmalformedjwtstring-__construct"><code>__construct()</code></h4>
 
@@ -2747,30 +1986,19 @@ public function __construct();
 
 ## Encryption\Security\JWT\Exceptions\MissingJwtTypHeader
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/MissingJwtTypHeader.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\InvalidArgumentException`
 - **`Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader`**
 
-</div>
-
-__Uses__ `InvalidArgumentException`
+`InvalidArgumentException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtexceptionsmissingjwttypheader-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtexceptionsmissingjwttypheader-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtexceptionsmissingjwttypheader-__construct"><code>__construct()</code></h4>
 
@@ -2780,46 +2008,30 @@ public function __construct();
 
 ## Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/UnsupportedAlgorithmException.php">Source on GitHub</a>
+Class
 
 Exception thrown when the algorithm is not supported for JWT
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`**
 - [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`](#encryptionsecurityjwtexceptionsunsupportedhmacalgorithm)
 
-</div>
-
-__Uses__ `Exception`
+`Exception`
 
 ## Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/UnsupportedHmacAlgorithm.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`](#encryptionsecurityjwtexceptionsunsupportedalgorithmexception)
 - **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtexceptionsunsupportedhmacalgorithm-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtexceptionsunsupportedhmacalgorithm-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtexceptionsunsupportedhmacalgorithm-__construct"><code>__construct()</code></h4>
 
@@ -2829,12 +2041,9 @@ public function __construct();
 
 ## Encryption\Security\JWT\Exceptions\ValidatorException
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/ValidatorException.php">Source on GitHub</a>
+Class
 
 Exception thrown when the validation does not pass for JWT
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`**
@@ -2844,35 +2053,22 @@ Exception thrown when the validation does not pass for JWT
 - [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`](#encryptionsecurityjwtexceptionsinvalidnotbefore)
 - [`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`](#encryptionsecurityjwtexceptionsweakpassphrase)
 
-</div>
-
-__Uses__ `Exception`
+`Exception`
 
 ## Encryption\Security\JWT\Exceptions\WeakPassphrase
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Exceptions/WeakPassphrase.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
 - **`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtexceptionsweakpassphrase-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtexceptionsweakpassphrase-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtexceptionsweakpassphrase-__construct"><code>__construct()</code></h4>
 
@@ -2882,41 +2078,24 @@ public function __construct();
 
 ## Encryption\Security\JWT\Signer\AbstractSigner
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Signer/AbstractSigner.php">Source on GitHub</a>
+Abstract
 
 Abstract class helping with the signer classes
-
-<div class="api-tree">
 
 - **`Phalcon\Encryption\Security\JWT\Signer\AbstractSigner`** - implements [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](#encryptionsecurityjwtsignersignerinterface)
 - [`Phalcon\Encryption\Security\JWT\Signer\Hmac`](#encryptionsecurityjwtsignerhmac)
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtsignerabstractsigner-getalgorithm">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlgorithm</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtsignerabstractsigner-getalgorithm" visibility="public" name="getAlgorithm" returnType="string" params={[]}>
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$algorithm</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="algorithm" type="string" default="&quot;&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwtsignerabstractsigner-getalgorithm"><code>getAlgorithm()</code></h4>
 
@@ -2926,51 +2105,31 @@ public function getAlgorithm(): string;
 
 ## Encryption\Security\JWT\Signer\Hmac
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Signer/Hmac.php">Source on GitHub</a>
+Class
 
 HMAC signing class
-
-<div class="api-tree">
 
 - [`Phalcon\Encryption\Security\JWT\Signer\AbstractSigner`](#encryptionsecurityjwtsignerabstractsigner)
 - **`Phalcon\Encryption\Security\JWT\Signer\Hmac`**
 
-</div>
-
-__Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException` · `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm` · `Phalcon\Traits\Php\HashTrait`
+`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException` · `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm` · `Phalcon\Traits\Php\HashTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtsignerhmac-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$algo</span><span class="sm"> = &quot;sha512&quot;</span> )</code>
-<span class="desc">Hmac constructor.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtsignerhmac-getalgheader">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlgHeader</span>()</code>
-<span class="desc">Return the value that is used for the &quot;alg&quot; header</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtsignerhmac-sign">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">sign</span>(<span class="prm"><span class="st">string</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passphrase</span></span>)</code>
-<span class="desc">Sign a payload using the passphrase</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtsignerhmac-verify">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">verify</span>(<span class="prm"><span class="st">string</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passphrase</span></span>)</code>
-<span class="desc">Verify a passed source with a payload and passphrase</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtsignerhmac-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"algo","default":"\"sha512\""}]}>
+Hmac constructor.
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtsignerhmac-getalgheader" visibility="public" name="getAlgHeader" returnType="string" params={[]}>
+Return the value that is used for the "alg" header
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtsignerhmac-sign" visibility="public" name="sign" returnType="string" params={[{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
+Sign a payload using the passphrase
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtsignerhmac-verify" visibility="public" name="verify" returnType="bool" params={[{"type":"string","name":"source","default":null},{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
+Verify a passed source with a payload and passphrase
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="encryptionsecurityjwtsignerhmac-__construct"><code>__construct()</code></h4>
 
@@ -3013,49 +2172,28 @@ Verify a passed source with a payload and passphrase
 
 ## Encryption\Security\JWT\Signer\None
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Signer/None.php">Source on GitHub</a>
+Class
 
 No signing class
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\JWT\Signer\None`** - implements [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](#encryptionsecurityjwtsignersignerinterface)
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtsignernone-getalgheader">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlgHeader</span>()</code>
-<span class="desc">Return the value that is used for the &quot;alg&quot; header</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtsignernone-getalgorithm">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlgorithm</span>()</code>
-<span class="desc">Return the algorithm used</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtsignernone-sign">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">sign</span>(<span class="prm"><span class="st">string</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passphrase</span></span>)</code>
-<span class="desc">Sign a payload using the passphrase</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtsignernone-verify">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">verify</span>(<span class="prm"><span class="st">string</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passphrase</span></span>)</code>
-<span class="desc">Verify a passed source with a payload and passphrase</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtsignernone-getalgheader" visibility="public" name="getAlgHeader" returnType="string" params={[]}>
+Return the value that is used for the "alg" header
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtsignernone-getalgorithm" visibility="public" name="getAlgorithm" returnType="string" params={[]}>
+Return the algorithm used
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtsignernone-sign" visibility="public" name="sign" returnType="string" params={[{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
+Sign a payload using the passphrase
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtsignernone-verify" visibility="public" name="verify" returnType="bool" params={[{"type":"string","name":"source","default":null},{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
+Verify a passed source with a payload and passphrase
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="encryptionsecurityjwtsignernone-getalgheader"><code>getAlgHeader()</code></h4>
 
@@ -3098,60 +2236,38 @@ Verify a passed source with a payload and passphrase
 
 ## Encryption\Security\JWT\Signer\SignerInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Signer/SignerInterface.php">Source on GitHub</a>
+Interface
 
 Interface for JWT Signer classes
 
-<div class="api-tree">
-
-- [`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`](/6.0/api/phalcon_contracts/#contractsencryptionsecurityjwtsignersigner)
+- [`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`](../phalcon_contracts/#contractsencryptionsecurityjwtsignersigner)
 - **`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`
+`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`
 
 ## Encryption\Security\JWT\Token\AbstractItem
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Token/AbstractItem.php">Source on GitHub</a>
+Abstract
 
 Abstract helper class for Tokens
 
 @property array $data
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\JWT\Token\AbstractItem`**
 - [`Phalcon\Encryption\Security\JWT\Token\Item`](#encryptionsecurityjwttokenitem)
 - [`Phalcon\Encryption\Security\JWT\Token\Signature`](#encryptionsecurityjwttokensignature)
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwttokenabstractitem-getencoded">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getEncoded</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwttokenabstractitem-getencoded" visibility="public" name="getEncoded" returnType="string" params={[]}>
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, mixed&gt;</code>
-<code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="data" type="array&lt;string, mixed&gt;" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityjwttokenabstractitem-getencoded"><code>getEncoded()</code></h4>
 
@@ -3161,108 +2277,61 @@ public function getEncoded(): string;
 
 ## Encryption\Security\JWT\Token\Enum
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Token/Enum.php">Source on GitHub</a>
+Class
 
 Constants for Tokens. It offers constants for Headers as well as Claims
 
 @link https://tools.ietf.org/html/rfc7519
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\JWT\Token\Enum`**
-
-</div>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">ALGO</span><span class="sm"> = &quot;alg&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">AUDIENCE</span><span class="sm"> = &quot;aud&quot;</span></code>
-<span class="desc">Claims</span>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">CONTENT_TYPE</span><span class="sm"> = &quot;cty&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">EXPIRATION_TIME</span><span class="sm"> = &quot;exp&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">ID</span><span class="sm"> = &quot;jti&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">ISSUED_AT</span><span class="sm"> = &quot;iat&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">ISSUER</span><span class="sm"> = &quot;iss&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NOT_BEFORE</span><span class="sm"> = &quot;nbf&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">SUBJECT</span><span class="sm"> = &quot;sub&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">TYPE</span><span class="sm"> = &quot;typ&quot;</span></code>
-<span class="desc">Headers</span>
-</div>
-</div>
+<ApiItem kind="constant" name="ALGO" type="string" default="&quot;alg&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="AUDIENCE" type="string" default="&quot;aud&quot;">
+Claims
+</ApiItem>
+<ApiItem kind="constant" name="CONTENT_TYPE" type="string" default="&quot;cty&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="EXPIRATION_TIME" type="string" default="&quot;exp&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="ID" type="string" default="&quot;jti&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="ISSUED_AT" type="string" default="&quot;iat&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="ISSUER" type="string" default="&quot;iss&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_BEFORE" type="string" default="&quot;nbf&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="SUBJECT" type="string" default="&quot;sub&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="TYPE" type="string" default="&quot;typ&quot;">
+Headers
+</ApiItem>
 
 ## Encryption\Security\JWT\Token\Item
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Token/Item.php">Source on GitHub</a>
+Class
 
 Storage class for a Token Item
-
-<div class="api-tree">
 
 - [`Phalcon\Encryption\Security\JWT\Token\AbstractItem`](#encryptionsecurityjwttokenabstractitem)
 - **`Phalcon\Encryption\Security\JWT\Token\Item`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwttokenitem-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoded</span></span>)</code>
-<span class="desc">Item constructor.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokenitem-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokenitem-getpayload">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getPayload</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokenitem-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwttokenitem-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"payload","default":null},{"type":"string","name":"encoded","default":null}]}>
+Item constructor.
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokenitem-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokenitem-getpayload" visibility="public" name="getPayload" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokenitem-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="encryptionsecurityjwttokenitem-__construct"><code>__construct()</code></h4>
 
@@ -3298,8 +2367,7 @@ public function has( string $name ): bool;
 
 ## Encryption\Security\JWT\Token\Parser
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Token/Parser.php">Source on GitHub</a>
+Class
 
 Token Parser class.
 
@@ -3307,32 +2375,19 @@ It parses a token by validating if it is formed properly and splits it into
 three parts. The headers are decoded, then the claims and finally the
 signature. It returns a token object populated with the decoded information.
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\JWT\Token\Parser`**
 
-</div>
-
-__Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader` · `Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString` · `Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\Base64Trait`
+`Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader` · `Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString` · `Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\Base64Trait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwttokenparser-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">Decode|null</span> <span class="sv">$decode</span><span class="sm"> = null</span> )</code>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokenparser-parse">
-<code class="vis vis-public">public</code>
-<code class="ret">Token</code>
-<code class="sig"><span class="sf">parse</span>( <span class="st">string</span> <span class="sv">$token</span> )</code>
-<span class="desc">Parse a token and return it</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwttokenparser-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Decode|null","name":"decode","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokenparser-parse" visibility="public" name="parse" returnType="Token" params={[{"type":"string","name":"token","default":null}]}>
+Parse a token and return it
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="encryptionsecurityjwttokenparser-__construct"><code>__construct()</code></h4>
 
@@ -3350,36 +2405,22 @@ Parse a token and return it
 
 ## Encryption\Security\JWT\Token\Signature
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Token/Signature.php">Source on GitHub</a>
+Class
 
 Signature class containing the encoded data and the hash.
-
-<div class="api-tree">
 
 - [`Phalcon\Encryption\Security\JWT\Token\AbstractItem`](#encryptionsecurityjwttokenabstractitem)
 - **`Phalcon\Encryption\Security\JWT\Token\Signature`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwttokensignature-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$hash</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoded</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-<span class="desc">Signature constructor.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokensignature-gethash">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getHash</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwttokensignature-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"hash","default":"\"\""},{"type":"string","name":"encoded","default":"\"\""}]}>
+Signature constructor.
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokensignature-gethash" visibility="public" name="getHash" returnType="string" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="encryptionsecurityjwttokensignature-__construct"><code>__construct()</code></h4>
 
@@ -3400,8 +2441,7 @@ public function getHash(): string;
 
 ## Encryption\Security\JWT\Token\Token
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Token/Token.php">Source on GitHub</a>
+Class
 
 Token Class.
 
@@ -3414,69 +2454,38 @@ and payload. It also calculates and returns the token string.
 
 @link https://tools.ietf.org/html/rfc7519
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\JWT\Token\Token`**
 
-</div>
-
-__Uses__ `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Validator`
+`Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Validator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwttokentoken-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Item</span> <span class="sv">$headers</span>,</span><span class="prm"><span class="st">Item</span> <span class="sv">$claims</span>,</span><span class="prm"><span class="st">Signature</span> <span class="sv">$signature</span></span>)</code>
-<span class="desc">Token constructor.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokentoken-getclaims">
-<code class="vis vis-public">public</code>
-<code class="ret">Item</code>
-<code class="sig"><span class="sf">getClaims</span>()</code>
-<span class="desc">Return the registered claims</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokentoken-getheaders">
-<code class="vis vis-public">public</code>
-<code class="ret">Item</code>
-<code class="sig"><span class="sf">getHeaders</span>()</code>
-<span class="desc">Return the registered headers</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokentoken-getpayload">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getPayload</span>()</code>
-<span class="desc">Return the payload</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokentoken-getsignature">
-<code class="vis vis-public">public</code>
-<code class="ret">Signature</code>
-<code class="sig"><span class="sf">getSignature</span>()</code>
-<span class="desc">Return the signature</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokentoken-gettoken">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getToken</span>()</code>
-<span class="desc">Return the token</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokentoken-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">validate</span>( <span class="st">Validator</span> <span class="sv">$validator</span> )</code>
-<span class="desc">Validate the token against the claims registered in the validator.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwttokentoken-verify">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">verify</span>(<span class="prm"><span class="st">SignerInterface</span> <span class="sv">$signer</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
-<span class="desc">Verify the signature</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwttokentoken-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Item","name":"headers","default":null},{"type":"Item","name":"claims","default":null},{"type":"Signature","name":"signature","default":null}]}>
+Token constructor.
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokentoken-getclaims" visibility="public" name="getClaims" returnType="Item" params={[]}>
+Return the registered claims
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokentoken-getheaders" visibility="public" name="getHeaders" returnType="Item" params={[]}>
+Return the registered headers
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokentoken-getpayload" visibility="public" name="getPayload" returnType="string" params={[]}>
+Return the payload
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokentoken-getsignature" visibility="public" name="getSignature" returnType="Signature" params={[]}>
+Return the signature
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokentoken-gettoken" visibility="public" name="getToken" returnType="string" params={[]}>
+Return the token
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokentoken-validate" visibility="public" name="validate" returnType="array" params={[{"type":"Validator","name":"validator","default":null}]}>
+Validate the token against the claims registered in the validator.
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwttokentoken-verify" visibility="public" name="verify" returnType="bool" params={[{"type":"SignerInterface","name":"signer","default":null},{"type":"string","name":"key","default":null}]}>
+Verify the signature
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 8</div>
 
 <h4 id="encryptionsecurityjwttokentoken-__construct"><code>__construct()</code></h4>
 
@@ -3560,110 +2569,60 @@ Verify the signature
 
 ## Encryption\Security\JWT\Validator
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/JWT/Validator.php">Source on GitHub</a>
+Class
 
 Class Validator
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\JWT\Validator`**
 
-</div>
-
-__Uses__ `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Time\Clock\ClockInterface`
+`Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Time\Clock\ClockInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtvalidator-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Token</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$timeShift</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">ClockInterface|null</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Validator constructor.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$claim</span> )</code>
-<span class="desc">Return the value of a claim</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-geterrors">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getErrors</span>()</code>
-<span class="desc">Return an array with validation errors (if any)</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-set">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$claim</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set the value of a claim, for comparison with the token values</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-settoken">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setToken</span>( <span class="st">Token</span> <span class="sv">$token</span> )</code>
-<span class="desc">Set the token to be validated</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-validateaudience">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">validateAudience</span>( <span class="st">array|string</span> <span class="sv">$audience</span> )</code>
-<span class="desc">Validate the audience</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-validateclaim">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">validateClaim</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">bool|int|string</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Validate a claim</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-validateexpiration">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">validateExpiration</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
-<span class="desc">Validate the expiration time of the token</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-validateid">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">validateId</span>( <span class="st">string|null</span> <span class="sv">$jwtId</span><span class="sm"> = null</span> )</code>
-<span class="desc">Validate the id of the token</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-validateissuedat">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">validateIssuedAt</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
-<span class="desc">Validate the issued at (iat) of the token</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-validateissuer">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">validateIssuer</span>( <span class="st">string|null</span> <span class="sv">$issuer</span><span class="sm"> = null</span> )</code>
-<span class="desc">Validate the issuer of the token</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-validatenotbefore">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">validateNotBefore</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
-<span class="desc">Validate the notbefore (nbf) of the token</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-validatesignature">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">validateSignature</span>(<span class="prm"><span class="st">SignerInterface</span> <span class="sv">$signer</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passphrase</span></span>)</code>
-<span class="desc">Validate the signature of the token</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtvalidator-validatesubject">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">validateSubject</span>( <span class="st">string|null</span> <span class="sv">$subject</span><span class="sm"> = null</span> )</code>
-<span class="desc">Validate the subject of the token</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityjwtvalidator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Token","name":"token","default":null},{"type":"int","name":"timeShift","default":"0"},{"type":"ClockInterface|null","name":"clock","default":"null"}]}>
+Validator constructor.
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"claim","default":null}]}>
+Return the value of a claim
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-geterrors" visibility="public" name="getErrors" returnType="array" params={[]}>
+Return an array with validation errors (if any)
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-set" visibility="public" name="set" returnType="static" params={[{"type":"string","name":"claim","default":null},{"type":"mixed","name":"value","default":null}]}>
+Set the value of a claim, for comparison with the token values
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-settoken" visibility="public" name="setToken" returnType="static" params={[{"type":"Token","name":"token","default":null}]}>
+Set the token to be validated
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-validateaudience" visibility="public" name="validateAudience" returnType="static" params={[{"type":"array|string","name":"audience","default":null}]}>
+Validate the audience
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-validateclaim" visibility="public" name="validateClaim" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"bool|int|string","name":"value","default":null}]}>
+Validate a claim
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-validateexpiration" visibility="public" name="validateExpiration" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
+Validate the expiration time of the token
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-validateid" visibility="public" name="validateId" returnType="static" params={[{"type":"string|null","name":"jwtId","default":"null"}]}>
+Validate the id of the token
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-validateissuedat" visibility="public" name="validateIssuedAt" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
+Validate the issued at (iat) of the token
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-validateissuer" visibility="public" name="validateIssuer" returnType="static" params={[{"type":"string|null","name":"issuer","default":"null"}]}>
+Validate the issuer of the token
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-validatenotbefore" visibility="public" name="validateNotBefore" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
+Validate the notbefore (nbf) of the token
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-validatesignature" visibility="public" name="validateSignature" returnType="static" params={[{"type":"SignerInterface","name":"signer","default":null},{"type":"string","name":"passphrase","default":null}]}>
+Validate the signature of the token
+</ApiItem>
+<ApiItem href="#encryptionsecurityjwtvalidator-validatesubject" visibility="public" name="validateSubject" returnType="static" params={[{"type":"string|null","name":"subject","default":"null"}]}>
+Validate the subject of the token
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 14</div>
 
 <h4 id="encryptionsecurityjwtvalidator-__construct"><code>__construct()</code></h4>
 
@@ -3804,8 +2763,7 @@ A null subject expresses no expectation and is skipped.
 
 ## Encryption\Security\Random
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Random.php">Source on GitHub</a>
+Class
 
 Phalcon\Encryption\Security\Random
 
@@ -3877,76 +2835,41 @@ This class partially borrows SecureRandom library from Ruby
 
 @link https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\Random`**
 
-</div>
-
-__Uses__ `Exception` · `Phalcon\Encryption\Security\Exceptions\InvalidRandomInput` · `Phalcon\Traits\Php\Base64Trait`
+`Exception` · `Phalcon\Encryption\Security\Exceptions\InvalidRandomInput` · `Phalcon\Traits\Php\Base64Trait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityrandom-base58">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">base58</span>( <span class="st">int</span> <span class="sv">$len</span><span class="sm"> = 16</span> )</code>
-<span class="desc">Generates a random base58 string</span>
-</a>
-<a class="api-item" href="#encryptionsecurityrandom-base62">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">base62</span>( <span class="st">int</span> <span class="sv">$len</span><span class="sm"> = 16</span> )</code>
-<span class="desc">Generates a random base62 string</span>
-</a>
-<a class="api-item" href="#encryptionsecurityrandom-base64">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">base64</span>( <span class="st">int</span> <span class="sv">$len</span><span class="sm"> = 16</span> )</code>
-<span class="desc">Generates a random base64 string</span>
-</a>
-<a class="api-item" href="#encryptionsecurityrandom-base64safe">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">base64Safe</span>(<span class="prm"><span class="st">int</span> <span class="sv">$len</span><span class="sm"> = 16</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$padding</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Generates a random URL-safe base64 string</span>
-</a>
-<a class="api-item" href="#encryptionsecurityrandom-bytes">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">bytes</span>( <span class="st">int</span> <span class="sv">$len</span><span class="sm"> = 16</span> )</code>
-<span class="desc">Generates a random binary string</span>
-</a>
-<a class="api-item" href="#encryptionsecurityrandom-hex">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">hex</span>( <span class="st">int</span> <span class="sv">$len</span><span class="sm"> = 16</span> )</code>
-<span class="desc">Generates a random hex string</span>
-</a>
-<a class="api-item" href="#encryptionsecurityrandom-number">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">number</span>( <span class="st">int</span> <span class="sv">$len</span> )</code>
-<span class="desc">Generates a random number between 0 and $len</span>
-</a>
-<a class="api-item" href="#encryptionsecurityrandom-uuid">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">uuid</span>()</code>
-<span class="desc">Generates a v4 random UUID (Universally Unique IDentifier)</span>
-</a>
-<a class="api-item" href="#encryptionsecurityrandom-base">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">base</span>(<span class="prm"><span class="st">string</span> <span class="sv">$alphabet</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$base</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$number</span><span class="sm"> = 16</span></span>)</code>
-<span class="desc">Generates a random string based on the number ($base) of characters</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityrandom-base58" visibility="public" name="base58" returnType="string" params={[{"type":"int","name":"len","default":"16"}]}>
+Generates a random base58 string
+</ApiItem>
+<ApiItem href="#encryptionsecurityrandom-base62" visibility="public" name="base62" returnType="string" params={[{"type":"int","name":"len","default":"16"}]}>
+Generates a random base62 string
+</ApiItem>
+<ApiItem href="#encryptionsecurityrandom-base64" visibility="public" name="base64" returnType="string" params={[{"type":"int","name":"len","default":"16"}]}>
+Generates a random base64 string
+</ApiItem>
+<ApiItem href="#encryptionsecurityrandom-base64safe" visibility="public" name="base64Safe" returnType="string" params={[{"type":"int","name":"len","default":"16"},{"type":"bool","name":"padding","default":"false"}]}>
+Generates a random URL-safe base64 string
+</ApiItem>
+<ApiItem href="#encryptionsecurityrandom-bytes" visibility="public" name="bytes" returnType="string" params={[{"type":"int","name":"len","default":"16"}]}>
+Generates a random binary string
+</ApiItem>
+<ApiItem href="#encryptionsecurityrandom-hex" visibility="public" name="hex" returnType="string" params={[{"type":"int","name":"len","default":"16"}]}>
+Generates a random hex string
+</ApiItem>
+<ApiItem href="#encryptionsecurityrandom-number" visibility="public" name="number" returnType="int" params={[{"type":"int","name":"len","default":null}]}>
+Generates a random number between 0 and $len
+</ApiItem>
+<ApiItem href="#encryptionsecurityrandom-uuid" visibility="public" name="uuid" returnType="string" params={[]}>
+Generates a v4 random UUID (Universally Unique IDentifier)
+</ApiItem>
+<ApiItem href="#encryptionsecurityrandom-base" visibility="protected" name="base" returnType="string" params={[{"type":"string","name":"alphabet","default":null},{"type":"int","name":"base","default":null},{"type":"int","name":"number","default":"16"}]}>
+Generates a random string based on the number ($base) of characters
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 8</div>
 
 <h4 id="encryptionsecurityrandom-base58"><code>base58()</code></h4>
 
@@ -4118,8 +3041,6 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 @link https://www.ietf.org/rfc/rfc4122.txt
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="encryptionsecurityrandom-base"><code>base()</code></h4>
 
 ```php
@@ -4135,8 +3056,7 @@ Generates a random string based on the number ($base) of characters
 
 ## Encryption\Security\Uuid
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid.php">Source on GitHub</a>
+Class
 
 Factory that generates UUIDs of versions 1 through 7.
 
@@ -4144,58 +3064,32 @@ Each call creates a new immutable version object. Cast to string for the
 UUID value; use the returned object for additional methods such as
 getDateTime() or getNode().
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\Uuid`**
 
-</div>
-
-__Uses__ `Phalcon\Encryption\Security\Uuid\Version1` · `Phalcon\Encryption\Security\Uuid\Version3` · `Phalcon\Encryption\Security\Uuid\Version4` · `Phalcon\Encryption\Security\Uuid\Version5` · `Phalcon\Encryption\Security\Uuid\Version6` · `Phalcon\Encryption\Security\Uuid\Version7`
+`Phalcon\Encryption\Security\Uuid\Version1` · `Phalcon\Encryption\Security\Uuid\Version3` · `Phalcon\Encryption\Security\Uuid\Version4` · `Phalcon\Encryption\Security\Uuid\Version5` · `Phalcon\Encryption\Security\Uuid\Version6` · `Phalcon\Encryption\Security\Uuid\Version7`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuid-v1">
-<code class="vis vis-public">public</code>
-<code class="ret">Version1</code>
-<code class="sig"><span class="sf">v1</span>()</code>
-<span class="desc">Generates a version 1 (time-based) UUID.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuid-v3">
-<code class="vis vis-public">public</code>
-<code class="ret">Version3</code>
-<code class="sig"><span class="sf">v3</span>(<span class="prm"><span class="st">string</span> <span class="sv">$namespaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-<span class="desc">Generates a version 3 (name-based MD5) UUID.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuid-v4">
-<code class="vis vis-public">public</code>
-<code class="ret">Version4</code>
-<code class="sig"><span class="sf">v4</span>()</code>
-<span class="desc">Generates a version 4 (random) UUID.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuid-v5">
-<code class="vis vis-public">public</code>
-<code class="ret">Version5</code>
-<code class="sig"><span class="sf">v5</span>(<span class="prm"><span class="st">string</span> <span class="sv">$namespaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-<span class="desc">Generates a version 5 (name-based SHA-1) UUID.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuid-v6">
-<code class="vis vis-public">public</code>
-<code class="ret">Version6</code>
-<code class="sig"><span class="sf">v6</span>()</code>
-<span class="desc">Generates a version 6 (reordered time-based) UUID.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuid-v7">
-<code class="vis vis-public">public</code>
-<code class="ret">Version7</code>
-<code class="sig"><span class="sf">v7</span>()</code>
-<span class="desc">Generates a version 7 (Unix timestamp) UUID.</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityuuid-v1" visibility="public" name="v1" returnType="Version1" params={[]}>
+Generates a version 1 (time-based) UUID.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuid-v3" visibility="public" name="v3" returnType="Version3" params={[{"type":"string","name":"namespaceName","default":null},{"type":"string","name":"name","default":null}]}>
+Generates a version 3 (name-based MD5) UUID.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuid-v4" visibility="public" name="v4" returnType="Version4" params={[]}>
+Generates a version 4 (random) UUID.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuid-v5" visibility="public" name="v5" returnType="Version5" params={[{"type":"string","name":"namespaceName","default":null},{"type":"string","name":"name","default":null}]}>
+Generates a version 5 (name-based SHA-1) UUID.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuid-v6" visibility="public" name="v6" returnType="Version6" params={[]}>
+Generates a version 6 (reordered time-based) UUID.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuid-v7" visibility="public" name="v7" returnType="Version7" params={[]}>
+Generates a version 7 (Unix timestamp) UUID.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="encryptionsecurityuuid-v1"><code>v1()</code></h4>
 
@@ -4253,12 +3147,9 @@ Generates a version 7 (Unix timestamp) UUID.
 
 ## Encryption\Security\Uuid\AbstractUuid
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/AbstractUuid.php">Source on GitHub</a>
+Abstract
 
 Shared base for all UUID version objects.
-
-<div class="api-tree">
 
 - **`Phalcon\Encryption\Security\Uuid\AbstractUuid`** - implements [`Phalcon\Encryption\Security\Uuid\UuidInterface`](#encryptionsecurityuuiduuidinterface)
 - [`Phalcon\Encryption\Security\Uuid\Version1`](#encryptionsecurityuuidversion1)
@@ -4268,89 +3159,50 @@ Shared base for all UUID version objects.
 - [`Phalcon\Encryption\Security\Uuid\Version6`](#encryptionsecurityuuidversion6)
 - [`Phalcon\Encryption\Security\Uuid\Version7`](#encryptionsecurityuuidversion7)
 
-</div>
-
-__Uses__ `DateTimeImmutable`
+`DateTimeImmutable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidabstractuuid-__tostring">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__toString</span>()</code>
-<span class="desc">Returns the UUID string.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuidabstractuuid-jsonserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">jsonSerialize</span>()</code>
-<span class="desc">Returns the UUID string for JSON serialisation.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuidabstractuuid-format">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">format</span>( <span class="st">string</span> <span class="sv">$hex</span> )</code>
-<span class="desc">Formats a 32-character hex string as a canonical UUID string.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuidabstractuuid-getnodeprovider">
-<code class="vis vis-protected">protected</code>
-<code class="ret">NodeProviderInterface</code>
-<code class="sig"><span class="sf">getNodeProvider</span>()</code>
-<span class="desc">Returns the shared SysNodeProvider instance, creating it on first call.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuidabstractuuid-namespacetobytes">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">namespaceToBytes</span>( <span class="st">string</span> <span class="sv">$uuid</span> )</code>
-<span class="desc">Converts a canonical UUID string to its 16-byte binary representation.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuidabstractuuid-uuidtimestamptodatetime">
-<code class="vis vis-protected">protected</code>
-<code class="ret">DateTimeImmutable</code>
-<code class="sig"><span class="sf">uuidTimestampToDateTime</span>( <span class="st">mixed</span> <span class="sv">$timestamp</span> )</code>
-<span class="desc">Converts a 60-bit UUID timestamp (100-ns intervals since UUID epoch) to</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityuuidabstractuuid-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
+Returns the UUID string.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuidabstractuuid-jsonserialize" visibility="public" name="jsonSerialize" returnType="string" params={[]}>
+Returns the UUID string for JSON serialisation.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuidabstractuuid-format" visibility="protected" name="format" returnType="string" params={[{"type":"string","name":"hex","default":null}]}>
+Formats a 32-character hex string as a canonical UUID string.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuidabstractuuid-getnodeprovider" visibility="protected" name="getNodeProvider" returnType="NodeProviderInterface" params={[]}>
+Returns the shared SysNodeProvider instance, creating it on first call.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuidabstractuuid-namespacetobytes" visibility="protected" name="namespaceToBytes" returnType="string" params={[{"type":"string","name":"uuid","default":null}]}>
+Converts a canonical UUID string to its 16-byte binary representation.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuidabstractuuid-uuidtimestamptodatetime" visibility="protected" name="uuidTimestampToDateTime" returnType="DateTimeImmutable" params={[{"type":"mixed","name":"timestamp","default":null}]}>
+Converts a 60-bit UUID timestamp (100-ns intervals since UUID epoch) to
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">MAX</span><span class="sm"> = &quot;ffffffff-ffff-ffff-ffff-ffffffffffff&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NIL</span><span class="sm"> = &quot;00000000-0000-0000-0000-000000000000&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">TIME_OFFSET_INT</span><span class="sm"> = 122192928000000000</span></code>
-<span class="desc">100-nanosecond intervals between UUID epoch (1582-10-15) and Unix epoch (1970-01-01).</span>
-</div>
-</div>
+<ApiItem kind="constant" name="MAX" type="string" default="&quot;ffffffff-ffff-ffff-ffff-ffffffffffff&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NIL" type="string" default="&quot;00000000-0000-0000-0000-000000000000&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="TIME_OFFSET_INT" type="int" default="122192928000000000">
+100-nanosecond intervals between UUID epoch (1582-10-15)
+and Unix epoch (1970-01-01).
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">NodeProviderInterface|null</code>
-<code class="sig"><span class="sv">$nodeProvider</span><span class="sm"> = null</span></code>
-<span class="desc">Cached SysNodeProvider instance - shared within the request via static.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$uid</span><span class="sm"> = &quot;&quot;</span></code>
-<span class="desc">The generated UUID string.</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="nodeProvider" type="NodeProviderInterface|null" default="null">
+Cached SysNodeProvider instance - shared within the request via static.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="uid" type="string" default="&quot;&quot;">
+The generated UUID string.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="encryptionsecurityuuidabstractuuid-__tostring"><code>__toString()</code></h4>
 
@@ -4367,8 +3219,6 @@ public function jsonSerialize(): string;
 ```
 
 Returns the UUID string for JSON serialisation.
-
-<div class="api-group">Protected · 4</div>
 
 <h4 id="encryptionsecurityuuidabstractuuid-format"><code>format()</code></h4>
 
@@ -4407,22 +3257,16 @@ a DateTimeImmutable. Used by Version1 and Version6.
 
 ## Encryption\Security\Uuid\NodeProviderInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/NodeProviderInterface.php">Source on GitHub</a>
+Interface
 
-<div class="api-tree">
-
-- [`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`](/6.0/api/phalcon_contracts/#contractsencryptionsecurityuuidnodeprovider)
+- [`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`](../phalcon_contracts/#contractsencryptionsecurityuuidnodeprovider)
 - **`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`
+`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`
 
 ## Encryption\Security\Uuid\RandomNodeProvider
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/RandomNodeProvider.php">Source on GitHub</a>
+Class
 
 Generates a random 48-bit node with the multicast bit set.
 
@@ -4430,26 +3274,15 @@ Used as a fallback when no hardware MAC address is available.
 
 @link https://www.ietf.org/rfc/rfc4122.txt Section 4.5
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\Uuid\RandomNodeProvider`** - implements [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](#encryptionsecurityuuidnodeproviderinterface)
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidrandomnodeprovider-getnode">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getNode</span>()</code>
-<span class="desc">Returns a random 12-character hex node with the multicast bit set.</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityuuidrandomnodeprovider-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
+Returns a random 12-character hex node with the multicast bit set.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityuuidrandomnodeprovider-getnode"><code>getNode()</code></h4>
 
@@ -4461,8 +3294,7 @@ Returns a random 12-character hex node with the multicast bit set.
 
 ## Encryption\Security\Uuid\SysNodeProvider
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/SysNodeProvider.php">Source on GitHub</a>
+Class
 
 Discovers the hardware MAC address and returns it as a 12-character hex node.
 
@@ -4478,28 +3310,17 @@ Platform support:
   Windows - passthru("ipconfig /all 2>&1")
   FreeBSD - passthru("netstat -i -f link 2>&1")
 
-<div class="api-tree">
-
 - **`Phalcon\Encryption\Security\Uuid\SysNodeProvider`** - implements [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](#encryptionsecurityuuidnodeproviderinterface)
 
-</div>
-
-__Uses__ `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidsysnodeprovider-getnode">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getNode</span>()</code>
-<span class="desc">Returns the hardware MAC address as a 12-character hex string.</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityuuidsysnodeprovider-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
+Returns the hardware MAC address as a 12-character hex string.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityuuidsysnodeprovider-getnode"><code>getNode()</code></h4>
 
@@ -4512,40 +3333,29 @@ Result is cached in the instance property and optionally in APCu.
 
 ## Encryption\Security\Uuid\TimeBasedUuidInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/TimeBasedUuidInterface.php">Source on GitHub</a>
+Interface
 
-<div class="api-tree">
-
-- [`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`](/6.0/api/phalcon_contracts/#contractsencryptionsecurityuuidtimebaseduuid)
+- [`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`](../phalcon_contracts/#contractsencryptionsecurityuuidtimebaseduuid)
 - **`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`
+`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`
 
 ## Encryption\Security\Uuid\UuidInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/UuidInterface.php">Source on GitHub</a>
+Interface
 
 Marker interface for UUID version adapters.
 
 Also carries the standard RFC 4122 namespace UUIDs as constants.
 
-<div class="api-tree">
-
-- [`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`](/6.0/api/phalcon_contracts/#contractsencryptionsecurityuuiduuid)
+- [`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`](../phalcon_contracts/#contractsencryptionsecurityuuiduuid)
 - **`Phalcon\Encryption\Security\Uuid\UuidInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Encryption\Security\Uuid\Uuid`
+`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`
 
 ## Encryption\Security\Uuid\Version1
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/Version1.php">Source on GitHub</a>
+Class
 
 Generates a version 1 (time-based) UUID.
 
@@ -4556,39 +3366,23 @@ as fallback.
 
 @link https://www.ietf.org/rfc/rfc4122.txt
 
-<div class="api-tree">
-
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
 - **`Phalcon\Encryption\Security\Uuid\Version1`** - implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
 
-</div>
-
-__Uses__ `DateTimeImmutable` · `DateTimeInterface`
+`DateTimeImmutable` · `DateTimeInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidversion1-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">DateTimeInterface|null</span> <span class="sv">$dateTime</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$node</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#encryptionsecurityuuidversion1-getdatetime">
-<code class="vis vis-public">public</code>
-<code class="ret">DateTimeImmutable</code>
-<code class="sig"><span class="sf">getDateTime</span>()</code>
-<span class="desc">Returns a DateTimeImmutable built from the UUID&#039;s embedded timestamp.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuidversion1-getnode">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getNode</span>()</code>
-<span class="desc">Returns the 12-character hex node embedded in the UUID.</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityuuidversion1-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"DateTimeInterface|null","name":"dateTime","default":"null"},{"type":"mixed","name":"node","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuidversion1-getdatetime" visibility="public" name="getDateTime" returnType="DateTimeImmutable" params={[]}>
+Returns a DateTimeImmutable built from the UUID's embedded timestamp.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuidversion1-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
+Returns the 12-character hex node embedded in the UUID.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="encryptionsecurityuuidversion1-__construct"><code>__construct()</code></h4>
 
@@ -4617,8 +3411,7 @@ Returns the 12-character hex node embedded in the UUID.
 
 ## Encryption\Security\Uuid\Version3
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/Version3.php">Source on GitHub</a>
+Class
 
 Generates a version 3 (name-based MD5) UUID.
 
@@ -4627,25 +3420,15 @@ by hashing namespace bytes + name with MD5, then stamping version/variant.
 
 @link https://www.ietf.org/rfc/rfc4122.txt
 
-<div class="api-tree">
-
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
 - **`Phalcon\Encryption\Security\Uuid\Version3`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidversion3-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$namespaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityuuidversion3-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"namespaceName","default":null},{"type":"string","name":"name","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityuuidversion3-__construct"><code>__construct()</code></h4>
 
@@ -4658,8 +3441,7 @@ string $name
 
 ## Encryption\Security\Uuid\Version4
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/Version4.php">Source on GitHub</a>
+Class
 
 Generates a version 4 (random) UUID.
 
@@ -4668,25 +3450,15 @@ Phalcon\Encryption\Security\Random::uuid().
 
 @link https://www.ietf.org/rfc/rfc4122.txt
 
-<div class="api-tree">
-
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
 - **`Phalcon\Encryption\Security\Uuid\Version4`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidversion4-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityuuidversion4-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityuuidversion4-__construct"><code>__construct()</code></h4>
 
@@ -4696,8 +3468,7 @@ public function __construct();
 
 ## Encryption\Security\Uuid\Version5
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/Version5.php">Source on GitHub</a>
+Class
 
 Generates a version 5 (name-based SHA-1) UUID.
 
@@ -4707,25 +3478,15 @@ then stamping version/variant bits.
 
 @link https://www.ietf.org/rfc/rfc4122.txt
 
-<div class="api-tree">
-
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
 - **`Phalcon\Encryption\Security\Uuid\Version5`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidversion5-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$namespaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityuuidversion5-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"namespaceName","default":null},{"type":"string","name":"name","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityuuidversion5-__construct"><code>__construct()</code></h4>
 
@@ -4738,8 +3499,7 @@ string $name
 
 ## Encryption\Security\Uuid\Version6
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/Version6.php">Source on GitHub</a>
+Class
 
 Generates a version 6 (reordered time-based) UUID.
 
@@ -4749,39 +3509,23 @@ that sort lexicographically in chronological order.
 
 @link https://www.rfc-editor.org/rfc/rfc9562
 
-<div class="api-tree">
-
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
 - **`Phalcon\Encryption\Security\Uuid\Version6`** - implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
 
-</div>
-
-__Uses__ `DateTimeImmutable`
+`DateTimeImmutable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidversion6-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityuuidversion6-getdatetime">
-<code class="vis vis-public">public</code>
-<code class="ret">DateTimeImmutable</code>
-<code class="sig"><span class="sf">getDateTime</span>()</code>
-<span class="desc">Returns a DateTimeImmutable built from the UUID&#039;s embedded timestamp.</span>
-</a>
-<a class="api-item" href="#encryptionsecurityuuidversion6-getnode">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getNode</span>()</code>
-<span class="desc">Returns the 12-character hex node embedded in the UUID.</span>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityuuidversion6-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuidversion6-getdatetime" visibility="public" name="getDateTime" returnType="DateTimeImmutable" params={[]}>
+Returns a DateTimeImmutable built from the UUID's embedded timestamp.
+</ApiItem>
+<ApiItem href="#encryptionsecurityuuidversion6-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
+Returns the 12-character hex node embedded in the UUID.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="encryptionsecurityuuidversion6-__construct"><code>__construct()</code></h4>
 
@@ -4807,8 +3551,7 @@ Returns the 12-character hex node embedded in the UUID.
 
 ## Encryption\Security\Uuid\Version7
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Encryption/Security/Uuid/Version7.php">Source on GitHub</a>
+Class
 
 Generates a version 7 (Unix timestamp) UUID per RFC 9562.
 
@@ -4817,25 +3560,15 @@ Layout (128 bits):
 
 @link https://www.rfc-editor.org/rfc/rfc9562
 
-<div class="api-tree">
-
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
 - **`Phalcon\Encryption\Security\Uuid\Version7`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidversion7-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#encryptionsecurityuuidversion7-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="encryptionsecurityuuidversion7-__construct"><code>__construct()</code></h4>
 

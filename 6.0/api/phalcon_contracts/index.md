@@ -15,8 +15,7 @@ All classes are prefixed with `Phalcon`
 
 ## Contracts\ADR\ADRTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/ADRTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the ADR namespace.
 
@@ -30,56 +29,35 @@ type names per file and has no namespacing for them: the prefix is what
 keeps generic names such as `middleware_map` from clashing with an alias
 imported from another namespace into the same file.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\ADRTypes`**
-
-</div>
 
 ## Contracts\ADR\Action
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Action.php">Source on GitHub</a>
+Interface
 
 Marker contract for a per-endpoint Action. An Action is a Handler:
 `__invoke(request): response`.
 
-<div class="api-tree">
-
 - [`Phalcon\Contracts\ADR\Handler`](#contractsadrhandler)
 - **`Phalcon\Contracts\ADR\Action`**
 
-</div>
-
 ## Contracts\ADR\Application
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Application.php">Source on GitHub</a>
+Interface
 
 Handles a request end to end: routes it, dispatches the Action and returns
 the response, routing any error through the error responder.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Application`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+`Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadrapplication-handle">
-<code class="vis vis-public">public</code>
-<code class="ret">ResponseInterface</code>
-<code class="sig"><span class="sf">handle</span>( <span class="st">AttributeRequest</span> <span class="sv">$request</span> )</code>
-</a>
-</div>
+<ApiItem href="#contractsadrapplication-handle" visibility="public" name="handle" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsadrapplication-handle"><code>handle()</code></h4>
 
@@ -89,33 +67,21 @@ public function handle( AttributeRequest $request ): ResponseInterface;
 
 ## Contracts\ADR\Dispatcher
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Dispatcher.php">Source on GitHub</a>
+Interface
 
 Resolves an Action by class name, builds the middleware pipeline around it and
 runs it to produce a response.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Dispatcher`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+`Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadrdispatcher-dispatch">
-<code class="vis vis-public">public</code>
-<code class="ret">ResponseInterface</code>
-<code class="sig"><span class="sf">dispatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$actionClass</span>,</span><span class="prm"><span class="st">AttributeRequest</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$routeMiddleware</span><span class="sm"> = []</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#contractsadrdispatcher-dispatch" visibility="public" name="dispatch" returnType="ResponseInterface" params={[{"type":"string","name":"actionClass","default":null},{"type":"AttributeRequest","name":"request","default":null},{"type":"array","name":"routeMiddleware","default":"[]"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsadrdispatcher-dispatch"><code>dispatch()</code></h4>
 
@@ -129,32 +95,20 @@ array $routeMiddleware = []
 
 ## Contracts\ADR\Emitter\Emitter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Emitter/Emitter.php">Source on GitHub</a>
+Interface
 
 Sends a response to the client. Called by the front controller only.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Emitter\Emitter`**
 
-</div>
-
-__Uses__ `Phalcon\Http\ResponseInterface`
+`Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadremitteremitter-emit">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">emit</span>( <span class="st">ResponseInterface</span> <span class="sv">$response</span> )</code>
-</a>
-</div>
+<ApiItem href="#contractsadremitteremitter-emit" visibility="public" name="emit" returnType="void" params={[{"type":"ResponseInterface","name":"response","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsadremitteremitter-emit"><code>emit()</code></h4>
 
@@ -164,51 +118,34 @@ public function emit( ResponseInterface $response ): void;
 
 ## Contracts\ADR\Exceptions\ADRThrowable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Exceptions/ADRThrowable.php">Source on GitHub</a>
+Interface
 
 Base throwable contract for the ADR component. Every ADR exception implements
 it, so callers can catch all ADR errors with a single type.
 
-<div class="api-tree">
-
 - `\Throwable`
 - **`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`**
 
-</div>
-
-__Uses__ `Throwable`
+`Throwable`
 
 ## Contracts\ADR\Handler
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Handler.php">Source on GitHub</a>
+Interface
 
 Receives the request and returns a response. The terminal handler in the
 pipeline is the Action.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Handler`**
 - [`Phalcon\Contracts\ADR\Action`](#contractsadraction)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+`Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadrhandler-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">ResponseInterface</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">AttributeRequest</span> <span class="sv">$request</span> )</code>
-</a>
-</div>
+<ApiItem href="#contractsadrhandler-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsadrhandler-__invoke"><code>__invoke()</code></h4>
 
@@ -218,34 +155,22 @@ public function __invoke( AttributeRequest $request ): ResponseInterface;
 
 ## Contracts\ADR\Middleware
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Middleware.php">Source on GitHub</a>
+Interface
 
 Wraps the handler chain. Middleware may pass the request through to the next
 handler, decorate the response, short-circuit by returning its own response,
 or throw to route through the error responder.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Middleware`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+`Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadrmiddleware-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">ResponseInterface</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">AttributeRequest</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">Handler</span> <span class="sv">$next</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#contractsadrmiddleware-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null},{"type":"Handler","name":"next","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsadrmiddleware-__invoke"><code>__invoke()</code></h4>
 
@@ -258,99 +183,54 @@ Handler $next
 
 ## Contracts\ADR\Payload\Payload
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Payload/Payload.php">Source on GitHub</a>
+Interface
 
 Contract for the immutable payload produced by the domain layer.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Payload\Payload`**
 
-</div>
-
-__Uses__ `Throwable`
+`Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadrpayloadpayload-getexception">
-<code class="vis vis-public">public</code>
-<code class="ret">Throwable|null</code>
-<code class="sig"><span class="sf">getException</span>()</code>
-<span class="desc">Gets the exception thrown in the domain layer, if any.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-getextras">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getExtras</span>()</code>
-<span class="desc">Gets the arbitrary extra domain information.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-getinput">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getInput</span>()</code>
-<span class="desc">Gets the domain input.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-getmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getMessages</span>()</code>
-<span class="desc">Gets the domain messages.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-getresult">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getResult</span>()</code>
-<span class="desc">Gets the domain result.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-getstatus">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getStatus</span>()</code>
-<span class="desc">Gets the payload status.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-withexception">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">withException</span>( <span class="st">Throwable</span> <span class="sv">$exception</span> )</code>
-<span class="desc">Returns a copy of the payload with the given exception.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-withextras">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">withExtras</span>( <span class="st">mixed</span> <span class="sv">$extras</span> )</code>
-<span class="desc">Returns a copy of the payload with the given extras.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-withinput">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">withInput</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-<span class="desc">Returns a copy of the payload with the given input.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-withmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">withMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
-<span class="desc">Returns a copy of the payload with the given messages.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-withresult">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">withResult</span>( <span class="st">mixed</span> <span class="sv">$result</span> )</code>
-<span class="desc">Returns a copy of the payload with the given result.</span>
-</a>
-<a class="api-item" href="#contractsadrpayloadpayload-withstatus">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">withStatus</span>( <span class="st">mixed</span> <span class="sv">$status</span> )</code>
-<span class="desc">Returns a copy of the payload with the given status.</span>
-</a>
-</div>
+<ApiItem href="#contractsadrpayloadpayload-getexception" visibility="public" name="getException" returnType="Throwable|null" params={[]}>
+Gets the exception thrown in the domain layer, if any.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-getextras" visibility="public" name="getExtras" returnType="mixed" params={[]}>
+Gets the arbitrary extra domain information.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-getinput" visibility="public" name="getInput" returnType="mixed" params={[]}>
+Gets the domain input.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-getmessages" visibility="public" name="getMessages" returnType="mixed" params={[]}>
+Gets the domain messages.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-getresult" visibility="public" name="getResult" returnType="mixed" params={[]}>
+Gets the domain result.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-getstatus" visibility="public" name="getStatus" returnType="mixed" params={[]}>
+Gets the payload status.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-withexception" visibility="public" name="withException" returnType="Payload" params={[{"type":"Throwable","name":"exception","default":null}]}>
+Returns a copy of the payload with the given exception.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-withextras" visibility="public" name="withExtras" returnType="Payload" params={[{"type":"mixed","name":"extras","default":null}]}>
+Returns a copy of the payload with the given extras.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-withinput" visibility="public" name="withInput" returnType="Payload" params={[{"type":"mixed","name":"input","default":null}]}>
+Returns a copy of the payload with the given input.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-withmessages" visibility="public" name="withMessages" returnType="Payload" params={[{"type":"mixed","name":"messages","default":null}]}>
+Returns a copy of the payload with the given messages.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-withresult" visibility="public" name="withResult" returnType="Payload" params={[{"type":"mixed","name":"result","default":null}]}>
+Returns a copy of the payload with the given result.
+</ApiItem>
+<ApiItem href="#contractsadrpayloadpayload-withstatus" visibility="public" name="withStatus" returnType="Payload" params={[{"type":"mixed","name":"status","default":null}]}>
+Returns a copy of the payload with the given status.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 12</div>
 
 <h4 id="contractsadrpayloadpayload-getexception"><code>getException()</code></h4>
 
@@ -450,45 +330,27 @@ Returns a copy of the payload with the given status.
 
 ## Contracts\ADR\Responder\Formatter\Formatter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Responder/Formatter/Formatter.php">Source on GitHub</a>
+Interface
 
 Renders a payload into a string for a given content type.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\ADR\Payload\Payload`
+`Phalcon\Contracts\ADR\Payload\Payload`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadrresponderformatterformatter-accepts">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">accepts</span>( <span class="st">string</span> <span class="sv">$acceptHeader</span> )</code>
-<span class="desc">Whether this formatter can satisfy the given <code>Accept</code> header.</span>
-</a>
-<a class="api-item" href="#contractsadrresponderformatterformatter-contenttype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">contentType</span>()</code>
-<span class="desc">The content type this formatter produces.</span>
-</a>
-<a class="api-item" href="#contractsadrresponderformatterformatter-format">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">format</span>( <span class="st">Payload</span> <span class="sv">$payload</span> )</code>
-<span class="desc">Renders the payload into a string.</span>
-</a>
-</div>
+<ApiItem href="#contractsadrresponderformatterformatter-accepts" visibility="public" name="accepts" returnType="bool" params={[{"type":"string","name":"acceptHeader","default":null}]}>
+Whether this formatter can satisfy the given `Accept` header.
+</ApiItem>
+<ApiItem href="#contractsadrresponderformatterformatter-contenttype" visibility="public" name="contentType" returnType="string" params={[]}>
+The content type this formatter produces.
+</ApiItem>
+<ApiItem href="#contractsadrresponderformatterformatter-format" visibility="public" name="format" returnType="string" params={[{"type":"Payload","name":"payload","default":null}]}>
+Renders the payload into a string.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="contractsadrresponderformatterformatter-accepts"><code>accepts()</code></h4>
 
@@ -516,32 +378,20 @@ Renders the payload into a string.
 
 ## Contracts\ADR\Responder\Responder
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Responder/Responder.php">Source on GitHub</a>
+Interface
 
 Turns a payload into an HTTP response. The only layer that speaks HTTP.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Responder\Responder`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
+`Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadrresponderresponder-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">ResponseInterface</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">ResponseInterface</span> <span class="sv">$response</span>,</span><span class="prm"><span class="st">Payload</span> <span class="sv">$payload</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#contractsadrresponderresponder-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"RequestInterface","name":"request","default":null},{"type":"ResponseInterface","name":"response","default":null},{"type":"Payload","name":"payload","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsadrresponderresponder-__invoke"><code>__invoke()</code></h4>
 
@@ -555,34 +405,22 @@ Payload $payload
 
 ## Contracts\ADR\Router\AttributeFilter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Router/AttributeFilter.php">Source on GitHub</a>
+Interface
 
 Validates, casts and converts a router match's positional tail segments into
 named request attributes, driven by the matched Action's optional static
 `params()` declaration.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Router\AttributeFilter`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\ADR\ADRTypes`
+`Phalcon\Contracts\ADR\ADRTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadrrouterattributefilter-filter">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">filter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$actionClass</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#contractsadrrouterattributefilter-filter" visibility="public" name="filter" returnType="array" params={[{"type":"string","name":"actionClass","default":null},{"type":"array","name":"attributes","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsadrrouterattributefilter-filter"><code>filter()</code></h4>
 
@@ -595,80 +433,44 @@ array $attributes
 
 ## Contracts\ADR\Router\Router
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Router/Router.php">Source on GitHub</a>
+Interface
 
 Maps a request to an Action by convention: the HTTP method and the static
 path segments identify the class; trailing segments become positional
 request attributes. No route table.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Router\Router`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Http\RequestInterface`
+`Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Http\RequestInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadrrouterrouter-candidatesfor">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">candidatesFor</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span></span>)</code>
-<span class="desc">Every Action class this router would try for the given method and path,</span>
-</a>
-<a class="api-item" href="#contractsadrrouterrouter-classfor">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">classFor</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span></span>)</code>
-<span class="desc">The class this convention names for a fully static path, derived without</span>
-</a>
-<a class="api-item" href="#contractsadrrouterrouter-match">
-<code class="vis vis-public">public</code>
-<code class="ret">RouterMatch|null</code>
-<code class="sig"><span class="sf">match</span>( <span class="st">RequestInterface</span> <span class="sv">$request</span> )</code>
-</a>
-<a class="api-item" href="#contractsadrrouterrouter-methodfor">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">methodFor</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">The HTTP method the given Action class answers, uppercased, or null when</span>
-</a>
-<a class="api-item" href="#contractsadrrouterrouter-pathfor">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">pathFor</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">The canonical static path the given Action class answers, or null when</span>
-</a>
-<a class="api-item" href="#contractsadrrouterrouter-setactiondirectory">
-<code class="vis vis-public">public</code>
-<code class="ret">Router</code>
-<code class="sig"><span class="sf">setActionDirectory</span>( <span class="st">string</span> <span class="sv">$actionDirectory</span> )</code>
-<span class="desc">The filesystem root that backs the base namespace. The router uses it to</span>
-</a>
-<a class="api-item" href="#contractsadrrouterrouter-setbasenamespace">
-<code class="vis vis-public">public</code>
-<code class="ret">Router</code>
-<code class="sig"><span class="sf">setBaseNamespace</span>( <span class="st">string</span> <span class="sv">$baseNamespace</span> )</code>
-</a>
-<a class="api-item" href="#contractsadrrouterrouter-setmiddlewaremap">
-<code class="vis vis-public">public</code>
-<code class="ret">Router</code>
-<code class="sig"><span class="sf">setMiddlewareMap</span>( <span class="st">array</span> <span class="sv">$middlewareMap</span> )</code>
-</a>
-<a class="api-item" href="#contractsadrrouterrouter-setwordseparator">
-<code class="vis vis-public">public</code>
-<code class="ret">Router</code>
-<code class="sig"><span class="sf">setWordSeparator</span>( <span class="st">string</span> <span class="sv">$wordSeparator</span> )</code>
-<span class="desc">The single delimiter between words in a path segment. Applied</span>
-</a>
-</div>
+<ApiItem href="#contractsadrrouterrouter-candidatesfor" visibility="public" name="candidatesFor" returnType="array" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"path","default":null}]}>
+Every Action class this router would try for the given method and path,
+</ApiItem>
+<ApiItem href="#contractsadrrouterrouter-classfor" visibility="public" name="classFor" returnType="string" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"path","default":null}]}>
+The class this convention names for a fully static path, derived without
+</ApiItem>
+<ApiItem href="#contractsadrrouterrouter-match" visibility="public" name="match" returnType="RouterMatch|null" params={[{"type":"RequestInterface","name":"request","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsadrrouterrouter-methodfor" visibility="public" name="methodFor" returnType="string|null" params={[{"type":"string","name":"className","default":null}]}>
+The HTTP method the given Action class answers, uppercased, or null when
+</ApiItem>
+<ApiItem href="#contractsadrrouterrouter-pathfor" visibility="public" name="pathFor" returnType="string|null" params={[{"type":"string","name":"className","default":null}]}>
+The canonical static path the given Action class answers, or null when
+</ApiItem>
+<ApiItem href="#contractsadrrouterrouter-setactiondirectory" visibility="public" name="setActionDirectory" returnType="Router" params={[{"type":"string","name":"actionDirectory","default":null}]}>
+The filesystem root that backs the base namespace. The router uses it to
+</ApiItem>
+<ApiItem href="#contractsadrrouterrouter-setbasenamespace" visibility="public" name="setBaseNamespace" returnType="Router" params={[{"type":"string","name":"baseNamespace","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsadrrouterrouter-setmiddlewaremap" visibility="public" name="setMiddlewareMap" returnType="Router" params={[{"type":"array","name":"middlewareMap","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsadrrouterrouter-setwordseparator" visibility="public" name="setWordSeparator" returnType="Router" params={[{"type":"string","name":"wordSeparator","default":null}]}>
+The single delimiter between words in a path segment. Applied
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 9</div>
 
 <h4 id="contractsadrrouterrouter-candidatesfor"><code>candidatesFor()</code></h4>
 
@@ -765,48 +567,27 @@ class name. Any other character is literal.
 
 ## Contracts\ADR\Router\RouterMatch
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/ADR/Router/RouterMatch.php">Source on GitHub</a>
+Interface
 
 The result of matching a request against the router: the Action class, the
 extracted route attributes, the route's middleware and its optional name.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\ADR\Router\RouterMatch`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\ADR\ADRTypes`
+`Phalcon\Contracts\ADR\ADRTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsadrrouterroutermatch-getaction">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAction</span>()</code>
-</a>
-<a class="api-item" href="#contractsadrrouterroutermatch-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-</a>
-<a class="api-item" href="#contractsadrrouterroutermatch-getmiddleware">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getMiddleware</span>()</code>
-</a>
-<a class="api-item" href="#contractsadrrouterroutermatch-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-</a>
-</div>
+<ApiItem href="#contractsadrrouterroutermatch-getaction" visibility="public" name="getAction" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsadrrouterroutermatch-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsadrrouterroutermatch-getmiddleware" visibility="public" name="getMiddleware" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsadrrouterroutermatch-getname" visibility="public" name="getName" returnType="string|null" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="contractsadrrouterroutermatch-getaction"><code>getAction()</code></h4>
 
@@ -834,163 +615,89 @@ public function getName(): string|null;
 
 ## Contracts\Acl\AclTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/AclTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Acl namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Acl\AclTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface`
+`Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface`
 
 ## Contracts\Acl\Adapter\Adapter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/Adapter/Adapter.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Acl adapters
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Acl\Adapter\Adapter`**
-- [`Phalcon\Acl\Adapter\AdapterInterface`](/6.0/api/phalcon_acl/#acladapteradapterinterface)
+- [`Phalcon\Acl\Adapter\AdapterInterface`](../phalcon_acl/#acladapteradapterinterface)
 
-</div>
-
-__Uses__ `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes`
+`Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsacladapteradapter-addcomponent">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">addComponent</span>(<span class="prm"><span class="st">ComponentInterface|string</span> <span class="sv">$componentObject</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$accessList</span></span>)</code>
-<span class="desc">Adds a component to the ACL list</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-addcomponentaccess">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">addComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
-<span class="desc">Adds access to components</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-addinherit">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">addInherit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">array|RoleInterface|string</span> <span class="sv">$roleToInherit</span></span>)</code>
-<span class="desc">Add a role which inherits from an existing role</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-addrole">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">addRole</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleObject</span>,</span><span class="prm"><span class="st">array|RoleInterface|string|null</span> <span class="sv">$accessInherits</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Adds a role to the ACL list. The second parameter lets to inherit access</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-allow">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">allow</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$function</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Allow access to a role on a component. You can use <code>*</code> as wildcard</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-deny">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">deny</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">callable|null</span> <span class="sv">$function</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Deny access to a role on a component. You can use <code>*</code> as wildcard</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-dropcomponentaccess">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">dropComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$accessList</span></span>)</code>
-<span class="desc">Removes access from a component</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-getactiveaccess">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getActiveAccess</span>()</code>
-<span class="desc">Returns the access which the list is checking if a role can access it</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-getactivecomponent">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getActiveComponent</span>()</code>
-<span class="desc">Returns the component which the list is checking if some role can access</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-getactiverole">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getActiveRole</span>()</code>
-<span class="desc">Returns the role which the list is checking if it&#039;s allowed to certain</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-getcomponents">
-<code class="vis vis-public">public</code>
-<code class="ret">array|null</code>
-<code class="sig"><span class="sf">getComponents</span>()</code>
-<span class="desc">Return an array with every component registered in the list</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-getdefaultaction">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getDefaultAction</span>()</code>
-<span class="desc">Returns the default action</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-getinheritedroles">
-<code class="vis vis-public">public</code>
-<code class="ret">array|null</code>
-<code class="sig"><span class="sf">getInheritedRoles</span>( <span class="st">string</span> <span class="sv">$roleName</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Returns the inherited roles for a passed role name. If no role name</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-getnoargumentsdefaultaction">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getNoArgumentsDefaultAction</span>()</code>
-<span class="desc">Returns the default ACL access level for no arguments provided in</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-getroles">
-<code class="vis vis-public">public</code>
-<code class="ret">array|null</code>
-<code class="sig"><span class="sf">getRoles</span>()</code>
-<span class="desc">Return an array with every role registered in the list</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-isallowed">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Check whether a role is allowed to access an action from a component</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-iscomponent">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isComponent</span>( <span class="st">string</span> <span class="sv">$componentName</span> )</code>
-<span class="desc">Check whether a component exists in the components list</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-isrole">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isRole</span>( <span class="st">string</span> <span class="sv">$roleName</span> )</code>
-<span class="desc">Check whether role exist in the roles list</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-setdefaultaction">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
-<span class="desc">Sets the default access level</span>
-</a>
-<a class="api-item" href="#contractsacladapteradapter-setnoargumentsdefaultaction">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setNoArgumentsDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
-<span class="desc">Sets the default access level (Phalcon\Acl\Enum::ALLOW or</span>
-</a>
-</div>
+<ApiItem href="#contractsacladapteradapter-addcomponent" visibility="public" name="addComponent" returnType="bool" params={[{"type":"ComponentInterface|string","name":"componentObject","default":null},{"type":"array|string","name":"accessList","default":null}]}>
+Adds a component to the ACL list
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-addcomponentaccess" visibility="public" name="addComponentAccess" returnType="bool" params={[{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"accessList","default":null}]}>
+Adds access to components
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-addinherit" visibility="public" name="addInherit" returnType="bool" params={[{"type":"string","name":"roleName","default":null},{"type":"array|RoleInterface|string","name":"roleToInherit","default":null}]}>
+Add a role which inherits from an existing role
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-addrole" visibility="public" name="addRole" returnType="bool" params={[{"type":"mixed","name":"roleObject","default":null},{"type":"array|RoleInterface|string|null","name":"accessInherits","default":"null"}]}>
+Adds a role to the ACL list. The second parameter lets to inherit access
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-allow" visibility="public" name="allow" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"array|string","name":"access","default":null},{"type":"callable|null","name":"function","default":"null"}]}>
+Allow access to a role on a component. You can use `*` as wildcard
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-deny" visibility="public" name="deny" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"array|string","name":"access","default":null},{"type":"callable|null","name":"function","default":"null"}]}>
+Deny access to a role on a component. You can use `*` as wildcard
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-dropcomponentaccess" visibility="public" name="dropComponentAccess" returnType="void" params={[{"type":"string","name":"componentName","default":null},{"type":"array|string","name":"accessList","default":null}]}>
+Removes access from a component
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-getactiveaccess" visibility="public" name="getActiveAccess" returnType="string|null" params={[]}>
+Returns the access which the list is checking if a role can access it
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-getactivecomponent" visibility="public" name="getActiveComponent" returnType="string|null" params={[]}>
+Returns the component which the list is checking if some role can access
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-getactiverole" visibility="public" name="getActiveRole" returnType="string|null" params={[]}>
+Returns the role which the list is checking if it's allowed to certain
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-getcomponents" visibility="public" name="getComponents" returnType="array|null" params={[]}>
+Return an array with every component registered in the list
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-getdefaultaction" visibility="public" name="getDefaultAction" returnType="int" params={[]}>
+Returns the default action
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-getinheritedroles" visibility="public" name="getInheritedRoles" returnType="array|null" params={[{"type":"string","name":"roleName","default":"\"\""}]}>
+Returns the inherited roles for a passed role name. If no role name
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-getnoargumentsdefaultaction" visibility="public" name="getNoArgumentsDefaultAction" returnType="int" params={[]}>
+Returns the default ACL access level for no arguments provided in
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-getroles" visibility="public" name="getRoles" returnType="array|null" params={[]}>
+Return an array with every role registered in the list
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-isallowed" visibility="public" name="isAllowed" returnType="bool" params={[{"type":"mixed","name":"roleName","default":null},{"type":"mixed","name":"componentName","default":null},{"type":"string","name":"access","default":null},{"type":"array|null","name":"parameters","default":"null"}]}>
+Check whether a role is allowed to access an action from a component
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-iscomponent" visibility="public" name="isComponent" returnType="bool" params={[{"type":"string","name":"componentName","default":null}]}>
+Check whether a component exists in the components list
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-isrole" visibility="public" name="isRole" returnType="bool" params={[{"type":"string","name":"roleName","default":null}]}>
+Check whether role exist in the roles list
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-setdefaultaction" visibility="public" name="setDefaultAction" returnType="void" params={[{"type":"int","name":"defaultAccess","default":null}]}>
+Sets the default access level
+</ApiItem>
+<ApiItem href="#contractsacladapteradapter-setnoargumentsdefaultaction" visibility="public" name="setNoArgumentsDefaultAction" returnType="void" params={[{"type":"int","name":"defaultAccess","default":null}]}>
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 20</div>
 
 <h4 id="contractsacladapteradapter-addcomponent"><code>addComponent()</code></h4>
 
@@ -1196,8 +903,7 @@ there exists func for accessKey
 
 ## Contracts\Acl\Adapter\Persistable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/Adapter/Persistable.php">Source on GitHub</a>
+Interface
 
 Contract for ACL adapters that persist their policy to a backing store as a
 whole-policy snapshot (coarse granularity).
@@ -1206,32 +912,18 @@ NOTE: callable (closure) rules registered via allow()/deny() are NOT
 persisted - closures are not serializable. Re-register them in code after
 load(). The static rule set and role inheritance are persisted in full.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Acl\Adapter\Persistable`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsacladapterpersistable-load">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">load</span>()</code>
-<span class="desc">Loads the policy snapshot from the backing store, replacing current</span>
-</a>
-<a class="api-item" href="#contractsacladapterpersistable-save">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">save</span>()</code>
-<span class="desc">Persists the current policy snapshot to the backing store.</span>
-</a>
-</div>
+<ApiItem href="#contractsacladapterpersistable-load" visibility="public" name="load" returnType="bool" params={[]}>
+Loads the policy snapshot from the backing store, replacing current
+</ApiItem>
+<ApiItem href="#contractsacladapterpersistable-save" visibility="public" name="save" returnType="bool" params={[]}>
+Persists the current policy snapshot to the backing store.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractsacladapterpersistable-load"><code>load()</code></h4>
 
@@ -1252,44 +944,26 @@ Persists the current policy snapshot to the backing store.
 
 ## Contracts\Acl\Component
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/Component.php">Source on GitHub</a>
+Interface
 
 Canonical contract for an ACL component entity.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Acl\Component`**
-- [`Phalcon\Acl\ComponentInterface`](/6.0/api/phalcon_acl/#aclcomponentinterface)
-
-</div>
+- [`Phalcon\Acl\ComponentInterface`](../phalcon_acl/#aclcomponentinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsaclcomponent-__tostring">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__toString</span>()</code>
-<span class="desc">Magic method __toString</span>
-</a>
-<a class="api-item" href="#contractsaclcomponent-getdescription">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getDescription</span>()</code>
-<span class="desc">Returns component description</span>
-</a>
-<a class="api-item" href="#contractsaclcomponent-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Returns the component name</span>
-</a>
-</div>
+<ApiItem href="#contractsaclcomponent-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
+Magic method __toString
+</ApiItem>
+<ApiItem href="#contractsaclcomponent-getdescription" visibility="public" name="getDescription" returnType="string|null" params={[]}>
+Returns component description
+</ApiItem>
+<ApiItem href="#contractsaclcomponent-getname" visibility="public" name="getName" returnType="string" params={[]}>
+Returns the component name
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="contractsaclcomponent-__tostring"><code>__toString()</code></h4>
 
@@ -1317,32 +991,20 @@ Returns the component name
 
 ## Contracts\Acl\ComponentAware
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/ComponentAware.php">Source on GitHub</a>
+Interface
 
 Canonical contract for ACL component-aware objects.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Acl\ComponentAware`**
-- [`Phalcon\Acl\ComponentAwareInterface`](/6.0/api/phalcon_acl/#aclcomponentawareinterface)
-
-</div>
+- [`Phalcon\Acl\ComponentAwareInterface`](../phalcon_acl/#aclcomponentawareinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsaclcomponentaware-getcomponentname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getComponentName</span>()</code>
-<span class="desc">Returns component name</span>
-</a>
-</div>
+<ApiItem href="#contractsaclcomponentaware-getcomponentname" visibility="public" name="getComponentName" returnType="string" params={[]}>
+Returns component name
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsaclcomponentaware-getcomponentname"><code>getComponentName()</code></h4>
 
@@ -1354,44 +1016,26 @@ Returns component name
 
 ## Contracts\Acl\Role
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/Role.php">Source on GitHub</a>
+Interface
 
 Canonical contract for an ACL role entity.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Acl\Role`**
-- [`Phalcon\Acl\RoleInterface`](/6.0/api/phalcon_acl/#aclroleinterface)
-
-</div>
+- [`Phalcon\Acl\RoleInterface`](../phalcon_acl/#aclroleinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsaclrole-__tostring">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__toString</span>()</code>
-<span class="desc">Magic method __toString</span>
-</a>
-<a class="api-item" href="#contractsaclrole-getdescription">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getDescription</span>()</code>
-<span class="desc">Returns role description</span>
-</a>
-<a class="api-item" href="#contractsaclrole-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Returns the role name</span>
-</a>
-</div>
+<ApiItem href="#contractsaclrole-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
+Magic method __toString
+</ApiItem>
+<ApiItem href="#contractsaclrole-getdescription" visibility="public" name="getDescription" returnType="string|null" params={[]}>
+Returns role description
+</ApiItem>
+<ApiItem href="#contractsaclrole-getname" visibility="public" name="getName" returnType="string" params={[]}>
+Returns the role name
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="contractsaclrole-__tostring"><code>__toString()</code></h4>
 
@@ -1419,32 +1063,20 @@ Returns the role name
 
 ## Contracts\Acl\RoleAware
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Acl/RoleAware.php">Source on GitHub</a>
+Interface
 
 Canonical contract for ACL role-aware objects.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Acl\RoleAware`**
-- [`Phalcon\Acl\RoleAwareInterface`](/6.0/api/phalcon_acl/#aclroleawareinterface)
-
-</div>
+- [`Phalcon\Acl\RoleAwareInterface`](../phalcon_acl/#aclroleawareinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsaclroleaware-getrolename">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getRoleName</span>()</code>
-<span class="desc">Returns role name</span>
-</a>
-</div>
+<ApiItem href="#contractsaclroleaware-getrolename" visibility="public" name="getRoleName" returnType="string" params={[]}>
+Returns role name
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsaclroleaware-getrolename"><code>getRoleName()</code></h4>
 
@@ -1456,23 +1088,17 @@ Returns role name
 
 ## Contracts\Application\ApplicationTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Application/ApplicationTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Application namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Application\ApplicationTypes`**
 
-</div>
-
-__Uses__ `Closure`
+`Closure`
 
 ## Contracts\Assets\Asset
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Assets/Asset.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Assets\Asset.
 
@@ -1480,63 +1106,34 @@ Covers collection membership: an asset's key, type, HTML attributes, and
 filter flag. The file-output pipeline (Phalcon\Assets\Manager::output())
 requires the concrete Phalcon\Assets\Asset class.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Assets\Asset`**
-- [`Phalcon\Assets\AssetInterface`](/6.0/api/phalcon_assets/#assetsassetinterface)
-
-</div>
+- [`Phalcon\Assets\AssetInterface`](../phalcon_assets/#assetsassetinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsassetsasset-getassetkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAssetKey</span>()</code>
-<span class="desc">Gets the asset&#039;s key.</span>
-</a>
-<a class="api-item" href="#contractsassetsasset-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array|null</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-<span class="desc">Gets extra HTML attributes.</span>
-</a>
-<a class="api-item" href="#contractsassetsasset-getfilter">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getFilter</span>()</code>
-<span class="desc">Gets if the asset must be filtered or not.</span>
-</a>
-<a class="api-item" href="#contractsassetsasset-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Gets the asset&#039;s type.</span>
-</a>
-<a class="api-item" href="#contractsassetsasset-setattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">Asset</code>
-<code class="sig"><span class="sf">setAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
-<span class="desc">Sets extra HTML attributes.</span>
-</a>
-<a class="api-item" href="#contractsassetsasset-setfilter">
-<code class="vis vis-public">public</code>
-<code class="ret">Asset</code>
-<code class="sig"><span class="sf">setFilter</span>( <span class="st">bool</span> <span class="sv">$filter</span> )</code>
-<span class="desc">Sets if the asset must be filtered or not.</span>
-</a>
-<a class="api-item" href="#contractsassetsasset-settype">
-<code class="vis vis-public">public</code>
-<code class="ret">Asset</code>
-<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Sets the asset&#039;s type.</span>
-</a>
-</div>
+<ApiItem href="#contractsassetsasset-getassetkey" visibility="public" name="getAssetKey" returnType="string" params={[]}>
+Gets the asset's key.
+</ApiItem>
+<ApiItem href="#contractsassetsasset-getattributes" visibility="public" name="getAttributes" returnType="array|null" params={[]}>
+Gets extra HTML attributes.
+</ApiItem>
+<ApiItem href="#contractsassetsasset-getfilter" visibility="public" name="getFilter" returnType="bool" params={[]}>
+Gets if the asset must be filtered or not.
+</ApiItem>
+<ApiItem href="#contractsassetsasset-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+Gets the asset's type.
+</ApiItem>
+<ApiItem href="#contractsassetsasset-setattributes" visibility="public" name="setAttributes" returnType="Asset" params={[{"type":"array","name":"attributes","default":null}]}>
+Sets extra HTML attributes.
+</ApiItem>
+<ApiItem href="#contractsassetsasset-setfilter" visibility="public" name="setFilter" returnType="Asset" params={[{"type":"bool","name":"filter","default":null}]}>
+Sets if the asset must be filtered or not.
+</ApiItem>
+<ApiItem href="#contractsassetsasset-settype" visibility="public" name="setType" returnType="Asset" params={[{"type":"string","name":"type","default":null}]}>
+Sets the asset's type.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 7</div>
 
 <h4 id="contractsassetsasset-getassetkey"><code>getAssetKey()</code></h4>
 
@@ -1596,48 +1193,31 @@ Sets the asset's type.
 
 ## Contracts\Assets\AssetsTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Assets/AssetsTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Assets namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Assets\AssetsTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\AssetInterface` · `Phalcon\Assets\Collection` · `Phalcon\Assets\FilterInterface` · `Phalcon\Assets\Manager`
+`Phalcon\Assets\AssetInterface` · `Phalcon\Assets\Collection` · `Phalcon\Assets\FilterInterface` · `Phalcon\Assets\Manager`
 
 ## Contracts\Assets\Filter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Assets/Filter.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Assets filters (Cssmin, Jsmin, None, and
 custom user filters).
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Assets\Filter`**
-- [`Phalcon\Assets\FilterInterface`](/6.0/api/phalcon_assets/#assetsfilterinterface)
-
-</div>
+- [`Phalcon\Assets\FilterInterface`](../phalcon_assets/#assetsfilterinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsassetsfilter-filter">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">filter</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
-<span class="desc">Filters the content returning a string with the filtered content</span>
-</a>
-</div>
+<ApiItem href="#contractsassetsfilter-filter" visibility="public" name="filter" returnType="string" params={[{"type":"string","name":"content","default":null}]}>
+Filters the content returning a string with the filtered content
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsassetsfilter-filter"><code>filter()</code></h4>
 
@@ -1649,63 +1229,36 @@ Filters the content returning a string with the filtered content
 
 ## Contracts\Auth\Access\Access
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Access/Access.php">Source on GitHub</a>
+Interface
 
 Access gates are Specifications: policies that decide whether the current
 identity may run the given action. The enforcement point passes the
 identity (the guard) and the request context on every call; gates hold no
 reference to the auth manager.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Auth\Access\Access`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard`
+`Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthaccessaccess-getexceptactions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getExceptActions</span>()</code>
-</a>
-<a class="api-item" href="#contractsauthaccessaccess-getonlyactions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getOnlyActions</span>()</code>
-</a>
-<a class="api-item" href="#contractsauthaccessaccess-isallowed">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">Guard</span> <span class="sv">$guard</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Whether the identity behind the guard may run the action.</span>
-</a>
-<a class="api-item" href="#contractsauthaccessaccess-redirectto">
-<code class="vis vis-public">public</code>
-<code class="ret">array|null</code>
-<code class="sig"><span class="sf">redirectTo</span>()</code>
-</a>
-<a class="api-item" href="#contractsauthaccessaccess-setexceptactions">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setExceptActions</span>( <span class="st">array</span> <span class="sv">$exceptActions</span><span class="sm"> = []</span> )</code>
-<span class="desc">Exempts the listed action names from the gate; every other action is</span>
-</a>
-<a class="api-item" href="#contractsauthaccessaccess-setonlyactions">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setOnlyActions</span>( <span class="st">array</span> <span class="sv">$onlyActions</span><span class="sm"> = []</span> )</code>
-<span class="desc">Restricts the gate to the listed action names.</span>
-</a>
-</div>
+<ApiItem href="#contractsauthaccessaccess-getexceptactions" visibility="public" name="getExceptActions" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsauthaccessaccess-getonlyactions" visibility="public" name="getOnlyActions" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsauthaccessaccess-isallowed" visibility="public" name="isAllowed" returnType="bool" params={[{"type":"Guard","name":"guard","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"context","default":"[]"}]}>
+Whether the identity behind the guard may run the action.
+</ApiItem>
+<ApiItem href="#contractsauthaccessaccess-redirectto" visibility="public" name="redirectTo" returnType="array|null" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsauthaccessaccess-setexceptactions" visibility="public" name="setExceptActions" returnType="void" params={[{"type":"array","name":"exceptActions","default":"[]"}]}>
+Exempts the listed action names from the gate; every other action is
+</ApiItem>
+<ApiItem href="#contractsauthaccessaccess-setonlyactions" visibility="public" name="setOnlyActions" returnType="void" params={[{"type":"array","name":"onlyActions","default":"[]"}]}>
+Restricts the gate to the listed action names.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="contractsauthaccessaccess-getexceptactions"><code>getExceptActions()</code></h4>
 
@@ -1767,8 +1320,7 @@ for an unlisted action they return opposite answers to the same call.
 
 ## Contracts\Auth\Adapter\Adapter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Adapter/Adapter.php">Source on GitHub</a>
+Interface
 
 Authentication adapter contract.
 
@@ -1778,47 +1330,27 @@ unsealed: any user-row field may be used as the lookup key, plus an
 optional `password` entry that is ignored during the row match and
 consumed only by validateCredentials().
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Auth\Adapter\Adapter`**
 - [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](#contractsauthadapterrememberadapter)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
+`Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthadapteradapter-fromoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">fromOptions</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
-<span class="desc">Build an adapter from a flat options map. Used by ManagerFactory to</span>
-</a>
-<a class="api-item" href="#contractsauthadapteradapter-retrievebycredentials">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveByCredentials</span>( <span class="st">array</span> <span class="sv">$credentials</span> )</code>
-<span class="desc">Find a user matching the given credentials (e.g. [&#039;email&#039; =&gt; &#039;a@b&#039;]).</span>
-</a>
-<a class="api-item" href="#contractsauthadapteradapter-retrievebyid">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveById</span>( <span class="st">int|string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Find a user by their unique identifier.</span>
-</a>
-<a class="api-item" href="#contractsauthadapteradapter-validatecredentials">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validateCredentials</span>(<span class="prm"><span class="st">AuthUser</span> <span class="sv">$user</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$credentials</span></span>)</code>
-<span class="desc">Validate the provided credentials against the given user.</span>
-</a>
-</div>
+<ApiItem href="#contractsauthadapteradapter-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Security","name":"hasher","default":null},{"type":"array","name":"options","default":null}]}>
+Build an adapter from a flat options map. Used by ManagerFactory to
+</ApiItem>
+<ApiItem href="#contractsauthadapteradapter-retrievebycredentials" visibility="public" name="retrieveByCredentials" returnType="AuthUser|null" params={[{"type":"array","name":"credentials","default":null}]}>
+Find a user matching the given credentials (e.g. ['email' => 'a@b']).
+</ApiItem>
+<ApiItem href="#contractsauthadapteradapter-retrievebyid" visibility="public" name="retrieveById" returnType="AuthUser|null" params={[{"type":"int|string","name":"id","default":null}]}>
+Find a user by their unique identifier.
+</ApiItem>
+<ApiItem href="#contractsauthadapteradapter-validatecredentials" visibility="public" name="validateCredentials" returnType="bool" params={[{"type":"AuthUser","name":"user","default":null},{"type":"array","name":"credentials","default":null}]}>
+Validate the provided credentials against the given user.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="contractsauthadapteradapter-fromoptions"><code>fromOptions()</code></h4>
 
@@ -1866,8 +1398,7 @@ Implementations typically verify the password hash held under the
 
 ## Contracts\Auth\Adapter\AdapterConfig
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Adapter/AdapterConfig.php">Source on GitHub</a>
+Interface
 
 Authentication adapter configuration contract.
 
@@ -1875,26 +1406,15 @@ Per-adapter config shape is intentionally adapter-specific (e.g. Stream
 exposes getFile(), Memory exposes getUsers()); the only field shared across
 all adapters is the optional model class used during user hydration.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Auth\Adapter\AdapterConfig`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthadapteradapterconfig-getmodel">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getModel</span>()</code>
-<span class="desc">Returns the user-model class name to hydrate, if configured.</span>
-</a>
-</div>
+<ApiItem href="#contractsauthadapteradapterconfig-getmodel" visibility="public" name="getModel" returnType="string|null" params={[]}>
+Returns the user-model class name to hydrate, if configured.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsauthadapteradapterconfig-getmodel"><code>getModel()</code></h4>
 
@@ -1906,40 +1426,25 @@ Returns the user-model class name to hydrate, if configured.
 
 ## Contracts\Auth\Adapter\RememberAdapter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Adapter/RememberAdapter.php">Source on GitHub</a>
+Interface
 
 Capability extension implemented by adapters that support remember-me.
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Auth\Adapter\Adapter`](#contractsauthadapteradapter)
 - **`Phalcon\Contracts\Auth\Adapter\RememberAdapter`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken`
+`Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthadapterrememberadapter-createremembertoken">
-<code class="vis vis-public">public</code>
-<code class="ret">RememberToken</code>
-<code class="sig"><span class="sf">createRememberToken</span>( <span class="st">AuthUser</span> <span class="sv">$user</span> )</code>
-<span class="desc">Create and persist a new remember token for the user.</span>
-</a>
-<a class="api-item" href="#contractsauthadapterrememberadapter-retrievebytoken">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">retrieveByToken</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Retrieve a user by the remember-me cookie payload.</span>
-</a>
-</div>
+<ApiItem href="#contractsauthadapterrememberadapter-createremembertoken" visibility="public" name="createRememberToken" returnType="RememberToken" params={[{"type":"AuthUser","name":"user","default":null}]}>
+Create and persist a new remember token for the user.
+</ApiItem>
+<ApiItem href="#contractsauthadapterrememberadapter-retrievebytoken" visibility="public" name="retrieveByToken" returnType="AuthUser|null" params={[{"type":"int|string","name":"id","default":null},{"type":"string","name":"token","default":null},{"type":"string|null","name":"userAgent","default":"null"}]}>
+Retrieve a user by the remember-me cookie payload.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractsauthadapterrememberadapter-createremembertoken"><code>createRememberToken()</code></h4>
 
@@ -1963,39 +1468,24 @@ Retrieve a user by the remember-me cookie payload.
 
 ## Contracts\Auth\AuthRemember
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/AuthRemember.php">Source on GitHub</a>
+Interface
 
 Implemented by authenticatable models that support remember-me tokens.
 This is intentionally separate from AuthUser so that adapters which do
 not support remember-me are not forced to implement it.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Auth\AuthRemember`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthauthremember-createremembertoken">
-<code class="vis vis-public">public</code>
-<code class="ret">RememberToken</code>
-<code class="sig"><span class="sf">createRememberToken</span>(<span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Persists a new remember token for the user.</span>
-</a>
-<a class="api-item" href="#contractsauthauthremember-getremembertoken">
-<code class="vis vis-public">public</code>
-<code class="ret">RememberToken|null</code>
-<code class="sig"><span class="sf">getRememberToken</span>( <span class="st">string</span> <span class="sv">$token</span> )</code>
-<span class="desc">Returns the remember token entry matching the given token value,</span>
-</a>
-</div>
+<ApiItem href="#contractsauthauthremember-createremembertoken" visibility="public" name="createRememberToken" returnType="RememberToken" params={[{"type":"string","name":"token","default":null},{"type":"string|null","name":"userAgent","default":"null"}]}>
+Persists a new remember token for the user.
+</ApiItem>
+<ApiItem href="#contractsauthauthremember-getremembertoken" visibility="public" name="getRememberToken" returnType="RememberToken|null" params={[{"type":"string","name":"token","default":null}]}>
+Returns the remember token entry matching the given token value,
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractsauthauthremember-createremembertoken"><code>createRememberToken()</code></h4>
 
@@ -2019,8 +1509,7 @@ or null if not found.
 
 ## Contracts\Auth\AuthTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/AuthTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Auth namespace.
 
@@ -2034,47 +1523,28 @@ type names per file and has no namespacing for them: the prefix is what
 keeps generic names such as `adapter_config` from clashing with an alias
 imported from another namespace into the same file.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Auth\AuthTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Auth\Access\Access`
+`Phalcon\Contracts\Auth\Access\Access`
 
 ## Contracts\Auth\AuthUser
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/AuthUser.php">Source on GitHub</a>
+Interface
 
 Implemented by user models that can be authenticated.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Auth\AuthUser`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthauthuser-getauthidentifier">
-<code class="vis vis-public">public</code>
-<code class="ret">int|string</code>
-<code class="sig"><span class="sf">getAuthIdentifier</span>()</code>
-<span class="desc">Returns the unique identifier for the authenticatable user</span>
-</a>
-<a class="api-item" href="#contractsauthauthuser-getauthpassword">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAuthPassword</span>()</code>
-<span class="desc">Returns the hashed password for the authenticatable user.</span>
-</a>
-</div>
+<ApiItem href="#contractsauthauthuser-getauthidentifier" visibility="public" name="getAuthIdentifier" returnType="int|string" params={[]}>
+Returns the unique identifier for the authenticatable user
+</ApiItem>
+<ApiItem href="#contractsauthauthuser-getauthpassword" visibility="public" name="getAuthPassword" returnType="string" params={[]}>
+Returns the hashed password for the authenticatable user.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractsauthauthuser-getauthidentifier"><code>getAuthIdentifier()</code></h4>
 
@@ -2097,37 +1567,22 @@ Returns the hashed password for the authenticatable user.
 
 ## Contracts\Auth\Guard\BasicAuth
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Guard/BasicAuth.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Auth\Guard\BasicAuth`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Auth\AuthUser`
+`Phalcon\Contracts\Auth\AuthUser`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthguardbasicauth-basic">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">basic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;email&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$extraConditions</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Authenticate against HTTP Basic credentials. Returns true on success.</span>
-</a>
-<a class="api-item" href="#contractsauthguardbasicauth-oncebasic">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|false</code>
-<code class="sig"><span class="sf">onceBasic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;email&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$extraConditions</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Like basic() but does not persist; returns the resolved user on success</span>
-</a>
-</div>
+<ApiItem href="#contractsauthguardbasicauth-basic" visibility="public" name="basic" returnType="bool" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
+Authenticate against HTTP Basic credentials. Returns true on success.
+</ApiItem>
+<ApiItem href="#contractsauthguardbasicauth-oncebasic" visibility="public" name="onceBasic" returnType="AuthUser|false" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
+Like basic() but does not persist; returns the resolved user on success
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractsauthguardbasicauth-basic"><code>basic()</code></h4>
 
@@ -2154,79 +1609,43 @@ or false on failure.
 
 ## Contracts\Auth\Guard\Guard
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Guard/Guard.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Auth\Guard\Guard`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface`
+`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthguardguard-check">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">check</span>()</code>
-<span class="desc">Whether the current request is authenticated.</span>
-</a>
-<a class="api-item" href="#contractsauthguardguard-fromoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">fromOptions</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
-<span class="desc">Build a guard from an adapter, the application container, and a flat</span>
-</a>
-<a class="api-item" href="#contractsauthguardguard-getlastuserattempted">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">getLastUserAttempted</span>()</code>
-<span class="desc">Returns the last user the guard tried to authenticate during this</span>
-</a>
-<a class="api-item" href="#contractsauthguardguard-guest">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">guest</span>()</code>
-<span class="desc">Whether the current request is unauthenticated.</span>
-</a>
-<a class="api-item" href="#contractsauthguardguard-hasuser">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasUser</span>()</code>
-<span class="desc">Whether the guard currently holds a resolved user.</span>
-</a>
-<a class="api-item" href="#contractsauthguardguard-id">
-<code class="vis vis-public">public</code>
-<code class="ret">int|string|null</code>
-<code class="sig"><span class="sf">id</span>()</code>
-<span class="desc">Returns the authenticated user&#039;s identifier, or null when no</span>
-</a>
-<a class="api-item" href="#contractsauthguardguard-setuser">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setUser</span>( <span class="st">AuthUser</span> <span class="sv">$user</span> )</code>
-<span class="desc">Sets the current user explicitly. Returns $this for fluent chaining.</span>
-</a>
-<a class="api-item" href="#contractsauthguardguard-user">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">user</span>()</code>
-<span class="desc">Returns the resolved user for the current request, or null.</span>
-</a>
-<a class="api-item" href="#contractsauthguardguard-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>( <span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span> )</code>
-<span class="desc">Validates the given credentials without logging in.</span>
-</a>
-</div>
+<ApiItem href="#contractsauthguardguard-check" visibility="public" name="check" returnType="bool" params={[]}>
+Whether the current request is authenticated.
+</ApiItem>
+<ApiItem href="#contractsauthguardguard-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"mixed","name":"container","default":null},{"type":"array","name":"options","default":null}]}>
+Build a guard from an adapter, the application container, and a flat
+</ApiItem>
+<ApiItem href="#contractsauthguardguard-getlastuserattempted" visibility="public" name="getLastUserAttempted" returnType="AuthUser|null" params={[]}>
+Returns the last user the guard tried to authenticate during this
+</ApiItem>
+<ApiItem href="#contractsauthguardguard-guest" visibility="public" name="guest" returnType="bool" params={[]}>
+Whether the current request is unauthenticated.
+</ApiItem>
+<ApiItem href="#contractsauthguardguard-hasuser" visibility="public" name="hasUser" returnType="bool" params={[]}>
+Whether the guard currently holds a resolved user.
+</ApiItem>
+<ApiItem href="#contractsauthguardguard-id" visibility="public" name="id" returnType="int|string|null" params={[]}>
+Returns the authenticated user's identifier, or null when no
+</ApiItem>
+<ApiItem href="#contractsauthguardguard-setuser" visibility="public" name="setUser" returnType="static" params={[{"type":"AuthUser","name":"user","default":null}]}>
+Sets the current user explicitly. Returns $this for fluent chaining.
+</ApiItem>
+<ApiItem href="#contractsauthguardguard-user" visibility="public" name="user" returnType="AuthUser|null" params={[]}>
+Returns the resolved user for the current request, or null.
+</ApiItem>
+<ApiItem href="#contractsauthguardguard-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
+Validates the given credentials without logging in.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 9</div>
 
 <h4 id="contractsauthguardguard-check"><code>check()</code></h4>
 
@@ -2315,8 +1734,7 @@ Validates the given credentials without logging in.
 
 ## Contracts\Auth\Guard\GuardConfig
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Guard/GuardConfig.php">Source on GitHub</a>
+Interface
 
 Authentication guard configuration contract.
 
@@ -2325,62 +1743,34 @@ getInputKey()/getStorageKey(); Session has no required config today).
 The contract carries no methods of its own - it only marks the type so
 AbstractGuard can accept any guard config uniformly.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Auth\Guard\GuardConfig`**
-
-</div>
 
 ## Contracts\Auth\Guard\GuardStateful
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Guard/GuardStateful.php">Source on GitHub</a>
+Interface
 
 Implemented by guards backed by persistent state (sessions/cookies).
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Auth\Guard\GuardStateful`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser`
+`Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthguardguardstateful-attempt">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">attempt</span>(<span class="prm"><span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Attempts to authenticate the user with the given credentials and, on</span>
-</a>
-<a class="api-item" href="#contractsauthguardguardstateful-login">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">login</span>(<span class="prm"><span class="st">AuthUser</span> <span class="sv">$user</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
-</a>
-<a class="api-item" href="#contractsauthguardguardstateful-loginbyid">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|false</code>
-<code class="sig"><span class="sf">loginById</span>(<span class="prm"><span class="st">int|string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Logs in the user identified by $id. Returns the resolved user on</span>
-</a>
-<a class="api-item" href="#contractsauthguardguardstateful-logout">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">logout</span>()</code>
-</a>
-<a class="api-item" href="#contractsauthguardguardstateful-viaremember">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">viaRemember</span>()</code>
-</a>
-</div>
+<ApiItem href="#contractsauthguardguardstateful-attempt" visibility="public" name="attempt" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"},{"type":"bool","name":"remember","default":"false"}]}>
+Attempts to authenticate the user with the given credentials and, on
+</ApiItem>
+<ApiItem href="#contractsauthguardguardstateful-login" visibility="public" name="login" returnType="void" params={[{"type":"AuthUser","name":"user","default":null},{"type":"bool","name":"remember","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#contractsauthguardguardstateful-loginbyid" visibility="public" name="loginById" returnType="AuthUser|false" params={[{"type":"int|string","name":"id","default":null},{"type":"bool","name":"remember","default":"false"}]}>
+Logs in the user identified by $id. Returns the resolved user on
+</ApiItem>
+<ApiItem href="#contractsauthguardguardstateful-logout" visibility="public" name="logout" returnType="void" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsauthguardguardstateful-viaremember" visibility="public" name="viaRemember" returnType="bool" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 5</div>
 
 <h4 id="contractsauthguardguardstateful-attempt"><code>attempt()</code></h4>
 
@@ -2429,125 +1819,62 @@ public function viaRemember(): bool;
 
 ## Contracts\Auth\Manager
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/Manager.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Auth\Manager`**
 
-</div>
-
-__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Guard\Guard`
+`Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Guard\Guard`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthmanager-access">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">access</span>( <span class="st">string</span> <span class="sv">$accessName</span> )</code>
-<span class="desc">Activates the named access gate for the current request and returns the</span>
-</a>
-<a class="api-item" href="#contractsauthmanager-addaccesslist">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">addAccessList</span>( <span class="st">array</span> <span class="sv">$accessList</span> )</code>
-</a>
-<a class="api-item" href="#contractsauthmanager-addguard">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">addGuard</span>(<span class="prm"><span class="st">string</span> <span class="sv">$nameGuard</span>,</span><span class="prm"><span class="st">Guard</span> <span class="sv">$guard</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isDefault</span><span class="sm"> = false</span></span>)</code>
-</a>
-<a class="api-item" href="#contractsauthmanager-attempt">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">attempt</span>(<span class="prm"><span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
-</a>
-<a class="api-item" href="#contractsauthmanager-check">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">check</span>()</code>
-<span class="desc">Whether the default guard reports the current request as authenticated.</span>
-</a>
-<a class="api-item" href="#contractsauthmanager-except">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">except</span>( <span class="st">string</span> <span class="sv">$actions</span> )</code>
-<span class="desc">Restricts the active access gate to skip the listed action names.</span>
-</a>
-<a class="api-item" href="#contractsauthmanager-getaccess">
-<code class="vis vis-public">public</code>
-<code class="ret">Access|null</code>
-<code class="sig"><span class="sf">getAccess</span>()</code>
-<span class="desc">Returns the active access gate, or null when none has been activated -</span>
-</a>
-<a class="api-item" href="#contractsauthmanager-getaccesslist">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAccessList</span>()</code>
-</a>
-<a class="api-item" href="#contractsauthmanager-getdefaultguard">
-<code class="vis vis-public">public</code>
-<code class="ret">Guard|null</code>
-<code class="sig"><span class="sf">getDefaultGuard</span>()</code>
-</a>
-<a class="api-item" href="#contractsauthmanager-getguards">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getGuards</span>()</code>
-</a>
-<a class="api-item" href="#contractsauthmanager-guard">
-<code class="vis vis-public">public</code>
-<code class="ret">Guard</code>
-<code class="sig"><span class="sf">guard</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
-<span class="desc">Returns the named guard, or the default guard when $name is null.</span>
-</a>
-<a class="api-item" href="#contractsauthmanager-id">
-<code class="vis vis-public">public</code>
-<code class="ret">int|string|null</code>
-<code class="sig"><span class="sf">id</span>()</code>
-<span class="desc">Returns the authenticated user&#039;s identifier from the default guard,</span>
-</a>
-<a class="api-item" href="#contractsauthmanager-logout">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">logout</span>()</code>
-<span class="desc">Logs the current user out via the default guard.</span>
-</a>
-<a class="api-item" href="#contractsauthmanager-only">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">only</span>( <span class="st">string</span> <span class="sv">$actions</span> )</code>
-<span class="desc">Restricts the active access gate to apply only to the listed action names.</span>
-</a>
-<a class="api-item" href="#contractsauthmanager-setaccess">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">setAccess</span>( <span class="st">Access</span> <span class="sv">$access</span> )</code>
-</a>
-<a class="api-item" href="#contractsauthmanager-setdefaultguard">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">setDefaultGuard</span>( <span class="st">Guard</span> <span class="sv">$guard</span> )</code>
-</a>
-<a class="api-item" href="#contractsauthmanager-user">
-<code class="vis vis-public">public</code>
-<code class="ret">AuthUser|null</code>
-<code class="sig"><span class="sf">user</span>()</code>
-<span class="desc">Returns the resolved user from the default guard, or null.</span>
-</a>
-<a class="api-item" href="#contractsauthmanager-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>( <span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span> )</code>
-<span class="desc">Validates the given credentials against the default guard without</span>
-</a>
-</div>
+<ApiItem href="#contractsauthmanager-access" visibility="public" name="access" returnType="self" params={[{"type":"string","name":"accessName","default":null}]}>
+Activates the named access gate for the current request and returns the
+</ApiItem>
+<ApiItem href="#contractsauthmanager-addaccesslist" visibility="public" name="addAccessList" returnType="self" params={[{"type":"array","name":"accessList","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsauthmanager-addguard" visibility="public" name="addGuard" returnType="self" params={[{"type":"string","name":"nameGuard","default":null},{"type":"Guard","name":"guard","default":null},{"type":"bool","name":"isDefault","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#contractsauthmanager-attempt" visibility="public" name="attempt" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"},{"type":"bool","name":"remember","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#contractsauthmanager-check" visibility="public" name="check" returnType="bool" params={[]}>
+Whether the default guard reports the current request as authenticated.
+</ApiItem>
+<ApiItem href="#contractsauthmanager-except" visibility="public" name="except" returnType="self" params={[{"type":"string","name":"actions","default":null}]}>
+Restricts the active access gate to skip the listed action names.
+</ApiItem>
+<ApiItem href="#contractsauthmanager-getaccess" visibility="public" name="getAccess" returnType="Access|null" params={[]}>
+Returns the active access gate, or null when none has been activated -
+</ApiItem>
+<ApiItem href="#contractsauthmanager-getaccesslist" visibility="public" name="getAccessList" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsauthmanager-getdefaultguard" visibility="public" name="getDefaultGuard" returnType="Guard|null" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsauthmanager-getguards" visibility="public" name="getGuards" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsauthmanager-guard" visibility="public" name="guard" returnType="Guard" params={[{"type":"string|null","name":"name","default":"null"}]}>
+Returns the named guard, or the default guard when $name is null.
+</ApiItem>
+<ApiItem href="#contractsauthmanager-id" visibility="public" name="id" returnType="int|string|null" params={[]}>
+Returns the authenticated user's identifier from the default guard,
+</ApiItem>
+<ApiItem href="#contractsauthmanager-logout" visibility="public" name="logout" returnType="void" params={[]}>
+Logs the current user out via the default guard.
+</ApiItem>
+<ApiItem href="#contractsauthmanager-only" visibility="public" name="only" returnType="self" params={[{"type":"string","name":"actions","default":null}]}>
+Restricts the active access gate to apply only to the listed action names.
+</ApiItem>
+<ApiItem href="#contractsauthmanager-setaccess" visibility="public" name="setAccess" returnType="self" params={[{"type":"Access","name":"access","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsauthmanager-setdefaultguard" visibility="public" name="setDefaultGuard" returnType="self" params={[{"type":"Guard","name":"guard","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsauthmanager-user" visibility="public" name="user" returnType="AuthUser|null" params={[]}>
+Returns the resolved user from the default guard, or null.
+</ApiItem>
+<ApiItem href="#contractsauthmanager-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
+Validates the given credentials against the default guard without
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 18</div>
 
 <h4 id="contractsauthmanager-access"><code>access()</code></h4>
 
@@ -2696,43 +2023,25 @@ logging in.
 
 ## Contracts\Auth\RememberToken
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Auth/RememberToken.php">Source on GitHub</a>
+Interface
 
 A persisted remember-me token row.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Auth\RememberToken`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsauthremembertoken-delete">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>()</code>
-<span class="desc">Deletes the token from storage.</span>
-</a>
-<a class="api-item" href="#contractsauthremembertoken-gettoken">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getToken</span>()</code>
-<span class="desc">Returns the token value stored for this remember entry.</span>
-</a>
-<a class="api-item" href="#contractsauthremembertoken-getuseragent">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getUserAgent</span>()</code>
-<span class="desc">Returns the user agent associated with this token, if any.</span>
-</a>
-</div>
+<ApiItem href="#contractsauthremembertoken-delete" visibility="public" name="delete" returnType="bool" params={[]}>
+Deletes the token from storage.
+</ApiItem>
+<ApiItem href="#contractsauthremembertoken-gettoken" visibility="public" name="getToken" returnType="string" params={[]}>
+Returns the token value stored for this remember entry.
+</ApiItem>
+<ApiItem href="#contractsauthremembertoken-getuseragent" visibility="public" name="getUserAgent" returnType="string|null" params={[]}>
+Returns the user agent associated with this token, if any.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="contractsauthremembertoken-delete"><code>delete()</code></h4>
 
@@ -2760,89 +2069,51 @@ Returns the user agent associated with this token, if any.
 
 ## Contracts\Autoload\AutoloadTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Autoload/AutoloadTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Autoload namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Autoload\AutoloadTypes`**
-
-</div>
 
 ## Contracts\Cache\Cache
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Cache/Cache.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Cache\Cache.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Cache\Cache`**
-- [`Phalcon\Cache\CacheInterface`](/6.0/api/phalcon_cache/#cachecacheinterface)
+- [`Phalcon\Cache\CacheInterface`](../phalcon_cache/#cachecacheinterface)
 
-</div>
-
-__Uses__ `DateInterval` · `Phalcon\Cache\Exception\InvalidArgumentException`
+`DateInterval` · `Phalcon\Cache\Exception\InvalidArgumentException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscachecache-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Wipes clean the entire cache&#039;s keys.</span>
-</a>
-<a class="api-item" href="#contractscachecache-delete">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Delete an item from the cache by its unique key.</span>
-</a>
-<a class="api-item" href="#contractscachecache-deletemultiple">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">iterable</span> <span class="sv">$keys</span> )</code>
-<span class="desc">Deletes multiple cache items in a single operation.</span>
-</a>
-<a class="api-item" href="#contractscachecache-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Fetches a value from the cache.</span>
-</a>
-<a class="api-item" href="#contractscachecache-getmultiple">
-<code class="vis vis-public">public</code>
-<code class="ret">iterable</code>
-<code class="sig"><span class="sf">getMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Obtains multiple cache items by their unique keys.</span>
-</a>
-<a class="api-item" href="#contractscachecache-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Determines whether an item is present in the cache.</span>
-</a>
-<a class="api-item" href="#contractscachecache-set">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">DateInterval|int|null</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Persists data in the cache, uniquely referenced by a key with an optional</span>
-</a>
-<a class="api-item" href="#contractscachecache-setmultiple">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">setMultiple</span>(<span class="prm"><span class="st">iterable</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">DateInterval|int|null</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</span>
-</a>
-</div>
+<ApiItem href="#contractscachecache-clear" visibility="public" name="clear" returnType="bool" params={[]}>
+Wipes clean the entire cache's keys.
+</ApiItem>
+<ApiItem href="#contractscachecache-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Delete an item from the cache by its unique key.
+</ApiItem>
+<ApiItem href="#contractscachecache-deletemultiple" visibility="public" name="deleteMultiple" returnType="bool" params={[{"type":"iterable","name":"keys","default":null}]}>
+Deletes multiple cache items in a single operation.
+</ApiItem>
+<ApiItem href="#contractscachecache-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Fetches a value from the cache.
+</ApiItem>
+<ApiItem href="#contractscachecache-getmultiple" visibility="public" name="getMultiple" returnType="iterable" params={[{"type":"iterable","name":"keys","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Obtains multiple cache items by their unique keys.
+</ApiItem>
+<ApiItem href="#contractscachecache-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Determines whether an item is present in the cache.
+</ApiItem>
+<ApiItem href="#contractscachecache-set" visibility="public" name="set" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"DateInterval|int|null","name":"ttl","default":"null"}]}>
+Persists data in the cache, uniquely referenced by a key with an optional
+</ApiItem>
+<ApiItem href="#contractscachecache-setmultiple" visibility="public" name="setMultiple" returnType="bool" params={[{"type":"iterable","name":"values","default":null},{"type":"DateInterval|int|null","name":"ttl","default":"null"}]}>
+Persists a set of key => value pairs in the cache, with an optional TTL.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 8</div>
 
 <h4 id="contractscachecache-clear"><code>clear()</code></h4>
 
@@ -2924,96 +2195,55 @@ Persists a set of key => value pairs in the cache, with an optional TTL.
 
 ## Contracts\Cli\CliTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Cli/CliTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Cli namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Cli\CliTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Cli\Router\Route`
+`Phalcon\Cli\Router\Route`
 
 ## Contracts\Cli\Dispatcher
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Cli/Dispatcher.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Cli\Dispatcher.
 
-<div class="api-tree">
-
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](#contractsdispatcherdispatcher)
 - **`Phalcon\Contracts\Cli\Dispatcher`**
-- [`Phalcon\Cli\DispatcherInterface`](/6.0/api/phalcon_cli/#clidispatcherinterface)
+- [`Phalcon\Cli\DispatcherInterface`](../phalcon_cli/#clidispatcherinterface)
 
-</div>
-
-__Uses__ `Phalcon\Cli\TaskInterface` · `Phalcon\Contracts\Dispatcher\Dispatcher`
+`Phalcon\Cli\TaskInterface` · `Phalcon\Contracts\Dispatcher\Dispatcher`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsclidispatcher-getactivetask">
-<code class="vis vis-public">public</code>
-<code class="ret">TaskInterface|null</code>
-<code class="sig"><span class="sf">getActiveTask</span>()</code>
-<span class="desc">Returns the active task in the dispatcher</span>
-</a>
-<a class="api-item" href="#contractsclidispatcher-getlasttask">
-<code class="vis vis-public">public</code>
-<code class="ret">TaskInterface|null</code>
-<code class="sig"><span class="sf">getLastTask</span>()</code>
-<span class="desc">Returns the latest dispatched controller</span>
-</a>
-<a class="api-item" href="#contractsclidispatcher-getoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getOptions</span>()</code>
-</a>
-<a class="api-item" href="#contractsclidispatcher-gettaskname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTaskName</span>()</code>
-<span class="desc">Gets last dispatched task name</span>
-</a>
-<a class="api-item" href="#contractsclidispatcher-gettasksuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTaskSuffix</span>()</code>
-<span class="desc">Gets default task suffix</span>
-</a>
-<a class="api-item" href="#contractsclidispatcher-setdefaulttask">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefaultTask</span>( <span class="st">string</span> <span class="sv">$taskName</span> )</code>
-<span class="desc">Sets the default task name</span>
-</a>
-<a class="api-item" href="#contractsclidispatcher-setoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
-</a>
-<a class="api-item" href="#contractsclidispatcher-settaskname">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setTaskName</span>( <span class="st">string</span> <span class="sv">$taskName</span> )</code>
-<span class="desc">Sets the task name to be dispatched</span>
-</a>
-<a class="api-item" href="#contractsclidispatcher-settasksuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setTaskSuffix</span>( <span class="st">string</span> <span class="sv">$taskSuffix</span> )</code>
-<span class="desc">Sets the default task suffix</span>
-</a>
-</div>
+<ApiItem href="#contractsclidispatcher-getactivetask" visibility="public" name="getActiveTask" returnType="TaskInterface|null" params={[]}>
+Returns the active task in the dispatcher
+</ApiItem>
+<ApiItem href="#contractsclidispatcher-getlasttask" visibility="public" name="getLastTask" returnType="TaskInterface|null" params={[]}>
+Returns the latest dispatched controller
+</ApiItem>
+<ApiItem href="#contractsclidispatcher-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsclidispatcher-gettaskname" visibility="public" name="getTaskName" returnType="string" params={[]}>
+Gets last dispatched task name
+</ApiItem>
+<ApiItem href="#contractsclidispatcher-gettasksuffix" visibility="public" name="getTaskSuffix" returnType="string" params={[]}>
+Gets default task suffix
+</ApiItem>
+<ApiItem href="#contractsclidispatcher-setdefaulttask" visibility="public" name="setDefaultTask" returnType="void" params={[{"type":"string","name":"taskName","default":null}]}>
+Sets the default task name
+</ApiItem>
+<ApiItem href="#contractsclidispatcher-setoptions" visibility="public" name="setOptions" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsclidispatcher-settaskname" visibility="public" name="setTaskName" returnType="void" params={[{"type":"string","name":"taskName","default":null}]}>
+Sets the task name to be dispatched
+</ApiItem>
+<ApiItem href="#contractsclidispatcher-settasksuffix" visibility="public" name="setTaskSuffix" returnType="void" params={[{"type":"string","name":"taskSuffix","default":null}]}>
+Sets the default task suffix
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 9</div>
 
 <h4 id="contractsclidispatcher-getactivetask"><code>getActiveTask()</code></h4>
 
@@ -3085,23 +2315,27 @@ Sets the default task suffix
 
 ## Contracts\Config\ConfigTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Config/ConfigTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Config namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Config\ConfigTypes`**
 
-</div>
+`Phalcon\Config\ConfigInterface`
 
-__Uses__ `Phalcon\Config\ConfigInterface`
+## Contracts\Container\ContainerTypes
+
+Interface
+
+Central registry of the array shapes used across the Container namespace.
+
+- **`Phalcon\Contracts\Container\ContainerTypes`**
+
+`Phalcon\Container\Definition\Processor\Processor` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Contracts\Container\Service\Provider` · `ReflectionParameter`
 
 ## Contracts\Container\Ioc\IocContainer
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Ioc/IocContainer.php">Source on GitHub</a>
+Interface
 
 [_IocContainer_][] affords obtaining services by name.
 
@@ -3111,33 +2345,19 @@ __Uses__ `Phalcon\Config\ConfigInterface`
       will need to obtain services somehow, e.g. from a [Service-Interop][]
       implementation.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Container\Ioc\IocContainer`**
 - [`Phalcon\Contracts\Container\Service\Collection`](#contractscontainerservicecollection)
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscontaineriocioccontainer-getservice">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
-<span class="desc">Returns an instance of the <code>$serviceName</code>.</span>
-</a>
-<a class="api-item" href="#contractscontaineriocioccontainer-hasservice">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
-<span class="desc">Is the container able to return an instance of the <code>$serviceName</code>?</span>
-</a>
-</div>
+<ApiItem href="#contractscontaineriocioccontainer-getservice" visibility="public" name="getService" returnType="object" params={[{"type":"string","name":"serviceName","default":null}]}>
+Returns an instance of the `$serviceName`.
+</ApiItem>
+<ApiItem href="#contractscontaineriocioccontainer-hasservice" visibility="public" name="hasService" returnType="bool" params={[{"type":"string","name":"serviceName","default":null}]}>
+Is the container able to return an instance of the `$serviceName`?
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractscontaineriocioccontainer-getservice"><code>getService()</code></h4>
 
@@ -3178,32 +2398,20 @@ Is the container able to return an instance of the `$serviceName`?
 
 ## Contracts\Container\Ioc\IocContainerFactory
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Ioc/IocContainerFactory.php">Source on GitHub</a>
+Interface
 
 [_IocContainerFactory_][] affords obtaining a new instance of
 [_IocContainer_][].
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Container\Ioc\IocContainerFactory`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscontaineriocioccontainerfactory-newcontainer">
-<code class="vis vis-public">public</code>
-<code class="ret">IocContainer</code>
-<code class="sig"><span class="sf">newContainer</span>()</code>
-<span class="desc">Returns a new instance of [_IocContainer_][].</span>
-</a>
-</div>
+<ApiItem href="#contractscontaineriocioccontainerfactory-newcontainer" visibility="public" name="newContainer" returnType="IocContainer" params={[]}>
+Returns a new instance of [_IocContainer_][].
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractscontaineriocioccontainerfactory-newcontainer"><code>newContainer()</code></h4>
 
@@ -3223,61 +2431,39 @@ Returns a new instance of [_IocContainer_][].
 
 ## Contracts\Container\Ioc\IocThrowable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Ioc/IocThrowable.php">Source on GitHub</a>
+Interface
 
 [_IocThrowable_][] extends [_Throwable_][] to mark an [_Exception_][] as
 IOC-related.
 
 It adds no class members.
 
-<div class="api-tree">
-
 - `\Throwable`
 - **`Phalcon\Contracts\Container\Ioc\IocThrowable`**
-- [`Phalcon\Container\Exceptions\ContainerThrowable`](/6.0/api/phalcon_container/#containerexceptionscontainerthrowable)
+- [`Phalcon\Container\Exceptions\ContainerThrowable`](../phalcon_container/#containerexceptionscontainerthrowable)
 
-</div>
-
-__Uses__ `Throwable`
+`Throwable`
 
 ## Contracts\Container\Ioc\IocTypeAliases
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Ioc/IocTypeAliases.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Container\Ioc\IocTypeAliases`**
 
-</div>
-
 ## Contracts\Container\Resolver\ReflectionMethodResolver
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Resolver/ReflectionMethodResolver.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Container\Resolver\ReflectionMethodResolver`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod`
+`Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscontainerresolverreflectionmethodresolver-resolvemethod">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">resolveMethod</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionMethod</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$instance</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#contractscontainerresolverreflectionmethodresolver-resolvemethod" visibility="public" name="resolveMethod" returnType="void" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"ReflectionMethod","name":"method","default":null},{"type":"object","name":"instance","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractscontainerresolverreflectionmethodresolver-resolvemethod"><code>resolveMethod()</code></h4>
 
@@ -3291,31 +2477,19 @@ object $instance
 
 ## Contracts\Container\Resolver\ReflectionParameterResolver
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Resolver/ReflectionParameterResolver.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Container\Resolver\ReflectionParameterResolver`**
 - [`Phalcon\Contracts\Container\Resolver\ResolverService`](#contractscontainerresolverresolverservice)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionParameter`
+`Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionParameter`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscontainerresolverreflectionparameterresolver-resolveparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolveParameter</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionParameter</span> <span class="sv">$parameter</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#contractscontainerresolverreflectionparameterresolver-resolveparameter" visibility="public" name="resolveParameter" returnType="mixed" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"ReflectionParameter","name":"parameter","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractscontainerresolverreflectionparameterresolver-resolveparameter"><code>resolveParameter()</code></h4>
 
@@ -3328,30 +2502,18 @@ ReflectionParameter $parameter
 
 ## Contracts\Container\Resolver\Resolvable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Resolver/Resolvable.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Container\Resolver\Resolvable`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer`
+`Phalcon\Contracts\Container\Ioc\IocContainer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscontainerresolverresolvable-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>( <span class="st">IocContainer</span> <span class="sv">$ioc</span> )</code>
-</a>
-</div>
+<ApiItem href="#contractscontainerresolverresolvable-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"IocContainer","name":"ioc","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractscontainerresolverresolvable-resolve"><code>resolve()</code></h4>
 
@@ -3361,56 +2523,29 @@ public function resolve( IocContainer $ioc ): mixed;
 
 ## Contracts\Container\Resolver\ResolverService
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Resolver/ResolverService.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - [`Phalcon\Contracts\Container\Resolver\ReflectionParameterResolver`](#contractscontainerresolverreflectionparameterresolver)
 - **`Phalcon\Contracts\Container\Resolver\ResolverService`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod` · `ReflectionType`
+`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod` · `ReflectionType`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscontainerresolverresolverservice-isresolvableclass">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isResolvableClass</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerresolverresolverservice-resolvecall">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolveCall</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerresolverresolverservice-resolveclass">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">resolveClass</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerresolverresolverservice-resolvemethod">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">resolveMethod</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionMethod</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$instance</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerresolverresolverservice-resolveparameters">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">resolveParameters</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerresolverresolverservice-resolvetype">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolveType</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionType</span> <span class="sv">$type</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#contractscontainerresolverresolverservice-isresolvableclass" visibility="public" name="isResolvableClass" returnType="bool" params={[{"type":"string","name":"className","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerresolverresolverservice-resolvecall" visibility="public" name="resolveCall" returnType="mixed" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"callable","name":"callableObject","default":null},{"type":"array","name":"arguments","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerresolverresolverservice-resolveclass" visibility="public" name="resolveClass" returnType="object" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"string","name":"className","default":null},{"type":"array","name":"arguments","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerresolverresolverservice-resolvemethod" visibility="public" name="resolveMethod" returnType="void" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"ReflectionMethod","name":"method","default":null},{"type":"object","name":"instance","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerresolverresolverservice-resolveparameters" visibility="public" name="resolveParameters" returnType="array" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"array","name":"parameters","default":null},{"type":"array","name":"arguments","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerresolverresolverservice-resolvetype" visibility="public" name="resolveType" returnType="mixed" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"ReflectionType","name":"type","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="contractscontainerresolverresolverservice-isresolvableclass"><code>isResolvableClass()</code></h4>
 
@@ -3469,190 +2604,86 @@ ReflectionType $type
 
 ## Contracts\Container\Resolver\ResolverThrowable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Resolver/ResolverThrowable.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - `\Throwable`
 - **`Phalcon\Contracts\Container\Resolver\ResolverThrowable`**
 
-</div>
-
-__Uses__ `Throwable`
+`Throwable`
 
 ## Contracts\Container\Service\Collection
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Collection.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - [`Phalcon\Contracts\Container\Ioc\IocContainer`](#contractscontaineriocioccontainer)
 - **`Phalcon\Contracts\Container\Service\Collection`**
 
-</div>
-
-__Uses__ `Closure` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\Ioc\IocContainer`
+`Closure` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscontainerservicecollection-bind">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">string</span> <span class="sv">$interfaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$concrete</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-callableget">
-<code class="vis vis-public">public</code>
-<code class="ret">Closure</code>
-<code class="sig"><span class="sf">callableGet</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-callablenew">
-<code class="vis vis-public">public</code>
-<code class="ret">Closure</code>
-<code class="sig"><span class="sf">callableNew</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-extend">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">extend</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-getalias">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-getbytag">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getByTag</span>( <span class="st">string</span> <span class="sv">$tag</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-getdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">getDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-getinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">getInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-getparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-getresolver">
-<code class="vis vis-public">public</code>
-<code class="ret">Resolver</code>
-<code class="sig"><span class="sf">getResolver</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-hasalias">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-hasdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-hasinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-hasparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-isautowireenabled">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAutowireEnabled</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-new">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">new</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-newdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">newDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-set">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceDefinition</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-setalias">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-setautowire">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setAutowire</span>( <span class="st">bool</span> <span class="sv">$enabled</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-setdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setDefinition</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">ServiceDefinition</span> <span class="sv">$definition</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-setinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$instance</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$lifetime</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-setparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-unsetalias">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsetAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-unsetdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsetDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-unsetinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsetInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-unsetinstances">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsetInstances</span>( <span class="st">string</span> <span class="sv">$lifetime</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicecollection-unsetparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsetParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiItem href="#contractscontainerservicecollection-bind" visibility="public" name="bind" returnType="ServiceDefinition" params={[{"type":"string","name":"interfaceName","default":null},{"type":"string","name":"concrete","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-callableget" visibility="public" name="callableGet" returnType="Closure" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-callablenew" visibility="public" name="callableNew" returnType="Closure" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-extend" visibility="public" name="extend" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-getalias" visibility="public" name="getAlias" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-getbytag" visibility="public" name="getByTag" returnType="array" params={[{"type":"string","name":"tag","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-getdefinition" visibility="public" name="getDefinition" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-getinstance" visibility="public" name="getInstance" returnType="object" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-getparameter" visibility="public" name="getParameter" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-getresolver" visibility="public" name="getResolver" returnType="Resolver" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-hasalias" visibility="public" name="hasAlias" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-hasdefinition" visibility="public" name="hasDefinition" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-hasinstance" visibility="public" name="hasInstance" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-hasparameter" visibility="public" name="hasParameter" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-isautowireenabled" visibility="public" name="isAutowireEnabled" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-new" visibility="public" name="new" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-newdefinition" visibility="public" name="newDefinition" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-set" visibility="public" name="set" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-setalias" visibility="public" name="setAlias" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"alias","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-setautowire" visibility="public" name="setAutowire" returnType="static" params={[{"type":"bool","name":"enabled","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-setdefinition" visibility="public" name="setDefinition" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"ServiceDefinition","name":"definition","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-setinstance" visibility="public" name="setInstance" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"object","name":"instance","default":null},{"type":"string","name":"lifetime","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-setparameter" visibility="public" name="setParameter" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-unsetalias" visibility="public" name="unsetAlias" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-unsetdefinition" visibility="public" name="unsetDefinition" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-unsetinstance" visibility="public" name="unsetInstance" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-unsetinstances" visibility="public" name="unsetInstances" returnType="void" params={[{"type":"string","name":"lifetime","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicecollection-unsetparameter" visibility="public" name="unsetParameter" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 30</div>
 
 <h4 id="contractscontainerservicecollection-bind"><code>bind()</code></h4>
 
@@ -3858,110 +2889,50 @@ public function unsetParameter( string $name ): void;
 
 ## Contracts\Container\Service\Definition
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Definition.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Container\Service\Definition`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer`
+`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscontainerservicedefinition-addextender">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addExtender</span>( <span class="st">callable</span> <span class="sv">$extender</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-buildservice">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">buildService</span>( <span class="st">IocContainer</span> <span class="sv">$ioc</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-getclass">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getClass</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-getextenders">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getExtenders</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-getfactory">
-<code class="vis vis-public">public</code>
-<code class="ret">callable</code>
-<code class="sig"><span class="sf">getFactory</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-getlifetime">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getLifetime</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-getservicename">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getServiceName</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-hasclass">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasClass</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-hasextenders">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasExtenders</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-hasfactory">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasFactory</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-setclass">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setClass</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-setextenders">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setExtenders</span>( <span class="st">array</span> <span class="sv">$extenders</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-setfactory">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setFactory</span>( <span class="st">callable</span> <span class="sv">$factory</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-setlifetime">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setLifetime</span>( <span class="st">string</span> <span class="sv">$lifetime</span> )</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-unsetclass">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">unsetClass</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-unsetextenders">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">unsetExtenders</span>()</code>
-</a>
-<a class="api-item" href="#contractscontainerservicedefinition-unsetfactory">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">unsetFactory</span>()</code>
-</a>
-</div>
+<ApiItem href="#contractscontainerservicedefinition-addextender" visibility="public" name="addExtender" returnType="static" params={[{"type":"callable","name":"extender","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-buildservice" visibility="public" name="buildService" returnType="object" params={[{"type":"IocContainer","name":"ioc","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-getclass" visibility="public" name="getClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-getextenders" visibility="public" name="getExtenders" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-getfactory" visibility="public" name="getFactory" returnType="callable" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-getlifetime" visibility="public" name="getLifetime" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-getservicename" visibility="public" name="getServiceName" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-hasclass" visibility="public" name="hasClass" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-hasextenders" visibility="public" name="hasExtenders" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-hasfactory" visibility="public" name="hasFactory" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-setclass" visibility="public" name="setClass" returnType="static" params={[{"type":"string","name":"className","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-setextenders" visibility="public" name="setExtenders" returnType="static" params={[{"type":"array","name":"extenders","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-setfactory" visibility="public" name="setFactory" returnType="static" params={[{"type":"callable","name":"factory","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-setlifetime" visibility="public" name="setLifetime" returnType="static" params={[{"type":"string","name":"lifetime","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-unsetclass" visibility="public" name="unsetClass" returnType="static" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-unsetextenders" visibility="public" name="unsetExtenders" returnType="static" params={[]}>
+</ApiItem>
+<ApiItem href="#contractscontainerservicedefinition-unsetfactory" visibility="public" name="unsetFactory" returnType="static" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 17</div>
 
 <h4 id="contractscontainerservicedefinition-addextender"><code>addExtender()</code></h4>
 
@@ -4067,44 +3038,19 @@ public function unsetFactory(): static;
 
 ## Contracts\Container\Service\Enumerable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Enumerable.php">Source on GitHub</a>
-
-Optional capability contract for a container that can report the services it
-holds. Callers detect support with `instanceof`.
-
-Deliberately separate from Collection rather than a member of it. Collection
-mirrors the service-interop surface, which has no notion of enumeration, and
-adding a member to a published interface breaks every implementor. A second,
-narrow interface states the capability without touching the first.
-
-Carries no interop attribution because nothing here is copied: enumeration is
-Phalcon's own addition.
-
-Tooling that reports on a container type-hints this instead of the concrete
-Container, so it depends on a published contract rather than on an
-implementation detail that is free to change.
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Container\Service\Enumerable`**
 
-</div>
+`Phalcon\Contracts\Container\ContainerTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscontainerserviceenumerable-getservicenames">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServiceNames</span>()</code>
-<span class="desc">Returns the names of every registered service definition. Names that</span>
-</a>
-</div>
+<ApiItem href="#contractscontainerserviceenumerable-getservicenames" visibility="public" name="getServiceNames" returnType="array" params={[]}>
+Returns the names of every registered service definition. Names that
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractscontainerserviceenumerable-getservicenames"><code>getServiceNames()</code></h4>
 
@@ -4118,56 +3064,31 @@ included.
 
 ## Contracts\Container\Service\Lifetime
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Lifetime.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - **`Phalcon\Contracts\Container\Service\Lifetime`**
 
-</div>
-
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">SCOPED</span><span class="sm"> = &quot;SCOPED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">SINGLETON</span><span class="sm"> = &quot;SINGLETON&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">TRANSIENT</span><span class="sm"> = &quot;TRANSIENT&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="SCOPED" type="string" default="&quot;SCOPED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="SINGLETON" type="string" default="&quot;SINGLETON&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="TRANSIENT" type="string" default="&quot;TRANSIENT&quot;">
+</ApiItem>
 
 ## Contracts\Container\Service\Provider
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Provider.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Container\Service\Provider`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractscontainerserviceprovider-provide">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">provide</span>( <span class="st">Collection</span> <span class="sv">$services</span> )</code>
-</a>
-</div>
+<ApiItem href="#contractscontainerserviceprovider-provide" visibility="public" name="provide" returnType="void" params={[{"type":"Collection","name":"services","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractscontainerserviceprovider-provide"><code>provide()</code></h4>
 
@@ -4177,22 +3098,16 @@ public function provide( Collection $services ): void;
 
 ## Contracts\Container\Service\Throwable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Container/Service/Throwable.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - `\Throwable`
 - **`Phalcon\Contracts\Container\Service\Throwable`**
 
-</div>
-
-__Uses__ `Throwable`
+`Throwable`
 
 ## Contracts\Db\Adapter\Adapter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Adapter/Adapter.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Db adapters.
 
@@ -4207,425 +3122,216 @@ Canonical contract for Phalcon\Db adapters.
              - refreshMaterializedView() : bool
              - returning()               : string
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Db\Adapter\Adapter`**
-- [`Phalcon\Db\Adapter\AdapterInterface`](/6.0/api/phalcon_db/#dbadapteradapterinterface)
+- [`Phalcon\Db\Adapter\AdapterInterface`](../phalcon_db/#dbadapteradapterinterface)
 
-</div>
-
-__Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface`
+`Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdbadapteradapter-addcolumn">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">addColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span></span>)</code>
-<span class="desc">Adds a column to a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-addforeignkey">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">addForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ReferenceInterface</span> <span class="sv">$reference</span></span>)</code>
-<span class="desc">Adds a foreign key to a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-addindex">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">addIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
-<span class="desc">Adds an index to a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-addprimarykey">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">addPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
-<span class="desc">Adds a primary key to a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-affectedrows">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">affectedRows</span>()</code>
-<span class="desc">Returns the number of affected rows by the last INSERT/UPDATE/DELETE</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-begin">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">begin</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
-<span class="desc">Starts a transaction in the connection</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-close">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">close</span>()</code>
-<span class="desc">Closes active connection returning success. Phalcon automatically closes</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-commit">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">commit</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
-<span class="desc">Commits the active transaction in the connection</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-connect">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">connect</span>( <span class="st">array</span> <span class="sv">$descriptor</span><span class="sm"> = []</span> )</code>
-<span class="desc">This method is automatically called in \Phalcon\Db\Adapter\Pdo</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-createsavepoint">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">createSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Creates a new savepoint</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-createtable">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">createTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
-<span class="desc">Creates a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-createview">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Creates a view</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-delete">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Deletes data from a table using custom RDBMS SQL syntax</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-describecolumns">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Returns an array of Phalcon\Db\Column objects describing a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-describeindexes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Lists table indexes</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-describereferences">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Lists table references</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-dropcolumn">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">dropColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$columnName</span></span>)</code>
-<span class="desc">Drops a column from a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-dropforeignkey">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">dropForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceName</span></span>)</code>
-<span class="desc">Drops a foreign key from a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-dropindex">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">dropIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$indexName</span></span>)</code>
-<span class="desc">Drop an index from a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-dropprimarykey">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">dropPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
-<span class="desc">Drops primary key from a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-droptable">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">dropTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Drops a table from a schema/database</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-dropview">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Drops a view</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-escapeidentifier">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">escapeIdentifier</span>( <span class="st">array|float|int|string</span> <span class="sv">$identifier</span> )</code>
-<span class="desc">Escapes a column/table/schema name</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-escapestring">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">escapeString</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-<span class="desc">Escapes a value to avoid SQL injections</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-execute">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">execute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlStatement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Sends SQL statements to the database server returning the success state.</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-fetchall">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">fetchAll</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$fetchMode</span><span class="sm"> = 2</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Dumps the complete result of a query into an array</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-fetchcolumn">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">fetchColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int|string</span> <span class="sv">$column</span><span class="sm"> = 0</span></span>)</code>
-<span class="desc">Returns the n&#039;th field of first row in a SQL query result</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-fetchone">
-<code class="vis vis-public">public</code>
-<code class="ret">array|bool</code>
-<code class="sig"><span class="sf">fetchOne</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$fetchMode</span><span class="sm"> = 2</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Returns the first row in a SQL query result</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-forupdate">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">forUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-<span class="desc">Returns a SQL modified with a FOR UPDATE clause</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getcolumndefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getColumnDefinition</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
-<span class="desc">Returns the SQL column definition from a column</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getcolumnlist">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getColumnList</span>( <span class="st">array</span> <span class="sv">$columnList</span> )</code>
-<span class="desc">Gets a list of columns</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getconnectionid">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getConnectionId</span>()</code>
-<span class="desc">Gets the active connection unique identifier</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getdefaultidvalue">
-<code class="vis vis-public">public</code>
-<code class="ret">RawValue</code>
-<code class="sig"><span class="sf">getDefaultIdValue</span>()</code>
-<span class="desc">Return the default identity value to insert in an identity column</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getdefaultvalue">
-<code class="vis vis-public">public</code>
-<code class="ret">RawValue|null</code>
-<code class="sig"><span class="sf">getDefaultValue</span>()</code>
-<span class="desc">Returns the default value to make the RBDM use the default value declared</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getdescriptor">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getDescriptor</span>()</code>
-<span class="desc">Return descriptor used to connect to the active database</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getdialect">
-<code class="vis vis-public">public</code>
-<code class="ret">DialectInterface</code>
-<code class="sig"><span class="sf">getDialect</span>()</code>
-<span class="desc">Returns internal dialect instance</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getdialecttype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getDialectType</span>()</code>
-<span class="desc">Returns the name of the dialect used</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getinternalhandler">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getInternalHandler</span>()</code>
-<span class="desc">Return internal PDO handler</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getnestedtransactionsavepointname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getNestedTransactionSavepointName</span>()</code>
-<span class="desc">Returns the savepoint name to use for nested transactions</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getrealsqlstatement">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getRealSQLStatement</span>()</code>
-<span class="desc">Active SQL statement in the object without replace bound parameters</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getsqlbindtypes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getSQLBindTypes</span>()</code>
-<span class="desc">Active SQL statement in the object</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getsqlstatement">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getSQLStatement</span>()</code>
-<span class="desc">Active SQL statement in the object</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-getsqlvariables">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getSQLVariables</span>()</code>
-<span class="desc">Active SQL statement in the object</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Returns type of database system the adapter is used for</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-insert">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">insert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$fields</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Inserts data into a table using custom RDBMS SQL syntax</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-insertasdict">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">insertAsDict</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Inserts data into a table using custom RBDM SQL syntax</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-isnestedtransactionswithsavepoints">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isNestedTransactionsWithSavepoints</span>()</code>
-<span class="desc">Returns if nested transactions should use savepoints</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-isundertransaction">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isUnderTransaction</span>()</code>
-<span class="desc">Checks whether connection is under database transaction</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-lastinsertid">
-<code class="vis vis-public">public</code>
-<code class="ret">bool|string</code>
-<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
-<span class="desc">Returns insert id for the auto_increment column inserted in the last SQL</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-limit">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array|int</span> <span class="sv">$number</span></span>)</code>
-<span class="desc">Appends a LIMIT clause to sqlQuery argument</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-listtables">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">listTables</span>( <span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
-<span class="desc">List all tables on a database</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-listviews">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">listViews</span>( <span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
-<span class="desc">List all views on a database</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-modifycolumn">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface|null</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Modifies a table column based on a definition</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-query">
-<code class="vis vis-public">public</code>
-<code class="ret">bool|ResultInterface</code>
-<code class="sig"><span class="sf">query</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlStatement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Sends SQL statements to the database server returning the success state.</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-releasesavepoint">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">releaseSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Releases given savepoint</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-rollback">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">rollback</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
-<span class="desc">Rollbacks the active transaction in the connection</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-rollbacksavepoint">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">rollbackSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Rollbacks given savepoint</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-setnestedtransactionswithsavepoints">
-<code class="vis vis-public">public</code>
-<code class="ret">\Phalcon\Db\Adapter\AdapterInterface</code>
-<code class="sig"><span class="sf">setNestedTransactionsWithSavepoints</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-<span class="desc">Set if nested transactions should use savepoints</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-sharedlock">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-<span class="desc">Returns a SQL modified with a LOCK IN SHARE MODE clause</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-supportsequences">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">supportSequences</span>()</code>
-<span class="desc">Check whether the database system requires a sequence to produce</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-supportsdefaultvalue">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">supportsDefaultValue</span>()</code>
-<span class="desc">SQLite does not support the DEFAULT keyword</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-tableexists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates SQL checking for the existence of a schema.table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-tableoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Gets creation options from a table</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-update">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$whereCondition</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Updates data on a table using custom RDBMS SQL syntax</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-updateasdict">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">updateAsDict</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$whereCondition</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Updates data on a table using custom RBDM SQL syntax</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-useexplicitidvalue">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">useExplicitIdValue</span>()</code>
-<span class="desc">Check whether the database system requires an explicit value for identity</span>
-</a>
-<a class="api-item" href="#contractsdbadapteradapter-viewexists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates SQL checking for the existence of a schema.view</span>
-</a>
-</div>
+<ApiItem href="#contractsdbadapteradapter-addcolumn" visibility="public" name="addColumn" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ColumnInterface","name":"column","default":null}]}>
+Adds a column to a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-addforeignkey" visibility="public" name="addForeignKey" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ReferenceInterface","name":"reference","default":null}]}>
+Adds a foreign key to a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-addindex" visibility="public" name="addIndex" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"IndexInterface","name":"index","default":null}]}>
+Adds an index to a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-addprimarykey" visibility="public" name="addPrimaryKey" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"IndexInterface","name":"index","default":null}]}>
+Adds a primary key to a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-affectedrows" visibility="public" name="affectedRows" returnType="int" params={[]}>
+Returns the number of affected rows by the last INSERT/UPDATE/DELETE
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-begin" visibility="public" name="begin" returnType="bool" params={[{"type":"bool","name":"nesting","default":"true"}]}>
+Starts a transaction in the connection
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-close" visibility="public" name="close" returnType="void" params={[]}>
+Closes active connection returning success. Phalcon automatically closes
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-commit" visibility="public" name="commit" returnType="bool" params={[{"type":"bool","name":"nesting","default":"true"}]}>
+Commits the active transaction in the connection
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-connect" visibility="public" name="connect" returnType="void" params={[{"type":"array","name":"descriptor","default":"[]"}]}>
+This method is automatically called in \Phalcon\Db\Adapter\Pdo
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-createsavepoint" visibility="public" name="createSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Creates a new savepoint
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-createtable" visibility="public" name="createTable" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"array","name":"definition","default":null}]}>
+Creates a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-createview" visibility="public" name="createView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Creates a view
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"array|string","name":"tableName","default":null},{"type":"string|null","name":"whereCondition","default":"null"},{"type":"array","name":"placeholders","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+Deletes data from a table using custom RDBMS SQL syntax
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-describecolumns" visibility="public" name="describeColumns" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Returns an array of Phalcon\Db\Column objects describing a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-describeindexes" visibility="public" name="describeIndexes" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Lists table indexes
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Lists table references
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-dropcolumn" visibility="public" name="dropColumn" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"columnName","default":null}]}>
+Drops a column from a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-dropforeignkey" visibility="public" name="dropForeignKey" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"referenceName","default":null}]}>
+Drops a foreign key from a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-dropindex" visibility="public" name="dropIndex" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"indexName","default":null}]}>
+Drop an index from a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-dropprimarykey" visibility="public" name="dropPrimaryKey" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null}]}>
+Drops primary key from a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-droptable" visibility="public" name="dropTable" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
+Drops a table from a schema/database
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-dropview" visibility="public" name="dropView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
+Drops a view
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-escapeidentifier" visibility="public" name="escapeIdentifier" returnType="string" params={[{"type":"array|float|int|string","name":"identifier","default":null}]}>
+Escapes a column/table/schema name
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-escapestring" visibility="public" name="escapeString" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
+Escapes a value to avoid SQL injections
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-execute" visibility="public" name="execute" returnType="bool" params={[{"type":"string","name":"sqlStatement","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
+Sends SQL statements to the database server returning the success state.
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-fetchall" visibility="public" name="fetchAll" returnType="array" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"2"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
+Dumps the complete result of a query into an array
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-fetchcolumn" visibility="public" name="fetchColumn" returnType="mixed" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"int|string","name":"column","default":"0"}]}>
+Returns the n'th field of first row in a SQL query result
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-fetchone" visibility="public" name="fetchOne" returnType="array|bool" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"2"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
+Returns the first row in a SQL query result
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-forupdate" visibility="public" name="forUpdate" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
+Returns a SQL modified with a FOR UPDATE clause
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getcolumndefinition" visibility="public" name="getColumnDefinition" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
+Returns the SQL column definition from a column
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getcolumnlist" visibility="public" name="getColumnList" returnType="string" params={[{"type":"array","name":"columnList","default":null}]}>
+Gets a list of columns
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getconnectionid" visibility="public" name="getConnectionId" returnType="int" params={[]}>
+Gets the active connection unique identifier
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getdefaultidvalue" visibility="public" name="getDefaultIdValue" returnType="RawValue" params={[]}>
+Return the default identity value to insert in an identity column
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getdefaultvalue" visibility="public" name="getDefaultValue" returnType="RawValue|null" params={[]}>
+Returns the default value to make the RBDM use the default value declared
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getdescriptor" visibility="public" name="getDescriptor" returnType="array" params={[]}>
+Return descriptor used to connect to the active database
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getdialect" visibility="public" name="getDialect" returnType="DialectInterface" params={[]}>
+Returns internal dialect instance
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getdialecttype" visibility="public" name="getDialectType" returnType="string" params={[]}>
+Returns the name of the dialect used
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getinternalhandler" visibility="public" name="getInternalHandler" returnType="mixed" params={[]}>
+Return internal PDO handler
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getnestedtransactionsavepointname" visibility="public" name="getNestedTransactionSavepointName" returnType="string" params={[]}>
+Returns the savepoint name to use for nested transactions
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getrealsqlstatement" visibility="public" name="getRealSQLStatement" returnType="string" params={[]}>
+Active SQL statement in the object without replace bound parameters
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getsqlbindtypes" visibility="public" name="getSQLBindTypes" returnType="array" params={[]}>
+Active SQL statement in the object
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getsqlstatement" visibility="public" name="getSQLStatement" returnType="string" params={[]}>
+Active SQL statement in the object
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-getsqlvariables" visibility="public" name="getSQLVariables" returnType="array" params={[]}>
+Active SQL statement in the object
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+Returns type of database system the adapter is used for
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-insert" visibility="public" name="insert" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"values","default":null},{"type":"array|null","name":"fields","default":"null"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+Inserts data into a table using custom RDBMS SQL syntax
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-insertasdict" visibility="public" name="insertAsDict" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"data","default":null},{"type":"array","name":"dataTypes","default":"[]"}]}>
+Inserts data into a table using custom RBDM SQL syntax
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-isnestedtransactionswithsavepoints" visibility="public" name="isNestedTransactionsWithSavepoints" returnType="bool" params={[]}>
+Returns if nested transactions should use savepoints
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-isundertransaction" visibility="public" name="isUnderTransaction" returnType="bool" params={[]}>
+Checks whether connection is under database transaction
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-lastinsertid" visibility="public" name="lastInsertId" returnType="bool|string" params={[{"type":"string|null","name":"name","default":"null"}]}>
+Returns insert id for the auto_increment column inserted in the last SQL
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-limit" visibility="public" name="limit" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array|int","name":"number","default":null}]}>
+Appends a LIMIT clause to sqlQuery argument
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-listtables" visibility="public" name="listTables" returnType="array" params={[{"type":"string|null","name":"schemaName","default":"null"}]}>
+List all tables on a database
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-listviews" visibility="public" name="listViews" returnType="array" params={[{"type":"string|null","name":"schemaName","default":"null"}]}>
+List all views on a database
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-modifycolumn" visibility="public" name="modifyColumn" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ColumnInterface","name":"column","default":null},{"type":"ColumnInterface|null","name":"currentColumn","default":"null"}]}>
+Modifies a table column based on a definition
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-query" visibility="public" name="query" returnType="bool|ResultInterface" params={[{"type":"string","name":"sqlStatement","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
+Sends SQL statements to the database server returning the success state.
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-releasesavepoint" visibility="public" name="releaseSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Releases given savepoint
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-rollback" visibility="public" name="rollback" returnType="bool" params={[{"type":"bool","name":"nesting","default":"true"}]}>
+Rollbacks the active transaction in the connection
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-rollbacksavepoint" visibility="public" name="rollbackSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Rollbacks given savepoint
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-setnestedtransactionswithsavepoints" visibility="public" name="setNestedTransactionsWithSavepoints" returnType="\Phalcon\Db\Adapter\AdapterInterface" params={[{"type":"bool","name":"flag","default":null}]}>
+Set if nested transactions should use savepoints
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-sharedlock" visibility="public" name="sharedLock" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
+Returns a SQL modified with a LOCK IN SHARE MODE clause
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-supportsequences" visibility="public" name="supportSequences" returnType="bool" params={[]}>
+Check whether the database system requires a sequence to produce
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-supportsdefaultvalue" visibility="public" name="supportsDefaultValue" returnType="bool" params={[]}>
+SQLite does not support the DEFAULT keyword
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-tableexists" visibility="public" name="tableExists" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Generates SQL checking for the existence of a schema.table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-tableoptions" visibility="public" name="tableOptions" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Gets creation options from a table
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-update" visibility="public" name="update" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"fields","default":null},{"type":"array","name":"values","default":null},{"type":"array|string","name":"whereCondition","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+Updates data on a table using custom RDBMS SQL syntax
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-updateasdict" visibility="public" name="updateAsDict" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"data","default":null},{"type":"array|string","name":"whereCondition","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+Updates data on a table using custom RBDM SQL syntax
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-useexplicitidvalue" visibility="public" name="useExplicitIdValue" returnType="bool" params={[]}>
+Check whether the database system requires an explicit value for identity
+</ApiItem>
+<ApiItem href="#contractsdbadapteradapter-viewexists" visibility="public" name="viewExists" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Generates SQL checking for the existence of a schema.view
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 67</div>
 
 <h4 id="contractsdbadapteradapter-addcolumn"><code>addColumn()</code></h4>
 
@@ -5359,38 +4065,23 @@ Generates SQL checking for the existence of a schema.view
 
 ## Contracts\Db\Check
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Check.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Db\Check.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Db\Check`**
-- [`Phalcon\Db\CheckInterface`](/6.0/api/phalcon_db/#dbcheckinterface)
-
-</div>
+- [`Phalcon\Db\CheckInterface`](../phalcon_db/#dbcheckinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdbcheck-getexpression">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExpression</span>()</code>
-<span class="desc">Gets the CHECK expression (the SQL boolean predicate).</span>
-</a>
-<a class="api-item" href="#contractsdbcheck-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Gets the constraint name. An empty string indicates an unnamed CHECK</span>
-</a>
-</div>
+<ApiItem href="#contractsdbcheck-getexpression" visibility="public" name="getExpression" returnType="string" params={[]}>
+Gets the CHECK expression (the SQL boolean predicate).
+</ApiItem>
+<ApiItem href="#contractsdbcheck-getname" visibility="public" name="getName" returnType="string" params={[]}>
+Gets the constraint name. An empty string indicates an unnamed CHECK
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractsdbcheck-getexpression"><code>getExpression()</code></h4>
 
@@ -5412,8 +4103,7 @@ prefix in that case.
 
 ## Contracts\Db\Column
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Column.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Db\Column.
 
@@ -5426,117 +4116,61 @@ Canonical contract for Phalcon\Db\Column.
              - isGenerationStored()      : bool
              - isInvisible()             : bool
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Db\Column`**
-- [`Phalcon\Db\ColumnInterface`](/6.0/api/phalcon_db/#dbcolumninterface)
-
-</div>
+- [`Phalcon\Db\ColumnInterface`](../phalcon_db/#dbcolumninterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdbcolumn-getafterposition">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getAfterPosition</span>()</code>
-<span class="desc">Check whether field absolute to position in table</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-getbindtype">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getBindType</span>()</code>
-<span class="desc">Returns the type of bind handling</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-getdefault">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getDefault</span>()</code>
-<span class="desc">Returns default value of column</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Returns column name</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-getscale">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getScale</span>()</code>
-<span class="desc">Returns column scale</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-getsize">
-<code class="vis vis-public">public</code>
-<code class="ret">int|string</code>
-<code class="sig"><span class="sf">getSize</span>()</code>
-<span class="desc">Returns column size</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">int|string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Returns column type</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-gettypereference">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getTypeReference</span>()</code>
-<span class="desc">Returns column type reference</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-gettypevalues">
-<code class="vis vis-public">public</code>
-<code class="ret">array|int|string</code>
-<code class="sig"><span class="sf">getTypeValues</span>()</code>
-<span class="desc">Returns column type values</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-hasdefault">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasDefault</span>()</code>
-<span class="desc">Check whether column has default value</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-isautoincrement">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAutoIncrement</span>()</code>
-<span class="desc">Auto-Increment</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-isfirst">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isFirst</span>()</code>
-<span class="desc">Check whether the column is the first in table</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-isnotnull">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isNotNull</span>()</code>
-<span class="desc">Not null</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-isnumeric">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isNumeric</span>()</code>
-<span class="desc">Check whether column have a numeric type</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-isprimary">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isPrimary</span>()</code>
-<span class="desc">Column is part of the primary key?</span>
-</a>
-<a class="api-item" href="#contractsdbcolumn-isunsigned">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isUnsigned</span>()</code>
-<span class="desc">Returns true if number column is unsigned</span>
-</a>
-</div>
+<ApiItem href="#contractsdbcolumn-getafterposition" visibility="public" name="getAfterPosition" returnType="string|null" params={[]}>
+Check whether field absolute to position in table
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-getbindtype" visibility="public" name="getBindType" returnType="int" params={[]}>
+Returns the type of bind handling
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-getdefault" visibility="public" name="getDefault" returnType="mixed" params={[]}>
+Returns default value of column
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-getname" visibility="public" name="getName" returnType="string" params={[]}>
+Returns column name
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-getscale" visibility="public" name="getScale" returnType="int" params={[]}>
+Returns column scale
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-getsize" visibility="public" name="getSize" returnType="int|string" params={[]}>
+Returns column size
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-gettype" visibility="public" name="getType" returnType="int|string" params={[]}>
+Returns column type
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-gettypereference" visibility="public" name="getTypeReference" returnType="int" params={[]}>
+Returns column type reference
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-gettypevalues" visibility="public" name="getTypeValues" returnType="array|int|string" params={[]}>
+Returns column type values
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-hasdefault" visibility="public" name="hasDefault" returnType="bool" params={[]}>
+Check whether column has default value
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-isautoincrement" visibility="public" name="isAutoIncrement" returnType="bool" params={[]}>
+Auto-Increment
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-isfirst" visibility="public" name="isFirst" returnType="bool" params={[]}>
+Check whether the column is the first in table
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-isnotnull" visibility="public" name="isNotNull" returnType="bool" params={[]}>
+Not null
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-isnumeric" visibility="public" name="isNumeric" returnType="bool" params={[]}>
+Check whether column have a numeric type
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-isprimary" visibility="public" name="isPrimary" returnType="bool" params={[]}>
+Column is part of the primary key?
+</ApiItem>
+<ApiItem href="#contractsdbcolumn-isunsigned" visibility="public" name="isUnsigned" returnType="bool" params={[]}>
+Returns true if number column is unsigned
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 16</div>
 
 <h4 id="contractsdbcolumn-getafterposition"><code>getAfterPosition()</code></h4>
 
@@ -5668,8 +4302,7 @@ Returns true if number column is unsigned
 
 ## Contracts\Db\Dialect
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Dialect.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Db dialects.
 
@@ -5684,247 +4317,129 @@ Canonical contract for Phalcon\Db dialects.
              - refreshMaterializedView() : string
              - returning()               : string
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Db\Dialect`**
-- [`Phalcon\Db\DialectInterface`](/6.0/api/phalcon_db/#dbdialectinterface)
+- [`Phalcon\Db\DialectInterface`](../phalcon_db/#dbdialectinterface)
 
-</div>
-
-__Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdbdialect-addcolumn">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">addColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span></span>)</code>
-<span class="desc">Generates SQL to add a column to a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-addforeignkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">addForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ReferenceInterface</span> <span class="sv">$reference</span></span>)</code>
-<span class="desc">Generates SQL to add an index to a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-addindex">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">addIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
-<span class="desc">Generates SQL to add an index to a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-addprimarykey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">addPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
-<span class="desc">Generates SQL to add the primary key to a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-createsavepoint">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">createSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Generate SQL to create a new savepoint</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-createtable">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">createTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
-<span class="desc">Generates SQL to create a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-createview">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates SQL to create a view</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-describecolumns">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates SQL to describe a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-describeindexes">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates SQL to query indexes on a table.</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-describereferences">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates SQL to query foreign keys on a table.</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-dropcolumn">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">dropColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$columnName</span></span>)</code>
-<span class="desc">Generates SQL to delete a column from a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-dropforeignkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">dropForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceName</span></span>)</code>
-<span class="desc">Generates SQL to delete a foreign key from a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-dropindex">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">dropIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$indexName</span></span>)</code>
-<span class="desc">Generates SQL to delete an index from a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-dropprimarykey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">dropPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
-<span class="desc">Generates SQL to delete primary key from a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-droptable">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">dropTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Generates SQL to drop a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-dropview">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Generates SQL to drop a view</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-forupdate">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">forUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-<span class="desc">Returns a SQL modified with a FOR UPDATE clause</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-getcolumndefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getColumnDefinition</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
-<span class="desc">Gets the column name in RDBMS</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-getcolumnlist">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getColumnList</span>( <span class="st">array</span> <span class="sv">$columnList</span> )</code>
-<span class="desc">Gets a list of columns</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-getcustomfunctions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getCustomFunctions</span>()</code>
-<span class="desc">Returns registered functions</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-getsqlexpression">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getSqlExpression</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Transforms an intermediate representation for an expression into a</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-limit">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array|int</span> <span class="sv">$number</span></span>)</code>
-<span class="desc">Generates the SQL for LIMIT clause</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-listtables">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">listTables</span>( <span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
-<span class="desc">List all tables in database</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-modifycolumn">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface|null</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates SQL to modify a column in a table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-registercustomfunction">
-<code class="vis vis-public">public</code>
-<code class="ret">DbDialect</code>
-<code class="sig"><span class="sf">registerCustomFunction</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$customFunction</span></span>)</code>
-<span class="desc">Registers custom SQL functions</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-releasesavepoint">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">releaseSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Generate SQL to release a savepoint</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-rollbacksavepoint">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">rollbackSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Generate SQL to rollback a savepoint</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-select">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">select</span>( <span class="st">array</span> <span class="sv">$definition</span> )</code>
-<span class="desc">Builds a SELECT statement</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-sharedlock">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
-<span class="desc">Returns a SQL modified with a LOCK IN SHARE MODE clause</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-supportsreleasesavepoints">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">supportsReleaseSavepoints</span>()</code>
-<span class="desc">Checks whether the platform supports releasing savepoints.</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-supportssavepoints">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">supportsSavepoints</span>()</code>
-<span class="desc">Checks whether the platform supports savepoints</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-tableexists">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates SQL checking for the existence of a schema.table</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-tableoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates the SQL to describe the table creation options</span>
-</a>
-<a class="api-item" href="#contractsdbdialect-viewexists">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates SQL checking for the existence of a schema.view</span>
-</a>
-</div>
+<ApiItem href="#contractsdbdialect-addcolumn" visibility="public" name="addColumn" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ColumnInterface","name":"column","default":null}]}>
+Generates SQL to add a column to a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-addforeignkey" visibility="public" name="addForeignKey" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ReferenceInterface","name":"reference","default":null}]}>
+Generates SQL to add an index to a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-addindex" visibility="public" name="addIndex" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"IndexInterface","name":"index","default":null}]}>
+Generates SQL to add an index to a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-addprimarykey" visibility="public" name="addPrimaryKey" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"IndexInterface","name":"index","default":null}]}>
+Generates SQL to add the primary key to a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-createsavepoint" visibility="public" name="createSavepoint" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Generate SQL to create a new savepoint
+</ApiItem>
+<ApiItem href="#contractsdbdialect-createtable" visibility="public" name="createTable" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"array","name":"definition","default":null}]}>
+Generates SQL to create a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-createview" visibility="public" name="createView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Generates SQL to create a view
+</ApiItem>
+<ApiItem href="#contractsdbdialect-describecolumns" visibility="public" name="describeColumns" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Generates SQL to describe a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-describeindexes" visibility="public" name="describeIndexes" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Generates SQL to query indexes on a table.
+</ApiItem>
+<ApiItem href="#contractsdbdialect-describereferences" visibility="public" name="describeReferences" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Generates SQL to query foreign keys on a table.
+</ApiItem>
+<ApiItem href="#contractsdbdialect-dropcolumn" visibility="public" name="dropColumn" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"columnName","default":null}]}>
+Generates SQL to delete a column from a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-dropforeignkey" visibility="public" name="dropForeignKey" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"referenceName","default":null}]}>
+Generates SQL to delete a foreign key from a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-dropindex" visibility="public" name="dropIndex" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"indexName","default":null}]}>
+Generates SQL to delete an index from a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-dropprimarykey" visibility="public" name="dropPrimaryKey" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null}]}>
+Generates SQL to delete primary key from a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-droptable" visibility="public" name="dropTable" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"bool","name":"ifExists","default":"true"}]}>
+Generates SQL to drop a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-dropview" visibility="public" name="dropView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
+Generates SQL to drop a view
+</ApiItem>
+<ApiItem href="#contractsdbdialect-forupdate" visibility="public" name="forUpdate" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
+Returns a SQL modified with a FOR UPDATE clause
+</ApiItem>
+<ApiItem href="#contractsdbdialect-getcolumndefinition" visibility="public" name="getColumnDefinition" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
+Gets the column name in RDBMS
+</ApiItem>
+<ApiItem href="#contractsdbdialect-getcolumnlist" visibility="public" name="getColumnList" returnType="string" params={[{"type":"array","name":"columnList","default":null}]}>
+Gets a list of columns
+</ApiItem>
+<ApiItem href="#contractsdbdialect-getcustomfunctions" visibility="public" name="getCustomFunctions" returnType="array" params={[]}>
+Returns registered functions
+</ApiItem>
+<ApiItem href="#contractsdbdialect-getsqlexpression" visibility="public" name="getSqlExpression" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+Transforms an intermediate representation for an expression into a
+</ApiItem>
+<ApiItem href="#contractsdbdialect-limit" visibility="public" name="limit" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array|int","name":"number","default":null}]}>
+Generates the SQL for LIMIT clause
+</ApiItem>
+<ApiItem href="#contractsdbdialect-listtables" visibility="public" name="listTables" returnType="string" params={[{"type":"string|null","name":"schemaName","default":"null"}]}>
+List all tables in database
+</ApiItem>
+<ApiItem href="#contractsdbdialect-modifycolumn" visibility="public" name="modifyColumn" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ColumnInterface","name":"column","default":null},{"type":"ColumnInterface|null","name":"currentColumn","default":"null"}]}>
+Generates SQL to modify a column in a table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-registercustomfunction" visibility="public" name="registerCustomFunction" returnType="DbDialect" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"customFunction","default":null}]}>
+Registers custom SQL functions
+</ApiItem>
+<ApiItem href="#contractsdbdialect-releasesavepoint" visibility="public" name="releaseSavepoint" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Generate SQL to release a savepoint
+</ApiItem>
+<ApiItem href="#contractsdbdialect-rollbacksavepoint" visibility="public" name="rollbackSavepoint" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Generate SQL to rollback a savepoint
+</ApiItem>
+<ApiItem href="#contractsdbdialect-select" visibility="public" name="select" returnType="string" params={[{"type":"array","name":"definition","default":null}]}>
+Builds a SELECT statement
+</ApiItem>
+<ApiItem href="#contractsdbdialect-sharedlock" visibility="public" name="sharedLock" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
+Returns a SQL modified with a LOCK IN SHARE MODE clause
+</ApiItem>
+<ApiItem href="#contractsdbdialect-supportsreleasesavepoints" visibility="public" name="supportsReleaseSavepoints" returnType="bool" params={[]}>
+Checks whether the platform supports releasing savepoints.
+</ApiItem>
+<ApiItem href="#contractsdbdialect-supportssavepoints" visibility="public" name="supportsSavepoints" returnType="bool" params={[]}>
+Checks whether the platform supports savepoints
+</ApiItem>
+<ApiItem href="#contractsdbdialect-tableexists" visibility="public" name="tableExists" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Generates SQL checking for the existence of a schema.table
+</ApiItem>
+<ApiItem href="#contractsdbdialect-tableoptions" visibility="public" name="tableOptions" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Generates the SQL to describe the table creation options
+</ApiItem>
+<ApiItem href="#contractsdbdialect-viewexists" visibility="public" name="viewExists" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+Generates SQL checking for the existence of a schema.view
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">LOCK_NONE</span><span class="sm"> = &quot;&quot;</span></code>
-<span class="desc">No row-lock modifier - the default behavior for <code>forUpdate()</code>.</span>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">LOCK_NOWAIT</span><span class="sm"> = &quot;NOWAIT&quot;</span></code>
-<span class="desc">Append <code>NOWAIT</code> to the <code>FOR UPDATE</code> clause.</span>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">LOCK_SKIP_LOCKED</span><span class="sm"> = &quot;SKIP LOCKED&quot;</span></code>
-<span class="desc">Append <code>SKIP LOCKED</code> to the <code>FOR UPDATE</code> clause.</span>
-</div>
-</div>
+<ApiItem kind="constant" name="LOCK_NONE" type="string" default="&quot;&quot;">
+No row-lock modifier - the default behavior for `forUpdate()`.
+</ApiItem>
+<ApiItem kind="constant" name="LOCK_NOWAIT" type="string" default="&quot;NOWAIT&quot;">
+Append `NOWAIT` to the `FOR UPDATE` clause.
+</ApiItem>
+<ApiItem kind="constant" name="LOCK_SKIP_LOCKED" type="string" default="&quot;SKIP LOCKED&quot;">
+Append `SKIP LOCKED` to the `FOR UPDATE` clause.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 34</div>
 
 <h4 id="contractsdbdialect-addcolumn"><code>addColumn()</code></h4>
 
@@ -6296,44 +4811,26 @@ Generates SQL checking for the existence of a schema.view
 
 ## Contracts\Db\Geometry\Geometry
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Geometry/Geometry.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Db\Geometry value objects.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Db\Geometry\Geometry`**
-- [`Phalcon\Db\Geometry\GeometryInterface`](/6.0/api/phalcon_db/#dbgeometrygeometryinterface)
-
-</div>
+- [`Phalcon\Db\Geometry\GeometryInterface`](../phalcon_db/#dbgeometrygeometryinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdbgeometrygeometry-getsrid">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getSrid</span>()</code>
-<span class="desc">Gets the Spatial Reference System Identifier (SRID).</span>
-</a>
-<a class="api-item" href="#contractsdbgeometrygeometry-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Gets the geometry type.</span>
-</a>
-<a class="api-item" href="#contractsdbgeometrygeometry-towkt">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">toWkt</span>()</code>
-<span class="desc">Renders the geometry as a Well-Known Text (WKT) string.</span>
-</a>
-</div>
+<ApiItem href="#contractsdbgeometrygeometry-getsrid" visibility="public" name="getSrid" returnType="int" params={[]}>
+Gets the Spatial Reference System Identifier (SRID).
+</ApiItem>
+<ApiItem href="#contractsdbgeometrygeometry-gettype" visibility="public" name="getType" returnType="int" params={[]}>
+Gets the geometry type.
+</ApiItem>
+<ApiItem href="#contractsdbgeometrygeometry-towkt" visibility="public" name="toWkt" returnType="string" params={[]}>
+Renders the geometry as a Well-Known Text (WKT) string.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="contractsdbgeometrygeometry-getsrid"><code>getSrid()</code></h4>
 
@@ -6361,8 +4858,7 @@ Renders the geometry as a Well-Known Text (WKT) string.
 
 ## Contracts\Db\Index
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Index.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Db\Index.
 
@@ -6374,39 +4870,22 @@ Canonical contract for Phalcon\Db\Index.
              - isConcurrent()  : bool
              - isInvisible()   : bool
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Db\Index`**
-- [`Phalcon\Db\IndexInterface`](/6.0/api/phalcon_db/#dbindexinterface)
-
-</div>
+- [`Phalcon\Db\IndexInterface`](../phalcon_db/#dbindexinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdbindex-getcolumns">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getColumns</span>()</code>
-<span class="desc">Gets the columns that corresponds the index</span>
-</a>
-<a class="api-item" href="#contractsdbindex-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Gets the index name</span>
-</a>
-<a class="api-item" href="#contractsdbindex-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Gets the index type</span>
-</a>
-</div>
+<ApiItem href="#contractsdbindex-getcolumns" visibility="public" name="getColumns" returnType="array" params={[]}>
+Gets the columns that corresponds the index
+</ApiItem>
+<ApiItem href="#contractsdbindex-getname" visibility="public" name="getName" returnType="string" params={[]}>
+Gets the index name
+</ApiItem>
+<ApiItem href="#contractsdbindex-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+Gets the index type
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="contractsdbindex-getcolumns"><code>getColumns()</code></h4>
 
@@ -6434,74 +4913,41 @@ Gets the index type
 
 ## Contracts\Db\Reference
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Reference.php">Source on GitHub</a>
+Interface
 
 Interface for Phalcon\Db\Reference
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Db\Reference`**
-- [`Phalcon\Db\ReferenceInterface`](/6.0/api/phalcon_db/#dbreferenceinterface)
-
-</div>
+- [`Phalcon\Db\ReferenceInterface`](../phalcon_db/#dbreferenceinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdbreference-getcolumns">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getColumns</span>()</code>
-<span class="desc">Gets local columns which reference is based</span>
-</a>
-<a class="api-item" href="#contractsdbreference-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Gets the index name</span>
-</a>
-<a class="api-item" href="#contractsdbreference-getondelete">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getOnDelete</span>()</code>
-<span class="desc">Gets the referenced on delete</span>
-</a>
-<a class="api-item" href="#contractsdbreference-getonupdate">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getOnUpdate</span>()</code>
-<span class="desc">Gets the referenced on update</span>
-</a>
-<a class="api-item" href="#contractsdbreference-getreferencedcolumns">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getReferencedColumns</span>()</code>
-<span class="desc">Gets referenced columns</span>
-</a>
-<a class="api-item" href="#contractsdbreference-getreferencedschema">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getReferencedSchema</span>()</code>
-<span class="desc">Gets the schema where referenced table is</span>
-</a>
-<a class="api-item" href="#contractsdbreference-getreferencedtable">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getReferencedTable</span>()</code>
-<span class="desc">Gets the referenced table</span>
-</a>
-<a class="api-item" href="#contractsdbreference-getschemaname">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getSchemaName</span>()</code>
-<span class="desc">Gets the schema where referenced table is</span>
-</a>
-</div>
+<ApiItem href="#contractsdbreference-getcolumns" visibility="public" name="getColumns" returnType="array" params={[]}>
+Gets local columns which reference is based
+</ApiItem>
+<ApiItem href="#contractsdbreference-getname" visibility="public" name="getName" returnType="string" params={[]}>
+Gets the index name
+</ApiItem>
+<ApiItem href="#contractsdbreference-getondelete" visibility="public" name="getOnDelete" returnType="string|null" params={[]}>
+Gets the referenced on delete
+</ApiItem>
+<ApiItem href="#contractsdbreference-getonupdate" visibility="public" name="getOnUpdate" returnType="string|null" params={[]}>
+Gets the referenced on update
+</ApiItem>
+<ApiItem href="#contractsdbreference-getreferencedcolumns" visibility="public" name="getReferencedColumns" returnType="array" params={[]}>
+Gets referenced columns
+</ApiItem>
+<ApiItem href="#contractsdbreference-getreferencedschema" visibility="public" name="getReferencedSchema" returnType="string|null" params={[]}>
+Gets the schema where referenced table is
+</ApiItem>
+<ApiItem href="#contractsdbreference-getreferencedtable" visibility="public" name="getReferencedTable" returnType="string" params={[]}>
+Gets the referenced table
+</ApiItem>
+<ApiItem href="#contractsdbreference-getschemaname" visibility="public" name="getSchemaName" returnType="string|null" params={[]}>
+Gets the schema where referenced table is
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 8</div>
 
 <h4 id="contractsdbreference-getcolumns"><code>getColumns()</code></h4>
 
@@ -6569,75 +5015,43 @@ Gets the schema where referenced table is
 
 ## Contracts\Db\Result
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Db/Result.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Db result objects.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Db\Result`**
-- [`Phalcon\Db\ResultInterface`](/6.0/api/phalcon_db/#dbresultinterface)
+- [`Phalcon\Db\ResultInterface`](../phalcon_db/#dbresultinterface)
 
-</div>
-
-__Uses__ `PDOStatement`
+`PDOStatement`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdbresult-dataseek">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">dataSeek</span>( <span class="st">int</span> <span class="sv">$number</span> )</code>
-<span class="desc">Moves internal resultset cursor to another position letting us to fetch a</span>
-</a>
-<a class="api-item" href="#contractsdbresult-execute">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">execute</span>()</code>
-<span class="desc">Allows to execute the statement again. Some database systems don&#039;t</span>
-</a>
-<a class="api-item" href="#contractsdbresult-fetch">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">fetch</span>()</code>
-<span class="desc">Fetches an array/object of strings that corresponds to the fetched row,</span>
-</a>
-<a class="api-item" href="#contractsdbresult-fetchall">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">fetchAll</span>()</code>
-<span class="desc">Returns an array of arrays containing all the records in the result. This</span>
-</a>
-<a class="api-item" href="#contractsdbresult-fetcharray">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">fetchArray</span>()</code>
-<span class="desc">Returns an array of strings that corresponds to the fetched row, or FALSE</span>
-</a>
-<a class="api-item" href="#contractsdbresult-getinternalresult">
-<code class="vis vis-public">public</code>
-<code class="ret">PDOStatement</code>
-<code class="sig"><span class="sf">getInternalResult</span>()</code>
-<span class="desc">Gets the internal PDO result object</span>
-</a>
-<a class="api-item" href="#contractsdbresult-numrows">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">numRows</span>()</code>
-<span class="desc">Gets number of rows returned by a resultset</span>
-</a>
-<a class="api-item" href="#contractsdbresult-setfetchmode">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">setFetchMode</span>( <span class="st">int</span> <span class="sv">$fetchMode</span> )</code>
-<span class="desc">Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()</span>
-</a>
-</div>
+<ApiItem href="#contractsdbresult-dataseek" visibility="public" name="dataSeek" returnType="" params={[{"type":"int","name":"number","default":null}]}>
+Moves internal resultset cursor to another position letting us to fetch a
+</ApiItem>
+<ApiItem href="#contractsdbresult-execute" visibility="public" name="execute" returnType="bool" params={[]}>
+Allows to execute the statement again. Some database systems don't
+</ApiItem>
+<ApiItem href="#contractsdbresult-fetch" visibility="public" name="fetch" returnType="mixed" params={[]}>
+Fetches an array/object of strings that corresponds to the fetched row,
+</ApiItem>
+<ApiItem href="#contractsdbresult-fetchall" visibility="public" name="fetchAll" returnType="array" params={[]}>
+Returns an array of arrays containing all the records in the result. This
+</ApiItem>
+<ApiItem href="#contractsdbresult-fetcharray" visibility="public" name="fetchArray" returnType="mixed" params={[]}>
+Returns an array of strings that corresponds to the fetched row, or FALSE
+</ApiItem>
+<ApiItem href="#contractsdbresult-getinternalresult" visibility="public" name="getInternalResult" returnType="PDOStatement" params={[]}>
+Gets the internal PDO result object
+</ApiItem>
+<ApiItem href="#contractsdbresult-numrows" visibility="public" name="numRows" returnType="int" params={[]}>
+Gets number of rows returned by a resultset
+</ApiItem>
+<ApiItem href="#contractsdbresult-setfetchmode" visibility="public" name="setFetchMode" returnType="bool" params={[{"type":"int","name":"fetchMode","default":null}]}>
+Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 8</div>
 
 <h4 id="contractsdbresult-dataseek"><code>dataSeek()</code></h4>
 
@@ -6714,8 +5128,7 @@ Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 
 ## Contracts\Dispatcher\Dispatcher
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Dispatcher/Dispatcher.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Dispatcher\AbstractDispatcher.
 
@@ -6724,148 +5137,78 @@ Note: The deprecated `getParam()`/`getParams()`/`hasParam()`/`setParam()`/
 are scheduled to be removed in the next major version in favor of their
 `*Parameter` counterparts.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Dispatcher\Dispatcher`**
 - [`Phalcon\Contracts\Cli\Dispatcher`](#contractsclidispatcher)
 - [`Phalcon\Contracts\Mvc\Dispatcher`](#contractsmvcdispatcher)
-- [`Phalcon\Dispatcher\DispatcherInterface`](/6.0/api/phalcon_dispatcher/#dispatcherdispatcherinterface)
-
-</div>
+- [`Phalcon\Dispatcher\DispatcherInterface`](../phalcon_dispatcher/#dispatcherdispatcherinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdispatcherdispatcher-dispatch">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">dispatch</span>()</code>
-<span class="desc">Dispatches a handle action taking into account the routing parameters</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-forward">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">forward</span>( <span class="st">array</span> <span class="sv">$forward</span> )</code>
-<span class="desc">Forwards the execution flow to another controller/action</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-getactionname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getActionName</span>()</code>
-<span class="desc">Gets last dispatched action name</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-getactionsuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getActionSuffix</span>()</code>
-<span class="desc">Gets the default action suffix</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-gethandlersuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getHandlerSuffix</span>()</code>
-<span class="desc">Gets the default handler suffix</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-getparam">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Gets a param by its name or numeric index</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-getparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Gets a param by its name or numeric index</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-getparameters">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getParameters</span>()</code>
-<span class="desc">Gets action params</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-getparams">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getParams</span>()</code>
-<span class="desc">Gets action params</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-getreturnedvalue">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getReturnedValue</span>()</code>
-<span class="desc">Returns value returned by the latest dispatched action</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-hasparam">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasParam</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
-<span class="desc">Check if a param exists</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-isfinished">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isFinished</span>()</code>
-<span class="desc">Checks if the dispatch loop is finished or has more pendent</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-setactionname">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setActionName</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
-<span class="desc">Sets the action name to be dispatched</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-setactionsuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setActionSuffix</span>( <span class="st">string</span> <span class="sv">$actionSuffix</span> )</code>
-<span class="desc">Sets the default action suffix</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-setdefaultaction">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
-<span class="desc">Sets the default action name</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-setdefaultnamespace">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefaultNamespace</span>( <span class="st">string</span> <span class="sv">$defaultNamespace</span> )</code>
-<span class="desc">Sets the default namespace</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-sethandlersuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setHandlerSuffix</span>( <span class="st">string</span> <span class="sv">$handlerSuffix</span> )</code>
-<span class="desc">Sets the default suffix for the handler</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-setmodulename">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string|null</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
-<span class="desc">Sets the module name which the application belongs to</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-setnamespacename">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setNamespaceName</span>( <span class="st">string</span> <span class="sv">$namespaceName</span> )</code>
-<span class="desc">Sets the namespace which the controller belongs to</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-setparam">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set a param by its name or numeric index</span>
-</a>
-<a class="api-item" href="#contractsdispatcherdispatcher-setparams">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setParams</span>( <span class="st">array</span> <span class="sv">$params</span> )</code>
-<span class="desc">Sets action params to be dispatched</span>
-</a>
-</div>
+<ApiItem href="#contractsdispatcherdispatcher-dispatch" visibility="public" name="dispatch" returnType="" params={[]}>
+Dispatches a handle action taking into account the routing parameters
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-forward" visibility="public" name="forward" returnType="void" params={[{"type":"array","name":"forward","default":null}]}>
+Forwards the execution flow to another controller/action
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-getactionname" visibility="public" name="getActionName" returnType="string" params={[]}>
+Gets last dispatched action name
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-getactionsuffix" visibility="public" name="getActionSuffix" returnType="string" params={[]}>
+Gets the default action suffix
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-gethandlersuffix" visibility="public" name="getHandlerSuffix" returnType="string" params={[]}>
+Gets the default handler suffix
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-getparam" visibility="public" name="getParam" returnType="mixed" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"filters","default":"null"}]}>
+Gets a param by its name or numeric index
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-getparameter" visibility="public" name="getParameter" returnType="mixed" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"filters","default":"null"}]}>
+Gets a param by its name or numeric index
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-getparameters" visibility="public" name="getParameters" returnType="array" params={[]}>
+Gets action params
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-getparams" visibility="public" name="getParams" returnType="array" params={[]}>
+Gets action params
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-getreturnedvalue" visibility="public" name="getReturnedValue" returnType="mixed" params={[]}>
+Returns value returned by the latest dispatched action
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-hasparam" visibility="public" name="hasParam" returnType="bool" params={[{"type":"mixed","name":"param","default":null}]}>
+Check if a param exists
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-isfinished" visibility="public" name="isFinished" returnType="bool" params={[]}>
+Checks if the dispatch loop is finished or has more pendent
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-setactionname" visibility="public" name="setActionName" returnType="void" params={[{"type":"string","name":"actionName","default":null}]}>
+Sets the action name to be dispatched
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-setactionsuffix" visibility="public" name="setActionSuffix" returnType="void" params={[{"type":"string","name":"actionSuffix","default":null}]}>
+Sets the default action suffix
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-setdefaultaction" visibility="public" name="setDefaultAction" returnType="void" params={[{"type":"string","name":"actionName","default":null}]}>
+Sets the default action name
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-setdefaultnamespace" visibility="public" name="setDefaultNamespace" returnType="void" params={[{"type":"string","name":"defaultNamespace","default":null}]}>
+Sets the default namespace
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-sethandlersuffix" visibility="public" name="setHandlerSuffix" returnType="void" params={[{"type":"string","name":"handlerSuffix","default":null}]}>
+Sets the default suffix for the handler
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-setmodulename" visibility="public" name="setModuleName" returnType="void" params={[{"type":"string|null","name":"moduleName","default":"null"}]}>
+Sets the module name which the application belongs to
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-setnamespacename" visibility="public" name="setNamespaceName" returnType="void" params={[{"type":"string","name":"namespaceName","default":null}]}>
+Sets the namespace which the controller belongs to
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-setparam" visibility="public" name="setParam" returnType="void" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"value","default":null}]}>
+Set a param by its name or numeric index
+</ApiItem>
+<ApiItem href="#contractsdispatcherdispatcher-setparams" visibility="public" name="setParams" returnType="void" params={[{"type":"array","name":"params","default":null}]}>
+Sets action params to be dispatched
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 21</div>
 
 <h4 id="contractsdispatcherdispatcher-dispatch"><code>dispatch()</code></h4>
 
@@ -7051,21 +5394,15 @@ Sets action params to be dispatched
 
 ## Contracts\Dispatcher\DispatcherTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Dispatcher/DispatcherTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Dispatcher namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Dispatcher\DispatcherTypes`**
-
-</div>
 
 ## Contracts\Domain\Payload\Payload
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Domain/Payload/Payload.php">Source on GitHub</a>
+Interface
 
 Canonical combined read/write contract for a domain payload.
 
@@ -7080,17 +5417,12 @@ capability it needs, even though the concrete payload implements both.
 @see Readable
 @see Writeable
 
-<div class="api-tree">
-
 - [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable)
 - **`Phalcon\Contracts\Domain\Payload\Payload`** - extends [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable), [`Phalcon\Contracts\Domain\Payload\Writeable`](#contractsdomainpayloadwriteable)
 
-</div>
-
 ## Contracts\Domain\Payload\Readable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Domain/Payload/Readable.php">Source on GitHub</a>
+Interface
 
 Canonical read-only contract for a domain payload.
 
@@ -7098,60 +5430,34 @@ Responders consume a finished payload through this contract (the getters),
 narrowing the surface to the read side of the Action-Domain-Responder
 boundary.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Domain\Payload\Readable`**
 - [`Phalcon\Contracts\Domain\Payload\Payload`](#contractsdomainpayloadpayload)
-- [`Phalcon\Domain\Payload\ReadableInterface`](/6.0/api/phalcon_domain/#domainpayloadreadableinterface)
+- [`Phalcon\Domain\Payload\ReadableInterface`](../phalcon_domain/#domainpayloadreadableinterface)
 
-</div>
-
-__Uses__ `Throwable`
+`Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdomainpayloadreadable-getexception">
-<code class="vis vis-public">public</code>
-<code class="ret">Throwable|null</code>
-<code class="sig"><span class="sf">getException</span>()</code>
-<span class="desc">Gets the potential exception thrown in the domain layer</span>
-</a>
-<a class="api-item" href="#contractsdomainpayloadreadable-getextras">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getExtras</span>()</code>
-<span class="desc">Gets arbitrary extra values produced by the domain layer.</span>
-</a>
-<a class="api-item" href="#contractsdomainpayloadreadable-getinput">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getInput</span>()</code>
-<span class="desc">Gets the input received by the domain layer.</span>
-</a>
-<a class="api-item" href="#contractsdomainpayloadreadable-getmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getMessages</span>()</code>
-<span class="desc">Gets the messages produced by the domain layer.</span>
-</a>
-<a class="api-item" href="#contractsdomainpayloadreadable-getoutput">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getOutput</span>()</code>
-<span class="desc">Gets the output produced from the domain layer.</span>
-</a>
-<a class="api-item" href="#contractsdomainpayloadreadable-getstatus">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getStatus</span>()</code>
-<span class="desc">Gets the status of this payload.</span>
-</a>
-</div>
+<ApiItem href="#contractsdomainpayloadreadable-getexception" visibility="public" name="getException" returnType="Throwable|null" params={[]}>
+Gets the potential exception thrown in the domain layer
+</ApiItem>
+<ApiItem href="#contractsdomainpayloadreadable-getextras" visibility="public" name="getExtras" returnType="mixed" params={[]}>
+Gets arbitrary extra values produced by the domain layer.
+</ApiItem>
+<ApiItem href="#contractsdomainpayloadreadable-getinput" visibility="public" name="getInput" returnType="mixed" params={[]}>
+Gets the input received by the domain layer.
+</ApiItem>
+<ApiItem href="#contractsdomainpayloadreadable-getmessages" visibility="public" name="getMessages" returnType="mixed" params={[]}>
+Gets the messages produced by the domain layer.
+</ApiItem>
+<ApiItem href="#contractsdomainpayloadreadable-getoutput" visibility="public" name="getOutput" returnType="mixed" params={[]}>
+Gets the output produced from the domain layer.
+</ApiItem>
+<ApiItem href="#contractsdomainpayloadreadable-getstatus" visibility="public" name="getStatus" returnType="mixed" params={[]}>
+Gets the status of this payload.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="contractsdomainpayloadreadable-getexception"><code>getException()</code></h4>
 
@@ -7207,8 +5513,7 @@ Status values are drawn from the `Status` vocabulary.
 
 ## Contracts\Domain\Payload\Writeable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Domain/Payload/Writeable.php">Source on GitHub</a>
+Interface
 
 Canonical write-only contract for a domain payload.
 
@@ -7216,59 +5521,33 @@ The domain layer builds a payload through this contract (the setters),
 narrowing the surface to the write side of the Action-Domain-Responder
 boundary.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Domain\Payload\Writeable`**
-- [`Phalcon\Domain\Payload\WriteableInterface`](/6.0/api/phalcon_domain/#domainpayloadwriteableinterface)
+- [`Phalcon\Domain\Payload\WriteableInterface`](../phalcon_domain/#domainpayloadwriteableinterface)
 
-</div>
-
-__Uses__ `Throwable`
+`Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsdomainpayloadwriteable-setexception">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">setException</span>( <span class="st">Throwable</span> <span class="sv">$exception</span> )</code>
-<span class="desc">Sets an exception produced by the domain layer.</span>
-</a>
-<a class="api-item" href="#contractsdomainpayloadwriteable-setextras">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">setExtras</span>( <span class="st">mixed</span> <span class="sv">$extras</span> )</code>
-<span class="desc">Sets arbitrary extra values produced by the domain layer.</span>
-</a>
-<a class="api-item" href="#contractsdomainpayloadwriteable-setinput">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">setInput</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-<span class="desc">Sets the input received by the domain layer.</span>
-</a>
-<a class="api-item" href="#contractsdomainpayloadwriteable-setmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">setMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
-<span class="desc">Sets the messages produced by the domain layer.</span>
-</a>
-<a class="api-item" href="#contractsdomainpayloadwriteable-setoutput">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">setOutput</span>( <span class="st">mixed</span> <span class="sv">$output</span> )</code>
-<span class="desc">Sets the output produced from the domain layer.</span>
-</a>
-<a class="api-item" href="#contractsdomainpayloadwriteable-setstatus">
-<code class="vis vis-public">public</code>
-<code class="ret">Payload</code>
-<code class="sig"><span class="sf">setStatus</span>( <span class="st">mixed</span> <span class="sv">$status</span> )</code>
-<span class="desc">Sets the status of this payload.</span>
-</a>
-</div>
+<ApiItem href="#contractsdomainpayloadwriteable-setexception" visibility="public" name="setException" returnType="Payload" params={[{"type":"Throwable","name":"exception","default":null}]}>
+Sets an exception produced by the domain layer.
+</ApiItem>
+<ApiItem href="#contractsdomainpayloadwriteable-setextras" visibility="public" name="setExtras" returnType="Payload" params={[{"type":"mixed","name":"extras","default":null}]}>
+Sets arbitrary extra values produced by the domain layer.
+</ApiItem>
+<ApiItem href="#contractsdomainpayloadwriteable-setinput" visibility="public" name="setInput" returnType="Payload" params={[{"type":"mixed","name":"input","default":null}]}>
+Sets the input received by the domain layer.
+</ApiItem>
+<ApiItem href="#contractsdomainpayloadwriteable-setmessages" visibility="public" name="setMessages" returnType="Payload" params={[{"type":"mixed","name":"messages","default":null}]}>
+Sets the messages produced by the domain layer.
+</ApiItem>
+<ApiItem href="#contractsdomainpayloadwriteable-setoutput" visibility="public" name="setOutput" returnType="Payload" params={[{"type":"mixed","name":"output","default":null}]}>
+Sets the output produced from the domain layer.
+</ApiItem>
+<ApiItem href="#contractsdomainpayloadwriteable-setstatus" visibility="public" name="setStatus" returnType="Payload" params={[{"type":"mixed","name":"status","default":null}]}>
+Sets the status of this payload.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="contractsdomainpayloadwriteable-setexception"><code>setException()</code></h4>
 
@@ -7324,8 +5603,7 @@ Status values are drawn from the `Status` vocabulary.
 
 ## Contracts\Encryption\Crypt\Crypt
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Crypt/Crypt.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Encryption\Crypt.
 
@@ -7342,123 +5620,64 @@ state set through the relevant setters and shared across every
 through the DI container is therefore not safe for interleaved AEAD
 operations.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Encryption\Crypt\Crypt`**
-- [`Phalcon\Encryption\Crypt\CryptInterface`](/6.0/api/phalcon_encryption/#encryptioncryptcryptinterface)
-
-</div>
+- [`Phalcon\Encryption\Crypt\CryptInterface`](../phalcon_encryption/#encryptioncryptcryptinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsencryptioncryptcrypt-decrypt">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">decrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Decrypts a text</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-decryptbase64">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">decryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Decrypt a text that is coded as a base64 string</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-encrypt">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">encrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Encrypts a text</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-encryptbase64">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">encryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Encrypts a text returning the result as a base64 string</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-getauthdata">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAuthData</span>()</code>
-<span class="desc">Returns authentication data</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-getauthtag">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAuthTag</span>()</code>
-<span class="desc">Returns the authentication tag</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-getauthtaglength">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getAuthTagLength</span>()</code>
-<span class="desc">Returns the authentication tag length</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-getavailableciphers">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAvailableCiphers</span>()</code>
-<span class="desc">Returns a list of available cyphers</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-getcipher">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getCipher</span>()</code>
-<span class="desc">Returns the current cipher</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-getkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getKey</span>()</code>
-<span class="desc">Returns the encryption key</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-setauthdata">
-<code class="vis vis-public">public</code>
-<code class="ret">Crypt</code>
-<code class="sig"><span class="sf">setAuthData</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
-<span class="desc">Sets authentication data</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-setauthtag">
-<code class="vis vis-public">public</code>
-<code class="ret">Crypt</code>
-<code class="sig"><span class="sf">setAuthTag</span>( <span class="st">string</span> <span class="sv">$tag</span> )</code>
-<span class="desc">Sets the authentication tag</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-setauthtaglength">
-<code class="vis vis-public">public</code>
-<code class="ret">Crypt</code>
-<code class="sig"><span class="sf">setAuthTagLength</span>( <span class="st">int</span> <span class="sv">$length</span> )</code>
-<span class="desc">Sets the authentication tag length</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-setcipher">
-<code class="vis vis-public">public</code>
-<code class="ret">Crypt</code>
-<code class="sig"><span class="sf">setCipher</span>( <span class="st">string</span> <span class="sv">$cipher</span> )</code>
-<span class="desc">Sets the cipher algorithm</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-setkey">
-<code class="vis vis-public">public</code>
-<code class="ret">Crypt</code>
-<code class="sig"><span class="sf">setKey</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Sets the encryption key</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-setpadding">
-<code class="vis vis-public">public</code>
-<code class="ret">Crypt</code>
-<code class="sig"><span class="sf">setPadding</span>( <span class="st">int</span> <span class="sv">$scheme</span> )</code>
-<span class="desc">Changes the padding scheme used.</span>
-</a>
-<a class="api-item" href="#contractsencryptioncryptcrypt-usesigning">
-<code class="vis vis-public">public</code>
-<code class="ret">Crypt</code>
-<code class="sig"><span class="sf">useSigning</span>( <span class="st">bool</span> <span class="sv">$useSigning</span> )</code>
-<span class="desc">Sets if the calculating message digest must be used.</span>
-</a>
-</div>
+<ApiItem href="#contractsencryptioncryptcrypt-decrypt" visibility="public" name="decrypt" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
+Decrypts a text
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-decryptbase64" visibility="public" name="decryptBase64" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
+Decrypt a text that is coded as a base64 string
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-encrypt" visibility="public" name="encrypt" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
+Encrypts a text
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-encryptbase64" visibility="public" name="encryptBase64" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
+Encrypts a text returning the result as a base64 string
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-getauthdata" visibility="public" name="getAuthData" returnType="string" params={[]}>
+Returns authentication data
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-getauthtag" visibility="public" name="getAuthTag" returnType="string" params={[]}>
+Returns the authentication tag
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-getauthtaglength" visibility="public" name="getAuthTagLength" returnType="int" params={[]}>
+Returns the authentication tag length
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-getavailableciphers" visibility="public" name="getAvailableCiphers" returnType="array" params={[]}>
+Returns a list of available cyphers
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-getcipher" visibility="public" name="getCipher" returnType="string" params={[]}>
+Returns the current cipher
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-getkey" visibility="public" name="getKey" returnType="string" params={[]}>
+Returns the encryption key
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-setauthdata" visibility="public" name="setAuthData" returnType="Crypt" params={[{"type":"string","name":"data","default":null}]}>
+Sets authentication data
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-setauthtag" visibility="public" name="setAuthTag" returnType="Crypt" params={[{"type":"string","name":"tag","default":null}]}>
+Sets the authentication tag
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-setauthtaglength" visibility="public" name="setAuthTagLength" returnType="Crypt" params={[{"type":"int","name":"length","default":null}]}>
+Sets the authentication tag length
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-setcipher" visibility="public" name="setCipher" returnType="Crypt" params={[{"type":"string","name":"cipher","default":null}]}>
+Sets the cipher algorithm
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-setkey" visibility="public" name="setKey" returnType="Crypt" params={[{"type":"string","name":"key","default":null}]}>
+Sets the encryption key
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-setpadding" visibility="public" name="setPadding" returnType="Crypt" params={[{"type":"int","name":"scheme","default":null}]}>
+Changes the padding scheme used.
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptcrypt-usesigning" visibility="public" name="useSigning" returnType="Crypt" params={[{"type":"bool","name":"useSigning","default":null}]}>
+Sets if the calculating message digest must be used.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 17</div>
 
 <h4 id="contractsencryptioncryptcrypt-decrypt"><code>decrypt()</code></h4>
 
@@ -7610,8 +5829,7 @@ Sets if the calculating message digest must be used.
 
 ## Contracts\Encryption\Crypt\Padding\Pad
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Crypt/Padding/Pad.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Encryption\Crypt\Padding strategies.
 
@@ -7622,31 +5840,17 @@ encoding-sensitive functions such as `mb_strlen()` on the padded plaintext
 yields the wrong padding size whenever the bytes form valid multibyte
 sequences.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`**
-- [`Phalcon\Encryption\Crypt\Padding\PadInterface`](/6.0/api/phalcon_encryption/#encryptioncryptpaddingpadinterface)
-
-</div>
+- [`Phalcon\Encryption\Crypt\Padding\PadInterface`](../phalcon_encryption/#encryptioncryptpaddingpadinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsencryptioncryptpaddingpad-pad">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">pad</span>( <span class="st">int</span> <span class="sv">$paddingSize</span> )</code>
-</a>
-<a class="api-item" href="#contractsencryptioncryptpaddingpad-unpad">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">unpad</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#contractsencryptioncryptpaddingpad-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsencryptioncryptpaddingpad-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractsencryptioncryptpaddingpad-pad"><code>pad()</code></h4>
 
@@ -7665,51 +5869,27 @@ int $blockSize
 
 ## Contracts\Encryption\Security\CryptoUtils
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/CryptoUtils.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Encryption\Security\CryptoUtils`**
 - [`Phalcon\Contracts\Encryption\Security\Security`](#contractsencryptionsecuritysecurity)
 
-</div>
-
-__Uses__ `Phalcon\Encryption\Security\Random`
+`Phalcon\Encryption\Security\Random`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsencryptionsecuritycryptoutils-computehmac">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">computeHmac</span>(<span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$algorithm</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritycryptoutils-getrandom">
-<code class="vis vis-public">public</code>
-<code class="ret">Random</code>
-<code class="sig"><span class="sf">getRandom</span>()</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritycryptoutils-getrandombytes">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getRandomBytes</span>()</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritycryptoutils-getsaltbytes">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getSaltBytes</span>( <span class="st">int</span> <span class="sv">$numberBytes</span><span class="sm"> = 0</span> )</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritycryptoutils-setrandombytes">
-<code class="vis vis-public">public</code>
-<code class="ret">Security</code>
-<code class="sig"><span class="sf">setRandomBytes</span>( <span class="st">int</span> <span class="sv">$randomBytes</span> )</code>
-</a>
-</div>
+<ApiItem href="#contractsencryptionsecuritycryptoutils-computehmac" visibility="public" name="computeHmac" returnType="string" params={[{"type":"string","name":"data","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"algorithm","default":null},{"type":"bool","name":"raw","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritycryptoutils-getrandom" visibility="public" name="getRandom" returnType="Random" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritycryptoutils-getrandombytes" visibility="public" name="getRandomBytes" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritycryptoutils-getsaltbytes" visibility="public" name="getSaltBytes" returnType="string" params={[{"type":"int","name":"numberBytes","default":"0"}]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritycryptoutils-setrandombytes" visibility="public" name="setRandomBytes" returnType="Security" params={[{"type":"int","name":"randomBytes","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 5</div>
 
 <h4 id="contractsencryptionsecuritycryptoutils-computehmac"><code>computeHmac()</code></h4>
 
@@ -7748,53 +5928,26 @@ public function setRandomBytes( int $randomBytes ): Security;
 
 ## Contracts\Encryption\Security\CsrfProtection
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/CsrfProtection.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Encryption\Security\CsrfProtection`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsencryptionsecuritycsrfprotection-checktoken">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">checkToken</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$tokenKey</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$tokenValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$destroyIfValid</span><span class="sm"> = true</span></span>)</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritycsrfprotection-destroytoken">
-<code class="vis vis-public">public</code>
-<code class="ret">Security</code>
-<code class="sig"><span class="sf">destroyToken</span>()</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritycsrfprotection-getrequesttoken">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getRequestToken</span>()</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritycsrfprotection-getsessiontoken">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getSessionToken</span>()</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritycsrfprotection-gettoken">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getToken</span>()</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritycsrfprotection-gettokenkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getTokenKey</span>()</code>
-</a>
-</div>
+<ApiItem href="#contractsencryptionsecuritycsrfprotection-checktoken" visibility="public" name="checkToken" returnType="bool" params={[{"type":"string|null","name":"tokenKey","default":"null"},{"type":"string|null","name":"tokenValue","default":"null"},{"type":"bool","name":"destroyIfValid","default":"true"}]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritycsrfprotection-destroytoken" visibility="public" name="destroyToken" returnType="Security" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritycsrfprotection-getrequesttoken" visibility="public" name="getRequestToken" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritycsrfprotection-getsessiontoken" visibility="public" name="getSessionToken" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritycsrfprotection-gettoken" visibility="public" name="getToken" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritycsrfprotection-gettokenkey" visibility="public" name="getTokenKey" returnType="string|null" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="contractsencryptionsecuritycsrfprotection-checktoken"><code>checkToken()</code></h4>
 
@@ -7838,50 +5991,29 @@ public function getTokenKey(): string|null;
 
 ## Contracts\Encryption\Security\JWT\Signer\Signer
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/JWT/Signer/Signer.php">Source on GitHub</a>
+Interface
 
 Canonical contract for JWT Signer classes
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`**
-- [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](/6.0/api/phalcon_encryption/#encryptionsecurityjwtsignersignerinterface)
-
-</div>
+- [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](../phalcon_encryption/#encryptionsecurityjwtsignersignerinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsencryptionsecurityjwtsignersigner-getalgheader">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlgHeader</span>()</code>
-<span class="desc">Return the value that is used for the &quot;alg&quot; header</span>
-</a>
-<a class="api-item" href="#contractsencryptionsecurityjwtsignersigner-getalgorithm">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlgorithm</span>()</code>
-<span class="desc">Return the algorithm used</span>
-</a>
-<a class="api-item" href="#contractsencryptionsecurityjwtsignersigner-sign">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">sign</span>(<span class="prm"><span class="st">string</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passphrase</span></span>)</code>
-<span class="desc">Sign a payload using the passphrase</span>
-</a>
-<a class="api-item" href="#contractsencryptionsecurityjwtsignersigner-verify">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">verify</span>(<span class="prm"><span class="st">string</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passphrase</span></span>)</code>
-<span class="desc">Verify a passed source with a payload and passphrase</span>
-</a>
-</div>
+<ApiItem href="#contractsencryptionsecurityjwtsignersigner-getalgheader" visibility="public" name="getAlgHeader" returnType="string" params={[]}>
+Return the value that is used for the "alg" header
+</ApiItem>
+<ApiItem href="#contractsencryptionsecurityjwtsignersigner-getalgorithm" visibility="public" name="getAlgorithm" returnType="string" params={[]}>
+Return the algorithm used
+</ApiItem>
+<ApiItem href="#contractsencryptionsecurityjwtsignersigner-sign" visibility="public" name="sign" returnType="string" params={[{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
+Sign a payload using the passphrase
+</ApiItem>
+<ApiItem href="#contractsencryptionsecurityjwtsignersigner-verify" visibility="public" name="verify" returnType="bool" params={[{"type":"string","name":"source","default":null},{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
+Verify a passed source with a payload and passphrase
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="contractsencryptionsecurityjwtsignersigner-getalgheader"><code>getAlgHeader()</code></h4>
 
@@ -7924,63 +6056,30 @@ Verify a passed source with a payload and passphrase
 
 ## Contracts\Encryption\Security\PasswordSecurity
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/PasswordSecurity.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Encryption\Security\PasswordSecurity`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-checkhash">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">checkHash</span>(<span class="prm"><span class="st">string</span> <span class="sv">$password</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passwordHash</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$maxPassLength</span><span class="sm"> = 0</span></span>)</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-getdefaulthash">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getDefaultHash</span>()</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-gethashinformation">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getHashInformation</span>( <span class="st">string</span> <span class="sv">$hash</span> )</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-getworkfactor">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getWorkFactor</span>()</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-hash">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">hash</span>(<span class="prm"><span class="st">string</span> <span class="sv">$password</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-islegacyhash">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isLegacyHash</span>( <span class="st">string</span> <span class="sv">$passwordHash</span> )</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-setdefaulthash">
-<code class="vis vis-public">public</code>
-<code class="ret">Security</code>
-<code class="sig"><span class="sf">setDefaultHash</span>( <span class="st">int</span> <span class="sv">$defaultHash</span> )</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-setworkfactor">
-<code class="vis vis-public">public</code>
-<code class="ret">Security</code>
-<code class="sig"><span class="sf">setWorkFactor</span>( <span class="st">int</span> <span class="sv">$workFactor</span> )</code>
-</a>
-</div>
+<ApiItem href="#contractsencryptionsecuritypasswordsecurity-checkhash" visibility="public" name="checkHash" returnType="bool" params={[{"type":"string","name":"password","default":null},{"type":"string","name":"passwordHash","default":null},{"type":"int","name":"maxPassLength","default":"0"}]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritypasswordsecurity-getdefaulthash" visibility="public" name="getDefaultHash" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritypasswordsecurity-gethashinformation" visibility="public" name="getHashInformation" returnType="array" params={[{"type":"string","name":"hash","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritypasswordsecurity-getworkfactor" visibility="public" name="getWorkFactor" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritypasswordsecurity-hash" visibility="public" name="hash" returnType="string" params={[{"type":"string","name":"password","default":null},{"type":"array","name":"options","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritypasswordsecurity-islegacyhash" visibility="public" name="isLegacyHash" returnType="bool" params={[{"type":"string","name":"passwordHash","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritypasswordsecurity-setdefaulthash" visibility="public" name="setDefaultHash" returnType="Security" params={[{"type":"int","name":"defaultHash","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecuritypasswordsecurity-setworkfactor" visibility="public" name="setWorkFactor" returnType="Security" params={[{"type":"int","name":"workFactor","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 8</div>
 
 <h4 id="contractsencryptionsecuritypasswordsecurity-checkhash"><code>checkHash()</code></h4>
 
@@ -8039,41 +6138,24 @@ public function setWorkFactor( int $workFactor ): Security;
 
 ## Contracts\Encryption\Security\Security
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/Security.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils)
 - **`Phalcon\Contracts\Encryption\Security\Security`** - extends [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils), [`Phalcon\Contracts\Encryption\Security\CsrfProtection`](#contractsencryptionsecuritycsrfprotection), [`Phalcon\Contracts\Encryption\Security\PasswordSecurity`](#contractsencryptionsecuritypasswordsecurity)
 
-</div>
-
 ## Contracts\Encryption\Security\Uuid\NodeProvider
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/Uuid/NodeProvider.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`**
-- [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](/6.0/api/phalcon_encryption/#encryptionsecurityuuidnodeproviderinterface)
-
-</div>
+- [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](../phalcon_encryption/#encryptionsecurityuuidnodeproviderinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsencryptionsecurityuuidnodeprovider-getnode">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getNode</span>()</code>
-</a>
-</div>
+<ApiItem href="#contractsencryptionsecurityuuidnodeprovider-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsencryptionsecurityuuidnodeprovider-getnode"><code>getNode()</code></h4>
 
@@ -8083,36 +6165,21 @@ public function getNode(): string;
 
 ## Contracts\Encryption\Security\Uuid\TimeBasedUuid
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/Uuid/TimeBasedUuid.php">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`**
-- [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](/6.0/api/phalcon_encryption/#encryptionsecurityuuidtimebaseduuidinterface)
+- [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](../phalcon_encryption/#encryptionsecurityuuidtimebaseduuidinterface)
 
-</div>
-
-__Uses__ `DateTimeImmutable`
+`DateTimeImmutable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsencryptionsecurityuuidtimebaseduuid-getdatetime">
-<code class="vis vis-public">public</code>
-<code class="ret">DateTimeImmutable</code>
-<code class="sig"><span class="sf">getDateTime</span>()</code>
-</a>
-<a class="api-item" href="#contractsencryptionsecurityuuidtimebaseduuid-getnode">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getNode</span>()</code>
-</a>
-</div>
+<ApiItem href="#contractsencryptionsecurityuuidtimebaseduuid-getdatetime" visibility="public" name="getDateTime" returnType="DateTimeImmutable" params={[]}>
+</ApiItem>
+<ApiItem href="#contractsencryptionsecurityuuidtimebaseduuid-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractsencryptionsecurityuuidtimebaseduuid-getdatetime"><code>getDateTime()</code></h4>
 
@@ -8128,45 +6195,29 @@ public function getNode(): string;
 
 ## Contracts\Encryption\Security\Uuid\Uuid
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Encryption/Security/Uuid/Uuid.php">Source on GitHub</a>
+Interface
 
 Canonical marker contract for UUID version adapters.
 
 Also carries the standard RFC 4122 namespace UUIDs as constants.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`**
-- [`Phalcon\Encryption\Security\Uuid\UuidInterface`](/6.0/api/phalcon_encryption/#encryptionsecurityuuiduuidinterface)
-
-</div>
+- [`Phalcon\Encryption\Security\Uuid\UuidInterface`](../phalcon_encryption/#encryptionsecurityuuiduuidinterface)
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NAMESPACE_DNS</span><span class="sm"> = &quot;6ba7b810-9dad-11d1-80b4-00c04fd430c8&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NAMESPACE_OID</span><span class="sm"> = &quot;6ba7b812-9dad-11d1-80b4-00c04fd430c8&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NAMESPACE_URL</span><span class="sm"> = &quot;6ba7b811-9dad-11d1-80b4-00c04fd430c8&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NAMESPACE_X500</span><span class="sm"> = &quot;6ba7b814-9dad-11d1-80b4-00c04fd430c8&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="NAMESPACE_DNS" type="string" default="&quot;6ba7b810-9dad-11d1-80b4-00c04fd430c8&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NAMESPACE_OID" type="string" default="&quot;6ba7b812-9dad-11d1-80b4-00c04fd430c8&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NAMESPACE_URL" type="string" default="&quot;6ba7b811-9dad-11d1-80b4-00c04fd430c8&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NAMESPACE_X500" type="string" default="&quot;6ba7b814-9dad-11d1-80b4-00c04fd430c8&quot;">
+</ApiItem>
 
 ## Contracts\Events\Enumerable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/Enumerable.php">Source on GitHub</a>
+Interface
 
 Optional capability contract for an events manager that can report every
 attached listener in one call. Callers detect support with `instanceof`.
@@ -8179,26 +6230,15 @@ Tooling that reports on an events manager type-hints this instead of the
 concrete Manager, so it depends on a published contract rather than on an
 implementation detail that is free to change.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Events\Enumerable`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractseventsenumerable-getlistenermap">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getListenerMap</span>()</code>
-<span class="desc">Returns every event type that currently has at least one listener,</span>
-</a>
-</div>
+<ApiItem href="#contractseventsenumerable-getlistenermap" visibility="public" name="getListenerMap" returnType="array" params={[]}>
+Returns every event type that currently has at least one listener,
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractseventsenumerable-getlistenermap"><code>getListenerMap()</code></h4>
 
@@ -8213,68 +6253,38 @@ pipeline.
 
 ## Contracts\Events\Event
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/Event.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Events\Event.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Events\Event`**
-- [`Phalcon\Events\EventInterface`](/6.0/api/phalcon_events/#eventseventinterface)
-
-</div>
+- [`Phalcon\Events\EventInterface`](../phalcon_events/#eventseventinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractseventsevent-getdata">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getData</span>()</code>
-<span class="desc">Gets event data</span>
-</a>
-<a class="api-item" href="#contractseventsevent-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Gets event type</span>
-</a>
-<a class="api-item" href="#contractseventsevent-iscancelable">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isCancelable</span>()</code>
-<span class="desc">Check whether the event is cancelable</span>
-</a>
-<a class="api-item" href="#contractseventsevent-isstopped">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isStopped</span>()</code>
-<span class="desc">Check whether the event is currently stopped</span>
-</a>
-<a class="api-item" href="#contractseventsevent-setdata">
-<code class="vis vis-public">public</code>
-<code class="ret">Event</code>
-<code class="sig"><span class="sf">setData</span>( <span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span> )</code>
-<span class="desc">Sets event data</span>
-</a>
-<a class="api-item" href="#contractseventsevent-settype">
-<code class="vis vis-public">public</code>
-<code class="ret">Event</code>
-<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Sets event type</span>
-</a>
-<a class="api-item" href="#contractseventsevent-stop">
-<code class="vis vis-public">public</code>
-<code class="ret">Event</code>
-<code class="sig"><span class="sf">stop</span>()</code>
-<span class="desc">Stops the event preventing propagation</span>
-</a>
-</div>
+<ApiItem href="#contractseventsevent-getdata" visibility="public" name="getData" returnType="mixed" params={[]}>
+Gets event data
+</ApiItem>
+<ApiItem href="#contractseventsevent-gettype" visibility="public" name="getType" returnType="mixed" params={[]}>
+Gets event type
+</ApiItem>
+<ApiItem href="#contractseventsevent-iscancelable" visibility="public" name="isCancelable" returnType="bool" params={[]}>
+Check whether the event is cancelable
+</ApiItem>
+<ApiItem href="#contractseventsevent-isstopped" visibility="public" name="isStopped" returnType="bool" params={[]}>
+Check whether the event is currently stopped
+</ApiItem>
+<ApiItem href="#contractseventsevent-setdata" visibility="public" name="setData" returnType="Event" params={[{"type":"mixed","name":"data","default":"null"}]}>
+Sets event data
+</ApiItem>
+<ApiItem href="#contractseventsevent-settype" visibility="public" name="setType" returnType="Event" params={[{"type":"string","name":"type","default":null}]}>
+Sets event type
+</ApiItem>
+<ApiItem href="#contractseventsevent-stop" visibility="public" name="stop" returnType="Event" params={[]}>
+Stops the event preventing propagation
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 7</div>
 
 <h4 id="contractseventsevent-getdata"><code>getData()</code></h4>
 
@@ -8334,8 +6344,7 @@ Stops the event preventing propagation
 
 ## Contracts\Events\EventsAware
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/EventsAware.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Events\EventsAwareInterface. Implemented by
 components that accept an events manager and dispatch through it.
@@ -8345,35 +6354,21 @@ contract) to preserve LSP for the many AbstractEventsAware subclasses that
 already type-hint ManagerInterface. ManagerInterface extends Manager, so
 this remains type-compatible with any code that needs the canonical surface.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Events\EventsAware`**
-- [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
+- [`Phalcon\Events\EventsAwareInterface`](../phalcon_events/#eventseventsawareinterface)
 
-</div>
-
-__Uses__ `Phalcon\Events\ManagerInterface`
+`Phalcon\Events\ManagerInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractseventseventsaware-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal events manager</span>
-</a>
-<a class="api-item" href="#contractseventseventsaware-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
-</div>
+<ApiItem href="#contractseventseventsaware-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
+Returns the internal events manager
+</ApiItem>
+<ApiItem href="#contractseventseventsaware-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
+Sets the events manager
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractseventseventsaware-geteventsmanager"><code>getEventsManager()</code></h4>
 
@@ -8393,131 +6388,70 @@ Sets the events manager
 
 ## Contracts\Events\Manager
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/Manager.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Events\Manager.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Events\Manager`**
-- [`Phalcon\Events\ManagerInterface`](/6.0/api/phalcon_events/#eventsmanagerinterface)
-
-</div>
+- [`Phalcon\Events\ManagerInterface`](../phalcon_events/#eventsmanagerinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractseventsmanager-addsubscriber">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">addSubscriber</span>( <span class="st">Subscriber</span> <span class="sv">$subscriber</span> )</code>
-<span class="desc">Registers an event subscriber.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-areprioritiesenabled">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">arePrioritiesEnabled</span>()</code>
-<span class="desc">Returns whether priority ordering is currently enabled.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-attach">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">attach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">callable|object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$priority</span><span class="sm"> = self::DEFAULT_PRIORITY</span></span>)</code>
-<span class="desc">Attach a listener to the events manager.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-clearsubscribers">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">clearSubscribers</span>()</code>
-<span class="desc">Removes every registered subscriber and detaches each listener they</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-collectresponses">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">collectResponses</span>( <span class="st">bool</span> <span class="sv">$collect</span> )</code>
-<span class="desc">Toggle response collection on/off.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-detach">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">detach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">callable|object</span> <span class="sv">$handler</span></span>)</code>
-<span class="desc">Detach a listener from the events manager.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-detachall">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">detachAll</span>( <span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
-<span class="desc">Removes all listeners -- globally or for a single event type.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-enablepriorities">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">enablePriorities</span>( <span class="st">bool</span> <span class="sv">$enablePriorities</span> )</code>
-<span class="desc">Toggle priority ordering on/off.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-fire">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Fires an event, notifying the active listeners.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-getlisteners">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getListeners</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Returns all listeners attached to the given event type.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-getresponses">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getResponses</span>()</code>
-<span class="desc">Returns the responses recorded during the last fire (when collecting).</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-getsubscribers">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getSubscribers</span>()</code>
-<span class="desc">Returns the list of registered subscriber instances.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-haslisteners">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasListeners</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Check whether the given event type has any listeners.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-iscollecting">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isCollecting</span>()</code>
-<span class="desc">Check whether the manager is currently collecting responses.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-isvalidhandler">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isValidHandler</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
-<span class="desc">Returns true when the given handler is an object or callable.</span>
-</a>
-<a class="api-item" href="#contractseventsmanager-removesubscriber">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">removeSubscriber</span>( <span class="st">Subscriber</span> <span class="sv">$subscriber</span> )</code>
-<span class="desc">Removes a previously registered subscriber.</span>
-</a>
-</div>
+<ApiItem href="#contractseventsmanager-addsubscriber" visibility="public" name="addSubscriber" returnType="void" params={[{"type":"Subscriber","name":"subscriber","default":null}]}>
+Registers an event subscriber.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-areprioritiesenabled" visibility="public" name="arePrioritiesEnabled" returnType="bool" params={[]}>
+Returns whether priority ordering is currently enabled.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-attach" visibility="public" name="attach" returnType="void" params={[{"type":"string","name":"eventType","default":null},{"type":"callable|object","name":"handler","default":null},{"type":"int","name":"priority","default":"self::DEFAULT_PRIORITY"}]}>
+Attach a listener to the events manager.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-clearsubscribers" visibility="public" name="clearSubscribers" returnType="void" params={[]}>
+Removes every registered subscriber and detaches each listener they
+</ApiItem>
+<ApiItem href="#contractseventsmanager-collectresponses" visibility="public" name="collectResponses" returnType="void" params={[{"type":"bool","name":"collect","default":null}]}>
+Toggle response collection on/off.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-detach" visibility="public" name="detach" returnType="void" params={[{"type":"string","name":"eventType","default":null},{"type":"callable|object","name":"handler","default":null}]}>
+Detach a listener from the events manager.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-detachall" visibility="public" name="detachAll" returnType="void" params={[{"type":"string|null","name":"type","default":"null"}]}>
+Removes all listeners -- globally or for a single event type.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-enablepriorities" visibility="public" name="enablePriorities" returnType="void" params={[{"type":"bool","name":"enablePriorities","default":null}]}>
+Toggle priority ordering on/off.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-fire" visibility="public" name="fire" returnType="mixed" params={[{"type":"string","name":"eventType","default":null},{"type":"object","name":"source","default":null},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancelable","default":"true"}]}>
+Fires an event, notifying the active listeners.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-getlisteners" visibility="public" name="getListeners" returnType="array" params={[{"type":"string","name":"type","default":null}]}>
+Returns all listeners attached to the given event type.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-getresponses" visibility="public" name="getResponses" returnType="array" params={[]}>
+Returns the responses recorded during the last fire (when collecting).
+</ApiItem>
+<ApiItem href="#contractseventsmanager-getsubscribers" visibility="public" name="getSubscribers" returnType="array" params={[]}>
+Returns the list of registered subscriber instances.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-haslisteners" visibility="public" name="hasListeners" returnType="bool" params={[{"type":"string","name":"type","default":null}]}>
+Check whether the given event type has any listeners.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-iscollecting" visibility="public" name="isCollecting" returnType="bool" params={[]}>
+Check whether the manager is currently collecting responses.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-isvalidhandler" visibility="public" name="isValidHandler" returnType="bool" params={[{"type":"mixed","name":"handler","default":null}]}>
+Returns true when the given handler is an object or callable.
+</ApiItem>
+<ApiItem href="#contractseventsmanager-removesubscriber" visibility="public" name="removeSubscriber" returnType="void" params={[{"type":"Subscriber","name":"subscriber","default":null}]}>
+Removes a previously registered subscriber.
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">DEFAULT_PRIORITY</span><span class="sm"> = 100</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="DEFAULT_PRIORITY" type="int" default="100">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 16</div>
 
 <h4 id="contractseventsmanager-addsubscriber"><code>addSubscriber()</code></h4>
 
@@ -8662,31 +6596,19 @@ Removes a previously registered subscriber.
 
 ## Contracts\Events\Stoppable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/Stoppable.php">Source on GitHub</a>
+Interface
 
 Phalcon's local mirror of PSR-14 StoppableEventInterface.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Events\Stoppable`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractseventsstoppable-ispropagationstopped">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isPropagationStopped</span>()</code>
-<span class="desc">Returns true when the event must stop propagating to subsequent</span>
-</a>
-</div>
+<ApiItem href="#contractseventsstoppable-ispropagationstopped" visibility="public" name="isPropagationStopped" returnType="bool" params={[]}>
+Returns true when the event must stop propagating to subsequent
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractseventsstoppable-ispropagationstopped"><code>isPropagationStopped()</code></h4>
 
@@ -8699,8 +6621,7 @@ listeners.
 
 ## Contracts\Events\Subscriber
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Events/Subscriber.php">Source on GitHub</a>
+Interface
 
 Contract for event subscriber classes. A subscriber declares the events it
 wants to listen to via a static map; Events\Manager parses the map and
@@ -8715,26 +6636,15 @@ Accepted value shapes per event key:
       ['methodName2', priority],
   ]
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Events\Subscriber`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractseventssubscriber-getsubscribedevents">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getSubscribedEvents</span>()</code>
-<span class="desc">Returns a map of event name =&gt; listener config.</span>
-</a>
-</div>
+<ApiItem href="#contractseventssubscriber-getsubscribedevents" visibility="public" name="getSubscribedEvents" returnType="array" params={[]}>
+Returns a map of event name => listener config.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractseventssubscriber-getsubscribedevents"><code>getSubscribedEvents()</code></h4>
 
@@ -8746,8 +6656,7 @@ Returns a map of event name => listener config.
 
 ## Contracts\Filter\Sanitizer
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Filter/Sanitizer.php">Source on GitHub</a>
+Interface
 
 The contract for sanitizers registered in Phalcon\Filter\Filter.
 
@@ -8766,16 +6675,11 @@ A sanitizer operates on a single value. Array handling (one level of
 recursion by default) is the responsibility of
 Phalcon\Filter\Filter::sanitize(), not of the sanitizer.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Filter\Sanitizer`**
-
-</div>
 
 ## Contracts\Flash\Flash
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Flash/Flash.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Flash messengers.
 
@@ -8783,51 +6687,28 @@ Note: `output()` and `clear()` are part of the concrete `Direct` / `Session`
 API and are not declared on this contract; they are scheduled to be added in
 the next major version.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Flash\Flash`**
-- [`Phalcon\Flash\FlashInterface`](/6.0/api/phalcon_flash/#flashflashinterface)
-
-</div>
+- [`Phalcon\Flash\FlashInterface`](../phalcon_flash/#flashflashinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsflashflash-error">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">error</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Shows a HTML error message</span>
-</a>
-<a class="api-item" href="#contractsflashflash-message">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">message</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span></span>)</code>
-<span class="desc">Outputs a message</span>
-</a>
-<a class="api-item" href="#contractsflashflash-notice">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">notice</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Shows a HTML notice/information message</span>
-</a>
-<a class="api-item" href="#contractsflashflash-success">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">success</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Shows a HTML success message</span>
-</a>
-<a class="api-item" href="#contractsflashflash-warning">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">warning</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Shows a HTML warning message</span>
-</a>
-</div>
+<ApiItem href="#contractsflashflash-error" visibility="public" name="error" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
+Shows a HTML error message
+</ApiItem>
+<ApiItem href="#contractsflashflash-message" visibility="public" name="message" returnType="string|null" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"message","default":null}]}>
+Outputs a message
+</ApiItem>
+<ApiItem href="#contractsflashflash-notice" visibility="public" name="notice" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
+Shows a HTML notice/information message
+</ApiItem>
+<ApiItem href="#contractsflashflash-success" visibility="public" name="success" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
+Shows a HTML success message
+</ApiItem>
+<ApiItem href="#contractsflashflash-warning" visibility="public" name="warning" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
+Shows a HTML warning message
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 5</div>
 
 <h4 id="contractsflashflash-error"><code>error()</code></h4>
 
@@ -8879,10 +6760,19 @@ public function warning( string $message ): string|null;
 
 Shows a HTML warning message
 
+## Contracts\Forms\FormsTypes
+
+Interface
+
+Central registry of the array shapes used across the Forms namespace.
+
+- **`Phalcon\Contracts\Forms\FormsTypes`**
+
+`Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Form`
+
 ## Contracts\Forms\Schema
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Forms/Schema.php">Source on GitHub</a>
+Interface
 
 Contract for objects that supply a normalized list of form element
 definitions. Implementations may source the definitions from a PHP array,
@@ -8900,26 +6790,15 @@ Optional keys per definition:
   - 'validators' (array)           - ValidatorInterface instances
   - 'options'    (array)           - choices for select / checkgroup / radiogroup
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Forms\Schema`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsformsschema-load">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">load</span>()</code>
-<span class="desc">Returns an ordered list of normalized element definitions.</span>
-</a>
-</div>
+<ApiItem href="#contractsformsschema-load" visibility="public" name="load" returnType="array" params={[]}>
+Returns an ordered list of normalized element definitions.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsformsschema-load"><code>load()</code></h4>
 
@@ -8931,32 +6810,20 @@ Returns an ordered list of normalized element definitions.
 
 ## Contracts\Front\FrontController
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Front/FrontController.php">Source on GitHub</a>
+Interface
 
 [_FrontController_][] affords an entry point into the outermost presentation
 layer in any execution context (HTTP, CLI, etc.).
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Front\FrontController`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsfrontfrontcontroller-run">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">run</span>()</code>
-<span class="desc">Runs the front controller.</span>
-</a>
-</div>
+<ApiItem href="#contractsfrontfrontcontroller-run" visibility="public" name="run" returnType="int" params={[]}>
+Runs the front controller.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsfrontfrontcontroller-run"><code>run()</code></h4>
 
@@ -9023,8 +6890,7 @@ Runs the front controller.
 
 ## Contracts\Front\FrontTypeAliases
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Front/FrontTypeAliases.php">Source on GitHub</a>
+Interface
 
 [_FrontTypeAliases_][] provides custom PHPStan types to aid static analysis.
 
@@ -9034,49 +6900,30 @@ Runs the front controller.
     - An `int` exit status code: `0` for success, `1` to `254` for
       non-success. The value `255` is reserved by PHP itself.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Front\FrontTypeAliases`**
-
-</div>
 
 ## Contracts\Html\Helper\Input\SelectData
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Html/Helper/Input/SelectData.php">Source on GitHub</a>
+Interface
 
 Interface for SELECT option data providers.
 
 Return format: [value => label] for flat options;
 [groupLabel => [value => label, ...]] for optgroups.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Html\Helper\Input\SelectData`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Html\HtmlTypes`
+`Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractshtmlhelperinputselectdata-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-<span class="desc">Returns the per-option attribute map.</span>
-</a>
-<a class="api-item" href="#contractshtmlhelperinputselectdata-getoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getOptions</span>()</code>
-</a>
-</div>
+<ApiItem href="#contractshtmlhelperinputselectdata-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
+Returns the per-option attribute map.
+</ApiItem>
+<ApiItem href="#contractshtmlhelperinputselectdata-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractshtmlhelperinputselectdata-getattributes"><code>getAttributes()</code></h4>
 
@@ -9098,8 +6945,7 @@ public function getOptions(): array;
 
 ## Contracts\Html\HtmlTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Html/HtmlTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Html namespace.
 
@@ -9107,18 +6953,13 @@ Attribute values stay scalar here. The array member that PSR-13 allows for
 link attributes lives in the Link registry instead, because the helper
 pipeline concatenates and escapes every value as a string.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Html\HtmlTypes`**
 
-</div>
-
-__Uses__ `Closure`
+`Closure`
 
 ## Contracts\Html\Link\LinkTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Html/Link/LinkTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Html\Link namespace.
 
@@ -9126,18 +6967,13 @@ PSR-13 states that a link attribute value is "a PHP primitive or an array of
 PHP strings", so `link_attributes` keeps the array member that the plain
 Html attribute shape drops.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Html\Link\LinkTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface`
+`Phalcon\Html\Link\Interfaces\LinkInterface`
 
 ## Contracts\Http\AttributeRequest
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Http/AttributeRequest.php">Source on GitHub</a>
+Interface
 
 Extends the request contract with the native attribute bag.
 
@@ -9146,29 +6982,18 @@ interface exposes it as a contract without touching `RequestInterface`
 (adding a method there would break userland implementers). It lets consumers
 type against the attribute-bearing request without depending on the concrete.
 
-<div class="api-tree">
-
-- [`Phalcon\Http\RequestInterface`](/6.0/api/phalcon_http/#httprequestinterface)
+- [`Phalcon\Http\RequestInterface`](../phalcon_http/#httprequestinterface)
 - **`Phalcon\Contracts\Http\AttributeRequest`**
 
-</div>
-
-__Uses__ `Phalcon\Http\RequestInterface` · `Phalcon\Http\Request\Bag\AttributeBag`
+`Phalcon\Http\RequestInterface` · `Phalcon\Http\Request\Bag\AttributeBag`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractshttpattributerequest-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">AttributeBag</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-<span class="desc">Returns the request attribute bag.</span>
-</a>
-</div>
+<ApiItem href="#contractshttpattributerequest-getattributes" visibility="public" name="getAttributes" returnType="AttributeBag" params={[]}>
+Returns the request attribute bag.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractshttpattributerequest-getattributes"><code>getAttributes()</code></h4>
 
@@ -9180,23 +7005,17 @@ Returns the request attribute bag.
 
 ## Contracts\Http\HttpTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Http/HttpTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Http namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Http\HttpTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Request\FileInterface`
+`Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Request\FileInterface`
 
 ## Contracts\Image\ImageTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Image/ImageTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Image namespace.
 
@@ -9210,92 +7029,52 @@ type names per file and has no namespacing for them: the prefix is what
 keeps generic names such as `config` from clashing with an alias imported
 from another namespace into the same file.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Image\ImageTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Image\Adapter\AdapterInterface`
+`Phalcon\Image\Adapter\AdapterInterface`
 
 ## Contracts\Logger\Adapter\Adapter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Logger/Adapter/Adapter.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Logger adapters.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Logger\Adapter\Adapter`**
-- [`Phalcon\Logger\Adapter\AdapterInterface`](/6.0/api/phalcon_logger/#loggeradapteradapterinterface)
+- [`Phalcon\Logger\Adapter\AdapterInterface`](../phalcon_logger/#loggeradapteradapterinterface)
 
-</div>
-
-__Uses__ `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Item`
+`Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Item`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsloggeradapteradapter-add">
-<code class="vis vis-public">public</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sf">add</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
-<span class="desc">Adds a message in the queue</span>
-</a>
-<a class="api-item" href="#contractsloggeradapteradapter-begin">
-<code class="vis vis-public">public</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sf">begin</span>()</code>
-<span class="desc">Starts a transaction</span>
-</a>
-<a class="api-item" href="#contractsloggeradapteradapter-close">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">close</span>()</code>
-<span class="desc">Closes the logger</span>
-</a>
-<a class="api-item" href="#contractsloggeradapteradapter-commit">
-<code class="vis vis-public">public</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sf">commit</span>()</code>
-<span class="desc">Commits the internal transaction</span>
-</a>
-<a class="api-item" href="#contractsloggeradapteradapter-getformatter">
-<code class="vis vis-public">public</code>
-<code class="ret">FormatterInterface</code>
-<code class="sig"><span class="sf">getFormatter</span>()</code>
-<span class="desc">Returns the internal formatter</span>
-</a>
-<a class="api-item" href="#contractsloggeradapteradapter-intransaction">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">inTransaction</span>()</code>
-<span class="desc">Returns the whether the logger is currently in an active transaction or</span>
-</a>
-<a class="api-item" href="#contractsloggeradapteradapter-process">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">process</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
-<span class="desc">Processes the message in the adapter</span>
-</a>
-<a class="api-item" href="#contractsloggeradapteradapter-rollback">
-<code class="vis vis-public">public</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sf">rollback</span>()</code>
-<span class="desc">Rollbacks the internal transaction</span>
-</a>
-<a class="api-item" href="#contractsloggeradapteradapter-setformatter">
-<code class="vis vis-public">public</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sf">setFormatter</span>( <span class="st">FormatterInterface</span> <span class="sv">$formatter</span> )</code>
-<span class="desc">Sets the message formatter</span>
-</a>
-</div>
+<ApiItem href="#contractsloggeradapteradapter-add" visibility="public" name="add" returnType="Adapter" params={[{"type":"Item","name":"item","default":null}]}>
+Adds a message in the queue
+</ApiItem>
+<ApiItem href="#contractsloggeradapteradapter-begin" visibility="public" name="begin" returnType="Adapter" params={[]}>
+Starts a transaction
+</ApiItem>
+<ApiItem href="#contractsloggeradapteradapter-close" visibility="public" name="close" returnType="bool" params={[]}>
+Closes the logger
+</ApiItem>
+<ApiItem href="#contractsloggeradapteradapter-commit" visibility="public" name="commit" returnType="Adapter" params={[]}>
+Commits the internal transaction
+</ApiItem>
+<ApiItem href="#contractsloggeradapteradapter-getformatter" visibility="public" name="getFormatter" returnType="FormatterInterface" params={[]}>
+Returns the internal formatter
+</ApiItem>
+<ApiItem href="#contractsloggeradapteradapter-intransaction" visibility="public" name="inTransaction" returnType="bool" params={[]}>
+Returns the whether the logger is currently in an active transaction or
+</ApiItem>
+<ApiItem href="#contractsloggeradapteradapter-process" visibility="public" name="process" returnType="void" params={[{"type":"Item","name":"item","default":null}]}>
+Processes the message in the adapter
+</ApiItem>
+<ApiItem href="#contractsloggeradapteradapter-rollback" visibility="public" name="rollback" returnType="Adapter" params={[]}>
+Rollbacks the internal transaction
+</ApiItem>
+<ApiItem href="#contractsloggeradapteradapter-setformatter" visibility="public" name="setFormatter" returnType="Adapter" params={[{"type":"FormatterInterface","name":"formatter","default":null}]}>
+Sets the message formatter
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 9</div>
 
 <h4 id="contractsloggeradapteradapter-add"><code>add()</code></h4>
 
@@ -9372,34 +7151,22 @@ Sets the message formatter
 
 ## Contracts\Logger\Formatter\Formatter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Logger/Formatter/Formatter.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Logger formatters.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Logger\Formatter\Formatter`**
-- [`Phalcon\Logger\Formatter\FormatterInterface`](/6.0/api/phalcon_logger/#loggerformatterformatterinterface)
+- [`Phalcon\Logger\Formatter\FormatterInterface`](../phalcon_logger/#loggerformatterformatterinterface)
 
-</div>
-
-__Uses__ `Phalcon\Logger\Item`
+`Phalcon\Logger\Item`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsloggerformatterformatter-format">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">format</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
-<span class="desc">Applies a format to an item</span>
-</a>
-</div>
+<ApiItem href="#contractsloggerformatterformatter-format" visibility="public" name="format" returnType="string" params={[{"type":"Item","name":"item","default":null}]}>
+Applies a format to an item
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsloggerformatterformatter-format"><code>format()</code></h4>
 
@@ -9411,112 +7178,61 @@ Applies a format to an item
 
 ## Contracts\Logger\Logger
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Logger/Logger.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Logger\Logger.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Logger\Logger`**
-- [`Phalcon\Logger\LoggerInterface`](/6.0/api/phalcon_logger/#loggerloggerinterface)
+- [`Phalcon\Logger\LoggerInterface`](../phalcon_logger/#loggerloggerinterface)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Logger\Adapter\Adapter`
+`Phalcon\Contracts\Logger\Adapter\Adapter`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsloggerlogger-alert">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">alert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Action must be taken immediately.</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-critical">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">critical</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Critical conditions.</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-debug">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">debug</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Detailed debug information.</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-emergency">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">emergency</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">System is unusable.</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-error">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">error</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Runtime errors that do not require immediate action but should typically</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-getadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sf">getAdapter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns an adapter from the stack</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-getadapters">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAdapters</span>()</code>
-<span class="desc">Returns the adapter stack array</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-getloglevel">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getLogLevel</span>()</code>
-<span class="desc">Returns the log level</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Returns the name of the logger</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-info">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">info</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Interesting events.</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-log">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">log</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$level</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Logs with an arbitrary level.</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-notice">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">notice</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Normal but significant events.</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-trace">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">trace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Extra-verbose diagnostic output.</span>
-</a>
-<a class="api-item" href="#contractsloggerlogger-warning">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">warning</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Exceptional occurrences that are not errors.</span>
-</a>
-</div>
+<ApiItem href="#contractsloggerlogger-alert" visibility="public" name="alert" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
+Action must be taken immediately.
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-critical" visibility="public" name="critical" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
+Critical conditions.
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-debug" visibility="public" name="debug" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
+Detailed debug information.
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-emergency" visibility="public" name="emergency" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
+System is unusable.
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-error" visibility="public" name="error" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
+Runtime errors that do not require immediate action but should typically
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-getadapter" visibility="public" name="getAdapter" returnType="Adapter" params={[{"type":"string","name":"name","default":null}]}>
+Returns an adapter from the stack
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-getadapters" visibility="public" name="getAdapters" returnType="array" params={[]}>
+Returns the adapter stack array
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-getloglevel" visibility="public" name="getLogLevel" returnType="int" params={[]}>
+Returns the log level
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-getname" visibility="public" name="getName" returnType="string" params={[]}>
+Returns the name of the logger
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-info" visibility="public" name="info" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
+Interesting events.
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-log" visibility="public" name="log" returnType="void" params={[{"type":"mixed","name":"level","default":null},{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
+Logs with an arbitrary level.
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-notice" visibility="public" name="notice" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
+Normal but significant events.
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-trace" visibility="public" name="trace" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
+Extra-verbose diagnostic output.
+</ApiItem>
+<ApiItem href="#contractsloggerlogger-warning" visibility="public" name="warning" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
+Exceptional occurrences that are not errors.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 14</div>
 
 <h4 id="contractsloggerlogger-alert"><code>alert()</code></h4>
 
@@ -9677,23 +7393,17 @@ that are not necessarily wrong.
 
 ## Contracts\Logger\LoggerTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Logger/LoggerTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Logger namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Logger\LoggerTypes`**
 
-</div>
-
-__Uses__ `DateTimeZone` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Item`
+`DateTimeZone` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Item`
 
 ## Contracts\Messages\Messages
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Messages/Messages.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Messages\Messages.
 
@@ -9705,40 +7415,24 @@ during iteration (`foreach`), which walks the integer sequence only.
 @extends ArrayAccess&lt;array-key, mixed>
 @extends Iterator&lt;int, MessageInterface>
 
-<div class="api-tree">
-
 - `\ArrayAccess`
 - **`Phalcon\Contracts\Messages\Messages`** - extends `\ArrayAccess`, `\Countable`, `\Iterator`
 
-</div>
-
-__Uses__ `ArrayAccess` · `Countable` · `Iterator` · `Phalcon\Messages\MessageInterface`
+`ArrayAccess` · `Countable` · `Iterator` · `Phalcon\Messages\MessageInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsmessagesmessages-appendmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
-<span class="desc">Appends a message to the collection</span>
-</a>
-<a class="api-item" href="#contractsmessagesmessages-appendmessages">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">appendMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
-<span class="desc">Appends an array of messages to the collection</span>
-</a>
-<a class="api-item" href="#contractsmessagesmessages-filter">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">filter</span>( <span class="st">string</span> <span class="sv">$fieldName</span> )</code>
-<span class="desc">Filters the message collection by field name</span>
-</a>
-</div>
+<ApiItem href="#contractsmessagesmessages-appendmessage" visibility="public" name="appendMessage" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null}]}>
+Appends a message to the collection
+</ApiItem>
+<ApiItem href="#contractsmessagesmessages-appendmessages" visibility="public" name="appendMessages" returnType="" params={[{"type":"mixed","name":"messages","default":null}]}>
+Appends an array of messages to the collection
+</ApiItem>
+<ApiItem href="#contractsmessagesmessages-filter" visibility="public" name="filter" returnType="array" params={[{"type":"string","name":"fieldName","default":null}]}>
+Filters the message collection by field name
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="contractsmessagesmessages-appendmessage"><code>appendMessage()</code></h4>
 
@@ -9766,8 +7460,7 @@ Filters the message collection by field name
 
 ## Contracts\Messages\MessagesTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Messages/MessagesTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Messages namespace.
 
@@ -9781,75 +7474,44 @@ type names per file and has no namespacing for them: the prefix is what
 keeps generic names such as `metadata` from clashing with an alias imported
 from another namespace into the same file.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Messages\MessagesTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Messages\MessageInterface`
+`Phalcon\Messages\MessageInterface`
 
 ## Contracts\Mvc\Dispatcher
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Mvc/Dispatcher.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Mvc\Dispatcher.
 
-<div class="api-tree">
-
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](#contractsdispatcherdispatcher)
 - **`Phalcon\Contracts\Mvc\Dispatcher`**
-- [`Phalcon\Mvc\DispatcherInterface`](/6.0/api/phalcon_mvc/#mvcdispatcherinterface)
+- [`Phalcon\Mvc\DispatcherInterface`](../phalcon_mvc/#mvcdispatcherinterface)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Dispatcher\Dispatcher` · `Phalcon\Mvc\ControllerInterface`
+`Phalcon\Contracts\Dispatcher\Dispatcher` · `Phalcon\Mvc\ControllerInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsmvcdispatcher-getactivecontroller">
-<code class="vis vis-public">public</code>
-<code class="ret">ControllerInterface|null</code>
-<code class="sig"><span class="sf">getActiveController</span>()</code>
-<span class="desc">Returns the active controller in the dispatcher</span>
-</a>
-<a class="api-item" href="#contractsmvcdispatcher-getcontrollername">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getControllerName</span>()</code>
-<span class="desc">Gets last dispatched controller name</span>
-</a>
-<a class="api-item" href="#contractsmvcdispatcher-getlastcontroller">
-<code class="vis vis-public">public</code>
-<code class="ret">ControllerInterface|null</code>
-<code class="sig"><span class="sf">getLastController</span>()</code>
-<span class="desc">Returns the latest dispatched controller</span>
-</a>
-<a class="api-item" href="#contractsmvcdispatcher-setcontrollername">
-<code class="vis vis-public">public</code>
-<code class="ret">DispatcherContract</code>
-<code class="sig"><span class="sf">setControllerName</span>( <span class="st">string</span> <span class="sv">$controllerName</span> )</code>
-<span class="desc">Sets the controller name to be dispatched</span>
-</a>
-<a class="api-item" href="#contractsmvcdispatcher-setcontrollersuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">DispatcherContract</code>
-<code class="sig"><span class="sf">setControllerSuffix</span>( <span class="st">string</span> <span class="sv">$controllerSuffix</span> )</code>
-<span class="desc">Sets the default controller suffix</span>
-</a>
-<a class="api-item" href="#contractsmvcdispatcher-setdefaultcontroller">
-<code class="vis vis-public">public</code>
-<code class="ret">DispatcherContract</code>
-<code class="sig"><span class="sf">setDefaultController</span>( <span class="st">string</span> <span class="sv">$controllerName</span> )</code>
-<span class="desc">Sets the default controller name</span>
-</a>
-</div>
+<ApiItem href="#contractsmvcdispatcher-getactivecontroller" visibility="public" name="getActiveController" returnType="ControllerInterface|null" params={[]}>
+Returns the active controller in the dispatcher
+</ApiItem>
+<ApiItem href="#contractsmvcdispatcher-getcontrollername" visibility="public" name="getControllerName" returnType="string" params={[]}>
+Gets last dispatched controller name
+</ApiItem>
+<ApiItem href="#contractsmvcdispatcher-getlastcontroller" visibility="public" name="getLastController" returnType="ControllerInterface|null" params={[]}>
+Returns the latest dispatched controller
+</ApiItem>
+<ApiItem href="#contractsmvcdispatcher-setcontrollername" visibility="public" name="setControllerName" returnType="DispatcherContract" params={[{"type":"string","name":"controllerName","default":null}]}>
+Sets the controller name to be dispatched
+</ApiItem>
+<ApiItem href="#contractsmvcdispatcher-setcontrollersuffix" visibility="public" name="setControllerSuffix" returnType="DispatcherContract" params={[{"type":"string","name":"controllerSuffix","default":null}]}>
+Sets the default controller suffix
+</ApiItem>
+<ApiItem href="#contractsmvcdispatcher-setdefaultcontroller" visibility="public" name="setDefaultController" returnType="DispatcherContract" params={[{"type":"string","name":"controllerName","default":null}]}>
+Sets the default controller name
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="contractsmvcdispatcher-getactivecontroller"><code>getActiveController()</code></h4>
 
@@ -9901,8 +7563,7 @@ Sets the default controller name
 
 ## Contracts\Mvc\Model\Relation\CacheKeyProvider
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Mvc/Model/Relation/CacheKeyProvider.php">Source on GitHub</a>
+Interface
 
 Interface for models that provide a custom unique key for the reusable
 records cache in the Model Manager. Implement this interface when the
@@ -9910,26 +7571,15 @@ default object-identity based key (unique_key) does not produce stable
 cache hits across multiple object instances that represent the same
 database record.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsmvcmodelrelationcachekeyprovider-getuniquekey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getUniqueKey</span>()</code>
-<span class="desc">Returns a string that uniquely identifies this model instance for</span>
-</a>
-</div>
+<ApiItem href="#contractsmvcmodelrelationcachekeyprovider-getuniquekey" visibility="public" name="getUniqueKey" returnType="string" params={[]}>
+Returns a string that uniquely identifies this model instance for
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsmvcmodelrelationcachekeyprovider-getuniquekey"><code>getUniqueKey()</code></h4>
 
@@ -9942,8 +7592,7 @@ use as the key in the reusable records cache.
 
 ## Contracts\Mvc\MvcTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Mvc/MvcTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Mvc namespace.
 
@@ -9957,58 +7606,33 @@ type names per file and has no namespacing for them: the prefix is what
 keeps generic names such as `model_find_parameters` from clashing with an
 alias imported from another namespace into the same file.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Mvc\MvcTypes`**
-
-</div>
 
 ## Contracts\Paginator\Adapter
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Paginator/Adapter.php">Source on GitHub</a>
+Interface
 
 Interface for Phalcon\Paginator adapters
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Paginator\Adapter`**
-- [`Phalcon\Paginator\Adapter\AdapterInterface`](/6.0/api/phalcon_paginator/#paginatoradapteradapterinterface)
-
-</div>
+- [`Phalcon\Paginator\Adapter\AdapterInterface`](../phalcon_paginator/#paginatoradapteradapterinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractspaginatoradapter-getlimit">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getLimit</span>()</code>
-<span class="desc">Get current rows limit</span>
-</a>
-<a class="api-item" href="#contractspaginatoradapter-paginate">
-<code class="vis vis-public">public</code>
-<code class="ret">Repository</code>
-<code class="sig"><span class="sf">paginate</span>()</code>
-<span class="desc">Returns a slice of the resultset to show in the pagination</span>
-</a>
-<a class="api-item" href="#contractspaginatoradapter-setcurrentpage">
-<code class="vis vis-public">public</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sf">setCurrentPage</span>( <span class="st">int</span> <span class="sv">$page</span> )</code>
-<span class="desc">Set the current page number</span>
-</a>
-<a class="api-item" href="#contractspaginatoradapter-setlimit">
-<code class="vis vis-public">public</code>
-<code class="ret">Adapter</code>
-<code class="sig"><span class="sf">setLimit</span>( <span class="st">int</span> <span class="sv">$limit</span> )</code>
-<span class="desc">Set current rows limit</span>
-</a>
-</div>
+<ApiItem href="#contractspaginatoradapter-getlimit" visibility="public" name="getLimit" returnType="int" params={[]}>
+Get current rows limit
+</ApiItem>
+<ApiItem href="#contractspaginatoradapter-paginate" visibility="public" name="paginate" returnType="Repository" params={[]}>
+Returns a slice of the resultset to show in the pagination
+</ApiItem>
+<ApiItem href="#contractspaginatoradapter-setcurrentpage" visibility="public" name="setCurrentPage" returnType="Adapter" params={[{"type":"int","name":"page","default":null}]}>
+Set the current page number
+</ApiItem>
+<ApiItem href="#contractspaginatoradapter-setlimit" visibility="public" name="setLimit" returnType="Adapter" params={[{"type":"int","name":"limit","default":null}]}>
+Set current rows limit
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="contractspaginatoradapter-getlimit"><code>getLimit()</code></h4>
 
@@ -10044,8 +7668,7 @@ Set current rows limit
 
 ## Contracts\Paginator\PaginatorTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Paginator/PaginatorTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Paginator namespace.
 
@@ -10059,18 +7682,13 @@ imported type names per file and has no namespacing for them: the prefix
 is what keeps generic names such as `config` from clashing with an alias
 imported from another namespace into the same file.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Paginator\PaginatorTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Mvc\Model\Query\Builder`
+`Phalcon\Mvc\Model\Query\Builder`
 
 ## Contracts\Paginator\Repository
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Paginator/Repository.php">Source on GitHub</a>
+Interface
 
 Interface for the repository of current state
 Phalcon\Paginator\AdapterInterface::paginate()
@@ -10084,124 +7702,65 @@ Two adapter dialects fill this repository:
   rather than page numbers, and `getTotalItems()`, `getLast()` and
   `getPrevious()` are not computed (they return 0).
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Paginator\Repository`**
-- [`Phalcon\Paginator\RepositoryInterface`](/6.0/api/phalcon_paginator/#paginatorrepositoryinterface)
-
-</div>
+- [`Phalcon\Paginator\RepositoryInterface`](../phalcon_paginator/#paginatorrepositoryinterface)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractspaginatorrepository-getaliases">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAliases</span>()</code>
-<span class="desc">Gets the aliases for properties repository</span>
-</a>
-<a class="api-item" href="#contractspaginatorrepository-getcurrent">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getCurrent</span>()</code>
-<span class="desc">Gets number of the current page</span>
-</a>
-<a class="api-item" href="#contractspaginatorrepository-getfirst">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getFirst</span>()</code>
-<span class="desc">Gets number of the first page</span>
-</a>
-<a class="api-item" href="#contractspaginatorrepository-getitems">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getItems</span>()</code>
-<span class="desc">Gets the items on the current page</span>
-</a>
-<a class="api-item" href="#contractspaginatorrepository-getlast">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getLast</span>()</code>
-<span class="desc">Gets number of the last page</span>
-</a>
-<a class="api-item" href="#contractspaginatorrepository-getlimit">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getLimit</span>()</code>
-<span class="desc">Gets current rows limit</span>
-</a>
-<a class="api-item" href="#contractspaginatorrepository-getnext">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getNext</span>()</code>
-<span class="desc">Gets number of the next page</span>
-</a>
-<a class="api-item" href="#contractspaginatorrepository-getprevious">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getPrevious</span>()</code>
-<span class="desc">Gets number of the previous page</span>
-</a>
-<a class="api-item" href="#contractspaginatorrepository-gettotalitems">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getTotalItems</span>()</code>
-<span class="desc">Gets the total number of items</span>
-</a>
-<a class="api-item" href="#contractspaginatorrepository-setaliases">
-<code class="vis vis-public">public</code>
-<code class="ret">Repository</code>
-<code class="sig"><span class="sf">setAliases</span>( <span class="st">array</span> <span class="sv">$aliases</span> )</code>
-<span class="desc">Sets the aliases for properties repository</span>
-</a>
-<a class="api-item" href="#contractspaginatorrepository-setproperties">
-<code class="vis vis-public">public</code>
-<code class="ret">Repository</code>
-<code class="sig"><span class="sf">setProperties</span>( <span class="st">array</span> <span class="sv">$properties</span> )</code>
-<span class="desc">Sets values for properties of the repository</span>
-</a>
-</div>
+<ApiItem href="#contractspaginatorrepository-getaliases" visibility="public" name="getAliases" returnType="array" params={[]}>
+Gets the aliases for properties repository
+</ApiItem>
+<ApiItem href="#contractspaginatorrepository-getcurrent" visibility="public" name="getCurrent" returnType="int" params={[]}>
+Gets number of the current page
+</ApiItem>
+<ApiItem href="#contractspaginatorrepository-getfirst" visibility="public" name="getFirst" returnType="int" params={[]}>
+Gets number of the first page
+</ApiItem>
+<ApiItem href="#contractspaginatorrepository-getitems" visibility="public" name="getItems" returnType="mixed" params={[]}>
+Gets the items on the current page
+</ApiItem>
+<ApiItem href="#contractspaginatorrepository-getlast" visibility="public" name="getLast" returnType="int" params={[]}>
+Gets number of the last page
+</ApiItem>
+<ApiItem href="#contractspaginatorrepository-getlimit" visibility="public" name="getLimit" returnType="int" params={[]}>
+Gets current rows limit
+</ApiItem>
+<ApiItem href="#contractspaginatorrepository-getnext" visibility="public" name="getNext" returnType="int" params={[]}>
+Gets number of the next page
+</ApiItem>
+<ApiItem href="#contractspaginatorrepository-getprevious" visibility="public" name="getPrevious" returnType="int" params={[]}>
+Gets number of the previous page
+</ApiItem>
+<ApiItem href="#contractspaginatorrepository-gettotalitems" visibility="public" name="getTotalItems" returnType="int" params={[]}>
+Gets the total number of items
+</ApiItem>
+<ApiItem href="#contractspaginatorrepository-setaliases" visibility="public" name="setAliases" returnType="Repository" params={[{"type":"array","name":"aliases","default":null}]}>
+Sets the aliases for properties repository
+</ApiItem>
+<ApiItem href="#contractspaginatorrepository-setproperties" visibility="public" name="setProperties" returnType="Repository" params={[{"type":"array","name":"properties","default":null}]}>
+Sets values for properties of the repository
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">PROPERTY_CURRENT_PAGE</span><span class="sm"> = &quot;current&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">PROPERTY_FIRST_PAGE</span><span class="sm"> = &quot;first&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">PROPERTY_ITEMS</span><span class="sm"> = &quot;items&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">PROPERTY_LAST_PAGE</span><span class="sm"> = &quot;last&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">PROPERTY_LIMIT</span><span class="sm"> = &quot;limit&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">PROPERTY_NEXT_PAGE</span><span class="sm"> = &quot;next&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">PROPERTY_PREVIOUS_PAGE</span><span class="sm"> = &quot;previous&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">PROPERTY_TOTAL_ITEMS</span><span class="sm"> = &quot;total_items&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="PROPERTY_CURRENT_PAGE" type="string" default="&quot;current&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PROPERTY_FIRST_PAGE" type="string" default="&quot;first&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PROPERTY_ITEMS" type="string" default="&quot;items&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PROPERTY_LAST_PAGE" type="string" default="&quot;last&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PROPERTY_LIMIT" type="string" default="&quot;limit&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PROPERTY_NEXT_PAGE" type="string" default="&quot;next&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PROPERTY_PREVIOUS_PAGE" type="string" default="&quot;previous&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PROPERTY_TOTAL_ITEMS" type="string" default="&quot;total_items&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 11</div>
 
 <h4 id="contractspaginatorrepository-getaliases"><code>getAliases()</code></h4>
 
@@ -10305,31 +7864,19 @@ Sets values for properties of the repository
 
 ## Contracts\Queue\ConnectionFactory
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/ConnectionFactory.php">Source on GitHub</a>
+Interface
 
 Builds a Context: the entry point of every adapter.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Queue\ConnectionFactory`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsqueueconnectionfactory-createcontext">
-<code class="vis vis-public">public</code>
-<code class="ret">Context</code>
-<code class="sig"><span class="sf">createContext</span>()</code>
-<span class="desc">Creates a context (a session/connection to the transport).</span>
-</a>
-</div>
+<ApiItem href="#contractsqueueconnectionfactory-createcontext" visibility="public" name="createContext" returnType="Context" params={[]}>
+Creates a context (a session/connection to the transport).
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsqueueconnectionfactory-createcontext"><code>createContext()</code></h4>
 
@@ -10341,55 +7888,31 @@ Creates a context (a session/connection to the transport).
 
 ## Contracts\Queue\Consumer
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Consumer.php">Source on GitHub</a>
+Interface
 
 Receives messages from a single queue.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Queue\Consumer`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsqueueconsumer-acknowledge">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">acknowledge</span>( <span class="st">Message</span> <span class="sv">$message</span> )</code>
-<span class="desc">Acknowledges the message; the transport may then discard it.</span>
-</a>
-<a class="api-item" href="#contractsqueueconsumer-getqueue">
-<code class="vis vis-public">public</code>
-<code class="ret">Queue</code>
-<code class="sig"><span class="sf">getQueue</span>()</code>
-<span class="desc">Returns the queue this consumer reads from.</span>
-</a>
-<a class="api-item" href="#contractsqueueconsumer-receive">
-<code class="vis vis-public">public</code>
-<code class="ret">Message|null</code>
-<code class="sig"><span class="sf">receive</span>( <span class="st">int</span> <span class="sv">$timeout</span><span class="sm"> = 0</span> )</code>
-<span class="desc">Receives a message, blocking up to timeout milliseconds (0 = block</span>
-</a>
-<a class="api-item" href="#contractsqueueconsumer-receivenowait">
-<code class="vis vis-public">public</code>
-<code class="ret">Message|null</code>
-<code class="sig"><span class="sf">receiveNoWait</span>()</code>
-<span class="desc">Receives a message without blocking, or null when none is ready.</span>
-</a>
-<a class="api-item" href="#contractsqueueconsumer-reject">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">reject</span>(<span class="prm"><span class="st">Message</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$requeue</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Rejects the message. When requeue is true the transport redelivers it.</span>
-</a>
-</div>
+<ApiItem href="#contractsqueueconsumer-acknowledge" visibility="public" name="acknowledge" returnType="void" params={[{"type":"Message","name":"message","default":null}]}>
+Acknowledges the message; the transport may then discard it.
+</ApiItem>
+<ApiItem href="#contractsqueueconsumer-getqueue" visibility="public" name="getQueue" returnType="Queue" params={[]}>
+Returns the queue this consumer reads from.
+</ApiItem>
+<ApiItem href="#contractsqueueconsumer-receive" visibility="public" name="receive" returnType="Message|null" params={[{"type":"int","name":"timeout","default":"0"}]}>
+Receives a message, blocking up to timeout milliseconds (0 = block
+</ApiItem>
+<ApiItem href="#contractsqueueconsumer-receivenowait" visibility="public" name="receiveNoWait" returnType="Message|null" params={[]}>
+Receives a message without blocking, or null when none is ready.
+</ApiItem>
+<ApiItem href="#contractsqueueconsumer-reject" visibility="public" name="reject" returnType="void" params={[{"type":"Message","name":"message","default":null},{"type":"bool","name":"requeue","default":"false"}]}>
+Rejects the message. When requeue is true the transport redelivers it.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 5</div>
 
 <h4 id="contractsqueueconsumer-acknowledge"><code>acknowledge()</code></h4>
 
@@ -10437,80 +7960,44 @@ Rejects the message. When requeue is true the transport redelivers it.
 
 ## Contracts\Queue\Context
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Context.php">Source on GitHub</a>
+Interface
 
 A session with the transport. Factory for messages, destinations,
 producers and consumers.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Queue\Context`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsqueuecontext-close">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">close</span>()</code>
-<span class="desc">Closes the context and releases its resources.</span>
-</a>
-<a class="api-item" href="#contractsqueuecontext-createconsumer">
-<code class="vis vis-public">public</code>
-<code class="ret">Consumer</code>
-<code class="sig"><span class="sf">createConsumer</span>( <span class="st">Destination</span> <span class="sv">$destination</span> )</code>
-<span class="desc">Creates a consumer for the given destination.</span>
-</a>
-<a class="api-item" href="#contractsqueuecontext-createmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">Message</code>
-<code class="sig"><span class="sf">createMessage</span>(<span class="prm"><span class="st">string</span> <span class="sv">$body</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$properties</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$headers</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Creates a message with an optional body, properties and headers.</span>
-</a>
-<a class="api-item" href="#contractsqueuecontext-createproducer">
-<code class="vis vis-public">public</code>
-<code class="ret">Producer</code>
-<code class="sig"><span class="sf">createProducer</span>()</code>
-<span class="desc">Creates a producer.</span>
-</a>
-<a class="api-item" href="#contractsqueuecontext-createqueue">
-<code class="vis vis-public">public</code>
-<code class="ret">Queue</code>
-<code class="sig"><span class="sf">createQueue</span>( <span class="st">string</span> <span class="sv">$queueName</span> )</code>
-<span class="desc">Creates a queue destination by name.</span>
-</a>
-<a class="api-item" href="#contractsqueuecontext-createsubscriptionconsumer">
-<code class="vis vis-public">public</code>
-<code class="ret">SubscriptionConsumer</code>
-<code class="sig"><span class="sf">createSubscriptionConsumer</span>()</code>
-<span class="desc">Creates a subscription consumer for consuming from several queues.</span>
-</a>
-<a class="api-item" href="#contractsqueuecontext-createtemporaryqueue">
-<code class="vis vis-public">public</code>
-<code class="ret">Queue</code>
-<code class="sig"><span class="sf">createTemporaryQueue</span>()</code>
-<span class="desc">Creates a temporary queue tied to the lifetime of the context.</span>
-</a>
-<a class="api-item" href="#contractsqueuecontext-createtopic">
-<code class="vis vis-public">public</code>
-<code class="ret">Topic</code>
-<code class="sig"><span class="sf">createTopic</span>( <span class="st">string</span> <span class="sv">$topicName</span> )</code>
-<span class="desc">Creates a topic destination by name.</span>
-</a>
-<a class="api-item" href="#contractsqueuecontext-purgequeue">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">purgeQueue</span>( <span class="st">Queue</span> <span class="sv">$queue</span> )</code>
-<span class="desc">Removes all messages from the given queue.</span>
-</a>
-</div>
+<ApiItem href="#contractsqueuecontext-close" visibility="public" name="close" returnType="void" params={[]}>
+Closes the context and releases its resources.
+</ApiItem>
+<ApiItem href="#contractsqueuecontext-createconsumer" visibility="public" name="createConsumer" returnType="Consumer" params={[{"type":"Destination","name":"destination","default":null}]}>
+Creates a consumer for the given destination.
+</ApiItem>
+<ApiItem href="#contractsqueuecontext-createmessage" visibility="public" name="createMessage" returnType="Message" params={[{"type":"string","name":"body","default":"\"\""},{"type":"array","name":"properties","default":"[]"},{"type":"array","name":"headers","default":"[]"}]}>
+Creates a message with an optional body, properties and headers.
+</ApiItem>
+<ApiItem href="#contractsqueuecontext-createproducer" visibility="public" name="createProducer" returnType="Producer" params={[]}>
+Creates a producer.
+</ApiItem>
+<ApiItem href="#contractsqueuecontext-createqueue" visibility="public" name="createQueue" returnType="Queue" params={[{"type":"string","name":"queueName","default":null}]}>
+Creates a queue destination by name.
+</ApiItem>
+<ApiItem href="#contractsqueuecontext-createsubscriptionconsumer" visibility="public" name="createSubscriptionConsumer" returnType="SubscriptionConsumer" params={[]}>
+Creates a subscription consumer for consuming from several queues.
+</ApiItem>
+<ApiItem href="#contractsqueuecontext-createtemporaryqueue" visibility="public" name="createTemporaryQueue" returnType="Queue" params={[]}>
+Creates a temporary queue tied to the lifetime of the context.
+</ApiItem>
+<ApiItem href="#contractsqueuecontext-createtopic" visibility="public" name="createTopic" returnType="Topic" params={[{"type":"string","name":"topicName","default":null}]}>
+Creates a topic destination by name.
+</ApiItem>
+<ApiItem href="#contractsqueuecontext-purgequeue" visibility="public" name="purgeQueue" returnType="void" params={[{"type":"Queue","name":"queue","default":null}]}>
+Removes all messages from the given queue.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 9</div>
 
 <h4 id="contractsqueuecontext-close"><code>close()</code></h4>
 
@@ -10590,23 +8077,17 @@ Removes all messages from the given queue.
 
 ## Contracts\Queue\Destination
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Destination.php">Source on GitHub</a>
+Interface
 
 Marker interface for a message destination: a Queue or a Topic.
-
-<div class="api-tree">
 
 - **`Phalcon\Contracts\Queue\Destination`**
 - [`Phalcon\Contracts\Queue\Queue`](#contractsqueuequeue)
 - [`Phalcon\Contracts\Queue\Topic`](#contractsqueuetopic)
 
-</div>
-
 ## Contracts\Queue\Inspectable
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Inspectable.php">Source on GitHub</a>
+Interface
 
 Optional capability contract for a transport that can report statistics for
 a queue (for example ready, delayed and buried job counts). Callers detect
@@ -10617,26 +8098,15 @@ semantics are defined by the implementing adapter and are NOT guaranteed to
 be uniform across adapters. It is an inspection surface, not a portable or
 normalized schema. Each implementation documents the exact keys it returns.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Queue\Inspectable`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsqueueinspectable-getstats">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getStats</span>( <span class="st">Queue</span> <span class="sv">$queue</span> )</code>
-<span class="desc">Returns statistics for the given queue.</span>
-</a>
-</div>
+<ApiItem href="#contractsqueueinspectable-getstats" visibility="public" name="getStats" returnType="array" params={[{"type":"Queue","name":"queue","default":null}]}>
+Returns statistics for the given queue.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsqueueinspectable-getstats"><code>getStats()</code></h4>
 
@@ -10648,146 +8118,77 @@ Returns statistics for the given queue.
 
 ## Contracts\Queue\Message
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Message.php">Source on GitHub</a>
+Interface
 
 A message exchanged through the transport. Carries a body, application
 properties, transport headers and the standard messaging metadata.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Queue\Message`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsqueuemessage-getbody">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getBody</span>()</code>
-<span class="desc">Returns the message body.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-getcorrelationid">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getCorrelationId</span>()</code>
-<span class="desc">Returns the correlation id used to correlate request/reply messages.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-getheader">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Returns a single header value, or the default when it is not set.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-getheaders">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getHeaders</span>()</code>
-<span class="desc">Returns all transport headers.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-getmessageid">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getMessageId</span>()</code>
-<span class="desc">Returns the message id.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-getproperties">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getProperties</span>()</code>
-<span class="desc">Returns all application properties.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-getproperty">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Returns a single property value, or the default when it is not set.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-getreplyto">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getReplyTo</span>()</code>
-<span class="desc">Returns the reply-to destination name.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-gettimestamp">
-<code class="vis vis-public">public</code>
-<code class="ret">int|null</code>
-<code class="sig"><span class="sf">getTimestamp</span>()</code>
-<span class="desc">Returns the timestamp (in milliseconds) or null when it is not set.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-isredelivered">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isRedelivered</span>()</code>
-<span class="desc">Whether the message has been redelivered.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-setbody">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setBody</span>( <span class="st">string</span> <span class="sv">$body</span> )</code>
-<span class="desc">Sets the message body.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-setcorrelationid">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setCorrelationId</span>( <span class="st">string</span> <span class="sv">$correlationId</span> )</code>
-<span class="desc">Sets the correlation id.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-setheader">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Sets a single transport header.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-setheaders">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setHeaders</span>( <span class="st">array</span> <span class="sv">$headers</span> )</code>
-<span class="desc">Replaces all transport headers.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-setmessageid">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setMessageId</span>( <span class="st">string</span> <span class="sv">$messageId</span> )</code>
-<span class="desc">Sets the message id.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-setproperties">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setProperties</span>( <span class="st">array</span> <span class="sv">$properties</span> )</code>
-<span class="desc">Replaces all application properties.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-setproperty">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Sets a single application property.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-setredelivered">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setRedelivered</span>( <span class="st">bool</span> <span class="sv">$redelivered</span> )</code>
-<span class="desc">Marks the message as redelivered.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-setreplyto">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setReplyTo</span>( <span class="st">string</span> <span class="sv">$replyTo</span> )</code>
-<span class="desc">Sets the reply-to destination name.</span>
-</a>
-<a class="api-item" href="#contractsqueuemessage-settimestamp">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setTimestamp</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
-<span class="desc">Sets the timestamp (in milliseconds).</span>
-</a>
-</div>
+<ApiItem href="#contractsqueuemessage-getbody" visibility="public" name="getBody" returnType="string" params={[]}>
+Returns the message body.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-getcorrelationid" visibility="public" name="getCorrelationId" returnType="string|null" params={[]}>
+Returns the correlation id used to correlate request/reply messages.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-getheader" visibility="public" name="getHeader" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Returns a single header value, or the default when it is not set.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-getheaders" visibility="public" name="getHeaders" returnType="array" params={[]}>
+Returns all transport headers.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-getmessageid" visibility="public" name="getMessageId" returnType="string|null" params={[]}>
+Returns the message id.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-getproperties" visibility="public" name="getProperties" returnType="array" params={[]}>
+Returns all application properties.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-getproperty" visibility="public" name="getProperty" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Returns a single property value, or the default when it is not set.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-getreplyto" visibility="public" name="getReplyTo" returnType="string|null" params={[]}>
+Returns the reply-to destination name.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-gettimestamp" visibility="public" name="getTimestamp" returnType="int|null" params={[]}>
+Returns the timestamp (in milliseconds) or null when it is not set.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-isredelivered" visibility="public" name="isRedelivered" returnType="bool" params={[]}>
+Whether the message has been redelivered.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-setbody" visibility="public" name="setBody" returnType="void" params={[{"type":"string","name":"body","default":null}]}>
+Sets the message body.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-setcorrelationid" visibility="public" name="setCorrelationId" returnType="void" params={[{"type":"string","name":"correlationId","default":null}]}>
+Sets the correlation id.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-setheader" visibility="public" name="setHeader" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
+Sets a single transport header.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-setheaders" visibility="public" name="setHeaders" returnType="void" params={[{"type":"array","name":"headers","default":null}]}>
+Replaces all transport headers.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-setmessageid" visibility="public" name="setMessageId" returnType="void" params={[{"type":"string","name":"messageId","default":null}]}>
+Sets the message id.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-setproperties" visibility="public" name="setProperties" returnType="void" params={[{"type":"array","name":"properties","default":null}]}>
+Replaces all application properties.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-setproperty" visibility="public" name="setProperty" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
+Sets a single application property.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-setredelivered" visibility="public" name="setRedelivered" returnType="void" params={[{"type":"bool","name":"redelivered","default":null}]}>
+Marks the message as redelivered.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-setreplyto" visibility="public" name="setReplyTo" returnType="void" params={[{"type":"string","name":"replyTo","default":null}]}>
+Sets the reply-to destination name.
+</ApiItem>
+<ApiItem href="#contractsqueuemessage-settimestamp" visibility="public" name="setTimestamp" returnType="void" params={[{"type":"int","name":"timestamp","default":null}]}>
+Sets the timestamp (in milliseconds).
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 20</div>
 
 <h4 id="contractsqueuemessage-getbody"><code>getBody()</code></h4>
 
@@ -10963,8 +8364,7 @@ Sets the timestamp (in milliseconds).
 
 ## Contracts\Queue\Processor
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Processor.php">Source on GitHub</a>
+Interface
 
 Processes a single message. The return value tells the consumer what to
 do next: acknowledge, reject, or requeue.
@@ -10972,43 +8372,24 @@ do next: acknowledge, reject, or requeue.
 The literal constant values are kept compatible with the wider interop
 ecosystem.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Queue\Processor`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsqueueprocessor-process">
-<code class="vis vis-public">public</code>
-<code class="ret">object|string</code>
-<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">Message</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">Context</span> <span class="sv">$context</span></span>)</code>
-<span class="desc">Processes the message and returns one of the ACK / REJECT / REQUEUE</span>
-</a>
-</div>
+<ApiItem href="#contractsqueueprocessor-process" visibility="public" name="process" returnType="object|string" params={[{"type":"Message","name":"message","default":null},{"type":"Context","name":"context","default":null}]}>
+Processes the message and returns one of the ACK / REJECT / REQUEUE
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">ACK</span><span class="sm"> = &quot;enqueue.ack&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">REJECT</span><span class="sm"> = &quot;enqueue.reject&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">REQUEUE</span><span class="sm"> = &quot;enqueue.requeue&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="ACK" type="string" default="&quot;enqueue.ack&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="REJECT" type="string" default="&quot;enqueue.reject&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="REQUEUE" type="string" default="&quot;enqueue.requeue&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsqueueprocessor-process"><code>process()</code></h4>
 
@@ -11024,67 +8405,37 @@ constants, or an object whose string form is one of those values.
 
 ## Contracts\Queue\Producer
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Producer.php">Source on GitHub</a>
+Interface
 
 Sends messages to a destination.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Queue\Producer`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsqueueproducer-getdeliverydelay">
-<code class="vis vis-public">public</code>
-<code class="ret">int|null</code>
-<code class="sig"><span class="sf">getDeliveryDelay</span>()</code>
-<span class="desc">Returns the delivery delay (in milliseconds) or null when not set.</span>
-</a>
-<a class="api-item" href="#contractsqueueproducer-getpriority">
-<code class="vis vis-public">public</code>
-<code class="ret">int|null</code>
-<code class="sig"><span class="sf">getPriority</span>()</code>
-<span class="desc">Returns the message priority or null when not set.</span>
-</a>
-<a class="api-item" href="#contractsqueueproducer-gettimetolive">
-<code class="vis vis-public">public</code>
-<code class="ret">int|null</code>
-<code class="sig"><span class="sf">getTimeToLive</span>()</code>
-<span class="desc">Returns the time to live (in milliseconds) or null when not set.</span>
-</a>
-<a class="api-item" href="#contractsqueueproducer-send">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">send</span>(<span class="prm"><span class="st">Destination</span> <span class="sv">$destination</span>,</span><span class="prm"><span class="st">Message</span> <span class="sv">$message</span></span>)</code>
-<span class="desc">Sends a message to the given destination.</span>
-</a>
-<a class="api-item" href="#contractsqueueproducer-setdeliverydelay">
-<code class="vis vis-public">public</code>
-<code class="ret">Producer</code>
-<code class="sig"><span class="sf">setDeliveryDelay</span>( <span class="st">mixed</span> <span class="sv">$deliveryDelay</span><span class="sm"> = null</span> )</code>
-<span class="desc">Sets the delivery delay (in milliseconds). Null clears it.</span>
-</a>
-<a class="api-item" href="#contractsqueueproducer-setpriority">
-<code class="vis vis-public">public</code>
-<code class="ret">Producer</code>
-<code class="sig"><span class="sf">setPriority</span>( <span class="st">mixed</span> <span class="sv">$priority</span><span class="sm"> = null</span> )</code>
-<span class="desc">Sets the message priority. Null clears it.</span>
-</a>
-<a class="api-item" href="#contractsqueueproducer-settimetolive">
-<code class="vis vis-public">public</code>
-<code class="ret">Producer</code>
-<code class="sig"><span class="sf">setTimeToLive</span>( <span class="st">mixed</span> <span class="sv">$timeToLive</span><span class="sm"> = null</span> )</code>
-<span class="desc">Sets the time to live (in milliseconds). Null clears it.</span>
-</a>
-</div>
+<ApiItem href="#contractsqueueproducer-getdeliverydelay" visibility="public" name="getDeliveryDelay" returnType="int|null" params={[]}>
+Returns the delivery delay (in milliseconds) or null when not set.
+</ApiItem>
+<ApiItem href="#contractsqueueproducer-getpriority" visibility="public" name="getPriority" returnType="int|null" params={[]}>
+Returns the message priority or null when not set.
+</ApiItem>
+<ApiItem href="#contractsqueueproducer-gettimetolive" visibility="public" name="getTimeToLive" returnType="int|null" params={[]}>
+Returns the time to live (in milliseconds) or null when not set.
+</ApiItem>
+<ApiItem href="#contractsqueueproducer-send" visibility="public" name="send" returnType="void" params={[{"type":"Destination","name":"destination","default":null},{"type":"Message","name":"message","default":null}]}>
+Sends a message to the given destination.
+</ApiItem>
+<ApiItem href="#contractsqueueproducer-setdeliverydelay" visibility="public" name="setDeliveryDelay" returnType="Producer" params={[{"type":"mixed","name":"deliveryDelay","default":"null"}]}>
+Sets the delivery delay (in milliseconds). Null clears it.
+</ApiItem>
+<ApiItem href="#contractsqueueproducer-setpriority" visibility="public" name="setPriority" returnType="Producer" params={[{"type":"mixed","name":"priority","default":"null"}]}>
+Sets the message priority. Null clears it.
+</ApiItem>
+<ApiItem href="#contractsqueueproducer-settimetolive" visibility="public" name="setTimeToLive" returnType="Producer" params={[{"type":"mixed","name":"timeToLive","default":"null"}]}>
+Sets the time to live (in milliseconds). Null clears it.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 7</div>
 
 <h4 id="contractsqueueproducer-getdeliverydelay"><code>getDeliveryDelay()</code></h4>
 
@@ -11147,32 +8498,20 @@ Sets the time to live (in milliseconds). Null clears it.
 
 ## Contracts\Queue\Queue
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Queue.php">Source on GitHub</a>
+Interface
 
 A queue destination (point-to-point).
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
 - **`Phalcon\Contracts\Queue\Queue`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsqueuequeue-getqueuename">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getQueueName</span>()</code>
-<span class="desc">Returns the queue name.</span>
-</a>
-</div>
+<ApiItem href="#contractsqueuequeue-getqueuename" visibility="public" name="getQueueName" returnType="string" params={[]}>
+Returns the queue name.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsqueuequeue-getqueuename"><code>getQueueName()</code></h4>
 
@@ -11184,63 +8523,37 @@ Returns the queue name.
 
 ## Contracts\Queue\QueueTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/QueueTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Queue namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Queue\QueueTypes`**
-
-</div>
 
 ## Contracts\Queue\SubscriptionConsumer
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/SubscriptionConsumer.php">Source on GitHub</a>
+Interface
 
 Consumes from several queues at once, dispatching each message to the
 callback registered for its consumer.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Queue\SubscriptionConsumer`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsqueuesubscriptionconsumer-consume">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">consume</span>( <span class="st">int</span> <span class="sv">$timeout</span><span class="sm"> = 0</span> )</code>
-<span class="desc">Starts consuming, blocking up to timeout milliseconds (0 = block</span>
-</a>
-<a class="api-item" href="#contractsqueuesubscriptionconsumer-subscribe">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">subscribe</span>(<span class="prm"><span class="st">Consumer</span> <span class="sv">$consumer</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callback</span></span>)</code>
-<span class="desc">Subscribes a consumer; the callback receives each delivered message.</span>
-</a>
-<a class="api-item" href="#contractsqueuesubscriptionconsumer-unsubscribe">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsubscribe</span>( <span class="st">Consumer</span> <span class="sv">$consumer</span> )</code>
-<span class="desc">Removes a previously subscribed consumer.</span>
-</a>
-<a class="api-item" href="#contractsqueuesubscriptionconsumer-unsubscribeall">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unsubscribeAll</span>()</code>
-<span class="desc">Removes every subscribed consumer.</span>
-</a>
-</div>
+<ApiItem href="#contractsqueuesubscriptionconsumer-consume" visibility="public" name="consume" returnType="void" params={[{"type":"int","name":"timeout","default":"0"}]}>
+Starts consuming, blocking up to timeout milliseconds (0 = block
+</ApiItem>
+<ApiItem href="#contractsqueuesubscriptionconsumer-subscribe" visibility="public" name="subscribe" returnType="void" params={[{"type":"Consumer","name":"consumer","default":null},{"type":"callable","name":"callback","default":null}]}>
+Subscribes a consumer; the callback receives each delivered message.
+</ApiItem>
+<ApiItem href="#contractsqueuesubscriptionconsumer-unsubscribe" visibility="public" name="unsubscribe" returnType="void" params={[{"type":"Consumer","name":"consumer","default":null}]}>
+Removes a previously subscribed consumer.
+</ApiItem>
+<ApiItem href="#contractsqueuesubscriptionconsumer-unsubscribeall" visibility="public" name="unsubscribeAll" returnType="void" params={[]}>
+Removes every subscribed consumer.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="contractsqueuesubscriptionconsumer-consume"><code>consume()</code></h4>
 
@@ -11280,32 +8593,20 @@ Removes every subscribed consumer.
 
 ## Contracts\Queue\Topic
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/Topic.php">Source on GitHub</a>
+Interface
 
 A topic destination (publish/subscribe).
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
 - **`Phalcon\Contracts\Queue\Topic`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsqueuetopic-gettopicname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTopicName</span>()</code>
-<span class="desc">Returns the topic name.</span>
-</a>
-</div>
+<ApiItem href="#contractsqueuetopic-gettopicname" visibility="public" name="getTopicName" returnType="string" params={[]}>
+Returns the topic name.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsqueuetopic-gettopicname"><code>getTopicName()</code></h4>
 
@@ -11317,242 +8618,134 @@ Returns the topic name.
 
 ## Contracts\Queue\VisibilityAware
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Queue/VisibilityAware.php">Source on GitHub</a>
+Interface
 
 Marker contract for a consumer that supports a visibility timeout
 (for example Beanstalk TTR or an SQS visibility timeout). Callers detect
 support with `instanceof`. It carries no behavior and commits to no class
 shape.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Queue\VisibilityAware`**
-
-</div>
 
 ## Contracts\Session\SessionTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Session/SessionTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Session namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Session\SessionTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Storage\Serializer\SerializerInterface`
+`Phalcon\Storage\Serializer\SerializerInterface`
 
 ## Contracts\Storage\StorageTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Storage/StorageTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Storage namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Storage\StorageTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Storage\Serializer\SerializerInterface` · `WeakReference`
+`Phalcon\Storage\Serializer\SerializerInterface` · `WeakReference`
 
 ## Contracts\Support\Collection
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Support/Collection.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Support\Collection.
 
 @extends ArrayAccess&lt;int|string, mixed>
 @extends IteratorAggregate&lt;int|string, mixed>
 
-<div class="api-tree">
-
 - `\ArrayAccess`
 - **`Phalcon\Contracts\Support\Collection`** - extends `\ArrayAccess`, `\IteratorAggregate`
-- [`Phalcon\Support\Collection\CollectionInterface`](/6.0/api/phalcon_support/#supportcollectioncollectioninterface)
+- [`Phalcon\Support\Collection\CollectionInterface`](../phalcon_support/#supportcollectioncollectioninterface)
 
-</div>
-
-__Uses__ `ArrayAccess` · `IteratorAggregate`
+`ArrayAccess` · `IteratorAggregate`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractssupportcollection-__get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-</a>
-<a class="api-item" href="#contractssupportcollection-__isset">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-</a>
-<a class="api-item" href="#contractssupportcollection-__set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-</a>
-<a class="api-item" href="#contractssupportcollection-__unset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__unset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-</a>
-<a class="api-item" href="#contractssupportcollection-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Clears the internal collection.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-column">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">column</span>( <span class="st">string</span> <span class="sv">$propertyOrMethod</span> )</code>
-<span class="desc">Returns the values from a single property/method extracted from every</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-each">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">each</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
-<span class="desc">Invokes the callback for every item in the collection.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-filter">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">filter</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
-<span class="desc">Returns a new collection of items for which the callback returns true.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-first">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">first</span>()</code>
-<span class="desc">Returns the first value in the collection or null when empty.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Returns an element from the collection.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span> )</code>
-<span class="desc">Returns the keys (insensitive or not) of the collection.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Returns the configured runtime type guard, or null when not set.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-getvalues">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getValues</span>()</code>
-<span class="desc">Returns the values of the internal array.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Checks whether an element exists in the collection.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-init">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
-<span class="desc">Initializes the internal array.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-isempty">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isEmpty</span>()</code>
-<span class="desc">Returns true when the collection has no entries.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-keys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">keys</span>( <span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span> )</code>
-<span class="desc">Returns the keys (insensitive or not) of the collection.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-last">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">last</span>()</code>
-<span class="desc">Returns the last value in the collection or null when empty.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-map">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">map</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
-<span class="desc">Returns a new collection with the callback applied to every value.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-reduce">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">reduce</span>(<span class="prm"><span class="st">callable</span> <span class="sv">$callback</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$initial</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Reduces the collection to a single value using the callback.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-remove">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Removes the element from the collection.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-replace">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">replace</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
-<span class="desc">Replaces the collection data with a new array, clearing first.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Stores an element in the collection.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-sort">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">sort</span>(<span class="prm"><span class="st">callable|null</span> <span class="sv">$callback</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$order</span><span class="sm"> = SORT_ASC</span></span>)</code>
-<span class="desc">Returns a new collection sorted by value, preserving keys.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-toarray">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">toArray</span>()</code>
-<span class="desc">Returns the collection as an array.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-tojson">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">toJson</span>( <span class="st">int</span> <span class="sv">$options</span><span class="sm"> = 4194383</span> )</code>
-<span class="desc">Returns the collection serialized as a JSON string.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-values">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">values</span>()</code>
-<span class="desc">Returns the values of the internal array.</span>
-</a>
-<a class="api-item" href="#contractssupportcollection-where">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$propertyOrMethod</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Returns a new collection containing only the items whose</span>
-</a>
-</div>
+<ApiItem href="#contractssupportcollection-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"element","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractssupportcollection-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractssupportcollection-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractssupportcollection-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
+</ApiItem>
+<ApiItem href="#contractssupportcollection-clear" visibility="public" name="clear" returnType="void" params={[]}>
+Clears the internal collection.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-column" visibility="public" name="column" returnType="array" params={[{"type":"string","name":"propertyOrMethod","default":null}]}>
+Returns the values from a single property/method extracted from every
+</ApiItem>
+<ApiItem href="#contractssupportcollection-each" visibility="public" name="each" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
+Invokes the callback for every item in the collection.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-filter" visibility="public" name="filter" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
+Returns a new collection of items for which the callback returns true.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-first" visibility="public" name="first" returnType="mixed" params={[]}>
+Returns the first value in the collection or null when empty.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
+Returns an element from the collection.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"bool","name":"insensitive","default":"true"}]}>
+Returns the keys (insensitive or not) of the collection.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-gettype" visibility="public" name="getType" returnType="string|null" params={[]}>
+Returns the configured runtime type guard, or null when not set.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-getvalues" visibility="public" name="getValues" returnType="array" params={[]}>
+Returns the values of the internal array.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
+Checks whether an element exists in the collection.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
+Initializes the internal array.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-isempty" visibility="public" name="isEmpty" returnType="bool" params={[]}>
+Returns true when the collection has no entries.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-keys" visibility="public" name="keys" returnType="array" params={[{"type":"bool","name":"insensitive","default":"true"}]}>
+Returns the keys (insensitive or not) of the collection.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-last" visibility="public" name="last" returnType="mixed" params={[]}>
+Returns the last value in the collection or null when empty.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-map" visibility="public" name="map" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
+Returns a new collection with the callback applied to every value.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-reduce" visibility="public" name="reduce" returnType="mixed" params={[{"type":"callable","name":"callback","default":null},{"type":"mixed","name":"initial","default":"null"}]}>
+Reduces the collection to a single value using the callback.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
+Removes the element from the collection.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-replace" visibility="public" name="replace" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
+Replaces the collection data with a new array, clearing first.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+Stores an element in the collection.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-sort" visibility="public" name="sort" returnType="static" params={[{"type":"callable|null","name":"callback","default":"null"},{"type":"int","name":"order","default":"SORT_ASC"}]}>
+Returns a new collection sorted by value, preserving keys.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
+Returns the collection as an array.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-tojson" visibility="public" name="toJson" returnType="string" params={[{"type":"int","name":"options","default":"4194383"}]}>
+Returns the collection serialized as a JSON string.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-values" visibility="public" name="values" returnType="array" params={[]}>
+Returns the values of the internal array.
+</ApiItem>
+<ApiItem href="#contractssupportcollection-where" visibility="public" name="where" returnType="static" params={[{"type":"string","name":"propertyOrMethod","default":null},{"type":"mixed","name":"value","default":null}]}>
+Returns a new collection containing only the items whose
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 28</div>
 
 <h4 id="contractssupportcollection-__get"><code>__get()</code></h4>
 
@@ -11793,53 +8986,32 @@ Returns a new collection containing only the items whose
 
 ## Contracts\Support\Debug\Renderer
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Support/Debug/Renderer.php">Source on GitHub</a>
+Interface
 
 Canonical contract for Phalcon\Support\Debug renderers. Turns an
 ExceptionReport into output.
 
-<div class="api-tree">
-
 - [`Phalcon\Contracts\Support\Debug\TemplateAware`](#contractssupportdebugtemplateaware)
 - **`Phalcon\Contracts\Support\Debug\Renderer`**
 
-</div>
-
-__Uses__ `Phalcon\Support\Debug\Report\ExceptionReport`
+`Phalcon\Support\Debug\Report\ExceptionReport`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractssupportdebugrenderer-getcsssources">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getCssSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
-<span class="desc">Returns the CSS sources block for the given base URI.</span>
-</a>
-<a class="api-item" href="#contractssupportdebugrenderer-getjssources">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getJsSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
-<span class="desc">Returns the JavaScript sources block for the given base URI.</span>
-</a>
-<a class="api-item" href="#contractssupportdebugrenderer-getversion">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getVersion</span>()</code>
-<span class="desc">Returns the framework version block.</span>
-</a>
-<a class="api-item" href="#contractssupportdebugrenderer-render">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">render</span>( <span class="st">ExceptionReport</span> <span class="sv">$report</span> )</code>
-<span class="desc">Renders the report.</span>
-</a>
-</div>
+<ApiItem href="#contractssupportdebugrenderer-getcsssources" visibility="public" name="getCssSources" returnType="string" params={[{"type":"string","name":"uri","default":null}]}>
+Returns the CSS sources block for the given base URI.
+</ApiItem>
+<ApiItem href="#contractssupportdebugrenderer-getjssources" visibility="public" name="getJsSources" returnType="string" params={[{"type":"string","name":"uri","default":null}]}>
+Returns the JavaScript sources block for the given base URI.
+</ApiItem>
+<ApiItem href="#contractssupportdebugrenderer-getversion" visibility="public" name="getVersion" returnType="string" params={[]}>
+Returns the framework version block.
+</ApiItem>
+<ApiItem href="#contractssupportdebugrenderer-render" visibility="public" name="render" returnType="string" params={[{"type":"ExceptionReport","name":"report","default":null}]}>
+Renders the report.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="contractssupportdebugrenderer-getcsssources"><code>getCssSources()</code></h4>
 
@@ -11875,39 +9047,24 @@ Renders the report.
 
 ## Contracts\Support\Debug\TemplateAware
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Support/Debug/TemplateAware.php">Source on GitHub</a>
+Interface
 
 Canonical contract for components that render through named, overridable
 template strings.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Support\Debug\TemplateAware`**
 - [`Phalcon\Contracts\Support\Debug\Renderer`](#contractssupportdebugrenderer)
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractssupportdebugtemplateaware-gettemplate">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns the template for the given name (override if set, default</span>
-</a>
-<a class="api-item" href="#contractssupportdebugtemplateaware-settemplate">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setTemplate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$template</span></span>)</code>
-<span class="desc">Overrides the template for the given name.</span>
-</a>
-</div>
+<ApiItem href="#contractssupportdebugtemplateaware-gettemplate" visibility="public" name="getTemplate" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Returns the template for the given name (override if set, default
+</ApiItem>
+<ApiItem href="#contractssupportdebugtemplateaware-settemplate" visibility="public" name="setTemplate" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"template","default":null}]}>
+Overrides the template for the given name.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="contractssupportdebugtemplateaware-gettemplate"><code>getTemplate()</code></h4>
 
@@ -11931,34 +9088,23 @@ Overrides the template for the given name.
 
 ## Contracts\Support\SupportTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Support/SupportTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Support namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Support\SupportTypes`**
-
-</div>
 
 ## Contracts\Translate\TranslateTypes
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/Translate/TranslateTypes.php">Source on GitHub</a>
+Interface
 
 Central registry of the array shapes used across the Translate namespace.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\Translate\TranslateTypes`**
-
-</div>
 
 ## Contracts\View\Renderer
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Contracts/View/Renderer.php">Source on GitHub</a>
+Interface
 
 Renders a template with the given data and returns the result as a string.
 
@@ -11966,26 +9112,15 @@ A neutral abstraction: it is not tied to MVC, to ADR, or to any particular
 template engine. `Phalcon\Mvc\View\Simple` satisfies it out of the box, and
 userland engines only need this one method to become a drop-in renderer.
 
-<div class="api-tree">
-
 - **`Phalcon\Contracts\View\Renderer`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#contractsviewrenderer-render">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Renders the template and returns the output.</span>
-</a>
-</div>
+<ApiItem href="#contractsviewrenderer-render" visibility="public" name="render" returnType="string" params={[{"type":"string","name":"path","default":null},{"type":"array","name":"params","default":"[]"}]}>
+Renders the template and returns the output.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="contractsviewrenderer-render"><code>render()</code></h4>
 

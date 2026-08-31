@@ -15,87 +15,50 @@ All classes are prefixed with `Phalcon`
 
 ## Application\AbstractApplication
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Application/AbstractApplication.php">Source on GitHub</a>
+Abstract
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
-<div class="api-tree">
-
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/6.0/api/phalcon_di/#diinjectable)
-- **`Phalcon\Application\AbstractApplication`** - implements [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Cli\Console`](/6.0/api/phalcon_cli/#cliconsole)
-- [`Phalcon\Mvc\Application`](/6.0/api/phalcon_mvc/#mvcapplication)
+- [`Phalcon\Di\Injectable`](../phalcon_di/#diinjectable)
+- **`Phalcon\Application\AbstractApplication`** - implements [`Phalcon\Events\EventsAwareInterface`](../phalcon_events/#eventseventsawareinterface)
+- [`Phalcon\Cli\Console`](../phalcon_cli/#cliconsole)
+- [`Phalcon\Mvc\Application`](../phalcon_mvc/#mvcapplication)
 
-</div>
-
-__Uses__ `Closure` · `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Contracts\Application\ApplicationTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
+`Closure` · `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Contracts\Application\ApplicationTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#applicationabstractapplication-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
-<span class="desc">AbstractApplication constructor.</span>
-</a>
-<a class="api-item" href="#applicationabstractapplication-getdefaultmodule">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getDefaultModule</span>()</code>
-<span class="desc">Returns the default module name</span>
-</a>
-<a class="api-item" href="#applicationabstractapplication-getmodule">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getModule</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Gets the module definition registered in the application via module name</span>
-</a>
-<a class="api-item" href="#applicationabstractapplication-getmodules">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getModules</span>()</code>
-<span class="desc">Return the modules registered in the application</span>
-</a>
-<a class="api-item" href="#applicationabstractapplication-registermodules">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">registerModules</span>(<span class="prm"><span class="st">array</span> <span class="sv">$modules</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Register an array of modules present in the application</span>
-</a>
-<a class="api-item" href="#applicationabstractapplication-setdefaultmodule">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setDefaultModule</span>( <span class="st">string</span> <span class="sv">$defaultModule</span> )</code>
-<span class="desc">Sets the module name to be used if the router does not return a valid</span>
-</a>
-<a class="api-item" href="#applicationabstractapplication-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
-</div>
+<ApiItem href="#applicationabstractapplication-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"DiInterface|null","name":"container","default":"null"}]}>
+AbstractApplication constructor.
+</ApiItem>
+<ApiItem href="#applicationabstractapplication-getdefaultmodule" visibility="public" name="getDefaultModule" returnType="string" params={[]}>
+Returns the default module name
+</ApiItem>
+<ApiItem href="#applicationabstractapplication-getmodule" visibility="public" name="getModule" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+Gets the module definition registered in the application via module name
+</ApiItem>
+<ApiItem href="#applicationabstractapplication-getmodules" visibility="public" name="getModules" returnType="array" params={[]}>
+Return the modules registered in the application
+</ApiItem>
+<ApiItem href="#applicationabstractapplication-registermodules" visibility="public" name="registerModules" returnType="static" params={[{"type":"array","name":"modules","default":null},{"type":"bool","name":"merge","default":"false"}]}>
+Register an array of modules present in the application
+</ApiItem>
+<ApiItem href="#applicationabstractapplication-setdefaultmodule" visibility="public" name="setDefaultModule" returnType="static" params={[{"type":"string","name":"defaultModule","default":null}]}>
+Sets the module name to be used if the router does not return a valid
+</ApiItem>
+<ApiItem href="#applicationabstractapplication-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
+Sets the events manager
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$defaultModule</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$modules</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="defaultModule" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="modules" type="array" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 7</div>
 
 <h4 id="applicationabstractapplication-__construct"><code>__construct()</code></h4>
 
@@ -174,48 +137,32 @@ Sets the events manager
 
 ## Application\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Application/Exception.php">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Application use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Application\Exception`**
 - [`Phalcon\Application\Exceptions\ModuleNotRegistered`](#applicationexceptionsmodulenotregistered)
-- [`Phalcon\Cli\Console\Exception`](/6.0/api/phalcon_cli/#cliconsoleexception)
-- [`Phalcon\Mvc\Application\Exception`](/6.0/api/phalcon_mvc/#mvcapplicationexception)
-
-</div>
+- [`Phalcon\Cli\Console\Exception`](../phalcon_cli/#cliconsoleexception)
+- [`Phalcon\Mvc\Application\Exception`](../phalcon_mvc/#mvcapplicationexception)
 
 ## Application\Exceptions\ModuleNotRegistered
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Application/Exceptions/ModuleNotRegistered.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Application\Exception`](#applicationexception)
 - **`Phalcon\Application\Exceptions\ModuleNotRegistered`**
 
-</div>
-
-__Uses__ `Phalcon\Application\Exception`
+`Phalcon\Application\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#applicationexceptionsmodulenotregistered-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiItem href="#applicationexceptionsmodulenotregistered-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="applicationexceptionsmodulenotregistered-__construct"><code>__construct()</code></h4>
 

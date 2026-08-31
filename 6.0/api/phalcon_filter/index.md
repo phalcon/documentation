@@ -15,48 +15,32 @@ All classes are prefixed with `Phalcon`
 
 ## Filter\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Exception.php">Source on GitHub</a>
+Class
 
 Phalcon\Filter\Exception
 
 Exceptions thrown in Phalcon\Filter will use this class
 
-<div class="api-tree">
-
 - `\Exception`
 - **`Phalcon\Filter\Exception`**
 - [`Phalcon\Filter\Exceptions\FilterNotRegistered`](#filterexceptionsfilternotregistered)
 
-</div>
-
 ## Filter\Exceptions\FilterNotRegistered
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Exceptions/FilterNotRegistered.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Exception`](#filterexception)
 - **`Phalcon\Filter\Exceptions\FilterNotRegistered`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Exception`
+`Phalcon\Filter\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filterexceptionsfilternotregistered-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiItem href="#filterexceptionsfilternotregistered-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filterexceptionsfilternotregistered-__construct"><code>__construct()</code></h4>
 
@@ -66,8 +50,7 @@ public function __construct( string $name );
 
 ## Filter\Filter
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Filter.php">Source on GitHub</a>
+Class
 
 Lazy loads, stores and exposes sanitizer objects
 
@@ -94,176 +77,92 @@ Lazy loads, stores and exposes sanitizer objects
 @method string|null  upperWords(string $input)
 @method string|null  url(string $input)
 
-<div class="api-tree">
-
 - **`Phalcon\Filter\Filter`** - implements [`Phalcon\Filter\FilterInterface`](#filterfilterinterface)
 
-</div>
-
-__Uses__ `Phalcon\Filter\Exceptions\FilterNotRegistered` · `Phalcon\Filter\Sanitize\AbsInt` · `Phalcon\Filter\Sanitize\Alnum` · `Phalcon\Filter\Sanitize\Alpha` · `Phalcon\Filter\Sanitize\BoolVal` · `Phalcon\Filter\Sanitize\Email` · `Phalcon\Filter\Sanitize\FloatVal` · `Phalcon\Filter\Sanitize\IntVal` · `Phalcon\Filter\Sanitize\Ip` · `Phalcon\Filter\Sanitize\Lower` · `Phalcon\Filter\Sanitize\LowerFirst` · `Phalcon\Filter\Sanitize\Regex` · `Phalcon\Filter\Sanitize\Remove` · `Phalcon\Filter\Sanitize\Replace` · `Phalcon\Filter\Sanitize\Special` · `Phalcon\Filter\Sanitize\SpecialFull` · `Phalcon\Filter\Sanitize\StringVal` · `Phalcon\Filter\Sanitize\Striptags` · `Phalcon\Filter\Sanitize\Trim` · `Phalcon\Filter\Sanitize\Upper` · `Phalcon\Filter\Sanitize\UpperFirst` · `Phalcon\Filter\Sanitize\UpperWords` · `Phalcon\Filter\Sanitize\Url`
+`Phalcon\Filter\Exceptions\FilterNotRegistered` · `Phalcon\Filter\Sanitize\AbsInt` · `Phalcon\Filter\Sanitize\Alnum` · `Phalcon\Filter\Sanitize\Alpha` · `Phalcon\Filter\Sanitize\BoolVal` · `Phalcon\Filter\Sanitize\Email` · `Phalcon\Filter\Sanitize\FloatVal` · `Phalcon\Filter\Sanitize\IntVal` · `Phalcon\Filter\Sanitize\Ip` · `Phalcon\Filter\Sanitize\Lower` · `Phalcon\Filter\Sanitize\LowerFirst` · `Phalcon\Filter\Sanitize\Regex` · `Phalcon\Filter\Sanitize\Remove` · `Phalcon\Filter\Sanitize\Replace` · `Phalcon\Filter\Sanitize\Special` · `Phalcon\Filter\Sanitize\SpecialFull` · `Phalcon\Filter\Sanitize\StringVal` · `Phalcon\Filter\Sanitize\Striptags` · `Phalcon\Filter\Sanitize\Trim` · `Phalcon\Filter\Sanitize\Upper` · `Phalcon\Filter\Sanitize\UpperFirst` · `Phalcon\Filter\Sanitize\UpperWords` · `Phalcon\Filter\Sanitize\Url`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filterfilter-__call">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span></span>)</code>
-<span class="desc">Magic call to make the helper objects available as methods.</span>
-</a>
-<a class="api-item" href="#filterfilter-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$mapper</span><span class="sm"> = []</span> )</code>
-<span class="desc">Filter constructor.</span>
-</a>
-<a class="api-item" href="#filterfilter-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Get a service. If it is not in the mapper array, create a new object,</span>
-</a>
-<a class="api-item" href="#filterfilter-getdefaultmapper">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getDefaultMapper</span>()</code>
-<span class="desc">Returns the default sanitizer name to class map. This is the single</span>
-</a>
-<a class="api-item" href="#filterfilter-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Checks if a service exists in the map array</span>
-</a>
-<a class="api-item" href="#filterfilter-sanitize">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">sanitize</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$sanitizers</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Sanitizes a value with a specified single or set of sanitizers</span>
-</a>
-<a class="api-item" href="#filterfilter-set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$service</span></span>)</code>
-<span class="desc">Set a new service to the mapper array</span>
-</a>
-<a class="api-item" href="#filterfilter-init">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$mapper</span> )</code>
-<span class="desc">Loads the objects in the internal mapper array</span>
-</a>
-</div>
+<ApiItem href="#filterfilter-__call" visibility="public" name="__call" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"args","default":null}]}>
+Magic call to make the helper objects available as methods.
+</ApiItem>
+<ApiItem href="#filterfilter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"mapper","default":"[]"}]}>
+Filter constructor.
+</ApiItem>
+<ApiItem href="#filterfilter-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+Get a service. If it is not in the mapper array, create a new object,
+</ApiItem>
+<ApiItem href="#filterfilter-getdefaultmapper" visibility="public" name="getDefaultMapper" returnType="array" params={[]}>
+Returns the default sanitizer name to class map. This is the single
+</ApiItem>
+<ApiItem href="#filterfilter-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Checks if a service exists in the map array
+</ApiItem>
+<ApiItem href="#filterfilter-sanitize" visibility="public" name="sanitize" returnType="mixed" params={[{"type":"mixed","name":"value","default":null},{"type":"array|string","name":"sanitizers","default":null},{"type":"bool","name":"noRecursive","default":"false"}]}>
+Sanitizes a value with a specified single or set of sanitizers
+</ApiItem>
+<ApiItem href="#filterfilter-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"service","default":null}]}>
+Set a new service to the mapper array
+</ApiItem>
+<ApiItem href="#filterfilter-init" visibility="protected" name="init" returnType="void" params={[{"type":"array","name":"mapper","default":null}]}>
+Loads the objects in the internal mapper array
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_ABSINT</span><span class="sm"> = &quot;absint&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_ALNUM</span><span class="sm"> = &quot;alnum&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_ALPHA</span><span class="sm"> = &quot;alpha&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_BOOL</span><span class="sm"> = &quot;bool&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_EMAIL</span><span class="sm"> = &quot;email&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_FLOAT</span><span class="sm"> = &quot;float&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_INT</span><span class="sm"> = &quot;int&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_IP</span><span class="sm"> = &quot;ip&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_LOWER</span><span class="sm"> = &quot;lower&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_LOWERFIRST</span><span class="sm"> = &quot;lowerfirst&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_REGEX</span><span class="sm"> = &quot;regex&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_REMOVE</span><span class="sm"> = &quot;remove&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_REPLACE</span><span class="sm"> = &quot;replace&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_SPECIAL</span><span class="sm"> = &quot;special&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_SPECIALFULL</span><span class="sm"> = &quot;specialfull&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_STRING</span><span class="sm"> = &quot;string&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_STRIPTAGS</span><span class="sm"> = &quot;striptags&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_TRIM</span><span class="sm"> = &quot;trim&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_UPPER</span><span class="sm"> = &quot;upper&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_UPPERFIRST</span><span class="sm"> = &quot;upperfirst&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_UPPERWORDS</span><span class="sm"> = &quot;upperwords&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FILTER_URL</span><span class="sm"> = &quot;url&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="FILTER_ABSINT" type="string" default="&quot;absint&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_ALNUM" type="string" default="&quot;alnum&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_ALPHA" type="string" default="&quot;alpha&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_BOOL" type="string" default="&quot;bool&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_EMAIL" type="string" default="&quot;email&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_FLOAT" type="string" default="&quot;float&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_INT" type="string" default="&quot;int&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_IP" type="string" default="&quot;ip&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_LOWER" type="string" default="&quot;lower&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_LOWERFIRST" type="string" default="&quot;lowerfirst&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_REGEX" type="string" default="&quot;regex&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_REMOVE" type="string" default="&quot;remove&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_REPLACE" type="string" default="&quot;replace&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_SPECIAL" type="string" default="&quot;special&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_SPECIALFULL" type="string" default="&quot;specialfull&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_STRING" type="string" default="&quot;string&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_STRIPTAGS" type="string" default="&quot;striptags&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_TRIM" type="string" default="&quot;trim&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_UPPER" type="string" default="&quot;upper&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_UPPERFIRST" type="string" default="&quot;upperfirst&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_UPPERWORDS" type="string" default="&quot;upperwords&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FILTER_URL" type="string" default="&quot;url&quot;">
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string&gt;</code>
-<code class="sig"><span class="sv">$mapper</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, FilterInterface&gt;</code>
-<code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="mapper" type="array&lt;string, string&gt;" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="services" type="array&lt;string, FilterInterface&gt;" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 7</div>
 
 <h4 id="filterfilter-__call"><code>__call()</code></h4>
 
@@ -342,8 +241,6 @@ mixed $service
 
 Set a new service to the mapper array
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="filterfilter-init"><code>init()</code></h4>
 
 ```php
@@ -354,39 +251,24 @@ Loads the objects in the internal mapper array
 
 ## Filter\FilterFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/FilterFactory.php">Source on GitHub</a>
+Class
 
 Class FilterFactory
 
 @package Phalcon\Filter
 
-<div class="api-tree">
-
 - **`Phalcon\Filter\FilterFactory`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filterfilterfactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">FilterInterface</code>
-<code class="sig"><span class="sf">newInstance</span>()</code>
-<span class="desc">Returns a Locator object with all the helpers defined in anonymous</span>
-</a>
-<a class="api-item" href="#filterfilterfactory-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Returns the available adapters</span>
-</a>
-</div>
+<ApiItem href="#filterfilterfactory-newinstance" visibility="public" name="newInstance" returnType="FilterInterface" params={[]}>
+Returns a Locator object with all the helpers defined in anonymous
+</ApiItem>
+<ApiItem href="#filterfilterfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the available adapters
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filterfilterfactory-newinstance"><code>newInstance()</code></h4>
 
@@ -396,8 +278,6 @@ public function newInstance(): FilterInterface;
 
 Returns a Locator object with all the helpers defined in anonymous
 functions
-
-<div class="api-group">Protected · 1</div>
 
 <h4 id="filterfilterfactory-getservices"><code>getServices()</code></h4>
 
@@ -409,31 +289,19 @@ Returns the available adapters
 
 ## Filter\FilterInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/FilterInterface.php">Source on GitHub</a>
+Interface
 
 Lazy loads, stores and exposes sanitizer objects
 
-<div class="api-tree">
-
 - **`Phalcon\Filter\FilterInterface`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filterfilterinterface-sanitize">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">sanitize</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$sanitizers</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Sanitizes a value with a specified single or set of sanitizers</span>
-</a>
-</div>
+<ApiItem href="#filterfilterinterface-sanitize" visibility="public" name="sanitize" returnType="mixed" params={[{"type":"mixed","name":"value","default":null},{"type":"array|string","name":"sanitizers","default":null},{"type":"bool","name":"noRecursive","default":"false"}]}>
+Sanitizes a value with a specified single or set of sanitizers
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filterfilterinterface-sanitize"><code>sanitize()</code></h4>
 
@@ -454,32 +322,20 @@ returned - recursion is one level deep only. When `$noRecursive` is
 
 ## Filter\Sanitize\AbsInt
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/AbsInt.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to absolute integer
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\AbsInt`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\AbsInt`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeabsint-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeabsint-__invoke" visibility="public" name="__invoke" returnType="int" params={[{"type":"mixed","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeabsint-__invoke"><code>__invoke()</code></h4>
 
@@ -489,31 +345,20 @@ public function __invoke( mixed $input ): int;
 
 ## Filter\Sanitize\Alnum
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Alnum.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to an alphanumeric value
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Alnum`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Alnum`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizealnum-__invoke">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">array|string</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizealnum-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"array|string","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizealnum-__invoke"><code>__invoke()</code></h4>
 
@@ -523,31 +368,20 @@ public function __invoke( array|string $input );
 
 ## Filter\Sanitize\Alpha
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Alpha.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to an alpha value
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Alpha`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Alpha`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizealpha-__invoke">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">array|string</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizealpha-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"array|string","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizealpha-__invoke"><code>__invoke()</code></h4>
 
@@ -557,32 +391,20 @@ public function __invoke( array|string $input );
 
 ## Filter\Sanitize\BoolVal
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/BoolVal.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to boolean
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\BoolVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\BoolVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeboolval-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeboolval-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"mixed","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeboolval-__invoke"><code>__invoke()</code></h4>
 
@@ -592,32 +414,20 @@ public function __invoke( mixed $input ): bool;
 
 ## Filter\Sanitize\Email
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Email.php">Source on GitHub</a>
+Class
 
 Sanitizes an email string
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Email`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Email`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeemail-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeemail-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"mixed","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeemail-__invoke"><code>__invoke()</code></h4>
 
@@ -627,32 +437,20 @@ public function __invoke( mixed $input ): string;
 
 ## Filter\Sanitize\FloatVal
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/FloatVal.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to float
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\FloatVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\FloatVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizefloatval-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">float</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizefloatval-__invoke" visibility="public" name="__invoke" returnType="float" params={[{"type":"mixed","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizefloatval-__invoke"><code>__invoke()</code></h4>
 
@@ -662,32 +460,20 @@ public function __invoke( mixed $input ): float;
 
 ## Filter\Sanitize\IntVal
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/IntVal.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to integer
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\IntVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\IntVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeintval-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeintval-__invoke" visibility="public" name="__invoke" returnType="int" params={[{"type":"mixed","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeintval-__invoke"><code>__invoke()</code></h4>
 
@@ -697,34 +483,22 @@ public function __invoke( mixed $input ): int;
 
 ## Filter\Sanitize\Ip
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Ip.php">Source on GitHub</a>
+Class
 
 Phalcon\Filter\Sanitize\IP
 
 Sanitizes a value to an ip address or CIDR range
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Ip`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Ip`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeip-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">false|string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$filter</span><span class="sm"> = 0</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeip-__invoke" visibility="public" name="__invoke" returnType="false|string" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"filter","default":"0"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeip-__invoke"><code>__invoke()</code></h4>
 
@@ -737,31 +511,20 @@ int $filter = 0
 
 ## Filter\Sanitize\Lower
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Lower.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to lowercase
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Lower`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Lower`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
+`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizelower-__invoke">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizelower-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizelower-__invoke"><code>__invoke()</code></h4>
 
@@ -771,32 +534,20 @@ public function __invoke( string $input );
 
 ## Filter\Sanitize\LowerFirst
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/LowerFirst.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to lcfirst
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\LowerFirst`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\LowerFirst`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizelowerfirst-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizelowerfirst-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizelowerfirst-__invoke"><code>__invoke()</code></h4>
 
@@ -806,31 +557,20 @@ public function __invoke( string $input ): string;
 
 ## Filter\Sanitize\Regex
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Regex.php">Source on GitHub</a>
+Class
 
 Sanitizes a value performing preg_replace
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Regex`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Regex`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeregex-__invoke">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$replace</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeregex-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"array|string","name":"input","default":null},{"type":"array|string","name":"pattern","default":null},{"type":"array|string","name":"replace","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeregex-__invoke"><code>__invoke()</code></h4>
 
@@ -844,31 +584,20 @@ array|string $replace
 
 ## Filter\Sanitize\Remove
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Remove.php">Source on GitHub</a>
+Class
 
 Sanitizes a value removing parts of a string
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Remove`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Remove`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeremove-__invoke">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$replace</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeremove-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"array|string","name":"input","default":null},{"type":"array|string","name":"replace","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeremove-__invoke"><code>__invoke()</code></h4>
 
@@ -881,31 +610,20 @@ array|string $replace
 
 ## Filter\Sanitize\Replace
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Replace.php">Source on GitHub</a>
+Class
 
 Sanitizes a value replacing parts of a string
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Replace`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Replace`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizereplace-__invoke">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$target</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizereplace-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null},{"type":"mixed","name":"source","default":null},{"type":"mixed","name":"target","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizereplace-__invoke"><code>__invoke()</code></h4>
 
@@ -919,32 +637,20 @@ mixed $target
 
 ## Filter\Sanitize\Special
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Special.php">Source on GitHub</a>
+Class
 
 Sanitizes a value special characters
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Special`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Special`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizespecial-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizespecial-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"mixed","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizespecial-__invoke"><code>__invoke()</code></h4>
 
@@ -954,32 +660,20 @@ public function __invoke( mixed $input ): string;
 
 ## Filter\Sanitize\SpecialFull
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/SpecialFull.php">Source on GitHub</a>
+Class
 
 Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\SpecialFull`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\SpecialFull`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizespecialfull-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizespecialfull-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"mixed","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizespecialfull-__invoke"><code>__invoke()</code></h4>
 
@@ -989,32 +683,20 @@ public function __invoke( mixed $input ): string;
 
 ## Filter\Sanitize\StringVal
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/StringVal.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to string
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\StringVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\StringVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizestringval-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = 11</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizestringval-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"flags","default":"11"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizestringval-__invoke"><code>__invoke()</code></h4>
 
@@ -1027,32 +709,20 @@ int $flags = 11
 
 ## Filter\Sanitize\Striptags
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Striptags.php">Source on GitHub</a>
+Class
 
 Sanitizes a value striptags
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Striptags`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Striptags`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizestriptags-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizestriptags-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizestriptags-__invoke"><code>__invoke()</code></h4>
 
@@ -1062,32 +732,20 @@ public function __invoke( string $input ): string;
 
 ## Filter\Sanitize\Trim
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Trim.php">Source on GitHub</a>
+Class
 
 Sanitizes a value removing leading and trailing spaces
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Trim`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Trim`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizetrim-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizetrim-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizetrim-__invoke"><code>__invoke()</code></h4>
 
@@ -1097,31 +755,20 @@ public function __invoke( string $input ): string;
 
 ## Filter\Sanitize\Upper
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Upper.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to uppercase
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Upper`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Upper`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
+`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeupper-__invoke">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeupper-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeupper-__invoke"><code>__invoke()</code></h4>
 
@@ -1131,32 +778,20 @@ public function __invoke( string $input );
 
 ## Filter\Sanitize\UpperFirst
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/UpperFirst.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to ucfirst
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\UpperFirst`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\UpperFirst`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeupperfirst-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeupperfirst-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeupperfirst-__invoke"><code>__invoke()</code></h4>
 
@@ -1166,31 +801,20 @@ public function __invoke( string $input ): string;
 
 ## Filter\Sanitize\UpperWords
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/UpperWords.php">Source on GitHub</a>
+Class
 
 Sanitizes a value to uppercase the first character of each word
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\UpperWords`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\UpperWords`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
+`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeupperwords-__invoke">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeupperwords-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeupperwords-__invoke"><code>__invoke()</code></h4>
 
@@ -1200,31 +824,20 @@ public function __invoke( string $input );
 
 ## Filter\Sanitize\Url
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Sanitize/Url.php">Source on GitHub</a>
+Class
 
 Sanitizes a value url
 
-<div class="api-tree">
+- **`Phalcon\Filter\Sanitize\Url`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
 
-- **`Phalcon\Filter\Sanitize\Url`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
-
-</div>
-
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtersanitizeurl-__invoke">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtersanitizeurl-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtersanitizeurl-__invoke"><code>__invoke()</code></h4>
 
@@ -1234,229 +847,117 @@ public function __invoke( mixed $input );
 
 ## Filter\Validation
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation.php">Source on GitHub</a>
+Class
 
 Allows to validate data using custom or built-in validators
 
-<div class="api-tree">
-
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/6.0/api/phalcon_di/#diinjectable)
+- [`Phalcon\Di\Injectable`](../phalcon_di/#diinjectable)
 - **`Phalcon\Filter\Validation`** - implements [`Phalcon\Filter\Validation\ValidationInterface`](#filtervalidationvalidationinterface)
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception` · `Phalcon\Di\Injectable` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
+`Phalcon\Di\Exception` · `Phalcon\Di\Injectable` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidation-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$validators</span><span class="sm"> = []</span> )</code>
-<span class="desc">Phalcon\Filter\Validation constructor</span>
-</a>
-<a class="api-item" href="#filtervalidation-add">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">ValidatorInterface</span> <span class="sv">$validator</span></span>)</code>
-<span class="desc">Adds a validator to a field</span>
-</a>
-<a class="api-item" href="#filtervalidation-appendmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
-<span class="desc">Appends a message to the messages list</span>
-</a>
-<a class="api-item" href="#filtervalidation-bind">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">object|null</span> <span class="sv">$entity</span>,</span><span class="prm"><span class="st">array|object|null</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Assigns the data to an entity</span>
-</a>
-<a class="api-item" href="#filtervalidation-fails">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">fails</span>()</code>
-<span class="desc">Verify if validation fails by verifying if there are messages in the current validation</span>
-</a>
-<a class="api-item" href="#filtervalidation-getdata">
-<code class="vis vis-public">public</code>
-<code class="ret">array|object</code>
-<code class="sig"><span class="sf">getData</span>()</code>
-</a>
-<a class="api-item" href="#filtervalidation-getdefaultmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getDefaultMessage</span>( <span class="st">string</span> <span class="sv">$validatorClassName</span> )</code>
-<span class="desc">Returns the default message registered for a validator class, or an</span>
-</a>
-<a class="api-item" href="#filtervalidation-getentity">
-<code class="vis vis-public">public</code>
-<code class="ret">object|null</code>
-<code class="sig"><span class="sf">getEntity</span>()</code>
-<span class="desc">Returns the bound entity</span>
-</a>
-<a class="api-item" href="#filtervalidation-getfilters">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getFilters</span>( <span class="st">string|null</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
-<span class="desc">Returns all the filters or a specific one</span>
-</a>
-<a class="api-item" href="#filtervalidation-getlabel">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getLabel</span>( <span class="st">array|string</span> <span class="sv">$field</span> )</code>
-<span class="desc">Get label for field</span>
-</a>
-<a class="api-item" href="#filtervalidation-getmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">Messages</code>
-<code class="sig"><span class="sf">getMessages</span>()</code>
-<span class="desc">Returns the registered validators</span>
-</a>
-<a class="api-item" href="#filtervalidation-getvalidators">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getValidators</span>()</code>
-<span class="desc">Returns the validators added to the validation</span>
-</a>
-<a class="api-item" href="#filtervalidation-getvalue">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getValue</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
-<span class="desc">Gets the value to validate in the array/object data source</span>
-</a>
-<a class="api-item" href="#filtervalidation-getvaluebydata">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getValueByData</span>(<span class="prm"><span class="st">array|object</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Gets the value to validate in the array/object data source</span>
-</a>
-<a class="api-item" href="#filtervalidation-getvaluebyentity">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getValueByEntity</span>(<span class="prm"><span class="st">object</span> <span class="sv">$entity</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Gets the value to validate in the object entity source</span>
-</a>
-<a class="api-item" href="#filtervalidation-rule">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">rule</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">ValidatorInterface</span> <span class="sv">$validator</span></span>)</code>
-<span class="desc">Alias of <code>add</code> method</span>
-</a>
-<a class="api-item" href="#filtervalidation-rules">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">rules</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$validators</span></span>)</code>
-<span class="desc">Adds the validators to a field</span>
-</a>
-<a class="api-item" href="#filtervalidation-setdefaultmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">setDefaultMessages</span>( <span class="st">array</span> <span class="sv">$messages</span><span class="sm"> = []</span> )</code>
-<span class="desc">Registers default messages for validators, keyed by validator class</span>
-</a>
-<a class="api-item" href="#filtervalidation-setentity">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEntity</span>( <span class="st">object|null</span> <span class="sv">$entity</span> )</code>
-<span class="desc">Sets the bound entity</span>
-</a>
-<a class="api-item" href="#filtervalidation-setfilters">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setFilters</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$filters</span></span>)</code>
-<span class="desc">Adds filters to the field</span>
-</a>
-<a class="api-item" href="#filtervalidation-setlabels">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setLabels</span>( <span class="st">array</span> <span class="sv">$labels</span> )</code>
-<span class="desc">Adds labels for fields</span>
-</a>
-<a class="api-item" href="#filtervalidation-setvalidators">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setValidators</span>( <span class="st">array</span> <span class="sv">$validators</span> )</code>
-<span class="desc">Sets the validator array</span>
-</a>
-<a class="api-item" href="#filtervalidation-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">false|Messages</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">array|object|null</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">object|null</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Validate a set of data according to a set of rules</span>
-</a>
-<a class="api-item" href="#filtervalidation-prechecking">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">preChecking</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">ValidatorInterface</span> <span class="sv">$validator</span></span>)</code>
-<span class="desc">Internal validations, if it returns true, then skip the current validator</span>
-</a>
-</div>
+<ApiItem href="#filtervalidation-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"validators","default":"[]"}]}>
+Phalcon\Filter\Validation constructor
+</ApiItem>
+<ApiItem href="#filtervalidation-add" visibility="public" name="add" returnType="static" params={[{"type":"array|string","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
+Adds a validator to a field
+</ApiItem>
+<ApiItem href="#filtervalidation-appendmessage" visibility="public" name="appendMessage" returnType="static" params={[{"type":"MessageInterface","name":"message","default":null}]}>
+Appends a message to the messages list
+</ApiItem>
+<ApiItem href="#filtervalidation-bind" visibility="public" name="bind" returnType="static" params={[{"type":"object|null","name":"entity","default":null},{"type":"array|object|null","name":"data","default":null},{"type":"array","name":"whitelist","default":"[]"}]}>
+Assigns the data to an entity
+</ApiItem>
+<ApiItem href="#filtervalidation-fails" visibility="public" name="fails" returnType="bool" params={[]}>
+Verify if validation fails by verifying if there are messages in the current validation
+</ApiItem>
+<ApiItem href="#filtervalidation-getdata" visibility="public" name="getData" returnType="array|object" params={[]}>
+</ApiItem>
+<ApiItem href="#filtervalidation-getdefaultmessage" visibility="public" name="getDefaultMessage" returnType="string" params={[{"type":"string","name":"validatorClassName","default":null}]}>
+Returns the default message registered for a validator class, or an
+</ApiItem>
+<ApiItem href="#filtervalidation-getentity" visibility="public" name="getEntity" returnType="object|null" params={[]}>
+Returns the bound entity
+</ApiItem>
+<ApiItem href="#filtervalidation-getfilters" visibility="public" name="getFilters" returnType="mixed" params={[{"type":"string|null","name":"field","default":"null"}]}>
+Returns all the filters or a specific one
+</ApiItem>
+<ApiItem href="#filtervalidation-getlabel" visibility="public" name="getLabel" returnType="string" params={[{"type":"array|string","name":"field","default":null}]}>
+Get label for field
+</ApiItem>
+<ApiItem href="#filtervalidation-getmessages" visibility="public" name="getMessages" returnType="Messages" params={[]}>
+Returns the registered validators
+</ApiItem>
+<ApiItem href="#filtervalidation-getvalidators" visibility="public" name="getValidators" returnType="array" params={[]}>
+Returns the validators added to the validation
+</ApiItem>
+<ApiItem href="#filtervalidation-getvalue" visibility="public" name="getValue" returnType="mixed" params={[{"type":"string","name":"field","default":null}]}>
+Gets the value to validate in the array/object data source
+</ApiItem>
+<ApiItem href="#filtervalidation-getvaluebydata" visibility="public" name="getValueByData" returnType="mixed" params={[{"type":"array|object","name":"data","default":null},{"type":"string","name":"field","default":null}]}>
+Gets the value to validate in the array/object data source
+</ApiItem>
+<ApiItem href="#filtervalidation-getvaluebyentity" visibility="public" name="getValueByEntity" returnType="mixed" params={[{"type":"object","name":"entity","default":null},{"type":"string","name":"field","default":null}]}>
+Gets the value to validate in the object entity source
+</ApiItem>
+<ApiItem href="#filtervalidation-rule" visibility="public" name="rule" returnType="static" params={[{"type":"array|string","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
+Alias of `add` method
+</ApiItem>
+<ApiItem href="#filtervalidation-rules" visibility="public" name="rules" returnType="static" params={[{"type":"array|string","name":"field","default":null},{"type":"array","name":"validators","default":null}]}>
+Adds the validators to a field
+</ApiItem>
+<ApiItem href="#filtervalidation-setdefaultmessages" visibility="public" name="setDefaultMessages" returnType="array" params={[{"type":"array","name":"messages","default":"[]"}]}>
+Registers default messages for validators, keyed by validator class
+</ApiItem>
+<ApiItem href="#filtervalidation-setentity" visibility="public" name="setEntity" returnType="void" params={[{"type":"object|null","name":"entity","default":null}]}>
+Sets the bound entity
+</ApiItem>
+<ApiItem href="#filtervalidation-setfilters" visibility="public" name="setFilters" returnType="static" params={[{"type":"array|string","name":"field","default":null},{"type":"array|string","name":"filters","default":null}]}>
+Adds filters to the field
+</ApiItem>
+<ApiItem href="#filtervalidation-setlabels" visibility="public" name="setLabels" returnType="void" params={[{"type":"array","name":"labels","default":null}]}>
+Adds labels for fields
+</ApiItem>
+<ApiItem href="#filtervalidation-setvalidators" visibility="public" name="setValidators" returnType="static" params={[{"type":"array","name":"validators","default":null}]}>
+Sets the validator array
+</ApiItem>
+<ApiItem href="#filtervalidation-validate" visibility="public" name="validate" returnType="false|Messages" params={[{"type":"array|object|null","name":"data","default":"null"},{"type":"object|null","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
+Validate a set of data according to a set of rules
+</ApiItem>
+<ApiItem href="#filtervalidation-prechecking" visibility="protected" name="preChecking" returnType="bool" params={[{"type":"array|string","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
+Internal validations, if it returns true, then skip the current validator
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$combinedFieldsValidators</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array|object</code>
-<code class="sig"><span class="sv">$data</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$defaultMessages</span><span class="sm"> = []</span></code>
-<span class="desc">Default messages for validators, keyed by validator class name</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">object|null</code>
-<code class="sig"><span class="sv">$entity</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$filters</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$labels</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Messages</code>
-<code class="sig"><span class="sv">$messages</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$validators</span><span class="sm"> = []</span></code>
-<span class="desc">List of validators</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$values</span><span class="sm"> = []</span></code>
-<span class="desc">Calculated values</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$whitelist</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="combinedFieldsValidators" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="data" type="array|object" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="defaultMessages" type="array" default="[]">
+Default messages for validators, keyed by validator class name
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="entity" type="object|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="filters" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="labels" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="messages" type="Messages" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="validators" type="array" default="[]">
+List of validators
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="values" type="array" default="[]">
+Calculated values
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="whitelist" type="array" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 23</div>
 
 <h4 id="filtervalidation-__construct"><code>__construct()</code></h4>
 
@@ -1695,8 +1196,6 @@ $validation = new AuthorValidation();
 $validation->validate($_POST, $entity, $fields);
 ```
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="filtervalidation-prechecking"><code>preChecking()</code></h4>
 
 ```php
@@ -1710,27 +1209,19 @@ Internal validations, if it returns true, then skip the current validator
 
 ## Filter\Validation\AbstractCombinedFieldsValidator
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/AbstractCombinedFieldsValidator.php">Source on GitHub</a>
+Abstract
 
 This is a base class for combined fields validators
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`**
 - [`Phalcon\Filter\Validation\Validator\Uniqueness`](#filtervalidationvalidatoruniqueness)
 
-</div>
-
 ## Filter\Validation\AbstractValidator
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/AbstractValidator.php">Source on GitHub</a>
+Abstract
 
 This is a base class for validators
-
-<div class="api-tree">
 
 - **`Phalcon\Filter\Validation\AbstractValidator`** - implements [`Phalcon\Filter\Validation\ValidatorInterface`](#filtervalidationvalidatorinterface)
 - [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
@@ -1757,141 +1248,77 @@ This is a base class for validators
 - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
 - [`Phalcon\Filter\Validation\Validator\Url`](#filtervalidationvalidatorurl)
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Whitelist`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Whitelist`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationabstractvalidator-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Phalcon\Filter\Validation\Validator constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-getoption">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Returns an option in the validator&#039;s options</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-gettemplate">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string|null</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
-<span class="desc">Get the template message</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-gettemplates">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getTemplates</span>()</code>
-<span class="desc">Get templates collection object</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-hasoption">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasOption</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an option is defined</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-isallowempty">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAllowEmpty</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Checks whether the field can be considered empty and therefore</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-messagefactory">
-<code class="vis vis-public">public</code>
-<code class="ret">Message</code>
-<code class="sig"><span class="sf">messageFactory</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$replacements</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Create a default message by factory</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-setoption">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Sets an option in the validator</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-settemplate">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidatorInterface</code>
-<code class="sig"><span class="sf">setTemplate</span>( <span class="st">string</span> <span class="sv">$template</span> )</code>
-<span class="desc">Set a new template message</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-settemplates">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidatorInterface</code>
-<code class="sig"><span class="sf">setTemplates</span>( <span class="st">array</span> <span class="sv">$templates</span> )</code>
-<span class="desc">Clear current templates and set new from an array,</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-allowempty">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">allowEmpty</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Checks if field can be empty.</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-checkarray">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">checkArray</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Checks if a value is an array and returns the element based on the</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-preparecode">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">prepareCode</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
-<span class="desc">Prepares a validation code.</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-preparelabel">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">prepareLabel</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Prepares a label for the field.</span>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidator-rejectnonstringable">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">rejectNonStringable</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Rejects a value that cannot be a string: an array, or an object without</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationabstractvalidator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Phalcon\Filter\Validation\Validator constructor
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-getoption" visibility="public" name="getOption" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Returns an option in the validator's options
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-gettemplate" visibility="public" name="getTemplate" returnType="string" params={[{"type":"string|null","name":"field","default":"null"}]}>
+Get the template message
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-gettemplates" visibility="public" name="getTemplates" returnType="array" params={[]}>
+Get templates collection object
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-hasoption" visibility="public" name="hasOption" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an option is defined
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-isallowempty" visibility="public" name="isAllowEmpty" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Checks whether the field can be considered empty and therefore
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-messagefactory" visibility="public" name="messageFactory" returnType="Message" params={[{"type":"Validation","name":"validation","default":null},{"type":"array|string","name":"field","default":null},{"type":"array","name":"replacements","default":"[]"}]}>
+Create a default message by factory
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-setoption" visibility="public" name="setOption" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
+Sets an option in the validator
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-settemplate" visibility="public" name="setTemplate" returnType="ValidatorInterface" params={[{"type":"string","name":"template","default":null}]}>
+Set a new template message
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-settemplates" visibility="public" name="setTemplates" returnType="ValidatorInterface" params={[{"type":"array","name":"templates","default":null}]}>
+Clear current templates and set new from an array,
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-allowempty" visibility="protected" name="allowEmpty" returnType="bool" params={[{"type":"mixed","name":"field","default":null},{"type":"mixed","name":"value","default":null}]}>
+Checks if field can be empty.
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-checkarray" visibility="protected" name="checkArray" returnType="mixed" params={[{"type":"mixed","name":"value","default":null},{"type":"string","name":"field","default":null}]}>
+Checks if a value is an array and returns the element based on the
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-preparecode" visibility="protected" name="prepareCode" returnType="int" params={[{"type":"string","name":"field","default":null}]}>
+Prepares a validation code.
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-preparelabel" visibility="protected" name="prepareLabel" returnType="mixed" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Prepares a label for the field.
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-rejectnonstringable" visibility="protected" name="rejectNonStringable" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null},{"type":"mixed","name":"value","default":null}]}>
+Rejects a value that cannot be a string: an array, or an object without
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = null</span></code>
-<span class="desc">Message template</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$templateChanged</span><span class="sm"> = false</span></code>
-<span class="desc">Whether the template/message has been explicitly assigned on the instance (constructor <code>message</code>/<code>template</code> option or setTemplate()). While false, <code>template</code> still holds the validator&#039;s class default and a global default registered via Validation::setDefaultMessages() applies.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$templates</span><span class="sm"> = []</span></code>
-<span class="desc">Message templates</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="null">
+Message template
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="templateChanged" type="bool" default="false">
+Whether the template/message has been explicitly assigned on the
+instance (constructor `message`/`template` option or setTemplate()).
+While false, `template` still holds the validator's class default and a
+global default registered via Validation::setDefaultMessages() applies.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="templates" type="array" default="[]">
+Message templates
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 11</div>
 
 <h4 id="filtervalidationabstractvalidator-__construct"><code>__construct()</code></h4>
 
@@ -2000,8 +1427,6 @@ string $field
 
 Executes the validation
 
-<div class="api-group">Protected · 5</div>
-
 <h4 id="filtervalidationabstractvalidator-allowempty"><code>allowEmpty()</code></h4>
 
 ```php
@@ -2061,8 +1486,7 @@ true when the value is rejected.
 
 ## Filter\Validation\AbstractValidatorComposite
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/AbstractValidatorComposite.php">Source on GitHub</a>
+Abstract
 
 This is a base class for combined fields validators
 
@@ -2071,25 +1495,18 @@ Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait directly (with
 extends AbstractValidator implements ValidatorCompositeInterface) instead of
 extending this.
 
-<div class="api-tree">
-
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\AbstractValidatorComposite`** - implements [`Phalcon\Filter\Validation\ValidatorCompositeInterface`](#filtervalidationvalidatorcompositeinterface)
 - [`Phalcon\Filter\Validation\Validator\File`](#filtervalidationvalidatorfile)
 - [`Phalcon\Filter\Validation\Validator\StringLength`](#filtervalidationvalidatorstringlength)
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait`
+`Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait`
 
 ## Filter\Validation\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exception.php">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Filter\Validation\Exception`**
@@ -2113,35 +1530,22 @@ Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
 - [`Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`](#filtervalidationexceptionsuniquenessonlyforphalconmodel)
 - [`Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`](#filtervalidationexceptionsvalidationentitynotobject)
 
-</div>
-
 ## Filter\Validation\Exceptions\FieldNotPrintable
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/FieldNotPrintable.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\FieldNotPrintable`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsfieldnotprintable-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsfieldnotprintable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsfieldnotprintable-__construct"><code>__construct()</code></h4>
 
@@ -2151,31 +1555,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\FilterServiceUnavailable
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/FilterServiceUnavailable.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsfilterserviceunavailable-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsfilterserviceunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsfilterserviceunavailable-__construct"><code>__construct()</code></h4>
 
@@ -2185,31 +1578,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\InvalidAllowedTypes
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/InvalidAllowedTypes.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsinvalidallowedtypes-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsinvalidallowedtypes-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsinvalidallowedtypes-__construct"><code>__construct()</code></h4>
 
@@ -2219,31 +1601,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\InvalidCallbackReturn
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/InvalidCallbackReturn.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsinvalidcallbackreturn-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsinvalidcallbackreturn-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsinvalidcallbackreturn-__construct"><code>__construct()</code></h4>
 
@@ -2253,31 +1624,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\InvalidDomainOption
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/InvalidDomainOption.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsinvaliddomainoption-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsinvaliddomainoption-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsinvaliddomainoption-__construct"><code>__construct()</code></h4>
 
@@ -2287,31 +1647,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\InvalidFieldType
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/InvalidFieldType.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\InvalidFieldType`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsinvalidfieldtype-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsinvalidfieldtype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsinvalidfieldtype-__construct"><code>__construct()</code></h4>
 
@@ -2321,31 +1670,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\InvalidFilterService
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/InvalidFilterService.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\InvalidFilterService`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsinvalidfilterservice-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsinvalidfilterservice-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsinvalidfilterservice-__construct"><code>__construct()</code></h4>
 
@@ -2355,31 +1693,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\InvalidStrictOption
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/InvalidStrictOption.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsinvalidstrictoption-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsinvalidstrictoption-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsinvalidstrictoption-__construct"><code>__construct()</code></h4>
 
@@ -2389,31 +1716,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\InvalidValidationData
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/InvalidValidationData.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\InvalidValidationData`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsinvalidvalidationdata-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsinvalidvalidationdata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsinvalidvalidationdata-__construct"><code>__construct()</code></h4>
 
@@ -2423,31 +1739,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\InvalidValidator
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/InvalidValidator.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\InvalidValidator`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsinvalidvalidator-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsinvalidvalidator-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsinvalidvalidator-__construct"><code>__construct()</code></h4>
 
@@ -2457,31 +1762,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\InvalidValidatorScope
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/InvalidValidatorScope.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsinvalidvalidatorscope-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsinvalidvalidatorscope-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsinvalidvalidatorscope-__construct"><code>__construct()</code></h4>
 
@@ -2491,31 +1785,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\MissingMbstring
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/MissingMbstring.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\MissingMbstring`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsmissingmbstring-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsmissingmbstring-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsmissingmbstring-__construct"><code>__construct()</code></h4>
 
@@ -2525,31 +1808,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\NoDataToValidate
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/NoDataToValidate.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\NoDataToValidate`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsnodatatovalidate-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsnodatatovalidate-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsnodatatovalidate-__construct"><code>__construct()</code></h4>
 
@@ -2559,31 +1831,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\NoValidators
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/NoValidators.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\NoValidators`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsnovalidators-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsnovalidators-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsnovalidators-__construct"><code>__construct()</code></h4>
 
@@ -2593,31 +1854,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\NoValidatorsInComposite
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/NoValidatorsInComposite.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsnovalidatorsincomposite-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsnovalidatorsincomposite-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsnovalidatorsincomposite-__construct"><code>__construct()</code></h4>
 
@@ -2627,31 +1877,20 @@ public function __construct( string $className );
 
 ## Filter\Validation\Exceptions\UniquenessConversionMustBeArray
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/UniquenessConversionMustBeArray.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsuniquenessconversionmustbearray-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsuniquenessconversionmustbearray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsuniquenessconversionmustbearray-__construct"><code>__construct()</code></h4>
 
@@ -2661,31 +1900,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\UniquenessModelRequired
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/UniquenessModelRequired.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsuniquenessmodelrequired-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsuniquenessmodelrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsuniquenessmodelrequired-__construct"><code>__construct()</code></h4>
 
@@ -2695,31 +1923,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/UniquenessOnlyForPhalconModel.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsuniquenessonlyforphalconmodel-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsuniquenessonlyforphalconmodel-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsuniquenessonlyforphalconmodel-__construct"><code>__construct()</code></h4>
 
@@ -2729,31 +1946,20 @@ public function __construct();
 
 ## Filter\Validation\Exceptions\ValidationEntityNotObject
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Exceptions/ValidationEntityNotObject.php">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
 - **`Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\Exception`
+`Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationexceptionsvalidationentitynotobject-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#filtervalidationexceptionsvalidationentitynotobject-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationexceptionsvalidationentitynotobject-__construct"><code>__construct()</code></h4>
 
@@ -2763,51 +1969,31 @@ public function __construct();
 
 ## Filter\Validation\Traits\ValidatorCompositeTrait
 
-<span class="badge badge--trait">Trait</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Traits/ValidatorCompositeTrait.php">Source on GitHub</a>
+Trait
 
 Shared validator collection state and combined validation for composite
 validators.
 
-<div class="api-tree">
-
 - **`Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait`**
 
-</div>
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`
 
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`
-
-__Used by__ [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
+[`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationtraitsvalidatorcompositetrait-getvalidators">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getValidators</span>()</code>
-</a>
-<a class="api-item" href="#filtervalidationtraitsvalidatorcompositetrait-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationtraitsvalidatorcompositetrait-getvalidators" visibility="public" name="getValidators" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#filtervalidationtraitsvalidatorcompositetrait-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$validators</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="validators" type="array" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationtraitsvalidatorcompositetrait-getvalidators"><code>getValidators()</code></h4>
 
@@ -2828,111 +2014,60 @@ Executes the validation
 
 ## Filter\Validation\ValidationInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/ValidationInterface.php">Source on GitHub</a>
+Interface
 
 Interface for the Phalcon\Filter\Validation component
 
-<div class="api-tree">
-
 - **`Phalcon\Filter\Validation\ValidationInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`
+`Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidationinterface-add">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidationInterface</code>
-<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">ValidatorInterface</span> <span class="sv">$validator</span></span>)</code>
-<span class="desc">Adds a validator to a field</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-appendmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidationInterface</code>
-<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
-<span class="desc">Appends a message to the messages list</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-bind">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidationInterface</code>
-<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">object</span> <span class="sv">$entity</span>,</span><span class="prm"><span class="st">array|object|null</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Assigns the data to an entity</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-getentity">
-<code class="vis vis-public">public</code>
-<code class="ret">object|null</code>
-<code class="sig"><span class="sf">getEntity</span>()</code>
-<span class="desc">Returns the bound entity</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-getfilters">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getFilters</span>( <span class="st">string|null</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
-<span class="desc">Returns all the filters or a specific one</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-getlabel">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getLabel</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
-<span class="desc">Get label for field</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-getmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">Messages</code>
-<code class="sig"><span class="sf">getMessages</span>()</code>
-<span class="desc">Returns the registered validators</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-getvalidators">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getValidators</span>()</code>
-<span class="desc">Returns the validators added to the validation</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-getvalue">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getValue</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
-<span class="desc">Gets the value to validate in the array/object data source</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-rule">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidationInterface</code>
-<code class="sig"><span class="sf">rule</span>(<span class="prm"><span class="st">array|string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">ValidatorInterface</span> <span class="sv">$validator</span></span>)</code>
-<span class="desc">Alias of <code>add</code> method</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-rules">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidationInterface</code>
-<code class="sig"><span class="sf">rules</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$validators</span></span>)</code>
-<span class="desc">Adds the validators to a field</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-setfilters">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidationInterface</code>
-<code class="sig"><span class="sf">setFilters</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$filters</span></span>)</code>
-<span class="desc">Adds filters to the field</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-setlabels">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setLabels</span>( <span class="st">array</span> <span class="sv">$labels</span> )</code>
-<span class="desc">Adds labels for fields</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidationinterface-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">false|Messages</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">array|object|null</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">object|null</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Validate a set of data according to a set of rules</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidationinterface-add" visibility="public" name="add" returnType="ValidationInterface" params={[{"type":"array|string","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
+Adds a validator to a field
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-appendmessage" visibility="public" name="appendMessage" returnType="ValidationInterface" params={[{"type":"MessageInterface","name":"message","default":null}]}>
+Appends a message to the messages list
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-bind" visibility="public" name="bind" returnType="ValidationInterface" params={[{"type":"object","name":"entity","default":null},{"type":"array|object|null","name":"data","default":null},{"type":"array","name":"whitelist","default":"[]"}]}>
+Assigns the data to an entity
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-getentity" visibility="public" name="getEntity" returnType="object|null" params={[]}>
+Returns the bound entity
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-getfilters" visibility="public" name="getFilters" returnType="mixed" params={[{"type":"string|null","name":"field","default":"null"}]}>
+Returns all the filters or a specific one
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-getlabel" visibility="public" name="getLabel" returnType="string" params={[{"type":"string","name":"field","default":null}]}>
+Get label for field
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-getmessages" visibility="public" name="getMessages" returnType="Messages" params={[]}>
+Returns the registered validators
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-getvalidators" visibility="public" name="getValidators" returnType="array" params={[]}>
+Returns the validators added to the validation
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-getvalue" visibility="public" name="getValue" returnType="mixed" params={[{"type":"string","name":"field","default":null}]}>
+Gets the value to validate in the array/object data source
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-rule" visibility="public" name="rule" returnType="ValidationInterface" params={[{"type":"array|string","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
+Alias of `add` method
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-rules" visibility="public" name="rules" returnType="ValidationInterface" params={[{"type":"string","name":"field","default":null},{"type":"array","name":"validators","default":null}]}>
+Adds the validators to a field
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-setfilters" visibility="public" name="setFilters" returnType="ValidationInterface" params={[{"type":"string","name":"field","default":null},{"type":"array|string","name":"filters","default":null}]}>
+Adds filters to the field
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-setlabels" visibility="public" name="setLabels" returnType="void" params={[{"type":"array","name":"labels","default":null}]}>
+Adds labels for fields
+</ApiItem>
+<ApiItem href="#filtervalidationvalidationinterface-validate" visibility="public" name="validate" returnType="false|Messages" params={[{"type":"array|object|null","name":"data","default":"null"},{"type":"object|null","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
+Validate a set of data according to a set of rules
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 14</div>
 
 <h4 id="filtervalidationvalidationinterface-add"><code>add()</code></h4>
 
@@ -3069,39 +2204,24 @@ Validate a set of data according to a set of rules
 
 ## Filter\Validation\ValidatorCompositeInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/ValidatorCompositeInterface.php">Source on GitHub</a>
+Interface
 
 This is a base class for combined fields validators
 
-<div class="api-tree">
-
 - **`Phalcon\Filter\Validation\ValidatorCompositeInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation`
+`Phalcon\Filter\Validation`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorcompositeinterface-getvalidators">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getValidators</span>()</code>
-<span class="desc">Executes the validation</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorcompositeinterface-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorcompositeinterface-getvalidators" visibility="public" name="getValidators" returnType="array" params={[]}>
+Executes the validation
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorcompositeinterface-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorcompositeinterface-getvalidators"><code>getValidators()</code></h4>
 
@@ -3124,49 +2244,29 @@ Executes the validation
 
 ## Filter\Validation\ValidatorFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/ValidatorFactory.php">Source on GitHub</a>
+Class
 
-<div class="api-tree">
-
-- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Filter\Validation\ValidatorFactory`**
 
-</div>
-
-__Uses__ `Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Filter\Validation\Validator\Alnum` · `Phalcon\Filter\Validation\Validator\Alpha` · `Phalcon\Filter\Validation\Validator\Between` · `Phalcon\Filter\Validation\Validator\Callback` · `Phalcon\Filter\Validation\Validator\Confirmation` · `Phalcon\Filter\Validation\Validator\CreditCard` · `Phalcon\Filter\Validation\Validator\Date` · `Phalcon\Filter\Validation\Validator\Digit` · `Phalcon\Filter\Validation\Validator\Email` · `Phalcon\Filter\Validation\Validator\Exception` · `Phalcon\Filter\Validation\Validator\ExclusionIn` · `Phalcon\Filter\Validation\Validator\File` · `Phalcon\Filter\Validation\Validator\Identical` · `Phalcon\Filter\Validation\Validator\InclusionIn` · `Phalcon\Filter\Validation\Validator\Ip` · `Phalcon\Filter\Validation\Validator\Numericality` · `Phalcon\Filter\Validation\Validator\PresenceOf` · `Phalcon\Filter\Validation\Validator\Regex` · `Phalcon\Filter\Validation\Validator\StringLength` · `Phalcon\Filter\Validation\Validator\Uniqueness` · `Phalcon\Filter\Validation\Validator\Url`
+`Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Filter\Validation\Validator\Alnum` · `Phalcon\Filter\Validation\Validator\Alpha` · `Phalcon\Filter\Validation\Validator\Between` · `Phalcon\Filter\Validation\Validator\Callback` · `Phalcon\Filter\Validation\Validator\Confirmation` · `Phalcon\Filter\Validation\Validator\CreditCard` · `Phalcon\Filter\Validation\Validator\Date` · `Phalcon\Filter\Validation\Validator\Digit` · `Phalcon\Filter\Validation\Validator\Email` · `Phalcon\Filter\Validation\Validator\Exception` · `Phalcon\Filter\Validation\Validator\ExclusionIn` · `Phalcon\Filter\Validation\Validator\File` · `Phalcon\Filter\Validation\Validator\Identical` · `Phalcon\Filter\Validation\Validator\InclusionIn` · `Phalcon\Filter\Validation\Validator\Ip` · `Phalcon\Filter\Validation\Validator\Numericality` · `Phalcon\Filter\Validation\Validator\PresenceOf` · `Phalcon\Filter\Validation\Validator\Regex` · `Phalcon\Filter\Validation\Validator\StringLength` · `Phalcon\Filter\Validation\Validator\Uniqueness` · `Phalcon\Filter\Validation\Validator\Url`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfactory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor.</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidatorInterface</code>
-<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Creates a new instance</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfactory-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfactory-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Returns the available adapters</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
+Constructor.
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfactory-newinstance" visibility="public" name="newInstance" returnType="ValidatorInterface" params={[{"type":"string","name":"name","default":null}]}>
+Creates a new instance
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the available adapters
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorfactory-__construct"><code>__construct()</code></h4>
 
@@ -3184,8 +2284,6 @@ public function newInstance( string $name ): ValidatorInterface;
 
 Creates a new instance
 
-<div class="api-group">Protected · 2</div>
-
 <h4 id="filtervalidationvalidatorfactory-getexceptionclass"><code>getExceptionClass()</code></h4>
 
 ```php
@@ -3202,69 +2300,39 @@ Returns the available adapters
 
 ## Filter\Validation\ValidatorInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/ValidatorInterface.php">Source on GitHub</a>
+Interface
 
 Interface for Phalcon\Filter\Validation\AbstractValidator
 
-<div class="api-tree">
-
 - **`Phalcon\Filter\Validation\ValidatorInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation`
+`Phalcon\Filter\Validation`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorinterface-getoption">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Returns an option in the validator&#039;s options</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorinterface-gettemplate">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
-<span class="desc">Get the template message</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorinterface-gettemplates">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getTemplates</span>()</code>
-<span class="desc">Get message templates</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorinterface-hasoption">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasOption</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an option is defined</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorinterface-settemplate">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidatorInterface</code>
-<code class="sig"><span class="sf">setTemplate</span>( <span class="st">string</span> <span class="sv">$template</span> )</code>
-<span class="desc">Set a new template message</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorinterface-settemplates">
-<code class="vis vis-public">public</code>
-<code class="ret">ValidatorInterface</code>
-<code class="sig"><span class="sf">setTemplates</span>( <span class="st">array</span> <span class="sv">$templates</span> )</code>
-<span class="desc">Clear current template and set new from an array,</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorinterface-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorinterface-getoption" visibility="public" name="getOption" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Returns an option in the validator's options
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorinterface-gettemplate" visibility="public" name="getTemplate" returnType="string" params={[{"type":"string","name":"field","default":null}]}>
+Get the template message
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorinterface-gettemplates" visibility="public" name="getTemplates" returnType="array" params={[]}>
+Get message templates
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorinterface-hasoption" visibility="public" name="hasOption" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an option is defined
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorinterface-settemplate" visibility="public" name="setTemplate" returnType="ValidatorInterface" params={[{"type":"string","name":"template","default":null}]}>
+Set a new template message
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorinterface-settemplates" visibility="public" name="setTemplates" returnType="ValidatorInterface" params={[{"type":"array","name":"templates","default":null}]}>
+Clear current template and set new from an array,
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorinterface-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 7</div>
 
 <h4 id="filtervalidationvalidatorinterface-getoption"><code>getOption()</code></h4>
 
@@ -3331,8 +2399,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Alnum
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Alnum.php">Source on GitHub</a>
+Class
 
 Check for alphanumeric character(s)
 
@@ -3367,44 +2434,26 @@ new AlnumValidator(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Alnum`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatoralnum-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatoralnum-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatoralnum-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatoralnum-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must contain only letters and numbers&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must contain only letters and numbers&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatoralnum-__construct"><code>__construct()</code></h4>
 
@@ -3427,8 +2476,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Alpha
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Alpha.php">Source on GitHub</a>
+Class
 
 Check for alphabetic character(s)
 
@@ -3463,44 +2511,26 @@ new AlphaValidator(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Alpha`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatoralpha-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatoralpha-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatoralpha-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatoralpha-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must contain only letters&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must contain only letters&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatoralpha-__construct"><code>__construct()</code></h4>
 
@@ -3523,8 +2553,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Between
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Between.php">Source on GitHub</a>
+Class
 
 Validates that a value is between an inclusive range of two values.
 For a value x, the test is passed if minimum&lt;=x&lt;=maximum.
@@ -3570,44 +2599,26 @@ new Between(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Between`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorbetween-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorbetween-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorbetween-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorbetween-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be within the range of :min to :max&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be within the range of :min to :max&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorbetween-__construct"><code>__construct()</code></h4>
 
@@ -3630,8 +2641,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Callback
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Callback.php">Source on GitHub</a>
+Class
 
 Calls user function for validation
 
@@ -3676,44 +2686,26 @@ new CallbackValidator(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Callback`**
 
-</div>
-
-__Uses__ `Closure` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn` · `Phalcon\Filter\Validation\ValidatorInterface` · `ReflectionFunction`
+`Closure` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn` · `Phalcon\Filter\Validation\ValidatorInterface` · `ReflectionFunction`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorcallback-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorcallback-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorcallback-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorcallback-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must match the callback function&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must match the callback function&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorcallback-__construct"><code>__construct()</code></h4>
 
@@ -3736,8 +2728,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Confirmation
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Confirmation.php">Source on GitHub</a>
+Class
 
 Checks that two values have the same value
 
@@ -3777,50 +2768,29 @@ new Confirmation(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Confirmation`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorconfirmation-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorconfirmation-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorconfirmation-compare">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">compare</span>(<span class="prm"><span class="st">string</span> <span class="sv">$a</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$b</span></span>)</code>
-<span class="desc">Compare strings</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorconfirmation-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorconfirmation-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorconfirmation-compare" visibility="protected" name="compare" returnType="bool" params={[{"type":"string","name":"a","default":null},{"type":"string","name":"b","default":null}]}>
+Compare strings
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be the same as :with&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be the same as :with&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorconfirmation-__construct"><code>__construct()</code></h4>
 
@@ -3841,8 +2811,6 @@ string $field
 
 Executes the validation
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="filtervalidationvalidatorconfirmation-compare"><code>compare()</code></h4>
 
 ```php
@@ -3856,8 +2824,7 @@ Compare strings
 
 ## Filter\Validation\Validator\CreditCard
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/CreditCard.php">Source on GitHub</a>
+Class
 
 Checks if a value has a valid credit card number
 
@@ -3892,44 +2859,26 @@ new CreditCardValidator(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\CreditCard`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorcreditcard-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorcreditcard-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorcreditcard-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorcreditcard-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field is not valid for a credit card number&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is not valid for a credit card number&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorcreditcard-__construct"><code>__construct()</code></h4>
 
@@ -3952,8 +2901,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Date
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Date.php">Source on GitHub</a>
+Class
 
 Checks if a value is a valid date
 
@@ -3993,44 +2941,26 @@ new DateValidator(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Date`**
 
-</div>
-
-__Uses__ `DateTime` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`DateTime` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatordate-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatordate-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatordate-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatordate-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field is not a valid date&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is not a valid date&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatordate-__construct"><code>__construct()</code></h4>
 
@@ -4053,8 +2983,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Digit
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Digit.php">Source on GitHub</a>
+Class
 
 Check for numeric character(s)
 
@@ -4089,44 +3018,26 @@ new DigitValidator(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Digit`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatordigit-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatordigit-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatordigit-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatordigit-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be numeric&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be numeric&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatordigit-__construct"><code>__construct()</code></h4>
 
@@ -4149,8 +3060,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Email
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Email.php">Source on GitHub</a>
+Class
 
 Checks if a value has a correct e-mail format
 
@@ -4185,58 +3095,40 @@ new EmailValidator(
 );
 ```
 
+```php
 $validator->add(
-    "täst@example.com",
-    new EmailValidator(
-        [
-            "message" => "The e-mail is not valid",
-            "allowUTF8" => true,
-        ]
-    )
+"täst@example.com",
+new EmailValidator(
+    [
+        "message" => "The e-mail is not valid",
+        "allowUTF8" => true,
+    ]
+)
 );
 ```
-
-<div class="api-tree" markdown>
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Email`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
-{ .api-uses }
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatoremail-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatoremail-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatoremail-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatoremail-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be an email address&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be an email address&quot;">
+</ApiItem>
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
-
-#### `__construct()` { #filtervalidationvalidatoremail-__construct }
+<h4 id="filtervalidationvalidatoremail-__construct"><code>__construct()</code></h4>
 
 ```php
 public function __construct( array $options = [] );
@@ -4248,8 +3140,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -4257,23 +3149,17 @@ Executes the validation
 
 ## Filter\Validation\Validator\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Exception.php">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Filter\Validation\Validator\* classes will use this
 class
 
-<div class="api-tree">
-
 - `\Exception`
 - **`Phalcon\Filter\Validation\Validator\Exception`**
 
-</div>
-
 ## Filter\Validation\Validator\ExclusionIn
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/ExclusionIn.php">Source on GitHub</a>
+Class
 
 Check if a value is not included into a list of values
 
@@ -4284,79 +3170,61 @@ use Phalcon\Filter\Validation\Validator\ExclusionIn;
 $validator = new Validation();
 
 $validator->add(
-    "status",
-    new ExclusionIn(
-        [
-            "message" => "The status must not be A or B",
-            "domain"  => [
-                "A",
-                "B",
-            ],
-        ]
-    )
+"status",
+new ExclusionIn(
+    [
+        "message" => "The status must not be A or B",
+        "domain"  => [
+            "A",
+            "B",
+        ],
+    ]
+)
 );
 
 $validator->add(
+[
+    "status",
+    "type",
+],
+new ExclusionIn(
     [
-        "status",
-        "type",
-    ],
-    new ExclusionIn(
-        [
-            "message" => [
-                "status" => "The status must not be A or B",
-                "type"   => "The type must not be 1 or "
+        "message" => [
+            "status" => "The status must not be A or B",
+            "type"   => "The type must not be 1 or "
+        ],
+        "domain" => [
+            "status" => [
+                "A",
+                "B",
             ],
-            "domain" => [
-                "status" => [
-                    "A",
-                    "B",
-                ],
-                "type"   => [1, 2],
-            ],
-        ]
-    )
+            "type"   => [1, 2],
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\ExclusionIn`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorexclusionin-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorexclusionin-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorexclusionin-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorexclusionin-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must not be a part of list: :domain&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must not be a part of list: :domain&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorexclusionin-__construct"><code>__construct()</code></h4>
 
@@ -4370,8 +3238,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -4379,8 +3247,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\File
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/File.php">Source on GitHub</a>
+Class
 
 Checks if a value has a correct file
 
@@ -4391,89 +3258,79 @@ use Phalcon\Filter\Validation\Validator\File as FileValidator;
 $validator = new Validation();
 
 $validator->add(
-    "file",
-    new FileValidator(
-        [
-            "maxSize"              => "2M",
-            "messageSize"          => ":field exceeds the max file size (:size)",
-            "allowedTypes"         => [
-                "image/jpeg",
-                "image/png",
-            ],
-            "messageType"          => "Allowed file types are :types",
-            "maxResolution"        => "800x600",
-            "messageMaxResolution" => "Max resolution of :field is :resolution",
-            "messageFileEmpty"     => "File is empty",
-            "messageIniSize"       => "Ini size is not valid",
-            "messageValid"         => "File is not valid",
-        ]
-    )
+"file",
+new FileValidator(
+    [
+        "maxSize"              => "2M",
+        "messageSize"          => ":field exceeds the max file size (:size)",
+        "allowedTypes"         => [
+            "image/jpeg",
+            "image/png",
+        ],
+        "messageType"          => "Allowed file types are :types",
+        "maxResolution"        => "800x600",
+        "messageMaxResolution" => "Max resolution of :field is :resolution",
+        "messageFileEmpty"     => "File is empty",
+        "messageIniSize"       => "Ini size is not valid",
+        "messageValid"         => "File is not valid",
+    ]
+)
 );
 
 $validator->add(
+[
+    "file",
+    "anotherFile",
+],
+new FileValidator(
     [
-        "file",
-        "anotherFile",
-    ],
-    new FileValidator(
-        [
-            "maxSize" => [
-                "file"        => "2M",
-                "anotherFile" => "4M",
+        "maxSize" => [
+            "file"        => "2M",
+            "anotherFile" => "4M",
+        ],
+        "messageSize" => [
+            "file"        => "file exceeds the max file size 2M",
+            "anotherFile" => "anotherFile exceeds the max file size 4M",
+        "allowedTypes" => [
+            "file"        => [
+                "image/jpeg",
+                "image/png",
             ],
-            "messageSize" => [
-                "file"        => "file exceeds the max file size 2M",
-                "anotherFile" => "anotherFile exceeds the max file size 4M",
-            "allowedTypes" => [
-                "file"        => [
-                    "image/jpeg",
-                    "image/png",
-                ],
-                "anotherFile" => [
-                    "image/gif",
-                    "image/bmp",
-                ],
+            "anotherFile" => [
+                "image/gif",
+                "image/bmp",
             ],
-            "messageType" => [
-                "file"        => "Allowed file types are image/jpeg and image/png",
-                "anotherFile" => "Allowed file types are image/gif and image/bmp",
-            ],
-            "maxResolution" => [
-                "file"        => "800x600",
-                "anotherFile" => "1024x768",
-            ],
-            "messageMaxResolution" => [
-                "file"        => "Max resolution of file is 800x600",
-                "anotherFile" => "Max resolution of file is 1024x768",
-            ],
-        ]
-    )
+        ],
+        "messageType" => [
+            "file"        => "Allowed file types are image/jpeg and image/png",
+            "anotherFile" => "Allowed file types are image/gif and image/bmp",
+        ],
+        "maxResolution" => [
+            "file"        => "800x600",
+            "anotherFile" => "1024x768",
+        ],
+        "messageMaxResolution" => [
+            "file"        => "Max resolution of file is 800x600",
+            "anotherFile" => "Max resolution of file is 1024x768",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
 - **`Phalcon\Filter\Validation\Validator\File`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Filter\Validation\Validator\File\MimeType` · `Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio` · `Phalcon\Filter\Validation\Validator\File\Resolution\Equal` · `Phalcon\Filter\Validation\Validator\File\Resolution\Max` · `Phalcon\Filter\Validation\Validator\File\Resolution\Min` · `Phalcon\Filter\Validation\Validator\File\Size\Equal` · `Phalcon\Filter\Validation\Validator\File\Size\Max` · `Phalcon\Filter\Validation\Validator\File\Size\Min`
+`Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Filter\Validation\Validator\File\MimeType` · `Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio` · `Phalcon\Filter\Validation\Validator\File\Resolution\Equal` · `Phalcon\Filter\Validation\Validator\File\Resolution\Max` · `Phalcon\Filter\Validation\Validator\File\Resolution\Min` · `Phalcon\Filter\Validation\Validator\File\Size\Equal` · `Phalcon\Filter\Validation\Validator\File\Size\Max` · `Phalcon\Filter\Validation\Validator\File\Size\Min`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfile-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfile-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationvalidatorfile-__construct"><code>__construct()</code></h4>
 
@@ -4485,8 +3342,7 @@ Constructor
 
 ## Filter\Validation\Validator\File\AbstractFile
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/File/AbstractFile.php">Source on GitHub</a>
+Abstract
 
 Checks if a value has a correct file
 
@@ -4497,36 +3353,34 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-    "file",
-    new Size(
-        [
-            "maxSize"              => "2M",
-            "messageSize"          => ":field exceeds the max file size (:size)",
-        ]
-    )
+"file",
+new Size(
+    [
+        "maxSize"              => "2M",
+        "messageSize"          => ":field exceeds the max file size (:size)",
+    ]
+)
 );
 
 $validator->add(
+[
+    "file",
+    "anotherFile",
+],
+new FileValidator(
     [
-        "file",
-        "anotherFile",
-    ],
-    new FileValidator(
-        [
-            "maxSize" => [
-                "file"        => "2M",
-                "anotherFile" => "4M",
-            ],
-            "messageSize" => [
-                "file"        => "file exceeds the max file size 2M",
-                "anotherFile" => "anotherFile exceeds the max file size 4M",
-            ],
-        ]
-    )
+        "maxSize" => [
+            "file"        => "2M",
+            "anotherFile" => "4M",
+        ],
+        "messageSize" => [
+            "file"        => "file exceeds the max file size 2M",
+            "anotherFile" => "anotherFile exceeds the max file size 4M",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\File\AbstractFile`**
@@ -4537,126 +3391,70 @@ $validator->add(
 - [`Phalcon\Filter\Validation\Validator\File\Resolution\Min`](#filtervalidationvalidatorfileresolutionmin)
 - [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-checkupload">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">checkUpload</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Check upload</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-checkuploadisempty">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">checkUploadIsEmpty</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Check if upload is empty</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-checkuploadisvalid">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">checkUploadIsValid</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Check if upload is valid</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-checkuploadmaxsize">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">checkUploadMaxSize</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Check if uploaded file is larger than PHP allowed size</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-getfilesizeinbytes">
-<code class="vis vis-public">public</code>
-<code class="ret">float</code>
-<code class="sig"><span class="sf">getFileSizeInBytes</span>( <span class="st">string</span> <span class="sv">$size</span> )</code>
-<span class="desc">Convert a string like &quot;2.5MB&quot; in bytes</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-getmessagefileempty">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getMessageFileEmpty</span>()</code>
-<span class="desc">Empty is empty</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-getmessageinisize">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getMessageIniSize</span>()</code>
-<span class="desc">File exceeds the file size set in PHP configuration</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-getmessagevalid">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getMessageValid</span>()</code>
-<span class="desc">File is not valid</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-isallowempty">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAllowEmpty</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Check on empty</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-setmessagefileempty">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setMessageFileEmpty</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Empty is empty</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-setmessageinisize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setMessageIniSize</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">File exceeds the file size set in PHP configuration</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-setmessagevalid">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setMessageValid</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">File is not valid</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileabstractfile-checkisuploadedfile">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">checkIsUploadedFile</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Checks if a file has been uploaded; Internal check that can be</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-checkupload" visibility="public" name="checkUpload" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Check upload
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-checkuploadisempty" visibility="public" name="checkUploadIsEmpty" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Check if upload is empty
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-checkuploadisvalid" visibility="public" name="checkUploadIsValid" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Check if upload is valid
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-checkuploadmaxsize" visibility="public" name="checkUploadMaxSize" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Check if uploaded file is larger than PHP allowed size
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-getfilesizeinbytes" visibility="public" name="getFileSizeInBytes" returnType="float" params={[{"type":"string","name":"size","default":null}]}>
+Convert a string like "2.5MB" in bytes
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-getmessagefileempty" visibility="public" name="getMessageFileEmpty" returnType="string" params={[]}>
+Empty is empty
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-getmessageinisize" visibility="public" name="getMessageIniSize" returnType="string" params={[]}>
+File exceeds the file size set in PHP configuration
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-getmessagevalid" visibility="public" name="getMessageValid" returnType="string" params={[]}>
+File is not valid
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-isallowempty" visibility="public" name="isAllowEmpty" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Check on empty
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-setmessagefileempty" visibility="public" name="setMessageFileEmpty" returnType="void" params={[{"type":"string","name":"message","default":null}]}>
+Empty is empty
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-setmessageinisize" visibility="public" name="setMessageIniSize" returnType="void" params={[{"type":"string","name":"message","default":null}]}>
+File exceeds the file size set in PHP configuration
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-setmessagevalid" visibility="public" name="setMessageValid" returnType="void" params={[{"type":"string","name":"message","default":null}]}>
+File is not valid
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-checkisuploadedfile" visibility="protected" name="checkIsUploadedFile" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Checks if a file has been uploaded; Internal check that can be
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$messageFileEmpty</span><span class="sm"> = &quot;Field :field must not be empty&quot;</span></code>
-<span class="desc">Empty is empty</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$messageIniSize</span><span class="sm"> = &quot;File :field exceeds the maximum file size&quot;</span></code>
-<span class="desc">File exceeds the file size set in PHP configuration</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$messageValid</span><span class="sm"> = &quot;Field :field is not valid&quot;</span></code>
-<span class="desc">File is not valid</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="messageFileEmpty" type="string" default="&quot;Field :field must not be empty&quot;">
+Empty is empty
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="messageIniSize" type="string" default="&quot;File :field exceeds the maximum file size&quot;">
+File exceeds the file size set in PHP configuration
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="messageValid" type="string" default="&quot;Field :field is not valid&quot;">
+File is not valid
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 12</div>
 
 <h4 id="filtervalidationvalidatorfileabstractfile-checkupload"><code>checkUpload()</code></h4>
 
 ```php
 public function checkUpload(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -4666,8 +3464,8 @@ Check upload
 
 ```php
 public function checkUploadIsEmpty(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -4677,8 +3475,8 @@ Check if upload is empty
 
 ```php
 public function checkUploadIsValid(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -4688,8 +3486,8 @@ Check if upload is valid
 
 ```php
 public function checkUploadMaxSize(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -4731,8 +3529,8 @@ File is not valid
 
 ```php
 public function isAllowEmpty(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -4762,8 +3560,6 @@ public function setMessageValid( string $message ): void;
 
 File is not valid
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="filtervalidationvalidatorfileabstractfile-checkisuploadedfile"><code>checkIsUploadedFile()</code></h4>
 
 ```php
@@ -4775,8 +3571,7 @@ overridden in a subclass if you do not want to check uploaded files
 
 ## Filter\Validation\Validator\File\MimeType
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/File/MimeType.php">Source on GitHub</a>
+Class
 
 Checks if a value has a correct file mime type
 
@@ -4787,85 +3582,69 @@ use Phalcon\Filter\Validation\Validator\File\MimeType;
 $validator = new Validation();
 
 $validator->add(
-    "file",
-    new MimeType(
-        [
-            "types" => [
-                "image/jpeg",
-                "image/png",
-            ],
-            "message" => "Allowed file types are :types"
-        ]
-    )
+"file",
+new MimeType(
+    [
+        "types" => [
+            "image/jpeg",
+            "image/png",
+        ],
+        "message" => "Allowed file types are :types"
+    ]
+)
 );
 
 $validator->add(
+[
+    "file",
+    "anotherFile",
+],
+new MimeType(
     [
-        "file",
-        "anotherFile",
-    ],
-    new MimeType(
-        [
-            "types" => [
-                "file"        => [
-                    "image/jpeg",
-                    "image/png",
-                ],
-                "anotherFile" => [
-                    "image/gif",
-                    "image/bmp",
-                ],
+        "types" => [
+            "file"        => [
+                "image/jpeg",
+                "image/png",
             ],
-            "message" => [
-                "file"        => "Allowed file types are image/jpeg and image/png",
-                "anotherFile" => "Allowed file types are image/gif and image/bmp",
-            ]
+            "anotherFile" => [
+                "image/gif",
+                "image/bmp",
+            ],
+        ],
+        "message" => [
+            "file"        => "Allowed file types are image/jpeg and image/png",
+            "anotherFile" => "Allowed file types are image/gif and image/bmp",
         ]
-    )
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
 - **`Phalcon\Filter\Validation\Validator\File\MimeType`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfilemimetype-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfilemimetype-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field must be of type: :types&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field must be of type: :types&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationvalidatorfilemimetype-validate"><code>validate()</code></h4>
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -4873,8 +3652,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\File\Resolution\AspectRatio
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/File/Resolution/AspectRatio.php">Source on GitHub</a>
+Class
 
 Checks if a file has the exact aspect ratio
 
@@ -4889,74 +3667,56 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio;
 $validator = new Validation();
 
 $validator->add(
-    "file",
-    new AspectRatio(
-        [
-            "ratio"   => "16x9",
-            "message" => "The aspect ratio of the field :field has to be :ratio",
-        ]
-    )
+"file",
+new AspectRatio(
+    [
+        "ratio"   => "16x9",
+        "message" => "The aspect ratio of the field :field has to be :ratio",
+    ]
+)
 );
 
 $validator->add(
+[
+    "file",
+    "anotherFile",
+],
+new AspectRatio(
     [
-        "file",
-        "anotherFile",
-    ],
-    new AspectRatio(
-        [
-            "ratio" => [
-                "file"        => "16x9",
-                "anotherFile" => "4x3",
-            ],
-            "message" => [
-                "file"        => "Aspect ratio of file has to be 16x9",
-                "anotherFile" => "Aspect ratio of anotherFile has to be 4x3",
-            ],
-        ]
-    )
+        "ratio" => [
+            "file"        => "16x9",
+            "anotherFile" => "4x3",
+        ],
+        "message" => [
+            "file"        => "Aspect ratio of file has to be 16x9",
+            "anotherFile" => "Aspect ratio of anotherFile has to be 4x3",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
 - **`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfileresolutionaspectratio-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileresolutionaspectratio-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfileresolutionaspectratio-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileresolutionaspectratio-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field does not have the exact aspect ratio of :ratio&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field does not have the exact aspect ratio of :ratio&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorfileresolutionaspectratio-__construct"><code>__construct()</code></h4>
 
@@ -4970,8 +3730,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -4979,8 +3739,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\File\Resolution\Equal
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/File/Resolution/Equal.php">Source on GitHub</a>
+Class
 
 Checks if a file has the right resolution
 
@@ -4991,74 +3750,56 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Equal;
 $validator = new Validation();
 
 $validator->add(
-    "file",
-    new Equal(
-        [
-            "resolution" => "800x600",
-            "message"    => "The resolution of the field :field has to be equal :resolution",
-        ]
-    )
+"file",
+new Equal(
+    [
+        "resolution" => "800x600",
+        "message"    => "The resolution of the field :field has to be equal :resolution",
+    ]
+)
 );
 
 $validator->add(
+[
+    "file",
+    "anotherFile",
+],
+new Equal(
     [
-        "file",
-        "anotherFile",
-    ],
-    new Equal(
-        [
-            "resolution" => [
-                "file"        => "800x600",
-                "anotherFile" => "1024x768",
-            ],
-            "message" => [
-                "file"        => "Equal resolution of file has to be 800x600",
-                "anotherFile" => "Equal resolution of file has to be 1024x768",
-            ],
-        ]
-    )
+        "resolution" => [
+            "file"        => "800x600",
+            "anotherFile" => "1024x768",
+        ],
+        "message" => [
+            "file"        => "Equal resolution of file has to be 800x600",
+            "anotherFile" => "Equal resolution of file has to be 1024x768",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
 - **`Phalcon\Filter\Validation\Validator\File\Resolution\Equal`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfileresolutionequal-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileresolutionequal-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfileresolutionequal-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileresolutionequal-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;The resolution of the field :field has to be equal :resolution&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;The resolution of the field :field has to be equal :resolution&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorfileresolutionequal-__construct"><code>__construct()</code></h4>
 
@@ -5072,8 +3813,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -5081,8 +3822,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\File\Resolution\Max
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/File/Resolution/Max.php">Source on GitHub</a>
+Class
 
 Checks if a file has the right resolution
 
@@ -5093,79 +3833,61 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Max;
 $validator = new Validation();
 
 $validator->add(
-    "file",
-    new Max(
-        [
-            "resolution"      => "800x600",
-            "message"  => "Max resolution of :field is :resolution",
-            "included" => true,
-        ]
-    )
+"file",
+new Max(
+    [
+        "resolution"      => "800x600",
+        "message"  => "Max resolution of :field is :resolution",
+        "included" => true,
+    ]
+)
 );
 
 $validator->add(
+[
+    "file",
+    "anotherFile",
+],
+new Max(
     [
-        "file",
-        "anotherFile",
-    ],
-    new Max(
-        [
-            "resolution" => [
-                "file"        => "800x600",
-                "anotherFile" => "1024x768",
-            ],
-            "included" => [
-                "file"        => false,
-                "anotherFile" => true,
-            ],
-            "message" => [
-                "file"        => "Max resolution of file is 800x600",
-                "anotherFile" => "Max resolution of file is 1024x768",
-            ],
-        ]
-    )
+        "resolution" => [
+            "file"        => "800x600",
+            "anotherFile" => "1024x768",
+        ],
+        "included" => [
+            "file"        => false,
+            "anotherFile" => true,
+        ],
+        "message" => [
+            "file"        => "Max resolution of file is 800x600",
+            "anotherFile" => "Max resolution of file is 1024x768",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
 - **`Phalcon\Filter\Validation\Validator\File\Resolution\Max`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfileresolutionmax-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileresolutionmax-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfileresolutionmax-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileresolutionmax-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field exceeds the maximum resolution of :resolution&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field exceeds the maximum resolution of :resolution&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorfileresolutionmax-__construct"><code>__construct()</code></h4>
 
@@ -5179,8 +3901,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -5188,8 +3910,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\File\Resolution\Min
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/File/Resolution/Min.php">Source on GitHub</a>
+Class
 
 Checks if a file has the right resolution
 
@@ -5200,79 +3921,61 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Min;
 $validator = new Validation();
 
 $validator->add(
-    "file",
-    new Min(
-        [
-            "resolution" => "800x600",
-            "message"    => "Min resolution of :field is :resolution",
-            "included"   => true,
-        ]
-    )
+"file",
+new Min(
+    [
+        "resolution" => "800x600",
+        "message"    => "Min resolution of :field is :resolution",
+        "included"   => true,
+    ]
+)
 );
 
 $validator->add(
+[
+    "file",
+    "anotherFile",
+],
+new Min(
     [
-        "file",
-        "anotherFile",
-    ],
-    new Min(
-        [
-            "resolution" => [
-                "file"        => "800x600",
-                "anotherFile" => "1024x768",
-            ],
-            "included" => [
-                "file"        => false,
-                "anotherFile" => true,
-            ],
-            "message" => [
-                "file"        => "Min resolution of file is 800x600",
-                "anotherFile" => "Min resolution of file is 1024x768",
-            ],
-        ]
-    )
+        "resolution" => [
+            "file"        => "800x600",
+            "anotherFile" => "1024x768",
+        ],
+        "included" => [
+            "file"        => false,
+            "anotherFile" => true,
+        ],
+        "message" => [
+            "file"        => "Min resolution of file is 800x600",
+            "anotherFile" => "Min resolution of file is 1024x768",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
 - **`Phalcon\Filter\Validation\Validator\File\Resolution\Min`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfileresolutionmin-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfileresolutionmin-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfileresolutionmin-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileresolutionmin-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field can not have the minimum resolution of :resolution&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field can not have the minimum resolution of :resolution&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorfileresolutionmin-__construct"><code>__construct()</code></h4>
 
@@ -5286,8 +3989,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -5295,8 +3998,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\File\Size\Equal
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/File/Size/Equal.php">Source on GitHub</a>
+Class
 
 Checks if a value has a correct file
 
@@ -5307,41 +4009,39 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-    "file",
-    new Equal(
-        [
-            "size"     => "2M",
-            "included" => true,
-            "message"  => ":field exceeds the equal file size (:size)",
-        ]
-    )
+"file",
+new Equal(
+    [
+        "size"     => "2M",
+        "included" => true,
+        "message"  => ":field exceeds the equal file size (:size)",
+    ]
+)
 );
 
 $validator->add(
+[
+    "file",
+    "anotherFile",
+],
+new Equal(
     [
-        "file",
-        "anotherFile",
-    ],
-    new Equal(
-        [
-            "size" => [
-                "file"        => "2M",
-                "anotherFile" => "4M",
-            ],
-            "included" => [
-                "file"        => false,
-                "anotherFile" => true,
-            ],
-            "message" => [
-                "file"        => "file does not have the right file size",
-                "anotherFile" => "anotherFile wrong file size (4MB)",
-            ],
-        ]
-    )
+        "size" => [
+            "file"        => "2M",
+            "anotherFile" => "4M",
+        ],
+        "included" => [
+            "file"        => false,
+            "anotherFile" => true,
+        ],
+        "message" => [
+            "file"        => "file does not have the right file size",
+            "anotherFile" => "anotherFile wrong file size (4MB)",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
@@ -5349,60 +4049,42 @@ $validator->add(
 - [`Phalcon\Filter\Validation\Validator\File\Size\Max`](#filtervalidationvalidatorfilesizemax)
 - [`Phalcon\Filter\Validation\Validator\File\Size\Min`](#filtervalidationvalidatorfilesizemin)
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfilesizeequal-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfilesizeequal-getconditional">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">float</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">float</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Executes the conditional</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfilesizeequal-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfilesizeequal-getconditional" visibility="protected" name="getConditional" returnType="" params={[{"type":"float","name":"source","default":null},{"type":"float","name":"target","default":null},{"type":"bool","name":"included","default":"false"}]}>
+Executes the conditional
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field does not have the exact :size file size&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field does not have the exact :size file size&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationvalidatorfilesizeequal-validate"><code>validate()</code></h4>
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
 Executes the validation
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="filtervalidationvalidatorfilesizeequal-getconditional"><code>getConditional()</code></h4>
 
 ```php
 protected function getConditional(
-    float $source,
-    float $target,
-    bool $included = false
+float $source,
+float $target,
+bool $included = false
 );
 ```
 
@@ -5410,8 +4092,7 @@ Executes the conditional
 
 ## Filter\Validation\Validator\File\Size\Max
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/File/Size/Max.php">Source on GitHub</a>
+Class
 
 Checks if a value has a correct file
 
@@ -5422,80 +4103,65 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-    "file",
-    new Max(
-        [
-            "size"     => "2M",
-            "included" => true,
-            "message"  => ":field exceeds the max file size (:size)",
-        ]
-    )
+"file",
+new Max(
+    [
+        "size"     => "2M",
+        "included" => true,
+        "message"  => ":field exceeds the max file size (:size)",
+    ]
+)
 );
 
 $validator->add(
+[
+    "file",
+    "anotherFile",
+],
+new Max(
     [
-        "file",
-        "anotherFile",
-    ],
-    new Max(
-        [
-            "size" => [
-                "file"        => "2M",
-                "anotherFile" => "4M",
-            ],
-            "included" => [
-                "file"        => false,
-                "anotherFile" => true,
-            ],
-            "message" => [
-                "file"        => "file exceeds the max file size 2M",
-                "anotherFile" => "anotherFile exceeds the max file size 4M",
-            ],
-        ]
-    )
+        "size" => [
+            "file"        => "2M",
+            "anotherFile" => "4M",
+        ],
+        "included" => [
+            "file"        => false,
+            "anotherFile" => true,
+        ],
+        "message" => [
+            "file"        => "file exceeds the max file size 2M",
+            "anotherFile" => "anotherFile exceeds the max file size 4M",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
 - [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
 - **`Phalcon\Filter\Validation\Validator\File\Size\Max`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfilesizemax-getconditional">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">float</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">float</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Executes the conditional</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfilesizemax-getconditional" visibility="protected" name="getConditional" returnType="" params={[{"type":"float","name":"source","default":null},{"type":"float","name":"target","default":null},{"type":"bool","name":"included","default":"false"}]}>
+Executes the conditional
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field exceeds the size of :size&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field exceeds the size of :size&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Protected · 1</div>
 
 <h4 id="filtervalidationvalidatorfilesizemax-getconditional"><code>getConditional()</code></h4>
 
 ```php
 protected function getConditional(
-    float $source,
-    float $target,
-    bool $included = false
+float $source,
+float $target,
+bool $included = false
 );
 ```
 
@@ -5503,8 +4169,7 @@ Executes the conditional
 
 ## Filter\Validation\Validator\File\Size\Min
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/File/Size/Min.php">Source on GitHub</a>
+Class
 
 Checks if a value has a correct file
 
@@ -5515,80 +4180,65 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-    "file",
-    new Min(
-        [
-            "size"     => "2M",
-            "included" => true,
-            "message"  => ":field exceeds the min file size (:size)",
-        ]
-    )
+"file",
+new Min(
+    [
+        "size"     => "2M",
+        "included" => true,
+        "message"  => ":field exceeds the min file size (:size)",
+    ]
+)
 );
 
 $validator->add(
+[
+    "file",
+    "anotherFile",
+],
+new Min(
     [
-        "file",
-        "anotherFile",
-    ],
-    new Min(
-        [
-            "size" => [
-                "file"        => "2M",
-                "anotherFile" => "4M",
-            ],
-            "included" => [
-                "file"        => false,
-                "anotherFile" => true,
-            ],
-            "message" => [
-                "file"        => "file exceeds the min file size 2M",
-                "anotherFile" => "anotherFile exceeds the min file size 4M",
-            ],
-        ]
-    )
+        "size" => [
+            "file"        => "2M",
+            "anotherFile" => "4M",
+        ],
+        "included" => [
+            "file"        => false,
+            "anotherFile" => true,
+        ],
+        "message" => [
+            "file"        => "file exceeds the min file size 2M",
+            "anotherFile" => "anotherFile exceeds the min file size 4M",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
 - [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
 - **`Phalcon\Filter\Validation\Validator\File\Size\Min`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfilesizemin-getconditional">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">float</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">float</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Executes the conditional</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfilesizemin-getconditional" visibility="protected" name="getConditional" returnType="" params={[{"type":"float","name":"source","default":null},{"type":"float","name":"target","default":null},{"type":"bool","name":"included","default":"false"}]}>
+Executes the conditional
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field can not have the minimum size of :size&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field can not have the minimum size of :size&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Protected · 1</div>
 
 <h4 id="filtervalidationvalidatorfilesizemin-getconditional"><code>getConditional()</code></h4>
 
 ```php
 protected function getConditional(
-    float $source,
-    float $target,
-    bool $included = false
+float $source,
+float $target,
+bool $included = false
 );
 ```
 
@@ -5596,8 +4246,7 @@ Executes the conditional
 
 ## Filter\Validation\Validator\Files
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Files.php">Source on GitHub</a>
+Class
 
 Validates an array of uploaded files by delegating each file to the `File`
 validator. Accepts the same options as `Phalcon\Filter\Validation\Validator\File`
@@ -5613,60 +4262,43 @@ use Phalcon\Filter\Validation\Validator\Files as FilesValidator;
 $validation = new Validation();
 
 $validation->add(
-    "photos",
-    new FilesValidator(
-        [
-            "maxSize"      => "2M",
-            "messageSize"  => ":field exceeds the max file size (:size)",
-            "allowedTypes" => ["image/jpeg", "image/png"],
-            "messageType"  => "Allowed file types are :types",
-        ]
-    )
+"photos",
+new FilesValidator(
+    [
+        "maxSize"      => "2M",
+        "messageSize"  => ":field exceeds the max file size (:size)",
+        "allowedTypes" => ["image/jpeg", "image/png"],
+        "messageType"  => "Allowed file types are :types",
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Files`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorfiles-isallowempty">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAllowEmpty</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Whole-field empty check: true when the field carries no uploaded files.</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfiles-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation, delegating each file to a <code>File</code> validator.</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorfiles-normalizefiles">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">normalizeFiles</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
-<span class="desc">Normalizes a single file or a transposed multi-file <code>$_FILES</code> node into a</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorfiles-isallowempty" visibility="public" name="isAllowEmpty" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Whole-field empty check: true when the field carries no uploaded files.
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfiles-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation, delegating each file to a `File` validator.
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfiles-normalizefiles" visibility="protected" name="normalizeFiles" returnType="array" params={[{"type":"mixed","name":"value","default":null}]}>
+Normalizes a single file or a transposed multi-file `$_FILES` node into a
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorfiles-isallowempty"><code>isAllowEmpty()</code></h4>
 
 ```php
 public function isAllowEmpty(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -5676,14 +4308,12 @@ Whole-field empty check: true when the field carries no uploaded files.
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
 Executes the validation, delegating each file to a `File` validator.
-
-<div class="api-group">Protected · 1</div>
 
 <h4 id="filtervalidationvalidatorfiles-normalizefiles"><code>normalizeFiles()</code></h4>
 
@@ -5696,8 +4326,7 @@ list of single-file structures.
 
 ## Filter\Validation\Validator\Identical
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Identical.php">Source on GitHub</a>
+Class
 
 Checks if a value is identical to other
 
@@ -5708,73 +4337,55 @@ use Phalcon\Filter\Validation\Validator\Identical;
 $validator = new Validation();
 
 $validator->add(
-    "terms",
-    new Identical(
-        [
-            "accepted" => "yes",
-            "message" => "Terms and conditions must be accepted",
-        ]
-    )
+"terms",
+new Identical(
+    [
+        "accepted" => "yes",
+        "message" => "Terms and conditions must be accepted",
+    ]
+)
 );
 
 $validator->add(
+[
+    "terms",
+    "anotherTerms",
+],
+new Identical(
     [
-        "terms",
-        "anotherTerms",
-    ],
-    new Identical(
-        [
-            "accepted" => [
-                "terms"        => "yes",
-                "anotherTerms" => "yes",
-            ],
-            "message" => [
-                "terms"        => "Terms and conditions must be accepted",
-                "anotherTerms" => "Another terms  must be accepted",
-            ],
-        ]
-    )
+        "accepted" => [
+            "terms"        => "yes",
+            "anotherTerms" => "yes",
+        ],
+        "message" => [
+            "terms"        => "Terms and conditions must be accepted",
+            "anotherTerms" => "Another terms  must be accepted",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Identical`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatoridentical-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatoridentical-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatoridentical-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatoridentical-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field does not have the expected value&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not have the expected value&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatoridentical-__construct"><code>__construct()</code></h4>
 
@@ -5788,8 +4399,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -5797,8 +4408,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\InclusionIn
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/InclusionIn.php">Source on GitHub</a>
+Class
 
 Check if a value is included into a list of values
 
@@ -5809,73 +4419,55 @@ use Phalcon\Filter\Validation\Validator\InclusionIn;
 $validator = new Validation();
 
 $validator->add(
-    "status",
-    new InclusionIn(
-        [
-            "message" => "The status must be A or B",
-            "domain"  => ["A", "B"],
-        ]
-    )
+"status",
+new InclusionIn(
+    [
+        "message" => "The status must be A or B",
+        "domain"  => ["A", "B"],
+    ]
+)
 );
 
 $validator->add(
+[
+    "status",
+    "type",
+],
+new InclusionIn(
     [
-        "status",
-        "type",
-    ],
-    new InclusionIn(
-        [
-            "message" => [
-                "status" => "The status must be A or B",
-                "type"   => "The status must be 1 or 2",
-            ],
-            "domain" => [
-                "status" => ["A", "B"],
-                "type"   => [1, 2],
-            ]
+        "message" => [
+            "status" => "The status must be A or B",
+            "type"   => "The status must be 1 or 2",
+        ],
+        "domain" => [
+            "status" => ["A", "B"],
+            "type"   => [1, 2],
         ]
-    )
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\InclusionIn`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorinclusionin-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorinclusionin-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorinclusionin-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorinclusionin-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be a part of list: :domain&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a part of list: :domain&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorinclusionin-__construct"><code>__construct()</code></h4>
 
@@ -5889,8 +4481,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -5898,8 +4490,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Ip
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Ip.php">Source on GitHub</a>
+Class
 
 Check for IP addresses
 
@@ -5907,101 +4498,77 @@ Check for IP addresses
 use Phalcon\Filter\Validation\Validator\Ip as IpValidator;
 
 $validator->add(
-    "ip_address",
-    new IpValidator(
-        [
-            "message"       => ":field must contain only ip addresses",
-            "version"       => IP::VERSION_4 | IP::VERSION_6, // v6 and v4. The same if not specified
-            "allowReserved" => false,   // False if not specified. Ignored for v6
-            "allowPrivate"  => false,   // False if not specified
-            "allowEmpty"    => false,
-        ]
-    )
+"ip_address",
+new IpValidator(
+    [
+        "message"       => ":field must contain only ip addresses",
+        "version"       => IP::VERSION_4 | IP::VERSION_6, // v6 and v4. The same if not specified
+        "allowReserved" => false,   // False if not specified. Ignored for v6
+        "allowPrivate"  => false,   // False if not specified
+        "allowEmpty"    => false,
+    ]
+)
 );
 
 $validator->add(
+[
+    "source_address",
+    "destination_address",
+],
+new IpValidator(
     [
-        "source_address",
-        "destination_address",
-    ],
-    new IpValidator(
-        [
-            "message" => [
-                "source_address"      => "source_address must be a valid IP address",
-                "destination_address" => "destination_address must be a valid IP address",
-            ],
-            "version" => [
-                 "source_address"      => Ip::VERSION_4 | IP::VERSION_6,
-                 "destination_address" => Ip::VERSION_4,
-            ],
-            "allowReserved" => [
-                 "source_address"      => false,
-                 "destination_address" => true,
-            ],
-            "allowPrivate" => [
-                 "source_address"      => false,
-                 "destination_address" => true,
-            ],
-            "allowEmpty" => [
-                 "source_address"      => false,
-                 "destination_address" => true,
-            ],
-        ]
-    )
+        "message" => [
+            "source_address"      => "source_address must be a valid IP address",
+            "destination_address" => "destination_address must be a valid IP address",
+        ],
+        "version" => [
+             "source_address"      => Ip::VERSION_4 | IP::VERSION_6,
+             "destination_address" => Ip::VERSION_4,
+        ],
+        "allowReserved" => [
+             "source_address"      => false,
+             "destination_address" => true,
+        ],
+        "allowPrivate" => [
+             "source_address"      => false,
+             "destination_address" => true,
+        ],
+        "allowEmpty" => [
+             "source_address"      => false,
+             "destination_address" => true,
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Ip`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorip-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorip-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorip-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorip-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">bool</code>
-<code class="sig"><span class="sc">VERSION_4</span><span class="sm"> = FILTER_FLAG_IPV4</span></code>
-</div>
-<div class="api-item">
-<code class="ret">bool</code>
-<code class="sig"><span class="sc">VERSION_6</span><span class="sm"> = FILTER_FLAG_IPV6</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="VERSION_4" type="bool" default="FILTER_FLAG_IPV4">
+</ApiItem>
+<ApiItem kind="constant" name="VERSION_6" type="bool" default="FILTER_FLAG_IPV6">
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be a valid IP address&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a valid IP address&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorip-__construct"><code>__construct()</code></h4>
 
@@ -6015,8 +4582,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -6024,8 +4591,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Numericality
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Numericality.php">Source on GitHub</a>
+Class
 
 Check for a valid numeric value
 
@@ -6036,68 +4602,50 @@ use Phalcon\Filter\Validation\Validator\Numericality;
 $validator = new Validation();
 
 $validator->add(
-    "price",
-    new Numericality(
-        [
-            "message" => ":field is not numeric",
-        ]
-    )
+"price",
+new Numericality(
+    [
+        "message" => ":field is not numeric",
+    ]
+)
 );
 
 $validator->add(
+[
+    "price",
+    "amount",
+],
+new Numericality(
     [
-        "price",
-        "amount",
-    ],
-    new Numericality(
-        [
-            "message" => [
-                "price"  => "price is not numeric",
-                "amount" => "amount is not numeric",
-            ]
+        "message" => [
+            "price"  => "price is not numeric",
+            "amount" => "amount is not numeric",
         ]
-    )
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Numericality`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatornumericality-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatornumericality-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatornumericality-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatornumericality-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field does not have a valid numeric format&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not have a valid numeric format&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatornumericality-__construct"><code>__construct()</code></h4>
 
@@ -6111,8 +4659,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -6120,8 +4668,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\PresenceOf
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/PresenceOf.php">Source on GitHub</a>
+Class
 
 Validates that a value is not null or empty string
 
@@ -6132,68 +4679,50 @@ use Phalcon\Filter\Validation\Validator\PresenceOf;
 $validator = new Validation();
 
 $validator->add(
-    "name",
-    new PresenceOf(
-        [
-            "message" => "The name is required",
-        ]
-    )
+"name",
+new PresenceOf(
+    [
+        "message" => "The name is required",
+    ]
+)
 );
 
 $validator->add(
+[
+    "name",
+    "email",
+],
+new PresenceOf(
     [
-        "name",
-        "email",
-    ],
-    new PresenceOf(
-        [
-            "message" => [
-                "name"  => "The name is required",
-                "email" => "The email is required",
-            ],
-        ]
-    )
+        "message" => [
+            "name"  => "The name is required",
+            "email" => "The email is required",
+        ],
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\PresenceOf`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorpresenceof-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorpresenceof-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorpresenceof-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorpresenceof-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field is required&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is required&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorpresenceof-__construct"><code>__construct()</code></h4>
 
@@ -6207,8 +4736,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -6216,8 +4745,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Regex
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Regex.php">Source on GitHub</a>
+Class
 
 Allows validate if the value of a field matches a regular expression
 
@@ -6228,73 +4756,55 @@ use Phalcon\Filter\Validation\Validator\Regex as RegexValidator;
 $validator = new Validation();
 
 $validator->add(
-    "created_at",
-    new RegexValidator(
-        [
-            "pattern" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
-            "message" => "The creation date is invalid",
-        ]
-    )
+"created_at",
+new RegexValidator(
+    [
+        "pattern" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
+        "message" => "The creation date is invalid",
+    ]
+)
 );
 
 $validator->add(
+[
+    "created_at",
+    "name",
+],
+new RegexValidator(
     [
-        "created_at",
-        "name",
-    ],
-    new RegexValidator(
-        [
-            "pattern" => [
-                "created_at" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
-                "name"       => "/^[a-z]$/",
-            ],
-            "message" => [
-                "created_at" => "The creation date is invalid",
-                "name"       => "The name is invalid",
-            ]
+        "pattern" => [
+            "created_at" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
+            "name"       => "/^[a-z]$/",
+        ],
+        "message" => [
+            "created_at" => "The creation date is invalid",
+            "name"       => "The name is invalid",
         ]
-    )
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Regex`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorregex-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorregex-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorregex-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorregex-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field does not match the required format&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not match the required format&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorregex-__construct"><code>__construct()</code></h4>
 
@@ -6308,8 +4818,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -6317,8 +4827,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\StringLength
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/StringLength.php">Source on GitHub</a>
+Class
 
 Validates that a string has the specified maximum and minimum constraints
 The test is passed if for a string's length L, min&lt;=L&lt;=max, i.e. L must
@@ -6337,78 +4846,68 @@ use Phalcon\Filter\Validation\Validator\StringLength as StringLength;
 $validator = new Validation();
 
 $validation->add(
-    "name_last",
-    new StringLength(
-        [
-            "max"             => 50,
-            "min"             => 2,
-            "messageMaximum"  => "We don't like really long names",
-            "messageMinimum"  => "We want more than just their initials",
-            "includedMaximum" => true,
-            "includedMinimum" => false,
-        ]
-    )
+"name_last",
+new StringLength(
+    [
+        "max"             => 50,
+        "min"             => 2,
+        "messageMaximum"  => "We don't like really long names",
+        "messageMinimum"  => "We want more than just their initials",
+        "includedMaximum" => true,
+        "includedMinimum" => false,
+    ]
+)
 );
 
 $validation->add(
+[
+    "name_last",
+    "name_first",
+],
+new StringLength(
     [
-        "name_last",
-        "name_first",
-    ],
-    new StringLength(
-        [
-            "max" => [
-                "name_last"  => 50,
-                "name_first" => 40,
-            ],
-            "min" => [
-                "name_last"  => 2,
-                "name_first" => 4,
-            ],
-            "messageMaximum" => [
-                "name_last"  => "We don't like really long last names",
-                "name_first" => "We don't like really long first names",
-            ],
-            "messageMinimum" => [
-                "name_last"  => "We don't like too short last names",
-                "name_first" => "We don't like too short first names",
-            ],
-            "includedMaximum" => [
-                "name_last"  => false,
-                "name_first" => true,
-            ],
-            "includedMinimum" => [
-                "name_last"  => false,
-                "name_first" => true,
-            ]
+        "max" => [
+            "name_last"  => 50,
+            "name_first" => 40,
+        ],
+        "min" => [
+            "name_last"  => 2,
+            "name_first" => 4,
+        ],
+        "messageMaximum" => [
+            "name_last"  => "We don't like really long last names",
+            "name_first" => "We don't like really long first names",
+        ],
+        "messageMinimum" => [
+            "name_last"  => "We don't like too short last names",
+            "name_first" => "We don't like too short first names",
+        ],
+        "includedMaximum" => [
+            "name_last"  => false,
+            "name_first" => true,
+        ],
+        "includedMinimum" => [
+            "name_last"  => false,
+            "name_first" => true,
         ]
-    )
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
 - **`Phalcon\Filter\Validation\Validator\StringLength`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message`
+`Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorstringlength-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorstringlength-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="filtervalidationvalidatorstringlength-__construct"><code>__construct()</code></h4>
 
@@ -6420,8 +4919,7 @@ Constructor
 
 ## Filter\Validation\Validator\StringLength\Max
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/StringLength/Max.php">Source on GitHub</a>
+Class
 
 Validates that a string has the specified maximum constraints
 The test is passed if for a string's length L, L&lt;=max, i.e. L must
@@ -6439,78 +4937,60 @@ use Phalcon\Filter\Validation\Validator\StringLength\Max;
 $validator = new Validation();
 
 $validation->add(
-    "name_last",
-    new Max(
-        [
-            "max"      => 50,
-            "message"  => "We don't like really long names",
-            "included" => true
-        ]
-    )
+"name_last",
+new Max(
+    [
+        "max"      => 50,
+        "message"  => "We don't like really long names",
+        "included" => true
+    ]
+)
 );
 
 $validation->add(
+[
+    "name_last",
+    "name_first",
+],
+new Max(
     [
-        "name_last",
-        "name_first",
-    ],
-    new Max(
-        [
-            "max" => [
-                "name_last"  => 50,
-                "name_first" => 40,
-            ],
-            "message" => [
-                "name_last"  => "We don't like really long last names",
-                "name_first" => "We don't like really long first names",
-            ],
-            "included" => [
-                "name_last"  => false,
-                "name_first" => true,
-            ]
+        "max" => [
+            "name_last"  => 50,
+            "name_first" => 40,
+        ],
+        "message" => [
+            "name_last"  => "We don't like really long last names",
+            "name_first" => "We don't like really long first names",
+        ],
+        "included" => [
+            "name_last"  => false,
+            "name_first" => true,
         ]
-    )
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorstringlengthmax-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorstringlengthmax-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorstringlengthmax-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorstringlengthmax-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must not exceed :max characters long&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must not exceed :max characters long&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorstringlengthmax-__construct"><code>__construct()</code></h4>
 
@@ -6524,8 +5004,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -6533,8 +5013,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\StringLength\Min
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/StringLength/Min.php">Source on GitHub</a>
+Class
 
 Validates that a string has the specified minimum constraints
 The test is passed if for a string's length L, min&lt;=L, i.e. L must
@@ -6552,78 +5031,60 @@ use Phalcon\Filter\Validation\Validator\StringLength\Min;
 $validator = new Validation();
 
 $validation->add(
-    "name_last",
-    new Min(
-        [
-            "min"     => 2,
-            "message" => "We want more than just their initials",
-            "included" => false
-        ]
-    )
+"name_last",
+new Min(
+    [
+        "min"     => 2,
+        "message" => "We want more than just their initials",
+        "included" => false
+    ]
+)
 );
 
 $validation->add(
+[
+    "name_last",
+    "name_first",
+],
+new Min(
     [
-        "name_last",
-        "name_first",
-    ],
-    new Min(
-        [
-            "min" => [
-                "name_last"  => 2,
-                "name_first" => 4,
-            ],
-            "message" => [
-                "name_last"  => "We don't like too short last names",
-                "name_first" => "We don't like too short first names",
-            ],
-            "included" => [
-                "name_last"  => false,
-                "name_first" => true,
-            ]
+        "min" => [
+            "name_last"  => 2,
+            "name_first" => 4,
+        ],
+        "message" => [
+            "name_last"  => "We don't like too short last names",
+            "name_first" => "We don't like too short first names",
+        ],
+        "included" => [
+            "name_last"  => false,
+            "name_first" => true,
         ]
-    )
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorstringlengthmin-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorstringlengthmin-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorstringlengthmin-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorstringlengthmin-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be at least :min characters long&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be at least :min characters long&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorstringlengthmin-__construct"><code>__construct()</code></h4>
 
@@ -6637,8 +5098,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
@@ -6646,8 +5107,7 @@ Executes the validation
 
 ## Filter\Validation\Validator\Uniqueness
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Uniqueness.php">Source on GitHub</a>
+Class
 
 Check that a field is unique in the related table
 
@@ -6658,45 +5118,45 @@ use Phalcon\Filter\Validation\Validator\Uniqueness as UniquenessValidator;
 $validator = new Validation();
 
 $validator->add(
-    "username",
-    new UniquenessValidator(
-        [
-            "model"   => new Users(),
-            "message" => ":field must be unique",
-        ]
-    )
+"username",
+new UniquenessValidator(
+    [
+        "model"   => new Users(),
+        "message" => ":field must be unique",
+    ]
+)
 );
 ```
 
 Different attribute from the field:
 ```php
 $validator->add(
-    "username",
-    new UniquenessValidator(
-        [
-            "model"     => new Users(),
-            "attribute" => "nick",
-        ]
-    )
+"username",
+new UniquenessValidator(
+    [
+        "model"     => new Users(),
+        "attribute" => "nick",
+    ]
+)
 );
 ```
 
 In model:
 ```php
 $validator->add(
-    "username",
-    new UniquenessValidator()
+"username",
+new UniquenessValidator()
 );
 ```
 
 Combination of fields in model:
 ```php
 $validator->add(
-    [
-        "firstName",
-        "lastName",
-    ],
-    new UniquenessValidator()
+[
+    "firstName",
+    "lastName",
+],
+new UniquenessValidator()
 );
 ```
 
@@ -6705,81 +5165,51 @@ situations where values need to be converted to do the database lookup:
 
 ```php
 $validator->add(
-    "username",
-    new UniquenessValidator(
-        [
-            "convert" => function (array $values) {
-                $values["username"] = strtolower($values["username"]);
+"username",
+new UniquenessValidator(
+    [
+        "convert" => function (array $values) {
+            $values["username"] = strtolower($values["username"]);
 
-                return $values;
-            }
-        ]
-    )
+            return $values;
+        }
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
 - **`Phalcon\Filter\Validation\Validator\Uniqueness`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray` · `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired` · `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel` · `Phalcon\Messages\Message` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Support\Settings`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray` · `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired` · `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel` · `Phalcon\Messages\Message` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatoruniqueness-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatoruniqueness-getoption">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Returns an option in the validator&#039;s options</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatoruniqueness-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatoruniqueness-getcolumnnamereal">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getColumnNameReal</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">The column map is used in the case to get real column name</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatoruniqueness-isuniqueness">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isUniqueness</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">array|string</span> <span class="sv">$field</span></span>)</code>
-</a>
-<a class="api-item" href="#filtervalidationvalidatoruniqueness-isuniquenessmodel">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">isUniquenessModel</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span></span>)</code>
-<span class="desc">Uniqueness method used for model</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatoruniqueness-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatoruniqueness-getoption" visibility="public" name="getOption" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Returns an option in the validator's options
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatoruniqueness-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"array|string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatoruniqueness-getcolumnnamereal" visibility="protected" name="getColumnNameReal" returnType="string" params={[{"type":"mixed","name":"record","default":null},{"type":"string","name":"field","default":null}]}>
+The column map is used in the case to get real column name
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatoruniqueness-isuniqueness" visibility="protected" name="isUniqueness" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"array|string","name":"field","default":null}]}>
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatoruniqueness-isuniquenessmodel" visibility="protected" name="isUniquenessModel" returnType="array" params={[{"type":"mixed","name":"record","default":null},{"type":"array","name":"field","default":null},{"type":"array","name":"values","default":null}]}>
+Uniqueness method used for model
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be unique&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be unique&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="filtervalidationvalidatoruniqueness-__construct"><code>__construct()</code></h4>
 
@@ -6793,8 +5223,8 @@ Constructor
 
 ```php
 public function getOption(
-    string $key,
-    mixed $defaultValue = null
+string $key,
+mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -6808,21 +5238,19 @@ combination of fields; in that case resolve it to the mapped value.
 
 ```php
 public function validate(
-    Validation $validation,
-    array|string $field
+Validation $validation,
+array|string $field
 ): bool;
 ```
 
 Executes the validation
 
-<div class="api-group">Protected · 3</div>
-
 <h4 id="filtervalidationvalidatoruniqueness-getcolumnnamereal"><code>getColumnNameReal()</code></h4>
 
 ```php
 protected function getColumnNameReal(
-    mixed $record,
-    string $field
+mixed $record,
+string $field
 ): string;
 ```
 
@@ -6832,8 +5260,8 @@ The column map is used in the case to get real column name
 
 ```php
 protected function isUniqueness(
-    Validation $validation,
-    array|string $field
+Validation $validation,
+array|string $field
 ): bool;
 ```
 
@@ -6841,9 +5269,9 @@ protected function isUniqueness(
 
 ```php
 protected function isUniquenessModel(
-    mixed $record,
-    array $field,
-    array $values
+mixed $record,
+array $field,
+array $values
 ): array;
 ```
 
@@ -6851,8 +5279,7 @@ Uniqueness method used for model
 
 ## Filter\Validation\Validator\Url
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/Url.php">Source on GitHub</a>
+Class
 
 Checks if a value has a url format
 
@@ -6863,68 +5290,50 @@ use Phalcon\Filter\Validation\Validator\Url as UrlValidator;
 $validator = new Validation();
 
 $validator->add(
-    "url",
-    new UrlValidator(
-        [
-            "message" => ":field must be a url",
-        ]
-    )
+"url",
+new UrlValidator(
+    [
+        "message" => ":field must be a url",
+    ]
+)
 );
 
 $validator->add(
+[
+    "url",
+    "homepage",
+],
+new UrlValidator(
     [
-        "url",
-        "homepage",
-    ],
-    new UrlValidator(
-        [
-            "message" => [
-                "url"      => "url must be a url",
-                "homepage" => "homepage must be a url",
-            ]
+        "message" => [
+            "url"      => "url must be a url",
+            "homepage" => "homepage must be a url",
         ]
-    )
+    ]
+)
 );
 ```
-
-<div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
 - **`Phalcon\Filter\Validation\Validator\Url`**
 
-</div>
-
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#filtervalidationvalidatorurl-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#filtervalidationvalidatorurl-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
+<ApiItem href="#filtervalidationvalidatorurl-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorurl-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be a url&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a url&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="filtervalidationvalidatorurl-__construct"><code>__construct()</code></h4>
 
@@ -6938,8 +5347,8 @@ Constructor
 
 ```php
 public function validate(
-    Validation $validation,
-    string $field
+Validation $validation,
+string $field
 ): bool;
 ```
 
