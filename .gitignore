@@ -1,1 +1,31 @@
-site/
+# JetBrains IDE
+.idea/
+*.iml
+
+# Converter (Python) and its scratch space
+__pycache__/
+*.pyc
+resources/nimbus/work/
+
+# pnpm store created by the Docker builds
+.pnpm-store/
+
+# Astro / nimbus
+node_modules/
+dist/
+.astro/
+.wrangler/
+.env
+.env.local
+.env.*.local
+.env.production
+.dev.vars
+.dev.vars.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.nimbus/

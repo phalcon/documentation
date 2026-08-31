@@ -1,0 +1,79 @@
+---
+title: "ADR - Container and Provider"
+---
+
+## Overview
+
+An ADR application is wired by the framework's autowiring [container][container]. Almost every class (actions, domains, middleware) is resolved automatically by type, so you rarely register anything by hand. What you do register are the *seams*: the handful of services the framework itself needs to run a request.
+
+`Phalcon\ADR\Container\AdrProvider` registers exactly those seams. It is the ADR counterpart to `Phalcon\Container\Provider\Web`, and you use it *instead of* Web for an ADR application.
+
+## Registered seams
+
+| Service (alias) | Bound to |
+| --------------- | -------- |
+| `eventsManager` | `Phalcon\Events\Manager` |
+| `request`       | `Phalcon\Http\Request` (as `AttributeRequest`) |
+| `response`      | `Phalcon\Http\Response` |
+| `responder`     | `Phalcon\ADR\Responder\JsonResponder` (the default responder) |
+| `router`        | `Phalcon\ADR\Router\Router` |
+| `dispatcher`    | `Phalcon\ADR\Dispatcher` |
+| `emitter`       | `Phalcon\ADR\Emitter\SapiEmitter` |
+
+It also registers a default logger (a null logger, until you bind your own). Everything else (the application, the pipeline, your actions, your middleware) is autowired and needs no registration.
+
+## Registering the provider
+
+The [front controller][front] registers the provider for you in its default `registerProviders()`. When you supply your own front controller you call the parent first, then add anything of your own:
+
+```php
+protected function registerProviders(Container $container): void
+{
+    parent::registerProviders($container);   // registers the ADR seams above
+
+    $container->bind(OrderRepositoryInterface::class, DbOrderRepository::class);
+}
+```
+
+## Registering from the application
+
+`Phalcon\ADR\Application` exposes a small surface over the container, so you register services from the application without reaching for the container's definition API. Each registration method returns the application, so calls chain.
+
+| Method | Purpose |
+| ------ | ------- |
+| `bind($interface, $concrete)` | bind an interface to a concrete class |
+| `define($class, $parameters)` | register a class together with values for its scalar constructor parameters |
+| `factory($name, $closure)` | register a factory closure |
+| `set($name, $definition)` | register a raw definition (class-string, closure, or value) |
+| `extend($name, $closure)` | decorate a service after it is built |
+| `getContainer()` | return the underlying container |
+
+Type-hinted dependencies are autowired, so `define()` is only for the values autowiring cannot infer - scalars such as a host name, a port, or a flag:
+
+```php
+<?php
+
+use App\Mailer\MailerService;
+use App\Order\DbOrderRepository;
+use App\Order\OrderRepositoryInterface;
+use Phalcon\ADR\Application;
+
+$application = (new Application())
+    ->bind(OrderRepositoryInterface::class, DbOrderRepository::class)
+    ->define(MailerService::class, [
+        'host'   => 'smtp.example.com',
+        'port'   => 587,
+        'useTls' => true,
+    ]);
+```
+
+Constructed with no container, `new Application()` builds its own with the seams above already registered, which is how you configure an ADR application without a front controller.
+
+## Overriding a seam
+
+Because each seam is just a container binding, you replace one by binding your own implementation after the provider has run. For example, to swap the default JSON responder for a text responder, or to provide your own emitter, bind a different class to the same contract. See [Responders][responders] and [Emitter][emitter].
+
+[container]: /5.18/container/
+[front]: /5.18/adr-front-controller/
+[responders]: /5.18/adr-responders/
+[emitter]: /5.18/adr-emitter/
