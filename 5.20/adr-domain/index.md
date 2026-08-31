@@ -1,0 +1,81 @@
+---
+title: "ADR - Domain"
+version: "5.20"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# ADR - Domain
+
+## Overview
+
+The domain is your application's business logic: entities, services, and the rules that operate on them. In ADR the domain is completely unaware of HTTP. It receives plain input, does its work, and returns a [Payload][payload] describing what happened. Because it never touches the request or the response, the domain is simple to test and can be reused across HTTP, CLI, and queue contexts alike.
+
+A domain implements no framework interface; it is simply your own class. It takes an input object and returns a [Payload][payload]. Typing the input is up to you: the generic [Input][input] bag works out of the box, or you extend it into a typed, per-domain value object such as an `InvoicesDto`.
+
+```php
+<?php
+
+namespace MyApp\Domain;
+
+use MyApp\Models\Invoices;
+use Phalcon\ADR\Input\Input;
+use Phalcon\ADR\Payload\Payload;
+use Phalcon\Contracts\ADR\Payload\Payload as PayloadInterface;
+
+final class ViewInvoice
+{
+public function __invoke(Input $input): PayloadInterface
+{
+    $invoice = Invoices::findFirst($input->get('id'));
+
+    return $invoice === null
+        ? Payload::notFound(['id' => $input->get('id')])
+        : Payload::success($invoice);
+}
+}
+```
+
+## The Payload
+
+`Phalcon\ADR\Payload\Payload` is an immutable value object that carries the outcome of the domain back to the [responder][responders]. It never describes an HTTP response; it describes a *domain* result, which the responder is then free to translate. A payload holds a status plus, depending on that status, a result, a set of messages, an exception, the original input, and any extras.
+
+It is created through named factories that pair an outcome with the right status:
+
+| Factory | Status | Typical use |
+| ------- | ------ | ----------- |
+| `Payload::success($result)`  | `SUCCESS`           | a value was read or an operation completed |
+| `Payload::created($result)`  | `CREATED`           | a resource was created |
+| `Payload::updated($result)`  | `UPDATED`           | a resource was updated |
+| `Payload::deleted($result)`  | `DELETED`           | a resource was deleted |
+| `Payload::found($result)`    | `FOUND`             | a resource was located |
+| `Payload::accepted($result)` | `ACCEPTED`          | work was accepted for later processing |
+| `Payload::processing($result)` | `PROCESSING`      | work is in progress |
+| `Payload::notFound($messages)` | `NOT_FOUND`       | a resource does not exist |
+| `Payload::invalid($messages)`  | `NOT_VALID`       | validation failed |
+| `Payload::error($messages)`    | `ERROR`           | an unexpected failure |
+| `Payload::unauthenticated($messages)` | `NOT_AUTHENTICATED` | identity was not established |
+| `Payload::forbidden($messages)` | `NOT_AUTHORIZED` | identity is known but not allowed |
+
+The payload is immutable. Every `with*()` method (`withStatus()`, `withResult()`, `withMessages()`, `withInput()`, `withExtras()`, `withException()`) returns a new copy rather than mutating the original.
+
+## Status
+
+`Phalcon\ADR\Payload\Status` is the domain's vocabulary of outcomes, expressed as string constants that carry no HTTP meaning:
+
+```
+ACCEPTED   CREATED   DELETED   ERROR   FAILURE   FOUND   METHOD_NOT_ALLOWED
+NOT_ACCEPTED   NOT_AUTHENTICATED   NOT_AUTHORIZED   NOT_CREATED   NOT_DELETED
+NOT_FOUND   NOT_UPDATED   NOT_VALID   PROCESSING   SUCCESS   UPDATED   VALID
+AUTHENTICATED   AUTHORIZED
+```
+
+Translating a status into an HTTP status code is the responder's job, performed by a status mapper. This is the single seam where the domain vocabulary meets HTTP, and it is the reason the domain can stay HTTP-free. See [Responders][responders].
+
+[payload]: /5.20/adr-payload/
+[input]: /5.20/adr-input/
+[responders]: /5.20/adr-responders/
+
+Source: https://docs.phalcon.io/5.20/adr-domain/index.mdx

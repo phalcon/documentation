@@ -1,0 +1,100 @@
+---
+title: "Upgrade Guide"
+version: "6.0"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Upgrade Guide
+
+# Upgrading to V6
+
+So you have decided to upgrade to v6! **Congratulations**!!
+
+Phalcon v6 contains a near identical code with v5, to make the upgrade process as simple and painless as possible.
+
+There are a couple of areas that have been reworked and changed that you should be aware of - and if you do not use that functionality, the upgrade can be a simple `composer require` command.
+
+## Requirements
+
+### PHP 8.1
+
+Phalcon v6 has the same requirements as v5. PHP 8.1 [active support][php-support] has already expired, including security fixes. We will be supporting this version for a while longer, offering developers more time to upgrade their applications.
+
+Since Phalcon 4, we have been following the PHP releases and adjusting Phalcon accordingly to work with those releases.
+
+### Installation
+
+Phalcon can be installed using composer.
+
+```
+composer require phalcon/phalcon
+```
+
+- - -
+
+## General Notes
+
+## Changes
+
+![](/assets/images/status-no-changes-blue.svg) [![](/assets/images/status-docs.svg)][phalcon-annotations]
+
+### Annotations
+
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)][phalcon-application]
+
+---
+
+### Volt
+
+![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)][phalcon-volt]
+
+[phalcon-acl]: /6.0/acl/
+[phalcon-annotations]: /6.0/annotations/
+[phalcon-application]: /6.0/application/
+[phalcon-application-cli]: /6.0/application-cli/
+[phalcon-assets]: /6.0/assets/
+[phalcon-autoload]: /6.0/autoload/
+[phalcon-cache]: /6.0/cache/
+[phalcon-config]: /6.0/config/
+[phalcon-datamapper]: /6.0/datamapper/
+[phalcon-db-layer]: /6.0/db-layer/
+[phalcon-db-pagination]: /6.0/db-pagination/
+[phalcon-di]: /6.0/di/
+[phalcon-dispatcher]: /6.0/dispatcher/
+[phalcon-domain]: /6.0/domain/
+[phalcon-encryption-crypt]: /6.0/encryption-crypt/
+[phalcon-encryption-security]: /6.0/encryption-security/
+[phalcon-events]: /6.0/events/
+[phalcon-filter-filter]: /6.0/filter-filter/
+[phalcon-filter-validation]: /6.0/filter-validation/
+[phalcon-flash]: /6.0/flash/
+[phalcon-forms]: /6.0/forms/
+[phalcon-html]: /6.0/html/
+[phalcon-html-escaper]: /6.0/html-escaper/
+[phalcon-html-link]: /6.0/html-link/
+[phalcon-html-tagfactory]: /6.0/html-tagfactory/
+[phalcon-logger]: /6.0/logger/
+[phalcon-mvc]: /6.0/mvc/
+[phalcon-mvc-url]: /6.0/mvc-url/
+[phalcon-session]: /6.0/session/
+[phalcon-storage]: /6.0/storage/
+[phalcon-support-collection]: /6.0/support-collection/
+[phalcon-support-debug]: /6.0/support-debug/
+[phalcon-support-helper]: /6.0/support-helper/
+[phalcon-support-registry]: /6.0/support-registry/
+[phalcon-support-version]: /6.0/support-version/
+[phalcon-tag]: /6.0/tag/
+[phalcon-translate]: /6.0/translate/
+[phalcon-volt]: /6.0/volt/
+[php-support]: https://www.php.net/supported-versions.php
+[bridge-psr3]: https://github.com/phalcon/bridge-psr3
+[psr-16]: https://www.php-fig.org/psr/psr-16/
+[psr-3]: https://www.php-fig.org/psr/psr-3/
+[psr-extension]: https://github.com/jbboehr/php-psr
+[volt-tag-helpers]: /6.0/volt/#tag-helpers
+[zephir-phar]: https://github.com/phalcon/zephir/releases
+
+Source: https://docs.phalcon.io/6.0/upgrade/index.mdx

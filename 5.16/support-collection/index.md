@@ -1,0 +1,1049 @@
+---
+title: "Collection"
+version: "5.16"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Collection
+
+## Overview
+
+`Phalcon\Support\Collection` is an object-oriented array. It offers speed, as well as implementations of various PHP interfaces. These are:
+
+- [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
+- [Countable](https://php.net/manual/en/class.countable.php)
+- [IteratorAggregate](https://php.net/manual/en/class.iteratoraggregate.php)
+- [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
+- [Serializable](https://php.net/manual/en/class.serializable.php)
+
+In addition to the interfaces, `Collection` exposes a rich method set for inspecting, transforming, and filtering the data it holds. The component is meant to be used wherever the application needs an object-flavored array that supports both property/array access and higher-order operations like `filter()`, `map()`, `reduce()`, and `sort()`.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new Collection($data);
+```
+
+## Constructor
+
+```php
+public function __construct(
+array $data = [],
+bool $insensitive = true,
+bool $strictNull = false,
+string | null $type = null
+)
+```
+
+`Collection` accepts four optional constructor parameters. Each is described in its own section below, but here is the full surface at a glance:
+
+| Parameter      | Type           | Default | Purpose                                                                |
+|----------------|----------------|---------|------------------------------------------------------------------------|
+| `$data`        | `array`        | `[]`    | Initial payload. The collection is populated by calling `init($data)`. |
+| `$insensitive` | `bool`         | `true`  | When `true`, key lookups are case-insensitive.                         |
+| `$strictNull`  | `bool`         | `false` | When `true`, a stored `null` value is returned verbatim by `get()`.    |
+| `$type`        | `string\|null` | `null`  | Optional runtime type guard enforced on every `set()` / `init()` call. |
+
+The simplest construction passes only the initial payload:
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new Collection($data);
+```
+
+## Case Sensitivity
+
+The second constructor parameter, `$insensitive`, controls how key lookups behave. With the default `true`, all keys are normalized to lowercase on read and write, so `get('year')`, `get('Year')`, and `get('YEAR')` all return the same value. Setting it to `false` makes every key comparison exact.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new Collection($data, false);
+
+echo $collection->has('year');   // true
+echo $collection->has('COLORS'); // false (would be true with $insensitive = true)
+```
+
+## Strict Null Handling
+
+The third constructor parameter, `$strictNull`, changes how `get()` reports stored `null` values:
+
+- `false` (default): a stored `null` is treated as "missing" and the supplied default (or `null` if no default is given) is returned. This matches the long-standing 3.x behavior.
+- `true`: a stored `null` is returned as-is. Use this when you need to distinguish "I stored `null` on purpose" from " the key was never set".
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$loose  = new Collection(['flag' => null], true, false);
+$strict = new Collection(['flag' => null], true, true);
+
+echo $loose->get('flag', 'fallback');  // 'fallback' - null treated as missing
+echo $strict->get('flag', 'fallback'); // null      - null returned verbatim
+```
+
+`has()` is unaffected by `$strictNull` - it reports membership, not value. A key whose stored value is `null` always satisfies `has()`.
+
+## Type Guard
+
+The fourth constructor parameter, `$type`, turns the collection into a typed container. When set, every `set()` and every value assigned through `init()` (or via `__set`, `offsetSet`, or the property syntax) is validated against `$type`. A mismatched value triggers an `InvalidArgumentException` and is **not** stored.
+
+The accepted tokens are split into two groups:
+
+**Scalar tokens** map to the corresponding `is_*` checks:
+
+| Token      | Check         |
+|------------|---------------|
+| `'int'`    | `is_int()`    |
+| `'string'` | `is_string()` |
+| `'bool'`   | `is_bool()`   |
+| `'float'`  | `is_float()`  |
+| `'array'`  | `is_array()`  |
+| `'object'` | `is_object()` |
+
+**Anything else** is treated as a fully-qualified class or interface name and tested with `instanceof`.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+use Phalcon\Mvc\Url;
+
+// Scalar guard - only integers allowed
+$years = new Collection([], true, false, 'int');
+
+$years->set('genesis', 1987); // OK
+$years->set('genesis', '1987'); // InvalidArgumentException - '1987' is a string
+
+// Class guard - only Url instances allowed
+$urls = new Collection([], true, false, Url::class);
+
+$urls->set('home', new Url());    // OK
+$urls->set('home', '/home');      // InvalidArgumentException
+```
+
+The guard runs on the **initial payload** as well, so passing data that does not match the declared type will throw at construction time:
+
+```php
+$years = new Collection(['ok' => 1, 'bad' => 'two'], true, false, 'int');
+// InvalidArgumentException is thrown while iterating the initial array
+```
+
+You can read the configured guard back at any time with `getType()` (see below). When `$type` is `null` (the default), the guard is a no-op and any value is accepted.
+
+## Reusing
+
+You can also reuse the component by repopulating it. `Phalcon\Support\Collection` exposes three methods to manage the internal data wholesale:
+
+- `clear()` - empties the collection.
+- `init(array $data = [])` - adds each entry of `$data` to the collection without clearing first. Existing keys are overwritten; other keys are left untouched.
+- `replace(array $data)` - clear-then-init in one call. Useful when you want a clean swap.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new Collection($data);
+
+echo $collection->count(); // 2
+
+// Wholesale swap
+$collection->replace(['year' => 1987]);
+
+echo $collection->count(); // 1
+
+// Or the two-step variant
+$collection->clear();
+$collection->init(['year' => 1987]);
+
+echo $collection->count(); // 1
+```
+
+## Get
+
+`Phalcon\Support\Collection` implements several interfaces to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
+
+- Property access
+- `__get()`
+- Array-based get (`$collection[$element]`)
+- `offsetGet()`
+- `get()`
+
+The fastest way is by using the property syntax:
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new Collection($data);
+
+echo $collection->year; // 1987
+```
+
+You can use `__get($element)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetGet`:
+
+```php
+echo $collection->__get('year');           // 1987
+echo $collection['year'];                  // 1987
+echo $collection->offsetGet('year');       // 1987
+echo $collection->get('year', 1987);       // 1987
+```
+
+```php
+public function get(
+string $element,
+mixed $defaultValue = null,
+string | null $cast = null
+): mixed
+```
+
+`get()` offers three parameters:
+
+- `$element` - the key of the element we want to retrieve.
+- `$defaultValue` - returned when `$element` is not set, or when `$element` is set to `null` **and** `$strictNull` is `false` (the default). See [Strict Null Handling](#strict-null-handling) for the strict variant.
+- `$cast` - accepts a string that defines what the returned value will be cast to before it is returned. The available values are:
+    - `array`
+    - `bool`
+    - `boolean`
+    - `double`
+    - `float`
+    - `int`
+    - `integer`
+    - `null`
+    - `object`
+    - `string`
+
+```php
+$collection = new Collection(['port' => '8080']);
+
+echo $collection->get('port', null, 'int'); // (int) 8080
+```
+
+## Has
+
+To check whether an element exists or not in the collection, you can use the following:
+
+- `isset()` on the property
+- `__isset()`
+- Array-based isset (`isset($collection[$element])`)
+- `offsetExists()`
+- `has()`
+
+The fastest way is by using the property syntax:
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new Collection($data);
+
+echo isset($collection->year); // true
+```
+
+You can use `__isset($element)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetExists`:
+
+```php
+echo $collection->__isset('year');      // true
+echo isset($collection['year']);        // true
+echo $collection->offsetExists('year'); // true
+echo $collection->has('year');          // true
+```
+
+```php
+public function has(string $element): bool
+```
+
+## Set
+
+To set an element in the collection, you can use the following:
+
+- Assign the value to the property
+- `__set()`
+- Array-based assignment
+- `offsetSet()`
+- `set()`
+
+The fastest way is by using the property syntax:
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+];
+
+$collection = new Collection($data);
+
+$collection->year = 1987;
+```
+
+You can use `__set($element, $value)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetSet`:
+
+```php
+$collection->__set('year', 1987);
+$collection['year'] = 1987;
+$collection->offsetSet('year', 1987);
+$collection->set('year', 1987);
+```
+
+Every code path above ultimately routes through the same internal `setData()` helper, which means the [Type Guard](#type-guard) (when configured) applies uniformly regardless of which form you use.
+
+## Remove
+
+To remove an element in the collection, you can use the following:
+
+- `unset` the property
+- `__unset()`
+- Array-based unset
+- `offsetUnset()`
+- `remove()`
+
+The fastest way is by using the property syntax:
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+];
+
+$collection = new Collection($data);
+
+unset($collection->year);
+```
+
+You can use `__unset($element)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetUnset`:
+
+```php
+$collection->__unset('year');
+unset($collection['year']);
+$collection->offsetUnset('year');
+$collection->remove('year');
+```
+
+```php
+public function remove(string $element): void
+```
+
+## Keys and Values
+
+`Collection` exposes two methods to read the internal data shape directly:
+
+- `keys(bool $insensitive = true): array` - returns the keys stored internally. With the default `true`, keys are returned in their case-insensitive (lowercase) form, mirroring how they were indexed. Pass `false` to receive the keys in their original casing.
+- `values(): array` - returns the values, indexed numerically from `0`.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'Year'   => 1987,
+'colors' => ['red', 'green', 'blue'],
+];
+
+$collection = new Collection($data);
+
+print_r($collection->keys());      // ['year', 'colors']
+print_r($collection->keys(false)); // ['Year', 'colors']
+print_r($collection->values());    // [1987, ['red', 'green', 'blue']]
+```
+
+:::info[NOTE]
+The original method names `getKeys()` and `getValues()` are retained as deprecated thin wrappers over `keys()` / `values()`. New code should call `keys()` and `values()` directly. The deprecated forms will be removed in a future major release.
+:::
+
+## Inspecting
+
+The following methods give you quick visibility into the collection without iterating it yourself:
+
+- `count(): int` - number of stored elements (also satisfies `Countable`).
+- `isEmpty(): bool` - `true` when the collection holds no elements.
+- `first(): mixed` - first stored value, or `null` when empty.
+- `last(): mixed` - last stored value, or `null` when empty.
+- `getType(): string | null` - the type guard configured at construction (see [Type Guard](#type-guard)), or `null` when none.
+- `column(string $propertyOrMethod): array` - projects a single property (or method-result) off every stored item, keyed by the original collection key.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$collection = new Collection([
+'one'   => 1,
+'two'   => 2,
+'three' => 3,
+]);
+
+echo $collection->count();   // 3
+echo $collection->isEmpty(); // false
+echo $collection->first();   // 1
+echo $collection->last();    // 3
+echo $collection->getType(); // null
+```
+
+`column()` accepts the name of either a public property or a public method. For each stored item it returns the property's value, or the result of invoking the method with no arguments. Items that are not objects/arrays are returned as `null`.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+class User
+{
+public function __construct(
+    public string $name,
+    public int $age,
+) {}
+
+public function displayName(): string
+{
+    return strtoupper($this->name);
+}
+}
+
+$users = new Collection([
+'alice' => new User('Alice', 30),
+'bob'   => new User('Bob', 25),
+]);
+
+print_r($users->column('age'));
+// ['alice' => 30, 'bob' => 25]
+
+print_r($users->column('displayName'));
+// ['alice' => 'ALICE', 'bob' => 'BOB']
+```
+
+`column()` also works on plain arrays:
+
+```php
+$rows = new Collection([
+['id' => 1, 'name' => 'Alice'],
+['id' => 2, 'name' => 'Bob'],
+]);
+
+print_r($rows->column('name')); // [0 => 'Alice', 1 => 'Bob']
+```
+
+## Filtering and Transforming
+
+`Collection` exposes a small set of higher-order operations modeled after the standard array primitives. Each of these returns a **new** `Collection` of the same concrete subclass (so `Registry::filter(...)` returns a `Registry`, not a base `Collection`) and carries over the `insensitive`, `strictNull`, and `type` configuration; the source collection is never mutated.
+
+### `each(callable $callback)`
+
+Runs `$callback($value, $key)` for every entry and returns the collection itself, so calls can be chained. Use this for side effects (logging, dispatching events) where you do not need a new collection back.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$collection = new Collection(['one' => 1, 'two' => 2, 'three' => 3]);
+
+$collection
+->each(function ($value, $key) {
+    echo "$key => $value" . PHP_EOL;
+})
+->each(function ($value) {
+    // do something else
+});
+```
+
+### `filter(callable $callback)`
+
+Returns a new collection containing only the entries for which `$callback($value, $key)` returns a truthy value. Original keys are preserved.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$collection = new Collection([
+'one'   => 1,
+'two'   => 2,
+'three' => 3,
+'four'  => 4,
+]);
+
+$even = $collection->filter(
+fn ($value) => $value % 2 === 0
+);
+
+print_r($even->toArray()); // ['two' => 2, 'four' => 4]
+```
+
+### `map(callable $callback)`
+
+Returns a new collection with every entry replaced by `$callback($value, $key)`. Keys are preserved.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$collection = new Collection(['one' => 1, 'two' => 2, 'three' => 3]);
+
+$squared = $collection->map(
+fn ($value) => $value * $value
+);
+
+print_r($squared->toArray()); // ['one' => 1, 'two' => 4, 'three' => 9]
+```
+
+### `reduce(callable $callback, mixed $initial = null)`
+
+Collapses the collection to a single value by repeatedly applying `$callback($accumulator, $value, $key)`. The first call receives `$initial` as the accumulator; each subsequent call receives the previous return value.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$collection = new Collection(['one' => 1, 'two' => 2, 'three' => 3]);
+
+$sum = $collection->reduce(
+fn ($acc, $value) => $acc + $value,
+0
+);
+
+echo $sum; // 6
+```
+
+### `sort(?callable $callback = null, int $order = SORT_ASC)`
+
+Returns a new collection sorted by value, preserving keys. When `$callback` is supplied it is passed to PHP's `uasort`. Without a callback, the comparison direction is controlled by `$order` (`SORT_ASC` uses `asort()`, `SORT_DESC` uses `arsort()`).
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$collection = new Collection([
+'c' => 30,
+'a' => 10,
+'b' => 20,
+]);
+
+print_r($collection->sort()->toArray());
+// ['a' => 10, 'b' => 20, 'c' => 30]
+
+print_r($collection->sort(null, SORT_DESC)->toArray());
+// ['c' => 30, 'b' => 20, 'a' => 10]
+
+$byLength = $collection
+->map(fn ($v) => str_repeat('x', $v / 10))
+->sort(fn ($left, $right) => strlen($left) <=> strlen($right));
+```
+
+### `where(string $propertyOrMethod, mixed $value)`
+
+Returns a new collection containing only the items whose `$propertyOrMethod` (resolved through the same logic as `column()`) is strictly equal (`===`) to `$value`.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$users = new Collection([
+['id' => 1, 'role' => 'admin'],
+['id' => 2, 'role' => 'user'],
+['id' => 3, 'role' => 'admin'],
+]);
+
+$admins = $users->where('role', 'admin');
+
+print_r($admins->toArray());
+// [
+//   0 => ['id' => 1, 'role' => 'admin'],
+//   2 => ['id' => 3, 'role' => 'admin'],
+// ]
+```
+
+## Iteration
+
+Since the collection object implements `\IteratorAggregate`, you can iterate through the object with ease. `getIterator()` returns an `ArrayIterator` instance.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+   'red',
+   'green',
+   'blue',
+];
+
+$collection = new Collection($data);
+
+foreach ($collection as $key => $value) {
+echo $key . ' - ' . $value . PHP_EOL;
+}
+```
+
+## Count
+
+The implementation of the `\Countable` interface exposes the `count()` method, which stores the number of elements in the collection.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new Collection($data);
+
+echo $collection->count(); // 2
+echo count($collection);   // 2 (same value, via Countable)
+```
+
+## Serialization
+
+The `\Serializable` and `\JsonSerializable` interfaces expose methods that allow you to serialize and unserialize the object. `serialize()` and `unserialize()` use PHP's `serialize` / `unserialize` functions; `jsonSerialize()` returns an array which can be used with `json_encode` to serialize the object.
+
+`__serialize()` returns a **structured** array that captures the full collection configuration - `data`, `insensitive`, `strictNull`, and `type` - so that round-tripping through `serialize()`/`unserialize()` faithfully restores the case-sensitivity setting, the strict-null mode, and the type guard, not only the data.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new Collection($data, false, true, 'int');
+
+$blob = $collection->serialize();
+// O:31:"Phalcon\Support\Collection":4:{...}
+// Contains data + insensitive=false + strictNull=true + type=int
+
+$restored = new Collection();
+$restored->unserialize($blob);
+
+echo $restored->getType(); // 'int' - guard preserved
+```
+
+:::info[Backwards compatibility]
+`__unserialize()` accepts both the new structured format **and** the legacy flat-array format produced by earlier releases, so existing serialized blobs stored in caches, sessions, or databases keep deserializing without intervention. When a legacy blob is loaded, the missing fields default to `insensitive = true`, `strictNull = false`, `type = null`.
+:::
+
+## Transformations
+
+`Phalcon\Support\Collection` also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new Collection($data);
+
+print_r($collection->toArray()); // $data
+```
+
+`toJson(int $options)` returns a JSON representation of the object. It uses `json_encode` internally and accepts a parameter, which represents the flags that `json_encode` accepts. By default, the options bundle together a sensible escape set:
+
+- `JSON_HEX_TAG`
+- `JSON_HEX_APOS`
+- `JSON_HEX_AMP`
+- `JSON_HEX_QUOT`
+- `JSON_UNESCAPED_SLASHES`
+- `JSON_THROW_ON_ERROR`
+
+`JSON_THROW_ON_ERROR` is included so that encode failures (e.g., passing a value that cannot be JSON-encoded like a resource) raise an `InvalidArgumentException` rather than silently returning an empty string.
+
+You can pass any valid flags to the method according to your needs.
+
+```php
+<?php
+
+use Phalcon\Support\Collection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new Collection($data);
+
+echo $collection->toJson();
+// {"colors":["red","green","blue"],"year":1987}
+
+echo $collection->toJson(JSON_PRETTY_PRINT);
+/**
+{
+"colors": [
+    "red",
+    "green",
+    "blue"
+],
+"year": 1987
+}
+*/
+```
+
+## Read Only Collection
+
+Phalcon also offers a component that can be used in a read-only fashion. `Phalcon\Support\Collection\ReadOnlyCollection` can serve as a collection in your application that can only be populated with initial data but does not allow its contents to be changed throughout the application.
+
+:::info[NOTE]
+This class has been renamed from `ReadOnly` in order to avoid collisions with PHP 8.x reserved words.
+:::
+
+```php
+<?php
+
+use Phalcon\Support\Collection\ReadOnlyCollection;
+
+$data = [
+'colors' => [
+    'red',
+    'green',
+    'blue',
+],
+'year'   => 1987,
+];
+
+$collection = new ReadOnlyCollection($data);
+
+echo $collection->toJson();
+// {"colors":["red","green","blue"],"year":1987}
+
+$collection->set('colors', ['red']); // Exception
+```
+
+Methods that would otherwise mutate state (`clear`, `init`, `remove`, `replace`, `set`) all throw `Phalcon\Support\Collection\Exception`. Read-only operations - `get`, `has`, `keys`, `values`, `count`, `first`, `last`, `isEmpty`, `column`, `filter`, `map`, `reduce`, `sort`, `where`, `each`, `toArray`, `toJson` - behave exactly as on a regular `Collection`.
+
+## Custom Objects
+
+Phalcon allows developers to define their own collection objects. These objects must implement the canonical contract [Phalcon\Contracts\Support\Collection][contracts-support-collection]. The expanded interface mirrors every public method exposed by `Phalcon\Support\Collection`:
+
+```php
+<?php
+
+namespace MyApp;
+
+use Phalcon\Contracts\Support\Collection as CollectionContract;
+
+class MyCollection implements CollectionContract
+{
+public function __get(string $element): mixed;
+
+public function __isset(string $element): bool;
+
+public function __set(string $element, mixed $value): void;
+
+public function __unset(string $element): void;
+
+public function clear(): void;
+
+public function column(string $propertyOrMethod): array;
+
+public function each(callable $callback): static;
+
+public function filter(callable $callback): static;
+
+public function first(): mixed;
+
+public function get(
+    string $element,
+    mixed $defaultValue = null,
+    ?string $cast = null
+): mixed;
+
+public function getKeys(bool $insensitive = true): array;
+
+public function getType(): ?string;
+
+public function getValues(): array;
+
+public function has(string $element): bool;
+
+public function init(array $data = []): void;
+
+public function isEmpty(): bool;
+
+public function keys(bool $insensitive = true): array;
+
+public function last(): mixed;
+
+public function map(callable $callback): static;
+
+public function reduce(callable $callback, mixed $initial = null): mixed;
+
+public function remove(string $element): void;
+
+public function replace(array $data): void;
+
+public function set(string $element, mixed $value): void;
+
+public function sort(?callable $callback = null, int $order = SORT_ASC): static;
+
+public function toArray(): array;
+
+public function toJson(int $options = 4194383): string;
+
+public function values(): array;
+
+public function where(string $propertyOrMethod, mixed $value): static;
+}
+```
+
+:::info[Interface location]
+The interface previously lived at `Phalcon\Support\Collection\CollectionInterface`. That symbol is retained as a deprecated alias that extends `Phalcon\Contracts\Support\Collection`, so existing implementations keep working without modification. New code should reference `Phalcon\Contracts\Support\Collection` directly.
+:::
+
+## Typed Object Collections
+
+The recommended way to hold a homogeneous group of value objects is to extend `Phalcon\Support\Collection` and pass the class name through the `$type` guard. Static analyzers such as Psalm and PHPStan understand `@extends Collection<TKey, TValue>`, so once the collection is declared, every read returns the concrete object type.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace MyApp\Models;
+
+class Invoice
+{
+public function __construct(
+    public int $inv_id,
+    public string $inv_title,
+    public float $inv_total
+) {
+}
+}
+```
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace MyApp\Models;
+
+use Phalcon\Support\Collection;
+
+/**
+ * @extends Collection<string, Invoice>
+ */
+class InvoicesCollection extends Collection
+{
+public function __construct(array $data = [])
+{
+    // Lock the type guard; the parent constructor enforces it
+    parent::__construct($data, false, true, Invoice::class);
+}
+}
+```
+
+Using the typed collection:
+
+```php
+<?php
+
+use MyApp\Models\Invoice;
+use MyApp\Models\InvoicesCollection;
+
+$invoices = new InvoicesCollection();
+
+$invoices->set('first', new Invoice(1, 'ACME', 100.00));
+$invoices->set('second', new Invoice(2, 'Globex', 200.00));
+
+// Psalm / PHPStan know $invoice is Invoice, not mixed
+foreach ($invoices as $invoice) {
+echo $invoice->inv_title, PHP_EOL;
+}
+```
+
+Any attempt to store a value that is not an `Invoice` is rejected by the `$type` guard configured in the parent constructor:
+
+```php
+$invoices->set('bad', 'not an invoice'); // InvalidArgumentException
+```
+
+## Indexing by Object Property
+
+When the elements have a natural identifier (database id, slug, ISBN), looking them up by that identifier is faster and easier than searching the collection on every access. Override `set()` to derive the key from the value and the collection becomes a primary-key lookup table.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace MyApp\Models;
+
+use Phalcon\Support\Collection;
+
+/**
+ * @extends Collection<int, Invoice>
+ */
+class InvoicesCollection extends Collection
+{
+public function __construct(array $data = [])
+{
+    parent::__construct([], false, true, Invoice::class);
+
+    foreach ($data as $invoice) {
+        $this->set('', $invoice);
+    }
+}
+
+public function set(string $element, mixed $value): void
+{
+    if (!$value instanceof Invoice) {
+        throw new \InvalidArgumentException(
+            'InvoicesCollection only accepts Invoice instances'
+        );
+    }
+
+    parent::set((string) $value->inv_id, $value);
+}
+}
+```
+
+Now the element is addressable by its `inv_id` without scanning the collection:
+
+```php
+<?php
+
+use MyApp\Models\Invoice;
+use MyApp\Models\InvoicesCollection;
+
+$invoices = new InvoicesCollection([
+new Invoice(101, 'ACME', 100.00),
+new Invoice(202, 'Globex', 200.00),
+new Invoice(303, 'Initech', 300.00),
+]);
+
+// O(1) lookup by primary key - no `where()`, no `filter()`
+$globex = $invoices->get('202');
+
+echo $globex->inv_title; // 'Globex'
+```
+
+The `$element` parameter of the overridden `set()` is intentionally ignored so callers can write `$invoices->set('', $invoice)` (or, with array syntax, `$invoices[] = $invoice`). If you prefer a stricter contract, throw when `$element` is non-empty and does not match `$value->inv_id` - that catches accidental key/value drift at the call site.
+
+## Exceptions
+
+Most exceptions thrown in the `Phalcon\Support\Collection` namespace extend `Phalcon\Support\Exception`, so a `catch (Phalcon\Support\Exception $e)` block catches them. The lone exception is `InvalidValueType`, which extends the native `\InvalidArgumentException` (see the table below).
+
+### Granular Exceptions
+
+The component raises granular subclasses so callers can catch a specific failure mode. `ReadOnlyViolation` extends `Phalcon\Support\Collection\Exception` (itself a `Phalcon\Support\Exception`), so existing `catch (Phalcon\Support\Exception $e)` blocks continue to catch it. `InvalidValueType` extends the native `\InvalidArgumentException`, so it is **not** caught by `Phalcon\Support\Exception`; catch `\InvalidArgumentException` or the class itself.
+
+| Class                                                     | Parent                                 | Thrown when                                                              |
+|-----------------------------------------------------------|----------------------------------------|--------------------------------------------------------------------------|
+| `Phalcon\Support\Collection\Exceptions\InvalidValueType`  | `\InvalidArgumentException`             | A value being added to the collection has a type the collection rejects. |
+| `Phalcon\Support\Collection\Exceptions\ReadOnlyViolation` | `Phalcon\Support\Collection\Exception` | A write is attempted on a `ReadOnlyCollection`.                          |
+
+[contracts-support-collection]: /5.16/api/phalcon_contracts/#contractssupportcollection
+
+Source: https://docs.phalcon.io/5.16/support-collection/index.mdx

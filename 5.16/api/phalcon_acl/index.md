@@ -1,0 +1,1759 @@
+---
+title: "Phalcon Acl"
+version: "5.16"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Phalcon Acl
+
+:::info[NOTE]
+All classes are prefixed with `Phalcon`
+:::
+
+## Acl\Adapter\AbstractAdapter
+
+<span class="badge badge--abstract">Abstract</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Adapter/AbstractAdapter.zep">Source on GitHub</a>
+
+Adapter for Phalcon\Acl adapters
+
+<div class="api-tree">
+
+- [`Phalcon\Events\AbstractEventsAware`](/5.16/api/phalcon_events/#eventsabstracteventsaware)
+- **`Phalcon\Acl\Adapter\AbstractAdapter`** — implements [`Phalcon\Acl\Adapter\AdapterInterface`](#acladapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.16/api/phalcon_events/#eventseventsawareinterface)
+- [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
+
+</div>
+
+__Uses__ `Phalcon\Acl\Enum` · `Phalcon\Events\AbstractEventsAware` · `Phalcon\Events\EventsAwareInterface`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#acladapterabstractadapter-getactiveaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getActiveAccess</span>()</code>
+<span class="desc">Active access which the list is checking if some role can access it</span>
+</a>
+<a class="api-item" href="#acladapterabstractadapter-getactivecomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getActiveComponent</span>()</code>
+<span class="desc">Component which the list is checking if some role can access it</span>
+</a>
+<a class="api-item" href="#acladapterabstractadapter-getactiverole">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getActiveRole</span>()</code>
+<span class="desc">Role which the list is checking if it&#039;s allowed to certain</span>
+</a>
+<a class="api-item" href="#acladapterabstractadapter-getdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getDefaultAction</span>()</code>
+<span class="desc">Returns the default ACL access level</span>
+</a>
+<a class="api-item" href="#acladapterabstractadapter-setdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
+<span class="desc">Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$accessGranted</span><span class="sm"> = Enum::DENY</span></code>
+<span class="desc">Access Granted</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$activeAccess</span><span class="sm"> = null</span></code>
+<span class="desc">Active access which the list is checking if some role can access it</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$activeComponent</span><span class="sm"> = null</span></code>
+<span class="desc">Component which the list is checking if some role can access it</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$activeRole</span><span class="sm"> = null</span></code>
+<span class="desc">Role which the list is checking if it&#039;s allowed to certain component/access</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$defaultAccess</span><span class="sm"> = Enum::DENY</span></code>
+<span class="desc">Default access</span>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 5</div>
+
+<h4 id="acladapterabstractadapter-getactiveaccess"><code>getActiveAccess()</code></h4>
+
+```php
+public function getActiveAccess(): string|null;
+```
+
+Active access which the list is checking if some role can access it
+
+<h4 id="acladapterabstractadapter-getactivecomponent"><code>getActiveComponent()</code></h4>
+
+```php
+public function getActiveComponent(): string|null;
+```
+
+Component which the list is checking if some role can access it
+
+<h4 id="acladapterabstractadapter-getactiverole"><code>getActiveRole()</code></h4>
+
+```php
+public function getActiveRole(): string|null;
+```
+
+Role which the list is checking if it's allowed to certain
+component/access
+
+<h4 id="acladapterabstractadapter-getdefaultaction"><code>getDefaultAction()</code></h4>
+
+```php
+public function getDefaultAction(): int;
+```
+
+Returns the default ACL access level
+
+<h4 id="acladapterabstractadapter-setdefaultaction"><code>setDefaultAction()</code></h4>
+
+```php
+public function setDefaultAction( int $defaultAccess ): void;
+```
+
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+
+## Acl\Adapter\AdapterInterface
+
+<span class="badge badge--interface">Interface</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Adapter/AdapterInterface.zep">Source on GitHub</a>
+
+Interface for Phalcon\Acl adapters
+
+<div class="api-tree">
+
+- **`Phalcon\Acl\Adapter\AdapterInterface`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#acladapteradapterinterface-addcomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addComponent</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$componentValue</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Adds a component to the ACL list</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-addcomponentaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Adds access to components</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-addinherit">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addInherit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$roleToInherits</span></span>)</code>
+<span class="desc">Do a role inherit from another existing role</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-addrole">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addRole</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$role</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessInherits</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Adds a role to the ACL list. Second parameter lets to inherit access data</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-allow">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">allow</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$func</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Allow access to a role on a component</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-deny">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">deny</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$func</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Deny access to a role on a component</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-dropcomponentaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">dropComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Removes access from a component</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-getactiveaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">null|string</code>
+<code class="sig"><span class="sf">getActiveAccess</span>()</code>
+<span class="desc">Returns the access which the list is checking if some role can access it</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-getactivecomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">null|string</code>
+<code class="sig"><span class="sf">getActiveComponent</span>()</code>
+<span class="desc">Returns the component which the list is checking if some role can access</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-getactiverole">
+<code class="vis vis-public">public</code>
+<code class="ret">null|string</code>
+<code class="sig"><span class="sf">getActiveRole</span>()</code>
+<span class="desc">Returns the role which the list is checking if it&#039;s allowed to certain</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-getcomponents">
+<code class="vis vis-public">public</code>
+<code class="ret">ComponentInterface[]</code>
+<code class="sig"><span class="sf">getComponents</span>()</code>
+<span class="desc">Return an array with every component registered in the list</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-getdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getDefaultAction</span>()</code>
+<span class="desc">Returns the default ACL access level</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-getinheritedroles">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getInheritedRoles</span>( <span class="st">string</span> <span class="sv">$roleName</span><span class="sm"> = &quot;&quot;</span> )</code>
+<span class="desc">Returns the inherited roles for a passed role name. If no role name</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-getnoargumentsdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getNoArgumentsDefaultAction</span>()</code>
+<span class="desc">Returns the default ACL access level for no arguments provided in</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-getroles">
+<code class="vis vis-public">public</code>
+<code class="ret">RoleInterface[]</code>
+<code class="sig"><span class="sf">getRoles</span>()</code>
+<span class="desc">Return an array with every role registered in the list</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-isallowed">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Check whether a role is allowed to access an action from a component</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-iscomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isComponent</span>( <span class="st">string</span> <span class="sv">$componentName</span> )</code>
+<span class="desc">Check whether component exist in the components list</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-isrole">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isRole</span>( <span class="st">string</span> <span class="sv">$roleName</span> )</code>
+<span class="desc">Check whether role exist in the roles list</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-setdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
+<span class="desc">Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)</span>
+</a>
+<a class="api-item" href="#acladapteradapterinterface-setnoargumentsdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setNoArgumentsDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
+<span class="desc">Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 20</div>
+
+<h4 id="acladapteradapterinterface-addcomponent"><code>addComponent()</code></h4>
+
+```php
+public function addComponent(
+mixed $componentValue,
+mixed $accessList
+): bool;
+```
+
+Adds a component to the ACL list
+
+Access names can be a particular action, by example
+search, update, delete, etc. or a list of them
+
+<h4 id="acladapteradapterinterface-addcomponentaccess"><code>addComponentAccess()</code></h4>
+
+```php
+public function addComponentAccess(
+string $componentName,
+mixed $accessList
+): bool;
+```
+
+Adds access to components
+
+<h4 id="acladapteradapterinterface-addinherit"><code>addInherit()</code></h4>
+
+```php
+public function addInherit(
+string $roleName,
+mixed $roleToInherits
+): bool;
+```
+
+Do a role inherit from another existing role
+
+<h4 id="acladapteradapterinterface-addrole"><code>addRole()</code></h4>
+
+```php
+public function addRole(
+mixed $role,
+mixed $accessInherits = null
+): bool;
+```
+
+Adds a role to the ACL list. Second parameter lets to inherit access data
+from other existing role
+
+<h4 id="acladapteradapterinterface-allow"><code>allow()</code></h4>
+
+```php
+public function allow(
+string $roleName,
+string $componentName,
+mixed $access,
+mixed $func = null
+): void;
+```
+
+Allow access to a role on a component
+
+<h4 id="acladapteradapterinterface-deny"><code>deny()</code></h4>
+
+```php
+public function deny(
+string $roleName,
+string $componentName,
+mixed $access,
+mixed $func = null
+): void;
+```
+
+Deny access to a role on a component
+
+<h4 id="acladapteradapterinterface-dropcomponentaccess"><code>dropComponentAccess()</code></h4>
+
+```php
+public function dropComponentAccess(
+string $componentName,
+mixed $accessList
+): void;
+```
+
+Removes access from a component
+
+<h4 id="acladapteradapterinterface-getactiveaccess"><code>getActiveAccess()</code></h4>
+
+```php
+public function getActiveAccess(): null|string;
+```
+
+Returns the access which the list is checking if some role can access it
+
+<h4 id="acladapteradapterinterface-getactivecomponent"><code>getActiveComponent()</code></h4>
+
+```php
+public function getActiveComponent(): null|string;
+```
+
+Returns the component which the list is checking if some role can access
+it
+
+<h4 id="acladapteradapterinterface-getactiverole"><code>getActiveRole()</code></h4>
+
+```php
+public function getActiveRole(): null|string;
+```
+
+Returns the role which the list is checking if it's allowed to certain
+component/access
+
+<h4 id="acladapteradapterinterface-getcomponents"><code>getComponents()</code></h4>
+
+```php
+public function getComponents(): ComponentInterface[];
+```
+
+Return an array with every component registered in the list
+
+<h4 id="acladapteradapterinterface-getdefaultaction"><code>getDefaultAction()</code></h4>
+
+```php
+public function getDefaultAction(): int;
+```
+
+Returns the default ACL access level
+
+<h4 id="acladapteradapterinterface-getinheritedroles"><code>getInheritedRoles()</code></h4>
+
+```php
+public function getInheritedRoles( string $roleName = "" ): array;
+```
+
+Returns the inherited roles for a passed role name. If no role name
+has been specified it will return the whole array. If the role has not
+been found it returns an empty array
+
+<h4 id="acladapteradapterinterface-getnoargumentsdefaultaction"><code>getNoArgumentsDefaultAction()</code></h4>
+
+```php
+public function getNoArgumentsDefaultAction(): int;
+```
+
+Returns the default ACL access level for no arguments provided in
+isAllowed action if there exists func for accessKey
+
+<h4 id="acladapteradapterinterface-getroles"><code>getRoles()</code></h4>
+
+```php
+public function getRoles(): RoleInterface[];
+```
+
+Return an array with every role registered in the list
+
+<h4 id="acladapteradapterinterface-isallowed"><code>isAllowed()</code></h4>
+
+```php
+public function isAllowed(
+mixed $roleName,
+mixed $componentName,
+string $access,
+array $parameters = null
+): bool;
+```
+
+Check whether a role is allowed to access an action from a component
+
+<h4 id="acladapteradapterinterface-iscomponent"><code>isComponent()</code></h4>
+
+```php
+public function isComponent( string $componentName ): bool;
+```
+
+Check whether component exist in the components list
+
+<h4 id="acladapteradapterinterface-isrole"><code>isRole()</code></h4>
+
+```php
+public function isRole( string $roleName ): bool;
+```
+
+Check whether role exist in the roles list
+
+<h4 id="acladapteradapterinterface-setdefaultaction"><code>setDefaultAction()</code></h4>
+
+```php
+public function setDefaultAction( int $defaultAccess ): void;
+```
+
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+
+<h4 id="acladapteradapterinterface-setnoargumentsdefaultaction"><code>setNoArgumentsDefaultAction()</code></h4>
+
+```php
+public function setNoArgumentsDefaultAction( int $defaultAccess ): void;
+```
+
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+for no arguments provided in isAllowed action if there exists func for
+accessKey
+
+## Acl\Adapter\Memory
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Adapter/Memory.zep">Source on GitHub</a>
+
+Manages ACL lists in memory
+
+```php
+$acl = new \Phalcon\Acl\Adapter\Memory();
+
+$acl->setDefaultAction(
+\Phalcon\Acl\Enum::DENY
+);
+
+// Register roles
+$roles = [
+"users"  => new \Phalcon\Acl\Role("Users"),
+"guests" => new \Phalcon\Acl\Role("Guests"),
+];
+foreach ($roles as $role) {
+$acl->addRole($role);
+}
+
+// Private area components
+$privateComponents = [
+"companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
+"products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
+"invoices"  => ["index", "profile"],
+];
+
+foreach ($privateComponents as $componentName => $actions) {
+$acl->addComponent(
+    new \Phalcon\Acl\Component($componentName),
+    $actions
+);
+}
+
+// Public area components
+$publicComponents = [
+"index"   => ["index"],
+"about"   => ["index"],
+"session" => ["index", "register", "start", "end"],
+"contact" => ["index", "send"],
+];
+
+foreach ($publicComponents as $componentName => $actions) {
+$acl->addComponent(
+    new \Phalcon\Acl\Component($componentName),
+    $actions
+);
+}
+
+// Grant access to public areas to both users and guests
+foreach ($roles as $role) {
+foreach ($publicComponents as $component => $actions) {
+    $acl->allow($role->getName(), $component, "*");
+}
+}
+
+// Grant access to private area to role Users
+foreach ($privateComponents as $component => $actions) {
+foreach ($actions as $action) {
+    $acl->allow("Users", $component, $action);
+}
+}
+```
+
+<div class="api-tree">
+
+- [`Phalcon\Events\AbstractEventsAware`](/5.16/api/phalcon_events/#eventsabstracteventsaware)
+- [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
+- **`Phalcon\Acl\Adapter\Memory`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\AccessRuleNotFound` · `Phalcon\Acl\Exceptions\CircularInheritanceError` · `Phalcon\Acl\Exceptions\ElementNotFound` · `Phalcon\Acl\Exceptions\InvalidAccessList` · `Phalcon\Acl\Exceptions\InvalidComponentImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleType` · `Phalcon\Acl\Exceptions\MissingFunctionParameters` · `Phalcon\Acl\Exceptions\ParameterTypeMismatch` · `Phalcon\Acl\Exceptions\RoleNotFoundException` · `Phalcon\Acl\Role` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface` · `ReflectionClass` · `ReflectionFunction` · `ReflectionNamedType`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#acladaptermemory-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+<span class="desc">Phalcon\Acl\Adapter\Memory constructor</span>
+</a>
+<a class="api-item" href="#acladaptermemory-addcomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addComponent</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$componentValue</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Adds a component to the ACL list</span>
+</a>
+<a class="api-item" href="#acladaptermemory-addcomponentaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Adds access to components</span>
+</a>
+<a class="api-item" href="#acladaptermemory-addinherit">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addInherit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$roleToInherits</span></span>)</code>
+<span class="desc">Do a role inherit from another existing role</span>
+</a>
+<a class="api-item" href="#acladaptermemory-addrole">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addRole</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$role</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessInherits</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role</span>
+</a>
+<a class="api-item" href="#acladaptermemory-allow">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">allow</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$func</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Allow access to a role on a component. You can use <code>*</code> as wildcard</span>
+</a>
+<a class="api-item" href="#acladaptermemory-deny">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">deny</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$func</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Deny access to a role on a component. You can use <code>*</code> as wildcard</span>
+</a>
+<a class="api-item" href="#acladaptermemory-dropcomponentaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">dropComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Removes access from a component</span>
+</a>
+<a class="api-item" href="#acladaptermemory-getactivefunction">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getActiveFunction</span>()</code>
+<span class="desc">Returns the latest function used to acquire access</span>
+</a>
+<a class="api-item" href="#acladaptermemory-getactivefunctioncustomargumentscount">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getActiveFunctionCustomArgumentsCount</span>()</code>
+<span class="desc">Returns number of additional arguments(excluding role and resource) for active function</span>
+</a>
+<a class="api-item" href="#acladaptermemory-getactivekey">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getActiveKey</span>()</code>
+<span class="desc">Returns the latest key used to acquire access</span>
+</a>
+<a class="api-item" href="#acladaptermemory-getcomponents">
+<code class="vis vis-public">public</code>
+<code class="ret">ComponentInterface[]</code>
+<code class="sig"><span class="sf">getComponents</span>()</code>
+<span class="desc">Return an array with every component registered in the list</span>
+</a>
+<a class="api-item" href="#acladaptermemory-getinheritedroles">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getInheritedRoles</span>( <span class="st">string</span> <span class="sv">$roleName</span><span class="sm"> = &quot;&quot;</span> )</code>
+<span class="desc">Returns the inherited roles for a passed role name. If no role name</span>
+</a>
+<a class="api-item" href="#acladaptermemory-getnoargumentsdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getNoArgumentsDefaultAction</span>()</code>
+<span class="desc">Returns the default ACL access level for no arguments provided in</span>
+</a>
+<a class="api-item" href="#acladaptermemory-getroles">
+<code class="vis vis-public">public</code>
+<code class="ret">RoleInterface[]</code>
+<code class="sig"><span class="sf">getRoles</span>()</code>
+<span class="desc">Return an array with every role registered in the list</span>
+</a>
+<a class="api-item" href="#acladaptermemory-isallowed">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Check whether a role is allowed to access an action from a component</span>
+</a>
+<a class="api-item" href="#acladaptermemory-iscomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isComponent</span>( <span class="st">string</span> <span class="sv">$componentName</span> )</code>
+<span class="desc">Check whether component exist in the components list</span>
+</a>
+<a class="api-item" href="#acladaptermemory-isrole">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isRole</span>( <span class="st">string</span> <span class="sv">$roleName</span> )</code>
+<span class="desc">Check whether role exist in the roles list</span>
+</a>
+<a class="api-item" href="#acladaptermemory-setnoargumentsdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setNoArgumentsDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
+<span class="desc">Sets the default access level (<code>Phalcon\Enum::ALLOW</code> or <code>Phalcon\Enum::DENY</code>)</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$access</span></code>
+<span class="desc">Access</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$accessList</span></code>
+<span class="desc">Access List</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$activeFunction</span></code>
+<span class="desc">Returns the latest function used to acquire access</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$activeFunctionCustomArgumentsCount</span><span class="sm"> = 0</span></code>
+<span class="desc">Returns number of additional arguments(excluding role and resource) for active function</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$activeKey</span><span class="sm"> = null</span></code>
+<span class="desc">Returns the latest key used to acquire access</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$components</span></code>
+<span class="desc">Components</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$componentsNames</span></code>
+<span class="desc">Component Names</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$functions</span></code>
+<span class="desc">Function List</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$noArgumentsDefaultAction</span><span class="sm"> = Enum::DENY</span></code>
+<span class="desc">Default action for no arguments is <code>allow</code></span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$roleInherits</span></code>
+<span class="desc">Role Inherits</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$roles</span></code>
+<span class="desc">Roles</span>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 19</div>
+
+<h4 id="acladaptermemory-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
+
+Phalcon\Acl\Adapter\Memory constructor
+
+<h4 id="acladaptermemory-addcomponent"><code>addComponent()</code></h4>
+
+```php
+public function addComponent(
+mixed $componentValue,
+mixed $accessList
+): bool;
+```
+
+Adds a component to the ACL list
+
+Access names can be a particular action, by example
+search, update, delete, etc. or a list of them
+
+Example:
+```php
+// Add a component to the list allowing access to an action
+$acl->addComponent(
+new Phalcon\Acl\Component("customers"),
+"search"
+);
+
+$acl->addComponent("customers", "search");
+
+// Add a component  with an access list
+$acl->addComponent(
+new Phalcon\Acl\Component("customers"),
+[
+    "create",
+    "search",
+]
+);
+
+$acl->addComponent(
+"customers",
+[
+    "create",
+    "search",
+]
+);
+```
+
+<h4 id="acladaptermemory-addcomponentaccess"><code>addComponentAccess()</code></h4>
+
+```php
+public function addComponentAccess(
+string $componentName,
+mixed $accessList
+): bool;
+```
+
+Adds access to components
+
+<h4 id="acladaptermemory-addinherit"><code>addInherit()</code></h4>
+
+```php
+public function addInherit(
+string $roleName,
+mixed $roleToInherits
+): bool;
+```
+
+Do a role inherit from another existing role
+
+```php
+$acl->addRole("administrator", "consultant");
+$acl->addRole("administrator", ["consultant", "consultant2"]);
+```
+
+<h4 id="acladaptermemory-addrole"><code>addRole()</code></h4>
+
+```php
+public function addRole(
+mixed $role,
+mixed $accessInherits = null
+): bool;
+```
+
+Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role
+
+If the role already exists this method returns `false` and the
+`accessInherits` argument is ignored; the existing role is left
+unchanged.
+
+```php
+$acl->addRole(
+new Phalcon\Acl\Role("administrator"),
+"consultant"
+);
+
+$acl->addRole("administrator", "consultant");
+$acl->addRole("administrator", ["consultant", "consultant2"]);
+```
+
+<h4 id="acladaptermemory-allow"><code>allow()</code></h4>
+
+```php
+public function allow(
+string $roleName,
+string $componentName,
+mixed $access,
+mixed $func = null
+): void;
+```
+
+Allow access to a role on a component. You can use `*` as wildcard
+
+A `*` role is an eager snapshot: it expands to the roles that exist when
+`allow()` is called, so roles added afterwards do not inherit the grant.
+
+```php
+// Allow access to guests to search on customers
+$acl->allow("guests", "customers", "search");
+
+// Allow access to guests to search or create on customers
+$acl->allow("guests", "customers", ["search", "create"]);
+
+// Allow access to any role to browse on products
+$acl->allow("*", "products", "browse");
+
+// Allow access to any role to perform any action on any component
+$acl->allow("*", "*", "*");
+```
+
+<h4 id="acladaptermemory-deny"><code>deny()</code></h4>
+
+```php
+public function deny(
+string $roleName,
+string $componentName,
+mixed $access,
+mixed $func = null
+): void;
+```
+
+Deny access to a role on a component. You can use `*` as wildcard
+
+A `*` role is an eager snapshot: it expands to the roles that exist when
+`deny()` is called, so roles added afterwards do not inherit the rule.
+
+```php
+// Deny access to guests to search on customers
+$acl->deny("guests", "customers", "search");
+
+// Deny access to guests to search or create on customers
+$acl->deny("guests", "customers", ["search", "create"]);
+
+// Deny access to any role to browse on products
+$acl->deny("*", "products", "browse");
+
+// Deny access to any role to perform any action on any component
+$acl->deny("*", "*", "*");
+```
+
+<h4 id="acladaptermemory-dropcomponentaccess"><code>dropComponentAccess()</code></h4>
+
+```php
+public function dropComponentAccess(
+string $componentName,
+mixed $accessList
+): void;
+```
+
+Removes access from a component
+
+<h4 id="acladaptermemory-getactivefunction"><code>getActiveFunction()</code></h4>
+
+```php
+public function getActiveFunction(): mixed;
+```
+
+Returns the latest function used to acquire access
+
+<h4 id="acladaptermemory-getactivefunctioncustomargumentscount"><code>getActiveFunctionCustomArgumentsCount()</code></h4>
+
+```php
+public function getActiveFunctionCustomArgumentsCount(): int;
+```
+
+Returns number of additional arguments(excluding role and resource) for active function
+
+<h4 id="acladaptermemory-getactivekey"><code>getActiveKey()</code></h4>
+
+```php
+public function getActiveKey(): string|null;
+```
+
+Returns the latest key used to acquire access
+
+<h4 id="acladaptermemory-getcomponents"><code>getComponents()</code></h4>
+
+```php
+public function getComponents(): ComponentInterface[];
+```
+
+Return an array with every component registered in the list
+
+<h4 id="acladaptermemory-getinheritedroles"><code>getInheritedRoles()</code></h4>
+
+```php
+public function getInheritedRoles( string $roleName = "" ): array;
+```
+
+Returns the inherited roles for a passed role name. If no role name
+has been specified it will return the whole array. If the role has not
+been found it returns an empty array
+
+<h4 id="acladaptermemory-getnoargumentsdefaultaction"><code>getNoArgumentsDefaultAction()</code></h4>
+
+```php
+public function getNoArgumentsDefaultAction(): int;
+```
+
+Returns the default ACL access level for no arguments provided in
+`isAllowed` action if a `func` (callable) exists for `accessKey`
+
+<h4 id="acladaptermemory-getroles"><code>getRoles()</code></h4>
+
+```php
+public function getRoles(): RoleInterface[];
+```
+
+Return an array with every role registered in the list
+
+<h4 id="acladaptermemory-isallowed"><code>isAllowed()</code></h4>
+
+```php
+public function isAllowed(
+mixed $roleName,
+mixed $componentName,
+string $access,
+array $parameters = null
+): bool;
+```
+
+Check whether a role is allowed to access an action from a component
+
+```php
+// Does andres have access to the customers component to create?
+$acl->isAllowed("andres", "Products", "create");
+
+// Do guests have access to any component to edit?
+$acl->isAllowed("guests", "*", "edit");
+```
+
+<h4 id="acladaptermemory-iscomponent"><code>isComponent()</code></h4>
+
+```php
+public function isComponent( string $componentName ): bool;
+```
+
+Check whether component exist in the components list
+
+<h4 id="acladaptermemory-isrole"><code>isRole()</code></h4>
+
+```php
+public function isRole( string $roleName ): bool;
+```
+
+Check whether role exist in the roles list
+
+<h4 id="acladaptermemory-setnoargumentsdefaultaction"><code>setNoArgumentsDefaultAction()</code></h4>
+
+```php
+public function setNoArgumentsDefaultAction( int $defaultAccess ): void;
+```
+
+Sets the default access level (`Phalcon\Enum::ALLOW` or `Phalcon\Enum::DENY`)
+for no arguments provided in isAllowed action if there exists func for
+accessKey
+
+## Acl\Component
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Component.zep">Source on GitHub</a>
+
+This class defines component entity and its description
+
+<div class="api-tree">
+
+- **`Phalcon\Acl\Component`** — implements [`Phalcon\Acl\ComponentInterface`](#aclcomponentinterface)
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclcomponent-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$description</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Phalcon\Acl\Component constructor</span>
+</a>
+<a class="api-item" href="#aclcomponent-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+</a>
+<a class="api-item" href="#aclcomponent-getdescription">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
+</a>
+<a class="api-item" href="#aclcomponent-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+<h4 id="aclcomponent-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $name,
+string $description = null
+);
+```
+
+Phalcon\Acl\Component constructor
+
+<h4 id="aclcomponent-__tostring"><code>__toString()</code></h4>
+
+```php
+public function __toString(): string;
+```
+
+<h4 id="aclcomponent-getdescription"><code>getDescription()</code></h4>
+
+```php
+public function getDescription(): string|null;
+```
+
+<h4 id="aclcomponent-getname"><code>getName()</code></h4>
+
+```php
+public function getName(): string;
+```
+
+## Acl\ComponentAwareInterface
+
+<span class="badge badge--interface">Interface</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/ComponentAwareInterface.zep">Source on GitHub</a>
+
+Interface for classes which could be used in allow method as RESOURCE
+
+<div class="api-tree">
+
+- **`Phalcon\Acl\ComponentAwareInterface`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclcomponentawareinterface-getcomponentname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getComponentName</span>()</code>
+<span class="desc">Returns component name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+<h4 id="aclcomponentawareinterface-getcomponentname"><code>getComponentName()</code></h4>
+
+```php
+public function getComponentName(): string;
+```
+
+Returns component name
+
+## Acl\ComponentInterface
+
+<span class="badge badge--interface">Interface</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/ComponentInterface.zep">Source on GitHub</a>
+
+Interface for Phalcon\Acl\Component
+
+<div class="api-tree">
+
+- **`Phalcon\Acl\ComponentInterface`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclcomponentinterface-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+<span class="desc">Magic method __toString</span>
+</a>
+<a class="api-item" href="#aclcomponentinterface-getdescription">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
+<span class="desc">Returns component description</span>
+</a>
+<a class="api-item" href="#aclcomponentinterface-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+<span class="desc">Returns the component name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+<h4 id="aclcomponentinterface-__tostring"><code>__toString()</code></h4>
+
+```php
+public function __toString(): string;
+```
+
+Magic method __toString
+
+<h4 id="aclcomponentinterface-getdescription"><code>getDescription()</code></h4>
+
+```php
+public function getDescription(): string|null;
+```
+
+Returns component description
+
+<h4 id="aclcomponentinterface-getname"><code>getName()</code></h4>
+
+```php
+public function getName(): string;
+```
+
+Returns the component name
+
+## Acl\Enum
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Enum.zep">Source on GitHub</a>
+
+Constants for Phalcon\Acl\Adapter adapters
+
+<div class="api-tree">
+
+- **`Phalcon\Acl\Enum`**
+
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">ALLOW</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">DENY</span><span class="sm"> = 0</span></code>
+</div>
+</div>
+
+## Acl\Exception
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exception.zep">Source on GitHub</a>
+
+Class for exceptions thrown by Phalcon\Acl
+
+<div class="api-tree">
+
+- `\Exception`
+- **`Phalcon\Acl\Exception`**
+- [`Phalcon\Acl\Exceptions\AccessRuleNotFound`](#aclexceptionsaccessrulenotfound)
+- [`Phalcon\Acl\Exceptions\CircularInheritanceError`](#aclexceptionscircularinheritanceerror)
+- [`Phalcon\Acl\Exceptions\ElementNotFound`](#aclexceptionselementnotfound)
+- [`Phalcon\Acl\Exceptions\ForbiddenWildcard`](#aclexceptionsforbiddenwildcard)
+- [`Phalcon\Acl\Exceptions\InvalidAccessList`](#aclexceptionsinvalidaccesslist)
+- [`Phalcon\Acl\Exceptions\InvalidComponentImplementation`](#aclexceptionsinvalidcomponentimplementation)
+- [`Phalcon\Acl\Exceptions\InvalidRoleImplementation`](#aclexceptionsinvalidroleimplementation)
+- [`Phalcon\Acl\Exceptions\InvalidRoleType`](#aclexceptionsinvalidroletype)
+- [`Phalcon\Acl\Exceptions\MissingFunctionParameters`](#aclexceptionsmissingfunctionparameters)
+- [`Phalcon\Acl\Exceptions\ParameterTypeMismatch`](#aclexceptionsparametertypemismatch)
+- [`Phalcon\Acl\Exceptions\RoleNotFoundException`](#aclexceptionsrolenotfoundexception)
+
+</div>
+
+## Acl\Exceptions\AccessRuleNotFound
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/AccessRuleNotFound.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\AccessRuleNotFound`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclexceptionsaccessrulenotfound-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$accessName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+<h4 id="aclexceptionsaccessrulenotfound-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $accessName,
+string $componentName
+);
+```
+
+## Acl\Exceptions\CircularInheritanceError
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/CircularInheritanceError.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\CircularInheritanceError`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclexceptionscircularinheritanceerror-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$roleName</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+<h4 id="aclexceptionscircularinheritanceerror-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $roleName );
+```
+
+## Acl\Exceptions\ElementNotFound
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/ElementNotFound.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\ElementNotFound`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+## Acl\Exceptions\ForbiddenWildcard
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/ForbiddenWildcard.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\ForbiddenWildcard`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclexceptionsforbiddenwildcard-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$elementType</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+<h4 id="aclexceptionsforbiddenwildcard-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $elementType );
+```
+
+## Acl\Exceptions\InvalidAccessList
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/InvalidAccessList.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\InvalidAccessList`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclexceptionsinvalidaccesslist-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+<h4 id="aclexceptionsinvalidaccesslist-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
+
+## Acl\Exceptions\InvalidComponentImplementation
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/InvalidComponentImplementation.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\InvalidComponentImplementation`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclexceptionsinvalidcomponentimplementation-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+<h4 id="aclexceptionsinvalidcomponentimplementation-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
+
+## Acl\Exceptions\InvalidRoleImplementation
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/InvalidRoleImplementation.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\InvalidRoleImplementation`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclexceptionsinvalidroleimplementation-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+<h4 id="aclexceptionsinvalidroleimplementation-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
+
+## Acl\Exceptions\InvalidRoleType
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/InvalidRoleType.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\InvalidRoleType`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclexceptionsinvalidroletype-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+<h4 id="aclexceptionsinvalidroletype-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
+
+## Acl\Exceptions\MissingFunctionParameters
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/MissingFunctionParameters.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\MissingFunctionParameters`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+## Acl\Exceptions\ParameterTypeMismatch
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/ParameterTypeMismatch.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\ParameterTypeMismatch`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+## Acl\Exceptions\RoleNotFoundException
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/RoleNotFoundException.zep">Source on GitHub</a>
+
+<div class="api-tree">
+
+- `\Exception`
+- [`Phalcon\Acl\Exception`](#aclexception)
+- **`Phalcon\Acl\Exceptions\RoleNotFoundException`**
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exception`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclexceptionsrolenotfoundexception-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$roleName</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+<h4 id="aclexceptionsrolenotfoundexception-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $roleName );
+```
+
+## Acl\Role
+
+<span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Role.zep">Source on GitHub</a>
+
+This class defines role entity and its description
+
+<div class="api-tree">
+
+- **`Phalcon\Acl\Role`** — implements [`Phalcon\Acl\RoleInterface`](#aclroleinterface)
+
+</div>
+
+__Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclrole-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$description</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Phalcon\Acl\Role constructor</span>
+</a>
+<a class="api-item" href="#aclrole-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+</a>
+<a class="api-item" href="#aclrole-getdescription">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
+</a>
+<a class="api-item" href="#aclrole-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+<h4 id="aclrole-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $name,
+string $description = null
+);
+```
+
+Phalcon\Acl\Role constructor
+
+<h4 id="aclrole-__tostring"><code>__toString()</code></h4>
+
+```php
+public function __toString(): string;
+```
+
+<h4 id="aclrole-getdescription"><code>getDescription()</code></h4>
+
+```php
+public function getDescription(): string|null;
+```
+
+<h4 id="aclrole-getname"><code>getName()</code></h4>
+
+```php
+public function getName(): string;
+```
+
+## Acl\RoleAwareInterface
+
+<span class="badge badge--interface">Interface</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/RoleAwareInterface.zep">Source on GitHub</a>
+
+Interface for classes which could be used in allow method as ROLE
+
+<div class="api-tree">
+
+- **`Phalcon\Acl\RoleAwareInterface`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclroleawareinterface-getrolename">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getRoleName</span>()</code>
+<span class="desc">Returns role name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+<h4 id="aclroleawareinterface-getrolename"><code>getRoleName()</code></h4>
+
+```php
+public function getRoleName(): string;
+```
+
+Returns role name
+
+## Acl\RoleInterface
+
+<span class="badge badge--interface">Interface</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/RoleInterface.zep">Source on GitHub</a>
+
+Interface for Phalcon\Acl\Role
+
+<div class="api-tree">
+
+- **`Phalcon\Acl\RoleInterface`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#aclroleinterface-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+<span class="desc">Magic method __toString</span>
+</a>
+<a class="api-item" href="#aclroleinterface-getdescription">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
+<span class="desc">Returns role description</span>
+</a>
+<a class="api-item" href="#aclroleinterface-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+<span class="desc">Returns the role name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+<h4 id="aclroleinterface-__tostring"><code>__toString()</code></h4>
+
+```php
+public function __toString(): string;
+```
+
+Magic method __toString
+
+<h4 id="aclroleinterface-getdescription"><code>getDescription()</code></h4>
+
+```php
+public function getDescription(): string|null;
+```
+
+Returns role description
+
+<h4 id="aclroleinterface-getname"><code>getName()</code></h4>
+
+```php
+public function getName(): string;
+```
+
+Returns the role name
+
+Source: https://docs.phalcon.io/5.16/api/phalcon_acl/index.mdx

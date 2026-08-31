@@ -1,0 +1,16 @@
+---
+title: "HTTP Request (PSR-7)"
+version: "5.5"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# HTTP Request (PSR-7)
+
+:::info[NOTE]
+The HTTP Request component has been removed from v5 to remove the dependency on PSR. They will be introduced in a future version either as pure Phalcon implementations with proxy (PSR enabled) classes or in v6 (PHP implementation).
+:::
+
+Source: https://docs.phalcon.io/5.5/http-request/index.mdx

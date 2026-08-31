@@ -1,0 +1,26 @@
+---
+title: "HTML Components"
+version: "5.4"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# HTML Components
+
+## Overview
+The [Phalcon\Html\Attributes][html-attributes] is a wrapper of [Phalcon\Support\Collection][support-collection]. It also contains two more methods `render()` and `__toString()`. `render()` uses [Phalcon\Html\TagFactory][html-tagfactory] internally to render the attributes that an HTML element has. These HTML attributes are defined in the object itself.
+
+The component can be used on its own if you want to collect HTML attributes in an object and then _render_ them (return them as a string) in a `key=value` format.
+
+This component is used internally by [Phalcon\Forms\Form][forms] to store the attributes of form elements.
+
+[html-attributes]: /5.4/api/phalcon_html/#html-attributes
+[html-attributes-attributesinterface]: /5.4/api/phalcon_html/#html-attributes-attributesinterface
+[html-attributes-renderinterface]: /5.4/api/phalcon_html/#html-attributes-renderinterface
+[html-tagfactory]: /5.4/api/phalcon_html/#html-tagfactory
+[support-collection]: /5.4/support-collection/
+[forms]: /5.4/forms/
+
+Source: https://docs.phalcon.io/5.4/html-attributes/index.mdx

@@ -1,0 +1,5 @@
+# Phalcon Documentation
+
+> Phalcon Framework. A full-stack PHP framework delivered as a PHP extension, offering lower resource consumption and high performance.
+
+Index: https://docs.phalcon.io/llms.txt

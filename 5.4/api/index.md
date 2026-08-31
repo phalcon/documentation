@@ -1,0 +1,44 @@
+---
+title: "API Index"
+version: "5.4"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# API Index
+
+- [Phalcon Acl](/5.4/api/phalcon_acl/)
+- [Phalcon Annotations](/5.4/api/phalcon_annotations/)
+- [Phalcon Application](/5.4/api/phalcon_application/)
+- [Phalcon Assets](/5.4/api/phalcon_assets/)
+- [Phalcon Autoload](/5.4/api/phalcon_autoload/)
+- [Phalcon Cache](/5.4/api/phalcon_cache/)
+- [Phalcon Cli](/5.4/api/phalcon_cli/)
+- [Phalcon Config](/5.4/api/phalcon_config/)
+- [Phalcon Datamapper](/5.4/api/phalcon_datamapper/)
+- [Phalcon Db](/5.4/api/phalcon_db/)
+- [Phalcon Di](/5.4/api/phalcon_di/)
+- [Phalcon Dispatcher](/5.4/api/phalcon_dispatcher/)
+- [Phalcon Domain](/5.4/api/phalcon_domain/)
+- [Phalcon Encryption](/5.4/api/phalcon_encryption/)
+- [Phalcon Events](/5.4/api/phalcon_events/)
+- [Phalcon Factory](/5.4/api/phalcon_factory/)
+- [Phalcon Filter](/5.4/api/phalcon_filter/)
+- [Phalcon Flash](/5.4/api/phalcon_flash/)
+- [Phalcon Forms](/5.4/api/phalcon_forms/)
+- [Phalcon Html](/5.4/api/phalcon_html/)
+- [Phalcon Http](/5.4/api/phalcon_http/)
+- [Phalcon Image](/5.4/api/phalcon_image/)
+- [Phalcon Logger](/5.4/api/phalcon_logger/)
+- [Phalcon Messages](/5.4/api/phalcon_messages/)
+- [Phalcon Mvc](/5.4/api/phalcon_mvc/)
+- [Phalcon Paginator](/5.4/api/phalcon_paginator/)
+- [Phalcon Session](/5.4/api/phalcon_session/)
+- [Phalcon Storage](/5.4/api/phalcon_storage/)
+- [Phalcon Support](/5.4/api/phalcon_support/)
+- [Phalcon Tag](/5.4/api/phalcon_tag/)
+- [Phalcon Translate](/5.4/api/phalcon_translate/)
+
+Source: https://docs.phalcon.io/5.4/api/index.mdx

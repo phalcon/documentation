@@ -1,0 +1,77 @@
+---
+title: "Release History"
+version: "6.0"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Release History
+
+<table>
+    <thead>
+    <tr>
+        <th class="version-th-center">Version</th>
+        <th class="version-th-center">Release date</th>
+        <th class="version-th-right">PHP version</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="version-td-center">6.0.0alpha1</td>
+        <td class="version-td-center">Jul 19, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center previous-version">6.0.0alpha2</td>
+        <td class="version-td-center">Jul 19, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center current-version">6.0.0alpha3</td>
+        <td class="version-td-center">Jul 29, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    </tbody>
+</table>
+
+<div style="margin-left: -1em;">
+    <div style="float: left; margin-left: 1em; display: none;">
+        <span style="white-space: nowrap;"><b>Legend:</b></span>
+    </div>
+    <div style="float: left; margin-left: 1em;">
+        <span class="legend legend-old-version"
+              title="An older version, not maintained">
+            Old version
+        </span>
+    </div>
+    <div style="float: left; margin-left: 1em;">
+        <span class="legend legend-old-version-supported" 
+              title="An older version, yet still maintained">
+            Older version, still maintained
+        </span>
+    </div>
+    <div style="float: left; margin-left: 1em;">
+        <span class="legend legend-latest" 
+              title="Latest stable version">
+            <strong>Latest version</strong>
+        </span>
+    </div>
+    <div style="float: left; margin-left: 1em;">
+        <span class="legend legend-future" 
+              title="Latest preview of a future release">
+            Latest preview version
+        </span>
+    </div>
+    <div style="float: left; margin-left: 1em;">
+        <span class="legend legend-future" 
+              title="A future release">
+            Future release
+        </span>
+    </div>
+    <div style="clear: left;">
+    </div>
+</div>
+
+Source: https://docs.phalcon.io/6.0/releases/index.mdx

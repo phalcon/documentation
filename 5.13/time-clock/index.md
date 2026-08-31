@@ -1,0 +1,336 @@
+---
+title: "Clock Component"
+version: "5.13"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Clock Component
+
+## Overview
+
+[Phalcon\Time\Clock][clock-interface] is a small abstraction that returns the current time as
+a [DateTimeImmutable][datetimeimmutable] object. It allows you to decouple your code from the system clock, which makes
+time-dependent logic predictable and easy to test.
+
+The component ships with two implementations:
+
+- [Phalcon\Time\Clock\SystemClock][system-clock] - returns the real, system time
+- [Phalcon\Time\Clock\FrozenClock][frozen-clock] - returns a fixed time, useful for testing
+
+Both implementations adhere to the [Phalcon\Time\Clock\ClockInterface][clock-interface] contract:
+
+```php
+<?php
+
+namespace Phalcon\Time\Clock;
+
+use DateTimeImmutable;
+
+interface ClockInterface
+{
+public function now(): DateTimeImmutable;
+}
+```
+
+## SystemClock
+
+[Phalcon\Time\Clock\SystemClock][system-clock] returns the current time using the timezone passed to its constructor.
+The class is `final` and cannot be extended.
+
+```php
+<?php
+
+use DateTimeZone;
+use Phalcon\Time\Clock\SystemClock;
+
+$clock = new SystemClock(new DateTimeZone('Pacific/Niue'));
+
+echo $clock->now()->format('Y-m-d H:i:s');
+```
+
+### Constructor
+
+```php
+public function __construct(DateTimeZone $timezone)
+```
+
+The constructor requires a [DateTimeZone][datetimezone] object that will be used every time `now()` is called.
+
+### Factory methods
+
+For convenience, two static constructors are exposed:
+
+```php
+public static function fromSystemTimezone(): SystemClock
+```
+
+Returns a new instance configured with the current default timezone (as returned
+by [date_default_timezone_get()][date-default-timezone-get]).
+
+```php
+<?php
+
+use Phalcon\Time\Clock\SystemClock;
+
+$clock = SystemClock::fromSystemTimezone();
+```
+
+```php
+public static function fromUTC(): SystemClock
+```
+
+Returns a new instance configured with the `UTC` timezone.
+
+```php
+<?php
+
+use Phalcon\Time\Clock\SystemClock;
+
+$clock = SystemClock::fromUTC();
+
+echo $clock->now()->format(DATE_ATOM);
+```
+
+### now()
+
+```php
+public function now(): DateTimeImmutable
+```
+
+Returns a new [DateTimeImmutable][datetimeimmutable] representing _now_ in the configured timezone. Each call returns a
+fresh object with the current time.
+
+```php
+<?php
+
+use Phalcon\Time\Clock\SystemClock;
+
+$clock = SystemClock::fromUTC();
+
+$first  = $clock->now();
+sleep(1);
+$second = $clock->now();
+
+var_dump($first == $second); // false
+```
+
+## FrozenClock
+
+[Phalcon\Time\Clock\FrozenClock][frozen-clock] always returns the same point in time until you change it. This is the
+implementation of choice for testing code that depends on the current time. The class is `final` and cannot be extended.
+
+```php
+<?php
+
+use DateTimeImmutable;
+use Phalcon\Time\Clock\FrozenClock;
+
+$clock = new FrozenClock(new DateTimeImmutable('2026-01-01 12:00:00'));
+
+echo $clock->now()->format('Y-m-d H:i:s'); // 2026-01-01 12:00:00
+echo $clock->now()->format('Y-m-d H:i:s'); // 2026-01-01 12:00:00
+```
+
+### Constructor
+
+```php
+public function __construct(DateTimeImmutable $now)
+```
+
+The constructor accepts a [DateTimeImmutable][datetimeimmutable] object, which will be returned by every subsequent call
+to `now()` until the clock is mutated.
+
+### Factory methods
+
+Same convenience constructors as [SystemClock][system-clock] are available:
+
+```php
+public static function fromSystemTimezone(): FrozenClock
+```
+
+Returns a new instance frozen at _now_ using the current default timezone.
+
+```php
+public static function fromUTC(): FrozenClock
+```
+
+Returns a new instance frozen at _now_ using the `UTC` timezone.
+
+```php
+<?php
+
+use Phalcon\Time\Clock\FrozenClock;
+
+$clock = FrozenClock::fromUTC();
+```
+
+### now()
+
+```php
+public function now(): DateTimeImmutable
+```
+
+Returns the [DateTimeImmutable][datetimeimmutable] currently held by the clock. The returned value does not change until
+`set()` or `adjust()` is called.
+
+### set()
+
+```php
+public function set(DateTimeImmutable $now): FrozenClock
+```
+
+Replaces the time held by the clock. Every consumer that has a reference to the clock will observe the new value on the
+next call to `now()`.
+
+```php
+<?php
+
+use DateTimeImmutable;
+use Phalcon\Time\Clock\FrozenClock;
+
+$clock = new FrozenClock(new DateTimeImmutable('2026-01-01 12:00:00'));
+
+echo $clock->now()->format('Y-m-d H:i:s'); // 2026-01-01 12:00:00
+
+$clock->set(new DateTimeImmutable('2026-06-15 09:30:00'));
+
+echo $clock->now()->format('Y-m-d H:i:s'); // 2026-06-15 09:30:00
+```
+
+### adjust()
+
+```php
+public function adjust(string $modifier): FrozenClock
+```
+
+Mutates the clock by applying a [DateTimeImmutable::modify()][datetimeimmutable-modify] expression. Every consumer that
+has a reference to the clock will observe the new value on the next call to `now()`. If the modifier string is invalid,
+a [Phalcon\Time\Clock\Exception][exception] is thrown.
+
+```php
+<?php
+
+use DateTimeImmutable;
+use Phalcon\Time\Clock\FrozenClock;
+
+$clock = new FrozenClock(new DateTimeImmutable('2026-01-01 12:00:00'));
+
+$clock->adjust('+1 day');
+echo $clock->now()->format('Y-m-d H:i:s'); // 2026-01-02 12:00:00
+
+$clock->adjust('+2 hours');
+echo $clock->now()->format('Y-m-d H:i:s'); // 2026-01-02 14:00:00
+```
+
+```php
+<?php
+
+use DateTimeImmutable;
+use Phalcon\Time\Clock\Exception;
+use Phalcon\Time\Clock\FrozenClock;
+
+$clock = new FrozenClock(new DateTimeImmutable('2026-01-01 12:00:00'));
+
+try {
+$clock->adjust('not a real modifier');
+} catch (Exception $ex) {
+echo $ex->getMessage(); // Invalid modifier: "not a real modifier"
+}
+```
+
+## Dependency Injection
+
+Because the clock is exposed through a small interface, it is a good candidate for dependency injection. Inject the
+interface into your services and pass the implementation that suits the context (system or frozen).
+
+```php
+<?php
+
+use Phalcon\Di\Di;
+use Phalcon\Time\Clock\ClockInterface;
+use Phalcon\Time\Clock\SystemClock;
+
+$container = new Di();
+
+$container->setShared(
+ClockInterface::class,
+function () {
+    return SystemClock::fromUTC();
+}
+);
+```
+
+In your services, type-hint against [ClockInterface][clock-interface]:
+
+```php
+<?php
+
+use Phalcon\Time\Clock\ClockInterface;
+
+class InvoiceService
+{
+public function __construct(
+    private ClockInterface $clock
+) {
+}
+
+public function isOverdue(\DateTimeImmutable $dueDate): bool
+{
+    return $this->clock->now() > $dueDate;
+}
+}
+```
+
+In your tests, swap the implementation for a [FrozenClock][frozen-clock] so that time-dependent assertions become
+deterministic.
+
+```php
+<?php
+
+use DateTimeImmutable;
+use Phalcon\Time\Clock\FrozenClock;
+
+$clock   = new FrozenClock(new DateTimeImmutable('2026-01-01 12:00:00'));
+$service = new InvoiceService($clock);
+
+$dueDate = new DateTimeImmutable('2025-12-25 00:00:00');
+
+var_dump($service->isOverdue($dueDate)); // true
+```
+
+## Exceptions
+
+Any exception thrown by the component is a [Phalcon\Time\Clock\Exception][exception], which extends the base PHP
+`\Exception` class.
+
+### Granular Exceptions
+
+As of 5.13.1 the component raises granular subclasses of `Phalcon\Time\Clock\Exception` so callers can catch a specific
+failure mode. Existing `catch (Phalcon\Time\Clock\Exception $e)` blocks continue to work unchanged.
+
+| Class                                           | Parent                         | Thrown when                                                               |
+|-------------------------------------------------|--------------------------------|---------------------------------------------------------------------------|
+| `Phalcon\Time\Clock\Exceptions\InvalidModifier` | `Phalcon\Time\Clock\Exception` | `FrozenClock::adjust()` is given a modifier string that PHP cannot parse. |
+
+[clock-interface]: /5.13/api/phalcon_time/#timeclockclockinterface
+
+[date-default-timezone-get]: https://www.php.net/manual/en/function.date-default-timezone-get.php
+
+[datetimeimmutable]: https://www.php.net/manual/en/class.datetimeimmutable.php
+
+[datetimeimmutable-modify]: https://www.php.net/manual/en/datetimeimmutable.modify.php
+
+[datetimezone]: https://www.php.net/manual/en/class.datetimezone.php
+
+[exception]: /5.13/api/phalcon_time/#timeclockexception
+
+[frozen-clock]: /5.13/api/phalcon_time/#timeclockfrozenclock
+
+[lcobucci-clock]: https://github.com/lcobucci/clock
+
+[system-clock]: /5.13/api/phalcon_time/#timeclocksystemclock
+
+Source: https://docs.phalcon.io/5.13/time-clock/index.mdx
