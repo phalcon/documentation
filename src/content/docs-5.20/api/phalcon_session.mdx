@@ -1,95 +1,66 @@
 ---
 title: "Phalcon Session"
-sidebar: false
 ---
-
 
 :::info[NOTE]
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Session\Adapter\AbstractAdapter
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/AbstractAdapter.zep">Source on GitHub</a>
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/AbstractAdapter.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Session\Adapter\AbstractAdapter`** - implements `\SessionHandlerInterface`, `\SessionUpdateTimestampHandlerInterface`
     - [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
     - [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
-
+<ApiUses>`Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionadapterabstractadapter-close">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">close</span>()</code>
-<span class="desc">Close</span>
-</a>
-<a class="api-item" href="#sessionadapterabstractadapter-destroy">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">destroy</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Destroy</span>
-</a>
-<a class="api-item" href="#sessionadapterabstractadapter-gc">
-<code class="vis vis-public">public</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">gc</span>( <span class="st">int</span> <span class="sv">$max_lifetime</span> )</code>
-<span class="desc">Garbage Collector</span>
-</a>
-<a class="api-item" href="#sessionadapterabstractadapter-open">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">open</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-<span class="desc">Open</span>
-</a>
-<a class="api-item" href="#sessionadapterabstractadapter-read">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Read</span>
-</a>
-<a class="api-item" href="#sessionadapterabstractadapter-updatetimestamp">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Refresh the session lifetime without changing the session data</span>
-</a>
-<a class="api-item" href="#sessionadapterabstractadapter-validateid">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validateId</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Validate the session id (used when strict mode is enabled)</span>
-</a>
-<a class="api-item" href="#sessionadapterabstractadapter-write">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Write</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionadapterabstractadapter-close" visibility="public" name="close" returnType="bool" params={[]}>
+Close
+</ApiItem>
+<ApiItem href="#sessionadapterabstractadapter-destroy" visibility="public" name="destroy" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
+Destroy
+</ApiItem>
+<ApiItem href="#sessionadapterabstractadapter-gc" visibility="public" name="gc" returnType="false|int" params={[{"type":"int","name":"max_lifetime","default":null}]}>
+Garbage Collector
+</ApiItem>
+<ApiItem href="#sessionadapterabstractadapter-open" visibility="public" name="open" returnType="bool" params={[{"type":"string","name":"path","default":null},{"type":"string","name":"name","default":null}]}>
+Open
+</ApiItem>
+<ApiItem href="#sessionadapterabstractadapter-read" visibility="public" name="read" returnType="string" params={[{"type":"string","name":"id","default":null}]}>
+Read
+</ApiItem>
+<ApiItem href="#sessionadapterabstractadapter-updatetimestamp" visibility="public" name="updateTimestamp" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
+Refresh the session lifetime without changing the session data
+</ApiItem>
+<ApiItem href="#sessionadapterabstractadapter-validateid" visibility="public" name="validateId" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
+Validate the session id (used when strict mode is enabled)
+</ApiItem>
+<ApiItem href="#sessionadapterabstractadapter-write" visibility="public" name="write" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
+Write
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sv">$adapter</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="adapter" type="AdapterInterface" default="">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 8</div>
+<ApiGroup label="Public" count="8" />
 
 <h4 id="sessionadapterabstractadapter-close"><code>close()</code></h4>
 
@@ -167,49 +138,45 @@ Write
 
 ## Session\Adapter\Exceptions\AdapterRuntimeError
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/AdapterRuntimeError.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/AdapterRuntimeError.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Session\Exception`](#sessionexception)
         - **`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Session\Exception`
-
+<ApiUses>`Phalcon\Session\Exception`</ApiUses>
 
 
 ## Session\Adapter\Exceptions\InvalidSavePath
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/InvalidSavePath.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/InvalidSavePath.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Session\Exception`](#sessionexception)
         - **`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Session\Exception`
-
+<ApiUses>`Phalcon\Session\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionadapterexceptionsinvalidsavepath-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionadapterexceptionsinvalidsavepath-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="sessionadapterexceptionsinvalidsavepath-__construct"><code>__construct()</code></h4>
 
@@ -220,32 +187,29 @@ public function __construct();
 
 ## Session\Adapter\Exceptions\SavePathUnavailable
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/SavePathUnavailable.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/SavePathUnavailable.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Session\Exception`](#sessionexception)
         - **`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Session\Exception`
-
+<ApiUses>`Phalcon\Session\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionadapterexceptionssavepathunavailable-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionadapterexceptionssavepathunavailable-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="sessionadapterexceptionssavepathunavailable-__construct"><code>__construct()</code></h4>
 
@@ -256,34 +220,31 @@ public function __construct( string $path );
 
 ## Session\Adapter\Libmemcached
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Libmemcached.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Libmemcached.zep" />
 
 Phalcon\Session\Adapter\Libmemcached
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Session\Adapter\AbstractAdapter`](#sessionadapterabstractadapter)
     - **`Phalcon\Session\Adapter\Libmemcached`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Exception` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Storage\AdapterFactory`
-
+<ApiUses>`Exception` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Storage\AdapterFactory`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionadapterlibmemcached-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Libmemcached constructor.</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionadapterlibmemcached-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Libmemcached constructor.
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="sessionadapterlibmemcached-__construct"><code>__construct()</code></h4>
 
@@ -308,8 +269,8 @@ Libmemcached constructor.
 
 ## Session\Adapter\Noop
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Noop.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Noop.zep" />
 
 Phalcon\Session\Adapter\Noop
 
@@ -326,72 +287,47 @@ $session = new Manager();
 $session->setAdapter(new Noop());
 ```
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Session\Adapter\Noop`** - implements `\SessionHandlerInterface`, `\SessionUpdateTimestampHandlerInterface`
     - [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
 
-</div>
+</ApiTree>
 
-__Uses__ `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
-
+<ApiUses>`SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionadapternoop-close">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">close</span>()</code>
-<span class="desc">Close</span>
-</a>
-<a class="api-item" href="#sessionadapternoop-destroy">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">destroy</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Destroy</span>
-</a>
-<a class="api-item" href="#sessionadapternoop-gc">
-<code class="vis vis-public">public</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">gc</span>( <span class="st">int</span> <span class="sv">$max_lifetime</span> )</code>
-<span class="desc">Garbage Collector</span>
-</a>
-<a class="api-item" href="#sessionadapternoop-open">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">open</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-<span class="desc">Open</span>
-</a>
-<a class="api-item" href="#sessionadapternoop-read">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Read</span>
-</a>
-<a class="api-item" href="#sessionadapternoop-updatetimestamp">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Refresh the session lifetime without changing the session data</span>
-</a>
-<a class="api-item" href="#sessionadapternoop-validateid">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validateId</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Validate the session id (used when strict mode is enabled)</span>
-</a>
-<a class="api-item" href="#sessionadapternoop-write">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Write</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionadapternoop-close" visibility="public" name="close" returnType="bool" params={[]}>
+Close
+</ApiItem>
+<ApiItem href="#sessionadapternoop-destroy" visibility="public" name="destroy" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
+Destroy
+</ApiItem>
+<ApiItem href="#sessionadapternoop-gc" visibility="public" name="gc" returnType="false|int" params={[{"type":"int","name":"max_lifetime","default":null}]}>
+Garbage Collector
+</ApiItem>
+<ApiItem href="#sessionadapternoop-open" visibility="public" name="open" returnType="bool" params={[{"type":"string","name":"path","default":null},{"type":"string","name":"name","default":null}]}>
+Open
+</ApiItem>
+<ApiItem href="#sessionadapternoop-read" visibility="public" name="read" returnType="string" params={[{"type":"string","name":"id","default":null}]}>
+Read
+</ApiItem>
+<ApiItem href="#sessionadapternoop-updatetimestamp" visibility="public" name="updateTimestamp" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
+Refresh the session lifetime without changing the session data
+</ApiItem>
+<ApiItem href="#sessionadapternoop-validateid" visibility="public" name="validateId" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
+Validate the session id (used when strict mode is enabled)
+</ApiItem>
+<ApiItem href="#sessionadapternoop-write" visibility="public" name="write" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
+Write
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 8</div>
+<ApiGroup label="Public" count="8" />
 
 <h4 id="sessionadapternoop-close"><code>close()</code></h4>
 
@@ -469,110 +405,72 @@ Write
 
 ## Session\Adapter\Redis
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Redis.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Redis.zep" />
 
 Phalcon\Session\Adapter\Redis
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Session\Adapter\AbstractAdapter`](#sessionadapterabstractadapter)
     - **`Phalcon\Session\Adapter\Redis`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Exception` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Storage\AdapterFactory`
-
+<ApiUses>`Exception` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Storage\AdapterFactory`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionadapterredis-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#sessionadapterredis-close">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">close</span>()</code>
-<span class="desc">Close - releases the session lock if one is held</span>
-</a>
-<a class="api-item" href="#sessionadapterredis-destroy">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">destroy</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Destroy</span>
-</a>
-<a class="api-item" href="#sessionadapterredis-read">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Read</span>
-</a>
-<a class="api-item" href="#sessionadapterredis-acquirelock">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">acquireLock</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Tries to acquire the session lock, pausing <code>lockWaitTime</code> microseconds</span>
-</a>
-<a class="api-item" href="#sessionadapterredis-releaselock">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">releaseLock</span>()</code>
-<span class="desc">Releases the session lock - only when this instance still owns it</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionadapterredis-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#sessionadapterredis-close" visibility="public" name="close" returnType="bool" params={[]}>
+Close - releases the session lock if one is held
+</ApiItem>
+<ApiItem href="#sessionadapterredis-destroy" visibility="public" name="destroy" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
+Destroy
+</ApiItem>
+<ApiItem href="#sessionadapterredis-read" visibility="public" name="read" returnType="string" params={[{"type":"string","name":"id","default":null}]}>
+Read
+</ApiItem>
+<ApiItem href="#sessionadapterredis-acquirelock" visibility="protected" name="acquireLock" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
+Tries to acquire the session lock, pausing `lockWaitTime` microseconds
+</ApiItem>
+<ApiItem href="#sessionadapterredis-releaselock" visibility="protected" name="releaseLock" returnType="void" params={[]}>
+Releases the session lock - only when this instance still owns it
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$lockAcquired</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$lockExpiry</span><span class="sm"> = 30</span></code>
-<span class="desc">Lock time-to-live in seconds. The lock is not refreshed during the request: a request that runs longer than this expiry loses its lock silently and a concurrent request may then acquire it (the token-guarded release still avoids deleting the newer lock). Raise this above the longest expected request to retain the lock for the whole request.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$lockKey</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$lockRetries</span><span class="sm"> = 100</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$lockToken</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$lockWaitTime</span><span class="sm"> = 50000</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$lockingEnabled</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="lockAcquired" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="lockExpiry" type="int" default="30">
+Lock time-to-live in seconds. The lock is not refreshed during the
+request: a request that runs longer than this expiry loses its lock
+silently and a concurrent request may then acquire it (the token-guarded
+release still avoids deleting the newer lock). Raise this above the
+longest expected request to retain the lock for the whole request.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="lockKey" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="lockRetries" type="int" default="100">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="lockToken" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="lockWaitTime" type="int" default="50000">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="lockingEnabled" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<ApiGroup label="Public" count="4" />
 
 <h4 id="sessionadapterredis-__construct"><code>__construct()</code></h4>
 
@@ -609,7 +507,7 @@ public function read( string $id ): string;
 
 Read
 
-<div class="api-group">Protected · 2</div>
+<ApiGroup label="Protected" count="2" />
 
 <h4 id="sessionadapterredis-acquirelock"><code>acquireLock()</code></h4>
 
@@ -631,8 +529,8 @@ Releases the session lock - only when this instance still owns it
 
 ## Session\Adapter\Stream
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Stream.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Stream.zep" />
 
 Phalcon\Session\Adapter\Stream
 
@@ -653,98 +551,62 @@ $files = new Stream(
 $session->setAdapter($files);
 ```
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Session\Adapter\Noop`](#sessionadapternoop)
     - **`Phalcon\Session\Adapter\Stream`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
-
+<ApiUses>`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionadapterstream-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-destroy">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">destroy</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-</a>
-<a class="api-item" href="#sessionadapterstream-gc">
-<code class="vis vis-public">public</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">gc</span>( <span class="st">int</span> <span class="sv">$max_lifetime</span> )</code>
-<span class="desc">Garbage Collector</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-open">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">open</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-<span class="desc">Ignore the savePath and use local defined path</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-read">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Reads data from the adapter</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-updatetimestamp">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Refresh the session file modification time without changing its data</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-validateid">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validateId</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
-<span class="desc">Validate the session id (used when strict mode is enabled)</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-write">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span></span>)</code>
-</a>
-<a class="api-item" href="#sessionadapterstream-getglobfiles">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array|false</code>
-<code class="sig"><span class="sf">getGlobFiles</span>( <span class="st">string</span> <span class="sv">$pattern</span> )</code>
-<span class="desc">Gets the glob array or returns false on failure</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-getprefixedname">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getPrefixedName</span>( <span class="st">mixed</span> <span class="sv">$name</span> )</code>
-<span class="desc">Helper method to get the name prefixed</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionadapterstream-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#sessionadapterstream-destroy" visibility="public" name="destroy" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
+</ApiItem>
+<ApiItem href="#sessionadapterstream-gc" visibility="public" name="gc" returnType="false|int" params={[{"type":"int","name":"max_lifetime","default":null}]}>
+Garbage Collector
+</ApiItem>
+<ApiItem href="#sessionadapterstream-open" visibility="public" name="open" returnType="bool" params={[{"type":"string","name":"path","default":null},{"type":"string","name":"name","default":null}]}>
+Ignore the savePath and use local defined path
+</ApiItem>
+<ApiItem href="#sessionadapterstream-read" visibility="public" name="read" returnType="string" params={[{"type":"string","name":"id","default":null}]}>
+Reads data from the adapter
+</ApiItem>
+<ApiItem href="#sessionadapterstream-updatetimestamp" visibility="public" name="updateTimestamp" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
+Refresh the session file modification time without changing its data
+</ApiItem>
+<ApiItem href="#sessionadapterstream-validateid" visibility="public" name="validateId" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
+Validate the session id (used when strict mode is enabled)
+</ApiItem>
+<ApiItem href="#sessionadapterstream-write" visibility="public" name="write" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
+</ApiItem>
+<ApiItem href="#sessionadapterstream-getglobfiles" visibility="protected" name="getGlobFiles" returnType="array|false" params={[{"type":"string","name":"pattern","default":null}]}>
+Gets the glob array or returns false on failure
+</ApiItem>
+<ApiItem href="#sessionadapterstream-getprefixedname" visibility="protected" name="getPrefixedName" returnType="string" params={[{"type":"mixed","name":"name","default":null}]}>
+Helper method to get the name prefixed
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
-<span class="desc">Session options</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span></code>
-<span class="desc">Session prefix</span>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
+Session options
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
+Session prefix
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 8</div>
+<ApiGroup label="Public" count="8" />
 
 <h4 id="sessionadapterstream-__construct"><code>__construct()</code></h4>
 
@@ -815,7 +677,7 @@ public function write(
 ): bool;
 ```
 
-<div class="api-group">Protected · 2</div>
+<ApiGroup label="Protected" count="2" />
 
 <h4 id="sessionadapterstream-getglobfiles"><code>getGlobFiles()</code></h4>
 
@@ -836,8 +698,8 @@ Helper method to get the name prefixed
 
 ## Session\Bag
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Bag.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Bag.zep" />
 
 This component helps to separate session data into "namespaces". Working by
 this way you can easily create groups of session variables into the
@@ -856,64 +718,43 @@ $user->age  = 22;
 
 @extends Collection&lt;mixed>
 
-<div class="api-tree">
+<ApiTree>
 
-- [`Phalcon\Support\Collection`](/5.20/api/phalcon_support/#supportcollection)
-    - **`Phalcon\Session\Bag`** - implements [`Phalcon\Session\BagInterface`](#sessionbaginterface), [`Phalcon\Di\InjectionAwareInterface`](/5.20/api/phalcon_di/#diinjectionawareinterface)
+- [`Phalcon\Support\Collection`](../phalcon_support/#supportcollection)
+    - **`Phalcon\Session\Bag`** - implements [`Phalcon\Session\BagInterface`](#sessionbaginterface), [`Phalcon\Di\InjectionAwareInterface`](../phalcon_di/#diinjectionawareinterface)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Collection`
-
+<ApiUses>`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Collection`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionbag-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$session</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
-</a>
-<a class="api-item" href="#sessionbag-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Destroys the session bag</span>
-</a>
-<a class="api-item" href="#sessionbag-getdi">
-<code class="vis vis-public">public</code>
-<code class="ret">DiInterface</code>
-<code class="sig"><span class="sf">getDI</span>()</code>
-<span class="desc">Returns the DependencyInjector container</span>
-</a>
-<a class="api-item" href="#sessionbag-init">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
-<span class="desc">Initialize internal array</span>
-</a>
-<a class="api-item" href="#sessionbag-remove">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Removes a property from the internal bag</span>
-</a>
-<a class="api-item" href="#sessionbag-set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Sets a value in the session bag</span>
-</a>
-<a class="api-item" href="#sessionbag-setdi">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Sets the DependencyInjector container</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionbag-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"ManagerInterface","name":"session","default":null},{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#sessionbag-clear" visibility="public" name="clear" returnType="void" params={[]}>
+Destroys the session bag
+</ApiItem>
+<ApiItem href="#sessionbag-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
+Returns the DependencyInjector container
+</ApiItem>
+<ApiItem href="#sessionbag-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
+Initialize internal array
+</ApiItem>
+<ApiItem href="#sessionbag-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
+Removes a property from the internal bag
+</ApiItem>
+<ApiItem href="#sessionbag-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+Sets a value in the session bag
+</ApiItem>
+<ApiItem href="#sessionbag-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Sets the DependencyInjector container
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 7</div>
+<ApiGroup label="Public" count="7" />
 
 <h4 id="sessionbag-__construct"><code>__construct()</code></h4>
 
@@ -978,75 +819,45 @@ Sets the DependencyInjector container
 
 ## Session\BagInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/BagInterface.zep">Source on GitHub</a>
+<ApiBadge variant="interface">Interface</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/BagInterface.zep" />
 
 Interface for Phalcon\Session\Bag
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Session\BagInterface`**
 
-</div>
+</ApiTree>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionbaginterface-__get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-</a>
-<a class="api-item" href="#sessionbaginterface-__isset">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-</a>
-<a class="api-item" href="#sessionbaginterface-__set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-</a>
-<a class="api-item" href="#sessionbaginterface-__unset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__unset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-</a>
-<a class="api-item" href="#sessionbaginterface-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-</a>
-<a class="api-item" href="#sessionbaginterface-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#sessionbaginterface-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-</a>
-<a class="api-item" href="#sessionbaginterface-init">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
-</a>
-<a class="api-item" href="#sessionbaginterface-remove">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-</a>
-<a class="api-item" href="#sessionbaginterface-set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionbaginterface-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"element","default":null}]}>
+</ApiItem>
+<ApiItem href="#sessionbaginterface-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
+</ApiItem>
+<ApiItem href="#sessionbaginterface-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+</ApiItem>
+<ApiItem href="#sessionbaginterface-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
+</ApiItem>
+<ApiItem href="#sessionbaginterface-clear" visibility="public" name="clear" returnType="void" params={[]}>
+</ApiItem>
+<ApiItem href="#sessionbaginterface-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#sessionbaginterface-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
+</ApiItem>
+<ApiItem href="#sessionbaginterface-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#sessionbaginterface-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
+</ApiItem>
+<ApiItem href="#sessionbaginterface-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 10</div>
+<ApiGroup label="Public" count="10" />
 
 <h4 id="sessionbaginterface-__get"><code>__get()</code></h4>
 
@@ -1121,14 +932,14 @@ public function set(
 
 ## Session\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exception.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exception.zep" />
 
 Phalcon\Session\Exception
 
 Exceptions thrown in Phalcon\Session will use this class
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - **`Phalcon\Session\Exception`**
@@ -1141,37 +952,34 @@ Exceptions thrown in Phalcon\Session will use this class
         - [`Phalcon\Session\Exceptions\SessionAlreadyStarted`](#sessionexceptionssessionalreadystarted)
         - [`Phalcon\Session\Exceptions\SessionModificationDenied`](#sessionexceptionssessionmodificationdenied)
 
-</div>
+</ApiTree>
 
 
 ## Session\Exceptions\InvalidSessionAdapter
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionAdapter.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionAdapter.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Session\Exception`](#sessionexception)
         - **`Phalcon\Session\Exceptions\InvalidSessionAdapter`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Session\Exception`
-
+<ApiUses>`Phalcon\Session\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionexceptionsinvalidsessionadapter-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionexceptionsinvalidsessionadapter-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="sessionexceptionsinvalidsessionadapter-__construct"><code>__construct()</code></h4>
 
@@ -1182,32 +990,29 @@ public function __construct();
 
 ## Session\Exceptions\InvalidSessionId
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionId.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionId.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Session\Exception`](#sessionexception)
         - **`Phalcon\Session\Exceptions\InvalidSessionId`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Session\Exception`
-
+<ApiUses>`Phalcon\Session\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionexceptionsinvalidsessionid-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionexceptionsinvalidsessionid-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="sessionexceptionsinvalidsessionid-__construct"><code>__construct()</code></h4>
 
@@ -1218,32 +1023,29 @@ public function __construct();
 
 ## Session\Exceptions\InvalidSessionName
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionName.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionName.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Session\Exception`](#sessionexception)
         - **`Phalcon\Session\Exceptions\InvalidSessionName`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Session\Exception`
-
+<ApiUses>`Phalcon\Session\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionexceptionsinvalidsessionname-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionexceptionsinvalidsessionname-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="sessionexceptionsinvalidsessionname-__construct"><code>__construct()</code></h4>
 
@@ -1254,32 +1056,29 @@ public function __construct();
 
 ## Session\Exceptions\SessionAlreadyStarted
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionAlreadyStarted.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionAlreadyStarted.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Session\Exception`](#sessionexception)
         - **`Phalcon\Session\Exceptions\SessionAlreadyStarted`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Session\Exception`
-
+<ApiUses>`Phalcon\Session\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionexceptionssessionalreadystarted-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionexceptionssessionalreadystarted-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="sessionexceptionssessionalreadystarted-__construct"><code>__construct()</code></h4>
 
@@ -1290,32 +1089,29 @@ public function __construct();
 
 ## Session\Exceptions\SessionModificationDenied
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionModificationDenied.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionModificationDenied.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Session\Exception`](#sessionexception)
         - **`Phalcon\Session\Exceptions\SessionModificationDenied`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Session\Exception`
-
+<ApiUses>`Phalcon\Session\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionexceptionssessionmodificationdenied-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionexceptionssessionmodificationdenied-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="sessionexceptionssessionmodificationdenied-__construct"><code>__construct()</code></h4>
 
@@ -1326,161 +1122,95 @@ public function __construct();
 
 ## Session\Manager
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Manager.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Manager.zep" />
 
 Session manager class
 
-<div class="api-tree">
+<ApiTree>
 
 - `\stdClass`
-    - [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
+    - [`Phalcon\Di\AbstractInjectionAware`](../phalcon_di/#diabstractinjectionaware)
         - **`Phalcon\Session\Manager`** - implements [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
 
-</div>
+</ApiTree>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`
-
+<ApiUses>`InvalidArgumentException` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionmanager-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Manager constructor.</span>
-</a>
-<a class="api-item" href="#sessionmanager-__get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Alias: Gets a session variable from an application context</span>
-</a>
-<a class="api-item" href="#sessionmanager-__isset">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Alias: Check whether a session variable is set in an application context</span>
-</a>
-<a class="api-item" href="#sessionmanager-__set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Alias: Sets a session variable in an application context</span>
-</a>
-<a class="api-item" href="#sessionmanager-__unset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__unset</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Alias: Removes a session variable from an application context</span>
-</a>
-<a class="api-item" href="#sessionmanager-destroy">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">destroy</span>()</code>
-<span class="desc">Destroy/end a session</span>
-</a>
-<a class="api-item" href="#sessionmanager-exists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">exists</span>()</code>
-<span class="desc">Check whether the session has been started</span>
-</a>
-<a class="api-item" href="#sessionmanager-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remove</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Gets a session variable from an application context</span>
-</a>
-<a class="api-item" href="#sessionmanager-getadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">SessionHandlerInterface|null</code>
-<code class="sig"><span class="sf">getAdapter</span>()</code>
-<span class="desc">Returns the stored session adapter</span>
-</a>
-<a class="api-item" href="#sessionmanager-getid">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getId</span>()</code>
-<span class="desc">Returns the session id</span>
-</a>
-<a class="api-item" href="#sessionmanager-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Returns the name of the session</span>
-</a>
-<a class="api-item" href="#sessionmanager-getoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getOptions</span>()</code>
-<span class="desc">Get internal options</span>
-</a>
-<a class="api-item" href="#sessionmanager-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Check whether a session variable is set in an application context</span>
-</a>
-<a class="api-item" href="#sessionmanager-regenerateid">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface</code>
-<code class="sig"><span class="sf">regenerateId</span>( <span class="st">bool</span> <span class="sv">$deleteOldSession</span><span class="sm"> = true</span> )</code>
-<span class="desc">Regenerates the session id via <code>session_regenerate_id()</code> (when the</span>
-</a>
-<a class="api-item" href="#sessionmanager-remove">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Removes a session variable from an application context</span>
-</a>
-<a class="api-item" href="#sessionmanager-set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Sets a session variable in an application context</span>
-</a>
-<a class="api-item" href="#sessionmanager-setadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface</code>
-<code class="sig"><span class="sf">setAdapter</span>( <span class="st">SessionHandlerInterface</span> <span class="sv">$adapter</span> )</code>
-<span class="desc">Set the adapter for the session</span>
-</a>
-<a class="api-item" href="#sessionmanager-setid">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface</code>
-<code class="sig"><span class="sf">setId</span>( <span class="st">string</span> <span class="sv">$sessionId</span> )</code>
-<span class="desc">Set session Id</span>
-</a>
-<a class="api-item" href="#sessionmanager-setname">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface</code>
-<code class="sig"><span class="sf">setName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Set the session name. Throw exception if the session has started</span>
-</a>
-<a class="api-item" href="#sessionmanager-setoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
-<span class="desc">Sets session&#039;s options</span>
-</a>
-<a class="api-item" href="#sessionmanager-start">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">start</span>()</code>
-<span class="desc">Starts the session (if headers are already sent the session will not be</span>
-</a>
-<a class="api-item" href="#sessionmanager-status">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">status</span>()</code>
-<span class="desc">Returns the status of the current session.</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionmanager-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Manager constructor.
+</ApiItem>
+<ApiItem href="#sessionmanager-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"key","default":null}]}>
+Alias: Gets a session variable from an application context
+</ApiItem>
+<ApiItem href="#sessionmanager-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Alias: Check whether a session variable is set in an application context
+</ApiItem>
+<ApiItem href="#sessionmanager-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
+Alias: Sets a session variable in an application context
+</ApiItem>
+<ApiItem href="#sessionmanager-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"key","default":null}]}>
+Alias: Removes a session variable from an application context
+</ApiItem>
+<ApiItem href="#sessionmanager-destroy" visibility="public" name="destroy" returnType="void" params={[]}>
+Destroy/end a session
+</ApiItem>
+<ApiItem href="#sessionmanager-exists" visibility="public" name="exists" returnType="bool" params={[]}>
+Check whether the session has been started
+</ApiItem>
+<ApiItem href="#sessionmanager-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"bool","name":"remove","default":"false"}]}>
+Gets a session variable from an application context
+</ApiItem>
+<ApiItem href="#sessionmanager-getadapter" visibility="public" name="getAdapter" returnType="SessionHandlerInterface|null" params={[]}>
+Returns the stored session adapter
+</ApiItem>
+<ApiItem href="#sessionmanager-getid" visibility="public" name="getId" returnType="string" params={[]}>
+Returns the session id
+</ApiItem>
+<ApiItem href="#sessionmanager-getname" visibility="public" name="getName" returnType="string" params={[]}>
+Returns the name of the session
+</ApiItem>
+<ApiItem href="#sessionmanager-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
+Get internal options
+</ApiItem>
+<ApiItem href="#sessionmanager-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Check whether a session variable is set in an application context
+</ApiItem>
+<ApiItem href="#sessionmanager-regenerateid" visibility="public" name="regenerateId" returnType="ManagerInterface" params={[{"type":"bool","name":"deleteOldSession","default":"true"}]}>
+Regenerates the session id via `session_regenerate_id()` (when the
+</ApiItem>
+<ApiItem href="#sessionmanager-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"key","default":null}]}>
+Removes a session variable from an application context
+</ApiItem>
+<ApiItem href="#sessionmanager-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
+Sets a session variable in an application context
+</ApiItem>
+<ApiItem href="#sessionmanager-setadapter" visibility="public" name="setAdapter" returnType="ManagerInterface" params={[{"type":"SessionHandlerInterface","name":"adapter","default":null}]}>
+Set the adapter for the session
+</ApiItem>
+<ApiItem href="#sessionmanager-setid" visibility="public" name="setId" returnType="ManagerInterface" params={[{"type":"string","name":"sessionId","default":null}]}>
+Set session Id
+</ApiItem>
+<ApiItem href="#sessionmanager-setname" visibility="public" name="setName" returnType="ManagerInterface" params={[{"type":"string","name":"name","default":null}]}>
+Set the session name. Throw exception if the session has started
+</ApiItem>
+<ApiItem href="#sessionmanager-setoptions" visibility="public" name="setOptions" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
+Sets session's options
+</ApiItem>
+<ApiItem href="#sessionmanager-start" visibility="public" name="start" returnType="bool" params={[]}>
+Starts the session (if headers are already sent the session will not be
+</ApiItem>
+<ApiItem href="#sessionmanager-status" visibility="public" name="status" returnType="int" params={[]}>
+Returns the status of the current session.
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 22</div>
+<ApiGroup label="Public" count="22" />
 
 <h4 id="sessionmanager-__construct"><code>__construct()</code></h4>
 
@@ -1675,171 +1405,101 @@ Returns the status of the current session.
 
 ## Session\ManagerInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/ManagerInterface.zep">Source on GitHub</a>
+<ApiBadge variant="interface">Interface</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/ManagerInterface.zep" />
 
 Interface for the Phalcon\Session\Manager
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Session\ManagerInterface`**
 
-</div>
+</ApiTree>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Session\SessionTypes` · `SessionHandlerInterface`
-
+<ApiUses>`InvalidArgumentException` · `Phalcon\Contracts\Session\SessionTypes` · `SessionHandlerInterface`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#sessionmanagerinterface-__get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Alias: Gets a session variable from an application context</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-__isset">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Alias: Check whether a session variable is set in an application context</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-__set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Alias: Sets a session variable in an application context</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-__unset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__unset</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Alias: Removes a session variable from an application context</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-destroy">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">destroy</span>()</code>
-<span class="desc">Destroy/end a session</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-exists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">exists</span>()</code>
-<span class="desc">Check whether the session has been started</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remove</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Gets a session variable from an application context</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-getadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">SessionHandlerInterface|null</code>
-<code class="sig"><span class="sf">getAdapter</span>()</code>
-<span class="desc">Returns the stored session adapter</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-getid">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getId</span>()</code>
-<span class="desc">Returns the session id</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Returns the name of the session</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-getoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getOptions</span>()</code>
-<span class="desc">Get internal options</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Check whether a session variable is set in an application context</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-regenerateid">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface</code>
-<code class="sig"><span class="sf">regenerateId</span>( <span class="st">bool</span> <span class="sv">$deleteOldSession</span><span class="sm"> = true</span> )</code>
-<span class="desc">Regenerates the session id using the adapter.</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-remove">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Removes a session variable from an application context</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Sets a session variable in an application context</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-setadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface</code>
-<code class="sig"><span class="sf">setAdapter</span>( <span class="st">SessionHandlerInterface</span> <span class="sv">$adapter</span> )</code>
-<span class="desc">Set the adapter for the session</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-setid">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface</code>
-<code class="sig"><span class="sf">setId</span>( <span class="st">string</span> <span class="sv">$sessionId</span> )</code>
-<span class="desc">Set session Id</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-setname">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface</code>
-<code class="sig"><span class="sf">setName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Set the session name. Throw exception if the session has started</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-setoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
-<span class="desc">Sets session&#039;s options</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-start">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">start</span>()</code>
-<span class="desc">Starts the session (if headers are already sent the session will not be</span>
-</a>
-<a class="api-item" href="#sessionmanagerinterface-status">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">status</span>()</code>
-<span class="desc">Returns the status of the current session.</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#sessionmanagerinterface-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"key","default":null}]}>
+Alias: Gets a session variable from an application context
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Alias: Check whether a session variable is set in an application context
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
+Alias: Sets a session variable in an application context
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"key","default":null}]}>
+Alias: Removes a session variable from an application context
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-destroy" visibility="public" name="destroy" returnType="void" params={[]}>
+Destroy/end a session
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-exists" visibility="public" name="exists" returnType="bool" params={[]}>
+Check whether the session has been started
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"bool","name":"remove","default":"false"}]}>
+Gets a session variable from an application context
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-getadapter" visibility="public" name="getAdapter" returnType="SessionHandlerInterface|null" params={[]}>
+Returns the stored session adapter
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-getid" visibility="public" name="getId" returnType="string" params={[]}>
+Returns the session id
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-getname" visibility="public" name="getName" returnType="string" params={[]}>
+Returns the name of the session
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
+Get internal options
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Check whether a session variable is set in an application context
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-regenerateid" visibility="public" name="regenerateId" returnType="ManagerInterface" params={[{"type":"bool","name":"deleteOldSession","default":"true"}]}>
+Regenerates the session id using the adapter.
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"key","default":null}]}>
+Removes a session variable from an application context
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
+Sets a session variable in an application context
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-setadapter" visibility="public" name="setAdapter" returnType="ManagerInterface" params={[{"type":"SessionHandlerInterface","name":"adapter","default":null}]}>
+Set the adapter for the session
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-setid" visibility="public" name="setId" returnType="ManagerInterface" params={[{"type":"string","name":"sessionId","default":null}]}>
+Set session Id
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-setname" visibility="public" name="setName" returnType="ManagerInterface" params={[{"type":"string","name":"name","default":null}]}>
+Set the session name. Throw exception if the session has started
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-setoptions" visibility="public" name="setOptions" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
+Sets session's options
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-start" visibility="public" name="start" returnType="bool" params={[]}>
+Starts the session (if headers are already sent the session will not be
+</ApiItem>
+<ApiItem href="#sessionmanagerinterface-status" visibility="public" name="status" returnType="int" params={[]}>
+Returns the status of the current session.
+</ApiItem>
+</ApiList>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">SESSION_ACTIVE</span><span class="sm"> = 2</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">SESSION_DISABLED</span><span class="sm"> = 0</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">SESSION_NONE</span><span class="sm"> = 1</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="constant" name="SESSION_ACTIVE" type="int" default="2">
+</ApiItem>
+<ApiItem kind="constant" name="SESSION_DISABLED" type="int" default="0">
+</ApiItem>
+<ApiItem kind="constant" name="SESSION_NONE" type="int" default="1">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 21</div>
+<ApiGroup label="Public" count="21" />
 
 <h4 id="sessionmanagerinterface-__get"><code>__get()</code></h4>
 

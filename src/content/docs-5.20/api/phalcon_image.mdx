@@ -1,306 +1,180 @@
 ---
 title: "Phalcon Image"
-sidebar: false
 ---
-
 
 :::info[NOTE]
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Image\Adapter\AbstractAdapter
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/AbstractAdapter.zep">Source on GitHub</a>
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/AbstractAdapter.zep" />
 
 All image adapters must use this class
 
 @template TImage of object
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Image\Adapter\AbstractAdapter`** - implements [`Phalcon\Image\Adapter\AdapterInterface`](#imageadapteradapterinterface)
     - [`Phalcon\Image\Adapter\Gd`](#imageadaptergd)
     - [`Phalcon\Image\Adapter\Imagick`](#imageadapterimagick)
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ImageTooLarge` · `Phalcon\Image\Exceptions\InvalidColor` · `Phalcon\Image\Exceptions\MissingDimensions` · `Phalcon\Image\Exceptions\MissingHeight` · `Phalcon\Image\Exceptions\MissingWidth`
-
+<ApiUses>`Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ImageTooLarge` · `Phalcon\Image\Exceptions\InvalidColor` · `Phalcon\Image\Exceptions\MissingDimensions` · `Phalcon\Image\Exceptions\MissingHeight` · `Phalcon\Image\Exceptions\MissingWidth`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageadapterabstractadapter-background">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">background</span>(<span class="prm"><span class="st">string</span> <span class="sv">$color</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span></span>)</code>
-<span class="desc">Set the background color of an image</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-blur">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">blur</span>( <span class="st">int</span> <span class="sv">$radius</span> )</code>
-<span class="desc">Blur image</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-crop">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">crop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Crop an image to the given size</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-flip">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">flip</span>( <span class="st">int</span> <span class="sv">$direction</span> )</code>
-<span class="desc">Flip the image along the horizontal or vertical axis</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-getheight">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getHeight</span>()</code>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-getimage">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">getImage</span>()</code>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-getmime">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getMime</span>()</code>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-getrealpath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getRealpath</span>()</code>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-getwidth">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getWidth</span>()</code>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-mask">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">mask</span>( <span class="st">AdapterInterface</span> <span class="sv">$mask</span> )</code>
-<span class="desc">Composite one image onto another</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-pixelate">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">pixelate</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
-<span class="desc">Pixelate image</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-reflection">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">reflection</span>(<span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$fadeIn</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Add a reflection to an image</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-render">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$extension</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
-<span class="desc">Render the image and return the binary string</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-resize">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">resize</span>(<span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$master</span><span class="sm"> = Enum::AUTO</span></span>)</code>
-<span class="desc">Resize the image to the given size</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-rotate">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">rotate</span>( <span class="st">int</span> <span class="sv">$degrees</span> )</code>
-<span class="desc">Rotate the image by a given amount</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-save">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">save</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = -1</span></span>)</code>
-<span class="desc">Save the image</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-sharpen">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">sharpen</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
-<span class="desc">Sharpen the image by a given amount</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-text">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">text</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$color</span><span class="sm"> = &quot;000000&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span><span class="sm"> = 12</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Add a text to an image with a specified opacity</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-watermark">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">watermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span></span>)</code>
-<span class="desc">Add a watermark to an image with the specified opacity</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-assertpixellimit">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">assertPixelLimit</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
-<span class="desc">Rejects an image whose pixel count exceeds the configured limit before</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-checkhighlow">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">checkHighLow</span>(<span class="prm"><span class="st">int</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$min</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$max</span><span class="sm"> = 100</span></span>)</code>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processbackground">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processBackground</span>(<span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
-<span class="desc">Renders the supplied colour onto the image as the background. Channels</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processblur">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processBlur</span>( <span class="st">int</span> <span class="sv">$radius</span> )</code>
-<span class="desc">Applies a blur. The radius is already clamped to 1-100.</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processcrop">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processCrop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span></span>)</code>
-<span class="desc">Crops the image. Width, height and both offsets are already normalized</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processflip">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processFlip</span>( <span class="st">int</span> <span class="sv">$direction</span> )</code>
-<span class="desc">Flips the image. The direction is already normalized to</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processmask">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">processMask</span>( <span class="st">AdapterInterface</span> <span class="sv">$mask</span> )</code>
-<span class="desc">Composites the supplied image as a mask onto this one. The mask is read</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processpixelate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processPixelate</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
-<span class="desc">Pixelates the image. The amount is already at least 2.</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processreflection">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processReflection</span>(<span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$fadeIn</span></span>)</code>
-<span class="desc">Adds a reflection. The height is clamped to the image height and the</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processrender">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">processRender</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
-<span class="desc">Renders the image to a binary string. The extension is non-empty and the</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processresize">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processResize</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
-<span class="desc">Resizes the image. Width and height are already resolved to positive</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processrotate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processRotate</span>( <span class="st">int</span> <span class="sv">$degrees</span> )</code>
-<span class="desc">Rotates the image. The degrees value is already normalized to -180..180.</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processsave">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">processSave</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
-<span class="desc">Saves the image to the supplied file path.</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processsharpen">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processSharpen</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
-<span class="desc">Sharpens the image. The amount is already clamped to 1-100.</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processtext">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Renders text onto the image. The opacity is clamped to 0-100 and the</span>
-</a>
-<a class="api-item" href="#imageadapterabstractadapter-processwatermark">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processWatermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
-<span class="desc">Composites the supplied watermark onto this image. Offsets and opacity</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageadapterabstractadapter-background" visibility="public" name="background" returnType="AdapterInterface" params={[{"type":"string","name":"color","default":null},{"type":"int","name":"opacity","default":"100"}]}>
+Set the background color of an image
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-blur" visibility="public" name="blur" returnType="AdapterInterface" params={[{"type":"int","name":"radius","default":null}]}>
+Blur image
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-crop" visibility="public" name="crop" returnType="AdapterInterface" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"mixed","name":"offsetX","default":"null"},{"type":"mixed","name":"offsetY","default":"null"}]}>
+Crop an image to the given size
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-flip" visibility="public" name="flip" returnType="AdapterInterface" params={[{"type":"int","name":"direction","default":null}]}>
+Flip the image along the horizontal or vertical axis
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-getheight" visibility="public" name="getHeight" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-getimage" visibility="public" name="getImage" returnType="" params={[]}>
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-getmime" visibility="public" name="getMime" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-getrealpath" visibility="public" name="getRealpath" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-gettype" visibility="public" name="getType" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-getwidth" visibility="public" name="getWidth" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-mask" visibility="public" name="mask" returnType="AdapterInterface" params={[{"type":"AdapterInterface","name":"mask","default":null}]}>
+Composite one image onto another
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-pixelate" visibility="public" name="pixelate" returnType="AdapterInterface" params={[{"type":"int","name":"amount","default":null}]}>
+Pixelate image
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-reflection" visibility="public" name="reflection" returnType="AdapterInterface" params={[{"type":"int","name":"height","default":null},{"type":"int","name":"opacity","default":"100"},{"type":"bool","name":"fadeIn","default":"false"}]}>
+Add a reflection to an image
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-render" visibility="public" name="render" returnType="string" params={[{"type":"string|null","name":"extension","default":"null"},{"type":"int","name":"quality","default":"100"}]}>
+Render the image and return the binary string
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-resize" visibility="public" name="resize" returnType="AdapterInterface" params={[{"type":"int|null","name":"width","default":"null"},{"type":"int|null","name":"height","default":"null"},{"type":"int","name":"master","default":"Enum::AUTO"}]}>
+Resize the image to the given size
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-rotate" visibility="public" name="rotate" returnType="AdapterInterface" params={[{"type":"int","name":"degrees","default":null}]}>
+Rotate the image by a given amount
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-save" visibility="public" name="save" returnType="AdapterInterface" params={[{"type":"string|null","name":"file","default":"null"},{"type":"int","name":"quality","default":"-1"}]}>
+Save the image
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-sharpen" visibility="public" name="sharpen" returnType="AdapterInterface" params={[{"type":"int","name":"amount","default":null}]}>
+Sharpen the image by a given amount
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-text" visibility="public" name="text" returnType="AdapterInterface" params={[{"type":"string","name":"text","default":null},{"type":"mixed","name":"offsetX","default":"false"},{"type":"mixed","name":"offsetY","default":"false"},{"type":"int","name":"opacity","default":"100"},{"type":"string","name":"color","default":"\"000000\""},{"type":"int","name":"size","default":"12"},{"type":"string|null","name":"fontFile","default":"null"}]}>
+Add a text to an image with a specified opacity
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-watermark" visibility="public" name="watermark" returnType="AdapterInterface" params={[{"type":"AdapterInterface","name":"watermark","default":null},{"type":"int","name":"offsetX","default":"0"},{"type":"int","name":"offsetY","default":"0"},{"type":"int","name":"opacity","default":"100"}]}>
+Add a watermark to an image with the specified opacity
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-assertpixellimit" visibility="protected" name="assertPixelLimit" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
+Rejects an image whose pixel count exceeds the configured limit before
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-checkhighlow" visibility="protected" name="checkHighLow" returnType="int" params={[{"type":"int","name":"value","default":null},{"type":"int","name":"min","default":"0"},{"type":"int","name":"max","default":"100"}]}>
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processbackground" visibility="protected" name="processBackground" returnType="void" params={[{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"opacity","default":null}]}>
+Renders the supplied colour onto the image as the background. Channels
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processblur" visibility="protected" name="processBlur" returnType="void" params={[{"type":"int","name":"radius","default":null}]}>
+Applies a blur. The radius is already clamped to 1-100.
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processcrop" visibility="protected" name="processCrop" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null}]}>
+Crops the image. Width, height and both offsets are already normalized
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processflip" visibility="protected" name="processFlip" returnType="void" params={[{"type":"int","name":"direction","default":null}]}>
+Flips the image. The direction is already normalized to
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processmask" visibility="protected" name="processMask" returnType="" params={[{"type":"AdapterInterface","name":"mask","default":null}]}>
+Composites the supplied image as a mask onto this one. The mask is read
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processpixelate" visibility="protected" name="processPixelate" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
+Pixelates the image. The amount is already at least 2.
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processreflection" visibility="protected" name="processReflection" returnType="void" params={[{"type":"int","name":"height","default":null},{"type":"int","name":"opacity","default":null},{"type":"bool","name":"fadeIn","default":null}]}>
+Adds a reflection. The height is clamped to the image height and the
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processrender" visibility="protected" name="processRender" returnType="" params={[{"type":"string","name":"extension","default":null},{"type":"int","name":"quality","default":null}]}>
+Renders the image to a binary string. The extension is non-empty and the
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processresize" visibility="protected" name="processResize" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
+Resizes the image. Width and height are already resolved to positive
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processrotate" visibility="protected" name="processRotate" returnType="void" params={[{"type":"int","name":"degrees","default":null}]}>
+Rotates the image. The degrees value is already normalized to -180..180.
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processsave" visibility="protected" name="processSave" returnType="bool" params={[{"type":"string","name":"file","default":null},{"type":"int","name":"quality","default":null}]}>
+Saves the image to the supplied file path.
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processsharpen" visibility="protected" name="processSharpen" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
+Sharpens the image. The amount is already clamped to 1-100.
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processtext" visibility="protected" name="processText" returnType="void" params={[{"type":"string","name":"text","default":null},{"type":"mixed","name":"offsetX","default":null},{"type":"mixed","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null},{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"size","default":null},{"type":"string|null","name":"fontFile","default":"null"}]}>
+Renders text onto the image. The opacity is clamped to 0-100 and the
+</ApiItem>
+<ApiItem href="#imageadapterabstractadapter-processwatermark" visibility="protected" name="processWatermark" returnType="void" params={[{"type":"AdapterInterface","name":"watermark","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null}]}>
+Composites the supplied watermark onto this image. Offsets and opacity
+</ApiItem>
+</ApiList>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">DEFAULT_MAX_PIXELS</span><span class="sm"> = 50000000</span></code>
-<span class="desc">Default cap on the pixel count (width * height) of a loaded image, used when the constructor is not given an explicit limit. Bounds the memory a crafted image (decompression bomb / pixel flood) can force the backend to allocate (CWE-409). Generous by default; override per instance.</span>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="constant" name="DEFAULT_MAX_PIXELS" type="int" default="50000000">
+Default cap on the pixel count (width * height) of a loaded image, used
+when the constructor is not given an explicit limit. Bounds the memory a
+crafted image (decompression bomb / pixel flood) can force the backend to
+allocate (CWE-409). Generous by default; override per instance.
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$file</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$height</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">TImage|null</code>
-<code class="sig"><span class="sv">$image</span><span class="sm"> = null</span></code>
-<span class="desc">The handle of the underlying backend. Every adapter assigns it in its constructor and releases it in its destructor.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$maxPixels</span><span class="sm"> = 0</span></code>
-<span class="desc">Maximum allowed pixel count (width * height) for a loaded image. Zero disables the check.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$mime</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$realpath</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$type</span></code>
-<span class="desc">Image type Driver dependent</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$width</span></code>
-<span class="desc">Image width</span>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="file" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="height" type="int" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="image" type="TImage|null" default="null">
+The handle of the underlying backend. Every adapter assigns it in its
+constructor and releases it in its destructor.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="maxPixels" type="int" default="0">
+Maximum allowed pixel count (width * height) for a loaded image. Zero
+disables the check.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="mime" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="realpath" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="type" type="int" default="">
+Image type
+
+Driver dependent
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="width" type="int" default="">
+Image width
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 20</div>
+<ApiGroup label="Public" count="20" />
 
 <h4 id="imageadapterabstractadapter-background"><code>background()</code></h4>
 
@@ -498,7 +372,7 @@ internal handle, so a watermark created with a different backend
 composites correctly. The cost is one encode/decode round trip per call,
 which is worth knowing inside loops.
 
-<div class="api-group">Protected · 16</div>
+<ApiGroup label="Protected" count="16" />
 
 <h4 id="imageadapterabstractadapter-assertpixellimit"><code>assertPixelLimit()</code></h4>
 
@@ -686,122 +560,73 @@ its public render() output, so it may be any adapter backend.
 
 ## Image\Adapter\AdapterInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/AdapterInterface.zep">Source on GitHub</a>
+<ApiBadge variant="interface">Interface</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/AdapterInterface.zep" />
 
 Interface for Phalcon\Image\Adapter classes
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Image\Adapter\AdapterInterface`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Enum`
-
+<ApiUses>`Phalcon\Image\Enum`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageadapteradapterinterface-background">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">background</span>(<span class="prm"><span class="st">string</span> <span class="sv">$color</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span></span>)</code>
-<span class="desc">Add a background to an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-blur">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">blur</span>( <span class="st">int</span> <span class="sv">$radius</span> )</code>
-<span class="desc">Blur an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-crop">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">crop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$offsetX</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$offsetY</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Crop an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-flip">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">flip</span>( <span class="st">int</span> <span class="sv">$direction</span> )</code>
-<span class="desc">Flip an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-getheight">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getHeight</span>()</code>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-getwidth">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getWidth</span>()</code>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-mask">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">mask</span>( <span class="st">AdapterInterface</span> <span class="sv">$mask</span> )</code>
-<span class="desc">Add a mask to an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-pixelate">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">pixelate</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
-<span class="desc">Pixelate an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-reflection">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">reflection</span>(<span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$fadeIn</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Reflect an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-render">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$extension</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
-<span class="desc">Render an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-resize">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">resize</span>(<span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$master</span><span class="sm"> = Enum::AUTO</span></span>)</code>
-<span class="desc">Resize an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-rotate">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">rotate</span>( <span class="st">int</span> <span class="sv">$degrees</span> )</code>
-<span class="desc">Rotate an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-save">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">save</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span><span class="sm"> = 100</span></span>)</code>
-<span class="desc">Save an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-sharpen">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">sharpen</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
-<span class="desc">Sharpen an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-text">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">text</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$color</span><span class="sm"> = &quot;000000&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span><span class="sm"> = 12</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Adds text on an image</span>
-</a>
-<a class="api-item" href="#imageadapteradapterinterface-watermark">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">watermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span><span class="sm"> = 100</span></span>)</code>
-<span class="desc">Add a watermark on an image</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageadapteradapterinterface-background" visibility="public" name="background" returnType="AdapterInterface" params={[{"type":"string","name":"color","default":null},{"type":"int","name":"opacity","default":"100"}]}>
+Add a background to an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-blur" visibility="public" name="blur" returnType="AdapterInterface" params={[{"type":"int","name":"radius","default":null}]}>
+Blur an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-crop" visibility="public" name="crop" returnType="AdapterInterface" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int|null","name":"offsetX","default":"null"},{"type":"int|null","name":"offsetY","default":"null"}]}>
+Crop an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-flip" visibility="public" name="flip" returnType="AdapterInterface" params={[{"type":"int","name":"direction","default":null}]}>
+Flip an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-getheight" visibility="public" name="getHeight" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-getwidth" visibility="public" name="getWidth" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-mask" visibility="public" name="mask" returnType="AdapterInterface" params={[{"type":"AdapterInterface","name":"mask","default":null}]}>
+Add a mask to an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-pixelate" visibility="public" name="pixelate" returnType="AdapterInterface" params={[{"type":"int","name":"amount","default":null}]}>
+Pixelate an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-reflection" visibility="public" name="reflection" returnType="AdapterInterface" params={[{"type":"int","name":"height","default":null},{"type":"int","name":"opacity","default":"100"},{"type":"bool","name":"fadeIn","default":"false"}]}>
+Reflect an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-render" visibility="public" name="render" returnType="string" params={[{"type":"string|null","name":"extension","default":"null"},{"type":"int","name":"quality","default":"100"}]}>
+Render an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-resize" visibility="public" name="resize" returnType="AdapterInterface" params={[{"type":"int|null","name":"width","default":"null"},{"type":"int|null","name":"height","default":"null"},{"type":"int","name":"master","default":"Enum::AUTO"}]}>
+Resize an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-rotate" visibility="public" name="rotate" returnType="AdapterInterface" params={[{"type":"int","name":"degrees","default":null}]}>
+Rotate an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-save" visibility="public" name="save" returnType="AdapterInterface" params={[{"type":"string|null","name":"file","default":"null"},{"type":"int","name":"quality","default":"100"}]}>
+Save an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-sharpen" visibility="public" name="sharpen" returnType="AdapterInterface" params={[{"type":"int","name":"amount","default":null}]}>
+Sharpen an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-text" visibility="public" name="text" returnType="AdapterInterface" params={[{"type":"string","name":"text","default":null},{"type":"int","name":"offsetX","default":"0"},{"type":"int","name":"offsetY","default":"0"},{"type":"int","name":"opacity","default":"100"},{"type":"string","name":"color","default":"\"000000\""},{"type":"int","name":"size","default":"12"},{"type":"string|null","name":"fontFile","default":"null"}]}>
+Adds text on an image
+</ApiItem>
+<ApiItem href="#imageadapteradapterinterface-watermark" visibility="public" name="watermark" returnType="AdapterInterface" params={[{"type":"AdapterInterface","name":"watermark","default":null},{"type":"int","name":"offsetX","default":"0"},{"type":"int","name":"offsetY","default":"0"},{"type":"int","name":"opacity","default":"100"}]}>
+Add a watermark on an image
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 16</div>
+<ApiGroup label="Public" count="16" />
 
 <h4 id="imageadapteradapterinterface-background"><code>background()</code></h4>
 
@@ -965,8 +790,8 @@ Add a watermark on an image
 
 ## Image\Adapter\Gd
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/Gd.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/Gd.zep" />
 
 Image manipulation backed by the GD extension.
 
@@ -986,118 +811,64 @@ own scales. Switching the factory backend can change the rendered output.
 
 @extends AbstractAdapter&lt;GdImage>
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Image\Adapter\AbstractAdapter`](#imageadapterabstractadapter)
     - **`Phalcon\Image\Adapter\Gd`**
 
-</div>
+</ApiTree>
 
-__Uses__ `GdImage` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\TextRenderingFailed` · `Phalcon\Image\Exceptions\UnsupportedImageType` · `Phalcon\Image\Exceptions\VersionMismatch` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\InfoTrait`
-
+<ApiUses>`GdImage` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\TextRenderingFailed` · `Phalcon\Image\Exceptions\UnsupportedImageType` · `Phalcon\Image\Exceptions\VersionMismatch` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageadaptergd-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$maxPixels</span><span class="sm"> = 0</span></span>)</code>
-<span class="desc">Loads an image from a file, or creates a blank canvas.</span>
-</a>
-<a class="api-item" href="#imageadaptergd-__destruct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__destruct</span>()</code>
-<span class="desc">Destructor</span>
-</a>
-<a class="api-item" href="#imageadaptergd-create">
-<code class="vis vis-public">public</code>
-<code class="ret">AbstractAdapter</code>
-<code class="sig"><span class="sf">create</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
-<span class="desc">Creates a blank true-color canvas of the given dimensions, without the</span>
-</a>
-<a class="api-item" href="#imageadaptergd-getversion">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getVersion</span>()</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processbackground">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processBackground</span>(<span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processblur">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processBlur</span>( <span class="st">int</span> <span class="sv">$radius</span> )</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processcreate">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">processCreate</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processcrop">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processCrop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span></span>)</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processflip">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processFlip</span>( <span class="st">int</span> <span class="sv">$direction</span> )</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processmask">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">processMask</span>( <span class="st">AdapterInterface</span> <span class="sv">$mask</span> )</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processpixelate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processPixelate</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processreflection">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processReflection</span>(<span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$fadeIn</span></span>)</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processrender">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|string</code>
-<code class="sig"><span class="sf">processRender</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processresize">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processResize</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processrotate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processRotate</span>( <span class="st">int</span> <span class="sv">$degrees</span> )</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processsave">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">processSave</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processsharpen">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processSharpen</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processtext">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#imageadaptergd-processwatermark">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processWatermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageadaptergd-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"file","default":null},{"type":"int|null","name":"width","default":"null"},{"type":"int|null","name":"height","default":"null"},{"type":"int","name":"maxPixels","default":"0"}]}>
+Loads an image from a file, or creates a blank canvas.
+</ApiItem>
+<ApiItem href="#imageadaptergd-__destruct" visibility="public" name="__destruct" returnType="" params={[]}>
+Destructor
+</ApiItem>
+<ApiItem href="#imageadaptergd-create" visibility="public" name="create" returnType="AbstractAdapter" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
+Creates a blank true-color canvas of the given dimensions, without the
+</ApiItem>
+<ApiItem href="#imageadaptergd-getversion" visibility="public" name="getVersion" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processbackground" visibility="protected" name="processBackground" returnType="void" params={[{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"opacity","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processblur" visibility="protected" name="processBlur" returnType="void" params={[{"type":"int","name":"radius","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processcreate" visibility="protected" name="processCreate" returnType="" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processcrop" visibility="protected" name="processCrop" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processflip" visibility="protected" name="processFlip" returnType="void" params={[{"type":"int","name":"direction","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processmask" visibility="protected" name="processMask" returnType="" params={[{"type":"AdapterInterface","name":"mask","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processpixelate" visibility="protected" name="processPixelate" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processreflection" visibility="protected" name="processReflection" returnType="void" params={[{"type":"int","name":"height","default":null},{"type":"int","name":"opacity","default":null},{"type":"bool","name":"fadeIn","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processrender" visibility="protected" name="processRender" returnType="false|string" params={[{"type":"string","name":"extension","default":null},{"type":"int","name":"quality","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processresize" visibility="protected" name="processResize" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processrotate" visibility="protected" name="processRotate" returnType="void" params={[{"type":"int","name":"degrees","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processsave" visibility="protected" name="processSave" returnType="bool" params={[{"type":"string","name":"file","default":null},{"type":"int","name":"quality","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processsharpen" visibility="protected" name="processSharpen" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processtext" visibility="protected" name="processText" returnType="void" params={[{"type":"string","name":"text","default":null},{"type":"mixed","name":"offsetX","default":null},{"type":"mixed","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null},{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"size","default":null},{"type":"string|null","name":"fontFile","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#imageadaptergd-processwatermark" visibility="protected" name="processWatermark" returnType="void" params={[{"type":"AdapterInterface","name":"watermark","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<ApiGroup label="Public" count="4" />
 
 <h4 id="imageadaptergd-__construct"><code>__construct()</code></h4>
 
@@ -1144,7 +915,7 @@ load-or-create ambiguity of the constructor.
 public function getVersion(): string;
 ```
 
-<div class="api-group">Protected · 15</div>
+<ApiGroup label="Protected" count="15" />
 
 <h4 id="imageadaptergd-processbackground"><code>processBackground()</code></h4>
 
@@ -1280,8 +1051,8 @@ protected function processWatermark(
 
 ## Image\Adapter\Imagick
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/Imagick.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/Imagick.zep" />
 
 Phalcon\Image\Adapter\Imagick
 
@@ -1311,146 +1082,87 @@ Switching the factory backend can change the rendered output.
 
 @extends AbstractAdapter&lt;ImagickNative>
 
-<div class="api-tree">
+<ApiTree>
 
 - [`Phalcon\Image\Adapter\AbstractAdapter`](#imageadapterabstractadapter)
     - **`Phalcon\Image\Adapter\Imagick`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickException` · `ImagickPixel` · `ImagickPixelException` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\CompositeFailed` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\ResizeFailed` · `Phalcon\Image\Exceptions\ResourceTypeError` · `Phalcon\Traits\Php\FileTrait`
-
+<ApiUses>`Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickException` · `ImagickPixel` · `ImagickPixelException` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\CompositeFailed` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\ResizeFailed` · `Phalcon\Image\Exceptions\ResourceTypeError` · `Phalcon\Traits\Php\FileTrait`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageadapterimagick-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$maxPixels</span><span class="sm"> = 0</span></span>)</code>
-<span class="desc">Loads an image from a file, or creates a blank canvas.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-__destruct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__destruct</span>()</code>
-<span class="desc">Destroys the loaded image to free up resources.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-create">
-<code class="vis vis-public">public</code>
-<code class="ret">AbstractAdapter</code>
-<code class="sig"><span class="sf">create</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
-<span class="desc">Creates a blank transparent canvas of the given dimensions, without the</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-liquidrescale">
-<code class="vis vis-public">public</code>
-<code class="ret">AbstractAdapter</code>
-<code class="sig"><span class="sf">liquidRescale</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$deltaX</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$rigidity</span><span class="sm"> = 0</span></span>)</code>
-<span class="desc">This method scales the images using liquid rescaling method. Only support</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-setresourcelimit">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setResourceLimit</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$limit</span></span>)</code>
-<span class="desc">Sets the limit for a particular resource in megabytes</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processbackground">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processBackground</span>(<span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
-<span class="desc">Execute a background.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processblur">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processBlur</span>( <span class="st">int</span> <span class="sv">$radius</span> )</code>
-<span class="desc">Blur image</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processcrop">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processCrop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span></span>)</code>
-<span class="desc">Execute a crop.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processflip">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processFlip</span>( <span class="st">int</span> <span class="sv">$direction</span> )</code>
-<span class="desc">Execute a flip.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processmask">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processMask</span>( <span class="st">AdapterInterface</span> <span class="sv">$mask</span> )</code>
-<span class="desc">Composite one image onto another</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processpixelate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processPixelate</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
-<span class="desc">Pixelate image</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processreflection">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processReflection</span>(<span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$fadeIn</span></span>)</code>
-<span class="desc">Execute a reflection.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processrender">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">processRender</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
-<span class="desc">Execute a render.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processresize">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processResize</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
-<span class="desc">Execute a resize.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processrotate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processRotate</span>( <span class="st">int</span> <span class="sv">$degrees</span> )</code>
-<span class="desc">Execute a rotation.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processsave">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">processSave</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
-<span class="desc">Execute a save.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processsharpen">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processSharpen</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
-<span class="desc">Execute a sharpen.</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processtext">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Execute a text</span>
-</a>
-<a class="api-item" href="#imageadapterimagick-processwatermark">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">processWatermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
-<span class="desc">Add Watermark</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageadapterimagick-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"file","default":null},{"type":"int|null","name":"width","default":"null"},{"type":"int|null","name":"height","default":"null"},{"type":"int","name":"maxPixels","default":"0"}]}>
+Loads an image from a file, or creates a blank canvas.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-__destruct" visibility="public" name="__destruct" returnType="" params={[]}>
+Destroys the loaded image to free up resources.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-create" visibility="public" name="create" returnType="AbstractAdapter" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
+Creates a blank transparent canvas of the given dimensions, without the
+</ApiItem>
+<ApiItem href="#imageadapterimagick-liquidrescale" visibility="public" name="liquidRescale" returnType="AbstractAdapter" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int","name":"deltaX","default":"0"},{"type":"int","name":"rigidity","default":"0"}]}>
+This method scales the images using liquid rescaling method. Only support
+</ApiItem>
+<ApiItem href="#imageadapterimagick-setresourcelimit" visibility="public" name="setResourceLimit" returnType="void" params={[{"type":"int","name":"type","default":null},{"type":"int","name":"limit","default":null}]}>
+Sets the limit for a particular resource in megabytes
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processbackground" visibility="protected" name="processBackground" returnType="void" params={[{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"opacity","default":null}]}>
+Execute a background.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processblur" visibility="protected" name="processBlur" returnType="void" params={[{"type":"int","name":"radius","default":null}]}>
+Blur image
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processcrop" visibility="protected" name="processCrop" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null}]}>
+Execute a crop.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processflip" visibility="protected" name="processFlip" returnType="void" params={[{"type":"int","name":"direction","default":null}]}>
+Execute a flip.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processmask" visibility="protected" name="processMask" returnType="void" params={[{"type":"AdapterInterface","name":"mask","default":null}]}>
+Composite one image onto another
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processpixelate" visibility="protected" name="processPixelate" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
+Pixelate image
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processreflection" visibility="protected" name="processReflection" returnType="void" params={[{"type":"int","name":"height","default":null},{"type":"int","name":"opacity","default":null},{"type":"bool","name":"fadeIn","default":null}]}>
+Execute a reflection.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processrender" visibility="protected" name="processRender" returnType="string" params={[{"type":"string","name":"extension","default":null},{"type":"int","name":"quality","default":null}]}>
+Execute a render.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processresize" visibility="protected" name="processResize" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
+Execute a resize.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processrotate" visibility="protected" name="processRotate" returnType="void" params={[{"type":"int","name":"degrees","default":null}]}>
+Execute a rotation.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processsave" visibility="protected" name="processSave" returnType="bool" params={[{"type":"string","name":"file","default":null},{"type":"int","name":"quality","default":null}]}>
+Execute a save.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processsharpen" visibility="protected" name="processSharpen" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
+Execute a sharpen.
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processtext" visibility="protected" name="processText" returnType="void" params={[{"type":"string","name":"text","default":null},{"type":"mixed","name":"offsetX","default":null},{"type":"mixed","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null},{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"size","default":null},{"type":"string|null","name":"fontFile","default":"null"}]}>
+Execute a text
+</ApiItem>
+<ApiItem href="#imageadapterimagick-processwatermark" visibility="protected" name="processWatermark" returnType="void" params={[{"type":"AdapterInterface","name":"watermark","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null}]}>
+Add Watermark
+</ApiItem>
+</ApiList>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$version</span><span class="sm"> = 0</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="property" visibility="protected" name="version" type="int" default="0">
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 5</div>
+<ApiGroup label="Public" count="5" />
 
 <h4 id="imageadapterimagick-__construct"><code>__construct()</code></h4>
 
@@ -1518,7 +1230,7 @@ Sets the limit for a particular resource in megabytes
 
 @link https://www.php.net/manual/en/imagick.constants.php#imagick.constants.resourcetypes
 
-<div class="api-group">Protected · 14</div>
+<ApiGroup label="Protected" count="14" />
 
 <h4 id="imageadapterimagick-processbackground"><code>processBackground()</code></h4>
 
@@ -1673,65 +1385,47 @@ Add Watermark
 
 ## Image\Enum
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Enum.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Enum.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Image\Enum`**
 
-</div>
+</ApiTree>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">AUTO</span><span class="sm"> = 4</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">HEIGHT</span><span class="sm"> = 3</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">HORIZONTAL</span><span class="sm"> = 11</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">INVERSE</span><span class="sm"> = 5</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">NONE</span><span class="sm"> = 1</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">PRECISE</span><span class="sm"> = 6</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">TENSILE</span><span class="sm"> = 7</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">VERTICAL</span><span class="sm"> = 12</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">WIDTH</span><span class="sm"> = 2</span></code>
-</div>
-</div>
+<ApiList>
+<ApiItem kind="constant" name="AUTO" type="int" default="4">
+</ApiItem>
+<ApiItem kind="constant" name="HEIGHT" type="int" default="3">
+</ApiItem>
+<ApiItem kind="constant" name="HORIZONTAL" type="int" default="11">
+</ApiItem>
+<ApiItem kind="constant" name="INVERSE" type="int" default="5">
+</ApiItem>
+<ApiItem kind="constant" name="NONE" type="int" default="1">
+</ApiItem>
+<ApiItem kind="constant" name="PRECISE" type="int" default="6">
+</ApiItem>
+<ApiItem kind="constant" name="TENSILE" type="int" default="7">
+</ApiItem>
+<ApiItem kind="constant" name="VERTICAL" type="int" default="12">
+</ApiItem>
+<ApiItem kind="constant" name="WIDTH" type="int" default="2">
+</ApiItem>
+</ApiList>
 
 
 ## Image\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exception.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exception.zep" />
 
 Exceptions thrown in Phalcon\Image will use this class
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - **`Phalcon\Image\Exception`**
@@ -1749,37 +1443,34 @@ Exceptions thrown in Phalcon\Image will use this class
         - [`Phalcon\Image\Exceptions\UnsupportedImageType`](#imageexceptionsunsupportedimagetype)
         - [`Phalcon\Image\Exceptions\VersionMismatch`](#imageexceptionsversionmismatch)
 
-</div>
+</ApiTree>
 
 
 ## Image\Exceptions\CompositeFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/CompositeFailed.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/CompositeFailed.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\CompositeFailed`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionscompositefailed-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionscompositefailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionscompositefailed-__construct"><code>__construct()</code></h4>
 
@@ -1790,32 +1481,29 @@ public function __construct();
 
 ## Image\Exceptions\ExtensionNotLoaded
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ExtensionNotLoaded.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ExtensionNotLoaded.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\ExtensionNotLoaded`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsextensionnotloaded-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$extension</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsextensionnotloaded-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"extension","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsextensionnotloaded-__construct"><code>__construct()</code></h4>
 
@@ -1826,32 +1514,29 @@ public function __construct( string $extension );
 
 ## Image\Exceptions\ImageLoadFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ImageLoadFailed.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ImageLoadFailed.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\ImageLoadFailed`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsimageloadfailed-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$file</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsimageloadfailed-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"file","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsimageloadfailed-__construct"><code>__construct()</code></h4>
 
@@ -1862,32 +1547,29 @@ public function __construct( string $file );
 
 ## Image\Exceptions\ImageTooLarge
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ImageTooLarge.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ImageTooLarge.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\ImageTooLarge`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsimagetoolarge-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">int</span> <span class="sv">$pixels</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$maxPixels</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsimagetoolarge-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"pixels","default":null},{"type":"int","name":"maxPixels","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsimagetoolarge-__construct"><code>__construct()</code></h4>
 
@@ -1901,32 +1583,29 @@ public function __construct(
 
 ## Image\Exceptions\InvalidColor
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/InvalidColor.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/InvalidColor.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\InvalidColor`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsinvalidcolor-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$color</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsinvalidcolor-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"color","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsinvalidcolor-__construct"><code>__construct()</code></h4>
 
@@ -1937,32 +1616,29 @@ public function __construct( string $color );
 
 ## Image\Exceptions\MissingDimensions
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingDimensions.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingDimensions.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\MissingDimensions`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsmissingdimensions-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsmissingdimensions-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsmissingdimensions-__construct"><code>__construct()</code></h4>
 
@@ -1973,32 +1649,29 @@ public function __construct();
 
 ## Image\Exceptions\MissingHeight
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingHeight.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingHeight.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\MissingHeight`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsmissingheight-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsmissingheight-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsmissingheight-__construct"><code>__construct()</code></h4>
 
@@ -2009,32 +1682,29 @@ public function __construct();
 
 ## Image\Exceptions\MissingWidth
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingWidth.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingWidth.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\MissingWidth`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsmissingwidth-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsmissingwidth-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsmissingwidth-__construct"><code>__construct()</code></h4>
 
@@ -2045,32 +1715,29 @@ public function __construct();
 
 ## Image\Exceptions\ResizeFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ResizeFailed.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ResizeFailed.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\ResizeFailed`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsresizefailed-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsresizefailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsresizefailed-__construct"><code>__construct()</code></h4>
 
@@ -2081,32 +1748,29 @@ public function __construct();
 
 ## Image\Exceptions\ResourceTypeError
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ResourceTypeError.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ResourceTypeError.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\ResourceTypeError`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsresourcetypeerror-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsresourcetypeerror-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsresourcetypeerror-__construct"><code>__construct()</code></h4>
 
@@ -2117,32 +1781,29 @@ public function __construct();
 
 ## Image\Exceptions\TextRenderingFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/TextRenderingFailed.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/TextRenderingFailed.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\TextRenderingFailed`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionstextrenderingfailed-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionstextrenderingfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionstextrenderingfailed-__construct"><code>__construct()</code></h4>
 
@@ -2153,32 +1814,29 @@ public function __construct();
 
 ## Image\Exceptions\UnsupportedImageType
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/UnsupportedImageType.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/UnsupportedImageType.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\UnsupportedImageType`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsunsupportedimagetype-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$format</span><span class="sm"> = &quot;&quot;</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsunsupportedimagetype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"format","default":"\"\""}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsunsupportedimagetype-__construct"><code>__construct()</code></h4>
 
@@ -2189,32 +1847,29 @@ public function __construct( string $format = "" );
 
 ## Image\Exceptions\VersionMismatch
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/VersionMismatch.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/VersionMismatch.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Image\Exception`](#imageexception)
         - **`Phalcon\Image\Exceptions\VersionMismatch`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Image\Exception`
-
+<ApiUses>`Phalcon\Image\Exception`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageexceptionsversionmismatch-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$version</span> )</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageexceptionsversionmismatch-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"version","default":null}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="imageexceptionsversionmismatch-__construct"><code>__construct()</code></h4>
 
@@ -2225,58 +1880,43 @@ public function __construct( string $version );
 
 ## Image\ImageFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/ImageFactory.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/ImageFactory.zep" />
 
 Factory to create adapters for image manipulation
 
-<div class="api-tree">
+<ApiTree>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](/5.20/api/phalcon_factory/#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
         - **`Phalcon\Image\ImageFactory`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Throwable`
-
+<ApiUses>`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Throwable`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#imageimagefactory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#imageimagefactory-load">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
-<span class="desc">Factory to create an instance from a Config object</span>
-</a>
-<a class="api-item" href="#imageimagefactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Creates a new instance</span>
-</a>
-<a class="api-item" href="#imageimagefactory-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#imageimagefactory-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Returns the available adapters</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#imageimagefactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#imageimagefactory-load" visibility="public" name="load" returnType="AdapterInterface" params={[{"type":"mixed","name":"config","default":null}]}>
+Factory to create an instance from a Config object
+</ApiItem>
+<ApiItem href="#imageimagefactory-newinstance" visibility="public" name="newInstance" returnType="AdapterInterface" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"file","default":null},{"type":"int|null","name":"width","default":"null"},{"type":"int|null","name":"height","default":"null"}]}>
+Creates a new instance
+</ApiItem>
+<ApiItem href="#imageimagefactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#imageimagefactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the available adapters
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 3</div>
+<ApiGroup label="Public" count="3" />
 
 <h4 id="imageimagefactory-__construct"><code>__construct()</code></h4>
 
@@ -2307,7 +1947,7 @@ public function newInstance(
 
 Creates a new instance
 
-<div class="api-group">Protected · 2</div>
+<ApiGroup label="Protected" count="2" />
 
 <h4 id="imageimagefactory-getexceptionclass"><code>getExceptionClass()</code></h4>
 

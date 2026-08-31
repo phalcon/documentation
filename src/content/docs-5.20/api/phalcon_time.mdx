@@ -1,40 +1,35 @@
 ---
 title: "Phalcon Time"
-sidebar: false
 ---
-
 
 :::info[NOTE]
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Time\Clock\ClockInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/ClockInterface.zep">Source on GitHub</a>
+<ApiBadge variant="interface">Interface</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/ClockInterface.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Time\Clock\ClockInterface`**
 
-</div>
+</ApiTree>
 
-__Uses__ `DateTimeImmutable`
-
+<ApiUses>`DateTimeImmutable`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#timeclockclockinterface-now">
-<code class="vis vis-public">public</code>
-<code class="ret">DateTimeImmutable</code>
-<code class="sig"><span class="sf">now</span>()</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#timeclockclockinterface-now" visibility="public" name="now" returnType="DateTimeImmutable" params={[]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="timeclockclockinterface-now"><code>now()</code></h4>
 
@@ -45,46 +40,43 @@ public function now(): DateTimeImmutable;
 
 ## Time\Clock\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/Exception.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/Exception.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - **`Phalcon\Time\Clock\Exception`**
         - [`Phalcon\Time\Clock\Exceptions\InvalidModifier`](#timeclockexceptionsinvalidmodifier)
 
-</div>
+</ApiTree>
 
 
 ## Time\Clock\Exceptions\InvalidModifier
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/Exceptions/InvalidModifier.zep">Source on GitHub</a>
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/Exceptions/InvalidModifier.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - `\Exception`
     - [`Phalcon\Time\Clock\Exception`](#timeclockexception)
         - **`Phalcon\Time\Clock\Exceptions\InvalidModifier`**
 
-</div>
+</ApiTree>
 
-__Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
-
+<ApiUses>`Phalcon\Time\Clock\Exception` · `Throwable`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#timeclockexceptionsinvalidmodifier-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modifier</span>,</span><span class="prm"><span class="st">Throwable|null</span> <span class="sv">$ex</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#timeclockexceptionsinvalidmodifier-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"modifier","default":null},{"type":"Throwable|null","name":"ex","default":"null"}]}>
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<ApiGroup label="Public" count="1" />
 
 <h4 id="timeclockexceptionsinvalidmodifier-__construct"><code>__construct()</code></h4>
 
@@ -98,60 +90,42 @@ public function __construct(
 
 ## Time\Clock\FrozenClock
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/FrozenClock.zep">Source on GitHub</a>
+<ApiBadge variant="final">Final</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/FrozenClock.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Time\Clock\FrozenClock`** - implements [`Phalcon\Time\Clock\ClockInterface`](#timeclockclockinterface)
 
-</div>
+</ApiTree>
 
-__Uses__ `DateTimeImmutable` · `DateTimeZone` · `Phalcon\Time\Clock\Exceptions\InvalidModifier` · `Throwable`
-
+<ApiUses>`DateTimeImmutable` · `DateTimeZone` · `Phalcon\Time\Clock\Exceptions\InvalidModifier` · `Throwable`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#timeclockfrozenclock-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">DateTimeImmutable</span> <span class="sv">$now</span> )</code>
-</a>
-<a class="api-item" href="#timeclockfrozenclock-adjust">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">adjust</span>( <span class="st">string</span> <span class="sv">$modifier</span> )</code>
-<span class="desc">Mutates the clock to a new value. All consumers receive the same modification</span>
-</a>
-<a class="api-item" href="#timeclockfrozenclock-fromsystemtimezone">
-<code class="vis vis-public">public</code>
-<code class="ret">FrozenClock</code>
-<code class="sig"><span class="sf">fromSystemTimezone</span>()</code>
-<span class="desc">Return a new object of now with the current timezone</span>
-</a>
-<a class="api-item" href="#timeclockfrozenclock-fromutc">
-<code class="vis vis-public">public</code>
-<code class="ret">FrozenClock</code>
-<code class="sig"><span class="sf">fromUTC</span>()</code>
-<span class="desc">Return a new object of now with UTC</span>
-</a>
-<a class="api-item" href="#timeclockfrozenclock-now">
-<code class="vis vis-public">public</code>
-<code class="ret">DateTimeImmutable</code>
-<code class="sig"><span class="sf">now</span>()</code>
-<span class="desc">Return the current clock</span>
-</a>
-<a class="api-item" href="#timeclockfrozenclock-set">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">set</span>( <span class="st">DateTimeImmutable</span> <span class="sv">$now</span> )</code>
-<span class="desc">Sets the clock to a new value. All consumers receive the same modification</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#timeclockfrozenclock-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"DateTimeImmutable","name":"now","default":null}]}>
+</ApiItem>
+<ApiItem href="#timeclockfrozenclock-adjust" visibility="public" name="adjust" returnType="static" params={[{"type":"string","name":"modifier","default":null}]}>
+Mutates the clock to a new value. All consumers receive the same modification
+</ApiItem>
+<ApiItem href="#timeclockfrozenclock-fromsystemtimezone" visibility="public" name="fromSystemTimezone" returnType="FrozenClock" params={[]}>
+Return a new object of now with the current timezone
+</ApiItem>
+<ApiItem href="#timeclockfrozenclock-fromutc" visibility="public" name="fromUTC" returnType="FrozenClock" params={[]}>
+Return a new object of now with UTC
+</ApiItem>
+<ApiItem href="#timeclockfrozenclock-now" visibility="public" name="now" returnType="DateTimeImmutable" params={[]}>
+Return the current clock
+</ApiItem>
+<ApiItem href="#timeclockfrozenclock-set" visibility="public" name="set" returnType="static" params={[{"type":"DateTimeImmutable","name":"now","default":null}]}>
+Sets the clock to a new value. All consumers receive the same modification
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<ApiGroup label="Public" count="6" />
 
 <h4 id="timeclockfrozenclock-__construct"><code>__construct()</code></h4>
 
@@ -202,48 +176,36 @@ Sets the clock to a new value. All consumers receive the same modification
 
 ## Time\Clock\SystemClock
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/SystemClock.zep">Source on GitHub</a>
+<ApiBadge variant="final">Final</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/SystemClock.zep" />
 
-<div class="api-tree">
+<ApiTree>
 
 - **`Phalcon\Time\Clock\SystemClock`** - implements [`Phalcon\Time\Clock\ClockInterface`](#timeclockclockinterface)
 
-</div>
+</ApiTree>
 
-__Uses__ `DateTimeImmutable` · `DateTimeZone`
-
+<ApiUses>`DateTimeImmutable` · `DateTimeZone`</ApiUses>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#timeclocksystemclock-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">DateTimeZone</span> <span class="sv">$timezone</span> )</code>
-</a>
-<a class="api-item" href="#timeclocksystemclock-fromsystemtimezone">
-<code class="vis vis-public">public</code>
-<code class="ret">SystemClock</code>
-<code class="sig"><span class="sf">fromSystemTimezone</span>()</code>
-<span class="desc">Return a new object of now with the current timezone</span>
-</a>
-<a class="api-item" href="#timeclocksystemclock-fromutc">
-<code class="vis vis-public">public</code>
-<code class="ret">SystemClock</code>
-<code class="sig"><span class="sf">fromUTC</span>()</code>
-<span class="desc">Return a new object of now with UTC</span>
-</a>
-<a class="api-item" href="#timeclocksystemclock-now">
-<code class="vis vis-public">public</code>
-<code class="ret">DateTimeImmutable</code>
-<code class="sig"><span class="sf">now</span>()</code>
-<span class="desc">Return the current clock</span>
-</a>
-</div>
+<ApiList>
+<ApiItem href="#timeclocksystemclock-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"DateTimeZone","name":"timezone","default":null}]}>
+</ApiItem>
+<ApiItem href="#timeclocksystemclock-fromsystemtimezone" visibility="public" name="fromSystemTimezone" returnType="SystemClock" params={[]}>
+Return a new object of now with the current timezone
+</ApiItem>
+<ApiItem href="#timeclocksystemclock-fromutc" visibility="public" name="fromUTC" returnType="SystemClock" params={[]}>
+Return a new object of now with UTC
+</ApiItem>
+<ApiItem href="#timeclocksystemclock-now" visibility="public" name="now" returnType="DateTimeImmutable" params={[]}>
+Return the current clock
+</ApiItem>
+</ApiList>
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<ApiGroup label="Public" count="4" />
 
 <h4 id="timeclocksystemclock-__construct"><code>__construct()</code></h4>
 
