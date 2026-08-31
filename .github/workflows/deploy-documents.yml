@@ -1,40 +1,20 @@
-# Workflow inspiration and adaptation came from Andruino-Cli
-# https://github.com/arduino/arduino-cli/blob/master/.github/workflows/deploy-cobra-mkdocs-versioned-poetry.yml
-
-name: Deploy Documents 5.20
+name: Deploy Documents
 
 on:
   push:
     branches:
-      # Branch to base "dev" website on.
       - master
-      # Release branches have names like 0.8.x, 0.9.x, ...
-      - "[0-9]+.[0-9]+.x"
-  create:
+  workflow_dispatch:
+
+env:
+  # The branch that Cloudflare Pages serves. `production` during the trial
+  # of the new site; `gh-pages` holds the last MkDocs deployment as the
+  # rollback. Flip the Pages production branch together with this value.
+  DEPLOY_BRANCH: production
 
 jobs:
-  pre-publish:
-    runs-on: ubuntu-latest
-    outputs:
-      result: ${{ steps.determination.outputs.result }}
-    steps:
-      - name: Determine if documentation should be published on this workflow run
-        id: determination
-        run: |
-          RELEASE_BRANCH_REGEX="refs/heads/[0-9]+.[0-9]+.x"
-          if [[ "${{ github.event_name }}" == "push" || ( "${{ github.event_name }}" == "create" && "${{ github.ref }}" =~ $RELEASE_BRANCH_REGEX ) ]]; then
-            RESULT="true"
-          else
-            RESULT="false"
-          fi
-
-          echo "result=$RESULT" >> $GITHUB_OUTPUT
-          echo "Deploy documents: $RESULT"
-
   publish:
     runs-on: ubuntu-latest
-    needs: pre-publish
-    if: needs.pre-publish.outputs.result == 'true'
 
     steps:
       - name: Checkout repository
@@ -42,67 +22,65 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Build documentation image
-        run: docker build -t phalcon-docs resources/docker
+      - name: Set up pnpm
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
 
-      - name: Get sponsors and fanart
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Update the new feature request list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm run update-nfr
+
+      - name: Test
+        run: pnpm test
+
+      - name: Get the fan art
+        # The HTML comment at the top of every page. The committed
+        # src/fanart.html is the fallback when the download fails.
         run: |
-          wget -O docs/assets/sponsors.md \
-            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/sponsors-fragment.html
-          wget -O overrides/fanart.md \
-            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html
+          curl -fsSL -o src/fanart.html \
+            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html \
+            || echo "Download failed, the committed fan art is used"
 
-      - name: Update NFR list
+      - name: Build
+        run: pnpm build
+
+      - name: Determine the stable version
+        id: stable
         run: |
-          docker run --rm -v "$PWD":/docs --entrypoint python phalcon-docs update-nfr.py
+          STABLE=$(node -e "import('./src/lib/site.mjs').then((m) => console.log(m.STABLE_VERSION))")
+          echo "Stable version: ${STABLE}"
+          echo "version=${STABLE}" >> "$GITHUB_OUTPUT"
 
-      - name: Determine versioning parameters
-        id: determine-versioning
+      - name: Publish to the deploy branch
         run: |
-          # Read the first line from the VERSION file
-          LINE=$(head -n 1 ./VERSION)
-
-          # Extract version and alias using parameter expansion
-          VERSION="${LINE%%|*}"
-          ALIAS="${LINE#*|}"
-
-          # Trim stray whitespace / CRLF so the alias gate matches exactly
-          VERSION=$(printf '%s' "$VERSION" | tr -d '[:space:]')
-          ALIAS=$(printf '%s' "$ALIAS" | tr -d '[:space:]')
-
-          # Print the extracted values for verification
-          echo "Version: $VERSION"
-          echo "Alias: $ALIAS"
-
-          echo "PH_DOCS_VERSION=$VERSION" >> $GITHUB_ENV
-          echo "PH_DOCS_ALIAS=$ALIAS" >> $GITHUB_ENV
-
-      - name: Deploy
-        if: ${{ env.PH_DOCS_VERSION != '' }}
-        run: |
-          # Publishing implies creating a git commit on the production branch,
-          # We will need to create a user for this at some point
-          echo "Deploying with Mike"
           git config user.name niden
           git config user.email nikos@niden.net
-          git fetch --no-tags --prune --depth=1 origin +refs/heads/gh-pages:refs/remotes/origin/gh-pages
-          # Build and commit inside the container; push from the runner.
-          # checkout@v6 keeps its credentials outside the workspace, so they
-          # are not visible inside the container.
-          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/docs -v "$PWD":/docs \
-            --entrypoint mike phalcon-docs deploy ${{ env.PH_DOCS_VERSION }}
-          git push origin gh-pages
-          echo "Deployed"
+          git fetch --no-tags --prune --depth=1 origin "+refs/heads/${DEPLOY_BRANCH}:refs/remotes/origin/${DEPLOY_BRANCH}"
+          git worktree add ../deploy "origin/${DEPLOY_BRANCH}"
+          rsync -a --delete --exclude .git dist/ ../deploy/
+          touch ../deploy/.nojekyll
+          git -C ../deploy add -A
+          git -C ../deploy commit -m "Deployed ${GITHUB_SHA::7}" || echo "No changes to deploy"
+          git -C ../deploy push origin "HEAD:${DEPLOY_BRANCH}"
 
-      - name: Point Cloudflare /latest at this version
-        if: ${{ env.PH_DOCS_ALIAS == 'latest' }}
+      - name: Point Cloudflare /latest at the stable version
         env:
           CF_API_TOKEN:  ${{ secrets.CF_API_TOKEN }}
           CF_ZONE_ID:    ${{ secrets.CF_ZONE_ID }}
           CF_RULESET_ID: ${{ secrets.CF_RULESET_ID }}
           CF_RULE_ID:    ${{ secrets.CF_RULE_ID }}
+          STABLE:        ${{ steps.stable.outputs.version }}
         run: |
-          echo "Pointing /latest -> /${PH_DOCS_VERSION} at Cloudflare"
+          echo "Pointing /latest -> /${STABLE} at Cloudflare"
           curl -sS --fail-with-body -X PATCH \
             "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/rulesets/${CF_RULESET_ID}/rules/${CF_RULE_ID}" \
             -H "Authorization: Bearer ${CF_API_TOKEN}" \
@@ -117,19 +95,10 @@ jobs:
               "from_value": {
                 "status_code": 301,
                 "target_url": {
-                  "expression": "wildcard_replace(http.request.full_uri, r\"https://docs.phalcon.io/latest/*\", r\"https://docs.phalcon.io/${PH_DOCS_VERSION}/\${1}\")"
+                  "expression": "wildcard_replace(http.request.full_uri, r\"https://docs.phalcon.io/latest/*\", r\"https://docs.phalcon.io/${STABLE}/\${1}\")"
                 },
                 "preserve_query_string": true
               }
             }
           }
           JSON
-
-#          git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
-#          mike deploy \
-#            --update-aliases \
-#            --alias-type=redirect \
-##            --branch production \
-#            --push \
-#            ${{ env.PH_DOCS_VERSION }} \
-#            ${{ env.PH_DOCS_ALIAS }}

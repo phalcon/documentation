@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Serve the documentation locally with live reload.
+#
+#   ./serve            # http://localhost:4321
+#   ./serve 4400       # http://localhost:4400
+#   ./serve --build    # force an image rebuild first (after Dockerfile changes)
+#
+# Stop the server before running a build (`pnpm build`): both use the
+# .astro/ cache.
+
+set -e
+
+IMAGE="phalcon-docs"
+PORT="4321"
+BUILD="no"
+
+usage() {
+    echo "Usage: ${0} [--build] [port]" >&2
+    exit 1
+}
+
+for arg in "$@"; do
+    if [[ "${arg}" == "--build" ]]; then
+        BUILD="yes"
+    elif [[ "${arg}" =~ ^[0-9]+$ ]]; then
+        PORT="${arg}"
+    else
+        usage
+    fi
+done
+
+if ! command -v docker > /dev/null 2>&1; then
+    echo "docker is required but was not found in PATH" >&2
+    exit 1
+fi
+
+cd "$(dirname "$0")"
+
+if [[ "${BUILD}" == "yes" ]] || ! docker image inspect "${IMAGE}" > /dev/null 2>&1; then
+    docker build -t "${IMAGE}" resources/docker
+fi
+
+if [[ ! -d node_modules ]]; then
+    docker run --rm -v "$PWD":/docs "${IMAGE}" pnpm install --frozen-lockfile
+fi
+
+# A container stopped with Ctrl+C leaves the Astro dev-server lock on the
+# bind mount. Remove it so the next start does not see a "running" server.
+rm -f .astro/dev.json
+
+echo "Serving documentation at http://localhost:${PORT} (Ctrl+C to stop)"
+docker run --rm -it -p "${PORT}:4321" -v "$PWD":/docs "${IMAGE}"

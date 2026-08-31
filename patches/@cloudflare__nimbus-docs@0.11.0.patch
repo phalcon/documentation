@@ -1,0 +1,22 @@
+diff --git a/dist/validate-BZ3D9Rq5.js b/dist/validate-BZ3D9Rq5.js
+index 3224de92f2ab8a55347f3806dd1c1c3dbaad93ff..26512b3cbb495aafc630696d76507224546db48d 100644
+--- a/dist/validate-BZ3D9Rq5.js
++++ b/dist/validate-BZ3D9Rq5.js
+@@ -6698,7 +6698,7 @@ async function parseContentCollections(filePath) {
+ 		if (entry.startsWith("[")) continue;
+ 		const colonIdx = entry.indexOf(":");
+ 		const key = (colonIdx === -1 ? entry : entry.slice(0, colonIdx)).trim().replace(/^['"`]|['"`]$/g, "");
+-		if (/^[A-Za-z_][A-Za-z0-9_-]*$/.test(key)) names.push(key);
++		if (/^[A-Za-z_][A-Za-z0-9_.-]*$/.test(key)) names.push(key);
+ 	}
+ 	return names;
+ }
+@@ -6760,7 +6760,7 @@ async function parseCollectionBases(filePath) {
+ 		if (entry.startsWith("[")) continue;
+ 		const colonIdx = entry.indexOf(":");
+ 		const key = (colonIdx === -1 ? entry : entry.slice(0, colonIdx)).trim().replace(/^['"`]|['"`]$/g, "");
+-		if (!/^[A-Za-z_][A-Za-z0-9_-]*$/.test(key)) continue;
++		if (!/^[A-Za-z_][A-Za-z0-9_.-]*$/.test(key)) continue;
+ 		const baseMatch = (colonIdx === -1 ? findLocalDeclarationValue(stripped, key) : entry.slice(colonIdx + 1)).match(/\bbase\s*:\s*["']([^"']+)["']/);
+ 		out.set(key, baseMatch ? baseMatch[1] : key);
+ 	}
