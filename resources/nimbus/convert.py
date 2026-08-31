@@ -54,12 +54,15 @@ OCTICONS_TO_PHOSPHOR = {
 }
 # CommonMark allows up to three spaces of indentation before a fence, and a
 # fence can open a list item (`- ```).
+# The closing fence may be longer than the opening one (CommonMark): 3.4
+# closes a ```php block with ````.
 FENCE_RE = re.compile(
-    r"^ {0,3}(?:[-*+] |\d+\. )?(?P<f>```|~~~).*?^ {0,3}(?P=f)[ \t]*$",
+    r"^ {0,3}(?:[-*+] |\d+\. )?(?P<f>`{3,}|~{3,}).*?^ {0,3}(?P=f)[`~]*[ \t]*$",
     re.MULTILINE | re.DOTALL,
 )
-# Fence languages that Shiki names differently.
-FENCE_LANG_ALIASES = {"apacheconfig": "apache"}
+# Fence languages that Shiki names differently. Shiki has no `volt`
+# grammar; Volt is a Twig dialect, so `twig` highlights it correctly.
+FENCE_LANG_ALIASES = {"apacheconfig": "apache", "volt": "twig"}
 # HTML tags the pages use, plus the MDX components the converter emits.
 HTML_TAGS = (
     "a|b|br|code|div|em|h[1-6]|hr|i|iframe|img|li|ol|p|pre|span|strong|sub|sup|"
@@ -76,12 +79,14 @@ HEADING_ID_RE = re.compile(
     re.MULTILINE,
 )
 INLINE_CODE_RE = re.compile(r"`[^`\n]+`")
+INLINE_CODE_TAG_RE = re.compile(r"<code>[^<]*</code>")
 INLINE_CODE_TOKEN_RE = re.compile(r"\x00CODE(\d+)\x00")
 # `.md/#anchor` (a slash before the anchor) is a typo in older pages.
 INLINE_LINK_RE = re.compile(r"\]\((?!https?://)([^)#\s]+?)\.md/?(#[^)\s]*)?\)")
 LINK_CLASS_RE = re.compile(
     r"\[([^\]]+)\]\(([^)\s]+)\)\{[ \t]*\.([A-Za-z0-9_-]+)[ \t]*\}"
 )
+LOCALE_PREFIX_RE = re.compile(r"^[a-z]{2}(-[a-z]{2})?/")
 REF_LINK_RE = re.compile(
     r"^(\[[^\]]+\]:[ \t]+)(?!https?://)(\S+?)\.md/?(#\S*)?[ \t]*$",
     re.MULTILINE,
@@ -198,7 +203,7 @@ def convert_links(text, base):
 def _target(path, anchor, base):
     # nimbus lint requires root-relative internal links. `base` is the
     # directory URL of the page; `..` segments are resolved here.
-    resolved = posixpath.normpath(base + path)
+    resolved = slug_path(posixpath.normpath(base + path))
     if posixpath.basename(resolved) == "index":
         resolved = posixpath.dirname(resolved)
     return resolved.rstrip("/") + "/" + (anchor or "")
@@ -258,7 +263,12 @@ def convert_mdx_safety(text):
     stashed, spans = _stash_inline_code(text)
     stashed = re.sub(r"<(https?://[^>\s]+)>", r"[\1](\1)", stashed)
     stashed = re.sub(r"<(img\b[^>]*[^/])>", r"<\1 />", stashed)
-    stashed = re.sub(r"<br\s*>", "<br />", stashed)
+    stashed = re.sub(r"<(br|hr)\s*>", r"<\1 />", stashed)
+    # MDX still reads markdown inside an inline `<code>` span, so a `*` there
+    # opens an emphasis that runs past the closing tag (`<code>*\Apc</code>`).
+    stashed = INLINE_CODE_TAG_RE.sub(
+        lambda m: re.sub(r"(?<!\\)\*", r"\\*", m.group(0)), stashed
+    )
     # Only the HTML tags that the pages really use stay tags. Everything
     # else after `<` (`<Access>`, `array<string, T>`, `<hashed>`) is text.
     stashed = NOT_A_TAG_RE.sub("&lt;", stashed)
@@ -360,6 +370,17 @@ def convert_grid_cards(text):
     return GRID_CARDS_RE.sub(replace, text)
 
 
+def slug_path(page):
+    """Return the route of a page path.
+
+    Astro slugifies every segment of a content id, which lowercases it: the
+    3.4 page `api/Phalcon_Acl.md` is served at `/3.4/api/phalcon_acl/`. The
+    pages are written lowercase so that the file matches its URL, and the
+    old mixed-case URL becomes a redirect.
+    """
+    return page.lower()
+
+
 def build_sidebar(nav, titles, version):
     """Translate an MkDocs nav into nimbus `sidebar.items`.
 
@@ -378,7 +399,7 @@ def build_sidebar(nav, titles, version):
                     "items": build_sidebar(value, titles, version),
                 })
             elif value.endswith(".md") and not value.startswith("http"):
-                page = value[: -len(".md")]
+                page = slug_path(value[: -len(".md")])
                 if page.endswith("/index"):
                     page = page[: -len("/index")]
                 if titles.get(page) == label:
@@ -404,13 +425,18 @@ def write_sidebar(nav, titles, version, sidebar_dir):
     return out
 
 
-def find_redirects(source, version, mkdocs_yml=None):
+def find_redirects(source, version, mkdocs_yml=None, skip_locales=False):
     """Return `{old URL: new URL}` from the MkDocs redirects.
 
     Older branches declare them as `redirect_maps` of the MkDocs redirects
     plugin (`old.md: new.md`); newer ones ship `index.html` stubs whose
     `<link rel="canonical">` points to the page that replaced them,
     relative to the stub's directory.
+
+    `skip_locales` drops the `redirect_maps` of the translations of the old
+    multilingual site (`es-es/acl.md`, `zh-cn/acl.md`, ...). They are one
+    redirect per page per language, which the build writes as one HTML file
+    each.
     """
     source = Path(source)
     redirects = {}
@@ -425,7 +451,16 @@ def find_redirects(source, version, mkdocs_yml=None):
 
     if mkdocs_yml and Path(mkdocs_yml).is_file():
         for old, new in redirect_maps(mkdocs_yml).items():
+            if skip_locales and LOCALE_PREFIX_RE.match(old):
+                continue
             redirects[url(old)] = url(new)
+    # A page whose path has a capital (3.4 has `api/Phalcon_Acl.md`) is served
+    # lowercase; its MkDocs URL redirects there.
+    for page in sorted(source.rglob("*.md")):
+        rel = page.relative_to(source).as_posix()
+        if rel.split("/")[0] == "assets" or rel == slug_path(rel):
+            continue
+        redirects[url(rel)] = url(slug_path(rel))
     for stub in sorted(source.rglob("index.html")):
         match = re.search(r'<link rel="canonical" href="([^"]+)">', stub.read_text(encoding="utf-8"))
         if not match:
@@ -628,6 +663,12 @@ def main():
         metavar="PAGE",
         help="convert only this page (relative to --source); repeatable",
     )
+    parser.add_argument(
+        "--skip-locale-redirects",
+        action="store_true",
+        help="drop the redirect_maps of the translations of the old multilingual "
+        "site (one redirect per page per language, one HTML file each)",
+    )
     args = parser.parse_args()
 
     if args.register:
@@ -655,7 +696,8 @@ def main():
         if rel.parts[0] == "assets":
             continue
         # Pages are MDX: nimbus rewrites `:::` admonitions in .mdx files only.
-        out = content / rel.with_suffix(".mdx")
+        # The name is the route, which Astro lowercases.
+        out = content / slug_path(rel.with_suffix(".mdx").as_posix())
         out.parent.mkdir(parents=True, exist_ok=True)
         (content / rel).unlink(missing_ok=True)
         # API pages have no H1: "phalcon_acl" becomes the title "Phalcon Acl".
@@ -671,7 +713,7 @@ def main():
         )
         out.write_text(page, encoding="utf-8")
         count += 1
-        page_id = rel.with_suffix("").as_posix()
+        page_id = slug_path(rel.with_suffix("").as_posix())
         if page_id.endswith("/index"):
             page_id = page_id[: -len("/index")]
         titles[page_id] = re.search(r'^title: (".*")$', page, re.M).group(1)
@@ -683,7 +725,9 @@ def main():
         print(f"Sidebar written to {sidebar}")
 
     if not args.only:
-        redirects = find_redirects(source, args.version, nav_file)
+        redirects = find_redirects(
+            source, args.version, nav_file, skip_locales=args.skip_locale_redirects
+        )
         out = write_redirects(redirects, args.version, target / "src" / "redirects")
         print(f"{len(redirects)} redirects written to {out}")
 

@@ -13,3 +13,5 @@ plugins:
         'index.md': 'introduction.md'
         'loader.md': 'autoload.md'
         'old.md': 'new.md#section'
+        'en/loader.md': 'autoload.md'
+        'es-es/loader.md': 'autoload.md'

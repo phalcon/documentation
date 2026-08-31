@@ -26,5 +26,6 @@ export const collections = {
   "docs-5.6": defineCollection(docsCollection({ base: "docs-5.6", schemaFields })),
   "docs-5.5": defineCollection(docsCollection({ base: "docs-5.5", schemaFields })),
   "docs-5.4": defineCollection(docsCollection({ base: "docs-5.4", schemaFields })),
+  "docs-3.4": defineCollection(docsCollection({ base: "docs-3.4", schemaFields })),
   partials: defineCollection(partialsCollection()),
 };

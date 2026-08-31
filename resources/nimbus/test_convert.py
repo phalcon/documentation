@@ -107,6 +107,12 @@ class LinkTest(unittest.TestCase):
         result = convert.convert_page(page, "api", FIXTURES, version="5.20")
         self.assertIn("[Acl](/5.20/api/phalcon_acl/) [Db](/5.20/db-layer/#x)", result)
 
+    def test_a_link_to_a_page_with_a_capital_becomes_lowercase(self):
+        # Astro lowercases the route; 3.4 names its API pages `Phalcon_Acl.md`.
+        page = "# T\n\n[Acl](api/Phalcon_Acl.md#class-phalconaclrole)\n"
+        result = convert.convert_page(page, "", FIXTURES, version="3.4")
+        self.assertIn("[Acl](/3.4/api/phalcon_acl/#class-phalconaclrole)", result)
+
     def test_slash_before_anchor_typo_is_absorbed(self):
         page = "# T\n\n[a](api/phalcon_di.md/#difactorydefault)\n\n[b]: api/phalcon_config.md/#configconfig\n"
         result = convert.convert_page(page, "", FIXTURES, version="5.12")
@@ -201,10 +207,16 @@ class MdxSafetyTest(unittest.TestCase):
         self.assertIn("```twig\n{{ name }}\n```", result)
 
     def test_void_tags_are_self_closed(self):
-        page = '# T\n\n<img src="assets/images/a.png" alt="a">\nline<br>\n'
+        page = '# T\n\n<img src="assets/images/a.png" alt="a">\nline<br>\n\n<hr>\n'
         result = convert.convert_page(page, "", FIXTURES, version="5.20")
         self.assertIn('<img src="/assets/images/a.png" alt="a" />', result)
         self.assertIn("line<br />", result)
+        self.assertIn("<hr />", result)
+
+    def test_a_star_in_an_inline_code_tag_cannot_open_an_emphasis(self):
+        page = "# T\n\nSwitch <code>*\\Apc</code> to <code>*\\Apcu</code>.\n"
+        result = convert.convert_page(page, "", FIXTURES)
+        self.assertIn("<code>\\*\\Apc</code> to <code>\\*\\Apcu</code>", result)
 
     def test_bare_less_than_is_escaped(self):
         result = convert.convert_page("# T\n\n<3 Phalcon and a < b\n", "", FIXTURES)
@@ -245,6 +257,13 @@ class CodeBlockTest(unittest.TestCase):
 
 
 class FenceTest(unittest.TestCase):
+    def test_a_longer_closing_fence_closes_the_block(self):
+        # 3.4 closes a ```php block with ````; the text after it is prose,
+        # so its links are rewritten.
+        page = "# T\n\n```php\n$a = 1;\n````\n\nSee [D](api/Phalcon_Mvc_Dispatcher.md).\n"
+        result = convert.convert_page(page, "", FIXTURES, version="3.4")
+        self.assertIn("See [D](/3.4/api/phalcon_mvc_dispatcher/).", result)
+
     def test_fence_opening_a_list_item_is_one_block(self):
         page = "# T\n\n- ```\n  front_exit_status_int int<0,254>\n  ```\n    - text with {braces}\n"
         result = convert.convert_page(page, "", FIXTURES)
@@ -260,6 +279,12 @@ class FenceTest(unittest.TestCase):
         page = "# T\n\n```apacheconfig\nRewriteEngine On\n```\n"
         result = convert.convert_page(page, "", FIXTURES)
         self.assertIn("```apache\nRewriteEngine On\n```", result)
+
+    def test_volt_fence_becomes_twig(self):
+        # Shiki has no `volt` grammar; Volt is a Twig dialect.
+        page = "# T\n\n```volt\n{{ name }}\n```\n"
+        result = convert.convert_page(page, "", FIXTURES)
+        self.assertIn("```twig\n{{ name }}\n```", result)
 
     def test_title_drops_html_tags(self):
         page = '# <img src="assets/images/quill-mark.svg" height="26" alt=""> Quill\n'
@@ -327,6 +352,25 @@ class RedirectTest(unittest.TestCase):
 
     def test_redirect_maps_of_the_mkdocs_plugin_are_included(self):
         redirects = convert.find_redirects(FIXTURES / "src-same", "5.15", FIXTURES / "mkdocs.yml")
+        self.assertEqual(
+            redirects,
+            {
+                "/5.15/": "/5.15/introduction/",
+                "/5.15/loader/": "/5.15/autoload/",
+                "/5.15/old/": "/5.15/new/#section",
+                "/5.15/en/loader/": "/5.15/autoload/",
+                "/5.15/es-es/loader/": "/5.15/autoload/",
+            },
+        )
+
+    def test_a_page_with_a_capital_redirects_to_its_lowercase_url(self):
+        redirects = convert.find_redirects(FIXTURES / "mixed-case", "3.4")
+        self.assertEqual(redirects, {"/3.4/Api_Page/": "/3.4/api_page/"})
+
+    def test_skip_locales_drops_the_redirects_of_the_translations(self):
+        redirects = convert.find_redirects(
+            FIXTURES / "src-same", "5.15", FIXTURES / "mkdocs.yml", skip_locales=True
+        )
         self.assertEqual(
             redirects,
             {

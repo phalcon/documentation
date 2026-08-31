@@ -29,6 +29,12 @@ test("with two stable releases, an older 5.x points to 5.20 and nothing shows on
   assert.match(versionBanner("4.2", stable, {}).content, /<a href="\/6.0\/">6.0<\/a>/);
 });
 
+test("a deprecated version has no banner of ours; nimbus shows its own", () => {
+  const stable = ["5.20"];
+  assert.equal(versionBanner("3.4", stable, {}, ["3.4"]), null);
+  assert.match(versionBanner("3.4", stable, {}, []).content, /<a href="\/5.20\/">5.20<\/a>/);
+});
+
 test("picker tags: latest for the first stable, stable for the others, the pre-release tag otherwise", () => {
   const stable = ["6.0", "5.20"];
   assert.equal(versionTag("6.0", stable, {}), "latest");
