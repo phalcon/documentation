@@ -19,6 +19,9 @@ The site is an [Astro](https://astro.build) project using [nimbus-docs](https://
 | `src/pages/<version>/` | The routes of a version (generated, do not edit) |
 | `src/versions.generated.mjs`, `src/content.config.ts` | Generated registry of the versions (do not edit) |
 | `src/lib/site.mjs` | Stable releases, pre-releases, deprecated versions, analytics |
+| `src/components/`, `src/components.ts` | Astro components. `components.ts` is the registry that makes one usable in MDX with no import |
+| `src/styles/` | The stylesheets. `BaseLayout.astro` imports all of them |
+| `src/data/releases.ts` | The release history, shared by the `releases` page of every version |
 | `public/assets/images/` | Images, shared by all versions |
 | `resources/nimbus/` | Converter from the former MkDocs sources, templates, tests |
 
@@ -49,6 +52,34 @@ scripts/new-version.sh 5.20 5.21
 Then edit `src/content/docs-5.21/`, and set `STABLE_VERSIONS` (or
 `PRERELEASES`) in `src/lib/site.mjs` when the version is published. The
 first entry of `STABLE_VERSIONS` is where `/` and `/latest/` lead.
+
+### Publish a release
+
+The `releases` page of every version reads `src/data/releases.ts`, so one
+entry serves all of them. Take the date from the changelog, not from the git
+tag: some tags are a day away from the release, and some releases have no
+tag.
+
+```bash
+grep -m1 '5\.21\.0' ../cphalcon/CHANGELOG-5.0.md    # 5.x
+grep -m1 'beta 12'  ../phalcon/CHANGELOG.md         # 6.0 previews
+```
+
+For a new minor:
+
+1. `scripts/new-version.sh 5.20 5.21`
+2. Add the release to the end of `src/data/releases.ts`
+3. Move `status: "maintained"` to the release that 5.21 supersedes
+4. Put the version first in `STABLE_VERSIONS` in `src/lib/site.mjs`
+
+For a major that leaves pre-release, 6.0 for example:
+
+1. Add `{ version: "6.0", date: "...", php: "..." }` to `src/data/releases.ts`
+2. Set `STABLE_VERSIONS` to `["6.0", "5.20"]` and delete `6.0` from `PRERELEASES`
+
+The 6.0 previews then leave the page on their own: a preview is shown only
+while its major version has no stable release. Their entries can stay in the
+file or go, and the page is the same either way.
 
 ### Convert a MkDocs version
 
