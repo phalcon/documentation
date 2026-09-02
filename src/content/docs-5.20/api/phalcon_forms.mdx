@@ -1137,8 +1137,6 @@ Component INPUT[type=password] for forms
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Tag`</ApiUses>
-
 ### Properties
 
 <ApiList>
@@ -1160,8 +1158,6 @@ Component INPUT[type=radio] for forms
     - **`Phalcon\Forms\Element\Radio`**
 
 </ApiTree>
-
-<ApiUses>`Phalcon\Tag`</ApiUses>
 
 ### Properties
 
@@ -1190,7 +1186,7 @@ or with per-item attributes:
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\TagFactory`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Helper\Input\RadioGroup` · `Phalcon\Html\TagFactory`</ApiUses>
 
 ### Method Summary
 
@@ -1299,7 +1295,7 @@ Returns an array of prepared attributes for Phalcon\Html\TagFactory
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="optionsValues" type="object|array|null" default="null">
+<ApiItem kind="property" visibility="protected" name="optionsValues" type="array|object|null" default="null">
 </ApiItem>
 </ApiList>
 
@@ -1377,8 +1373,6 @@ Component INPUT[type=submit] for forms
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Tag`</ApiUses>
-
 ### Properties
 
 <ApiList>
@@ -1401,8 +1395,6 @@ Component INPUT[type=text] for forms
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Forms\Exception`</ApiUses>
-
 
 ## Forms\Element\TextArea
 
@@ -1417,8 +1409,6 @@ Component TEXTAREA for forms
     - **`Phalcon\Forms\Element\TextArea`**
 
 </ApiTree>
-
-<ApiUses>`Phalcon\Tag`</ApiUses>
 
 ### Properties
 
@@ -1957,8 +1947,8 @@ This component allows to build forms using an object-oriented interface
 <ApiTree>
 
 - `\stdClass`
-    - [`Phalcon\Di\Injectable`](../phalcon_di/#diinjectable)
-        - **`Phalcon\Forms\Form`** - implements `\Countable`, `\Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](../phalcon_html/#htmlattributesattributesinterface)
+    - [`Phalcon\Di\Injectable`](/5.20/api/phalcon_di/#diinjectable)
+        - **`Phalcon\Forms\Form`** - implements `\Countable`, `\Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](/5.20/api/phalcon_html/#htmlattributesattributesinterface)
 
 </ApiTree>
 
@@ -2028,7 +2018,6 @@ return ValidationInterface|null
 Gets a value from the internal related entity or from the default value
 </ApiItem>
 <ApiItem href="#formsform-getwhitelist" visibility="public" name="getWhitelist" returnType="array" params={[]}>
-return array
 </ApiItem>
 <ApiItem href="#formsform-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Check if the form contains an element
@@ -2312,8 +2301,6 @@ Gets a value from the internal related entity or from the default value
 public function getWhitelist(): array;
 ```
 
-return array
-
 <h4 id="formsform-has"><code>has()</code></h4>
 
 ```php
@@ -2510,7 +2497,7 @@ types with `setElement()`.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · `Phalcon\Forms\Element\Date` · `Phalcon\Forms\Element\Email` · `Phalcon\Forms\Element\File` · `Phalcon\Forms\Element\Hidden` · `Phalcon\Forms\Element\Numeric` · `Phalcon\Forms\Element\Password` · `Phalcon\Forms\Element\Radio` · `Phalcon\Forms\Element\RadioGroup` · `Phalcon\Forms\Element\Select` · `Phalcon\Forms\Element\Submit` · `Phalcon\Forms\Element\Text` · `Phalcon\Forms\Element\TextArea` · `Phalcon\Forms\Exceptions\FormNotInLocator` · `Phalcon\Forms\Exceptions\UnknownFormElementType`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · `Phalcon\Forms\Element\Date` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Element\Email` · `Phalcon\Forms\Element\File` · `Phalcon\Forms\Element\Hidden` · `Phalcon\Forms\Element\Numeric` · `Phalcon\Forms\Element\Password` · `Phalcon\Forms\Element\Radio` · `Phalcon\Forms\Element\RadioGroup` · `Phalcon\Forms\Element\Select` · `Phalcon\Forms\Element\Submit` · `Phalcon\Forms\Element\Text` · `Phalcon\Forms\Element\TextArea` · `Phalcon\Forms\Exceptions\FormNotInLocator` · `Phalcon\Forms\Exceptions\UnknownFormElementType`</ApiUses>
 
 ### Method Summary
 
@@ -2639,7 +2626,7 @@ Supplies form element definitions from a PHP array.
 
 <ApiTree>
 
-- **`Phalcon\Forms\Loader\ArrayLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](../phalcon_contracts/#contractsformsschema)
+- **`Phalcon\Forms\Loader\ArrayLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](/5.20/api/phalcon_contracts/#contractsformsschema)
 
 </ApiTree>
 
@@ -2703,7 +2690,7 @@ disk first; otherwise the value is treated as a raw JSON string.
 
 <ApiTree>
 
-- **`Phalcon\Forms\Loader\JsonLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](../phalcon_contracts/#contractsformsschema)
+- **`Phalcon\Forms\Loader\JsonLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](/5.20/api/phalcon_contracts/#contractsformsschema)
 
 </ApiTree>
 
@@ -2756,7 +2743,7 @@ directly; otherwise the value is treated as a raw YAML string.
 
 <ApiTree>
 
-- **`Phalcon\Forms\Loader\YamlLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](../phalcon_contracts/#contractsformsschema)
+- **`Phalcon\Forms\Loader\YamlLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](/5.20/api/phalcon_contracts/#contractsformsschema)
 
 </ApiTree>
 

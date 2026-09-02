@@ -72,12 +72,12 @@ Lazy loads, stores and exposes sanitizer objects
 @method string       email(string $input)
 @method float        float(mixed $input)
 @method int          int(string $input)
-@method string|false ip(string $input, int $filter = FILTER_FLAG_NONE)
+@method false|string ip(string $input, int $filter = 0)
 @method string       lower(string $input)
 @method string       lowerfirst(string $input)
 @method mixed        regex(mixed $input, mixed $pattern, mixed $replace)
 @method mixed        remove(mixed $input, mixed $replace)
-@method mixed        replace(mixed $input, mixed $source, mixed $target)
+@method mixed        replace(mixed $input, mixed $from, mixed $to)
 @method string       special(string $input)
 @method string       specialfull(string $input)
 @method string       string(string $input)
@@ -98,7 +98,7 @@ Lazy loads, stores and exposes sanitizer objects
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Exceptions\FilterNotRegistered` · `Phalcon\Filter\Sanitize\AbsInt` · `Phalcon\Filter\Sanitize\Alnum` · `Phalcon\Filter\Sanitize\Alpha` · `Phalcon\Filter\Sanitize\BoolVal` · `Phalcon\Filter\Sanitize\Email` · `Phalcon\Filter\Sanitize\FloatVal` · `Phalcon\Filter\Sanitize\IntVal` · `Phalcon\Filter\Sanitize\Ip` · `Phalcon\Filter\Sanitize\Lower` · `Phalcon\Filter\Sanitize\LowerFirst` · `Phalcon\Filter\Sanitize\Regex` · `Phalcon\Filter\Sanitize\Remove` · `Phalcon\Filter\Sanitize\Replace` · `Phalcon\Filter\Sanitize\Special` · `Phalcon\Filter\Sanitize\SpecialFull` · `Phalcon\Filter\Sanitize\StringVal` · `Phalcon\Filter\Sanitize\StringValLegacy` · `Phalcon\Filter\Sanitize\Striptags` · `Phalcon\Filter\Sanitize\Trim` · `Phalcon\Filter\Sanitize\Upper` · `Phalcon\Filter\Sanitize\UpperFirst` · `Phalcon\Filter\Sanitize\UpperWords` · `Phalcon\Filter\Sanitize\Url`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Filter\Exceptions\FilterNotRegistered` · `Phalcon\Filter\Sanitize\AbsInt` · `Phalcon\Filter\Sanitize\Alnum` · `Phalcon\Filter\Sanitize\Alpha` · `Phalcon\Filter\Sanitize\BoolVal` · `Phalcon\Filter\Sanitize\Email` · `Phalcon\Filter\Sanitize\FloatVal` · `Phalcon\Filter\Sanitize\IntVal` · `Phalcon\Filter\Sanitize\Ip` · `Phalcon\Filter\Sanitize\Lower` · `Phalcon\Filter\Sanitize\LowerFirst` · `Phalcon\Filter\Sanitize\Regex` · `Phalcon\Filter\Sanitize\Remove` · `Phalcon\Filter\Sanitize\Replace` · `Phalcon\Filter\Sanitize\Special` · `Phalcon\Filter\Sanitize\SpecialFull` · `Phalcon\Filter\Sanitize\StringVal` · `Phalcon\Filter\Sanitize\StringValLegacy` · `Phalcon\Filter\Sanitize\Striptags` · `Phalcon\Filter\Sanitize\Trim` · `Phalcon\Filter\Sanitize\Upper` · `Phalcon\Filter\Sanitize\UpperFirst` · `Phalcon\Filter\Sanitize\UpperWords` · `Phalcon\Filter\Sanitize\Url`</ApiUses>
 
 ### Method Summary
 
@@ -296,7 +296,7 @@ Class FilterFactory
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Filter`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Filter`</ApiUses>
 
 ### Method Summary
 
@@ -346,6 +346,8 @@ Lazy loads, stores and exposes sanitizer objects
 
 </ApiTree>
 
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes`</ApiUses>
+
 ### Method Summary
 
 <ApiList>
@@ -381,13 +383,11 @@ returned - recursion is one level deep only. When `$noRecursive` is
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/AbsInt.zep" />
 
-Phalcon\Filter\Sanitize\AbsInt
-
 Sanitizes a value to absolute integer
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\AbsInt`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\AbsInt`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -416,13 +416,11 @@ public function __invoke( mixed $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Alnum.zep" />
 
-Phalcon\Filter\Sanitize\Alnum
-
 Sanitizes a value to an alphanumeric value
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Alnum`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Alnum`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -451,13 +449,11 @@ public function __invoke( mixed $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Alpha.zep" />
 
-Phalcon\Filter\Sanitize\Alpha
-
 Sanitizes a value to an alpha value
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Alpha`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Alpha`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -486,13 +482,11 @@ public function __invoke( mixed $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/BoolVal.zep" />
 
-Phalcon\Filter\Sanitize\BoolVal
-
 Sanitizes a value to boolean
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\BoolVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\BoolVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -521,13 +515,11 @@ public function __invoke( mixed $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Email.zep" />
 
-Phalcon\Filter\Sanitize\Email
-
 Sanitizes an email string
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Email`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Email`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -556,13 +548,11 @@ public function __invoke( mixed $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/FloatVal.zep" />
 
-Phalcon\Filter\Sanitize\FloatVal
-
 Sanitizes a value to float
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\FloatVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\FloatVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -591,13 +581,11 @@ public function __invoke( mixed $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/IntVal.zep" />
 
-Phalcon\Filter\Sanitize\IntVal
-
 Sanitizes a value to integer
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\IntVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\IntVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -626,13 +614,11 @@ public function __invoke( mixed $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Ip.zep" />
 
-Phalcon\Filter\Sanitize\IP
-
 Sanitizes a value to an ip address or CIDR range
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Ip`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Ip`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -641,7 +627,7 @@ Sanitizes a value to an ip address or CIDR range
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#filtersanitizeip-__invoke" visibility="public" name="__invoke" returnType="string|false" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"filter","default":"0"}]}>
+<ApiItem href="#filtersanitizeip-__invoke" visibility="public" name="__invoke" returnType="false|string" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"filter","default":"0"}]}>
 </ApiItem>
 </ApiList>
 
@@ -655,7 +641,7 @@ Sanitizes a value to an ip address or CIDR range
 public function __invoke(
     string $input,
     int $filter = 0
-): string|false;
+): false|string;
 ```
 
 
@@ -664,13 +650,11 @@ public function __invoke(
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Lower.zep" />
 
-Phalcon\Filter\Sanitize\Lower
-
 Sanitizes a value to lowercase
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Lower`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Lower`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -699,13 +683,11 @@ public function __invoke( string $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/LowerFirst.zep" />
 
-Phalcon\Filter\Sanitize\LowerFirst
-
 Sanitizes a value to lcfirst
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\LowerFirst`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\LowerFirst`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -734,13 +716,11 @@ public function __invoke( string $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Regex.zep" />
 
-Phalcon\Filter\Sanitize\Regex
-
 Sanitizes a value performing preg_replace
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Regex`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Regex`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -773,13 +753,11 @@ public function __invoke(
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Remove.zep" />
 
-Phalcon\Filter\Sanitize\Remove
-
 Sanitizes a value removing parts of a string
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Remove`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Remove`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -811,13 +789,11 @@ public function __invoke(
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Replace.zep" />
 
-Phalcon\Filter\Sanitize\Replace
-
 Sanitizes a value replacing parts of a string
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Replace`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Replace`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -850,13 +826,11 @@ public function __invoke(
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Special.zep" />
 
-Phalcon\Filter\Sanitize\Special
-
 Sanitizes a value special characters
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Special`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Special`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -885,13 +859,11 @@ public function __invoke( mixed $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/SpecialFull.zep" />
 
-Phalcon\Filter\Sanitize\SpecialFull
-
 Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\SpecialFull`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\SpecialFull`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -924,7 +896,7 @@ Sanitizes a value to string
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\StringVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\StringVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -963,7 +935,7 @@ string is passed, the method will return false
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\StringValLegacy`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\StringValLegacy`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -992,13 +964,11 @@ public function __invoke( mixed $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Striptags.zep" />
 
-Phalcon\Filter\Sanitize\Striptags
-
 Sanitizes a value striptags
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Striptags`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Striptags`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -1027,13 +997,11 @@ public function __invoke( string $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Trim.zep" />
 
-Phalcon\Filter\Sanitize\Trim
-
 Sanitizes a value removing leading and trailing spaces
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Trim`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Trim`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -1062,13 +1030,11 @@ public function __invoke( string $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Upper.zep" />
 
-Phalcon\Filter\Sanitize\Upper
-
 Sanitizes a value to uppercase
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Upper`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Upper`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -1097,13 +1063,11 @@ public function __invoke( string $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/UpperFirst.zep" />
 
-Phalcon\Filter\Sanitize\UpperFirst
-
 Sanitizes a value to ucfirst
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\UpperFirst`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\UpperFirst`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -1132,13 +1096,11 @@ public function __invoke( string $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/UpperWords.zep" />
 
-Phalcon\Filter\Sanitize\UpperWords
-
 Sanitizes a value to uppercase the first character of each word
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\UpperWords`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\UpperWords`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -1167,13 +1129,11 @@ public function __invoke( string $input );
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Url.zep" />
 
-Phalcon\Filter\Sanitize\Url
-
 Sanitizes a value url
 
 <ApiTree>
 
-- **`Phalcon\Filter\Sanitize\Url`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](../phalcon_contracts/#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Url`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/5.20/api/phalcon_contracts/#contractsfiltersanitizer)
 
 </ApiTree>
 
@@ -1207,12 +1167,12 @@ Allows to validate data using custom or built-in validators
 <ApiTree>
 
 - `\stdClass`
-    - [`Phalcon\Di\Injectable`](../phalcon_di/#diinjectable)
+    - [`Phalcon\Di\Injectable`](/5.20/api/phalcon_di/#diinjectable)
         - **`Phalcon\Filter\Validation`** - implements [`Phalcon\Filter\Validation\ValidationInterface`](#filtervalidationvalidationinterface)
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable` · `Phalcon\Filter\Validation\Exceptions\InvalidFieldType` · `Phalcon\Filter\Validation\Exceptions\InvalidFilterService` · `Phalcon\Filter\Validation\Exceptions\InvalidValidationData` · `Phalcon\Filter\Validation\Exceptions\InvalidValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope` · `Phalcon\Filter\Validation\Exceptions\NoDataToValidate` · `Phalcon\Filter\Validation\Exceptions\NoValidators` · `Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable` · `Phalcon\Filter\Validation\Exceptions\InvalidFieldType` · `Phalcon\Filter\Validation\Exceptions\InvalidFilterService` · `Phalcon\Filter\Validation\Exceptions\InvalidValidationData` · `Phalcon\Filter\Validation\Exceptions\InvalidValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope` · `Phalcon\Filter\Validation\Exceptions\NoDataToValidate` · `Phalcon\Filter\Validation\Exceptions\NoValidators` · `Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`</ApiUses>
 
 ### Method Summary
 
@@ -1253,13 +1213,13 @@ Returns the registered validators
 Returns the validators added to the validation
 </ApiItem>
 <ApiItem href="#filtervalidation-getvalue" visibility="public" name="getValue" returnType="mixed|null" params={[{"type":"string","name":"field","default":null}]}>
-Gets the a value to validate in the array/object data source
+Gets the value to validate in the array/object data source
 </ApiItem>
 <ApiItem href="#filtervalidation-getvaluebydata" visibility="public" name="getValueByData" returnType="mixed|null" params={[{"type":"mixed","name":"data","default":null},{"type":"string","name":"field","default":null}]}>
-Gets the a value to validate in the array/object data source
+Gets the value to validate in the array/object data source
 </ApiItem>
 <ApiItem href="#filtervalidation-getvaluebyentity" visibility="public" name="getValueByEntity" returnType="mixed|null" params={[{"type":"mixed","name":"entity","default":null},{"type":"string","name":"field","default":null}]}>
-Gets the a value to validate in the object entity source
+Gets the value to validate in the object entity source
 </ApiItem>
 <ApiItem href="#filtervalidation-rule" visibility="public" name="rule" returnType="static" params={[{"type":"mixed","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
 Alias of `add` method
@@ -1444,7 +1404,7 @@ Returns the validators added to the validation
 public function getValue( string $field ): mixed|null;
 ```
 
-Gets the a value to validate in the array/object data source
+Gets the value to validate in the array/object data source
 
 <h4 id="filtervalidation-getvaluebydata"><code>getValueByData()</code></h4>
 
@@ -1455,7 +1415,7 @@ public function getValueByData(
 ): mixed|null;
 ```
 
-Gets the a value to validate in the array/object data source
+Gets the value to validate in the array/object data source
 
 <h4 id="filtervalidation-getvaluebyentity"><code>getValueByEntity()</code></h4>
 
@@ -1466,7 +1426,7 @@ public function getValueByEntity(
 ): mixed|null;
 ```
 
-Gets the a value to validate in the object entity source
+Gets the value to validate in the object entity source
 
 <h4 id="filtervalidation-rule"><code>rule()</code></h4>
 
@@ -1478,6 +1438,8 @@ public function rule(
 ```
 
 Alias of `add` method
+
+@todo remove this
 
 <h4 id="filtervalidation-rules"><code>rules()</code></h4>
 
@@ -1630,7 +1592,7 @@ This is a base class for validators
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Whitelist`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Whitelist`</ApiUses>
 
 ### Method Summary
 
@@ -2574,6 +2536,8 @@ validators.
 
 </ApiTree>
 
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes`</ApiUses>
+
 <ApiUsedBy>[`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)</ApiUsedBy>
 
 ### Method Summary
@@ -2629,7 +2593,7 @@ Interface for the Phalcon\Filter\Validation component
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Di\Injectable` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\Injectable` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`</ApiUses>
 
 ### Method Summary
 
@@ -2829,7 +2793,7 @@ This is a base class for combined fields validators
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation`</ApiUses>
 
 ### Method Summary
 
@@ -2873,19 +2837,19 @@ Executes the validation
 
 <ApiTree>
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
-    - [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/5.20/api/phalcon_factory/#factoryabstractconfigfactory)
+    - [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
         - **`Phalcon\Filter\Validation\ValidatorFactory`**
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Factory\AbstractFactory` · `Phalcon\Filter\Validation\Validator\Alnum` · `Phalcon\Filter\Validation\Validator\Alpha` · `Phalcon\Filter\Validation\Validator\Between` · `Phalcon\Filter\Validation\Validator\Callback` · `Phalcon\Filter\Validation\Validator\Confirmation` · `Phalcon\Filter\Validation\Validator\CreditCard` · `Phalcon\Filter\Validation\Validator\Date` · `Phalcon\Filter\Validation\Validator\Digit` · `Phalcon\Filter\Validation\Validator\Email` · `Phalcon\Filter\Validation\Validator\Exception` · `Phalcon\Filter\Validation\Validator\ExclusionIn` · `Phalcon\Filter\Validation\Validator\File` · `Phalcon\Filter\Validation\Validator\Identical` · `Phalcon\Filter\Validation\Validator\InclusionIn` · `Phalcon\Filter\Validation\Validator\Ip` · `Phalcon\Filter\Validation\Validator\Numericality` · `Phalcon\Filter\Validation\Validator\PresenceOf` · `Phalcon\Filter\Validation\Validator\Regex` · `Phalcon\Filter\Validation\Validator\StringLength` · `Phalcon\Filter\Validation\Validator\Uniqueness` · `Phalcon\Filter\Validation\Validator\Url`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Filter\Validation\Validator\Alnum` · `Phalcon\Filter\Validation\Validator\Alpha` · `Phalcon\Filter\Validation\Validator\Between` · `Phalcon\Filter\Validation\Validator\Callback` · `Phalcon\Filter\Validation\Validator\Confirmation` · `Phalcon\Filter\Validation\Validator\CreditCard` · `Phalcon\Filter\Validation\Validator\Date` · `Phalcon\Filter\Validation\Validator\Digit` · `Phalcon\Filter\Validation\Validator\Email` · `Phalcon\Filter\Validation\Validator\Exception` · `Phalcon\Filter\Validation\Validator\ExclusionIn` · `Phalcon\Filter\Validation\Validator\File` · `Phalcon\Filter\Validation\Validator\Identical` · `Phalcon\Filter\Validation\Validator\InclusionIn` · `Phalcon\Filter\Validation\Validator\Ip` · `Phalcon\Filter\Validation\Validator\Numericality` · `Phalcon\Filter\Validation\Validator\PresenceOf` · `Phalcon\Filter\Validation\Validator\Regex` · `Phalcon\Filter\Validation\Validator\StringLength` · `Phalcon\Filter\Validation\Validator\Uniqueness` · `Phalcon\Filter\Validation\Validator\Url`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
 <ApiItem href="#filtervalidationvalidatorfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
-TagFactory constructor.
+Constructor.
 </ApiItem>
 <ApiItem href="#filtervalidationvalidatorfactory-newinstance" visibility="public" name="newInstance" returnType="ValidatorInterface" params={[{"type":"string","name":"name","default":null}]}>
 Creates a new instance
@@ -2907,7 +2871,7 @@ Returns the available adapters
 public function __construct( array $services = [] );
 ```
 
-TagFactory constructor.
+Constructor.
 
 <h4 id="filtervalidationvalidatorfactory-newinstance"><code>newInstance()</code></h4>
 
@@ -2947,7 +2911,7 @@ Interface for Phalcon\Filter\Validation\AbstractValidator
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation`</ApiUses>
 
 ### Method Summary
 
@@ -3088,7 +3052,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -3104,7 +3068,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must contain only letters and numbers&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must contain only letters and numbers&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3177,7 +3141,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -3193,7 +3157,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must contain only letters&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must contain only letters&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3277,7 +3241,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -3293,7 +3257,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must be within the range of :min to :max&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be within the range of :min to :max&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3376,7 +3340,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\Message` · `ReflectionFunction`</ApiUses>
+<ApiUses>`Closure` · `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn` · `Phalcon\Filter\Validation\ValidatorInterface` · `ReflectionFunction`</ApiUses>
 
 ### Method Summary
 
@@ -3392,7 +3356,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must match the callback function&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must match the callback function&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3470,7 +3434,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3489,7 +3453,7 @@ Compare strings
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must be the same as :with&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be the same as :with&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3575,7 +3539,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -3591,7 +3555,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field is not valid for a credit card number&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is not valid for a credit card number&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3669,7 +3633,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`DateTime` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`DateTime` · `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -3685,7 +3649,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field is not a valid date&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is not a valid date&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3758,7 +3722,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -3774,7 +3738,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must be numeric&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be numeric&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3838,7 +3802,9 @@ $validator->add(
         ]
     )
 );
+```
 
+```php
 $validator->add(
     "täst@example.com",
     new EmailValidator(
@@ -3857,7 +3823,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -3873,7 +3839,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must be an email address&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be an email address&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3973,7 +3939,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -3989,7 +3955,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must not be a part of list: :domain&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must not be a part of list: :domain&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4099,7 +4065,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\File\MimeType` · `Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio` · `Phalcon\Filter\Validation\Validator\File\Resolution\Equal` · `Phalcon\Filter\Validation\Validator\File\Resolution\Max` · `Phalcon\Filter\Validation\Validator\File\Resolution\Min` · `Phalcon\Filter\Validation\Validator\File\Size\Equal` · `Phalcon\Filter\Validation\Validator\File\Size\Max` · `Phalcon\Filter\Validation\Validator\File\Size\Min` · `Phalcon\Messages\Message` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\File\MimeType` · `Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio` · `Phalcon\Filter\Validation\Validator\File\Resolution\Equal` · `Phalcon\Filter\Validation\Validator\File\Resolution\Max` · `Phalcon\Filter\Validation\Validator\File\Resolution\Min` · `Phalcon\Filter\Validation\Validator\File\Size\Equal` · `Phalcon\Filter\Validation\Validator\File\Size\Max` · `Phalcon\Filter\Validation\Validator\File\Size\Min` · `Phalcon\Messages\Message` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`</ApiUses>
 
 ### Method Summary
 
@@ -4218,6 +4184,9 @@ File exceeds the file size set in PHP configuration
 </ApiItem>
 <ApiItem href="#filtervalidationvalidatorfileabstractfile-setmessagevalid" visibility="public" name="setMessageValid" returnType="void" params={[{"type":"string","name":"message","default":null}]}>
 File is not valid
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-appendmessagevalid" visibility="protected" name="appendMessageValid" returnType="void" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
+Appends the "file is not valid" message for the field
 </ApiItem>
 <ApiItem href="#filtervalidationvalidatorfileabstractfile-checkisuploadedfile" visibility="protected" name="checkIsUploadedFile" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Checks if a file has been uploaded; Internal check that can be
@@ -4353,7 +4322,18 @@ public function setMessageValid( string $message ): void;
 
 File is not valid
 
-<ApiGroup label="Protected" count="1" />
+<ApiGroup label="Protected" count="2" />
+
+<h4 id="filtervalidationvalidatorfileabstractfile-appendmessagevalid"><code>appendMessageValid()</code></h4>
+
+```php
+protected function appendMessageValid(
+    Validation $validation,
+    string $field
+): void;
+```
+
+Appends the "file is not valid" message for the field
 
 <h4 id="filtervalidationvalidatorfileabstractfile-checkisuploadedfile"><code>checkIsUploadedFile()</code></h4>
 
@@ -4425,7 +4405,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
 
 ### Method Summary
 
@@ -4438,7 +4418,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;File :field must be of type: :types&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field must be of type: :types&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4513,7 +4493,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`</ApiUses>
 
 ### Method Summary
 
@@ -4529,7 +4509,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;File :field does not have the exact aspect ratio of :ratio&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field does not have the exact aspect ratio of :ratio&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4608,7 +4588,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -4624,7 +4604,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;The resolution of the field :field has to be equal :resolution&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;The resolution of the field :field has to be equal :resolution&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4708,7 +4688,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -4724,7 +4704,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;File :field exceeds the maximum resolution of :resolution&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field exceeds the maximum resolution of :resolution&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4808,7 +4788,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -4824,7 +4804,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;File :field can not have the minimum resolution of :resolution&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field can not have the minimum resolution of :resolution&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4910,7 +4890,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`</ApiUses>
 
 ### Method Summary
 
@@ -5176,7 +5156,7 @@ $validation->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Messages` · `Phalcon\Messages\Messages`</ApiUses>
+<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Messages`</ApiUses>
 
 ### Method Summary
 
@@ -5280,7 +5260,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -5296,7 +5276,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field does not have the expected value&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not have the expected value&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5374,7 +5354,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -5390,7 +5370,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must be a part of list: :domain&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a part of list: :domain&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5480,7 +5460,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -5505,7 +5485,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must be a valid IP address&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a valid IP address&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5578,7 +5558,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -5594,7 +5574,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field does not have a valid numeric format&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not have a valid numeric format&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5667,7 +5647,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -5683,7 +5663,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field is required&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is required&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5761,7 +5741,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -5777,7 +5757,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field does not match the required format&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not match the required format&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5884,7 +5864,7 @@ $validation->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -5969,7 +5949,7 @@ $validation->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
 
 ### Method Summary
 
@@ -5985,7 +5965,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must not exceed :max characters long&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must not exceed :max characters long&quot;">
 </ApiItem>
 </ApiList>
 
@@ -6075,7 +6055,7 @@ $validation->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
 
 ### Method Summary
 
@@ -6091,7 +6071,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must be at least :min characters long&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be at least :min characters long&quot;">
 </ApiItem>
 </ApiList>
 
@@ -6201,7 +6181,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray` · `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired` · `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel` · `Phalcon\Messages\Message` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Support\Settings`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray` · `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired` · `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel` · `Phalcon\Messages\Message` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Support\Settings`</ApiUses>
 
 ### Method Summary
 
@@ -6228,7 +6208,7 @@ Uniqueness method used for model
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must be unique&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be unique&quot;">
 </ApiItem>
 </ApiList>
 
@@ -6350,7 +6330,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
 
 ### Method Summary
 
@@ -6366,7 +6346,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;Field :field must be a url&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a url&quot;">
 </ApiItem>
 </ApiList>
 

@@ -22,7 +22,7 @@ parameters need to be declared via `define()`.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Application`** - implements [`Phalcon\Contracts\ADR\Application`](../phalcon_contracts/#contractsadrapplication)
+- **`Phalcon\ADR\Application`** - implements [`Phalcon\Contracts\ADR\Application`](/5.20/api/phalcon_contracts/#contractsadrapplication)
 
 </ApiTree>
 
@@ -219,7 +219,7 @@ binds the ADR contracts behind them.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Container\AdrProvider`** - implements [`Phalcon\Contracts\Container\Service\Provider`](../phalcon_contracts/#contractscontainerserviceprovider)
+- **`Phalcon\ADR\Container\AdrProvider`** - implements [`Phalcon\Contracts\Container\Service\Provider`](/5.20/api/phalcon_contracts/#contractscontainerserviceprovider)
 
 </ApiTree>
 
@@ -258,7 +258,7 @@ adapter. Everything else is constructor-injected.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Dispatcher`** - implements [`Phalcon\Contracts\ADR\Dispatcher`](../phalcon_contracts/#contractsadrdispatcher)
+- **`Phalcon\ADR\Dispatcher`** - implements [`Phalcon\Contracts\ADR\Dispatcher`](/5.20/api/phalcon_contracts/#contractsadrdispatcher)
 
 </ApiTree>
 
@@ -339,7 +339,7 @@ Refuses to emit once headers have already been sent.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Emitter\SapiEmitter`** - implements [`Phalcon\Contracts\ADR\Emitter\Emitter`](../phalcon_contracts/#contractsadremitteremitter)
+- **`Phalcon\ADR\Emitter\SapiEmitter`** - implements [`Phalcon\Contracts\ADR\Emitter\Emitter`](/5.20/api/phalcon_contracts/#contractsadremitteremitter)
 
 </ApiTree>
 
@@ -484,7 +484,7 @@ Action's execution.
 
 <ApiTree>
 
-- **`Phalcon\ADR\EventfulHandler`** - implements [`Phalcon\Contracts\ADR\Handler`](../phalcon_contracts/#contractsadrhandler)
+- **`Phalcon\ADR\EventfulHandler`** - implements [`Phalcon\Contracts\ADR\Handler`](/5.20/api/phalcon_contracts/#contractsadrhandler)
 
 </ApiTree>
 
@@ -604,7 +604,7 @@ exception.
 <ApiTree>
 
 - `\Exception`
-    - **`Phalcon\ADR\Exceptions\Exception`** - implements [`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`](../phalcon_contracts/#contractsadrexceptionsadrthrowable)
+    - **`Phalcon\ADR\Exceptions\Exception`** - implements [`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`](/5.20/api/phalcon_contracts/#contractsadrexceptionsadrthrowable)
         - [`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`](#adrexceptionsactiondirectorynotset)
         - [`Phalcon\ADR\Exceptions\HeadersAlreadySent`](#adrexceptionsheadersalreadysent)
         - [`Phalcon\ADR\Exceptions\MethodNotAllowed`](#adrexceptionsmethodnotallowed)
@@ -796,7 +796,7 @@ response. Userland front controllers override `loadEnvironment()`,
 
 <ApiTree>
 
-- **`Phalcon\ADR\Front\AbstractHttpFront`** - implements [`Phalcon\Contracts\Front\FrontController`](../phalcon_contracts/#contractsfrontfrontcontroller)
+- **`Phalcon\ADR\Front\AbstractHttpFront`** - implements [`Phalcon\Contracts\Front\FrontController`](/5.20/api/phalcon_contracts/#contractsfrontfrontcontroller)
     - [`Phalcon\ADR\Front\HttpFront`](#adrfronthttpfront)
 
 </ApiTree>
@@ -1016,7 +1016,7 @@ a wildcard origin. Preflight `OPTIONS` requests are answered directly.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Middleware\CorsMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](../phalcon_contracts/#contractsadrmiddleware)
+- **`Phalcon\ADR\Middleware\CorsMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](/5.20/api/phalcon_contracts/#contractsadrmiddleware)
 
 </ApiTree>
 
@@ -1102,7 +1102,7 @@ method.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Middleware\MethodOverrideMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](../phalcon_contracts/#contractsadrmiddleware)
+- **`Phalcon\ADR\Middleware\MethodOverrideMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](/5.20/api/phalcon_contracts/#contractsadrmiddleware)
 
 </ApiTree>
 
@@ -1146,7 +1146,7 @@ generating it, exposing it on the request attributes and the response.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Middleware\RequestIdMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](../phalcon_contracts/#contractsadrmiddleware)
+- **`Phalcon\ADR\Middleware\RequestIdMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](/5.20/api/phalcon_contracts/#contractsadrmiddleware)
 
 </ApiTree>
 
@@ -1183,7 +1183,7 @@ took to produce the response.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Middleware\TimingMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](../phalcon_contracts/#contractsadrmiddleware)
+- **`Phalcon\ADR\Middleware\TimingMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](/5.20/api/phalcon_contracts/#contractsadrmiddleware)
 
 </ApiTree>
 
@@ -1223,7 +1223,7 @@ commonly used statuses.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Payload\Payload`** - implements [`Phalcon\Contracts\ADR\Payload\Payload`](../phalcon_contracts/#contractsadrpayloadpayload)
+- **`Phalcon\ADR\Payload\Payload`** - implements [`Phalcon\Contracts\ADR\Payload\Payload`](/5.20/api/phalcon_contracts/#contractsadrpayloadpayload)
 
 </ApiTree>
 
@@ -1922,7 +1922,7 @@ When the middleware is exhausted it invokes the terminal handler (the Action).
 
 <ApiTree>
 
-- **`Phalcon\ADR\Pipeline`** - implements [`Phalcon\Contracts\ADR\Handler`](../phalcon_contracts/#contractsadrhandler)
+- **`Phalcon\ADR\Pipeline`** - implements [`Phalcon\Contracts\ADR\Handler`](/5.20/api/phalcon_contracts/#contractsadrhandler)
 
 </ApiTree>
 
@@ -2014,7 +2014,7 @@ response threaded so far, and the payload, and returns the response.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Responder\ChainResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](../phalcon_contracts/#contractsadrresponderresponder)
+- **`Phalcon\ADR\Responder\ChainResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/5.20/api/phalcon_contracts/#contractsadrresponderresponder)
     - [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
 
 </ApiTree>
@@ -2079,7 +2079,7 @@ formatter, so the content type and body are never left unset.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Responder\FormatResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](../phalcon_contracts/#contractsadrresponderresponder)
+- **`Phalcon\ADR\Responder\FormatResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/5.20/api/phalcon_contracts/#contractsadrresponderresponder)
 
 </ApiTree>
 
@@ -2131,7 +2131,7 @@ Renders a payload as JSON.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Responder\Formatter\JsonFormatter`** - implements [`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`](../phalcon_contracts/#contractsadrresponderformatterformatter)
+- **`Phalcon\ADR\Responder\Formatter\JsonFormatter`** - implements [`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`](/5.20/api/phalcon_contracts/#contractsadrresponderformatterformatter)
 
 </ApiTree>
 
@@ -2180,7 +2180,7 @@ Renders a payload as plain text.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Responder\Formatter\TextFormatter`** - implements [`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`](../phalcon_contracts/#contractsadrresponderformatterformatter)
+- **`Phalcon\ADR\Responder\Formatter\TextFormatter`** - implements [`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`](/5.20/api/phalcon_contracts/#contractsadrresponderformatterformatter)
 
 </ApiTree>
 
@@ -2366,7 +2366,7 @@ redirect.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Responder\RedirectResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](../phalcon_contracts/#contractsadrresponderresponder)
+- **`Phalcon\ADR\Responder\RedirectResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/5.20/api/phalcon_contracts/#contractsadrresponderresponder)
 
 </ApiTree>
 
@@ -2460,7 +2460,7 @@ Sets the response HTTP status code from the payload status, via StatusMapper.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Responder\StatusResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](../phalcon_contracts/#contractsadrresponderresponder)
+- **`Phalcon\ADR\Responder\StatusResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/5.20/api/phalcon_contracts/#contractsadrresponderresponder)
 
 </ApiTree>
 
@@ -2552,7 +2552,7 @@ MVC view.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Responder\ViewResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](../phalcon_contracts/#contractsadrresponderresponder)
+- **`Phalcon\ADR\Responder\ViewResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/5.20/api/phalcon_contracts/#contractsadrresponderresponder)
 
 </ApiTree>
 
@@ -2644,7 +2644,7 @@ segments pass through under their positional keys. An Action without
 
 <ApiTree>
 
-- **`Phalcon\ADR\Router\AttributeFilter`** - implements [`Phalcon\Contracts\ADR\Router\AttributeFilter`](../phalcon_contracts/#contractsadrrouterattributefilter)
+- **`Phalcon\ADR\Router\AttributeFilter`** - implements [`Phalcon\Contracts\ADR\Router\AttributeFilter`](/5.20/api/phalcon_contracts/#contractsadrrouterattributefilter)
 
 </ApiTree>
 
@@ -2742,7 +2742,7 @@ RFC 9110 both leave path structure entirely to the origin server.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Router\Router`** - implements [`Phalcon\Contracts\ADR\Router\Router`](../phalcon_contracts/#contractsadrrouterrouter)
+- **`Phalcon\ADR\Router\Router`** - implements [`Phalcon\Contracts\ADR\Router\Router`](/5.20/api/phalcon_contracts/#contractsadrrouterrouter)
 
 </ApiTree>
 
@@ -2993,7 +2993,7 @@ Immutable result of a successful route match.
 
 <ApiTree>
 
-- **`Phalcon\ADR\Router\RouterMatch`** - implements [`Phalcon\Contracts\ADR\Router\RouterMatch`](../phalcon_contracts/#contractsadrrouterroutermatch)
+- **`Phalcon\ADR\Router\RouterMatch`** - implements [`Phalcon\Contracts\ADR\Router\RouterMatch`](/5.20/api/phalcon_contracts/#contractsadrrouterroutermatch)
 
 </ApiTree>
 
