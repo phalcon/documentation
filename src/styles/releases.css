@@ -1,85 +1,170 @@
 /* ============================================================
-   Release history page - the version table and its legend.
+   Release history page - the version tables and their legend.
 
-   Port of the "Releases page" rules of docs/assets/css/extra.css.
-   The colour of a row says what the version is: green the latest,
-   yellow an older version that is still maintained. The legend
-   repeats the same colours as a swatch on the left of each label,
-   and adds red for an old version and blue for a future release.
+   The colour of a row says what the release is: green the latest,
+   yellow an older release that still gets fixes, blue a preview. A
+   superseded release has no colour. Each row also says its state in
+   words, because a colour alone is not sufficient. The legend shows
+   only the states that the tables use.
 
-   The cell rules are restated here because prose.css styles the
-   cells of a table that carry no class (`td:not([class])`), and
-   every cell of this table carries one.
+   The cell rules are here because prose.css styles the cells of a
+   table that carry no class (`td:not([class])`), and every cell of
+   these tables carries one.
    ============================================================ */
 
 :root {
     --release-latest: #d4f4b4;
     --release-maintained: #fef8c6;
-    --release-old: #fdb3ab;
-    --release-future: #c1e6f5;
+    --release-preview: #c1e6f5;
 }
 
-/* Muted for the dark theme: the same four colours, dark enough for the
+/* Muted for the dark theme: the same three colours, dark enough for the
    text of the theme to stay readable on a coloured row. */
 [data-mode="dark"] {
     --release-latest: #2c4a1f;
     --release-maintained: #4a4318;
-    --release-old: #52241f;
-    --release-future: #17394d;
+    --release-preview: #17394d;
 }
 
-.docs-content .version-th-center,
-.docs-content .version-th-right,
-.docs-content .version-td-center,
-.docs-content .version-td-right {
-    padding: 0.625rem 0.75rem;
-    vertical-align: top;
-    border-bottom: 1px solid var(--nb-border);
+.docs-content .release-section {
+    margin-block: 1.5rem;
 }
 
-.docs-content .version-th-center,
-.docs-content .version-th-right {
-    background: var(--nb-muted);
+.docs-content .release-heading {
+    margin-block: 0 0.75rem;
+    font-size: 1rem;
     font-weight: 600;
+}
+
+/* `overflow` has no effect on a table, so the box around it scrolls. */
+.docs-content .release-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+}
+
+.docs-content .release-table {
+    display: table;
+    width: 100%;
+    border: 1px solid var(--nb-border);
+    border-radius: 0.75rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+}
+
+.docs-content .release-th,
+.docs-content .release-td {
+    padding: 0.625rem 0.75rem;
+    border-bottom: 1px solid var(--nb-border);
+    vertical-align: middle;
+}
+
+.docs-content .release-th {
+    background: var(--nb-muted);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.docs-content .release-th-php,
+.docs-content .release-td-php {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.docs-content .release-table tbody tr:last-child .release-td {
+    border-bottom: none;
+}
+
+/* `border-collapse: separate` keeps the cell backgrounds square, and a
+   coloured row would show past the rounded border of the table. */
+.docs-content .release-table thead th:first-child {
+    border-top-left-radius: 0.75rem;
+}
+
+.docs-content .release-table thead th:last-child {
+    border-top-right-radius: 0.75rem;
+}
+
+.docs-content .release-table tbody tr:last-child .release-td:first-child {
+    border-bottom-left-radius: 0.75rem;
+}
+
+.docs-content .release-table tbody tr:last-child .release-td:last-child {
+    border-bottom-right-radius: 0.75rem;
+}
+
+.docs-content .release-row-latest {
+    background-color: var(--release-latest);
+}
+
+.docs-content .release-row-maintained {
+    background-color: var(--release-maintained);
+}
+
+.docs-content .release-row-preview {
+    background-color: var(--release-preview);
+}
+
+.docs-content .release-number {
+    font-weight: 600;
+}
+
+/* The badge gives the state as words. The colour of the row is thus not
+   the only signal. */
+.docs-content .release-badge {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.05rem 0.5rem;
+    border: 1px solid var(--nb-border-strong);
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* The position of the reader. It is not one of the colours of the legend,
+   because it tells the reader where they are, not what the release is. */
+.docs-content .release-badge-viewing {
+    border-color: transparent;
+    background: var(--nb-foreground);
+    color: var(--nb-background);
+}
+
+.docs-content .release-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin-block-start: 1.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+.docs-content .release-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.8125rem;
     white-space: nowrap;
 }
 
-.docs-content .version-th-center,
-.docs-content .version-td-center {
-    text-align: center;
+.docs-content .release-swatch {
+    display: inline-block;
+    width: 1.25rem;
+    height: 0.875rem;
+    border: 1px solid var(--nb-border);
+    border-radius: 0.25rem;
 }
 
-.docs-content .version-th-right,
-.docs-content .version-td-right {
-    text-align: right;
-}
-
-.docs-content .current-version {
+.docs-content .release-swatch-latest {
     background-color: var(--release-latest);
 }
 
-.docs-content .previous-version {
+.docs-content .release-swatch-maintained {
     background-color: var(--release-maintained);
 }
 
-.docs-content .legend {
-    padding-left: 0.3em;
-    white-space: nowrap;
-}
-
-.docs-content .legend-old-version {
-    border-left: 1.2em solid var(--release-old);
-}
-
-.docs-content .legend-old-version-supported {
-    border-left: 1.2em solid var(--release-maintained);
-}
-
-.docs-content .legend-latest {
-    border-left: 1.2em solid var(--release-latest);
-}
-
-.docs-content .legend-future {
-    border-left: 1.2em solid var(--release-future);
+.docs-content .release-swatch-preview {
+    background-color: var(--release-preview);
 }

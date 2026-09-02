@@ -1,0 +1,141 @@
+---
+import { releases, type Release } from "@/data/releases";
+
+/** Every releases route carries its version: /5.15/releases/. */
+const pageVersion = Astro.url.pathname.split("/").filter(Boolean)[0] ?? "";
+
+const majorOf = (version: string): string => version.split(".")[0];
+
+const stable = releases.filter((release) => release.status !== "preview");
+const stableMajors = new Set(stable.map((release) => majorOf(release.version)));
+
+/**
+ * A preview stays a preview only until its major version has a stable
+ * release. The 6.0 previews thus leave the page on the day that 6.0 ships,
+ * and no entry must change.
+ */
+const previews = releases.filter(
+  (release) =>
+    release.status === "preview" && !stableMajors.has(majorOf(release.version)),
+);
+
+/** The newest release that is not a preview. */
+const latest = stable[stable.length - 1];
+
+/** The newest release of the line that the reader is on. */
+const viewing = [...releases]
+  .reverse()
+  .find(
+    (release) =>
+      release.version === pageVersion ||
+      release.version.startsWith(`${pageVersion}.`),
+  );
+
+const formatDate = (date: string): string =>
+  new Date(`${date}T00:00:00Z`).toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+    year: "numeric",
+  });
+
+const rowClass = (release: Release): string => {
+  if (release === latest) {
+    return "release-row release-row-latest";
+  }
+
+  if (release.status === "maintained") {
+    return "release-row release-row-maintained";
+  }
+
+  if (release.status === "preview") {
+    return "release-row release-row-preview";
+  }
+
+  return "release-row";
+};
+
+/** Newest first: the release that the reader wants is at the top. */
+const sections: { rows: Release[]; title: string }[] = [];
+
+if (previews.length > 0) {
+  sections.push({ rows: [...previews].reverse(), title: "Preview releases" });
+}
+
+sections.push({ rows: [...stable].reverse(), title: "Stable releases" });
+
+/** The legend shows only the states that the tables use. */
+const legend: { label: string; swatch: string }[] = [
+  { label: "Latest release", swatch: "release-swatch-latest" },
+];
+
+if (stable.some((release) => release.status === "maintained")) {
+  legend.push({ label: "Still maintained", swatch: "release-swatch-maintained" });
+}
+
+if (previews.length > 0) {
+  legend.push({ label: "Preview", swatch: "release-swatch-preview" });
+}
+---
+
+{
+  sections.map((section) => (
+    <section class="release-section">
+      <h2 class="release-heading">{section.title}</h2>
+
+      <div class="release-scroll">
+        <table class="release-table">
+          <thead>
+            <tr>
+              <th class="release-th" scope="col">
+                Version
+              </th>
+              <th class="release-th" scope="col">
+                Release date
+              </th>
+              <th class="release-th release-th-php" scope="col">
+                PHP versions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {section.rows.map((release) => (
+              <tr class={rowClass(release)}>
+                <td class="release-td release-td-version">
+                  <span class="release-number">{release.version}</span>
+                  {release === latest && (
+                    <span class="release-badge release-badge-latest">Latest release</span>
+                  )}
+                  {release.status === "maintained" && (
+                    <span class="release-badge release-badge-maintained">
+                      Still maintained
+                    </span>
+                  )}
+                  {release.status === "preview" && (
+                    <span class="release-badge release-badge-preview">Preview</span>
+                  )}
+                  {release === viewing && (
+                    <span class="release-badge release-badge-viewing">You are viewing</span>
+                  )}
+                </td>
+                <td class="release-td">{formatDate(release.date)}</td>
+                <td class="release-td release-td-php">{release.php}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))
+}
+
+<ul class="release-legend">
+  {
+    legend.map((item) => (
+      <li class="release-legend-item">
+        <span class={`release-swatch ${item.swatch}`} aria-hidden="true" />
+        {item.label}
+      </li>
+    ))
+  }
+</ul>
