@@ -223,9 +223,9 @@ Interface
 
 This interface is used for consumers
 
-- [`Phalcon\Contracts\Domain\Payload\Readable`](../phalcon_contracts/#contractsdomainpayloadreadable)
+- [`Phalcon\Contracts\Domain\Payload\Readable`](/6.0/api/phalcon_contracts/#contractsdomainpayloadreadable)
 - [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface)
-- **`Phalcon\Domain\Payload\PayloadInterface`** - extends [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface), [`Phalcon\Domain\Payload\WriteableInterface`](#domainpayloadwriteableinterface), [`Phalcon\Contracts\Domain\Payload\Payload`](../phalcon_contracts/#contractsdomainpayloadpayload)
+- **`Phalcon\Domain\Payload\PayloadInterface`** - extends [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface), [`Phalcon\Domain\Payload\WriteableInterface`](#domainpayloadwriteableinterface), [`Phalcon\Contracts\Domain\Payload\Payload`](/6.0/api/phalcon_contracts/#contractsdomainpayloadpayload)
 
 `Phalcon\Contracts\Domain\Payload\Payload`
 
@@ -235,7 +235,7 @@ Interface
 
 This interface is used for consumers (read only)
 
-- [`Phalcon\Contracts\Domain\Payload\Readable`](../phalcon_contracts/#contractsdomainpayloadreadable)
+- [`Phalcon\Contracts\Domain\Payload\Readable`](/6.0/api/phalcon_contracts/#contractsdomainpayloadreadable)
 - **`Phalcon\Domain\Payload\ReadableInterface`**
 - [`Phalcon\Domain\Payload\PayloadInterface`](#domainpayloadpayloadinterface)
 
@@ -309,7 +309,7 @@ Interface
 
 This interface is used for consumers (write)
 
-- [`Phalcon\Contracts\Domain\Payload\Writeable`](../phalcon_contracts/#contractsdomainpayloadwriteable)
+- [`Phalcon\Contracts\Domain\Payload\Writeable`](/6.0/api/phalcon_contracts/#contractsdomainpayloadwriteable)
 - **`Phalcon\Domain\Payload\WriteableInterface`**
 
 `Phalcon\Contracts\Domain\Payload\Writeable`

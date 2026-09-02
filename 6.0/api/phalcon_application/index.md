@@ -20,10 +20,10 @@ Abstract
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](../phalcon_di/#diinjectable)
-- **`Phalcon\Application\AbstractApplication`** - implements [`Phalcon\Events\EventsAwareInterface`](../phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Cli\Console`](../phalcon_cli/#cliconsole)
-- [`Phalcon\Mvc\Application`](../phalcon_mvc/#mvcapplication)
+- [`Phalcon\Di\Injectable`](/6.0/api/phalcon_di/#diinjectable)
+- **`Phalcon\Application\AbstractApplication`** - implements [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
+- [`Phalcon\Cli\Console`](/6.0/api/phalcon_cli/#cliconsole)
+- [`Phalcon\Mvc\Application`](/6.0/api/phalcon_mvc/#mvcapplication)
 
 `Closure` · `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Contracts\Application\ApplicationTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 
@@ -144,8 +144,8 @@ Exceptions thrown in Phalcon\Application use this class
 - `\Exception`
 - **`Phalcon\Application\Exception`**
 - [`Phalcon\Application\Exceptions\ModuleNotRegistered`](#applicationexceptionsmodulenotregistered)
-- [`Phalcon\Cli\Console\Exception`](../phalcon_cli/#cliconsoleexception)
-- [`Phalcon\Mvc\Application\Exception`](../phalcon_mvc/#mvcapplicationexception)
+- [`Phalcon\Cli\Console\Exception`](/6.0/api/phalcon_cli/#cliconsoleexception)
+- [`Phalcon\Mvc\Application\Exception`](/6.0/api/phalcon_mvc/#mvcapplicationexception)
 
 ## Application\Exceptions\ModuleNotRegistered
 

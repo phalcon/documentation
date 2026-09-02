@@ -15,115 +15,67 @@ All classes are prefixed with `Phalcon`
 
 ## Annotations\Adapter\AbstractAdapter
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Adapter/AbstractAdapter.zep">Source on GitHub</a>
+Abstract
 
 This is the base class for Phalcon\Annotations adapters
-
-<div class="api-tree">
 
 - **`Phalcon\Annotations\Adapter\AbstractAdapter`** - implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
 - [`Phalcon\Annotations\Adapter\Apcu`](#annotationsadapterapcu)
 - [`Phalcon\Annotations\Adapter\Memory`](#annotationsadaptermemory)
 - [`Phalcon\Annotations\Adapter\Stream`](#annotationsadapterstream)
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Reader` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection`
+`Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Reader` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsadapterabstractadapter-get">
-<code class="vis vis-public">public</code>
-<code class="ret">Reflection</code>
-<code class="sig"><span class="sf">get</span>( <span class="st">mixed</span> <span class="sv">$className</span> )</code>
-<span class="desc">Parses or retrieves all the annotations found in a class</span>
-</a>
-<a class="api-item" href="#annotationsadapterabstractadapter-getannotationslimit">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getAnnotationsLimit</span>()</code>
-<span class="desc">Returns the configured annotations-cache cap (0 = unlimited).</span>
-</a>
-<a class="api-item" href="#annotationsadapterabstractadapter-getconstant">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection</code>
-<code class="sig"><span class="sf">getConstant</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$constantName</span></span>)</code>
-<span class="desc">Returns the annotations found in a specific constant</span>
-</a>
-<a class="api-item" href="#annotationsadapterabstractadapter-getconstants">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getConstants</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Returns the annotations found in all the class&#039; constants</span>
-</a>
-<a class="api-item" href="#annotationsadapterabstractadapter-getmethod">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection</code>
-<code class="sig"><span class="sf">getMethod</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span></span>)</code>
-<span class="desc">Returns the annotations found in a specific method</span>
-</a>
-<a class="api-item" href="#annotationsadapterabstractadapter-getmethods">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getMethods</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Returns the annotations found in all the class&#039; methods</span>
-</a>
-<a class="api-item" href="#annotationsadapterabstractadapter-getproperties">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getProperties</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Returns the annotations found in all the class&#039; properties</span>
-</a>
-<a class="api-item" href="#annotationsadapterabstractadapter-getproperty">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection</code>
-<code class="sig"><span class="sf">getProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$propertyName</span></span>)</code>
-<span class="desc">Returns the annotations found in a specific property</span>
-</a>
-<a class="api-item" href="#annotationsadapterabstractadapter-getreader">
-<code class="vis vis-public">public</code>
-<code class="ret">ReaderInterface</code>
-<code class="sig"><span class="sf">getReader</span>()</code>
-<span class="desc">Returns the annotation reader</span>
-</a>
-<a class="api-item" href="#annotationsadapterabstractadapter-setannotationslimit">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">setAnnotationsLimit</span>( <span class="st">int</span> <span class="sv">$annotationsLimit</span> )</code>
-<span class="desc">Caps the number of class entries retained in the annotations</span>
-</a>
-<a class="api-item" href="#annotationsadapterabstractadapter-setreader">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">setReader</span>( <span class="st">ReaderInterface</span> <span class="sv">$reader</span> )</code>
-<span class="desc">Sets the annotations parser</span>
-</a>
-</div>
+<ApiItem href="#annotationsadapterabstractadapter-get" visibility="public" name="get" returnType="Reflection" params={[{"type":"mixed","name":"className","default":null}]}>
+Parses or retrieves all the annotations found in a class
+</ApiItem>
+<ApiItem href="#annotationsadapterabstractadapter-getannotationslimit" visibility="public" name="getAnnotationsLimit" returnType="int" params={[]}>
+Returns the configured annotations-cache cap (0 = unlimited).
+</ApiItem>
+<ApiItem href="#annotationsadapterabstractadapter-getconstant" visibility="public" name="getConstant" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"constantName","default":null}]}>
+Returns the annotations found in a specific constant
+</ApiItem>
+<ApiItem href="#annotationsadapterabstractadapter-getconstants" visibility="public" name="getConstants" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
+Returns the annotations found in all the class' constants
+</ApiItem>
+<ApiItem href="#annotationsadapterabstractadapter-getmethod" visibility="public" name="getMethod" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"methodName","default":null}]}>
+Returns the annotations found in a specific method
+</ApiItem>
+<ApiItem href="#annotationsadapterabstractadapter-getmethods" visibility="public" name="getMethods" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
+Returns the annotations found in all the class' methods
+</ApiItem>
+<ApiItem href="#annotationsadapterabstractadapter-getproperties" visibility="public" name="getProperties" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
+Returns the annotations found in all the class' properties
+</ApiItem>
+<ApiItem href="#annotationsadapterabstractadapter-getproperty" visibility="public" name="getProperty" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"propertyName","default":null}]}>
+Returns the annotations found in a specific property
+</ApiItem>
+<ApiItem href="#annotationsadapterabstractadapter-getreader" visibility="public" name="getReader" returnType="ReaderInterface" params={[]}>
+Returns the annotation reader
+</ApiItem>
+<ApiItem href="#annotationsadapterabstractadapter-setannotationslimit" visibility="public" name="setAnnotationsLimit" returnType="" params={[{"type":"int","name":"annotationsLimit","default":null}]}>
+Caps the number of class entries retained in the annotations
+</ApiItem>
+<ApiItem href="#annotationsadapterabstractadapter-setreader" visibility="public" name="setReader" returnType="" params={[{"type":"ReaderInterface","name":"reader","default":null}]}>
+Sets the annotations parser
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$annotations</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$annotationsLimit</span><span class="sm"> = 0</span></code>
-<span class="desc">Maximum number of class annotation entries retained in the in-memory cache. 0 (default) keeps the original unbounded behavior; a positive value clears the cache when adding a new class would exceed it.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Reader</code>
-<code class="sig"><span class="sv">$reader</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="annotations" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="annotationsLimit" type="int" default="0">
+Maximum number of class annotation entries retained in the
+in-memory cache. 0 (default) keeps the original unbounded
+behavior; a positive value clears the cache when adding a new
+class would exceed it.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="reader" type="Reader" default="">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 11</div>
 
 <h4 id="annotationsadapterabstractadapter-get"><code>get()</code></h4>
 
@@ -228,80 +180,45 @@ Sets the annotations parser
 
 ## Annotations\Adapter\AdapterInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Adapter/AdapterInterface.zep">Source on GitHub</a>
+Interface
 
 This interface must be implemented by adapters in Phalcon\Annotations
 
-<div class="api-tree">
-
 - **`Phalcon\Annotations\Adapter\AdapterInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Collection` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection`
+`Phalcon\Annotations\Collection` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsadapteradapterinterface-get">
-<code class="vis vis-public">public</code>
-<code class="ret">Reflection</code>
-<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Parses or retrieves all the annotations found in a class</span>
-</a>
-<a class="api-item" href="#annotationsadapteradapterinterface-getconstant">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection</code>
-<code class="sig"><span class="sf">getConstant</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$constantName</span></span>)</code>
-<span class="desc">Returns the annotations found in a specific constant</span>
-</a>
-<a class="api-item" href="#annotationsadapteradapterinterface-getconstants">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getConstants</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Returns the annotations found in all the class&#039; constants</span>
-</a>
-<a class="api-item" href="#annotationsadapteradapterinterface-getmethod">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection</code>
-<code class="sig"><span class="sf">getMethod</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span></span>)</code>
-<span class="desc">Returns the annotations found in a specific method</span>
-</a>
-<a class="api-item" href="#annotationsadapteradapterinterface-getmethods">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getMethods</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Returns the annotations found in all the class&#039; methods</span>
-</a>
-<a class="api-item" href="#annotationsadapteradapterinterface-getproperties">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getProperties</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Returns the annotations found in all the class&#039; methods</span>
-</a>
-<a class="api-item" href="#annotationsadapteradapterinterface-getproperty">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection</code>
-<code class="sig"><span class="sf">getProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$propertyName</span></span>)</code>
-<span class="desc">Returns the annotations found in a specific property</span>
-</a>
-<a class="api-item" href="#annotationsadapteradapterinterface-getreader">
-<code class="vis vis-public">public</code>
-<code class="ret">ReaderInterface</code>
-<code class="sig"><span class="sf">getReader</span>()</code>
-<span class="desc">Returns the annotation reader</span>
-</a>
-<a class="api-item" href="#annotationsadapteradapterinterface-setreader">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">setReader</span>( <span class="st">ReaderInterface</span> <span class="sv">$reader</span> )</code>
-<span class="desc">Sets the annotations parser</span>
-</a>
-</div>
+<ApiItem href="#annotationsadapteradapterinterface-get" visibility="public" name="get" returnType="Reflection" params={[{"type":"string","name":"className","default":null}]}>
+Parses or retrieves all the annotations found in a class
+</ApiItem>
+<ApiItem href="#annotationsadapteradapterinterface-getconstant" visibility="public" name="getConstant" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"constantName","default":null}]}>
+Returns the annotations found in a specific constant
+</ApiItem>
+<ApiItem href="#annotationsadapteradapterinterface-getconstants" visibility="public" name="getConstants" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
+Returns the annotations found in all the class' constants
+</ApiItem>
+<ApiItem href="#annotationsadapteradapterinterface-getmethod" visibility="public" name="getMethod" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"methodName","default":null}]}>
+Returns the annotations found in a specific method
+</ApiItem>
+<ApiItem href="#annotationsadapteradapterinterface-getmethods" visibility="public" name="getMethods" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
+Returns the annotations found in all the class' methods
+</ApiItem>
+<ApiItem href="#annotationsadapteradapterinterface-getproperties" visibility="public" name="getProperties" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
+Returns the annotations found in all the class' methods
+</ApiItem>
+<ApiItem href="#annotationsadapteradapterinterface-getproperty" visibility="public" name="getProperty" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"propertyName","default":null}]}>
+Returns the annotations found in a specific property
+</ApiItem>
+<ApiItem href="#annotationsadapteradapterinterface-getreader" visibility="public" name="getReader" returnType="ReaderInterface" params={[]}>
+Returns the annotation reader
+</ApiItem>
+<ApiItem href="#annotationsadapteradapterinterface-setreader" visibility="public" name="setReader" returnType="" params={[{"type":"ReaderInterface","name":"reader","default":null}]}>
+Sets the annotations parser
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 9</div>
 
 <h4 id="annotationsadapteradapterinterface-get"><code>get()</code></h4>
 
@@ -386,8 +303,7 @@ Sets the annotations parser
 
 ## Annotations\Adapter\Apcu
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Adapter/Apcu.zep">Source on GitHub</a>
+Class
 
 Stores the parsed annotations in APCu. This adapter is suitable for production
 
@@ -397,55 +313,31 @@ use Phalcon\Annotations\Adapter\Apcu;
 $annotations = new Apcu();
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
 - **`Phalcon\Annotations\Adapter\Apcu`**
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Reflection`
+`Phalcon\Annotations\Reflection`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsadapterapcu-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Phalcon\Annotations\Adapter\Apcu constructor</span>
-</a>
-<a class="api-item" href="#annotationsadapterapcu-read">
-<code class="vis vis-public">public</code>
-<code class="ret">Reflection|bool</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Reads parsed annotations from APCu</span>
-</a>
-<a class="api-item" href="#annotationsadapterapcu-write">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">Reflection</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Writes parsed annotations to APCu</span>
-</a>
-</div>
+<ApiItem href="#annotationsadapterapcu-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Phalcon\Annotations\Adapter\Apcu constructor
+</ApiItem>
+<ApiItem href="#annotationsadapterapcu-read" visibility="public" name="read" returnType="Reflection|bool" params={[{"type":"string","name":"key","default":null}]}>
+Reads parsed annotations from APCu
+</ApiItem>
+<ApiItem href="#annotationsadapterapcu-write" visibility="public" name="write" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"Reflection","name":"data","default":null}]}>
+Writes parsed annotations to APCu
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$ttl</span><span class="sm"> = 172800</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="ttl" type="int" default="172800">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="annotationsadapterapcu-__construct"><code>__construct()</code></h4>
 
@@ -476,55 +368,33 @@ Writes parsed annotations to APCu
 
 ## Annotations\Adapter\Memory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Adapter/Memory.zep">Source on GitHub</a>
+Class
 
 Stores the parsed annotations in memory. This adapter is the suitable
 development/testing
 
-<div class="api-tree">
-
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
 - **`Phalcon\Annotations\Adapter\Memory`**
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Reflection`
+`Phalcon\Annotations\Reflection`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsadaptermemory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-</a>
-<a class="api-item" href="#annotationsadaptermemory-read">
-<code class="vis vis-public">public</code>
-<code class="ret">Reflection|bool</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Reads parsed annotations from memory</span>
-</a>
-<a class="api-item" href="#annotationsadaptermemory-write">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">Reflection</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Writes parsed annotations to memory</span>
-</a>
-</div>
+<ApiItem href="#annotationsadaptermemory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#annotationsadaptermemory-read" visibility="public" name="read" returnType="Reflection|bool" params={[{"type":"string","name":"key","default":null}]}>
+Reads parsed annotations from memory
+</ApiItem>
+<ApiItem href="#annotationsadaptermemory-write" visibility="public" name="write" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"Reflection","name":"data","default":null}]}>
+Writes parsed annotations to memory
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$data</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="data" type="mixed" default="">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="annotationsadaptermemory-__construct"><code>__construct()</code></h4>
 
@@ -553,8 +423,7 @@ Writes parsed annotations to memory
 
 ## Annotations\Adapter\Stream
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Adapter/Stream.zep">Source on GitHub</a>
+Class
 
 Stores the parsed annotations in files. This adapter is suitable for production
 
@@ -568,50 +437,29 @@ $annotations = new Stream(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
 - **`Phalcon\Annotations\Adapter\Stream`**
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `Phalcon\Traits\Php\FileTrait` · `RuntimeException`
+`Phalcon\Annotations\Exception` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `Phalcon\Traits\Php\FileTrait` · `RuntimeException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsadapterstream-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
-<span class="desc">Phalcon\Annotations\Adapter\Stream constructor</span>
-</a>
-<a class="api-item" href="#annotationsadapterstream-read">
-<code class="vis vis-public">public</code>
-<code class="ret">Reflection|bool|int</code>
-<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Reads parsed annotations from files</span>
-</a>
-<a class="api-item" href="#annotationsadapterstream-write">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">Reflection</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Writes parsed annotations to files</span>
-</a>
-</div>
+<ApiItem href="#annotationsadapterstream-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
+Phalcon\Annotations\Adapter\Stream constructor
+</ApiItem>
+<ApiItem href="#annotationsadapterstream-read" visibility="public" name="read" returnType="Reflection|bool|int" params={[{"type":"string","name":"key","default":null}]}>
+Reads parsed annotations from files
+</ApiItem>
+<ApiItem href="#annotationsadapterstream-write" visibility="public" name="write" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"Reflection","name":"data","default":null}]}>
+Writes parsed annotations to files
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$annotationsDir</span><span class="sm"> = &quot;./&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="annotationsDir" type="string" default="&quot;./&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="annotationsadapterstream-__construct"><code>__construct()</code></h4>
 
@@ -642,109 +490,60 @@ Writes parsed annotations to files
 
 ## Annotations\Annotation
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Annotation.zep">Source on GitHub</a>
+Class
 
 Represents a single annotation in an annotations collection
 
-<div class="api-tree">
-
 - **`Phalcon\Annotations\Annotation`**
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`
+`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsannotation-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$reflectionData</span> )</code>
-<span class="desc">Phalcon\Annotations\Annotation constructor</span>
-</a>
-<a class="api-item" href="#annotationsannotation-getargument">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">getArgument</span>( <span class="st">mixed</span> <span class="sv">$position</span> )</code>
-<span class="desc">Returns an argument in a specific position</span>
-</a>
-<a class="api-item" href="#annotationsannotation-getarguments">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getArguments</span>()</code>
-<span class="desc">Returns the expression arguments</span>
-</a>
-<a class="api-item" href="#annotationsannotation-getexprarguments">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getExprArguments</span>()</code>
-<span class="desc">Returns the expression arguments without resolving</span>
-</a>
-<a class="api-item" href="#annotationsannotation-getexpression">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getExpression</span>( <span class="st">array</span> <span class="sv">$expr</span> )</code>
-<span class="desc">Resolves an annotation expression</span>
-</a>
-<a class="api-item" href="#annotationsannotation-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">null|string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Returns the annotation&#039;s name</span>
-</a>
-<a class="api-item" href="#annotationsannotation-getnamedargument">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">getNamedArgument</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns a named argument</span>
-</a>
-<a class="api-item" href="#annotationsannotation-getnamedparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getNamedParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns a named parameter</span>
-</a>
-<a class="api-item" href="#annotationsannotation-hasargument">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasArgument</span>( <span class="st">mixed</span> <span class="sv">$position</span> )</code>
-<span class="desc">Returns an argument in a specific position</span>
-</a>
-<a class="api-item" href="#annotationsannotation-numberarguments">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">numberArguments</span>()</code>
-<span class="desc">Returns the number of arguments that the annotation has</span>
-</a>
-</div>
+<ApiItem href="#annotationsannotation-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"reflectionData","default":null}]}>
+Phalcon\Annotations\Annotation constructor
+</ApiItem>
+<ApiItem href="#annotationsannotation-getargument" visibility="public" name="getArgument" returnType="mixed|null" params={[{"type":"mixed","name":"position","default":null}]}>
+Returns an argument in a specific position
+</ApiItem>
+<ApiItem href="#annotationsannotation-getarguments" visibility="public" name="getArguments" returnType="array" params={[]}>
+Returns the expression arguments
+</ApiItem>
+<ApiItem href="#annotationsannotation-getexprarguments" visibility="public" name="getExprArguments" returnType="array" params={[]}>
+Returns the expression arguments without resolving
+</ApiItem>
+<ApiItem href="#annotationsannotation-getexpression" visibility="public" name="getExpression" returnType="mixed" params={[{"type":"array","name":"expr","default":null}]}>
+Resolves an annotation expression
+</ApiItem>
+<ApiItem href="#annotationsannotation-getname" visibility="public" name="getName" returnType="null|string" params={[]}>
+Returns the annotation's name
+</ApiItem>
+<ApiItem href="#annotationsannotation-getnamedargument" visibility="public" name="getNamedArgument" returnType="mixed|null" params={[{"type":"string","name":"name","default":null}]}>
+Returns a named argument
+</ApiItem>
+<ApiItem href="#annotationsannotation-getnamedparameter" visibility="public" name="getNamedParameter" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+Returns a named parameter
+</ApiItem>
+<ApiItem href="#annotationsannotation-hasargument" visibility="public" name="hasArgument" returnType="bool" params={[{"type":"mixed","name":"position","default":null}]}>
+Returns an argument in a specific position
+</ApiItem>
+<ApiItem href="#annotationsannotation-numberarguments" visibility="public" name="numberArguments" returnType="int" params={[]}>
+Returns the number of arguments that the annotation has
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$arguments</span><span class="sm"> = []</span></code>
-<span class="desc">Annotation Arguments</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$exprArguments</span><span class="sm"> = []</span></code>
-<span class="desc">Annotation ExprArguments</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$name</span></code>
-<span class="desc">Annotation Name</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="[]">
+Annotation Arguments
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="exprArguments" type="array" default="[]">
+Annotation ExprArguments
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="name" type="string|null" default="">
+Annotation Name
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 10</div>
 
 <h4 id="annotationsannotation-__construct"><code>__construct()</code></h4>
 
@@ -828,57 +627,34 @@ Returns the number of arguments that the annotation has
 
 ## Annotations\AnnotationsFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/AnnotationsFactory.zep">Source on GitHub</a>
+Class
 
 Factory to create annotations components
-
-<div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.20/api/phalcon_factory/#factoryabstractconfigfactory)
 - [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Annotations\AnnotationsFactory`**
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsannotationsfactory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
-<span class="desc">AdapterFactory constructor.</span>
-</a>
-<a class="api-item" href="#annotationsannotationsfactory-load">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
-<span class="desc">Factory to create an instance from a Config object</span>
-</a>
-<a class="api-item" href="#annotationsannotationsfactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Create a new instance of the adapter</span>
-</a>
-<a class="api-item" href="#annotationsannotationsfactory-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#annotationsannotationsfactory-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Returns the available adapters</span>
-</a>
-</div>
+<ApiItem href="#annotationsannotationsfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
+AdapterFactory constructor.
+</ApiItem>
+<ApiItem href="#annotationsannotationsfactory-load" visibility="public" name="load" returnType="mixed" params={[{"type":"mixed","name":"config","default":null}]}>
+Factory to create an instance from a Config object
+</ApiItem>
+<ApiItem href="#annotationsannotationsfactory-newinstance" visibility="public" name="newInstance" returnType="AdapterInterface" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Create a new instance of the adapter
+</ApiItem>
+<ApiItem href="#annotationsannotationsfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#annotationsannotationsfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the available adapters
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="annotationsannotationsfactory-__construct"><code>__construct()</code></h4>
 
@@ -907,8 +683,6 @@ array $options = []
 
 Create a new instance of the adapter
 
-<div class="api-group">Protected · 2</div>
-
 <h4 id="annotationsannotationsfactory-getexceptionclass"><code>getExceptionClass()</code></h4>
 
 ```php
@@ -925,8 +699,7 @@ Returns the available adapters
 
 ## Annotations\Collection
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Collection.zep">Source on GitHub</a>
+Class
 
 Represents a collection of annotations. This class allows to traverse a group
 of annotations easily
@@ -944,102 +717,54 @@ var_dump($classAnnotations->has("Cacheable"));
 $annotation = $classAnnotations->get("Cacheable");
 ```
 
-<div class="api-tree">
-
 - **`Phalcon\Annotations\Collection`** - implements `\Iterator`, `\Countable`
 
-</div>
-
-__Uses__ `Countable` · `Iterator` · `Phalcon\Annotations\Exceptions\AnnotationNotFound`
+`Countable` · `Iterator` · `Phalcon\Annotations\Exceptions\AnnotationNotFound`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationscollection-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$reflectionData</span><span class="sm"> = []</span> )</code>
-<span class="desc">Phalcon\Annotations\Collection constructor</span>
-</a>
-<a class="api-item" href="#annotationscollection-count">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">count</span>()</code>
-<span class="desc">Returns the number of annotations in the collection</span>
-</a>
-<a class="api-item" href="#annotationscollection-current">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">current</span>()</code>
-<span class="desc">Returns the current annotation in the iterator</span>
-</a>
-<a class="api-item" href="#annotationscollection-get">
-<code class="vis vis-public">public</code>
-<code class="ret">Annotation</code>
-<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns the first annotation that match a name</span>
-</a>
-<a class="api-item" href="#annotationscollection-getall">
-<code class="vis vis-public">public</code>
-<code class="ret">Annotation[]</code>
-<code class="sig"><span class="sf">getAll</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns all the annotations that match a name</span>
-</a>
-<a class="api-item" href="#annotationscollection-getannotations">
-<code class="vis vis-public">public</code>
-<code class="ret">Annotation[]</code>
-<code class="sig"><span class="sf">getAnnotations</span>()</code>
-<span class="desc">Returns the internal annotations as an array</span>
-</a>
-<a class="api-item" href="#annotationscollection-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Check if an annotation exists in a collection</span>
-</a>
-<a class="api-item" href="#annotationscollection-key">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">key</span>()</code>
-<span class="desc">Returns the current position/key in the iterator</span>
-</a>
-<a class="api-item" href="#annotationscollection-next">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">next</span>()</code>
-<span class="desc">Moves the internal iteration pointer to the next position</span>
-</a>
-<a class="api-item" href="#annotationscollection-rewind">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">rewind</span>()</code>
-<span class="desc">Rewinds the internal iterator</span>
-</a>
-<a class="api-item" href="#annotationscollection-valid">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">valid</span>()</code>
-<span class="desc">Check if the current annotation in the iterator is valid</span>
-</a>
-</div>
+<ApiItem href="#annotationscollection-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"reflectionData","default":"[]"}]}>
+Phalcon\Annotations\Collection constructor
+</ApiItem>
+<ApiItem href="#annotationscollection-count" visibility="public" name="count" returnType="int" params={[]}>
+Returns the number of annotations in the collection
+</ApiItem>
+<ApiItem href="#annotationscollection-current" visibility="public" name="current" returnType="mixed" params={[]}>
+Returns the current annotation in the iterator
+</ApiItem>
+<ApiItem href="#annotationscollection-get" visibility="public" name="get" returnType="Annotation" params={[{"type":"string","name":"name","default":null}]}>
+Returns the first annotation that match a name
+</ApiItem>
+<ApiItem href="#annotationscollection-getall" visibility="public" name="getAll" returnType="Annotation[]" params={[{"type":"string","name":"name","default":null}]}>
+Returns all the annotations that match a name
+</ApiItem>
+<ApiItem href="#annotationscollection-getannotations" visibility="public" name="getAnnotations" returnType="Annotation[]" params={[]}>
+Returns the internal annotations as an array
+</ApiItem>
+<ApiItem href="#annotationscollection-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Check if an annotation exists in a collection
+</ApiItem>
+<ApiItem href="#annotationscollection-key" visibility="public" name="key" returnType="int" params={[]}>
+Returns the current position/key in the iterator
+</ApiItem>
+<ApiItem href="#annotationscollection-next" visibility="public" name="next" returnType="void" params={[]}>
+Moves the internal iteration pointer to the next position
+</ApiItem>
+<ApiItem href="#annotationscollection-rewind" visibility="public" name="rewind" returnType="void" params={[]}>
+Rewinds the internal iterator
+</ApiItem>
+<ApiItem href="#annotationscollection-valid" visibility="public" name="valid" returnType="bool" params={[]}>
+Check if the current annotation in the iterator is valid
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$annotations</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$position</span><span class="sm"> = 0</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="annotations" type="array" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="position" type="int" default="0">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 11</div>
 
 <h4 id="annotationscollection-__construct"><code>__construct()</code></h4>
 
@@ -1131,12 +856,9 @@ Check if the current annotation in the iterator is valid
 
 ## Annotations\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exception.zep">Source on GitHub</a>
+Class
 
 Class for exceptions thrown by Phalcon\Annotations
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Annotations\Exception`**
@@ -1144,35 +866,22 @@ Class for exceptions thrown by Phalcon\Annotations
 - [`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`](#annotationsexceptionsannotationsdirectorynotwritable)
 - [`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`](#annotationsexceptionsunknownannotationexpression)
 
-</div>
-
 ## Annotations\Exceptions\AnnotationNotFound
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/AnnotationNotFound.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Annotations\Exception`](#annotationsexception)
 - **`Phalcon\Annotations\Exceptions\AnnotationNotFound`**
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Exception`
+`Phalcon\Annotations\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsexceptionsannotationnotfound-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiItem href="#annotationsexceptionsannotationnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="annotationsexceptionsannotationnotfound-__construct"><code>__construct()</code></h4>
 
@@ -1182,31 +891,20 @@ public function __construct( string $name );
 
 ## Annotations\Exceptions\AnnotationsDirectoryNotWritable
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/AnnotationsDirectoryNotWritable.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Annotations\Exception`](#annotationsexception)
 - **`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`**
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Exception`
+`Phalcon\Annotations\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsexceptionsannotationsdirectorynotwritable-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#annotationsexceptionsannotationsdirectorynotwritable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="annotationsexceptionsannotationsdirectorynotwritable-__construct"><code>__construct()</code></h4>
 
@@ -1216,30 +914,19 @@ public function __construct();
 
 ## Annotations\Exceptions\CannotReadAnnotationData
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/CannotReadAnnotationData.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\RuntimeException`
 - **`Phalcon\Annotations\Exceptions\CannotReadAnnotationData`**
 
-</div>
-
-__Uses__ `RuntimeException`
+`RuntimeException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsexceptionscannotreadannotationdata-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#annotationsexceptionscannotreadannotationdata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="annotationsexceptionscannotreadannotationdata-__construct"><code>__construct()</code></h4>
 
@@ -1249,31 +936,20 @@ public function __construct();
 
 ## Annotations\Exceptions\UnknownAnnotationExpression
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/UnknownAnnotationExpression.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Annotations\Exception`](#annotationsexception)
 - **`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`**
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Exception`
+`Phalcon\Annotations\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsexceptionsunknownannotationexpression-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-</a>
-</div>
+<ApiItem href="#annotationsexceptionsunknownannotationexpression-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="annotationsexceptionsunknownannotationexpression-__construct"><code>__construct()</code></h4>
 
@@ -1283,39 +959,24 @@ public function __construct( string $type );
 
 ## Annotations\Reader
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Reader.zep">Source on GitHub</a>
+Class
 
 Parses docblocks returning an array with the found annotations
 
-<div class="api-tree">
-
 - **`Phalcon\Annotations\Reader`** - implements [`Phalcon\Annotations\ReaderInterface`](#annotationsreaderinterface)
 
-</div>
-
-__Uses__ `ReflectionClass`
+`ReflectionClass`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsreader-parse">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">parse</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Reads annotations from the class docblocks, its methods and/or properties</span>
-</a>
-<a class="api-item" href="#annotationsreader-parsedocblock">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">parseDocBlock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$docBlock</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$line</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Parses a raw doc block returning the annotations found</span>
-</a>
-</div>
+<ApiItem href="#annotationsreader-parse" visibility="public" name="parse" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
+Reads annotations from the class docblocks, its methods and/or properties
+</ApiItem>
+<ApiItem href="#annotationsreader-parsedocblock" visibility="public" name="parseDocBlock" returnType="array" params={[{"type":"string","name":"docBlock","default":null},{"type":"mixed","name":"file","default":"null"},{"type":"mixed","name":"line","default":"null"}]}>
+Parses a raw doc block returning the annotations found
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="annotationsreader-parse"><code>parse()</code></h4>
 
@@ -1339,37 +1000,22 @@ Parses a raw doc block returning the annotations found
 
 ## Annotations\ReaderInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/ReaderInterface.zep">Source on GitHub</a>
+Interface
 
 Parses docblocks returning an array with the found annotations
 
-<div class="api-tree">
-
 - **`Phalcon\Annotations\ReaderInterface`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsreaderinterface-parse">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">parse</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
-<span class="desc">Reads annotations from the class docblocks, its constants, properties and methods</span>
-</a>
-<a class="api-item" href="#annotationsreaderinterface-parsedocblock">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">parseDocBlock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$docBlock</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$line</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Parses a raw docblock returning the annotations found</span>
-</a>
-</div>
+<ApiItem href="#annotationsreaderinterface-parse" visibility="public" name="parse" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
+Reads annotations from the class docblocks, its constants, properties and methods
+</ApiItem>
+<ApiItem href="#annotationsreaderinterface-parsedocblock" visibility="public" name="parseDocBlock" returnType="array" params={[{"type":"string","name":"docBlock","default":null},{"type":"mixed","name":"file","default":"null"},{"type":"mixed","name":"line","default":"null"}]}>
+Parses a raw docblock returning the annotations found
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="annotationsreaderinterface-parse"><code>parse()</code></h4>
 
@@ -1393,8 +1039,7 @@ Parses a raw docblock returning the annotations found
 
 ## Annotations\Reflection
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Reflection.zep">Source on GitHub</a>
+Class
 
 Allows to manipulate the annotations reflection in an OO manner
 
@@ -1413,84 +1058,42 @@ $reflection = new Reflection($parsing);
 $classAnnotations = $reflection->getClassAnnotations();
 ```
 
-<div class="api-tree">
-
 - **`Phalcon\Annotations\Reflection`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#annotationsreflection-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$reflectionData</span><span class="sm"> = []</span> )</code>
-</a>
-<a class="api-item" href="#annotationsreflection-getclassannotations">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection|null</code>
-<code class="sig"><span class="sf">getClassAnnotations</span>()</code>
-<span class="desc">Returns the annotations found in the class docblock</span>
-</a>
-<a class="api-item" href="#annotationsreflection-getconstantsannotations">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection[]</code>
-<code class="sig"><span class="sf">getConstantsAnnotations</span>()</code>
-<span class="desc">Returns the annotations found in the constants&#039; docblocks</span>
-</a>
-<a class="api-item" href="#annotationsreflection-getmethodsannotations">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection[]</code>
-<code class="sig"><span class="sf">getMethodsAnnotations</span>()</code>
-<span class="desc">Returns the annotations found in the methods&#039; docblocks</span>
-</a>
-<a class="api-item" href="#annotationsreflection-getpropertiesannotations">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection[]</code>
-<code class="sig"><span class="sf">getPropertiesAnnotations</span>()</code>
-<span class="desc">Returns the annotations found in the properties&#039; docblocks</span>
-</a>
-<a class="api-item" href="#annotationsreflection-getreflectiondata">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getReflectionData</span>()</code>
-<span class="desc">Returns the raw parsing intermediate definitions used to construct the</span>
-</a>
-</div>
+<ApiItem href="#annotationsreflection-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"reflectionData","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#annotationsreflection-getclassannotations" visibility="public" name="getClassAnnotations" returnType="Collection|null" params={[]}>
+Returns the annotations found in the class docblock
+</ApiItem>
+<ApiItem href="#annotationsreflection-getconstantsannotations" visibility="public" name="getConstantsAnnotations" returnType="Collection[]" params={[]}>
+Returns the annotations found in the constants' docblocks
+</ApiItem>
+<ApiItem href="#annotationsreflection-getmethodsannotations" visibility="public" name="getMethodsAnnotations" returnType="Collection[]" params={[]}>
+Returns the annotations found in the methods' docblocks
+</ApiItem>
+<ApiItem href="#annotationsreflection-getpropertiesannotations" visibility="public" name="getPropertiesAnnotations" returnType="Collection[]" params={[]}>
+Returns the annotations found in the properties' docblocks
+</ApiItem>
+<ApiItem href="#annotationsreflection-getreflectiondata" visibility="public" name="getReflectionData" returnType="array" params={[]}>
+Returns the raw parsing intermediate definitions used to construct the
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Collection|null</code>
-<code class="sig"><span class="sv">$classAnnotations</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$constantAnnotations</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$methodAnnotations</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$propertyAnnotations</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$reflectionData</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="classAnnotations" type="Collection|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="constantAnnotations" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="methodAnnotations" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="propertyAnnotations" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="reflectionData" type="array" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="annotationsreflection-__construct"><code>__construct()</code></h4>
 

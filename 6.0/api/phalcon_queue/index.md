@@ -20,8 +20,8 @@ Class
 Maps an adapter name to its ConnectionFactory. Mirrors
 Phalcon\Storage\AdapterFactory.
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Queue\AdapterFactory`**
 
 `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory` · `Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory` · `Phalcon\Queue\Adapter\Redis\RedisConnectionFactory` · `Phalcon\Queue\Adapter\Stream\StreamConnectionFactory` · `Phalcon\Queue\Exceptions\Exception`
@@ -89,7 +89,7 @@ transport-specific `receiveNoWait`, `acknowledge`, `reject` and `getQueue`.
 Transports with a native blocking receive (Redis BRPOP, Beanstalk reserve)
 override `receive()` instead of polling.
 
-- **`Phalcon\Queue\Adapter\AbstractConsumer`** - implements [`Phalcon\Contracts\Queue\Consumer`](../phalcon_contracts/#contractsqueueconsumer)
+- **`Phalcon\Queue\Adapter\AbstractConsumer`** - implements [`Phalcon\Contracts\Queue\Consumer`](/6.0/api/phalcon_contracts/#contractsqueueconsumer)
 - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`](#queueadapterbeanstalkbeanstalkconsumer)
 - [`Phalcon\Queue\Adapter\Memory\MemoryConsumer`](#queueadaptermemorymemoryconsumer)
 - [`Phalcon\Queue\Adapter\Redis\RedisConsumer`](#queueadapterredisredisconsumer)
@@ -192,7 +192,7 @@ temporary queue, so those factories live here once. Concrete contexts
 implement the transport-specific factories (consumer, producer, message,
 subscription consumer) and the storage operations.
 
-- **`Phalcon\Queue\Adapter\AbstractContext`** - implements [`Phalcon\Contracts\Queue\Context`](../phalcon_contracts/#contractsqueuecontext)
+- **`Phalcon\Queue\Adapter\AbstractContext`** - implements [`Phalcon\Contracts\Queue\Context`](/6.0/api/phalcon_contracts/#contractsqueuecontext)
 - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`](#queueadapterbeanstalkbeanstalkcontext)
 - [`Phalcon\Queue\Adapter\Memory\MemoryContext`](#queueadaptermemorymemorycontext)
 - [`Phalcon\Queue\Adapter\Redis\RedisContext`](#queueadapterredisrediscontext)
@@ -247,7 +247,7 @@ Shared base for the concrete adapter messages.
 @todo Remove in v7. Kept only for backwards compatibility; compose
 Phalcon\Queue\Adapter\Traits\MessageTrait directly instead of extending this.
 
-- **`Phalcon\Queue\Adapter\AbstractMessage`** - implements [`Phalcon\Contracts\Queue\Message`](../phalcon_contracts/#contractsqueuemessage)
+- **`Phalcon\Queue\Adapter\AbstractMessage`** - implements [`Phalcon\Contracts\Queue\Message`](/6.0/api/phalcon_contracts/#contractsqueuemessage)
 - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkMessage`](#queueadapterbeanstalkbeanstalkmessage)
 - [`Phalcon\Queue\Adapter\Memory\MemoryMessage`](#queueadaptermemorymemorymessage)
 - [`Phalcon\Queue\Adapter\Redis\RedisMessage`](#queueadapterredisredismessage)
@@ -265,7 +265,7 @@ setter throws the matching exception for any non-null value. A concrete
 producer overrides only the capabilities its transport actually supports,
 and implements `send()`.
 
-- **`Phalcon\Queue\Adapter\AbstractProducer`** - implements [`Phalcon\Contracts\Queue\Producer`](../phalcon_contracts/#contractsqueueproducer)
+- **`Phalcon\Queue\Adapter\AbstractProducer`** - implements [`Phalcon\Contracts\Queue\Producer`](/6.0/api/phalcon_contracts/#contractsqueueproducer)
 - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkProducer`](#queueadapterbeanstalkbeanstalkproducer)
 - [`Phalcon\Queue\Adapter\Memory\MemoryProducer`](#queueadaptermemorymemoryproducer)
 - [`Phalcon\Queue\Adapter\Redis\RedisProducer`](#queueadapterredisredisproducer)
@@ -347,7 +347,7 @@ Shared subscription-consumer base.
 Phalcon\Queue\Adapter\Traits\SubscriptionConsumerTrait directly instead of
 extending this.
 
-- **`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`** - implements [`Phalcon\Contracts\Queue\SubscriptionConsumer`](../phalcon_contracts/#contractsqueuesubscriptionconsumer)
+- **`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`** - implements [`Phalcon\Contracts\Queue\SubscriptionConsumer`](/6.0/api/phalcon_contracts/#contractsqueuesubscriptionconsumer)
 - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer`](#queueadapterbeanstalkbeanstalksubscriptionconsumer)
 - [`Phalcon\Queue\Adapter\Memory\MemorySubscriptionConsumer`](#queueadaptermemorymemorysubscriptionconsumer)
 - [`Phalcon\Queue\Adapter\Redis\RedisSubscriptionConsumer`](#queueadapterredisredissubscriptionconsumer)
@@ -599,7 +599,7 @@ Options:
   - ttr:          default time-to-run in seconds for every job (default 86400).
   - pollInterval: milliseconds between subscription poll passes (default 200).
 
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory`** - implements [`Phalcon\Contracts\Queue\ConnectionFactory`](../phalcon_contracts/#contractsqueueconnectionfactory)
+- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory`** - implements [`Phalcon\Contracts\Queue\ConnectionFactory`](/6.0/api/phalcon_contracts/#contractsqueueconnectionfactory)
 
 `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`
 
@@ -640,7 +640,7 @@ extends; acknowledging deletes the job, rejecting releases it (requeue) or
 buries it.
 
 - [`Phalcon\Queue\Adapter\AbstractConsumer`](#queueadapterabstractconsumer)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`** - implements [`Phalcon\Contracts\Queue\VisibilityAware`](../phalcon_contracts/#contractsqueuevisibilityaware)
+- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`** - implements [`Phalcon\Contracts\Queue\VisibilityAware`](/6.0/api/phalcon_contracts/#contractsqueuevisibilityaware)
 
 `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\VisibilityAware` · `Phalcon\Queue\Adapter\AbstractConsumer` · `Phalcon\Queue\Adapter\MessageEnvelope`
 
@@ -728,7 +728,7 @@ release, bury or touch a job. The destination factories come from
 AbstractContext.
 
 - [`Phalcon\Queue\Adapter\AbstractContext`](#queueadapterabstractcontext)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`** - implements [`Phalcon\Contracts\Queue\Inspectable`](../phalcon_contracts/#contractsqueueinspectable)
+- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`** - implements [`Phalcon\Contracts\Queue\Inspectable`](/6.0/api/phalcon_contracts/#contractsqueueinspectable)
 
 `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Inspectable` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
 
@@ -1041,7 +1041,7 @@ A named queue destination shared by every transport. A queue name is the
 only knowledge a destination carries, so the adapters need no transport
 specific subclass.
 
-- **`Phalcon\Queue\Adapter\GenericQueue`** - implements [`Phalcon\Contracts\Queue\Queue`](../phalcon_contracts/#contractsqueuequeue)
+- **`Phalcon\Queue\Adapter\GenericQueue`** - implements [`Phalcon\Contracts\Queue\Queue`](/6.0/api/phalcon_contracts/#contractsqueuequeue)
 
 `Phalcon\Contracts\Queue\Queue`
 
@@ -1085,7 +1085,7 @@ A named topic destination shared by every transport. A topic name is the
 only knowledge a destination carries, so the adapters need no transport
 specific subclass.
 
-- **`Phalcon\Queue\Adapter\GenericTopic`** - implements [`Phalcon\Contracts\Queue\Topic`](../phalcon_contracts/#contractsqueuetopic)
+- **`Phalcon\Queue\Adapter\GenericTopic`** - implements [`Phalcon\Contracts\Queue\Topic`](/6.0/api/phalcon_contracts/#contractsqueuetopic)
 
 `Phalcon\Contracts\Queue\Topic`
 
@@ -1127,7 +1127,7 @@ Class
 
 Builds a MemoryContext. The Memory transport takes no options.
 
-- **`Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory`** - implements [`Phalcon\Contracts\Queue\ConnectionFactory`](../phalcon_contracts/#contractsqueueconnectionfactory)
+- **`Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory`** - implements [`Phalcon\Contracts\Queue\ConnectionFactory`](/6.0/api/phalcon_contracts/#contractsqueueconnectionfactory)
 
 `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`
 
@@ -1537,7 +1537,7 @@ Options:
   - prefix:       key prefix for every queue (default "phalcon_queue:").
   - pollInterval: milliseconds between subscription poll passes (default 200).
 
-- **`Phalcon\Queue\Adapter\Redis\RedisConnectionFactory`** - implements [`Phalcon\Contracts\Queue\ConnectionFactory`](../phalcon_contracts/#contractsqueueconnectionfactory)
+- **`Phalcon\Queue\Adapter\Redis\RedisConnectionFactory`** - implements [`Phalcon\Contracts\Queue\ConnectionFactory`](/6.0/api/phalcon_contracts/#contractsqueueconnectionfactory)
 
 `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Exception` · `Phalcon\Storage\SerializerFactory` · `Redis`
 
@@ -1898,7 +1898,7 @@ Options:
                   "phalcon_queue" subdirectory of the system temp dir).
   - pollInterval: milliseconds between consumer poll attempts (default 200).
 
-- **`Phalcon\Queue\Adapter\Stream\StreamConnectionFactory`** - implements [`Phalcon\Contracts\Queue\ConnectionFactory`](../phalcon_contracts/#contractsqueueconnectionfactory)
+- **`Phalcon\Queue\Adapter\Stream\StreamConnectionFactory`** - implements [`Phalcon\Contracts\Queue\ConnectionFactory`](/6.0/api/phalcon_contracts/#contractsqueueconnectionfactory)
 
 `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`
 
@@ -2577,8 +2577,8 @@ Register it in your own Phalcon\Cli\Console; it is not auto-wired into
 FactoryDefault.
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](../phalcon_di/#diinjectable)
-- [`Phalcon\Cli\Task`](../phalcon_cli/#clitask)
+- [`Phalcon\Di\Injectable`](/6.0/api/phalcon_di/#diinjectable)
+- [`Phalcon\Cli\Task`](/6.0/api/phalcon_cli/#clitask)
 - **`Phalcon\Queue\Cli\ConsumerTask`**
 
 `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Task` · `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Processor` · `Phalcon\Di\DiInterface` · `Phalcon\Queue\Consumer\QueueConsumer` · `Phalcon\Queue\Consumer\Worker` · `Phalcon\Queue\Consumer\WorkerOptions` · `Phalcon\Queue\QueueFactory`
@@ -2693,8 +2693,8 @@ manager. The long-running operational shell (lifetime, signals) lives in
 `Phalcon\Queue\Consumer\Worker`, which drives `consumeOnce()` and shares the
 stop signal through `stop()` / `isStopRequested()`.
 
-- [`Phalcon\Events\AbstractEventsAware`](../phalcon_events/#eventsabstracteventsaware)
-- **`Phalcon\Queue\Consumer\QueueConsumer`** - implements [`Phalcon\Events\EventsAwareInterface`](../phalcon_events/#eventseventsawareinterface)
+- [`Phalcon\Events\AbstractEventsAware`](/6.0/api/phalcon_events/#eventsabstracteventsaware)
+- **`Phalcon\Queue\Consumer\QueueConsumer`** - implements [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
 
 `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Processor` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Events\AbstractEventsAware` · `Phalcon\Events\EventsAwareInterface` · `Throwable`
 
@@ -3175,7 +3175,7 @@ Class
 Builds a queue Context from the standard Phalcon config shape. Mirrors
 Phalcon\Cache\CacheFactory.
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
 - **`Phalcon\Queue\QueueFactory`**
 
 `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Queue\Exceptions\Exception`

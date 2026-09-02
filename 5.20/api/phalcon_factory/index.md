@@ -15,10 +15,7 @@ All classes are prefixed with `Phalcon`
 
 ## Factory\AbstractConfigFactory
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Factory/AbstractConfigFactory.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Abstract
 
 - **`Phalcon\Factory\AbstractConfigFactory`**
 - [`Phalcon\Cache\CacheFactory`](/5.20/api/phalcon_cache/#cachecachefactory)
@@ -26,41 +23,23 @@ All classes are prefixed with `Phalcon`
 - [`Phalcon\Logger\LoggerFactory`](/5.20/api/phalcon_logger/#loggerloggerfactory)
 - [`Phalcon\Queue\QueueFactory`](/5.20/api/phalcon_queue/#queuequeuefactory)
 
-</div>
-
-__Uses__ `Phalcon\Config\ConfigInterface`
+`Phalcon\Config\ConfigInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#factoryabstractconfigfactory-checkconfig">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">checkConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
-<span class="desc">Checks the config if it is a valid object</span>
-</a>
-<a class="api-item" href="#factoryabstractconfigfactory-checkconfigelement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">checkConfigElement</span>(<span class="prm"><span class="st">array</span> <span class="sv">$config</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$element</span></span>)</code>
-<span class="desc">Checks if the config has &quot;adapter&quot;</span>
-</a>
-<a class="api-item" href="#factoryabstractconfigfactory-getexception">
-<code class="vis vis-protected">protected</code>
-<code class="ret">\Exception</code>
-<code class="sig"><span class="sf">getException</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Returns the exception object for the child class</span>
-</a>
-<a class="api-item" href="#factoryabstractconfigfactory-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-</div>
+<ApiItem href="#factoryabstractconfigfactory-checkconfig" visibility="protected" name="checkConfig" returnType="array" params={[{"type":"mixed","name":"config","default":null}]}>
+Checks the config if it is a valid object
+</ApiItem>
+<ApiItem href="#factoryabstractconfigfactory-checkconfigelement" visibility="protected" name="checkConfigElement" returnType="array" params={[{"type":"array","name":"config","default":null},{"type":"string","name":"element","default":null}]}>
+Checks if the config has "adapter"
+</ApiItem>
+<ApiItem href="#factoryabstractconfigfactory-getexception" visibility="protected" name="getException" returnType="\Exception" params={[{"type":"string","name":"message","default":null}]}>
+Returns the exception object for the child class
+</ApiItem>
+<ApiItem href="#factoryabstractconfigfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Protected · 4</div>
 
 <h4 id="factoryabstractconfigfactory-checkconfig"><code>checkConfig()</code></h4>
 
@@ -97,10 +76,7 @@ protected function getExceptionClass(): string;
 
 ## Factory\AbstractFactory
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Factory/AbstractFactory.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Abstract
 
 - [`Phalcon\Factory\AbstractConfigFactory`](#factoryabstractconfigfactory)
 - **`Phalcon\Factory\AbstractFactory`**
@@ -120,51 +96,28 @@ protected function getExceptionClass(): string;
 - [`Phalcon\Translate\InterpolatorFactory`](/5.20/api/phalcon_translate/#translateinterpolatorfactory)
 - [`Phalcon\Translate\TranslateFactory`](/5.20/api/phalcon_translate/#translatetranslatefactory)
 
-</div>
-
-__Uses__ `Phalcon\Config\ConfigInterface`
+`Phalcon\Config\ConfigInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#factoryabstractfactory-getservice">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Checks if a service exists and throws an exception</span>
-</a>
-<a class="api-item" href="#factoryabstractfactory-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Returns the adapters for the factory</span>
-</a>
-<a class="api-item" href="#factoryabstractfactory-init">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
-<span class="desc">Initialize services/add new services</span>
-</a>
-</div>
+<ApiItem href="#factoryabstractfactory-getservice" visibility="protected" name="getService" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+Checks if a service exists and throws an exception
+</ApiItem>
+<ApiItem href="#factoryabstractfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the adapters for the factory
+</ApiItem>
+<ApiItem href="#factoryabstractfactory-init" visibility="protected" name="init" returnType="void" params={[{"type":"array","name":"services","default":"[]"}]}>
+Initialize services/add new services
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$mapper</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="mapper" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="services" type="array" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Protected · 3</div>
 
 <h4 id="factoryabstractfactory-getservice"><code>getService()</code></h4>
 
@@ -192,14 +145,9 @@ Initialize services/add new services
 
 ## Factory\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Factory/Exception.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - **`Phalcon\Factory\Exception`**
-
-</div>
 
 Source: https://docs.phalcon.io/5.20/api/phalcon_factory/index.mdx

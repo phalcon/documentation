@@ -15,8 +15,7 @@ All classes are prefixed with `Phalcon`
 
 ## Support\AbstractLocator
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/AbstractLocator.zep">Source on GitHub</a>
+Abstract
 
 Abstract base class for service locators.
 
@@ -25,98 +24,53 @@ from a DI container, with support for both legacy Di and new Container.
 
 @template T of object
 
-<div class="api-tree">
-
 - **`Phalcon\Support\AbstractLocator`**
 - [`Phalcon\Auth\Access\AccessLocator`](/5.20/api/phalcon_auth/#authaccessaccesslocator)
 - [`Phalcon\Auth\Adapter\AdapterLocator`](/5.20/api/phalcon_auth/#authadapteradapterlocator)
 - [`Phalcon\Auth\Guard\GuardLocator`](/5.20/api/phalcon_auth/#authguardguardlocator)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Throwable`
+`Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportabstractlocator-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
-</a>
-<a class="api-item" href="#supportabstractlocator-getall">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAll</span>()</code>
-<span class="desc">Returns the full registered service map (defaults plus any added via</span>
-</a>
-<a class="api-item" href="#supportabstractlocator-getclass">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getClass</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns the class-string registered under the given name.</span>
-</a>
-<a class="api-item" href="#supportabstractlocator-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Whether a service with the given name is registered.</span>
-</a>
-<a class="api-item" href="#supportabstractlocator-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Retrieve a service instance from the container.</span>
-</a>
-<a class="api-item" href="#supportabstractlocator-register">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">register</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$definition</span></span>)</code>
-<span class="desc">Register a service or override an existing one.</span>
-</a>
-<a class="api-item" href="#supportabstractlocator-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-<span class="desc">Get the exception class to throw on errors.</span>
-</a>
-<a class="api-item" href="#supportabstractlocator-getinterfaceclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getInterfaceClass</span>()</code>
-<span class="desc">Get the interface/class that all registered services must implement.</span>
-</a>
-<a class="api-item" href="#supportabstractlocator-getservice">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Get the service class name for a given name.</span>
-</a>
-<a class="api-item" href="#supportabstractlocator-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Get the default services for this locator.</span>
-</a>
-</div>
+<ApiItem href="#supportabstractlocator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"container","default":null},{"type":"array","name":"services","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#supportabstractlocator-getall" visibility="public" name="getAll" returnType="array" params={[]}>
+Returns the full registered service map (defaults plus any added via
+</ApiItem>
+<ApiItem href="#supportabstractlocator-getclass" visibility="public" name="getClass" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Returns the class-string registered under the given name.
+</ApiItem>
+<ApiItem href="#supportabstractlocator-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Whether a service with the given name is registered.
+</ApiItem>
+<ApiItem href="#supportabstractlocator-newinstance" visibility="public" name="newInstance" returnType="object" params={[{"type":"string","name":"name","default":null}]}>
+Retrieve a service instance from the container.
+</ApiItem>
+<ApiItem href="#supportabstractlocator-register" visibility="public" name="register" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"definition","default":null}]}>
+Register a service or override an existing one.
+</ApiItem>
+<ApiItem href="#supportabstractlocator-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+Get the exception class to throw on errors.
+</ApiItem>
+<ApiItem href="#supportabstractlocator-getinterfaceclass" visibility="protected" name="getInterfaceClass" returnType="string" params={[]}>
+Get the interface/class that all registered services must implement.
+</ApiItem>
+<ApiItem href="#supportabstractlocator-getservice" visibility="protected" name="getService" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Get the service class name for a given name.
+</ApiItem>
+<ApiItem href="#supportabstractlocator-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Get the default services for this locator.
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Collection|DiInterface</code>
-<code class="sig"><span class="sv">$container</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="container" type="Collection|DiInterface" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="services" type="array" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="supportabstractlocator-__construct"><code>__construct()</code></h4>
 
@@ -177,8 +131,6 @@ string $definition
 
 Register a service or override an existing one.
 
-<div class="api-group">Protected · 4</div>
-
 <h4 id="supportabstractlocator-getexceptionclass"><code>getExceptionClass()</code></h4>
 
 ```php
@@ -214,8 +166,7 @@ Get the default services for this locator.
 
 ## Support\Collection
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection.zep">Source on GitHub</a>
+Class
 
 `Phalcon\Support\Collection` is a supercharged object-oriented array. It implements:
 - [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php)
@@ -235,8 +186,6 @@ etc.
 @property bool                  $strictNull
 @property string|null           $type
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Collection`** - implements [`Phalcon\Support\Collection\CollectionInterface`](#supportcollectioncollectioninterface), `\Countable`, `\JsonSerializable`
 - [`Phalcon\Config\Config`](/5.20/api/phalcon_config/#configconfig)
 - [`Phalcon\Html\Attributes`](/5.20/api/phalcon_html/#htmlattributes)
@@ -244,318 +193,162 @@ etc.
 - [`Phalcon\Support\Collection\ReadOnlyCollection`](#supportcollectionreadonlycollection)
 - [`Phalcon\Support\Registry`](#supportregistry)
 
-</div>
-
-__Uses__ `ArrayIterator` · `Countable` · `InvalidArgumentException` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Helper\Json\Encode` · `Traversable`
+`ArrayIterator` · `Countable` · `InvalidArgumentException` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Helper\Json\Encode` · `Traversable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportcollection-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strictNull</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Collection constructor.</span>
-</a>
-<a class="api-item" href="#supportcollection-__get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Magic getter to get an element from the collection</span>
-</a>
-<a class="api-item" href="#supportcollection-__isset">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Magic isset to check whether an element exists or not</span>
-</a>
-<a class="api-item" href="#supportcollection-__serialize">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__serialize</span>()</code>
-<span class="desc">Returns the state of the collection for serialization, including</span>
-</a>
-<a class="api-item" href="#supportcollection-__set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Magic setter to assign values to an element</span>
-</a>
-<a class="api-item" href="#supportcollection-__unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
-<span class="desc">Restores the collection state. Accepts both the structured format</span>
-</a>
-<a class="api-item" href="#supportcollection-__unset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__unset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Magic unset to remove an element from the collection</span>
-</a>
-<a class="api-item" href="#supportcollection-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Clears the internal collection</span>
-</a>
-<a class="api-item" href="#supportcollection-column">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">column</span>( <span class="st">string</span> <span class="sv">$propertyOrMethod</span> )</code>
-<span class="desc">Returns the values from a single property/method extracted from every</span>
-</a>
-<a class="api-item" href="#supportcollection-count">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">count</span>()</code>
-<span class="desc">Count elements of an object</span>
-</a>
-<a class="api-item" href="#supportcollection-each">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">each</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
-<span class="desc">Invokes the callback for every item in the collection. Returns the</span>
-</a>
-<a class="api-item" href="#supportcollection-filter">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">filter</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
-<span class="desc">Returns a new collection of items for which the callback returns true.</span>
-</a>
-<a class="api-item" href="#supportcollection-first">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">first</span>()</code>
-<span class="desc">Returns the first value in the collection, or null if empty.</span>
-</a>
-<a class="api-item" href="#supportcollection-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Get the element from the collection</span>
-</a>
-<a class="api-item" href="#supportcollection-getiterator">
-<code class="vis vis-public">public</code>
-<code class="ret">Traversable</code>
-<code class="sig"><span class="sf">getIterator</span>()</code>
-<span class="desc">Returns the iterator of the class</span>
-</a>
-<a class="api-item" href="#supportcollection-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span> )</code>
-<span class="desc">Returns the keys (insensitive or not) of the collection.</span>
-</a>
-<a class="api-item" href="#supportcollection-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Returns the configured runtime type guard, or null if none.</span>
-</a>
-<a class="api-item" href="#supportcollection-getvalues">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getValues</span>()</code>
-<span class="desc">Returns the values of the internal array.</span>
-</a>
-<a class="api-item" href="#supportcollection-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Get the element from the collection</span>
-</a>
-<a class="api-item" href="#supportcollection-init">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
-<span class="desc">Initialize internal array</span>
-</a>
-<a class="api-item" href="#supportcollection-isempty">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isEmpty</span>()</code>
-<span class="desc">Return if the collection is empty</span>
-</a>
-<a class="api-item" href="#supportcollection-jsonserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">jsonSerialize</span>()</code>
-<span class="desc">Specify data which should be serialized to JSON</span>
-</a>
-<a class="api-item" href="#supportcollection-keys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">keys</span>( <span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span> )</code>
-<span class="desc">Returns the keys (insensitive or not) of the collection.</span>
-</a>
-<a class="api-item" href="#supportcollection-last">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">last</span>()</code>
-<span class="desc">Returns the last value in the collection, or null if empty.</span>
-</a>
-<a class="api-item" href="#supportcollection-map">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">map</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
-<span class="desc">Returns a new collection with the callback applied to every value.</span>
-</a>
-<a class="api-item" href="#supportcollection-offsetexists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
-<span class="desc">Whether a offset exists</span>
-</a>
-<a class="api-item" href="#supportcollection-offsetget">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
-<span class="desc">Offset to retrieve</span>
-</a>
-<a class="api-item" href="#supportcollection-offsetset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Offset to set</span>
-</a>
-<a class="api-item" href="#supportcollection-offsetunset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
-<span class="desc">Offset to unset</span>
-</a>
-<a class="api-item" href="#supportcollection-reduce">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">reduce</span>(<span class="prm"><span class="st">callable</span> <span class="sv">$callback</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$initial</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Reduces the collection to a single value using the callback. The</span>
-</a>
-<a class="api-item" href="#supportcollection-remove">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Delete the element from the collection</span>
-</a>
-<a class="api-item" href="#supportcollection-replace">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">replace</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
-<span class="desc">Replaces the collection data with a new array, clearing existing data first</span>
-</a>
-<a class="api-item" href="#supportcollection-serialize">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">serialize</span>()</code>
-<span class="desc">BC - delegate to __serialize()</span>
-</a>
-<a class="api-item" href="#supportcollection-set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set an element in the collection</span>
-</a>
-<a class="api-item" href="#supportcollection-sort">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">sort</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$callback</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$order</span><span class="sm"> = 4</span></span>)</code>
-<span class="desc">Returns a new collection sorted by value. Keys are preserved. When a</span>
-</a>
-<a class="api-item" href="#supportcollection-toarray">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">toArray</span>()</code>
-<span class="desc">Returns the object in an array format</span>
-</a>
-<a class="api-item" href="#supportcollection-tojson">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">toJson</span>( <span class="st">int</span> <span class="sv">$options</span><span class="sm"> = 4194383</span> )</code>
-<span class="desc">Returns the object in a JSON format</span>
-</a>
-<a class="api-item" href="#supportcollection-unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unserialize</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
-<span class="desc">BC - delegate to __unserialize()</span>
-</a>
-<a class="api-item" href="#supportcollection-values">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">values</span>()</code>
-<span class="desc">Returns the values of the internal array.</span>
-</a>
-<a class="api-item" href="#supportcollection-where">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$propertyOrMethod</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Returns a new collection containing only the items whose</span>
-</a>
-<a class="api-item" href="#supportcollection-cloneempty">
-<code class="vis vis-protected">protected</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">cloneEmpty</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
-<span class="desc">Builds a new collection of the same concrete class, carrying over the</span>
-</a>
-<a class="api-item" href="#supportcollection-extractvalue">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">extractValue</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$item</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$propertyOrMethod</span></span>)</code>
-<span class="desc">Extracts a single value from an item. For arrays returns the keyed</span>
-</a>
-<a class="api-item" href="#supportcollection-processkey">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">processKey</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Checks if we need insensitive keys and if so, converts the element to</span>
-</a>
-<a class="api-item" href="#supportcollection-setdata">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setData</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Internal method to set data</span>
-</a>
-<a class="api-item" href="#supportcollection-validatetype">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">validateType</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
-<span class="desc">Validates the value against the configured <code>$type</code> guard. When <code>$type</code></span>
-</a>
-</div>
+<ApiItem href="#supportcollection-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"data","default":"[]"},{"type":"bool","name":"insensitive","default":"true"},{"type":"bool","name":"strictNull","default":"false"},{"type":"string|null","name":"type","default":"null"}]}>
+Collection constructor.
+</ApiItem>
+<ApiItem href="#supportcollection-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"element","default":null}]}>
+Magic getter to get an element from the collection
+</ApiItem>
+<ApiItem href="#supportcollection-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
+Magic isset to check whether an element exists or not
+</ApiItem>
+<ApiItem href="#supportcollection-__serialize" visibility="public" name="__serialize" returnType="array" params={[]}>
+Returns the state of the collection for serialization, including
+</ApiItem>
+<ApiItem href="#supportcollection-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+Magic setter to assign values to an element
+</ApiItem>
+<ApiItem href="#supportcollection-__unserialize" visibility="public" name="__unserialize" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
+Restores the collection state. Accepts both the structured format
+</ApiItem>
+<ApiItem href="#supportcollection-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
+Magic unset to remove an element from the collection
+</ApiItem>
+<ApiItem href="#supportcollection-clear" visibility="public" name="clear" returnType="void" params={[]}>
+Clears the internal collection
+</ApiItem>
+<ApiItem href="#supportcollection-column" visibility="public" name="column" returnType="array" params={[{"type":"string","name":"propertyOrMethod","default":null}]}>
+Returns the values from a single property/method extracted from every
+</ApiItem>
+<ApiItem href="#supportcollection-count" visibility="public" name="count" returnType="int" params={[]}>
+Count elements of an object
+</ApiItem>
+<ApiItem href="#supportcollection-each" visibility="public" name="each" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
+Invokes the callback for every item in the collection. Returns the
+</ApiItem>
+<ApiItem href="#supportcollection-filter" visibility="public" name="filter" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
+Returns a new collection of items for which the callback returns true.
+</ApiItem>
+<ApiItem href="#supportcollection-first" visibility="public" name="first" returnType="mixed" params={[]}>
+Returns the first value in the collection, or null if empty.
+</ApiItem>
+<ApiItem href="#supportcollection-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
+Get the element from the collection
+</ApiItem>
+<ApiItem href="#supportcollection-getiterator" visibility="public" name="getIterator" returnType="Traversable" params={[]}>
+Returns the iterator of the class
+</ApiItem>
+<ApiItem href="#supportcollection-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"bool","name":"insensitive","default":"true"}]}>
+Returns the keys (insensitive or not) of the collection.
+</ApiItem>
+<ApiItem href="#supportcollection-gettype" visibility="public" name="getType" returnType="string|null" params={[]}>
+Returns the configured runtime type guard, or null if none.
+</ApiItem>
+<ApiItem href="#supportcollection-getvalues" visibility="public" name="getValues" returnType="array" params={[]}>
+Returns the values of the internal array.
+</ApiItem>
+<ApiItem href="#supportcollection-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
+Get the element from the collection
+</ApiItem>
+<ApiItem href="#supportcollection-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
+Initialize internal array
+</ApiItem>
+<ApiItem href="#supportcollection-isempty" visibility="public" name="isEmpty" returnType="bool" params={[]}>
+Return if the collection is empty
+</ApiItem>
+<ApiItem href="#supportcollection-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
+Specify data which should be serialized to JSON
+</ApiItem>
+<ApiItem href="#supportcollection-keys" visibility="public" name="keys" returnType="array" params={[{"type":"bool","name":"insensitive","default":"true"}]}>
+Returns the keys (insensitive or not) of the collection.
+</ApiItem>
+<ApiItem href="#supportcollection-last" visibility="public" name="last" returnType="mixed" params={[]}>
+Returns the last value in the collection, or null if empty.
+</ApiItem>
+<ApiItem href="#supportcollection-map" visibility="public" name="map" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
+Returns a new collection with the callback applied to every value.
+</ApiItem>
+<ApiItem href="#supportcollection-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"element","default":null}]}>
+Whether a offset exists
+</ApiItem>
+<ApiItem href="#supportcollection-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"element","default":null}]}>
+Offset to retrieve
+</ApiItem>
+<ApiItem href="#supportcollection-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+Offset to set
+</ApiItem>
+<ApiItem href="#supportcollection-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"element","default":null}]}>
+Offset to unset
+</ApiItem>
+<ApiItem href="#supportcollection-reduce" visibility="public" name="reduce" returnType="mixed" params={[{"type":"callable","name":"callback","default":null},{"type":"mixed","name":"initial","default":"null"}]}>
+Reduces the collection to a single value using the callback. The
+</ApiItem>
+<ApiItem href="#supportcollection-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
+Delete the element from the collection
+</ApiItem>
+<ApiItem href="#supportcollection-replace" visibility="public" name="replace" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
+Replaces the collection data with a new array, clearing existing data first
+</ApiItem>
+<ApiItem href="#supportcollection-serialize" visibility="public" name="serialize" returnType="string|null" params={[]}>
+BC - delegate to __serialize()
+</ApiItem>
+<ApiItem href="#supportcollection-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+Set an element in the collection
+</ApiItem>
+<ApiItem href="#supportcollection-sort" visibility="public" name="sort" returnType="static" params={[{"type":"mixed","name":"callback","default":"null"},{"type":"int","name":"order","default":"4"}]}>
+Returns a new collection sorted by value. Keys are preserved. When a
+</ApiItem>
+<ApiItem href="#supportcollection-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
+Returns the object in an array format
+</ApiItem>
+<ApiItem href="#supportcollection-tojson" visibility="public" name="toJson" returnType="string" params={[{"type":"int","name":"options","default":"4194383"}]}>
+Returns the object in a JSON format
+</ApiItem>
+<ApiItem href="#supportcollection-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"string","name":"data","default":null}]}>
+BC - delegate to __unserialize()
+</ApiItem>
+<ApiItem href="#supportcollection-values" visibility="public" name="values" returnType="array" params={[]}>
+Returns the values of the internal array.
+</ApiItem>
+<ApiItem href="#supportcollection-where" visibility="public" name="where" returnType="static" params={[{"type":"string","name":"propertyOrMethod","default":null},{"type":"mixed","name":"value","default":null}]}>
+Returns a new collection containing only the items whose
+</ApiItem>
+<ApiItem href="#supportcollection-cloneempty" visibility="protected" name="cloneEmpty" returnType="static" params={[{"type":"array","name":"data","default":"[]"}]}>
+Builds a new collection of the same concrete class, carrying over the
+</ApiItem>
+<ApiItem href="#supportcollection-extractvalue" visibility="protected" name="extractValue" returnType="mixed" params={[{"type":"mixed","name":"item","default":null},{"type":"string","name":"propertyOrMethod","default":null}]}>
+Extracts a single value from an item. For arrays returns the keyed
+</ApiItem>
+<ApiItem href="#supportcollection-processkey" visibility="protected" name="processKey" returnType="string" params={[{"type":"string","name":"element","default":null}]}>
+Checks if we need insensitive keys and if so, converts the element to
+</ApiItem>
+<ApiItem href="#supportcollection-setdata" visibility="protected" name="setData" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+Internal method to set data
+</ApiItem>
+<ApiItem href="#supportcollection-validatetype" visibility="protected" name="validateType" returnType="void" params={[{"type":"mixed","name":"value","default":null}]}>
+Validates the value against the configured `$type` guard. When `$type`
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, T&gt;</code>
-<code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$insensitive</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, string&gt;</code>
-<code class="sig"><span class="sv">$lowerKeys</span><span class="sm"> = []</span></code>
-<span class="desc">Maps the case-insensitive key back to the original one it was stored under.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$strictNull</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$type</span><span class="sm"> = null</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="data" type="array&lt;string, T&gt;" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="insensitive" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="lowerKeys" type="array&lt;string, string&gt;" default="[]">
+Maps the case-insensitive key back to the original one it was stored
+under.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="strictNull" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="type" type="string|null" default="null">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 40</div>
 
 <h4 id="supportcollection-__construct"><code>__construct()</code></h4>
 
@@ -923,8 +716,6 @@ mixed $value
 Returns a new collection containing only the items whose
 `propertyOrMethod` strictly equals `$value`.
 
-<div class="api-group">Protected · 5</div>
-
 <h4 id="supportcollection-cloneempty"><code>cloneEmpty()</code></h4>
 
 ```php
@@ -980,68 +771,47 @@ is treated as a class/interface name and tested with `instanceof`.
 
 ## Support\Collection\CollectionInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/CollectionInterface.zep">Source on GitHub</a>
+Interface
 
 Phalcon\Support\Collection\CollectionInterface
 
 @extends CollectionContract&lt;T>
-
-<div class="api-tree">
 
 - `\ArrayAccess`
 - [`Phalcon\Contracts\Support\Collection`](/5.20/api/phalcon_contracts/#contractssupportcollection)
 - **`Phalcon\Support\Collection\CollectionInterface`**
 - [`Phalcon\Config\ConfigInterface`](/5.20/api/phalcon_config/#configconfiginterface)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Support\Collection`
+`Phalcon\Contracts\Support\Collection`
 
 ## Support\Collection\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/Exception.zep">Source on GitHub</a>
+Class
 
 Exceptions for the Collection object
-
-<div class="api-tree">
 
 - `\Exception`
 - [`Phalcon\Support\Exception`](#supportexception)
 - **`Phalcon\Support\Collection\Exception`**
 - [`Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`](#supportcollectionexceptionsreadonlyviolation)
 
-</div>
-
-__Uses__ `Phalcon\Support\Exception`
+`Phalcon\Support\Exception`
 
 ## Support\Collection\Exceptions\InvalidValueType
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/Exceptions/InvalidValueType.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\InvalidArgumentException`
 - **`Phalcon\Support\Collection\Exceptions\InvalidValueType`**
 
-</div>
-
-__Uses__ `InvalidArgumentException`
+`InvalidArgumentException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportcollectionexceptionsinvalidvaluetype-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supportcollectionexceptionsinvalidvaluetype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"value","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supportcollectionexceptionsinvalidvaluetype-__construct"><code>__construct()</code></h4>
 
@@ -1054,32 +824,21 @@ mixed $value
 
 ## Support\Collection\Exceptions\ReadOnlyViolation
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/Exceptions/ReadOnlyViolation.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Support\Exception`](#supportexception)
 - [`Phalcon\Support\Collection\Exception`](#supportcollectionexception)
 - **`Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`**
 
-</div>
-
-__Uses__ `Phalcon\Support\Collection\Exception`
+`Phalcon\Support\Collection\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportcollectionexceptionsreadonlyviolation-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#supportcollectionexceptionsreadonlyviolation-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supportcollectionexceptionsreadonlyviolation-__construct"><code>__construct()</code></h4>
 
@@ -1089,79 +848,45 @@ public function __construct();
 
 ## Support\Collection\ReadOnlyCollection
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/ReadOnlyCollection.zep">Source on GitHub</a>
+Class
 
 A read only Collection object
 
 @extends Collection&lt;T>
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Collection`](#supportcollection)
 - **`Phalcon\Support\Collection\ReadOnlyCollection`**
 
-</div>
-
-__Uses__ `Phalcon\Support\Collection` · `Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`
+`Phalcon\Support\Collection` · `Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportcollectionreadonlycollection-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strictNull</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">ReadOnlyCollection constructor.</span>
-</a>
-<a class="api-item" href="#supportcollectionreadonlycollection-__unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
-<span class="desc">Restores the collection state during unserialization.</span>
-</a>
-<a class="api-item" href="#supportcollectionreadonlycollection-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-</a>
-<a class="api-item" href="#supportcollectionreadonlycollection-init">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
-</a>
-<a class="api-item" href="#supportcollectionreadonlycollection-remove">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Delete the element from the collection</span>
-</a>
-<a class="api-item" href="#supportcollectionreadonlycollection-replace">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">replace</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
-<span class="desc">Replaces the collection data with a new array</span>
-</a>
-<a class="api-item" href="#supportcollectionreadonlycollection-set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set an element in the collection</span>
-</a>
-</div>
+<ApiItem href="#supportcollectionreadonlycollection-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"data","default":"[]"},{"type":"bool","name":"insensitive","default":"true"},{"type":"bool","name":"strictNull","default":"false"},{"type":"string|null","name":"type","default":"null"}]}>
+ReadOnlyCollection constructor.
+</ApiItem>
+<ApiItem href="#supportcollectionreadonlycollection-__unserialize" visibility="public" name="__unserialize" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
+Restores the collection state during unserialization.
+</ApiItem>
+<ApiItem href="#supportcollectionreadonlycollection-clear" visibility="public" name="clear" returnType="void" params={[]}>
+</ApiItem>
+<ApiItem href="#supportcollectionreadonlycollection-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#supportcollectionreadonlycollection-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
+Delete the element from the collection
+</ApiItem>
+<ApiItem href="#supportcollectionreadonlycollection-replace" visibility="public" name="replace" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
+Replaces the collection data with a new array
+</ApiItem>
+<ApiItem href="#supportcollectionreadonlycollection-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+Set an element in the collection
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$constructed</span><span class="sm"> = false</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="constructed" type="bool" default="false">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 7</div>
 
 <h4 id="supportcollectionreadonlycollection-__construct"><code>__construct()</code></h4>
 
@@ -1228,201 +953,101 @@ Set an element in the collection
 
 ## Support\Debug
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug.zep">Source on GitHub</a>
+Class
 
 Listens for uncaught exceptions and renders them. Acts as a thin coordinator
 delegating data collection to ReportBuilder and presentation to a Renderer.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Debug`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `Phalcon\Support\Debug\Renderer\HtmlRenderer` · `Phalcon\Support\Debug\ReportBuilder` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionException` · `Throwable`
+`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `Phalcon\Support\Debug\Renderer\HtmlRenderer` · `Phalcon\Support\Debug\ReportBuilder` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionException` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportdebug-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-<a class="api-item" href="#supportdebug-clearvars">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">clearVars</span>()</code>
-<span class="desc">Clears are variables added previously</span>
-</a>
-<a class="api-item" href="#supportdebug-debugvar">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">debugVar</span>( <span class="st">mixed</span> <span class="sv">$variable</span> )</code>
-<span class="desc">Adds a variable to the debug output</span>
-</a>
-<a class="api-item" href="#supportdebug-getcsssources">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getCssSources</span>()</code>
-<span class="desc">Returns the CSS sources</span>
-</a>
-<a class="api-item" href="#supportdebug-getjssources">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getJsSources</span>()</code>
-<span class="desc">Returns the JavaScript sources</span>
-</a>
-<a class="api-item" href="#supportdebug-getrenderer">
-<code class="vis vis-public">public</code>
-<code class="ret">Renderer</code>
-<code class="sig"><span class="sf">getRenderer</span>()</code>
-<span class="desc">Returns the renderer used to produce the output</span>
-</a>
-<a class="api-item" href="#supportdebug-getversion">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getVersion</span>()</code>
-<span class="desc">Generates a link to the current version documentation</span>
-</a>
-<a class="api-item" href="#supportdebug-halt">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">halt</span>()</code>
-<span class="desc">Halts the request showing a backtrace</span>
-</a>
-<a class="api-item" href="#supportdebug-listen">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">listen</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$exceptions</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowSeverity</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Listen for uncaught exceptions and non silent notices or warnings</span>
-</a>
-<a class="api-item" href="#supportdebug-listenexceptions">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">listenExceptions</span>()</code>
-<span class="desc">Listen for uncaught exceptions</span>
-</a>
-<a class="api-item" href="#supportdebug-listenlowseverity">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">listenLowSeverity</span>()</code>
-<span class="desc">Listen for non silent notices or warnings</span>
-</a>
-<a class="api-item" href="#supportdebug-onuncaughtexception">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">onUncaughtException</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
-<span class="desc">Handles uncaught exceptions</span>
-</a>
-<a class="api-item" href="#supportdebug-onuncaughtlowseverity">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">onUncaughtLowSeverity</span>(<span class="prm"><span class="st">int</span> <span class="sv">$severity</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$line</span></span>)</code>
-<span class="desc">Throws an exception when a notice or warning is raised</span>
-</a>
-<a class="api-item" href="#supportdebug-renderhtml">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">renderHtml</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
-<span class="desc">Render exception to html format.</span>
-</a>
-<a class="api-item" href="#supportdebug-setblacklist">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setBlacklist</span>( <span class="st">array</span> <span class="sv">$blacklist</span> )</code>
-<span class="desc">Sets if files the exception&#039;s backtrace must be showed</span>
-</a>
-<a class="api-item" href="#supportdebug-setrenderer">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setRenderer</span>( <span class="st">Renderer</span> <span class="sv">$renderer</span> )</code>
-<span class="desc">Sets the renderer used to produce the output</span>
-</a>
-<a class="api-item" href="#supportdebug-setshowbacktrace">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setShowBackTrace</span>( <span class="st">bool</span> <span class="sv">$showBackTrace</span> )</code>
-<span class="desc">Sets if files the exception&#039;s backtrace must be showed</span>
-</a>
-<a class="api-item" href="#supportdebug-setshowfilefragment">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setShowFileFragment</span>( <span class="st">bool</span> <span class="sv">$showFileFragment</span> )</code>
-<span class="desc">Sets if files must be completely opened and showed in the output</span>
-</a>
-<a class="api-item" href="#supportdebug-setshowfiles">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setShowFiles</span>( <span class="st">bool</span> <span class="sv">$showFiles</span> )</code>
-<span class="desc">Set if files part of the backtrace must be shown in the output</span>
-</a>
-<a class="api-item" href="#supportdebug-seturi">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setUri</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
-<span class="desc">Change the base URI for static resources</span>
-</a>
-</div>
+<ApiItem href="#supportdebug-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebug-clearvars" visibility="public" name="clearVars" returnType="static" params={[]}>
+Clears are variables added previously
+</ApiItem>
+<ApiItem href="#supportdebug-debugvar" visibility="public" name="debugVar" returnType="static" params={[{"type":"mixed","name":"variable","default":null}]}>
+Adds a variable to the debug output
+</ApiItem>
+<ApiItem href="#supportdebug-getcsssources" visibility="public" name="getCssSources" returnType="string" params={[]}>
+Returns the CSS sources
+</ApiItem>
+<ApiItem href="#supportdebug-getjssources" visibility="public" name="getJsSources" returnType="string" params={[]}>
+Returns the JavaScript sources
+</ApiItem>
+<ApiItem href="#supportdebug-getrenderer" visibility="public" name="getRenderer" returnType="Renderer" params={[]}>
+Returns the renderer used to produce the output
+</ApiItem>
+<ApiItem href="#supportdebug-getversion" visibility="public" name="getVersion" returnType="string" params={[]}>
+Generates a link to the current version documentation
+</ApiItem>
+<ApiItem href="#supportdebug-halt" visibility="public" name="halt" returnType="void" params={[]}>
+Halts the request showing a backtrace
+</ApiItem>
+<ApiItem href="#supportdebug-listen" visibility="public" name="listen" returnType="static" params={[{"type":"bool","name":"exceptions","default":"true"},{"type":"bool","name":"lowSeverity","default":"false"}]}>
+Listen for uncaught exceptions and non silent notices or warnings
+</ApiItem>
+<ApiItem href="#supportdebug-listenexceptions" visibility="public" name="listenExceptions" returnType="static" params={[]}>
+Listen for uncaught exceptions
+</ApiItem>
+<ApiItem href="#supportdebug-listenlowseverity" visibility="public" name="listenLowSeverity" returnType="static" params={[]}>
+Listen for non silent notices or warnings
+</ApiItem>
+<ApiItem href="#supportdebug-onuncaughtexception" visibility="public" name="onUncaughtException" returnType="bool" params={[{"type":"\\Throwable","name":"exception","default":null}]}>
+Handles uncaught exceptions
+</ApiItem>
+<ApiItem href="#supportdebug-onuncaughtlowseverity" visibility="public" name="onUncaughtLowSeverity" returnType="void" params={[{"type":"int","name":"severity","default":null},{"type":"string","name":"message","default":null},{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null}]}>
+Throws an exception when a notice or warning is raised
+</ApiItem>
+<ApiItem href="#supportdebug-renderhtml" visibility="public" name="renderHtml" returnType="string" params={[{"type":"\\Throwable","name":"exception","default":null}]}>
+Render exception to html format.
+</ApiItem>
+<ApiItem href="#supportdebug-setblacklist" visibility="public" name="setBlacklist" returnType="static" params={[{"type":"array","name":"blacklist","default":null}]}>
+Sets if files the exception's backtrace must be showed
+</ApiItem>
+<ApiItem href="#supportdebug-setrenderer" visibility="public" name="setRenderer" returnType="static" params={[{"type":"Renderer","name":"renderer","default":null}]}>
+Sets the renderer used to produce the output
+</ApiItem>
+<ApiItem href="#supportdebug-setshowbacktrace" visibility="public" name="setShowBackTrace" returnType="static" params={[{"type":"bool","name":"showBackTrace","default":null}]}>
+Sets if files the exception's backtrace must be showed
+</ApiItem>
+<ApiItem href="#supportdebug-setshowfilefragment" visibility="public" name="setShowFileFragment" returnType="static" params={[{"type":"bool","name":"showFileFragment","default":null}]}>
+Sets if files must be completely opened and showed in the output
+</ApiItem>
+<ApiItem href="#supportdebug-setshowfiles" visibility="public" name="setShowFiles" returnType="static" params={[{"type":"bool","name":"showFiles","default":null}]}>
+Set if files part of the backtrace must be shown in the output
+</ApiItem>
+<ApiItem href="#supportdebug-seturi" visibility="public" name="setUri" returnType="static" params={[{"type":"string","name":"uri","default":null}]}>
+Change the base URI for static resources
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$blacklist</span><span class="sm"> = [...]</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$hideDocumentRoot</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$isActive</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Renderer</code>
-<code class="sig"><span class="sv">$renderer</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ReportBuilder</code>
-<code class="sig"><span class="sv">$reportBuilder</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$showBackTrace</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$showFileFragment</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$showFiles</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$uri</span><span class="sm"> = &quot;https://assets.phalcon.io/debug/5.0.x/&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="blacklist" type="array" default="[...]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="data" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="hideDocumentRoot" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="isActive" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="renderer" type="Renderer" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="reportBuilder" type="ReportBuilder" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="showBackTrace" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="showFileFragment" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="showFiles" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="uri" type="string" default="&quot;https://assets.phalcon.io/debug/5.0.x/&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 20</div>
 
 <h4 id="supportdebug-__construct"><code>__construct()</code></h4>
 
@@ -1593,8 +1218,7 @@ Change the base URI for static resources
 
 ## Support\Debug\Dump
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Dump.zep">Source on GitHub</a>
+Class
 
 Dumps information about a variable(s)
 
@@ -1612,111 +1236,57 @@ $baz = new stdClass();
 echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 ```
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Debug\Dump`** - implements [`Phalcon\Contracts\Support\Debug\TemplateAware`](/5.20/api/phalcon_contracts/#contractssupportdebugtemplateaware)
 
-</div>
-
-__Uses__ `InvalidArgumentException` · `JsonException` · `Phalcon\Container\Container` · `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Reflection` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty` · `stdClass`
+`InvalidArgumentException` · `JsonException` · `Phalcon\Container\Container` · `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Reflection` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty` · `stdClass`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportdebugdump-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$styles</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$detailed</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Dump constructor.</span>
-</a>
-<a class="api-item" href="#supportdebugdump-all">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">all</span>()</code>
-<span class="desc">Alias of variables() method</span>
-</a>
-<a class="api-item" href="#supportdebugdump-getdetailed">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getDetailed</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugdump-one">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">one</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$variable</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Alias of variable() method</span>
-</a>
-<a class="api-item" href="#supportdebugdump-setdetailed">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDetailed</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugdump-setstyles">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">setStyles</span>( <span class="st">array</span> <span class="sv">$styles</span><span class="sm"> = []</span> )</code>
-<span class="desc">Set styles for vars type</span>
-</a>
-<a class="api-item" href="#supportdebugdump-tojson">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">toJson</span>( <span class="st">mixed</span> <span class="sv">$variable</span> )</code>
-<span class="desc">Returns an JSON string of information about a single variable.</span>
-</a>
-<a class="api-item" href="#supportdebugdump-variable">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">variable</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$variable</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Returns an HTML string of information about a single variable.</span>
-</a>
-<a class="api-item" href="#supportdebugdump-variables">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">variables</span>()</code>
-<span class="desc">Returns an HTML string of debugging information about any number of</span>
-</a>
-<a class="api-item" href="#supportdebugdump-defaulttemplate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">defaultTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns the embedded default template for the given name.</span>
-</a>
-<a class="api-item" href="#supportdebugdump-getstyle">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getStyle</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Get style for type</span>
-</a>
-<a class="api-item" href="#supportdebugdump-output">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">output</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$variable</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$tab</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Prepare an HTML string of information about a single variable.</span>
-</a>
-</div>
+<ApiItem href="#supportdebugdump-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"styles","default":"[]"},{"type":"bool","name":"detailed","default":"false"}]}>
+Dump constructor.
+</ApiItem>
+<ApiItem href="#supportdebugdump-all" visibility="public" name="all" returnType="string" params={[]}>
+Alias of variables() method
+</ApiItem>
+<ApiItem href="#supportdebugdump-getdetailed" visibility="public" name="getDetailed" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugdump-one" visibility="public" name="one" returnType="string" params={[{"type":"mixed","name":"variable","default":null},{"type":"string|null","name":"name","default":"null"}]}>
+Alias of variable() method
+</ApiItem>
+<ApiItem href="#supportdebugdump-setdetailed" visibility="public" name="setDetailed" returnType="void" params={[{"type":"bool","name":"flag","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugdump-setstyles" visibility="public" name="setStyles" returnType="array" params={[{"type":"array","name":"styles","default":"[]"}]}>
+Set styles for vars type
+</ApiItem>
+<ApiItem href="#supportdebugdump-tojson" visibility="public" name="toJson" returnType="string" params={[{"type":"mixed","name":"variable","default":null}]}>
+Returns an JSON string of information about a single variable.
+</ApiItem>
+<ApiItem href="#supportdebugdump-variable" visibility="public" name="variable" returnType="string" params={[{"type":"mixed","name":"variable","default":null},{"type":"string|null","name":"name","default":"null"}]}>
+Returns an HTML string of information about a single variable.
+</ApiItem>
+<ApiItem href="#supportdebugdump-variables" visibility="public" name="variables" returnType="string" params={[]}>
+Returns an HTML string of debugging information about any number of
+</ApiItem>
+<ApiItem href="#supportdebugdump-defaulttemplate" visibility="protected" name="defaultTemplate" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Returns the embedded default template for the given name.
+</ApiItem>
+<ApiItem href="#supportdebugdump-getstyle" visibility="protected" name="getStyle" returnType="string" params={[{"type":"string","name":"type","default":null}]}>
+Get style for type
+</ApiItem>
+<ApiItem href="#supportdebugdump-output" visibility="protected" name="output" returnType="string" params={[{"type":"mixed","name":"variable","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"int","name":"tab","default":"1"}]}>
+Prepare an HTML string of information about a single variable.
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$detailed</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;array-key, class-string&gt;</code>
-<code class="sig"><span class="sv">$methods</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$styles</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="detailed" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="methods" type="array&lt;array-key, class-string&gt;" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="styles" type="array" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 9</div>
 
 <h4 id="supportdebugdump-__construct"><code>__construct()</code></h4>
 
@@ -1821,8 +1391,6 @@ $baz = new stdClass();
 echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 ```
 
-<div class="api-group">Protected · 3</div>
-
 <h4 id="supportdebugdump-defaulttemplate"><code>defaultTemplate()</code></h4>
 
 ```php
@@ -1853,50 +1421,34 @@ Prepare an HTML string of information about a single variable.
 
 ## Support\Debug\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Exception.zep">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Debug will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - [`Phalcon\Support\Exception`](#supportexception)
 - **`Phalcon\Support\Debug\Exception`**
 - [`Phalcon\Support\Debug\Exceptions\RequestHalted`](#supportdebugexceptionsrequesthalted)
 
-</div>
-
-__Uses__ `Phalcon\Support\Exception`
+`Phalcon\Support\Exception`
 
 ## Support\Debug\Exceptions\RequestHalted
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Exceptions/RequestHalted.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Support\Exception`](#supportexception)
 - [`Phalcon\Support\Debug\Exception`](#supportdebugexception)
 - **`Phalcon\Support\Debug\Exceptions\RequestHalted`**
 
-</div>
-
-__Uses__ `Phalcon\Support\Debug\Exception`
+`Phalcon\Support\Debug\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportdebugexceptionsrequesthalted-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#supportdebugexceptionsrequesthalted-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supportdebugexceptionsrequesthalted-__construct"><code>__construct()</code></h4>
 
@@ -1906,86 +1458,48 @@ public function __construct();
 
 ## Support\Debug\Exceptions\RuntimeWarning
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Exceptions/RuntimeWarning.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\ErrorException`
 - **`Phalcon\Support\Debug\Exceptions\RuntimeWarning`**
 
-</div>
-
 ## Support\Debug\Renderer\HtmlRenderer
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Renderer/HtmlRenderer.zep">Source on GitHub</a>
+Class
 
 Renders an ExceptionReport as the HTML debug page using embedded, overridable
 template strings filled by the interpolator. All styling and interactivity
 (theme, tabs, syntax highlighting, copy/editor links) are provided by the
 external debug.css / debug.js assets.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Debug\Renderer\HtmlRenderer`** - implements [`Phalcon\Contracts\Support\Debug\Renderer`](/5.20/api/phalcon_contracts/#contractssupportdebugrenderer)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportdebugrendererhtmlrenderer-getcsssources">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getCssSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugrendererhtmlrenderer-getjssources">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getJsSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugrendererhtmlrenderer-getversion">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getVersion</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugrendererhtmlrenderer-render">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">render</span>( <span class="st">ExceptionReport</span> <span class="sv">$report</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugrendererhtmlrenderer-defaulttemplate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">defaultTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns the embedded default template for the given name.</span>
-</a>
-<a class="api-item" href="#supportdebugrendererhtmlrenderer-escapestring">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">escapeString</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
-<span class="desc">Escapes a string with htmlentities</span>
-</a>
-<a class="api-item" href="#supportdebugrendererhtmlrenderer-getarraydump">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getArrayDump</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arguments</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$number</span><span class="sm"> = 0</span></span>)</code>
-<span class="desc">Produces a recursive representation of an array</span>
-</a>
-<a class="api-item" href="#supportdebugrendererhtmlrenderer-getvardump">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getVarDump</span>( <span class="st">mixed</span> <span class="sv">$variable</span> )</code>
-<span class="desc">Produces a string representation of a variable</span>
-</a>
-</div>
+<ApiItem href="#supportdebugrendererhtmlrenderer-getcsssources" visibility="public" name="getCssSources" returnType="string" params={[{"type":"string","name":"uri","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugrendererhtmlrenderer-getjssources" visibility="public" name="getJsSources" returnType="string" params={[{"type":"string","name":"uri","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugrendererhtmlrenderer-getversion" visibility="public" name="getVersion" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugrendererhtmlrenderer-render" visibility="public" name="render" returnType="string" params={[{"type":"ExceptionReport","name":"report","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugrendererhtmlrenderer-defaulttemplate" visibility="protected" name="defaultTemplate" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Returns the embedded default template for the given name.
+</ApiItem>
+<ApiItem href="#supportdebugrendererhtmlrenderer-escapestring" visibility="protected" name="escapeString" returnType="string" params={[{"type":"string","name":"value","default":null}]}>
+Escapes a string with htmlentities
+</ApiItem>
+<ApiItem href="#supportdebugrendererhtmlrenderer-getarraydump" visibility="protected" name="getArrayDump" returnType="string|null" params={[{"type":"array","name":"arguments","default":null},{"type":"int","name":"number","default":"0"}]}>
+Produces a recursive representation of an array
+</ApiItem>
+<ApiItem href="#supportdebugrendererhtmlrenderer-getvardump" visibility="protected" name="getVarDump" returnType="string" params={[{"type":"mixed","name":"variable","default":null}]}>
+Produces a string representation of a variable
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="supportdebugrendererhtmlrenderer-getcsssources"><code>getCssSources()</code></h4>
 
@@ -2010,8 +1524,6 @@ public function getVersion(): string;
 ```php
 public function render( ExceptionReport $report ): string;
 ```
-
-<div class="api-group">Protected · 4</div>
 
 <h4 id="supportdebugrendererhtmlrenderer-defaulttemplate"><code>defaultTemplate()</code></h4>
 
@@ -2050,34 +1562,22 @@ Produces a string representation of a variable
 
 ## Support\Debug\ReportBuilder
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/ReportBuilder.zep">Source on GitHub</a>
+Class
 
 Collects the runtime data for an exception (backtrace, superglobals, included
 files, memory, variables) into an ExceptionReport. Holds no presentation
 logic.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Debug\ReportBuilder`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
+`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportdebugreportbuilder-build">
-<code class="vis vis-public">public</code>
-<code class="ret">ExceptionReport</code>
-<code class="sig"><span class="sf">build</span>(<span class="prm"><span class="st">Throwable</span> <span class="sv">$exception</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$blacklist</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$showBackTrace</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$showFiles</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$showFileFragment</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$uri</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supportdebugreportbuilder-build" visibility="public" name="build" returnType="ExceptionReport" params={[{"type":"Throwable","name":"exception","default":null},{"type":"array","name":"blacklist","default":null},{"type":"bool","name":"showBackTrace","default":null},{"type":"bool","name":"showFiles","default":null},{"type":"bool","name":"showFileFragment","default":null},{"type":"string","name":"uri","default":null},{"type":"array","name":"data","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supportdebugreportbuilder-build"><code>build()</code></h4>
 
@@ -2095,81 +1595,40 @@ array $data
 
 ## Support\Debug\Report\BacktraceItem
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Report/BacktraceItem.zep">Source on GitHub</a>
+Final
 
 Represents a single resolved frame of an exception backtrace.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Debug\Report\BacktraceItem`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Support\SupportTypes`
+`Phalcon\Contracts\Support\SupportTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportdebugreportbacktraceitem-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$functionName</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$className</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$classLink</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$functionLink</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$hasArgs</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int|null</span> <span class="sv">$line</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fragment</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#supportdebugreportbacktraceitem-getargs">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getArgs</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportbacktraceitem-getclasslink">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getClassLink</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportbacktraceitem-getclassname">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getClassName</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportbacktraceitem-getfile">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getFile</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportbacktraceitem-getfragment">
-<code class="vis vis-public">public</code>
-<code class="ret">array|null</code>
-<code class="sig"><span class="sf">getFragment</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportbacktraceitem-getfunctionlink">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getFunctionLink</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportbacktraceitem-getfunctionname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getFunctionName</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportbacktraceitem-getline">
-<code class="vis vis-public">public</code>
-<code class="ret">int|null</code>
-<code class="sig"><span class="sf">getLine</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportbacktraceitem-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportbacktraceitem-hasargs">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasArgs</span>()</code>
-</a>
-</div>
+<ApiItem href="#supportdebugreportbacktraceitem-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"functionName","default":null},{"type":"string|null","name":"type","default":"null"},{"type":"string|null","name":"className","default":"null"},{"type":"string|null","name":"classLink","default":"null"},{"type":"string|null","name":"functionLink","default":"null"},{"type":"bool","name":"hasArgs","default":"false"},{"type":"array","name":"args","default":"[]"},{"type":"string|null","name":"file","default":"null"},{"type":"int|null","name":"line","default":"null"},{"type":"mixed","name":"fragment","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportbacktraceitem-getargs" visibility="public" name="getArgs" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportbacktraceitem-getclasslink" visibility="public" name="getClassLink" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportbacktraceitem-getclassname" visibility="public" name="getClassName" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportbacktraceitem-getfile" visibility="public" name="getFile" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportbacktraceitem-getfragment" visibility="public" name="getFragment" returnType="array|null" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportbacktraceitem-getfunctionlink" visibility="public" name="getFunctionLink" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportbacktraceitem-getfunctionname" visibility="public" name="getFunctionName" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportbacktraceitem-getline" visibility="public" name="getLine" returnType="int|null" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportbacktraceitem-gettype" visibility="public" name="getType" returnType="string|null" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportbacktraceitem-hasargs" visibility="public" name="hasArgs" returnType="bool" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 11</div>
 
 <h4 id="supportdebugreportbacktraceitem-__construct"><code>__construct()</code></h4>
 
@@ -2250,137 +1709,63 @@ public function hasArgs(): bool;
 
 ## Support\Debug\Report\ExceptionReport
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Report/ExceptionReport.zep">Source on GitHub</a>
+Final
 
 Carries all data collected for an exception, ready to be rendered. Holds no
 presentation logic.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Debug\Report\ExceptionReport`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Support\SupportTypes`
+`Phalcon\Contracts\Support\SupportTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportdebugreportexceptionreport-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$line</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$showBackTrace</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$uri</span></span>)</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getbacktrace">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getBacktrace</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getclassname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getClassName</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getfile">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getFile</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getincludedfiles">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getIncludedFiles</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getline">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getLine</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getmemoryusage">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getMemoryUsage</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getMessage</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getpeakmemoryusage">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getPeakMemoryUsage</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getrequest">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getRequest</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getserver">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServer</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-geturi">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getUri</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-getvariables">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getVariables</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-hasvariables">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasVariables</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-isshowbacktrace">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isShowBackTrace</span>()</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-setbacktrace">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setBacktrace</span>( <span class="st">array</span> <span class="sv">$backtrace</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-setincludedfiles">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setIncludedFiles</span>( <span class="st">array</span> <span class="sv">$includedFiles</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-setmemoryusage">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setMemoryUsage</span>( <span class="st">int</span> <span class="sv">$memoryUsage</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-setpeakmemoryusage">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setPeakMemoryUsage</span>( <span class="st">int</span> <span class="sv">$peakMemoryUsage</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-setrequest">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setRequest</span>( <span class="st">array</span> <span class="sv">$request</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-setserver">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setServer</span>( <span class="st">array</span> <span class="sv">$server</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugreportexceptionreport-setvariables">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setVariables</span>( <span class="st">array</span> <span class="sv">$variables</span> )</code>
-</a>
-</div>
+<ApiItem href="#supportdebugreportexceptionreport-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"message","default":null},{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null},{"type":"bool","name":"showBackTrace","default":null},{"type":"string","name":"uri","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getbacktrace" visibility="public" name="getBacktrace" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getclassname" visibility="public" name="getClassName" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getfile" visibility="public" name="getFile" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getincludedfiles" visibility="public" name="getIncludedFiles" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getline" visibility="public" name="getLine" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getmemoryusage" visibility="public" name="getMemoryUsage" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getmessage" visibility="public" name="getMessage" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getpeakmemoryusage" visibility="public" name="getPeakMemoryUsage" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getrequest" visibility="public" name="getRequest" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getserver" visibility="public" name="getServer" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-geturi" visibility="public" name="getUri" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getvariables" visibility="public" name="getVariables" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-hasvariables" visibility="public" name="hasVariables" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-isshowbacktrace" visibility="public" name="isShowBackTrace" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-setbacktrace" visibility="public" name="setBacktrace" returnType="static" params={[{"type":"array","name":"backtrace","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-setincludedfiles" visibility="public" name="setIncludedFiles" returnType="static" params={[{"type":"array","name":"includedFiles","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-setmemoryusage" visibility="public" name="setMemoryUsage" returnType="static" params={[{"type":"int","name":"memoryUsage","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-setpeakmemoryusage" visibility="public" name="setPeakMemoryUsage" returnType="static" params={[{"type":"int","name":"peakMemoryUsage","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-setrequest" visibility="public" name="setRequest" returnType="static" params={[{"type":"array","name":"request","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-setserver" visibility="public" name="setServer" returnType="static" params={[{"type":"array","name":"server","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-setvariables" visibility="public" name="setVariables" returnType="static" params={[{"type":"array","name":"variables","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 22</div>
 
 <h4 id="supportdebugreportexceptionreport-__construct"><code>__construct()</code></h4>
 
@@ -2523,8 +1908,7 @@ public function setVariables( array $variables ): static;
 
 ## Support\Debug\Traits\TemplateAwareTrait
 
-<span class="badge badge--trait">Trait</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Traits/TemplateAwareTrait.zep">Source on GitHub</a>
+Trait
 
 Shared store for named, overridable template strings. A using class supplies
 the embedded defaults via defaultTemplate().
@@ -2532,48 +1916,26 @@ the embedded defaults via defaultTemplate().
 Note: this trait has no Zephir equivalent; the cphalcon mirror duplicates
 these members in each class until Zephir supports traits.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Debug\Traits\TemplateAwareTrait`**
 
-</div>
-
-__Used by__ [`Phalcon\Support\Debug\Dump`](#supportdebugdump) · [`Phalcon\Support\Debug\Renderer\HtmlRenderer`](#supportdebugrendererhtmlrenderer)
+[`Phalcon\Support\Debug\Dump`](#supportdebugdump) · [`Phalcon\Support\Debug\Renderer\HtmlRenderer`](#supportdebugrendererhtmlrenderer)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportdebugtraitstemplateawaretrait-gettemplate">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#supportdebugtraitstemplateawaretrait-settemplate">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setTemplate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$template</span></span>)</code>
-</a>
-<a class="api-item" href="#supportdebugtraitstemplateawaretrait-defaulttemplate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">defaultTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns the embedded default template for the given name.</span>
-</a>
-</div>
+<ApiItem href="#supportdebugtraitstemplateawaretrait-gettemplate" visibility="public" name="getTemplate" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugtraitstemplateawaretrait-settemplate" visibility="public" name="setTemplate" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"template","default":null}]}>
+</ApiItem>
+<ApiItem href="#supportdebugtraitstemplateawaretrait-defaulttemplate" visibility="protected" name="defaultTemplate" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Returns the embedded default template for the given name.
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$templates</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="templates" type="array" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="supportdebugtraitstemplateawaretrait-gettemplate"><code>getTemplate()</code></h4>
 
@@ -2590,8 +1952,6 @@ string $template
 ): static;
 ```
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="supportdebugtraitstemplateawaretrait-defaulttemplate"><code>defaultTemplate()</code></h4>
 
 ```php
@@ -2602,12 +1962,9 @@ Returns the embedded default template for the given name.
 
 ## Support\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Exception.zep">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Support will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Support\Exception`**
@@ -2615,12 +1972,9 @@ Exceptions thrown in Phalcon\Support will use this class
 - [`Phalcon\Support\Debug\Exception`](#supportdebugexception)
 - [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
 
-</div>
-
 ## Support\HelperFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/HelperFactory.zep">Source on GitHub</a>
+Class
 
 ServiceLocator implementation for helpers
 
@@ -2684,48 +2038,28 @@ ServiceLocator implementation for helpers
 @method string upper(string $text, string $encoding = 'UTF-8')
 @method support_collection whitelist(support_collection $collection, support_collection $whiteList)
 
-<div class="api-tree">
-
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.20/api/phalcon_factory/#factoryabstractconfigfactory)
 - [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Support\HelperFactory`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper` · `Throwable`
+`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperfactory-__call">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
-</a>
-<a class="api-item" href="#supporthelperfactory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor.</span>
-</a>
-<a class="api-item" href="#supporthelperfactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#supporthelperfactory-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#supporthelperfactory-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Returns the available adapters</span>
-</a>
-</div>
+<ApiItem href="#supporthelperfactory-__call" visibility="public" name="__call" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"arguments","default":null}]}>
+</ApiItem>
+<ApiItem href="#supporthelperfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
+Constructor.
+</ApiItem>
+<ApiItem href="#supporthelperfactory-newinstance" visibility="public" name="newInstance" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#supporthelperfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#supporthelperfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the available adapters
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="supporthelperfactory-__call"><code>__call()</code></h4>
 
@@ -2750,8 +2084,6 @@ Constructor.
 public function newInstance( string $name );
 ```
 
-<div class="api-group">Protected · 2</div>
-
 <h4 id="supporthelperfactory-getexceptionclass"><code>getExceptionClass()</code></h4>
 
 ```php
@@ -2768,16 +2100,13 @@ Returns the available adapters
 
 ## Support\Helper\Arr\AbstractArr
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/AbstractArr.zep">Source on GitHub</a>
+Abstract
 
 @internal
 
 @todo Remove in v7. Kept only for backwards compatibility; compose
 Phalcon\Traits\Support\Helper\Arr\FilterTrait directly instead of extending
 this.
-
-<div class="api-tree">
 
 - **`Phalcon\Support\Helper\Arr\AbstractArr`**
 - [`Phalcon\Support\Helper\Arr\Blacklist`](#supporthelperarrblacklist)
@@ -2790,38 +2119,24 @@ this.
 - [`Phalcon\Support\Helper\Arr\ValidateAny`](#supporthelperarrvalidateany)
 - [`Phalcon\Support\Helper\Arr\Whitelist`](#supporthelperarrwhitelist)
 
-</div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
+`Phalcon\Traits\Support\Helper\Arr\FilterTrait`
 
 ## Support\Helper\Arr\Blacklist
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Blacklist.zep">Source on GitHub</a>
+Class
 
 Black list filter by key: exclude elements of an array
 by the keys obtained from the elements of a blacklist
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
 - **`Phalcon\Support\Helper\Arr\Blacklist`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrblacklist-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$blackList</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrblacklist-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"array","name":"blackList","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrblacklist-__invoke"><code>__invoke()</code></h4>
 
@@ -2834,30 +2149,18 @@ array $blackList
 
 ## Support\Helper\Arr\Chunk
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Chunk.zep">Source on GitHub</a>
+Class
 
 Chunks an array into smaller arrays of a specified size.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\Chunk`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrchunk-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$preserveKeys</span><span class="sm"> = false</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrchunk-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"int","name":"size","default":null},{"type":"bool","name":"preserveKeys","default":"false"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrchunk-__invoke"><code>__invoke()</code></h4>
 
@@ -2871,32 +2174,20 @@ bool $preserveKeys = false
 
 ## Support\Helper\Arr\Filter
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Filter.zep">Source on GitHub</a>
+Class
 
 Filters an array using array_filter. If a callback is supplied, it will be
 used.
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
 - **`Phalcon\Support\Helper\Arr\Filter`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrfilter-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrfilter-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrfilter-__invoke"><code>__invoke()</code></h4>
 
@@ -2909,32 +2200,20 @@ mixed $method = null
 
 ## Support\Helper\Arr\First
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/First.zep">Source on GitHub</a>
+Class
 
 Returns the first element of the collection. If a callable is passed, the
 element returned is the first that validates true
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
 - **`Phalcon\Support\Helper\Arr\First`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrfirst-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrfirst-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrfirst-__invoke"><code>__invoke()</code></h4>
 
@@ -2947,32 +2226,20 @@ mixed $method = null
 
 ## Support\Helper\Arr\FirstKey
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/FirstKey.zep">Source on GitHub</a>
+Class
 
 Returns the key of the first element of the collection. If a callable
 is passed, the element returned is the first that validates true
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
 - **`Phalcon\Support\Helper\Arr\FirstKey`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrfirstkey-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrfirstkey-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrfirstkey-__invoke"><code>__invoke()</code></h4>
 
@@ -2985,31 +2252,19 @@ mixed $method = null
 
 ## Support\Helper\Arr\Flatten
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Flatten.zep">Source on GitHub</a>
+Class
 
 Flattens an array up to the one level depth, unless `$deep` is set to
 `true`
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\Flatten`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrflatten-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$deep</span><span class="sm"> = false</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrflatten-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"bool","name":"deep","default":"false"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrflatten-__invoke"><code>__invoke()</code></h4>
 
@@ -3022,34 +2277,22 @@ bool $deep = false
 
 ## Support\Helper\Arr\Get
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Get.zep">Source on GitHub</a>
+Class
 
 Gets an array element by key and if it does not exist returns the default.
 It also allows for casting the returned value to a specific type using
 `settype` internally
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\Get`**
 
-</div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+`Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrget-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrget-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"index","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrget-__invoke"><code>__invoke()</code></h4>
 
@@ -3064,32 +2307,20 @@ string|null $cast = null
 
 ## Support\Helper\Arr\Group
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Group.zep">Source on GitHub</a>
+Class
 
 Groups the elements of an array based on the passed callable
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\Group`**
 
-</div>
-
-__Uses__ `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrgroup-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrgroup-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrgroup-__invoke"><code>__invoke()</code></h4>
 
@@ -3102,31 +2333,19 @@ mixed $method
 
 ## Support\Helper\Arr\Has
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Has.zep">Source on GitHub</a>
+Class
 
 Checks an array if it has an element with a specific key and returns
 `true`/`false` accordingly
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\Has`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrhas-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrhas-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"index","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrhas-__invoke"><code>__invoke()</code></h4>
 
@@ -3139,33 +2358,21 @@ mixed $index
 
 ## Support\Helper\Arr\IsUnique
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/IsUnique.zep">Source on GitHub</a>
+Class
 
 Checks a flat list for duplicate values. Returns true if duplicate
 values exist and false if values are all unique.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\IsUnique`**
 
-</div>
-
-__Uses__ `Stringable`
+`Stringable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrisunique-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">array</span> <span class="sv">$collection</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrisunique-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrisunique-__invoke"><code>__invoke()</code></h4>
 
@@ -3175,32 +2382,20 @@ public function __invoke( array $collection ): bool;
 
 ## Support\Helper\Arr\Last
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Last.zep">Source on GitHub</a>
+Class
 
 Returns the last element of the collection. If a callable is passed, the
 element returned is the first that validates true
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
 - **`Phalcon\Support\Helper\Arr\Last`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrlast-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrlast-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrlast-__invoke"><code>__invoke()</code></h4>
 
@@ -3213,32 +2408,20 @@ mixed $method = null
 
 ## Support\Helper\Arr\LastKey
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/LastKey.zep">Source on GitHub</a>
+Class
 
 Returns the key of the last element of the collection. If a callable is
 passed, the element returned is the first that validates true
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
 - **`Phalcon\Support\Helper\Arr\LastKey`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrlastkey-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrlastkey-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrlastkey-__invoke"><code>__invoke()</code></h4>
 
@@ -3251,45 +2434,27 @@ mixed $method = null
 
 ## Support\Helper\Arr\Order
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Order.zep">Source on GitHub</a>
+Class
 
 Sorts a collection of arrays or objects by an attribute of the object. It
 supports ascending/descending sorts but also flags that are identical to
 the ones used by `ksort` and `krsort`
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\Order`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrorder-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$order</span><span class="sm"> = self::ORDER_ASC</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = 0</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrorder-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"attribute","default":null},{"type":"int","name":"order","default":"self::ORDER_ASC"},{"type":"int","name":"flags","default":"0"}]}>
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">ORDER_ASC</span><span class="sm"> = 1</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">ORDER_DESC</span><span class="sm"> = 2</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="ORDER_ASC" type="int" default="1">
+</ApiItem>
+<ApiItem kind="constant" name="ORDER_DESC" type="int" default="2">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrorder-__invoke"><code>__invoke()</code></h4>
 
@@ -3304,30 +2469,18 @@ int $flags = 0
 
 ## Support\Helper\Arr\Pluck
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Pluck.zep">Source on GitHub</a>
+Class
 
 Returns a subset of the collection based on the values of the collection
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\Pluck`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrpluck-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$element</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrpluck-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"string","name":"element","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrpluck-__invoke"><code>__invoke()</code></h4>
 
@@ -3340,30 +2493,18 @@ string $element
 
 ## Support\Helper\Arr\Set
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Set.zep">Source on GitHub</a>
+Class
 
 Sets an array element. Using a key is optional
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\Set`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrset-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrset-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"index","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrset-__invoke"><code>__invoke()</code></h4>
 
@@ -3377,30 +2518,18 @@ mixed $index = null
 
 ## Support\Helper\Arr\SliceLeft
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/SliceLeft.zep">Source on GitHub</a>
+Class
 
 Returns a new array with n elements removed from the left.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\SliceLeft`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrsliceleft-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$elements</span><span class="sm"> = 1</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrsliceleft-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"int","name":"elements","default":"1"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrsliceleft-__invoke"><code>__invoke()</code></h4>
 
@@ -3413,30 +2542,18 @@ int $elements = 1
 
 ## Support\Helper\Arr\SliceRight
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/SliceRight.zep">Source on GitHub</a>
+Class
 
 Returns a new array with n elements removed from the right.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\SliceRight`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrsliceright-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$elements</span><span class="sm"> = 1</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrsliceright-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"int","name":"elements","default":"1"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrsliceright-__invoke"><code>__invoke()</code></h4>
 
@@ -3449,31 +2566,19 @@ int $elements = 1
 
 ## Support\Helper\Arr\Split
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Split.zep">Source on GitHub</a>
+Class
 
 Returns a new array with keys of the collection as one element and values
 as another
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\Split`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrsplit-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">array</span> <span class="sv">$collection</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrsplit-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrsplit-__invoke"><code>__invoke()</code></h4>
 
@@ -3483,30 +2588,18 @@ public function __invoke( array $collection ): array;
 
 ## Support\Helper\Arr\ToObject
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/ToObject.zep">Source on GitHub</a>
+Class
 
 Returns the passed array as an object.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Arr\ToObject`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrtoobject-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">object</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">array</span> <span class="sv">$collection</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrtoobject-__invoke" visibility="public" name="__invoke" returnType="object" params={[{"type":"array","name":"collection","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrtoobject-__invoke"><code>__invoke()</code></h4>
 
@@ -3516,32 +2609,20 @@ public function __invoke( array $collection ): object;
 
 ## Support\Helper\Arr\ValidateAll
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/ValidateAll.zep">Source on GitHub</a>
+Class
 
 Returns `true` if the provided function returns `true` for all elements of
 the collection, `false` otherwise.
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
 - **`Phalcon\Support\Helper\Arr\ValidateAll`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrvalidateall-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrvalidateall-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrvalidateall-__invoke"><code>__invoke()</code></h4>
 
@@ -3554,32 +2635,20 @@ mixed $method
 
 ## Support\Helper\Arr\ValidateAny
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/ValidateAny.zep">Source on GitHub</a>
+Class
 
 Returns `true` if the provided function returns `true` for at least one
 element of the collection, `false` otherwise.
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
 - **`Phalcon\Support\Helper\Arr\ValidateAny`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrvalidateany-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrvalidateany-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrvalidateany-__invoke"><code>__invoke()</code></h4>
 
@@ -3592,32 +2661,20 @@ mixed $method
 
 ## Support\Helper\Arr\Whitelist
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/Whitelist.zep">Source on GitHub</a>
+Class
 
 White list filter by key: obtain elements of an array filtering by the keys
 obtained from the elements of a whitelist
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
 - **`Phalcon\Support\Helper\Arr\Whitelist`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrwhitelist-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whiteList</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperarrwhitelist-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"array","name":"whiteList","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperarrwhitelist-__invoke"><code>__invoke()</code></h4>
 
@@ -3630,12 +2687,9 @@ array $whiteList
 
 ## Support\Helper\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Exception.zep">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Support\Helper will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - [`Phalcon\Support\Exception`](#supportexception)
@@ -3643,39 +2697,25 @@ Exceptions thrown in Phalcon\Support\Helper will use this class
 - [`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`](#supporthelperstrexceptionsinsufficientarguments)
 - [`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`](#supporthelperstrexceptionsinvalidreplaceformat)
 
-</div>
-
-__Uses__ `Phalcon\Support\Exception`
+`Phalcon\Support\Exception`
 
 ## Support\Helper\File\Basename
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/File/Basename.zep">Source on GitHub</a>
+Class
 
 Gets the filename from a given path, Same as PHP's `basename()` but has
 non-ASCII support. PHP's `basename()` does not properly support streams or
 filenames beginning with a non-US-ASCII character.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\File\Basename`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperfilebasename-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$uri</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$suffix</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">@see https://bugs.php.net/bug.php?id=37738</span>
-</a>
-</div>
+<ApiItem href="#supporthelperfilebasename-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"uri","default":null},{"type":"string|null","name":"suffix","default":"null"}]}>
+@see https://bugs.php.net/bug.php?id=37738
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperfilebasename-__invoke"><code>__invoke()</code></h4>
 
@@ -3690,8 +2730,7 @@ string|null $suffix = null
 
 ## Support\Helper\Json\Decode
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Json/Decode.zep">Source on GitHub</a>
+Class
 
 Decodes a string using `json_decode` and throws an exception if the
 JSON data cannot be decoded
@@ -3705,26 +2744,16 @@ If JSON_THROW_ON_ERROR is defined in the options a JsonException will be
 thrown in the case of an error. Otherwise, any error will throw
 JsonDecodeError
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Json\Decode`**
 
-</div>
-
-__Uses__ `JsonException` · `Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError` · `Phalcon\Traits\Support\Helper\Json\DecodeTrait`
+`JsonException` · `Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError` · `Phalcon\Traits\Support\Helper\Json\DecodeTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperjsondecode-__invoke">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$associative</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$depth</span><span class="sm"> = 512</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$options</span><span class="sm"> = 79</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperjsondecode-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"data","default":null},{"type":"bool","name":"associative","default":"false"},{"type":"int","name":"depth","default":"512"},{"type":"int","name":"options","default":"79"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperjsondecode-__invoke"><code>__invoke()</code></h4>
 
@@ -3739,8 +2768,7 @@ int $options = 79
 
 ## Support\Helper\Json\Encode
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Json/Encode.zep">Source on GitHub</a>
+Class
 
 Encodes a string using `json_encode` and throws an exception if the
 JSON data cannot be encoded
@@ -3756,27 +2784,16 @@ JsonEncodeError
 
 @see  https://www.ietf.org/rfc/rfc4627.txt
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Json\Encode`**
 
-</div>
-
-__Uses__ `JsonException` · `Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError` · `Phalcon\Traits\Support\Helper\Json\EncodeTrait`
+`JsonException` · `Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError` · `Phalcon\Traits\Support\Helper\Json\EncodeTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperjsonencode-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$options</span><span class="sm"> = 79</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$depth</span><span class="sm"> = 512</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperjsonencode-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"mixed","name":"data","default":null},{"type":"int","name":"options","default":"79"},{"type":"int","name":"depth","default":"512"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperjsonencode-__invoke"><code>__invoke()</code></h4>
 
@@ -3790,30 +2807,19 @@ int $depth = 512
 
 ## Support\Helper\Json\Exceptions\JsonDecodeError
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Json/Exceptions/JsonDecodeError.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\InvalidArgumentException`
 - **`Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError`**
 
-</div>
-
-__Uses__ `InvalidArgumentException` · `Throwable`
+`InvalidArgumentException` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperjsonexceptionsjsondecodeerror-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">Throwable|null</span> <span class="sv">$previous</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperjsonexceptionsjsondecodeerror-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":"\"\""},{"type":"int","name":"code","default":"0"},{"type":"Throwable|null","name":"previous","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperjsonexceptionsjsondecodeerror-__construct"><code>__construct()</code></h4>
 
@@ -3827,30 +2833,19 @@ Throwable|null $previous = null
 
 ## Support\Helper\Json\Exceptions\JsonEncodeError
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Json/Exceptions/JsonEncodeError.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\InvalidArgumentException`
 - **`Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError`**
 
-</div>
-
-__Uses__ `InvalidArgumentException` · `Throwable`
+`InvalidArgumentException` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperjsonexceptionsjsonencodeerror-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">Throwable|null</span> <span class="sv">$previous</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperjsonexceptionsjsonencodeerror-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":"\"\""},{"type":"int","name":"code","default":"0"},{"type":"Throwable|null","name":"previous","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperjsonexceptionsjsonencodeerror-__construct"><code>__construct()</code></h4>
 
@@ -3864,30 +2859,18 @@ Throwable|null $previous = null
 
 ## Support\Helper\Number\IsBetween
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Number/IsBetween.zep">Source on GitHub</a>
+Class
 
 Checks if a number is within a range
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Number\IsBetween`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelpernumberisbetween-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">int</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$start</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$end</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelpernumberisbetween-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"int","name":"value","default":null},{"type":"int","name":"start","default":null},{"type":"int","name":"end","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelpernumberisbetween-__invoke"><code>__invoke()</code></h4>
 
@@ -3901,8 +2884,7 @@ int $end
 
 ## Support\Helper\Str\AbstractStr
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/AbstractStr.zep">Source on GitHub</a>
+Abstract
 
 Abstract class offering methods to help with the Str namespace.
 
@@ -3911,8 +2893,6 @@ Abstract class offering methods to help with the Str namespace.
 @todo Remove in v7. Kept only for backwards compatibility; compose the
       individual Phalcon\Traits\Support\Helper\Str\* traits directly instead
       of extending this.
-
-<div class="api-tree">
 
 - **`Phalcon\Support\Helper\Str\AbstractStr`**
 - [`Phalcon\Support\Helper\Str\Concat`](#supporthelperstrconcat)
@@ -3925,38 +2905,24 @@ Abstract class offering methods to help with the Str namespace.
 - [`Phalcon\Support\Helper\Str\StartsWith`](#supporthelperstrstartswith)
 - [`Phalcon\Support\Helper\Str\Upper`](#supporthelperstrupper)
 
-</div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Phalcon\Traits\Support\Helper\Str\LowerTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait` · `Phalcon\Traits\Support\Helper\Str\UpperTrait`
+`Phalcon\Traits\Support\Helper\Str\EndsWithTrait` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Phalcon\Traits\Support\Helper\Str\LowerTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait` · `Phalcon\Traits\Support\Helper\Str\UpperTrait`
 
 ## Support\Helper\Str\Camelize
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Camelize.zep">Source on GitHub</a>
+Class
 
 Converts strings to upperCamelCase or lowerCamelCase
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Camelize`**
 
-</div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
+`Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrcamelize-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowerFirst</span><span class="sm"> = false</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrcamelize-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"delimiters","default":"null"},{"type":"bool","name":"lowerFirst","default":"false"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrcamelize-__invoke"><code>__invoke()</code></h4>
 
@@ -3970,34 +2936,22 @@ bool $lowerFirst = false
 
 ## Support\Helper\Str\Concat
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Concat.zep">Source on GitHub</a>
+Class
 
 Concatenates strings using the separator only once without duplication in
 places concatenation
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
 - **`Phalcon\Support\Helper\Str\Concat`**
 
-</div>
-
-__Uses__ `Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`
+`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrconcat-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$many</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrconcat-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"delimiter","default":null},{"type":"string","name":"many","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrconcat-__invoke"><code>__invoke()</code></h4>
 
@@ -4010,31 +2964,19 @@ string $many
 
 ## Support\Helper\Str\CountVowels
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/CountVowels.zep">Source on GitHub</a>
+Class
 
 Returns number of vowels in provided string. Uses a regular expression
 to count the number of vowels (A, E, I, O, U) in a string.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\CountVowels`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrcountvowels-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrcountvowels-__invoke" visibility="public" name="__invoke" returnType="int" params={[{"type":"string","name":"text","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrcountvowels-__invoke"><code>__invoke()</code></h4>
 
@@ -4044,33 +2986,21 @@ public function __invoke( string $text ): int;
 
 ## Support\Helper\Str\Decapitalize
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Decapitalize.zep">Source on GitHub</a>
+Class
 
 Decapitalizes the first letter of the string and then adds it with rest
 of the string. Omit the upperRest parameter to keep the rest of the
 string intact, or set it to true to convert to uppercase.
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
 - **`Phalcon\Support\Helper\Str\Decapitalize`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrdecapitalize-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$upperRest</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrdecapitalize-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"bool","name":"upperRest","default":"false"},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrdecapitalize-__invoke"><code>__invoke()</code></h4>
 
@@ -4084,31 +3014,19 @@ string $encoding = "UTF-8"
 
 ## Support\Helper\Str\Decrement
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Decrement.zep">Source on GitHub</a>
+Class
 
 Removes a number from the end of a string or decrements that number if it
 is already defined
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Decrement`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrdecrement-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;_&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrdecrement-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"_\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrdecrement-__invoke"><code>__invoke()</code></h4>
 
@@ -4121,33 +3039,21 @@ string $separator = "_"
 
 ## Support\Helper\Str\DirFromFile
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/DirFromFile.zep">Source on GitHub</a>
+Class
 
 Accepts a file name (without extension) and returns a calculated
 directory structure with the filename in the end
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\DirFromFile`**
 
-</div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait`
+`Phalcon\Traits\Support\Helper\Str\DirFromFileTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrdirfromfile-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$file</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrdirfromfile-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"file","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrdirfromfile-__invoke"><code>__invoke()</code></h4>
 
@@ -4157,33 +3063,21 @@ public function __invoke( string $file ): string;
 
 ## Support\Helper\Str\DirSeparator
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/DirSeparator.zep">Source on GitHub</a>
+Class
 
 Accepts a directory name and ensures that it ends with
 DIRECTORY_SEPARATOR
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\DirSeparator`**
 
-</div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+`Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrdirseparator-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$directory</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrdirseparator-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"directory","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrdirseparator-__invoke"><code>__invoke()</code></h4>
 
@@ -4193,34 +3087,22 @@ public function __invoke( string $directory ): string;
 
 ## Support\Helper\Str\Dynamic
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Dynamic.zep">Source on GitHub</a>
+Class
 
 Generates random text in accordance with the template. The template is
 defined by the left and right delimiter and it can contain values separated
 by the separator
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Dynamic`**
 
-</div>
-
-__Uses__ `Phalcon\Support\Helper\Str\Exceptions\SyntaxError`
+`Phalcon\Support\Helper\Str\Exceptions\SyntaxError`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrdynamic-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$leftDelimiter</span><span class="sm"> = &quot;\{&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$rightDelimiter</span><span class="sm"> = &quot;\}&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;|&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrdynamic-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"leftDelimiter","default":"\"{\""},{"type":"string","name":"rightDelimiter","default":"\"}\""},{"type":"string","name":"separator","default":"\"|\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrdynamic-__invoke"><code>__invoke()</code></h4>
 
@@ -4235,31 +3117,19 @@ string $separator = "|"
 
 ## Support\Helper\Str\EndsWith
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/EndsWith.zep">Source on GitHub</a>
+Class
 
 Check if a string ends with a given string
-
-<div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
 - **`Phalcon\Support\Helper\Str\EndsWith`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrendswith-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$haystack</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ignoreCase</span><span class="sm"> = true</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrendswith-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"haystack","default":null},{"type":"string","name":"needle","default":null},{"type":"bool","name":"ignoreCase","default":"true"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrendswith-__invoke"><code>__invoke()</code></h4>
 
@@ -4273,62 +3143,41 @@ bool $ignoreCase = true
 
 ## Support\Helper\Str\Exceptions\InsufficientArguments
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Exceptions/InsufficientArguments.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Support\Exception`](#supportexception)
 - [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
 - **`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`**
 
-</div>
-
-__Uses__ `Phalcon\Support\Helper\Exception`
+`Phalcon\Support\Helper\Exception`
 
 ## Support\Helper\Str\Exceptions\InvalidReplaceFormat
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Exceptions/InvalidReplaceFormat.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Support\Exception`](#supportexception)
 - [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
 - **`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`**
 
-</div>
-
-__Uses__ `Phalcon\Support\Helper\Exception`
+`Phalcon\Support\Helper\Exception`
 
 ## Support\Helper\Str\Exceptions\SyntaxError
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Exceptions/SyntaxError.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\RuntimeException`
 - **`Phalcon\Support\Helper\Str\Exceptions\SyntaxError`**
 
-</div>
-
-__Uses__ `RuntimeException`
+`RuntimeException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrexceptionssyntaxerror-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrexceptionssyntaxerror-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"text","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrexceptionssyntaxerror-__construct"><code>__construct()</code></h4>
 
@@ -4338,31 +3187,19 @@ public function __construct( string $text );
 
 ## Support\Helper\Str\FirstBetween
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/FirstBetween.zep">Source on GitHub</a>
+Class
 
 Returns the first string there is between the strings from the
 parameter start and end.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\FirstBetween`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrfirstbetween-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$start</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$end</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrfirstbetween-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"start","default":null},{"type":"string","name":"end","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrfirstbetween-__invoke"><code>__invoke()</code></h4>
 
@@ -4376,35 +3213,23 @@ string $end
 
 ## Support\Helper\Str\Friendly
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Friendly.zep">Source on GitHub</a>
+Class
 
 Changes a text to a URL friendly one. Replaces commonly known accented
 characters with their Latin equivalents. If a `replace` string or array
 is passed, it will also be used to replace those characters with a space.
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
 - **`Phalcon\Support\Helper\Str\Friendly`**
 
-</div>
-
-__Uses__ `Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`
+`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrfriendly-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;-&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowercase</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$replace</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrfriendly-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"-\""},{"type":"bool","name":"lowercase","default":"true"},{"type":"mixed","name":"replace","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrfriendly-__invoke"><code>__invoke()</code></h4>
 
@@ -4419,30 +3244,18 @@ mixed $replace = null
 
 ## Support\Helper\Str\Humanize
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Humanize.zep">Source on GitHub</a>
+Class
 
 Makes an underscored or dashed text human-readable
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Humanize`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrhumanize-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrhumanize-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrhumanize-__invoke"><code>__invoke()</code></h4>
 
@@ -4452,30 +3265,18 @@ public function __invoke( string $text ): string;
 
 ## Support\Helper\Str\Includes
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Includes.zep">Source on GitHub</a>
+Class
 
 Determines whether a string includes another string or not.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Includes`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrincludes-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$haystack</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$needle</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrincludes-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"haystack","default":null},{"type":"string","name":"needle","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrincludes-__invoke"><code>__invoke()</code></h4>
 
@@ -4488,31 +3289,19 @@ string $needle
 
 ## Support\Helper\Str\Increment
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Increment.zep">Source on GitHub</a>
+Class
 
 Adds a number to the end of a string or increments that number if it
 is already defined
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Increment`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrincrement-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;_&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrincrement-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"_\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrincrement-__invoke"><code>__invoke()</code></h4>
 
@@ -4525,35 +3314,23 @@ string $separator = "_"
 
 ## Support\Helper\Str\Interpolate
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Interpolate.zep">Source on GitHub</a>
+Class
 
 Interpolates context values into the message placeholders. By default, the
 right and left tokens are `%`
 
 @see https://www.php-fig.org/psr/psr-3/ Section 1.2 Message
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Interpolate`**
 
-</div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+`Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrinterpolate-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$leftToken</span><span class="sm"> = &quot;%&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$rightToken</span><span class="sm"> = &quot;%&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrinterpolate-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"},{"type":"string","name":"leftToken","default":"\"%\""},{"type":"string","name":"rightToken","default":"\"%\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrinterpolate-__invoke"><code>__invoke()</code></h4>
 
@@ -4568,31 +3345,19 @@ string $rightToken = "%"
 
 ## Support\Helper\Str\IsAnagram
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/IsAnagram.zep">Source on GitHub</a>
+Class
 
 Compare two strings and returns `true` if both strings are anagram,
 `false` otherwise.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\IsAnagram`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrisanagram-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$first</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$second</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrisanagram-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"first","default":null},{"type":"string","name":"second","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrisanagram-__invoke"><code>__invoke()</code></h4>
 
@@ -4605,31 +3370,19 @@ string $second
 
 ## Support\Helper\Str\IsLower
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/IsLower.zep">Source on GitHub</a>
+Class
 
 Returns `true` if the given string is in lower case, `false` otherwise.
-
-<div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
 - **`Phalcon\Support\Helper\Str\IsLower`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrislower-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrislower-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrislower-__invoke"><code>__invoke()</code></h4>
 
@@ -4642,30 +3395,18 @@ string $encoding = "UTF-8"
 
 ## Support\Helper\Str\IsPalindrome
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/IsPalindrome.zep">Source on GitHub</a>
+Class
 
 Returns `true` if the given string is a palindrome, `false` otherwise.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\IsPalindrome`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrispalindrome-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrispalindrome-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"text","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrispalindrome-__invoke"><code>__invoke()</code></h4>
 
@@ -4675,31 +3416,19 @@ public function __invoke( string $text ): bool;
 
 ## Support\Helper\Str\IsUpper
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/IsUpper.zep">Source on GitHub</a>
+Class
 
 Returns `true` if the given string is in upper case, `false` otherwise.
-
-<div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
 - **`Phalcon\Support\Helper\Str\IsUpper`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrisupper-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrisupper-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrisupper-__invoke"><code>__invoke()</code></h4>
 
@@ -4712,31 +3441,19 @@ string $encoding = "UTF-8"
 
 ## Support\Helper\Str\KebabCase
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/KebabCase.zep">Source on GitHub</a>
+Class
 
 Converts strings to kebab-case style
-
-<div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\PascalCase`](#supporthelperstrpascalcase)
 - **`Phalcon\Support\Helper\Str\KebabCase`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrkebabcase-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiters</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrkebabcase-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"delimiters","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrkebabcase-__invoke"><code>__invoke()</code></h4>
 
@@ -4749,30 +3466,18 @@ string|null $delimiters = null
 
 ## Support\Helper\Str\Len
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Len.zep">Source on GitHub</a>
+Class
 
 Calculates the length of the string using `mb_strlen`
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Len`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrlen-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrlen-__invoke" visibility="public" name="__invoke" returnType="int" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrlen-__invoke"><code>__invoke()</code></h4>
 
@@ -4785,31 +3490,19 @@ string $encoding = "UTF-8"
 
 ## Support\Helper\Str\Lower
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Lower.zep">Source on GitHub</a>
+Class
 
 Converts a string to lowercase using mbstring
-
-<div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
 - **`Phalcon\Support\Helper\Str\Lower`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrlower-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrlower-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrlower-__invoke"><code>__invoke()</code></h4>
 
@@ -4822,37 +3515,22 @@ string $encoding = "UTF-8"
 
 ## Support\Helper\Str\PascalCase
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/PascalCase.zep">Source on GitHub</a>
+Class
 
 Converts strings to PascalCase style
-
-<div class="api-tree">
 
 - **`Phalcon\Support\Helper\Str\PascalCase`**
 - [`Phalcon\Support\Helper\Str\KebabCase`](#supporthelperstrkebabcase)
 - [`Phalcon\Support\Helper\Str\SnakeCase`](#supporthelperstrsnakecase)
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrpascalcase-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiters</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#supporthelperstrpascalcase-processarray">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">processArray</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiters</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrpascalcase-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"delimiters","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#supporthelperstrpascalcase-processarray" visibility="protected" name="processArray" returnType="array" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"delimiters","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrpascalcase-__invoke"><code>__invoke()</code></h4>
 
@@ -4862,8 +3540,6 @@ string $text,
 string|null $delimiters = null
 ): string;
 ```
-
-<div class="api-group">Protected · 1</div>
 
 <h4 id="supporthelperstrpascalcase-processarray"><code>processArray()</code></h4>
 
@@ -4876,33 +3552,21 @@ string|null $delimiters = null
 
 ## Support\Helper\Str\Prefix
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Prefix.zep">Source on GitHub</a>
+Class
 
 Prefixes the text with the supplied prefix
 @todo v7 make text string
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Prefix`**
 
-</div>
-
-__Uses__ `Stringable`
+`Stringable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrprefix-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrprefix-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"mixed","name":"text","default":null},{"type":"string","name":"prefix","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrprefix-__invoke"><code>__invoke()</code></h4>
 
@@ -4915,66 +3579,41 @@ string $prefix
 
 ## Support\Helper\Str\Random
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Random.zep">Source on GitHub</a>
+Class
 
 Generates a random string based on the given type. Type is one of the
 RANDOM_* constants
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Random`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrrandom-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = self::RANDOM_ALNUM</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$length</span><span class="sm"> = 8</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrrandom-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"int","name":"type","default":"self::RANDOM_ALNUM"},{"type":"int","name":"length","default":"8"}]}>
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">RANDOM_ALNUM</span><span class="sm"> = 0</span></code>
-<span class="desc">Only alphanumeric characters [a-zA-Z0-9]</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">RANDOM_ALPHA</span><span class="sm"> = 1</span></code>
-<span class="desc">Only alphabetical characters [azAZ]</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">RANDOM_DISTINCT</span><span class="sm"> = 5</span></code>
-<span class="desc">Only alphanumeric uppercase characters exclude similar characters [2345679ACDEFHJKLMNPRSTUVWXYZ]</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">RANDOM_HEXDEC</span><span class="sm"> = 2</span></code>
-<span class="desc">Only hexadecimal characters [0-9a-f]</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">RANDOM_NOZERO</span><span class="sm"> = 4</span></code>
-<span class="desc">Only numbers without 0 [1-9]</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">RANDOM_NUMERIC</span><span class="sm"> = 3</span></code>
-<span class="desc">Only numbers [0-9]</span>
-</div>
-</div>
+<ApiItem kind="constant" name="RANDOM_ALNUM" type="int" default="0">
+Only alphanumeric characters [a-zA-Z0-9]
+</ApiItem>
+<ApiItem kind="constant" name="RANDOM_ALPHA" type="int" default="1">
+Only alphabetical characters [azAZ]
+</ApiItem>
+<ApiItem kind="constant" name="RANDOM_DISTINCT" type="int" default="5">
+Only alphanumeric uppercase characters exclude similar
+characters [2345679ACDEFHJKLMNPRSTUVWXYZ]
+</ApiItem>
+<ApiItem kind="constant" name="RANDOM_HEXDEC" type="int" default="2">
+Only hexadecimal characters [0-9a-f]
+</ApiItem>
+<ApiItem kind="constant" name="RANDOM_NOZERO" type="int" default="4">
+Only numbers without 0 [1-9]
+</ApiItem>
+<ApiItem kind="constant" name="RANDOM_NUMERIC" type="int" default="3">
+Only numbers [0-9]
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrrandom-__invoke"><code>__invoke()</code></h4>
 
@@ -4987,30 +3626,18 @@ int $length = 8
 
 ## Support\Helper\Str\ReduceSlashes
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/ReduceSlashes.zep">Source on GitHub</a>
+Class
 
 Reduces multiple slashes in a string to single slashes
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\ReduceSlashes`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrreduceslashes-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrreduceslashes-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrreduceslashes-__invoke"><code>__invoke()</code></h4>
 
@@ -5020,31 +3647,19 @@ public function __invoke( string $text ): string;
 
 ## Support\Helper\Str\SnakeCase
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/SnakeCase.zep">Source on GitHub</a>
+Class
 
 Converts strings to snake_case style
-
-<div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\PascalCase`](#supporthelperstrpascalcase)
 - **`Phalcon\Support\Helper\Str\SnakeCase`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrsnakecase-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$delimiters</span><span class="sm"> = null</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrsnakecase-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"delimiters","default":"null"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrsnakecase-__invoke"><code>__invoke()</code></h4>
 
@@ -5057,31 +3672,19 @@ string|null $delimiters = null
 
 ## Support\Helper\Str\StartsWith
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/StartsWith.zep">Source on GitHub</a>
+Class
 
 Check if a string starts with a given string
-
-<div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
 - **`Phalcon\Support\Helper\Str\StartsWith`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrstartswith-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$haystack</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ignoreCase</span><span class="sm"> = true</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrstartswith-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"haystack","default":null},{"type":"string","name":"needle","default":null},{"type":"bool","name":"ignoreCase","default":"true"}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrstartswith-__invoke"><code>__invoke()</code></h4>
 
@@ -5095,33 +3698,21 @@ bool $ignoreCase = true
 
 ## Support\Helper\Str\Suffix
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Suffix.zep">Source on GitHub</a>
+Class
 
 Suffixes the text with the supplied suffix
 @todo v7 make text string
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Suffix`**
 
-</div>
-
-__Uses__ `Stringable`
+`Stringable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrsuffix-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrsuffix-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"mixed","name":"text","default":null},{"type":"string","name":"suffix","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrsuffix-__invoke"><code>__invoke()</code></h4>
 
@@ -5134,30 +3725,18 @@ string $suffix
 
 ## Support\Helper\Str\Ucwords
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Ucwords.zep">Source on GitHub</a>
+Class
 
 Capitalizes the first letter of each word
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Ucwords`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrucwords-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrucwords-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrucwords-__invoke"><code>__invoke()</code></h4>
 
@@ -5170,32 +3749,20 @@ string $encoding = "UTF-8"
 
 ## Support\Helper\Str\Uncamelize
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Uncamelize.zep">Source on GitHub</a>
+Class
 
 Converts strings to non camelized style
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Uncamelize`**
 
-</div>
-
-__Uses__ `Phalcon\Traits\Support\Helper\Str\UncamelizeTrait`
+`Phalcon\Traits\Support\Helper\Str\UncamelizeTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstruncamelize-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = &quot;_&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstruncamelize-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"delimiter","default":"\"_\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstruncamelize-__invoke"><code>__invoke()</code></h4>
 
@@ -5208,30 +3775,18 @@ string $delimiter = "_"
 
 ## Support\Helper\Str\Underscore
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Underscore.zep">Source on GitHub</a>
+Class
 
 Makes a text underscored instead of spaced
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Helper\Str\Underscore`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrunderscore-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrunderscore-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrunderscore-__invoke"><code>__invoke()</code></h4>
 
@@ -5241,31 +3796,19 @@ public function __invoke( string $text ): string;
 
 ## Support\Helper\Str\Upper
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Upper.zep">Source on GitHub</a>
+Class
 
 Converts a string to uppercase using mbstring
-
-<div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
 - **`Phalcon\Support\Helper\Str\Upper`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrupper-__invoke">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#supporthelperstrupper-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="supporthelperstrupper-__invoke"><code>__invoke()</code></h4>
 
@@ -5278,8 +3821,7 @@ string $encoding = "UTF-8"
 
 ## Support\Registry
 
-<span class="badge badge--final">Final</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Registry.zep">Source on GitHub</a>
+Final
 
 A registry is a container for storing objects and values in the application
 space. By storing the value in a registry, the same object is always
@@ -5330,154 +3872,81 @@ bypass relatively slow method calls.
 
 @extends Collection&lt;mixed>
 
-<div class="api-tree">
-
 - [`Phalcon\Support\Collection`](#supportcollection)
 - **`Phalcon\Support\Registry`**
 
-</div>
-
-__Uses__ `Traversable`
+`Traversable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportregistry-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#supportregistry-__get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Magic getter to get an element from the collection</span>
-</a>
-<a class="api-item" href="#supportregistry-__isset">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Magic isset to check whether an element exists or not</span>
-</a>
-<a class="api-item" href="#supportregistry-__set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Magic setter to assign values to an element</span>
-</a>
-<a class="api-item" href="#supportregistry-__unset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__unset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Magic unset to remove an element from the collection</span>
-</a>
-<a class="api-item" href="#supportregistry-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Clears the internal collection</span>
-</a>
-<a class="api-item" href="#supportregistry-count">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">count</span>()</code>
-<span class="desc">Count elements of an object</span>
-</a>
-<a class="api-item" href="#supportregistry-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Get the element from the collection</span>
-</a>
-<a class="api-item" href="#supportregistry-getiterator">
-<code class="vis vis-public">public</code>
-<code class="ret">Traversable</code>
-<code class="sig"><span class="sf">getIterator</span>()</code>
-<span class="desc">Returns the iterator of the class</span>
-</a>
-<a class="api-item" href="#supportregistry-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Determines whether an element is present in the collection.</span>
-</a>
-<a class="api-item" href="#supportregistry-init">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
-<span class="desc">Initialize internal array</span>
-</a>
-<a class="api-item" href="#supportregistry-jsonserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">jsonSerialize</span>()</code>
-<span class="desc">Specify data which should be serialized to JSON</span>
-</a>
-<a class="api-item" href="#supportregistry-offsetexists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
-<span class="desc">Whether a offset exists</span>
-</a>
-<a class="api-item" href="#supportregistry-offsetget">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
-<span class="desc">Offset to retrieve</span>
-</a>
-<a class="api-item" href="#supportregistry-offsetset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Offset to set</span>
-</a>
-<a class="api-item" href="#supportregistry-offsetunset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
-<span class="desc">Offset to unset</span>
-</a>
-<a class="api-item" href="#supportregistry-remove">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
-<span class="desc">Delete the element from the collection</span>
-</a>
-<a class="api-item" href="#supportregistry-serialize">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">serialize</span>()</code>
-<span class="desc">String representation of object</span>
-</a>
-<a class="api-item" href="#supportregistry-set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set an element in the collection</span>
-</a>
-<a class="api-item" href="#supportregistry-toarray">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">toArray</span>()</code>
-<span class="desc">Returns the object in an array format</span>
-</a>
-<a class="api-item" href="#supportregistry-tojson">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">toJson</span>( <span class="st">int</span> <span class="sv">$options</span><span class="sm"> = 79</span> )</code>
-<span class="desc">Returns the object in a JSON format</span>
-</a>
-<a class="api-item" href="#supportregistry-unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unserialize</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
-<span class="desc">Unserializes the object</span>
-</a>
-</div>
+<ApiItem href="#supportregistry-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"data","default":"[]"}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#supportregistry-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"element","default":null}]}>
+Magic getter to get an element from the collection
+</ApiItem>
+<ApiItem href="#supportregistry-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
+Magic isset to check whether an element exists or not
+</ApiItem>
+<ApiItem href="#supportregistry-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+Magic setter to assign values to an element
+</ApiItem>
+<ApiItem href="#supportregistry-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
+Magic unset to remove an element from the collection
+</ApiItem>
+<ApiItem href="#supportregistry-clear" visibility="public" name="clear" returnType="void" params={[]}>
+Clears the internal collection
+</ApiItem>
+<ApiItem href="#supportregistry-count" visibility="public" name="count" returnType="int" params={[]}>
+Count elements of an object
+</ApiItem>
+<ApiItem href="#supportregistry-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
+Get the element from the collection
+</ApiItem>
+<ApiItem href="#supportregistry-getiterator" visibility="public" name="getIterator" returnType="Traversable" params={[]}>
+Returns the iterator of the class
+</ApiItem>
+<ApiItem href="#supportregistry-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
+Determines whether an element is present in the collection.
+</ApiItem>
+<ApiItem href="#supportregistry-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
+Initialize internal array
+</ApiItem>
+<ApiItem href="#supportregistry-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
+Specify data which should be serialized to JSON
+</ApiItem>
+<ApiItem href="#supportregistry-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"element","default":null}]}>
+Whether a offset exists
+</ApiItem>
+<ApiItem href="#supportregistry-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"element","default":null}]}>
+Offset to retrieve
+</ApiItem>
+<ApiItem href="#supportregistry-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+Offset to set
+</ApiItem>
+<ApiItem href="#supportregistry-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"element","default":null}]}>
+Offset to unset
+</ApiItem>
+<ApiItem href="#supportregistry-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
+Delete the element from the collection
+</ApiItem>
+<ApiItem href="#supportregistry-serialize" visibility="public" name="serialize" returnType="string|null" params={[]}>
+String representation of object
+</ApiItem>
+<ApiItem href="#supportregistry-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
+Set an element in the collection
+</ApiItem>
+<ApiItem href="#supportregistry-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
+Returns the object in an array format
+</ApiItem>
+<ApiItem href="#supportregistry-tojson" visibility="public" name="toJson" returnType="string" params={[{"type":"int","name":"options","default":"79"}]}>
+Returns the object in a JSON format
+</ApiItem>
+<ApiItem href="#supportregistry-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"string","name":"data","default":null}]}>
+Unserializes the object
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 22</div>
 
 <h4 id="supportregistry-__construct"><code>__construct()</code></h4>
 
@@ -5674,8 +4143,7 @@ Unserializes the object
 
 ## Support\Settings
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Settings.zep">Source on GitHub</a>
+Class
 
 Phalcon\Support\Settings
 
@@ -5699,49 +4167,27 @@ PHP-level override. In ZTS builds each thread has its own copy of the struct.
 reset() clears only the keys that were previously set via set(), restoring
 those keys to their globals_get() fallback values.
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Settings`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportsettings-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Returns the value of a known setting.</span>
-</a>
-<a class="api-item" href="#supportsettings-reset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">reset</span>()</code>
-<span class="desc">Clears all PHP-level overrides, restoring get() to return globals_get()</span>
-</a>
-<a class="api-item" href="#supportsettings-set">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Overrides a setting at the PHP level.</span>
-</a>
-</div>
+<ApiItem href="#supportsettings-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null}]}>
+Returns the value of a known setting.
+</ApiItem>
+<ApiItem href="#supportsettings-reset" visibility="public" name="reset" returnType="void" params={[]}>
+Clears all PHP-level overrides, restoring get() to return globals_get()
+</ApiItem>
+<ApiItem href="#supportsettings-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
+Overrides a setting at the PHP level.
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$overrides</span><span class="sm"> = []</span></code>
-<span class="desc">PHP-level overrides. Keys stored here take priority over globals_get().</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="overrides" type="array" default="[]">
+PHP-level overrides. Keys stored here take priority over globals_get().
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="supportsettings-get"><code>get()</code></h4>
 
@@ -5783,85 +4229,74 @@ Unknown keys are silently ignored.
 
 ## Support\Version
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Version.zep">Source on GitHub</a>
+Class
 
 This class allows to get the installed version of the framework
 
-<div class="api-tree">
-
 - **`Phalcon\Support\Version`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#supportversion-get">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">get</span>()</code>
-<span class="desc">Returns the active version (string)</span>
-</a>
-<a class="api-item" href="#supportversion-getid">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getId</span>()</code>
-<span class="desc">Returns the numeric active version</span>
-</a>
-<a class="api-item" href="#supportversion-getpart">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getPart</span>( <span class="st">int</span> <span class="sv">$part</span> )</code>
-<span class="desc">Returns a specific part of the version. If the wrong parameter is passed</span>
-</a>
-<a class="api-item" href="#supportversion-getspecial">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getSpecial</span>( <span class="st">int</span> <span class="sv">$special</span> )</code>
-<span class="desc">Translates a number to a special release.</span>
-</a>
-<a class="api-item" href="#supportversion-getversion">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getVersion</span>()</code>
-<span class="desc">Area where the version number is set. The format is as follows:</span>
-</a>
-</div>
+<ApiItem href="#supportversion-get" visibility="public" name="get" returnType="string" params={[]}>
+Returns the active version (string)
+</ApiItem>
+<ApiItem href="#supportversion-getid" visibility="public" name="getId" returnType="string" params={[]}>
+Returns the numeric active version
+</ApiItem>
+<ApiItem href="#supportversion-getpart" visibility="public" name="getPart" returnType="string" params={[{"type":"int","name":"part","default":null}]}>
+Returns a specific part of the version. If the wrong parameter is passed
+</ApiItem>
+<ApiItem href="#supportversion-getspecial" visibility="protected" name="getSpecial" returnType="string" params={[{"type":"int","name":"special","default":null}]}>
+Translates a number to a special release.
+</ApiItem>
+<ApiItem href="#supportversion-getversion" visibility="protected" name="getVersion" returnType="array" params={[]}>
+Area where the version number is set. The format is as follows:
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">VERSION_MAJOR</span><span class="sm"> = 0</span></code>
-<span class="desc">The constant referencing the major version. Returns 0 ``<code>php echo (new Phalcon\Support\Version()) -&gt;getPart(Phalcon\Support\Version::VERSION_MAJOR); </code>``</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">VERSION_MEDIUM</span><span class="sm"> = 1</span></code>
-<span class="desc">The constant referencing the major version. Returns 1 ``<code>php echo (new Phalcon\Support\Version()) -&gt;getPart(Phalcon\Support\Version::VERSION_MEDIUM); </code>``</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">VERSION_MINOR</span><span class="sm"> = 2</span></code>
-<span class="desc">The constant referencing the major version. Returns 2 ``<code>php echo (new Phalcon\Support\Version()) -&gt;getPart(Phalcon\Support\Version::VERSION_MINOR); </code>``</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">VERSION_SPECIAL</span><span class="sm"> = 3</span></code>
-<span class="desc">The constant referencing the major version. Returns 3 ``<code>php echo (new Phalcon\Support\Version()) -&gt;getPart(Phalcon\Support\Version::VERSION_SPECIAL); </code>``</span>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">VERSION_SPECIAL_NUMBER</span><span class="sm"> = 4</span></code>
-<span class="desc">The constant referencing the major version. Returns 4 ``<code>php echo (new Phalcon\Support\Version()) -&gt;getPart(Phalcon\Support\Version::VERSION_SPECIAL_NUMBER); </code>``</span>
-</div>
-</div>
+<ApiItem kind="constant" name="VERSION_MAJOR" type="int" default="0">
+The constant referencing the major version. Returns 0
+
+```php
+echo (new Phalcon\Support\Version())
+     ->getPart(Phalcon\Support\Version::VERSION_MAJOR);
+```
+</ApiItem>
+<ApiItem kind="constant" name="VERSION_MEDIUM" type="int" default="1">
+The constant referencing the major version. Returns 1
+
+```php
+echo (new Phalcon\Support\Version())
+     ->getPart(Phalcon\Support\Version::VERSION_MEDIUM);
+```
+</ApiItem>
+<ApiItem kind="constant" name="VERSION_MINOR" type="int" default="2">
+The constant referencing the major version. Returns 2
+
+```php
+echo (new Phalcon\Support\Version())
+     ->getPart(Phalcon\Support\Version::VERSION_MINOR);
+```
+</ApiItem>
+<ApiItem kind="constant" name="VERSION_SPECIAL" type="int" default="3">
+The constant referencing the major version. Returns 3
+
+```php
+echo (new Phalcon\Support\Version())
+     ->getPart(Phalcon\Support\Version::VERSION_SPECIAL);
+```
+</ApiItem>
+<ApiItem kind="constant" name="VERSION_SPECIAL_NUMBER" type="int" default="4">
+The constant referencing the major version. Returns 4
+
+```php
+echo (new Phalcon\Support\Version())
+     ->getPart(Phalcon\Support\Version::VERSION_SPECIAL_NUMBER);
+```
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="supportversion-get"><code>get()</code></h4>
 
@@ -5899,8 +4334,6 @@ it will return the full version
 ```php
 echo (new Phalcon\Version())->getPart(Phalcon\Version::VERSION_MAJOR);
 ```
-
-<div class="api-group">Protected · 2</div>
 
 <h4 id="supportversion-getspecial"><code>getSpecial()</code></h4>
 

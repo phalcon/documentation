@@ -25,7 +25,7 @@ When no container is supplied one is created with the ADR defaults
 (`AdrProvider`) registered. Type-hinted dependencies autowire; only scalar
 parameters need to be declared via `define()`.
 
-- **`Phalcon\ADR\Application`** - implements [`Phalcon\Contracts\ADR\Application`](../phalcon_contracts/#contractsadrapplication)
+- **`Phalcon\ADR\Application`** - implements [`Phalcon\Contracts\ADR\Application`](/6.0/api/phalcon_contracts/#contractsadrapplication)
 
 `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Container\Container` · `Phalcon\Container\ContainerFactory` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Router\AttributeFilter` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface`
 
@@ -210,7 +210,7 @@ Used instead of `Phalcon\Container\Provider\Web` for ADR applications. It
 shares the short aliases (`request`/`response`/`router`/`eventsManager`) but
 binds the ADR contracts behind them.
 
-- **`Phalcon\ADR\Container\AdrProvider`** - implements [`Phalcon\Contracts\Container\Service\Provider`](../phalcon_contracts/#contractscontainerserviceprovider)
+- **`Phalcon\ADR\Container\AdrProvider`** - implements [`Phalcon\Contracts\Container\Service\Provider`](/6.0/api/phalcon_contracts/#contractscontainerserviceprovider)
 
 `Phalcon\ADR\Dispatcher` · `Phalcon\ADR\Emitter\SapiEmitter` · `Phalcon\ADR\Responder\JsonResponder` · `Phalcon\ADR\Router\AttributeFilter` · `Phalcon\ADR\Router\Router` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\ADR\Router\AttributeFilter` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Contracts\Logger\Logger` · `Phalcon\Events\Manager` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Logger`
 
@@ -239,7 +239,7 @@ The container resolution is the one deliberate Service Locator: it uses the
 resolve-only `IocContainer` contract, so a container swap is a two-method
 adapter. Everything else is constructor-injected.
 
-- **`Phalcon\ADR\Dispatcher`** - implements [`Phalcon\Contracts\ADR\Dispatcher`](../phalcon_contracts/#contractsadrdispatcher)
+- **`Phalcon\ADR\Dispatcher`** - implements [`Phalcon\Contracts\ADR\Dispatcher`](/6.0/api/phalcon_contracts/#contractsadrdispatcher)
 
 `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\NotAnAction` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Action` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
@@ -306,7 +306,7 @@ Class
 Emits a response through the SAPI (headers + body via `Response::send()`).
 Refuses to emit once headers have already been sent.
 
-- **`Phalcon\ADR\Emitter\SapiEmitter`** - implements [`Phalcon\Contracts\ADR\Emitter\Emitter`](../phalcon_contracts/#contractsadremitteremitter)
+- **`Phalcon\ADR\Emitter\SapiEmitter`** - implements [`Phalcon\Contracts\ADR\Emitter\Emitter`](/6.0/api/phalcon_contracts/#contractsadremitteremitter)
 
 `Phalcon\ADR\Exceptions\HeadersAlreadySent` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Http\ResponseInterface`
 
@@ -427,7 +427,7 @@ Final
 The terminal handler of the pipeline: fires the `adr:*` events around the
 Action's execution.
 
-- **`Phalcon\ADR\EventfulHandler`** - implements [`Phalcon\Contracts\ADR\Handler`](../phalcon_contracts/#contractsadrhandler)
+- **`Phalcon\ADR\EventfulHandler`** - implements [`Phalcon\Contracts\ADR\Handler`](/6.0/api/phalcon_contracts/#contractsadrhandler)
 
 `Phalcon\ADR\Events\Event` · `Phalcon\Contracts\ADR\Action` · `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
@@ -517,7 +517,7 @@ Generic exception for the ADR component, and the base for every typed ADR
 exception.
 
 - `\Exception`
-- **`Phalcon\ADR\Exceptions\Exception`** - implements [`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`](../phalcon_contracts/#contractsadrexceptionsadrthrowable)
+- **`Phalcon\ADR\Exceptions\Exception`** - implements [`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`](/6.0/api/phalcon_contracts/#contractsadrexceptionsadrthrowable)
 - [`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`](#adrexceptionsactiondirectorynotset)
 - [`Phalcon\ADR\Exceptions\HeadersAlreadySent`](#adrexceptionsheadersalreadysent)
 - [`Phalcon\ADR\Exceptions\MethodNotAllowed`](#adrexceptionsmethodnotallowed)
@@ -653,7 +653,7 @@ response. Userland front controllers override `loadEnvironment()`,
 `registerProviders()` and optionally `getApplication()`; bootstrap is
 `exit((new AppFront(dirname(__DIR__)))->run());`.
 
-- **`Phalcon\ADR\Front\AbstractHttpFront`** - implements [`Phalcon\Contracts\Front\FrontController`](../phalcon_contracts/#contractsfrontfrontcontroller)
+- **`Phalcon\ADR\Front\AbstractHttpFront`** - implements [`Phalcon\Contracts\Front\FrontController`](/6.0/api/phalcon_contracts/#contractsfrontfrontcontroller)
 - [`Phalcon\ADR\Front\HttpFront`](#adrfronthttpfront)
 
 `Phalcon\ADR\Application` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\Container\Container` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Contracts\Front\FrontController` · `Phalcon\Contracts\Http\AttributeRequest` · `Throwable`
@@ -841,7 +841,7 @@ is configured, and only for requests whose `Origin` is on it. The allowed
 origin is always echoed back explicitly, so credentials are never paired with
 a wildcard origin. Preflight `OPTIONS` requests are answered directly.
 
-- **`Phalcon\ADR\Middleware\CorsMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](../phalcon_contracts/#contractsadrmiddleware)
+- **`Phalcon\ADR\Middleware\CorsMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](/6.0/api/phalcon_contracts/#contractsadrmiddleware)
 
 `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
@@ -916,7 +916,7 @@ method.
 The flag lives on `Phalcon\Http\Request`, not on the request contract, so a
 request implementation that does not carry it is simply passed through.
 
-- **`Phalcon\ADR\Middleware\MethodOverrideMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](../phalcon_contracts/#contractsadrmiddleware)
+- **`Phalcon\ADR\Middleware\MethodOverrideMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](/6.0/api/phalcon_contracts/#contractsadrmiddleware)
 
 `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
@@ -948,7 +948,7 @@ Class
 Ensures every request carries an `X-Request-Id`, reusing an incoming one or
 generating it, exposing it on the request attributes and the response.
 
-- **`Phalcon\ADR\Middleware\RequestIdMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](../phalcon_contracts/#contractsadrmiddleware)
+- **`Phalcon\ADR\Middleware\RequestIdMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](/6.0/api/phalcon_contracts/#contractsadrmiddleware)
 
 `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
@@ -975,7 +975,7 @@ Class
 Adds an `X-Response-Time` header measuring how long the rest of the pipeline
 took to produce the response.
 
-- **`Phalcon\ADR\Middleware\TimingMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](../phalcon_contracts/#contractsadrmiddleware)
+- **`Phalcon\ADR\Middleware\TimingMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](/6.0/api/phalcon_contracts/#contractsadrmiddleware)
 
 `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
@@ -1005,7 +1005,7 @@ Every `with*()` method returns a new instance, leaving the receiver
 unchanged. Named factories provide a concise way to create a payload for the
 commonly used statuses.
 
-- **`Phalcon\ADR\Payload\Payload`** - implements [`Phalcon\Contracts\ADR\Payload\Payload`](../phalcon_contracts/#contractsadrpayloadpayload)
+- **`Phalcon\ADR\Payload\Payload`** - implements [`Phalcon\Contracts\ADR\Payload\Payload`](/6.0/api/phalcon_contracts/#contractsadrpayloadpayload)
 
 `Phalcon\Contracts\ADR\Payload\Payload` · `Throwable`
 
@@ -1674,7 +1674,7 @@ and hands a new Pipeline (advanced by one) forward as the `next` handler, so
 
 When the middleware is exhausted it invokes the terminal handler (the Action).
 
-- **`Phalcon\ADR\Pipeline`** - implements [`Phalcon\Contracts\ADR\Handler`](../phalcon_contracts/#contractsadrhandler)
+- **`Phalcon\ADR\Pipeline`** - implements [`Phalcon\Contracts\ADR\Handler`](/6.0/api/phalcon_contracts/#contractsadrhandler)
 
 `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
@@ -1746,7 +1746,7 @@ Class
 Composes single-purpose responders. Each link receives the request, the
 response threaded so far, and the payload, and returns the response.
 
-- **`Phalcon\ADR\Responder\ChainResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](../phalcon_contracts/#contractsadrresponderresponder)
+- **`Phalcon\ADR\Responder\ChainResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/6.0/api/phalcon_contracts/#contractsadrresponderresponder)
 - [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
 
 `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
@@ -1799,7 +1799,7 @@ payload as the response body + content type.
 If no formatter accepts the header it falls back to the first (default)
 formatter, so the content type and body are never left unset.
 
-- **`Phalcon\ADR\Responder\FormatResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](../phalcon_contracts/#contractsadrresponderresponder)
+- **`Phalcon\ADR\Responder\FormatResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/6.0/api/phalcon_contracts/#contractsadrresponderresponder)
 
 `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Formatter\Formatter` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
 
@@ -1839,7 +1839,7 @@ Class
 
 Renders a payload as JSON.
 
-- **`Phalcon\ADR\Responder\Formatter\JsonFormatter`** - implements [`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`](../phalcon_contracts/#contractsadrresponderformatterformatter)
+- **`Phalcon\ADR\Responder\Formatter\JsonFormatter`** - implements [`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`](/6.0/api/phalcon_contracts/#contractsadrresponderformatterformatter)
 
 `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Formatter\Formatter`
 
@@ -1881,7 +1881,7 @@ Renders a payload as plain text.
 The payload is untyped, so anything that cannot be expressed as a string -
 an object without `__toString()`, for instance - renders as an empty body.
 
-- **`Phalcon\ADR\Responder\Formatter\TextFormatter`** - implements [`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`](../phalcon_contracts/#contractsadrresponderformatterformatter)
+- **`Phalcon\ADR\Responder\Formatter\TextFormatter`** - implements [`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`](/6.0/api/phalcon_contracts/#contractsadrresponderformatterformatter)
 
 `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Formatter\Formatter` · `Stringable`
 
@@ -2035,7 +2035,7 @@ Applies a `Redirect` value object carried on the payload result: sets the
 status code and the `Location` header. A no-op when the result is not a
 redirect.
 
-- **`Phalcon\ADR\Responder\RedirectResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](../phalcon_contracts/#contractsadrresponderresponder)
+- **`Phalcon\ADR\Responder\RedirectResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/6.0/api/phalcon_contracts/#contractsadrresponderresponder)
 
 `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
 
@@ -2110,7 +2110,7 @@ Sets the response HTTP status code from the payload status, via StatusMapper.
 The payload status is untyped, so anything that cannot be expressed as a
 string - an array, an object - leaves the response status code untouched.
 
-- **`Phalcon\ADR\Responder\StatusResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](../phalcon_contracts/#contractsadrresponderresponder)
+- **`Phalcon\ADR\Responder\StatusResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/6.0/api/phalcon_contracts/#contractsadrresponderresponder)
 
 `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
 
@@ -2180,7 +2180,7 @@ the status mapping and the `Responder` contract stay the same. It depends on
 the neutral `Renderer` contract only, so the ADR component never imports the
 MVC view.
 
-- **`Phalcon\ADR\Responder\ViewResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](../phalcon_contracts/#contractsadrresponderresponder)
+- **`Phalcon\ADR\Responder\ViewResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/6.0/api/phalcon_contracts/#contractsadrresponderresponder)
 
 `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\View\Renderer` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
 
@@ -2258,7 +2258,7 @@ the attributes; a declared parameter with no segment is skipped; surplus
 segments pass through under their positional keys. An Action without
 `params()` is returned unchanged.
 
-- **`Phalcon\ADR\Router\AttributeFilter`** - implements [`Phalcon\Contracts\ADR\Router\AttributeFilter`](../phalcon_contracts/#contractsadrrouterattributefilter)
+- **`Phalcon\ADR\Router\AttributeFilter`** - implements [`Phalcon\Contracts\ADR\Router\AttributeFilter`](/6.0/api/phalcon_contracts/#contractsadrrouterattributefilter)
 
 `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\AttributeFilter`
 
@@ -2344,7 +2344,7 @@ is a spelling difference, not a capability one - and it is not a deviation
 from any standard. REST is Fielding's dissertation, not an RFC; RFC 3986 and
 RFC 9110 both leave path structure entirely to the origin server.
 
-- **`Phalcon\ADR\Router\Router`** - implements [`Phalcon\Contracts\ADR\Router\Router`](../phalcon_contracts/#contractsadrrouterrouter)
+- **`Phalcon\ADR\Router\Router`** - implements [`Phalcon\Contracts\ADR\Router\Router`](/6.0/api/phalcon_contracts/#contractsadrrouterrouter)
 
 `Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\ADR\Router\RouterMatch` · `Phalcon\Http\RequestInterface` · `ReflectionClass`
 
@@ -2588,7 +2588,7 @@ Final
 
 Immutable result of a successful route match.
 
-- **`Phalcon\ADR\Router\RouterMatch`** - implements [`Phalcon\Contracts\ADR\Router\RouterMatch`](../phalcon_contracts/#contractsadrrouterroutermatch)
+- **`Phalcon\ADR\Router\RouterMatch`** - implements [`Phalcon\Contracts\ADR\Router\RouterMatch`](/6.0/api/phalcon_contracts/#contractsadrrouterroutermatch)
 
 `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\RouterMatch`
 

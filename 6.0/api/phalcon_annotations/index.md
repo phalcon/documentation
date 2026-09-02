@@ -21,8 +21,8 @@ Factory to create Annotations adapters
 
 @property SerializerFactory $serializerFactory
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Annotations\AdapterFactory`**
 
 `Exception` · `Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Libmemcached` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Redis` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Annotations\Adapter\Weak` · `Phalcon\Annotations\Parser\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory`
@@ -85,7 +85,7 @@ Interface
 
 This interface must be implemented by adapters in Phalcon\Components\Attributes
 
-- [`Phalcon\Storage\Adapter\AdapterInterface`](../phalcon_storage/#storageadapteradapterinterface)
+- [`Phalcon\Storage\Adapter\AdapterInterface`](/6.0/api/phalcon_storage/#storageadapteradapterinterface)
 - **`Phalcon\Annotations\Adapter\AdapterInterface`**
 
 `Phalcon\Storage\Adapter\AdapterInterface`
@@ -96,8 +96,8 @@ Class
 
 Stores the parsed annotations in apcu.
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Apcu`](../phalcon_storage/#storageadapterapcu)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Apcu`](/6.0/api/phalcon_storage/#storageadapterapcu)
 - **`Phalcon\Annotations\Adapter\Apcu`** - implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
 
 `Phalcon\Annotations\Parser\Reflection` · `Phalcon\Storage\Adapter\Apcu`
@@ -125,8 +125,8 @@ Class
 Stores the parsed annotations in memory. This adapter is the suitable
 development/testing
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Libmemcached`](../phalcon_storage/#storageadapterlibmemcached)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Libmemcached`](/6.0/api/phalcon_storage/#storageadapterlibmemcached)
 - **`Phalcon\Annotations\Adapter\Libmemcached`** - implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
 
 `Phalcon\Annotations\Parser\Reflection` · `Phalcon\Storage\Adapter\Libmemcached`
@@ -154,8 +154,8 @@ Class
 Stores the parsed annotations in memory. This adapter is the suitable
 development/testing
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Memory`](../phalcon_storage/#storageadaptermemory)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Memory`](/6.0/api/phalcon_storage/#storageadaptermemory)
 - **`Phalcon\Annotations\Adapter\Memory`** - implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
 
 `Phalcon\Annotations\Parser\Reflection` · `Phalcon\Storage\Adapter\Memory`
@@ -182,8 +182,8 @@ Class
 
 Stores the parsed annotations in redis.
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Redis`](../phalcon_storage/#storageadapterredis)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Redis`](/6.0/api/phalcon_storage/#storageadapterredis)
 - **`Phalcon\Annotations\Adapter\Redis`** - implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
 
 `Phalcon\Annotations\Parser\Reflection` · `Phalcon\Storage\Adapter\Redis`
@@ -211,8 +211,8 @@ Class
 Stores the parsed annotations in memory. This adapter is the suitable
 development/testing
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Stream`](../phalcon_storage/#storageadapterstream)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Stream`](/6.0/api/phalcon_storage/#storageadapterstream)
 - **`Phalcon\Annotations\Adapter\Stream`** - implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
 
 `Phalcon\Annotations\Parser\Reflection` · `Phalcon\Storage\Adapter\Stream`
@@ -240,8 +240,8 @@ Class
 Stores the parsed annotations in memory. This adapter is the suitable
 development/testing
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Weak`](../phalcon_storage/#storageadapterweak)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Weak`](/6.0/api/phalcon_storage/#storageadapterweak)
 - **`Phalcon\Annotations\Adapter\Weak`** - implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
 
 `Phalcon\Annotations\Parser\Reflection` · `Phalcon\Storage\Adapter\Weak`

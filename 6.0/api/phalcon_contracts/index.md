@@ -630,7 +630,7 @@ Interface
 Canonical contract for Phalcon\Acl adapters
 
 - **`Phalcon\Contracts\Acl\Adapter\Adapter`**
-- [`Phalcon\Acl\Adapter\AdapterInterface`](../phalcon_acl/#acladapteradapterinterface)
+- [`Phalcon\Acl\Adapter\AdapterInterface`](/6.0/api/phalcon_acl/#acladapteradapterinterface)
 
 `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes`
 
@@ -949,7 +949,7 @@ Interface
 Canonical contract for an ACL component entity.
 
 - **`Phalcon\Contracts\Acl\Component`**
-- [`Phalcon\Acl\ComponentInterface`](../phalcon_acl/#aclcomponentinterface)
+- [`Phalcon\Acl\ComponentInterface`](/6.0/api/phalcon_acl/#aclcomponentinterface)
 
 ### Method Summary
 
@@ -996,7 +996,7 @@ Interface
 Canonical contract for ACL component-aware objects.
 
 - **`Phalcon\Contracts\Acl\ComponentAware`**
-- [`Phalcon\Acl\ComponentAwareInterface`](../phalcon_acl/#aclcomponentawareinterface)
+- [`Phalcon\Acl\ComponentAwareInterface`](/6.0/api/phalcon_acl/#aclcomponentawareinterface)
 
 ### Method Summary
 
@@ -1021,7 +1021,7 @@ Interface
 Canonical contract for an ACL role entity.
 
 - **`Phalcon\Contracts\Acl\Role`**
-- [`Phalcon\Acl\RoleInterface`](../phalcon_acl/#aclroleinterface)
+- [`Phalcon\Acl\RoleInterface`](/6.0/api/phalcon_acl/#aclroleinterface)
 
 ### Method Summary
 
@@ -1068,7 +1068,7 @@ Interface
 Canonical contract for ACL role-aware objects.
 
 - **`Phalcon\Contracts\Acl\RoleAware`**
-- [`Phalcon\Acl\RoleAwareInterface`](../phalcon_acl/#aclroleawareinterface)
+- [`Phalcon\Acl\RoleAwareInterface`](/6.0/api/phalcon_acl/#aclroleawareinterface)
 
 ### Method Summary
 
@@ -1107,7 +1107,7 @@ filter flag. The file-output pipeline (Phalcon\Assets\Manager::output())
 requires the concrete Phalcon\Assets\Asset class.
 
 - **`Phalcon\Contracts\Assets\Asset`**
-- [`Phalcon\Assets\AssetInterface`](../phalcon_assets/#assetsassetinterface)
+- [`Phalcon\Assets\AssetInterface`](/6.0/api/phalcon_assets/#assetsassetinterface)
 
 ### Method Summary
 
@@ -1209,7 +1209,7 @@ Canonical contract for Phalcon\Assets filters (Cssmin, Jsmin, None, and
 custom user filters).
 
 - **`Phalcon\Contracts\Assets\Filter`**
-- [`Phalcon\Assets\FilterInterface`](../phalcon_assets/#assetsfilterinterface)
+- [`Phalcon\Assets\FilterInterface`](/6.0/api/phalcon_assets/#assetsfilterinterface)
 
 ### Method Summary
 
@@ -2082,7 +2082,7 @@ Interface
 Canonical contract for Phalcon\Cache\Cache.
 
 - **`Phalcon\Contracts\Cache\Cache`**
-- [`Phalcon\Cache\CacheInterface`](../phalcon_cache/#cachecacheinterface)
+- [`Phalcon\Cache\CacheInterface`](/6.0/api/phalcon_cache/#cachecacheinterface)
 
 `DateInterval` · `Phalcon\Cache\Exception\InvalidArgumentException`
 
@@ -2211,7 +2211,7 @@ Canonical contract for Phalcon\Cli\Dispatcher.
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](#contractsdispatcherdispatcher)
 - **`Phalcon\Contracts\Cli\Dispatcher`**
-- [`Phalcon\Cli\DispatcherInterface`](../phalcon_cli/#clidispatcherinterface)
+- [`Phalcon\Cli\DispatcherInterface`](/6.0/api/phalcon_cli/#clidispatcherinterface)
 
 `Phalcon\Cli\TaskInterface` · `Phalcon\Contracts\Dispatcher\Dispatcher`
 
@@ -2440,7 +2440,7 @@ It adds no class members.
 
 - `\Throwable`
 - **`Phalcon\Contracts\Container\Ioc\IocThrowable`**
-- [`Phalcon\Container\Exceptions\ContainerThrowable`](../phalcon_container/#containerexceptionscontainerthrowable)
+- [`Phalcon\Container\Exceptions\ContainerThrowable`](/6.0/api/phalcon_container/#containerexceptionscontainerthrowable)
 
 `Throwable`
 
@@ -3123,7 +3123,7 @@ Canonical contract for Phalcon\Db adapters.
              - returning()               : string
 
 - **`Phalcon\Contracts\Db\Adapter\Adapter`**
-- [`Phalcon\Db\Adapter\AdapterInterface`](../phalcon_db/#dbadapteradapterinterface)
+- [`Phalcon\Db\Adapter\AdapterInterface`](/6.0/api/phalcon_db/#dbadapteradapterinterface)
 
 `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface`
 
@@ -4070,7 +4070,7 @@ Interface
 Canonical contract for Phalcon\Db\Check.
 
 - **`Phalcon\Contracts\Db\Check`**
-- [`Phalcon\Db\CheckInterface`](../phalcon_db/#dbcheckinterface)
+- [`Phalcon\Db\CheckInterface`](/6.0/api/phalcon_db/#dbcheckinterface)
 
 ### Method Summary
 
@@ -4117,7 +4117,7 @@ Canonical contract for Phalcon\Db\Column.
              - isInvisible()             : bool
 
 - **`Phalcon\Contracts\Db\Column`**
-- [`Phalcon\Db\ColumnInterface`](../phalcon_db/#dbcolumninterface)
+- [`Phalcon\Db\ColumnInterface`](/6.0/api/phalcon_db/#dbcolumninterface)
 
 ### Method Summary
 
@@ -4318,7 +4318,7 @@ Canonical contract for Phalcon\Db dialects.
              - returning()               : string
 
 - **`Phalcon\Contracts\Db\Dialect`**
-- [`Phalcon\Db\DialectInterface`](../phalcon_db/#dbdialectinterface)
+- [`Phalcon\Db\DialectInterface`](/6.0/api/phalcon_db/#dbdialectinterface)
 
 `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
 
@@ -4816,7 +4816,7 @@ Interface
 Canonical contract for Phalcon\Db\Geometry value objects.
 
 - **`Phalcon\Contracts\Db\Geometry\Geometry`**
-- [`Phalcon\Db\Geometry\GeometryInterface`](../phalcon_db/#dbgeometrygeometryinterface)
+- [`Phalcon\Db\Geometry\GeometryInterface`](/6.0/api/phalcon_db/#dbgeometrygeometryinterface)
 
 ### Method Summary
 
@@ -4871,7 +4871,7 @@ Canonical contract for Phalcon\Db\Index.
              - isInvisible()   : bool
 
 - **`Phalcon\Contracts\Db\Index`**
-- [`Phalcon\Db\IndexInterface`](../phalcon_db/#dbindexinterface)
+- [`Phalcon\Db\IndexInterface`](/6.0/api/phalcon_db/#dbindexinterface)
 
 ### Method Summary
 
@@ -4918,7 +4918,7 @@ Interface
 Interface for Phalcon\Db\Reference
 
 - **`Phalcon\Contracts\Db\Reference`**
-- [`Phalcon\Db\ReferenceInterface`](../phalcon_db/#dbreferenceinterface)
+- [`Phalcon\Db\ReferenceInterface`](/6.0/api/phalcon_db/#dbreferenceinterface)
 
 ### Method Summary
 
@@ -5020,7 +5020,7 @@ Interface
 Canonical contract for Phalcon\Db result objects.
 
 - **`Phalcon\Contracts\Db\Result`**
-- [`Phalcon\Db\ResultInterface`](../phalcon_db/#dbresultinterface)
+- [`Phalcon\Db\ResultInterface`](/6.0/api/phalcon_db/#dbresultinterface)
 
 `PDOStatement`
 
@@ -5140,7 +5140,7 @@ are scheduled to be removed in the next major version in favor of their
 - **`Phalcon\Contracts\Dispatcher\Dispatcher`**
 - [`Phalcon\Contracts\Cli\Dispatcher`](#contractsclidispatcher)
 - [`Phalcon\Contracts\Mvc\Dispatcher`](#contractsmvcdispatcher)
-- [`Phalcon\Dispatcher\DispatcherInterface`](../phalcon_dispatcher/#dispatcherdispatcherinterface)
+- [`Phalcon\Dispatcher\DispatcherInterface`](/6.0/api/phalcon_dispatcher/#dispatcherdispatcherinterface)
 
 ### Method Summary
 
@@ -5432,7 +5432,7 @@ boundary.
 
 - **`Phalcon\Contracts\Domain\Payload\Readable`**
 - [`Phalcon\Contracts\Domain\Payload\Payload`](#contractsdomainpayloadpayload)
-- [`Phalcon\Domain\Payload\ReadableInterface`](../phalcon_domain/#domainpayloadreadableinterface)
+- [`Phalcon\Domain\Payload\ReadableInterface`](/6.0/api/phalcon_domain/#domainpayloadreadableinterface)
 
 `Throwable`
 
@@ -5522,7 +5522,7 @@ narrowing the surface to the write side of the Action-Domain-Responder
 boundary.
 
 - **`Phalcon\Contracts\Domain\Payload\Writeable`**
-- [`Phalcon\Domain\Payload\WriteableInterface`](../phalcon_domain/#domainpayloadwriteableinterface)
+- [`Phalcon\Domain\Payload\WriteableInterface`](/6.0/api/phalcon_domain/#domainpayloadwriteableinterface)
 
 `Throwable`
 
@@ -5621,7 +5621,7 @@ through the DI container is therefore not safe for interleaved AEAD
 operations.
 
 - **`Phalcon\Contracts\Encryption\Crypt\Crypt`**
-- [`Phalcon\Encryption\Crypt\CryptInterface`](../phalcon_encryption/#encryptioncryptcryptinterface)
+- [`Phalcon\Encryption\Crypt\CryptInterface`](/6.0/api/phalcon_encryption/#encryptioncryptcryptinterface)
 
 ### Method Summary
 
@@ -5841,7 +5841,7 @@ yields the wrong padding size whenever the bytes form valid multibyte
 sequences.
 
 - **`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`**
-- [`Phalcon\Encryption\Crypt\Padding\PadInterface`](../phalcon_encryption/#encryptioncryptpaddingpadinterface)
+- [`Phalcon\Encryption\Crypt\Padding\PadInterface`](/6.0/api/phalcon_encryption/#encryptioncryptpaddingpadinterface)
 
 ### Method Summary
 
@@ -5996,7 +5996,7 @@ Interface
 Canonical contract for JWT Signer classes
 
 - **`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`**
-- [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](../phalcon_encryption/#encryptionsecurityjwtsignersignerinterface)
+- [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](/6.0/api/phalcon_encryption/#encryptionsecurityjwtsignersignerinterface)
 
 ### Method Summary
 
@@ -6148,7 +6148,7 @@ Interface
 Interface
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`**
-- [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](../phalcon_encryption/#encryptionsecurityuuidnodeproviderinterface)
+- [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](/6.0/api/phalcon_encryption/#encryptionsecurityuuidnodeproviderinterface)
 
 ### Method Summary
 
@@ -6168,7 +6168,7 @@ public function getNode(): string;
 Interface
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`**
-- [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](../phalcon_encryption/#encryptionsecurityuuidtimebaseduuidinterface)
+- [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](/6.0/api/phalcon_encryption/#encryptionsecurityuuidtimebaseduuidinterface)
 
 `DateTimeImmutable`
 
@@ -6202,7 +6202,7 @@ Canonical marker contract for UUID version adapters.
 Also carries the standard RFC 4122 namespace UUIDs as constants.
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`**
-- [`Phalcon\Encryption\Security\Uuid\UuidInterface`](../phalcon_encryption/#encryptionsecurityuuiduuidinterface)
+- [`Phalcon\Encryption\Security\Uuid\UuidInterface`](/6.0/api/phalcon_encryption/#encryptionsecurityuuiduuidinterface)
 
 ### Constants
 
@@ -6258,7 +6258,7 @@ Interface
 Canonical contract for Phalcon\Events\Event.
 
 - **`Phalcon\Contracts\Events\Event`**
-- [`Phalcon\Events\EventInterface`](../phalcon_events/#eventseventinterface)
+- [`Phalcon\Events\EventInterface`](/6.0/api/phalcon_events/#eventseventinterface)
 
 ### Method Summary
 
@@ -6355,7 +6355,7 @@ already type-hint ManagerInterface. ManagerInterface extends Manager, so
 this remains type-compatible with any code that needs the canonical surface.
 
 - **`Phalcon\Contracts\Events\EventsAware`**
-- [`Phalcon\Events\EventsAwareInterface`](../phalcon_events/#eventseventsawareinterface)
+- [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
 
 `Phalcon\Events\ManagerInterface`
 
@@ -6393,7 +6393,7 @@ Interface
 Canonical contract for Phalcon\Events\Manager.
 
 - **`Phalcon\Contracts\Events\Manager`**
-- [`Phalcon\Events\ManagerInterface`](../phalcon_events/#eventsmanagerinterface)
+- [`Phalcon\Events\ManagerInterface`](/6.0/api/phalcon_events/#eventsmanagerinterface)
 
 ### Method Summary
 
@@ -6654,6 +6654,16 @@ public static function getSubscribedEvents(): array;
 
 Returns a map of event name => listener config.
 
+## Contracts\Filter\FilterTypes
+
+Interface
+
+Central registry of the array shapes used across the Filter namespace.
+
+- **`Phalcon\Contracts\Filter\FilterTypes`**
+
+`Phalcon\Filter\Validation\ValidatorInterface`
+
 ## Contracts\Filter\Sanitizer
 
 Interface
@@ -6675,6 +6685,8 @@ A sanitizer operates on a single value. Array handling (one level of
 recursion by default) is the responsibility of
 Phalcon\Filter\Filter::sanitize(), not of the sanitizer.
 
+@method mixed __invoke(mixed $value, mixed ...$params)
+
 - **`Phalcon\Contracts\Filter\Sanitizer`**
 
 ## Contracts\Flash\Flash
@@ -6688,7 +6700,7 @@ API and are not declared on this contract; they are scheduled to be added in
 the next major version.
 
 - **`Phalcon\Contracts\Flash\Flash`**
-- [`Phalcon\Flash\FlashInterface`](../phalcon_flash/#flashflashinterface)
+- [`Phalcon\Flash\FlashInterface`](/6.0/api/phalcon_flash/#flashflashinterface)
 
 ### Method Summary
 
@@ -6759,6 +6771,14 @@ public function warning( string $message ): string|null;
 ```
 
 Shows a HTML warning message
+
+## Contracts\Flash\FlashTypes
+
+Interface
+
+Central registry of the array shapes used across the Flash namespace.
+
+- **`Phalcon\Contracts\Flash\FlashTypes`**
 
 ## Contracts\Forms\FormsTypes
 
@@ -6982,7 +7002,7 @@ interface exposes it as a contract without touching `RequestInterface`
 (adding a method there would break userland implementers). It lets consumers
 type against the attribute-bearing request without depending on the concrete.
 
-- [`Phalcon\Http\RequestInterface`](../phalcon_http/#httprequestinterface)
+- [`Phalcon\Http\RequestInterface`](/6.0/api/phalcon_http/#httprequestinterface)
 - **`Phalcon\Contracts\Http\AttributeRequest`**
 
 `Phalcon\Http\RequestInterface` · `Phalcon\Http\Request\Bag\AttributeBag`
@@ -7040,7 +7060,7 @@ Interface
 Canonical contract for Phalcon\Logger adapters.
 
 - **`Phalcon\Contracts\Logger\Adapter\Adapter`**
-- [`Phalcon\Logger\Adapter\AdapterInterface`](../phalcon_logger/#loggeradapteradapterinterface)
+- [`Phalcon\Logger\Adapter\AdapterInterface`](/6.0/api/phalcon_logger/#loggeradapteradapterinterface)
 
 `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Item`
 
@@ -7156,7 +7176,7 @@ Interface
 Canonical contract for Phalcon\Logger formatters.
 
 - **`Phalcon\Contracts\Logger\Formatter\Formatter`**
-- [`Phalcon\Logger\Formatter\FormatterInterface`](../phalcon_logger/#loggerformatterformatterinterface)
+- [`Phalcon\Logger\Formatter\FormatterInterface`](/6.0/api/phalcon_logger/#loggerformatterformatterinterface)
 
 `Phalcon\Logger\Item`
 
@@ -7183,7 +7203,7 @@ Interface
 Canonical contract for Phalcon\Logger\Logger.
 
 - **`Phalcon\Contracts\Logger\Logger`**
-- [`Phalcon\Logger\LoggerInterface`](../phalcon_logger/#loggerloggerinterface)
+- [`Phalcon\Logger\LoggerInterface`](/6.0/api/phalcon_logger/#loggerloggerinterface)
 
 `Phalcon\Contracts\Logger\Adapter\Adapter`
 
@@ -7486,7 +7506,7 @@ Canonical contract for Phalcon\Mvc\Dispatcher.
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](#contractsdispatcherdispatcher)
 - **`Phalcon\Contracts\Mvc\Dispatcher`**
-- [`Phalcon\Mvc\DispatcherInterface`](../phalcon_mvc/#mvcdispatcherinterface)
+- [`Phalcon\Mvc\DispatcherInterface`](/6.0/api/phalcon_mvc/#mvcdispatcherinterface)
 
 `Phalcon\Contracts\Dispatcher\Dispatcher` · `Phalcon\Mvc\ControllerInterface`
 
@@ -7615,7 +7635,7 @@ Interface
 Interface for Phalcon\Paginator adapters
 
 - **`Phalcon\Contracts\Paginator\Adapter`**
-- [`Phalcon\Paginator\Adapter\AdapterInterface`](../phalcon_paginator/#paginatoradapteradapterinterface)
+- [`Phalcon\Paginator\Adapter\AdapterInterface`](/6.0/api/phalcon_paginator/#paginatoradapteradapterinterface)
 
 ### Method Summary
 
@@ -7703,7 +7723,7 @@ Two adapter dialects fill this repository:
   `getPrevious()` are not computed (they return 0).
 
 - **`Phalcon\Contracts\Paginator\Repository`**
-- [`Phalcon\Paginator\RepositoryInterface`](../phalcon_paginator/#paginatorrepositoryinterface)
+- [`Phalcon\Paginator\RepositoryInterface`](/6.0/api/phalcon_paginator/#paginatorrepositoryinterface)
 
 ### Method Summary
 
@@ -8658,7 +8678,7 @@ Canonical contract for Phalcon\Support\Collection.
 
 - `\ArrayAccess`
 - **`Phalcon\Contracts\Support\Collection`** - extends `\ArrayAccess`, `\IteratorAggregate`
-- [`Phalcon\Support\Collection\CollectionInterface`](../phalcon_support/#supportcollectioncollectioninterface)
+- [`Phalcon\Support\Collection\CollectionInterface`](/6.0/api/phalcon_support/#supportcollectioncollectioninterface)
 
 `ArrayAccess` · `IteratorAggregate`
 

@@ -67,7 +67,7 @@ $config = new Grouped(
 );
 ```
 
-- [`Phalcon\Support\Collection`](../phalcon_support/#supportcollection)
+- [`Phalcon\Support\Collection`](/6.0/api/phalcon_support/#supportcollection)
 - [`Phalcon\Config\Config`](#configconfig)
 - **`Phalcon\Config\Adapter\Grouped`**
 
@@ -138,7 +138,7 @@ INI_SCANNER_NORMAL
 );
 ```
 
-- [`Phalcon\Support\Collection`](../phalcon_support/#supportcollection)
+- [`Phalcon\Support\Collection`](/6.0/api/phalcon_support/#supportcollection)
 - [`Phalcon\Config\Config`](#configconfig)
 - **`Phalcon\Config\Adapter\Ini`**
 
@@ -226,7 +226,7 @@ echo $config->phalcon->baseuri;
 echo $config->models->metadata;
 ```
 
-- [`Phalcon\Support\Collection`](../phalcon_support/#supportcollection)
+- [`Phalcon\Support\Collection`](/6.0/api/phalcon_support/#supportcollection)
 - [`Phalcon\Config\Config`](#configconfig)
 - **`Phalcon\Config\Adapter\Json`**
 
@@ -286,7 +286,7 @@ echo $config->phalcon->controllersDir;
 echo $config->database->username;
 ```
 
-- [`Phalcon\Support\Collection`](../phalcon_support/#supportcollection)
+- [`Phalcon\Support\Collection`](/6.0/api/phalcon_support/#supportcollection)
 - [`Phalcon\Config\Config`](#configconfig)
 - **`Phalcon\Config\Adapter\Php`**
 
@@ -348,7 +348,7 @@ echo $config->phalcon->baseuri;
 echo $config->models->metadata;
 ```
 
-- [`Phalcon\Support\Collection`](../phalcon_support/#supportcollection)
+- [`Phalcon\Support\Collection`](/6.0/api/phalcon_support/#supportcollection)
 - [`Phalcon\Config\Config`](#configconfig)
 - **`Phalcon\Config\Adapter\Yaml`**
 
@@ -403,7 +403,7 @@ $config = new \Phalcon\Config\Config(
 
 @extends Collection&lt;mixed>
 
-- [`Phalcon\Support\Collection`](../phalcon_support/#supportcollection)
+- [`Phalcon\Support\Collection`](/6.0/api/phalcon_support/#supportcollection)
 - **`Phalcon\Config\Config`** - implements [`Phalcon\Config\ConfigInterface`](#configconfiginterface)
 - [`Phalcon\Config\Adapter\Grouped`](#configadaptergrouped)
 - [`Phalcon\Config\Adapter\Ini`](#configadapterini)
@@ -576,8 +576,8 @@ $options = [
 $config = (new ConfigFactory())->load($options);
 ```
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Config\ConfigFactory`**
 
 `Exception` · `Phalcon\Config\Adapter\Grouped` · `Phalcon\Config\Adapter\Ini` · `Phalcon\Config\Adapter\Json` · `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\Exceptions\ConfigNotArrayOrObject` · `Phalcon\Config\Exceptions\MissingConfigOption` · `Phalcon\Config\Exceptions\MissingFileExtension` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Factory\AbstractFactory`
@@ -687,8 +687,8 @@ Interface for Phalcon\Config\Config class
 @extends CollectionInterface&lt;mixed>
 
 - `\ArrayAccess`
-- [`Phalcon\Contracts\Support\Collection`](../phalcon_contracts/#contractssupportcollection)
-- [`Phalcon\Support\Collection\CollectionInterface`](../phalcon_support/#supportcollectioncollectioninterface)
+- [`Phalcon\Contracts\Support\Collection`](/6.0/api/phalcon_contracts/#contractssupportcollection)
+- [`Phalcon\Support\Collection\CollectionInterface`](/6.0/api/phalcon_support/#supportcollectioncollectioninterface)
 - **`Phalcon\Config\ConfigInterface`**
 
 `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Support\Collection\CollectionInterface`

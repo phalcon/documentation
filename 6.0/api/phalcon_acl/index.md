@@ -36,8 +36,8 @@ Abstract
 
 Functionality common to all adapters
 
-- [`Phalcon\Events\AbstractEventsAware`](../phalcon_events/#eventsabstracteventsaware)
-- **`Phalcon\Acl\Adapter\AbstractAdapter`** - implements [`Phalcon\Acl\Adapter\AdapterInterface`](#acladapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](../phalcon_events/#eventseventsawareinterface)
+- [`Phalcon\Events\AbstractEventsAware`](/6.0/api/phalcon_events/#eventsabstracteventsaware)
+- **`Phalcon\Acl\Adapter\AbstractAdapter`** - implements [`Phalcon\Acl\Adapter\AdapterInterface`](#acladapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
 - [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
 
 `Phalcon\Acl\Enum` · `Phalcon\Events\AbstractEventsAware` · `Phalcon\Events\EventsAwareInterface`
@@ -130,7 +130,7 @@ Interface
 
 Interface for Phalcon\Acl adapters
 
-- [`Phalcon\Contracts\Acl\Adapter\Adapter`](../phalcon_contracts/#contractsacladapteradapter)
+- [`Phalcon\Contracts\Acl\Adapter\Adapter`](/6.0/api/phalcon_contracts/#contractsacladapteradapter)
 - **`Phalcon\Acl\Adapter\AdapterInterface`**
 
 `Phalcon\Contracts\Acl\Adapter\Adapter`
@@ -201,7 +201,7 @@ foreach ($actions as $action) {
 }
 ```
 
-- [`Phalcon\Events\AbstractEventsAware`](../phalcon_events/#eventsabstracteventsaware)
+- [`Phalcon\Events\AbstractEventsAware`](/6.0/api/phalcon_events/#eventsabstracteventsaware)
 - [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
 - **`Phalcon\Acl\Adapter\Memory`**
 - [`Phalcon\Acl\Adapter\Storage`](#acladapterstorage)
@@ -596,10 +596,10 @@ Use external locking when multiple processes write the same key.
 
 @see Persistable
 
-- [`Phalcon\Events\AbstractEventsAware`](../phalcon_events/#eventsabstracteventsaware)
+- [`Phalcon\Events\AbstractEventsAware`](/6.0/api/phalcon_events/#eventsabstracteventsaware)
 - [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
 - [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
-- **`Phalcon\Acl\Adapter\Storage`** - implements [`Phalcon\Contracts\Acl\Adapter\Persistable`](../phalcon_contracts/#contractsacladapterpersistable)
+- **`Phalcon\Acl\Adapter\Storage`** - implements [`Phalcon\Contracts\Acl\Adapter\Persistable`](/6.0/api/phalcon_contracts/#contractsacladapterpersistable)
 
 `Phalcon\Acl\Component` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\InvalidSnapshot` · `Phalcon\Acl\Role` · `Phalcon\Contracts\Acl\AclTypes` · `Phalcon\Contracts\Acl\Adapter\Persistable` · `Phalcon\Storage\Adapter\AdapterInterface` · `Throwable`
 
@@ -694,7 +694,7 @@ Interface
 
 Interface for ACL Component aware objects
 
-- [`Phalcon\Contracts\Acl\ComponentAware`](../phalcon_contracts/#contractsaclcomponentaware)
+- [`Phalcon\Contracts\Acl\ComponentAware`](/6.0/api/phalcon_contracts/#contractsaclcomponentaware)
 - **`Phalcon\Acl\ComponentAwareInterface`**
 
 `Phalcon\Contracts\Acl\ComponentAware`
@@ -705,7 +705,7 @@ Interface
 
 Interface for Phalcon\Acl\Component
 
-- [`Phalcon\Contracts\Acl\Component`](../phalcon_contracts/#contractsaclcomponent)
+- [`Phalcon\Contracts\Acl\Component`](/6.0/api/phalcon_contracts/#contractsaclcomponent)
 - **`Phalcon\Acl\ComponentInterface`**
 
 `Phalcon\Contracts\Acl\Component`
@@ -1037,7 +1037,7 @@ Interface
 
 Interface for ACL Role aware objects
 
-- [`Phalcon\Contracts\Acl\RoleAware`](../phalcon_contracts/#contractsaclroleaware)
+- [`Phalcon\Contracts\Acl\RoleAware`](/6.0/api/phalcon_contracts/#contractsaclroleaware)
 - **`Phalcon\Acl\RoleAwareInterface`**
 
 `Phalcon\Contracts\Acl\RoleAware`
@@ -1048,7 +1048,7 @@ Interface
 
 Interface for Phalcon\Acl\Role
 
-- [`Phalcon\Contracts\Acl\Role`](../phalcon_contracts/#contractsaclrole)
+- [`Phalcon\Contracts\Acl\Role`](/6.0/api/phalcon_contracts/#contractsaclrole)
 - **`Phalcon\Acl\RoleInterface`**
 
 `Phalcon\Contracts\Acl\Role`

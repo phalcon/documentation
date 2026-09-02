@@ -383,7 +383,7 @@ visited during iteration (`foreach`), which walks the integer sequence only.
 Use the append methods (`appendMessage()` / `appendMessages()`) when entries
 must take part in iteration.
 
-- **`Phalcon\Messages\Messages`** - implements [`Phalcon\Contracts\Messages\Messages`](../phalcon_contracts/#contractsmessagesmessages), `\JsonSerializable`
+- **`Phalcon\Messages\Messages`** - implements [`Phalcon\Contracts\Messages\Messages`](/6.0/api/phalcon_contracts/#contractsmessagesmessages), `\JsonSerializable`
 
 `Iterator` · `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Phalcon\Messages\Traits\MessagesHelperTrait` · `Traversable`
 

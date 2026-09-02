@@ -15,493 +15,248 @@ All classes are prefixed with `Phalcon`
 
 ## Tag
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag.zep">Source on GitHub</a>
+Class
 
 Phalcon\Tag is designed to simplify building of HTML tags.
 It provides a set of helpers to generate HTML in a dynamic way.
 This component is a class that you can extend to add more helpers.
 
-<div class="api-tree">
-
 - **`Phalcon\Tag`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Tag\Exception` · `Phalcon\Tag\Select` · `Stringable`
+`Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Tag\Exception` · `Phalcon\Tag\Select` · `Stringable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#tag-appendtitle">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">appendTitle</span>( <span class="st">mixed</span> <span class="sv">$title</span> )</code>
-<span class="desc">Appends a text to current document title</span>
-</a>
-<a class="api-item" href="#tag-checkfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">checkField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;check&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-colorfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">colorField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;color&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-datefield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">dateField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;date&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-datetimefield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">dateTimeField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;datetime&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-datetimelocalfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">dateTimeLocalField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;datetime-local&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-displayto">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">displayTo</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Alias of Phalcon\Tag::setDefault()</span>
-</a>
-<a class="api-item" href="#tag-emailfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">emailField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;email&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-endform">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">endForm</span>()</code>
-<span class="desc">Builds an HTML close FORM tag</span>
-</a>
-<a class="api-item" href="#tag-filefield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">fileField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;file&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-formlegacy">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">formLegacy</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML FORM tag</span>
-</a>
-<a class="api-item" href="#tag-friendlytitle">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">friendlyTitle</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;-&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowercase</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$replace</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Converts texts into URL-friendly titles</span>
-</a>
-<a class="api-item" href="#tag-getdi">
-<code class="vis vis-public">public</code>
-<code class="ret">DiInterface</code>
-<code class="sig"><span class="sf">getDI</span>()</code>
-<span class="desc">Internally gets the request dispatcher</span>
-</a>
-<a class="api-item" href="#tag-getdoctype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getDocType</span>()</code>
-<span class="desc">Get the document type declaration of content</span>
-</a>
-<a class="api-item" href="#tag-getescaper">
-<code class="vis vis-public">public</code>
-<code class="ret">EscaperInterface|null</code>
-<code class="sig"><span class="sf">getEscaper</span>( <span class="st">array</span> <span class="sv">$params</span> )</code>
-<span class="desc">Obtains the &#039;escaper&#039; service if required</span>
-</a>
-<a class="api-item" href="#tag-getescaperservice">
-<code class="vis vis-public">public</code>
-<code class="ret">EscaperInterface</code>
-<code class="sig"><span class="sf">getEscaperService</span>()</code>
-<span class="desc">Returns an Escaper service from the default DI</span>
-</a>
-<a class="api-item" href="#tag-gettitle">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTitle</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$prepend</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$append</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Gets the current document title. The title will be automatically escaped.</span>
-</a>
-<a class="api-item" href="#tag-gettitleseparator">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTitleSeparator</span>()</code>
-<span class="desc">Gets the current document title separator</span>
-</a>
-<a class="api-item" href="#tag-geturlservice">
-<code class="vis vis-public">public</code>
-<code class="ret">UrlInterface</code>
-<code class="sig"><span class="sf">getUrlService</span>()</code>
-<span class="desc">Returns a URL service from the default DI</span>
-</a>
-<a class="api-item" href="#tag-getvalue">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getValue</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Every helper calls this function to check whether a component has a</span>
-</a>
-<a class="api-item" href="#tag-hasvalue">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasValue</span>( <span class="st">mixed</span> <span class="sv">$name</span> )</code>
-<span class="desc">Check if a helper has a default value set using Phalcon\Tag::setDefault()</span>
-</a>
-<a class="api-item" href="#tag-hiddenfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">hiddenField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;hidden&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-image">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">image</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Builds HTML IMG tags</span>
-</a>
-<a class="api-item" href="#tag-imageinput">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">imageInput</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;image&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-javascriptinclude">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">javascriptInclude</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Builds a SCRIPT[type=&quot;javascript&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-linkto">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">linkTo</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$text</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$local</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Builds an HTML A tag using framework conventions</span>
-</a>
-<a class="api-item" href="#tag-monthfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">monthField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;month&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-numericfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">numericField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;number&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-passwordfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">passwordField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;password&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-preload">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">preload</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Parses the preload element passed and sets the necessary link headers</span>
-</a>
-<a class="api-item" href="#tag-prependtitle">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">prependTitle</span>( <span class="st">mixed</span> <span class="sv">$title</span> )</code>
-<span class="desc">Prepends a text to current document title</span>
-</a>
-<a class="api-item" href="#tag-radiofield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">radioField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;radio&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-rangefield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">rangeField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;range&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-renderattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">renderAttributes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$code</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
-<span class="desc">Renders parameters keeping order in their HTML attributes</span>
-</a>
-<a class="api-item" href="#tag-rendertitle">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">renderTitle</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$prepend</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$append</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Renders the title with title tags. The title is automatically escaped</span>
-</a>
-<a class="api-item" href="#tag-resetinput">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">resetInput</span>()</code>
-<span class="desc">Resets the request and internal values to avoid those fields will have</span>
-</a>
-<a class="api-item" href="#tag-searchfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">searchField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds a HTML input[type=&quot;search&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-select">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">select</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options</span>
-</a>
-<a class="api-item" href="#tag-selectstatic">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">selectStatic</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Builds an HTML SELECT tag using a PHP array for options</span>
-</a>
-<a class="api-item" href="#tag-setautoescape">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setAutoescape</span>( <span class="st">bool</span> <span class="sv">$autoescape</span> )</code>
-<span class="desc">Set autoescape mode in generated HTML</span>
-</a>
-<a class="api-item" href="#tag-setdi">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Sets the dependency injector container.</span>
-</a>
-<a class="api-item" href="#tag-setdefault">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefault</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Assigns default values to generated tags by helpers</span>
-</a>
-<a class="api-item" href="#tag-setdefaults">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefaults</span>(<span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Assigns default values to generated tags by helpers</span>
-</a>
-<a class="api-item" href="#tag-setdoctype">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDocType</span>( <span class="st">int</span> <span class="sv">$doctype</span> )</code>
-<span class="desc">Set the document type of content</span>
-</a>
-<a class="api-item" href="#tag-settitle">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setTitle</span>( <span class="st">string</span> <span class="sv">$title</span> )</code>
-<span class="desc">Set the title of view content</span>
-</a>
-<a class="api-item" href="#tag-settitleseparator">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setTitleSeparator</span>( <span class="st">string</span> <span class="sv">$titleSeparator</span> )</code>
-<span class="desc">Set the title separator of view content</span>
-</a>
-<a class="api-item" href="#tag-stylesheetlink">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">stylesheetLink</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Builds a LINK[rel=&quot;stylesheet&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-submitbutton">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">submitButton</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;submit&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-taghtml">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">tagHtml</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tagName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$selfClose</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$onlyStart</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useEol</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Builds a HTML tag</span>
-</a>
-<a class="api-item" href="#tag-taghtmlclose">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">tagHtmlClose</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tagName</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useEol</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Builds a HTML tag closing tag</span>
-</a>
-<a class="api-item" href="#tag-telfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">telField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;tel&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-textarea">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">textArea</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML TEXTAREA tag</span>
-</a>
-<a class="api-item" href="#tag-textfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">textField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;text&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-timefield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">timeField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;time&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-urlfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">urlField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;url&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-weekfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">weekField</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
-<span class="desc">Builds an HTML input[type=&quot;week&quot;] tag</span>
-</a>
-<a class="api-item" href="#tag-getstaticurl">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getStaticUrl</span>( <span class="st">mixed</span> <span class="sv">$uri</span> )</code>
-<span class="desc">Resolves a static (asset) URL through the <code>url</code> service.</span>
-</a>
-<a class="api-item" href="#tag-inputfield">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">inputField</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$asValue</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Builds generic INPUT tags</span>
-</a>
-<a class="api-item" href="#tag-inputfieldchecked">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">inputFieldChecked</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span></span>)</code>
-<span class="desc">Builds INPUT tags that implements the checked attribute</span>
-</a>
-<a class="api-item" href="#tag-tostringvalue">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">toStringValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
-<span class="desc">Reduces an arbitrary helper value to the string a tag attribute, id or</span>
-</a>
-</div>
+<ApiItem href="#tag-appendtitle" visibility="public" name="appendTitle" returnType="void" params={[{"type":"mixed","name":"title","default":null}]}>
+Appends a text to current document title
+</ApiItem>
+<ApiItem href="#tag-checkfield" visibility="public" name="checkField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="check"] tag
+</ApiItem>
+<ApiItem href="#tag-colorfield" visibility="public" name="colorField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="color"] tag
+</ApiItem>
+<ApiItem href="#tag-datefield" visibility="public" name="dateField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="date"] tag
+</ApiItem>
+<ApiItem href="#tag-datetimefield" visibility="public" name="dateTimeField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="datetime"] tag
+</ApiItem>
+<ApiItem href="#tag-datetimelocalfield" visibility="public" name="dateTimeLocalField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="datetime-local"] tag
+</ApiItem>
+<ApiItem href="#tag-displayto" visibility="public" name="displayTo" returnType="void" params={[{"type":"string","name":"id","default":null},{"type":"mixed","name":"value","default":null}]}>
+Alias of Phalcon\Tag::setDefault()
+</ApiItem>
+<ApiItem href="#tag-emailfield" visibility="public" name="emailField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="email"] tag
+</ApiItem>
+<ApiItem href="#tag-endform" visibility="public" name="endForm" returnType="string" params={[]}>
+Builds an HTML close FORM tag
+</ApiItem>
+<ApiItem href="#tag-filefield" visibility="public" name="fileField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="file"] tag
+</ApiItem>
+<ApiItem href="#tag-formlegacy" visibility="public" name="formLegacy" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML FORM tag
+</ApiItem>
+<ApiItem href="#tag-friendlytitle" visibility="public" name="friendlyTitle" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"-\""},{"type":"bool","name":"lowercase","default":"true"},{"type":"mixed","name":"replace","default":"null"}]}>
+Converts texts into URL-friendly titles
+</ApiItem>
+<ApiItem href="#tag-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
+Internally gets the request dispatcher
+</ApiItem>
+<ApiItem href="#tag-getdoctype" visibility="public" name="getDocType" returnType="string" params={[]}>
+Get the document type declaration of content
+</ApiItem>
+<ApiItem href="#tag-getescaper" visibility="public" name="getEscaper" returnType="EscaperInterface|null" params={[{"type":"array","name":"params","default":null}]}>
+Obtains the 'escaper' service if required
+</ApiItem>
+<ApiItem href="#tag-getescaperservice" visibility="public" name="getEscaperService" returnType="EscaperInterface" params={[]}>
+Returns an Escaper service from the default DI
+</ApiItem>
+<ApiItem href="#tag-gettitle" visibility="public" name="getTitle" returnType="string" params={[{"type":"bool","name":"prepend","default":"true"},{"type":"bool","name":"append","default":"true"}]}>
+Gets the current document title. The title will be automatically escaped.
+</ApiItem>
+<ApiItem href="#tag-gettitleseparator" visibility="public" name="getTitleSeparator" returnType="string" params={[]}>
+Gets the current document title separator
+</ApiItem>
+<ApiItem href="#tag-geturlservice" visibility="public" name="getUrlService" returnType="UrlInterface" params={[]}>
+Returns a URL service from the default DI
+</ApiItem>
+<ApiItem href="#tag-getvalue" visibility="public" name="getValue" returnType="mixed" params={[{"type":"mixed","name":"name","default":null},{"type":"array","name":"params","default":"[]"}]}>
+Every helper calls this function to check whether a component has a
+</ApiItem>
+<ApiItem href="#tag-hasvalue" visibility="public" name="hasValue" returnType="bool" params={[{"type":"mixed","name":"name","default":null}]}>
+Check if a helper has a default value set using Phalcon\Tag::setDefault()
+</ApiItem>
+<ApiItem href="#tag-hiddenfield" visibility="public" name="hiddenField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds a HTML input[type="hidden"] tag
+</ApiItem>
+<ApiItem href="#tag-image" visibility="public" name="image" returnType="string" params={[{"type":"mixed","name":"parameters","default":"null"},{"type":"bool","name":"local","default":"true"}]}>
+Builds HTML IMG tags
+</ApiItem>
+<ApiItem href="#tag-imageinput" visibility="public" name="imageInput" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="image"] tag
+</ApiItem>
+<ApiItem href="#tag-javascriptinclude" visibility="public" name="javascriptInclude" returnType="string" params={[{"type":"mixed","name":"parameters","default":"null"},{"type":"bool","name":"local","default":"true"}]}>
+Builds a SCRIPT[type="javascript"] tag
+</ApiItem>
+<ApiItem href="#tag-linkto" visibility="public" name="linkTo" returnType="string" params={[{"type":"mixed","name":"parameters","default":null},{"type":"mixed","name":"text","default":"null"},{"type":"mixed","name":"local","default":"true"}]}>
+Builds an HTML A tag using framework conventions
+</ApiItem>
+<ApiItem href="#tag-monthfield" visibility="public" name="monthField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="month"] tag
+</ApiItem>
+<ApiItem href="#tag-numericfield" visibility="public" name="numericField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="number"] tag
+</ApiItem>
+<ApiItem href="#tag-passwordfield" visibility="public" name="passwordField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds a HTML input[type="password"] tag
+</ApiItem>
+<ApiItem href="#tag-preload" visibility="public" name="preload" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Parses the preload element passed and sets the necessary link headers
+</ApiItem>
+<ApiItem href="#tag-prependtitle" visibility="public" name="prependTitle" returnType="void" params={[{"type":"mixed","name":"title","default":null}]}>
+Prepends a text to current document title
+</ApiItem>
+<ApiItem href="#tag-radiofield" visibility="public" name="radioField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="radio"] tag
+</ApiItem>
+<ApiItem href="#tag-rangefield" visibility="public" name="rangeField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="range"] tag
+</ApiItem>
+<ApiItem href="#tag-renderattributes" visibility="public" name="renderAttributes" returnType="string" params={[{"type":"string","name":"code","default":null},{"type":"array","name":"attributes","default":null}]}>
+Renders parameters keeping order in their HTML attributes
+</ApiItem>
+<ApiItem href="#tag-rendertitle" visibility="public" name="renderTitle" returnType="string" params={[{"type":"bool","name":"prepend","default":"true"},{"type":"bool","name":"append","default":"true"}]}>
+Renders the title with title tags. The title is automatically escaped
+</ApiItem>
+<ApiItem href="#tag-resetinput" visibility="public" name="resetInput" returnType="void" params={[]}>
+Resets the request and internal values to avoid those fields will have
+</ApiItem>
+<ApiItem href="#tag-searchfield" visibility="public" name="searchField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds a HTML input[type="search"] tag
+</ApiItem>
+<ApiItem href="#tag-select" visibility="public" name="select" returnType="string" params={[{"type":"mixed","name":"parameters","default":null},{"type":"mixed","name":"data","default":"null"}]}>
+Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options
+</ApiItem>
+<ApiItem href="#tag-selectstatic" visibility="public" name="selectStatic" returnType="string" params={[{"type":"mixed","name":"parameters","default":null},{"type":"mixed","name":"data","default":"null"}]}>
+Builds an HTML SELECT tag using a PHP array for options
+</ApiItem>
+<ApiItem href="#tag-setautoescape" visibility="public" name="setAutoescape" returnType="void" params={[{"type":"bool","name":"autoescape","default":null}]}>
+Set autoescape mode in generated HTML
+</ApiItem>
+<ApiItem href="#tag-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Sets the dependency injector container.
+</ApiItem>
+<ApiItem href="#tag-setdefault" visibility="public" name="setDefault" returnType="void" params={[{"type":"string","name":"id","default":null},{"type":"mixed","name":"value","default":null}]}>
+Assigns default values to generated tags by helpers
+</ApiItem>
+<ApiItem href="#tag-setdefaults" visibility="public" name="setDefaults" returnType="void" params={[{"type":"array","name":"values","default":null},{"type":"bool","name":"merge","default":"false"}]}>
+Assigns default values to generated tags by helpers
+</ApiItem>
+<ApiItem href="#tag-setdoctype" visibility="public" name="setDocType" returnType="void" params={[{"type":"int","name":"doctype","default":null}]}>
+Set the document type of content
+</ApiItem>
+<ApiItem href="#tag-settitle" visibility="public" name="setTitle" returnType="void" params={[{"type":"string","name":"title","default":null}]}>
+Set the title of view content
+</ApiItem>
+<ApiItem href="#tag-settitleseparator" visibility="public" name="setTitleSeparator" returnType="void" params={[{"type":"string","name":"titleSeparator","default":null}]}>
+Set the title separator of view content
+</ApiItem>
+<ApiItem href="#tag-stylesheetlink" visibility="public" name="stylesheetLink" returnType="string" params={[{"type":"mixed","name":"parameters","default":"null"},{"type":"bool","name":"local","default":"true"}]}>
+Builds a LINK[rel="stylesheet"] tag
+</ApiItem>
+<ApiItem href="#tag-submitbutton" visibility="public" name="submitButton" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="submit"] tag
+</ApiItem>
+<ApiItem href="#tag-taghtml" visibility="public" name="tagHtml" returnType="string" params={[{"type":"string","name":"tagName","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"bool","name":"selfClose","default":"false"},{"type":"bool","name":"onlyStart","default":"false"},{"type":"bool","name":"useEol","default":"false"}]}>
+Builds a HTML tag
+</ApiItem>
+<ApiItem href="#tag-taghtmlclose" visibility="public" name="tagHtmlClose" returnType="string" params={[{"type":"string","name":"tagName","default":null},{"type":"bool","name":"useEol","default":"false"}]}>
+Builds a HTML tag closing tag
+</ApiItem>
+<ApiItem href="#tag-telfield" visibility="public" name="telField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="tel"] tag
+</ApiItem>
+<ApiItem href="#tag-textarea" visibility="public" name="textArea" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML TEXTAREA tag
+</ApiItem>
+<ApiItem href="#tag-textfield" visibility="public" name="textField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="text"] tag
+</ApiItem>
+<ApiItem href="#tag-timefield" visibility="public" name="timeField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="time"] tag
+</ApiItem>
+<ApiItem href="#tag-urlfield" visibility="public" name="urlField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="url"] tag
+</ApiItem>
+<ApiItem href="#tag-weekfield" visibility="public" name="weekField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="week"] tag
+</ApiItem>
+<ApiItem href="#tag-getstaticurl" visibility="protected" name="getStaticUrl" returnType="string" params={[{"type":"mixed","name":"uri","default":null}]}>
+Resolves a static (asset) URL through the `url` service.
+</ApiItem>
+<ApiItem href="#tag-inputfield" visibility="protected" name="inputField" returnType="string" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"parameters","default":null},{"type":"bool","name":"asValue","default":"false"}]}>
+Builds generic INPUT tags
+</ApiItem>
+<ApiItem href="#tag-inputfieldchecked" visibility="protected" name="inputFieldChecked" returnType="string" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"parameters","default":null}]}>
+Builds INPUT tags that implements the checked attribute
+</ApiItem>
+<ApiItem href="#tag-tostringvalue" visibility="protected" name="toStringValue" returnType="string" params={[{"type":"mixed","name":"value","default":null}]}>
+Reduces an arbitrary helper value to the string a tag attribute, id or
+</ApiItem>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">HTML32</span><span class="sm"> = 1</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">HTML401_FRAMESET</span><span class="sm"> = 4</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">HTML401_STRICT</span><span class="sm"> = 2</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">HTML401_TRANSITIONAL</span><span class="sm"> = 3</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">HTML5</span><span class="sm"> = 5</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">XHTML10_FRAMESET</span><span class="sm"> = 8</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">XHTML10_STRICT</span><span class="sm"> = 6</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">XHTML10_TRANSITIONAL</span><span class="sm"> = 7</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">XHTML11</span><span class="sm"> = 9</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">XHTML20</span><span class="sm"> = 10</span></code>
-</div>
-<div class="api-item">
-<code class="ret">int</code>
-<code class="sig"><span class="sc">XHTML5</span><span class="sm"> = 11</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="HTML32" type="int" default="1">
+</ApiItem>
+<ApiItem kind="constant" name="HTML401_FRAMESET" type="int" default="4">
+</ApiItem>
+<ApiItem kind="constant" name="HTML401_STRICT" type="int" default="2">
+</ApiItem>
+<ApiItem kind="constant" name="HTML401_TRANSITIONAL" type="int" default="3">
+</ApiItem>
+<ApiItem kind="constant" name="HTML5" type="int" default="5">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML10_FRAMESET" type="int" default="8">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML10_STRICT" type="int" default="6">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML10_TRANSITIONAL" type="int" default="7">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML11" type="int" default="9">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML20" type="int" default="10">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML5" type="int" default="11">
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$autoEscape</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$displayValues</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$documentAppendTitle</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$documentPrependTitle</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$documentTitle</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$documentTitleSeparator</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$documentType</span><span class="sm"> = 11</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">EscaperInterface|null</code>
-<code class="sig"><span class="sv">$escaperService</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">UrlInterface|null</code>
-<code class="sig"><span class="sv">$urlService</span><span class="sm"> = null</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="autoEscape" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="displayValues" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="documentAppendTitle" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="documentPrependTitle" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="documentTitle" type="string|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="documentTitleSeparator" type="string|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="documentType" type="int" default="11">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="escaperService" type="EscaperInterface|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="urlService" type="UrlInterface|null" default="null">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 56</div>
 
 <h4 id="tag-appendtitle"><code>appendTitle()</code></h4>
 
@@ -1008,8 +763,6 @@ public static function weekField( mixed $parameters ): string;
 
 Builds an HTML input[type="week"] tag
 
-<div class="api-group">Protected · 4</div>
-
 <h4 id="tag-getstaticurl"><code>getStaticUrl()</code></h4>
 
 ```php
@@ -1059,63 +812,40 @@ reads back as an empty string rather than aborting the helper.
 
 ## Tag\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag/Exception.zep">Source on GitHub</a>
+Class
 
 Phalcon\Tag\Exception
 
 Exceptions thrown in Phalcon\Tag will use this class
 
-<div class="api-tree">
-
 - `\Exception`
 - **`Phalcon\Tag\Exception`**
 
-</div>
-
 ## Tag\Select
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag/Select.zep">Source on GitHub</a>
+Abstract
 
 Phalcon\Tag\Select
 
 Generates a SELECT HTML tag using a static array of values or a
 Phalcon\Mvc\Model resultset
 
-<div class="api-tree">
-
 - **`Phalcon\Tag\Select`**
 
-</div>
-
-__Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Tag` · `Stringable`
+`Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Tag` · `Stringable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#tagselect-selectfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">selectField</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Generates a SELECT tag</span>
-</a>
-<a class="api-item" href="#tagselect-echooption">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">echoOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$selected</span><span class="sm"> = false</span></span>)</code>
-</a>
-<a class="api-item" href="#tagselect-tostringvalue">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">toStringValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
-<span class="desc">Reduces an arbitrary option value to the string the markup needs.</span>
-</a>
-</div>
+<ApiItem href="#tagselect-selectfield" visibility="public" name="selectField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null},{"type":"mixed","name":"data","default":"null"}]}>
+Generates a SELECT tag
+</ApiItem>
+<ApiItem href="#tagselect-echooption" visibility="protected" name="echoOption" returnType="string" params={[{"type":"string","name":"value","default":null},{"type":"bool","name":"selected","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#tagselect-tostringvalue" visibility="protected" name="toStringValue" returnType="string" params={[{"type":"mixed","name":"value","default":null}]}>
+Reduces an arbitrary option value to the string the markup needs.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="tagselect-selectfield"><code>selectField()</code></h4>
 
@@ -1127,8 +857,6 @@ mixed $data = null
 ```
 
 Generates a SELECT tag
-
-<div class="api-group">Protected · 2</div>
 
 <h4 id="tagselect-echooption"><code>echoOption()</code></h4>
 

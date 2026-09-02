@@ -25,23 +25,39 @@ $flash->success("The record was successfully deleted");
 $flash->error("Cannot open the file");
 ```
 
-Class AbstractFlash
-
-@package Phalcon\Flash
-
-- **`Phalcon\Flash\AbstractFlash`** - implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface), [`Phalcon\Di\InjectionAwareInterface`](../phalcon_di/#diinjectionawareinterface)
+- `\stdClass`
+- [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
+- **`Phalcon\Flash\AbstractFlash`** - implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface)
 - [`Phalcon\Flash\Direct`](#flashdirect)
 - [`Phalcon\Flash\Session`](#flashsession)
 
-`Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Flash\Exceptions\EscaperServiceUnavailable` · `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray` · `Phalcon\Flash\Traits\FlashGettersTrait` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+`Phalcon\Contracts\Flash\FlashTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Flash\Exceptions\EscaperServiceUnavailable` · `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 
 ### Method Summary
 
 <ApiItem href="#flashabstractflash-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface|null","name":"escaper","default":"null"},{"type":"SessionInterface|null","name":"session","default":"null"}]}>
 AbstractFlash constructor.
 </ApiItem>
+<ApiItem href="#flashabstractflash-clear" visibility="public" name="clear" returnType="void" params={[]}>
+Clears accumulated messages when implicit flush is disabled
+</ApiItem>
 <ApiItem href="#flashabstractflash-error" visibility="public" name="error" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
 Shows a HTML error message
+</ApiItem>
+<ApiItem href="#flashabstractflash-getautoescape" visibility="public" name="getAutoescape" returnType="bool" params={[]}>
+Returns the flag that defines whether to automatically escape content or not
+</ApiItem>
+<ApiItem href="#flashabstractflash-getautomatichtml" visibility="public" name="getAutomaticHtml" returnType="bool" params={[]}>
+Returns the flag that defines whether to automatically use HTML or not
+</ApiItem>
+<ApiItem href="#flashabstractflash-getcssclasses" visibility="public" name="getCssClasses" returnType="array" params={[]}>
+Returns the array of the CSS classes for formatting messages. The key is
+</ApiItem>
+<ApiItem href="#flashabstractflash-getcssiconclasses" visibility="public" name="getCssIconClasses" returnType="array" params={[]}>
+Returns the array of the icon CSS classes for formatting messages. The
+</ApiItem>
+<ApiItem href="#flashabstractflash-getcustomtemplate" visibility="public" name="getCustomTemplate" returnType="string" params={[]}>
+Returns the custom template for formatting messages
 </ApiItem>
 <ApiItem href="#flashabstractflash-getescaperservice" visibility="public" name="getEscaperService" returnType="EscaperInterface" params={[]}>
 Returns the Escaper Service
@@ -83,6 +99,27 @@ Shows a HTML success message
 Shows a HTML warning message
 </ApiItem>
 
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="autoescape" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="automaticHtml" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="cssClasses" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="cssIconClasses" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="customTemplate" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="escaperService" type="EscaperInterface|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="implicitFlush" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="messages" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="sessionService" type="SessionInterface|null" default="null">
+</ApiItem>
+
 ### Methods
 
 <h4 id="flashabstractflash-__construct"><code>__construct()</code></h4>
@@ -96,6 +133,14 @@ SessionInterface|null $session = null
 
 AbstractFlash constructor.
 
+<h4 id="flashabstractflash-clear"><code>clear()</code></h4>
+
+```php
+public function clear(): void;
+```
+
+Clears accumulated messages when implicit flush is disabled
+
 <h4 id="flashabstractflash-error"><code>error()</code></h4>
 
 ```php
@@ -107,6 +152,48 @@ Shows a HTML error message
 ```php
 $flash->error("This is an error");
 ```
+
+<h4 id="flashabstractflash-getautoescape"><code>getAutoescape()</code></h4>
+
+```php
+public function getAutoescape(): bool;
+```
+
+Returns the flag that defines whether to automatically escape content or not
+
+<h4 id="flashabstractflash-getautomatichtml"><code>getAutomaticHtml()</code></h4>
+
+```php
+public function getAutomaticHtml(): bool;
+```
+
+Returns the flag that defines whether to automatically use HTML or not
+
+<h4 id="flashabstractflash-getcssclasses"><code>getCssClasses()</code></h4>
+
+```php
+public function getCssClasses(): array;
+```
+
+Returns the array of the CSS classes for formatting messages. The key is
+the type of message and the value is the CSS class
+
+<h4 id="flashabstractflash-getcssiconclasses"><code>getCssIconClasses()</code></h4>
+
+```php
+public function getCssIconClasses(): array;
+```
+
+Returns the array of the icon CSS classes for formatting messages. The
+key is the type of message and the value is the icon CSS class
+
+<h4 id="flashabstractflash-getcustomtemplate"><code>getCustomTemplate()</code></h4>
+
+```php
+public function getCustomTemplate(): string;
+```
+
+Returns the custom template for formatting messages
 
 <h4 id="flashabstractflash-getescaperservice"><code>getEscaperService()</code></h4>
 
@@ -249,6 +336,8 @@ Class Direct
 
 @package Phalcon\Flash
 
+- `\stdClass`
+- [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
 - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
 - **`Phalcon\Flash\Direct`**
 
@@ -369,7 +458,7 @@ Interface
 
 Interface FlashInterface
 
-- [`Phalcon\Contracts\Flash\Flash`](../phalcon_contracts/#contractsflashflash)
+- [`Phalcon\Contracts\Flash\Flash`](/6.0/api/phalcon_contracts/#contractsflashflash)
 - **`Phalcon\Flash\FlashInterface`**
 
 `Phalcon\Contracts\Flash\Flash`
@@ -386,10 +475,12 @@ Class Session
 
 @package Phalcon\Flash
 
+- `\stdClass`
+- [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
 - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
 - **`Phalcon\Flash\Session`**
 
-`Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface`
+`Phalcon\Contracts\Flash\FlashTypes` · `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface`
 
 ### Method Summary
 
@@ -399,7 +490,7 @@ Session constructor.
 <ApiItem href="#flashsession-clear" visibility="public" name="clear" returnType="void" params={[]}>
 Clear messages in the session messenger
 </ApiItem>
-<ApiItem href="#flashsession-getmessages" visibility="public" name="getMessages" returnType="array" params={[{"type":"string|null","name":"type","default":"null"},{"type":"bool","name":"remove","default":"true"}]}>
+<ApiItem href="#flashsession-getmessages" visibility="public" name="getMessages" returnType="array" params={[{"type":"mixed","name":"type","default":"null"},{"type":"bool","name":"remove","default":"true"}]}>
 Returns the messages in the session flasher
 </ApiItem>
 <ApiItem href="#flashsession-getsessionservice" visibility="public" name="getSessionService" returnType="ManagerInterface" params={[]}>
@@ -457,7 +548,7 @@ Clear messages in the session messenger
 
 ```php
 public function getMessages(
-string|null $type = null,
+mixed $type = null,
 bool $remove = true
 ): array;
 ```
@@ -517,129 +608,5 @@ protected function setSessionMessages( array $messages ): array;
 ```
 
 Stores the messages in session
-
-## Flash\Traits\FlashGettersTrait
-
-Trait
-
-Class AbstractFlash
-
-@package Phalcon\Flash
-
-Shows HTML notifications related to different circumstances. Classes can be
-stylized using CSS
-
-```php
-$flash->success("The record was successfully deleted");
-$flash->error("Cannot open the file");
-```
-@property bool                  $autoescape
-@property bool                  $automaticHtml
-@property array                 $cssClasses
-@property string                $customTemplate
-@property EscaperInterface|null $escaperService
-@property bool                  $implicitFlush
-@property array                 $messages
-@property SessionInterface|null $sessionService
-
-- **`Phalcon\Flash\Traits\FlashGettersTrait`**
-
-`Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface`
-
-[`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
-
-### Method Summary
-
-<ApiItem href="#flashtraitsflashgetterstrait-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Clears accumulated messages when implicit flush is disabled
-</ApiItem>
-<ApiItem href="#flashtraitsflashgetterstrait-getautoescape" visibility="public" name="getAutoescape" returnType="bool" params={[]}>
-Returns the flag that defines whether to automatically escape content or not
-</ApiItem>
-<ApiItem href="#flashtraitsflashgetterstrait-getautomatichtml" visibility="public" name="getAutomaticHtml" returnType="bool" params={[]}>
-Returns the flag that defines whether to automatically use HTML or not
-</ApiItem>
-<ApiItem href="#flashtraitsflashgetterstrait-getcssclasses" visibility="public" name="getCssClasses" returnType="array" params={[]}>
-Returns the array of the CSS classes for formatting messages. The key is
-</ApiItem>
-<ApiItem href="#flashtraitsflashgetterstrait-getcssiconclasses" visibility="public" name="getCssIconClasses" returnType="array" params={[]}>
-Returns the array of the icon CSS classes for formatting messages. The
-</ApiItem>
-<ApiItem href="#flashtraitsflashgetterstrait-getcustomtemplate" visibility="public" name="getCustomTemplate" returnType="string" params={[]}>
-Returns the custom template for formatting messages
-</ApiItem>
-
-### Properties
-
-<ApiItem kind="property" visibility="protected" name="autoescape" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="automaticHtml" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cssClasses" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cssIconClasses" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="customTemplate" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="escaperService" type="EscaperInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="implicitFlush" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="messages" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sessionService" type="SessionInterface|null" default="null">
-</ApiItem>
-
-### Methods
-
-<h4 id="flashtraitsflashgetterstrait-clear"><code>clear()</code></h4>
-
-```php
-public function clear(): void;
-```
-
-Clears accumulated messages when implicit flush is disabled
-
-<h4 id="flashtraitsflashgetterstrait-getautoescape"><code>getAutoescape()</code></h4>
-
-```php
-public function getAutoescape(): bool;
-```
-
-Returns the flag that defines whether to automatically escape content or not
-
-<h4 id="flashtraitsflashgetterstrait-getautomatichtml"><code>getAutomaticHtml()</code></h4>
-
-```php
-public function getAutomaticHtml(): bool;
-```
-
-Returns the flag that defines whether to automatically use HTML or not
-
-<h4 id="flashtraitsflashgetterstrait-getcssclasses"><code>getCssClasses()</code></h4>
-
-```php
-public function getCssClasses(): array;
-```
-
-Returns the array of the CSS classes for formatting messages. The key is
-the type of message and the value is the CSS class
-
-<h4 id="flashtraitsflashgetterstrait-getcssiconclasses"><code>getCssIconClasses()</code></h4>
-
-```php
-public function getCssIconClasses(): array;
-```
-
-Returns the array of the icon CSS classes for formatting messages. The
-key is the type of message and the value is the icon CSS class
-
-<h4 id="flashtraitsflashgetterstrait-getcustomtemplate"><code>getCustomTemplate()</code></h4>
-
-```php
-public function getCustomTemplate(): string;
-```
-
-Returns the custom template for formatting messages
 
 Source: https://docs.phalcon.io/6.0/api/phalcon_flash/index.mdx

@@ -21,17 +21,18 @@ This abstract class offers common access to the DI in a class
 
 - `\stdClass`
 - **`Phalcon\Di\AbstractInjectionAware`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
-- [`Phalcon\Assets\Manager`](../phalcon_assets/#assetsmanager)
-- [`Phalcon\Cli\Router`](../phalcon_cli/#clirouter)
-- [`Phalcon\Dispatcher\AbstractDispatcher`](../phalcon_dispatcher/#dispatcherabstractdispatcher)
-- [`Phalcon\Encryption\Security`](../phalcon_encryption/#encryptionsecurity)
-- [`Phalcon\Http\Cookie`](../phalcon_http/#httpcookie)
-- [`Phalcon\Http\Request`](../phalcon_http/#httprequest)
-- [`Phalcon\Http\Response\Cookies`](../phalcon_http/#httpresponsecookies)
-- [`Phalcon\Mvc\Model`](../phalcon_mvc/#mvcmodel)
-- [`Phalcon\Mvc\Router`](../phalcon_mvc/#mvcrouter)
-- [`Phalcon\Mvc\Url`](../phalcon_mvc/#mvcurl)
-- [`Phalcon\Session\Manager`](../phalcon_session/#sessionmanager)
+- [`Phalcon\Assets\Manager`](/6.0/api/phalcon_assets/#assetsmanager)
+- [`Phalcon\Cli\Router`](/6.0/api/phalcon_cli/#clirouter)
+- [`Phalcon\Dispatcher\AbstractDispatcher`](/6.0/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
+- [`Phalcon\Encryption\Security`](/6.0/api/phalcon_encryption/#encryptionsecurity)
+- [`Phalcon\Flash\AbstractFlash`](/6.0/api/phalcon_flash/#flashabstractflash)
+- [`Phalcon\Http\Cookie`](/6.0/api/phalcon_http/#httpcookie)
+- [`Phalcon\Http\Request`](/6.0/api/phalcon_http/#httprequest)
+- [`Phalcon\Http\Response\Cookies`](/6.0/api/phalcon_http/#httpresponsecookies)
+- [`Phalcon\Mvc\Model`](/6.0/api/phalcon_mvc/#mvcmodel)
+- [`Phalcon\Mvc\Router`](/6.0/api/phalcon_mvc/#mvcrouter)
+- [`Phalcon\Mvc\Url`](/6.0/api/phalcon_mvc/#mvcurl)
+- [`Phalcon\Session\Manager`](/6.0/api/phalcon_session/#sessionmanager)
 
 `Phalcon\Di\Traits\InjectionAwareTrait` · `stdClass`
 
@@ -93,13 +94,13 @@ Phalcon\Di\Di constructor
 <ApiItem href="#didi-attempt" visibility="public" name="attempt" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
 Attempts to register a service in the services container
 </ApiItem>
-<ApiItem href="#didi-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"array|null","name":"parameters","default":"null"}]}>
+<ApiItem href="#didi-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
 Resolves the service based on its configuration
 </ApiItem>
 <ApiItem href="#didi-getalias" visibility="public" name="getAlias" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
 Return the alias based on a passed key. Returns an empty string if
 </ApiItem>
-<ApiItem href="#didi-getdefault" visibility="public" name="getDefault" returnType="object|null" params={[]}>
+<ApiItem href="#didi-getdefault" visibility="public" name="getDefault" returnType="DiInterface|null" params={[]}>
 Return the latest DI created
 </ApiItem>
 <ApiItem href="#didi-getinternaleventsmanager" visibility="public" name="getInternalEventsManager" returnType="ManagerInterface|null" params={[]}>
@@ -114,7 +115,7 @@ Returns a Phalcon\Di\Service instance
 <ApiItem href="#didi-getservices" visibility="public" name="getServices" returnType="array" params={[]}>
 Return the services registered in the DI
 </ApiItem>
-<ApiItem href="#didi-getshared" visibility="public" name="getShared" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"array|null","name":"parameters","default":"null"}]}>
+<ApiItem href="#didi-getshared" visibility="public" name="getShared" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
 Resolves a service, the resolved service is stored in the DI, subsequent
 </ApiItem>
 <ApiItem href="#didi-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
@@ -141,7 +142,7 @@ Registers a service in the services container
 <ApiItem href="#didi-setalias" visibility="public" name="setAlias" returnType="self" params={[{"type":"string","name":"name","default":null},{"type":"array|string","name":"aliases","default":null}]}>
 Sets one or more aliases to the given name.
 </ApiItem>
-<ApiItem href="#didi-setdefault" visibility="public" name="setDefault" returnType="void" params={[{"type":"object","name":"container","default":null}]}>
+<ApiItem href="#didi-setdefault" visibility="public" name="setDefault" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
 Set a default dependency injection container to be obtained into static
 </ApiItem>
 <ApiItem href="#didi-setinternaleventsmanager" visibility="public" name="setInternalEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
@@ -209,7 +210,7 @@ with the same name
 ```php
 public function get(
 string $name,
-array|null $parameters = null
+mixed $parameters = null
 ): mixed;
 ```
 
@@ -227,7 +228,7 @@ the alias does not exist
 <h4 id="didi-getdefault"><code>getDefault()</code></h4>
 
 ```php
-public static function getDefault(): object|null;
+public static function getDefault(): DiInterface|null;
 ```
 
 Return the latest DI created
@@ -269,7 +270,7 @@ Return the services registered in the DI
 ```php
 public function getShared(
 string $name,
-array|null $parameters = null
+mixed $parameters = null
 ): mixed;
 ```
 
@@ -374,7 +375,7 @@ Sets one or more aliases to the given name.
 <h4 id="didi-setdefault"><code>setDefault()</code></h4>
 
 ```php
-public static function setDefault( object $container ): void;
+public static function setDefault( DiInterface $container ): void;
 ```
 
 Set a default dependency injection container to be obtained into static
@@ -426,10 +427,10 @@ Interface for Phalcon\Di
 <ApiItem href="#didiinterface-attempt" visibility="public" name="attempt" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
 Attempts to register a service in the services container
 </ApiItem>
-<ApiItem href="#didiinterface-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"array|null","name":"parameters","default":"null"}]}>
+<ApiItem href="#didiinterface-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
 Resolves the service based on its configuration
 </ApiItem>
-<ApiItem href="#didiinterface-getdefault" visibility="public" name="getDefault" returnType="object|null" params={[]}>
+<ApiItem href="#didiinterface-getdefault" visibility="public" name="getDefault" returnType="DiInterface|null" params={[]}>
 Return the last DI created
 </ApiItem>
 <ApiItem href="#didiinterface-getraw" visibility="public" name="getRaw" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
@@ -441,7 +442,7 @@ Returns the corresponding Phalcon\Di\Service instance for a service
 <ApiItem href="#didiinterface-getservices" visibility="public" name="getServices" returnType="array" params={[]}>
 Return the services registered in the DI
 </ApiItem>
-<ApiItem href="#didiinterface-getshared" visibility="public" name="getShared" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"array|null","name":"parameters","default":"null"}]}>
+<ApiItem href="#didiinterface-getshared" visibility="public" name="getShared" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
 Returns a shared service based on their configuration
 </ApiItem>
 <ApiItem href="#didiinterface-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
@@ -462,7 +463,7 @@ Resets the internal default DI
 <ApiItem href="#didiinterface-set" visibility="public" name="set" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
 Registers a service in the services container
 </ApiItem>
-<ApiItem href="#didiinterface-setdefault" visibility="public" name="setDefault" returnType="void" params={[{"type":"object","name":"container","default":null}]}>
+<ApiItem href="#didiinterface-setdefault" visibility="public" name="setDefault" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
 Set a default dependency injection container to be obtained into static
 </ApiItem>
 <ApiItem href="#didiinterface-setservice" visibility="public" name="setService" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"ServiceInterface","name":"rawDefinition","default":null}]}>
@@ -493,7 +494,7 @@ with the same name
 ```php
 public function get(
 string $name,
-array|null $parameters = null
+mixed $parameters = null
 ): mixed;
 ```
 
@@ -502,7 +503,7 @@ Resolves the service based on its configuration
 <h4 id="didiinterface-getdefault"><code>getDefault()</code></h4>
 
 ```php
-public static function getDefault(): object|null;
+public static function getDefault(): DiInterface|null;
 ```
 
 Return the last DI created
@@ -536,7 +537,7 @@ Return the services registered in the DI
 ```php
 public function getShared(
 string $name,
-array|null $parameters = null
+mixed $parameters = null
 ): mixed;
 ```
 
@@ -607,7 +608,7 @@ Registers a service in the services container
 <h4 id="didiinterface-setdefault"><code>setDefault()</code></h4>
 
 ```php
-public static function setDefault( object $container ): void;
+public static function setDefault( DiInterface $container ): void;
 ```
 
 Set a default dependency injection container to be obtained into static
@@ -1289,16 +1290,16 @@ accessing a public property with the same name of a registered service
 
 - `\stdClass`
 - **`Phalcon\Di\Injectable`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
-- [`Phalcon\Application\AbstractApplication`](../phalcon_application/#applicationabstractapplication)
-- [`Phalcon\Cli\Task`](../phalcon_cli/#clitask)
-- [`Phalcon\Filter\Validation`](../phalcon_filter/#filtervalidation)
-- [`Phalcon\Forms\Form`](../phalcon_forms/#formsform)
-- [`Phalcon\Mvc\Controller`](../phalcon_mvc/#mvccontroller)
-- [`Phalcon\Mvc\Micro`](../phalcon_mvc/#mvcmicro)
-- [`Phalcon\Mvc\Model\MetaData`](../phalcon_mvc/#mvcmodelmetadata)
-- [`Phalcon\Mvc\View`](../phalcon_mvc/#mvcview)
-- [`Phalcon\Mvc\View\Engine\AbstractEngine`](../phalcon_mvc/#mvcviewengineabstractengine)
-- [`Phalcon\Mvc\View\Simple`](../phalcon_mvc/#mvcviewsimple)
+- [`Phalcon\Application\AbstractApplication`](/6.0/api/phalcon_application/#applicationabstractapplication)
+- [`Phalcon\Cli\Task`](/6.0/api/phalcon_cli/#clitask)
+- [`Phalcon\Filter\Validation`](/6.0/api/phalcon_filter/#filtervalidation)
+- [`Phalcon\Forms\Form`](/6.0/api/phalcon_forms/#formsform)
+- [`Phalcon\Mvc\Controller`](/6.0/api/phalcon_mvc/#mvccontroller)
+- [`Phalcon\Mvc\Micro`](/6.0/api/phalcon_mvc/#mvcmicro)
+- [`Phalcon\Mvc\Model\MetaData`](/6.0/api/phalcon_mvc/#mvcmodelmetadata)
+- [`Phalcon\Mvc\View`](/6.0/api/phalcon_mvc/#mvcview)
+- [`Phalcon\Mvc\View\Engine\AbstractEngine`](/6.0/api/phalcon_mvc/#mvcviewengineabstractengine)
+- [`Phalcon\Mvc\View\Simple`](/6.0/api/phalcon_mvc/#mvcviewsimple)
 
 `Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterInterface` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Http\Request` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Http\Response\Cookies` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Session\Bag` · `Phalcon\Session\BagInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings` · `stdClass`
 
@@ -2022,7 +2023,7 @@ Class AbstractInjectionAware
 
 `Phalcon\Di\DiInterface`
 
-[`Phalcon\Di\AbstractInjectionAware`](#diabstractinjectionaware) · [`Phalcon\Di\Injectable`](#diinjectable) · [`Phalcon\Flash\AbstractFlash`](../phalcon_flash/#flashabstractflash) · [`Phalcon\Mvc\Model\Manager`](../phalcon_mvc/#mvcmodelmanager) · [`Phalcon\Mvc\Model\Query`](../phalcon_mvc/#mvcmodelquery) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](../phalcon_mvc/#mvcviewenginevoltcompiler) · [`Phalcon\Session\Bag`](../phalcon_session/#sessionbag)
+[`Phalcon\Di\AbstractInjectionAware`](#diabstractinjectionaware) · [`Phalcon\Di\Injectable`](#diinjectable) · [`Phalcon\Mvc\Model\Manager`](/6.0/api/phalcon_mvc/#mvcmodelmanager) · [`Phalcon\Mvc\Model\Query`](/6.0/api/phalcon_mvc/#mvcmodelquery) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](/6.0/api/phalcon_mvc/#mvcviewenginevoltcompiler) · [`Phalcon\Session\Bag`](/6.0/api/phalcon_session/#sessionbag)
 
 ### Method Summary
 

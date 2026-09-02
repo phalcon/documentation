@@ -15,8 +15,7 @@ All classes are prefixed with `Phalcon`
 
 ## Assets\Asset
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Asset.zep">Source on GitHub</a>
+Class
 
 Object representation of an asset
 
@@ -24,154 +23,79 @@ Object representation of an asset
 $asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
 ```
 
-<div class="api-tree">
-
 - **`Phalcon\Assets\Asset`** - implements [`Phalcon\Assets\AssetInterface`](#assetsassetinterface)
 - [`Phalcon\Assets\Asset\Css`](#assetsassetcss)
 - [`Phalcon\Assets\Asset\Js`](#assetsassetjs)
 
-</div>
-
-__Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\HashTrait`
+`Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\HashTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsasset-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isLocal</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isAutoVersion</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Asset constructor.</span>
-</a>
-<a class="api-item" href="#assetsasset-getassetkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAssetKey</span>()</code>
-<span class="desc">Gets the asset&#039;s key.</span>
-</a>
-<a class="api-item" href="#assetsasset-getcontent">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getContent</span>( <span class="st">string|null</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
-<span class="desc">Returns the content of the asset as an string</span>
-</a>
-<a class="api-item" href="#assetsasset-getfilter">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getFilter</span>()</code>
-<span class="desc">Gets if the asset must be filtered or not.</span>
-</a>
-<a class="api-item" href="#assetsasset-getpath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getPath</span>()</code>
-<span class="desc">Returns the path for this asset</span>
-</a>
-<a class="api-item" href="#assetsasset-getrealsourcepath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getRealSourcePath</span>( <span class="st">string|null</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
-<span class="desc">Returns the complete location where the asset is located</span>
-</a>
-<a class="api-item" href="#assetsasset-getrealtargetpath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getRealTargetPath</span>( <span class="st">string|null</span> <span class="sv">$basePath</span><span class="sm"> = null</span> )</code>
-<span class="desc">Returns the complete location where the asset must be written</span>
-</a>
-<a class="api-item" href="#assetsasset-getrealtargeturi">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getRealTargetUri</span>()</code>
-<span class="desc">Returns the real target uri for the generated HTML</span>
-</a>
-<a class="api-item" href="#assetsasset-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Gets the asset&#039;s type.</span>
-</a>
-<a class="api-item" href="#assetsasset-getversion">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getVersion</span>()</code>
-<span class="desc">Gets the asset&#039;s version.</span>
-</a>
-<a class="api-item" href="#assetsasset-isautoversion">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAutoVersion</span>()</code>
-<span class="desc">Checks if the asset is using auto version</span>
-</a>
-<a class="api-item" href="#assetsasset-setattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
-<span class="desc">Sets extra HTML attributes</span>
-</a>
-<a class="api-item" href="#assetsasset-setautoversion">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setAutoVersion</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-</a>
-<a class="api-item" href="#assetsasset-setfilter">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setFilter</span>( <span class="st">bool</span> <span class="sv">$filter</span> )</code>
-<span class="desc">Sets if the asset must be filtered or not</span>
-</a>
-<a class="api-item" href="#assetsasset-setpath">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setPath</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-<span class="desc">Sets the asset&#039;s path</span>
-</a>
-<a class="api-item" href="#assetsasset-settype">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Sets the asset&#039;s type</span>
-</a>
-<a class="api-item" href="#assetsasset-setversion">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setVersion</span>( <span class="st">string</span> <span class="sv">$version</span> )</code>
-<span class="desc">Sets the asset&#039;s version</span>
-</a>
-</div>
+<ApiItem href="#assetsasset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"path","default":null},{"type":"bool","name":"isLocal","default":"true"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"isAutoVersion","default":"false"}]}>
+Asset constructor.
+</ApiItem>
+<ApiItem href="#assetsasset-getassetkey" visibility="public" name="getAssetKey" returnType="string" params={[]}>
+Gets the asset's key.
+</ApiItem>
+<ApiItem href="#assetsasset-getcontent" visibility="public" name="getContent" returnType="string" params={[{"type":"string|null","name":"basePath","default":"null"}]}>
+Returns the content of the asset as an string
+</ApiItem>
+<ApiItem href="#assetsasset-getfilter" visibility="public" name="getFilter" returnType="bool" params={[]}>
+Gets if the asset must be filtered or not.
+</ApiItem>
+<ApiItem href="#assetsasset-getpath" visibility="public" name="getPath" returnType="string" params={[]}>
+Returns the path for this asset
+</ApiItem>
+<ApiItem href="#assetsasset-getrealsourcepath" visibility="public" name="getRealSourcePath" returnType="string" params={[{"type":"string|null","name":"basePath","default":"null"}]}>
+Returns the complete location where the asset is located
+</ApiItem>
+<ApiItem href="#assetsasset-getrealtargetpath" visibility="public" name="getRealTargetPath" returnType="string" params={[{"type":"string|null","name":"basePath","default":"null"}]}>
+Returns the complete location where the asset must be written
+</ApiItem>
+<ApiItem href="#assetsasset-getrealtargeturi" visibility="public" name="getRealTargetUri" returnType="string" params={[]}>
+Returns the real target uri for the generated HTML
+</ApiItem>
+<ApiItem href="#assetsasset-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+Gets the asset's type.
+</ApiItem>
+<ApiItem href="#assetsasset-getversion" visibility="public" name="getVersion" returnType="string|null" params={[]}>
+Gets the asset's version.
+</ApiItem>
+<ApiItem href="#assetsasset-isautoversion" visibility="public" name="isAutoVersion" returnType="bool" params={[]}>
+Checks if the asset is using auto version
+</ApiItem>
+<ApiItem href="#assetsasset-setattributes" visibility="public" name="setAttributes" returnType="AssetInterface" params={[{"type":"array","name":"attributes","default":null}]}>
+Sets extra HTML attributes
+</ApiItem>
+<ApiItem href="#assetsasset-setautoversion" visibility="public" name="setAutoVersion" returnType="AssetInterface" params={[{"type":"bool","name":"flag","default":null}]}>
+</ApiItem>
+<ApiItem href="#assetsasset-setfilter" visibility="public" name="setFilter" returnType="AssetInterface" params={[{"type":"bool","name":"filter","default":null}]}>
+Sets if the asset must be filtered or not
+</ApiItem>
+<ApiItem href="#assetsasset-setpath" visibility="public" name="setPath" returnType="AssetInterface" params={[{"type":"string","name":"path","default":null}]}>
+Sets the asset's path
+</ApiItem>
+<ApiItem href="#assetsasset-settype" visibility="public" name="setType" returnType="AssetInterface" params={[{"type":"string","name":"type","default":null}]}>
+Sets the asset's type
+</ApiItem>
+<ApiItem href="#assetsasset-setversion" visibility="public" name="setVersion" returnType="AssetInterface" params={[{"type":"string","name":"version","default":null}]}>
+Sets the asset's version
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$filter</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$isAutoVersion</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$path</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$type</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$version</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="filter" type="bool" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="isAutoVersion" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="path" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="type" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="version" type="string" default="">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 17</div>
 
 <h4 id="assetsasset-__construct"><code>__construct()</code></h4>
 
@@ -318,49 +242,33 @@ Sets the asset's version
 
 ## Assets\AssetInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/AssetInterface.zep">Source on GitHub</a>
+Interface
 
 Phalcon\Assets\AssetInterface
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Assets\Asset`](/5.20/api/phalcon_contracts/#contractsassetsasset)
 - **`Phalcon\Assets\AssetInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Assets\Asset`
+`Phalcon\Contracts\Assets\Asset`
 
 ## Assets\Asset\Css
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Asset/Css.zep">Source on GitHub</a>
+Class
 
 Represents CSS assets
-
-<div class="api-tree">
 
 - [`Phalcon\Assets\Asset`](#assetsasset)
 - **`Phalcon\Assets\Asset\Css`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Asset`
+`Phalcon\Assets\Asset`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsassetcss-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Css constructor.</span>
-</a>
-</div>
+<ApiItem href="#assetsassetcss-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null},{"type":"bool","name":"local","default":"true"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Css constructor.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsassetcss-__construct"><code>__construct()</code></h4>
 
@@ -379,33 +287,22 @@ Css constructor.
 
 ## Assets\Asset\Js
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Asset/Js.zep">Source on GitHub</a>
+Class
 
 Represents JavaScript assets
-
-<div class="api-tree">
 
 - [`Phalcon\Assets\Asset`](#assetsasset)
 - **`Phalcon\Assets\Asset\Js`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Asset`
+`Phalcon\Assets\Asset`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsassetjs-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Js constructor.</span>
-</a>
-</div>
+<ApiItem href="#assetsassetjs-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null},{"type":"bool","name":"local","default":"true"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Js constructor.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsassetjs-__construct"><code>__construct()</code></h4>
 
@@ -424,233 +321,117 @@ Js constructor.
 
 ## Assets\Collection
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Collection.zep">Source on GitHub</a>
+Class
 
 Collection of asset objects
 
-<div class="api-tree">
-
 - **`Phalcon\Assets\Collection`** - implements `\Countable`, `\IteratorAggregate`
 
-</div>
-
-__Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\FileTrait` · `Traversable`
+`ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\FileTrait` · `Traversable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetscollection-add">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">add</span>( <span class="st">AssetInterface</span> <span class="sv">$asset</span> )</code>
-<span class="desc">Adds an asset to the collection</span>
-</a>
-<a class="api-item" href="#assetscollection-addcss">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$isLocal</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Adds a CSS asset to the collection</span>
-</a>
-<a class="api-item" href="#assetscollection-addfilter">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addFilter</span>( <span class="st">FilterInterface</span> <span class="sv">$filter</span> )</code>
-<span class="desc">Adds a filter to the collection</span>
-</a>
-<a class="api-item" href="#assetscollection-addinline">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addInline</span>( <span class="st">Inline</span> <span class="sv">$code</span> )</code>
-<span class="desc">Adds an inline code to the collection</span>
-</a>
-<a class="api-item" href="#assetscollection-addinlinecss">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addInlineCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Adds an inline CSS to the collection</span>
-</a>
-<a class="api-item" href="#assetscollection-addinlinejs">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addInlineJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Adds an inline JavaScript to the collection</span>
-</a>
-<a class="api-item" href="#assetscollection-addjs">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$isLocal</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Adds a JavaScript asset to the collection</span>
-</a>
-<a class="api-item" href="#assetscollection-count">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">count</span>()</code>
-<span class="desc">Return the count of the assets</span>
-</a>
-<a class="api-item" href="#assetscollection-getassets">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAssets</span>()</code>
-<span class="desc">Return the stored assets</span>
-</a>
-<a class="api-item" href="#assetscollection-getcodes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getCodes</span>()</code>
-<span class="desc">Return the stored codes</span>
-</a>
-<a class="api-item" href="#assetscollection-getfilters">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getFilters</span>()</code>
-<span class="desc">Return the stored filters</span>
-</a>
-<a class="api-item" href="#assetscollection-getiterator">
-<code class="vis vis-public">public</code>
-<code class="ret">Traversable</code>
-<code class="sig"><span class="sf">getIterator</span>()</code>
-<span class="desc">Returns the iterator of the class</span>
-</a>
-<a class="api-item" href="#assetscollection-getjoin">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getJoin</span>()</code>
-</a>
-<a class="api-item" href="#assetscollection-getprefix">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getPrefix</span>()</code>
-<span class="desc">Returns the prefix</span>
-</a>
-<a class="api-item" href="#assetscollection-getrealtargetpath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getRealTargetPath</span>( <span class="st">string</span> <span class="sv">$basePath</span> )</code>
-<span class="desc">Returns the complete location where the joined/filtered collection must</span>
-</a>
-<a class="api-item" href="#assetscollection-gettargetislocal">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getTargetIsLocal</span>()</code>
-<span class="desc">Returns whether the target is local or not</span>
-</a>
-<a class="api-item" href="#assetscollection-getversion">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getVersion</span>()</code>
-<span class="desc">Returns the version</span>
-</a>
-<a class="api-item" href="#assetscollection-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">AssetInterface</span> <span class="sv">$asset</span> )</code>
-<span class="desc">Checks this the asset is added to the collection.</span>
-</a>
-<a class="api-item" href="#assetscollection-isautoversion">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isAutoVersion</span>()</code>
-<span class="desc">Checks if collection is using auto version</span>
-</a>
-<a class="api-item" href="#assetscollection-join">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">join</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-<span class="desc">Sets if all filtered assets in the collection must be joined in a single</span>
-</a>
-<a class="api-item" href="#assetscollection-setattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
-<span class="desc">Sets extra HTML attributes</span>
-</a>
-<a class="api-item" href="#assetscollection-setautoversion">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setAutoVersion</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-</a>
-<a class="api-item" href="#assetscollection-setfilters">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setFilters</span>( <span class="st">array</span> <span class="sv">$filters</span> )</code>
-<span class="desc">Sets an array of filters in the collection</span>
-</a>
-<a class="api-item" href="#assetscollection-setprefix">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setPrefix</span>( <span class="st">string</span> <span class="sv">$prefix</span> )</code>
-<span class="desc">Sets a common prefix for all the assets</span>
-</a>
-<a class="api-item" href="#assetscollection-settargetislocal">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setTargetIsLocal</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-<span class="desc">Sets if the target local or not</span>
-</a>
-<a class="api-item" href="#assetscollection-setversion">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setVersion</span>( <span class="st">string</span> <span class="sv">$version</span> )</code>
-<span class="desc">Sets the version</span>
-</a>
-<a class="api-item" href="#assetscollection-addasset">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">addAsset</span>( <span class="st">AssetInterface</span> <span class="sv">$asset</span> )</code>
-<span class="desc">Adds an asset or inline-code to the collection</span>
-</a>
-</div>
+<ApiItem href="#assetscollection-add" visibility="public" name="add" returnType="static" params={[{"type":"AssetInterface","name":"asset","default":null}]}>
+Adds an asset to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addcss" visibility="public" name="addCss" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"isLocal","default":"null"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Adds a CSS asset to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addfilter" visibility="public" name="addFilter" returnType="static" params={[{"type":"FilterInterface","name":"filter","default":null}]}>
+Adds a filter to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addinline" visibility="public" name="addInline" returnType="static" params={[{"type":"Inline","name":"code","default":null}]}>
+Adds an inline code to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addinlinecss" visibility="public" name="addInlineCss" returnType="static" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Adds an inline CSS to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addinlinejs" visibility="public" name="addInlineJs" returnType="static" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Adds an inline JavaScript to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addjs" visibility="public" name="addJs" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"isLocal","default":"null"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Adds a JavaScript asset to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-count" visibility="public" name="count" returnType="int" params={[]}>
+Return the count of the assets
+</ApiItem>
+<ApiItem href="#assetscollection-getassets" visibility="public" name="getAssets" returnType="array" params={[]}>
+Return the stored assets
+</ApiItem>
+<ApiItem href="#assetscollection-getcodes" visibility="public" name="getCodes" returnType="array" params={[]}>
+Return the stored codes
+</ApiItem>
+<ApiItem href="#assetscollection-getfilters" visibility="public" name="getFilters" returnType="array" params={[]}>
+Return the stored filters
+</ApiItem>
+<ApiItem href="#assetscollection-getiterator" visibility="public" name="getIterator" returnType="Traversable" params={[]}>
+Returns the iterator of the class
+</ApiItem>
+<ApiItem href="#assetscollection-getjoin" visibility="public" name="getJoin" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#assetscollection-getprefix" visibility="public" name="getPrefix" returnType="string" params={[]}>
+Returns the prefix
+</ApiItem>
+<ApiItem href="#assetscollection-getrealtargetpath" visibility="public" name="getRealTargetPath" returnType="string" params={[{"type":"string","name":"basePath","default":null}]}>
+Returns the complete location where the joined/filtered collection must
+</ApiItem>
+<ApiItem href="#assetscollection-gettargetislocal" visibility="public" name="getTargetIsLocal" returnType="bool" params={[]}>
+Returns whether the target is local or not
+</ApiItem>
+<ApiItem href="#assetscollection-getversion" visibility="public" name="getVersion" returnType="string" params={[]}>
+Returns the version
+</ApiItem>
+<ApiItem href="#assetscollection-has" visibility="public" name="has" returnType="bool" params={[{"type":"AssetInterface","name":"asset","default":null}]}>
+Checks this the asset is added to the collection.
+</ApiItem>
+<ApiItem href="#assetscollection-isautoversion" visibility="public" name="isAutoVersion" returnType="bool" params={[]}>
+Checks if collection is using auto version
+</ApiItem>
+<ApiItem href="#assetscollection-join" visibility="public" name="join" returnType="static" params={[{"type":"bool","name":"flag","default":null}]}>
+Sets if all filtered assets in the collection must be joined in a single
+</ApiItem>
+<ApiItem href="#assetscollection-setattributes" visibility="public" name="setAttributes" returnType="static" params={[{"type":"array","name":"attributes","default":null}]}>
+Sets extra HTML attributes
+</ApiItem>
+<ApiItem href="#assetscollection-setautoversion" visibility="public" name="setAutoVersion" returnType="static" params={[{"type":"bool","name":"flag","default":null}]}>
+</ApiItem>
+<ApiItem href="#assetscollection-setfilters" visibility="public" name="setFilters" returnType="static" params={[{"type":"array","name":"filters","default":null}]}>
+Sets an array of filters in the collection
+</ApiItem>
+<ApiItem href="#assetscollection-setprefix" visibility="public" name="setPrefix" returnType="static" params={[{"type":"string","name":"prefix","default":null}]}>
+Sets a common prefix for all the assets
+</ApiItem>
+<ApiItem href="#assetscollection-settargetislocal" visibility="public" name="setTargetIsLocal" returnType="static" params={[{"type":"bool","name":"flag","default":null}]}>
+Sets if the target local or not
+</ApiItem>
+<ApiItem href="#assetscollection-setversion" visibility="public" name="setVersion" returnType="static" params={[{"type":"string","name":"version","default":null}]}>
+Sets the version
+</ApiItem>
+<ApiItem href="#assetscollection-addasset" visibility="protected" name="addAsset" returnType="bool" params={[{"type":"AssetInterface","name":"asset","default":null}]}>
+Adds an asset or inline-code to the collection
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">assets_asset_map</code>
-<code class="sig"><span class="sv">$assets</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$autoVersion</span><span class="sm"> = false</span></code>
-<span class="desc">Should version be determined from file modification time</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">assets_codes</code>
-<code class="sig"><span class="sv">$codes</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">assets_filters</code>
-<code class="sig"><span class="sv">$filters</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$join</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$targetIsLocal</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$version</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="assets" type="assets_asset_map" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="autoVersion" type="bool" default="false">
+Should version be determined from file modification time
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="codes" type="assets_codes" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="filters" type="assets_filters" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="join" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="targetIsLocal" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="version" type="string" default="&quot;&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 26</div>
 
 <h4 id="assetscollection-add"><code>add()</code></h4>
 
@@ -892,8 +673,6 @@ public function setVersion( string $version ): static;
 
 Sets the version
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="assetscollection-addasset"><code>addAsset()</code></h4>
 
 ```php
@@ -904,12 +683,9 @@ Adds an asset or inline-code to the collection
 
 ## Assets\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exception.zep">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Assets will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Assets\Exception`**
@@ -922,35 +698,22 @@ Exceptions thrown in Phalcon\Assets will use this class
 - [`Phalcon\Assets\Exceptions\InvalidTargetPath`](#assetsexceptionsinvalidtargetpath)
 - [`Phalcon\Assets\Exceptions\TargetPathIsDirectory`](#assetsexceptionstargetpathisdirectory)
 
-</div>
-
 ## Assets\Exceptions\AssetSourceTargetCollision
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/AssetSourceTargetCollision.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Assets\Exception`](#assetsexception)
 - **`Phalcon\Assets\Exceptions\AssetSourceTargetCollision`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Exception`
+`Phalcon\Assets\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsexceptionsassetsourcetargetcollision-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-</a>
-</div>
+<ApiItem href="#assetsexceptionsassetsourcetargetcollision-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionsassetsourcetargetcollision-__construct"><code>__construct()</code></h4>
 
@@ -960,31 +723,20 @@ public function __construct( string $path );
 
 ## Assets\Exceptions\CannotReadAsset
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/CannotReadAsset.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Assets\Exception`](#assetsexception)
 - **`Phalcon\Assets\Exceptions\CannotReadAsset`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Exception`
+`Phalcon\Assets\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsexceptionscannotreadasset-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-</a>
-</div>
+<ApiItem href="#assetsexceptionscannotreadasset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionscannotreadasset-__construct"><code>__construct()</code></h4>
 
@@ -994,31 +746,20 @@ public function __construct( string $path );
 
 ## Assets\Exceptions\CollectionNotFound
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/CollectionNotFound.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Assets\Exception`](#assetsexception)
 - **`Phalcon\Assets\Exceptions\CollectionNotFound`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Exception`
+`Phalcon\Assets\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsexceptionscollectionnotfound-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = &quot;&quot;</span> )</code>
-</a>
-</div>
+<ApiItem href="#assetsexceptionscollectionnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":"\"\""}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionscollectionnotfound-__construct"><code>__construct()</code></h4>
 
@@ -1028,31 +769,20 @@ public function __construct( string $name = "" );
 
 ## Assets\Exceptions\InvalidAssetSourcePath
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidAssetSourcePath.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Assets\Exception`](#assetsexception)
 - **`Phalcon\Assets\Exceptions\InvalidAssetSourcePath`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Exception`
+`Phalcon\Assets\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsexceptionsinvalidassetsourcepath-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-</a>
-</div>
+<ApiItem href="#assetsexceptionsinvalidassetsourcepath-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionsinvalidassetsourcepath-__construct"><code>__construct()</code></h4>
 
@@ -1062,31 +792,20 @@ public function __construct( string $path );
 
 ## Assets\Exceptions\InvalidAssetTargetPath
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidAssetTargetPath.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Assets\Exception`](#assetsexception)
 - **`Phalcon\Assets\Exceptions\InvalidAssetTargetPath`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Exception`
+`Phalcon\Assets\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsexceptionsinvalidassettargetpath-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-</a>
-</div>
+<ApiItem href="#assetsexceptionsinvalidassettargetpath-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionsinvalidassettargetpath-__construct"><code>__construct()</code></h4>
 
@@ -1096,31 +815,20 @@ public function __construct( string $path );
 
 ## Assets\Exceptions\InvalidFilter
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidFilter.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Assets\Exception`](#assetsexception)
 - **`Phalcon\Assets\Exceptions\InvalidFilter`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Exception`
+`Phalcon\Assets\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsexceptionsinvalidfilter-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#assetsexceptionsinvalidfilter-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionsinvalidfilter-__construct"><code>__construct()</code></h4>
 
@@ -1130,31 +838,20 @@ public function __construct();
 
 ## Assets\Exceptions\InvalidTargetPath
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidTargetPath.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Assets\Exception`](#assetsexception)
 - **`Phalcon\Assets\Exceptions\InvalidTargetPath`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Exception`
+`Phalcon\Assets\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsexceptionsinvalidtargetpath-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-</a>
-</div>
+<ApiItem href="#assetsexceptionsinvalidtargetpath-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionsinvalidtargetpath-__construct"><code>__construct()</code></h4>
 
@@ -1164,31 +861,20 @@ public function __construct( string $path );
 
 ## Assets\Exceptions\TargetPathIsDirectory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/TargetPathIsDirectory.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Assets\Exception`](#assetsexception)
 - **`Phalcon\Assets\Exceptions\TargetPathIsDirectory`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Exception`
+`Phalcon\Assets\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsexceptionstargetpathisdirectory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
-</a>
-</div>
+<ApiItem href="#assetsexceptionstargetpathisdirectory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsexceptionstargetpathisdirectory-__construct"><code>__construct()</code></h4>
 
@@ -1198,54 +884,36 @@ public function __construct( string $path );
 
 ## Assets\FilterInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/FilterInterface.zep">Source on GitHub</a>
+Interface
 
 Phalcon\Assets\FilterInterface
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Assets\Filter`](/5.20/api/phalcon_contracts/#contractsassetsfilter)
 - **`Phalcon\Assets\FilterInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Assets\Filter`
+`Phalcon\Contracts\Assets\Filter`
 
 ## Assets\Filters\Cssmin
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Filters/CssMin.zep">Source on GitHub</a>
+Class
 
 Filter intended to minify CSS content (remove comments, newlines, and line
 feeds, and drop the last semicolon of the last property).
 
 > NOTE: This functionality is not currently available; `filter()` returns
 > the content unchanged.
-\{: .alert .alert-info \}
-
-<div class="api-tree">
 
 - **`Phalcon\Assets\Filters\Cssmin`** - implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
 
-</div>
-
-__Uses__ `Phalcon\Assets\FilterInterface`
+`Phalcon\Assets\FilterInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsfilterscssmin-filter">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">filter</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
-<span class="desc">Filters the content using CSSMIN</span>
-</a>
-</div>
+<ApiItem href="#assetsfilterscssmin-filter" visibility="public" name="filter" returnType="string" params={[{"type":"string","name":"content","default":null}]}>
+Filters the content using CSSMIN
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsfilterscssmin-filter"><code>filter()</code></h4>
 
@@ -1257,8 +925,7 @@ Filters the content using CSSMIN
 
 ## Assets\Filters\Jsmin
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Filters/JsMin.zep">Source on GitHub</a>
+Class
 
 Filter intended to minify JavaScript content (remove comments and the
 characters that are insignificant to JavaScript - tabs, carriage returns,
@@ -1266,30 +933,18 @@ and most spaces and linefeeds).
 
 > NOTE: This functionality is not currently available; `filter()` returns
 > the content unchanged.
-\{: .alert .alert-info \}
-
-<div class="api-tree">
 
 - **`Phalcon\Assets\Filters\Jsmin`** - implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
 
-</div>
-
-__Uses__ `Phalcon\Assets\FilterInterface`
+`Phalcon\Assets\FilterInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsfiltersjsmin-filter">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">filter</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
-<span class="desc">Filters the content using JSMIN</span>
-</a>
-</div>
+<ApiItem href="#assetsfiltersjsmin-filter" visibility="public" name="filter" returnType="string" params={[{"type":"string","name":"content","default":null}]}>
+Filters the content using JSMIN
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsfiltersjsmin-filter"><code>filter()</code></h4>
 
@@ -1301,33 +956,21 @@ Filters the content using JSMIN
 
 ## Assets\Filters\None
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Filters/None.zep">Source on GitHub</a>
+Class
 
 Returns the content without make any modification to the original source
 
-<div class="api-tree">
-
 - **`Phalcon\Assets\Filters\None`** - implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
 
-</div>
-
-__Uses__ `Phalcon\Assets\FilterInterface`
+`Phalcon\Assets\FilterInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsfiltersnone-filter">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">filter</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
-<span class="desc">Returns the content as is</span>
-</a>
-</div>
+<ApiItem href="#assetsfiltersnone-filter" visibility="public" name="filter" returnType="string" params={[{"type":"string","name":"content","default":null}]}>
+Returns the content as is
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsfiltersnone-filter"><code>filter()</code></h4>
 
@@ -1339,8 +982,7 @@ Returns the content as is
 
 ## Assets\Inline
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Inline.zep">Source on GitHub</a>
+Class
 
 Represents an inline asset
 
@@ -1348,91 +990,49 @@ Represents an inline asset
 $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 ```
 
-<div class="api-tree">
-
 - **`Phalcon\Assets\Inline`** - implements [`Phalcon\Assets\AssetInterface`](#assetsassetinterface)
 - [`Phalcon\Assets\Inline\Css`](#assetsinlinecss)
 - [`Phalcon\Assets\Inline\Js`](#assetsinlinejs)
 
-</div>
-
-__Uses__ `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\HashTrait`
+`Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\HashTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsinline-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Inline constructor.</span>
-</a>
-<a class="api-item" href="#assetsinline-getassetkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAssetKey</span>()</code>
-<span class="desc">Gets the asset&#039;s key.</span>
-</a>
-<a class="api-item" href="#assetsinline-getcontent">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getContent</span>()</code>
-<span class="desc">Gets if the asset content</span>
-</a>
-<a class="api-item" href="#assetsinline-getfilter">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getFilter</span>()</code>
-<span class="desc">Gets if the asset must be filtered or not.</span>
-</a>
-<a class="api-item" href="#assetsinline-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Gets the asset&#039;s type.</span>
-</a>
-<a class="api-item" href="#assetsinline-setattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
-<span class="desc">Sets extra HTML attributes</span>
-</a>
-<a class="api-item" href="#assetsinline-setfilter">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setFilter</span>( <span class="st">bool</span> <span class="sv">$filter</span> )</code>
-<span class="desc">Sets if the asset must be filtered or not</span>
-</a>
-<a class="api-item" href="#assetsinline-settype">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Sets the inline&#039;s type</span>
-</a>
-</div>
+<ApiItem href="#assetsinline-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Inline constructor.
+</ApiItem>
+<ApiItem href="#assetsinline-getassetkey" visibility="public" name="getAssetKey" returnType="string" params={[]}>
+Gets the asset's key.
+</ApiItem>
+<ApiItem href="#assetsinline-getcontent" visibility="public" name="getContent" returnType="string" params={[]}>
+Gets if the asset content
+</ApiItem>
+<ApiItem href="#assetsinline-getfilter" visibility="public" name="getFilter" returnType="bool" params={[]}>
+Gets if the asset must be filtered or not.
+</ApiItem>
+<ApiItem href="#assetsinline-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+Gets the asset's type.
+</ApiItem>
+<ApiItem href="#assetsinline-setattributes" visibility="public" name="setAttributes" returnType="AssetInterface" params={[{"type":"array","name":"attributes","default":null}]}>
+Sets extra HTML attributes
+</ApiItem>
+<ApiItem href="#assetsinline-setfilter" visibility="public" name="setFilter" returnType="AssetInterface" params={[{"type":"bool","name":"filter","default":null}]}>
+Sets if the asset must be filtered or not
+</ApiItem>
+<ApiItem href="#assetsinline-settype" visibility="public" name="setType" returnType="AssetInterface" params={[{"type":"string","name":"type","default":null}]}>
+Sets the inline's type
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$content</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$filter</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$type</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="content" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="filter" type="bool" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="type" type="string" default="">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 8</div>
 
 <h4 id="assetsinline-__construct"><code>__construct()</code></h4>
 
@@ -1505,33 +1105,22 @@ Sets the inline's type
 
 ## Assets\Inline\Css
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Inline/Css.zep">Source on GitHub</a>
+Class
 
 Represents an inlined CSS
-
-<div class="api-tree">
 
 - [`Phalcon\Assets\Inline`](#assetsinline)
 - **`Phalcon\Assets\Inline\Css`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Inline` · `Phalcon\Contracts\Assets\AssetsTypes`
+`Phalcon\Assets\Inline` · `Phalcon\Contracts\Assets\AssetsTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsinlinecss-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Css constructor.</span>
-</a>
-</div>
+<ApiItem href="#assetsinlinecss-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Css constructor.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsinlinecss-__construct"><code>__construct()</code></h4>
 
@@ -1547,33 +1136,22 @@ Css constructor.
 
 ## Assets\Inline\Js
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Inline/Js.zep">Source on GitHub</a>
+Class
 
 Represents an inline JavaScript
-
-<div class="api-tree">
 
 - [`Phalcon\Assets\Inline`](#assetsinline)
 - **`Phalcon\Assets\Inline\Js`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Inline` · `Phalcon\Contracts\Assets\AssetsTypes`
+`Phalcon\Assets\Inline` · `Phalcon\Contracts\Assets\AssetsTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsinlinejs-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Js constructor.</span>
-</a>
-</div>
+<ApiItem href="#assetsinlinejs-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Js constructor.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetsinlinejs-__construct"><code>__construct()</code></h4>
 
@@ -1589,215 +1167,112 @@ Js constructor.
 
 ## Assets\Manager
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Manager.zep">Source on GitHub</a>
+Class
 
 Manages collections of CSS/JavaScript assets
-
-<div class="api-tree">
 
 - `\stdClass`
 - [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
 - **`Phalcon\Assets\Manager`**
 
-</div>
-
-__Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Url` · `Phalcon\Traits\Php\FileTrait`
+`Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Url` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetsmanager-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">TagFactory</span> <span class="sv">$tagFactory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Manager constructor.</span>
-</a>
-<a class="api-item" href="#assetsmanager-addasset">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addAsset</span>( <span class="st">Asset</span> <span class="sv">$asset</span> )</code>
-<span class="desc">Adds a raw asset to the manager</span>
-</a>
-<a class="api-item" href="#assetsmanager-addassetbytype">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addAssetByType</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">Asset</span> <span class="sv">$asset</span></span>)</code>
-<span class="desc">Adds an asset by its type</span>
-</a>
-<a class="api-item" href="#assetsmanager-addcss">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Adds a CSS asset to the &#039;css&#039; collection</span>
-</a>
-<a class="api-item" href="#assetsmanager-addinlinecode">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addInlineCode</span>( <span class="st">Inline</span> <span class="sv">$code</span> )</code>
-<span class="desc">Adds a raw inline code to the manager</span>
-</a>
-<a class="api-item" href="#assetsmanager-addinlinecodebytype">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addInlineCodeByType</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">Inline</span> <span class="sv">$code</span></span>)</code>
-<span class="desc">Adds an inline code by its type</span>
-</a>
-<a class="api-item" href="#assetsmanager-addinlinecss">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addInlineCss</span>(<span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Adds an inline CSS to the &#039;css&#039; collection</span>
-</a>
-<a class="api-item" href="#assetsmanager-addinlinejs">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addInlineJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Adds an inline JavaScript to the &#039;js&#039; collection</span>
-</a>
-<a class="api-item" href="#assetsmanager-addjs">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">addJs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$filter</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$version</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoVersion</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Adds a JavaScript asset to the &#039;js&#039; collection</span>
-</a>
-<a class="api-item" href="#assetsmanager-collection">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection</code>
-<code class="sig"><span class="sf">collection</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Creates/Returns a collection of assets</span>
-</a>
-<a class="api-item" href="#assetsmanager-collectionassetsbytype">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">collectionAssetsByType</span>(<span class="prm"><span class="st">array</span> <span class="sv">$assets</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
-<span class="desc">Creates/Returns a collection of assets by type</span>
-</a>
-<a class="api-item" href="#assetsmanager-exists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">exists</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns true or false if collection exists.</span>
-</a>
-<a class="api-item" href="#assetsmanager-get">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection</code>
-<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns a collection by its id.</span>
-</a>
-<a class="api-item" href="#assetsmanager-getcollections">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection[]</code>
-<code class="sig"><span class="sf">getCollections</span>()</code>
-<span class="desc">Returns existing collections in the manager</span>
-</a>
-<a class="api-item" href="#assetsmanager-getcss">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection</code>
-<code class="sig"><span class="sf">getCss</span>()</code>
-<span class="desc">Returns the CSS collection of assets</span>
-</a>
-<a class="api-item" href="#assetsmanager-getjs">
-<code class="vis vis-public">public</code>
-<code class="ret">Collection</code>
-<code class="sig"><span class="sf">getJs</span>()</code>
-<span class="desc">Returns the CSS collection of assets</span>
-</a>
-<a class="api-item" href="#assetsmanager-getoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getOptions</span>()</code>
-<span class="desc">Returns the manager options</span>
-</a>
-<a class="api-item" href="#assetsmanager-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns true or false if collection exists.</span>
-</a>
-<a class="api-item" href="#assetsmanager-output">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">output</span>(<span class="prm"><span class="st">Collection</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
-<span class="desc">Traverses a collection calling the callback to generate its HTML</span>
-</a>
-<a class="api-item" href="#assetsmanager-outputcss">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">outputCss</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
-<span class="desc">Prints the HTML for CSS assets</span>
-</a>
-<a class="api-item" href="#assetsmanager-outputinline">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">outputInline</span>(<span class="prm"><span class="st">Collection</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$type</span></span>)</code>
-<span class="desc">Traverses a collection and generate its HTML</span>
-</a>
-<a class="api-item" href="#assetsmanager-outputinlinecss">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">outputInlineCss</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
-<span class="desc">Prints the HTML for inline CSS</span>
-</a>
-<a class="api-item" href="#assetsmanager-outputinlinejs">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">outputInlineJs</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
-<span class="desc">Prints the HTML for inline JS</span>
-</a>
-<a class="api-item" href="#assetsmanager-outputjs">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">outputJs</span>( <span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
-<span class="desc">Prints the HTML for JS assets</span>
-</a>
-<a class="api-item" href="#assetsmanager-set">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">Collection</span> <span class="sv">$collection</span></span>)</code>
-<span class="desc">Sets a collection in the Assets Manager</span>
-</a>
-<a class="api-item" href="#assetsmanager-setoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
-<span class="desc">Sets the manager options</span>
-</a>
-<a class="api-item" href="#assetsmanager-useimplicitoutput">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">useImplicitOutput</span>( <span class="st">bool</span> <span class="sv">$implicitOutput</span> )</code>
-<span class="desc">Sets if the HTML generated must be directly printed or returned</span>
-</a>
-</div>
+<ApiItem href="#assetsmanager-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"TagFactory","name":"tagFactory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Manager constructor.
+</ApiItem>
+<ApiItem href="#assetsmanager-addasset" visibility="public" name="addAsset" returnType="static" params={[{"type":"Asset","name":"asset","default":null}]}>
+Adds a raw asset to the manager
+</ApiItem>
+<ApiItem href="#assetsmanager-addassetbytype" visibility="public" name="addAssetByType" returnType="static" params={[{"type":"string","name":"type","default":null},{"type":"Asset","name":"asset","default":null}]}>
+Adds an asset by its type
+</ApiItem>
+<ApiItem href="#assetsmanager-addcss" visibility="public" name="addCss" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"bool","name":"local","default":"true"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Adds a CSS asset to the 'css' collection
+</ApiItem>
+<ApiItem href="#assetsmanager-addinlinecode" visibility="public" name="addInlineCode" returnType="static" params={[{"type":"Inline","name":"code","default":null}]}>
+Adds a raw inline code to the manager
+</ApiItem>
+<ApiItem href="#assetsmanager-addinlinecodebytype" visibility="public" name="addInlineCodeByType" returnType="static" params={[{"type":"string","name":"type","default":null},{"type":"Inline","name":"code","default":null}]}>
+Adds an inline code by its type
+</ApiItem>
+<ApiItem href="#assetsmanager-addinlinecss" visibility="public" name="addInlineCss" returnType="static" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Adds an inline CSS to the 'css' collection
+</ApiItem>
+<ApiItem href="#assetsmanager-addinlinejs" visibility="public" name="addInlineJs" returnType="static" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Adds an inline JavaScript to the 'js' collection
+</ApiItem>
+<ApiItem href="#assetsmanager-addjs" visibility="public" name="addJs" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"bool","name":"local","default":"true"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Adds a JavaScript asset to the 'js' collection
+</ApiItem>
+<ApiItem href="#assetsmanager-collection" visibility="public" name="collection" returnType="Collection" params={[{"type":"string","name":"name","default":null}]}>
+Creates/Returns a collection of assets
+</ApiItem>
+<ApiItem href="#assetsmanager-collectionassetsbytype" visibility="public" name="collectionAssetsByType" returnType="array" params={[{"type":"array","name":"assets","default":null},{"type":"string","name":"type","default":null}]}>
+Creates/Returns a collection of assets by type
+</ApiItem>
+<ApiItem href="#assetsmanager-exists" visibility="public" name="exists" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Returns true or false if collection exists.
+</ApiItem>
+<ApiItem href="#assetsmanager-get" visibility="public" name="get" returnType="Collection" params={[{"type":"string","name":"name","default":null}]}>
+Returns a collection by its id.
+</ApiItem>
+<ApiItem href="#assetsmanager-getcollections" visibility="public" name="getCollections" returnType="Collection[]" params={[]}>
+Returns existing collections in the manager
+</ApiItem>
+<ApiItem href="#assetsmanager-getcss" visibility="public" name="getCss" returnType="Collection" params={[]}>
+Returns the CSS collection of assets
+</ApiItem>
+<ApiItem href="#assetsmanager-getjs" visibility="public" name="getJs" returnType="Collection" params={[]}>
+Returns the CSS collection of assets
+</ApiItem>
+<ApiItem href="#assetsmanager-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
+Returns the manager options
+</ApiItem>
+<ApiItem href="#assetsmanager-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Returns true or false if collection exists.
+</ApiItem>
+<ApiItem href="#assetsmanager-output" visibility="public" name="output" returnType="string|null" params={[{"type":"Collection","name":"collection","default":null},{"type":"string","name":"type","default":null}]}>
+Traverses a collection calling the callback to generate its HTML
+</ApiItem>
+<ApiItem href="#assetsmanager-outputcss" visibility="public" name="outputCss" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
+Prints the HTML for CSS assets
+</ApiItem>
+<ApiItem href="#assetsmanager-outputinline" visibility="public" name="outputInline" returnType="string" params={[{"type":"Collection","name":"collection","default":null},{"type":"mixed","name":"type","default":null}]}>
+Traverses a collection and generate its HTML
+</ApiItem>
+<ApiItem href="#assetsmanager-outputinlinecss" visibility="public" name="outputInlineCss" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
+Prints the HTML for inline CSS
+</ApiItem>
+<ApiItem href="#assetsmanager-outputinlinejs" visibility="public" name="outputInlineJs" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
+Prints the HTML for inline JS
+</ApiItem>
+<ApiItem href="#assetsmanager-outputjs" visibility="public" name="outputJs" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
+Prints the HTML for JS assets
+</ApiItem>
+<ApiItem href="#assetsmanager-set" visibility="public" name="set" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"Collection","name":"collection","default":null}]}>
+Sets a collection in the Assets Manager
+</ApiItem>
+<ApiItem href="#assetsmanager-setoptions" visibility="public" name="setOptions" returnType="static" params={[{"type":"array","name":"options","default":null}]}>
+Sets the manager options
+</ApiItem>
+<ApiItem href="#assetsmanager-useimplicitoutput" visibility="public" name="useImplicitOutput" returnType="static" params={[{"type":"bool","name":"implicitOutput","default":null}]}>
+Sets if the HTML generated must be directly printed or returned
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">assets_collections</code>
-<code class="sig"><span class="sv">$collections</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$implicitOutput</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">TagFactory</code>
-<code class="sig"><span class="sv">$tagFactory</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="collections" type="assets_collections" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="implicitOutput" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="tagFactory" type="TagFactory" default="">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 27</div>
 
 <h4 id="assetsmanager-__construct"><code>__construct()</code></h4>
 
@@ -2090,8 +1565,7 @@ Sets if the HTML generated must be directly printed or returned
 
 ## Assets\Traits\AttributesTrait
 
-<span class="badge badge--trait">Trait</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Traits/AttributesTrait.zep">Source on GitHub</a>
+Trait
 
 Shared HTML-attributes state for asset objects (`Asset`, `Inline`,
 `Collection`).
@@ -2099,40 +1573,24 @@ Shared HTML-attributes state for asset objects (`Asset`, `Inline`,
 @todo set attributes to have a default array when introduced in zephir
 @todo v7 - share setAttributes here too (blocked: Collection is not an AssetInterface, so the return type diverges)
 
-<div class="api-tree">
-
 - **`Phalcon\Assets\Traits\AttributesTrait`**
 
-</div>
+`Phalcon\Contracts\Assets\AssetsTypes`
 
-__Uses__ `Phalcon\Contracts\Assets\AssetsTypes`
-
-__Used by__ [`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collection`](#assetscollection) · [`Phalcon\Assets\Inline`](#assetsinline)
+[`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collection`](#assetscollection) · [`Phalcon\Assets\Inline`](#assetsinline)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetstraitsattributestrait-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-<span class="desc">Gets extra HTML attributes.</span>
-</a>
-</div>
+<ApiItem href="#assetstraitsattributestrait-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
+Gets extra HTML attributes.
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">assets_attributes|null</code>
-<code class="sig"><span class="sv">$attributes</span><span class="sm"> = null</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="attributes" type="assets_attributes|null" default="null">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="assetstraitsattributestrait-getattributes"><code>getAttributes()</code></h4>
 
@@ -2144,98 +1602,51 @@ Gets extra HTML attributes.
 
 ## Assets\Traits\SourceTargetTrait
 
-<span class="badge badge--trait">Trait</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Traits/SourceTargetTrait.zep">Source on GitHub</a>
+Trait
 
 Shared source/target path, uri and locality state for asset objects
 (`Asset`, `Collection`).
 
-<div class="api-tree">
-
 - **`Phalcon\Assets\Traits\SourceTargetTrait`**
 
-</div>
-
-__Used by__ [`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collection`](#assetscollection)
+[`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collection`](#assetscollection)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#assetstraitssourcetargettrait-getsourcepath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getSourcePath</span>()</code>
-</a>
-<a class="api-item" href="#assetstraitssourcetargettrait-gettargetpath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTargetPath</span>()</code>
-</a>
-<a class="api-item" href="#assetstraitssourcetargettrait-gettargeturi">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTargetUri</span>()</code>
-</a>
-<a class="api-item" href="#assetstraitssourcetargettrait-islocal">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isLocal</span>()</code>
-<span class="desc">Checks if the asset is local or not</span>
-</a>
-<a class="api-item" href="#assetstraitssourcetargettrait-setislocal">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setIsLocal</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-<span class="desc">Sets if the asset is local or external</span>
-</a>
-<a class="api-item" href="#assetstraitssourcetargettrait-setsourcepath">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setSourcePath</span>( <span class="st">string</span> <span class="sv">$sourcePath</span> )</code>
-<span class="desc">Sets the asset&#039;s source path</span>
-</a>
-<a class="api-item" href="#assetstraitssourcetargettrait-settargetpath">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setTargetPath</span>( <span class="st">string</span> <span class="sv">$targetPath</span> )</code>
-<span class="desc">Sets the asset&#039;s target path</span>
-</a>
-<a class="api-item" href="#assetstraitssourcetargettrait-settargeturi">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setTargetUri</span>( <span class="st">string</span> <span class="sv">$targetUri</span> )</code>
-<span class="desc">Sets a target uri for the generated HTML</span>
-</a>
-</div>
+<ApiItem href="#assetstraitssourcetargettrait-getsourcepath" visibility="public" name="getSourcePath" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-gettargetpath" visibility="public" name="getTargetPath" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-gettargeturi" visibility="public" name="getTargetUri" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-islocal" visibility="public" name="isLocal" returnType="bool" params={[]}>
+Checks if the asset is local or not
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-setislocal" visibility="public" name="setIsLocal" returnType="static" params={[{"type":"bool","name":"flag","default":null}]}>
+Sets if the asset is local or external
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-setsourcepath" visibility="public" name="setSourcePath" returnType="static" params={[{"type":"string","name":"sourcePath","default":null}]}>
+Sets the asset's source path
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-settargetpath" visibility="public" name="setTargetPath" returnType="static" params={[{"type":"string","name":"targetPath","default":null}]}>
+Sets the asset's target path
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-settargeturi" visibility="public" name="setTargetUri" returnType="static" params={[{"type":"string","name":"targetUri","default":null}]}>
+Sets a target uri for the generated HTML
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$isLocal</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$sourcePath</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$targetPath</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$targetUri</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="isLocal" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="sourcePath" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="targetPath" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="targetUri" type="string" default="&quot;&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 8</div>
 
 <h4 id="assetstraitssourcetargettrait-getsourcepath"><code>getSourcePath()</code></h4>
 

@@ -15,57 +15,34 @@ All classes are prefixed with `Phalcon`
 
 ## Events\AbstractEventsAware
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/AbstractEventsAware.zep">Source on GitHub</a>
+Abstract
 
 This abstract class offers access to the events manager
-
-<div class="api-tree">
 
 - **`Phalcon\Events\AbstractEventsAware`**
 - [`Phalcon\Acl\Adapter\AbstractAdapter`](/5.20/api/phalcon_acl/#acladapterabstractadapter)
 - [`Phalcon\Queue\Consumer\QueueConsumer`](/5.20/api/phalcon_queue/#queueconsumerqueueconsumer)
 
-</div>
-
-__Uses__ `Phalcon\Events\ManagerInterface`
+`Phalcon\Events\ManagerInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#eventsabstracteventsaware-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
-<a class="api-item" href="#eventsabstracteventsaware-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
-<a class="api-item" href="#eventsabstracteventsaware-firemanagerevent">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed|bool</code>
-<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$stopOnFalse</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Helper method to fire an event</span>
-</a>
-</div>
+<ApiItem href="#eventsabstracteventsaware-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
+Returns the internal event manager
+</ApiItem>
+<ApiItem href="#eventsabstracteventsaware-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
+Sets the events manager
+</ApiItem>
+<ApiItem href="#eventsabstracteventsaware-firemanagerevent" visibility="protected" name="fireManagerEvent" returnType="mixed|bool" params={[{"type":"string","name":"eventName","default":null},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancellable","default":"true"},{"type":"bool","name":"stopOnFalse","default":"false"}]}>
+Helper method to fire an event
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="eventsabstracteventsaware-geteventsmanager"><code>getEventsManager()</code></h4>
 
@@ -83,8 +60,6 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 Sets the events manager
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="eventsabstracteventsaware-firemanagerevent"><code>fireManagerEvent()</code></h4>
 
 ```php
@@ -100,8 +75,7 @@ Helper method to fire an event
 
 ## Events\Event
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Event.zep">Source on GitHub</a>
+Class
 
 This class offers contextual information of a fired event in the
 EventsManager
@@ -115,113 +89,59 @@ $event->stop();
 }
 ```
 
-<div class="api-tree">
-
 - **`Phalcon\Events\Event`** - implements [`Phalcon\Events\EventInterface`](#eventseventinterface), [`Phalcon\Contracts\Events\Stoppable`](/5.20/api/phalcon_contracts/#contractseventsstoppable)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Events\Exceptions\EventNotCancelable` · `Phalcon\Events\Exceptions\InvalidEventSource`
+`Phalcon\Contracts\Events\Stoppable` · `Phalcon\Events\Exceptions\EventNotCancelable` · `Phalcon\Events\Exceptions\InvalidEventSource`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#eventsevent-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$source</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Phalcon\Events\Event constructor</span>
-</a>
-<a class="api-item" href="#eventsevent-getdata">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getData</span>()</code>
-</a>
-<a class="api-item" href="#eventsevent-getsource">
-<code class="vis vis-public">public</code>
-<code class="ret">object|null</code>
-<code class="sig"><span class="sf">getSource</span>()</code>
-</a>
-<a class="api-item" href="#eventsevent-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-</a>
-<a class="api-item" href="#eventsevent-iscancelable">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isCancelable</span>()</code>
-<span class="desc">Check whether the event is cancelable.</span>
-</a>
-<a class="api-item" href="#eventsevent-ispropagationstopped">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isPropagationStopped</span>()</code>
-<span class="desc">Returns whether propagation must stop. PSR-14 alias backed by the same</span>
-</a>
-<a class="api-item" href="#eventsevent-isstopped">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isStopped</span>()</code>
-<span class="desc">Check whether the event is currently stopped.</span>
-</a>
-<a class="api-item" href="#eventsevent-setdata">
-<code class="vis vis-public">public</code>
-<code class="ret">EventInterface</code>
-<code class="sig"><span class="sf">setData</span>( <span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span> )</code>
-<span class="desc">Sets event data.</span>
-</a>
-<a class="api-item" href="#eventsevent-settype">
-<code class="vis vis-public">public</code>
-<code class="ret">EventInterface</code>
-<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Sets event type.</span>
-</a>
-<a class="api-item" href="#eventsevent-stop">
-<code class="vis vis-public">public</code>
-<code class="ret">EventInterface</code>
-<code class="sig"><span class="sf">stop</span>()</code>
-<span class="desc">Stops the event preventing propagation.</span>
-</a>
-</div>
+<ApiItem href="#eventsevent-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"source","default":"null"},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancelable","default":"true"}]}>
+Phalcon\Events\Event constructor
+</ApiItem>
+<ApiItem href="#eventsevent-getdata" visibility="public" name="getData" returnType="mixed" params={[]}>
+</ApiItem>
+<ApiItem href="#eventsevent-getsource" visibility="public" name="getSource" returnType="object|null" params={[]}>
+</ApiItem>
+<ApiItem href="#eventsevent-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#eventsevent-iscancelable" visibility="public" name="isCancelable" returnType="bool" params={[]}>
+Check whether the event is cancelable.
+</ApiItem>
+<ApiItem href="#eventsevent-ispropagationstopped" visibility="public" name="isPropagationStopped" returnType="bool" params={[]}>
+Returns whether propagation must stop. PSR-14 alias backed by the same
+</ApiItem>
+<ApiItem href="#eventsevent-isstopped" visibility="public" name="isStopped" returnType="bool" params={[]}>
+Check whether the event is currently stopped.
+</ApiItem>
+<ApiItem href="#eventsevent-setdata" visibility="public" name="setData" returnType="EventInterface" params={[{"type":"mixed","name":"data","default":"null"}]}>
+Sets event data.
+</ApiItem>
+<ApiItem href="#eventsevent-settype" visibility="public" name="setType" returnType="EventInterface" params={[{"type":"string","name":"type","default":null}]}>
+Sets event type.
+</ApiItem>
+<ApiItem href="#eventsevent-stop" visibility="public" name="stop" returnType="EventInterface" params={[]}>
+Stops the event preventing propagation.
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$cancelable</span></code>
-<span class="desc">Is event cancelable?</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$data</span></code>
-<span class="desc">Event data</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">object|null</code>
-<code class="sig"><span class="sv">$source</span><span class="sm"> = null</span></code>
-<span class="desc">Event source</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$stopped</span><span class="sm"> = false</span></code>
-<span class="desc">Is event propagation stopped?</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$type</span></code>
-<span class="desc">Event type</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="cancelable" type="bool" default="">
+Is event cancelable?
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="data" type="mixed" default="">
+Event data
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="source" type="object|null" default="null">
+Event source
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="stopped" type="bool" default="false">
+Is event propagation stopped?
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="type" type="string" default="">
+Event type
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 10</div>
 
 <h4 id="eventsevent-__construct"><code>__construct()</code></h4>
 
@@ -317,44 +237,31 @@ $event->stop();
 
 ## Events\EventInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventInterface.zep">Source on GitHub</a>
+Interface
 
 Phalcon\Events\EventInterface
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Events\Event`](/5.20/api/phalcon_contracts/#contractseventsevent)
 - **`Phalcon\Events\EventInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Events\Event`
+`Phalcon\Contracts\Events\Event`
 
 ## Events\EventsAwareInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventsAwareInterface.zep">Source on GitHub</a>
+Interface
 
 Phalcon\Events\EventsAwareInterface
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Events\EventsAware`](/5.20/api/phalcon_contracts/#contractseventseventsaware)
 - **`Phalcon\Events\EventsAwareInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Events\EventsAware`
+`Phalcon\Contracts\Events\EventsAware`
 
 ## Events\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exception.zep">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Events will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Events\Exception`**
@@ -365,35 +272,22 @@ Exceptions thrown in Phalcon\Events will use this class
 - [`Phalcon\Events\Exceptions\InvalidSubscriberConfiguration`](#eventsexceptionsinvalidsubscriberconfiguration)
 - [`Phalcon\Events\Exceptions\NoListenersForEvent`](#eventsexceptionsnolistenersforevent)
 
-</div>
-
 ## Events\Exceptions\EventNotCancelable
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/EventNotCancelable.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Events\Exception`](#eventsexception)
 - **`Phalcon\Events\Exceptions\EventNotCancelable`**
 
-</div>
-
-__Uses__ `Phalcon\Events\Exception`
+`Phalcon\Events\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#eventsexceptionseventnotcancelable-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#eventsexceptionseventnotcancelable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="eventsexceptionseventnotcancelable-__construct"><code>__construct()</code></h4>
 
@@ -403,31 +297,20 @@ public function __construct();
 
 ## Events\Exceptions\InvalidEventHandler
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventHandler.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Events\Exception`](#eventsexception)
 - **`Phalcon\Events\Exceptions\InvalidEventHandler`**
 
-</div>
-
-__Uses__ `Phalcon\Events\Exception`
+`Phalcon\Events\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#eventsexceptionsinvalideventhandler-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#eventsexceptionsinvalideventhandler-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="eventsexceptionsinvalideventhandler-__construct"><code>__construct()</code></h4>
 
@@ -437,31 +320,20 @@ public function __construct();
 
 ## Events\Exceptions\InvalidEventSource
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventSource.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Events\Exception`](#eventsexception)
 - **`Phalcon\Events\Exceptions\InvalidEventSource`**
 
-</div>
-
-__Uses__ `Phalcon\Events\Exception`
+`Phalcon\Events\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#eventsexceptionsinvalideventsource-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$sourceType</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#eventsexceptionsinvalideventsource-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"sourceType","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="eventsexceptionsinvalideventsource-__construct"><code>__construct()</code></h4>
 
@@ -474,31 +346,20 @@ string $sourceType
 
 ## Events\Exceptions\InvalidEventType
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventType.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Events\Exception`](#eventsexception)
 - **`Phalcon\Events\Exceptions\InvalidEventType`**
 
-</div>
-
-__Uses__ `Phalcon\Events\Exception`
+`Phalcon\Events\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#eventsexceptionsinvalideventtype-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$eventType</span> )</code>
-</a>
-</div>
+<ApiItem href="#eventsexceptionsinvalideventtype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"eventType","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="eventsexceptionsinvalideventtype-__construct"><code>__construct()</code></h4>
 
@@ -508,31 +369,20 @@ public function __construct( string $eventType );
 
 ## Events\Exceptions\InvalidSubscriberConfiguration
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidSubscriberConfiguration.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Events\Exception`](#eventsexception)
 - **`Phalcon\Events\Exceptions\InvalidSubscriberConfiguration`**
 
-</div>
-
-__Uses__ `Phalcon\Events\Exception`
+`Phalcon\Events\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#eventsexceptionsinvalidsubscriberconfiguration-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
-</a>
-</div>
+<ApiItem href="#eventsexceptionsinvalidsubscriberconfiguration-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"eventName","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="eventsexceptionsinvalidsubscriberconfiguration-__construct"><code>__construct()</code></h4>
 
@@ -542,31 +392,20 @@ public function __construct( string $eventName );
 
 ## Events\Exceptions\NoListenersForEvent
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/NoListenersForEvent.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Events\Exception`](#eventsexception)
 - **`Phalcon\Events\Exceptions\NoListenersForEvent`**
 
-</div>
-
-__Uses__ `Phalcon\Events\Exception`
+`Phalcon\Events\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#eventsexceptionsnolistenersforevent-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$eventType</span> )</code>
-</a>
-</div>
+<ApiItem href="#eventsexceptionsnolistenersforevent-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"eventType","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="eventsexceptionsnolistenersforevent-__construct"><code>__construct()</code></h4>
 
@@ -576,291 +415,204 @@ public function __construct( string $eventType );
 
 ## Events\Manager
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Manager.zep">Source on GitHub</a>
+Class
 
 Phalcon Events Manager, offers an easy way to intercept and manipulate, if
 needed, the normal flow of operation. With the EventsManager the developer
 can create hooks or plugins that will offer monitoring of data, manipulation,
 conditional execution and much more.
 
-<div class="api-tree">
-
 - **`Phalcon\Events\Manager`** - implements [`Phalcon\Events\ManagerInterface`](#eventsmanagerinterface), [`Phalcon\Contracts\Events\Enumerable`](/5.20/api/phalcon_contracts/#contractseventsenumerable)
 
-</div>
-
-__Uses__ `Closure` · `Phalcon\Contracts\Events\Enumerable` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent`
+`Closure` · `Phalcon\Contracts\Events\Enumerable` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#eventsmanager-addsubscriber">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">addSubscriber</span>( <span class="st">Subscriber</span> <span class="sv">$subscriber</span> )</code>
-<span class="desc">Registers an event subscriber. The subscriber&#039;s getSubscribedEvents()</span>
-</a>
-<a class="api-item" href="#eventsmanager-areprioritiesenabled">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">arePrioritiesEnabled</span>()</code>
-<span class="desc">Returns if priorities are enabled</span>
-</a>
-<a class="api-item" href="#eventsmanager-attach">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">attach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$priority</span><span class="sm"> = self::DEFAULT_PRIORITY</span></span>)</code>
-<span class="desc">Attach a listener to the events manager</span>
-</a>
-<a class="api-item" href="#eventsmanager-clearsubscribers">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">clearSubscribers</span>()</code>
-<span class="desc">Removes every registered subscriber and detaches each listener they</span>
-</a>
-<a class="api-item" href="#eventsmanager-collectresponses">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">collectResponses</span>( <span class="st">bool</span> <span class="sv">$collect</span> )</code>
-<span class="desc">Tells the event manager if it needs to collect all the responses returned</span>
-</a>
-<a class="api-item" href="#eventsmanager-detach">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">detach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
-<span class="desc">Detach the listener from the events manager</span>
-</a>
-<a class="api-item" href="#eventsmanager-detachall">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">detachAll</span>( <span class="st">string|null</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
-<span class="desc">Removes all events from the EventsManager</span>
-</a>
-<a class="api-item" href="#eventsmanager-dispatch">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">dispatch</span>(<span class="prm"><span class="st">object</span> <span class="sv">$event</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$source</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Dispatches an object event to its listeners, routed by an explicit name</span>
-</a>
-<a class="api-item" href="#eventsmanager-enablepriorities">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">enablePriorities</span>( <span class="st">bool</span> <span class="sv">$enablePriorities</span> )</code>
-<span class="desc">Set if priorities are enabled in the EventsManager.</span>
-</a>
-<a class="api-item" href="#eventsmanager-fire">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$stopOnFalse</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Fires an event in the events manager causing the active listeners to be</span>
-</a>
-<a class="api-item" href="#eventsmanager-fireall">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">fireAll</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Fires an event and returns every listener&#039;s return value as an</span>
-</a>
-<a class="api-item" href="#eventsmanager-firequeue">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">fireQueue</span>(<span class="prm"><span class="st">array</span> <span class="sv">$queue</span>,</span><span class="prm"><span class="st">EventInterface</span> <span class="sv">$event</span></span>)</code>
-<span class="desc">Internal handler to call a queue of events.</span>
-</a>
-<a class="api-item" href="#eventsmanager-getlistenermap">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getListenerMap</span>()</code>
-<span class="desc">Returns every event type that currently has at least one listener,</span>
-</a>
-<a class="api-item" href="#eventsmanager-getlisteners">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getListeners</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Returns all the attached listeners of a certain type</span>
-</a>
-<a class="api-item" href="#eventsmanager-getmethodexistscachelimit">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getMethodExistsCacheLimit</span>()</code>
-<span class="desc">Returns the configured method_exists-cache cap (0 = unlimited).</span>
-</a>
-<a class="api-item" href="#eventsmanager-getresponses">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getResponses</span>()</code>
-<span class="desc">Returns all the responses returned by every handler executed by the last</span>
-</a>
-<a class="api-item" href="#eventsmanager-getsubscribers">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getSubscribers</span>()</code>
-<span class="desc">Returns the list of registered subscriber instances. Useful for</span>
-</a>
-<a class="api-item" href="#eventsmanager-halt">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">halt</span>()</code>
-<span class="desc">Manager-level kill switch. After halt(), every fire()/fireAll()/</span>
-</a>
-<a class="api-item" href="#eventsmanager-haslisteners">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasListeners</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Check whether certain type of event has listeners</span>
-</a>
-<a class="api-item" href="#eventsmanager-iscollecting">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isCollecting</span>()</code>
-<span class="desc">Check if the events manager is collecting all all the responses returned</span>
-</a>
-<a class="api-item" href="#eventsmanager-ishalted">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isHalted</span>()</code>
-<span class="desc">Returns whether the manager-level kill switch is engaged. See halt().</span>
-</a>
-<a class="api-item" href="#eventsmanager-isstoponfalse">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isStopOnFalse</span>()</code>
-<span class="desc">Returns whether the stop-on-false short-circuit is enabled.</span>
-</a>
-<a class="api-item" href="#eventsmanager-isstrict">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isStrict</span>()</code>
-<span class="desc">Returns whether strict mode is enabled. When true, fire()/fireAll()</span>
-</a>
-<a class="api-item" href="#eventsmanager-isvalidhandler">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isValidHandler</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
-</a>
-<a class="api-item" href="#eventsmanager-removesubscriber">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">removeSubscriber</span>( <span class="st">Subscriber</span> <span class="sv">$subscriber</span> )</code>
-<span class="desc">Removes a previously registered subscriber. Detaches every listener the</span>
-</a>
-<a class="api-item" href="#eventsmanager-resume">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">resume</span>()</code>
-<span class="desc">Clears the manager-level kill switch set by halt(). Subsequent</span>
-</a>
-<a class="api-item" href="#eventsmanager-setmethodexistscachelimit">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setMethodExistsCacheLimit</span>( <span class="st">int</span> <span class="sv">$methodExistsCacheLimit</span> )</code>
-<span class="desc">Caps the number of distinct handler classes retained in the</span>
-</a>
-<a class="api-item" href="#eventsmanager-setstoponfalse">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setStopOnFalse</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-<span class="desc">Enables/disables the stop-on-false short-circuit. When true, a</span>
-</a>
-<a class="api-item" href="#eventsmanager-setstrict">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setStrict</span>( <span class="st">bool</span> <span class="sv">$strict</span> )</code>
-<span class="desc">Enables/disables strict mode. When true, fire()/fireAll() throw</span>
-</a>
-<a class="api-item" href="#eventsmanager-afterfire">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">afterFire</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$status</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Extension seam invoked after an event has been dispatched to its</span>
-</a>
-<a class="api-item" href="#eventsmanager-beforefire">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">beforeFire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Extension seam invoked before an event is dispatched. The base</span>
-</a>
-</div>
+<ApiItem href="#eventsmanager-addsubscriber" visibility="public" name="addSubscriber" returnType="void" params={[{"type":"Subscriber","name":"subscriber","default":null}]}>
+Registers an event subscriber. The subscriber's getSubscribedEvents()
+</ApiItem>
+<ApiItem href="#eventsmanager-areprioritiesenabled" visibility="public" name="arePrioritiesEnabled" returnType="bool" params={[]}>
+Returns if priorities are enabled
+</ApiItem>
+<ApiItem href="#eventsmanager-attach" visibility="public" name="attach" returnType="void" params={[{"type":"string","name":"eventType","default":null},{"type":"mixed","name":"handler","default":null},{"type":"int","name":"priority","default":"self::DEFAULT_PRIORITY"}]}>
+Attach a listener to the events manager
+</ApiItem>
+<ApiItem href="#eventsmanager-clearsubscribers" visibility="public" name="clearSubscribers" returnType="void" params={[]}>
+Removes every registered subscriber and detaches each listener they
+</ApiItem>
+<ApiItem href="#eventsmanager-collectresponses" visibility="public" name="collectResponses" returnType="void" params={[{"type":"bool","name":"collect","default":null}]}>
+Tells the event manager if it needs to collect all the responses returned
+</ApiItem>
+<ApiItem href="#eventsmanager-detach" visibility="public" name="detach" returnType="void" params={[{"type":"string","name":"eventType","default":null},{"type":"mixed","name":"handler","default":null}]}>
+Detach the listener from the events manager
+</ApiItem>
+<ApiItem href="#eventsmanager-detachall" visibility="public" name="detachAll" returnType="void" params={[{"type":"string|null","name":"type","default":"null"}]}>
+Removes all events from the EventsManager
+</ApiItem>
+<ApiItem href="#eventsmanager-dispatch" visibility="public" name="dispatch" returnType="" params={[{"type":"object","name":"event","default":null},{"type":"mixed","name":"name","default":"null"},{"type":"mixed","name":"source","default":"null"}]}>
+Dispatches an object event to its listeners, routed by an explicit name
+</ApiItem>
+<ApiItem href="#eventsmanager-enablepriorities" visibility="public" name="enablePriorities" returnType="void" params={[{"type":"bool","name":"enablePriorities","default":null}]}>
+Set if priorities are enabled in the EventsManager.
+</ApiItem>
+<ApiItem href="#eventsmanager-fire" visibility="public" name="fire" returnType="" params={[{"type":"string","name":"eventType","default":null},{"type":"object","name":"source","default":null},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancelable","default":"true"},{"type":"mixed","name":"stopOnFalse","default":"null"}]}>
+Fires an event in the events manager causing the active listeners to be
+</ApiItem>
+<ApiItem href="#eventsmanager-fireall" visibility="public" name="fireAll" returnType="array" params={[{"type":"string","name":"eventType","default":null},{"type":"object","name":"source","default":null},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancelable","default":"true"}]}>
+Fires an event and returns every listener's return value as an
+</ApiItem>
+<ApiItem href="#eventsmanager-firequeue" visibility="public" name="fireQueue" returnType="" params={[{"type":"array","name":"queue","default":null},{"type":"EventInterface","name":"event","default":null}]}>
+Internal handler to call a queue of events.
+</ApiItem>
+<ApiItem href="#eventsmanager-getlistenermap" visibility="public" name="getListenerMap" returnType="array" params={[]}>
+Returns every event type that currently has at least one listener,
+</ApiItem>
+<ApiItem href="#eventsmanager-getlisteners" visibility="public" name="getListeners" returnType="array" params={[{"type":"string","name":"type","default":null}]}>
+Returns all the attached listeners of a certain type
+</ApiItem>
+<ApiItem href="#eventsmanager-getmethodexistscachelimit" visibility="public" name="getMethodExistsCacheLimit" returnType="int" params={[]}>
+Returns the configured method_exists-cache cap (0 = unlimited).
+</ApiItem>
+<ApiItem href="#eventsmanager-getresponses" visibility="public" name="getResponses" returnType="array" params={[]}>
+Returns all the responses returned by every handler executed by the last
+</ApiItem>
+<ApiItem href="#eventsmanager-getsubscribers" visibility="public" name="getSubscribers" returnType="array" params={[]}>
+Returns the list of registered subscriber instances. Useful for
+</ApiItem>
+<ApiItem href="#eventsmanager-halt" visibility="public" name="halt" returnType="void" params={[]}>
+Manager-level kill switch. After halt(), every fire()/fireAll()/
+</ApiItem>
+<ApiItem href="#eventsmanager-haslisteners" visibility="public" name="hasListeners" returnType="bool" params={[{"type":"string","name":"type","default":null}]}>
+Check whether certain type of event has listeners
+</ApiItem>
+<ApiItem href="#eventsmanager-iscollecting" visibility="public" name="isCollecting" returnType="bool" params={[]}>
+Check if the events manager is collecting all all the responses returned
+</ApiItem>
+<ApiItem href="#eventsmanager-ishalted" visibility="public" name="isHalted" returnType="bool" params={[]}>
+Returns whether the manager-level kill switch is engaged. See halt().
+</ApiItem>
+<ApiItem href="#eventsmanager-isstoponfalse" visibility="public" name="isStopOnFalse" returnType="bool" params={[]}>
+Returns whether the stop-on-false short-circuit is enabled.
+</ApiItem>
+<ApiItem href="#eventsmanager-isstrict" visibility="public" name="isStrict" returnType="bool" params={[]}>
+Returns whether strict mode is enabled. When true, fire()/fireAll()
+</ApiItem>
+<ApiItem href="#eventsmanager-isvalidhandler" visibility="public" name="isValidHandler" returnType="bool" params={[{"type":"mixed","name":"handler","default":null}]}>
+</ApiItem>
+<ApiItem href="#eventsmanager-removesubscriber" visibility="public" name="removeSubscriber" returnType="void" params={[{"type":"Subscriber","name":"subscriber","default":null}]}>
+Removes a previously registered subscriber. Detaches every listener the
+</ApiItem>
+<ApiItem href="#eventsmanager-resume" visibility="public" name="resume" returnType="void" params={[]}>
+Clears the manager-level kill switch set by halt(). Subsequent
+</ApiItem>
+<ApiItem href="#eventsmanager-setmethodexistscachelimit" visibility="public" name="setMethodExistsCacheLimit" returnType="void" params={[{"type":"int","name":"methodExistsCacheLimit","default":null}]}>
+Caps the number of distinct handler classes retained in the
+</ApiItem>
+<ApiItem href="#eventsmanager-setstoponfalse" visibility="public" name="setStopOnFalse" returnType="void" params={[{"type":"bool","name":"flag","default":null}]}>
+Enables/disables the stop-on-false short-circuit. When true, a
+</ApiItem>
+<ApiItem href="#eventsmanager-setstrict" visibility="public" name="setStrict" returnType="void" params={[{"type":"bool","name":"strict","default":null}]}>
+Enables/disables strict mode. When true, fire()/fireAll() throw
+</ApiItem>
+<ApiItem href="#eventsmanager-afterfire" visibility="protected" name="afterFire" returnType="mixed" params={[{"type":"mixed","name":"status","default":null},{"type":"string","name":"eventType","default":null},{"type":"object","name":"source","default":null},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancelable","default":"true"}]}>
+Extension seam invoked after an event has been dispatched to its
+</ApiItem>
+<ApiItem href="#eventsmanager-beforefire" visibility="protected" name="beforeFire" returnType="bool" params={[{"type":"string","name":"eventType","default":null},{"type":"object","name":"source","default":null},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancelable","default":"true"}]}>
+Extension seam invoked before an event is dispatched. The base
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$collect</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$enablePriorities</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$eventNameCache</span><span class="sm"> = []</span></code>
-<span class="desc">Parsed-eventType cache. Memoizes the strpos + substr work done in fire() so the same event name fired repeatedly (the common case for db:beforeQuery, model:afterSave, etc.) collapses to a single hash lookup. Shape: <code>eventNameCache[$eventType] = [typePrefix, eventName]</code> Unbounded by design - distinct event types in a typical Phalcon application are well under 100 keys, and the cache never needs invalidation (parse is deterministic for a given eventType string).</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$events</span><span class="sm"> = []</span></code>
-<span class="desc">Listener storage. Shape: events[$eventType] = [ [handler, type, priority]            // types 0, 1, 3 [handler, type, priority, className] // type 2 carries // resolved class name ... ] Kept sorted by priority descending when priorities are enabled (FIFO within the same priority); otherwise listeners are simply appended in attach order. <code>type</code> is classified once at attach() time so dispatch() can route via a simple branch: 0 - Closure: direct invocation via <code>\{handler\}(args)</code>, no arg-array alloc per call 1 - [obj, method] array callable: direct dynamic dispatch <code>handler[0]-&gt;\{handler[1]\}(args)</code> 2 - plain object: dynamic dispatch via method named after the event (the classic Phalcon listener pattern); class name is captured at attach time to skip get_class() per fire 3 - generic callable (string fn name, invokable object, [class, staticMethod]): call_user_func_array</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$fireDepth</span><span class="sm"> = 0</span></code>
-<span class="desc">Re-entrancy depth of fire()/fireAll(). 0 means no fire is in progress. Incremented on every fire entry, decremented on exit. Used to keep nested fire() calls from clobbering the outer caller&#039;s <code>$this-&gt;responses</code> accumulator.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$halted</span><span class="sm"> = false</span></code>
-<span class="desc">Manager-level kill switch. When true, every fire()/fireAll()/ fireQueue() call returns immediately (null or empty array) without dispatching. Cleared by resume(). Survives across fire() calls, unlike Event::stop() which only stops the current dispatch chain.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$methodExistsCache</span><span class="sm"> = []</span></code>
-<span class="desc">Memoized method_exists() results for the OBJECT_METHOD dispatch path in dispatch(). Keyed by <code>handlerClass =&gt; [methodName =&gt; bool]</code>. A class doesn&#039;t gain methods at runtime so the lookup is permanent.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$methodExistsCacheLimit</span><span class="sm"> = 0</span></code>
-<span class="desc">Maximum number of distinct handler classes retained in methodExistsCache. 0 (default) keeps the original unbounded behavior; a positive value clears the cache when adding a new class would exceed it. Re-warming is cheap (method_exists is O(1)) and the cap is meant for very long-lived workers that see many distinct listener classes over time.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$responses</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$stopOnFalse</span><span class="sm"> = false</span></code>
-<span class="desc">When true, a listener returning literal <code>false</code> (with the event&#039;s <code>cancelable</code> flag on) short-circuits the dispatch loop and pins the fire() return as <code>false</code>. Default off - preserves the pre-5.13 &quot;last-wins&quot; contract for codebases that rely on later listeners overriding an earlier false return [#17019].</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$strict</span><span class="sm"> = false</span></code>
-<span class="desc">When true, fire()/fireAll() throw on dispatch of an event that has zero matching listeners. Catches typos in dev. Default off.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$subscriberEventsCache</span><span class="sm"> = []</span></code>
-<span class="desc">Memoized getSubscribedEvents() maps keyed by Subscriber class name. The static method&#039;s return is stable for the lifetime of a class definition, so the cache never needs invalidation.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$subscribers</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="collect" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="enablePriorities" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="eventNameCache" type="array" default="[]">
+Parsed-eventType cache. Memoizes the strpos + substr work done in
+fire() so the same event name fired repeatedly (the common case
+for db:beforeQuery, model:afterSave, etc.) collapses to a single
+hash lookup.
+
+Shape: `eventNameCache[$eventType] = [typePrefix, eventName]`
+
+Unbounded by design - distinct event types in a typical Phalcon
+application are well under 100 keys, and the cache never needs
+invalidation (parse is deterministic for a given eventType string).
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="events" type="array" default="[]">
+Listener storage. Shape:
+
+  events[$eventType] = [
+      [handler, type, priority]            // types 0, 1, 3
+      [handler, type, priority, className] // type 2 carries
+                                           // resolved class name
+      ...
+  ]
+
+Kept sorted by priority descending when priorities are enabled
+(FIFO within the same priority); otherwise listeners are simply
+appended in attach order.
+
+`type` is classified once at attach() time so dispatch() can
+route via a simple branch:
+
+  0 - Closure: direct invocation via `{handler}(args)`, no
+      arg-array alloc per call
+  1 - [obj, method] array callable: direct dynamic dispatch
+      `handler[0]->{handler[1]}(args)`
+  2 - plain object: dynamic dispatch via method named after the
+      event (the classic Phalcon listener pattern); class name is
+      captured at attach time to skip get_class() per fire
+  3 - generic callable (string fn name, invokable object,
+      [class, staticMethod]): call_user_func_array
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="fireDepth" type="int" default="0">
+Re-entrancy depth of fire()/fireAll(). 0 means no fire is in
+progress. Incremented on every fire entry, decremented on exit.
+Used to keep nested fire() calls from clobbering the outer
+caller's `$this->responses` accumulator.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="halted" type="bool" default="false">
+Manager-level kill switch. When true, every fire()/fireAll()/
+fireQueue() call returns immediately (null or empty array) without
+dispatching. Cleared by resume(). Survives across fire() calls,
+unlike Event::stop() which only stops the current dispatch chain.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="methodExistsCache" type="array" default="[]">
+Memoized method_exists() results for the OBJECT_METHOD dispatch
+path in dispatch(). Keyed by `handlerClass => [methodName => bool]`.
+A class doesn't gain methods at runtime so the lookup is permanent.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="methodExistsCacheLimit" type="int" default="0">
+Maximum number of distinct handler classes retained in
+methodExistsCache. 0 (default) keeps the original unbounded
+behavior; a positive value clears the cache when adding a new
+class would exceed it. Re-warming is cheap (method_exists is
+O(1)) and the cap is meant for very long-lived workers that see
+many distinct listener classes over time.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="responses" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="stopOnFalse" type="bool" default="false">
+When true, a listener returning literal `false` (with the event's
+`cancelable` flag on) short-circuits the dispatch loop and pins
+the fire() return as `false`. Default off - preserves the pre-5.13
+"last-wins" contract for codebases that rely on later listeners
+overriding an earlier false return [#17019].
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="strict" type="bool" default="false">
+When true, fire()/fireAll() throw on dispatch of an event that
+has zero matching listeners. Catches typos in dev. Default off.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="subscriberEventsCache" type="array" default="[]">
+Memoized getSubscribedEvents() maps keyed by Subscriber class name.
+The static method's return is stable for the lifetime of a class
+definition, so the cache never needs invalidation.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="subscribers" type="array" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 29</div>
 
 <h4 id="eventsmanager-addsubscriber"><code>addSubscriber()</code></h4>
 
@@ -1184,8 +936,6 @@ public function setStrict( bool $strict ): void;
 Enables/disables strict mode. When true, fire()/fireAll() throw
 when dispatching an event with zero matching listeners.
 
-<div class="api-group">Protected · 2</div>
-
 <h4 id="eventsmanager-afterfire"><code>afterFire()</code></h4>
 
 ```php
@@ -1228,71 +978,43 @@ with no locally attached listeners.
 
 ## Events\ManagerInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/ManagerInterface.zep">Source on GitHub</a>
+Interface
 
 Phalcon\Events\ManagerInterface
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Events\Manager`](/5.20/api/phalcon_contracts/#contractseventsmanager)
 - **`Phalcon\Events\ManagerInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Events\Manager`
+`Phalcon\Contracts\Events\Manager`
 
 ## Events\Traits\EventsAwareTrait
 
-<span class="badge badge--trait">Trait</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Traits/EventsAwareTrait.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Trait
 
 - **`Phalcon\Events\Traits\EventsAwareTrait`**
 
-</div>
+`Phalcon\Events\Exception` · `Phalcon\Events\ManagerInterface`
 
-__Uses__ `Phalcon\Events\Exception` · `Phalcon\Events\ManagerInterface`
-
-__Used by__ [`Phalcon\Application\AbstractApplication`](/5.20/api/phalcon_application/#applicationabstractapplication) · [`Phalcon\Auth\Guard\AbstractGuard`](/5.20/api/phalcon_auth/#authguardabstractguard) · [`Phalcon\Autoload\Loader`](/5.20/api/phalcon_autoload/#autoloadloader) · [`Phalcon\Cache\AbstractCache`](/5.20/api/phalcon_cache/#cacheabstractcache) · [`Phalcon\Cli\Task`](/5.20/api/phalcon_cli/#clitask) · [`Phalcon\DataMapper\Pdo\ConnectionLocator`](/5.20/api/phalcon_datamapper/#datamapperpdoconnectionlocator) · [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](/5.20/api/phalcon_datamapper/#datamapperpdoconnectionabstractconnection) · [`Phalcon\Dispatcher\AbstractDispatcher`](/5.20/api/phalcon_dispatcher/#dispatcherabstractdispatcher) · [`Phalcon\Http\Request`](/5.20/api/phalcon_http/#httprequest) · [`Phalcon\Http\Response`](/5.20/api/phalcon_http/#httpresponse) · [`Phalcon\Storage\Adapter\AbstractAdapter`](/5.20/api/phalcon_storage/#storageadapterabstractadapter)
+[`Phalcon\Application\AbstractApplication`](/5.20/api/phalcon_application/#applicationabstractapplication) · [`Phalcon\Auth\Guard\AbstractGuard`](/5.20/api/phalcon_auth/#authguardabstractguard) · [`Phalcon\Autoload\Loader`](/5.20/api/phalcon_autoload/#autoloadloader) · [`Phalcon\Cache\AbstractCache`](/5.20/api/phalcon_cache/#cacheabstractcache) · [`Phalcon\Cli\Task`](/5.20/api/phalcon_cli/#clitask) · [`Phalcon\DataMapper\Pdo\ConnectionLocator`](/5.20/api/phalcon_datamapper/#datamapperpdoconnectionlocator) · [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](/5.20/api/phalcon_datamapper/#datamapperpdoconnectionabstractconnection) · [`Phalcon\Dispatcher\AbstractDispatcher`](/5.20/api/phalcon_dispatcher/#dispatcherabstractdispatcher) · [`Phalcon\Http\Request`](/5.20/api/phalcon_http/#httprequest) · [`Phalcon\Http\Response`](/5.20/api/phalcon_http/#httpresponse) · [`Phalcon\Storage\Adapter\AbstractAdapter`](/5.20/api/phalcon_storage/#storageadapterabstractadapter)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#eventstraitseventsawaretrait-geteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
-<a class="api-item" href="#eventstraitseventsawaretrait-seteventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the events manager</span>
-</a>
-<a class="api-item" href="#eventstraitseventsawaretrait-firemanagerevent">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$stopOnFalse</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Helper method to fire an event</span>
-</a>
-</div>
+<ApiItem href="#eventstraitseventsawaretrait-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
+Returns the internal event manager
+</ApiItem>
+<ApiItem href="#eventstraitseventsawaretrait-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
+Sets the events manager
+</ApiItem>
+<ApiItem href="#eventstraitseventsawaretrait-firemanagerevent" visibility="protected" name="fireManagerEvent" returnType="mixed" params={[{"type":"string","name":"eventName","default":null},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancellable","default":"true"},{"type":"bool","name":"stopOnFalse","default":"false"}]}>
+Helper method to fire an event
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="eventstraitseventsawaretrait-geteventsmanager"><code>getEventsManager()</code></h4>
 
@@ -1309,8 +1031,6 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
 Sets the events manager
-
-<div class="api-group">Protected · 1</div>
 
 <h4 id="eventstraitseventsawaretrait-firemanagerevent"><code>fireManagerEvent()</code></h4>
 

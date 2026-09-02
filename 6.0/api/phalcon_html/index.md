@@ -21,7 +21,7 @@ This class helps to work with HTML Attributes
 
 @extends Collection&lt;mixed>
 
-- [`Phalcon\Support\Collection`](../phalcon_support/#supportcollection)
+- [`Phalcon\Support\Collection`](/6.0/api/phalcon_support/#supportcollection)
 - **`Phalcon\Html\Attributes`** - implements [`Phalcon\Html\Attributes\RenderInterface`](#htmlattributesrenderinterface)
 
 `Phalcon\Html\Attributes\RenderInterface` · `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Exceptions\AttributeNotRenderable` · `Phalcon\Support\Collection`
@@ -2722,7 +2722,7 @@ Wraps a plain PHP array as a SELECT data provider.
 Keys are option values; string values are labels;
 array values define optgroups.
 
-- **`Phalcon\Html\Helper\Input\Select\ArrayData`** - implements [`Phalcon\Contracts\Html\Helper\Input\SelectData`](../phalcon_contracts/#contractshtmlhelperinputselectdata)
+- **`Phalcon\Html\Helper\Input\Select\ArrayData`** - implements [`Phalcon\Contracts\Html\Helper\Input\SelectData`](/6.0/api/phalcon_contracts/#contractshtmlhelperinputselectdata)
 
 `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Contracts\Html\HtmlTypes`
 
@@ -2769,7 +2769,7 @@ public function getOptions(): array;
 
 Class
 
-- **`Phalcon\Html\Helper\Input\Select\ResultsetData`** - implements [`Phalcon\Contracts\Html\Helper\Input\SelectData`](../phalcon_contracts/#contractshtmlhelperinputselectdata)
+- **`Phalcon\Html\Helper\Input\Select\ResultsetData`** - implements [`Phalcon\Contracts\Html\Helper\Input\SelectData`](/6.0/api/phalcon_contracts/#contractshtmlhelperinputselectdata)
 
 `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Exceptions\InvalidResultsetValue` · `Phalcon\Html\Exceptions\UsingRequiresTwoValues` · `Phalcon\Mvc\Model\ResultsetInterface`
 

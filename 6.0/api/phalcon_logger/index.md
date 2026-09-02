@@ -257,8 +257,8 @@ Class
 
 Factory used to create adapters used for Logging
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Logger\AdapterFactory`**
 
 `Exception` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog` · `Throwable`
@@ -526,7 +526,7 @@ Phalcon\Logger\AdapterInterface
 
 Interface for Phalcon\Logger adapters
 
-- [`Phalcon\Contracts\Logger\Adapter\Adapter`](../phalcon_contracts/#contractsloggeradapteradapter)
+- [`Phalcon\Contracts\Logger\Adapter\Adapter`](/6.0/api/phalcon_contracts/#contractsloggeradapteradapter)
 - **`Phalcon\Logger\Adapter\AdapterInterface`**
 
 `Phalcon\Contracts\Logger\Adapter\Adapter`
@@ -1107,7 +1107,7 @@ Phalcon\Logger\FormatterInterface
 
 This interface must be implemented by formatters in Phalcon\Logger
 
-- [`Phalcon\Contracts\Logger\Formatter\Formatter`](../phalcon_contracts/#contractsloggerformatterformatter)
+- [`Phalcon\Contracts\Logger\Formatter\Formatter`](/6.0/api/phalcon_contracts/#contractsloggerformatterformatter)
 - **`Phalcon\Logger\Formatter\FormatterInterface`**
 
 `Phalcon\Contracts\Logger\Formatter\Formatter`
@@ -1504,7 +1504,7 @@ Class
 
 Factory creating logger objects
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
 - **`Phalcon\Logger\LoggerFactory`**
 
 `DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Throwable`
@@ -1567,7 +1567,7 @@ Interface
 
 Interface for Phalcon based logger objects.
 
-- [`Phalcon\Contracts\Logger\Logger`](../phalcon_contracts/#contractsloggerlogger)
+- [`Phalcon\Contracts\Logger\Logger`](/6.0/api/phalcon_contracts/#contractsloggerlogger)
 - **`Phalcon\Logger\LoggerInterface`**
 
 `Phalcon\Contracts\Logger\Logger`

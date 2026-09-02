@@ -116,7 +116,7 @@ Gets current repository for pagination
 
 Interface
 
-- [`Phalcon\Contracts\Paginator\Adapter`](../phalcon_contracts/#contractspaginatoradapter)
+- [`Phalcon\Contracts\Paginator\Adapter`](/6.0/api/phalcon_contracts/#contractspaginatoradapter)
 - **`Phalcon\Paginator\Adapter\AdapterInterface`**
 
 `Phalcon\Contracts\Paginator\Adapter`
@@ -720,8 +720,8 @@ public function __construct();
 
 Class
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Paginator\PaginatorFactory`**
 
 `Phalcon\Config\Config` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor` · `Throwable`
@@ -965,7 +965,7 @@ Resolve alias property name
 
 Interface
 
-- [`Phalcon\Contracts\Paginator\Repository`](../phalcon_contracts/#contractspaginatorrepository)
+- [`Phalcon\Contracts\Paginator\Repository`](/6.0/api/phalcon_contracts/#contractspaginatorrepository)
 - **`Phalcon\Paginator\RepositoryInterface`**
 
 `Phalcon\Contracts\Paginator\Repository`

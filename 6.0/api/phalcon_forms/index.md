@@ -1156,7 +1156,7 @@ Component SELECT (choice) for forms
 
 ### Method Summary
 
-<ApiItem href="#formselementselect-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array|object|null","name":"options","default":"null"},{"type":"array","name":"attributes","default":"[]"}]}>
+<ApiItem href="#formselementselect-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"options","default":"null"},{"type":"array","name":"attributes","default":"[]"}]}>
 Constructor
 </ApiItem>
 <ApiItem href="#formselementselect-addoption" visibility="public" name="addOption" returnType="ElementInterface" params={[{"type":"mixed","name":"option","default":null}]}>
@@ -1177,7 +1177,7 @@ Returns an array of prepared attributes for Phalcon\Html\TagFactory
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="optionsValues" type="forms_select_options|object|null" default="null">
+<ApiItem kind="property" visibility="protected" name="optionsValues" type="array|object|null" default="null">
 </ApiItem>
 
 ### Methods
@@ -1187,7 +1187,7 @@ Returns an array of prepared attributes for Phalcon\Html\TagFactory
 ```php
 public function __construct(
 string $name,
-array|object|null $options = null,
+mixed $options = null,
 array $attributes = []
 );
 ```
@@ -1648,8 +1648,8 @@ This component allows to build forms using an object-oriented interface
 @implements Iterator&lt;int, ElementInterface>
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](../phalcon_di/#diinjectable)
-- **`Phalcon\Forms\Form`** - implements `\Countable`, `\Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](../phalcon_html/#htmlattributesattributesinterface)
+- [`Phalcon\Di\Injectable`](/6.0/api/phalcon_di/#diinjectable)
+- **`Phalcon\Forms\Form`** - implements `\Countable`, `\Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](/6.0/api/phalcon_html/#htmlattributesattributesinterface)
 
 `Countable` · `Iterator` · `Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Exceptions\ElementNotInForm` · `Phalcon\Forms\Exceptions\InvalidEntity` · `Phalcon\Forms\Exceptions\NoFormElements` · `Phalcon\Html\Attributes` · `Phalcon\Html\Attributes\AttributesInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\Messages` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
 
@@ -1716,7 +1716,6 @@ return ValidationInterface|null
 Gets a value from the internal related entity or from the default value
 </ApiItem>
 <ApiItem href="#formsform-getwhitelist" visibility="public" name="getWhitelist" returnType="array" params={[]}>
-return array
 </ApiItem>
 <ApiItem href="#formsform-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Check if the form contains an element
@@ -1724,7 +1723,7 @@ Check if the form contains an element
 <ApiItem href="#formsform-hasmessagesfor" visibility="public" name="hasMessagesFor" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Check if messages were generated for a specific element
 </ApiItem>
-<ApiItem href="#formsform-isvalid" visibility="public" name="isValid" returnType="bool" params={[{"type":"array","name":"data","default":"[]"},{"type":"object|null","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
+<ApiItem href="#formsform-isvalid" visibility="public" name="isValid" returnType="bool" params={[{"type":"mixed","name":"data","default":"null"},{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
 Validates the form
 </ApiItem>
 <ApiItem href="#formsform-key" visibility="public" name="key" returnType="int" params={[]}>
@@ -1754,7 +1753,7 @@ Sets the form's action
 <ApiItem href="#formsform-setattributes" visibility="public" name="setAttributes" returnType="static" params={[{"type":"Attributes","name":"attributes","default":null}]}>
 Set form attributes collection
 </ApiItem>
-<ApiItem href="#formsform-setentity" visibility="public" name="setEntity" returnType="static" params={[{"type":"object","name":"entity","default":null}]}>
+<ApiItem href="#formsform-setentity" visibility="public" name="setEntity" returnType="static" params={[{"type":"mixed","name":"entity","default":null}]}>
 Sets the entity related to the model
 </ApiItem>
 <ApiItem href="#formsform-settagfactory" visibility="public" name="setTagFactory" returnType="static" params={[{"type":"TagFactory","name":"tagFactory","default":null}]}>
@@ -1780,19 +1779,19 @@ Check if the current element in the iterator is valid
 
 <ApiItem kind="property" visibility="protected" name="attributes" type="Attributes" default="">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="data" type="forms_data" default="[]">
+<ApiItem kind="property" visibility="protected" name="data" type="array" default="[]">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="elements" type="forms_elements" default="[]">
+<ApiItem kind="property" visibility="protected" name="elements" type="array" default="[]">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="elementsIndexed" type="forms_elements_indexed" default="[]">
+<ApiItem kind="property" visibility="protected" name="elementsIndexed" type="array" default="[]">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="entity" type="object|null" default="null">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="filteredData" type="forms_data" default="[]">
+<ApiItem kind="property" visibility="protected" name="filteredData" type="array" default="[]">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="messages" type="Messages" default="">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="options" type="forms_options" default="[]">
+<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="position" type="int" default="0">
 </ApiItem>
@@ -1800,7 +1799,7 @@ Check if the current element in the iterator is valid
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="validation" type="ValidationInterface|null" default="null">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="whitelist" type="forms_whitelist" default="[]">
+<ApiItem kind="property" visibility="protected" name="whitelist" type="array" default="[]">
 </ApiItem>
 
 ### Methods
@@ -1995,8 +1994,6 @@ Gets a value from the internal related entity or from the default value
 public function getWhitelist(): array;
 ```
 
-return array
-
 <h4 id="formsform-has"><code>has()</code></h4>
 
 ```php
@@ -2017,8 +2014,8 @@ Check if messages were generated for a specific element
 
 ```php
 public function isValid(
-array $data = [],
-object|null $entity = null,
+mixed $data = null,
+mixed $entity = null,
 array $whitelist = []
 ): bool;
 ```
@@ -2113,7 +2110,7 @@ Set form attributes collection
 <h4 id="formsform-setentity"><code>setEntity()</code></h4>
 
 ```php
-public function setEntity( object $entity ): static;
+public function setEntity( mixed $entity ): static;
 ```
 
 Sets the entity related to the model
@@ -2306,7 +2303,7 @@ Class
 
 Supplies form element definitions from a PHP array.
 
-- **`Phalcon\Forms\Loader\ArrayLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](../phalcon_contracts/#contractsformsschema)
+- **`Phalcon\Forms\Loader\ArrayLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](/6.0/api/phalcon_contracts/#contractsformsschema)
 
 `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\SchemaEntryMissingKey` · `Phalcon\Forms\Exceptions\SchemaEntryNotArray`
 
@@ -2351,9 +2348,9 @@ Supplies form element definitions from a JSON string or file.
 When $source looks like an existing, readable file path it is read from
 disk first; otherwise the value is treated as a raw JSON string.
 
-- **`Phalcon\Forms\Loader\JsonLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](../phalcon_contracts/#contractsformsschema)
+- **`Phalcon\Forms\Loader\JsonLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](/6.0/api/phalcon_contracts/#contractsformsschema)
 
-`Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\InvalidJsonSchema` · `Phalcon\Forms\Exceptions\JsonSchemaNotArray` · `Phalcon\Traits\Php\FileTrait`
+`InvalidArgumentException` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\InvalidJsonSchema` · `Phalcon\Forms\Exceptions\JsonSchemaNotArray` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
@@ -2387,7 +2384,7 @@ Requires the PHP `yaml` extension (pecl/yaml).
 When $source is an existing, readable file path the file is parsed
 directly; otherwise the value is treated as a raw YAML string.
 
-- **`Phalcon\Forms\Loader\YamlLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](../phalcon_contracts/#contractsformsschema)
+- **`Phalcon\Forms\Loader\YamlLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](/6.0/api/phalcon_contracts/#contractsformsschema)
 
 `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\YamlExtensionRequired` · `Phalcon\Forms\Exceptions\YamlSchemaNotArray` · `Phalcon\Traits\Php\InfoTrait`
 
@@ -2448,7 +2445,7 @@ Registers a form in the Forms Manager
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="forms" type="array&lt;string, Form&gt;" default="[]">
+<ApiItem kind="property" visibility="protected" name="forms" type="array" default="[]">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="locator" type="FormsLocator" default="">
 </ApiItem>

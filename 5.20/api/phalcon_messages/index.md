@@ -15,47 +15,31 @@ All classes are prefixed with `Phalcon`
 
 ## Messages\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Exception.zep">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Messages\* classes will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Messages\Exception`**
 - [`Phalcon\Messages\Exceptions\MessageNotObject`](#messagesexceptionsmessagenotobject)
 - [`Phalcon\Messages\Exceptions\MessagesNotIterable`](#messagesexceptionsmessagesnotiterable)
 
-</div>
-
 ## Messages\Exceptions\MessageNotObject
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Exceptions/MessageNotObject.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Messages\Exception`](#messagesexception)
 - **`Phalcon\Messages\Exceptions\MessageNotObject`**
 
-</div>
-
-__Uses__ `Phalcon\Messages\Exception`
+`Phalcon\Messages\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#messagesexceptionsmessagenotobject-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#messagesexceptionsmessagenotobject-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="messagesexceptionsmessagenotobject-__construct"><code>__construct()</code></h4>
 
@@ -65,31 +49,20 @@ public function __construct();
 
 ## Messages\Exceptions\MessagesNotIterable
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Exceptions/MessagesNotIterable.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Messages\Exception`](#messagesexception)
 - **`Phalcon\Messages\Exceptions\MessagesNotIterable`**
 
-</div>
-
-__Uses__ `Phalcon\Messages\Exception`
+`Phalcon\Messages\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#messagesexceptionsmessagesnotiterable-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#messagesexceptionsmessagesnotiterable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="messagesexceptionsmessagesnotiterable-__construct"><code>__construct()</code></h4>
 
@@ -99,131 +72,67 @@ public function __construct();
 
 ## Messages\Message
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Message.zep">Source on GitHub</a>
+Class
 
 Class Message
 
 Stores a message from various components
 
-<div class="api-tree">
-
 - **`Phalcon\Messages\Message`** - implements [`Phalcon\Messages\MessageInterface`](#messagesmessageinterface), `\JsonSerializable`
 
-</div>
-
-__Uses__ `JsonSerializable` · `Phalcon\Contracts\Messages\MessagesTypes`
+`JsonSerializable` · `Phalcon\Contracts\Messages\MessagesTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#messagesmessage-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$metaData</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Phalcon\Messages\Message constructor</span>
-</a>
-<a class="api-item" href="#messagesmessage-__tostring">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__toString</span>()</code>
-<span class="desc">Magic __toString method returns verbose message</span>
-</a>
-<a class="api-item" href="#messagesmessage-getcode">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getCode</span>()</code>
-</a>
-<a class="api-item" href="#messagesmessage-getfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getField</span>()</code>
-</a>
-<a class="api-item" href="#messagesmessage-getmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getMessage</span>()</code>
-</a>
-<a class="api-item" href="#messagesmessage-getmetadata">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getMetaData</span>()</code>
-</a>
-<a class="api-item" href="#messagesmessage-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-</a>
-<a class="api-item" href="#messagesmessage-jsonserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">jsonSerialize</span>()</code>
-<span class="desc">Serializes the object for json_encode</span>
-</a>
-<a class="api-item" href="#messagesmessage-setcode">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">setCode</span>( <span class="st">int</span> <span class="sv">$code</span> )</code>
-<span class="desc">Sets code for the message</span>
-</a>
-<a class="api-item" href="#messagesmessage-setfield">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">setField</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
-<span class="desc">Sets field name related to message</span>
-</a>
-<a class="api-item" href="#messagesmessage-setmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">setMessage</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Sets verbose message</span>
-</a>
-<a class="api-item" href="#messagesmessage-setmetadata">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">setMetaData</span>( <span class="st">array</span> <span class="sv">$metaData</span> )</code>
-<span class="desc">Sets message metadata</span>
-</a>
-<a class="api-item" href="#messagesmessage-settype">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Sets message type</span>
-</a>
-</div>
+<ApiItem href="#messagesmessage-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":null},{"type":"string","name":"field","default":"\"\""},{"type":"string","name":"type","default":"\"\""},{"type":"int","name":"code","default":"0"},{"type":"array","name":"metaData","default":"[]"}]}>
+Phalcon\Messages\Message constructor
+</ApiItem>
+<ApiItem href="#messagesmessage-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
+Magic __toString method returns verbose message
+</ApiItem>
+<ApiItem href="#messagesmessage-getcode" visibility="public" name="getCode" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#messagesmessage-getfield" visibility="public" name="getField" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#messagesmessage-getmessage" visibility="public" name="getMessage" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#messagesmessage-getmetadata" visibility="public" name="getMetaData" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#messagesmessage-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#messagesmessage-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
+Serializes the object for json_encode
+</ApiItem>
+<ApiItem href="#messagesmessage-setcode" visibility="public" name="setCode" returnType="MessageInterface" params={[{"type":"int","name":"code","default":null}]}>
+Sets code for the message
+</ApiItem>
+<ApiItem href="#messagesmessage-setfield" visibility="public" name="setField" returnType="MessageInterface" params={[{"type":"string","name":"field","default":null}]}>
+Sets field name related to message
+</ApiItem>
+<ApiItem href="#messagesmessage-setmessage" visibility="public" name="setMessage" returnType="MessageInterface" params={[{"type":"string","name":"message","default":null}]}>
+Sets verbose message
+</ApiItem>
+<ApiItem href="#messagesmessage-setmetadata" visibility="public" name="setMetaData" returnType="MessageInterface" params={[{"type":"array","name":"metaData","default":null}]}>
+Sets message metadata
+</ApiItem>
+<ApiItem href="#messagesmessage-settype" visibility="public" name="setType" returnType="MessageInterface" params={[{"type":"string","name":"type","default":null}]}>
+Sets message type
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$code</span><span class="sm"> = 0</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$field</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$message</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$metaData</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="code" type="int" default="0">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="field" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="message" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="metaData" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="type" type="string" default="&quot;&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 13</div>
 
 <h4 id="messagesmessage-__construct"><code>__construct()</code></h4>
 
@@ -327,93 +236,51 @@ Sets message type
 
 ## Messages\MessageInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/MessageInterface.zep">Source on GitHub</a>
+Interface
 
 Interface for Phalcon\Messages\Message
 
-<div class="api-tree">
-
 - **`Phalcon\Messages\MessageInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Messages\MessagesTypes`
+`Phalcon\Contracts\Messages\MessagesTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#messagesmessageinterface-__tostring">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">__toString</span>()</code>
-<span class="desc">Magic __toString method returns verbose message</span>
-</a>
-<a class="api-item" href="#messagesmessageinterface-getcode">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getCode</span>()</code>
-<span class="desc">Returns the message code related to this message</span>
-</a>
-<a class="api-item" href="#messagesmessageinterface-getfield">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getField</span>()</code>
-<span class="desc">Returns field name related to message</span>
-</a>
-<a class="api-item" href="#messagesmessageinterface-getmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getMessage</span>()</code>
-<span class="desc">Returns verbose message</span>
-</a>
-<a class="api-item" href="#messagesmessageinterface-getmetadata">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getMetaData</span>()</code>
-<span class="desc">Returns message metadata</span>
-</a>
-<a class="api-item" href="#messagesmessageinterface-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Returns message type</span>
-</a>
-<a class="api-item" href="#messagesmessageinterface-setcode">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">setCode</span>( <span class="st">int</span> <span class="sv">$code</span> )</code>
-<span class="desc">Sets code for the message</span>
-</a>
-<a class="api-item" href="#messagesmessageinterface-setfield">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">setField</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
-<span class="desc">Sets field name related to message</span>
-</a>
-<a class="api-item" href="#messagesmessageinterface-setmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">setMessage</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Sets verbose message</span>
-</a>
-<a class="api-item" href="#messagesmessageinterface-setmetadata">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">setMetaData</span>( <span class="st">array</span> <span class="sv">$metaData</span> )</code>
-<span class="desc">Sets message metadata</span>
-</a>
-<a class="api-item" href="#messagesmessageinterface-settype">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Sets message type</span>
-</a>
-</div>
+<ApiItem href="#messagesmessageinterface-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
+Magic __toString method returns verbose message
+</ApiItem>
+<ApiItem href="#messagesmessageinterface-getcode" visibility="public" name="getCode" returnType="int" params={[]}>
+Returns the message code related to this message
+</ApiItem>
+<ApiItem href="#messagesmessageinterface-getfield" visibility="public" name="getField" returnType="string" params={[]}>
+Returns field name related to message
+</ApiItem>
+<ApiItem href="#messagesmessageinterface-getmessage" visibility="public" name="getMessage" returnType="string" params={[]}>
+Returns verbose message
+</ApiItem>
+<ApiItem href="#messagesmessageinterface-getmetadata" visibility="public" name="getMetaData" returnType="array" params={[]}>
+Returns message metadata
+</ApiItem>
+<ApiItem href="#messagesmessageinterface-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+Returns message type
+</ApiItem>
+<ApiItem href="#messagesmessageinterface-setcode" visibility="public" name="setCode" returnType="MessageInterface" params={[{"type":"int","name":"code","default":null}]}>
+Sets code for the message
+</ApiItem>
+<ApiItem href="#messagesmessageinterface-setfield" visibility="public" name="setField" returnType="MessageInterface" params={[{"type":"string","name":"field","default":null}]}>
+Sets field name related to message
+</ApiItem>
+<ApiItem href="#messagesmessageinterface-setmessage" visibility="public" name="setMessage" returnType="MessageInterface" params={[{"type":"string","name":"message","default":null}]}>
+Sets verbose message
+</ApiItem>
+<ApiItem href="#messagesmessageinterface-setmetadata" visibility="public" name="setMetaData" returnType="MessageInterface" params={[{"type":"array","name":"metaData","default":null}]}>
+Sets message metadata
+</ApiItem>
+<ApiItem href="#messagesmessageinterface-settype" visibility="public" name="setType" returnType="MessageInterface" params={[{"type":"string","name":"type","default":null}]}>
+Sets message type
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 11</div>
 
 <h4 id="messagesmessageinterface-__tostring"><code>__toString()</code></h4>
 
@@ -505,8 +372,7 @@ Sets message type
 
 ## Messages\Messages
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Messages.zep">Source on GitHub</a>
+Class
 
 Represents a collection of messages
 
@@ -517,50 +383,29 @@ visited during iteration (`foreach`), which walks the integer sequence only.
 Use the append methods (`appendMessage()` / `appendMessages()`) when entries
 must take part in iteration.
 
-<div class="api-tree">
-
 - **`Phalcon\Messages\Messages`** - implements [`Phalcon\Contracts\Messages\Messages`](/5.20/api/phalcon_contracts/#contractsmessagesmessages), `\JsonSerializable`
 
-</div>
-
-__Uses__ `Iterator` · `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Phalcon\Messages\Traits\MessagesHelperTrait` · `Traversable`
+`Iterator` · `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Phalcon\Messages\Traits\MessagesHelperTrait` · `Traversable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#messagesmessages-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$messages</span><span class="sm"> = []</span> )</code>
-<span class="desc">Phalcon\Messages\Messages constructor</span>
-</a>
-<a class="api-item" href="#messagesmessages-appendmessage">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
-<span class="desc">Appends a message to the collection</span>
-</a>
-<a class="api-item" href="#messagesmessages-appendmessages">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">appendMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
-<span class="desc">Appends an array of messages to the collection</span>
-</a>
-<a class="api-item" href="#messagesmessages-filter">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">filter</span>( <span class="st">string</span> <span class="sv">$fieldName</span> )</code>
-<span class="desc">Filters the message collection by field name</span>
-</a>
-<a class="api-item" href="#messagesmessages-jsonserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">jsonSerialize</span>()</code>
-<span class="desc">Returns serialised message objects as array for json_encode. Calls</span>
-</a>
-</div>
+<ApiItem href="#messagesmessages-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"messages","default":"[]"}]}>
+Phalcon\Messages\Messages constructor
+</ApiItem>
+<ApiItem href="#messagesmessages-appendmessage" visibility="public" name="appendMessage" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null}]}>
+Appends a message to the collection
+</ApiItem>
+<ApiItem href="#messagesmessages-appendmessages" visibility="public" name="appendMessages" returnType="" params={[{"type":"mixed","name":"messages","default":null}]}>
+Appends an array of messages to the collection
+</ApiItem>
+<ApiItem href="#messagesmessages-filter" visibility="public" name="filter" returnType="array" params={[{"type":"string","name":"fieldName","default":null}]}>
+Filters the message collection by field name
+</ApiItem>
+<ApiItem href="#messagesmessages-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
+Returns serialised message objects as array for json_encode. Calls
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 5</div>
 
 <h4 id="messagesmessages-__construct"><code>__construct()</code></h4>
 
@@ -625,104 +470,57 @@ echo json_encode($data);
 
 ## Messages\Traits\MessagesHelperTrait
 
-<span class="badge badge--trait">Trait</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Traits/MessagesHelperTrait.zep">Source on GitHub</a>
+Trait
 
 Trait MessagesHelperTrait
 
-<div class="api-tree">
-
 - **`Phalcon\Messages\Traits\MessagesHelperTrait`**
 
-</div>
+`Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\MessageInterface`
 
-__Uses__ `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\MessageInterface`
-
-__Used by__ [`Phalcon\Messages\Messages`](#messagesmessages)
+[`Phalcon\Messages\Messages`](#messagesmessages)
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#messagestraitsmessageshelpertrait-count">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">count</span>()</code>
-<span class="desc">Returns the number of messages in the list</span>
-</a>
-<a class="api-item" href="#messagestraitsmessageshelpertrait-current">
-<code class="vis vis-public">public</code>
-<code class="ret">MessageInterface</code>
-<code class="sig"><span class="sf">current</span>()</code>
-<span class="desc">Returns the current message in the iterator</span>
-</a>
-<a class="api-item" href="#messagestraitsmessageshelpertrait-key">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">key</span>()</code>
-<span class="desc">Returns the current position/key in the iterator</span>
-</a>
-<a class="api-item" href="#messagestraitsmessageshelpertrait-next">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">next</span>()</code>
-<span class="desc">Moves the internal iteration pointer to the next position</span>
-</a>
-<a class="api-item" href="#messagestraitsmessageshelpertrait-offsetexists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
-<span class="desc">Checks if an index exists</span>
-</a>
-<a class="api-item" href="#messagestraitsmessageshelpertrait-offsetget">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
-<span class="desc">Gets an attribute a message using the array syntax</span>
-</a>
-<a class="api-item" href="#messagestraitsmessageshelpertrait-offsetset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Sets an attribute using the array-syntax</span>
-</a>
-<a class="api-item" href="#messagestraitsmessageshelpertrait-offsetunset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
-<span class="desc">Removes a message from the list</span>
-</a>
-<a class="api-item" href="#messagestraitsmessageshelpertrait-rewind">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">rewind</span>()</code>
-<span class="desc">Rewinds the internal iterator</span>
-</a>
-<a class="api-item" href="#messagestraitsmessageshelpertrait-valid">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">valid</span>()</code>
-<span class="desc">Check if the current message in the iterator is valid</span>
-</a>
-</div>
+<ApiItem href="#messagestraitsmessageshelpertrait-count" visibility="public" name="count" returnType="int" params={[]}>
+Returns the number of messages in the list
+</ApiItem>
+<ApiItem href="#messagestraitsmessageshelpertrait-current" visibility="public" name="current" returnType="MessageInterface" params={[]}>
+Returns the current message in the iterator
+</ApiItem>
+<ApiItem href="#messagestraitsmessageshelpertrait-key" visibility="public" name="key" returnType="int" params={[]}>
+Returns the current position/key in the iterator
+</ApiItem>
+<ApiItem href="#messagestraitsmessageshelpertrait-next" visibility="public" name="next" returnType="void" params={[]}>
+Moves the internal iteration pointer to the next position
+</ApiItem>
+<ApiItem href="#messagestraitsmessageshelpertrait-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"offset","default":null}]}>
+Checks if an index exists
+</ApiItem>
+<ApiItem href="#messagestraitsmessageshelpertrait-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"offset","default":null}]}>
+Gets an attribute a message using the array syntax
+</ApiItem>
+<ApiItem href="#messagestraitsmessageshelpertrait-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
+Sets an attribute using the array-syntax
+</ApiItem>
+<ApiItem href="#messagestraitsmessageshelpertrait-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"offset","default":null}]}>
+Removes a message from the list
+</ApiItem>
+<ApiItem href="#messagestraitsmessageshelpertrait-rewind" visibility="public" name="rewind" returnType="void" params={[]}>
+Rewinds the internal iterator
+</ApiItem>
+<ApiItem href="#messagestraitsmessageshelpertrait-valid" visibility="public" name="valid" returnType="bool" params={[]}>
+Check if the current message in the iterator is valid
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">messages_list</code>
-<code class="sig"><span class="sv">$messages</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$position</span><span class="sm"> = 0</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="messages" type="messages_list" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="position" type="int" default="0">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 10</div>
 
 <h4 id="messagestraitsmessageshelpertrait-count"><code>count()</code></h4>
 

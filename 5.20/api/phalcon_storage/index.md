@@ -15,49 +15,29 @@ All classes are prefixed with `Phalcon`
 
 ## Storage\AdapterFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/AdapterFactory.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.20/api/phalcon_factory/#factoryabstractconfigfactory)
 - [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Storage\AdapterFactory`**
 
-</div>
-
-__Uses__ `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Apcu` · `Phalcon\Storage\Adapter\Libmemcached` · `Phalcon\Storage\Adapter\Memory` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Adapter\RedisCluster` · `Phalcon\Storage\Adapter\Stream` · `Phalcon\Storage\Adapter\Weak` · `Throwable`
+`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Apcu` · `Phalcon\Storage\Adapter\Libmemcached` · `Phalcon\Storage\Adapter\Memory` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Adapter\RedisCluster` · `Phalcon\Storage\Adapter\Stream` · `Phalcon\Storage\Adapter\Weak` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageadapterfactory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">AdapterFactory constructor.</span>
-</a>
-<a class="api-item" href="#storageadapterfactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Create a new instance of the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterfactory-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#storageadapterfactory-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Returns the available adapters</span>
-</a>
-</div>
+<ApiItem href="#storageadapterfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SerializerFactory","name":"factory","default":null},{"type":"array","name":"services","default":"[]"}]}>
+AdapterFactory constructor.
+</ApiItem>
+<ApiItem href="#storageadapterfactory-newinstance" visibility="public" name="newInstance" returnType="AdapterInterface" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Create a new instance of the adapter
+</ApiItem>
+<ApiItem href="#storageadapterfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#storageadapterfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the available adapters
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="storageadapterfactory-__construct"><code>__construct()</code></h4>
 
@@ -81,8 +61,6 @@ array $options = []
 
 Create a new instance of the adapter
 
-<div class="api-group">Protected · 2</div>
-
 <h4 id="storageadapterfactory-getexceptionclass"><code>getExceptionClass()</code></h4>
 
 ```php
@@ -99,12 +77,9 @@ Returns the available adapters
 
 ## Storage\Adapter\AbstractAdapter
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/AbstractAdapter.zep">Source on GitHub</a>
+Abstract
 
 Storage AbstractAdapter
-
-<div class="api-tree">
 
 - **`Phalcon\Storage\Adapter\AbstractAdapter`** - implements [`Phalcon\Storage\Adapter\AdapterInterface`](#storageadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.20/api/phalcon_events/#eventseventsawareinterface)
 - [`Phalcon\Storage\Adapter\Apcu`](#storageadapterapcu)
@@ -114,260 +89,134 @@ Storage AbstractAdapter
 - [`Phalcon\Storage\Adapter\Stream`](#storageadapterstream)
 - [`Phalcon\Storage\Adapter\Weak`](#storageadapterweak)
 
-</div>
-
-__Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+`DateInterval` · `DateTime` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageadapterabstractadapter-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Flushes/clears the cache</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-decrement">
-<code class="vis vis-public">public</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">decrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Decrements a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-delete">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-deletemultiple">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">array</span> <span class="sv">$keys</span> )</code>
-<span class="desc">Deletes multiple data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Reads data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getAdapter</span>()</code>
-<span class="desc">Returns the adapter - connects to the storage if not connected</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getdefaultserializer">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getDefaultSerializer</span>()</code>
-<span class="desc">Name of the default serializer class</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Returns all the keys stored</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getlifetime">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getLifetime</span>()</code>
-<span class="desc">Returns the lifetime</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getprefix">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getPrefix</span>()</code>
-<span class="desc">Returns the prefix</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getserializer">
-<code class="vis vis-public">public</code>
-<code class="ret">SerializerInterface|null</code>
-<code class="sig"><span class="sf">getSerializer</span>()</code>
-<span class="desc">Get the serializer</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an element exists in the cache</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-increment">
-<code class="vis vis-public">public</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">increment</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Increments a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-set">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-setdefaultserializer">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefaultSerializer</span>( <span class="st">string</span> <span class="sv">$serializer</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-__construct">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$serializerFactory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">AbstractAdapter constructor.</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-dodecrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Decrements a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-dodelete">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-dodeletemultiple">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDeleteMultiple</span>( <span class="st">array</span> <span class="sv">$keys</span> )</code>
-<span class="desc">Deletes multiple data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-doget">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">doGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-dogetdata">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">doGetData</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-dohas">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doHas</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an element exists in the cache</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-doincrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Increments a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-doset">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getfilteredkeys">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getFilteredKeys</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
-<span class="desc">Filters the keys array based on global and passed prefix</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getkeywithoutprefix">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getKeyWithoutPrefix</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Check if the key has the prefix and remove it, otherwise just return the</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getprefixedkey">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getPrefixedKey</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
-<span class="desc">Returns the key requested, prefixed</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getserializeddata">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getSerializedData</span>( <span class="st">mixed</span> <span class="sv">$content</span> )</code>
-<span class="desc">Returns serialized data</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getttl">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getTtl</span>( <span class="st">mixed</span> <span class="sv">$ttl</span> )</code>
-<span class="desc">Calculates the TTL for a cache item</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getunserializeddata">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getUnserializedData</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Returns unserialized data</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-initserializer">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">initSerializer</span>()</code>
-<span class="desc">Initializes the serializer</span>
-</a>
-</div>
+<ApiItem href="#storageadapterabstractadapter-clear" visibility="public" name="clear" returnType="bool" params={[]}>
+Flushes/clears the cache
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-decrement" visibility="public" name="decrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Decrements a stored number
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Deletes data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-deletemultiple" visibility="public" name="deleteMultiple" returnType="bool" params={[{"type":"array","name":"keys","default":null}]}>
+Deletes multiple data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Reads data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getadapter" visibility="public" name="getAdapter" returnType="mixed" params={[]}>
+Returns the adapter - connects to the storage if not connected
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getdefaultserializer" visibility="public" name="getDefaultSerializer" returnType="string" params={[]}>
+Name of the default serializer class
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"string","name":"prefix","default":"\"\""}]}>
+Returns all the keys stored
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getlifetime" visibility="public" name="getLifetime" returnType="int" params={[]}>
+Returns the lifetime
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getprefix" visibility="public" name="getPrefix" returnType="string" params={[]}>
+Returns the prefix
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getserializer" visibility="public" name="getSerializer" returnType="SerializerInterface|null" params={[]}>
+Get the serializer
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an element exists in the cache
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-increment" visibility="public" name="increment" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Increments a stored number
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-set" visibility="public" name="set" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-setdefaultserializer" visibility="public" name="setDefaultSerializer" returnType="void" params={[{"type":"string","name":"serializer","default":null}]}>
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-__construct" visibility="protected" name="__construct" returnType="" params={[{"type":"SerializerFactory","name":"serializerFactory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+AbstractAdapter constructor.
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-dodecrement" visibility="protected" name="doDecrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Decrements a stored number
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-dodelete" visibility="protected" name="doDelete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Deletes data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-dodeletemultiple" visibility="protected" name="doDeleteMultiple" returnType="bool" params={[{"type":"array","name":"keys","default":null}]}>
+Deletes multiple data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-doget" visibility="protected" name="doGet" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-dogetdata" visibility="protected" name="doGetData" returnType="mixed" params={[{"type":"string","name":"key","default":null}]}>
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-dohas" visibility="protected" name="doHas" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an element exists in the cache
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-doincrement" visibility="protected" name="doIncrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Increments a stored number
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-doset" visibility="protected" name="doSet" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getfilteredkeys" visibility="protected" name="getFilteredKeys" returnType="array" params={[{"type":"mixed","name":"keys","default":null},{"type":"string","name":"prefix","default":null}]}>
+Filters the keys array based on global and passed prefix
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getkeywithoutprefix" visibility="protected" name="getKeyWithoutPrefix" returnType="string" params={[{"type":"string","name":"key","default":null}]}>
+Check if the key has the prefix and remove it, otherwise just return the
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getprefixedkey" visibility="protected" name="getPrefixedKey" returnType="string" params={[{"type":"mixed","name":"key","default":null}]}>
+Returns the key requested, prefixed
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getserializeddata" visibility="protected" name="getSerializedData" returnType="mixed" params={[{"type":"mixed","name":"content","default":null}]}>
+Returns serialized data
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getttl" visibility="protected" name="getTtl" returnType="int" params={[{"type":"mixed","name":"ttl","default":null}]}>
+Calculates the TTL for a cache item
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-getunserializeddata" visibility="protected" name="getUnserializedData" returnType="mixed" params={[{"type":"mixed","name":"content","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Returns unserialized data
+</ApiItem>
+<ApiItem href="#storageadapterabstractadapter-initserializer" visibility="protected" name="initSerializer" returnType="void" params={[]}>
+Initializes the serializer
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$adapter</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|array&lt;int, string&gt;</code>
-<code class="sig"><span class="sv">$allowedClasses</span><span class="sm"> = true</span></code>
-<span class="desc">Classes the &quot;php&quot; serializer may instantiate: true, false or a list of class names (the &quot;allowedClasses&quot; option)</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$defaultSerializer</span><span class="sm"> = &quot;php&quot;</span></code>
-<span class="desc">Name of the default serializer class</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;storage&quot;</span></code>
-<span class="desc">EventType prefix.</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$lifetime</span><span class="sm"> = 3600</span></code>
-<span class="desc">Name of the default TTL (time to live)</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, mixed&gt;</code>
-<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;ph-memo-&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">SerializerInterface|null</code>
-<code class="sig"><span class="sv">$serializer</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">SerializerFactory</code>
-<code class="sig"><span class="sv">$serializerFactory</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$stripPrefix</span><span class="sm"> = true</span></code>
-<span class="desc">Whether a leading prefix is stripped from incoming keys before the adapter prefix is applied. Disable when keys are externally generated identifiers that may legitimately start with the prefix text (e.g. session ids).</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="adapter" type="mixed" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="allowedClasses" type="bool|array&lt;int, string&gt;" default="true">
+Classes the "php" serializer may instantiate: true, false or a list
+of class names (the "allowedClasses" option)
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="defaultSerializer" type="string" default="&quot;php&quot;">
+Name of the default serializer class
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="eventType" type="string" default="&quot;storage&quot;">
+EventType prefix.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="lifetime" type="int" default="3600">
+Name of the default TTL (time to live)
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="options" type="array&lt;string, mixed&gt;" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;ph-memo-&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="serializer" type="SerializerInterface|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="serializerFactory" type="SerializerFactory" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="stripPrefix" type="bool" default="true">
+Whether a leading prefix is stripped from incoming keys before the
+adapter prefix is applied. Disable when keys are externally
+generated identifiers that may legitimately start with the prefix
+text (e.g. session ids).
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 15</div>
 
 <h4 id="storageadapterabstractadapter-clear"><code>clear()</code></h4>
 
@@ -503,8 +352,6 @@ the `setForever()` method.
 ```php
 public function setDefaultSerializer( string $serializer ): void;
 ```
-
-<div class="api-group">Protected · 16</div>
 
 <h4 id="storageadapterabstractadapter-__construct"><code>__construct()</code></h4>
 
@@ -660,100 +507,55 @@ Initializes the serializer
 
 ## Storage\Adapter\AdapterInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/AdapterInterface.zep">Source on GitHub</a>
+Interface
 
 Interface for Phalcon\Logger adapters
-
-<div class="api-tree">
 
 - **`Phalcon\Storage\Adapter\AdapterInterface`**
 - [`Phalcon\Cache\Adapter\AdapterInterface`](/5.20/api/phalcon_cache/#cacheadapteradapterinterface)
 
-</div>
-
-__Uses__ `DateInterval` · `Phalcon\Contracts\Storage\StorageTypes`
+`DateInterval` · `Phalcon\Contracts\Storage\StorageTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageadapteradapterinterface-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Flushes/clears the cache</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-decrement">
-<code class="vis vis-public">public</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">decrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Decrements a stored number</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-delete">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-deletemultiple">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">array</span> <span class="sv">$keys</span> )</code>
-<span class="desc">Deletes multiple data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Reads data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-getadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getAdapter</span>()</code>
-<span class="desc">Returns the already connected adapter or connects to the backend</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Returns all the keys stored</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-getprefix">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getPrefix</span>()</code>
-<span class="desc">Returns the prefix for the keys</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an element exists in the cache</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-increment">
-<code class="vis vis-public">public</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">increment</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Increments a stored number</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-set">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-<a class="api-item" href="#storageadapteradapterinterface-setforever">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Stores data in the adapter forever. The key needs to be manually deleted</span>
-</a>
-</div>
+<ApiItem href="#storageadapteradapterinterface-clear" visibility="public" name="clear" returnType="bool" params={[]}>
+Flushes/clears the cache
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-decrement" visibility="public" name="decrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Decrements a stored number
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Deletes data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-deletemultiple" visibility="public" name="deleteMultiple" returnType="bool" params={[{"type":"array","name":"keys","default":null}]}>
+Deletes multiple data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Reads data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-getadapter" visibility="public" name="getAdapter" returnType="mixed" params={[]}>
+Returns the already connected adapter or connects to the backend
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"string","name":"prefix","default":"\"\""}]}>
+Returns all the keys stored
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-getprefix" visibility="public" name="getPrefix" returnType="string" params={[]}>
+Returns the prefix for the keys
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an element exists in the cache
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-increment" visibility="public" name="increment" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Increments a stored number
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-set" visibility="public" name="set" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+</ApiItem>
+<ApiItem href="#storageadapteradapterinterface-setforever" visibility="public" name="setForever" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"data","default":null}]}>
+Stores data in the adapter forever. The key needs to be manually deleted
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 12</div>
 
 <h4 id="storageadapteradapterinterface-clear"><code>clear()</code></h4>
 
@@ -875,8 +677,7 @@ from the adapter.
 
 ## Storage\Adapter\Apcu
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Apcu.zep">Source on GitHub</a>
+Class
 
 Apcu adapter
 
@@ -885,98 +686,53 @@ Capabilities:
 - getKeys(): APCUIterator regex scan over the shared APCu store.
 - Serializers: Phalcon-side only; no backend-native serializer.
 
-<div class="api-tree">
-
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
 - **`Phalcon\Storage\Adapter\Apcu`**
 - [`Phalcon\Cache\Adapter\Apcu`](/5.20/api/phalcon_cache/#cacheadapterapcu)
 
-</div>
-
-__Uses__ `APCUIterator` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Traits\Php\ApcuTrait`
+`APCUIterator` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Traits\Php\ApcuTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageadapterapcu-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Apcu constructor.</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Flushes/clears the cache</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Stores data in the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-setforever">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Stores data in the adapter forever. The key needs to manually deleted</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-dodecrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Decrements a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-dodelete">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-dodeletemultiple">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDeleteMultiple</span>( <span class="st">array</span> <span class="sv">$keys</span> )</code>
-<span class="desc">Deletes multiple keys from APCu in a single call</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-dogetdata">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">doGetData</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-dohas">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doHas</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an element exists in the cache</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-doincrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Increments a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-doset">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-</div>
+<ApiItem href="#storageadapterapcu-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SerializerFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Apcu constructor.
+</ApiItem>
+<ApiItem href="#storageadapterapcu-clear" visibility="public" name="clear" returnType="bool" params={[]}>
+Flushes/clears the cache
+</ApiItem>
+<ApiItem href="#storageadapterapcu-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"string","name":"prefix","default":"\"\""}]}>
+Stores data in the adapter
+</ApiItem>
+<ApiItem href="#storageadapterapcu-setforever" visibility="public" name="setForever" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"data","default":null}]}>
+Stores data in the adapter forever. The key needs to manually deleted
+</ApiItem>
+<ApiItem href="#storageadapterapcu-dodecrement" visibility="protected" name="doDecrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Decrements a stored number
+</ApiItem>
+<ApiItem href="#storageadapterapcu-dodelete" visibility="protected" name="doDelete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Deletes data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterapcu-dodeletemultiple" visibility="protected" name="doDeleteMultiple" returnType="bool" params={[{"type":"array","name":"keys","default":null}]}>
+Deletes multiple keys from APCu in a single call
+</ApiItem>
+<ApiItem href="#storageadapterapcu-dogetdata" visibility="protected" name="doGetData" returnType="mixed" params={[{"type":"string","name":"key","default":null}]}>
+</ApiItem>
+<ApiItem href="#storageadapterapcu-dohas" visibility="protected" name="doHas" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an element exists in the cache
+</ApiItem>
+<ApiItem href="#storageadapterapcu-doincrement" visibility="protected" name="doIncrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Increments a stored number
+</ApiItem>
+<ApiItem href="#storageadapterapcu-doset" visibility="protected" name="doSet" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;ph-apcu-&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;ph-apcu-&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="storageadapterapcu-__construct"><code>__construct()</code></h4>
 
@@ -1016,8 +772,6 @@ mixed $data
 
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
-
-<div class="api-group">Protected · 7</div>
 
 <h4 id="storageadapterapcu-dodecrement"><code>doDecrement()</code></h4>
 
@@ -1089,8 +843,7 @@ the `setForever()` method.
 
 ## Storage\Adapter\Libmemcached
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Libmemcached.zep">Source on GitHub</a>
+Class
 
 Libmemcached adapter
 
@@ -1100,99 +853,54 @@ Capabilities:
   incomplete or unavailable on modern memcached builds.
 - Serializers: Phalcon-side plus libmemcached's own options.
 
-<div class="api-tree">
-
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
 - **`Phalcon\Storage\Adapter\Libmemcached`**
 - [`Phalcon\Cache\Adapter\Libmemcached`](/5.20/api/phalcon_cache/#cacheadapterlibmemcached)
 
-</div>
-
-__Uses__ `DateInterval` · `Exception` · `Memcached` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
+`DateInterval` · `Exception` · `Memcached` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageadapterlibmemcached-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Libmemcached constructor.</span>
-</a>
-<a class="api-item" href="#storageadapterlibmemcached-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Flushes/clears the cache</span>
-</a>
-<a class="api-item" href="#storageadapterlibmemcached-getadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getAdapter</span>()</code>
-<span class="desc">Returns the already connected adapter or connects to the Memcached</span>
-</a>
-<a class="api-item" href="#storageadapterlibmemcached-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Stores data in the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterlibmemcached-setforever">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Stores data in the adapter forever. The key needs to be manually deleted</span>
-</a>
-<a class="api-item" href="#storageadapterlibmemcached-dodecrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Decrements a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterlibmemcached-dodelete">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterlibmemcached-dodeletemultiple">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDeleteMultiple</span>( <span class="st">array</span> <span class="sv">$keys</span> )</code>
-<span class="desc">Deletes multiple keys from Memcached using a single deleteMulti call</span>
-</a>
-<a class="api-item" href="#storageadapterlibmemcached-dohas">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doHas</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an element exists in the cache</span>
-</a>
-<a class="api-item" href="#storageadapterlibmemcached-doincrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Increments a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterlibmemcached-doset">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-</div>
+<ApiItem href="#storageadapterlibmemcached-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SerializerFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Libmemcached constructor.
+</ApiItem>
+<ApiItem href="#storageadapterlibmemcached-clear" visibility="public" name="clear" returnType="bool" params={[]}>
+Flushes/clears the cache
+</ApiItem>
+<ApiItem href="#storageadapterlibmemcached-getadapter" visibility="public" name="getAdapter" returnType="mixed" params={[]}>
+Returns the already connected adapter or connects to the Memcached
+</ApiItem>
+<ApiItem href="#storageadapterlibmemcached-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"string","name":"prefix","default":"\"\""}]}>
+Stores data in the adapter
+</ApiItem>
+<ApiItem href="#storageadapterlibmemcached-setforever" visibility="public" name="setForever" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"data","default":null}]}>
+Stores data in the adapter forever. The key needs to be manually deleted
+</ApiItem>
+<ApiItem href="#storageadapterlibmemcached-dodecrement" visibility="protected" name="doDecrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Decrements a stored number
+</ApiItem>
+<ApiItem href="#storageadapterlibmemcached-dodelete" visibility="protected" name="doDelete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Deletes data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterlibmemcached-dodeletemultiple" visibility="protected" name="doDeleteMultiple" returnType="bool" params={[{"type":"array","name":"keys","default":null}]}>
+Deletes multiple keys from Memcached using a single deleteMulti call
+</ApiItem>
+<ApiItem href="#storageadapterlibmemcached-dohas" visibility="protected" name="doHas" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an element exists in the cache
+</ApiItem>
+<ApiItem href="#storageadapterlibmemcached-doincrement" visibility="protected" name="doIncrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Increments a stored number
+</ApiItem>
+<ApiItem href="#storageadapterlibmemcached-doset" visibility="protected" name="doSet" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;ph-memc-&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;ph-memc-&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 5</div>
 
 <h4 id="storageadapterlibmemcached-__construct"><code>__construct()</code></h4>
 
@@ -1241,8 +949,6 @@ mixed $data
 
 Stores data in the adapter forever. The key needs to be manually deleted
 from the adapter.
-
-<div class="api-group">Protected · 6</div>
 
 <h4 id="storageadapterlibmemcached-dodecrement"><code>doDecrement()</code></h4>
 
@@ -1308,8 +1014,7 @@ the `setForever()` method.
 
 ## Storage\Adapter\Memory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Memory.zep">Source on GitHub</a>
+Class
 
 Memory adapter
 
@@ -1320,110 +1025,61 @@ Capabilities:
 - getKeys(): in-memory array scan (cheap).
 - Optional maxItems FIFO cap drops the oldest entry before a new key is set.
 
-<div class="api-tree">
-
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
 - **`Phalcon\Storage\Adapter\Memory`**
 - [`Phalcon\Cache\Adapter\Memory`](/5.20/api/phalcon_cache/#cacheadaptermemory)
 
-</div>
-
-__Uses__ `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\SerializerFactory`
+`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\SerializerFactory`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageadaptermemory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Memory constructor.</span>
-</a>
-<a class="api-item" href="#storageadaptermemory-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Flushes/clears the cache</span>
-</a>
-<a class="api-item" href="#storageadaptermemory-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Stores data in the adapter</span>
-</a>
-<a class="api-item" href="#storageadaptermemory-getmaxitems">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getMaxItems</span>()</code>
-<span class="desc">Returns the configured store cap (0 = unlimited). See setMaxItems().</span>
-</a>
-<a class="api-item" href="#storageadaptermemory-setforever">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Stores data in the adapter forever. The key needs to manually deleted</span>
-</a>
-<a class="api-item" href="#storageadaptermemory-setmaxitems">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setMaxItems</span>( <span class="st">int</span> <span class="sv">$maxItems</span> )</code>
-<span class="desc">Caps the number of items retained in the in-memory store.</span>
-</a>
-<a class="api-item" href="#storageadaptermemory-dodecrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Decrements a stored number</span>
-</a>
-<a class="api-item" href="#storageadaptermemory-dodelete">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadaptermemory-dogetdata">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">doGetData</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-</a>
-<a class="api-item" href="#storageadaptermemory-dohas">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doHas</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an element exists in the cache</span>
-</a>
-<a class="api-item" href="#storageadaptermemory-doincrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Increments a stored number</span>
-</a>
-<a class="api-item" href="#storageadaptermemory-doset">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-</div>
+<ApiItem href="#storageadaptermemory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SerializerFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Memory constructor.
+</ApiItem>
+<ApiItem href="#storageadaptermemory-clear" visibility="public" name="clear" returnType="bool" params={[]}>
+Flushes/clears the cache
+</ApiItem>
+<ApiItem href="#storageadaptermemory-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"string","name":"prefix","default":"\"\""}]}>
+Stores data in the adapter
+</ApiItem>
+<ApiItem href="#storageadaptermemory-getmaxitems" visibility="public" name="getMaxItems" returnType="int" params={[]}>
+Returns the configured store cap (0 = unlimited). See setMaxItems().
+</ApiItem>
+<ApiItem href="#storageadaptermemory-setforever" visibility="public" name="setForever" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"data","default":null}]}>
+Stores data in the adapter forever. The key needs to manually deleted
+</ApiItem>
+<ApiItem href="#storageadaptermemory-setmaxitems" visibility="public" name="setMaxItems" returnType="static" params={[{"type":"int","name":"maxItems","default":null}]}>
+Caps the number of items retained in the in-memory store.
+</ApiItem>
+<ApiItem href="#storageadaptermemory-dodecrement" visibility="protected" name="doDecrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Decrements a stored number
+</ApiItem>
+<ApiItem href="#storageadaptermemory-dodelete" visibility="protected" name="doDelete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Deletes data from the adapter
+</ApiItem>
+<ApiItem href="#storageadaptermemory-dogetdata" visibility="protected" name="doGetData" returnType="mixed" params={[{"type":"string","name":"key","default":null}]}>
+</ApiItem>
+<ApiItem href="#storageadaptermemory-dohas" visibility="protected" name="doHas" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an element exists in the cache
+</ApiItem>
+<ApiItem href="#storageadaptermemory-doincrement" visibility="protected" name="doIncrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Increments a stored number
+</ApiItem>
+<ApiItem href="#storageadaptermemory-doset" visibility="protected" name="doSet" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, mixed&gt;</code>
-<code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$maxItems</span><span class="sm"> = 0</span></code>
-<span class="desc">Maximum number of items retained in the in-memory store. 0 (default) keeps the original unbounded behavior; a positive value drops the oldest entry FIFO before a new key is stored.</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="data" type="array&lt;string, mixed&gt;" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="maxItems" type="int" default="0">
+Maximum number of items retained in the in-memory store.
+0 (default) keeps the original unbounded behavior; a positive
+value drops the oldest entry FIFO before a new key is stored.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="storageadaptermemory-__construct"><code>__construct()</code></h4>
 
@@ -1482,8 +1138,6 @@ Caps the number of items retained in the in-memory store.
 0 disables the cap (the default; preserves the original
 unbounded behavior). When the cap is exceeded, the oldest
 entry is evicted FIFO before a new key is stored.
-
-<div class="api-group">Protected · 6</div>
 
 <h4 id="storageadaptermemory-dodecrement"><code>doDecrement()</code></h4>
 
@@ -1547,8 +1201,7 @@ the `setForever()` method.
 
 ## Storage\Adapter\Redis
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Redis.zep">Source on GitHub</a>
+Class
 
 Redis adapter
 
@@ -1559,106 +1212,58 @@ Capabilities:
   serializers change the bytes at rest and are not interchangeable with
   Phalcon-side serializers.
 
-<div class="api-tree">
-
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
 - **`Phalcon\Storage\Adapter\Redis`**
 - [`Phalcon\Cache\Adapter\Redis`](/5.20/api/phalcon_cache/#cacheadapterredis)
 - [`Phalcon\Storage\Adapter\RedisCluster`](#storageadapterrediscluster)
 
-</div>
-
-__Uses__ `DateInterval` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\AuthenticationFailed` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\DatabaseSelectionFailed` · `Phalcon\Storage\SerializerFactory` · `Redis` · `RedisException`
+`DateInterval` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\AuthenticationFailed` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\DatabaseSelectionFailed` · `Phalcon\Storage\SerializerFactory` · `Redis` · `RedisException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageadapterredis-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Redis constructor.</span>
-</a>
-<a class="api-item" href="#storageadapterredis-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Flushes/clears the cache</span>
-</a>
-<a class="api-item" href="#storageadapterredis-getadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getAdapter</span>()</code>
-<span class="desc">Returns the already connected adapter or connects to the Redis</span>
-</a>
-<a class="api-item" href="#storageadapterredis-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Returns all the keys stored</span>
-</a>
-<a class="api-item" href="#storageadapterredis-setforever">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Stores data in the adapter forever. The key needs to manually deleted</span>
-</a>
-<a class="api-item" href="#storageadapterredis-dodecrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Decrements a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterredis-dodelete">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterredis-dodeletemultiple">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDeleteMultiple</span>( <span class="st">array</span> <span class="sv">$keys</span> )</code>
-<span class="desc">Deletes multiple keys from Redis using a single unlink call</span>
-</a>
-<a class="api-item" href="#storageadapterredis-dohas">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doHas</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an element exists in the cache</span>
-</a>
-<a class="api-item" href="#storageadapterredis-doincrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Increments a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterredis-doset">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-<a class="api-item" href="#storageadapterredis-getdefaultoptions">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getDefaultOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
-<span class="desc">The parameter is the raw, user supplied options array; <code>RedisCluster</code></span>
-</a>
-</div>
+<ApiItem href="#storageadapterredis-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SerializerFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Redis constructor.
+</ApiItem>
+<ApiItem href="#storageadapterredis-clear" visibility="public" name="clear" returnType="bool" params={[]}>
+Flushes/clears the cache
+</ApiItem>
+<ApiItem href="#storageadapterredis-getadapter" visibility="public" name="getAdapter" returnType="mixed" params={[]}>
+Returns the already connected adapter or connects to the Redis
+</ApiItem>
+<ApiItem href="#storageadapterredis-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"string","name":"prefix","default":"\"\""}]}>
+Returns all the keys stored
+</ApiItem>
+<ApiItem href="#storageadapterredis-setforever" visibility="public" name="setForever" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"data","default":null}]}>
+Stores data in the adapter forever. The key needs to manually deleted
+</ApiItem>
+<ApiItem href="#storageadapterredis-dodecrement" visibility="protected" name="doDecrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Decrements a stored number
+</ApiItem>
+<ApiItem href="#storageadapterredis-dodelete" visibility="protected" name="doDelete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Deletes data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterredis-dodeletemultiple" visibility="protected" name="doDeleteMultiple" returnType="bool" params={[{"type":"array","name":"keys","default":null}]}>
+Deletes multiple keys from Redis using a single unlink call
+</ApiItem>
+<ApiItem href="#storageadapterredis-dohas" visibility="protected" name="doHas" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an element exists in the cache
+</ApiItem>
+<ApiItem href="#storageadapterredis-doincrement" visibility="protected" name="doIncrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Increments a stored number
+</ApiItem>
+<ApiItem href="#storageadapterredis-doset" visibility="protected" name="doSet" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+</ApiItem>
+<ApiItem href="#storageadapterredis-getdefaultoptions" visibility="protected" name="getDefaultOptions" returnType="array" params={[{"type":"array","name":"options","default":null}]}>
+The parameter is the raw, user supplied options array; `RedisCluster`
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;ph-reds-&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;ph-reds-&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 5</div>
 
 <h4 id="storageadapterredis-__construct"><code>__construct()</code></h4>
 
@@ -1715,8 +1320,6 @@ mixed $data
 
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
-
-<div class="api-group">Protected · 7</div>
 
 <h4 id="storageadapterredis-dodecrement"><code>doDecrement()</code></h4>
 
@@ -1792,8 +1395,7 @@ have to agree on the wider type.
 
 ## Storage\Adapter\RedisCluster
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/RedisCluster.zep">Source on GitHub</a>
+Class
 
 RedisCluster adapter
 
@@ -1803,63 +1405,36 @@ Capabilities (in addition to Redis):
   the redesign); clear() flushes every master.
 - Serializers: Phalcon-side, or backend-native via OPT_SERIALIZER.
 
-<div class="api-tree">
-
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
 - [`Phalcon\Storage\Adapter\Redis`](#storageadapterredis)
 - **`Phalcon\Storage\Adapter\RedisCluster`**
 - [`Phalcon\Cache\Adapter\RedisCluster`](/5.20/api/phalcon_cache/#cacheadapterrediscluster)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Redis` · `RedisCluster` · `Throwable`
+`Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Redis` · `RedisCluster` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageadapterrediscluster-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">You can create and connect to a cluster either by passing it one or more</span>
-</a>
-<a class="api-item" href="#storageadapterrediscluster-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Flushes/clears the cache</span>
-</a>
-<a class="api-item" href="#storageadapterrediscluster-getadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getAdapter</span>()</code>
-<span class="desc">Returns the already connected adapter or connects to the Redis</span>
-</a>
-<a class="api-item" href="#storageadapterrediscluster-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Returns all the keys stored</span>
-</a>
-<a class="api-item" href="#storageadapterrediscluster-getdefaultoptions">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getDefaultOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
-</a>
-</div>
+<ApiItem href="#storageadapterrediscluster-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SerializerFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+You can create and connect to a cluster either by passing it one or more
+</ApiItem>
+<ApiItem href="#storageadapterrediscluster-clear" visibility="public" name="clear" returnType="bool" params={[]}>
+Flushes/clears the cache
+</ApiItem>
+<ApiItem href="#storageadapterrediscluster-getadapter" visibility="public" name="getAdapter" returnType="mixed" params={[]}>
+Returns the already connected adapter or connects to the Redis
+</ApiItem>
+<ApiItem href="#storageadapterrediscluster-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"string","name":"prefix","default":"\"\""}]}>
+Returns all the keys stored
+</ApiItem>
+<ApiItem href="#storageadapterrediscluster-getdefaultoptions" visibility="protected" name="getDefaultOptions" returnType="array" params={[{"type":"array","name":"options","default":null}]}>
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;ph-redc-&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;ph-redc-&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="storageadapterrediscluster-__construct"><code>__construct()</code></h4>
 
@@ -1928,8 +1503,6 @@ RedisCluster::scan() iterates one node at a time, so the blocking KEYS
 command is retained here (phpredis routes it across the masters). The
 per-node SCAN migration is left to the storage redesign.
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="storageadapterrediscluster-getdefaultoptions"><code>getDefaultOptions()</code></h4>
 
 ```php
@@ -1938,8 +1511,7 @@ protected function getDefaultOptions( array $options ): array;
 
 ## Storage\Adapter\Stream
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Stream.zep">Source on GitHub</a>
+Class
 
 Stream adapter
 
@@ -1949,98 +1521,53 @@ Capabilities:
 - getKeys(): recursive directory traversal; cost grows with the entry count.
 - Serializers: Phalcon-side only.
 
-<div class="api-tree">
-
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
 - **`Phalcon\Storage\Adapter\Stream`**
 - [`Phalcon\Cache\Adapter\Stream`](/5.20/api/phalcon_cache/#cacheadapterstream)
 
-</div>
-
-__Uses__ `FilesystemIterator` · `Iterator` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator` · `SplFileInfo`
+`FilesystemIterator` · `Iterator` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator` · `SplFileInfo`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageadapterstream-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Stream constructor.</span>
-</a>
-<a class="api-item" href="#storageadapterstream-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Flushes/clears the cache</span>
-</a>
-<a class="api-item" href="#storageadapterstream-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Stores data in the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterstream-setforever">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">Stores data in the adapter forever. The key needs to manually deleted</span>
-</a>
-<a class="api-item" href="#storageadapterstream-dodecrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Decrements a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterstream-dodelete">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterstream-doget">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">doGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Reads data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterstream-dohas">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doHas</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an element exists in the cache and is not expired</span>
-</a>
-<a class="api-item" href="#storageadapterstream-doincrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Increments a stored number</span>
-</a>
-<a class="api-item" href="#storageadapterstream-doset">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-</div>
+<ApiItem href="#storageadapterstream-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SerializerFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Stream constructor.
+</ApiItem>
+<ApiItem href="#storageadapterstream-clear" visibility="public" name="clear" returnType="bool" params={[]}>
+Flushes/clears the cache
+</ApiItem>
+<ApiItem href="#storageadapterstream-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"string","name":"prefix","default":"\"\""}]}>
+Stores data in the adapter
+</ApiItem>
+<ApiItem href="#storageadapterstream-setforever" visibility="public" name="setForever" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"data","default":null}]}>
+Stores data in the adapter forever. The key needs to manually deleted
+</ApiItem>
+<ApiItem href="#storageadapterstream-dodecrement" visibility="protected" name="doDecrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Decrements a stored number
+</ApiItem>
+<ApiItem href="#storageadapterstream-dodelete" visibility="protected" name="doDelete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Deletes data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterstream-doget" visibility="protected" name="doGet" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Reads data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterstream-dohas" visibility="protected" name="doHas" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an element exists in the cache and is not expired
+</ApiItem>
+<ApiItem href="#storageadapterstream-doincrement" visibility="protected" name="doIncrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Increments a stored number
+</ApiItem>
+<ApiItem href="#storageadapterstream-doset" visibility="protected" name="doSet" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;ph-strm&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$storageDir</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;ph-strm&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="storageDir" type="string" default="&quot;&quot;">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="storageadapterstream-__construct"><code>__construct()</code></h4>
 
@@ -2080,8 +1607,6 @@ mixed $data
 
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
-
-<div class="api-group">Protected · 6</div>
 
 <h4 id="storageadapterstream-dodecrement"><code>doDecrement()</code></h4>
 
@@ -2150,8 +1675,7 @@ the `setForever()` method.
 
 ## Storage\Adapter\Weak
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Weak.zep">Source on GitHub</a>
+Class
 
 Weak Adapter
 
@@ -2162,109 +1686,58 @@ Capabilities:
 - Counters unsupported: increment()/decrement() return false.
 - setForever() is equivalent to set(); getKeys() reads the in-memory list.
 
-<div class="api-tree">
-
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
 - **`Phalcon\Storage\Adapter\Weak`**
 - [`Phalcon\Cache\Adapter\Weak`](/5.20/api/phalcon_cache/#cacheadapterweak)
 
-</div>
-
-__Uses__ `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\SerializerFactory` · `WeakReference`
+`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\SerializerFactory` · `WeakReference`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageadapterweak-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Constructor, there are no options</span>
-</a>
-<a class="api-item" href="#storageadapterweak-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Flushes/clears the cache</span>
-</a>
-<a class="api-item" href="#storageadapterweak-getkeys">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
-<span class="desc">Stores data in the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterweak-setdefaultserializer">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefaultSerializer</span>( <span class="st">string</span> <span class="sv">$serializer</span> )</code>
-<span class="desc">Will never set a serializer, WeakReference cannot be serialized</span>
-</a>
-<a class="api-item" href="#storageadapterweak-setforever">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">setForever</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
-<span class="desc">For compatiblity only, there is no Forever with WeakReference.</span>
-</a>
-<a class="api-item" href="#storageadapterweak-dodecrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doDecrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Decrements a stored number - not supported for WeakReference</span>
-</a>
-<a class="api-item" href="#storageadapterweak-dodelete">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Deletes data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterweak-doget">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">doGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Reads data from the adapter</span>
-</a>
-<a class="api-item" href="#storageadapterweak-dohas">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doHas</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Checks if an element exists in the cache</span>
-</a>
-<a class="api-item" href="#storageadapterweak-doincrement">
-<code class="vis vis-protected">protected</code>
-<code class="ret">false|int</code>
-<code class="sig"><span class="sf">doIncrement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$value</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">Increments a stored number - not supported for WeakReference</span>
-</a>
-<a class="api-item" href="#storageadapterweak-doset">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
-</a>
-</div>
+<ApiItem href="#storageadapterweak-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SerializerFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Constructor, there are no options
+</ApiItem>
+<ApiItem href="#storageadapterweak-clear" visibility="public" name="clear" returnType="bool" params={[]}>
+Flushes/clears the cache
+</ApiItem>
+<ApiItem href="#storageadapterweak-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"string","name":"prefix","default":"\"\""}]}>
+Stores data in the adapter
+</ApiItem>
+<ApiItem href="#storageadapterweak-setdefaultserializer" visibility="public" name="setDefaultSerializer" returnType="void" params={[{"type":"string","name":"serializer","default":null}]}>
+Will never set a serializer, WeakReference cannot be serialized
+</ApiItem>
+<ApiItem href="#storageadapterweak-setforever" visibility="public" name="setForever" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"data","default":null}]}>
+For compatiblity only, there is no Forever with WeakReference.
+</ApiItem>
+<ApiItem href="#storageadapterweak-dodecrement" visibility="protected" name="doDecrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Decrements a stored number - not supported for WeakReference
+</ApiItem>
+<ApiItem href="#storageadapterweak-dodelete" visibility="protected" name="doDelete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Deletes data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterweak-doget" visibility="protected" name="doGet" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Reads data from the adapter
+</ApiItem>
+<ApiItem href="#storageadapterweak-dohas" visibility="protected" name="doHas" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
+Checks if an element exists in the cache
+</ApiItem>
+<ApiItem href="#storageadapterweak-doincrement" visibility="protected" name="doIncrement" returnType="false|int" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"value","default":"1"}]}>
+Increments a stored number - not supported for WeakReference
+</ApiItem>
+<ApiItem href="#storageadapterweak-doset" visibility="protected" name="doSet" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sv">$fetching</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, mixed&gt;</code>
-<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, WeakReference&lt;object&gt;&gt;</code>
-<code class="sig"><span class="sv">$weakList</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="fetching" type="string|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="options" type="array&lt;string, mixed&gt;" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="weakList" type="array&lt;string, WeakReference&lt;object&gt;&gt;" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 5</div>
 
 <h4 id="storageadapterweak-__construct"><code>__construct()</code></h4>
 
@@ -2311,8 +1784,6 @@ mixed $data
 ```
 
 For compatiblity only, there is no Forever with WeakReference.
-
-<div class="api-group">Protected · 6</div>
 
 <h4 id="storageadapterweak-dodecrement"><code>doDecrement()</code></h4>
 
@@ -2381,14 +1852,11 @@ the `setForever()` method.
 
 ## Storage\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exception.zep">Source on GitHub</a>
+Class
 
 Phalcon\Storage\Exception
 
 Exceptions thrown in Phalcon\Storage will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Storage\Exception`**
@@ -2399,35 +1867,22 @@ Exceptions thrown in Phalcon\Storage will use this class
 - [`Phalcon\Storage\Exceptions\InvalidConfiguration`](#storageexceptionsinvalidconfiguration)
 - [`Phalcon\Storage\Exceptions\StorageError`](#storageexceptionsstorageerror)
 
-</div>
-
 ## Storage\Exceptions\AuthenticationFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/AuthenticationFailed.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Storage\Exception`](#storageexception)
 - **`Phalcon\Storage\Exceptions\AuthenticationFailed`**
 
-</div>
-
-__Uses__ `Phalcon\Storage\Exception`
+`Phalcon\Storage\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageexceptionsauthenticationfailed-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#storageexceptionsauthenticationfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="storageexceptionsauthenticationfailed-__construct"><code>__construct()</code></h4>
 
@@ -2437,61 +1892,40 @@ public function __construct();
 
 ## Storage\Exceptions\ClusterConnectionFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/ClusterConnectionFailed.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Storage\Exception`](#storageexception)
 - **`Phalcon\Storage\Exceptions\ClusterConnectionFailed`**
 
-</div>
-
-__Uses__ `Phalcon\Storage\Exception`
+`Phalcon\Storage\Exception`
 
 ## Storage\Exceptions\ConnectionFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/ConnectionFailed.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Storage\Exception`](#storageexception)
 - **`Phalcon\Storage\Exceptions\ConnectionFailed`**
 
-</div>
-
-__Uses__ `Phalcon\Storage\Exception`
+`Phalcon\Storage\Exception`
 
 ## Storage\Exceptions\DatabaseSelectionFailed
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/DatabaseSelectionFailed.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Storage\Exception`](#storageexception)
 - **`Phalcon\Storage\Exceptions\DatabaseSelectionFailed`**
 
-</div>
-
-__Uses__ `Phalcon\Storage\Exception`
+`Phalcon\Storage\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageexceptionsdatabaseselectionfailed-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#storageexceptionsdatabaseselectionfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="storageexceptionsdatabaseselectionfailed-__construct"><code>__construct()</code></h4>
 
@@ -2501,78 +1935,48 @@ public function __construct();
 
 ## Storage\Exceptions\InvalidConfiguration
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/InvalidConfiguration.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Storage\Exception`](#storageexception)
 - **`Phalcon\Storage\Exceptions\InvalidConfiguration`**
 
-</div>
-
-__Uses__ `Phalcon\Storage\Exception`
+`Phalcon\Storage\Exception`
 
 ## Storage\Exceptions\StorageError
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/StorageError.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Storage\Exception`](#storageexception)
 - **`Phalcon\Storage\Exceptions\StorageError`**
 
-</div>
-
-__Uses__ `Phalcon\Storage\Exception`
+`Phalcon\Storage\Exception`
 
 ## Storage\SerializerFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/SerializerFactory.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.20/api/phalcon_factory/#factoryabstractconfigfactory)
 - [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Storage\SerializerFactory`**
 
-</div>
-
-__Uses__ `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Serializer\Base64` · `Phalcon\Storage\Serializer\Igbinary` · `Phalcon\Storage\Serializer\Json` · `Phalcon\Storage\Serializer\MemcachedIgbinary` · `Phalcon\Storage\Serializer\MemcachedJson` · `Phalcon\Storage\Serializer\MemcachedPhp` · `Phalcon\Storage\Serializer\Msgpack` · `Phalcon\Storage\Serializer\None` · `Phalcon\Storage\Serializer\Php` · `Phalcon\Storage\Serializer\RedisIgbinary` · `Phalcon\Storage\Serializer\RedisJson` · `Phalcon\Storage\Serializer\RedisMsgpack` · `Phalcon\Storage\Serializer\RedisNone` · `Phalcon\Storage\Serializer\RedisPhp` · `Phalcon\Storage\Serializer\SerializerInterface` · `Throwable`
+`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Serializer\Base64` · `Phalcon\Storage\Serializer\Igbinary` · `Phalcon\Storage\Serializer\Json` · `Phalcon\Storage\Serializer\MemcachedIgbinary` · `Phalcon\Storage\Serializer\MemcachedJson` · `Phalcon\Storage\Serializer\MemcachedPhp` · `Phalcon\Storage\Serializer\Msgpack` · `Phalcon\Storage\Serializer\None` · `Phalcon\Storage\Serializer\Php` · `Phalcon\Storage\Serializer\RedisIgbinary` · `Phalcon\Storage\Serializer\RedisJson` · `Phalcon\Storage\Serializer\RedisMsgpack` · `Phalcon\Storage\Serializer\RedisNone` · `Phalcon\Storage\Serializer\RedisPhp` · `Phalcon\Storage\Serializer\SerializerInterface` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializerfactory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
-<span class="desc">SerializerFactory constructor.</span>
-</a>
-<a class="api-item" href="#storageserializerfactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">SerializerInterface</code>
-<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#storageserializerfactory-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#storageserializerfactory-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Returns the available adapters</span>
-</a>
-</div>
+<ApiItem href="#storageserializerfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
+SerializerFactory constructor.
+</ApiItem>
+<ApiItem href="#storageserializerfactory-newinstance" visibility="public" name="newInstance" returnType="SerializerInterface" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#storageserializerfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#storageserializerfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the available adapters
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="storageserializerfactory-__construct"><code>__construct()</code></h4>
 
@@ -2587,8 +1991,6 @@ SerializerFactory constructor.
 ```php
 public function newInstance( string $name ): SerializerInterface;
 ```
-
-<div class="api-group">Protected · 2</div>
 
 <h4 id="storageserializerfactory-getexceptionclass"><code>getExceptionClass()</code></h4>
 
@@ -2606,13 +2008,10 @@ Returns the available adapters
 
 ## Storage\Serializer\AbstractSerializer
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/AbstractSerializer.zep">Source on GitHub</a>
+Abstract
 
 @property mixed $data
 @property bool  $isSuccess
-
-<div class="api-tree">
 
 - **`Phalcon\Storage\Serializer\AbstractSerializer`** - implements [`Phalcon\Storage\Serializer\SerializerInterface`](#storageserializerserializerinterface)
 - [`Phalcon\Storage\Serializer\Base64`](#storageserializerbase64)
@@ -2621,72 +2020,38 @@ Returns the available adapters
 - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
 - [`Phalcon\Storage\Serializer\Php`](#storageserializerphp)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Storage\StorageTypes`
+`Phalcon\Contracts\Storage\StorageTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializerabstractserializer-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span> )</code>
-<span class="desc">AbstractSerializer constructor.</span>
-</a>
-<a class="api-item" href="#storageserializerabstractserializer-__serialize">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">__serialize</span>()</code>
-<span class="desc">Serialize data</span>
-</a>
-<a class="api-item" href="#storageserializerabstractserializer-__unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
-<span class="desc">Unserialize data</span>
-</a>
-<a class="api-item" href="#storageserializerabstractserializer-getdata">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getData</span>()</code>
-</a>
-<a class="api-item" href="#storageserializerabstractserializer-issuccess">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isSuccess</span>()</code>
-<span class="desc">Returns <code>true</code> if the serialize/unserialize operation was successful;</span>
-</a>
-<a class="api-item" href="#storageserializerabstractserializer-setdata">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setData</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
-</a>
-<a class="api-item" href="#storageserializerabstractserializer-isserializable">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isSerializable</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
-<span class="desc">If this returns true, then the data is returned as is</span>
-</a>
-</div>
+<ApiItem href="#storageserializerabstractserializer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"data","default":"null"}]}>
+AbstractSerializer constructor.
+</ApiItem>
+<ApiItem href="#storageserializerabstractserializer-__serialize" visibility="public" name="__serialize" returnType="array" params={[]}>
+Serialize data
+</ApiItem>
+<ApiItem href="#storageserializerabstractserializer-__unserialize" visibility="public" name="__unserialize" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
+Unserialize data
+</ApiItem>
+<ApiItem href="#storageserializerabstractserializer-getdata" visibility="public" name="getData" returnType="mixed" params={[]}>
+</ApiItem>
+<ApiItem href="#storageserializerabstractserializer-issuccess" visibility="public" name="isSuccess" returnType="bool" params={[]}>
+Returns `true` if the serialize/unserialize operation was successful;
+</ApiItem>
+<ApiItem href="#storageserializerabstractserializer-setdata" visibility="public" name="setData" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
+</ApiItem>
+<ApiItem href="#storageserializerabstractserializer-isserializable" visibility="protected" name="isSerializable" returnType="bool" params={[{"type":"mixed","name":"data","default":null}]}>
+If this returns true, then the data is returned as is
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$data</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$isSuccess</span><span class="sm"> = true</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="data" type="mixed" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="isSuccess" type="bool" default="true">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 6</div>
 
 <h4 id="storageserializerabstractserializer-__construct"><code>__construct()</code></h4>
 
@@ -2733,8 +2098,6 @@ Returns `true` if the serialize/unserialize operation was successful;
 public function setData( mixed $data ): void;
 ```
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="storageserializerabstractserializer-isserializable"><code>isSerializable()</code></h4>
 
 ```php
@@ -2745,38 +2108,23 @@ If this returns true, then the data is returned as is
 
 ## Storage\Serializer\Base64
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Base64.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - **`Phalcon\Storage\Serializer\Base64`**
 
-</div>
-
-__Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · `Phalcon\Traits\Php\Base64Trait`
+`Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · `Phalcon\Traits\Php\Base64Trait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializerbase64-serialize">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">serialize</span>()</code>
-<span class="desc">Serializes data</span>
-</a>
-<a class="api-item" href="#storageserializerbase64-unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
-<span class="desc">Unserializes data</span>
-</a>
-</div>
+<ApiItem href="#storageserializerbase64-serialize" visibility="public" name="serialize" returnType="string" params={[]}>
+Serializes data
+</ApiItem>
+<ApiItem href="#storageserializerbase64-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
+Unserializes data
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="storageserializerbase64-serialize"><code>serialize()</code></h4>
 
@@ -2796,30 +2144,19 @@ Unserializes data
 
 ## Storage\Serializer\Exceptions\InvalidSerializationInput
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Exceptions/InvalidSerializationInput.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\InvalidArgumentException`
 - **`Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput`**
 
-</div>
-
-__Uses__ `InvalidArgumentException`
+`InvalidArgumentException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializerexceptionsinvalidserializationinput-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#storageserializerexceptionsinvalidserializationinput-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="storageserializerexceptionsinvalidserializationinput-__construct"><code>__construct()</code></h4>
 
@@ -2829,30 +2166,19 @@ public function __construct();
 
 ## Storage\Serializer\Exceptions\InvalidUnserializationInput
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Exceptions/InvalidUnserializationInput.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\InvalidArgumentException`
 - **`Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput`**
 
-</div>
-
-__Uses__ `InvalidArgumentException`
+`InvalidArgumentException`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializerexceptionsinvalidunserializationinput-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#storageserializerexceptionsinvalidunserializationinput-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="storageserializerexceptionsinvalidunserializationinput-__construct"><code>__construct()</code></h4>
 
@@ -2862,50 +2188,30 @@ public function __construct();
 
 ## Storage\Serializer\Igbinary
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Igbinary.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - **`Phalcon\Storage\Serializer\Igbinary`**
 - [`Phalcon\Storage\Serializer\Msgpack`](#storageserializermsgpack)
 
-</div>
-
-__Uses__ `Phalcon\Traits\Php\IgbinaryTrait`
+`Phalcon\Traits\Php\IgbinaryTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializerigbinary-serialize">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">serialize</span>()</code>
-<span class="desc">Serializes data</span>
-</a>
-<a class="api-item" href="#storageserializerigbinary-unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
-<span class="desc">Unserializes data</span>
-</a>
-<a class="api-item" href="#storageserializerigbinary-doserialize">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">doSerialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
-<span class="desc">Serialize</span>
-</a>
-<a class="api-item" href="#storageserializerigbinary-dounserialize">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">doUnserialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
-<span class="desc">Unserialize</span>
-</a>
-</div>
+<ApiItem href="#storageserializerigbinary-serialize" visibility="public" name="serialize" returnType="mixed" params={[]}>
+Serializes data
+</ApiItem>
+<ApiItem href="#storageserializerigbinary-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
+Unserializes data
+</ApiItem>
+<ApiItem href="#storageserializerigbinary-doserialize" visibility="protected" name="doSerialize" returnType="string|null" params={[{"type":"mixed","name":"value","default":null}]}>
+Serialize
+</ApiItem>
+<ApiItem href="#storageserializerigbinary-dounserialize" visibility="protected" name="doUnserialize" returnType="" params={[{"type":"mixed","name":"value","default":null}]}>
+Unserialize
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="storageserializerigbinary-serialize"><code>serialize()</code></h4>
 
@@ -2922,8 +2228,6 @@ public function unserialize( mixed $data ): void;
 ```
 
 Unserializes data
-
-<div class="api-group">Protected · 2</div>
 
 <h4 id="storageserializerigbinary-doserialize"><code>doSerialize()</code></h4>
 
@@ -2943,43 +2247,26 @@ Unserialize
 
 ## Storage\Serializer\Json
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Json.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - **`Phalcon\Storage\Serializer\Json`**
 
-</div>
-
-__Uses__ `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode`
+`Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializerjson-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span> )</code>
-<span class="desc">AbstractSerializer constructor.</span>
-</a>
-<a class="api-item" href="#storageserializerjson-serialize">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">serialize</span>()</code>
-<span class="desc">Serializes data</span>
-</a>
-<a class="api-item" href="#storageserializerjson-unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
-<span class="desc">Unserializes data</span>
-</a>
-</div>
+<ApiItem href="#storageserializerjson-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"data","default":"null"}]}>
+AbstractSerializer constructor.
+</ApiItem>
+<ApiItem href="#storageserializerjson-serialize" visibility="public" name="serialize" returnType="mixed" params={[]}>
+Serializes data
+</ApiItem>
+<ApiItem href="#storageserializerjson-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
+Unserializes data
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="storageserializerjson-__construct"><code>__construct()</code></h4>
 
@@ -3007,82 +2294,53 @@ Unserializes data
 
 ## Storage\Serializer\MemcachedIgbinary
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/MemcachedIgbinary.zep">Source on GitHub</a>
+Class
 
 Serializer using the built-in Memcached 'igbinary' serializer
-
-<div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
 - **`Phalcon\Storage\Serializer\MemcachedIgbinary`**
 
-</div>
-
 ## Storage\Serializer\MemcachedJson
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/MemcachedJson.zep">Source on GitHub</a>
+Class
 
 Serializer using the built-in Memcached 'json' serializer
-
-<div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
 - **`Phalcon\Storage\Serializer\MemcachedJson`**
 
-</div>
-
 ## Storage\Serializer\MemcachedPhp
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/MemcachedPhp.zep">Source on GitHub</a>
+Class
 
 Serializer using the built-in Memcached 'php' serializer
-
-<div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
 - **`Phalcon\Storage\Serializer\MemcachedPhp`**
 
-</div>
-
 ## Storage\Serializer\Msgpack
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Msgpack.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - [`Phalcon\Storage\Serializer\Igbinary`](#storageserializerigbinary)
 - **`Phalcon\Storage\Serializer\Msgpack`**
 
-</div>
-
-__Uses__ `Phalcon\Traits\Php\MsgpackTrait`
+`Phalcon\Traits\Php\MsgpackTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializermsgpack-doserialize">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">doSerialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
-<span class="desc">Serializes data</span>
-</a>
-<a class="api-item" href="#storageserializermsgpack-dounserialize">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">doUnserialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
-</a>
-</div>
+<ApiItem href="#storageserializermsgpack-doserialize" visibility="protected" name="doSerialize" returnType="string" params={[{"type":"mixed","name":"value","default":null}]}>
+Serializes data
+</ApiItem>
+<ApiItem href="#storageserializermsgpack-dounserialize" visibility="protected" name="doUnserialize" returnType="" params={[{"type":"mixed","name":"value","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Protected · 2</div>
 
 <h4 id="storageserializermsgpack-doserialize"><code>doSerialize()</code></h4>
 
@@ -3100,10 +2358,7 @@ protected function doUnserialize( mixed $value );
 
 ## Storage\Serializer\None
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/None.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - **`Phalcon\Storage\Serializer\None`**
@@ -3116,28 +2371,16 @@ protected function doUnserialize( mixed $value );
 - [`Phalcon\Storage\Serializer\RedisNone`](#storageserializerredisnone)
 - [`Phalcon\Storage\Serializer\RedisPhp`](#storageserializerredisphp)
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializernone-serialize">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">serialize</span>()</code>
-<span class="desc">Serializes data</span>
-</a>
-<a class="api-item" href="#storageserializernone-unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
-<span class="desc">Unserializes data</span>
-</a>
-</div>
+<ApiItem href="#storageserializernone-serialize" visibility="public" name="serialize" returnType="mixed" params={[]}>
+Serializes data
+</ApiItem>
+<ApiItem href="#storageserializernone-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
+Unserializes data
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="storageserializernone-serialize"><code>serialize()</code></h4>
 
@@ -3157,60 +2400,36 @@ Unserializes data
 
 ## Storage\Serializer\Php
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Php.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - **`Phalcon\Storage\Serializer\Php`**
 
-</div>
-
-__Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · `Phalcon\Traits\Php\SerializeTrait`
+`Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · `Phalcon\Traits\Php\SerializeTrait`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializerphp-getallowedclasses">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getAllowedClasses</span>()</code>
-</a>
-<a class="api-item" href="#storageserializerphp-serialize">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">serialize</span>()</code>
-<span class="desc">Serializes data</span>
-</a>
-<a class="api-item" href="#storageserializerphp-setallowedclasses">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setAllowedClasses</span>( <span class="st">mixed</span> <span class="sv">$allowedClasses</span> )</code>
-<span class="desc">Restricts the classes that unserialize() may instantiate (see the</span>
-</a>
-<a class="api-item" href="#storageserializerphp-unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
-<span class="desc">Unserializes data</span>
-</a>
-</div>
+<ApiItem href="#storageserializerphp-getallowedclasses" visibility="public" name="getAllowedClasses" returnType="mixed" params={[]}>
+</ApiItem>
+<ApiItem href="#storageserializerphp-serialize" visibility="public" name="serialize" returnType="mixed" params={[]}>
+Serializes data
+</ApiItem>
+<ApiItem href="#storageserializerphp-setallowedclasses" visibility="public" name="setAllowedClasses" returnType="static" params={[{"type":"mixed","name":"allowedClasses","default":null}]}>
+Restricts the classes that unserialize() may instantiate (see the
+</ApiItem>
+<ApiItem href="#storageserializerphp-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
+Unserializes data
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$allowedClasses</span><span class="sm"> = true</span></code>
-<span class="desc">Classes that unserialize() may instantiate: true (any class, the PHP default), false (none) or a list of class names. Stored bytes that try to build another class are rejected on read.</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="allowedClasses" type="mixed" default="true">
+Classes that unserialize() may instantiate: true (any class, the PHP
+default), false (none) or a list of class names. Stored bytes that
+try to build another class are rejected on read.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="storageserializerphp-getallowedclasses"><code>getAllowedClasses()</code></h4>
 
@@ -3245,120 +2464,74 @@ Unserializes data
 
 ## Storage\Serializer\RedisIgbinary
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/RedisIgbinary.zep">Source on GitHub</a>
+Class
 
 Serializer using the built-in Redis 'igbinary' serializer
-
-<div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
 - **`Phalcon\Storage\Serializer\RedisIgbinary`**
 
-</div>
-
 ## Storage\Serializer\RedisJson
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/RedisJson.zep">Source on GitHub</a>
+Class
 
 Serializer using the built-in Redis 'json' serializer
-
-<div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
 - **`Phalcon\Storage\Serializer\RedisJson`**
 
-</div>
-
 ## Storage\Serializer\RedisMsgpack
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/RedisMsgpack.zep">Source on GitHub</a>
+Class
 
 Serializer using the built-in Redis 'msgpack' serializer
-
-<div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
 - **`Phalcon\Storage\Serializer\RedisMsgpack`**
 
-</div>
-
 ## Storage\Serializer\RedisNone
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/RedisNone.zep">Source on GitHub</a>
+Class
 
 Serializer using the built-in Redis 'none' serializer
-
-<div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
 - **`Phalcon\Storage\Serializer\RedisNone`**
 
-</div>
-
 ## Storage\Serializer\RedisPhp
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/RedisPhp.zep">Source on GitHub</a>
+Class
 
 Serializer using the built-in Redis 'php' serializer
-
-<div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
 - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
 - **`Phalcon\Storage\Serializer\RedisPhp`**
 
-</div>
-
 ## Storage\Serializer\SerializerInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/SerializerInterface.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - **`Phalcon\Storage\Serializer\SerializerInterface`**
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#storageserializerserializerinterface-getdata">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getData</span>()</code>
-</a>
-<a class="api-item" href="#storageserializerserializerinterface-serialize">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">serialize</span>()</code>
-<span class="desc">Serializes data</span>
-</a>
-<a class="api-item" href="#storageserializerserializerinterface-setdata">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setData</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
-</a>
-<a class="api-item" href="#storageserializerserializerinterface-unserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
-<span class="desc">Unserializes data</span>
-</a>
-</div>
+<ApiItem href="#storageserializerserializerinterface-getdata" visibility="public" name="getData" returnType="mixed" params={[]}>
+</ApiItem>
+<ApiItem href="#storageserializerserializerinterface-serialize" visibility="public" name="serialize" returnType="mixed" params={[]}>
+Serializes data
+</ApiItem>
+<ApiItem href="#storageserializerserializerinterface-setdata" visibility="public" name="setData" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
+</ApiItem>
+<ApiItem href="#storageserializerserializerinterface-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
+Unserializes data
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="storageserializerserializerinterface-getdata"><code>getData()</code></h4>
 

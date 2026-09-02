@@ -17,7 +17,7 @@ All classes are prefixed with `Phalcon`
 
 Class
 
-- **`Phalcon\Container\Container`** - implements [`Phalcon\Contracts\Container\Service\Collection`](../phalcon_contracts/#contractscontainerservicecollection), [`Phalcon\Contracts\Container\Service\Enumerable`](../phalcon_contracts/#contractscontainerserviceenumerable)
+- **`Phalcon\Container\Container`** - implements [`Phalcon\Contracts\Container\Service\Collection`](/6.0/api/phalcon_contracts/#contractscontainerservicecollection), [`Phalcon\Contracts\Container\Service\Enumerable`](/6.0/api/phalcon_contracts/#contractscontainerserviceenumerable)
 
 `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` · `Phalcon\Container\Definition\Processor\ObjectProcessor` · `Phalcon\Container\Definition\Processor\Processor` · `Phalcon\Container\Definition\Processor\StringProcessor` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Definition\ServiceLifetime` · `Phalcon\Container\Exceptions\CannotExtendResolved` · `Phalcon\Container\Exceptions\CircularAliasFound` · `Phalcon\Container\Exceptions\InstanceNotFound` · `Phalcon\Container\Exceptions\NoProcessorFound` · `Phalcon\Container\Exceptions\ParameterNotFound` · `Phalcon\Container\Exceptions\ServiceNotFound` · `Phalcon\Container\Exceptions\ServiceNotRegistered` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Enumerable` · `Phalcon\Di\InjectionAwareInterface` · `ReflectionException`
 
@@ -460,7 +460,7 @@ Remove a parameter
 
 Class
 
-- **`Phalcon\Container\ContainerFactory`** - implements [`Phalcon\Contracts\Container\Ioc\IocContainerFactory`](../phalcon_contracts/#contractscontaineriocioccontainerfactory)
+- **`Phalcon\Container\ContainerFactory`** - implements [`Phalcon\Contracts\Container\Ioc\IocContainerFactory`](/6.0/api/phalcon_contracts/#contractscontaineriocioccontainerfactory)
 
 `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainerFactory` · `Phalcon\Contracts\Container\Service\Provider`
 
@@ -1179,8 +1179,8 @@ Circular Alias found
 Interface
 
 - `\Throwable`
-- [`Phalcon\Contracts\Container\Ioc\IocThrowable`](../phalcon_contracts/#contractscontaineriociocthrowable)
-- **`Phalcon\Container\Exceptions\ContainerThrowable`** - extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](../phalcon_contracts/#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](../phalcon_contracts/#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](../phalcon_contracts/#contractscontainerservicethrowable)
+- [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/6.0/api/phalcon_contracts/#contractscontaineriociocthrowable)
+- **`Phalcon\Container\Exceptions\ContainerThrowable`** - extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/6.0/api/phalcon_contracts/#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](/6.0/api/phalcon_contracts/#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](/6.0/api/phalcon_contracts/#contractscontainerservicethrowable)
 
 `Phalcon\Contracts\Container\Ioc\IocThrowable` · `Phalcon\Contracts\Container\Resolver\ResolverThrowable` · `Phalcon\Contracts\Container\Service\Throwable`
 
@@ -1444,7 +1444,7 @@ Service not registered
 
 Class
 
-- **`Phalcon\Container\Provider\Cli`** - implements [`Phalcon\Contracts\Container\Service\Provider`](../phalcon_contracts/#contractscontainerserviceprovider)
+- **`Phalcon\Container\Provider\Cli`** - implements [`Phalcon\Contracts\Container\Service\Provider`](/6.0/api/phalcon_contracts/#contractscontainerserviceprovider)
 
 `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\DispatcherInterface` · `Phalcon\Cli\Router` · `Phalcon\Cli\RouterInterface` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 
@@ -1468,7 +1468,7 @@ Provider for commonly used CLI applications
 
 Class
 
-- **`Phalcon\Container\Provider\Web`** - implements [`Phalcon\Contracts\Container\Service\Provider`](../phalcon_contracts/#contractscontainerserviceprovider)
+- **`Phalcon\Container\Provider\Web`** - implements [`Phalcon\Contracts\Container\Service\Provider`](/6.0/api/phalcon_contracts/#contractscontainerserviceprovider)
 
 `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Assets\Manager` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Container\Resolver\Lazy\LazyFactory` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Db\Event\Factory` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Http\Response\Cookies` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\DispatcherInterface` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 
@@ -1984,7 +1984,7 @@ Resolve a shared instance method call
 
 Abstract
 
-- **`Phalcon\Container\Resolver\Lazy\Lazy`** - implements [`Phalcon\Contracts\Container\Resolver\Resolvable`](../phalcon_contracts/#contractscontainerresolverresolvable)
+- **`Phalcon\Container\Resolver\Lazy\Lazy`** - implements [`Phalcon\Contracts\Container\Resolver\Resolvable`](/6.0/api/phalcon_contracts/#contractscontainerresolverresolvable)
 - [`Phalcon\Container\Resolver\Lazy\ArrayValues`](#containerresolverlazyarrayvalues)
 - [`Phalcon\Container\Resolver\Lazy\Call`](#containerresolverlazycall)
 - [`Phalcon\Container\Resolver\Lazy\CallableGet`](#containerresolverlazycallableget)
@@ -2318,7 +2318,7 @@ Resolve a static method call
 
 Class
 
-- **`Phalcon\Container\Resolver\Resolver`** - implements [`Phalcon\Contracts\Container\Resolver\ResolverService`](../phalcon_contracts/#contractscontainerresolverresolverservice)
+- **`Phalcon\Container\Resolver\Resolver`** - implements [`Phalcon\Contracts\Container\Resolver\ResolverService`](/6.0/api/phalcon_contracts/#contractscontainerresolverresolverservice)
 
 `Closure` · `Phalcon\Container\Exceptions\CannotResolveParameter` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\ResolverService` · `Phalcon\Contracts\Container\Service\Collection` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType` · `ReflectionParameter` · `ReflectionType`
 

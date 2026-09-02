@@ -88,7 +88,7 @@ Returns the kind label used by AccessDenied (e.g. 'task', 'action',
 
 Abstract
 
-- **`Phalcon\Auth\Access\AbstractAccess`** - implements [`Phalcon\Contracts\Auth\Access\Access`](../phalcon_contracts/#contractsauthaccessaccess)
+- **`Phalcon\Auth\Access\AbstractAccess`** - implements [`Phalcon\Contracts\Auth\Access\Access`](/6.0/api/phalcon_contracts/#contractsauthaccessaccess)
 - [`Phalcon\Auth\Access\Acl`](#authaccessacl)
 - [`Phalcon\Auth\Access\Auth`](#authaccessauth)
 - [`Phalcon\Auth\Access\Guest`](#authaccessguest)
@@ -182,7 +182,7 @@ class builder).
 
 @extends AbstractLocator&lt;Access>
 
-- [`Phalcon\Support\AbstractLocator`](../phalcon_support/#supportabstractlocator)
+- [`Phalcon\Support\AbstractLocator`](/6.0/api/phalcon_support/#supportabstractlocator)
 - **`Phalcon\Auth\Access\AccessLocator`**
 
 `Phalcon\Auth\Exception` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Support\AbstractLocator`
@@ -363,7 +363,7 @@ Abstract
 
 @template TConfig of AdapterConfig
 
-- **`Phalcon\Auth\Adapter\AbstractAdapter`** - implements [`Phalcon\Contracts\Auth\Adapter\Adapter`](../phalcon_contracts/#contractsauthadapteradapter)
+- **`Phalcon\Auth\Adapter\AbstractAdapter`** - implements [`Phalcon\Contracts\Auth\Adapter\Adapter`](/6.0/api/phalcon_contracts/#contractsauthadapteradapter)
 - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
 - [`Phalcon\Auth\Adapter\Model`](#authadaptermodel)
 
@@ -565,7 +565,7 @@ to be used here.
 
 @extends AbstractLocator&lt;Adapter>
 
-- [`Phalcon\Support\AbstractLocator`](../phalcon_support/#supportabstractlocator)
+- [`Phalcon\Support\AbstractLocator`](/6.0/api/phalcon_support/#supportabstractlocator)
 - **`Phalcon\Auth\Adapter\AdapterLocator`**
 
 `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Support\AbstractLocator`
@@ -603,7 +603,7 @@ protected function getServices(): array;
 
 Abstract
 
-- **`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`** - implements [`Phalcon\Contracts\Auth\Adapter\AdapterConfig`](../phalcon_contracts/#contractsauthadapteradapterconfig)
+- **`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`** - implements [`Phalcon\Contracts\Auth\Adapter\AdapterConfig`](/6.0/api/phalcon_contracts/#contractsauthadapteradapterconfig)
 - [`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`](#authadapterconfigmemoryadapterconfig)
 - [`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`](#authadapterconfigmodeladapterconfig)
 - [`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`](#authadapterconfigstreamadapterconfig)
@@ -842,7 +842,7 @@ Phalcon Model-backed adapter.
 @extends AbstractAdapter&lt;ModelAdapterConfig>
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-- **`Phalcon\Auth\Adapter\Model`** - implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](../phalcon_contracts/#contractsauthadapterrememberadapter)
+- **`Phalcon\Auth\Adapter\Model`** - implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](/6.0/api/phalcon_contracts/#contractsauthadapterrememberadapter)
 
 `Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\InvalidCredentialKey` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\ModelInterface`
 
@@ -981,7 +981,7 @@ Class
 Lightweight value object returned by array-backed adapters (Memory, Stream)
 when no application model class is configured.
 
-- **`Phalcon\Auth\AuthUser`** - implements [`Phalcon\Contracts\Auth\AuthUser`](../phalcon_contracts/#contractsauthauthuser)
+- **`Phalcon\Auth\AuthUser`** - implements [`Phalcon\Contracts\Auth\AuthUser`](/6.0/api/phalcon_contracts/#contractsauthauthuser)
 
 `Phalcon\Auth\Exceptions\DataMustContainIdKey` · `Phalcon\Contracts\Auth\AuthUser`
 
@@ -1631,7 +1631,7 @@ Abstract
 
 @template TConfig of GuardConfig
 
-- **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](../phalcon_contracts/#contractsauthguardguard)
+- **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](/6.0/api/phalcon_contracts/#contractsauthguardguard)
 - [`Phalcon\Auth\Guard\Session`](#authguardsession)
 - [`Phalcon\Auth\Guard\Token`](#authguardtoken)
 
@@ -1757,7 +1757,7 @@ user should be ?AuthUser
 
 Abstract
 
-- **`Phalcon\Auth\Guard\Config\AbstractGuardConfig`** - implements [`Phalcon\Contracts\Auth\Guard\GuardConfig`](../phalcon_contracts/#contractsauthguardguardconfig)
+- **`Phalcon\Auth\Guard\Config\AbstractGuardConfig`** - implements [`Phalcon\Contracts\Auth\Guard\GuardConfig`](/6.0/api/phalcon_contracts/#contractsauthguardguardconfig)
 - [`Phalcon\Auth\Guard\Config\SessionGuardConfig`](#authguardconfigsessionguardconfig)
 - [`Phalcon\Auth\Guard\Config\TokenGuardConfig`](#authguardconfigtokenguardconfig)
 
@@ -1898,7 +1898,7 @@ Phalcon\Di\Di, register the guards in it before resolution.
 
 @extends AbstractLocator&lt;Guard>
 
-- [`Phalcon\Support\AbstractLocator`](../phalcon_support/#supportabstractlocator)
+- [`Phalcon\Support\AbstractLocator`](/6.0/api/phalcon_support/#supportabstractlocator)
 - **`Phalcon\Auth\Guard\GuardLocator`**
 
 `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Support\AbstractLocator`
@@ -1939,7 +1939,7 @@ Class
 @extends AbstractGuard&lt;SessionGuardConfig>
 
 - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-- **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](../phalcon_contracts/#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](../phalcon_contracts/#contractsauthguardbasicauth)
+- **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](/6.0/api/phalcon_contracts/#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](/6.0/api/phalcon_contracts/#contractsauthguardbasicauth)
 
 `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
 
@@ -2481,7 +2481,7 @@ behind a single facade. Guard-specific behavior is reached through
 Manager::guard(); callers narrow with instanceof against the
 relevant capability interface (GuardStateful, BasicAuth, etc.).
 
-- **`Phalcon\Auth\Manager`** - implements [`Phalcon\Contracts\Auth\Manager`](../phalcon_contracts/#contractsauthmanager)
+- **`Phalcon\Auth\Manager`** - implements [`Phalcon\Contracts\Auth\Manager`](/6.0/api/phalcon_contracts/#contractsauthmanager)
 
 `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\AccessNotRegistered` · `Phalcon\Auth\Exceptions\ActiveAccessRequired` · `Phalcon\Auth\Exceptions\DefaultGuardNotRegistered` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\GuardNotDefined` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\Manager`
 

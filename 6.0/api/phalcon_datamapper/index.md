@@ -98,7 +98,7 @@ Manages Connection instances for default, read, and write connections.
 The locator gives its events manager to each connection that it returns,
 so connections that are built on demand also fire the DataMapper events.
 
-- **`Phalcon\DataMapper\Pdo\ConnectionLocator`** - implements [`Phalcon\DataMapper\Pdo\ConnectionLocatorInterface`](#datamapperpdoconnectionlocatorinterface), [`Phalcon\Contracts\Events\EventsAware`](../phalcon_contracts/#contractseventseventsaware)
+- **`Phalcon\DataMapper\Pdo\ConnectionLocator`** - implements [`Phalcon\DataMapper\Pdo\ConnectionLocatorInterface`](#datamapperpdoconnectionlocatorinterface), [`Phalcon\Contracts\Events\EventsAware`](/6.0/api/phalcon_contracts/#contractseventseventsaware)
 
 `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound` · `Phalcon\Events\Traits\EventsAwareTrait`
 
@@ -327,7 +327,7 @@ an events manager is set. ConnectionInterface does not declare the events
 manager methods; the EventsAware contract is applied here so that existing
 implementations of the interface keep working.
 
-- **`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`** - implements [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface), [`Phalcon\Contracts\Events\EventsAware`](../phalcon_contracts/#contractseventseventsaware)
+- **`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`** - implements [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface), [`Phalcon\Contracts\Events\EventsAware`](/6.0/api/phalcon_contracts/#contractseventseventsaware)
 - [`Phalcon\DataMapper\Pdo\Connection`](#datamapperpdoconnection)
 - [`Phalcon\DataMapper\Pdo\Connection\Decorated`](#datamapperpdoconnectiondecorated)
 
@@ -1644,7 +1644,7 @@ Class
 
 A memory-based logger.
 
-- **`Phalcon\DataMapper\Pdo\Profiler\MemoryLogger`** - implements [`Phalcon\Logger\LoggerInterface`](../phalcon_logger/#loggerloggerinterface)
+- **`Phalcon\DataMapper\Pdo\Profiler\MemoryLogger`** - implements [`Phalcon\Logger\LoggerInterface`](/6.0/api/phalcon_logger/#loggerloggerinterface)
 
 `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Enum` · `Phalcon\Logger\LoggerInterface` · `Stringable`
 

@@ -25,9 +25,9 @@ from a DI container, with support for both legacy Di and new Container.
 @template T of object
 
 - **`Phalcon\Support\AbstractLocator`**
-- [`Phalcon\Auth\Access\AccessLocator`](../phalcon_auth/#authaccessaccesslocator)
-- [`Phalcon\Auth\Adapter\AdapterLocator`](../phalcon_auth/#authadapteradapterlocator)
-- [`Phalcon\Auth\Guard\GuardLocator`](../phalcon_auth/#authguardguardlocator)
+- [`Phalcon\Auth\Access\AccessLocator`](/6.0/api/phalcon_auth/#authaccessaccesslocator)
+- [`Phalcon\Auth\Adapter\AdapterLocator`](/6.0/api/phalcon_auth/#authadapteradapterlocator)
+- [`Phalcon\Auth\Guard\GuardLocator`](/6.0/api/phalcon_auth/#authguardguardlocator)
 
 `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Throwable`
 
@@ -187,9 +187,9 @@ etc.
 @property string|null           $type
 
 - **`Phalcon\Support\Collection`** - implements [`Phalcon\Support\Collection\CollectionInterface`](#supportcollectioncollectioninterface), `\Countable`, `\JsonSerializable`
-- [`Phalcon\Config\Config`](../phalcon_config/#configconfig)
-- [`Phalcon\Html\Attributes`](../phalcon_html/#htmlattributes)
-- [`Phalcon\Session\Bag`](../phalcon_session/#sessionbag)
+- [`Phalcon\Config\Config`](/6.0/api/phalcon_config/#configconfig)
+- [`Phalcon\Html\Attributes`](/6.0/api/phalcon_html/#htmlattributes)
+- [`Phalcon\Session\Bag`](/6.0/api/phalcon_session/#sessionbag)
 - [`Phalcon\Support\Collection\ReadOnlyCollection`](#supportcollectionreadonlycollection)
 - [`Phalcon\Support\Registry`](#supportregistry)
 
@@ -684,9 +684,9 @@ Phalcon\Support\Collection\CollectionInterface
 @extends CollectionContract&lt;T>
 
 - `\ArrayAccess`
-- [`Phalcon\Contracts\Support\Collection`](../phalcon_contracts/#contractssupportcollection)
+- [`Phalcon\Contracts\Support\Collection`](/6.0/api/phalcon_contracts/#contractssupportcollection)
 - **`Phalcon\Support\Collection\CollectionInterface`**
-- [`Phalcon\Config\ConfigInterface`](../phalcon_config/#configconfiginterface)
+- [`Phalcon\Config\ConfigInterface`](/6.0/api/phalcon_config/#configconfiginterface)
 
 `Phalcon\Contracts\Support\Collection`
 
@@ -1364,7 +1364,7 @@ $baz = new stdClass();
 echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 ```
 
-- **`Phalcon\Support\Debug\Dump`** - implements [`Phalcon\Contracts\Support\Debug\TemplateAware`](../phalcon_contracts/#contractssupportdebugtemplateaware)
+- **`Phalcon\Support\Debug\Dump`** - implements [`Phalcon\Contracts\Support\Debug\TemplateAware`](/6.0/api/phalcon_contracts/#contractssupportdebugtemplateaware)
 
 `InvalidArgumentException` · `JsonException` · `Phalcon\Container\Container` · `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Reflection` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty` · `stdClass`
 
@@ -1600,7 +1600,7 @@ template strings filled by the interpolator. All styling and interactivity
 (theme, tabs, syntax highlighting, copy/editor links) are provided by the
 external debug.css / debug.js assets.
 
-- **`Phalcon\Support\Debug\Renderer\HtmlRenderer`** - implements [`Phalcon\Contracts\Support\Debug\Renderer`](../phalcon_contracts/#contractssupportdebugrenderer)
+- **`Phalcon\Support\Debug\Renderer\HtmlRenderer`** - implements [`Phalcon\Contracts\Support\Debug\Renderer`](/6.0/api/phalcon_contracts/#contractssupportdebugrenderer)
 
 `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 
@@ -2168,8 +2168,8 @@ ServiceLocator implementation for helpers
 @method string upper(string $text, string $encoding = 'UTF-8')
 @method support_collection whitelist(support_collection $collection, support_collection $whiteList)
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Support\HelperFactory`**
 
 `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper` · `Throwable`
@@ -4362,7 +4362,7 @@ Trait
 
 `Phalcon\Config\ConfigInterface` · `Throwable`
 
-[`Phalcon\Auth\ManagerFactory`](../phalcon_auth/#authmanagerfactory)
+[`Phalcon\Auth\ManagerFactory`](/6.0/api/phalcon_auth/#authmanagerfactory)
 
 ### Method Summary
 
@@ -4413,7 +4413,7 @@ Trait
 
 - **`Phalcon\Support\Traits\FilePathTrait`**
 
-[`Phalcon\Mvc\Model\MetaData\Stream`](../phalcon_mvc/#mvcmodelmetadatastream) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](../phalcon_mvc/#mvcviewenginevoltcompiler) · [`Phalcon\Storage\Adapter\Stream`](../phalcon_storage/#storageadapterstream)
+[`Phalcon\Mvc\Model\MetaData\Stream`](/6.0/api/phalcon_mvc/#mvcmodelmetadatastream) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](/6.0/api/phalcon_mvc/#mvcviewenginevoltcompiler) · [`Phalcon\Storage\Adapter\Stream`](/6.0/api/phalcon_storage/#storageadapterstream)
 
 ### Method Summary
 

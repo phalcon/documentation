@@ -15,140 +15,75 @@ All classes are prefixed with `Phalcon`
 
 ## Domain\Payload\Payload
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/Payload.zep">Source on GitHub</a>
+Class
 
 Holds the payload
 
-<div class="api-tree">
-
 - **`Phalcon\Domain\Payload\Payload`** - implements [`Phalcon\Domain\Payload\PayloadInterface`](#domainpayloadpayloadinterface)
 
-</div>
-
-__Uses__ `Throwable`
+`Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#domainpayloadpayload-getexception">
-<code class="vis vis-public">public</code>
-<code class="ret">Throwable|null</code>
-<code class="sig"><span class="sf">getException</span>()</code>
-<span class="desc">Gets the potential exception thrown in the domain layer</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-getextras">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getExtras</span>()</code>
-<span class="desc">Extra information</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-getinput">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getInput</span>()</code>
-<span class="desc">Input</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-getmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getMessages</span>()</code>
-<span class="desc">Messages</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-getoutput">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getOutput</span>()</code>
-<span class="desc">Output</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-getstatus">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getStatus</span>()</code>
-<span class="desc">Status</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-setexception">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setException</span>( <span class="st">Throwable</span> <span class="sv">$exception</span> )</code>
-<span class="desc">Sets an exception thrown in the domain</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-setextras">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setExtras</span>( <span class="st">mixed</span> <span class="sv">$extras</span> )</code>
-<span class="desc">Sets arbitrary extra domain information.</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-setinput">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setInput</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-<span class="desc">Sets the domain input.</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-setmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
-<span class="desc">Sets the domain messages.</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-setoutput">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setOutput</span>( <span class="st">mixed</span> <span class="sv">$output</span> )</code>
-<span class="desc">Sets the domain output.</span>
-</a>
-<a class="api-item" href="#domainpayloadpayload-setstatus">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setStatus</span>( <span class="st">mixed</span> <span class="sv">$status</span> )</code>
-<span class="desc">Sets the payload status.</span>
-</a>
-</div>
+<ApiItem href="#domainpayloadpayload-getexception" visibility="public" name="getException" returnType="Throwable|null" params={[]}>
+Gets the potential exception thrown in the domain layer
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-getextras" visibility="public" name="getExtras" returnType="mixed" params={[]}>
+Extra information
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-getinput" visibility="public" name="getInput" returnType="mixed" params={[]}>
+Input
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-getmessages" visibility="public" name="getMessages" returnType="mixed" params={[]}>
+Messages
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-getoutput" visibility="public" name="getOutput" returnType="mixed" params={[]}>
+Output
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-getstatus" visibility="public" name="getStatus" returnType="mixed" params={[]}>
+Status
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setexception" visibility="public" name="setException" returnType="PayloadInterface" params={[{"type":"Throwable","name":"exception","default":null}]}>
+Sets an exception thrown in the domain
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setextras" visibility="public" name="setExtras" returnType="PayloadInterface" params={[{"type":"mixed","name":"extras","default":null}]}>
+Sets arbitrary extra domain information.
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setinput" visibility="public" name="setInput" returnType="PayloadInterface" params={[{"type":"mixed","name":"input","default":null}]}>
+Sets the domain input.
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setmessages" visibility="public" name="setMessages" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":null}]}>
+Sets the domain messages.
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setoutput" visibility="public" name="setOutput" returnType="PayloadInterface" params={[{"type":"mixed","name":"output","default":null}]}>
+Sets the domain output.
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setstatus" visibility="public" name="setStatus" returnType="PayloadInterface" params={[{"type":"mixed","name":"status","default":null}]}>
+Sets the payload status.
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Throwable|null</code>
-<code class="sig"><span class="sv">$exception</span><span class="sm"> = null</span></code>
-<span class="desc">Exception if any</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$extras</span></code>
-<span class="desc">Extra information</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$input</span></code>
-<span class="desc">Input</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$messages</span></code>
-<span class="desc">Messages</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$output</span></code>
-<span class="desc">Output</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$status</span></code>
-<span class="desc">Status</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="exception" type="Throwable|null" default="null">
+Exception if any
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="extras" type="mixed" default="">
+Extra information
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="input" type="mixed" default="">
+Input
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="messages" type="mixed" default="">
+Messages
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="output" type="mixed" default="">
+Output
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="status" type="mixed" default="">
+Status
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 12</div>
 
 <h4 id="domainpayloadpayload-getexception"><code>getException()</code></h4>
 
@@ -256,8 +191,7 @@ Status values are drawn from the `Status` vocabulary.
 
 ## Domain\Payload\PayloadFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadFactory.zep">Source on GitHub</a>
+Class
 
 Factory to create payload objects.
 
@@ -265,26 +199,15 @@ It exists so that payload creation can be registered as a service in the DI
 container and substituted in tests, rather than constructing `Payload`
 instances directly.
 
-<div class="api-tree">
-
 - **`Phalcon\Domain\Payload\PayloadFactory`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#domainpayloadpayloadfactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">newInstance</span>()</code>
-<span class="desc">Instantiate a new object</span>
-</a>
-</div>
+<ApiItem href="#domainpayloadpayloadfactory-newinstance" visibility="public" name="newInstance" returnType="PayloadInterface" params={[]}>
+Instantiate a new object
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="domainpayloadpayloadfactory-newinstance"><code>newInstance()</code></h4>
 
@@ -296,42 +219,31 @@ Instantiate a new object
 
 ## Domain\Payload\PayloadInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadInterface.zep">Source on GitHub</a>
+Interface
 
 This interface is used for consumers
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Domain\Payload\Readable`](/5.20/api/phalcon_contracts/#contractsdomainpayloadreadable)
 - [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface)
 - **`Phalcon\Domain\Payload\PayloadInterface`** - extends [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface), [`Phalcon\Domain\Payload\WriteableInterface`](#domainpayloadwriteableinterface), [`Phalcon\Contracts\Domain\Payload\Payload`](/5.20/api/phalcon_contracts/#contractsdomainpayloadpayload)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Domain\Payload\Payload`
+`Phalcon\Contracts\Domain\Payload\Payload`
 
 ## Domain\Payload\ReadableInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/ReadableInterface.zep">Source on GitHub</a>
+Interface
 
 This interface is used for consumers (read only)
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Domain\Payload\Readable`](/5.20/api/phalcon_contracts/#contractsdomainpayloadreadable)
 - **`Phalcon\Domain\Payload\ReadableInterface`**
 - [`Phalcon\Domain\Payload\PayloadInterface`](#domainpayloadpayloadinterface)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Domain\Payload\Readable`
+`Phalcon\Contracts\Domain\Payload\Readable`
 
 ## Domain\Payload\Status
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/Status.zep">Source on GitHub</a>
+Class
 
 Holds the status codes for the payload.
 
@@ -346,111 +258,60 @@ lineage:
 
 @see Payload
 
-<div class="api-tree">
-
 - **`Phalcon\Domain\Payload\Status`**
-
-</div>
 
 ### Constants
 
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">ACCEPTED</span><span class="sm"> = &quot;ACCEPTED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">AUTHENTICATED</span><span class="sm"> = &quot;AUTHENTICATED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">AUTHORIZED</span><span class="sm"> = &quot;AUTHORIZED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">CREATED</span><span class="sm"> = &quot;CREATED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">DELETED</span><span class="sm"> = &quot;DELETED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">ERROR</span><span class="sm"> = &quot;ERROR&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FAILURE</span><span class="sm"> = &quot;FAILURE&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">FOUND</span><span class="sm"> = &quot;FOUND&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NOT_ACCEPTED</span><span class="sm"> = &quot;NOT_ACCEPTED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NOT_AUTHENTICATED</span><span class="sm"> = &quot;NOT_AUTHENTICATED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NOT_AUTHORIZED</span><span class="sm"> = &quot;NOT_AUTHORIZED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NOT_CREATED</span><span class="sm"> = &quot;NOT_CREATED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NOT_DELETED</span><span class="sm"> = &quot;NOT_DELETED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NOT_FOUND</span><span class="sm"> = &quot;NOT_FOUND&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NOT_UPDATED</span><span class="sm"> = &quot;NOT_UPDATED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NOT_VALID</span><span class="sm"> = &quot;NOT_VALID&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">PROCESSING</span><span class="sm"> = &quot;PROCESSING&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">SUCCESS</span><span class="sm"> = &quot;SUCCESS&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">UPDATED</span><span class="sm"> = &quot;UPDATED&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">VALID</span><span class="sm"> = &quot;VALID&quot;</span></code>
-</div>
-</div>
+<ApiItem kind="constant" name="ACCEPTED" type="string" default="&quot;ACCEPTED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="AUTHENTICATED" type="string" default="&quot;AUTHENTICATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="AUTHORIZED" type="string" default="&quot;AUTHORIZED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="CREATED" type="string" default="&quot;CREATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="DELETED" type="string" default="&quot;DELETED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="ERROR" type="string" default="&quot;ERROR&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FAILURE" type="string" default="&quot;FAILURE&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FOUND" type="string" default="&quot;FOUND&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_ACCEPTED" type="string" default="&quot;NOT_ACCEPTED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_AUTHENTICATED" type="string" default="&quot;NOT_AUTHENTICATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_AUTHORIZED" type="string" default="&quot;NOT_AUTHORIZED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_CREATED" type="string" default="&quot;NOT_CREATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_DELETED" type="string" default="&quot;NOT_DELETED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_FOUND" type="string" default="&quot;NOT_FOUND&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_UPDATED" type="string" default="&quot;NOT_UPDATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_VALID" type="string" default="&quot;NOT_VALID&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PROCESSING" type="string" default="&quot;PROCESSING&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="SUCCESS" type="string" default="&quot;SUCCESS&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="UPDATED" type="string" default="&quot;UPDATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="VALID" type="string" default="&quot;VALID&quot;">
+</ApiItem>
 
 ## Domain\Payload\WriteableInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/WriteableInterface.zep">Source on GitHub</a>
+Interface
 
 This interface is used for consumers (write)
-
-<div class="api-tree">
 
 - [`Phalcon\Contracts\Domain\Payload\Writeable`](/5.20/api/phalcon_contracts/#contractsdomainpayloadwriteable)
 - **`Phalcon\Domain\Payload\WriteableInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Domain\Payload\Writeable`
+`Phalcon\Contracts\Domain\Payload\Writeable`
 
 Source: https://docs.phalcon.io/5.20/api/phalcon_domain/index.mdx

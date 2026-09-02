@@ -496,7 +496,7 @@ Interface
 
 Interface for Phalcon\Encryption\Crypt
 
-- [`Phalcon\Contracts\Encryption\Crypt\Crypt`](../phalcon_contracts/#contractsencryptioncryptcrypt)
+- [`Phalcon\Contracts\Encryption\Crypt\Crypt`](/6.0/api/phalcon_contracts/#contractsencryptioncryptcrypt)
 - **`Phalcon\Encryption\Crypt\CryptInterface`**
 
 `Phalcon\Contracts\Encryption\Crypt\Crypt`
@@ -794,8 +794,8 @@ Class
 
 Factory for creating pad classes
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Encryption\Crypt\PadFactory`**
 
 `Exception` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Padding\Ansi` · `Phalcon\Encryption\Crypt\Padding\Iso10126` · `Phalcon\Encryption\Crypt\Padding\IsoIek` · `Phalcon\Encryption\Crypt\Padding\Noop` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Encryption\Crypt\Padding\Pkcs7` · `Phalcon\Encryption\Crypt\Padding\Space` · `Phalcon\Encryption\Crypt\Padding\Zero` · `Phalcon\Factory\AbstractFactory`
@@ -989,7 +989,7 @@ Interface
 
 Interface for Phalcon\Encryption\Crypt\Padding
 
-- [`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`](../phalcon_contracts/#contractsencryptioncryptpaddingpad)
+- [`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`](/6.0/api/phalcon_contracts/#contractsencryptioncryptpaddingpad)
 - **`Phalcon\Encryption\Crypt\Padding\PadInterface`**
 
 `Phalcon\Contracts\Encryption\Crypt\Padding\Pad`
@@ -1111,8 +1111,8 @@ if ($this->security->checkHash($password, $user->password)) {
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](../phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Encryption\Security`** - implements [`Phalcon\Contracts\Encryption\Security\Security`](../phalcon_contracts/#contractsencryptionsecuritysecurity)
+- [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
+- **`Phalcon\Encryption\Security`** - implements [`Phalcon\Contracts\Encryption\Security\Security`](/6.0/api/phalcon_contracts/#contractsencryptionsecuritysecurity)
 
 `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Php\HashTrait` · `ValueError`
 
@@ -2240,7 +2240,7 @@ Interface
 
 Interface for JWT Signer classes
 
-- [`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`](../phalcon_contracts/#contractsencryptionsecurityjwtsignersigner)
+- [`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`](/6.0/api/phalcon_contracts/#contractsencryptionsecurityjwtsignersigner)
 - **`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`**
 
 `Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`
@@ -3259,7 +3259,7 @@ a DateTimeImmutable. Used by Version1 and Version6.
 
 Interface
 
-- [`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`](../phalcon_contracts/#contractsencryptionsecurityuuidnodeprovider)
+- [`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`](/6.0/api/phalcon_contracts/#contractsencryptionsecurityuuidnodeprovider)
 - **`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`**
 
 `Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`
@@ -3335,7 +3335,7 @@ Result is cached in the instance property and optionally in APCu.
 
 Interface
 
-- [`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`](../phalcon_contracts/#contractsencryptionsecurityuuidtimebaseduuid)
+- [`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`](/6.0/api/phalcon_contracts/#contractsencryptionsecurityuuidtimebaseduuid)
 - **`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`**
 
 `Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`
@@ -3348,7 +3348,7 @@ Marker interface for UUID version adapters.
 
 Also carries the standard RFC 4122 namespace UUIDs as constants.
 
-- [`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`](../phalcon_contracts/#contractsencryptionsecurityuuiduuid)
+- [`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`](/6.0/api/phalcon_contracts/#contractsencryptionsecurityuuiduuid)
 - **`Phalcon\Encryption\Security\Uuid\UuidInterface`**
 
 `Phalcon\Contracts\Encryption\Security\Uuid\Uuid`

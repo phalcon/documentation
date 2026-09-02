@@ -246,7 +246,7 @@ Interface
 
 Phalcon\Assets\AssetInterface
 
-- [`Phalcon\Contracts\Assets\Asset`](../phalcon_contracts/#contractsassetsasset)
+- [`Phalcon\Contracts\Assets\Asset`](/6.0/api/phalcon_contracts/#contractsassetsasset)
 - **`Phalcon\Assets\AssetInterface`**
 
 `Phalcon\Contracts\Assets\Asset`
@@ -890,7 +890,7 @@ Interface
 
 Phalcon\Assets\FilterInterface
 
-- [`Phalcon\Contracts\Assets\Filter`](../phalcon_contracts/#contractsassetsfilter)
+- [`Phalcon\Contracts\Assets\Filter`](/6.0/api/phalcon_contracts/#contractsassetsfilter)
 - **`Phalcon\Assets\FilterInterface`**
 
 `Phalcon\Contracts\Assets\Filter`
@@ -1168,7 +1168,7 @@ Class
 Manages collections of CSS/JavaScript assets
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](../phalcon_di/#diabstractinjectionaware)
+- [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
 - **`Phalcon\Assets\Manager`**
 
 `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Url` · `Phalcon\Traits\Php\FileTrait`

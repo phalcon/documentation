@@ -15,12 +15,9 @@ All classes are prefixed with `Phalcon`
 
 ## Di\AbstractInjectionAware
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/AbstractInjectionAware.zep">Source on GitHub</a>
+Abstract
 
 This abstract class offers common access to the DI in a class
-
-<div class="api-tree">
 
 - `\stdClass`
 - **`Phalcon\Di\AbstractInjectionAware`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
@@ -37,41 +34,24 @@ This abstract class offers common access to the DI in a class
 - [`Phalcon\Mvc\Url`](/5.20/api/phalcon_mvc/#mvcurl)
 - [`Phalcon\Session\Manager`](/5.20/api/phalcon_session/#sessionmanager)
 
-</div>
-
-__Uses__ `stdClass`
+`stdClass`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diabstractinjectionaware-getdi">
-<code class="vis vis-public">public</code>
-<code class="ret">DiInterface</code>
-<code class="sig"><span class="sf">getDI</span>()</code>
-<span class="desc">Returns the internal dependency injector</span>
-</a>
-<a class="api-item" href="#diabstractinjectionaware-setdi">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Sets the dependency injector</span>
-</a>
-</div>
+<ApiItem href="#diabstractinjectionaware-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
+Returns the internal dependency injector
+</ApiItem>
+<ApiItem href="#diabstractinjectionaware-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Sets the dependency injector
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface</code>
-<code class="sig"><span class="sv">$container</span></code>
-<span class="desc">Dependency Injector</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="container" type="DiInterface" default="">
+Dependency Injector
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="diabstractinjectionaware-getdi"><code>getDI()</code></h4>
 
@@ -91,8 +71,7 @@ Sets the dependency injector
 
 ## Di\Di
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Di.zep">Source on GitHub</a>
+Class
 
 Phalcon\Di\Di is a component that implements Dependency Injection/Service
 Location of services and it's itself a container for them.
@@ -131,236 +110,123 @@ function () {
 $request = $di->getRequest();
 ```
 
-<div class="api-tree">
-
 - **`Phalcon\Di\Di`** - implements [`Phalcon\Di\DiInterface`](#didiinterface)
 - [`Phalcon\Di\FactoryDefault`](#difactorydefault)
 
-</div>
-
-__Uses__ `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Exceptions\ServiceCannotBeResolved` · `Phalcon\Di\InitializationAwareInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Service` · `Phalcon\Di\ServiceInterface` · `Phalcon\Di\ServiceProviderInterface` · `Phalcon\Events\ManagerInterface`
+`Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Exceptions\ServiceCannotBeResolved` · `Phalcon\Di\InitializationAwareInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Service` · `Phalcon\Di\ServiceInterface` · `Phalcon\Di\ServiceProviderInterface` · `Phalcon\Events\ManagerInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#didi-__call">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Magic method to get or set services using setters/getters</span>
-</a>
-<a class="api-item" href="#didi-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-<span class="desc">Phalcon\Di\Di constructor</span>
-</a>
-<a class="api-item" href="#didi-attempt">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface|bool</code>
-<code class="sig"><span class="sf">attempt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shared</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Attempts to register a service in the services container</span>
-</a>
-<a class="api-item" href="#didi-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Resolves the service based on its configuration</span>
-</a>
-<a class="api-item" href="#didi-getalias">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Return the alias based on a passed key. Returns an empty string if</span>
-</a>
-<a class="api-item" href="#didi-getdefault">
-<code class="vis vis-public">public</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sf">getDefault</span>()</code>
-<span class="desc">Return the latest DI created</span>
-</a>
-<a class="api-item" href="#didi-getinternaleventsmanager">
-<code class="vis vis-public">public</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sf">getInternalEventsManager</span>()</code>
-<span class="desc">Returns the internal event manager</span>
-</a>
-<a class="api-item" href="#didi-getraw">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getRaw</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns a service definition without resolving</span>
-</a>
-<a class="api-item" href="#didi-getservice">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface</code>
-<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns a Phalcon\Di\Service instance</span>
-</a>
-<a class="api-item" href="#didi-getservices">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface[]</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Return the services registered in the DI</span>
-</a>
-<a class="api-item" href="#didi-getshared">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getShared</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Resolves a service, the resolved service is stored in the DI, subsequent</span>
-</a>
-<a class="api-item" href="#didi-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Check whether the DI contains a service by a name</span>
-</a>
-<a class="api-item" href="#didi-hasshared">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasShared</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Check whether the DI has a cached shared instance for a service name.</span>
-</a>
-<a class="api-item" href="#didi-loadfromphp">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">loadFromPhp</span>( <span class="st">string</span> <span class="sv">$filePath</span> )</code>
-<span class="desc">Loads services from a php config file.</span>
-</a>
-<a class="api-item" href="#didi-loadfromyaml">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">loadFromYaml</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array|null</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Loads services from a yaml file.</span>
-</a>
-<a class="api-item" href="#didi-offsetexists">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$name</span> )</code>
-<span class="desc">Check if a service is registered using the array syntax</span>
-</a>
-<a class="api-item" href="#didi-offsetget">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$name</span> )</code>
-<span class="desc">Allows to obtain a shared service using the array syntax</span>
-</a>
-<a class="api-item" href="#didi-offsetset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Allows to register a shared service using the array syntax</span>
-</a>
-<a class="api-item" href="#didi-offsetunset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$name</span> )</code>
-<span class="desc">Removes a service from the services container using the array syntax</span>
-</a>
-<a class="api-item" href="#didi-register">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">register</span>( <span class="st">ServiceProviderInterface</span> <span class="sv">$provider</span> )</code>
-<span class="desc">Registers a service provider.</span>
-</a>
-<a class="api-item" href="#didi-remove">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Removes a service in the services container</span>
-</a>
-<a class="api-item" href="#didi-removeshared">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">removeShared</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Removes the cached shared instance for a service, leaving the service</span>
-</a>
-<a class="api-item" href="#didi-reset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">reset</span>()</code>
-<span class="desc">Resets the internal default DI</span>
-</a>
-<a class="api-item" href="#didi-set">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shared</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Registers a service in the services container</span>
-</a>
-<a class="api-item" href="#didi-setalias">
-<code class="vis vis-public">public</code>
-<code class="ret">self</code>
-<code class="sig"><span class="sf">setAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$aliases</span></span>)</code>
-<span class="desc">Sets one or more aliases to the given name.</span>
-</a>
-<a class="api-item" href="#didi-setdefault">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefault</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Set a default dependency injection container to be obtained into static</span>
-</a>
-<a class="api-item" href="#didi-setinternaleventsmanager">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">setInternalEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
-<span class="desc">Sets the internal event manager</span>
-</a>
-<a class="api-item" href="#didi-setservice">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface</code>
-<code class="sig"><span class="sf">setService</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">ServiceInterface</span> <span class="sv">$rawDefinition</span></span>)</code>
-<span class="desc">Sets a service using a raw Phalcon\Di\Service definition</span>
-</a>
-<a class="api-item" href="#didi-setshared">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface</code>
-<code class="sig"><span class="sf">setShared</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
-<span class="desc">Registers an &quot;always shared&quot; service in the services container</span>
-</a>
-<a class="api-item" href="#didi-loadfromconfig">
-<code class="vis vis-protected">protected</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">loadFromConfig</span>( <span class="st">ConfigInterface</span> <span class="sv">$config</span> )</code>
-<span class="desc">Loads services from a Config object.</span>
-</a>
-</div>
+<ApiItem href="#didi-__call" visibility="public" name="__call" returnType="mixed|null" params={[{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":"[]"}]}>
+Magic method to get or set services using setters/getters
+</ApiItem>
+<ApiItem href="#didi-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+Phalcon\Di\Di constructor
+</ApiItem>
+<ApiItem href="#didi-attempt" visibility="public" name="attempt" returnType="ServiceInterface|bool" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
+Attempts to register a service in the services container
+</ApiItem>
+<ApiItem href="#didi-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
+Resolves the service based on its configuration
+</ApiItem>
+<ApiItem href="#didi-getalias" visibility="public" name="getAlias" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Return the alias based on a passed key. Returns an empty string if
+</ApiItem>
+<ApiItem href="#didi-getdefault" visibility="public" name="getDefault" returnType="DiInterface|null" params={[]}>
+Return the latest DI created
+</ApiItem>
+<ApiItem href="#didi-getinternaleventsmanager" visibility="public" name="getInternalEventsManager" returnType="ManagerInterface|null" params={[]}>
+Returns the internal event manager
+</ApiItem>
+<ApiItem href="#didi-getraw" visibility="public" name="getRaw" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+Returns a service definition without resolving
+</ApiItem>
+<ApiItem href="#didi-getservice" visibility="public" name="getService" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null}]}>
+Returns a Phalcon\Di\Service instance
+</ApiItem>
+<ApiItem href="#didi-getservices" visibility="public" name="getServices" returnType="ServiceInterface[]" params={[]}>
+Return the services registered in the DI
+</ApiItem>
+<ApiItem href="#didi-getshared" visibility="public" name="getShared" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
+Resolves a service, the resolved service is stored in the DI, subsequent
+</ApiItem>
+<ApiItem href="#didi-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Check whether the DI contains a service by a name
+</ApiItem>
+<ApiItem href="#didi-hasshared" visibility="public" name="hasShared" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Check whether the DI has a cached shared instance for a service name.
+</ApiItem>
+<ApiItem href="#didi-loadfromphp" visibility="public" name="loadFromPhp" returnType="void" params={[{"type":"string","name":"filePath","default":null}]}>
+Loads services from a php config file.
+</ApiItem>
+<ApiItem href="#didi-loadfromyaml" visibility="public" name="loadFromYaml" returnType="void" params={[{"type":"string","name":"filePath","default":null},{"type":"array|null","name":"callbacks","default":"null"}]}>
+Loads services from a yaml file.
+</ApiItem>
+<ApiItem href="#didi-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"name","default":null}]}>
+Check if a service is registered using the array syntax
+</ApiItem>
+<ApiItem href="#didi-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"name","default":null}]}>
+Allows to obtain a shared service using the array syntax
+</ApiItem>
+<ApiItem href="#didi-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
+Allows to register a shared service using the array syntax
+</ApiItem>
+<ApiItem href="#didi-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"name","default":null}]}>
+Removes a service from the services container using the array syntax
+</ApiItem>
+<ApiItem href="#didi-register" visibility="public" name="register" returnType="void" params={[{"type":"ServiceProviderInterface","name":"provider","default":null}]}>
+Registers a service provider.
+</ApiItem>
+<ApiItem href="#didi-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+Removes a service in the services container
+</ApiItem>
+<ApiItem href="#didi-removeshared" visibility="public" name="removeShared" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+Removes the cached shared instance for a service, leaving the service
+</ApiItem>
+<ApiItem href="#didi-reset" visibility="public" name="reset" returnType="void" params={[]}>
+Resets the internal default DI
+</ApiItem>
+<ApiItem href="#didi-set" visibility="public" name="set" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
+Registers a service in the services container
+</ApiItem>
+<ApiItem href="#didi-setalias" visibility="public" name="setAlias" returnType="self" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"aliases","default":null}]}>
+Sets one or more aliases to the given name.
+</ApiItem>
+<ApiItem href="#didi-setdefault" visibility="public" name="setDefault" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Set a default dependency injection container to be obtained into static
+</ApiItem>
+<ApiItem href="#didi-setinternaleventsmanager" visibility="public" name="setInternalEventsManager" returnType="" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
+Sets the internal event manager
+</ApiItem>
+<ApiItem href="#didi-setservice" visibility="public" name="setService" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"ServiceInterface","name":"rawDefinition","default":null}]}>
+Sets a service using a raw Phalcon\Di\Service definition
+</ApiItem>
+<ApiItem href="#didi-setshared" visibility="public" name="setShared" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
+Registers an "always shared" service in the services container
+</ApiItem>
+<ApiItem href="#didi-loadfromconfig" visibility="protected" name="loadFromConfig" returnType="void" params={[{"type":"ConfigInterface","name":"config","default":null}]}>
+Loads services from a Config object.
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$aliases</span><span class="sm"> = []</span></code>
-<span class="desc">List of service aliases</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sv">$defaultContainer</span><span class="sm"> = null</span></code>
-<span class="desc">Latest DI build</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ManagerInterface|null</code>
-<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
-<span class="desc">Events Manager</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">ServiceInterface[]</code>
-<code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
-<span class="desc">List of registered services</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$sharedInstances</span><span class="sm"> = []</span></code>
-<span class="desc">List of shared instances</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="aliases" type="array" default="[]">
+List of service aliases
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="defaultContainer" type="DiInterface|null" default="null">
+Latest DI build
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
+Events Manager
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="services" type="ServiceInterface[]" default="[]">
+List of registered services
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="sharedInstances" type="array" default="[]">
+List of shared instances
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 29</div>
 
 <h4 id="didi-__call"><code>__call()</code></h4>
 
@@ -722,8 +588,6 @@ mixed $definition
 
 Registers an "always shared" service in the services container
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="didi-loadfromconfig"><code>loadFromConfig()</code></h4>
 
 ```php
@@ -734,124 +598,67 @@ Loads services from a Config object.
 
 ## Di\DiInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/DiInterface.zep">Source on GitHub</a>
+Interface
 
 Interface for Phalcon\Di\Di
-
-<div class="api-tree">
 
 - `\ArrayAccess`
 - **`Phalcon\Di\DiInterface`**
 
-</div>
-
-__Uses__ `ArrayAccess`
+`ArrayAccess`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#didiinterface-attempt">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface|bool</code>
-<code class="sig"><span class="sf">attempt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shared</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Attempts to register a service in the services container</span>
-</a>
-<a class="api-item" href="#didiinterface-get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Resolves the service based on its configuration</span>
-</a>
-<a class="api-item" href="#didiinterface-getdefault">
-<code class="vis vis-public">public</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sf">getDefault</span>()</code>
-<span class="desc">Return the last DI created</span>
-</a>
-<a class="api-item" href="#didiinterface-getraw">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getRaw</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns a service definition without resolving</span>
-</a>
-<a class="api-item" href="#didiinterface-getservice">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface</code>
-<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns the corresponding Phalcon\Di\Service instance for a service</span>
-</a>
-<a class="api-item" href="#didiinterface-getservices">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface[]</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Return the services registered in the DI</span>
-</a>
-<a class="api-item" href="#didiinterface-getshared">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getShared</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Returns a shared service based on their configuration</span>
-</a>
-<a class="api-item" href="#didiinterface-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Check whether the DI contains a service by a name</span>
-</a>
-<a class="api-item" href="#didiinterface-hasshared">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasShared</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Check whether the DI has a cached shared instance for a service name.</span>
-</a>
-<a class="api-item" href="#didiinterface-remove">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Removes a service in the services container</span>
-</a>
-<a class="api-item" href="#didiinterface-removeshared">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">removeShared</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Removes the cached shared instance for a service, leaving the service</span>
-</a>
-<a class="api-item" href="#didiinterface-reset">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">reset</span>()</code>
-<span class="desc">Resets the internal default DI</span>
-</a>
-<a class="api-item" href="#didiinterface-set">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shared</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Registers a service in the services container</span>
-</a>
-<a class="api-item" href="#didiinterface-setdefault">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefault</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Set a default dependency injection container to be obtained into static</span>
-</a>
-<a class="api-item" href="#didiinterface-setservice">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface</code>
-<code class="sig"><span class="sf">setService</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">ServiceInterface</span> <span class="sv">$rawDefinition</span></span>)</code>
-<span class="desc">Sets a service using a raw Phalcon\Di\Service definition</span>
-</a>
-<a class="api-item" href="#didiinterface-setshared">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface</code>
-<code class="sig"><span class="sf">setShared</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
-<span class="desc">Registers an &quot;always shared&quot; service in the services container</span>
-</a>
-</div>
+<ApiItem href="#didiinterface-attempt" visibility="public" name="attempt" returnType="ServiceInterface|bool" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
+Attempts to register a service in the services container
+</ApiItem>
+<ApiItem href="#didiinterface-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
+Resolves the service based on its configuration
+</ApiItem>
+<ApiItem href="#didiinterface-getdefault" visibility="public" name="getDefault" returnType="DiInterface|null" params={[]}>
+Return the last DI created
+</ApiItem>
+<ApiItem href="#didiinterface-getraw" visibility="public" name="getRaw" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
+Returns a service definition without resolving
+</ApiItem>
+<ApiItem href="#didiinterface-getservice" visibility="public" name="getService" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null}]}>
+Returns the corresponding Phalcon\Di\Service instance for a service
+</ApiItem>
+<ApiItem href="#didiinterface-getservices" visibility="public" name="getServices" returnType="ServiceInterface[]" params={[]}>
+Return the services registered in the DI
+</ApiItem>
+<ApiItem href="#didiinterface-getshared" visibility="public" name="getShared" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
+Returns a shared service based on their configuration
+</ApiItem>
+<ApiItem href="#didiinterface-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Check whether the DI contains a service by a name
+</ApiItem>
+<ApiItem href="#didiinterface-hasshared" visibility="public" name="hasShared" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Check whether the DI has a cached shared instance for a service name.
+</ApiItem>
+<ApiItem href="#didiinterface-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+Removes a service in the services container
+</ApiItem>
+<ApiItem href="#didiinterface-removeshared" visibility="public" name="removeShared" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
+Removes the cached shared instance for a service, leaving the service
+</ApiItem>
+<ApiItem href="#didiinterface-reset" visibility="public" name="reset" returnType="void" params={[]}>
+Resets the internal default DI
+</ApiItem>
+<ApiItem href="#didiinterface-set" visibility="public" name="set" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
+Registers a service in the services container
+</ApiItem>
+<ApiItem href="#didiinterface-setdefault" visibility="public" name="setDefault" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Set a default dependency injection container to be obtained into static
+</ApiItem>
+<ApiItem href="#didiinterface-setservice" visibility="public" name="setService" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"ServiceInterface","name":"rawDefinition","default":null}]}>
+Sets a service using a raw Phalcon\Di\Service definition
+</ApiItem>
+<ApiItem href="#didiinterface-setshared" visibility="public" name="setShared" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
+Registers an "always shared" service in the services container
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 16</div>
 
 <h4 id="didiinterface-attempt"><code>attempt()</code></h4>
 
@@ -1016,12 +823,9 @@ Registers an "always shared" service in the services container
 
 ## Di\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exception.zep">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Di will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Di\Exception`**
@@ -1047,36 +851,18 @@ Exceptions thrown in Phalcon\Di will use this class
 - [`Phalcon\Di\Exceptions\SetterParametersMustBeArray`](#diexceptionssetterparametersmustbearray)
 - [`Phalcon\Di\Exceptions\UnknownServiceType`](#diexceptionsunknownservicetype)
 
-</div>
-
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexception-servicecannotberesolved">
-<code class="vis vis-public">public</code>
-<code class="ret">Exception</code>
-<code class="sig"><span class="sf">serviceCannotBeResolved</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#diexception-servicenotfound">
-<code class="vis vis-public">public</code>
-<code class="ret">Exception</code>
-<code class="sig"><span class="sf">serviceNotFound</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#diexception-undefinedmethod">
-<code class="vis vis-public">public</code>
-<code class="ret">Exception</code>
-<code class="sig"><span class="sf">undefinedMethod</span>( <span class="st">string</span> <span class="sv">$method</span> )</code>
-</a>
-<a class="api-item" href="#diexception-unknownserviceinparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">Exception</code>
-<code class="sig"><span class="sf">unknownServiceInParameter</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexception-servicecannotberesolved" visibility="public" name="serviceCannotBeResolved" returnType="Exception" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#diexception-servicenotfound" visibility="public" name="serviceNotFound" returnType="Exception" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#diexception-undefinedmethod" visibility="public" name="undefinedMethod" returnType="Exception" params={[{"type":"string","name":"method","default":null}]}>
+</ApiItem>
+<ApiItem href="#diexception-unknownserviceinparameter" visibility="public" name="unknownServiceInParameter" returnType="Exception" params={[{"type":"int","name":"position","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="diexception-servicecannotberesolved"><code>serviceCannotBeResolved()</code></h4>
 
@@ -1104,46 +890,30 @@ public static function unknownServiceInParameter( int $position ): Exception;
 
 ## Di\Exception\ServiceResolutionException
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exception/ServiceResolutionException.zep">Source on GitHub</a>
+Class
 
 Phalcon\Di\Exception\ServiceResolutionException
-
-<div class="api-tree">
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exception\ServiceResolutionException`**
 
-</div>
-
 ## Di\Exceptions\AliasAlreadyInUse
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/AliasAlreadyInUse.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\AliasAlreadyInUse`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsaliasalreadyinuse-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$alias</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsaliasalreadyinuse-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"alias","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsaliasalreadyinuse-__construct"><code>__construct()</code></h4>
 
@@ -1153,31 +923,20 @@ public function __construct( string $alias );
 
 ## Di\Exceptions\AliasNameMustBeString
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/AliasNameMustBeString.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\AliasNameMustBeString`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsaliasnamemustbestring-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsaliasnamemustbestring-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsaliasnamemustbestring-__construct"><code>__construct()</code></h4>
 
@@ -1187,31 +946,20 @@ public function __construct();
 
 ## Di\Exceptions\ArgumentTypeRequired
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/ArgumentTypeRequired.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\ArgumentTypeRequired`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsargumenttyperequired-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsargumenttyperequired-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"position","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsargumenttyperequired-__construct"><code>__construct()</code></h4>
 
@@ -1221,31 +969,20 @@ public function __construct( int $position );
 
 ## Di\Exceptions\CallArgumentsMustBeArray
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/CallArgumentsMustBeArray.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\CallArgumentsMustBeArray`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionscallargumentsmustbearray-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionscallargumentsmustbearray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"position","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionscallargumentsmustbearray-__construct"><code>__construct()</code></h4>
 
@@ -1255,31 +992,20 @@ public function __construct( int $position );
 
 ## Di\Exceptions\CircularAliasReference
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/CircularAliasReference.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\CircularAliasReference`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionscircularaliasreference-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionscircularaliasreference-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionscircularaliasreference-__construct"><code>__construct()</code></h4>
 
@@ -1289,31 +1015,20 @@ public function __construct( string $name );
 
 ## Di\Exceptions\ContainerRequired
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/ContainerRequired.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\ContainerRequired`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionscontainerrequired-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#diexceptionscontainerrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionscontainerrequired-__construct"><code>__construct()</code></h4>
 
@@ -1323,31 +1038,20 @@ public function __construct();
 
 ## Di\Exceptions\DefinitionMustBeArrayForRead
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/DefinitionMustBeArrayForRead.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsdefinitionmustbearrayforread-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsdefinitionmustbearrayforread-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsdefinitionmustbearrayforread-__construct"><code>__construct()</code></h4>
 
@@ -1357,31 +1061,20 @@ public function __construct();
 
 ## Di\Exceptions\DefinitionMustBeArrayForUpdate
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/DefinitionMustBeArrayForUpdate.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsdefinitionmustbearrayforupdate-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsdefinitionmustbearrayforupdate-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsdefinitionmustbearrayforupdate-__construct"><code>__construct()</code></h4>
 
@@ -1391,31 +1084,20 @@ public function __construct();
 
 ## Di\Exceptions\MethodCallMustBeArray
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/MethodCallMustBeArray.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\MethodCallMustBeArray`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsmethodcallmustbearray-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsmethodcallmustbearray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"position","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsmethodcallmustbearray-__construct"><code>__construct()</code></h4>
 
@@ -1425,31 +1107,20 @@ public function __construct( int $position );
 
 ## Di\Exceptions\MethodNameRequired
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/MethodNameRequired.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\MethodNameRequired`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsmethodnamerequired-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsmethodnamerequired-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"position","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsmethodnamerequired-__construct"><code>__construct()</code></h4>
 
@@ -1459,31 +1130,20 @@ public function __construct( int $position );
 
 ## Di\Exceptions\MissingClassNameParameter
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/MissingClassNameParameter.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\MissingClassNameParameter`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsmissingclassnameparameter-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsmissingclassnameparameter-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsmissingclassnameparameter-__construct"><code>__construct()</code></h4>
 
@@ -1493,31 +1153,20 @@ public function __construct();
 
 ## Di\Exceptions\MissingParameterKey
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/MissingParameterKey.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\MissingParameterKey`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsmissingparameterkey-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span></span>)</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsmissingparameterkey-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"key","default":null},{"type":"int","name":"position","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsmissingparameterkey-__construct"><code>__construct()</code></h4>
 
@@ -1530,31 +1179,20 @@ int $position
 
 ## Di\Exceptions\PropertyInjectionRequiresInstance
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/PropertyInjectionRequiresInstance.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionspropertyinjectionrequiresinstance-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#diexceptionspropertyinjectionrequiresinstance-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionspropertyinjectionrequiresinstance-__construct"><code>__construct()</code></h4>
 
@@ -1564,31 +1202,20 @@ public function __construct();
 
 ## Di\Exceptions\PropertyMustBeArray
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/PropertyMustBeArray.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\PropertyMustBeArray`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionspropertymustbearray-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionspropertymustbearray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"position","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionspropertymustbearray-__construct"><code>__construct()</code></h4>
 
@@ -1598,31 +1225,20 @@ public function __construct( int $position );
 
 ## Di\Exceptions\PropertyNameRequired
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/PropertyNameRequired.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\PropertyNameRequired`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionspropertynamerequired-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionspropertynamerequired-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"position","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionspropertynamerequired-__construct"><code>__construct()</code></h4>
 
@@ -1632,31 +1248,20 @@ public function __construct( int $position );
 
 ## Di\Exceptions\PropertyValueRequired
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/PropertyValueRequired.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\PropertyValueRequired`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionspropertyvaluerequired-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionspropertyvaluerequired-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"position","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionspropertyvaluerequired-__construct"><code>__construct()</code></h4>
 
@@ -1666,31 +1271,20 @@ public function __construct( int $position );
 
 ## Di\Exceptions\ServiceCannotBeResolved
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/ServiceCannotBeResolved.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\ServiceCannotBeResolved`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsservicecannotberesolved-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsservicecannotberesolved-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsservicecannotberesolved-__construct"><code>__construct()</code></h4>
 
@@ -1700,31 +1294,20 @@ public function __construct( string $name );
 
 ## Di\Exceptions\SetterInjectionRequiresInstance
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/SetterInjectionRequiresInstance.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\SetterInjectionRequiresInstance`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionssetterinjectionrequiresinstance-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#diexceptionssetterinjectionrequiresinstance-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionssetterinjectionrequiresinstance-__construct"><code>__construct()</code></h4>
 
@@ -1734,31 +1317,20 @@ public function __construct();
 
 ## Di\Exceptions\SetterParametersMustBeArray
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/SetterParametersMustBeArray.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\SetterParametersMustBeArray`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionssetterparametersmustbearray-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#diexceptionssetterparametersmustbearray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionssetterparametersmustbearray-__construct"><code>__construct()</code></h4>
 
@@ -1768,31 +1340,20 @@ public function __construct();
 
 ## Di\Exceptions\UnknownServiceType
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/UnknownServiceType.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Di\Exception`](#diexception)
 - **`Phalcon\Di\Exceptions\UnknownServiceType`**
 
-</div>
-
-__Uses__ `Phalcon\Di\Exception`
+`Phalcon\Di\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diexceptionsunknownservicetype-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-</a>
-</div>
+<ApiItem href="#diexceptionsunknownservicetype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"position","default":null}]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diexceptionsunknownservicetype-__construct"><code>__construct()</code></h4>
 
@@ -1802,37 +1363,26 @@ public function __construct( int $position );
 
 ## Di\FactoryDefault
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/FactoryDefault.zep">Source on GitHub</a>
+Class
 
 This is a variant of the standard Phalcon\Di\Di. By default it automatically
 registers all the services provided by the framework. Thanks to this, the
 developer does not need to register each service individually providing a
 full stack framework
 
-<div class="api-tree">
-
 - [`Phalcon\Di\Di`](#didi)
 - **`Phalcon\Di\FactoryDefault`**
 - [`Phalcon\Di\FactoryDefault\Cli`](#difactorydefaultcli)
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\FilterFactory` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\Response\Cookies` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Url` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
+`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\FilterFactory` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\Response\Cookies` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Url` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#difactorydefault-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-<span class="desc">Phalcon\Di\FactoryDefault constructor</span>
-</a>
-</div>
+<ApiItem href="#difactorydefault-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+Phalcon\Di\FactoryDefault constructor
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="difactorydefault-__construct"><code>__construct()</code></h4>
 
@@ -1844,8 +1394,7 @@ Phalcon\Di\FactoryDefault constructor
 
 ## Di\FactoryDefault\Cli
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/FactoryDefault/Cli.zep">Source on GitHub</a>
+Class
 
 Phalcon\Di\FactoryDefault\Cli
 
@@ -1854,29 +1403,19 @@ registers all the services provided by the framework.
 Thanks to this, the developer does not need to register each service individually.
 This class is specially suitable for CLI applications
 
-<div class="api-tree">
-
 - [`Phalcon\Di\Di`](#didi)
 - [`Phalcon\Di\FactoryDefault`](#difactorydefault)
 - **`Phalcon\Di\FactoryDefault\Cli`**
 
-</div>
-
-__Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Router` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Service` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\FilterFactory` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
+`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Router` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Service` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\FilterFactory` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#difactorydefaultcli-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-<span class="desc">Phalcon\Di\FactoryDefault\Cli constructor</span>
-</a>
-</div>
+<ApiItem href="#difactorydefaultcli-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+Phalcon\Di\FactoryDefault\Cli constructor
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="difactorydefaultcli-__construct"><code>__construct()</code></h4>
 
@@ -1888,30 +1427,18 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 ## Di\InitializationAwareInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/InitializationAwareInterface.zep">Source on GitHub</a>
+Interface
 
 Interface for components that have `initialize()`
 
-<div class="api-tree">
-
 - **`Phalcon\Di\InitializationAwareInterface`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diinitializationawareinterface-initialize">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">initialize</span>()</code>
-</a>
-</div>
+<ApiItem href="#diinitializationawareinterface-initialize" visibility="public" name="initialize" returnType="void" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diinitializationawareinterface-initialize"><code>initialize()</code></h4>
 
@@ -1921,8 +1448,7 @@ public function initialize(): void;
 
 ## Di\Injectable
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Injectable.zep">Source on GitHub</a>
+Abstract
 
 This class allows to access services in the services container by just only
 accessing a public property with the same name of a registered service
@@ -1953,8 +1479,6 @@ accessing a public property with the same name of a registered service
 @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent
 @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
 
-<div class="api-tree">
-
 - `\stdClass`
 - **`Phalcon\Di\Injectable`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
 - [`Phalcon\Application\AbstractApplication`](/5.20/api/phalcon_application/#applicationabstractapplication)
@@ -1967,53 +1491,30 @@ accessing a public property with the same name of a registered service
 - [`Phalcon\Mvc\View\Engine\AbstractEngine`](/5.20/api/phalcon_mvc/#mvcviewengineabstractengine)
 - [`Phalcon\Mvc\View\Simple`](/5.20/api/phalcon_mvc/#mvcviewsimple)
 
-</div>
-
-__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\Exceptions\ContainerRequired` · `Phalcon\Session\BagInterface` · `stdClass`
+`Phalcon\Di\Di` · `Phalcon\Di\Exceptions\ContainerRequired` · `Phalcon\Session\BagInterface` · `stdClass`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diinjectable-__get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$propertyName</span> )</code>
-<span class="desc">Magic method __get</span>
-</a>
-<a class="api-item" href="#diinjectable-__isset">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Magic method __isset</span>
-</a>
-<a class="api-item" href="#diinjectable-getdi">
-<code class="vis vis-public">public</code>
-<code class="ret">DiInterface</code>
-<code class="sig"><span class="sf">getDI</span>()</code>
-<span class="desc">Returns the internal dependency injector</span>
-</a>
-<a class="api-item" href="#diinjectable-setdi">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Sets the dependency injector</span>
-</a>
-</div>
+<ApiItem href="#diinjectable-__get" visibility="public" name="__get" returnType="mixed|null" params={[{"type":"string","name":"propertyName","default":null}]}>
+Magic method __get
+</ApiItem>
+<ApiItem href="#diinjectable-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Magic method __isset
+</ApiItem>
+<ApiItem href="#diinjectable-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
+Returns the internal dependency injector
+</ApiItem>
+<ApiItem href="#diinjectable-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Sets the dependency injector
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
-<span class="desc">Dependency Injector</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="null">
+Dependency Injector
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 4</div>
 
 <h4 id="diinjectable-__get"><code>__get()</code></h4>
 
@@ -2049,38 +1550,23 @@ Sets the dependency injector
 
 ## Di\InjectionAwareInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/InjectionAwareInterface.zep">Source on GitHub</a>
+Interface
 
 This interface must be implemented in those classes that uses internally the
 Phalcon\Di\Di that creates them
 
-<div class="api-tree">
-
 - **`Phalcon\Di\InjectionAwareInterface`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diinjectionawareinterface-getdi">
-<code class="vis vis-public">public</code>
-<code class="ret">DiInterface</code>
-<code class="sig"><span class="sf">getDI</span>()</code>
-<span class="desc">Returns the internal dependency injector</span>
-</a>
-<a class="api-item" href="#diinjectionawareinterface-setdi">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
-<span class="desc">Sets the dependency injector</span>
-</a>
-</div>
+<ApiItem href="#diinjectionawareinterface-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
+Returns the internal dependency injector
+</ApiItem>
+<ApiItem href="#diinjectionawareinterface-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Sets the dependency injector
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="diinjectionawareinterface-getdi"><code>getDI()</code></h4>
 
@@ -2100,8 +1586,7 @@ Sets the dependency injector
 
 ## Di\Service
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Service.zep">Source on GitHub</a>
+Class
 
 Represents individually a service in the services container
 
@@ -2114,105 +1599,55 @@ $service = new \Phalcon\Di\Service(
 $request = service->resolve();
 ```
 
-<div class="api-tree">
-
 - **`Phalcon\Di\Service`** - implements [`Phalcon\Di\ServiceInterface`](#diserviceinterface)
 
-</div>
-
-__Uses__ `Closure` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder`
+`Closure` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diservice-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shared</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Phalcon\Di\Service</span>
-</a>
-<a class="api-item" href="#diservice-getdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getDefinition</span>()</code>
-<span class="desc">Returns the service definition</span>
-</a>
-<a class="api-item" href="#diservice-getparameter">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">getParameter</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-<span class="desc">Returns a parameter in a specific position</span>
-</a>
-<a class="api-item" href="#diservice-isresolved">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isResolved</span>()</code>
-<span class="desc">Returns true if the service was resolved</span>
-</a>
-<a class="api-item" href="#diservice-isshared">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isShared</span>()</code>
-<span class="desc">Check whether the service is shared or not</span>
-</a>
-<a class="api-item" href="#diservice-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Resolves the service</span>
-</a>
-<a class="api-item" href="#diservice-setdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefinition</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
-<span class="desc">Set the service definition</span>
-</a>
-<a class="api-item" href="#diservice-setparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface</code>
-<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">int</span> <span class="sv">$position</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameter</span></span>)</code>
-<span class="desc">Changes a parameter in the definition without resolve the service</span>
-</a>
-<a class="api-item" href="#diservice-setshared">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setShared</span>( <span class="st">bool</span> <span class="sv">$shared</span> )</code>
-<span class="desc">Sets if the service is shared or not</span>
-</a>
-<a class="api-item" href="#diservice-setsharedinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setSharedInstance</span>( <span class="st">mixed</span> <span class="sv">$sharedInstance</span> )</code>
-<span class="desc">Sets/Resets the shared instance related to the service</span>
-</a>
-</div>
+<ApiItem href="#diservice-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
+Phalcon\Di\Service
+</ApiItem>
+<ApiItem href="#diservice-getdefinition" visibility="public" name="getDefinition" returnType="mixed" params={[]}>
+Returns the service definition
+</ApiItem>
+<ApiItem href="#diservice-getparameter" visibility="public" name="getParameter" returnType="" params={[{"type":"int","name":"position","default":null}]}>
+Returns a parameter in a specific position
+</ApiItem>
+<ApiItem href="#diservice-isresolved" visibility="public" name="isResolved" returnType="bool" params={[]}>
+Returns true if the service was resolved
+</ApiItem>
+<ApiItem href="#diservice-isshared" visibility="public" name="isShared" returnType="bool" params={[]}>
+Check whether the service is shared or not
+</ApiItem>
+<ApiItem href="#diservice-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"mixed","name":"parameters","default":"null"},{"type":"DiInterface|null","name":"container","default":"null"}]}>
+Resolves the service
+</ApiItem>
+<ApiItem href="#diservice-setdefinition" visibility="public" name="setDefinition" returnType="void" params={[{"type":"mixed","name":"definition","default":null}]}>
+Set the service definition
+</ApiItem>
+<ApiItem href="#diservice-setparameter" visibility="public" name="setParameter" returnType="ServiceInterface" params={[{"type":"int","name":"position","default":null},{"type":"array","name":"parameter","default":null}]}>
+Changes a parameter in the definition without resolve the service
+</ApiItem>
+<ApiItem href="#diservice-setshared" visibility="public" name="setShared" returnType="void" params={[{"type":"bool","name":"shared","default":null}]}>
+Sets if the service is shared or not
+</ApiItem>
+<ApiItem href="#diservice-setsharedinstance" visibility="public" name="setSharedInstance" returnType="void" params={[{"type":"mixed","name":"sharedInstance","default":null}]}>
+Sets/Resets the shared instance related to the service
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$definition</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$resolved</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$shared</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sv">$sharedInstance</span><span class="sm"> = null</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="definition" type="mixed" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="resolved" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="shared" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="sharedInstance" type="mixed|null" default="null">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 10</div>
 
 <h4 id="diservice-__construct"><code>__construct()</code></h4>
 
@@ -2305,70 +1740,40 @@ Sets/Resets the shared instance related to the service
 
 ## Di\ServiceInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/ServiceInterface.zep">Source on GitHub</a>
+Interface
 
 Represents a service in the services container
 
-<div class="api-tree">
-
 - **`Phalcon\Di\ServiceInterface`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diserviceinterface-getdefinition">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getDefinition</span>()</code>
-<span class="desc">Returns the service definition</span>
-</a>
-<a class="api-item" href="#diserviceinterface-getparameter">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">getParameter</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
-<span class="desc">Returns a parameter in a specific position</span>
-</a>
-<a class="api-item" href="#diserviceinterface-isresolved">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isResolved</span>()</code>
-<span class="desc">Returns true if the service was resolved</span>
-</a>
-<a class="api-item" href="#diserviceinterface-isshared">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isShared</span>()</code>
-<span class="desc">Check whether the service is shared or not</span>
-</a>
-<a class="api-item" href="#diserviceinterface-resolve">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface|null</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Resolves the service</span>
-</a>
-<a class="api-item" href="#diserviceinterface-setdefinition">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">setDefinition</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
-<span class="desc">Set the service definition</span>
-</a>
-<a class="api-item" href="#diserviceinterface-setparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">ServiceInterface</code>
-<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">int</span> <span class="sv">$position</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameter</span></span>)</code>
-<span class="desc">Changes a parameter in the definition without resolve the service</span>
-</a>
-<a class="api-item" href="#diserviceinterface-setshared">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">setShared</span>( <span class="st">bool</span> <span class="sv">$shared</span> )</code>
-<span class="desc">Sets if the service is shared or not</span>
-</a>
-</div>
+<ApiItem href="#diserviceinterface-getdefinition" visibility="public" name="getDefinition" returnType="mixed" params={[]}>
+Returns the service definition
+</ApiItem>
+<ApiItem href="#diserviceinterface-getparameter" visibility="public" name="getParameter" returnType="" params={[{"type":"int","name":"position","default":null}]}>
+Returns a parameter in a specific position
+</ApiItem>
+<ApiItem href="#diserviceinterface-isresolved" visibility="public" name="isResolved" returnType="bool" params={[]}>
+Returns true if the service was resolved
+</ApiItem>
+<ApiItem href="#diserviceinterface-isshared" visibility="public" name="isShared" returnType="bool" params={[]}>
+Check whether the service is shared or not
+</ApiItem>
+<ApiItem href="#diserviceinterface-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"mixed","name":"parameters","default":"null"},{"type":"DiInterface|null","name":"container","default":"null"}]}>
+Resolves the service
+</ApiItem>
+<ApiItem href="#diserviceinterface-setdefinition" visibility="public" name="setDefinition" returnType="" params={[{"type":"mixed","name":"definition","default":null}]}>
+Set the service definition
+</ApiItem>
+<ApiItem href="#diserviceinterface-setparameter" visibility="public" name="setParameter" returnType="ServiceInterface" params={[{"type":"int","name":"position","default":null},{"type":"array","name":"parameter","default":null}]}>
+Changes a parameter in the definition without resolve the service
+</ApiItem>
+<ApiItem href="#diserviceinterface-setshared" visibility="public" name="setShared" returnType="" params={[{"type":"bool","name":"shared","default":null}]}>
+Sets if the service is shared or not
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 8</div>
 
 <h4 id="diserviceinterface-getdefinition"><code>getDefinition()</code></h4>
 
@@ -2442,8 +1847,7 @@ Sets if the service is shared or not
 
 ## Di\ServiceProviderInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/ServiceProviderInterface.zep">Source on GitHub</a>
+Interface
 
 Should be implemented by service providers, or such components, which
 register a service in the service container.
@@ -2468,26 +1872,15 @@ public function register(DiInterface $di)
 }
 ```
 
-<div class="api-tree">
-
 - **`Phalcon\Di\ServiceProviderInterface`**
-
-</div>
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diserviceproviderinterface-register">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">register</span>( <span class="st">DiInterface</span> <span class="sv">$di</span> )</code>
-<span class="desc">Registers a service provider.</span>
-</a>
-</div>
+<ApiItem href="#diserviceproviderinterface-register" visibility="public" name="register" returnType="void" params={[{"type":"DiInterface","name":"di","default":null}]}>
+Registers a service provider.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diserviceproviderinterface-register"><code>register()</code></h4>
 
@@ -2499,34 +1892,23 @@ Registers a service provider.
 
 ## Di\Service\Builder
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Service/Builder.zep">Source on GitHub</a>
+Class
 
 Phalcon\Di\Service\Builder
 
 This class builds instances based on complex definitions
 
-<div class="api-tree">
-
 - **`Phalcon\Di\Service\Builder`**
 
-</div>
-
-__Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\ArgumentTypeRequired` · `Phalcon\Di\Exceptions\CallArgumentsMustBeArray` · `Phalcon\Di\Exceptions\MethodCallMustBeArray` · `Phalcon\Di\Exceptions\MethodNameRequired` · `Phalcon\Di\Exceptions\MissingClassNameParameter` · `Phalcon\Di\Exceptions\MissingParameterKey` · `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance` · `Phalcon\Di\Exceptions\PropertyMustBeArray` · `Phalcon\Di\Exceptions\PropertyNameRequired` · `Phalcon\Di\Exceptions\PropertyValueRequired` · `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance` · `Phalcon\Di\Exceptions\SetterParametersMustBeArray` · `Phalcon\Di\Exceptions\UnknownServiceType`
+`Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\ArgumentTypeRequired` · `Phalcon\Di\Exceptions\CallArgumentsMustBeArray` · `Phalcon\Di\Exceptions\MethodCallMustBeArray` · `Phalcon\Di\Exceptions\MethodNameRequired` · `Phalcon\Di\Exceptions\MissingClassNameParameter` · `Phalcon\Di\Exceptions\MissingParameterKey` · `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance` · `Phalcon\Di\Exceptions\PropertyMustBeArray` · `Phalcon\Di\Exceptions\PropertyNameRequired` · `Phalcon\Di\Exceptions\PropertyValueRequired` · `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance` · `Phalcon\Di\Exceptions\SetterParametersMustBeArray` · `Phalcon\Di\Exceptions\UnknownServiceType`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#diservicebuilder-build">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">build</span>(<span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Builds a service using a complex service definition</span>
-</a>
-</div>
+<ApiItem href="#diservicebuilder-build" visibility="public" name="build" returnType="" params={[{"type":"DiInterface","name":"container","default":null},{"type":"array","name":"definition","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
+Builds a service using a complex service definition
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="diservicebuilder-build"><code>build()</code></h4>
 

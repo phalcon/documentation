@@ -47,10 +47,10 @@ channels. For any given point they run in this order:
    same Collection plus a `result` key.
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](../phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Dispatcher\AbstractDispatcher`** - implements [`Phalcon\Dispatcher\DispatcherInterface`](#dispatcherdispatcherinterface), [`Phalcon\Events\EventsAwareInterface`](../phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Cli\Dispatcher`](../phalcon_cli/#clidispatcher)
-- [`Phalcon\Mvc\Dispatcher`](../phalcon_mvc/#mvcdispatcher)
+- [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
+- **`Phalcon\Dispatcher\AbstractDispatcher`** - implements [`Phalcon\Dispatcher\DispatcherInterface`](#dispatcherdispatcherinterface), [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
+- [`Phalcon\Cli\Dispatcher`](/6.0/api/phalcon_cli/#clidispatcher)
+- [`Phalcon\Mvc\Dispatcher`](/6.0/api/phalcon_mvc/#mvcdispatcher)
 
 `Exception` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Contracts\Dispatcher\DispatcherTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\Exception` · `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Filter\FilterInterface` · `Phalcon\Mvc\Model\Binder` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Support\Collection`
 
@@ -650,7 +650,7 @@ Interface
 
 Interface for Phalcon\Dispatcher\AbstractDispatcher
 
-- [`Phalcon\Contracts\Dispatcher\Dispatcher`](../phalcon_contracts/#contractsdispatcherdispatcher)
+- [`Phalcon\Contracts\Dispatcher\Dispatcher`](/6.0/api/phalcon_contracts/#contractsdispatcherdispatcher)
 - **`Phalcon\Dispatcher\DispatcherInterface`**
 
 `Phalcon\Contracts\Dispatcher\Dispatcher`
@@ -663,9 +663,9 @@ Exceptions thrown in Phalcon\Dispatcher/* will use this class
 
 - `\Exception`
 - **`Phalcon\Dispatcher\Exception`**
-- [`Phalcon\Cli\Dispatcher\Exception`](../phalcon_cli/#clidispatcherexception)
+- [`Phalcon\Cli\Dispatcher\Exception`](/6.0/api/phalcon_cli/#clidispatcherexception)
 - [`Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`](#dispatcherexceptionsforwardininitializeforbidden)
-- [`Phalcon\Mvc\Dispatcher\Exception`](../phalcon_mvc/#mvcdispatcherexception)
+- [`Phalcon\Mvc\Dispatcher\Exception`](/6.0/api/phalcon_mvc/#mvcdispatcherexception)
 
 ### Constants
 

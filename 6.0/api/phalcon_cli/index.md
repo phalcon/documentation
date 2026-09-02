@@ -20,8 +20,8 @@ Class
 This component allows to create CLI applications using Phalcon
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](../phalcon_di/#diinjectable)
-- [`Phalcon\Application\AbstractApplication`](../phalcon_application/#applicationabstractapplication)
+- [`Phalcon\Di\Injectable`](/6.0/api/phalcon_di/#diinjectable)
+- [`Phalcon\Application\AbstractApplication`](/6.0/api/phalcon_application/#applicationabstractapplication)
 - **`Phalcon\Cli\Console`**
 
 `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Traits\Php\FileTrait`
@@ -71,7 +71,7 @@ Class
 Exceptions thrown in Phalcon\Cli\Console will use this class
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](../phalcon_application/#applicationexception)
+- [`Phalcon\Application\Exception`](/6.0/api/phalcon_application/#applicationexception)
 - **`Phalcon\Cli\Console\Exception`**
 - [`Phalcon\Cli\Console\Exceptions\ContainerRequired`](#cliconsoleexceptionscontainerrequired)
 - [`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`](#cliconsoleexceptionsinvalidmoduledefinition)
@@ -82,7 +82,7 @@ Exceptions thrown in Phalcon\Cli\Console will use this class
 Class
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](../phalcon_application/#applicationexception)
+- [`Phalcon\Application\Exception`](/6.0/api/phalcon_application/#applicationexception)
 - [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
 - **`Phalcon\Cli\Console\Exceptions\ContainerRequired`**
 
@@ -106,7 +106,7 @@ public function __construct();
 Class
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](../phalcon_application/#applicationexception)
+- [`Phalcon\Application\Exception`](/6.0/api/phalcon_application/#applicationexception)
 - [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
 - **`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`**
 
@@ -133,7 +133,7 @@ string|null $reason = null
 Class
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](../phalcon_application/#applicationexception)
+- [`Phalcon\Application\Exception`](/6.0/api/phalcon_application/#applicationexception)
 - [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
 - **`Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound`**
 
@@ -178,8 +178,8 @@ $handle = $dispatcher->dispatch();
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](../phalcon_di/#diabstractinjectionaware)
-- [`Phalcon\Dispatcher\AbstractDispatcher`](../phalcon_dispatcher/#dispatcherabstractdispatcher)
+- [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
+- [`Phalcon\Dispatcher\AbstractDispatcher`](/6.0/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
 - **`Phalcon\Cli\Dispatcher`** - implements [`Phalcon\Cli\DispatcherInterface`](#clidispatcherinterface)
 
 `Exception` · `Phalcon\Cli\Dispatcher\Exception` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Filter\FilterInterface`
@@ -375,8 +375,8 @@ Interface
 
 Interface for Phalcon\Cli\Dispatcher
 
-- [`Phalcon\Contracts\Dispatcher\Dispatcher`](../phalcon_contracts/#contractsdispatcherdispatcher)
-- [`Phalcon\Contracts\Cli\Dispatcher`](../phalcon_contracts/#contractsclidispatcher)
+- [`Phalcon\Contracts\Dispatcher\Dispatcher`](/6.0/api/phalcon_contracts/#contractsdispatcherdispatcher)
+- [`Phalcon\Contracts\Cli\Dispatcher`](/6.0/api/phalcon_contracts/#contractsclidispatcher)
 - **`Phalcon\Cli\DispatcherInterface`**
 
 `Phalcon\Contracts\Cli\Dispatcher`
@@ -388,7 +388,7 @@ Class
 Exceptions thrown in Phalcon\Cli\Dispatcher will use this class
 
 - `\Exception`
-- [`Phalcon\Dispatcher\Exception`](../phalcon_dispatcher/#dispatcherexception)
+- [`Phalcon\Dispatcher\Exception`](/6.0/api/phalcon_dispatcher/#dispatcherexception)
 - **`Phalcon\Cli\Dispatcher\Exception`**
 
 ## Cli\Router
@@ -415,7 +415,7 @@ echo $router->getTaskName();
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](../phalcon_di/#diabstractinjectionaware)
+- [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
 - **`Phalcon\Cli\Router`** - implements [`Phalcon\Cli\RouterInterface`](#clirouterinterface)
 
 `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType` · `Phalcon\Cli\Router\Route` · `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\AbstractInjectionAware`
@@ -1456,9 +1456,9 @@ followed by any CLI options the dispatcher collected (appended as trailing
 arguments). Declare optional trailing parameters to read those options.
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](../phalcon_di/#diinjectable)
-- **`Phalcon\Cli\Task`** - implements [`Phalcon\Cli\TaskInterface`](#clitaskinterface), [`Phalcon\Events\EventsAwareInterface`](../phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Queue\Cli\ConsumerTask`](../phalcon_queue/#queuecliconsumertask)
+- [`Phalcon\Di\Injectable`](/6.0/api/phalcon_di/#diinjectable)
+- **`Phalcon\Cli\Task`** - implements [`Phalcon\Cli\TaskInterface`](#clitaskinterface), [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
+- [`Phalcon\Queue\Cli\ConsumerTask`](/6.0/api/phalcon_queue/#queuecliconsumertask)
 
 `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 

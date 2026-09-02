@@ -20,8 +20,8 @@ Abstract
 This abstract class offers access to the events manager
 
 - **`Phalcon\Events\AbstractEventsAware`**
-- [`Phalcon\Acl\Adapter\AbstractAdapter`](../phalcon_acl/#acladapterabstractadapter)
-- [`Phalcon\Queue\Consumer\QueueConsumer`](../phalcon_queue/#queueconsumerqueueconsumer)
+- [`Phalcon\Acl\Adapter\AbstractAdapter`](/6.0/api/phalcon_acl/#acladapterabstractadapter)
+- [`Phalcon\Queue\Consumer\QueueConsumer`](/6.0/api/phalcon_queue/#queueconsumerqueueconsumer)
 
 ### Method Summary
 
@@ -89,7 +89,7 @@ $event->stop();
 }
 ```
 
-- **`Phalcon\Events\Event`** - implements [`Phalcon\Events\EventInterface`](#eventseventinterface), [`Phalcon\Contracts\Events\Stoppable`](../phalcon_contracts/#contractseventsstoppable)
+- **`Phalcon\Events\Event`** - implements [`Phalcon\Events\EventInterface`](#eventseventinterface), [`Phalcon\Contracts\Events\Stoppable`](/6.0/api/phalcon_contracts/#contractseventsstoppable)
 
 `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Events\Exceptions\EventNotCancelable`
 
@@ -237,7 +237,7 @@ Interface
 
 Phalcon\Events\EventInterface
 
-- [`Phalcon\Contracts\Events\Event`](../phalcon_contracts/#contractseventsevent)
+- [`Phalcon\Contracts\Events\Event`](/6.0/api/phalcon_contracts/#contractseventsevent)
 - **`Phalcon\Events\EventInterface`**
 
 `Phalcon\Contracts\Events\Event`
@@ -248,7 +248,7 @@ Interface
 
 Phalcon\Events\EventsAwareInterface
 
-- [`Phalcon\Contracts\Events\EventsAware`](../phalcon_contracts/#contractseventseventsaware)
+- [`Phalcon\Contracts\Events\EventsAware`](/6.0/api/phalcon_contracts/#contractseventseventsaware)
 - **`Phalcon\Events\EventsAwareInterface`**
 
 `Phalcon\Contracts\Events\EventsAware`
@@ -420,7 +420,7 @@ needed, the normal flow of operation. With the EventsManager the developer
 can create hooks or plugins that will offer monitoring of data, manipulation,
 conditional execution and much more.
 
-- **`Phalcon\Events\Manager`** - implements [`Phalcon\Events\ManagerInterface`](#eventsmanagerinterface), `\Psr\EventDispatcher\EventDispatcherInterface`, [`Phalcon\Contracts\Events\Enumerable`](../phalcon_contracts/#contractseventsenumerable)
+- **`Phalcon\Events\Manager`** - implements [`Phalcon\Events\ManagerInterface`](#eventsmanagerinterface), `\Psr\EventDispatcher\EventDispatcherInterface`, [`Phalcon\Contracts\Events\Enumerable`](/6.0/api/phalcon_contracts/#contractseventsenumerable)
 
 `Closure` · `Phalcon\Contracts\Events\Enumerable` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Db\Event\AbstractModelEvent` · `Phalcon\Db\Event\ModelEventNameEnum` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent` · `Psr\EventDispatcher\EventDispatcherInterface` · `Psr\EventDispatcher\StoppableEventInterface` · `Throwable`
 
@@ -908,7 +908,7 @@ Interface
 
 Phalcon\Events\ManagerInterface
 
-- [`Phalcon\Contracts\Events\Manager`](../phalcon_contracts/#contractseventsmanager)
+- [`Phalcon\Contracts\Events\Manager`](/6.0/api/phalcon_contracts/#contractseventsmanager)
 - **`Phalcon\Events\ManagerInterface`**
 
 `Phalcon\Contracts\Events\Manager`
@@ -927,7 +927,7 @@ Trait
 
 `Phalcon\Events\Exception` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\PsrEventInterface`
 
-[`Phalcon\Application\AbstractApplication`](../phalcon_application/#applicationabstractapplication) · [`Phalcon\Auth\Guard\AbstractGuard`](../phalcon_auth/#authguardabstractguard) · [`Phalcon\Autoload\Loader`](../phalcon_autoload/#autoloadloader) · [`Phalcon\Cache\AbstractCache`](../phalcon_cache/#cacheabstractcache) · [`Phalcon\Cli\Task`](../phalcon_cli/#clitask) · [`Phalcon\DataMapper\Pdo\ConnectionLocator`](../phalcon_datamapper/#datamapperpdoconnectionlocator) · [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](../phalcon_datamapper/#datamapperpdoconnectionabstractconnection) · [`Phalcon\Db\Adapter\AbstractAdapter`](../phalcon_db/#dbadapterabstractadapter) · [`Phalcon\Di\Di`](../phalcon_di/#didi) · [`Phalcon\Dispatcher\AbstractDispatcher`](../phalcon_dispatcher/#dispatcherabstractdispatcher) · [`Phalcon\Http\Request`](../phalcon_http/#httprequest) · [`Phalcon\Http\Response`](../phalcon_http/#httpresponse) · [`Phalcon\Mvc\Controller`](../phalcon_mvc/#mvccontroller) · [`Phalcon\Mvc\Dispatcher`](../phalcon_mvc/#mvcdispatcher) · [`Phalcon\Mvc\Micro`](../phalcon_mvc/#mvcmicro) · [`Phalcon\Mvc\Model\Manager`](../phalcon_mvc/#mvcmodelmanager) · [`Phalcon\Mvc\Router`](../phalcon_mvc/#mvcrouter) · [`Phalcon\Mvc\View`](../phalcon_mvc/#mvcview) · [`Phalcon\Mvc\View\Engine\AbstractEngine`](../phalcon_mvc/#mvcviewengineabstractengine) · [`Phalcon\Mvc\View\Simple`](../phalcon_mvc/#mvcviewsimple) · [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
+[`Phalcon\Application\AbstractApplication`](/6.0/api/phalcon_application/#applicationabstractapplication) · [`Phalcon\Auth\Guard\AbstractGuard`](/6.0/api/phalcon_auth/#authguardabstractguard) · [`Phalcon\Autoload\Loader`](/6.0/api/phalcon_autoload/#autoloadloader) · [`Phalcon\Cache\AbstractCache`](/6.0/api/phalcon_cache/#cacheabstractcache) · [`Phalcon\Cli\Task`](/6.0/api/phalcon_cli/#clitask) · [`Phalcon\DataMapper\Pdo\ConnectionLocator`](/6.0/api/phalcon_datamapper/#datamapperpdoconnectionlocator) · [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](/6.0/api/phalcon_datamapper/#datamapperpdoconnectionabstractconnection) · [`Phalcon\Db\Adapter\AbstractAdapter`](/6.0/api/phalcon_db/#dbadapterabstractadapter) · [`Phalcon\Di\Di`](/6.0/api/phalcon_di/#didi) · [`Phalcon\Dispatcher\AbstractDispatcher`](/6.0/api/phalcon_dispatcher/#dispatcherabstractdispatcher) · [`Phalcon\Http\Request`](/6.0/api/phalcon_http/#httprequest) · [`Phalcon\Http\Response`](/6.0/api/phalcon_http/#httpresponse) · [`Phalcon\Mvc\Controller`](/6.0/api/phalcon_mvc/#mvccontroller) · [`Phalcon\Mvc\Dispatcher`](/6.0/api/phalcon_mvc/#mvcdispatcher) · [`Phalcon\Mvc\Micro`](/6.0/api/phalcon_mvc/#mvcmicro) · [`Phalcon\Mvc\Model\Manager`](/6.0/api/phalcon_mvc/#mvcmodelmanager) · [`Phalcon\Mvc\Router`](/6.0/api/phalcon_mvc/#mvcrouter) · [`Phalcon\Mvc\View`](/6.0/api/phalcon_mvc/#mvcview) · [`Phalcon\Mvc\View\Engine\AbstractEngine`](/6.0/api/phalcon_mvc/#mvcviewengineabstractengine) · [`Phalcon\Mvc\View\Simple`](/6.0/api/phalcon_mvc/#mvcviewsimple) · [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
 
 ### Method Summary
 

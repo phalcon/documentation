@@ -28,7 +28,7 @@ twice (once from each object). Wire the manager into one layer only; the
 facade is the supported source for cache-level events (it also emits the
 multi-key `cache:*Multiple` events).
 
-- **`Phalcon\Cache\AbstractCache`** - implements [`Phalcon\Cache\CacheInterface`](#cachecacheinterface), [`Phalcon\Events\EventsAwareInterface`](../phalcon_events/#eventseventsawareinterface)
+- **`Phalcon\Cache\AbstractCache`** - implements [`Phalcon\Cache\CacheInterface`](#cachecacheinterface), [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
 - [`Phalcon\Cache\Cache`](#cachecache)
 
 `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Redis` · `Throwable` · `Traversable`
@@ -236,8 +236,8 @@ Class
 
 Factory to create Cache adapters
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Cache\AdapterFactory`**
 
 `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu` · `Phalcon\Cache\Adapter\Libmemcached` · `Phalcon\Cache\Adapter\Memory` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Adapter\RedisCluster` · `Phalcon\Cache\Adapter\Stream` · `Phalcon\Cache\Adapter\Weak` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory` · `Throwable`
@@ -305,7 +305,7 @@ Interface
 
 Interface for Phalcon\Cache adapters
 
-- [`Phalcon\Storage\Adapter\AdapterInterface`](../phalcon_storage/#storageadapteradapterinterface)
+- [`Phalcon\Storage\Adapter\AdapterInterface`](/6.0/api/phalcon_storage/#storageadapteradapterinterface)
 - **`Phalcon\Cache\Adapter\AdapterInterface`**
 
 `Phalcon\Storage\Adapter\AdapterInterface`
@@ -316,8 +316,8 @@ Class
 
 Apcu adapter
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Apcu`](../phalcon_storage/#storageadapterapcu)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Apcu`](/6.0/api/phalcon_storage/#storageadapterapcu)
 - **`Phalcon\Cache\Adapter\Apcu`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Apcu`
@@ -334,8 +334,8 @@ Class
 
 Libmemcached adapter
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Libmemcached`](../phalcon_storage/#storageadapterlibmemcached)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Libmemcached`](/6.0/api/phalcon_storage/#storageadapterlibmemcached)
 - **`Phalcon\Cache\Adapter\Libmemcached`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Libmemcached`
@@ -352,8 +352,8 @@ Class
 
 Memory adapter
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Memory`](../phalcon_storage/#storageadaptermemory)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Memory`](/6.0/api/phalcon_storage/#storageadaptermemory)
 - **`Phalcon\Cache\Adapter\Memory`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Memory`
@@ -370,8 +370,8 @@ Class
 
 Redis adapter
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Redis`](../phalcon_storage/#storageadapterredis)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Redis`](/6.0/api/phalcon_storage/#storageadapterredis)
 - **`Phalcon\Cache\Adapter\Redis`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Redis`
@@ -388,9 +388,9 @@ Class
 
 RedisCluster adapter
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Redis`](../phalcon_storage/#storageadapterredis)
-- [`Phalcon\Storage\Adapter\RedisCluster`](../phalcon_storage/#storageadapterrediscluster)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Redis`](/6.0/api/phalcon_storage/#storageadapterredis)
+- [`Phalcon\Storage\Adapter\RedisCluster`](/6.0/api/phalcon_storage/#storageadapterrediscluster)
 - **`Phalcon\Cache\Adapter\RedisCluster`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\RedisCluster`
@@ -407,8 +407,8 @@ Class
 
 Stream adapter
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Stream`](../phalcon_storage/#storageadapterstream)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Stream`](/6.0/api/phalcon_storage/#storageadapterstream)
 - **`Phalcon\Cache\Adapter\Stream`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Stream`
@@ -425,8 +425,8 @@ Class
 
 WeakCache implementation based on WeakReference
 
-- [`Phalcon\Storage\Adapter\AbstractAdapter`](../phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Weak`](../phalcon_storage/#storageadapterweak)
+- [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+- [`Phalcon\Storage\Adapter\Weak`](/6.0/api/phalcon_storage/#storageadapterweak)
 - **`Phalcon\Cache\Adapter\Weak`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Weak`
@@ -572,7 +572,7 @@ Class
 
 Creates a new Cache class
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
 - **`Phalcon\Cache\CacheFactory`**
 
 `Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Throwable`
@@ -640,7 +640,7 @@ Interface
 
 Interface for Phalcon\Cache\Cache
 
-- [`Phalcon\Contracts\Cache\Cache`](../phalcon_contracts/#contractscachecache)
+- [`Phalcon\Contracts\Cache\Cache`](/6.0/api/phalcon_contracts/#contractscachecache)
 - **`Phalcon\Cache\CacheInterface`**
 
 `Phalcon\Contracts\Cache\Cache`

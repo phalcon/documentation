@@ -15,12 +15,9 @@ All classes are prefixed with `Phalcon`
 
 ## Paginator\Adapter\AbstractAdapter
 
-<span class="badge badge--abstract">Abstract</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AbstractAdapter.zep">Source on GitHub</a>
+Abstract
 
 Phalcon\Paginator\Adapter\AbstractAdapter
-
-<div class="api-tree">
 
 - **`Phalcon\Paginator\Adapter\AbstractAdapter`** - implements [`Phalcon\Paginator\Adapter\AdapterInterface`](#paginatoradapteradapterinterface)
 - [`Phalcon\Paginator\Adapter\Model`](#paginatoradaptermodel)
@@ -28,82 +25,45 @@ Phalcon\Paginator\Adapter\AbstractAdapter
 - [`Phalcon\Paginator\Adapter\QueryBuilder`](#paginatoradapterquerybuilder)
 - [`Phalcon\Paginator\Adapter\QueryBuilderCursor`](#paginatoradapterquerybuildercursor)
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidLimit` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\Repository` · `Phalcon\Paginator\RepositoryInterface`
+`Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidLimit` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\Repository` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatoradapterabstractadapter-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$config</span> )</code>
-<span class="desc">Constructor</span>
-</a>
-<a class="api-item" href="#paginatoradapterabstractadapter-getlimit">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getLimit</span>()</code>
-<span class="desc">Get current rows limit</span>
-</a>
-<a class="api-item" href="#paginatoradapterabstractadapter-setcurrentpage">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">setCurrentPage</span>( <span class="st">int</span> <span class="sv">$page</span> )</code>
-<span class="desc">Set the current page number</span>
-</a>
-<a class="api-item" href="#paginatoradapterabstractadapter-setlimit">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">setLimit</span>( <span class="st">int</span> <span class="sv">$limit</span> )</code>
-<span class="desc">Set current rows limit</span>
-</a>
-<a class="api-item" href="#paginatoradapterabstractadapter-setrepository">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">setRepository</span>( <span class="st">RepositoryInterface</span> <span class="sv">$repository</span> )</code>
-<span class="desc">Sets current repository for pagination</span>
-</a>
-<a class="api-item" href="#paginatoradapterabstractadapter-getrepository">
-<code class="vis vis-protected">protected</code>
-<code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sf">getRepository</span>( <span class="st">array|null</span> <span class="sv">$properties</span><span class="sm"> = null</span> )</code>
-<span class="desc">Gets current repository for pagination</span>
-</a>
-</div>
+<ApiItem href="#paginatoradapterabstractadapter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"config","default":null}]}>
+Constructor
+</ApiItem>
+<ApiItem href="#paginatoradapterabstractadapter-getlimit" visibility="public" name="getLimit" returnType="int" params={[]}>
+Get current rows limit
+</ApiItem>
+<ApiItem href="#paginatoradapterabstractadapter-setcurrentpage" visibility="public" name="setCurrentPage" returnType="AdapterInterface" params={[{"type":"int","name":"page","default":null}]}>
+Set the current page number
+</ApiItem>
+<ApiItem href="#paginatoradapterabstractadapter-setlimit" visibility="public" name="setLimit" returnType="AdapterInterface" params={[{"type":"int","name":"limit","default":null}]}>
+Set current rows limit
+</ApiItem>
+<ApiItem href="#paginatoradapterabstractadapter-setrepository" visibility="public" name="setRepository" returnType="AdapterInterface" params={[{"type":"RepositoryInterface","name":"repository","default":null}]}>
+Sets current repository for pagination
+</ApiItem>
+<ApiItem href="#paginatoradapterabstractadapter-getrepository" visibility="protected" name="getRepository" returnType="RepositoryInterface" params={[{"type":"array|null","name":"properties","default":"null"}]}>
+Gets current repository for pagination
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$config</span></code>
-<span class="desc">Configuration of paginator</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int|null</code>
-<code class="sig"><span class="sv">$limitRows</span><span class="sm"> = null</span></code>
-<span class="desc">Number of rows to show in the paginator. By default is null</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int|null</code>
-<code class="sig"><span class="sv">$page</span><span class="sm"> = null</span></code>
-<span class="desc">Current page in paginate</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sv">$repository</span></code>
-<span class="desc">Repository for pagination</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="config" type="array" default="">
+Configuration of paginator
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="limitRows" type="int|null" default="null">
+Number of rows to show in the paginator. By default is null
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="page" type="int|null" default="null">
+Current page in paginate
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="repository" type="RepositoryInterface" default="">
+Repository for pagination
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 5</div>
 
 <h4 id="paginatoradapterabstractadapter-__construct"><code>__construct()</code></h4>
 
@@ -145,8 +105,6 @@ public function setRepository( RepositoryInterface $repository ): AdapterInterfa
 
 Sets current repository for pagination
 
-<div class="api-group">Protected · 1</div>
-
 <h4 id="paginatoradapterabstractadapter-getrepository"><code>getRepository()</code></h4>
 
 ```php
@@ -157,22 +115,16 @@ Gets current repository for pagination
 
 ## Paginator\Adapter\AdapterInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AdapterInterface.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - [`Phalcon\Contracts\Paginator\Adapter`](/5.20/api/phalcon_contracts/#contractspaginatoradapter)
 - **`Phalcon\Paginator\Adapter\AdapterInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Paginator\Adapter`
+`Phalcon\Contracts\Paginator\Adapter`
 
 ## Paginator\Adapter\Model
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/Model.zep">Source on GitHub</a>
+Class
 
 This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a
 base.
@@ -235,34 +187,21 @@ $paginator = new Model(
 $paginate = $paginator->paginate();
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Paginator\Adapter\AbstractAdapter`](#paginatoradapterabstractadapter)
 - **`Phalcon\Paginator\Adapter\Model`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
+`Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatoradaptermodel-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$config</span> )</code>
-<span class="desc">Phalcon\Paginator\Adapter\Model constructor</span>
-</a>
-<a class="api-item" href="#paginatoradaptermodel-paginate">
-<code class="vis vis-public">public</code>
-<code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sf">paginate</span>()</code>
-<span class="desc">Returns a slice of the resultset to show in the pagination</span>
-</a>
-</div>
+<ApiItem href="#paginatoradaptermodel-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"config","default":null}]}>
+Phalcon\Paginator\Adapter\Model constructor
+</ApiItem>
+<ApiItem href="#paginatoradaptermodel-paginate" visibility="public" name="paginate" returnType="RepositoryInterface" params={[]}>
+Returns a slice of the resultset to show in the pagination
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="paginatoradaptermodel-__construct"><code>__construct()</code></h4>
 
@@ -282,8 +221,7 @@ Returns a slice of the resultset to show in the pagination
 
 ## Paginator\Adapter\NativeArray
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/NativeArray.zep">Source on GitHub</a>
+Class
 
 Pagination using a PHP array as source of data
 
@@ -305,29 +243,18 @@ $paginator = new NativeArray(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Paginator\Adapter\AbstractAdapter`](#paginatoradapterabstractadapter)
 - **`Phalcon\Paginator\Adapter\NativeArray`**
 
-</div>
-
-__Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\PaginatorDataNotArray` · `Phalcon\Paginator\RepositoryInterface`
+`Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\PaginatorDataNotArray` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatoradapternativearray-paginate">
-<code class="vis vis-public">public</code>
-<code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sf">paginate</span>()</code>
-<span class="desc">Returns a slice of the resultset to show in the pagination</span>
-</a>
-</div>
+<ApiItem href="#paginatoradapternativearray-paginate" visibility="public" name="paginate" returnType="RepositoryInterface" params={[]}>
+Returns a slice of the resultset to show in the pagination
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="paginatoradapternativearray-paginate"><code>paginate()</code></h4>
 
@@ -339,8 +266,7 @@ Returns a slice of the resultset to show in the pagination
 
 ## Paginator\Adapter\QueryBuilder
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/QueryBuilder.zep">Source on GitHub</a>
+Class
 
 Pagination using a PHQL query builder as source of data
 
@@ -361,69 +287,41 @@ $paginator = new QueryBuilder(
 );
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Paginator\Adapter\AbstractAdapter`](#paginatoradapterabstractadapter)
 - **`Phalcon\Paginator\Adapter\QueryBuilder`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Db\Adapter\Adapter` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Db\Enum` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\BuilderModelNotDefined` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\MissingColumnsForHaving` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
+`Phalcon\Contracts\Db\Adapter\Adapter` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Db\Enum` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\BuilderModelNotDefined` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\MissingColumnsForHaving` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatoradapterquerybuilder-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$config</span> )</code>
-<span class="desc">Phalcon\Paginator\Adapter\QueryBuilder</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuilder-getcurrentpage">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getCurrentPage</span>()</code>
-<span class="desc">Get the current page number</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuilder-getquerybuilder">
-<code class="vis vis-public">public</code>
-<code class="ret">Builder</code>
-<code class="sig"><span class="sf">getQueryBuilder</span>()</code>
-<span class="desc">Get query builder object</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuilder-paginate">
-<code class="vis vis-public">public</code>
-<code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sf">paginate</span>()</code>
-<span class="desc">Returns a slice of the resultset to show in the pagination</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuilder-setquerybuilder">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setQueryBuilder</span>( <span class="st">Builder</span> <span class="sv">$builder</span> )</code>
-<span class="desc">Set query builder object</span>
-</a>
-</div>
+<ApiItem href="#paginatoradapterquerybuilder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"config","default":null}]}>
+Phalcon\Paginator\Adapter\QueryBuilder
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuilder-getcurrentpage" visibility="public" name="getCurrentPage" returnType="int" params={[]}>
+Get the current page number
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuilder-getquerybuilder" visibility="public" name="getQueryBuilder" returnType="Builder" params={[]}>
+Get query builder object
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuilder-paginate" visibility="public" name="paginate" returnType="RepositoryInterface" params={[]}>
+Returns a slice of the resultset to show in the pagination
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuilder-setquerybuilder" visibility="public" name="setQueryBuilder" returnType="static" params={[{"type":"Builder","name":"builder","default":null}]}>
+Set query builder object
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Builder</code>
-<code class="sig"><span class="sv">$builder</span></code>
-<span class="desc">Paginator&#039;s data</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">paginator_columns|null</code>
-<code class="sig"><span class="sv">$columns</span></code>
-<span class="desc">Column list used only for COUNT rewriting when the builder carries a HAVING or GROUP BY clause. It supplies the columns for the subquery that counts the grouped/having result set and is ignored otherwise.</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="builder" type="Builder" default="">
+Paginator's data
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="columns" type="paginator_columns|null" default="">
+Column list used only for COUNT rewriting when the builder carries a
+HAVING or GROUP BY clause. It supplies the columns for the subquery
+that counts the grouped/having result set and is ignored otherwise.
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 5</div>
 
 <h4 id="paginatoradapterquerybuilder-__construct"><code>__construct()</code></h4>
 
@@ -472,8 +370,7 @@ Set query builder object
 
 ## Paginator\Adapter\QueryBuilderCursor
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/QueryBuilderCursor.zep">Source on GitHub</a>
+Class
 
 Cursor-based (keyset) pagination using a PHQL query builder as source of
 data.
@@ -515,93 +412,51 @@ $page = $paginator->paginate();
 // $page->getCurrent() - cursor value used for this page (0 on first page)
 ```
 
-<div class="api-tree">
-
 - [`Phalcon\Paginator\Adapter\AbstractAdapter`](#paginatoradapterabstractadapter)
 - **`Phalcon\Paginator\Adapter\QueryBuilderCursor`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\InvalidCursorColumn` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
+`Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\InvalidCursorColumn` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatoradapterquerybuildercursor-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$config</span> )</code>
-<span class="desc">Phalcon\Paginator\Adapter\QueryBuilderCursor</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuildercursor-getcurrentpage">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getCurrentPage</span>()</code>
-<span class="desc">Get the current page number</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuildercursor-getcursor">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getCursor</span>()</code>
-<span class="desc">Get the cursor value for the current page (null on first page)</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuildercursor-getcursorcolumn">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getCursorColumn</span>()</code>
-<span class="desc">Get the cursor column name</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuildercursor-getquerybuilder">
-<code class="vis vis-public">public</code>
-<code class="ret">Builder</code>
-<code class="sig"><span class="sf">getQueryBuilder</span>()</code>
-<span class="desc">Get query builder object</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuildercursor-paginate">
-<code class="vis vis-public">public</code>
-<code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sf">paginate</span>()</code>
-<span class="desc">Returns a slice of the resultset to show in the pagination</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuildercursor-setcursor">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setCursor</span>( <span class="st">mixed</span> <span class="sv">$cursor</span> )</code>
-<span class="desc">Set the cursor value for the next paginate() call</span>
-</a>
-<a class="api-item" href="#paginatoradapterquerybuildercursor-setquerybuilder">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setQueryBuilder</span>( <span class="st">Builder</span> <span class="sv">$builder</span> )</code>
-<span class="desc">Set query builder object</span>
-</a>
-</div>
+<ApiItem href="#paginatoradapterquerybuildercursor-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"config","default":null}]}>
+Phalcon\Paginator\Adapter\QueryBuilderCursor
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuildercursor-getcurrentpage" visibility="public" name="getCurrentPage" returnType="int" params={[]}>
+Get the current page number
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuildercursor-getcursor" visibility="public" name="getCursor" returnType="mixed" params={[]}>
+Get the cursor value for the current page (null on first page)
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuildercursor-getcursorcolumn" visibility="public" name="getCursorColumn" returnType="string" params={[]}>
+Get the cursor column name
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuildercursor-getquerybuilder" visibility="public" name="getQueryBuilder" returnType="Builder" params={[]}>
+Get query builder object
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuildercursor-paginate" visibility="public" name="paginate" returnType="RepositoryInterface" params={[]}>
+Returns a slice of the resultset to show in the pagination
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuildercursor-setcursor" visibility="public" name="setCursor" returnType="static" params={[{"type":"mixed","name":"cursor","default":null}]}>
+Set the cursor value for the next paginate() call
+</ApiItem>
+<ApiItem href="#paginatoradapterquerybuildercursor-setquerybuilder" visibility="public" name="setQueryBuilder" returnType="static" params={[{"type":"Builder","name":"builder","default":null}]}>
+Set query builder object
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Builder</code>
-<code class="sig"><span class="sv">$builder</span></code>
-<span class="desc">Paginator&#039;s data</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sv">$cursor</span><span class="sm"> = null</span></code>
-<span class="desc">The cursor value for the current page (null = first page)</span>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$cursorColumn</span></code>
-<span class="desc">The column used as the cursor (must be unique and indexed)</span>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="builder" type="Builder" default="">
+Paginator's data
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="cursor" type="mixed" default="null">
+The cursor value for the current page (null = first page)
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="cursorColumn" type="string" default="">
+The column used as the cursor (must be unique and indexed)
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 8</div>
 
 <h4 id="paginatoradapterquerybuildercursor-__construct"><code>__construct()</code></h4>
 
@@ -679,12 +534,9 @@ Set query builder object
 
 ## Paginator\Exception
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exception.zep">Source on GitHub</a>
+Class
 
 Exceptions thrown in Phalcon\Paginator will use this class
-
-<div class="api-tree">
 
 - `\Exception`
 - **`Phalcon\Paginator\Exception`**
@@ -696,35 +548,22 @@ Exceptions thrown in Phalcon\Paginator will use this class
 - [`Phalcon\Paginator\Exceptions\MissingRequiredParameter`](#paginatorexceptionsmissingrequiredparameter)
 - [`Phalcon\Paginator\Exceptions\PaginatorDataNotArray`](#paginatorexceptionspaginatordatanotarray)
 
-</div>
-
 ## Paginator\Exceptions\BuilderModelNotDefined
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/BuilderModelNotDefined.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Paginator\Exception`](#paginatorexception)
 - **`Phalcon\Paginator\Exceptions\BuilderModelNotDefined`**
 
-</div>
-
-__Uses__ `Phalcon\Paginator\Exception`
+`Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatorexceptionsbuildermodelnotdefined-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#paginatorexceptionsbuildermodelnotdefined-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="paginatorexceptionsbuildermodelnotdefined-__construct"><code>__construct()</code></h4>
 
@@ -734,31 +573,20 @@ public function __construct();
 
 ## Paginator\Exceptions\InvalidBuilderInstance
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidBuilderInstance.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Paginator\Exception`](#paginatorexception)
 - **`Phalcon\Paginator\Exceptions\InvalidBuilderInstance`**
 
-</div>
-
-__Uses__ `Phalcon\Paginator\Exception`
+`Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatorexceptionsinvalidbuilderinstance-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#paginatorexceptionsinvalidbuilderinstance-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="paginatorexceptionsinvalidbuilderinstance-__construct"><code>__construct()</code></h4>
 
@@ -768,31 +596,20 @@ public function __construct();
 
 ## Paginator\Exceptions\InvalidCursorColumn
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidCursorColumn.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Paginator\Exception`](#paginatorexception)
 - **`Phalcon\Paginator\Exceptions\InvalidCursorColumn`**
 
-</div>
-
-__Uses__ `Phalcon\Paginator\Exception`
+`Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatorexceptionsinvalidcursorcolumn-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#paginatorexceptionsinvalidcursorcolumn-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="paginatorexceptionsinvalidcursorcolumn-__construct"><code>__construct()</code></h4>
 
@@ -802,31 +619,20 @@ public function __construct();
 
 ## Paginator\Exceptions\InvalidLimit
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidLimit.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Paginator\Exception`](#paginatorexception)
 - **`Phalcon\Paginator\Exceptions\InvalidLimit`**
 
-</div>
-
-__Uses__ `Phalcon\Paginator\Exception`
+`Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatorexceptionsinvalidlimit-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#paginatorexceptionsinvalidlimit-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="paginatorexceptionsinvalidlimit-__construct"><code>__construct()</code></h4>
 
@@ -836,31 +642,20 @@ public function __construct();
 
 ## Paginator\Exceptions\MissingColumnsForHaving
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/MissingColumnsForHaving.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Paginator\Exception`](#paginatorexception)
 - **`Phalcon\Paginator\Exceptions\MissingColumnsForHaving`**
 
-</div>
-
-__Uses__ `Phalcon\Paginator\Exception`
+`Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatorexceptionsmissingcolumnsforhaving-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#paginatorexceptionsmissingcolumnsforhaving-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="paginatorexceptionsmissingcolumnsforhaving-__construct"><code>__construct()</code></h4>
 
@@ -870,36 +665,22 @@ public function __construct();
 
 ## Paginator\Exceptions\MissingRequiredParameter
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/MissingRequiredParameter.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Paginator\Exception`](#paginatorexception)
 - **`Phalcon\Paginator\Exceptions\MissingRequiredParameter`**
 
-</div>
-
-__Uses__ `Phalcon\Paginator\Exception`
+`Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatorexceptionsmissingrequiredparameter-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$parameter</span> )</code>
-</a>
-<a class="api-item" href="#paginatorexceptionsmissingrequiredparameter-getparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getParameter</span>()</code>
-</a>
-</div>
+<ApiItem href="#paginatorexceptionsmissingrequiredparameter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"parameter","default":null}]}>
+</ApiItem>
+<ApiItem href="#paginatorexceptionsmissingrequiredparameter-getparameter" visibility="public" name="getParameter" returnType="string" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 2</div>
 
 <h4 id="paginatorexceptionsmissingrequiredparameter-__construct"><code>__construct()</code></h4>
 
@@ -915,31 +696,20 @@ public function getParameter(): string;
 
 ## Paginator\Exceptions\PaginatorDataNotArray
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/PaginatorDataNotArray.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - `\Exception`
 - [`Phalcon\Paginator\Exception`](#paginatorexception)
 - **`Phalcon\Paginator\Exceptions\PaginatorDataNotArray`**
 
-</div>
-
-__Uses__ `Phalcon\Paginator\Exception`
+`Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatorexceptionspaginatordatanotarray-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
+<ApiItem href="#paginatorexceptionspaginatordatanotarray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 1</div>
 
 <h4 id="paginatorexceptionspaginatordatanotarray-__construct"><code>__construct()</code></h4>
 
@@ -949,55 +719,32 @@ public function __construct();
 
 ## Paginator\PaginatorFactory
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/PaginatorFactory.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Class
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.20/api/phalcon_factory/#factoryabstractconfigfactory)
 - [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Paginator\PaginatorFactory`**
 
-</div>
-
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor` · `Throwable`
+`Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor` · `Throwable`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatorpaginatorfactory-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
-<span class="desc">AdapterFactory constructor.</span>
-</a>
-<a class="api-item" href="#paginatorpaginatorfactory-load">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
-<span class="desc">Factory to create an instance from a Config object</span>
-</a>
-<a class="api-item" href="#paginatorpaginatorfactory-newinstance">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Create a new instance of the adapter</span>
-</a>
-<a class="api-item" href="#paginatorpaginatorfactory-getexceptionclass">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getExceptionClass</span>()</code>
-</a>
-<a class="api-item" href="#paginatorpaginatorfactory-getservices">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getServices</span>()</code>
-<span class="desc">Returns the available adapters</span>
-</a>
-</div>
+<ApiItem href="#paginatorpaginatorfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
+AdapterFactory constructor.
+</ApiItem>
+<ApiItem href="#paginatorpaginatorfactory-load" visibility="public" name="load" returnType="AdapterInterface" params={[{"type":"mixed","name":"config","default":null}]}>
+Factory to create an instance from a Config object
+</ApiItem>
+<ApiItem href="#paginatorpaginatorfactory-newinstance" visibility="public" name="newInstance" returnType="AdapterInterface" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Create a new instance of the adapter
+</ApiItem>
+<ApiItem href="#paginatorpaginatorfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorpaginatorfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the available adapters
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 3</div>
 
 <h4 id="paginatorpaginatorfactory-__construct"><code>__construct()</code></h4>
 
@@ -1046,8 +793,6 @@ array $options = []
 
 Create a new instance of the adapter
 
-<div class="api-group">Protected · 2</div>
-
 <h4 id="paginatorpaginatorfactory-getexceptionclass"><code>getExceptionClass()</code></h4>
 
 ```php
@@ -1064,119 +809,57 @@ Returns the available adapters
 
 ## Paginator\Repository
 
-<span class="badge badge--class">Class</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Repository.zep">Source on GitHub</a>
+Class
 
 Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
 
-<div class="api-tree">
-
 - **`Phalcon\Paginator\Repository`** - implements [`Phalcon\Paginator\RepositoryInterface`](#paginatorrepositoryinterface), `\JsonSerializable`
 
-</div>
-
-__Uses__ `JsonSerializable` · `Phalcon\Contracts\Paginator\PaginatorTypes`
+`JsonSerializable` · `Phalcon\Contracts\Paginator\PaginatorTypes`
 
 ### Method Summary
 
-<div class="api-list">
-<a class="api-item" href="#paginatorrepository-__get">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$property</span> )</code>
-</a>
-<a class="api-item" href="#paginatorrepository-getaliases">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAliases</span>()</code>
-</a>
-<a class="api-item" href="#paginatorrepository-getcurrent">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getCurrent</span>()</code>
-</a>
-<a class="api-item" href="#paginatorrepository-getfirst">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getFirst</span>()</code>
-</a>
-<a class="api-item" href="#paginatorrepository-getitems">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getItems</span>()</code>
-</a>
-<a class="api-item" href="#paginatorrepository-getlast">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getLast</span>()</code>
-</a>
-<a class="api-item" href="#paginatorrepository-getlimit">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getLimit</span>()</code>
-</a>
-<a class="api-item" href="#paginatorrepository-getnext">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getNext</span>()</code>
-</a>
-<a class="api-item" href="#paginatorrepository-getprevious">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getPrevious</span>()</code>
-</a>
-<a class="api-item" href="#paginatorrepository-gettotalitems">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getTotalItems</span>()</code>
-</a>
-<a class="api-item" href="#paginatorrepository-jsonserialize">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">jsonSerialize</span>()</code>
-</a>
-<a class="api-item" href="#paginatorrepository-setaliases">
-<code class="vis vis-public">public</code>
-<code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sf">setAliases</span>( <span class="st">array</span> <span class="sv">$aliases</span> )</code>
-</a>
-<a class="api-item" href="#paginatorrepository-setproperties">
-<code class="vis vis-public">public</code>
-<code class="ret">RepositoryInterface</code>
-<code class="sig"><span class="sf">setProperties</span>( <span class="st">array</span> <span class="sv">$properties</span> )</code>
-</a>
-<a class="api-item" href="#paginatorrepository-getproperty">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$property</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Gets value of property by name</span>
-</a>
-<a class="api-item" href="#paginatorrepository-getrealnameproperty">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getRealNameProperty</span>( <span class="st">string</span> <span class="sv">$property</span> )</code>
-<span class="desc">Resolve alias property name</span>
-</a>
-</div>
+<ApiItem href="#paginatorrepository-__get" visibility="public" name="__get" returnType="mixed|null" params={[{"type":"string","name":"property","default":null}]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-getaliases" visibility="public" name="getAliases" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-getcurrent" visibility="public" name="getCurrent" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-getfirst" visibility="public" name="getFirst" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-getitems" visibility="public" name="getItems" returnType="mixed" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-getlast" visibility="public" name="getLast" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-getlimit" visibility="public" name="getLimit" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-getnext" visibility="public" name="getNext" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-getprevious" visibility="public" name="getPrevious" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-gettotalitems" visibility="public" name="getTotalItems" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-setaliases" visibility="public" name="setAliases" returnType="RepositoryInterface" params={[{"type":"array","name":"aliases","default":null}]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-setproperties" visibility="public" name="setProperties" returnType="RepositoryInterface" params={[{"type":"array","name":"properties","default":null}]}>
+</ApiItem>
+<ApiItem href="#paginatorrepository-getproperty" visibility="protected" name="getProperty" returnType="mixed" params={[{"type":"string","name":"property","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+Gets value of property by name
+</ApiItem>
+<ApiItem href="#paginatorrepository-getrealnameproperty" visibility="protected" name="getRealNameProperty" returnType="string" params={[{"type":"string","name":"property","default":null}]}>
+Resolve alias property name
+</ApiItem>
 
 ### Properties
 
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">paginator_aliases</code>
-<code class="sig"><span class="sv">$aliases</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">paginator_properties</code>
-<code class="sig"><span class="sv">$properties</span><span class="sm"> = []</span></code>
-</div>
-</div>
+<ApiItem kind="property" visibility="protected" name="aliases" type="paginator_aliases" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="properties" type="paginator_properties" default="[]">
+</ApiItem>
 
 ### Methods
-
-<div class="api-group">Public · 13</div>
 
 <h4 id="paginatorrepository-__get"><code>__get()</code></h4>
 
@@ -1256,8 +939,6 @@ public function setAliases( array $aliases ): RepositoryInterface;
 public function setProperties( array $properties ): RepositoryInterface;
 ```
 
-<div class="api-group">Protected · 2</div>
-
 <h4 id="paginatorrepository-getproperty"><code>getProperty()</code></h4>
 
 ```php
@@ -1283,16 +964,11 @@ Resolve alias property name
 
 ## Paginator\RepositoryInterface
 
-<span class="badge badge--interface">Interface</span>
-<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/RepositoryInterface.zep">Source on GitHub</a>
-
-<div class="api-tree">
+Interface
 
 - [`Phalcon\Contracts\Paginator\Repository`](/5.20/api/phalcon_contracts/#contractspaginatorrepository)
 - **`Phalcon\Paginator\RepositoryInterface`**
 
-</div>
-
-__Uses__ `Phalcon\Contracts\Paginator\Repository`
+`Phalcon\Contracts\Paginator\Repository`
 
 Source: https://docs.phalcon.io/5.20/api/phalcon_paginator/index.mdx

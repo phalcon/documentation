@@ -85,7 +85,7 @@ Abstract
 
 Base class for Phalcon\Db\Adapter adapters
 
-- **`Phalcon\Db\Adapter\AbstractAdapter`** - implements [`Phalcon\Db\Adapter\AdapterInterface`](#dbadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](../phalcon_events/#eventseventsawareinterface)
+- **`Phalcon\Db\Adapter\AbstractAdapter`** - implements [`Phalcon\Db\Adapter\AdapterInterface`](#dbadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
 - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 
 `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
@@ -1257,7 +1257,7 @@ Interface
 
 Phalcon\Db\Adapter\AdapterInterface
 
-- [`Phalcon\Contracts\Db\Adapter\Adapter`](../phalcon_contracts/#contractsdbadapteradapter)
+- [`Phalcon\Contracts\Db\Adapter\Adapter`](/6.0/api/phalcon_contracts/#contractsdbadapteradapter)
 - **`Phalcon\Db\Adapter\AdapterInterface`**
 
 `Phalcon\Contracts\Db\Adapter\Adapter`
@@ -1266,8 +1266,8 @@ Phalcon\Db\Adapter\AdapterInterface
 
 Class
 
-- [`Phalcon\Factory\AbstractConfigFactory`](../phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](../phalcon_factory/#factoryabstractfactory)
+- [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Db\Adapter\PdoFactory`**
 
 `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Exception`
@@ -2437,7 +2437,7 @@ Interface
 
 Phalcon\Db\CheckInterface
 
-- [`Phalcon\Contracts\Db\Check`](../phalcon_contracts/#contractsdbcheck)
+- [`Phalcon\Contracts\Db\Check`](/6.0/api/phalcon_contracts/#contractsdbcheck)
 - **`Phalcon\Db\CheckInterface`**
 
 `Phalcon\Contracts\Db\Check`
@@ -2978,7 +2978,7 @@ Interface
 
 Phalcon\Db\ColumnInterface
 
-- [`Phalcon\Contracts\Db\Column`](../phalcon_contracts/#contractsdbcolumn)
+- [`Phalcon\Contracts\Db\Column`](/6.0/api/phalcon_contracts/#contractsdbcolumn)
 - **`Phalcon\Db\ColumnInterface`**
 
 `Phalcon\Contracts\Db\Column`
@@ -3827,7 +3827,7 @@ Interface
 
 Phalcon\Db\DialectInterface
 
-- [`Phalcon\Contracts\Db\Dialect`](../phalcon_contracts/#contractsdbdialect)
+- [`Phalcon\Contracts\Db\Dialect`](/6.0/api/phalcon_contracts/#contractsdbdialect)
 - **`Phalcon\Db\DialectInterface`**
 
 `Phalcon\Contracts\Db\Dialect`
@@ -5675,7 +5675,7 @@ public function isPropagationStopped(): bool;
 
 Abstract
 
-- **`Phalcon\Db\Event\AbstractModelEvent`** - implements [`Phalcon\Events\PsrEventInterface`](../phalcon_events/#eventspsreventinterface)
+- **`Phalcon\Db\Event\AbstractModelEvent`** - implements [`Phalcon\Events\PsrEventInterface`](/6.0/api/phalcon_events/#eventspsreventinterface)
 - [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
 - [`Phalcon\Db\Event\AfterCreateEvent`](#dbeventaftercreateevent)
 - [`Phalcon\Db\Event\AfterDeleteEvent`](#dbeventafterdeleteevent)
@@ -7369,7 +7369,7 @@ Interface
 
 Phalcon\Db\Geometry\GeometryInterface
 
-- [`Phalcon\Contracts\Db\Geometry\Geometry`](../phalcon_contracts/#contractsdbgeometrygeometry)
+- [`Phalcon\Contracts\Db\Geometry\Geometry`](/6.0/api/phalcon_contracts/#contractsdbgeometrygeometry)
 - **`Phalcon\Db\Geometry\GeometryInterface`**
 
 `Phalcon\Contracts\Db\Geometry\Geometry`
@@ -8039,7 +8039,7 @@ Interface
 
 Phalcon\Db\IndexInterface
 
-- [`Phalcon\Contracts\Db\Index`](../phalcon_contracts/#contractsdbindex)
+- [`Phalcon\Contracts\Db\Index`](/6.0/api/phalcon_contracts/#contractsdbindex)
 - **`Phalcon\Db\IndexInterface`**
 
 `Phalcon\Contracts\Db\Index`
@@ -8613,7 +8613,7 @@ Interface
 
 Phalcon\Db\ReferenceInterface
 
-- [`Phalcon\Contracts\Db\Reference`](../phalcon_contracts/#contractsdbreference)
+- [`Phalcon\Contracts\Db\Reference`](/6.0/api/phalcon_contracts/#contractsdbreference)
 - **`Phalcon\Db\ReferenceInterface`**
 
 `Phalcon\Contracts\Db\Reference`
@@ -8624,7 +8624,7 @@ Interface
 
 Phalcon\Db\ResultInterface
 
-- [`Phalcon\Contracts\Db\Result`](../phalcon_contracts/#contractsdbresult)
+- [`Phalcon\Contracts\Db\Result`](/6.0/api/phalcon_contracts/#contractsdbresult)
 - **`Phalcon\Db\ResultInterface`**
 
 `Phalcon\Contracts\Db\Result`
