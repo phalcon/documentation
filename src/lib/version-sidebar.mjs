@@ -53,8 +53,13 @@ export function buildVersionSidebar(items, indexed, currentSlug) {
   return build(items);
 }
 
+// The rail links to the slashless form of a route (`trailingSlash: "never"`
+// in astro.config.ts). The generated config and the indexed entries both
+// still carry the MkDocs-era trailing slash, and `routeKey` is already the
+// function that takes it off.
 function link(label, href, current, order) {
-  return { type: "link", label, href, isCurrent: routeKey(href) === current, order };
+  const key = routeKey(href);
+  return { type: "link", label, href: key, isCurrent: key === current, order };
 }
 
 function routeKey(path) {

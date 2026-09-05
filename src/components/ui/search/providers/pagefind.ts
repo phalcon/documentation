@@ -1,5 +1,6 @@
 import type { SearchProvider, SearchResult } from "@cloudflare/nimbus-docs/types";
 import { config } from "virtual:nimbus/config";
+import { slashlessHref } from "@/lib/slashless-href.mjs";
 
 interface PagefindSubResult {
   title?: string;
@@ -71,13 +72,15 @@ export const provider: SearchProvider = {
       Object.keys(filters).length > 0 ? { filters } : undefined,
     );
     const results = await Promise.all(search.results.slice(0, 10).map((result) => result.data()));
+    // Pagefind indexes the built files, so its URLs are the directory form
+    // (`/5.20/logger/`). The site links slashless (`trailingSlash: "never"`).
     return results.map((result): SearchResult => ({
       title: result.meta?.title ?? "Untitled",
-      url: result.url,
+      url: slashlessHref(result.url),
       snippet: result.excerpt,
       subResults: result.sub_results
         ?.filter((sub): sub is Required<PagefindSubResult> => Boolean(sub.title && sub.url))
-        .map((sub) => ({ title: sub.title, url: sub.url })),
+        .map((sub) => ({ title: sub.title, url: slashlessHref(sub.url) })),
     }));
   },
 };

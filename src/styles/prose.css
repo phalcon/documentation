@@ -329,3 +329,22 @@
   margin-left: 1rem;
   color: var(--nb-muted-foreground);
 }
+
+/* ============================================================
+ * Phalcon design system additions
+ * ============================================================ */
+
+/* Display typeface for headings. Same stack as the body today (Helvetica),
+   kept as its own token so a display face can be swapped in one place. */
+.docs-content :where(h1:not([class]), h2:not([class]), h3:not([class]), h4:not([class])),
+.docs-content h1 {
+  font-family: var(--nb-font-display);
+}
+
+/* Code blocks — design surface: a tinted ground with a hairline, instead of
+   the syntax theme's own background. */
+.docs-content pre.astro-code {
+  background: var(--ph-code-bg) !important;
+  border: 1px solid var(--nb-border);
+  border-radius: 6px;
+}

@@ -5,43 +5,48 @@
    --api-* palette from docs/assets/css/extra.css. The selectors restate
    the markup quill emits. Material tokens are mapped to --nb-* tokens;
    rem sizes are scaled from Material's 20px base to the 16px base here.
+
+   The palette below is the Phalcon design system rather than Material:
+   every kind takes one of the five hues the theme already defines, so
+   the badges and chips stay in step with the rest of the site when a
+   token changes. Both themes come along for free — each --nb-* token
+   already carries its dark value. The hues, by kind:
+
+     interface  brand teal    the contract
+     abstract   success       green, incomplete but sound
+     class      neutral       the plain case, the most common one
+     trait      slate         the mixin
+     final      danger        red, sealed
+     protected  warning       amber, the guarded visibility
    ============================================================ */
 
 :root {
-    --api-abstract-bg: #e8f5e9;
-    --api-abstract-fg: #2e7d32;
-    --api-class-bg: #eceff1;
-    --api-class-fg: #546e7a;
-    --api-current-bg: #e0f2f1;
-    --api-final-bg: #ffebee;
-    --api-final-fg: #c62828;
-    --api-interface-bg: #e3f2fd;
-    --api-interface-fg: #1565c0;
-    --api-protected-bg: #fff3e0;
-    --api-protected-fg: #9c5700;
-    --api-trait-bg: #f3e5f5;
-    --api-trait-fg: #6a1b9a;
-    --api-type-fg: #00747f;
+    --api-abstract-bg: var(--nb-success-muted);
+    --api-abstract-fg: var(--nb-success);
+    --api-class-bg: var(--nb-border);
+    --api-class-fg: var(--nb-muted-foreground);
+    --api-current-bg: var(--ph-brand-muted);
+    --api-final-bg: var(--nb-danger-muted);
+    --api-final-fg: var(--nb-danger);
+    --api-interface-bg: var(--ph-brand-muted);
+    --api-interface-fg: var(--nb-primary-hover);
+    --api-protected-bg: var(--nb-warning-muted);
+    --api-protected-fg: var(--nb-warning);
+    --api-trait-bg: var(--nb-info-muted);
+    --api-trait-fg: var(--nb-info);
+    --api-type-fg: var(--nb-primary-hover);
     --api-code-bg: var(--nb-muted);
     --api-fg-light: var(--nb-muted-foreground);
     --api-line: var(--nb-border);
 }
 
+/* Only the three that cannot come straight from a token: on the dark
+   theme `border` is too close to the page for a chip, and `primary-hover`
+   is the darker teal, which is the light-theme direction. */
 [data-mode="dark"] {
-    --api-abstract-bg: #1d2f1f;
-    --api-abstract-fg: #81c784;
-    --api-class-bg: #262d31;
-    --api-class-fg: #90a4ae;
-    --api-current-bg: #1d3330;
-    --api-final-bg: #331f1f;
-    --api-final-fg: #e57373;
-    --api-interface-bg: #1a2733;
-    --api-interface-fg: #64b5f6;
-    --api-protected-bg: #33291a;
-    --api-protected-fg: #ffb74d;
-    --api-trait-bg: #2a1f33;
-    --api-trait-fg: #ba68c8;
-    --api-type-fg: #4ec9b0;
+    --api-class-bg: var(--nb-accent);
+    --api-interface-fg: var(--nb-primary);
+    --api-type-fg: var(--nb-primary);
 }
 
 /* Class kind badges */
