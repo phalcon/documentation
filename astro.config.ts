@@ -54,8 +54,15 @@ const cloudflareRedirects = {
   name: "cloudflare-redirects",
   hooks: {
     "astro:build:done": async ({ dir, logger }: { dir: URL; logger: { info: (message: string) => void } }) => {
+      // First match wins, so the exact paths precede the wildcard. Bare
+      // `/latest` needs its own line: the Cloudflare rule this replaces
+      // matched `/latest/*`, which never covered it, and it 404s. `/latest/`
+      // is listed too, or the wildcard sends it to `/${STABLE_VERSION}/`,
+      // which is only a meta-refresh stub and costs an extra hop.
       const body = [
         `/          /${STABLE_VERSION}/introduction  301`,
+        `/latest    /${STABLE_VERSION}/introduction  301`,
+        `/latest/   /${STABLE_VERSION}/introduction  301`,
         `/latest/*  /${STABLE_VERSION}/:splat        301`,
       ].join("\n");
 
