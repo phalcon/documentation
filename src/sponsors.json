@@ -1,0 +1,336 @@
+{
+    "sponsors": [
+        {
+            "id": "gh:elcreator",
+            "name": "Artur Kyryliuk",
+            "url": "https://github.com/elcreator",
+            "logo": "https://avatars.githubusercontent.com/u/974975?u=f1bbb9b9c676bc2141bb68fed8f0533a26322632&v=4",
+            "group": "backer",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "gh:raicabogdan",
+            "name": "Bogdan Raica",
+            "url": "https://github.com/raicabogdan",
+            "logo": "https://avatars.githubusercontent.com/u/4399340?v=4",
+            "group": "backer",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "oc:christian-jay-bayno",
+            "name": "Ceage10",
+            "url": "https://opencollective.com/christian-jay-bayno",
+            "logo": "https://images.opencollective.com/christian-jay-bayno/c6aab1d/avatar.png",
+            "group": "backer",
+            "kind": "financial",
+            "source": [
+                "opencollective"
+            ]
+        },
+        {
+            "id": "gh:6trading",
+            "name": "Chris",
+            "url": "https://github.com/6trading",
+            "logo": "https://avatars.githubusercontent.com/u/12135941?u=befb955111226257bb44aec408af3229904d2831&v=4",
+            "group": "backer",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "oc:user-39cc369e",
+            "name": "DarkMiu",
+            "url": "https://opencollective.com/user-39cc369e",
+            "logo": "https://images.opencollective.com/user-39cc369e/avatar.png",
+            "group": "backer",
+            "kind": "financial",
+            "source": [
+                "opencollective"
+            ]
+        },
+        {
+            "id": "gh:iogates",
+            "name": "ioGates",
+            "url": "https://github.com/iogates",
+            "logo": "https://avatars.githubusercontent.com/u/86652317?v=4",
+            "group": "backer",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "oc:aircode",
+            "name": "Mateusz Pająk / Aircode",
+            "url": "https://aircode.pl/",
+            "logo": "https://images.opencollective.com/aircode/3e9590d/avatar.png",
+            "group": "backer",
+            "kind": "financial",
+            "source": [
+                "opencollective"
+            ]
+        },
+        {
+            "id": "gh:dredasss",
+            "name": "Nerijus Alex",
+            "url": "https://github.com/dredasss",
+            "logo": "https://avatars.githubusercontent.com/u/38747389?u=ee99a8bb28ee6bedbbea6325d49d4eb99080d421&v=4",
+            "group": "backer",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "gh:tztztztz",
+            "name": "Tomasz Zadora",
+            "url": "https://github.com/tztztztz",
+            "logo": "https://avatars.githubusercontent.com/u/7032308?v=4",
+            "group": "backer",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "manual:abits",
+            "name": "Abits",
+            "url": "https://abits.com",
+            "logo": "https://assets.phalcon.io/phalcon/images/backers/abits-100x34.svg",
+            "group": "partner",
+            "kind": "in-kind",
+            "source": [
+                "manual"
+            ]
+        },
+        {
+            "id": "manual:cloudflare",
+            "name": "Cloudflare",
+            "url": "https://www.cloudflare.com/",
+            "logo": "https://assets.phalcon.io/phalcon/images/backers/cloudflare.svg",
+            "group": "partner",
+            "kind": "in-kind",
+            "source": [
+                "manual"
+            ]
+        },
+        {
+            "id": "manual:crowdin",
+            "name": "Crowdin",
+            "url": "https://crowdin.com/",
+            "logo": "https://assets.phalcon.io/phalcon/images/backers/crowdin.png",
+            "group": "partner",
+            "kind": "in-kind",
+            "source": [
+                "manual"
+            ]
+        },
+        {
+            "id": "manual:digitalocean",
+            "name": "DigitalOcean",
+            "url": "https://www.digitalocean.com/",
+            "logo": "https://assets.phalcon.io/phalcon/images/backers/digitalocean.svg",
+            "group": "partner",
+            "kind": "in-kind",
+            "source": [
+                "manual"
+            ]
+        },
+        {
+            "id": "manual:mctekk",
+            "name": "mctekk",
+            "url": "https://mctekk.com",
+            "logo": "https://assets.phalcon.io/phalcon/images/backers/mctekk-149x34.svg",
+            "group": "partner",
+            "kind": "in-kind",
+            "source": [
+                "manual"
+            ]
+        },
+        {
+            "id": "manual:odva",
+            "name": "odva",
+            "url": "https://odva.pro/",
+            "logo": "https://assets.phalcon.io/phalcon/images/backers/odva.svg",
+            "group": "partner",
+            "kind": "in-kind",
+            "source": [
+                "manual"
+            ]
+        },
+        {
+            "id": "oc:commercesuite",
+            "name": "Commercesuite",
+            "url": "https://opencollective.com/commercesuite",
+            "logo": "https://images.opencollective.com/commercesuite/5c683c0/logo.png",
+            "group": "sponsor",
+            "kind": "financial",
+            "source": [
+                "opencollective"
+            ]
+        },
+        {
+            "id": "gh:markofo",
+            "name": "markofo",
+            "url": "https://github.com/markofo",
+            "logo": "https://avatars.githubusercontent.com/u/59839390?v=4",
+            "group": "sponsor",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "gh:elstin",
+            "name": "Akira Kato",
+            "url": "https://github.com/elstin",
+            "logo": "https://avatars.githubusercontent.com/u/38716832?u=d219979f0233713ca897b1ea3dfaae57144d3a77&v=4",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "gh:alrieckert",
+            "name": "Anton Rieckert",
+            "url": "https://github.com/alrieckert",
+            "logo": "https://avatars.githubusercontent.com/u/452786?v=4",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "oc:barry",
+            "name": "Barry Helfrich",
+            "url": "https://opencollective.com/barry",
+            "logo": "https://images.opencollective.com/barry/avatar.png",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "opencollective"
+            ]
+        },
+        {
+            "id": "oc:borisdelev",
+            "name": "Boris Delev",
+            "url": "https://bd.fyi",
+            "logo": "https://images.opencollective.com/borisdelev/7630f7b/avatar.png",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "opencollective",
+                "github"
+            ]
+        },
+        {
+            "id": "gh:fvromera",
+            "name": "Chess",
+            "url": "https://github.com/fvromera",
+            "logo": "https://avatars.githubusercontent.com/u/32909196?u=a4a6d765c836be52ab247354399d0ed1a49224fa&v=4",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "oc:guest-163314bf",
+            "name": "D3",
+            "url": "https://opencollective.com/guest-163314bf",
+            "logo": "https://images.opencollective.com/guest-163314bf/avatar.png",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "opencollective"
+            ]
+        },
+        {
+            "id": "gh:f-do",
+            "name": "Florian",
+            "url": "https://github.com/f-do",
+            "logo": "https://avatars.githubusercontent.com/u/4299065?u=66d3687ffd970119b19d39694a5ddf87294d0bd5&v=4",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "gh:francoisgrogor",
+            "name": "francoisgrogor",
+            "url": "https://github.com/francoisgrogor",
+            "logo": "https://avatars.githubusercontent.com/u/5804565?v=4",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "gh:housesigma",
+            "name": "HouseSigma",
+            "url": "https://github.com/housesigma",
+            "logo": "https://avatars.githubusercontent.com/u/50630040?v=4",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "oc:ultimater",
+            "name": "Kevin Yarmak",
+            "url": "https://www.ultimater.net",
+            "logo": "https://images.opencollective.com/ultimater/19fc150/avatar.png",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "opencollective",
+                "github"
+            ]
+        },
+        {
+            "id": "oc:info23",
+            "name": "maGus Informática",
+            "url": "https://opencollective.com/info23",
+            "logo": "https://images.opencollective.com/info23/eebb146/avatar.png",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "opencollective"
+            ]
+        },
+        {
+            "id": "gh:niden",
+            "name": "Nikolaos Dimopoulos",
+            "url": "https://github.com/niden",
+            "logo": "https://avatars.githubusercontent.com/u/1073784?v=4",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        },
+        {
+            "id": "gh:rayanlevert",
+            "name": "Rayan Levert",
+            "url": "https://github.com/rayanlevert",
+            "logo": "https://avatars.githubusercontent.com/u/78140431?u=e9757b8d038f97b4e81c104378657275cc24d150&v=4",
+            "group": "supporter",
+            "kind": "financial",
+            "source": [
+                "github"
+            ]
+        }
+    ]
+}

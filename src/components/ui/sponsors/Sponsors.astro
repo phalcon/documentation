@@ -1,0 +1,66 @@
+---
+/**
+ * Sponsors — the logo rows on the sponsors page.
+ *
+ * The data comes from src/sponsors.json, refreshed from phalcon/assets by
+ * the deploy workflow the way the fan art is. Imported rather than injected
+ * with `set:html`: malformed JSON fails the build with a parse error, where
+ * malformed HTML would render broken markup on 2,500 pages.
+ *
+ * Only the two groups that carry logos are shown. Supporters and backers
+ * are people, and listing them by name is an editorial call, not a
+ * rendering one.
+ */
+import data from "@/sponsors.json";
+
+interface Sponsor {
+  group: string;
+  id: string;
+  kind: string;
+  logo: string | null;
+  name: string;
+  source: string[];
+  url: string;
+}
+
+const sections: { group: string; title: string }[] = [
+  { group: "sponsor", title: "Sponsors" },
+  { group: "partner", title: "Partners" },
+];
+
+const sponsors = data.sponsors as Sponsor[];
+
+const inGroup = (group: string): Sponsor[] =>
+  sponsors
+    .filter((sponsor) => sponsor.group === group && null !== sponsor.logo)
+    .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+{sections.map(({ group, title }) => {
+  const entries = inGroup(group);
+
+  return entries.length > 0 && (
+    <section class="not-prose mt-8">
+      <h2 class="mb-4 text-lg font-semibold text-foreground">{title}</h2>
+      <ul class="flex list-none flex-wrap gap-3 m-0 p-0">
+        {entries.map((sponsor) => (
+          <li>
+            <a
+              href={sponsor.url}
+              rel="noopener sponsored"
+              target="_blank"
+              class="flex h-20 w-40 items-center justify-center rounded-lg border border-border bg-card p-4 no-underline transition-colors hover:border-foreground/20"
+            >
+              <img
+                src={sponsor.logo}
+                alt={sponsor.name}
+                loading="lazy"
+                class="max-h-full max-w-full object-contain"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+})}
