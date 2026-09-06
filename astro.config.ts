@@ -1,3 +1,4 @@
+import { writeFile } from "node:fs/promises";
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import nimbus, { defineConfig as defineNimbusConfig } from "@cloudflare/nimbus-docs";
@@ -39,6 +40,31 @@ const nimbusConfig = defineNimbusConfig({
   },
 });
 
+/**
+ * Cloudflare Pages reads `_redirects` from the build root and serves real
+ * 301s from it at the edge. Written here rather than committed to public/
+ * so the stable version comes from src/lib/site.mjs and cannot go stale.
+ *
+ * These two routes were Cloudflare zone rules, which intercept before Pages
+ * ever sees the request. Zone rules therefore win over this file: the rules
+ * have to be deactivated for these lines to take effect, and this file has
+ * to be deployed before they are, or /latest/* has nothing to fall back on.
+ */
+const cloudflareRedirects = {
+  name: "cloudflare-redirects",
+  hooks: {
+    "astro:build:done": async ({ dir, logger }: { dir: URL; logger: { info: (message: string) => void } }) => {
+      const body = [
+        `/          /${STABLE_VERSION}/introduction  301`,
+        `/latest/*  /${STABLE_VERSION}/:splat        301`,
+      ].join("\n");
+
+      await writeFile(new URL("_redirects", dir), `${body}\n`, "utf8");
+      logger.info(`_redirects written, /latest -> /${STABLE_VERSION}`);
+    },
+  },
+};
+
 export default defineConfig({
   output: "static",
   // Slashless URLs. Pages still emit as `x/index.html` (the `directory`
@@ -72,6 +98,7 @@ export default defineConfig({
     defaultStrategy: "hover",
   },
   integrations: [
+    cloudflareRedirects,
     nimbus(nimbusConfig, {
       // Authoring rules are opt-in by design — your repo, your taste. The
       // two below are the load-bearing pair: frontmatter has to validate

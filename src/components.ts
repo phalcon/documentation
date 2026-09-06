@@ -20,6 +20,7 @@ import { Card } from "./components/ui/card";
 import { CardGrid } from "./components/ui/card-grid";
 import { PackageManagers } from "./components/ui/package-managers";
 import { ReleaseHistory } from "./components/ui/release-history";
+import { Sponsors } from "./components/ui/sponsors";
 import { Step, Steps } from "./components/ui/steps";
 import { Tabs, TabItem } from "./components/ui/tabs";
 
@@ -38,6 +39,7 @@ export const components = {
   ReleaseHistory,
   Render,
   SourceLink,
+  Sponsors,
   Step,
   Steps,
   TabItem,
