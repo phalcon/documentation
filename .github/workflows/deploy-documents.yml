@@ -61,14 +61,10 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Determine the stable version
-        id: stable
-        run: |
-          STABLE=$(node -e "import('./src/lib/site.mjs').then((m) => console.log(m.STABLE_VERSION))")
-          echo "Stable version: ${STABLE}"
-          echo "version=${STABLE}" >> "$GITHUB_OUTPUT"
-
       - name: Publish to the deploy branch
+        # dist/_redirects (written by the cloudflare-redirects hook in
+        # astro.config.ts) carries /latest -> the stable version, so the
+        # deployment is self-contained: no zone rule to update from here.
         run: |
           git config user.name niden
           git config user.email nikos@niden.net
@@ -79,34 +75,3 @@ jobs:
           git -C ../deploy add -A
           git -C ../deploy commit -m "Deployed ${GITHUB_SHA::7}" || echo "No changes to deploy"
           git -C ../deploy push origin "HEAD:${DEPLOY_BRANCH}"
-
-      - name: Point Cloudflare /latest at the stable version
-        env:
-          CF_API_TOKEN:  ${{ secrets.CF_API_TOKEN }}
-          CF_ZONE_ID:    ${{ secrets.CF_ZONE_ID }}
-          CF_RULESET_ID: ${{ secrets.CF_RULESET_ID }}
-          CF_RULE_ID:    ${{ secrets.CF_RULE_ID }}
-          STABLE:        ${{ steps.stable.outputs.version }}
-        run: |
-          echo "Pointing /latest -> /${STABLE} at Cloudflare"
-          curl -sS --fail-with-body -X PATCH \
-            "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/rulesets/${CF_RULESET_ID}/rules/${CF_RULE_ID}" \
-            -H "Authorization: Bearer ${CF_API_TOKEN}" \
-            -H "Content-Type: application/json" \
-            --data @- <<JSON
-          {
-            "action": "redirect",
-            "description": "Documentation Latest",
-            "enabled": true,
-            "expression": "(http.request.full_uri wildcard r\"https://docs.phalcon.io/latest/*\")",
-            "action_parameters": {
-              "from_value": {
-                "status_code": 301,
-                "target_url": {
-                  "expression": "wildcard_replace(http.request.full_uri, r\"https://docs.phalcon.io/latest/*\", r\"https://docs.phalcon.io/${STABLE}/\${1}\")"
-                },
-                "preserve_query_string": true
-              }
-            }
-          }
-          JSON
