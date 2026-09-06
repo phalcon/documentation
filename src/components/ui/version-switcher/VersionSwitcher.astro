@@ -8,6 +8,7 @@ import {
   getVersions,
 } from "@cloudflare/nimbus-docs";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../collapsible";
 import { cn } from "@/lib/cn";
 import { STABLE_VERSION, versionTag } from "@/lib/site.mjs";
 
@@ -156,44 +157,78 @@ if (versions && versions.all.length >= 2) {
     class={cn("md:hidden mb-4 pb-4 border-b border-border", className)}
     aria-labelledby="version-picker-label"
   >
-    <h3
-      id="version-picker-label"
-      class="flex items-center gap-1.5 text-[0.6875rem] uppercase tracking-wide font-semibold text-muted-foreground/80 mb-2 px-2"
-    >
-      <Icon name="ph:git-branch" class="w-3 h-3" />
-      Version
-    </h3>
-    <ul class="flex flex-col list-none m-0 p-0" role="listbox" aria-label="Docs versions">
-      {entries.map((entry) => (
-        <li>
-          <a
-            href={entry.href}
-            role="option"
-            aria-current={entry.isActive ? "page" : undefined}
-            aria-selected={entry.isActive}
-            class:list={[
-              "flex items-center justify-between gap-3 px-3 py-2 rounded-md text-sm no-underline transition-colors",
-              entry.isActive
-                ? "bg-accent text-foreground font-medium"
-                : "text-muted-foreground hover:bg-accent/60 hover:text-foreground",
-            ]}
-          >
-            <span class="flex items-center gap-2">
-              <span>{entry.version}</span>
-              {entry.tag && (
-                <span class="text-[0.6875rem] uppercase tracking-wide text-muted-foreground/70">
-                  {entry.tag}
-                </span>
-              )}
+    {/* Collapsed by default: 19 versions listed inline push the page
+        navigation off the bottom of a phone viewport. */}
+    <Collapsible data-nb-version-picker>
+      {/* The heading wraps the button — the standard disclosure pattern, and
+          it keeps the section's aria-labelledby target valid. */}
+      <h3 id="version-picker-label" class="m-0">
+        <CollapsibleTrigger
+          class="flex items-center justify-between gap-3 px-2 py-2 rounded-md text-sm text-muted-foreground hover:bg-accent/60 hover:text-foreground transition-colors"
+          aria-label={`Switch docs version (current: ${activeLabel})`}
+        >
+          <span class="flex items-center gap-2 min-w-0">
+            <Icon name="ph:git-branch" class="w-3 h-3 shrink-0" />
+            <span class="text-[0.6875rem] uppercase tracking-wide font-semibold text-muted-foreground/80">
+              Version
             </span>
-            {entry.isDeprecated && (
-              <span class="text-[0.6875rem] uppercase tracking-wide font-mono px-1.5 py-0.5 rounded-md bg-warning/15 text-warning border border-warning/20">
-                deprecated
-              </span>
-            )}
-          </a>
-        </li>
-      ))}
-    </ul>
+            <span class="font-medium text-foreground truncate">{activeLabel}</span>
+          </span>
+          <Icon
+            name="ph:caret-right"
+            data-nb-caret
+            class="w-3.5 h-3.5 shrink-0 opacity-60 transition-[rotate] duration-200 motion-reduce:transition-none"
+          />
+        </CollapsibleTrigger>
+      </h3>
+      <CollapsibleContent data-nb-state="closed">
+        <ul
+          class="flex flex-col list-none m-0 p-0 mt-1 max-h-[50vh] overflow-y-auto overscroll-contain"
+          role="listbox"
+          aria-label="Docs versions"
+        >
+          {entries.map((entry) => (
+            <li>
+              <a
+                href={entry.href}
+                role="option"
+                aria-current={entry.isActive ? "page" : undefined}
+                aria-selected={entry.isActive}
+                class:list={[
+                  "flex items-center justify-between gap-3 px-3 py-2 rounded-md text-sm no-underline transition-colors",
+                  entry.isActive
+                    ? "bg-accent text-foreground font-medium"
+                    : "text-muted-foreground hover:bg-accent/60 hover:text-foreground",
+                ]}
+              >
+                <span class="flex items-center gap-2">
+                  <span>{entry.version}</span>
+                  {entry.tag && (
+                    <span class="text-[0.6875rem] uppercase tracking-wide text-muted-foreground/70">
+                      {entry.tag}
+                    </span>
+                  )}
+                </span>
+                {entry.isDeprecated && (
+                  <span class="text-[0.6875rem] uppercase tracking-wide font-mono px-1.5 py-0.5 rounded-md bg-warning/15 text-warning border border-warning/20">
+                    deprecated
+                  </span>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </CollapsibleContent>
+    </Collapsible>
   </section>
 )}
+
+<style is:global>
+  /**
+   * The disclosure module mirrors `data-nb-state` onto the trigger; this rule
+   * turns the attribute change into the caret rotation.
+   */
+  [data-nb-version-picker] [data-nb-collapsible-trigger][data-nb-state="open"] [data-nb-caret] {
+    rotate: 90deg;
+  }
+</style>
