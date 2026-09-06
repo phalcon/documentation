@@ -2,6 +2,10 @@
 /**
  * PopoverContent — floating panel. Set `placement` to one of
  * `bottom-start` (default) | `bottom-end` | `top-start` | `top-end`.
+ *
+ * `popover` is set here and not only in popover.client.ts. Without the
+ * attribute the panel is a plain visible div, so it shows as an open
+ * menu until the script runs.
  */
 import { cn } from "@/lib/cn";
 import type { HTMLAttributes } from "astro/types";
@@ -16,6 +20,7 @@ const { placement = "bottom-start", class: className, ...attrs } = Astro.props;
 ---
 
 <div
+  popover="auto"
   data-popover-content
   data-placement={placement}
   class={cn(
