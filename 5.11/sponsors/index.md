@@ -13,6 +13,4 @@ For those who wish to sponsor our work and further the development of Phalcon, w
 
 # Sponsors and Supporters
 
-\{!assets/sponsors.md!\}
-
 Source: https://docs.phalcon.io/5.11/sponsors/index.mdx

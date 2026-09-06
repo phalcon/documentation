@@ -15,6 +15,4 @@ and features, and ensure the project's stability.
 
 # Sponsors and Supporters
 
-\{!assets/sponsors.md!\}
-
 Source: https://docs.phalcon.io/5.14/sponsors/index.mdx
