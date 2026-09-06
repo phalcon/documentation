@@ -8,7 +8,7 @@
  *   2. `@theme` block exposes them to Tailwind so utilities like
  *      `bg-card`, `text-foreground`, `border-border` work
  *   3. Dark mode uses the `[data-mode="dark"]` attribute
- *   4. All colors use oklch for perceptual uniformity
+ *   4. Colors are the Phalcon design system (hex), shared with phalcon.io
  *
  * Naming convention:
  *   - Surfaces paired with foregrounds: `card` / `card-foreground`
@@ -18,70 +18,80 @@
  *     `shadow-lg`, etc. as color names — they collide with built-ins)
  * ============================================================ */
 
-/* ---- Light mode (default) ---- */
+/* ---- Light mode (default) — Phalcon design system ---- */
 :root {
 	color-scheme: light;
 
 	/* Surfaces (paired with foregrounds for contrast) */
-	--nb-background: oklch(0.99 0 0);
-	--nb-foreground: oklch(0.21 0 0);
+	--nb-background: #f7faf8;
+	--nb-foreground: #0f1a17;
 
-	--nb-card: oklch(1 0 0);
+	--nb-card: #ffffff;
 	--nb-card-foreground: var(--nb-foreground);
 
-	--nb-muted: oklch(0.967 0 0);
-	--nb-muted-foreground: oklch(0.556 0 0);
+	--nb-muted: #eef4f0;
+	--nb-muted-foreground: #4b6157;
 
-	--nb-accent: oklch(0.967 0 0);
+	--nb-accent: #eef4f0;
 	--nb-accent-foreground: var(--nb-foreground);
 
 	/* Primary action / brand */
-	--nb-primary: oklch(0.145 0 0);
-	--nb-primary-foreground: oklch(0.97 0 0);
-	--nb-primary-hover: oklch(0.371 0 0);
+	--nb-primary: #0f9e86;
+	--nb-primary-foreground: #f7faf8;
+	--nb-primary-hover: #0b7d6a;
 
 	/* Borders / focus */
-	--nb-border: oklch(0.935 0 0);
-	--nb-border-strong: oklch(0.87 0 0);
-	--nb-selected: oklch(0.89 0 0);
-	--nb-ring: oklch(0.145 0 0 / 0.35);
+	--nb-border: #e4ede8;
+	--nb-border-strong: #d3e2d9;
+	--nb-selected: #d3e2d9;
+	--nb-ring: rgb(15 158 134 / 0.35);
 
 	/* Status colors — paired (saturated for text/border + muted for bg) */
-	--nb-info: oklch(0.45 0.18 255);
-	--nb-info-foreground: oklch(0.45 0.18 255);
-	--nb-info-muted: oklch(0.965 0.015 255);
+	--nb-info: #273646;
+	--nb-info-foreground: #273646;
+	--nb-info-muted: #eef1f4;
 
-	--nb-success: oklch(0.42 0.14 152);
-	--nb-success-foreground: oklch(0.42 0.14 152);
-	--nb-success-muted: oklch(0.965 0.015 152);
+	--nb-success: #2f8f5b;
+	--nb-success-foreground: #2f8f5b;
+	--nb-success-muted: #eaf4ee;
 
-	--nb-warning: oklch(0.48 0.15 65);
-	--nb-warning-foreground: oklch(0.48 0.15 65);
-	--nb-warning-muted: oklch(0.97 0.02 70);
+	--nb-warning: #9a6b12;
+	--nb-warning-foreground: #9a6b12;
+	--nb-warning-muted: #f7f1e2;
 
-	--nb-danger: oklch(0.47 0.18 25);
-	--nb-danger-foreground: oklch(0.47 0.18 25);
-	--nb-danger-muted: oklch(0.965 0.015 25);
+	--nb-danger: #b23b3b;
+	--nb-danger-foreground: #b23b3b;
+	--nb-danger-muted: #f8ecec;
 
-	/* Layout */
-	--nb-sidebar-width: 18.75rem;
-	--nb-toc-width: 18rem;
-	--nb-content-max: 43.5rem;
+	/* Phalcon extras — used by prose.css, api.css and the mermaid theme.
+	   `brand-muted` is the tint of --nb-primary that the status colors have
+	   in --nb-*-muted; the brand itself ships no muted pair. */
+	--ph-slate: #273646;
+	--ph-adm-warning: #9a6b12;
+	--ph-adm-danger: #b23b3b;
+	--ph-adm-tip: #2f8f5b;
+	--ph-brand-muted: #e2f2ee;
+	--ph-code-bg: #eef3f0;
+	--ph-kicker: #5c7a6e;
 
-	/* Typography — self-hosted via @fontsource-variable in BaseLayout.astro */
-	--nb-font-sans:
-		"Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
-		sans-serif;
+	/* Layout — design: sidebar 264px / content 820px / toc 232px */
+	--nb-sidebar-width: 16.5rem;
+	--nb-toc-width: 14.5rem;
+	--nb-content-max: 51.25rem;
+
+	/* Typography — Helvetica everywhere, matching phalcon.io: no webfonts,
+	   nothing to download. Code keeps the platform monospace stack. */
+	--nb-font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	--nb-font-display: var(--nb-font-sans);
 	--nb-font-mono:
-		"JetBrains Mono Variable", "JetBrains Mono", ui-monospace, "Cascadia Code",
-		"Source Code Pro", Menlo, Consolas, monospace;
-	--nb-h1-size: 2.1875rem;
-	--nb-h1-weight: 600;
+		ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+	--nb-h1-size: 2.375rem;
+	--nb-h1-weight: 700;
 	--nb-h1-tracking: -0.025em;
-	--nb-h2-size: 1.3rem;
-	--nb-h2-weight: 650;
-	--nb-h2-tracking: -0.015em;
-	--nb-h3-size: 1.1rem;
+	--nb-h2-size: 1.5rem;
+	--nb-h2-weight: 600;
+	--nb-h2-tracking: -0.01em;
+	--nb-h3-size: 1.15rem;
 	--nb-h3-weight: 600;
 	--nb-h3-tracking: -0.01em;
 	--nb-h4-weight: 600;
@@ -103,42 +113,51 @@
 [data-mode="dark"] {
 	color-scheme: dark;
 
-	--nb-background: oklch(0.085 0 0);
-	--nb-foreground: oklch(0.97 0 0);
+	--nb-background: #0a0c0f;
+	--nb-foreground: #e8ecef;
 
-	--nb-card: #0F0F0F;
+	--nb-card: #12161a;
 	--nb-card-foreground: var(--nb-foreground);
 
-	--nb-muted: #060606;
-	--nb-muted-foreground: oklch(0.556 0 0);
+	--nb-muted: #171b20;
+	--nb-muted-foreground: #9ba5ad;
 
-	--nb-accent: oklch(0.269 0 0);
+	--nb-accent: #171b20;
 	--nb-accent-foreground: var(--nb-foreground);
 
-	--nb-primary: oklch(0.9 0 0);
-	--nb-primary-foreground: oklch(0.085 0 0);
-	--nb-primary-hover: oklch(0.7 0 0);
+	--nb-primary: #74ccb2;
+	--nb-primary-foreground: #06120e;
+	--nb-primary-hover: #57b49b;
 
-	--nb-border: oklch(0.269 0 0);
-	--nb-border-strong: oklch(0.371 0 0);
-	--nb-selected: oklch(0.371 0 0);
-	--nb-ring: oklch(0.9 0 0 / 0.35);
+	--nb-border: #191d22;
+	--nb-border-strong: #2c323a;
+	--nb-selected: #2c323a;
+	--nb-ring: rgb(116 204 178 / 0.4);
 
-	--nb-info: oklch(0.75 0.12 255);
-	--nb-info-foreground: oklch(0.75 0.12 255);
-	--nb-info-muted: oklch(0.17 0.03 260);
+	--nb-info: #8aa79a;
+	--nb-info-foreground: #8aa79a;
+	--nb-info-muted: rgb(39 54 70 / 0.35);
 
-	--nb-success: oklch(0.72 0.12 150);
-	--nb-success-foreground: oklch(0.72 0.12 150);
-	--nb-success-muted: oklch(0.17 0.025 153);
+	--nb-success: #8fc19a;
+	--nb-success-foreground: #8fc19a;
+	--nb-success-muted: rgb(143 193 154 / 0.12);
 
-	--nb-warning: oklch(0.78 0.11 80);
-	--nb-warning-foreground: oklch(0.78 0.11 80);
-	--nb-warning-muted: oklch(0.19 0.03 70);
+	--nb-warning: #e2c37a;
+	--nb-warning-foreground: #e2c37a;
+	--nb-warning-muted: rgb(226 195 122 / 0.1);
 
-	--nb-danger: oklch(0.72 0.14 25);
-	--nb-danger-foreground: oklch(0.72 0.14 25);
-	--nb-danger-muted: oklch(0.17 0.03 25);
+	--nb-danger: #e08f8f;
+	--nb-danger-foreground: #e08f8f;
+	--nb-danger-muted: rgb(224 143 143 / 0.1);
+
+	/* Phalcon extras */
+	--ph-slate: #273646;
+	--ph-adm-warning: #e2c37a;
+	--ph-adm-danger: #e08f8f;
+	--ph-adm-tip: #8fc19a;
+	--ph-brand-muted: rgb(116 204 178 / 0.14);
+	--ph-code-bg: #0d1013;
+	--ph-kicker: #8fa39b;
 
 	--nb-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.2);
 	--nb-shadow: 0 1px 3px oklch(0 0 0 / 0.3), 0 1px 2px oklch(0 0 0 / 0.2);
@@ -188,6 +207,7 @@
 	--color-danger-muted: var(--nb-danger-muted);
 
 	--font-sans: var(--nb-font-sans);
+	--font-display: var(--nb-font-display);
 	--font-mono: var(--nb-font-mono);
 
 	--shadow-sm: var(--nb-shadow-sm);
@@ -198,7 +218,6 @@
 /* ---- Minimal overrides the plugin doesn't cover ---- */
 html {
 	font-family: var(--nb-font-sans);
-	font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 body {

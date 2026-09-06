@@ -15,25 +15,25 @@ test("stable versions have no banner; others point to the stable release", () =>
   assert.equal(versionBanner("5.20", ["5.20"], prereleases), null);
   const older = versionBanner("5.19", ["5.20"], prereleases);
   assert.equal(older.type, "caution");
-  assert.match(older.content, /The current stable release is <a href="\/5.20\/">5.20<\/a>/);
+  assert.match(older.content, /The current stable release is <a href="\/5.20">5.20<\/a>/);
   const beta = versionBanner("6.0", ["5.20"], prereleases);
   assert.equal(beta.type, "caution");
-  assert.match(beta.content, /6.0<\/strong> \(beta\)\. <a href="\/5.20\/">5.20<\/a> remains/);
+  assert.match(beta.content, /6.0<\/strong> \(beta\)\. <a href="\/5.20">5.20<\/a> remains/);
 });
 
 test("with two stable releases, an older 5.x points to 5.20 and nothing shows on either stable", () => {
   const stable = ["6.0", "5.20"];
   assert.equal(versionBanner("6.0", stable, {}), null);
   assert.equal(versionBanner("5.20", stable, {}), null);
-  assert.match(versionBanner("5.19", stable, {}).content, /<a href="\/5.20\/">5.20<\/a>/);
+  assert.match(versionBanner("5.19", stable, {}).content, /<a href="\/5.20">5.20<\/a>/);
   // 4.2 is deprecated in production, so the fallback is asserted on its own.
-  assert.match(versionBanner("4.2", stable, {}, []).content, /<a href="\/6.0\/">6.0<\/a>/);
+  assert.match(versionBanner("4.2", stable, {}, []).content, /<a href="\/6.0">6.0<\/a>/);
 });
 
 test("a deprecated version has no banner of ours; nimbus shows its own", () => {
   const stable = ["5.20"];
   assert.equal(versionBanner("3.4", stable, {}, ["3.4"]), null);
-  assert.match(versionBanner("3.4", stable, {}, []).content, /<a href="\/5.20\/">5.20<\/a>/);
+  assert.match(versionBanner("3.4", stable, {}, []).content, /<a href="\/5.20">5.20<\/a>/);
 });
 
 test("picker tags: latest for the first stable, stable for the others, the pre-release tag otherwise", () => {

@@ -12,18 +12,22 @@
    these tables carries one.
    ============================================================ */
 
+/* The three hues are the design system's: success for the latest release,
+   warning for one that still gets fixes, slate for a preview. They are a
+   step stronger than the `--nb-*-muted` tints, because a whole row has to
+   read as coloured next to its uncoloured neighbours. */
 :root {
-    --release-latest: #d4f4b4;
-    --release-maintained: #fef8c6;
-    --release-preview: #c1e6f5;
+    --release-latest: #dcefe3;
+    --release-maintained: #f5ecd4;
+    --release-preview: #e7edf3;
 }
 
-/* Muted for the dark theme: the same three colours, dark enough for the
+/* Muted for the dark theme: the same three hues, dark enough for the
    text of the theme to stay readable on a coloured row. */
 [data-mode="dark"] {
-    --release-latest: #2c4a1f;
-    --release-maintained: #4a4318;
-    --release-preview: #17394d;
+    --release-latest: #1e3326;
+    --release-maintained: #332d17;
+    --release-preview: #1a2836;
 }
 
 .docs-content .release-section {

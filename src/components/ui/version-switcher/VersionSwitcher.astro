@@ -91,7 +91,7 @@ if (versions && versions.all.length >= 2) {
       } else {
         // No same page in that version: its root redirects to its
         // introduction (see `redirects` in astro.config.ts).
-        href = `/${v}/`;
+        href = `/${v}`;
       }
 
       return { version: v, href, isCurrent, isActive, isDeprecated, tag };

@@ -82,7 +82,9 @@ export function versionBanner(
   if (stable.includes(version) || deprecated.includes(version)) return null;
   const major = version.split(".")[0];
   const target = stable.find((v) => v.split(".")[0] === major) ?? stable[0];
-  const link = `<a href="/${target}/">${target}</a>`;
+  // Slashless, like every other URL the site hands out; the version root
+  // redirects to that version's introduction (`redirects` in astro.config.ts).
+  const link = `<a href="/${target}">${target}</a>`;
   if (prereleases[version]) {
     return {
       content:

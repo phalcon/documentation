@@ -1,10 +1,11 @@
 ---
-import "@fontsource-variable/inter";
-import "@fontsource-variable/jetbrains-mono";
+// No webfonts: the type stack is Helvetica plus the platform monospace,
+// matching phalcon.io. See --nb-font-* in globals.css.
 import "../styles/globals.css";
 import "../styles/prose.css";
 import "../styles/api.css";
 import "../styles/releases.css";
+import "../styles/mermaid.css";
 import { ClientRouter } from "astro:transitions";
 import { config } from "virtual:nimbus/config";
 import { getCollectionLlmsUrl, getVersionStatus } from "@cloudflare/nimbus-docs";
@@ -123,6 +124,12 @@ const llmsUrl = Astro.site
       import { codeCopy, headingAnchors } from "@cloudflare/nimbus-docs/client";
       codeCopy();
       headingAnchors();
+    </script>
+    {/* Renders <pre class="mermaid"> blocks (see src/lib/mermaid-fence.ts).
+        The mermaid bundle itself is imported lazily, only where a diagram
+        is on the page. */}
+    <script>
+      import "../scripts/mermaid";
     </script>
   </body>
 </html>

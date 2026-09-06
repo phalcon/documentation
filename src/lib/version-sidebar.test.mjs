@@ -38,5 +38,6 @@ test("the current page is marked and groups keep their collapsed flag", () => {
   assert.equal(tree[1].collapsed, true);
   assert.equal(tree[1].children[0].isCurrent, true);
   assert.equal(tree[2].isCurrent, false);
-  assert.equal(tree[2].href, "/5.9/acl/");
+  // The rail links slashless, whatever form the config carries.
+  assert.equal(tree[2].href, "/5.9/acl");
 });
