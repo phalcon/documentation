@@ -1,2 +1,4 @@
 /          /5.20/introduction  301
+/latest    /5.20/introduction  301
+/latest/   /5.20/introduction  301
 /latest/*  /5.20/:splat        301
