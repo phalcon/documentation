@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@cloudflare/nimbus-docs@0.11.0':
-    hash: 5c11e32e2886b9f1f5f332ca2333cf49ccb1d89d93e3780c35a179e396d84b0a
+    hash: b528370c5ecb62c07995ade3d9af9a5c39f7f55c1d9fef35e60ae92b6a0f6e5b
     path: patches/@cloudflare__nimbus-docs@0.11.0.patch
 
 importers:
@@ -15,7 +15,7 @@ importers:
     dependencies:
       '@cloudflare/nimbus-docs':
         specifier: 0.11.0
-        version: 0.11.0(patch_hash=5c11e32e2886b9f1f5f332ca2333cf49ccb1d89d93e3780c35a179e396d84b0a)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0))
+        version: 0.11.0(patch_hash=b528370c5ecb62c07995ade3d9af9a5c39f7f55c1d9fef35e60ae92b6a0f6e5b)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0))
       '@iconify-json/ph':
         specifier: ^1.2.0
         version: 1.2.2
@@ -3241,7 +3241,7 @@ snapshots:
       fast-wrap-ansi: 0.2.2
       sisteransi: 1.0.5
 
-  '@cloudflare/nimbus-docs@0.11.0(patch_hash=5c11e32e2886b9f1f5f332ca2333cf49ccb1d89d93e3780c35a179e396d84b0a)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0))':
+  '@cloudflare/nimbus-docs@0.11.0(patch_hash=b528370c5ecb62c07995ade3d9af9a5c39f7f55c1d9fef35e60ae92b6a0f6e5b)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@astrojs/markdown-satteri': 0.3.8
       '@astrojs/mdx': 7.0.8(@astrojs/markdown-satteri@0.3.8)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0))
