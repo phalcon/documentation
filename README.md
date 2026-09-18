@@ -49,16 +49,11 @@ docker run --rm -v "$PWD":/docs phalcon-docs pnpm test
 scripts/new-version.sh 5.20 5.21
 ```
 
-Then edit `src/content/docs-5.21/`, and set `STABLE_VERSIONS` (or
-`PRERELEASES`) in `src/lib/site.mjs` when the version is published. The
-first entry of `STABLE_VERSIONS` is where `/` and `/latest/` lead.
+Then edit `src/content/docs-5.21/`, and set `STABLE_VERSIONS` (or `PRERELEASES`) in `src/lib/site.mjs` when the version is published. The first entry of `STABLE_VERSIONS` is where `/` and `/latest/` lead.
 
 ### Publish a release
 
-The `releases` page of every version reads `src/data/releases.ts`, so one
-entry serves all of them. Take the date from the changelog, not from the git
-tag: some tags are a day away from the release, and some releases have no
-tag.
+The `releases` page of every version reads `src/data/releases.ts`, so one entry serves all of them. Take the date from the changelog, not from the git tag: some tags are a day away from the release, and some releases have no tag.
 
 ```bash
 grep -m1 '5\.21\.0' ../cphalcon/CHANGELOG-5.0.md    # 5.x
@@ -77,14 +72,11 @@ For a major that leaves pre-release, 6.0 for example:
 1. Add `{ version: "6.0", date: "...", php: "..." }` to `src/data/releases.ts`
 2. Set `STABLE_VERSIONS` to `["6.0", "5.20"]` and delete `6.0` from `PRERELEASES`
 
-The 6.0 previews then leave the page on their own: a preview is shown only
-while its major version has no stable release. Their entries can stay in the
-file or go, and the page is the same either way.
+The 6.0 previews then leave the page on their own: a preview is shown only while its major version has no stable release. Their entries can stay in the file or go, and the page is the same either way.
 
 ### Convert a MkDocs version
 
-Every version is converted; the converter is kept for a version that is still
-in MkDocs form. Point it at a checkout of that branch:
+Every version is converted; the converter is kept for a version that is still in MkDocs form. Point it at a checkout of that branch:
 
 ```bash
 docker build -t phalcon-docs-converter resources/docker/converter
@@ -93,8 +85,7 @@ docker run --rm -v "$PWD":/docs phalcon-docs-converter resources/nimbus/convert.
 docker run --rm -v "$PWD":/docs phalcon-docs-converter resources/nimbus/convert.py --register
 ```
 
-`--skip-locale-redirects` drops the redirects of the translations of the old
-multilingual site (one per page per language, one file each in the build).
+`--skip-locale-redirects` drops the redirects of the translations of the old multilingual site (one per page per language, one file each in the build).
 
 ### Deployment
 
