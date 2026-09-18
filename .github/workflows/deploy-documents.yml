@@ -44,19 +44,25 @@ jobs:
 
       - name: Get the fan art
         # The HTML comment at the top of every page. The committed
-        # src/fanart.html is the fallback when the download fails.
+        # src/fanart.html is EMPTY on purpose: a failed download then renders
+        # nothing, so the art's presence in the page source is itself proof
+        # that this step ran. A committed copy would make a working download
+        # and a silent fallback indistinguishable.
         run: |
           curl -fsSL -o src/fanart.html \
             https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html \
-            || echo "Download failed, the committed fan art is used"
+            || echo "Download failed, no fan art is rendered"
 
       - name: Get the sponsors
         # Generated into phalcon/assets by its own scheduled workflow. The
-        # committed src/sponsors.json is the fallback when the download fails.
+        # committed src/sponsors.json holds an EMPTY roster on purpose: a
+        # failed download then renders no sponsors at all, which is visible and
+        # can be alerted on, rather than quietly serving a roster that is
+        # months out of date.
         run: |
           curl -fsSL -o src/sponsors.json \
             https://raw.githubusercontent.com/phalcon/assets/master/phalcon/sponsors.json \
-            || echo "Download failed, the committed roster is used"
+            || echo "Download failed, no sponsors are rendered"
 
       - name: Build
         run: pnpm build
