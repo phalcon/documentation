@@ -1,0 +1,317 @@
+---
+title: "Phalcon Domain"
+version: "5.21"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Phalcon Domain
+
+:::info[NOTE]
+All classes are prefixed with `Phalcon`
+:::
+
+## Domain\Payload\Payload
+
+Class
+
+Holds the payload
+
+- **`Phalcon\Domain\Payload\Payload`** - implements [`Phalcon\Domain\Payload\PayloadInterface`](#domainpayloadpayloadinterface)
+
+`Throwable`
+
+### Method Summary
+
+<ApiItem href="#domainpayloadpayload-getexception" visibility="public" name="getException" returnType="Throwable|null" params={[]}>
+Gets the potential exception thrown in the domain layer
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-getextras" visibility="public" name="getExtras" returnType="mixed" params={[]}>
+Extra information
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-getinput" visibility="public" name="getInput" returnType="mixed" params={[]}>
+Input
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-getmessages" visibility="public" name="getMessages" returnType="mixed" params={[]}>
+Messages
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-getoutput" visibility="public" name="getOutput" returnType="mixed" params={[]}>
+Output
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-getstatus" visibility="public" name="getStatus" returnType="mixed" params={[]}>
+Status
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setexception" visibility="public" name="setException" returnType="PayloadInterface" params={[{"type":"Throwable","name":"exception","default":null}]}>
+Sets an exception thrown in the domain
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setextras" visibility="public" name="setExtras" returnType="PayloadInterface" params={[{"type":"mixed","name":"extras","default":null}]}>
+Sets arbitrary extra domain information.
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setinput" visibility="public" name="setInput" returnType="PayloadInterface" params={[{"type":"mixed","name":"input","default":null}]}>
+Sets the domain input.
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setmessages" visibility="public" name="setMessages" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":null}]}>
+Sets the domain messages.
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setoutput" visibility="public" name="setOutput" returnType="PayloadInterface" params={[{"type":"mixed","name":"output","default":null}]}>
+Sets the domain output.
+</ApiItem>
+<ApiItem href="#domainpayloadpayload-setstatus" visibility="public" name="setStatus" returnType="PayloadInterface" params={[{"type":"mixed","name":"status","default":null}]}>
+Sets the payload status.
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="exception" type="Throwable|null" default="null">
+Exception if any
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="extras" type="mixed" default="">
+Extra information
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="input" type="mixed" default="">
+Input
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="messages" type="mixed" default="">
+Messages
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="output" type="mixed" default="">
+Output
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="status" type="mixed" default="">
+Status
+</ApiItem>
+
+### Methods
+
+<h4 id="domainpayloadpayload-getexception"><code>getException()</code></h4>
+
+```php
+public function getException(): Throwable|null;
+```
+
+Gets the potential exception thrown in the domain layer
+
+<h4 id="domainpayloadpayload-getextras"><code>getExtras()</code></h4>
+
+```php
+public function getExtras(): mixed;
+```
+
+Extra information
+
+<h4 id="domainpayloadpayload-getinput"><code>getInput()</code></h4>
+
+```php
+public function getInput(): mixed;
+```
+
+Input
+
+<h4 id="domainpayloadpayload-getmessages"><code>getMessages()</code></h4>
+
+```php
+public function getMessages(): mixed;
+```
+
+Messages
+
+<h4 id="domainpayloadpayload-getoutput"><code>getOutput()</code></h4>
+
+```php
+public function getOutput(): mixed;
+```
+
+Output
+
+<h4 id="domainpayloadpayload-getstatus"><code>getStatus()</code></h4>
+
+```php
+public function getStatus(): mixed;
+```
+
+Status
+
+Status values are drawn from the `Status` vocabulary.
+
+@see Status
+
+<h4 id="domainpayloadpayload-setexception"><code>setException()</code></h4>
+
+```php
+public function setException( Throwable $exception ): PayloadInterface;
+```
+
+Sets an exception thrown in the domain
+
+<h4 id="domainpayloadpayload-setextras"><code>setExtras()</code></h4>
+
+```php
+public function setExtras( mixed $extras ): PayloadInterface;
+```
+
+Sets arbitrary extra domain information.
+
+<h4 id="domainpayloadpayload-setinput"><code>setInput()</code></h4>
+
+```php
+public function setInput( mixed $input ): PayloadInterface;
+```
+
+Sets the domain input.
+
+<h4 id="domainpayloadpayload-setmessages"><code>setMessages()</code></h4>
+
+```php
+public function setMessages( mixed $messages ): PayloadInterface;
+```
+
+Sets the domain messages.
+
+<h4 id="domainpayloadpayload-setoutput"><code>setOutput()</code></h4>
+
+```php
+public function setOutput( mixed $output ): PayloadInterface;
+```
+
+Sets the domain output.
+
+<h4 id="domainpayloadpayload-setstatus"><code>setStatus()</code></h4>
+
+```php
+public function setStatus( mixed $status ): PayloadInterface;
+```
+
+Sets the payload status.
+
+Status values are drawn from the `Status` vocabulary.
+
+@see Status
+
+## Domain\Payload\PayloadFactory
+
+Class
+
+Factory to create payload objects.
+
+It exists so that payload creation can be registered as a service in the DI
+container and substituted in tests, rather than constructing `Payload`
+instances directly.
+
+- **`Phalcon\Domain\Payload\PayloadFactory`**
+
+### Method Summary
+
+<ApiItem href="#domainpayloadpayloadfactory-newinstance" visibility="public" name="newInstance" returnType="PayloadInterface" params={[]}>
+Instantiate a new object
+</ApiItem>
+
+### Methods
+
+<h4 id="domainpayloadpayloadfactory-newinstance"><code>newInstance()</code></h4>
+
+```php
+public function newInstance(): PayloadInterface;
+```
+
+Instantiate a new object
+
+## Domain\Payload\PayloadInterface
+
+Interface
+
+This interface is used for consumers
+
+- [`Phalcon\Contracts\Domain\Payload\Readable`](/5.21/api/phalcon_contracts/#contractsdomainpayloadreadable)
+- [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface)
+- **`Phalcon\Domain\Payload\PayloadInterface`** - extends [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface), [`Phalcon\Domain\Payload\WriteableInterface`](#domainpayloadwriteableinterface), [`Phalcon\Contracts\Domain\Payload\Payload`](/5.21/api/phalcon_contracts/#contractsdomainpayloadpayload)
+
+`Phalcon\Contracts\Domain\Payload\Payload`
+
+## Domain\Payload\ReadableInterface
+
+Interface
+
+This interface is used for consumers (read only)
+
+- [`Phalcon\Contracts\Domain\Payload\Readable`](/5.21/api/phalcon_contracts/#contractsdomainpayloadreadable)
+- **`Phalcon\Domain\Payload\ReadableInterface`**
+- [`Phalcon\Domain\Payload\PayloadInterface`](#domainpayloadpayloadinterface)
+
+`Phalcon\Contracts\Domain\Payload\Readable`
+
+## Domain\Payload\Status
+
+Class
+
+Holds the status codes for the payload.
+
+The two failure-related statuses are distinct, following the Aura.Payload
+lineage:
+
+- `ERROR` means an exception was raised while the domain layer was running.
+  By convention, `Payload::setException()` pairs with the `ERROR` status.
+- `FAILURE` means the domain layer ran to completion but declined the
+  request (for example, a business rule was not satisfied); no exception
+  was raised.
+
+@see Payload
+
+- **`Phalcon\Domain\Payload\Status`**
+
+### Constants
+
+<ApiItem kind="constant" name="ACCEPTED" type="string" default="&quot;ACCEPTED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="AUTHENTICATED" type="string" default="&quot;AUTHENTICATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="AUTHORIZED" type="string" default="&quot;AUTHORIZED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="CREATED" type="string" default="&quot;CREATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="DELETED" type="string" default="&quot;DELETED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="ERROR" type="string" default="&quot;ERROR&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FAILURE" type="string" default="&quot;FAILURE&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="FOUND" type="string" default="&quot;FOUND&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_ACCEPTED" type="string" default="&quot;NOT_ACCEPTED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_AUTHENTICATED" type="string" default="&quot;NOT_AUTHENTICATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_AUTHORIZED" type="string" default="&quot;NOT_AUTHORIZED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_CREATED" type="string" default="&quot;NOT_CREATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_DELETED" type="string" default="&quot;NOT_DELETED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_FOUND" type="string" default="&quot;NOT_FOUND&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_UPDATED" type="string" default="&quot;NOT_UPDATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="NOT_VALID" type="string" default="&quot;NOT_VALID&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="PROCESSING" type="string" default="&quot;PROCESSING&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="SUCCESS" type="string" default="&quot;SUCCESS&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="UPDATED" type="string" default="&quot;UPDATED&quot;">
+</ApiItem>
+<ApiItem kind="constant" name="VALID" type="string" default="&quot;VALID&quot;">
+</ApiItem>
+
+## Domain\Payload\WriteableInterface
+
+Interface
+
+This interface is used for consumers (write)
+
+- [`Phalcon\Contracts\Domain\Payload\Writeable`](/5.21/api/phalcon_contracts/#contractsdomainpayloadwriteable)
+- **`Phalcon\Domain\Payload\WriteableInterface`**
+
+`Phalcon\Contracts\Domain\Payload\Writeable`
+
+Source: https://docs.phalcon.io/5.21/api/phalcon_domain/index.mdx

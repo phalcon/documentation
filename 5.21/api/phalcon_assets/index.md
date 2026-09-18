@@ -1,0 +1,1709 @@
+---
+title: "Phalcon Assets"
+version: "5.21"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Phalcon Assets
+
+:::info[NOTE]
+All classes are prefixed with `Phalcon`
+:::
+
+## Assets\Asset
+
+Class
+
+Object representation of an asset
+
+```php
+$asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
+```
+
+- **`Phalcon\Assets\Asset`** - implements [`Phalcon\Assets\AssetInterface`](#assetsassetinterface)
+- [`Phalcon\Assets\Asset\Css`](#assetsassetcss)
+- [`Phalcon\Assets\Asset\Js`](#assetsassetjs)
+
+`Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\HashTrait`
+
+### Method Summary
+
+<ApiItem href="#assetsasset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"path","default":null},{"type":"bool","name":"isLocal","default":"true"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"isAutoVersion","default":"false"}]}>
+Asset constructor.
+</ApiItem>
+<ApiItem href="#assetsasset-getassetkey" visibility="public" name="getAssetKey" returnType="string" params={[]}>
+Gets the asset's key.
+</ApiItem>
+<ApiItem href="#assetsasset-getcontent" visibility="public" name="getContent" returnType="string" params={[{"type":"string|null","name":"basePath","default":"null"}]}>
+Returns the content of the asset as an string
+</ApiItem>
+<ApiItem href="#assetsasset-getfilter" visibility="public" name="getFilter" returnType="bool" params={[]}>
+Gets if the asset must be filtered or not.
+</ApiItem>
+<ApiItem href="#assetsasset-getpath" visibility="public" name="getPath" returnType="string" params={[]}>
+Returns the path for this asset
+</ApiItem>
+<ApiItem href="#assetsasset-getrealsourcepath" visibility="public" name="getRealSourcePath" returnType="string" params={[{"type":"string|null","name":"basePath","default":"null"}]}>
+Returns the complete location where the asset is located
+</ApiItem>
+<ApiItem href="#assetsasset-getrealtargetpath" visibility="public" name="getRealTargetPath" returnType="string" params={[{"type":"string|null","name":"basePath","default":"null"}]}>
+Returns the complete location where the asset must be written
+</ApiItem>
+<ApiItem href="#assetsasset-getrealtargeturi" visibility="public" name="getRealTargetUri" returnType="string" params={[]}>
+Returns the real target uri for the generated HTML
+</ApiItem>
+<ApiItem href="#assetsasset-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+Gets the asset's type.
+</ApiItem>
+<ApiItem href="#assetsasset-getversion" visibility="public" name="getVersion" returnType="string|null" params={[]}>
+Gets the asset's version.
+</ApiItem>
+<ApiItem href="#assetsasset-isautoversion" visibility="public" name="isAutoVersion" returnType="bool" params={[]}>
+Checks if the asset is using auto version
+</ApiItem>
+<ApiItem href="#assetsasset-setattributes" visibility="public" name="setAttributes" returnType="AssetInterface" params={[{"type":"array","name":"attributes","default":null}]}>
+Sets extra HTML attributes
+</ApiItem>
+<ApiItem href="#assetsasset-setautoversion" visibility="public" name="setAutoVersion" returnType="AssetInterface" params={[{"type":"bool","name":"flag","default":null}]}>
+</ApiItem>
+<ApiItem href="#assetsasset-setfilter" visibility="public" name="setFilter" returnType="AssetInterface" params={[{"type":"bool","name":"filter","default":null}]}>
+Sets if the asset must be filtered or not
+</ApiItem>
+<ApiItem href="#assetsasset-setpath" visibility="public" name="setPath" returnType="AssetInterface" params={[{"type":"string","name":"path","default":null}]}>
+Sets the asset's path
+</ApiItem>
+<ApiItem href="#assetsasset-settype" visibility="public" name="setType" returnType="AssetInterface" params={[{"type":"string","name":"type","default":null}]}>
+Sets the asset's type
+</ApiItem>
+<ApiItem href="#assetsasset-setversion" visibility="public" name="setVersion" returnType="AssetInterface" params={[{"type":"string","name":"version","default":null}]}>
+Sets the asset's version
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="filter" type="bool" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="isAutoVersion" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="path" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="type" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="version" type="string" default="">
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsasset-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $type,
+string $path,
+bool $isLocal = true,
+bool $filter = true,
+array $attributes = [],
+string|null $version = null,
+bool $isAutoVersion = false
+);
+```
+
+Asset constructor.
+
+<h4 id="assetsasset-getassetkey"><code>getAssetKey()</code></h4>
+
+```php
+public function getAssetKey(): string;
+```
+
+Gets the asset's key.
+
+<h4 id="assetsasset-getcontent"><code>getContent()</code></h4>
+
+```php
+public function getContent( string|null $basePath = null ): string;
+```
+
+Returns the content of the asset as an string
+Optionally a base path where the asset is located can be set
+
+<h4 id="assetsasset-getfilter"><code>getFilter()</code></h4>
+
+```php
+public function getFilter(): bool;
+```
+
+Gets if the asset must be filtered or not.
+
+<h4 id="assetsasset-getpath"><code>getPath()</code></h4>
+
+```php
+public function getPath(): string;
+```
+
+Returns the path for this asset
+
+<h4 id="assetsasset-getrealsourcepath"><code>getRealSourcePath()</code></h4>
+
+```php
+public function getRealSourcePath( string|null $basePath = null ): string;
+```
+
+Returns the complete location where the asset is located
+
+<h4 id="assetsasset-getrealtargetpath"><code>getRealTargetPath()</code></h4>
+
+```php
+public function getRealTargetPath( string|null $basePath = null ): string;
+```
+
+Returns the complete location where the asset must be written
+
+<h4 id="assetsasset-getrealtargeturi"><code>getRealTargetUri()</code></h4>
+
+```php
+public function getRealTargetUri(): string;
+```
+
+Returns the real target uri for the generated HTML
+
+<h4 id="assetsasset-gettype"><code>getType()</code></h4>
+
+```php
+public function getType(): string;
+```
+
+Gets the asset's type.
+
+<h4 id="assetsasset-getversion"><code>getVersion()</code></h4>
+
+```php
+public function getVersion(): string|null;
+```
+
+Gets the asset's version.
+
+<h4 id="assetsasset-isautoversion"><code>isAutoVersion()</code></h4>
+
+```php
+public function isAutoVersion(): bool;
+```
+
+Checks if the asset is using auto version
+
+<h4 id="assetsasset-setattributes"><code>setAttributes()</code></h4>
+
+```php
+public function setAttributes( array $attributes ): AssetInterface;
+```
+
+Sets extra HTML attributes
+
+<h4 id="assetsasset-setautoversion"><code>setAutoVersion()</code></h4>
+
+```php
+public function setAutoVersion( bool $flag ): AssetInterface;
+```
+
+<h4 id="assetsasset-setfilter"><code>setFilter()</code></h4>
+
+```php
+public function setFilter( bool $filter ): AssetInterface;
+```
+
+Sets if the asset must be filtered or not
+
+<h4 id="assetsasset-setpath"><code>setPath()</code></h4>
+
+```php
+public function setPath( string $path ): AssetInterface;
+```
+
+Sets the asset's path
+
+<h4 id="assetsasset-settype"><code>setType()</code></h4>
+
+```php
+public function setType( string $type ): AssetInterface;
+```
+
+Sets the asset's type
+
+<h4 id="assetsasset-setversion"><code>setVersion()</code></h4>
+
+```php
+public function setVersion( string $version ): AssetInterface;
+```
+
+Sets the asset's version
+
+## Assets\AssetInterface
+
+Interface
+
+Phalcon\Assets\AssetInterface
+
+- [`Phalcon\Contracts\Assets\Asset`](/5.21/api/phalcon_contracts/#contractsassetsasset)
+- **`Phalcon\Assets\AssetInterface`**
+
+`Phalcon\Contracts\Assets\Asset`
+
+## Assets\Asset\Css
+
+Class
+
+Represents CSS assets
+
+- [`Phalcon\Assets\Asset`](#assetsasset)
+- **`Phalcon\Assets\Asset\Css`**
+
+`Phalcon\Assets\Asset`
+
+### Method Summary
+
+<ApiItem href="#assetsassetcss-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null},{"type":"bool","name":"local","default":"true"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Css constructor.
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsassetcss-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $path,
+bool $local = true,
+bool $filter = true,
+array $attributes = [],
+string|null $version = null,
+bool $autoVersion = false
+);
+```
+
+Css constructor.
+
+## Assets\Asset\Js
+
+Class
+
+Represents JavaScript assets
+
+- [`Phalcon\Assets\Asset`](#assetsasset)
+- **`Phalcon\Assets\Asset\Js`**
+
+`Phalcon\Assets\Asset`
+
+### Method Summary
+
+<ApiItem href="#assetsassetjs-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null},{"type":"bool","name":"local","default":"true"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Js constructor.
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsassetjs-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $path,
+bool $local = true,
+bool $filter = true,
+array $attributes = [],
+string|null $version = null,
+bool $autoVersion = false
+);
+```
+
+Js constructor.
+
+## Assets\Collection
+
+Class
+
+Collection of asset objects
+
+- **`Phalcon\Assets\Collection`** - implements `\Countable`, `\IteratorAggregate`
+
+`ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\FileTrait` · `Traversable`
+
+### Method Summary
+
+<ApiItem href="#assetscollection-add" visibility="public" name="add" returnType="static" params={[{"type":"AssetInterface","name":"asset","default":null}]}>
+Adds an asset to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addcss" visibility="public" name="addCss" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"isLocal","default":"null"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Adds a CSS asset to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addfilter" visibility="public" name="addFilter" returnType="static" params={[{"type":"FilterInterface","name":"filter","default":null}]}>
+Adds a filter to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addinline" visibility="public" name="addInline" returnType="static" params={[{"type":"Inline","name":"code","default":null}]}>
+Adds an inline code to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addinlinecss" visibility="public" name="addInlineCss" returnType="static" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Adds an inline CSS to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addinlinejs" visibility="public" name="addInlineJs" returnType="static" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Adds an inline JavaScript to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-addjs" visibility="public" name="addJs" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"isLocal","default":"null"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Adds a JavaScript asset to the collection
+</ApiItem>
+<ApiItem href="#assetscollection-count" visibility="public" name="count" returnType="int" params={[]}>
+Return the count of the assets
+</ApiItem>
+<ApiItem href="#assetscollection-getassets" visibility="public" name="getAssets" returnType="array" params={[]}>
+Return the stored assets
+</ApiItem>
+<ApiItem href="#assetscollection-getcodes" visibility="public" name="getCodes" returnType="array" params={[]}>
+Return the stored codes
+</ApiItem>
+<ApiItem href="#assetscollection-getfilters" visibility="public" name="getFilters" returnType="array" params={[]}>
+Return the stored filters
+</ApiItem>
+<ApiItem href="#assetscollection-getiterator" visibility="public" name="getIterator" returnType="Traversable" params={[]}>
+Returns the iterator of the class
+</ApiItem>
+<ApiItem href="#assetscollection-getjoin" visibility="public" name="getJoin" returnType="bool" params={[]}>
+</ApiItem>
+<ApiItem href="#assetscollection-getprefix" visibility="public" name="getPrefix" returnType="string" params={[]}>
+Returns the prefix
+</ApiItem>
+<ApiItem href="#assetscollection-getrealtargetpath" visibility="public" name="getRealTargetPath" returnType="string" params={[{"type":"string","name":"basePath","default":null}]}>
+Returns the complete location where the joined/filtered collection must
+</ApiItem>
+<ApiItem href="#assetscollection-gettargetislocal" visibility="public" name="getTargetIsLocal" returnType="bool" params={[]}>
+Returns whether the target is local or not
+</ApiItem>
+<ApiItem href="#assetscollection-getversion" visibility="public" name="getVersion" returnType="string" params={[]}>
+Returns the version
+</ApiItem>
+<ApiItem href="#assetscollection-has" visibility="public" name="has" returnType="bool" params={[{"type":"AssetInterface","name":"asset","default":null}]}>
+Checks this the asset is added to the collection.
+</ApiItem>
+<ApiItem href="#assetscollection-isautoversion" visibility="public" name="isAutoVersion" returnType="bool" params={[]}>
+Checks if collection is using auto version
+</ApiItem>
+<ApiItem href="#assetscollection-join" visibility="public" name="join" returnType="static" params={[{"type":"bool","name":"flag","default":null}]}>
+Sets if all filtered assets in the collection must be joined in a single
+</ApiItem>
+<ApiItem href="#assetscollection-setattributes" visibility="public" name="setAttributes" returnType="static" params={[{"type":"array","name":"attributes","default":null}]}>
+Sets extra HTML attributes
+</ApiItem>
+<ApiItem href="#assetscollection-setautoversion" visibility="public" name="setAutoVersion" returnType="static" params={[{"type":"bool","name":"flag","default":null}]}>
+</ApiItem>
+<ApiItem href="#assetscollection-setfilters" visibility="public" name="setFilters" returnType="static" params={[{"type":"array","name":"filters","default":null}]}>
+Sets an array of filters in the collection
+</ApiItem>
+<ApiItem href="#assetscollection-setprefix" visibility="public" name="setPrefix" returnType="static" params={[{"type":"string","name":"prefix","default":null}]}>
+Sets a common prefix for all the assets
+</ApiItem>
+<ApiItem href="#assetscollection-settargetislocal" visibility="public" name="setTargetIsLocal" returnType="static" params={[{"type":"bool","name":"flag","default":null}]}>
+Sets if the target local or not
+</ApiItem>
+<ApiItem href="#assetscollection-setversion" visibility="public" name="setVersion" returnType="static" params={[{"type":"string","name":"version","default":null}]}>
+Sets the version
+</ApiItem>
+<ApiItem href="#assetscollection-addasset" visibility="protected" name="addAsset" returnType="bool" params={[{"type":"AssetInterface","name":"asset","default":null}]}>
+Adds an asset or inline-code to the collection
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="assets" type="assets_asset_map" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="autoVersion" type="bool" default="false">
+Should version be determined from file modification time
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="codes" type="assets_codes" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="filters" type="assets_filters" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="join" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="targetIsLocal" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="version" type="string" default="&quot;&quot;">
+</ApiItem>
+
+### Methods
+
+<h4 id="assetscollection-add"><code>add()</code></h4>
+
+```php
+public function add( AssetInterface $asset ): static;
+```
+
+Adds an asset to the collection
+
+<h4 id="assetscollection-addcss"><code>addCss()</code></h4>
+
+```php
+public function addCss(
+string $path,
+mixed $isLocal = null,
+bool $filter = true,
+array $attributes = [],
+string|null $version = null,
+bool $autoVersion = false
+): static;
+```
+
+Adds a CSS asset to the collection
+
+<h4 id="assetscollection-addfilter"><code>addFilter()</code></h4>
+
+```php
+public function addFilter( FilterInterface $filter ): static;
+```
+
+Adds a filter to the collection
+
+<h4 id="assetscollection-addinline"><code>addInline()</code></h4>
+
+```php
+public function addInline( Inline $code ): static;
+```
+
+Adds an inline code to the collection
+
+<h4 id="assetscollection-addinlinecss"><code>addInlineCss()</code></h4>
+
+```php
+public function addInlineCss(
+string $content,
+bool $filter = true,
+array $attributes = []
+): static;
+```
+
+Adds an inline CSS to the collection
+
+<h4 id="assetscollection-addinlinejs"><code>addInlineJs()</code></h4>
+
+```php
+public function addInlineJs(
+string $content,
+bool $filter = true,
+array $attributes = []
+): static;
+```
+
+Adds an inline JavaScript to the collection
+
+<h4 id="assetscollection-addjs"><code>addJs()</code></h4>
+
+```php
+public function addJs(
+string $path,
+mixed $isLocal = null,
+bool $filter = true,
+array $attributes = [],
+string|null $version = null,
+bool $autoVersion = false
+): static;
+```
+
+Adds a JavaScript asset to the collection
+
+<h4 id="assetscollection-count"><code>count()</code></h4>
+
+```php
+public function count(): int;
+```
+
+Return the count of the assets
+
+<h4 id="assetscollection-getassets"><code>getAssets()</code></h4>
+
+```php
+public function getAssets(): array;
+```
+
+Return the stored assets
+
+<h4 id="assetscollection-getcodes"><code>getCodes()</code></h4>
+
+```php
+public function getCodes(): array;
+```
+
+Return the stored codes
+
+<h4 id="assetscollection-getfilters"><code>getFilters()</code></h4>
+
+```php
+public function getFilters(): array;
+```
+
+Return the stored filters
+
+<h4 id="assetscollection-getiterator"><code>getIterator()</code></h4>
+
+```php
+public function getIterator(): Traversable;
+```
+
+Returns the iterator of the class
+
+<h4 id="assetscollection-getjoin"><code>getJoin()</code></h4>
+
+```php
+public function getJoin(): bool;
+```
+
+<h4 id="assetscollection-getprefix"><code>getPrefix()</code></h4>
+
+```php
+public function getPrefix(): string;
+```
+
+Returns the prefix
+
+<h4 id="assetscollection-getrealtargetpath"><code>getRealTargetPath()</code></h4>
+
+```php
+public function getRealTargetPath( string $basePath ): string;
+```
+
+Returns the complete location where the joined/filtered collection must
+be written
+
+<h4 id="assetscollection-gettargetislocal"><code>getTargetIsLocal()</code></h4>
+
+```php
+public function getTargetIsLocal(): bool;
+```
+
+Returns whether the target is local or not
+
+<h4 id="assetscollection-getversion"><code>getVersion()</code></h4>
+
+```php
+public function getVersion(): string;
+```
+
+Returns the version
+
+<h4 id="assetscollection-has"><code>has()</code></h4>
+
+```php
+public function has( AssetInterface $asset ): bool;
+```
+
+Checks this the asset is added to the collection.
+
+```php
+use Phalcon\Assets\Asset;
+use Phalcon\Assets\Collection;
+
+$collection = new Collection();
+
+$asset = new Asset("js", "js/jquery.js");
+
+$collection->add($asset);
+$collection->has($asset); // true
+```
+
+<h4 id="assetscollection-isautoversion"><code>isAutoVersion()</code></h4>
+
+```php
+public function isAutoVersion(): bool;
+```
+
+Checks if collection is using auto version
+
+<h4 id="assetscollection-join"><code>join()</code></h4>
+
+```php
+public function join( bool $flag ): static;
+```
+
+Sets if all filtered assets in the collection must be joined in a single
+result file
+
+<h4 id="assetscollection-setattributes"><code>setAttributes()</code></h4>
+
+```php
+public function setAttributes( array $attributes ): static;
+```
+
+Sets extra HTML attributes
+
+<h4 id="assetscollection-setautoversion"><code>setAutoVersion()</code></h4>
+
+```php
+public function setAutoVersion( bool $flag ): static;
+```
+
+<h4 id="assetscollection-setfilters"><code>setFilters()</code></h4>
+
+```php
+public function setFilters( array $filters ): static;
+```
+
+Sets an array of filters in the collection
+
+<h4 id="assetscollection-setprefix"><code>setPrefix()</code></h4>
+
+```php
+public function setPrefix( string $prefix ): static;
+```
+
+Sets a common prefix for all the assets
+
+<h4 id="assetscollection-settargetislocal"><code>setTargetIsLocal()</code></h4>
+
+```php
+public function setTargetIsLocal( bool $flag ): static;
+```
+
+Sets if the target local or not
+
+<h4 id="assetscollection-setversion"><code>setVersion()</code></h4>
+
+```php
+public function setVersion( string $version ): static;
+```
+
+Sets the version
+
+<h4 id="assetscollection-addasset"><code>addAsset()</code></h4>
+
+```php
+final protected function addAsset( AssetInterface $asset ): bool;
+```
+
+Adds an asset or inline-code to the collection
+
+## Assets\Exception
+
+Class
+
+Exceptions thrown in Phalcon\Assets will use this class
+
+- `\Exception`
+- **`Phalcon\Assets\Exception`**
+- [`Phalcon\Assets\Exceptions\AssetSourceTargetCollision`](#assetsexceptionsassetsourcetargetcollision)
+- [`Phalcon\Assets\Exceptions\CannotReadAsset`](#assetsexceptionscannotreadasset)
+- [`Phalcon\Assets\Exceptions\CollectionNotFound`](#assetsexceptionscollectionnotfound)
+- [`Phalcon\Assets\Exceptions\InvalidAssetSourcePath`](#assetsexceptionsinvalidassetsourcepath)
+- [`Phalcon\Assets\Exceptions\InvalidAssetTargetPath`](#assetsexceptionsinvalidassettargetpath)
+- [`Phalcon\Assets\Exceptions\InvalidFilter`](#assetsexceptionsinvalidfilter)
+- [`Phalcon\Assets\Exceptions\InvalidTargetPath`](#assetsexceptionsinvalidtargetpath)
+- [`Phalcon\Assets\Exceptions\TargetPathIsDirectory`](#assetsexceptionstargetpathisdirectory)
+
+## Assets\Exceptions\AssetSourceTargetCollision
+
+Class
+
+- `\Exception`
+- [`Phalcon\Assets\Exception`](#assetsexception)
+- **`Phalcon\Assets\Exceptions\AssetSourceTargetCollision`**
+
+`Phalcon\Assets\Exception`
+
+### Method Summary
+
+<ApiItem href="#assetsexceptionsassetsourcetargetcollision-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsexceptionsassetsourcetargetcollision-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $path );
+```
+
+## Assets\Exceptions\CannotReadAsset
+
+Class
+
+- `\Exception`
+- [`Phalcon\Assets\Exception`](#assetsexception)
+- **`Phalcon\Assets\Exceptions\CannotReadAsset`**
+
+`Phalcon\Assets\Exception`
+
+### Method Summary
+
+<ApiItem href="#assetsexceptionscannotreadasset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsexceptionscannotreadasset-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $path );
+```
+
+## Assets\Exceptions\CollectionNotFound
+
+Class
+
+- `\Exception`
+- [`Phalcon\Assets\Exception`](#assetsexception)
+- **`Phalcon\Assets\Exceptions\CollectionNotFound`**
+
+`Phalcon\Assets\Exception`
+
+### Method Summary
+
+<ApiItem href="#assetsexceptionscollectionnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":"\"\""}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsexceptionscollectionnotfound-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $name = "" );
+```
+
+## Assets\Exceptions\InvalidAssetSourcePath
+
+Class
+
+- `\Exception`
+- [`Phalcon\Assets\Exception`](#assetsexception)
+- **`Phalcon\Assets\Exceptions\InvalidAssetSourcePath`**
+
+`Phalcon\Assets\Exception`
+
+### Method Summary
+
+<ApiItem href="#assetsexceptionsinvalidassetsourcepath-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsexceptionsinvalidassetsourcepath-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $path );
+```
+
+## Assets\Exceptions\InvalidAssetTargetPath
+
+Class
+
+- `\Exception`
+- [`Phalcon\Assets\Exception`](#assetsexception)
+- **`Phalcon\Assets\Exceptions\InvalidAssetTargetPath`**
+
+`Phalcon\Assets\Exception`
+
+### Method Summary
+
+<ApiItem href="#assetsexceptionsinvalidassettargetpath-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsexceptionsinvalidassettargetpath-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $path );
+```
+
+## Assets\Exceptions\InvalidFilter
+
+Class
+
+- `\Exception`
+- [`Phalcon\Assets\Exception`](#assetsexception)
+- **`Phalcon\Assets\Exceptions\InvalidFilter`**
+
+`Phalcon\Assets\Exception`
+
+### Method Summary
+
+<ApiItem href="#assetsexceptionsinvalidfilter-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsexceptionsinvalidfilter-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
+
+## Assets\Exceptions\InvalidTargetPath
+
+Class
+
+- `\Exception`
+- [`Phalcon\Assets\Exception`](#assetsexception)
+- **`Phalcon\Assets\Exceptions\InvalidTargetPath`**
+
+`Phalcon\Assets\Exception`
+
+### Method Summary
+
+<ApiItem href="#assetsexceptionsinvalidtargetpath-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsexceptionsinvalidtargetpath-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $path );
+```
+
+## Assets\Exceptions\TargetPathIsDirectory
+
+Class
+
+- `\Exception`
+- [`Phalcon\Assets\Exception`](#assetsexception)
+- **`Phalcon\Assets\Exceptions\TargetPathIsDirectory`**
+
+`Phalcon\Assets\Exception`
+
+### Method Summary
+
+<ApiItem href="#assetsexceptionstargetpathisdirectory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsexceptionstargetpathisdirectory-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $path );
+```
+
+## Assets\FilterInterface
+
+Interface
+
+Phalcon\Assets\FilterInterface
+
+- [`Phalcon\Contracts\Assets\Filter`](/5.21/api/phalcon_contracts/#contractsassetsfilter)
+- **`Phalcon\Assets\FilterInterface`**
+
+`Phalcon\Contracts\Assets\Filter`
+
+## Assets\Filters\Cssmin
+
+Class
+
+Filter intended to minify CSS content (remove comments, newlines, and line
+feeds, and drop the last semicolon of the last property).
+
+> NOTE: This functionality is not currently available; `filter()` returns
+> the content unchanged.
+
+- **`Phalcon\Assets\Filters\Cssmin`** - implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
+
+`Phalcon\Assets\FilterInterface`
+
+### Method Summary
+
+<ApiItem href="#assetsfilterscssmin-filter" visibility="public" name="filter" returnType="string" params={[{"type":"string","name":"content","default":null}]}>
+Filters the content using CSSMIN
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsfilterscssmin-filter"><code>filter()</code></h4>
+
+```php
+public function filter( string $content ): string;
+```
+
+Filters the content using CSSMIN
+
+## Assets\Filters\Jsmin
+
+Class
+
+Filter intended to minify JavaScript content (remove comments and the
+characters that are insignificant to JavaScript - tabs, carriage returns,
+and most spaces and linefeeds).
+
+> NOTE: This functionality is not currently available; `filter()` returns
+> the content unchanged.
+
+- **`Phalcon\Assets\Filters\Jsmin`** - implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
+
+`Phalcon\Assets\FilterInterface`
+
+### Method Summary
+
+<ApiItem href="#assetsfiltersjsmin-filter" visibility="public" name="filter" returnType="string" params={[{"type":"string","name":"content","default":null}]}>
+Filters the content using JSMIN
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsfiltersjsmin-filter"><code>filter()</code></h4>
+
+```php
+public function filter( string $content ): string;
+```
+
+Filters the content using JSMIN
+
+## Assets\Filters\None
+
+Class
+
+Returns the content without make any modification to the original source
+
+- **`Phalcon\Assets\Filters\None`** - implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
+
+`Phalcon\Assets\FilterInterface`
+
+### Method Summary
+
+<ApiItem href="#assetsfiltersnone-filter" visibility="public" name="filter" returnType="string" params={[{"type":"string","name":"content","default":null}]}>
+Returns the content as is
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsfiltersnone-filter"><code>filter()</code></h4>
+
+```php
+public function filter( string $content ): string;
+```
+
+Returns the content as is
+
+## Assets\Inline
+
+Class
+
+Represents an inline asset
+
+```php
+$inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
+```
+
+- **`Phalcon\Assets\Inline`** - implements [`Phalcon\Assets\AssetInterface`](#assetsassetinterface)
+- [`Phalcon\Assets\Inline\Css`](#assetsinlinecss)
+- [`Phalcon\Assets\Inline\Js`](#assetsinlinejs)
+
+`Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Traits\Php\HashTrait`
+
+### Method Summary
+
+<ApiItem href="#assetsinline-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Inline constructor.
+</ApiItem>
+<ApiItem href="#assetsinline-getassetkey" visibility="public" name="getAssetKey" returnType="string" params={[]}>
+Gets the asset's key.
+</ApiItem>
+<ApiItem href="#assetsinline-getcontent" visibility="public" name="getContent" returnType="string" params={[]}>
+Gets if the asset content
+</ApiItem>
+<ApiItem href="#assetsinline-getfilter" visibility="public" name="getFilter" returnType="bool" params={[]}>
+Gets if the asset must be filtered or not.
+</ApiItem>
+<ApiItem href="#assetsinline-gettype" visibility="public" name="getType" returnType="string" params={[]}>
+Gets the asset's type.
+</ApiItem>
+<ApiItem href="#assetsinline-setattributes" visibility="public" name="setAttributes" returnType="AssetInterface" params={[{"type":"array","name":"attributes","default":null}]}>
+Sets extra HTML attributes
+</ApiItem>
+<ApiItem href="#assetsinline-setfilter" visibility="public" name="setFilter" returnType="AssetInterface" params={[{"type":"bool","name":"filter","default":null}]}>
+Sets if the asset must be filtered or not
+</ApiItem>
+<ApiItem href="#assetsinline-settype" visibility="public" name="setType" returnType="AssetInterface" params={[{"type":"string","name":"type","default":null}]}>
+Sets the inline's type
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="content" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="filter" type="bool" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="type" type="string" default="">
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsinline-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $type,
+string $content,
+bool $filter = true,
+array $attributes = []
+);
+```
+
+Inline constructor.
+
+<h4 id="assetsinline-getassetkey"><code>getAssetKey()</code></h4>
+
+```php
+public function getAssetKey(): string;
+```
+
+Gets the asset's key.
+
+<h4 id="assetsinline-getcontent"><code>getContent()</code></h4>
+
+```php
+public function getContent(): string;
+```
+
+Gets if the asset content
+
+<h4 id="assetsinline-getfilter"><code>getFilter()</code></h4>
+
+```php
+public function getFilter(): bool;
+```
+
+Gets if the asset must be filtered or not.
+
+<h4 id="assetsinline-gettype"><code>getType()</code></h4>
+
+```php
+public function getType(): string;
+```
+
+Gets the asset's type.
+
+<h4 id="assetsinline-setattributes"><code>setAttributes()</code></h4>
+
+```php
+public function setAttributes( array $attributes ): AssetInterface;
+```
+
+Sets extra HTML attributes
+
+<h4 id="assetsinline-setfilter"><code>setFilter()</code></h4>
+
+```php
+public function setFilter( bool $filter ): AssetInterface;
+```
+
+Sets if the asset must be filtered or not
+
+<h4 id="assetsinline-settype"><code>setType()</code></h4>
+
+```php
+public function setType( string $type ): AssetInterface;
+```
+
+Sets the inline's type
+
+## Assets\Inline\Css
+
+Class
+
+Represents an inlined CSS
+
+- [`Phalcon\Assets\Inline`](#assetsinline)
+- **`Phalcon\Assets\Inline\Css`**
+
+`Phalcon\Assets\Inline` · `Phalcon\Contracts\Assets\AssetsTypes`
+
+### Method Summary
+
+<ApiItem href="#assetsinlinecss-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Css constructor.
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsinlinecss-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $content,
+bool $filter = true,
+array $attributes = []
+);
+```
+
+Css constructor.
+
+## Assets\Inline\Js
+
+Class
+
+Represents an inline JavaScript
+
+- [`Phalcon\Assets\Inline`](#assetsinline)
+- **`Phalcon\Assets\Inline\Js`**
+
+`Phalcon\Assets\Inline` · `Phalcon\Contracts\Assets\AssetsTypes`
+
+### Method Summary
+
+<ApiItem href="#assetsinlinejs-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Js constructor.
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsinlinejs-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $content,
+bool $filter = true,
+array $attributes = []
+);
+```
+
+Js constructor.
+
+## Assets\Manager
+
+Class
+
+Manages collections of CSS/JavaScript assets
+
+- `\stdClass`
+- [`Phalcon\Di\AbstractInjectionAware`](/5.21/api/phalcon_di/#diabstractinjectionaware)
+- **`Phalcon\Assets\Manager`**
+
+`Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Contracts\Assets\AssetsTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Url` · `Phalcon\Traits\Php\FileTrait`
+
+### Method Summary
+
+<ApiItem href="#assetsmanager-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"TagFactory","name":"tagFactory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Manager constructor.
+</ApiItem>
+<ApiItem href="#assetsmanager-addasset" visibility="public" name="addAsset" returnType="static" params={[{"type":"Asset","name":"asset","default":null}]}>
+Adds a raw asset to the manager
+</ApiItem>
+<ApiItem href="#assetsmanager-addassetbytype" visibility="public" name="addAssetByType" returnType="static" params={[{"type":"string","name":"type","default":null},{"type":"Asset","name":"asset","default":null}]}>
+Adds an asset by its type
+</ApiItem>
+<ApiItem href="#assetsmanager-addcss" visibility="public" name="addCss" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"bool","name":"local","default":"true"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Adds a CSS asset to the 'css' collection
+</ApiItem>
+<ApiItem href="#assetsmanager-addinlinecode" visibility="public" name="addInlineCode" returnType="static" params={[{"type":"Inline","name":"code","default":null}]}>
+Adds a raw inline code to the manager
+</ApiItem>
+<ApiItem href="#assetsmanager-addinlinecodebytype" visibility="public" name="addInlineCodeByType" returnType="static" params={[{"type":"string","name":"type","default":null},{"type":"Inline","name":"code","default":null}]}>
+Adds an inline code by its type
+</ApiItem>
+<ApiItem href="#assetsmanager-addinlinecss" visibility="public" name="addInlineCss" returnType="static" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Adds an inline CSS to the 'css' collection
+</ApiItem>
+<ApiItem href="#assetsmanager-addinlinejs" visibility="public" name="addInlineJs" returnType="static" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
+Adds an inline JavaScript to the 'js' collection
+</ApiItem>
+<ApiItem href="#assetsmanager-addjs" visibility="public" name="addJs" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"bool","name":"local","default":"true"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+Adds a JavaScript asset to the 'js' collection
+</ApiItem>
+<ApiItem href="#assetsmanager-collection" visibility="public" name="collection" returnType="Collection" params={[{"type":"string","name":"name","default":null}]}>
+Creates/Returns a collection of assets
+</ApiItem>
+<ApiItem href="#assetsmanager-collectionassetsbytype" visibility="public" name="collectionAssetsByType" returnType="array" params={[{"type":"array","name":"assets","default":null},{"type":"string","name":"type","default":null}]}>
+Creates/Returns a collection of assets by type
+</ApiItem>
+<ApiItem href="#assetsmanager-exists" visibility="public" name="exists" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Returns true or false if collection exists.
+</ApiItem>
+<ApiItem href="#assetsmanager-get" visibility="public" name="get" returnType="Collection" params={[{"type":"string","name":"name","default":null}]}>
+Returns a collection by its id.
+</ApiItem>
+<ApiItem href="#assetsmanager-getcollections" visibility="public" name="getCollections" returnType="Collection[]" params={[]}>
+Returns existing collections in the manager
+</ApiItem>
+<ApiItem href="#assetsmanager-getcss" visibility="public" name="getCss" returnType="Collection" params={[]}>
+Returns the CSS collection of assets
+</ApiItem>
+<ApiItem href="#assetsmanager-getjs" visibility="public" name="getJs" returnType="Collection" params={[]}>
+Returns the CSS collection of assets
+</ApiItem>
+<ApiItem href="#assetsmanager-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
+Returns the manager options
+</ApiItem>
+<ApiItem href="#assetsmanager-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
+Returns true or false if collection exists.
+</ApiItem>
+<ApiItem href="#assetsmanager-output" visibility="public" name="output" returnType="string|null" params={[{"type":"Collection","name":"collection","default":null},{"type":"string","name":"type","default":null}]}>
+Traverses a collection calling the callback to generate its HTML
+</ApiItem>
+<ApiItem href="#assetsmanager-outputcss" visibility="public" name="outputCss" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
+Prints the HTML for CSS assets
+</ApiItem>
+<ApiItem href="#assetsmanager-outputinline" visibility="public" name="outputInline" returnType="string" params={[{"type":"Collection","name":"collection","default":null},{"type":"mixed","name":"type","default":null}]}>
+Traverses a collection and generate its HTML
+</ApiItem>
+<ApiItem href="#assetsmanager-outputinlinecss" visibility="public" name="outputInlineCss" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
+Prints the HTML for inline CSS
+</ApiItem>
+<ApiItem href="#assetsmanager-outputinlinejs" visibility="public" name="outputInlineJs" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
+Prints the HTML for inline JS
+</ApiItem>
+<ApiItem href="#assetsmanager-outputjs" visibility="public" name="outputJs" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
+Prints the HTML for JS assets
+</ApiItem>
+<ApiItem href="#assetsmanager-set" visibility="public" name="set" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"Collection","name":"collection","default":null}]}>
+Sets a collection in the Assets Manager
+</ApiItem>
+<ApiItem href="#assetsmanager-setoptions" visibility="public" name="setOptions" returnType="static" params={[{"type":"array","name":"options","default":null}]}>
+Sets the manager options
+</ApiItem>
+<ApiItem href="#assetsmanager-useimplicitoutput" visibility="public" name="useImplicitOutput" returnType="static" params={[{"type":"bool","name":"implicitOutput","default":null}]}>
+Sets if the HTML generated must be directly printed or returned
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="collections" type="assets_collections" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="implicitOutput" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="tagFactory" type="TagFactory" default="">
+</ApiItem>
+
+### Methods
+
+<h4 id="assetsmanager-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+TagFactory $tagFactory,
+array $options = []
+);
+```
+
+Manager constructor.
+
+<h4 id="assetsmanager-addasset"><code>addAsset()</code></h4>
+
+```php
+public function addAsset( Asset $asset ): static;
+```
+
+Adds a raw asset to the manager
+
+<h4 id="assetsmanager-addassetbytype"><code>addAssetByType()</code></h4>
+
+```php
+public function addAssetByType(
+string $type,
+Asset $asset
+): static;
+```
+
+Adds an asset by its type
+
+<h4 id="assetsmanager-addcss"><code>addCss()</code></h4>
+
+```php
+public function addCss(
+string $path,
+bool $local = true,
+bool $filter = true,
+array $attributes = [],
+string|null $version = null,
+bool $autoVersion = false
+): static;
+```
+
+Adds a CSS asset to the 'css' collection
+
+<h4 id="assetsmanager-addinlinecode"><code>addInlineCode()</code></h4>
+
+```php
+public function addInlineCode( Inline $code ): static;
+```
+
+Adds a raw inline code to the manager
+
+<h4 id="assetsmanager-addinlinecodebytype"><code>addInlineCodeByType()</code></h4>
+
+```php
+public function addInlineCodeByType(
+string $type,
+Inline $code
+): static;
+```
+
+Adds an inline code by its type
+
+<h4 id="assetsmanager-addinlinecss"><code>addInlineCss()</code></h4>
+
+```php
+public function addInlineCss(
+string $content,
+bool $filter = true,
+array $attributes = []
+): static;
+```
+
+Adds an inline CSS to the 'css' collection
+
+<h4 id="assetsmanager-addinlinejs"><code>addInlineJs()</code></h4>
+
+```php
+public function addInlineJs(
+string $content,
+bool $filter = true,
+array $attributes = []
+): static;
+```
+
+Adds an inline JavaScript to the 'js' collection
+
+<h4 id="assetsmanager-addjs"><code>addJs()</code></h4>
+
+```php
+public function addJs(
+string $path,
+bool $local = true,
+bool $filter = true,
+array $attributes = [],
+string|null $version = null,
+bool $autoVersion = false
+): static;
+```
+
+Adds a JavaScript asset to the 'js' collection
+
+```php
+$assets->addJs("scripts/jquery.js");
+$assets->addJs("https://jquery.my-cdn.com/jquery.js", false);
+```
+
+<h4 id="assetsmanager-collection"><code>collection()</code></h4>
+
+```php
+public function collection( string $name ): Collection;
+```
+
+Creates/Returns a collection of assets
+
+<h4 id="assetsmanager-collectionassetsbytype"><code>collectionAssetsByType()</code></h4>
+
+```php
+public function collectionAssetsByType(
+array $assets,
+string $type
+): array;
+```
+
+Creates/Returns a collection of assets by type
+
+The `instanceof` guard below is the validation, so the parameter stays a
+plain array here.
+
+<h4 id="assetsmanager-exists"><code>exists()</code></h4>
+
+```php
+public function exists( string $name ): bool;
+```
+
+Returns true or false if collection exists.
+
+```php
+if ($manager->exists("jsHeader")) {
+// \Phalcon\Assets\Collection
+$collection = $manager->get("jsHeader");
+}
+```
+
+<h4 id="assetsmanager-get"><code>get()</code></h4>
+
+```php
+public function get( string $name ): Collection;
+```
+
+Returns a collection by its id.
+
+```php
+$scripts = $assets->get("js");
+```
+
+<h4 id="assetsmanager-getcollections"><code>getCollections()</code></h4>
+
+```php
+public function getCollections(): Collection[];
+```
+
+Returns existing collections in the manager
+
+<h4 id="assetsmanager-getcss"><code>getCss()</code></h4>
+
+```php
+public function getCss(): Collection;
+```
+
+Returns the CSS collection of assets
+
+<h4 id="assetsmanager-getjs"><code>getJs()</code></h4>
+
+```php
+public function getJs(): Collection;
+```
+
+Returns the CSS collection of assets
+
+<h4 id="assetsmanager-getoptions"><code>getOptions()</code></h4>
+
+```php
+public function getOptions(): array;
+```
+
+Returns the manager options
+
+<h4 id="assetsmanager-has"><code>has()</code></h4>
+
+```php
+public function has( string $name ): bool;
+```
+
+Returns true or false if collection exists.
+
+```php
+if ($manager->has("jsHeader")) {
+// \Phalcon\Assets\Collection
+$collection = $manager->get("jsHeader");
+}
+```
+
+<h4 id="assetsmanager-output"><code>output()</code></h4>
+
+```php
+public function output(
+Collection $collection,
+string $type
+): string|null;
+```
+
+Traverses a collection calling the callback to generate its HTML
+
+<h4 id="assetsmanager-outputcss"><code>outputCss()</code></h4>
+
+```php
+public function outputCss( string|null $name = null ): string;
+```
+
+Prints the HTML for CSS assets
+
+<h4 id="assetsmanager-outputinline"><code>outputInline()</code></h4>
+
+```php
+public function outputInline(
+Collection $collection,
+mixed $type
+): string;
+```
+
+Traverses a collection and generate its HTML
+
+<h4 id="assetsmanager-outputinlinecss"><code>outputInlineCss()</code></h4>
+
+```php
+public function outputInlineCss( string|null $name = null ): string;
+```
+
+Prints the HTML for inline CSS
+
+<h4 id="assetsmanager-outputinlinejs"><code>outputInlineJs()</code></h4>
+
+```php
+public function outputInlineJs( string|null $name = null ): string;
+```
+
+Prints the HTML for inline JS
+
+<h4 id="assetsmanager-outputjs"><code>outputJs()</code></h4>
+
+```php
+public function outputJs( string|null $name = null ): string;
+```
+
+Prints the HTML for JS assets
+
+<h4 id="assetsmanager-set"><code>set()</code></h4>
+
+```php
+public function set(
+string $name,
+Collection $collection
+): static;
+```
+
+Sets a collection in the Assets Manager
+
+```php
+$assets->set("js", $collection);
+```
+
+<h4 id="assetsmanager-setoptions"><code>setOptions()</code></h4>
+
+```php
+public function setOptions( array $options ): static;
+```
+
+Sets the manager options
+
+<h4 id="assetsmanager-useimplicitoutput"><code>useImplicitOutput()</code></h4>
+
+```php
+public function useImplicitOutput( bool $implicitOutput ): static;
+```
+
+Sets if the HTML generated must be directly printed or returned
+
+## Assets\Traits\AttributesTrait
+
+Trait
+
+Shared HTML-attributes state for asset objects (`Asset`, `Inline`,
+`Collection`).
+
+@todo set attributes to have a default array when introduced in zephir
+@todo v7 - share setAttributes here too (blocked: Collection is not an AssetInterface, so the return type diverges)
+
+- **`Phalcon\Assets\Traits\AttributesTrait`**
+
+`Phalcon\Contracts\Assets\AssetsTypes`
+
+[`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collection`](#assetscollection) · [`Phalcon\Assets\Inline`](#assetsinline)
+
+### Method Summary
+
+<ApiItem href="#assetstraitsattributestrait-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
+Gets extra HTML attributes.
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="attributes" type="assets_attributes|null" default="null">
+</ApiItem>
+
+### Methods
+
+<h4 id="assetstraitsattributestrait-getattributes"><code>getAttributes()</code></h4>
+
+```php
+public function getAttributes(): array;
+```
+
+Gets extra HTML attributes.
+
+## Assets\Traits\SourceTargetTrait
+
+Trait
+
+Shared source/target path, uri and locality state for asset objects
+(`Asset`, `Collection`).
+
+- **`Phalcon\Assets\Traits\SourceTargetTrait`**
+
+[`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collection`](#assetscollection)
+
+### Method Summary
+
+<ApiItem href="#assetstraitssourcetargettrait-getsourcepath" visibility="public" name="getSourcePath" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-gettargetpath" visibility="public" name="getTargetPath" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-gettargeturi" visibility="public" name="getTargetUri" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-islocal" visibility="public" name="isLocal" returnType="bool" params={[]}>
+Checks if the asset is local or not
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-setislocal" visibility="public" name="setIsLocal" returnType="static" params={[{"type":"bool","name":"flag","default":null}]}>
+Sets if the asset is local or external
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-setsourcepath" visibility="public" name="setSourcePath" returnType="static" params={[{"type":"string","name":"sourcePath","default":null}]}>
+Sets the asset's source path
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-settargetpath" visibility="public" name="setTargetPath" returnType="static" params={[{"type":"string","name":"targetPath","default":null}]}>
+Sets the asset's target path
+</ApiItem>
+<ApiItem href="#assetstraitssourcetargettrait-settargeturi" visibility="public" name="setTargetUri" returnType="static" params={[{"type":"string","name":"targetUri","default":null}]}>
+Sets a target uri for the generated HTML
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="isLocal" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="sourcePath" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="targetPath" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="targetUri" type="string" default="&quot;&quot;">
+</ApiItem>
+
+### Methods
+
+<h4 id="assetstraitssourcetargettrait-getsourcepath"><code>getSourcePath()</code></h4>
+
+```php
+public function getSourcePath(): string;
+```
+
+<h4 id="assetstraitssourcetargettrait-gettargetpath"><code>getTargetPath()</code></h4>
+
+```php
+public function getTargetPath(): string;
+```
+
+<h4 id="assetstraitssourcetargettrait-gettargeturi"><code>getTargetUri()</code></h4>
+
+```php
+public function getTargetUri(): string;
+```
+
+<h4 id="assetstraitssourcetargettrait-islocal"><code>isLocal()</code></h4>
+
+```php
+public function isLocal(): bool;
+```
+
+Checks if the asset is local or not
+
+<h4 id="assetstraitssourcetargettrait-setislocal"><code>setIsLocal()</code></h4>
+
+```php
+public function setIsLocal( bool $flag ): static;
+```
+
+Sets if the asset is local or external
+
+<h4 id="assetstraitssourcetargettrait-setsourcepath"><code>setSourcePath()</code></h4>
+
+```php
+public function setSourcePath( string $sourcePath ): static;
+```
+
+Sets the asset's source path
+
+<h4 id="assetstraitssourcetargettrait-settargetpath"><code>setTargetPath()</code></h4>
+
+```php
+public function setTargetPath( string $targetPath ): static;
+```
+
+Sets the asset's target path
+
+<h4 id="assetstraitssourcetargettrait-settargeturi"><code>setTargetUri()</code></h4>
+
+```php
+public function setTargetUri( string $targetUri ): static;
+```
+
+Sets a target uri for the generated HTML
+
+Source: https://docs.phalcon.io/5.21/api/phalcon_assets/index.mdx
