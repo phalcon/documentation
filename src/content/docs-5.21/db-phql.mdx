@@ -791,6 +791,34 @@ ORDER BY
     co_products.prd_name
 ```
 
+### `WITH`
+
+The `WITH` clause follows a model in the `FROM` clause and names a relation of that model. PHQL adds an `INNER JOIN` to the related model for each name. Write one name after `WITH`, or a list of names in parentheses:
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WITH 
+        customer";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+PHQL resolves each name in this sequence:
+
+1. A relation alias on the model in the `FROM` clause
+2. As of 5.21, the name of the related model. The two models must have exactly one relation.
+
+A name that matches no relation throws `RelationshipNotFound`. A model name that has more than one relation to the model in the `FROM` clause throws `AmbiguousJoinRelation`. For example, when `Customers` has two `hasMany` relations to `Invoices`, `WITH Invoices` throws `AmbiguousJoinRelation`. Use the relation alias to select one of the relations.
+
 ### Aggregations
 
 The following examples show how to use aggregations in PHQL:
@@ -1119,6 +1147,53 @@ $records  = $this
     ->modelsManager
     ->executeQuery($phql)
 ;
+```
+
+### String Literals
+
+A PHQL string literal is enclosed in single quotes or double quotes. As of 5.21, PHQL resolves these escape sequences in a string literal:
+
+| Sequence | Result          |
+|----------|-----------------|
+| `\n`     | Line feed       |
+| `\r`     | Carriage return |
+| `\t`     | Tab             |
+| `\\`     | Backslash       |
+| `\'`     | Single quote    |
+| `\"`     | Double quote    |
+
+Any other sequence keeps its backslash. Thus a `LIKE` pattern such as `'100\%'` reaches the database as `100\%`.
+
+In the example below, the literal `'\n'` reaches the database as a line feed. `REPLACE()` changes each line feed in the title to `<br>`:
+
+```php
+<?php
+
+$phql = <<<'PHQL'
+    SELECT 
+        REPLACE(Invoices.inv_title, '\n', '<br>') AS title
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_id = 1
+PHQL;
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Write the PHQL in a nowdoc when it contains escape sequences, because PHP does not change the text of a nowdoc. In a double-quoted PHP string or a heredoc, PHP resolves its own escape sequences, such as `\n` and `\\`, before PHQL reads the string. In a single-quoted PHP string, PHP resolves `\\` and `\'`.
+
+After PHQL resolves the sequences, the dialect quotes the value for the database. All dialects double a single quote. MySQL also doubles each backslash, because MySQL uses the backslash as an escape character. PostgreSQL and SQLite do not change the backslash. For the PHQL condition `Invoices.inv_title LIKE '100\%'`, the dialects emit:
+
+```sql
+-- MySQL
+`co_invoices`.`inv_title` LIKE '100\\%'
+
+-- PostgreSQL and SQLite
+"co_invoices"."inv_title" LIKE '100\%'
 ```
 
 ### Dialect-Specific Operators
@@ -3348,7 +3423,7 @@ The PHQL `Query` raises these classes (namespace `Phalcon\Mvc\Model\Query\Except
 | Class                               | Parent                        | Thrown when                                                                         |
 |-------------------------------------|-------------------------------|-------------------------------------------------------------------------------------|
 | `AmbiguousColumn`                   | `Phalcon\Mvc\Model\Exception` | A column name without a domain matches multiple selected models.                    |
-| `AmbiguousJoinRelation`             | `Phalcon\Mvc\Model\Exception` | A join expression resolves to more than one relation between the two models.        |
+| `AmbiguousJoinRelation`             | `Phalcon\Mvc\Model\Exception` | A join or a `WITH` name resolves to more than one relation between the two models.  |
 | `BindParameterNotInPlaceholders`    | `Phalcon\Mvc\Model\Exception` | A bind value has no matching placeholder in the PHQL string.                        |
 | `BindTypeRequiresArray`             | `Phalcon\Mvc\Model\Exception` | The bind-types argument is not an array.                                            |
 | `BindValueRequired`                 | `Phalcon\Mvc\Model\Exception` | A placeholder in PHQL has no matching bind value.                                   |
@@ -3384,7 +3459,7 @@ The PHQL `Query` raises these classes (namespace `Phalcon\Mvc\Model\Query\Except
 | `PhqlColumnNotInMap`                | `Phalcon\Mvc\Model\Exception` | A column returned by the underlying SQL cannot be mapped to a model attribute.      |
 | `QueryOperationNotSupported`        | `Phalcon\Mvc\Model\Exception` | A PHQL operation is requested that the adapter does not implement.                  |
 | `ReadConnectionMissing`             | `Phalcon\Mvc\Model\Exception` | The query cannot acquire a read connection from the model manager.                  |
-| `RelationshipNotFound`              | `Phalcon\Mvc\Model\Exception` | A join references a relation that is not defined on the joined model.               |
+| `RelationshipNotFound`              | `Phalcon\Mvc\Model\Exception` | A join or a `WITH` name references a relation that is not defined.                  |
 | `ResultsetClassNotFound`            | `Phalcon\Mvc\Model\Exception` | A configured custom resultset class cannot be autoloaded.                           |
 | `ResultsetNonCacheable`             | `Phalcon\Mvc\Model\Exception` | A resultset cannot be cached because its underlying source is not deterministic.    |
 | `UnknownBindType`                   | `Phalcon\Mvc\Model\Exception` | A bind-types entry uses an unrecognized type constant.                              |

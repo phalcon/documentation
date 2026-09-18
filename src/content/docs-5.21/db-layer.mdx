@@ -1865,6 +1865,57 @@ try {
 }
 ```
 
+### Transaction Level
+
+The adapter counts the levels of the open transaction. `begin()` increases the count. `commit()` and `rollback()` decrease it. `getTransactionLevel()` returns the count. `isUnderTransaction()` returns `true` when the PDO connection has an active transaction.
+
+As of 5.21, `begin()`, `commit()` and `rollback()` compare the count with the PDO connection first. When the count is more than zero but the connection has no active transaction, the adapter sets the count to zero. This occurs:
+
+- after a statement that commits implicitly, such as `CREATE TABLE` on MySQL
+- after a reconnect
+- after the transaction ends outside the adapter
+
+After this reset, `commit()` and `rollback()` throw `Phalcon\Db\Exceptions\NoActiveTransaction`. The adapter does not send a `COMMIT`, `ROLLBACK` or savepoint statement to the server.
+
+```php
+<?php
+
+use Phalcon\Db\Adapter\Pdo\Mysql;
+use Phalcon\Db\Exceptions\NoActiveTransaction;
+
+$connection = new Mysql(
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => 'secret',
+        'dbname'   => 'tutorial',
+    ]
+);
+
+$connection->begin();
+
+$connection->execute('DELETE FROM `co_invoices` WHERE `inv_id` = 1');
+
+// MySQL commits the open transaction before it runs this statement
+$connection->execute('CREATE TABLE `co_invoices_archive` LIKE `co_invoices`');
+
+try {
+    $connection->commit();
+} catch (NoActiveTransaction $e) {
+    // There is no active transaction
+    echo $e->getMessage();
+
+    // 0
+    echo $connection->getTransactionLevel();
+}
+```
+
+When the server rejects a transaction statement, the count stays correct:
+
+- `begin()` restores the count when the transaction or the savepoint does not start, then throws the original exception again
+- `commit()` restores the count when the commit or the release of the savepoint fails, then throws the original exception again
+- `rollback()` keeps the count decreased when the rollback fails
+
 ## Events
 
 The adapters also send events to an [Events Manager][events] if it is present. If an event returns `false` it can stop the current operation. The following events are supported:

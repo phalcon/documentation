@@ -963,6 +963,39 @@ $validator->add(
 );
 ```
 
+Each file validator checks the upload before it checks the file:
+
+- An upload larger than the PHP size limits fails with the `messageIniSize` message.
+- The value must be one uploaded-file array from `$_FILES`. Its `error` must be `UPLOAD_ERR_OK`, and its `tmp_name` must be a file that PHP received through HTTP POST. If not, validation fails with the `messageFileEmpty` message. As of 5.21, a missing file and a plain string also fail this check.
+- The uploaded-file array must have the `name`, `type` and `size` keys. If not, validation fails with the `messageValid` message.
+
+As of 5.21, the resolution validators (`AspectRatio`, `Equal`, `Max` and `Min`) also reject a file that `getimagesize()` cannot read as an image. They use the `messageValid` message.
+
+Set these messages with the `messageFileEmpty`, `messageIniSize` and `messageValid` options of the `File` validator:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\File;
+
+$validator = new Validation();
+
+$validator->add(
+    "file",
+    new File(
+        [
+            "maxResolution"    => "800x600",
+            "messageFileEmpty" => "Upload a file for :field",
+            "messageIniSize"   => "The file in :field is too large",
+            "messageValid"     => "The file in :field is not a valid image",
+        ]
+    )
+);
+```
+
+On the other file validators, use `setMessageFileEmpty()`, `setMessageIniSize()` and `setMessageValid()`.
+
 ### File MimeType
 
 Checks if a value has a correct file mime type
