@@ -45,3 +45,4 @@ docker image inspect phalcon-docs-converter > /dev/null 2>&1 \
 docker run --rm -v "$PWD":/docs phalcon-docs-converter resources/nimbus/convert.py --register
 
 echo "Version ${TO} created from ${FROM}: src/content/docs-${TO}, src/sidebar/${TO}.mjs, src/redirects/${TO}.mjs, src/pages/${TO}"
+echo "Don't forget to update STABLE_VERSIONS or PRERELEASES in src/lib/site.mjs"
