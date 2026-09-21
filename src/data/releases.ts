@@ -75,6 +75,7 @@ export const releases: Release[] = [
   { version: "5.19", date: "2026-08-19", php: "8.1-8.5" },
   { version: "5.20", date: "2026-08-22", php: "8.1-8.5", status: "maintained" },
   { version: "5.21", date: "2026-09-18", php: "8.1-8.5" },
+  { version: "5.22", date: "2026-09-22", php: "8.1-8.5" },
 
   { version: "6.0.0alpha1", date: "2026-06-19", php: "8.1-8.5", status: "preview" },
   { version: "6.0.0alpha2", date: "2026-06-19", php: "8.1-8.5", status: "preview" },
@@ -93,4 +94,5 @@ export const releases: Release[] = [
   { version: "6.0.0beta9", date: "2026-08-24", php: "8.1-8.5", status: "preview" },
   { version: "6.0.0beta10", date: "2026-08-25", php: "8.1-8.5", status: "preview" },
   { version: "6.0.0RC1", date: "2026-09-18", php: "8.1-8.5", status: "preview" },
+  { version: "6.0.0RC2", date: "2026-09-22", php: "8.1-8.5", status: "preview" },
 ];

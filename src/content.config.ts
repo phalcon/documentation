@@ -10,6 +10,7 @@ const schemaFields = { audience: z.literal("human").optional() };
 export const collections = {
   docs: defineCollection(docsCollection({ schemaFields })),
   "docs-6.0": defineCollection(docsCollection({ base: "docs-6.0", schemaFields })),
+  "docs-5.22": defineCollection(docsCollection({ base: "docs-5.22", schemaFields })),
   "docs-5.21": defineCollection(docsCollection({ base: "docs-5.21", schemaFields })),
   "docs-5.20": defineCollection(docsCollection({ base: "docs-5.20", schemaFields })),
   "docs-5.19": defineCollection(docsCollection({ base: "docs-5.19", schemaFields })),
