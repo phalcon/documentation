@@ -1,0 +1,1051 @@
+---
+title: "Phalcon Translate"
+version: "5.22"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Phalcon Translate
+
+:::info[NOTE]
+All classes are prefixed with `Phalcon`
+:::
+
+## Translate\Adapter\AbstractAdapter
+
+Abstract
+
+@implements ArrayAccess&lt;string, string>
+
+- **`Phalcon\Translate\Adapter\AbstractAdapter`** - implements [`Phalcon\Translate\Adapter\AdapterInterface`](#translateadapteradapterinterface), `\ArrayAccess`
+- [`Phalcon\Translate\Adapter\Csv`](#translateadaptercsv)
+- [`Phalcon\Translate\Adapter\Gettext`](#translateadaptergettext)
+- [`Phalcon\Translate\Adapter\NativeArray`](#translateadapternativearray)
+
+`ArrayAccess` · `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Phalcon\Translate\Exceptions\KeyNotFound` · `Phalcon\Translate\InterpolatorFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
+
+### Method Summary
+
+<ApiItem href="#translateadapterabstractadapter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"InterpolatorFactory","name":"interpolatorFactory","default":null},{"type":"array","name":"options","default":"[]"}]}>
+AbstractAdapter constructor.
+</ApiItem>
+<ApiItem href="#translateadapterabstractadapter-_" visibility="public" name="_" returnType="string" params={[{"type":"string","name":"translateKey","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Returns the translation string of the given key (alias of method 't')
+</ApiItem>
+<ApiItem href="#translateadapterabstractadapter-notfound" visibility="public" name="notFound" returnType="string" params={[{"type":"string","name":"index","default":null}]}>
+Whenever a key is not found this method will be called
+</ApiItem>
+<ApiItem href="#translateadapterabstractadapter-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"offset","default":null}]}>
+Check whether a translation key exists
+</ApiItem>
+<ApiItem href="#translateadapterabstractadapter-offsetget" visibility="public" name="offsetGet" returnType="string" params={[{"type":"mixed","name":"offset","default":null}]}>
+Returns the translation related to the given key
+</ApiItem>
+<ApiItem href="#translateadapterabstractadapter-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
+Sets a translation value
+</ApiItem>
+<ApiItem href="#translateadapterabstractadapter-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"offset","default":null}]}>
+Unsets a translation from the dictionary
+</ApiItem>
+<ApiItem href="#translateadapterabstractadapter-t" visibility="public" name="t" returnType="string" params={[{"type":"string","name":"translateKey","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Returns the translation string of the given key
+</ApiItem>
+<ApiItem href="#translateadapterabstractadapter-replaceplaceholders" visibility="protected" name="replacePlaceholders" returnType="string" params={[{"type":"string","name":"translation","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Replaces placeholders by the values passed
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="defaultInterpolator" type="string" default="&quot;&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="interpolator" type="InterpolatorInterface|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="interpolatorFactory" type="InterpolatorFactory" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="triggerError" type="bool" default="false">
+</ApiItem>
+
+### Methods
+
+<h4 id="translateadapterabstractadapter-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+InterpolatorFactory $interpolatorFactory,
+array $options = []
+);
+```
+
+AbstractAdapter constructor.
+
+<h4 id="translateadapterabstractadapter-_"><code>_()</code></h4>
+
+```php
+public function _(
+string $translateKey,
+array $placeholders = []
+): string;
+```
+
+Returns the translation string of the given key (alias of method 't')
+
+<h4 id="translateadapterabstractadapter-notfound"><code>notFound()</code></h4>
+
+```php
+public function notFound( string $index ): string;
+```
+
+Whenever a key is not found this method will be called
+
+<h4 id="translateadapterabstractadapter-offsetexists"><code>offsetExists()</code></h4>
+
+```php
+public function offsetExists( mixed $offset ): bool;
+```
+
+Check whether a translation key exists
+
+<h4 id="translateadapterabstractadapter-offsetget"><code>offsetGet()</code></h4>
+
+```php
+public function offsetGet( mixed $offset ): string;
+```
+
+Returns the translation related to the given key
+
+<h4 id="translateadapterabstractadapter-offsetset"><code>offsetSet()</code></h4>
+
+```php
+public function offsetSet(
+mixed $offset,
+mixed $value
+): void;
+```
+
+Sets a translation value
+
+<h4 id="translateadapterabstractadapter-offsetunset"><code>offsetUnset()</code></h4>
+
+```php
+public function offsetUnset( mixed $offset ): void;
+```
+
+Unsets a translation from the dictionary
+
+<h4 id="translateadapterabstractadapter-t"><code>t()</code></h4>
+
+```php
+public function t(
+string $translateKey,
+array $placeholders = []
+): string;
+```
+
+Returns the translation string of the given key
+
+<h4 id="translateadapterabstractadapter-replaceplaceholders"><code>replacePlaceholders()</code></h4>
+
+```php
+protected function replacePlaceholders(
+string $translation,
+array $placeholders = []
+): string;
+```
+
+Replaces placeholders by the values passed
+
+## Translate\Adapter\AdapterInterface
+
+Interface
+
+Phalcon\Translate\Adapter\AdapterInterface
+
+Interface for Phalcon\Translate adapters
+
+- **`Phalcon\Translate\Adapter\AdapterInterface`**
+
+### Method Summary
+
+<ApiItem href="#translateadapteradapterinterface-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"index","default":null}]}>
+Check whether is defined a translation key in the internal array
+</ApiItem>
+<ApiItem href="#translateadapteradapterinterface-query" visibility="public" name="query" returnType="string" params={[{"type":"string","name":"translateKey","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Returns the translation related to the given key
+</ApiItem>
+<ApiItem href="#translateadapteradapterinterface-t" visibility="public" name="t" returnType="string" params={[{"type":"string","name":"translateKey","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Returns the translation string of the given key
+</ApiItem>
+
+### Methods
+
+<h4 id="translateadapteradapterinterface-has"><code>has()</code></h4>
+
+```php
+public function has( string $index ): bool;
+```
+
+Check whether is defined a translation key in the internal array
+
+<h4 id="translateadapteradapterinterface-query"><code>query()</code></h4>
+
+```php
+public function query(
+string $translateKey,
+array $placeholders = []
+): string;
+```
+
+Returns the translation related to the given key
+
+Missing-key semantics differ per adapter:
+
+| Adapter     | Missing key returns       | Strict mode (triggerError) |
+| ----------- | ------------------------- | -------------------------- |
+| NativeArray | the key, not interpolated | yes                        |
+| Csv         | the key, interpolated     | yes                        |
+| Gettext     | the msgid (gettext)       | yes                        |
+
+With strict mode enabled (the `triggerError` option) a missing key
+throws `KeyNotFound` instead of falling back.
+
+<h4 id="translateadapteradapterinterface-t"><code>t()</code></h4>
+
+```php
+public function t(
+string $translateKey,
+array $placeholders = []
+): string;
+```
+
+Returns the translation string of the given key
+
+## Translate\Adapter\Csv
+
+Class
+
+- [`Phalcon\Translate\Adapter\AbstractAdapter`](#translateadapterabstractadapter)
+- **`Phalcon\Translate\Adapter\Csv`**
+
+`Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+
+### Method Summary
+
+<ApiItem href="#translateadaptercsv-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"InterpolatorFactory","name":"interpolator","default":null},{"type":"array","name":"options","default":null}]}>
+Csv constructor.
+</ApiItem>
+<ApiItem href="#translateadaptercsv-exists" visibility="public" name="exists" returnType="bool" params={[{"type":"string","name":"index","default":null}]}>
+Check whether is defined a translation key in the internal array
+</ApiItem>
+<ApiItem href="#translateadaptercsv-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"index","default":null}]}>
+Check whether is defined a translation key in the internal array
+</ApiItem>
+<ApiItem href="#translateadaptercsv-query" visibility="public" name="query" returnType="string" params={[{"type":"string","name":"translateKey","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Returns the translation related to the given key
+</ApiItem>
+<ApiItem href="#translateadaptercsv-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
+Returns the internal array
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="translate" type="array" default="[]">
+</ApiItem>
+
+### Methods
+
+<h4 id="translateadaptercsv-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+InterpolatorFactory $interpolator,
+array $options
+);
+```
+
+Csv constructor.
+
+<h4 id="translateadaptercsv-exists"><code>exists()</code></h4>
+
+```php
+public function exists( string $index ): bool;
+```
+
+Check whether is defined a translation key in the internal array
+
+<h4 id="translateadaptercsv-has"><code>has()</code></h4>
+
+```php
+public function has( string $index ): bool;
+```
+
+Check whether is defined a translation key in the internal array
+
+<h4 id="translateadaptercsv-query"><code>query()</code></h4>
+
+```php
+public function query(
+string $translateKey,
+array $placeholders = []
+): string;
+```
+
+Returns the translation related to the given key
+
+<h4 id="translateadaptercsv-toarray"><code>toArray()</code></h4>
+
+```php
+public function toArray(): array;
+```
+
+Returns the internal array
+
+## Translate\Adapter\Gettext
+
+Class
+
+Phalcon\Translate\Adapter\Gettext
+
+```php
+use Phalcon\Translate\Adapter\Gettext;
+
+$adapter = new Gettext(
+[
+    "locale"        => "de_DE.UTF-8",
+    "defaultDomain" => "translations",
+    "directory"     => "/path/to/application/locales",
+    "category"      => LC_MESSAGES,
+]
+);
+```
+
+Allows translations using gettext
+
+- [`Phalcon\Translate\Adapter\AbstractAdapter`](#translateadapterabstractadapter)
+- **`Phalcon\Translate\Adapter\Gettext`**
+
+`Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+
+### Method Summary
+
+<ApiItem href="#translateadaptergettext-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"InterpolatorFactory","name":"interpolator","default":null},{"type":"array","name":"options","default":null}]}>
+Gettext constructor.
+</ApiItem>
+<ApiItem href="#translateadaptergettext-exists" visibility="public" name="exists" returnType="bool" params={[{"type":"string","name":"index","default":null}]}>
+Check whether is defined a translation key in the internal array
+</ApiItem>
+<ApiItem href="#translateadaptergettext-getcategory" visibility="public" name="getCategory" returnType="int" params={[]}>
+</ApiItem>
+<ApiItem href="#translateadaptergettext-getdefaultdomain" visibility="public" name="getDefaultDomain" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#translateadaptergettext-getdirectory" visibility="public" name="getDirectory" returnType="array|string" params={[]}>
+</ApiItem>
+<ApiItem href="#translateadaptergettext-getlocale" visibility="public" name="getLocale" returnType="false|string" params={[]}>
+</ApiItem>
+<ApiItem href="#translateadaptergettext-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"index","default":null}]}>
+Check whether is defined a translation key in the internal array
+</ApiItem>
+<ApiItem href="#translateadaptergettext-nquery" visibility="public" name="nquery" returnType="string" params={[{"type":"string","name":"msgid1","default":null},{"type":"string","name":"msgid2","default":null},{"type":"int","name":"count","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"string|null","name":"domain","default":"null"}]}>
+The plural version of gettext().
+</ApiItem>
+<ApiItem href="#translateadaptergettext-query" visibility="public" name="query" returnType="string" params={[{"type":"string","name":"translateKey","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Returns the translation related to the given key.
+</ApiItem>
+<ApiItem href="#translateadaptergettext-resetdomain" visibility="public" name="resetDomain" returnType="string" params={[]}>
+Sets the default domain
+</ApiItem>
+<ApiItem href="#translateadaptergettext-setdefaultdomain" visibility="public" name="setDefaultDomain" returnType="void" params={[{"type":"string","name":"domain","default":null}]}>
+Sets the domain default to search within when calls are made to gettext()
+</ApiItem>
+<ApiItem href="#translateadaptergettext-setdirectory" visibility="public" name="setDirectory" returnType="void" params={[{"type":"mixed","name":"directory","default":null}]}>
+Sets the path for a domain
+</ApiItem>
+<ApiItem href="#translateadaptergettext-setdomain" visibility="public" name="setDomain" returnType="string" params={[{"type":"string|null","name":"domain","default":"null"}]}>
+Changes the current domain (i.e. the translation file)
+</ApiItem>
+<ApiItem href="#translateadaptergettext-setlocale" visibility="public" name="setLocale" returnType="false|string" params={[{"type":"int","name":"category","default":null},{"type":"array","name":"localeArray","default":"[]"}]}>
+Sets locale information
+</ApiItem>
+<ApiItem href="#translateadaptergettext-getoptionsdefault" visibility="protected" name="getOptionsDefault" returnType="array" params={[]}>
+Gets default options
+</ApiItem>
+<ApiItem href="#translateadaptergettext-prepareoptions" visibility="protected" name="prepareOptions" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
+Validator for constructor
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="category" type="int" default="6">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="defaultDomain" type="string" default="&quot;messages&quot;">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="directory" type="mixed" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="locale" type="false|string" default="">
+</ApiItem>
+
+### Methods
+
+<h4 id="translateadaptergettext-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+InterpolatorFactory $interpolator,
+array $options
+);
+```
+
+Gettext constructor.
+
+<h4 id="translateadaptergettext-exists"><code>exists()</code></h4>
+
+```php
+public function exists( string $index ): bool;
+```
+
+Check whether is defined a translation key in the internal array
+
+<h4 id="translateadaptergettext-getcategory"><code>getCategory()</code></h4>
+
+```php
+public function getCategory(): int;
+```
+
+<h4 id="translateadaptergettext-getdefaultdomain"><code>getDefaultDomain()</code></h4>
+
+```php
+public function getDefaultDomain(): string;
+```
+
+<h4 id="translateadaptergettext-getdirectory"><code>getDirectory()</code></h4>
+
+```php
+public function getDirectory(): array|string;
+```
+
+<h4 id="translateadaptergettext-getlocale"><code>getLocale()</code></h4>
+
+```php
+public function getLocale(): false|string;
+```
+
+<h4 id="translateadaptergettext-has"><code>has()</code></h4>
+
+```php
+public function has( string $index ): bool;
+```
+
+Check whether is defined a translation key in the internal array
+
+<h4 id="translateadaptergettext-nquery"><code>nquery()</code></h4>
+
+```php
+public function nquery(
+string $msgid1,
+string $msgid2,
+int $count,
+array $placeholders = [],
+string|null $domain = null
+): string;
+```
+
+The plural version of gettext().
+Some languages have more than one form for plural messages dependent on
+the count.
+
+<h4 id="translateadaptergettext-query"><code>query()</code></h4>
+
+```php
+public function query(
+string $translateKey,
+array $placeholders = []
+): string;
+```
+
+Returns the translation related to the given key.
+
+```php
+$translator->query("你好 %name%！", ["name" => "Phalcon"]);
+```
+
+<h4 id="translateadaptergettext-resetdomain"><code>resetDomain()</code></h4>
+
+```php
+public function resetDomain(): string;
+```
+
+Sets the default domain
+
+<h4 id="translateadaptergettext-setdefaultdomain"><code>setDefaultDomain()</code></h4>
+
+```php
+public function setDefaultDomain( string $domain ): void;
+```
+
+Sets the domain default to search within when calls are made to gettext()
+
+<h4 id="translateadaptergettext-setdirectory"><code>setDirectory()</code></h4>
+
+```php
+public function setDirectory( mixed $directory ): void;
+```
+
+Sets the path for a domain
+
+```php
+// Set the directory path
+$gettext->setDirectory("/path/to/the/messages");
+
+// Set the domains and directories path
+$gettext->setDirectory(
+[
+    "messages" => "/path/to/the/messages",
+    "another"  => "/path/to/the/another",
+]
+);
+```
+
+<h4 id="translateadaptergettext-setdomain"><code>setDomain()</code></h4>
+
+```php
+public function setDomain( string|null $domain = null ): string;
+```
+
+Changes the current domain (i.e. the translation file)
+
+<h4 id="translateadaptergettext-setlocale"><code>setLocale()</code></h4>
+
+```php
+public function setLocale(
+int $category,
+array $localeArray = []
+): false|string;
+```
+
+Sets locale information
+
+Note: this method has process-global side effects. Besides calling
+`setlocale()`, it exports the `LC_ALL`, `LANG` and `LANGUAGE`
+environment variables via `putenv()`. `LC_ALL` affects every
+locale-sensitive operation in the process - `(string)` casts of floats,
+`strtoupper()`/`strtolower()` tables, date formatting and more - not
+just translations.
+
+```php
+// Set locale to Dutch
+$gettext->setLocale(LC_ALL, ["nl_NL"]);
+
+// Try different possible locale names for German
+$gettext->setLocale(LC_ALL, ["de_DE@euro", "de_DE", "de", "ge"]);
+```
+
+<h4 id="translateadaptergettext-getoptionsdefault"><code>getOptionsDefault()</code></h4>
+
+```php
+protected function getOptionsDefault(): array;
+```
+
+Gets default options
+
+<h4 id="translateadaptergettext-prepareoptions"><code>prepareOptions()</code></h4>
+
+```php
+protected function prepareOptions( array $options ): void;
+```
+
+Validator for constructor
+
+## Translate\Adapter\NativeArray
+
+Class
+
+Defines translation lists using PHP arrays
+
+- [`Phalcon\Translate\Adapter\AbstractAdapter`](#translateadapterabstractadapter)
+- **`Phalcon\Translate\Adapter\NativeArray`**
+
+`Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidDataType` · `Phalcon\Translate\Exceptions\MissingContent` · `Phalcon\Translate\InterpolatorFactory`
+
+### Method Summary
+
+<ApiItem href="#translateadapternativearray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"InterpolatorFactory","name":"interpolator","default":null},{"type":"array","name":"options","default":null}]}>
+NativeArray constructor.
+</ApiItem>
+<ApiItem href="#translateadapternativearray-exists" visibility="public" name="exists" returnType="bool" params={[{"type":"string","name":"index","default":null}]}>
+Check whether is defined a translation key in the internal array
+</ApiItem>
+<ApiItem href="#translateadapternativearray-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"index","default":null}]}>
+Check whether is defined a translation key in the internal array
+</ApiItem>
+<ApiItem href="#translateadapternativearray-query" visibility="public" name="query" returnType="string" params={[{"type":"string","name":"translateKey","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Returns the translation related to the given key
+</ApiItem>
+<ApiItem href="#translateadapternativearray-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
+Returns the internal array
+</ApiItem>
+
+### Methods
+
+<h4 id="translateadapternativearray-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+InterpolatorFactory $interpolator,
+array $options
+);
+```
+
+NativeArray constructor.
+
+<h4 id="translateadapternativearray-exists"><code>exists()</code></h4>
+
+```php
+public function exists( string $index ): bool;
+```
+
+Check whether is defined a translation key in the internal array
+
+<h4 id="translateadapternativearray-has"><code>has()</code></h4>
+
+```php
+public function has( string $index ): bool;
+```
+
+Check whether is defined a translation key in the internal array
+
+<h4 id="translateadapternativearray-query"><code>query()</code></h4>
+
+```php
+public function query(
+string $translateKey,
+array $placeholders = []
+): string;
+```
+
+Returns the translation related to the given key
+
+<h4 id="translateadapternativearray-toarray"><code>toArray()</code></h4>
+
+```php
+public function toArray(): array;
+```
+
+Returns the internal array
+
+## Translate\Exception
+
+Class
+
+Class for exceptions thrown by Phalcon\Translate
+
+- `\Exception`
+- **`Phalcon\Translate\Exception`**
+- [`Phalcon\Translate\Exceptions\FileOpenError`](#translateexceptionsfileopenerror)
+- [`Phalcon\Translate\Exceptions\ImmutableObject`](#translateexceptionsimmutableobject)
+- [`Phalcon\Translate\Exceptions\InterpolatorNotRegistered`](#translateexceptionsinterpolatornotregistered)
+- [`Phalcon\Translate\Exceptions\InvalidDataType`](#translateexceptionsinvaliddatatype)
+- [`Phalcon\Translate\Exceptions\KeyNotFound`](#translateexceptionskeynotfound)
+- [`Phalcon\Translate\Exceptions\MissingContent`](#translateexceptionsmissingcontent)
+- [`Phalcon\Translate\Exceptions\MissingGettextExtension`](#translateexceptionsmissinggettextextension)
+- [`Phalcon\Translate\Exceptions\MissingRequiredParameter`](#translateexceptionsmissingrequiredparameter)
+- [`Phalcon\Translate\Exceptions\TranslatorNotRegistered`](#translateexceptionstranslatornotregistered)
+
+## Translate\Exceptions\FileOpenError
+
+Class
+
+- `\Exception`
+- [`Phalcon\Translate\Exception`](#translateexception)
+- **`Phalcon\Translate\Exceptions\FileOpenError`**
+
+`Phalcon\Translate\Exception`
+
+### Method Summary
+
+<ApiItem href="#translateexceptionsfileopenerror-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="translateexceptionsfileopenerror-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $name );
+```
+
+## Translate\Exceptions\ImmutableObject
+
+Class
+
+- `\Exception`
+- [`Phalcon\Translate\Exception`](#translateexception)
+- **`Phalcon\Translate\Exceptions\ImmutableObject`**
+
+`Phalcon\Translate\Exception`
+
+### Method Summary
+
+<ApiItem href="#translateexceptionsimmutableobject-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="translateexceptionsimmutableobject-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
+
+## Translate\Exceptions\InterpolatorNotRegistered
+
+Class
+
+- `\Exception`
+- [`Phalcon\Translate\Exception`](#translateexception)
+- **`Phalcon\Translate\Exceptions\InterpolatorNotRegistered`**
+
+`Phalcon\Translate\Exception`
+
+## Translate\Exceptions\InvalidDataType
+
+Class
+
+- `\Exception`
+- [`Phalcon\Translate\Exception`](#translateexception)
+- **`Phalcon\Translate\Exceptions\InvalidDataType`**
+
+`Phalcon\Translate\Exception`
+
+### Method Summary
+
+<ApiItem href="#translateexceptionsinvaliddatatype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="translateexceptionsinvaliddatatype-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
+
+## Translate\Exceptions\KeyNotFound
+
+Class
+
+- `\Exception`
+- [`Phalcon\Translate\Exception`](#translateexception)
+- **`Phalcon\Translate\Exceptions\KeyNotFound`**
+
+`Phalcon\Translate\Exception`
+
+### Method Summary
+
+<ApiItem href="#translateexceptionskeynotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"key","default":null}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="translateexceptionskeynotfound-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $key );
+```
+
+## Translate\Exceptions\MissingContent
+
+Class
+
+- `\Exception`
+- [`Phalcon\Translate\Exception`](#translateexception)
+- **`Phalcon\Translate\Exceptions\MissingContent`**
+
+`Phalcon\Translate\Exception`
+
+### Method Summary
+
+<ApiItem href="#translateexceptionsmissingcontent-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="translateexceptionsmissingcontent-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
+
+## Translate\Exceptions\MissingGettextExtension
+
+Class
+
+- `\Exception`
+- [`Phalcon\Translate\Exception`](#translateexception)
+- **`Phalcon\Translate\Exceptions\MissingGettextExtension`**
+
+`Phalcon\Translate\Exception`
+
+### Method Summary
+
+<ApiItem href="#translateexceptionsmissinggettextextension-__construct" visibility="public" name="__construct" returnType="" params={[]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="translateexceptionsmissinggettextextension-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
+
+## Translate\Exceptions\MissingRequiredParameter
+
+Class
+
+- `\Exception`
+- [`Phalcon\Translate\Exception`](#translateexception)
+- **`Phalcon\Translate\Exceptions\MissingRequiredParameter`**
+
+`Phalcon\Translate\Exception`
+
+### Method Summary
+
+<ApiItem href="#translateexceptionsmissingrequiredparameter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"parameter","default":null}]}>
+</ApiItem>
+<ApiItem href="#translateexceptionsmissingrequiredparameter-getparameter" visibility="public" name="getParameter" returnType="string" params={[]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="translateexceptionsmissingrequiredparameter-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $parameter );
+```
+
+<h4 id="translateexceptionsmissingrequiredparameter-getparameter"><code>getParameter()</code></h4>
+
+```php
+public function getParameter(): string;
+```
+
+## Translate\Exceptions\TranslatorNotRegistered
+
+Class
+
+- `\Exception`
+- [`Phalcon\Translate\Exception`](#translateexception)
+- **`Phalcon\Translate\Exceptions\TranslatorNotRegistered`**
+
+`Phalcon\Translate\Exception`
+
+## Translate\InterpolatorFactory
+
+Class
+
+- [`Phalcon\Factory\AbstractConfigFactory`](/5.22/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
+- **`Phalcon\Translate\InterpolatorFactory`**
+
+`Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Exceptions\InterpolatorNotRegistered` · `Phalcon\Translate\Interpolator\AssociativeArray` · `Phalcon\Translate\Interpolator\IndexedArray` · `Phalcon\Translate\Interpolator\InterpolatorInterface` · `Throwable`
+
+### Method Summary
+
+<ApiItem href="#translateinterpolatorfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#translateinterpolatorfactory-newinstance" visibility="public" name="newInstance" returnType="InterpolatorInterface" params={[{"type":"string","name":"name","default":null}]}>
+Create a new instance of the adapter
+</ApiItem>
+<ApiItem href="#translateinterpolatorfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#translateinterpolatorfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the available adapters
+</ApiItem>
+
+### Methods
+
+<h4 id="translateinterpolatorfactory-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( array $services = [] );
+```
+
+<h4 id="translateinterpolatorfactory-newinstance"><code>newInstance()</code></h4>
+
+```php
+public function newInstance( string $name ): InterpolatorInterface;
+```
+
+Create a new instance of the adapter
+
+<h4 id="translateinterpolatorfactory-getexceptionclass"><code>getExceptionClass()</code></h4>
+
+```php
+protected function getExceptionClass(): string;
+```
+
+<h4 id="translateinterpolatorfactory-getservices"><code>getServices()</code></h4>
+
+```php
+protected function getServices(): array;
+```
+
+Returns the available adapters
+
+## Translate\Interpolator\AssociativeArray
+
+Class
+
+Class AssociativeArray
+
+- **`Phalcon\Translate\Interpolator\AssociativeArray`** - implements [`Phalcon\Translate\Interpolator\InterpolatorInterface`](#translateinterpolatorinterpolatorinterface)
+
+`Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+
+### Method Summary
+
+<ApiItem href="#translateinterpolatorassociativearray-replaceplaceholders" visibility="public" name="replacePlaceholders" returnType="string" params={[{"type":"string","name":"translation","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Replaces placeholders by the values passed
+</ApiItem>
+
+### Methods
+
+<h4 id="translateinterpolatorassociativearray-replaceplaceholders"><code>replacePlaceholders()</code></h4>
+
+```php
+public function replacePlaceholders(
+string $translation,
+array $placeholders = []
+): string;
+```
+
+Replaces placeholders by the values passed
+
+## Translate\Interpolator\IndexedArray
+
+Class
+
+- **`Phalcon\Translate\Interpolator\IndexedArray`** - implements [`Phalcon\Translate\Interpolator\InterpolatorInterface`](#translateinterpolatorinterpolatorinterface)
+
+### Method Summary
+
+<ApiItem href="#translateinterpolatorindexedarray-replaceplaceholders" visibility="public" name="replacePlaceholders" returnType="string" params={[{"type":"string","name":"translation","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Replaces placeholders by the values passed
+</ApiItem>
+
+### Methods
+
+<h4 id="translateinterpolatorindexedarray-replaceplaceholders"><code>replacePlaceholders()</code></h4>
+
+```php
+public function replacePlaceholders(
+string $translation,
+array $placeholders = []
+): string;
+```
+
+Replaces placeholders by the values passed
+
+## Translate\Interpolator\InterpolatorInterface
+
+Interface
+
+Phalcon\Translate\InterpolatorInterface
+
+Interface for Phalcon\Translate interpolators
+
+- **`Phalcon\Translate\Interpolator\InterpolatorInterface`**
+
+### Method Summary
+
+<ApiItem href="#translateinterpolatorinterpolatorinterface-replaceplaceholders" visibility="public" name="replacePlaceholders" returnType="string" params={[{"type":"string","name":"translation","default":null},{"type":"array","name":"placeholders","default":"[]"}]}>
+Replaces placeholders by the values passed
+</ApiItem>
+
+### Methods
+
+<h4 id="translateinterpolatorinterpolatorinterface-replaceplaceholders"><code>replacePlaceholders()</code></h4>
+
+```php
+public function replacePlaceholders(
+string $translation,
+array $placeholders = []
+): string;
+```
+
+Replaces placeholders by the values passed
+
+## Translate\TranslateFactory
+
+Class
+
+@property InterpolatorFactory $interpolator
+
+- [`Phalcon\Factory\AbstractConfigFactory`](/5.22/api/phalcon_factory/#factoryabstractconfigfactory)
+- [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
+- **`Phalcon\Translate\TranslateFactory`**
+
+`Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Adapter\AdapterInterface` · `Phalcon\Translate\Adapter\Csv` · `Phalcon\Translate\Adapter\Gettext` · `Phalcon\Translate\Adapter\NativeArray` · `Phalcon\Translate\Exceptions\TranslatorNotRegistered` · `Throwable`
+
+### Method Summary
+
+<ApiItem href="#translatetranslatefactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"InterpolatorFactory","name":"interpolator","default":null},{"type":"array","name":"services","default":"[]"}]}>
+</ApiItem>
+<ApiItem href="#translatetranslatefactory-load" visibility="public" name="load" returnType="AdapterInterface" params={[{"type":"mixed","name":"config","default":null}]}>
+Factory to create an instance from a Config object
+</ApiItem>
+<ApiItem href="#translatetranslatefactory-newinstance" visibility="public" name="newInstance" returnType="AdapterInterface" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"}]}>
+Create a new instance of the adapter
+</ApiItem>
+<ApiItem href="#translatetranslatefactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
+</ApiItem>
+<ApiItem href="#translatetranslatefactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+Returns the available adapters
+</ApiItem>
+
+### Methods
+
+<h4 id="translatetranslatefactory-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+InterpolatorFactory $interpolator,
+array $services = []
+);
+```
+
+<h4 id="translatetranslatefactory-load"><code>load()</code></h4>
+
+```php
+public function load( mixed $config ): AdapterInterface;
+```
+
+Factory to create an instance from a Config object
+
+<h4 id="translatetranslatefactory-newinstance"><code>newInstance()</code></h4>
+
+```php
+public function newInstance(
+string $name,
+array $options = []
+): AdapterInterface;
+```
+
+Create a new instance of the adapter
+
+<h4 id="translatetranslatefactory-getexceptionclass"><code>getExceptionClass()</code></h4>
+
+```php
+protected function getExceptionClass(): string;
+```
+
+<h4 id="translatetranslatefactory-getservices"><code>getServices()</code></h4>
+
+```php
+protected function getServices(): array;
+```
+
+Returns the available adapters
+
+Source: https://docs.phalcon.io/5.22/api/phalcon_translate/index.mdx

@@ -1,0 +1,880 @@
+---
+title: "Phalcon Tag"
+version: "5.22"
+---
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.phalcon.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Phalcon Tag
+
+:::info[NOTE]
+All classes are prefixed with `Phalcon`
+:::
+
+## Tag
+
+Class
+
+Phalcon\Tag is designed to simplify building of HTML tags.
+It provides a set of helpers to generate HTML in a dynamic way.
+This component is a class that you can extend to add more helpers.
+
+- **`Phalcon\Tag`**
+
+`Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Tag\Exception` · `Phalcon\Tag\Select` · `Stringable`
+
+### Method Summary
+
+<ApiItem href="#tag-appendtitle" visibility="public" name="appendTitle" returnType="void" params={[{"type":"mixed","name":"title","default":null}]}>
+Appends a text to current document title
+</ApiItem>
+<ApiItem href="#tag-checkfield" visibility="public" name="checkField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="check"] tag
+</ApiItem>
+<ApiItem href="#tag-colorfield" visibility="public" name="colorField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="color"] tag
+</ApiItem>
+<ApiItem href="#tag-datefield" visibility="public" name="dateField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="date"] tag
+</ApiItem>
+<ApiItem href="#tag-datetimefield" visibility="public" name="dateTimeField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="datetime"] tag
+</ApiItem>
+<ApiItem href="#tag-datetimelocalfield" visibility="public" name="dateTimeLocalField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="datetime-local"] tag
+</ApiItem>
+<ApiItem href="#tag-displayto" visibility="public" name="displayTo" returnType="void" params={[{"type":"string","name":"id","default":null},{"type":"mixed","name":"value","default":null}]}>
+Alias of Phalcon\Tag::setDefault()
+</ApiItem>
+<ApiItem href="#tag-emailfield" visibility="public" name="emailField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="email"] tag
+</ApiItem>
+<ApiItem href="#tag-endform" visibility="public" name="endForm" returnType="string" params={[]}>
+Builds an HTML close FORM tag
+</ApiItem>
+<ApiItem href="#tag-filefield" visibility="public" name="fileField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="file"] tag
+</ApiItem>
+<ApiItem href="#tag-formlegacy" visibility="public" name="formLegacy" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML FORM tag
+</ApiItem>
+<ApiItem href="#tag-friendlytitle" visibility="public" name="friendlyTitle" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"-\""},{"type":"bool","name":"lowercase","default":"true"},{"type":"mixed","name":"replace","default":"null"}]}>
+Converts texts into URL-friendly titles
+</ApiItem>
+<ApiItem href="#tag-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
+Internally gets the request dispatcher
+</ApiItem>
+<ApiItem href="#tag-getdoctype" visibility="public" name="getDocType" returnType="string" params={[]}>
+Get the document type declaration of content
+</ApiItem>
+<ApiItem href="#tag-getescaper" visibility="public" name="getEscaper" returnType="EscaperInterface|null" params={[{"type":"array","name":"params","default":null}]}>
+Obtains the 'escaper' service if required
+</ApiItem>
+<ApiItem href="#tag-getescaperservice" visibility="public" name="getEscaperService" returnType="EscaperInterface" params={[]}>
+Returns an Escaper service from the default DI
+</ApiItem>
+<ApiItem href="#tag-gettitle" visibility="public" name="getTitle" returnType="string" params={[{"type":"bool","name":"prepend","default":"true"},{"type":"bool","name":"append","default":"true"}]}>
+Gets the current document title. The title will be automatically escaped.
+</ApiItem>
+<ApiItem href="#tag-gettitleseparator" visibility="public" name="getTitleSeparator" returnType="string" params={[]}>
+Gets the current document title separator
+</ApiItem>
+<ApiItem href="#tag-geturlservice" visibility="public" name="getUrlService" returnType="UrlInterface" params={[]}>
+Returns a URL service from the default DI
+</ApiItem>
+<ApiItem href="#tag-getvalue" visibility="public" name="getValue" returnType="mixed" params={[{"type":"mixed","name":"name","default":null},{"type":"array","name":"params","default":"[]"}]}>
+Every helper calls this function to check whether a component has a
+</ApiItem>
+<ApiItem href="#tag-hasvalue" visibility="public" name="hasValue" returnType="bool" params={[{"type":"mixed","name":"name","default":null}]}>
+Check if a helper has a default value set using Phalcon\Tag::setDefault()
+</ApiItem>
+<ApiItem href="#tag-hiddenfield" visibility="public" name="hiddenField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds a HTML input[type="hidden"] tag
+</ApiItem>
+<ApiItem href="#tag-image" visibility="public" name="image" returnType="string" params={[{"type":"mixed","name":"parameters","default":"null"},{"type":"bool","name":"local","default":"true"}]}>
+Builds HTML IMG tags
+</ApiItem>
+<ApiItem href="#tag-imageinput" visibility="public" name="imageInput" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="image"] tag
+</ApiItem>
+<ApiItem href="#tag-javascriptinclude" visibility="public" name="javascriptInclude" returnType="string" params={[{"type":"mixed","name":"parameters","default":"null"},{"type":"bool","name":"local","default":"true"}]}>
+Builds a SCRIPT[type="javascript"] tag
+</ApiItem>
+<ApiItem href="#tag-linkto" visibility="public" name="linkTo" returnType="string" params={[{"type":"mixed","name":"parameters","default":null},{"type":"mixed","name":"text","default":"null"},{"type":"mixed","name":"local","default":"true"}]}>
+Builds an HTML A tag using framework conventions
+</ApiItem>
+<ApiItem href="#tag-monthfield" visibility="public" name="monthField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="month"] tag
+</ApiItem>
+<ApiItem href="#tag-numericfield" visibility="public" name="numericField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="number"] tag
+</ApiItem>
+<ApiItem href="#tag-passwordfield" visibility="public" name="passwordField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds a HTML input[type="password"] tag
+</ApiItem>
+<ApiItem href="#tag-preload" visibility="public" name="preload" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Parses the preload element passed and sets the necessary link headers
+</ApiItem>
+<ApiItem href="#tag-prependtitle" visibility="public" name="prependTitle" returnType="void" params={[{"type":"mixed","name":"title","default":null}]}>
+Prepends a text to current document title
+</ApiItem>
+<ApiItem href="#tag-radiofield" visibility="public" name="radioField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="radio"] tag
+</ApiItem>
+<ApiItem href="#tag-rangefield" visibility="public" name="rangeField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="range"] tag
+</ApiItem>
+<ApiItem href="#tag-renderattributes" visibility="public" name="renderAttributes" returnType="string" params={[{"type":"string","name":"code","default":null},{"type":"array","name":"attributes","default":null}]}>
+Renders parameters keeping order in their HTML attributes
+</ApiItem>
+<ApiItem href="#tag-rendertitle" visibility="public" name="renderTitle" returnType="string" params={[{"type":"bool","name":"prepend","default":"true"},{"type":"bool","name":"append","default":"true"}]}>
+Renders the title with title tags. The title is automatically escaped
+</ApiItem>
+<ApiItem href="#tag-resetinput" visibility="public" name="resetInput" returnType="void" params={[]}>
+Resets the request and internal values to avoid those fields will have
+</ApiItem>
+<ApiItem href="#tag-searchfield" visibility="public" name="searchField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds a HTML input[type="search"] tag
+</ApiItem>
+<ApiItem href="#tag-select" visibility="public" name="select" returnType="string" params={[{"type":"mixed","name":"parameters","default":null},{"type":"mixed","name":"data","default":"null"}]}>
+Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options
+</ApiItem>
+<ApiItem href="#tag-selectstatic" visibility="public" name="selectStatic" returnType="string" params={[{"type":"mixed","name":"parameters","default":null},{"type":"mixed","name":"data","default":"null"}]}>
+Builds an HTML SELECT tag using a PHP array for options
+</ApiItem>
+<ApiItem href="#tag-setautoescape" visibility="public" name="setAutoescape" returnType="void" params={[{"type":"bool","name":"autoescape","default":null}]}>
+Set autoescape mode in generated HTML
+</ApiItem>
+<ApiItem href="#tag-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Sets the dependency injector container.
+</ApiItem>
+<ApiItem href="#tag-setdefault" visibility="public" name="setDefault" returnType="void" params={[{"type":"string","name":"id","default":null},{"type":"mixed","name":"value","default":null}]}>
+Assigns default values to generated tags by helpers
+</ApiItem>
+<ApiItem href="#tag-setdefaults" visibility="public" name="setDefaults" returnType="void" params={[{"type":"array","name":"values","default":null},{"type":"bool","name":"merge","default":"false"}]}>
+Assigns default values to generated tags by helpers
+</ApiItem>
+<ApiItem href="#tag-setdoctype" visibility="public" name="setDocType" returnType="void" params={[{"type":"int","name":"doctype","default":null}]}>
+Set the document type of content
+</ApiItem>
+<ApiItem href="#tag-settitle" visibility="public" name="setTitle" returnType="void" params={[{"type":"string","name":"title","default":null}]}>
+Set the title of view content
+</ApiItem>
+<ApiItem href="#tag-settitleseparator" visibility="public" name="setTitleSeparator" returnType="void" params={[{"type":"string","name":"titleSeparator","default":null}]}>
+Set the title separator of view content
+</ApiItem>
+<ApiItem href="#tag-stylesheetlink" visibility="public" name="stylesheetLink" returnType="string" params={[{"type":"mixed","name":"parameters","default":"null"},{"type":"bool","name":"local","default":"true"}]}>
+Builds a LINK[rel="stylesheet"] tag
+</ApiItem>
+<ApiItem href="#tag-submitbutton" visibility="public" name="submitButton" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="submit"] tag
+</ApiItem>
+<ApiItem href="#tag-taghtml" visibility="public" name="tagHtml" returnType="string" params={[{"type":"string","name":"tagName","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"bool","name":"selfClose","default":"false"},{"type":"bool","name":"onlyStart","default":"false"},{"type":"bool","name":"useEol","default":"false"}]}>
+Builds a HTML tag
+</ApiItem>
+<ApiItem href="#tag-taghtmlclose" visibility="public" name="tagHtmlClose" returnType="string" params={[{"type":"string","name":"tagName","default":null},{"type":"bool","name":"useEol","default":"false"}]}>
+Builds a HTML tag closing tag
+</ApiItem>
+<ApiItem href="#tag-telfield" visibility="public" name="telField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="tel"] tag
+</ApiItem>
+<ApiItem href="#tag-textarea" visibility="public" name="textArea" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML TEXTAREA tag
+</ApiItem>
+<ApiItem href="#tag-textfield" visibility="public" name="textField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="text"] tag
+</ApiItem>
+<ApiItem href="#tag-timefield" visibility="public" name="timeField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="time"] tag
+</ApiItem>
+<ApiItem href="#tag-urlfield" visibility="public" name="urlField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="url"] tag
+</ApiItem>
+<ApiItem href="#tag-weekfield" visibility="public" name="weekField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
+Builds an HTML input[type="week"] tag
+</ApiItem>
+<ApiItem href="#tag-getstaticurl" visibility="protected" name="getStaticUrl" returnType="string" params={[{"type":"mixed","name":"uri","default":null}]}>
+Resolves a static (asset) URL through the `url` service.
+</ApiItem>
+<ApiItem href="#tag-inputfield" visibility="protected" name="inputField" returnType="string" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"parameters","default":null},{"type":"bool","name":"asValue","default":"false"}]}>
+Builds generic INPUT tags
+</ApiItem>
+<ApiItem href="#tag-inputfieldchecked" visibility="protected" name="inputFieldChecked" returnType="string" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"parameters","default":null}]}>
+Builds INPUT tags that implements the checked attribute
+</ApiItem>
+<ApiItem href="#tag-tostringvalue" visibility="protected" name="toStringValue" returnType="string" params={[{"type":"mixed","name":"value","default":null}]}>
+Reduces an arbitrary helper value to the string a tag attribute, id or
+</ApiItem>
+
+### Constants
+
+<ApiItem kind="constant" name="HTML32" type="int" default="1">
+</ApiItem>
+<ApiItem kind="constant" name="HTML401_FRAMESET" type="int" default="4">
+</ApiItem>
+<ApiItem kind="constant" name="HTML401_STRICT" type="int" default="2">
+</ApiItem>
+<ApiItem kind="constant" name="HTML401_TRANSITIONAL" type="int" default="3">
+</ApiItem>
+<ApiItem kind="constant" name="HTML5" type="int" default="5">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML10_FRAMESET" type="int" default="8">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML10_STRICT" type="int" default="6">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML10_TRANSITIONAL" type="int" default="7">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML11" type="int" default="9">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML20" type="int" default="10">
+</ApiItem>
+<ApiItem kind="constant" name="XHTML5" type="int" default="11">
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="autoEscape" type="bool" default="true">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="displayValues" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="documentAppendTitle" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="documentPrependTitle" type="array" default="[]">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="documentTitle" type="string|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="documentTitleSeparator" type="string|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="documentType" type="int" default="11">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="escaperService" type="EscaperInterface|null" default="null">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="urlService" type="UrlInterface|null" default="null">
+</ApiItem>
+
+### Methods
+
+<h4 id="tag-appendtitle"><code>appendTitle()</code></h4>
+
+```php
+public static function appendTitle( mixed $title ): void;
+```
+
+Appends a text to current document title
+
+<h4 id="tag-checkfield"><code>checkField()</code></h4>
+
+```php
+public static function checkField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="check"] tag
+
+<h4 id="tag-colorfield"><code>colorField()</code></h4>
+
+```php
+public static function colorField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="color"] tag
+
+<h4 id="tag-datefield"><code>dateField()</code></h4>
+
+```php
+public static function dateField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="date"] tag
+
+<h4 id="tag-datetimefield"><code>dateTimeField()</code></h4>
+
+```php
+public static function dateTimeField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="datetime"] tag
+
+<h4 id="tag-datetimelocalfield"><code>dateTimeLocalField()</code></h4>
+
+```php
+public static function dateTimeLocalField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="datetime-local"] tag
+
+<h4 id="tag-displayto"><code>displayTo()</code></h4>
+
+```php
+public static function displayTo(
+string $id,
+mixed $value
+): void;
+```
+
+Alias of Phalcon\Tag::setDefault()
+
+<h4 id="tag-emailfield"><code>emailField()</code></h4>
+
+```php
+public static function emailField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="email"] tag
+
+<h4 id="tag-endform"><code>endForm()</code></h4>
+
+```php
+public static function endForm(): string;
+```
+
+Builds an HTML close FORM tag
+
+<h4 id="tag-filefield"><code>fileField()</code></h4>
+
+```php
+public static function fileField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="file"] tag
+
+<h4 id="tag-formlegacy"><code>formLegacy()</code></h4>
+
+```php
+public static function formLegacy( mixed $parameters ): string;
+```
+
+Builds an HTML FORM tag
+
+<h4 id="tag-friendlytitle"><code>friendlyTitle()</code></h4>
+
+```php
+public static function friendlyTitle(
+string $text,
+string $separator = "-",
+bool $lowercase = true,
+mixed $replace = null
+): string;
+```
+
+Converts texts into URL-friendly titles
+
+<h4 id="tag-getdi"><code>getDI()</code></h4>
+
+```php
+public static function getDI(): DiInterface;
+```
+
+Internally gets the request dispatcher
+
+<h4 id="tag-getdoctype"><code>getDocType()</code></h4>
+
+```php
+public static function getDocType(): string;
+```
+
+Get the document type declaration of content
+
+<h4 id="tag-getescaper"><code>getEscaper()</code></h4>
+
+```php
+public static function getEscaper( array $params ): EscaperInterface|null;
+```
+
+Obtains the 'escaper' service if required
+
+<h4 id="tag-getescaperservice"><code>getEscaperService()</code></h4>
+
+```php
+public static function getEscaperService(): EscaperInterface;
+```
+
+Returns an Escaper service from the default DI
+
+<h4 id="tag-gettitle"><code>getTitle()</code></h4>
+
+```php
+public static function getTitle(
+bool $prepend = true,
+bool $append = true
+): string;
+```
+
+Gets the current document title. The title will be automatically escaped.
+
+<h4 id="tag-gettitleseparator"><code>getTitleSeparator()</code></h4>
+
+```php
+public static function getTitleSeparator(): string;
+```
+
+Gets the current document title separator
+
+<h4 id="tag-geturlservice"><code>getUrlService()</code></h4>
+
+```php
+public static function getUrlService(): UrlInterface;
+```
+
+Returns a URL service from the default DI
+
+<h4 id="tag-getvalue"><code>getValue()</code></h4>
+
+```php
+public static function getValue(
+mixed $name,
+array $params = []
+): mixed;
+```
+
+Every helper calls this function to check whether a component has a
+predefined value using Phalcon\Tag::setDefault() or value from $_POST
+
+<h4 id="tag-hasvalue"><code>hasValue()</code></h4>
+
+```php
+public static function hasValue( mixed $name ): bool;
+```
+
+Check if a helper has a default value set using Phalcon\Tag::setDefault()
+or value from $_POST
+
+<h4 id="tag-hiddenfield"><code>hiddenField()</code></h4>
+
+```php
+public static function hiddenField( mixed $parameters ): string;
+```
+
+Builds a HTML input[type="hidden"] tag
+
+<h4 id="tag-image"><code>image()</code></h4>
+
+```php
+public static function image(
+mixed $parameters = null,
+bool $local = true
+): string;
+```
+
+Builds HTML IMG tags
+
+<h4 id="tag-imageinput"><code>imageInput()</code></h4>
+
+```php
+public static function imageInput( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="image"] tag
+
+<h4 id="tag-javascriptinclude"><code>javascriptInclude()</code></h4>
+
+```php
+public static function javascriptInclude(
+mixed $parameters = null,
+bool $local = true
+): string;
+```
+
+Builds a SCRIPT[type="javascript"] tag
+
+<h4 id="tag-linkto"><code>linkTo()</code></h4>
+
+```php
+public static function linkTo(
+mixed $parameters,
+mixed $text = null,
+mixed $local = true
+): string;
+```
+
+Builds an HTML A tag using framework conventions
+
+<h4 id="tag-monthfield"><code>monthField()</code></h4>
+
+```php
+public static function monthField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="month"] tag
+
+<h4 id="tag-numericfield"><code>numericField()</code></h4>
+
+```php
+public static function numericField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="number"] tag
+
+<h4 id="tag-passwordfield"><code>passwordField()</code></h4>
+
+```php
+public static function passwordField( mixed $parameters ): string;
+```
+
+Builds a HTML input[type="password"] tag
+
+<h4 id="tag-preload"><code>preload()</code></h4>
+
+```php
+public static function preload( mixed $parameters ): string;
+```
+
+Parses the preload element passed and sets the necessary link headers
+
+<h4 id="tag-prependtitle"><code>prependTitle()</code></h4>
+
+```php
+public static function prependTitle( mixed $title ): void;
+```
+
+Prepends a text to current document title
+
+<h4 id="tag-radiofield"><code>radioField()</code></h4>
+
+```php
+public static function radioField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="radio"] tag
+
+<h4 id="tag-rangefield"><code>rangeField()</code></h4>
+
+```php
+public static function rangeField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="range"] tag
+
+<h4 id="tag-renderattributes"><code>renderAttributes()</code></h4>
+
+```php
+public static function renderAttributes(
+string $code,
+array $attributes
+): string;
+```
+
+Renders parameters keeping order in their HTML attributes
+
+<h4 id="tag-rendertitle"><code>renderTitle()</code></h4>
+
+```php
+public static function renderTitle(
+bool $prepend = true,
+bool $append = true
+): string;
+```
+
+Renders the title with title tags. The title is automatically escaped
+
+<h4 id="tag-resetinput"><code>resetInput()</code></h4>
+
+```php
+deprecated public static function resetInput(): void;
+```
+
+Resets the request and internal values to avoid those fields will have
+any default value.
+
+<h4 id="tag-searchfield"><code>searchField()</code></h4>
+
+```php
+public static function searchField( mixed $parameters ): string;
+```
+
+Builds a HTML input[type="search"] tag
+
+<h4 id="tag-select"><code>select()</code></h4>
+
+```php
+public static function select(
+mixed $parameters,
+mixed $data = null
+): string;
+```
+
+Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options
+
+<h4 id="tag-selectstatic"><code>selectStatic()</code></h4>
+
+```php
+public static function selectStatic(
+mixed $parameters,
+mixed $data = null
+): string;
+```
+
+Builds an HTML SELECT tag using a PHP array for options
+
+<h4 id="tag-setautoescape"><code>setAutoescape()</code></h4>
+
+```php
+public static function setAutoescape( bool $autoescape ): void;
+```
+
+Set autoescape mode in generated HTML
+
+<h4 id="tag-setdi"><code>setDI()</code></h4>
+
+```php
+public static function setDI( DiInterface $container ): void;
+```
+
+Sets the dependency injector container.
+
+<h4 id="tag-setdefault"><code>setDefault()</code></h4>
+
+```php
+public static function setDefault(
+string $id,
+mixed $value
+): void;
+```
+
+Assigns default values to generated tags by helpers
+
+<h4 id="tag-setdefaults"><code>setDefaults()</code></h4>
+
+```php
+public static function setDefaults(
+array $values,
+bool $merge = false
+): void;
+```
+
+Assigns default values to generated tags by helpers
+
+<h4 id="tag-setdoctype"><code>setDocType()</code></h4>
+
+```php
+public static function setDocType( int $doctype ): void;
+```
+
+Set the document type of content
+
+<h4 id="tag-settitle"><code>setTitle()</code></h4>
+
+```php
+public static function setTitle( string $title ): void;
+```
+
+Set the title of view content
+
+<h4 id="tag-settitleseparator"><code>setTitleSeparator()</code></h4>
+
+```php
+public static function setTitleSeparator( string $titleSeparator ): void;
+```
+
+Set the title separator of view content
+
+<h4 id="tag-stylesheetlink"><code>stylesheetLink()</code></h4>
+
+```php
+public static function stylesheetLink(
+mixed $parameters = null,
+bool $local = true
+): string;
+```
+
+Builds a LINK[rel="stylesheet"] tag
+
+<h4 id="tag-submitbutton"><code>submitButton()</code></h4>
+
+```php
+public static function submitButton( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="submit"] tag
+
+<h4 id="tag-taghtml"><code>tagHtml()</code></h4>
+
+```php
+public static function tagHtml(
+string $tagName,
+mixed $parameters = null,
+bool $selfClose = false,
+bool $onlyStart = false,
+bool $useEol = false
+): string;
+```
+
+Builds a HTML tag
+
+<h4 id="tag-taghtmlclose"><code>tagHtmlClose()</code></h4>
+
+```php
+public static function tagHtmlClose(
+string $tagName,
+bool $useEol = false
+): string;
+```
+
+Builds a HTML tag closing tag
+
+<h4 id="tag-telfield"><code>telField()</code></h4>
+
+```php
+public static function telField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="tel"] tag
+
+<h4 id="tag-textarea"><code>textArea()</code></h4>
+
+```php
+public static function textArea( mixed $parameters ): string;
+```
+
+Builds an HTML TEXTAREA tag
+
+<h4 id="tag-textfield"><code>textField()</code></h4>
+
+```php
+public static function textField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="text"] tag
+
+<h4 id="tag-timefield"><code>timeField()</code></h4>
+
+```php
+public static function timeField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="time"] tag
+
+<h4 id="tag-urlfield"><code>urlField()</code></h4>
+
+```php
+public static function urlField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="url"] tag
+
+<h4 id="tag-weekfield"><code>weekField()</code></h4>
+
+```php
+public static function weekField( mixed $parameters ): string;
+```
+
+Builds an HTML input[type="week"] tag
+
+<h4 id="tag-getstaticurl"><code>getStaticUrl()</code></h4>
+
+```php
+final protected static function getStaticUrl( mixed $uri ): string;
+```
+
+Resolves a static (asset) URL through the `url` service.
+
+`getStatic()` lives on Phalcon\Mvc\Url but is absent from
+Phalcon\Mvc\Url\UrlInterface, which is what getUrlService() is typed
+to return. A service that does not carry it falls back to `get()`
+rather than aborting the helper.
+
+<h4 id="tag-inputfield"><code>inputField()</code></h4>
+
+```php
+final protected static function inputField(
+string $type,
+mixed $parameters,
+bool $asValue = false
+): string;
+```
+
+Builds generic INPUT tags
+
+<h4 id="tag-inputfieldchecked"><code>inputFieldChecked()</code></h4>
+
+```php
+final protected static function inputFieldChecked(
+string $type,
+mixed $parameters
+): string;
+```
+
+Builds INPUT tags that implements the checked attribute
+
+<h4 id="tag-tostringvalue"><code>toStringValue()</code></h4>
+
+```php
+final protected static function toStringValue( mixed $value ): string;
+```
+
+Reduces an arbitrary helper value to the string a tag attribute, id or
+URI needs. Parameter bags are user supplied, so a value that cannot be
+expressed as a string - an array, an object without `__toString()` -
+reads back as an empty string rather than aborting the helper.
+
+## Tag\Exception
+
+Class
+
+Phalcon\Tag\Exception
+
+Exceptions thrown in Phalcon\Tag will use this class
+
+- `\Exception`
+- **`Phalcon\Tag\Exception`**
+
+## Tag\Select
+
+Abstract
+
+Phalcon\Tag\Select
+
+Generates a SELECT HTML tag using a static array of values or a
+Phalcon\Mvc\Model resultset
+
+- **`Phalcon\Tag\Select`**
+
+`Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Tag` · `Stringable`
+
+### Method Summary
+
+<ApiItem href="#tagselect-selectfield" visibility="public" name="selectField" returnType="string" params={[{"type":"mixed","name":"parameters","default":null},{"type":"mixed","name":"data","default":"null"}]}>
+Generates a SELECT tag
+</ApiItem>
+<ApiItem href="#tagselect-echooption" visibility="protected" name="echoOption" returnType="string" params={[{"type":"string","name":"value","default":null},{"type":"bool","name":"selected","default":"false"}]}>
+</ApiItem>
+<ApiItem href="#tagselect-tostringvalue" visibility="protected" name="toStringValue" returnType="string" params={[{"type":"mixed","name":"value","default":null}]}>
+Reduces an arbitrary option value to the string the markup needs.
+</ApiItem>
+
+### Methods
+
+<h4 id="tagselect-selectfield"><code>selectField()</code></h4>
+
+```php
+public static function selectField(
+mixed $parameters,
+mixed $data = null
+): string;
+```
+
+Generates a SELECT tag
+
+<h4 id="tagselect-echooption"><code>echoOption()</code></h4>
+
+```php
+protected static function echoOption(
+string $value,
+bool $selected = false
+): string;
+```
+
+<h4 id="tagselect-tostringvalue"><code>toStringValue()</code></h4>
+
+```php
+protected static function toStringValue( mixed $value ): string;
+```
+
+Reduces an arbitrary option value to the string the markup needs.
+Option data is user supplied, so anything that cannot be expressed as
+a string reads back as an empty string rather than aborting the tag.
+
+Source: https://docs.phalcon.io/5.22/api/phalcon_tag/index.mdx
