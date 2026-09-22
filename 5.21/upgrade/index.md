@@ -11,6 +11,10 @@ version: "5.21"
 
 # Upgrading to V5
 
+:::info[Upgrading from a previous v5 version?]
+[Click here](#upgrading-from-v520-to-v521) for the changes from v5.20 to v5.21.
+:::
+
 So you have decided to upgrade to v5! **Congratulations**!!
 
 Phalcon v5 contains a lot of changes in components and interfaces. Upgrading is going to be a time-consuming task, depending on how big and complex your application is. We hope that this document will make your upgrade journey smoother and also offer insight as to why certain changes were made and how they will help the framework in the future.
@@ -85,6 +89,193 @@ If you use the above method you will need to add the `extension=phalcon.so` in y
 :::warning[Zephir]
 Unless you are making changes to your local copy of the framework and wish to compile those changes, you do not need to use Zephir. However, if you want to, you will have to issue `zephir fullclean` and then `zephir build` with a released `zephir.phar`. `zephir fullclean` deletes the bundled C sources in `ext/`, and regenerates it. The changelog lists which version of Zephir was used to compile Phalcon, so you can download that particular phar file and compile the extension that way.
 :::
+
+- - -
+
+## Upgrading from v5.20 to v5.21
+
+Phalcon v5.21 adds native types to class properties that did not have a type. Some of these properties now have an object type. For example, the `$eventsManager` property is now `?Phalcon\Events\ManagerInterface`.
+
+This change affects your application only if one of your classes extends a Phalcon class and declares one of these properties again. PHP requires that a child class declares an inherited property with the same type as the parent class. If the types are not the same, PHP stops with a fatal error when it loads your class:
+
+```text
+Fatal error: Type of App\Mvc\View::$eventsManager must be ?Phalcon\Events\ManagerInterface (as in class Phalcon\Mvc\View)
+```
+
+To correct the error, do one of these steps:
+
+- Remove the property from your class. Your class inherits the property from the Phalcon class.
+- Declare the property with the same type as the Phalcon class.
+
+```php
+<?php
+
+namespace App\Mvc;
+
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Mvc\View as PhalconView;
+
+class View extends PhalconView
+{
+// v5.20 - causes a fatal error in v5.21
+// protected $eventsManager;
+
+// v5.21
+protected ?ManagerInterface $eventsManager = null;
+}
+```
+
+### New Property Types
+
+The properties below had no type in v5.20. In v5.21 they have an object type. The list shows the class that declares each property. A class that extends one of these classes inherits the new type. For example, `Phalcon\Db\Adapter\Pdo\Mysql` inherits `$eventsManager` from `Phalcon\Db\Adapter\AbstractAdapter`.
+
+Changes to `private` properties are not in the list, because they do not affect a child class.
+
+**Container**
+
+- `Phalcon\Container\Container`
+    - Changed `$resolver` from no type to `Phalcon\Container\Resolver\Resolver`
+
+**DataMapper**
+
+- `Phalcon\DataMapper\Pdo\Connection\AbstractConnection`
+    - Changed `$profiler` from no type to `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+- `Phalcon\DataMapper\Query\AbstractQuery`
+    - Changed `$bind` from no type to `Phalcon\DataMapper\Query\Bind`
+    - Changed `$connection` from no type to `Phalcon\DataMapper\Pdo\Connection`
+
+**Db**
+
+- `Phalcon\Db\Adapter\AbstractAdapter`
+    - Changed `$dialect` from no type to `Phalcon\Db\DialectInterface`
+    - Changed `$eventsManager` from no type to `?Phalcon\Events\ManagerInterface`
+
+**Di**
+
+- `Phalcon\Di\Di`
+    - Changed `$eventsManager` from no type to `?Phalcon\Events\ManagerInterface`
+
+**Domain**
+
+- `Phalcon\Domain\Payload\Payload`
+    - Changed `$exception` from no type to `?Throwable`
+
+**Encryption**
+
+- `Phalcon\Encryption\Crypt`
+    - Changed `$padFactory` from no type to `Phalcon\Encryption\Crypt\PadFactory`
+- `Phalcon\Encryption\Security`
+    - Changed `$random` from no type to `Phalcon\Encryption\Security\Random`
+- `Phalcon\Encryption\Security\Uuid\AbstractUuid`
+    - Changed `$nodeProvider` (static) from no type to `?Phalcon\Encryption\Security\Uuid\NodeProviderInterface`
+
+**Events**
+
+- `Phalcon\Events\AbstractEventsAware`
+    - Changed `$eventsManager` from no type to `?Phalcon\Events\ManagerInterface`
+
+**Filter**
+
+- `Phalcon\Filter\Validation`
+    - Changed `$messages` from no type to `Phalcon\Messages\Messages`
+
+**Flash**
+
+- `Phalcon\Flash\AbstractFlash`
+    - Changed `$escaperService` from no type to `?Phalcon\Html\Escaper\EscaperInterface`
+    - Changed `$sessionService` from no type to `?Phalcon\Session\ManagerInterface`
+
+**Forms**
+
+- `Phalcon\Forms\Element\AbstractElement`
+    - Changed `$form` from no type to `?Phalcon\Forms\Form`
+    - Changed `$messages` from no type to `Phalcon\Messages\Messages`
+    - Changed `$tagFactory` from no type to `?Phalcon\Html\TagFactory`
+- `Phalcon\Forms\Form`
+    - Changed `$messages` from no type to `Phalcon\Messages\Messages`
+    - Changed `$tagFactory` from no type to `?Phalcon\Html\TagFactory`
+    - Changed `$validation` from no type to `?Phalcon\Filter\Validation\ValidationInterface`
+- `Phalcon\Forms\Manager`
+    - Changed `$locator` from no type to `Phalcon\Forms\FormsLocator`
+
+**Mvc**
+
+- `Phalcon\Mvc\Micro`
+    - Changed `$eventsManager` from no type to `?Phalcon\Events\ManagerInterface`
+    - Changed `$modelBinder` from no type to `?Phalcon\Mvc\Model\BinderInterface`
+    - Changed `$router` from no type to `?Phalcon\Mvc\RouterInterface`
+- `Phalcon\Mvc\Model`
+    - Changed `$modelsManager` from no type to `?Phalcon\Mvc\Model\ManagerInterface`
+    - Changed `$modelsMetaData` from no type to `?Phalcon\Mvc\Model\MetaDataInterface`
+- `Phalcon\Mvc\Model\Binder`
+    - Changed `$cache` from no type to `?Phalcon\Cache\Adapter\AdapterInterface`
+- `Phalcon\Mvc\Model\Eager\Loader`
+    - Changed `$manager` from no type to `Phalcon\Mvc\Model\ManagerInterface`
+- `Phalcon\Mvc\Model\Manager`
+    - Changed `$builder` from no type to `?Phalcon\Mvc\Model\Query\BuilderInterface`
+    - Changed `$container` from no type to `?Phalcon\Di\DiInterface`
+    - Changed `$eventsManager` from no type to `?Phalcon\Events\ManagerInterface`
+- `Phalcon\Mvc\Model\MetaData`
+    - Changed `$adapter` from no type to `?Phalcon\Cache\Adapter\AdapterInterface`
+    - Changed `$container` from no type to `?Phalcon\Di\DiInterface`
+    - Changed `$strategy` from no type to `?Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`
+- `Phalcon\Mvc\Model\Query`
+    - Changed `$container` from no type to `?Phalcon\Di\DiInterface`
+    - Changed `$transaction` from no type to `?Phalcon\Mvc\Model\TransactionInterface`
+- `Phalcon\Mvc\Model\Query\Status`
+    - Changed `$model` from no type to `?Phalcon\Mvc\ModelInterface`
+- `Phalcon\Mvc\Model\Transaction`
+    - Changed `$manager` from no type to `?Phalcon\Mvc\Model\Transaction\ManagerInterface`
+    - Changed `$rollbackRecord` from no type to `?Phalcon\Mvc\ModelInterface`
+- `Phalcon\Mvc\Model\Transaction\Failed`
+    - Changed `$record` from no type to `?Phalcon\Mvc\ModelInterface`
+- `Phalcon\Mvc\Model\Transaction\Manager`
+    - Changed `$container` from no type to `?Phalcon\Di\DiInterface`
+- `Phalcon\Mvc\Model\ValidationFailed`
+    - Changed `$model` from no type to `Phalcon\Mvc\ModelInterface`
+- `Phalcon\Mvc\Router`
+    - Changed `$eventsManager` from no type to `?Phalcon\Events\ManagerInterface`
+    - Changed `$matchedRoute` from no type to `?Phalcon\Mvc\Router\RouteInterface`
+    - Changed `$pendingCache` from no type to `?Phalcon\Cache\Adapter\AdapterInterface`
+- `Phalcon\Mvc\Url`
+    - Changed `$router` from no type to `?Phalcon\Mvc\RouterInterface`
+- `Phalcon\Mvc\View`
+    - Changed `$eventsManager` from no type to `?Phalcon\Events\ManagerInterface`
+- `Phalcon\Mvc\View\Engine\AbstractEngine`
+    - Changed `$eventsManager` from no type to `?Phalcon\Events\ManagerInterface`
+- `Phalcon\Mvc\View\Engine\Volt`
+    - Changed `$eventsManager` from no type to `?Phalcon\Events\ManagerInterface`
+- `Phalcon\Mvc\View\Engine\Volt\Compiler`
+    - Changed `$container` from no type to `?Phalcon\Di\DiInterface`
+- `Phalcon\Mvc\View\Simple`
+    - Changed `$eventsManager` from no type to `?Phalcon\Events\ManagerInterface`
+
+### Removed Property Types
+
+In v5.20.3, the properties below lost their type. This affects you only if you upgrade from v5.20.0, v5.20.1 or v5.20.2. If your class declares one of these properties again with the `array` type, remove the type. If you do not, PHP stops with a fatal error:
+
+```text
+// PHP 8.1 - 8.4
+Fatal error: Type of App\Http\Request::$queryFilters must not be defined (as in class Phalcon\Http\Request)
+
+// PHP 8.5
+Fatal error: Type of App\Http\Request::$queryFilters must be omitted to match the parent definition in class Phalcon\Http\Request
+```
+
+**Http**
+
+- `Phalcon\Http\Request`
+    - Changed `$queryFilters` from `array` to no type
+    - Changed `$trustedProxies` from `array` to no type
+- `Phalcon\Http\Response\Headers`
+    - Changed `$headers` from `array` to no type
+
+### Removed Properties
+
+The properties below do not exist in v5.21. If your class reads or writes one of them, change your code.
+
+- `Phalcon\Encryption\Crypt\PadFactory::$exception`. Use `getExceptionClass()` instead.
+- `Phalcon\Flash\AbstractFlash::$interpolator`. The class now uses `toInterpolate()` from `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`.
 
 - - -
 
