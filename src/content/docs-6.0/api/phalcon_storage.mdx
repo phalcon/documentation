@@ -20,7 +20,7 @@ All classes are prefixed with `Phalcon`
 
 </ApiTree>
 
-<ApiUses>`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Apcu` · `Phalcon\Storage\Adapter\Libmemcached` · `Phalcon\Storage\Adapter\Memory` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Adapter\RedisCluster` · `Phalcon\Storage\Adapter\Stream` · `Phalcon\Storage\Adapter\Weak` · `Throwable`</ApiUses>
+<ApiUses>`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Apcu` · `Phalcon\Storage\Adapter\Libmemcached` · `Phalcon\Storage\Adapter\Memory` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Adapter\RedisCluster` · `Phalcon\Storage\Adapter\Stream` · `Phalcon\Storage\Adapter\Weak`</ApiUses>
 
 ### Method Summary
 
@@ -532,10 +532,15 @@ Initializes the serializer
 
 Interface for Phalcon\Logger adapters
 
+The adapter classes carry this member and the framework calls it on
+the interface. It joins the contract in the next major; until then the
+tag below records what all implementations provide.
+
+@method int getLifetime()
+
 <ApiTree>
 
 - **`Phalcon\Storage\Adapter\AdapterInterface`**
-    - [`Phalcon\Annotations\Adapter\AdapterInterface`](/6.0/api/phalcon_annotations/#annotationsadapteradapterinterface)
     - [`Phalcon\Cache\Adapter\AdapterInterface`](/6.0/api/phalcon_cache/#cacheadapteradapterinterface)
 
 </ApiTree>
@@ -722,7 +727,6 @@ Capabilities:
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Apcu`**
-        - [`Phalcon\Annotations\Adapter\Apcu`](/6.0/api/phalcon_annotations/#annotationsadapterapcu)
         - [`Phalcon\Cache\Adapter\Apcu`](/6.0/api/phalcon_cache/#cacheadapterapcu)
 
 </ApiTree>
@@ -904,7 +908,6 @@ Capabilities:
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Libmemcached`**
-        - [`Phalcon\Annotations\Adapter\Libmemcached`](/6.0/api/phalcon_annotations/#annotationsadapterlibmemcached)
         - [`Phalcon\Cache\Adapter\Libmemcached`](/6.0/api/phalcon_cache/#cacheadapterlibmemcached)
 
 </ApiTree>
@@ -1091,7 +1094,6 @@ Capabilities:
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Memory`**
-        - [`Phalcon\Annotations\Adapter\Memory`](/6.0/api/phalcon_annotations/#annotationsadaptermemory)
         - [`Phalcon\Cache\Adapter\Memory`](/6.0/api/phalcon_cache/#cacheadaptermemory)
 
 </ApiTree>
@@ -1293,7 +1295,6 @@ Capabilities:
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Redis`**
-        - [`Phalcon\Annotations\Adapter\Redis`](/6.0/api/phalcon_annotations/#annotationsadapterredis)
         - [`Phalcon\Cache\Adapter\Redis`](/6.0/api/phalcon_cache/#cacheadapterredis)
         - [`Phalcon\Storage\Adapter\RedisCluster`](#storageadapterrediscluster)
 
@@ -1631,7 +1632,6 @@ Capabilities:
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Stream`**
-        - [`Phalcon\Annotations\Adapter\Stream`](/6.0/api/phalcon_annotations/#annotationsadapterstream)
         - [`Phalcon\Cache\Adapter\Stream`](/6.0/api/phalcon_cache/#cacheadapterstream)
 
 </ApiTree>
@@ -1811,7 +1811,6 @@ Capabilities:
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
     - **`Phalcon\Storage\Adapter\Weak`**
-        - [`Phalcon\Annotations\Adapter\Weak`](/6.0/api/phalcon_annotations/#annotationsadapterweak)
         - [`Phalcon\Cache\Adapter\Weak`](/6.0/api/phalcon_cache/#cacheadapterweak)
 
 </ApiTree>
@@ -2151,7 +2150,7 @@ public function __construct();
 
 </ApiTree>
 
-<ApiUses>`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Serializer\Base64` · `Phalcon\Storage\Serializer\Igbinary` · `Phalcon\Storage\Serializer\Json` · `Phalcon\Storage\Serializer\MemcachedIgbinary` · `Phalcon\Storage\Serializer\MemcachedJson` · `Phalcon\Storage\Serializer\MemcachedPhp` · `Phalcon\Storage\Serializer\Msgpack` · `Phalcon\Storage\Serializer\None` · `Phalcon\Storage\Serializer\Php` · `Phalcon\Storage\Serializer\RedisIgbinary` · `Phalcon\Storage\Serializer\RedisJson` · `Phalcon\Storage\Serializer\RedisMsgpack` · `Phalcon\Storage\Serializer\RedisNone` · `Phalcon\Storage\Serializer\RedisPhp` · `Phalcon\Storage\Serializer\SerializerInterface` · `Throwable`</ApiUses>
+<ApiUses>`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Serializer\Base64` · `Phalcon\Storage\Serializer\Igbinary` · `Phalcon\Storage\Serializer\Json` · `Phalcon\Storage\Serializer\MemcachedIgbinary` · `Phalcon\Storage\Serializer\MemcachedJson` · `Phalcon\Storage\Serializer\MemcachedPhp` · `Phalcon\Storage\Serializer\Msgpack` · `Phalcon\Storage\Serializer\None` · `Phalcon\Storage\Serializer\Php` · `Phalcon\Storage\Serializer\RedisIgbinary` · `Phalcon\Storage\Serializer\RedisJson` · `Phalcon\Storage\Serializer\RedisMsgpack` · `Phalcon\Storage\Serializer\RedisNone` · `Phalcon\Storage\Serializer\RedisPhp` · `Phalcon\Storage\Serializer\SerializerInterface`</ApiUses>
 
 ### Method Summary
 

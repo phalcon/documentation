@@ -120,6 +120,7 @@ Annotations may or may not have parameters. A parameter could be a simple litera
 ```php
 /**
  * @SomeAnnotation
+ */
 ```
 
 Simple Annotation
@@ -127,6 +128,7 @@ Simple Annotation
 ```php
 /**
  * @SomeAnnotation('hello', 'world', 1, 2, 3, false, true)
+ */
 ```
 
 Annotation with parameters
@@ -135,6 +137,7 @@ Annotation with parameters
 /**
  * @SomeAnnotation(first='hello', second='world', third=1)
  * @SomeAnnotation(first: 'hello', second: 'world', third: 1)
+ */
 ```
 
 Annotation with named parameters
@@ -143,6 +146,7 @@ Annotation with named parameters
 /**
  * @SomeAnnotation([1, 2, 3, 4])
  * @SomeAnnotation({1, 2, 3, 4})
+ */
 ```
 
 Passing an array
@@ -153,6 +157,7 @@ Passing an array
  * @SomeAnnotation({'first'=1, 'second'=2, 'third'=3})
  * @SomeAnnotation({'first': 1, 'second': 2, 'third': 3})
  * @SomeAnnotation(['first': 1, 'second': 2, 'third': 3])
+ */
 ```
 
 Passing a hash as a parameter
@@ -162,6 +167,7 @@ Passing a hash as a parameter
  * @SomeAnnotation({'name'='SomeName', 'other'={
  *     'foo1': 'bar1', 'foo2': 'bar2', {1, 2, 3},
  * }})
+ */
 ```
 
 Nested arrays/hashes
@@ -169,9 +175,218 @@ Nested arrays/hashes
 ```php
 /**
  * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
+ */
 ```
 
 Nested Annotations
+
+## Readers
+
+A reader finds the annotations of a class and returns them as an array. The component has two readers, and both give the same array, so the adapter, [Phalcon\Annotations\Reflection][annotations-reflection], [Phalcon\Annotations\Collection][annotations-collection] and [Phalcon\Annotations\Annotation][annotations-annotation] do not know which one made it.
+
+| Reader                                                                     | Reads                             | Available          |
+|----------------------------------------------------------------------------|-----------------------------------|--------------------|
+| [Phalcon\Annotations\Reader][annotations-reader]                           | docblocks, with the syntax above  | all versions       |
+| [Phalcon\Annotations\AttributesReader][annotations-attributesreader]       | PHP attributes, through Reflection | 5.22 and later     |
+
+Both readers implement [Phalcon\Annotations\ReaderInterface][annotations-readerinterface], which declares one method, `parse()`. A reader of your own implements the same interface.
+
+Both readers work on every PHP version that Phalcon supports, because PHP attributes exist from PHP 8.0 and the minimum version of Phalcon 5 is PHP 8.1.
+
+[Phalcon\Annotations\Reader][annotations-reader] is the default. An application that does not select a reader keeps the behavior it has today.
+
+### Selecting a Reader
+
+Call `setReader()` on the annotations adapter. The call replaces the reader for that adapter only.
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory;
+use Phalcon\Annotations\AttributesReader;
+
+$adapter = new Memory();
+$adapter->setReader(new AttributesReader());
+```
+
+To change the reader of the `annotations` service of the container:
+
+```php
+<?php
+
+use Phalcon\Annotations\AttributesReader;
+use Phalcon\Di\FactoryDefault;
+
+$container = new FactoryDefault();
+
+$container
+    ->getShared('annotations')
+    ->setReader(new AttributesReader())
+;
+```
+
+`getReader()` returns the reader in use.
+
+:::caution[Clear the cache after a change of reader]
+The `Apcu` and `Stream` adapters key their entries on the class name only. The key does not name the reader. After a change of reader, clear the APCu cache or the `annotationsDir` folder, or the adapter returns the entries that the previous reader wrote.
+:::
+
+### Attribute Classes
+
+`Phalcon\Annotations\Router` and `Phalcon\Annotations\Models\MetaData` hold the attribute form of the annotations that the router and the model metadata strategy read.
+
+| Class                                                                            | Target   | Docblock form  |
+|----------------------------------------------------------------------------------|----------|----------------|
+| [Phalcon\Annotations\Router\Route][annotations-router-route]                     | method   | `@Route`       |
+| [Phalcon\Annotations\Router\Connect][annotations-router-connect]                 | method   | `@Connect`     |
+| [Phalcon\Annotations\Router\Delete][annotations-router-delete]                   | method   | `@Delete`      |
+| [Phalcon\Annotations\Router\Get][annotations-router-get]                         | method   | `@Get`         |
+| [Phalcon\Annotations\Router\Head][annotations-router-head]                       | method   | `@Head`        |
+| [Phalcon\Annotations\Router\Options][annotations-router-options]                 | method   | `@Options`     |
+| [Phalcon\Annotations\Router\Patch][annotations-router-patch]                     | method   | `@Patch`       |
+| [Phalcon\Annotations\Router\Post][annotations-router-post]                       | method   | `@Post`        |
+| [Phalcon\Annotations\Router\Purge][annotations-router-purge]                     | method   | `@Purge`       |
+| [Phalcon\Annotations\Router\Put][annotations-router-put]                         | method   | `@Put`         |
+| [Phalcon\Annotations\Router\Trace][annotations-router-trace]                     | method   | `@Trace`       |
+| [Phalcon\Annotations\Router\RoutePrefix][annotations-router-routeprefix]         | class    | `@RoutePrefix` |
+| [Phalcon\Annotations\Models\MetaData\Column][annotations-models-metadata-column] | property | `@Column`      |
+| [Phalcon\Annotations\Models\MetaData\Identity][annotations-models-metadata-identity] | property | `@Identity` |
+| [Phalcon\Annotations\Models\MetaData\Primary][annotations-models-metadata-primary] | property | `@Primary`   |
+| [Phalcon\Annotations\Models\MetaData\Source][annotations-models-metadata-source] | class    | `@Source`      |
+
+The route classes accept more than one attribute on one method, in the same way that a docblock accepts more than one `@Get` line. The other classes accept one.
+
+The service does not make an instance of these classes. It reads the name and the arguments with `ReflectionAttribute`. The classes give the name, the target and the signature that an IDE and a static analyzer read. Because no instance is made, the parameter types are not checked when the application runs. `#[Column(length: 'seventy')]` reaches the metadata strategy as a string, and only a static analyzer reports it.
+
+`Source` is available for an application that reads it, and no component of the framework reads it.
+
+The model of the Usage section, written with attributes:
+
+```php
+<?php
+
+use Phalcon\Annotations\Models\MetaData\Column;
+use Phalcon\Annotations\Models\MetaData\Identity;
+use Phalcon\Annotations\Models\MetaData\Primary;
+use Phalcon\Mvc\Model;
+
+class Customers extends Model
+{
+    #[Primary]
+    #[Identity]
+    #[Column(type: 'integer', nullable: false, column: 'cst_id')]
+    public $id;
+
+    #[Column(type: 'string', nullable: false, column: 'cst_name_first')]
+    public $nameFirst;
+
+    #[Column(type: 'string', nullable: false, column: 'cst_name_last')]
+    public $nameLast;
+}
+```
+
+### Argument Values
+
+The parser stores every literal of a docblock as a string. PHP resolves the argument of an attribute to its own type. The two readers agree on the value and not on the type.
+
+| Source                        | `getNamedArgument('length')` |
+|-------------------------------|------------------------------|
+| `@Column(length=70)`          | `'70'`                       |
+| `#[Column(length: 70)]`       | `70`                         |
+
+Use a loose comparison, or cast the value, when the code must accept the two readers.
+
+### Your Own Annotations
+
+The two readers return every annotation that they find. The classes above are the names that the router and the metadata strategy read, and they are not a list of the names that a reader accepts. An annotation of your own travels through the reader, the reflection and the collection with no special case:
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory;
+
+/**
+ * @Cacheable(lifetime=3600)
+ */
+class Invoices
+{
+}
+
+$adapter    = new Memory();
+$reflection = $adapter->get('Invoices');
+$collection = $reflection->getClassAnnotations();
+
+var_dump($collection->has('Cacheable'));                          // bool(true)
+echo $collection->get('Cacheable')->getNamedArgument('lifetime'); // 3600
+```
+
+The name is not the same for the two readers. A docblock name is text, and the parser gives it back as written. An attribute name is a class name, and [Phalcon\Annotations\AttributesReader][annotations-attributesreader] gives the short name only to an attribute of the `Phalcon\Annotations` namespace. Every other attribute keeps the full class name.
+
+| Source                                    | `getName()`                | `has('Cacheable')` |
+|-------------------------------------------|----------------------------|--------------------|
+| `/** @Cacheable(lifetime=3600) */`        | `Cacheable`                | `true`             |
+| `#[\App\Attributes\Cacheable(3600)]`      | `App\Attributes\Cacheable` | `false`            |
+
+The rule keeps the attribute of another library away from the name of a Phalcon one. Without it, `#[Doctrine\ORM\Mapping\Column]` becomes `Column` and the metadata strategy reads it as its own.
+
+With attributes, match on the full class name:
+
+```php
+<?php
+
+use App\Attributes\Cacheable;
+use Phalcon\Annotations\Adapter\Memory;
+use Phalcon\Annotations\AttributesReader;
+
+$adapter = new Memory();
+$adapter->setReader(new AttributesReader());
+
+$collection = $adapter->get('Invoices')->getClassAnnotations();
+
+var_dump($collection->has(Cacheable::class));             // bool(true)
+echo $collection->get(Cacheable::class)->getArgument(0);  // 3600
+```
+
+To give the short name to your own namespace as well, extend the reader and override `resolveName()`:
+
+```php
+<?php
+
+use Phalcon\Annotations\AttributesReader;
+
+use function array_pop;
+use function explode;
+use function str_starts_with;
+
+class AppAttributesReader extends AttributesReader
+{
+    protected function resolveName(string $name): string
+    {
+        if (str_starts_with($name, 'App\\Attributes\\')) {
+            $parts = explode('\\', $name);
+
+            return (string) array_pop($parts);
+        }
+
+        return parent::resolveName($name);
+    }
+}
+```
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory;
+
+$adapter = new Memory();
+$adapter->setReader(new AppAttributesReader());
+
+$collection = $adapter->get('Invoices')->getClassAnnotations();
+
+var_dump($collection->has('Cacheable')); // bool(true)
+```
+
+The call to `parent::resolveName()` keeps the rule for the `Phalcon\Annotations` namespace. Without it, every Phalcon attribute keeps its full class name, and the router and the metadata strategy find nothing.
 
 ## Adapters
 
@@ -404,7 +619,7 @@ First, set the annotations manager in your DI container:
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Annotations\Adapter\Apcu;
 
-$container = a FactoryDefault();
+$container = new FactoryDefault();
 
 $container->set(
     'annotations',
@@ -584,9 +799,26 @@ As of 5.14 the component raises granular subclasses so callers can catch a speci
 [annotations-adapter-stream]: /5.22/api/phalcon_annotations/#annotationsadapterstream
 [annotations-annotation]: /5.22/api/phalcon_annotations/#annotationsannotation
 [annotations-annotationsfactory]: /5.22/api/phalcon_annotations/#annotationsannotationsfactory
+[annotations-attributesreader]: /5.22/api/phalcon_annotations/#annotationsattributesreader
 [annotations-collection]: /5.22/api/phalcon_annotations/#annotationscollection
 [annotations-exception]: /5.22/api/phalcon_annotations/#annotationsexception
+[annotations-models-metadata-column]: /5.22/api/phalcon_annotations/#annotationsmodelsmetadatacolumn
+[annotations-models-metadata-identity]: /5.22/api/phalcon_annotations/#annotationsmodelsmetadataidentity
+[annotations-models-metadata-primary]: /5.22/api/phalcon_annotations/#annotationsmodelsmetadataprimary
+[annotations-models-metadata-source]: /5.22/api/phalcon_annotations/#annotationsmodelsmetadatasource
 [annotations-reader]: /5.22/api/phalcon_annotations/#annotationsreader
 [annotations-readerinterface]: /5.22/api/phalcon_annotations/#annotationsreaderinterface
 [annotations-reflection]: /5.22/api/phalcon_annotations/#annotationsreflection
+[annotations-router-connect]: /5.22/api/phalcon_annotations/#annotationsrouterconnect
+[annotations-router-delete]: /5.22/api/phalcon_annotations/#annotationsrouterdelete
+[annotations-router-get]: /5.22/api/phalcon_annotations/#annotationsrouterget
+[annotations-router-head]: /5.22/api/phalcon_annotations/#annotationsrouterhead
+[annotations-router-options]: /5.22/api/phalcon_annotations/#annotationsrouteroptions
+[annotations-router-patch]: /5.22/api/phalcon_annotations/#annotationsrouterpatch
+[annotations-router-post]: /5.22/api/phalcon_annotations/#annotationsrouterpost
+[annotations-router-purge]: /5.22/api/phalcon_annotations/#annotationsrouterpurge
+[annotations-router-put]: /5.22/api/phalcon_annotations/#annotationsrouterput
+[annotations-router-route]: /5.22/api/phalcon_annotations/#annotationsrouterroute
+[annotations-router-routeprefix]: /5.22/api/phalcon_annotations/#annotationsrouterrouteprefix
+[annotations-router-trace]: /5.22/api/phalcon_annotations/#annotationsroutertrace
 [config]: /5.22/config/

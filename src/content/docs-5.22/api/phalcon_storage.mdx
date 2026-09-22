@@ -20,7 +20,7 @@ All classes are prefixed with `Phalcon`
 
 </ApiTree>
 
-<ApiUses>`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Apcu` · `Phalcon\Storage\Adapter\Libmemcached` · `Phalcon\Storage\Adapter\Memory` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Adapter\RedisCluster` · `Phalcon\Storage\Adapter\Stream` · `Phalcon\Storage\Adapter\Weak` · `Throwable`</ApiUses>
+<ApiUses>`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Apcu` · `Phalcon\Storage\Adapter\Libmemcached` · `Phalcon\Storage\Adapter\Memory` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Adapter\RedisCluster` · `Phalcon\Storage\Adapter\Stream` · `Phalcon\Storage\Adapter\Weak`</ApiUses>
 
 ### Method Summary
 
@@ -202,7 +202,7 @@ Initializes the serializer
 <ApiList>
 <ApiItem kind="property" visibility="protected" name="adapter" type="mixed" default="">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="allowedClasses" type="bool|array&lt;int, string&gt;" default="true">
+<ApiItem kind="property" visibility="protected" name="allowedClasses" type="array&lt;int, string&gt;|bool" default="true">
 Classes the "php" serializer may instantiate: true, false or a list
 of class names (the "allowedClasses" option)
 </ApiItem>
@@ -531,6 +531,12 @@ Initializes the serializer
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/AdapterInterface.zep" />
 
 Interface for Phalcon\Logger adapters
+
+The adapter classes carry this member and the framework calls it on
+the interface. It joins the contract in the next major; until then the
+tag below records what all implementations provide.
+
+@method int getLifetime()
 
 <ApiTree>
 
@@ -2144,7 +2150,7 @@ public function __construct();
 
 </ApiTree>
 
-<ApiUses>`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Serializer\Base64` · `Phalcon\Storage\Serializer\Igbinary` · `Phalcon\Storage\Serializer\Json` · `Phalcon\Storage\Serializer\MemcachedIgbinary` · `Phalcon\Storage\Serializer\MemcachedJson` · `Phalcon\Storage\Serializer\MemcachedPhp` · `Phalcon\Storage\Serializer\Msgpack` · `Phalcon\Storage\Serializer\None` · `Phalcon\Storage\Serializer\Php` · `Phalcon\Storage\Serializer\RedisIgbinary` · `Phalcon\Storage\Serializer\RedisJson` · `Phalcon\Storage\Serializer\RedisMsgpack` · `Phalcon\Storage\Serializer\RedisNone` · `Phalcon\Storage\Serializer\RedisPhp` · `Phalcon\Storage\Serializer\SerializerInterface` · `Throwable`</ApiUses>
+<ApiUses>`Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Serializer\Base64` · `Phalcon\Storage\Serializer\Igbinary` · `Phalcon\Storage\Serializer\Json` · `Phalcon\Storage\Serializer\MemcachedIgbinary` · `Phalcon\Storage\Serializer\MemcachedJson` · `Phalcon\Storage\Serializer\MemcachedPhp` · `Phalcon\Storage\Serializer\Msgpack` · `Phalcon\Storage\Serializer\None` · `Phalcon\Storage\Serializer\Php` · `Phalcon\Storage\Serializer\RedisIgbinary` · `Phalcon\Storage\Serializer\RedisJson` · `Phalcon\Storage\Serializer\RedisMsgpack` · `Phalcon\Storage\Serializer\RedisNone` · `Phalcon\Storage\Serializer\RedisPhp` · `Phalcon\Storage\Serializer\SerializerInterface`</ApiUses>
 
 ### Method Summary
 
@@ -2725,7 +2731,7 @@ Unserializes data
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="allowedClasses" type="mixed" default="true">
+<ApiItem kind="property" visibility="protected" name="allowedClasses" type="array&lt;int, string&gt;|bool" default="true">
 Classes that unserialize() may instantiate: true (any class, the PHP
 default), false (none) or a list of class names. Stored bytes that
 try to build another class are rejected on read.

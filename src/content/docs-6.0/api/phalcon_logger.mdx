@@ -20,11 +20,11 @@ the built in AdapterFactory. A LoggerFactory is also available that allows
 developers to create new instances of the Logger or load them from config
 files (see Phalcon\Config\Config object).
 
-@property AdapterInterface[] $adapters
+@property AdapterInterface[]     $adapters
 @property array&lt;array-key, bool> $excluded
-@property int                $logLevel
-@property string             $name
-@property DateTimeZone       $timezone
+@property int                    $logLevel
+@property string                 $name
+@property DateTimeZone           $timezone
 
 <ApiTree>
 
@@ -274,7 +274,7 @@ Factory used to create adapters used for Logging
 
 </ApiTree>
 
-<ApiUses>`Exception` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog` · `Throwable`</ApiUses>
+<ApiUses>`Exception` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog`</ApiUses>
 
 ### Method Summary
 
@@ -1456,10 +1456,10 @@ Phalcon\Logger\Item
 Represents each item in a logging transaction
 
 @property array&lt;string, mixed> $context
-@property string            $message
-@property int               $level
-@property string            $levelName
-@property DateTimeImmutable $dateTime
+@property string               $message
+@property int                  $level
+@property string               $levelName
+@property DateTimeImmutable    $dateTime
 
 <ApiTree>
 
@@ -1756,7 +1756,7 @@ Factory creating logger objects
 
 </ApiTree>
 
-<ApiUses>`DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Throwable`</ApiUses>
+<ApiUses>`DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory`</ApiUses>
 
 ### Method Summary
 

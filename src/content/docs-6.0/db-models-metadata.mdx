@@ -776,6 +776,83 @@ The annotation `@Column` supports the following parameters:
 | `allow_empty_string` | Column allow empty strings                                                                                                                                                                                     |
 | `default`            | Default value                                                                                                                                                                                                  |
 
+#### PHP Attributes
+
+The same columns can be described with PHP attributes. `Phalcon\Annotations\Models\MetaData` holds one class for each annotation of the table above. The strategy reads the two forms and produces the same metadata.
+
+The application selects the reader on the [annotations][annotations] service. The docblock reader stays the default, so this step is required:
+
+```php
+<?php
+
+use Phalcon\Annotations\AttributesReader;
+use Phalcon\Di\FactoryDefault;
+
+$container = new FactoryDefault();
+
+$container
+    ->getShared('annotations')
+    ->setReader(new AttributesReader())
+;
+```
+
+The model of the example above, written with attributes:
+
+```php
+<?php
+
+use Phalcon\Annotations\Models\MetaData\Column;
+use Phalcon\Annotations\Models\MetaData\Identity;
+use Phalcon\Annotations\Models\MetaData\Primary;
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
+{
+    #[Primary]
+    #[Identity]
+    #[Column(type: 'integer', nullable: false)]
+    public $inv_id;
+
+    #[Column(type: 'integer', nullable: false)]
+    public $inv_cst_id;
+
+    #[Column(type: 'string', length: 70, nullable: false)]
+    public $inv_title;
+
+    #[Column(type: 'double', nullable: false)]
+    public $inv_total;
+}
+```
+
+Four parameter names are different, because a PHP parameter name cannot be snake_case under PSR-12, and `default` is a reserved word of Zephir, which builds the C extension that this library mirrors. The strategy reads the two spellings of each pair, so an existing docblock keeps its behavior, and the two projects keep one name for each concept.
+
+| Docblock             | Attribute          |
+|----------------------|--------------------|
+| `skip_on_insert`     | `skipOnInsert`     |
+| `skip_on_update`     | `skipOnUpdate`     |
+| `allow_empty_string` | `allowEmptyString` |
+| `default`            | `defaultValue`     |
+
+```php
+<?php
+
+use Phalcon\Annotations\Models\MetaData\Column;
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
+{
+    #[Column(type: 'datetime', nullable: true, skipOnInsert: true)]
+    public $inv_created_at;
+
+    #[Column(type: 'integer', defaultValue: 1900)]
+    public $inv_year;
+}
+```
+
+Use one spelling for each concept in one model. The two spellings exist so that the reader can change without a change to the models, and not so that they can be mixed.
+
+The two readers give different types for the same literal. The parser stores every docblock literal as a string, and PHP resolves an attribute argument to its own type. `@Column(default=1900)` gives the string `'1900'` to the `defaultValues` metadata index, and `#[Column(defaultValue: 1900)]` gives the integer `1900`. Code that compares a default value with `===` must account for this.
+
 The annotations strategy could be set up as follows:
 
 ```php
