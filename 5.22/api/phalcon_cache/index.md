@@ -240,7 +240,7 @@ Factory to create Cache adapters
 - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Cache\AdapterFactory`**
 
-`Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu` · `Phalcon\Cache\Adapter\Libmemcached` · `Phalcon\Cache\Adapter\Memory` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Adapter\RedisCluster` · `Phalcon\Cache\Adapter\Stream` · `Phalcon\Cache\Adapter\Weak` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory` · `Throwable`
+`Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu` · `Phalcon\Cache\Adapter\Libmemcached` · `Phalcon\Cache\Adapter\Memory` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Adapter\RedisCluster` · `Phalcon\Cache\Adapter\Stream` · `Phalcon\Cache\Adapter\Weak` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory`
 
 ### Method Summary
 
@@ -575,7 +575,7 @@ Creates a new Cache class
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.22/api/phalcon_factory/#factoryabstractconfigfactory)
 - **`Phalcon\Cache\CacheFactory`**
 
-`Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Throwable`
+`Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractConfigFactory`
 
 ### Method Summary
 

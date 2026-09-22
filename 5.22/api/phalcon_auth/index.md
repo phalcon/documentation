@@ -32,7 +32,7 @@ dispatches in the same request until it is replaced.
 - [`Phalcon\Auth\Micro\AuthMicroListener`](#authmicroauthmicrolistener)
 - [`Phalcon\Auth\Mvc\AuthDispatcherListener`](#authmvcauthdispatcherlistener)
 
-`Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Manager`
+`Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Manager`
 
 ### Method Summary
 
@@ -93,7 +93,7 @@ Abstract
 - [`Phalcon\Auth\Access\Auth`](#authaccessauth)
 - [`Phalcon\Auth\Access\Guest`](#authaccessguest)
 
-`Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Guard\Guard`
+`Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard`
 
 ### Method Summary
 
@@ -254,7 +254,7 @@ other user is rejected with an exception.
 - [`Phalcon\Auth\Access\AbstractAccess`](#authaccessabstractaccess)
 - **`Phalcon\Auth\Access\Acl`**
 
-`Phalcon\Acl\Adapter\AdapterInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\MissingHandlerContext` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard`
+`Phalcon\Acl\Adapter\AdapterInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\MissingHandlerContext` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard`
 
 ### Method Summary
 
@@ -367,7 +367,7 @@ Abstract
 - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
 - [`Phalcon\Auth\Adapter\Model`](#authadaptermodel)
 
-`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
+`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
 
 ### Method Summary
 
@@ -468,7 +468,7 @@ guard, and a default linear retrieveById - is shared here.
 - [`Phalcon\Auth\Adapter\Memory`](#authadaptermemory)
 - [`Phalcon\Auth\Adapter\Stream`](#authadapterstream)
 
-`Phalcon\Auth\AuthUser` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthUser`
+`Phalcon\Auth\AuthUser` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser`
 
 ### Method Summary
 
@@ -634,6 +634,8 @@ Class
 - [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
 - **`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`**
 
+`Phalcon\Contracts\Auth\AuthTypes`
+
 ### Method Summary
 
 <ApiItem href="#authadapterconfigmemoryadapterconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"users","default":"[]"},{"type":"string|null","name":"model","default":"null"}]}>
@@ -678,7 +680,7 @@ Class
 </ApiItem>
 <ApiItem href="#authadapterconfigmodeladapterconfig-getidcolumn" visibility="public" name="getIdColumn" returnType="string" params={[]}>
 </ApiItem>
-<ApiItem href="#authadapterconfigmodeladapterconfig-getmodel" visibility="public" name="getModel" returnType="string" params={[]}>
+<ApiItem href="#authadapterconfigmodeladapterconfig-getmodel" visibility="public" name="getModel" returnType="string|null" params={[]}>
 </ApiItem>
 
 ### Properties
@@ -706,7 +708,7 @@ public function getIdColumn(): string;
 <h4 id="authadapterconfigmodeladapterconfig-getmodel"><code>getModel()</code></h4>
 
 ```php
-public function getModel(): string;
+public function getModel(): string|null;
 ```
 
 ## Auth\Adapter\Config\StreamAdapterConfig
@@ -787,7 +789,7 @@ In-memory adapter - useful for tests and small read-only user lists.
 - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
 - **`Phalcon\Auth\Adapter\Memory`**
 
-`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
+`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
 
 ### Method Summary
 
@@ -846,7 +848,7 @@ Phalcon Model-backed adapter.
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
 - **`Phalcon\Auth\Adapter\Model`** - implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](/5.22/api/phalcon_contracts/#contractsauthadapterrememberadapter)
 
-`Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\InvalidCredentialKey` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Mvc\ModelInterface`
+`Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\InvalidCredentialKey` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\ModelInterface`
 
 ### Method Summary
 
@@ -935,7 +937,7 @@ The file must contain a JSON array of user records:
 - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
 - **`Phalcon\Auth\Adapter\Stream`**
 
-`InvalidArgumentException` · `Phalcon\Auth\Adapter\Config\StreamAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\FileCannotRead` · `Phalcon\Auth\Exceptions\FileDoesNotContainJson` · `Phalcon\Auth\Exceptions\FileDoesNotExist` · `Phalcon\Auth\Exceptions\FileNotValidJson` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
+`InvalidArgumentException` · `Phalcon\Auth\Adapter\Config\StreamAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\FileCannotRead` · `Phalcon\Auth\Exceptions\FileDoesNotContainJson` · `Phalcon\Auth\Exceptions\FileDoesNotExist` · `Phalcon\Auth\Exceptions\FileNotValidJson` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
@@ -1635,7 +1637,7 @@ Abstract
 - [`Phalcon\Auth\Guard\Session`](#authguardsession)
 - [`Phalcon\Auth\Guard\Token`](#authguardtoken)
 
-`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardConfig` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
+`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardConfig` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 
 ### Method Summary
 
@@ -1941,7 +1943,7 @@ Class
 - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
 - **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](/5.22/api/phalcon_contracts/#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](/5.22/api/phalcon_contracts/#contractsauthguardbasicauth)
 
-`Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
+`Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
 
 ### Method Summary
 
@@ -2159,7 +2161,7 @@ Class
 - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
 - **`Phalcon\Auth\Guard\Token`**
 
-`Phalcon\Auth\Guard\Config\TokenGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Http\RequestInterface`
+`Phalcon\Auth\Guard\Config\TokenGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Http\RequestInterface`
 
 ### Method Summary
 
@@ -2245,7 +2247,7 @@ Value object representing the contents of a remember-me cookie.
 
 - **`Phalcon\Auth\Guard\UserRemember`**
 
-`InvalidArgumentException` · `Phalcon\Support\Helper\Json\Decode`
+`InvalidArgumentException` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Support\Helper\Json\Decode`
 
 ### Method Summary
 
@@ -2418,7 +2420,7 @@ implementations. Not part of the public API.
 
 - **`Phalcon\Auth\Internal\Options`**
 
-`Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\OptionRequiresArray` · `Phalcon\Auth\Exceptions\OptionRequiresString`
+`Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\OptionRequiresArray` · `Phalcon\Auth\Exceptions\OptionRequiresString` · `Phalcon\Contracts\Auth\AuthTypes`
 
 ### Method Summary
 
@@ -2483,7 +2485,7 @@ relevant capability interface (GuardStateful, BasicAuth, etc.).
 
 - **`Phalcon\Auth\Manager`** - implements [`Phalcon\Contracts\Auth\Manager`](/5.22/api/phalcon_contracts/#contractsauthmanager)
 
-`Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\AccessNotRegistered` · `Phalcon\Auth\Exceptions\ActiveAccessRequired` · `Phalcon\Auth\Exceptions\DefaultGuardNotRegistered` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\GuardNotDefined` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\Manager`
+`Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\AccessNotRegistered` · `Phalcon\Auth\Exceptions\ActiveAccessRequired` · `Phalcon\Auth\Exceptions\DefaultGuardNotRegistered` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\GuardNotDefined` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\Manager`
 
 ### Method Summary
 
@@ -2705,7 +2707,7 @@ not separately constructed copies.
 
 - **`Phalcon\Auth\ManagerFactory`**
 
-`Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLocator` · `Phalcon\Auth\Exceptions\UnknownAdapter` · `Phalcon\Auth\Exceptions\UnknownGuard` · `Phalcon\Auth\Guard\GuardLocator` · `Phalcon\Auth\Internal\Options` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security` · `Phalcon\Traits\Factory\ConfigTrait`
+`Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLocator` · `Phalcon\Auth\Exceptions\UnknownAdapter` · `Phalcon\Auth\Exceptions\UnknownGuard` · `Phalcon\Auth\Guard\GuardLocator` · `Phalcon\Auth\Internal\Options` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security` · `Phalcon\Traits\Factory\ConfigTrait` · `Throwable`
 
 ### Method Summary
 

@@ -236,7 +236,7 @@ Base64 based wrapper methods
 
 - **`Phalcon\Traits\Php\Base64Trait`**
 
-[`Phalcon\Encryption\Crypt`](/5.22/api/phalcon_encryption/#encryptioncrypt) · [`Phalcon\Encryption\Security\JWT\Builder`](/5.22/api/phalcon_encryption/#encryptionsecurityjwtbuilder) · [`Phalcon\Encryption\Security\JWT\Token\Parser`](/5.22/api/phalcon_encryption/#encryptionsecurityjwttokenparser) · [`Phalcon\Storage\Serializer\Base64`](/5.22/api/phalcon_storage/#storageserializerbase64)
+[`Phalcon\Encryption\Crypt`](/5.22/api/phalcon_encryption/#encryptioncrypt) · [`Phalcon\Encryption\Security\JWT\Builder`](/5.22/api/phalcon_encryption/#encryptionsecurityjwtbuilder) · [`Phalcon\Encryption\Security\JWT\Token\Parser`](/5.22/api/phalcon_encryption/#encryptionsecurityjwttokenparser) · [`Phalcon\Encryption\Security\Random`](/5.22/api/phalcon_encryption/#encryptionsecurityrandom) · [`Phalcon\Storage\Serializer\Base64`](/5.22/api/phalcon_storage/#storageserializerbase64)
 
 ### Method Summary
 
@@ -323,8 +323,14 @@ Gets line from file pointer and parse for CSV fields
 <ApiItem href="#traitsphpfiletrait-phpfwrite" visibility="protected" name="phpFwrite" returnType="false|int" params={[{"type":"mixed","name":"handle","default":null},{"type":"string","name":"data","default":null},{"type":"int|null","name":"length","default":"null"}]}>
 Binary-safe file write
 </ApiItem>
+<ApiItem href="#traitsphpfiletrait-phpisdir" visibility="protected" name="phpIsDir" returnType="bool" params={[{"type":"string","name":"filename","default":null}]}>
+Tells whether the filename is a directory
+</ApiItem>
 <ApiItem href="#traitsphpfiletrait-phpiswritable" visibility="protected" name="phpIsWritable" returnType="bool" params={[{"type":"string","name":"filename","default":null}]}>
 Tells whether the filename is writable
+</ApiItem>
+<ApiItem href="#traitsphpfiletrait-phpmkdir" visibility="protected" name="phpMkdir" returnType="bool" params={[{"type":"string","name":"directory","default":null},{"type":"int","name":"permissions","default":"0777"},{"type":"bool","name":"recursive","default":"false"},{"type":"mixed","name":"context","default":"null"}]}>
+Makes a directory
 </ApiItem>
 <ApiItem href="#traitsphpfiletrait-phpunlink" visibility="protected" name="phpUnlink" returnType="bool" params={[{"type":"string","name":"filename","default":null},{"type":"mixed","name":"context","default":"null"}]}>
 @link https://php.net/manual/en/function.unlink.php
@@ -420,6 +426,16 @@ Binary-safe file write
 
 @link https://php.net/manual/en/function.fwrite.php
 
+<h4 id="traitsphpfiletrait-phpisdir"><code>phpIsDir()</code></h4>
+
+```php
+protected static function phpIsDir( string $filename ): bool;
+```
+
+Tells whether the filename is a directory
+
+@link https://php.net/manual/en/function.is-dir.php
+
 <h4 id="traitsphpfiletrait-phpiswritable"><code>phpIsWritable()</code></h4>
 
 ```php
@@ -429,6 +445,21 @@ protected static function phpIsWritable( string $filename ): bool;
 Tells whether the filename is writable
 
 @link https://php.net/manual/en/function.is-writable.php
+
+<h4 id="traitsphpfiletrait-phpmkdir"><code>phpMkdir()</code></h4>
+
+```php
+protected static function phpMkdir(
+string $directory,
+int $permissions = 0777,
+bool $recursive = false,
+mixed $context = null
+): bool;
+```
+
+Makes a directory
+
+@link https://php.net/manual/en/function.mkdir.php
 
 <h4 id="traitsphpfiletrait-phpunlink"><code>phpUnlink()</code></h4>
 

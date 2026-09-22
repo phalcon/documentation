@@ -848,7 +848,7 @@ Class
 - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Translate\InterpolatorFactory`**
 
-`Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Exceptions\InterpolatorNotRegistered` · `Phalcon\Translate\Interpolator\AssociativeArray` · `Phalcon\Translate\Interpolator\IndexedArray` · `Phalcon\Translate\Interpolator\InterpolatorInterface` · `Throwable`
+`Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Exceptions\InterpolatorNotRegistered` · `Phalcon\Translate\Interpolator\AssociativeArray` · `Phalcon\Translate\Interpolator\IndexedArray` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
 
 ### Method Summary
 
@@ -986,7 +986,7 @@ Class
 - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Translate\TranslateFactory`**
 
-`Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Adapter\AdapterInterface` · `Phalcon\Translate\Adapter\Csv` · `Phalcon\Translate\Adapter\Gettext` · `Phalcon\Translate\Adapter\NativeArray` · `Phalcon\Translate\Exceptions\TranslatorNotRegistered` · `Throwable`
+`Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Adapter\AdapterInterface` · `Phalcon\Translate\Adapter\Csv` · `Phalcon\Translate\Adapter\Gettext` · `Phalcon\Translate\Adapter\NativeArray` · `Phalcon\Translate\Exceptions\TranslatorNotRegistered`
 
 ### Method Summary
 

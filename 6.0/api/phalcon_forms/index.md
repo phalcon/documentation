@@ -2316,6 +2316,11 @@ Supplies form element definitions from a PHP array.
 <ApiItem href="#formsloaderarrayloader-validatedefinition" visibility="protected" name="validateDefinition" returnType="void" params={[{"type":"mixed","name":"definition","default":null},{"type":"int","name":"index","default":null}]}>
 </ApiItem>
 
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="definitions" type="array" default="">
+</ApiItem>
+
 ### Methods
 
 <h4 id="formsloaderarrayloader-__construct"><code>__construct()</code></h4>
@@ -2359,6 +2364,11 @@ disk first; otherwise the value is treated as a raw JSON string.
 <ApiItem href="#formsloaderjsonloader-load" visibility="public" name="load" returnType="array" params={[]}>
 </ApiItem>
 
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="source" type="string" default="">
+</ApiItem>
+
 ### Methods
 
 <h4 id="formsloaderjsonloader-__construct"><code>__construct()</code></h4>
@@ -2393,6 +2403,11 @@ directly; otherwise the value is treated as a raw YAML string.
 <ApiItem href="#formsloaderyamlloader-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"source","default":null}]}>
 </ApiItem>
 <ApiItem href="#formsloaderyamlloader-load" visibility="public" name="load" returnType="array" params={[]}>
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="source" type="string" default="">
 </ApiItem>
 
 ### Methods

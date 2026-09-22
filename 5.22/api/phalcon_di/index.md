@@ -74,7 +74,7 @@ Sets the dependency injector
 Class
 
 Phalcon\Di\Di is a component that implements Dependency Injection/Service
-Location of services and it's itself a container for them.
+Location of services, and it's itself a container for them.
 
 Since Phalcon is highly decoupled, Phalcon\Di\Di is essential to integrate the
 different components of the framework. The developer can also use this
@@ -113,7 +113,7 @@ $request = $di->getRequest();
 - **`Phalcon\Di\Di`** - implements [`Phalcon\Di\DiInterface`](#didiinterface)
 - [`Phalcon\Di\FactoryDefault`](#difactorydefault)
 
-`Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Exceptions\ServiceCannotBeResolved` · `Phalcon\Di\InitializationAwareInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Service` · `Phalcon\Di\ServiceInterface` · `Phalcon\Di\ServiceProviderInterface` · `Phalcon\Events\ManagerInterface`
+`Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Exceptions\ServiceCannotBeResolved` · `Phalcon\Di\InitializationAwareInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Service` · `Phalcon\Di\ServiceInterface` · `Phalcon\Di\ServiceProviderInterface` · `Phalcon\Events\ManagerInterface`
 
 ### Method Summary
 
@@ -210,7 +210,7 @@ Loads services from a Config object.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="aliases" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="aliases" type="array&lt;string, string&gt;" default="[]">
 List of service aliases
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="defaultContainer" type="DiInterface|null" default="null">
@@ -222,7 +222,7 @@ Events Manager
 <ApiItem kind="property" visibility="protected" name="services" type="ServiceInterface[]" default="[]">
 List of registered services
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="sharedInstances" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="sharedInstances" type="array&lt;string, mixed&gt;" default="[]">
 List of shared instances
 </ApiItem>
 
@@ -601,6 +601,8 @@ Loads services from a Config object.
 Interface
 
 Interface for Phalcon\Di\Di
+
+@extends ArrayAccess&lt;string, mixed>
 
 - `\ArrayAccess`
 - **`Phalcon\Di\DiInterface`**
@@ -1601,12 +1603,12 @@ $request = service->resolve();
 
 - **`Phalcon\Di\Service`** - implements [`Phalcon\Di\ServiceInterface`](#diserviceinterface)
 
-`Closure` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder`
+`Closure` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder`
 
 ### Method Summary
 
 <ApiItem href="#diservice-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
-Phalcon\Di\Service
+Service constructor.
 </ApiItem>
 <ApiItem href="#diservice-getdefinition" visibility="public" name="getDefinition" returnType="mixed" params={[]}>
 Returns the service definition
@@ -1658,7 +1660,7 @@ bool $shared = false
 );
 ```
 
-Phalcon\Di\Service
+Service constructor.
 
 <h4 id="diservice-getdefinition"><code>getDefinition()</code></h4>
 
@@ -1745,6 +1747,8 @@ Interface
 Represents a service in the services container
 
 - **`Phalcon\Di\ServiceInterface`**
+
+`Phalcon\Contracts\Di\DiTypes`
 
 ### Method Summary
 
@@ -1900,7 +1904,7 @@ This class builds instances based on complex definitions
 
 - **`Phalcon\Di\Service\Builder`**
 
-`Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\ArgumentTypeRequired` · `Phalcon\Di\Exceptions\CallArgumentsMustBeArray` · `Phalcon\Di\Exceptions\MethodCallMustBeArray` · `Phalcon\Di\Exceptions\MethodNameRequired` · `Phalcon\Di\Exceptions\MissingClassNameParameter` · `Phalcon\Di\Exceptions\MissingParameterKey` · `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance` · `Phalcon\Di\Exceptions\PropertyMustBeArray` · `Phalcon\Di\Exceptions\PropertyNameRequired` · `Phalcon\Di\Exceptions\PropertyValueRequired` · `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance` · `Phalcon\Di\Exceptions\SetterParametersMustBeArray` · `Phalcon\Di\Exceptions\UnknownServiceType`
+`Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\ArgumentTypeRequired` · `Phalcon\Di\Exceptions\CallArgumentsMustBeArray` · `Phalcon\Di\Exceptions\MethodCallMustBeArray` · `Phalcon\Di\Exceptions\MethodNameRequired` · `Phalcon\Di\Exceptions\MissingClassNameParameter` · `Phalcon\Di\Exceptions\MissingParameterKey` · `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance` · `Phalcon\Di\Exceptions\PropertyMustBeArray` · `Phalcon\Di\Exceptions\PropertyNameRequired` · `Phalcon\Di\Exceptions\PropertyValueRequired` · `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance` · `Phalcon\Di\Exceptions\SetterParametersMustBeArray` · `Phalcon\Di\Exceptions\UnknownServiceType`
 
 ### Method Summary
 

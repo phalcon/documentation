@@ -814,8 +814,6 @@ reads back as an empty string rather than aborting the helper.
 
 Class
 
-Phalcon\Tag\Exception
-
 Exceptions thrown in Phalcon\Tag will use this class
 
 - `\Exception`

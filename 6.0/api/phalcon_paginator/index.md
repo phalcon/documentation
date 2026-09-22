@@ -724,7 +724,7 @@ Class
 - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Paginator\PaginatorFactory`**
 
-`Phalcon\Config\Config` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor` · `Throwable`
+`Phalcon\Config\Config` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor`
 
 ### Method Summary
 

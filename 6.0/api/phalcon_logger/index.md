@@ -25,11 +25,11 @@ the built in AdapterFactory. A LoggerFactory is also available that allows
 developers to create new instances of the Logger or load them from config
 files (see Phalcon\Config\Config object).
 
-@property AdapterInterface[] $adapters
+@property AdapterInterface[]     $adapters
 @property array&lt;array-key, bool> $excluded
-@property int                $logLevel
-@property string             $name
-@property DateTimeZone       $timezone
+@property int                    $logLevel
+@property string                 $name
+@property DateTimeZone           $timezone
 
 - **`Phalcon\Logger\AbstractLogger`**
 - [`Phalcon\Logger\Logger`](#loggerlogger)
@@ -261,7 +261,7 @@ Factory used to create adapters used for Logging
 - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Logger\AdapterFactory`**
 
-`Exception` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog` · `Throwable`
+`Exception` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog`
 
 ### Method Summary
 
@@ -1233,10 +1233,10 @@ Phalcon\Logger\Item
 Represents each item in a logging transaction
 
 @property array&lt;string, mixed> $context
-@property string            $message
-@property int               $level
-@property string            $levelName
-@property DateTimeImmutable $dateTime
+@property string               $message
+@property int                  $level
+@property string               $levelName
+@property DateTimeImmutable    $dateTime
 
 - **`Phalcon\Logger\Item`**
 
@@ -1507,7 +1507,7 @@ Factory creating logger objects
 - [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
 - **`Phalcon\Logger\LoggerFactory`**
 
-`DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Throwable`
+`DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory`
 
 ### Method Summary
 

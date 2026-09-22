@@ -64,7 +64,7 @@ echo $e->getMessage(), PHP_EOL;
 - **`Phalcon\Db\Adapter\AbstractAdapter`** - implements [`Phalcon\Db\Adapter\AdapterInterface`](#dbadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
 - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 
-`Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\InvalidWhereConditions` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\InvalidWhereConditions` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -265,6 +265,9 @@ Check whether the database system requires an explicit value for identity
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-viewexists" visibility="public" name="viewExists" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Generates SQL checking for the existence of a schema.view
+</ApiItem>
+<ApiItem href="#dbadapterabstractadapter-checksavepoints" visibility="protected" name="checkSavepoints" returnType="void" params={[]}>
+Check if savepoints are supported
 </ApiItem>
 
 ### Properties
@@ -709,6 +712,8 @@ $invoice = $connection->fetchOne(
 print_r($invoice);
 ```
 
+@todo v7 check the return type, it should be also bool
+
 <h4 id="dbadapterabstractadapter-forupdate"><code>forUpdate()</code></h4>
 
 ```php
@@ -965,6 +970,8 @@ $connection->listTables("blog")
 );
 ```
 
+@todo optimize this
+
 <h4 id="dbadapterabstractadapter-listviews"><code>listViews()</code></h4>
 
 ```php
@@ -1196,7 +1203,7 @@ $success = $connection->update(
 
 ```
 
-Warning! If $whereCondition is string it not escaped.
+Warning! If $whereCondition is string, it is not escaped.
 
 <h4 id="dbadapterabstractadapter-updateasdict"><code>updateAsDict()</code></h4>
 
@@ -1252,6 +1259,14 @@ $connection->viewExists("active_users", "posts")
 );
 ```
 
+<h4 id="dbadapterabstractadapter-checksavepoints"><code>checkSavepoints()</code></h4>
+
+```php
+protected function checkSavepoints(): void;
+```
+
+Check if savepoints are supported
+
 ## Db\Adapter\AdapterInterface
 
 Interface
@@ -1271,7 +1286,7 @@ Class
 - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Db\Adapter\PdoFactory`**
 
-`Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Db\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+`Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Db\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
@@ -1360,7 +1375,7 @@ $connection = new Mysql($config);
 - [`Phalcon\Db\Adapter\Pdo\Postgresql`](#dbadapterpdopostgresql)
 - [`Phalcon\Db\Adapter\Pdo\Sqlite`](#dbadapterpdosqlite)
 
-`Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -1852,7 +1867,7 @@ $connection = new Mysql($config);
 - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 - **`Phalcon\Db\Adapter\Pdo\Mysql`**
 
-`Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
@@ -1988,7 +2003,7 @@ $connection = new Postgresql($config);
 - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 - **`Phalcon\Db\Adapter\Pdo\Postgresql`**
 
-`Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`
 
 ### Method Summary
 
@@ -2192,7 +2207,7 @@ $connection = new Sqlite(
 - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 - **`Phalcon\Db\Adapter\Pdo\Sqlite`**
 
-`Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingSqliteDatabase` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingSqliteDatabase` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
@@ -2379,7 +2394,7 @@ $connection->addCheck("products", null, $positivePrice);
 
 - **`Phalcon\Db\Check`** - implements [`Phalcon\Db\CheckInterface`](#dbcheckinterface)
 
-`Phalcon\Db\Exceptions\CheckExpressionRequired` · `Phalcon\Db\Exceptions\InvalidCheckExpression`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\CheckExpressionRequired` · `Phalcon\Db\Exceptions\InvalidCheckExpression`
 
 ### Method Summary
 
@@ -2473,7 +2488,7 @@ $connection->addColumn("co_invoices", null, $column);
 
 - **`Phalcon\Db\Column`** - implements [`Phalcon\Db\ColumnInterface`](#dbcolumninterface)
 
-`Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\Exceptions\ColumnTypeRejectsScale` · `Phalcon\Db\Exceptions\ColumnTypeRequired` · `Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict` · `Phalcon\Db\Exceptions\GeneratedDefaultConflict` · `Phalcon\Db\Exceptions\InvalidGenerationExpression`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\Exceptions\ColumnTypeRejectsScale` · `Phalcon\Db\Exceptions\ColumnTypeRequired` · `Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict` · `Phalcon\Db\Exceptions\GeneratedDefaultConflict` · `Phalcon\Db\Exceptions\InvalidGenerationExpression`
 
 ### Method Summary
 
@@ -2510,7 +2525,7 @@ Column data type
 <ApiItem href="#dbcolumn-gettypereference" visibility="public" name="getTypeReference" returnType="int" params={[]}>
 Column data type reference
 </ApiItem>
-<ApiItem href="#dbcolumn-gettypevalues" visibility="public" name="getTypeValues" returnType="array|string" params={[]}>
+<ApiItem href="#dbcolumn-gettypevalues" visibility="public" name="getTypeValues" returnType="array|string|int" params={[]}>
 Column data type values
 </ApiItem>
 <ApiItem href="#dbcolumn-hasdefault" visibility="public" name="hasDefault" returnType="bool" params={[]}>
@@ -2884,7 +2899,7 @@ Column data type reference
 <h4 id="dbcolumn-gettypevalues"><code>getTypeValues()</code></h4>
 
 ```php
-public function getTypeValues(): array|string;
+public function getTypeValues(): array|string|int;
 ```
 
 Column data type values
@@ -3006,7 +3021,7 @@ common methods to transform intermediate code into its RDBMS related syntax
 - [`Phalcon\Db\Dialect\Postgresql`](#dbdialectpostgresql)
 - [`Phalcon\Db\Dialect\Sqlite`](#dbdialectsqlite)
 
-`Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Db\Exceptions\UnsupportedOperator` · `Phalcon\Support\Settings`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Db\Exceptions\UnsupportedOperator` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -3871,7 +3886,7 @@ Generates database specific SQL for the MySQL RDBMS
 - [`Phalcon\Db\Dialect`](#dbdialect)
 - **`Phalcon\Db\Dialect\Mysql`**
 
-`Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
@@ -3966,7 +3981,7 @@ Generates SQL checking for the existence of a schema.view
 Escape a string literal for a single quoted SQL string. MySQL treats the
 </ApiItem>
 <ApiItem href="#dbdialectmysql-gettableoptions" visibility="protected" name="getTableOptions" returnType="string" params={[{"type":"array","name":"definition","default":null}]}>
-Generates SQL to add the table creation options
+Generates SQL to add the table creation options. The caller emits the
 </ApiItem>
 
 ### Properties
@@ -4348,7 +4363,9 @@ single quote.
 protected function getTableOptions( array $definition ): string;
 ```
 
-Generates SQL to add the table creation options
+Generates SQL to add the table creation options. The caller emits the
+clause only when the definition carries the options, so the shape
+below is narrower than `db_table_definition`.
 
 ## Db\Dialect\Postgresql
 
@@ -4359,7 +4376,7 @@ Generates database specific SQL for the PostgreSQL RDBMS
 - [`Phalcon\Db\Dialect`](#dbdialect)
 - **`Phalcon\Db\Dialect\Postgresql`**
 
-`Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
@@ -7338,7 +7355,7 @@ $connection->addIndex("co_invoices", null, $hidden);
 
 - **`Phalcon\Db\Index`** - implements [`Phalcon\Db\IndexInterface`](#dbindexinterface)
 
-`Phalcon\Db\Exceptions\InvalidIndexColumns` · `Phalcon\Db\Exceptions\InvalidIndexDirections` · `Phalcon\Db\Exceptions\InvalidIndexWhere`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\InvalidIndexColumns` · `Phalcon\Db\Exceptions\InvalidIndexDirections` · `Phalcon\Db\Exceptions\InvalidIndexWhere`
 
 ### Method Summary
 
@@ -7554,7 +7571,7 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 - **`Phalcon\Db\Profiler`**
 
-`Phalcon\Db\Profiler\Item` · `Phalcon\Db\Traits\ElapsedTimeTrait`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Profiler\Item` · `Phalcon\Db\Traits\ElapsedTimeTrait`
 
 ### Method Summary
 
@@ -7691,7 +7708,7 @@ This class identifies each profile in a Phalcon\Db\Profiler
 
 - **`Phalcon\Db\Profiler\Item`**
 
-`Phalcon\Db\Traits\ElapsedTimeTrait`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Traits\ElapsedTimeTrait`
 
 ### Method Summary
 
@@ -7731,10 +7748,10 @@ Return the SQL variables related to the profile
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="finalTime" type="double" default="">
+<ApiItem kind="property" visibility="protected" name="finalTime" type="float" default="">
 Timestamp when the profile ended
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="initialTime" type="double" default="">
+<ApiItem kind="property" visibility="protected" name="initialTime" type="float" default="">
 Timestamp when the profile started
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="sqlBindTypes" type="array" default="">
@@ -7927,7 +7944,7 @@ $reference = new \Phalcon\Db\Reference(
 
 - **`Phalcon\Db\Reference`** - implements [`Phalcon\Db\ReferenceInterface`](#dbreferenceinterface)
 
-`Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedColumnCountMismatch` · `Phalcon\Db\Exceptions\ReferencedColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedTableRequired`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedColumnCountMismatch` · `Phalcon\Db\Exceptions\ReferencedColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedTableRequired`
 
 ### Method Summary
 
@@ -8105,7 +8122,7 @@ print_r($invoice);
 
 - **`Phalcon\Db\Result\PdoResult`** - implements [`Phalcon\Db\ResultInterface`](#dbresultinterface)
 
-`Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\ResultInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\ResultInterface`
 
 ### Method Summary
 

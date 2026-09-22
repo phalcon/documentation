@@ -913,6 +913,9 @@ turns that flag on, and only for a `POST` request whose `_method` names a
 safe verb (`PUT`/`PATCH`/`DELETE`), so `_method` cannot spoof an arbitrary
 method.
 
+The flag lives on `Phalcon\Http\Request`, not on the request contract, so a
+request implementation that does not carry it is simply passed through.
+
 - **`Phalcon\ADR\Middleware\MethodOverrideMiddleware`** - implements [`Phalcon\Contracts\ADR\Middleware`](/5.22/api/phalcon_contracts/#contractsadrmiddleware)
 
 `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
@@ -1673,7 +1676,7 @@ When the middleware is exhausted it invokes the terminal handler (the Action).
 
 - **`Phalcon\ADR\Pipeline`** - implements [`Phalcon\Contracts\ADR\Handler`](/5.22/api/phalcon_contracts/#contractsadrhandler)
 
-`Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+`Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
@@ -1720,6 +1723,8 @@ responders into a chain. Subclasses bind the formatter(s).
 - **`Phalcon\ADR\Responder\AbstractFormattedResponder`**
 - [`Phalcon\ADR\Responder\JsonResponder`](#adrresponderjsonresponder)
 - [`Phalcon\ADR\Responder\TextResponder`](#adrrespondertextresponder)
+
+`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`
 
 ### Method Summary
 
@@ -1796,7 +1801,7 @@ formatter, so the content type and body are never left unset.
 
 - **`Phalcon\ADR\Responder\FormatResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/5.22/api/phalcon_contracts/#contractsadrresponderresponder)
 
-`Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
+`Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Formatter\Formatter` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
@@ -1873,9 +1878,12 @@ Class
 
 Renders a payload as plain text.
 
+The payload is untyped, so anything that cannot be expressed as a string -
+an object without `__toString()`, for instance - renders as an empty body.
+
 - **`Phalcon\ADR\Responder\Formatter\TextFormatter`** - implements [`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`](/5.22/api/phalcon_contracts/#contractsadrresponderformatterformatter)
 
-`Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Formatter\Formatter`
+`Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Formatter\Formatter` · `Stringable`
 
 ### Method Summary
 
@@ -2098,6 +2106,9 @@ An unmapped status resolves to 500 (server error), never a silent 200.
 Class
 
 Sets the response HTTP status code from the payload status, via StatusMapper.
+
+The payload status is untyped, so anything that cannot be expressed as a
+string - an array, an object - leaves the response status code untouched.
 
 - **`Phalcon\ADR\Responder\StatusResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/5.22/api/phalcon_contracts/#contractsadrresponderresponder)
 
@@ -2335,7 +2346,7 @@ RFC 9110 both leave path structure entirely to the origin server.
 
 - **`Phalcon\ADR\Router\Router`** - implements [`Phalcon\Contracts\ADR\Router\Router`](/5.22/api/phalcon_contracts/#contractsadrrouterrouter)
 
-`Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\ADR\Router\RouterMatch` · `Phalcon\Http\RequestInterface`
+`Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\ADR\Router\RouterMatch` · `Phalcon\Http\RequestInterface` · `ReflectionClass`
 
 ### Method Summary
 
@@ -2372,6 +2383,7 @@ The single derivation of the routing convention.
 <ApiItem href="#adrrouterrouter-hassubnamespace" visibility="protected" name="hasSubNamespace" returnType="bool" params={[{"type":"string","name":"subNamespace","default":null}]}>
 </ApiItem>
 <ApiItem href="#adrrouterrouter-locate" visibility="protected" name="locate" returnType="array|null" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"path","default":null}]}>
+The first derived candidate whose class actually exists, together with
 </ApiItem>
 <ApiItem href="#adrrouterrouter-middlewarefor" visibility="protected" name="middlewareFor" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
 </ApiItem>
@@ -2408,6 +2420,9 @@ Every Action class this router would try for the given method and path,
 in the order it tries them. The first that exists wins at match time.
 Namespace descent consults the filesystem, so the list depends on the
 action directory.
+
+The names are derived, not resolved: a candidate is what the convention
+would call the class, whether or not that class exists.
 
 <h4 id="adrrouterrouter-classfor"><code>classFor()</code></h4>
 
@@ -2533,6 +2548,9 @@ string $method,
 string $path
 ): array|null;
 ```
+
+The first derived candidate whose class actually exists, together with
+the segments the walk did not consume.
 
 <h4 id="adrrouterrouter-middlewarefor"><code>middlewareFor()</code></h4>
 

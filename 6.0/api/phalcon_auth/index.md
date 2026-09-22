@@ -38,7 +38,7 @@ dispatches in the same request until it is replaced.
 
 <ApiItem href="#authabstractauthdispatcherlistener-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Manager","name":"manager","default":null}]}>
 </ApiItem>
-<ApiItem href="#authabstractauthdispatcherlistener-enforce" visibility="protected" name="enforce" returnType="bool" params={[{"type":"string","name":"actionName","default":null},{"type":"array","name":"context","default":"[]"},{"type":"callable|null","name":"forwardHandler","default":"null"}]}>
+<ApiItem href="#authabstractauthdispatcherlistener-enforce" visibility="protected" name="enforce" returnType="bool" params={[{"type":"string","name":"actionName","default":null},{"type":"array","name":"context","default":"[]"},{"type":"mixed","name":"forwardHandler","default":"null"}]}>
 Runs the access check for the given action name. Returns true when
 </ApiItem>
 <ApiItem href="#authabstractauthdispatcherlistener-getactiontype" visibility="protected" name="getActionType" returnType="string" params={[]}>
@@ -64,7 +64,7 @@ public function __construct( Manager $manager );
 protected function enforce(
 string $actionName,
 array $context = [],
-callable|null $forwardHandler = null
+mixed $forwardHandler = null
 ): bool;
 ```
 
@@ -603,6 +603,10 @@ protected function getServices(): array;
 
 Abstract
 
+@todo Remove in v7. Kept only for backwards compatibility; compose
+Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait directly instead of
+extending this.
+
 - **`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`** - implements [`Phalcon\Contracts\Auth\Adapter\AdapterConfig`](/6.0/api/phalcon_contracts/#contractsauthadapteradapterconfig)
 - [`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`](#authadapterconfigmemoryadapterconfig)
 - [`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`](#authadapterconfigmodeladapterconfig)
@@ -676,7 +680,7 @@ Class
 </ApiItem>
 <ApiItem href="#authadapterconfigmodeladapterconfig-getidcolumn" visibility="public" name="getIdColumn" returnType="string" params={[]}>
 </ApiItem>
-<ApiItem href="#authadapterconfigmodeladapterconfig-getmodel" visibility="public" name="getModel" returnType="string" params={[]}>
+<ApiItem href="#authadapterconfigmodeladapterconfig-getmodel" visibility="public" name="getModel" returnType="string|null" params={[]}>
 </ApiItem>
 
 ### Properties
@@ -704,7 +708,7 @@ public function getIdColumn(): string;
 <h4 id="authadapterconfigmodeladapterconfig-getmodel"><code>getModel()</code></h4>
 
 ```php
-public function getModel(): string;
+public function getModel(): string|null;
 ```
 
 ## Auth\Adapter\Config\StreamAdapterConfig
@@ -858,9 +862,9 @@ Create and persist a new remember token for the user.
 <ApiItem href="#authadaptermodel-retrievebycredentials" visibility="public" name="retrieveByCredentials" returnType="AuthUser|null" params={[{"type":"array","name":"credentials","default":null}]}>
 Find a user matching the given credentials (excluding 'password' key).
 </ApiItem>
-<ApiItem href="#authadaptermodel-retrievebyid" visibility="public" name="retrieveById" returnType="AuthUser|null" params={[{"type":"int|string","name":"id","default":null}]}>
+<ApiItem href="#authadaptermodel-retrievebyid" visibility="public" name="retrieveById" returnType="AuthUser|null" params={[{"type":"mixed","name":"id","default":null}]}>
 </ApiItem>
-<ApiItem href="#authadaptermodel-retrievebytoken" visibility="public" name="retrieveByToken" returnType="AuthUser|null" params={[{"type":"int|string","name":"id","default":null},{"type":"string","name":"token","default":null},{"type":"string|null","name":"userAgent","default":"null"}]}>
+<ApiItem href="#authadaptermodel-retrievebytoken" visibility="public" name="retrieveByToken" returnType="AuthUser|null" params={[{"type":"mixed","name":"id","default":null},{"type":"string","name":"token","default":null},{"type":"string|null","name":"userAgent","default":"null"}]}>
 Retrieve a user by the remember-me cookie payload.
 </ApiItem>
 
@@ -903,14 +907,14 @@ Find a user matching the given credentials (excluding 'password' key).
 <h4 id="authadaptermodel-retrievebyid"><code>retrieveById()</code></h4>
 
 ```php
-public function retrieveById( int|string $id ): AuthUser|null;
+public function retrieveById( mixed $id ): AuthUser|null;
 ```
 
 <h4 id="authadaptermodel-retrievebytoken"><code>retrieveByToken()</code></h4>
 
 ```php
 public function retrieveByToken(
-int|string $id,
+mixed $id,
 string $token,
 string|null $userAgent = null
 ): AuthUser|null;

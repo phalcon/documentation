@@ -735,6 +735,8 @@ Interface for Phalcon\Session\Bag
 
 - **`Phalcon\Session\BagInterface`**
 
+`Phalcon\Contracts\Session\SessionTypes`
+
 ### Method Summary
 
 <ApiItem href="#sessionbaginterface-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"element","default":null}]}>

@@ -336,7 +336,7 @@ Collection of asset objects
 <ApiItem href="#assetscollection-add" visibility="public" name="add" returnType="static" params={[{"type":"AssetInterface","name":"asset","default":null}]}>
 Adds an asset to the collection
 </ApiItem>
-<ApiItem href="#assetscollection-addcss" visibility="public" name="addCss" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"bool|null","name":"isLocal","default":"null"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+<ApiItem href="#assetscollection-addcss" visibility="public" name="addCss" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"isLocal","default":"null"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
 Adds a CSS asset to the collection
 </ApiItem>
 <ApiItem href="#assetscollection-addfilter" visibility="public" name="addFilter" returnType="static" params={[{"type":"FilterInterface","name":"filter","default":null}]}>
@@ -351,7 +351,7 @@ Adds an inline CSS to the collection
 <ApiItem href="#assetscollection-addinlinejs" visibility="public" name="addInlineJs" returnType="static" params={[{"type":"string","name":"content","default":null},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"}]}>
 Adds an inline JavaScript to the collection
 </ApiItem>
-<ApiItem href="#assetscollection-addjs" visibility="public" name="addJs" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"bool|null","name":"isLocal","default":"null"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
+<ApiItem href="#assetscollection-addjs" visibility="public" name="addJs" returnType="static" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"isLocal","default":"null"},{"type":"bool","name":"filter","default":"true"},{"type":"array","name":"attributes","default":"[]"},{"type":"string|null","name":"version","default":"null"},{"type":"bool","name":"autoVersion","default":"false"}]}>
 Adds a JavaScript asset to the collection
 </ApiItem>
 <ApiItem href="#assetscollection-count" visibility="public" name="count" returnType="int" params={[]}>
@@ -448,7 +448,7 @@ Adds an asset to the collection
 ```php
 public function addCss(
 string $path,
-bool|null $isLocal = null,
+mixed $isLocal = null,
 bool $filter = true,
 array $attributes = [],
 string|null $version = null,
@@ -503,7 +503,7 @@ Adds an inline JavaScript to the collection
 ```php
 public function addJs(
 string $path,
-bool|null $isLocal = null,
+mixed $isLocal = null,
 bool $filter = true,
 array $attributes = [],
 string|null $version = null,

@@ -1446,7 +1446,7 @@ Class
 
 - **`Phalcon\Container\Provider\Cli`** - implements [`Phalcon\Contracts\Container\Service\Provider`](/6.0/api/phalcon_contracts/#contractscontainerserviceprovider)
 
-`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\DispatcherInterface` · `Phalcon\Cli\Router` · `Phalcon\Cli\RouterInterface` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
+`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\DispatcherInterface` · `Phalcon\Cli\Router` · `Phalcon\Cli\RouterInterface` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -1470,7 +1470,7 @@ Class
 
 - **`Phalcon\Container\Provider\Web`** - implements [`Phalcon\Contracts\Container\Service\Provider`](/6.0/api/phalcon_contracts/#contractscontainerserviceprovider)
 
-`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Assets\Manager` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Container\Resolver\Lazy\LazyFactory` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Db\Event\Factory` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Http\Response\Cookies` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\DispatcherInterface` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
+`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Container\Resolver\Lazy\LazyFactory` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Http\Response\Cookies` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\DispatcherInterface` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -2342,7 +2342,7 @@ Resolve parameters
 <ApiItem href="#containerresolverresolver-resolveparameters" visibility="public" name="resolveParameters" returnType="array" params={[{"type":"object","name":"ioc","default":null},{"type":"array","name":"parameters","default":null},{"type":"array","name":"arguments","default":null}]}>
 Resolve parameters
 </ApiItem>
-<ApiItem href="#containerresolverresolver-resolvetype" visibility="public" name="resolveType" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"ReflectionType","name":"type","default":null}]}>
+<ApiItem href="#containerresolverresolver-resolvetype" visibility="public" name="resolveType" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"mixed","name":"type","default":null}]}>
 type is ReflectionType
 </ApiItem>
 
@@ -2420,7 +2420,7 @@ Resolve parameters
 ```php
 public function resolveType(
 object $ioc,
-ReflectionType $type
+mixed $type
 ): mixed;
 ```
 

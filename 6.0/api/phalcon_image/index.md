@@ -89,7 +89,7 @@ Rejects an image whose pixel count exceeds the configured limit before
 <ApiItem href="#imageadapterabstractadapter-checkhighlow" visibility="protected" name="checkHighLow" returnType="int" params={[{"type":"int","name":"value","default":null},{"type":"int","name":"min","default":"0"},{"type":"int","name":"max","default":"100"}]}>
 </ApiItem>
 <ApiItem href="#imageadapterabstractadapter-processbackground" visibility="protected" name="processBackground" returnType="void" params={[{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"opacity","default":null}]}>
-Renders the supplied colour onto the image as the background. Channels
+Renders the supplied color onto the image as the background. Channels
 </ApiItem>
 <ApiItem href="#imageadapterabstractadapter-processblur" visibility="protected" name="processBlur" returnType="void" params={[{"type":"int","name":"radius","default":null}]}>
 Applies a blur. The radius is already clamped to 1-100.
@@ -344,7 +344,7 @@ string|null $fontFile = null
 
 Add a text to an image with a specified opacity
 
-The offsets accept `false` to centre the text on that axis, so they are
+The offsets accept `false` to center the text on that axis, so they are
 wider than the `int` the interface documents.
 
 <h4 id="imageadapterabstractadapter-watermark"><code>watermark()</code></h4>
@@ -399,7 +399,7 @@ int $opacity
 ): void;
 ```
 
-Renders the supplied colour onto the image as the background. Channels
+Renders the supplied color onto the image as the background. Channels
 are 0-255; the opacity is the validated 0-100 value.
 
 <h4 id="imageadapterabstractadapter-processblur"><code>processBlur()</code></h4>
@@ -531,7 +531,7 @@ string|null $fontFile = null
 ```
 
 Renders text onto the image. The opacity is clamped to 0-100 and the
-colour is supplied as separate 0-255 channels.
+color is supplied as separate 0-255 channels.
 
 <h4 id="imageadapterabstractadapter-processwatermark"><code>processWatermark()</code></h4>
 
@@ -1698,7 +1698,7 @@ Factory to create adapters for image manipulation
 - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Image\ImageFactory`**
 
-`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick` · `Throwable`
+`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick`
 
 ### Method Summary
 

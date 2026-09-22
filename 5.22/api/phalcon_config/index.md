@@ -71,12 +71,12 @@ $config = new Grouped(
 - [`Phalcon\Config\Config`](#configconfig)
 - **`Phalcon\Config\Adapter\Grouped`**
 
-`Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\GroupedAdapterRequiresArray` · `Phalcon\Factory\Exception`
+`Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exceptions\GroupedAdapterRequiresArray` · `Phalcon\Contracts\Config\ConfigTypes`
 
 ### Method Summary
 
 <ApiItem href="#configadaptergrouped-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"arrayConfig","default":null},{"type":"string","name":"defaultAdapter","default":"\"php\""},{"type":"ConfigFactory|null","name":"factory","default":"null"}]}>
-Phalcon\Config\Adapter\Grouped constructor
+Grouped constructor.
 </ApiItem>
 
 ### Methods
@@ -91,7 +91,7 @@ ConfigFactory|null $factory = null
 );
 ```
 
-Phalcon\Config\Adapter\Grouped constructor
+Grouped constructor.
 
 ## Config\Adapter\Ini
 
@@ -142,7 +142,7 @@ INI_SCANNER_NORMAL
 - [`Phalcon\Config\Config`](#configconfig)
 - **`Phalcon\Config\Adapter\Ini`**
 
-`Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Traits\Php\IniTrait`
+`Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Traits\Php\IniTrait`
 
 ### Method Summary
 
@@ -230,12 +230,12 @@ echo $config->models->metadata;
 - [`Phalcon\Config\Config`](#configconfig)
 - **`Phalcon\Config\Adapter\Json`**
 
-`Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
+`Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
 <ApiItem href="#configadapterjson-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"filePath","default":null}]}>
-Phalcon\Config\Adapter\Json constructor
+Json constructor.
 </ApiItem>
 
 ### Methods
@@ -246,7 +246,7 @@ Phalcon\Config\Adapter\Json constructor
 public function __construct( string $filePath );
 ```
 
-Phalcon\Config\Adapter\Json constructor
+Json constructor.
 
 ## Config\Adapter\Php
 
@@ -290,12 +290,12 @@ echo $config->database->username;
 - [`Phalcon\Config\Config`](#configconfig)
 - **`Phalcon\Config\Adapter\Php`**
 
-`Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile`
+`Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Contracts\Config\ConfigTypes`
 
 ### Method Summary
 
 <ApiItem href="#configadapterphp-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"filePath","default":null}]}>
-Phalcon\Config\Adapter\Php constructor
+Php constructor.
 </ApiItem>
 
 ### Methods
@@ -306,7 +306,7 @@ Phalcon\Config\Adapter\Php constructor
 public function __construct( string $filePath );
 ```
 
-Phalcon\Config\Adapter\Php constructor
+Php constructor.
 
 ## Config\Adapter\Yaml
 
@@ -357,7 +357,7 @@ echo $config->models->metadata;
 ### Method Summary
 
 <ApiItem href="#configadapteryaml-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"filePath","default":null},{"type":"array|null","name":"callbacks","default":"null"}]}>
-Phalcon\Config\Adapter\Yaml constructor
+Yaml constructor.
 </ApiItem>
 
 ### Methods
@@ -371,7 +371,7 @@ array|null $callbacks = null
 );
 ```
 
-Phalcon\Config\Adapter\Yaml constructor
+Yaml constructor.
 
 ## Config\Config
 
@@ -401,6 +401,8 @@ $config = new \Phalcon\Config\Config(
 );
 ```
 
+@extends Collection&lt;mixed>
+
 - [`Phalcon\Support\Collection`](/5.22/api/phalcon_support/#supportcollection)
 - **`Phalcon\Config\Config`** - implements [`Phalcon\Config\ConfigInterface`](#configconfiginterface)
 - [`Phalcon\Config\Adapter\Grouped`](#configadaptergrouped)
@@ -409,7 +411,7 @@ $config = new \Phalcon\Config\Config(
 - [`Phalcon\Config\Adapter\Php`](#configadapterphp)
 - [`Phalcon\Config\Adapter\Yaml`](#configadapteryaml)
 
-`Phalcon\Config\Exceptions\InvalidMergeData` · `Phalcon\Support\Collection`
+`Phalcon\Config\Exceptions\InvalidMergeData` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Support\Collection`
 
 ### Method Summary
 
@@ -526,7 +528,7 @@ Builds a new collection with the given data, carrying over the
 configuration of the current one. Clone-based instead of
 constructor-based: adapter subclasses (Ini, Json, Php, Yaml, Grouped)
 define file-loading constructors that are incompatible with the
-parent's `(array data, ...)` signature, so `filter()`, `map()`,
+parent's `(array $data, ...)` signature, so `filter()`, `map()`,
 `sort()` and `where()` would otherwise fail on any adapter instance.
 
 <h4 id="configconfig-internalmerge"><code>internalMerge()</code></h4>
@@ -682,12 +684,14 @@ Phalcon\Config\ConfigInterface
 
 Interface for Phalcon\Config\Config class
 
+@extends CollectionInterface&lt;mixed>
+
 - `\ArrayAccess`
 - [`Phalcon\Contracts\Support\Collection`](/5.22/api/phalcon_contracts/#contractssupportcollection)
 - [`Phalcon\Support\Collection\CollectionInterface`](/5.22/api/phalcon_support/#supportcollectioncollectioninterface)
 - **`Phalcon\Config\ConfigInterface`**
 
-`Phalcon\Support\Collection\CollectionInterface`
+`Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Support\Collection\CollectionInterface`
 
 ### Method Summary
 

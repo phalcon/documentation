@@ -999,6 +999,7 @@ Returns the 'before match' callback if any
 Returns the route's compiled pattern
 </ApiItem>
 <ApiItem href="#clirouterroute-getconverters" visibility="public" name="getConverters" returnType="array" params={[]}>
+Returns the router converter
 </ApiItem>
 <ApiItem href="#clirouterroute-getdelimiter" visibility="public" name="getDelimiter" returnType="string|null" params={[]}>
 Get routing delimiter
@@ -1010,11 +1011,13 @@ Returns the route's description
 Returns the route's name
 </ApiItem>
 <ApiItem href="#clirouterroute-getpaths" visibility="public" name="getPaths" returnType="array" params={[]}>
+Returns the paths
 </ApiItem>
 <ApiItem href="#clirouterroute-getpattern" visibility="public" name="getPattern" returnType="string" params={[]}>
 Returns the route's pattern
 </ApiItem>
 <ApiItem href="#clirouterroute-getreversedpaths" visibility="public" name="getReversedPaths" returnType="array" params={[]}>
+Returns the paths using positions as keys and names as values
 </ApiItem>
 <ApiItem href="#clirouterroute-getrouteid" visibility="public" name="getRouteId" returnType="string" params={[]}>
 Returns the route's id
@@ -1150,6 +1153,8 @@ Returns the route's compiled pattern
 public function getConverters(): array;
 ```
 
+Returns the router converter
+
 <h4 id="clirouterroute-getdelimiter"><code>getDelimiter()</code></h4>
 
 ```php
@@ -1180,6 +1185,8 @@ Returns the route's name
 public function getPaths(): array;
 ```
 
+Returns the paths
+
 <h4 id="clirouterroute-getpattern"><code>getPattern()</code></h4>
 
 ```php
@@ -1193,6 +1200,8 @@ Returns the route's pattern
 ```php
 public function getReversedPaths(): array;
 ```
+
+Returns the paths using positions as keys and names as values
 
 <h4 id="clirouterroute-getrouteid"><code>getRouteId()</code></h4>
 
@@ -1293,6 +1302,7 @@ Returns the route's name
 Returns the route's pattern
 </ApiItem>
 <ApiItem href="#clirouterrouteinterface-getreversedpaths" visibility="public" name="getReversedPaths" returnType="array" params={[]}>
+Returns the paths using positions as keys and names as values
 </ApiItem>
 <ApiItem href="#clirouterrouteinterface-getrouteid" visibility="public" name="getRouteId" returnType="string" params={[]}>
 Returns the route's id
@@ -1380,6 +1390,8 @@ Returns the route's pattern
 ```php
 public function getReversedPaths(): array;
 ```
+
+Returns the paths using positions as keys and names as values
 
 <h4 id="clirouterrouteinterface-getrouteid"><code>getRouteId()</code></h4>
 

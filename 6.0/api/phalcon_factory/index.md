@@ -23,7 +23,7 @@ Abstract
 - [`Phalcon\Logger\LoggerFactory`](/6.0/api/phalcon_logger/#loggerloggerfactory)
 - [`Phalcon\Queue\QueueFactory`](/6.0/api/phalcon_queue/#queuequeuefactory)
 
-`Exception` · `Phalcon\Config\ConfigInterface`
+`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Factory\FactoryTypes`
 
 ### Method Summary
 
@@ -80,7 +80,7 @@ Abstract
 
 - [`Phalcon\Factory\AbstractConfigFactory`](#factoryabstractconfigfactory)
 - **`Phalcon\Factory\AbstractFactory`**
-- [`Phalcon\Annotations\AdapterFactory`](/6.0/api/phalcon_annotations/#annotationsadapterfactory)
+- [`Phalcon\Annotations\AnnotationsFactory`](/6.0/api/phalcon_annotations/#annotationsannotationsfactory)
 - [`Phalcon\Cache\AdapterFactory`](/6.0/api/phalcon_cache/#cacheadapterfactory)
 - [`Phalcon\Config\ConfigFactory`](/6.0/api/phalcon_config/#configconfigfactory)
 - [`Phalcon\Db\Adapter\PdoFactory`](/6.0/api/phalcon_db/#dbadapterpdofactory)
@@ -96,11 +96,11 @@ Abstract
 - [`Phalcon\Translate\InterpolatorFactory`](/6.0/api/phalcon_translate/#translateinterpolatorfactory)
 - [`Phalcon\Translate\TranslateFactory`](/6.0/api/phalcon_translate/#translatetranslatefactory)
 
-`Exception`
+`Phalcon\Contracts\Factory\FactoryTypes`
 
 ### Method Summary
 
-<ApiItem href="#factoryabstractfactory-getservice" visibility="protected" name="getService" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+<ApiItem href="#factoryabstractfactory-getservice" visibility="protected" name="getService" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
 Checks if a service exists and throws an exception
 </ApiItem>
 <ApiItem href="#factoryabstractfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
@@ -112,9 +112,9 @@ Initialize services/add new services
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="mapper" type="array&lt;string, string&gt;" default="[]">
+<ApiItem kind="property" visibility="protected" name="mapper" type="array" default="[]">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="services" type="array&lt;string, mixed&gt;" default="[]">
+<ApiItem kind="property" visibility="protected" name="services" type="array" default="[]">
 </ApiItem>
 
 ### Methods
@@ -122,7 +122,7 @@ Initialize services/add new services
 <h4 id="factoryabstractfactory-getservice"><code>getService()</code></h4>
 
 ```php
-protected function getService( string $name ): string;
+protected function getService( string $name ): mixed;
 ```
 
 Checks if a service exists and throws an exception
@@ -142,5 +142,12 @@ protected function init( array $services = [] ): void;
 ```
 
 Initialize services/add new services
+
+## Factory\Exception
+
+Class
+
+- `\Exception`
+- **`Phalcon\Factory\Exception`**
 
 Source: https://docs.phalcon.io/6.0/api/phalcon_factory/index.mdx

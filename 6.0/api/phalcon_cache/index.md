@@ -44,7 +44,7 @@ Fetches a value from the cache.
 <ApiItem href="#cacheabstractcache-getadapter" visibility="public" name="getAdapter" returnType="AdapterInterface" params={[]}>
 Returns the current adapter
 </ApiItem>
-<ApiItem href="#cacheabstractcache-set" visibility="public" name="set" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"DateInterval|int|null","name":"ttl","default":"null"}]}>
+<ApiItem href="#cacheabstractcache-set" visibility="public" name="set" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
 Persists data in the cache, uniquely referenced by a key with an
 </ApiItem>
 <ApiItem href="#cacheabstractcache-checkkey" visibility="protected" name="checkKey" returnType="void" params={[{"type":"string","name":"key","default":null}]}>
@@ -59,22 +59,22 @@ Wipes clean the entire cache's keys.
 <ApiItem href="#cacheabstractcache-dodelete" visibility="protected" name="doDelete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
 Delete an item from the cache by its unique key.
 </ApiItem>
-<ApiItem href="#cacheabstractcache-dodeletemultiple" visibility="protected" name="doDeleteMultiple" returnType="bool" params={[{"type":"iterable","name":"keys","default":null}]}>
+<ApiItem href="#cacheabstractcache-dodeletemultiple" visibility="protected" name="doDeleteMultiple" returnType="bool" params={[{"type":"mixed","name":"keys","default":null}]}>
 Deletes multiple cache items in a single operation.
 </ApiItem>
 <ApiItem href="#cacheabstractcache-doget" visibility="protected" name="doGet" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
 Fetches a value from the cache.
 </ApiItem>
-<ApiItem href="#cacheabstractcache-dogetmultiple" visibility="protected" name="doGetMultiple" returnType="iterable" params={[{"type":"iterable","name":"keys","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+<ApiItem href="#cacheabstractcache-dogetmultiple" visibility="protected" name="doGetMultiple" returnType="array" params={[{"type":"mixed","name":"keys","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
 Obtains multiple cache items by their unique keys.
 </ApiItem>
 <ApiItem href="#cacheabstractcache-dohas" visibility="protected" name="doHas" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
 Determines whether an item is present in the cache.
 </ApiItem>
-<ApiItem href="#cacheabstractcache-doset" visibility="protected" name="doSet" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"DateInterval|int|null","name":"ttl","default":"null"}]}>
+<ApiItem href="#cacheabstractcache-doset" visibility="protected" name="doSet" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
 Persists data in the cache, uniquely referenced by a key with an optional
 </ApiItem>
-<ApiItem href="#cacheabstractcache-dosetmultiple" visibility="protected" name="doSetMultiple" returnType="bool" params={[{"type":"iterable","name":"values","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
+<ApiItem href="#cacheabstractcache-dosetmultiple" visibility="protected" name="doSetMultiple" returnType="bool" params={[{"type":"mixed","name":"values","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
 Persists a set of key => value pairs in the cache, with an optional TTL.
 </ApiItem>
 <ApiItem href="#cacheabstractcache-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
@@ -121,7 +121,7 @@ Returns the current adapter
 abstract public function set(
 string $key,
 mixed $value,
-DateInterval|int|null $ttl = null
+mixed $ttl = null
 ): bool;
 ```
 
@@ -163,7 +163,7 @@ Delete an item from the cache by its unique key.
 <h4 id="cacheabstractcache-dodeletemultiple"><code>doDeleteMultiple()</code></h4>
 
 ```php
-protected function doDeleteMultiple( iterable $keys ): bool;
+protected function doDeleteMultiple( mixed $keys ): bool;
 ```
 
 Deletes multiple cache items in a single operation.
@@ -183,9 +183,9 @@ Fetches a value from the cache.
 
 ```php
 protected function doGetMultiple(
-iterable $keys,
+mixed $keys,
 mixed $defaultValue = null
-): iterable;
+): array;
 ```
 
 Obtains multiple cache items by their unique keys.
@@ -204,7 +204,7 @@ Determines whether an item is present in the cache.
 protected function doSet(
 string $key,
 mixed $value,
-DateInterval|int|null $ttl = null
+mixed $ttl = null
 ): bool;
 ```
 
@@ -215,7 +215,7 @@ expiration TTL time.
 
 ```php
 protected function doSetMultiple(
-iterable $values,
+mixed $values,
 mixed $ttl = null
 ): bool;
 ```
@@ -240,7 +240,7 @@ Factory to create Cache adapters
 - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Cache\AdapterFactory`**
 
-`Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu` · `Phalcon\Cache\Adapter\Libmemcached` · `Phalcon\Cache\Adapter\Memory` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Adapter\RedisCluster` · `Phalcon\Cache\Adapter\Stream` · `Phalcon\Cache\Adapter\Weak` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory` · `Throwable`
+`Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu` · `Phalcon\Cache\Adapter\Libmemcached` · `Phalcon\Cache\Adapter\Memory` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Adapter\RedisCluster` · `Phalcon\Cache\Adapter\Stream` · `Phalcon\Cache\Adapter\Weak` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory`
 
 ### Method Summary
 
@@ -456,22 +456,22 @@ Wipes clean the entire cache's keys.
 <ApiItem href="#cachecache-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
 Delete an item from the cache by its unique key.
 </ApiItem>
-<ApiItem href="#cachecache-deletemultiple" visibility="public" name="deleteMultiple" returnType="bool" params={[{"type":"iterable","name":"keys","default":null}]}>
+<ApiItem href="#cachecache-deletemultiple" visibility="public" name="deleteMultiple" returnType="bool" params={[{"type":"mixed","name":"keys","default":null}]}>
 Deletes multiple cache items in a single operation.
 </ApiItem>
 <ApiItem href="#cachecache-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
 Fetches a value from the cache.
 </ApiItem>
-<ApiItem href="#cachecache-getmultiple" visibility="public" name="getMultiple" returnType="iterable" params={[{"type":"iterable","name":"keys","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+<ApiItem href="#cachecache-getmultiple" visibility="public" name="getMultiple" returnType="mixed" params={[{"type":"mixed","name":"keys","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
 Obtains multiple cache items by their unique keys.
 </ApiItem>
 <ApiItem href="#cachecache-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
 Determines whether an item is present in the cache.
 </ApiItem>
-<ApiItem href="#cachecache-set" visibility="public" name="set" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"DateInterval|int|null","name":"ttl","default":"null"}]}>
+<ApiItem href="#cachecache-set" visibility="public" name="set" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
 Persists data in the cache, uniquely referenced by a key with an optional
 </ApiItem>
-<ApiItem href="#cachecache-setmultiple" visibility="public" name="setMultiple" returnType="bool" params={[{"type":"iterable","name":"values","default":null},{"type":"DateInterval|int|null","name":"ttl","default":"null"}]}>
+<ApiItem href="#cachecache-setmultiple" visibility="public" name="setMultiple" returnType="bool" params={[{"type":"mixed","name":"values","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
 Persists a set of key => value pairs in the cache, with an optional TTL.
 </ApiItem>
 <ApiItem href="#cachecache-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
@@ -499,7 +499,7 @@ Delete an item from the cache by its unique key.
 <h4 id="cachecache-deletemultiple"><code>deleteMultiple()</code></h4>
 
 ```php
-public function deleteMultiple( iterable $keys ): bool;
+public function deleteMultiple( mixed $keys ): bool;
 ```
 
 Deletes multiple cache items in a single operation.
@@ -519,9 +519,9 @@ Fetches a value from the cache.
 
 ```php
 public function getMultiple(
-iterable $keys,
+mixed $keys,
 mixed $defaultValue = null
-): iterable;
+): mixed;
 ```
 
 Obtains multiple cache items by their unique keys.
@@ -540,7 +540,7 @@ Determines whether an item is present in the cache.
 public function set(
 string $key,
 mixed $value,
-DateInterval|int|null $ttl = null
+mixed $ttl = null
 ): bool;
 ```
 
@@ -551,8 +551,8 @@ expiration TTL time.
 
 ```php
 public function setMultiple(
-iterable $values,
-DateInterval|int|null $ttl = null
+mixed $values,
+mixed $ttl = null
 ): bool;
 ```
 
@@ -575,7 +575,7 @@ Creates a new Cache class
 - [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
 - **`Phalcon\Cache\CacheFactory`**
 
-`Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Throwable`
+`Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractConfigFactory`
 
 ### Method Summary
 
@@ -640,10 +640,16 @@ Interface
 
 Interface for Phalcon\Cache\Cache
 
+The cache class carries this member and the framework calls it on the
+interface. It joins the contract in the next major; until then the tag
+below records what all implementations provide.
+
+@method AdapterInterface getAdapter()
+
 - [`Phalcon\Contracts\Cache\Cache`](/6.0/api/phalcon_contracts/#contractscachecache)
 - **`Phalcon\Cache\CacheInterface`**
 
-`Phalcon\Contracts\Cache\Cache`
+`Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Contracts\Cache\Cache`
 
 ## Cache\Exception\Exception
 

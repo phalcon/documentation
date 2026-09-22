@@ -206,7 +206,7 @@ foreach ($actions as $action) {
 - **`Phalcon\Acl\Adapter\Memory`**
 - [`Phalcon\Acl\Adapter\Storage`](#acladapterstorage)
 
-`Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\AccessRuleNotFound` · `Phalcon\Acl\Exceptions\CircularInheritanceError` · `Phalcon\Acl\Exceptions\ElementNotFound` · `Phalcon\Acl\Exceptions\ForbiddenDelimiter` · `Phalcon\Acl\Exceptions\InvalidAccessList` · `Phalcon\Acl\Exceptions\InvalidComponentImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleType` · `Phalcon\Acl\Exceptions\MissingFunctionParameters` · `Phalcon\Acl\Exceptions\ParameterTypeMismatch` · `Phalcon\Acl\Exceptions\RoleNotFoundException` · `Phalcon\Acl\Role` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionNamedType`
+`Closure` · `Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\AccessRuleNotFound` · `Phalcon\Acl\Exceptions\CircularInheritanceError` · `Phalcon\Acl\Exceptions\ElementNotFound` · `Phalcon\Acl\Exceptions\ForbiddenDelimiter` · `Phalcon\Acl\Exceptions\InvalidAccessList` · `Phalcon\Acl\Exceptions\InvalidComponentImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleType` · `Phalcon\Acl\Exceptions\MissingFunctionParameters` · `Phalcon\Acl\Exceptions\ParameterTypeMismatch` · `Phalcon\Acl\Exceptions\RoleNotFoundException` · `Phalcon\Acl\Role` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionNamedType`
 
 ### Method Summary
 
@@ -601,7 +601,7 @@ Use external locking when multiple processes write the same key.
 - [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
 - **`Phalcon\Acl\Adapter\Storage`** - implements [`Phalcon\Contracts\Acl\Adapter\Persistable`](/5.22/api/phalcon_contracts/#contractsacladapterpersistable)
 
-`Phalcon\Acl\Component` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\InvalidSnapshot` · `Phalcon\Acl\Role` · `Phalcon\Contracts\Acl\AclTypes` · `Phalcon\Contracts\Acl\Adapter\Persistable` · `Phalcon\Storage\Adapter\AdapterInterface`
+`Phalcon\Acl\Component` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\InvalidSnapshot` · `Phalcon\Acl\Role` · `Phalcon\Contracts\Acl\AclTypes` · `Phalcon\Contracts\Acl\Adapter\Persistable` · `Phalcon\Storage\Adapter\AdapterInterface` · `Throwable`
 
 ### Method Summary
 

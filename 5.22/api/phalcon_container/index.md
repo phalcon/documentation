@@ -2205,7 +2205,7 @@ Resolve a new instance method call
 
 <ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="id" type="string|Lazy" default="">
+<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="method" type="string" default="">
 </ApiItem>
@@ -2249,7 +2249,7 @@ Resolve a new instance
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="id" type="string|Lazy" default="">
+<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
 </ApiItem>
 
 ### Methods
@@ -2289,7 +2289,7 @@ Resolve a static method call
 
 <ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="className" type="string|Lazy" default="">
+<ApiItem kind="property" visibility="protected" name="className" type="Lazy|string" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="method" type="string" default="">
 </ApiItem>

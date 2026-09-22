@@ -96,7 +96,7 @@ $event->stop();
 ### Method Summary
 
 <ApiItem href="#eventsevent-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"source","default":"null"},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancelable","default":"true"}]}>
-Phalcon\Events\Event constructor
+Event constructor.
 </ApiItem>
 <ApiItem href="#eventsevent-getdata" visibility="public" name="getData" returnType="mixed" params={[]}>
 </ApiItem>
@@ -154,7 +154,7 @@ bool $cancelable = true
 );
 ```
 
-Phalcon\Events\Event constructor
+Event constructor.
 
 <h4 id="eventsevent-getdata"><code>getData()</code></h4>
 
@@ -424,7 +424,7 @@ conditional execution and much more.
 
 - **`Phalcon\Events\Manager`** - implements [`Phalcon\Events\ManagerInterface`](#eventsmanagerinterface), [`Phalcon\Contracts\Events\Enumerable`](/5.22/api/phalcon_contracts/#contractseventsenumerable)
 
-`Closure` · `Phalcon\Contracts\Events\Enumerable` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent`
+`Closure` · `Phalcon\Contracts\Events\Enumerable` · `Phalcon\Contracts\Events\EventsTypes` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent`
 
 ### Method Summary
 
@@ -783,7 +783,7 @@ included, because addSubscriber() attaches through the regular listener
 pipeline.
 
 Unwrapping is delegated to getListeners() so the internal shape of
-this->events is read in exactly one place.
+$this->events is read in exactly one place.
 
 <h4 id="eventsmanager-getlisteners"><code>getListeners()</code></h4>
 

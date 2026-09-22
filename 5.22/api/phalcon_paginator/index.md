@@ -246,7 +246,7 @@ $paginator = new NativeArray(
 - [`Phalcon\Paginator\Adapter\AbstractAdapter`](#paginatoradapterabstractadapter)
 - **`Phalcon\Paginator\Adapter\NativeArray`**
 
-`Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\PaginatorDataNotArray` · `Phalcon\Paginator\RepositoryInterface`
+`Phalcon\Paginator\Exceptions\PaginatorDataNotArray` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
@@ -725,7 +725,7 @@ Class
 - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Paginator\PaginatorFactory`**
 
-`Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor` · `Throwable`
+`Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor`
 
 ### Method Summary
 

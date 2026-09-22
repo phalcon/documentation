@@ -636,25 +636,25 @@ Canonical contract for Phalcon\Acl adapters
 
 ### Method Summary
 
-<ApiItem href="#contractsacladapteradapter-addcomponent" visibility="public" name="addComponent" returnType="bool" params={[{"type":"ComponentInterface|string","name":"componentObject","default":null},{"type":"array|string","name":"accessList","default":null}]}>
+<ApiItem href="#contractsacladapteradapter-addcomponent" visibility="public" name="addComponent" returnType="bool" params={[{"type":"mixed","name":"componentValue","default":null},{"type":"mixed","name":"accessList","default":null}]}>
 Adds a component to the ACL list
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-addcomponentaccess" visibility="public" name="addComponentAccess" returnType="bool" params={[{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"accessList","default":null}]}>
 Adds access to components
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-addinherit" visibility="public" name="addInherit" returnType="bool" params={[{"type":"string","name":"roleName","default":null},{"type":"array|RoleInterface|string","name":"roleToInherit","default":null}]}>
+<ApiItem href="#contractsacladapteradapter-addinherit" visibility="public" name="addInherit" returnType="bool" params={[{"type":"string","name":"roleName","default":null},{"type":"mixed","name":"roleToInherits","default":null}]}>
 Add a role which inherits from an existing role
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-addrole" visibility="public" name="addRole" returnType="bool" params={[{"type":"mixed","name":"roleObject","default":null},{"type":"array|RoleInterface|string|null","name":"accessInherits","default":"null"}]}>
+<ApiItem href="#contractsacladapteradapter-addrole" visibility="public" name="addRole" returnType="bool" params={[{"type":"mixed","name":"role","default":null},{"type":"mixed","name":"accessInherits","default":"null"}]}>
 Adds a role to the ACL list. The second parameter lets to inherit access
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-allow" visibility="public" name="allow" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"array|string","name":"access","default":null},{"type":"callable|null","name":"function","default":"null"}]}>
+<ApiItem href="#contractsacladapteradapter-allow" visibility="public" name="allow" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"access","default":null},{"type":"mixed","name":"func","default":"null"}]}>
 Allow access to a role on a component. You can use `*` as wildcard
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-deny" visibility="public" name="deny" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"array|string","name":"access","default":null},{"type":"callable|null","name":"function","default":"null"}]}>
+<ApiItem href="#contractsacladapteradapter-deny" visibility="public" name="deny" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"access","default":null},{"type":"mixed","name":"func","default":"null"}]}>
 Deny access to a role on a component. You can use `*` as wildcard
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-dropcomponentaccess" visibility="public" name="dropComponentAccess" returnType="void" params={[{"type":"string","name":"componentName","default":null},{"type":"array|string","name":"accessList","default":null}]}>
+<ApiItem href="#contractsacladapteradapter-dropcomponentaccess" visibility="public" name="dropComponentAccess" returnType="void" params={[{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"accessList","default":null}]}>
 Removes access from a component
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-getactiveaccess" visibility="public" name="getActiveAccess" returnType="string|null" params={[]}>
@@ -666,19 +666,19 @@ Returns the component which the list is checking if some role can access
 <ApiItem href="#contractsacladapteradapter-getactiverole" visibility="public" name="getActiveRole" returnType="string|null" params={[]}>
 Returns the role which the list is checking if it's allowed to certain
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-getcomponents" visibility="public" name="getComponents" returnType="array|null" params={[]}>
+<ApiItem href="#contractsacladapteradapter-getcomponents" visibility="public" name="getComponents" returnType="array" params={[]}>
 Return an array with every component registered in the list
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-getdefaultaction" visibility="public" name="getDefaultAction" returnType="int" params={[]}>
 Returns the default action
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-getinheritedroles" visibility="public" name="getInheritedRoles" returnType="array|null" params={[{"type":"string","name":"roleName","default":"\"\""}]}>
+<ApiItem href="#contractsacladapteradapter-getinheritedroles" visibility="public" name="getInheritedRoles" returnType="array" params={[{"type":"string","name":"roleName","default":"\"\""}]}>
 Returns the inherited roles for a passed role name. If no role name
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-getnoargumentsdefaultaction" visibility="public" name="getNoArgumentsDefaultAction" returnType="int" params={[]}>
 Returns the default ACL access level for no arguments provided in
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-getroles" visibility="public" name="getRoles" returnType="array|null" params={[]}>
+<ApiItem href="#contractsacladapteradapter-getroles" visibility="public" name="getRoles" returnType="array" params={[]}>
 Return an array with every role registered in the list
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-isallowed" visibility="public" name="isAllowed" returnType="bool" params={[{"type":"mixed","name":"roleName","default":null},{"type":"mixed","name":"componentName","default":null},{"type":"string","name":"access","default":null},{"type":"array|null","name":"parameters","default":"null"}]}>
@@ -703,8 +703,8 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or
 
 ```php
 public function addComponent(
-ComponentInterface|string $componentObject,
-array|string $accessList
+mixed $componentValue,
+mixed $accessList
 ): bool;
 ```
 
@@ -729,7 +729,7 @@ Adds access to components
 ```php
 public function addInherit(
 string $roleName,
-array|RoleInterface|string $roleToInherit
+mixed $roleToInherits
 ): bool;
 ```
 
@@ -739,8 +739,8 @@ Add a role which inherits from an existing role
 
 ```php
 public function addRole(
-mixed $roleObject,
-array|RoleInterface|string|null $accessInherits = null
+mixed $role,
+mixed $accessInherits = null
 ): bool;
 ```
 
@@ -753,8 +753,8 @@ from an existing role
 public function allow(
 string $roleName,
 string $componentName,
-array|string $access,
-callable|null $function = null
+mixed $access,
+mixed $func = null
 ): void;
 ```
 
@@ -766,8 +766,8 @@ Allow access to a role on a component. You can use `*` as wildcard
 public function deny(
 string $roleName,
 string $componentName,
-array|string $access,
-callable|null $function = null
+mixed $access,
+mixed $func = null
 ): void;
 ```
 
@@ -778,7 +778,7 @@ Deny access to a role on a component. You can use `*` as wildcard
 ```php
 public function dropComponentAccess(
 string $componentName,
-array|string $accessList
+mixed $accessList
 ): void;
 ```
 
@@ -813,7 +813,7 @@ component/access
 <h4 id="contractsacladapteradapter-getcomponents"><code>getComponents()</code></h4>
 
 ```php
-public function getComponents(): array|null;
+public function getComponents(): array;
 ```
 
 Return an array with every component registered in the list
@@ -829,7 +829,7 @@ Returns the default action
 <h4 id="contractsacladapteradapter-getinheritedroles"><code>getInheritedRoles()</code></h4>
 
 ```php
-public function getInheritedRoles( string $roleName = "" ): array|null;
+public function getInheritedRoles( string $roleName = "" ): array;
 ```
 
 Returns the inherited roles for a passed role name. If no role name
@@ -848,7 +848,7 @@ Returns the default ACL access level for no arguments provided in
 <h4 id="contractsacladapteradapter-getroles"><code>getRoles()</code></h4>
 
 ```php
-public function getRoles(): array|null;
+public function getRoles(): array;
 ```
 
 Return an array with every role registered in the list
@@ -1085,6 +1085,44 @@ public function getRoleName(): string;
 ```
 
 Returns role name
+
+## Contracts\Annotations\AnnotationsTypes
+
+Interface
+
+Central registry of the array shapes used across the Annotations namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `annotations_` because PHPStan resolves
+imported type names per file and has no namespacing for them: the prefix is
+what keeps generic names such as `arguments` or `options` from clashing with
+an alias imported from another namespace into the same file.
+
+The list is alphabetical, with one exception: an alias that another alias
+names must be defined before it. Psalm reads the aliases in file order and
+cannot resolve a forward reference; it reports the name as a missing class
+instead. PHPStan does not care about the order, so a forward reference is
+invisible until the stubs are analyzed. `annotations_expression` is hoisted
+for that reason.
+
+The node shapes below are what `ext/phalcon/annotations/parser.php.inc.h`
+builds: `phannot_ret_annotation()`, `phannot_ret_named_item()`,
+`phannot_ret_literal_zval()` and `phannot_ret_array()`.
+
+An expression is one of a literal node (`type` plus an optional string
+`value`), an array node (`type` plus optional `items`) or a nested
+annotation node, and `getExpression()` walks into `items` and into nested
+annotations. That makes the shape recursive, which neither PHPStan nor Psalm
+accepts, so the alias stays an untyped map, as `db_expression` does for the
+dialect intermediate. Each read narrows the value it needs.
+
+- **`Phalcon\Contracts\Annotations\AnnotationsTypes`**
+
+`Phalcon\Annotations\Annotation` · `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Reflection`
 
 ## Contracts\Application\ApplicationTypes
 
@@ -1440,7 +1478,7 @@ Capability extension implemented by adapters that support remember-me.
 <ApiItem href="#contractsauthadapterrememberadapter-createremembertoken" visibility="public" name="createRememberToken" returnType="RememberToken" params={[{"type":"AuthUser","name":"user","default":null}]}>
 Create and persist a new remember token for the user.
 </ApiItem>
-<ApiItem href="#contractsauthadapterrememberadapter-retrievebytoken" visibility="public" name="retrieveByToken" returnType="AuthUser|null" params={[{"type":"int|string","name":"id","default":null},{"type":"string","name":"token","default":null},{"type":"string|null","name":"userAgent","default":"null"}]}>
+<ApiItem href="#contractsauthadapterrememberadapter-retrievebytoken" visibility="public" name="retrieveByToken" returnType="AuthUser|null" params={[{"type":"mixed","name":"id","default":null},{"type":"string","name":"token","default":null},{"type":"string|null","name":"userAgent","default":"null"}]}>
 Retrieve a user by the remember-me cookie payload.
 </ApiItem>
 
@@ -1458,7 +1496,7 @@ Create and persist a new remember token for the user.
 
 ```php
 public function retrieveByToken(
-int|string $id,
+mixed $id,
 string $token,
 string|null $userAgent = null
 ): AuthUser|null;
@@ -2094,22 +2132,22 @@ Wipes clean the entire cache's keys.
 <ApiItem href="#contractscachecache-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
 Delete an item from the cache by its unique key.
 </ApiItem>
-<ApiItem href="#contractscachecache-deletemultiple" visibility="public" name="deleteMultiple" returnType="bool" params={[{"type":"iterable","name":"keys","default":null}]}>
+<ApiItem href="#contractscachecache-deletemultiple" visibility="public" name="deleteMultiple" returnType="bool" params={[{"type":"mixed","name":"keys","default":null}]}>
 Deletes multiple cache items in a single operation.
 </ApiItem>
 <ApiItem href="#contractscachecache-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
 Fetches a value from the cache.
 </ApiItem>
-<ApiItem href="#contractscachecache-getmultiple" visibility="public" name="getMultiple" returnType="iterable" params={[{"type":"iterable","name":"keys","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+<ApiItem href="#contractscachecache-getmultiple" visibility="public" name="getMultiple" returnType="mixed" params={[{"type":"mixed","name":"keys","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
 Obtains multiple cache items by their unique keys.
 </ApiItem>
 <ApiItem href="#contractscachecache-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
 Determines whether an item is present in the cache.
 </ApiItem>
-<ApiItem href="#contractscachecache-set" visibility="public" name="set" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"DateInterval|int|null","name":"ttl","default":"null"}]}>
+<ApiItem href="#contractscachecache-set" visibility="public" name="set" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
 Persists data in the cache, uniquely referenced by a key with an optional
 </ApiItem>
-<ApiItem href="#contractscachecache-setmultiple" visibility="public" name="setMultiple" returnType="bool" params={[{"type":"iterable","name":"values","default":null},{"type":"DateInterval|int|null","name":"ttl","default":"null"}]}>
+<ApiItem href="#contractscachecache-setmultiple" visibility="public" name="setMultiple" returnType="bool" params={[{"type":"mixed","name":"values","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
 Persists a set of key => value pairs in the cache, with an optional TTL.
 </ApiItem>
 
@@ -2134,7 +2172,7 @@ Delete an item from the cache by its unique key.
 <h4 id="contractscachecache-deletemultiple"><code>deleteMultiple()</code></h4>
 
 ```php
-public function deleteMultiple( iterable $keys ): bool;
+public function deleteMultiple( mixed $keys ): bool;
 ```
 
 Deletes multiple cache items in a single operation.
@@ -2154,9 +2192,9 @@ Fetches a value from the cache.
 
 ```php
 public function getMultiple(
-iterable $keys,
+mixed $keys,
 mixed $defaultValue = null
-): iterable;
+): mixed;
 ```
 
 Obtains multiple cache items by their unique keys.
@@ -2175,7 +2213,7 @@ Determines whether an item is present in the cache.
 public function set(
 string $key,
 mixed $value,
-DateInterval|int|null $ttl = null
+mixed $ttl = null
 ): bool;
 ```
 
@@ -2186,8 +2224,8 @@ expiration TTL time.
 
 ```php
 public function setMultiple(
-iterable $values,
-DateInterval|int|null $ttl = null
+mixed $values,
+mixed $ttl = null
 ): bool;
 ```
 
@@ -2224,6 +2262,7 @@ Returns the active task in the dispatcher
 Returns the latest dispatched controller
 </ApiItem>
 <ApiItem href="#contractsclidispatcher-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
+Get dispatched options
 </ApiItem>
 <ApiItem href="#contractsclidispatcher-gettaskname" visibility="public" name="getTaskName" returnType="string" params={[]}>
 Gets last dispatched task name
@@ -2235,6 +2274,7 @@ Gets default task suffix
 Sets the default task name
 </ApiItem>
 <ApiItem href="#contractsclidispatcher-setoptions" visibility="public" name="setOptions" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
+Set the options to be dispatched
 </ApiItem>
 <ApiItem href="#contractsclidispatcher-settaskname" visibility="public" name="setTaskName" returnType="void" params={[{"type":"string","name":"taskName","default":null}]}>
 Sets the task name to be dispatched
@@ -2267,6 +2307,8 @@ Returns the latest dispatched controller
 public function getOptions(): array;
 ```
 
+Get dispatched options
+
 <h4 id="contractsclidispatcher-gettaskname"><code>getTaskName()</code></h4>
 
 ```php
@@ -2296,6 +2338,8 @@ Sets the default task name
 ```php
 public function setOptions( array $options ): void;
 ```
+
+Set the options to be dispatched
 
 <h4 id="contractsclidispatcher-settaskname"><code>setTaskName()</code></h4>
 
@@ -3062,21 +3106,6 @@ Returns the names of every registered service definition. Names that
 only exist as an alias, a pre-set instance or a parameter are not
 included.
 
-## Contracts\Container\Service\Lifetime
-
-Class
-
-- **`Phalcon\Contracts\Container\Service\Lifetime`**
-
-### Constants
-
-<ApiItem kind="constant" name="SCOPED" type="string" default="&quot;SCOPED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="SINGLETON" type="string" default="&quot;SINGLETON&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="TRANSIENT" type="string" default="&quot;TRANSIENT&quot;">
-</ApiItem>
-
 ## Contracts\Container\Service\Provider
 
 Interface
@@ -3105,6 +3134,16 @@ Interface
 
 `Throwable`
 
+## Contracts\DataMapper\DataMapperTypes
+
+Interface
+
+Central registry of the array shapes used across the DataMapper namespace.
+
+- **`Phalcon\Contracts\DataMapper\DataMapperTypes`**
+
+`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Stringable`
+
 ## Contracts\Db\Adapter\Adapter
 
 Interface
@@ -3118,14 +3157,23 @@ Canonical contract for Phalcon\Db adapters.
              - createMaterializedView()  : bool
              - dropCheck()               : bool
              - dropMaterializedView()    : bool
+             - executePrepared()         : PDOStatement
              - onConflictUpdate()        : string
+             - prepare()                 : PDOStatement
              - refreshMaterializedView() : bool
              - returning()               : string
+
+The PDO adapters carry the two statement members above and the framework
+calls them on the interface. They join the interface in the next major;
+until then the tags below record what they provide.
+
+@method PDOStatement executePrepared(PDOStatement $statement, db_bind_params $placeholders, db_bind_types $dataTypes)
+@method PDOStatement prepare(string $sqlStatement)
 
 - **`Phalcon\Contracts\Db\Adapter\Adapter`**
 - [`Phalcon\Db\Adapter\AdapterInterface`](/6.0/api/phalcon_db/#dbadapteradapterinterface)
 
-`Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface`
+`PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface`
 
 ### Method Summary
 
@@ -3165,16 +3213,16 @@ Creates a table
 <ApiItem href="#contractsdbadapteradapter-createview" visibility="public" name="createView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Creates a view
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"array|string","name":"tableName","default":null},{"type":"string|null","name":"whereCondition","default":"null"},{"type":"array","name":"placeholders","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+<ApiItem href="#contractsdbadapteradapter-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"mixed","name":"table","default":null},{"type":"string|null","name":"whereCondition","default":"null"},{"type":"array","name":"placeholders","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
 Deletes data from a table using custom RDBMS SQL syntax
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-describecolumns" visibility="public" name="describeColumns" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#contractsdbadapteradapter-describecolumns" visibility="public" name="describeColumns" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Returns an array of Phalcon\Db\Column objects describing a table
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-describeindexes" visibility="public" name="describeIndexes" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#contractsdbadapteradapter-describeindexes" visibility="public" name="describeIndexes" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Lists table indexes
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#contractsdbadapteradapter-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Lists table references
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-dropcolumn" visibility="public" name="dropColumn" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"columnName","default":null}]}>
@@ -3195,10 +3243,10 @@ Drops a table from a schema/database
 <ApiItem href="#contractsdbadapteradapter-dropview" visibility="public" name="dropView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
 Drops a view
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-escapeidentifier" visibility="public" name="escapeIdentifier" returnType="string" params={[{"type":"array|float|int|string","name":"identifier","default":null}]}>
+<ApiItem href="#contractsdbadapteradapter-escapeidentifier" visibility="public" name="escapeIdentifier" returnType="string" params={[{"type":"mixed","name":"identifier","default":null}]}>
 Escapes a column/table/schema name
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-escapestring" visibility="public" name="escapeString" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
+<ApiItem href="#contractsdbadapteradapter-escapestring" visibility="public" name="escapeString" returnType="string" params={[{"type":"string","name":"str","default":null}]}>
 Escapes a value to avoid SQL injections
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-execute" visibility="public" name="execute" returnType="bool" params={[{"type":"string","name":"sqlStatement","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
@@ -3207,19 +3255,19 @@ Sends SQL statements to the database server returning the success state.
 <ApiItem href="#contractsdbadapteradapter-fetchall" visibility="public" name="fetchAll" returnType="array" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"2"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
 Dumps the complete result of a query into an array
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-fetchcolumn" visibility="public" name="fetchColumn" returnType="mixed" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"int|string","name":"column","default":"0"}]}>
+<ApiItem href="#contractsdbadapteradapter-fetchcolumn" visibility="public" name="fetchColumn" returnType="mixed" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"mixed","name":"column","default":"0"}]}>
 Returns the n'th field of first row in a SQL query result
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-fetchone" visibility="public" name="fetchOne" returnType="array|bool" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"2"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
 Returns the first row in a SQL query result
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-forupdate" visibility="public" name="forUpdate" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
-Returns a SQL modified with a FOR UPDATE clause
+Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-getcolumndefinition" visibility="public" name="getColumnDefinition" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 Returns the SQL column definition from a column
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getcolumnlist" visibility="public" name="getColumnList" returnType="string" params={[{"type":"array","name":"columnList","default":null}]}>
+<ApiItem href="#contractsdbadapteradapter-getcolumnlist" visibility="public" name="getColumnList" returnType="string" params={[{"type":"mixed","name":"columnList","default":null}]}>
 Gets a list of columns
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-getconnectionid" visibility="public" name="getConnectionId" returnType="int" params={[]}>
@@ -3261,10 +3309,10 @@ Active SQL statement in the object
 <ApiItem href="#contractsdbadapteradapter-gettype" visibility="public" name="getType" returnType="string" params={[]}>
 Returns type of database system the adapter is used for
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-insert" visibility="public" name="insert" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"values","default":null},{"type":"array|null","name":"fields","default":"null"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+<ApiItem href="#contractsdbadapteradapter-insert" visibility="public" name="insert" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"array","name":"values","default":null},{"type":"mixed","name":"fields","default":"null"},{"type":"mixed","name":"dataTypes","default":"null"}]}>
 Inserts data into a table using custom RDBMS SQL syntax
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-insertasdict" visibility="public" name="insertAsDict" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"data","default":null},{"type":"array","name":"dataTypes","default":"[]"}]}>
+<ApiItem href="#contractsdbadapteradapter-insertasdict" visibility="public" name="insertAsDict" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"mixed","name":"data","default":null},{"type":"mixed","name":"dataTypes","default":"null"}]}>
 Inserts data into a table using custom RBDM SQL syntax
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-isnestedtransactionswithsavepoints" visibility="public" name="isNestedTransactionsWithSavepoints" returnType="bool" params={[]}>
@@ -3276,7 +3324,7 @@ Checks whether connection is under database transaction
 <ApiItem href="#contractsdbadapteradapter-lastinsertid" visibility="public" name="lastInsertId" returnType="bool|string" params={[{"type":"string|null","name":"name","default":"null"}]}>
 Returns insert id for the auto_increment column inserted in the last SQL
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-limit" visibility="public" name="limit" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array|int","name":"number","default":null}]}>
+<ApiItem href="#contractsdbadapteradapter-limit" visibility="public" name="limit" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"mixed","name":"number","default":null}]}>
 Appends a LIMIT clause to sqlQuery argument
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-listtables" visibility="public" name="listTables" returnType="array" params={[{"type":"string|null","name":"schemaName","default":"null"}]}>
@@ -3300,11 +3348,11 @@ Rollbacks the active transaction in the connection
 <ApiItem href="#contractsdbadapteradapter-rollbacksavepoint" visibility="public" name="rollbackSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Rollbacks given savepoint
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-setnestedtransactionswithsavepoints" visibility="public" name="setNestedTransactionsWithSavepoints" returnType="\Phalcon\Db\Adapter\AdapterInterface" params={[{"type":"bool","name":"flag","default":null}]}>
+<ApiItem href="#contractsdbadapteradapter-setnestedtransactionswithsavepoints" visibility="public" name="setNestedTransactionsWithSavepoints" returnType="\Phalcon\Db\Adapter\AdapterInterface" params={[{"type":"bool","name":"nestedTransactionsWithSavepoints","default":null}]}>
 Set if nested transactions should use savepoints
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-sharedlock" visibility="public" name="sharedLock" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Returns a SQL modified with a shared-lock clause. See the dialect's
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-supportsequences" visibility="public" name="supportSequences" returnType="bool" params={[]}>
 Check whether the database system requires a sequence to produce
@@ -3318,10 +3366,10 @@ Generates SQL checking for the existence of a schema.table
 <ApiItem href="#contractsdbadapteradapter-tableoptions" visibility="public" name="tableOptions" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Gets creation options from a table
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-update" visibility="public" name="update" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"fields","default":null},{"type":"array","name":"values","default":null},{"type":"array|string","name":"whereCondition","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+<ApiItem href="#contractsdbadapteradapter-update" visibility="public" name="update" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"mixed","name":"fields","default":null},{"type":"mixed","name":"values","default":null},{"type":"mixed","name":"whereCondition","default":"null"},{"type":"mixed","name":"dataTypes","default":"null"}]}>
 Updates data on a table using custom RDBMS SQL syntax
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-updateasdict" visibility="public" name="updateAsDict" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"data","default":null},{"type":"array|string","name":"whereCondition","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+<ApiItem href="#contractsdbadapteradapter-updateasdict" visibility="public" name="updateAsDict" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"mixed","name":"data","default":null},{"type":"mixed","name":"whereCondition","default":"null"},{"type":"mixed","name":"dataTypes","default":"null"}]}>
 Updates data on a table using custom RBDM SQL syntax
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-useexplicitidvalue" visibility="public" name="useExplicitIdValue" returnType="bool" params={[]}>
@@ -3460,7 +3508,7 @@ Creates a view
 
 ```php
 public function delete(
-array|string $tableName,
+mixed $table,
 string|null $whereCondition = null,
 array $placeholders = [],
 array $dataTypes = []
@@ -3473,8 +3521,8 @@ Deletes data from a table using custom RDBMS SQL syntax
 
 ```php
 public function describeColumns(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -3484,8 +3532,8 @@ Returns an array of Phalcon\Db\Column objects describing a table
 
 ```php
 public function describeIndexes(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -3495,8 +3543,8 @@ Lists table indexes
 
 ```php
 public function describeReferences(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -3576,7 +3624,7 @@ Drops a view
 <h4 id="contractsdbadapteradapter-escapeidentifier"><code>escapeIdentifier()</code></h4>
 
 ```php
-public function escapeIdentifier( array|float|int|string $identifier ): string;
+public function escapeIdentifier( mixed $identifier ): string;
 ```
 
 Escapes a column/table/schema name
@@ -3584,7 +3632,7 @@ Escapes a column/table/schema name
 <h4 id="contractsdbadapteradapter-escapestring"><code>escapeString()</code></h4>
 
 ```php
-public function escapeString( string $input ): string;
+public function escapeString( string $str ): string;
 ```
 
 Escapes a value to avoid SQL injections
@@ -3622,7 +3670,7 @@ Dumps the complete result of a query into an array
 public function fetchColumn(
 string $sqlQuery,
 array $placeholders = [],
-int|string $column = 0
+mixed $column = 0
 ): mixed;
 ```
 
@@ -3663,7 +3711,9 @@ string $modifier = ""
 ): string;
 ```
 
-Returns a SQL modified with a FOR UPDATE clause
+Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
+appends a row-lock disposition keyword - pass `Dialect::LOCK_NOWAIT`
+or `Dialect::LOCK_SKIP_LOCKED` (or leave as `Dialect::LOCK_NONE`).
 
 <h4 id="contractsdbadapteradapter-getcolumndefinition"><code>getColumnDefinition()</code></h4>
 
@@ -3676,7 +3726,7 @@ Returns the SQL column definition from a column
 <h4 id="contractsdbadapteradapter-getcolumnlist"><code>getColumnList()</code></h4>
 
 ```php
-public function getColumnList( array $columnList ): string;
+public function getColumnList( mixed $columnList ): string;
 ```
 
 Gets a list of columns
@@ -3720,6 +3770,8 @@ $success = $connection->insert(
 ]
 );
 ```
+
+@todo Return NULL if this is not supported by the adapter
 
 <h4 id="contractsdbadapteradapter-getdescriptor"><code>getDescriptor()</code></h4>
 
@@ -3805,10 +3857,10 @@ Returns type of database system the adapter is used for
 
 ```php
 public function insert(
-string $tableName,
+string $table,
 array $values,
-array|null $fields = null,
-array $dataTypes = []
+mixed $fields = null,
+mixed $dataTypes = null
 ): bool;
 ```
 
@@ -3818,9 +3870,9 @@ Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
 public function insertAsDict(
-string $tableName,
-array $data,
-array $dataTypes = []
+string $table,
+mixed $data,
+mixed $dataTypes = null
 ): bool;
 ```
 
@@ -3870,7 +3922,7 @@ statement
 ```php
 public function limit(
 string $sqlQuery,
-array|int $number
+mixed $number
 ): string;
 ```
 
@@ -3946,7 +3998,7 @@ Rollbacks given savepoint
 <h4 id="contractsdbadapteradapter-setnestedtransactionswithsavepoints"><code>setNestedTransactionsWithSavepoints()</code></h4>
 
 ```php
-public function setNestedTransactionsWithSavepoints( bool $flag ): \Phalcon\Db\Adapter\AdapterInterface;
+public function setNestedTransactionsWithSavepoints( bool $nestedTransactionsWithSavepoints ): \Phalcon\Db\Adapter\AdapterInterface;
 ```
 
 Set if nested transactions should use savepoints
@@ -3960,7 +4012,10 @@ string $modifier = ""
 ): string;
 ```
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Returns a SQL modified with a shared-lock clause. See the dialect's
+`sharedLock()` for per-engine semantics. The optional `modifier` is
+passed straight through (use `Dialect::LOCK_NOWAIT` /
+`Dialect::LOCK_SKIP_LOCKED` for PostgreSQL).
 
 <h4 id="contractsdbadapteradapter-supportsequences"><code>supportSequences()</code></h4>
 
@@ -4005,11 +4060,11 @@ Gets creation options from a table
 
 ```php
 public function update(
-string $tableName,
-array $fields,
-array $values,
-array|string $whereCondition = [],
-array $dataTypes = []
+string $table,
+mixed $fields,
+mixed $values,
+mixed $whereCondition = null,
+mixed $dataTypes = null
 ): bool;
 ```
 
@@ -4019,10 +4074,10 @@ Updates data on a table using custom RDBMS SQL syntax
 
 ```php
 public function updateAsDict(
-string $tableName,
-array $data,
-array|string $whereCondition = [],
-array $dataTypes = []
+string $table,
+mixed $data,
+mixed $whereCondition = null,
+mixed $dataTypes = null
 ): bool;
 ```
 
@@ -4110,11 +4165,23 @@ Canonical contract for Phalcon\Db\Column.
 @todo v7 - these will become required interface members. They are
            omitted from the v5 line to avoid breaking third-party
            implementors:
+             - getComment()              : string | null
              - getGenerationExpression() : string | null
              - isArray()                 : bool
              - isGenerated()             : bool
              - isGenerationStored()      : bool
              - isInvisible()             : bool
+
+The dialects call the members above on the interface. They join the
+interface in the next major; until then the tags below record what all
+implementations provide.
+
+@method string|null getComment()
+@method string|null getGenerationExpression()
+@method bool        isArray()
+@method bool        isGenerated()
+@method bool        isGenerationStored()
+@method bool        isInvisible()
 
 - **`Phalcon\Contracts\Db\Column`**
 - [`Phalcon\Db\ColumnInterface`](/6.0/api/phalcon_db/#dbcolumninterface)
@@ -4300,6 +4367,41 @@ public function isUnsigned(): bool;
 
 Returns true if number column is unsigned
 
+## Contracts\Db\DbTypes
+
+Interface
+
+Central registry of the array shapes used across the Db namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `db_` because PHPStan resolves imported type
+names per file and has no namespacing for them: the prefix is what keeps
+generic names such as `row` or `options` from clashing with an alias
+imported from another namespace into the same file.
+
+The list is alphabetical, with one exception: an alias that another alias
+names must be defined before it. Psalm reads the aliases in file order and
+cannot resolve a forward reference; it reports the name as a missing class
+instead. PHPStan does not care about the order, so a forward reference is
+invisible until the cphalcon stubs are analyzed.
+
+The intermediate representation the dialects consume.
+
+`getSqlExpression()` dispatches on the `type` key and each branch reads
+only the keys its own node kind carries, so a single array shape cannot
+describe the tree. The alias therefore stays an untyped map, as
+`mvc_query_ir` does for the PHQL intermediate, and each read narrows the
+value it needs. A recursive alias is not an option either: PHPStan rejects
+one.
+
+- **`Phalcon\Contracts\Db\DbTypes`**
+
+`Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Profiler\Item` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
+
 ## Contracts\Db\Dialect
 
 Interface
@@ -4313,9 +4415,27 @@ Canonical contract for Phalcon\Db dialects.
              - createMaterializedView()  : string
              - dropCheck()               : string
              - dropMaterializedView()    : string
+             - escape()                  : string
+             - escapeSchema()            : string
+             - listViews()               : string
              - onConflictUpdate()        : string
              - refreshMaterializedView() : string
              - returning()               : string
+
+The adapters call the members above on the interface. They join the
+interface in the next major; until then the tags below record what all
+implementations provide.
+
+@method string addCheck(string $tableName, string $schemaName, \Phalcon\Db\CheckInterface $check)
+@method string createMaterializedView(string $view, db_view_definition $definition, string|null $schema = null)
+@method string dropCheck(string $tableName, string $schemaName, string $checkName)
+@method string dropMaterializedView(string $viewName, string|null $schemaName = null, bool $ifExists = true)
+@method string escape(string $input, string $escapeChar = '')
+@method string escapeSchema(string $input, string $escapeChar = '')
+@method string listViews(string|null $schemaName = null)
+@method string onConflictUpdate(string $sqlQuery, db_column_names $conflictColumns, db_column_names $updateColumns)
+@method string refreshMaterializedView(string $viewName, string|null $schemaName = null, bool $concurrent = false)
+@method string returning(string $sqlQuery, db_column_names $columns)
 
 - **`Phalcon\Contracts\Db\Dialect`**
 - [`Phalcon\Db\DialectInterface`](/6.0/api/phalcon_db/#dbdialectinterface)
@@ -4345,13 +4465,13 @@ Generates SQL to create a table
 <ApiItem href="#contractsdbdialect-createview" visibility="public" name="createView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Generates SQL to create a view
 </ApiItem>
-<ApiItem href="#contractsdbdialect-describecolumns" visibility="public" name="describeColumns" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#contractsdbdialect-describecolumns" visibility="public" name="describeColumns" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL to describe a table
 </ApiItem>
-<ApiItem href="#contractsdbdialect-describeindexes" visibility="public" name="describeIndexes" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#contractsdbdialect-describeindexes" visibility="public" name="describeIndexes" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL to query indexes on a table.
 </ApiItem>
-<ApiItem href="#contractsdbdialect-describereferences" visibility="public" name="describeReferences" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#contractsdbdialect-describereferences" visibility="public" name="describeReferences" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL to query foreign keys on a table.
 </ApiItem>
 <ApiItem href="#contractsdbdialect-dropcolumn" visibility="public" name="dropColumn" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"columnName","default":null}]}>
@@ -4367,13 +4487,13 @@ Generates SQL to delete an index from a table
 Generates SQL to delete primary key from a table
 </ApiItem>
 <ApiItem href="#contractsdbdialect-droptable" visibility="public" name="dropTable" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"bool","name":"ifExists","default":"true"}]}>
-Generates SQL to drop a table
+Generates SQL to drop a table. Every bundled dialect widens
 </ApiItem>
 <ApiItem href="#contractsdbdialect-dropview" visibility="public" name="dropView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
 Generates SQL to drop a view
 </ApiItem>
 <ApiItem href="#contractsdbdialect-forupdate" visibility="public" name="forUpdate" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
-Returns a SQL modified with a FOR UPDATE clause
+Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
 </ApiItem>
 <ApiItem href="#contractsdbdialect-getcolumndefinition" visibility="public" name="getColumnDefinition" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 Gets the column name in RDBMS
@@ -4384,10 +4504,10 @@ Gets a list of columns
 <ApiItem href="#contractsdbdialect-getcustomfunctions" visibility="public" name="getCustomFunctions" returnType="array" params={[]}>
 Returns registered functions
 </ApiItem>
-<ApiItem href="#contractsdbdialect-getsqlexpression" visibility="public" name="getSqlExpression" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#contractsdbdialect-getsqlexpression" visibility="public" name="getSqlExpression" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Transforms an intermediate representation for an expression into a
 </ApiItem>
-<ApiItem href="#contractsdbdialect-limit" visibility="public" name="limit" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array|int","name":"number","default":null}]}>
+<ApiItem href="#contractsdbdialect-limit" visibility="public" name="limit" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"mixed","name":"number","default":null}]}>
 Generates the SQL for LIMIT clause
 </ApiItem>
 <ApiItem href="#contractsdbdialect-listtables" visibility="public" name="listTables" returnType="string" params={[{"type":"string|null","name":"schemaName","default":"null"}]}>
@@ -4409,7 +4529,7 @@ Generate SQL to rollback a savepoint
 Builds a SELECT statement
 </ApiItem>
 <ApiItem href="#contractsdbdialect-sharedlock" visibility="public" name="sharedLock" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Returns a SQL modified with a shared-lock clause. MySQL emits
 </ApiItem>
 <ApiItem href="#contractsdbdialect-supportsreleasesavepoints" visibility="public" name="supportsReleaseSavepoints" returnType="bool" params={[]}>
 Checks whether the platform supports releasing savepoints.
@@ -4420,7 +4540,7 @@ Checks whether the platform supports savepoints
 <ApiItem href="#contractsdbdialect-tableexists" visibility="public" name="tableExists" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Generates SQL checking for the existence of a schema.table
 </ApiItem>
-<ApiItem href="#contractsdbdialect-tableoptions" visibility="public" name="tableOptions" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#contractsdbdialect-tableoptions" visibility="public" name="tableOptions" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates the SQL to describe the table creation options
 </ApiItem>
 <ApiItem href="#contractsdbdialect-viewexists" visibility="public" name="viewExists" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
@@ -4433,10 +4553,15 @@ Generates SQL checking for the existence of a schema.view
 No row-lock modifier - the default behavior for `forUpdate()`.
 </ApiItem>
 <ApiItem kind="constant" name="LOCK_NOWAIT" type="string" default="&quot;NOWAIT&quot;">
-Append `NOWAIT` to the `FOR UPDATE` clause.
+Append `NOWAIT` to the `FOR UPDATE` clause - the query fails immediately
+if a row it needs is locked instead of blocking. MySQL 8.0+ and
+PostgreSQL 9.5+ recognize this. SQLite has no row-level locking and
+silently ignores the modifier.
 </ApiItem>
 <ApiItem kind="constant" name="LOCK_SKIP_LOCKED" type="string" default="&quot;SKIP LOCKED&quot;">
-Append `SKIP LOCKED` to the `FOR UPDATE` clause.
+Append `SKIP LOCKED` to the `FOR UPDATE` clause - the query returns
+rows that are not currently locked and silently skips ones that are.
+MySQL 8.0+ and PostgreSQL 9.5+ recognize this. SQLite ignores it.
 </ApiItem>
 
 ### Methods
@@ -4525,8 +4650,8 @@ Generates SQL to create a view
 
 ```php
 public function describeColumns(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4536,8 +4661,8 @@ Generates SQL to describe a table
 
 ```php
 public function describeIndexes(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4551,8 +4676,8 @@ column name.
 
 ```php
 public function describeReferences(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4620,7 +4745,9 @@ bool $ifExists = true
 ): string;
 ```
 
-Generates SQL to drop a table
+Generates SQL to drop a table. Every bundled dialect widens
+`schemaName` to `string|null` and defaults it to null; widening the
+contract itself is a next major change.
 
 <h4 id="contractsdbdialect-dropview"><code>dropView()</code></h4>
 
@@ -4643,7 +4770,9 @@ string $modifier = ""
 ): string;
 ```
 
-Returns a SQL modified with a FOR UPDATE clause
+Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
+appends a row-lock disposition keyword - pass `Dialect::LOCK_NOWAIT`
+or `Dialect::LOCK_SKIP_LOCKED` (or leave as `Dialect::LOCK_NONE`).
 
 <h4 id="contractsdbdialect-getcolumndefinition"><code>getColumnDefinition()</code></h4>
 
@@ -4674,7 +4803,7 @@ Returns registered functions
 ```php
 public function getSqlExpression(
 array $expression,
-string $escapeChar = "",
+string|null $escapeChar = null,
 array $bindCounts = []
 ): string;
 ```
@@ -4687,7 +4816,7 @@ database system valid expression
 ```php
 public function limit(
 string $sqlQuery,
-array|int $number
+mixed $number
 ): string;
 ```
 
@@ -4758,7 +4887,12 @@ string $modifier = ""
 ): string;
 ```
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Returns a SQL modified with a shared-lock clause. MySQL emits
+`LOCK IN SHARE MODE`; PostgreSQL emits `FOR SHARE`; SQLite returns the
+original query unchanged. The optional `modifier` appends a row-lock
+disposition keyword (`Dialect::LOCK_NOWAIT` / `Dialect::LOCK_SKIP_LOCKED`)
+for PostgreSQL - MySQL's legacy `LOCK IN SHARE MODE` does not support
+modifiers, so non-empty values are silently ignored on MySQL.
 
 <h4 id="contractsdbdialect-supportsreleasesavepoints"><code>supportsReleaseSavepoints()</code></h4>
 
@@ -4791,8 +4925,8 @@ Generates SQL checking for the existence of a schema.table
 
 ```php
 public function tableOptions(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4869,6 +5003,15 @@ Canonical contract for Phalcon\Db\Index.
              - getWhere()      : string
              - isConcurrent()  : bool
              - isInvisible()   : bool
+
+The dialects call the members above on the interface. They join the
+interface in the next major; until then the tags below record what all
+implementations provide.
+
+@method db_index_directions getDirections()
+@method string              getWhere()
+@method bool                isConcurrent()
+@method bool                isInvisible()
 
 - **`Phalcon\Contracts\Db\Index`**
 - [`Phalcon\Db\IndexInterface`](/6.0/api/phalcon_db/#dbindexinterface)
@@ -5125,6 +5268,14 @@ public function setFetchMode( int $fetchMode ): bool;
 ```
 
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
+
+## Contracts\Di\DiTypes
+
+Interface
+
+Central registry of the array shapes used across the Di namespace.
+
+- **`Phalcon\Contracts\Di\DiTypes`**
 
 ## Contracts\Dispatcher\Dispatcher
 
@@ -5867,6 +6018,27 @@ int $blockSize
 ): int;
 ```
 
+## Contracts\Encryption\EncryptionTypes
+
+Interface
+
+Central registry of the array shapes used across the Encryption namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `encryption_` because PHPStan resolves
+imported type names per file and has no namespacing for them: the prefix is
+what keeps generic names such as `options` or `claims` from clashing with an
+alias imported from another namespace into the same file.
+
+The list is alphabetical, with one exception: an alias that another alias
+names must be defined before it.
+
+- **`Phalcon\Contracts\Encryption\EncryptionTypes`**
+
 ## Contracts\Encryption\Security\CryptoUtils
 
 Interface
@@ -5934,7 +6106,7 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractsencryptionsecuritycsrfprotection-checktoken" visibility="public" name="checkToken" returnType="bool" params={[{"type":"string|null","name":"tokenKey","default":"null"},{"type":"string|null","name":"tokenValue","default":"null"},{"type":"bool","name":"destroyIfValid","default":"true"}]}>
+<ApiItem href="#contractsencryptionsecuritycsrfprotection-checktoken" visibility="public" name="checkToken" returnType="bool" params={[{"type":"string|null","name":"tokenKey","default":"null"},{"type":"mixed","name":"tokenValue","default":"null"},{"type":"bool","name":"destroyIfValid","default":"true"}]}>
 </ApiItem>
 <ApiItem href="#contractsencryptionsecuritycsrfprotection-destroytoken" visibility="public" name="destroyToken" returnType="Security" params={[]}>
 </ApiItem>
@@ -5954,7 +6126,7 @@ Interface
 ```php
 public function checkToken(
 string|null $tokenKey = null,
-string|null $tokenValue = null,
+mixed $tokenValue = null,
 bool $destroyIfValid = true
 ): bool;
 ```
@@ -6059,6 +6231,8 @@ Verify a passed source with a payload and passphrase
 Interface
 
 - **`Phalcon\Contracts\Encryption\Security\PasswordSecurity`**
+
+`Phalcon\Contracts\Encryption\EncryptionTypes`
 
 ### Method Summary
 
@@ -6386,6 +6560,14 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 Sets the events manager
 
+## Contracts\Events\EventsTypes
+
+Interface
+
+Central registry of the array shapes used across the Events namespace.
+
+- **`Phalcon\Contracts\Events\EventsTypes`**
+
 ## Contracts\Events\Manager
 
 Interface
@@ -6398,12 +6580,12 @@ Canonical contract for Phalcon\Events\Manager.
 ### Method Summary
 
 <ApiItem href="#contractseventsmanager-addsubscriber" visibility="public" name="addSubscriber" returnType="void" params={[{"type":"Subscriber","name":"subscriber","default":null}]}>
-Registers an event subscriber.
+Registers an event subscriber. The subscriber's getSubscribedEvents()
 </ApiItem>
 <ApiItem href="#contractseventsmanager-areprioritiesenabled" visibility="public" name="arePrioritiesEnabled" returnType="bool" params={[]}>
 Returns whether priority ordering is currently enabled.
 </ApiItem>
-<ApiItem href="#contractseventsmanager-attach" visibility="public" name="attach" returnType="void" params={[{"type":"string","name":"eventType","default":null},{"type":"callable|object","name":"handler","default":null},{"type":"int","name":"priority","default":"self::DEFAULT_PRIORITY"}]}>
+<ApiItem href="#contractseventsmanager-attach" visibility="public" name="attach" returnType="void" params={[{"type":"string","name":"eventType","default":null},{"type":"mixed","name":"handler","default":null},{"type":"int","name":"priority","default":"self::DEFAULT_PRIORITY"}]}>
 Attach a listener to the events manager.
 </ApiItem>
 <ApiItem href="#contractseventsmanager-clearsubscribers" visibility="public" name="clearSubscribers" returnType="void" params={[]}>
@@ -6412,7 +6594,7 @@ Removes every registered subscriber and detaches each listener they
 <ApiItem href="#contractseventsmanager-collectresponses" visibility="public" name="collectResponses" returnType="void" params={[{"type":"bool","name":"collect","default":null}]}>
 Toggle response collection on/off.
 </ApiItem>
-<ApiItem href="#contractseventsmanager-detach" visibility="public" name="detach" returnType="void" params={[{"type":"string","name":"eventType","default":null},{"type":"callable|object","name":"handler","default":null}]}>
+<ApiItem href="#contractseventsmanager-detach" visibility="public" name="detach" returnType="void" params={[{"type":"string","name":"eventType","default":null},{"type":"mixed","name":"handler","default":null}]}>
 Detach a listener from the events manager.
 </ApiItem>
 <ApiItem href="#contractseventsmanager-detachall" visibility="public" name="detachAll" returnType="void" params={[{"type":"string|null","name":"type","default":"null"}]}>
@@ -6443,7 +6625,7 @@ Check whether the manager is currently collecting responses.
 Returns true when the given handler is an object or callable.
 </ApiItem>
 <ApiItem href="#contractseventsmanager-removesubscriber" visibility="public" name="removeSubscriber" returnType="void" params={[{"type":"Subscriber","name":"subscriber","default":null}]}>
-Removes a previously registered subscriber.
+Removes a previously registered subscriber. Detaches every listener the
 </ApiItem>
 
 ### Constants
@@ -6459,7 +6641,9 @@ Removes a previously registered subscriber.
 public function addSubscriber( Subscriber $subscriber ): void;
 ```
 
-Registers an event subscriber.
+Registers an event subscriber. The subscriber's getSubscribedEvents()
+map is parsed and each entry is attached through the regular listener
+pipeline.
 
 <h4 id="contractseventsmanager-areprioritiesenabled"><code>arePrioritiesEnabled()</code></h4>
 
@@ -6474,7 +6658,7 @@ Returns whether priority ordering is currently enabled.
 ```php
 public function attach(
 string $eventType,
-callable|object $handler,
+mixed $handler,
 int $priority = self::DEFAULT_PRIORITY
 ): void;
 ```
@@ -6488,7 +6672,7 @@ public function clearSubscribers(): void;
 ```
 
 Removes every registered subscriber and detaches each listener they
-contributed.
+contributed. Listeners attached via attach() are untouched.
 
 <h4 id="contractseventsmanager-collectresponses"><code>collectResponses()</code></h4>
 
@@ -6503,7 +6687,7 @@ Toggle response collection on/off.
 ```php
 public function detach(
 string $eventType,
-callable|object $handler
+mixed $handler
 ): void;
 ```
 
@@ -6592,13 +6776,17 @@ Returns true when the given handler is an object or callable.
 public function removeSubscriber( Subscriber $subscriber ): void;
 ```
 
-Removes a previously registered subscriber.
+Removes a previously registered subscriber. Detaches every listener the
+subscriber declared via getSubscribedEvents(). Idempotent.
 
 ## Contracts\Events\Stoppable
 
 Interface
 
-Phalcon's local mirror of PSR-14 StoppableEventInterface.
+Phalcon's local mirror of PSR-14 StoppableEventInterface. Identical shape;
+not extended from the PSR interface because the Zephir extension cannot
+reference Composer-loaded interfaces at build time. A separate bridge
+package exposes a PSR-14 adapter.
 
 - **`Phalcon\Contracts\Events\Stoppable`**
 
@@ -6636,12 +6824,21 @@ Accepted value shapes per event key:
       ['methodName2', priority],
   ]
 
+Keys can be either a Phalcon event string (e.g. "db:beforeQuery") or a
+fully qualified event class name.
+
+Wildcard subscriptions: Phalcon's manager fires both the prefix queue and
+the full-name queue (e.g. "db" is fired before "db:beforeQuery"). To
+subscribe to every event of a component, use the prefix as the key:
+
+  'db' => 'onAnyDbEvent'   // fires for db:beforeQuery, db:afterQuery, ...
+
 - **`Phalcon\Contracts\Events\Subscriber`**
 
 ### Method Summary
 
 <ApiItem href="#contractseventssubscriber-getsubscribedevents" visibility="public" name="getSubscribedEvents" returnType="array" params={[]}>
-Returns a map of event name => listener config.
+Returns a map of event name => listener config. Called once per
 </ApiItem>
 
 ### Methods
@@ -6652,7 +6849,16 @@ Returns a map of event name => listener config.
 public static function getSubscribedEvents(): array;
 ```
 
-Returns a map of event name => listener config.
+Returns a map of event name => listener config. Called once per
+Manager::addSubscriber() / removeSubscriber() call.
+
+## Contracts\Factory\FactoryTypes
+
+Interface
+
+Central registry of the array shapes used across the Factory namespace.
+
+- **`Phalcon\Contracts\Factory\FactoryTypes`**
 
 ## Contracts\Filter\FilterTypes
 
@@ -7627,6 +7833,8 @@ keeps generic names such as `model_find_parameters` from clashing with an
 alias imported from another namespace into the same file.
 
 - **`Phalcon\Contracts\Mvc\MvcTypes`**
+
+`Phalcon\Di\DiInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Router\RouteInterface`
 
 ## Contracts\Paginator\Adapter
 

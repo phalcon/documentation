@@ -2105,7 +2105,7 @@ Adds filters to the field
 <ApiItem href="#filtervalidationvalidationinterface-setlabels" visibility="public" name="setLabels" returnType="void" params={[{"type":"array","name":"labels","default":null}]}>
 Adds labels for fields
 </ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-validate" visibility="public" name="validate" returnType="Messages|bool" params={[{"type":"mixed","name":"data","default":"null"},{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
+<ApiItem href="#filtervalidationvalidationinterface-validate" visibility="public" name="validate" returnType="bool|Messages" params={[{"type":"mixed","name":"data","default":"null"},{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
 Validate a set of data according to a set of rules
 </ApiItem>
 
@@ -2239,7 +2239,7 @@ public function validate(
 mixed $data = null,
 mixed $entity = null,
 array $whitelist = []
-): Messages|bool;
+): bool|Messages;
 ```
 
 Validate a set of data according to a set of rules

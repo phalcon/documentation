@@ -216,7 +216,7 @@ Adds a component to the ACL list
 <ApiItem href="#acladaptermemory-addcomponentaccess" visibility="public" name="addComponentAccess" returnType="bool" params={[{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"accessList","default":null}]}>
 Adds access to components
 </ApiItem>
-<ApiItem href="#acladaptermemory-addinherit" visibility="public" name="addInherit" returnType="bool" params={[{"type":"string","name":"roleName","default":null},{"type":"array|RoleInterface|string","name":"roleToInherit","default":null}]}>
+<ApiItem href="#acladaptermemory-addinherit" visibility="public" name="addInherit" returnType="bool" params={[{"type":"string","name":"roleName","default":null},{"type":"mixed","name":"roleToInherits","default":null}]}>
 Add a role which inherits from an existing role
 </ApiItem>
 <ApiItem href="#acladaptermemory-addrole" visibility="public" name="addRole" returnType="bool" params={[{"type":"mixed","name":"role","default":null},{"type":"mixed","name":"accessInherits","default":"null"}]}>
@@ -240,7 +240,7 @@ Returns number of additional arguments(excluding role and resource) for active f
 <ApiItem href="#acladaptermemory-getactivekey" visibility="public" name="getActiveKey" returnType="string|null" params={[]}>
 Returns the last composite key used to acquire access.
 </ApiItem>
-<ApiItem href="#acladaptermemory-getcomponents" visibility="public" name="getComponents" returnType="array|null" params={[]}>
+<ApiItem href="#acladaptermemory-getcomponents" visibility="public" name="getComponents" returnType="array" params={[]}>
 Return an array with every component registered in the list
 </ApiItem>
 <ApiItem href="#acladaptermemory-getinheritedroles" visibility="public" name="getInheritedRoles" returnType="array" params={[{"type":"string","name":"roleName","default":"\"\""}]}>
@@ -267,10 +267,10 @@ Sets the default access level (`Phalcon\Enum::ALLOW` or
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="access" type="array&lt;string, int&gt;" default="[]">
+<ApiItem kind="property" visibility="protected" name="access" type="array" default="[]">
 Access
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="accessList" type="array&lt;string, bool&gt;" default="[...]">
+<ApiItem kind="property" visibility="protected" name="accessList" type="array" default="[...]">
 Access List
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="activeFunction" type="mixed" default="">
@@ -283,22 +283,22 @@ active function
 <ApiItem kind="property" visibility="protected" name="activeKey" type="string|null" default="null">
 Returns the latest key used to acquire access
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="components" type="acl_components" default="[]">
+<ApiItem kind="property" visibility="protected" name="components" type="array" default="[]">
 Components
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="componentsNames" type="array&lt;string, bool&gt;" default="[...]">
+<ApiItem kind="property" visibility="protected" name="componentsNames" type="array" default="[...]">
 Component Names
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="functions" type="array&lt;string, callable|string&gt;" default="[]">
+<ApiItem kind="property" visibility="protected" name="functions" type="array" default="[]">
 Function List
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="noArgumentsDefaultAction" type="int" default="Enum::DENY">
 Default action for no arguments is `deny`
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="roleInherits" type="array&lt;string, array&lt;int, string&gt;&gt;" default="[]">
+<ApiItem kind="property" visibility="protected" name="roleInherits" type="array" default="[]">
 Role Inherits
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="roles" type="array&lt;string, RoleInterface&gt;" default="[]">
+<ApiItem kind="property" visibility="protected" name="roles" type="array" default="[]">
 Roles
 </ApiItem>
 
@@ -365,7 +365,7 @@ The accepted values are documented on the contract.
 ```php
 public function addInherit(
 string $roleName,
-array|RoleInterface|string $roleToInherit
+mixed $roleToInherits
 ): bool;
 ```
 
@@ -496,7 +496,7 @@ Returns the last composite key used to acquire access.
 <h4 id="acladaptermemory-getcomponents"><code>getComponents()</code></h4>
 
 ```php
-public function getComponents(): array|null;
+public function getComponents(): array;
 ```
 
 Return an array with every component registered in the list

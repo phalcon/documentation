@@ -34,7 +34,40 @@ This abstract class offers common access to the DI in a class
 - [`Phalcon\Mvc\Url`](/6.0/api/phalcon_mvc/#mvcurl)
 - [`Phalcon\Session\Manager`](/6.0/api/phalcon_session/#sessionmanager)
 
-`Phalcon\Di\Traits\InjectionAwareTrait` · `stdClass`
+`stdClass`
+
+### Method Summary
+
+<ApiItem href="#diabstractinjectionaware-getdi" visibility="public" name="getDI" returnType="DiInterface|null" params={[]}>
+Returns the internal dependency injector
+</ApiItem>
+<ApiItem href="#diabstractinjectionaware-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Sets the dependency injector
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="null">
+Dependency Injector
+</ApiItem>
+
+### Methods
+
+<h4 id="diabstractinjectionaware-getdi"><code>getDI()</code></h4>
+
+```php
+public function getDI(): DiInterface|null;
+```
+
+Returns the internal dependency injector
+
+<h4 id="diabstractinjectionaware-setdi"><code>setDI()</code></h4>
+
+```php
+public function setDI( DiInterface $container ): void;
+```
+
+Sets the dependency injector
 
 ## Di\Di
 
@@ -81,7 +114,7 @@ $request = $di->getRequest();
 - **`Phalcon\Di\Di`** - implements [`Phalcon\Di\DiInterface`](#didiinterface)
 - [`Phalcon\Di\FactoryDefault`](#difactorydefault)
 
-`Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Traits\DiArrayAccessTrait` · `Phalcon\Di\Traits\DiEventsTrait` · `Phalcon\Di\Traits\DiExceptionsTrait` · `Phalcon\Di\Traits\DiInstanceTrait` · `Phalcon\Di\Traits\DiLoadTrait` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `stdClass`
+`Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Exceptions\ServiceCannotBeResolved` · `Phalcon\Events\ManagerInterface` · `stdClass`
 
 ### Method Summary
 
@@ -124,6 +157,24 @@ Check whether the DI contains a service by a name
 <ApiItem href="#didi-hasshared" visibility="public" name="hasShared" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Check whether the DI has a cached shared instance for a service name.
 </ApiItem>
+<ApiItem href="#didi-loadfromphp" visibility="public" name="loadFromPhp" returnType="void" params={[{"type":"string","name":"filePath","default":null}]}>
+Loads services from a php config file.
+</ApiItem>
+<ApiItem href="#didi-loadfromyaml" visibility="public" name="loadFromYaml" returnType="void" params={[{"type":"string","name":"filePath","default":null},{"type":"array|null","name":"callbacks","default":"null"}]}>
+Loads services from a yaml file.
+</ApiItem>
+<ApiItem href="#didi-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"name","default":null}]}>
+Check if a service is registered using the array syntax
+</ApiItem>
+<ApiItem href="#didi-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"name","default":null}]}>
+Allows to obtain a shared service using the array syntax
+</ApiItem>
+<ApiItem href="#didi-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
+Allows to register a shared service using the array syntax
+</ApiItem>
+<ApiItem href="#didi-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"name","default":null}]}>
+Removes a service from the services container using the array syntax
+</ApiItem>
 <ApiItem href="#didi-register" visibility="public" name="register" returnType="void" params={[{"type":"ServiceProviderInterface","name":"provider","default":null}]}>
 Registers a service provider.
 </ApiItem>
@@ -154,19 +205,25 @@ Sets a service using a raw Phalcon\Di\Service definition
 <ApiItem href="#didi-setshared" visibility="public" name="setShared" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
 Registers an "always shared" service in the services container
 </ApiItem>
+<ApiItem href="#didi-loadfromconfig" visibility="protected" name="loadFromConfig" returnType="void" params={[{"type":"ConfigInterface","name":"config","default":null}]}>
+Loads services from a Config object.
+</ApiItem>
 
 ### Properties
 
 <ApiItem kind="property" visibility="protected" name="aliases" type="array&lt;string, string&gt;" default="[]">
 List of service aliases
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultContainer" type="object|null" default="null">
+<ApiItem kind="property" visibility="protected" name="defaultContainer" type="DiInterface|null" default="null">
 Latest DI build
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
+Events Manager
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="services" type="ServiceInterface[]" default="[]">
 List of registered services
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="sharedInstances" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="sharedInstances" type="array&lt;string, mixed&gt;" default="[]">
 List of shared instances
 </ApiItem>
 
@@ -297,6 +354,127 @@ Unlike `has()`, which reports on the service *definition* registry,
 this method reports only on the resolved-instance cache populated by
 `getShared()`.
 
+<h4 id="didi-loadfromphp"><code>loadFromPhp()</code></h4>
+
+```php
+public function loadFromPhp( string $filePath ): void;
+```
+
+Loads services from a php config file.
+
+```php
+$di->loadFromPhp("path/services.php");
+```
+
+And the services can be specified in the file as:
+
+```php
+return [
+ 'myComponent' => [
+     'className' => '\Acme\Components\MyComponent',
+     'shared' => true,
+ ],
+ 'group' => [
+     'className' => '\Acme\Group',
+     'arguments' => [
+         [
+             'type' => 'service',
+             'service' => 'myComponent',
+         ],
+     ],
+ ],
+ 'user' => [
+     'className' => '\Acme\User',
+ ],
+];
+```
+
+@link https://docs.phalcon.io/latest/di/
+
+<h4 id="didi-loadfromyaml"><code>loadFromYaml()</code></h4>
+
+```php
+public function loadFromYaml(
+string $filePath,
+array|null $callbacks = null
+): void;
+```
+
+Loads services from a yaml file.
+
+```php
+$di->loadFromYaml(
+"path/services.yaml",
+[
+    "!approot" => function ($value) {
+        return dirname(__DIR__) . $value;
+    }
+]
+);
+```
+
+And the services can be specified in the file as:
+
+```php
+myComponent:
+className: \Acme\Components\MyComponent
+shared: true
+
+group:
+className: \Acme\Group
+arguments:
+    - type: service
+      name: myComponent
+
+user:
+   className: \Acme\User
+```
+
+@link https://docs.phalcon.io/latest/di/
+
+<h4 id="didi-offsetexists"><code>offsetExists()</code></h4>
+
+```php
+public function offsetExists( mixed $name ): bool;
+```
+
+Check if a service is registered using the array syntax
+
+<h4 id="didi-offsetget"><code>offsetGet()</code></h4>
+
+```php
+public function offsetGet( mixed $name ): mixed;
+```
+
+Allows to obtain a shared service using the array syntax
+
+```php
+var_dump($di["request"]);
+```
+
+<h4 id="didi-offsetset"><code>offsetSet()</code></h4>
+
+```php
+public function offsetSet(
+mixed $offset,
+mixed $value
+): void;
+```
+
+Allows to register a shared service using the array syntax
+
+```php
+$di["request"] = new \Phalcon\Http\Request();
+```
+
+<h4 id="didi-offsetunset"><code>offsetUnset()</code></h4>
+
+```php
+public function offsetUnset( mixed $name ): void;
+```
+
+Removes a service from the services container using the array syntax
+
 <h4 id="didi-register"><code>register()</code></h4>
 
 ```php
@@ -411,11 +589,21 @@ mixed $definition
 
 Registers an "always shared" service in the services container
 
+<h4 id="didi-loadfromconfig"><code>loadFromConfig()</code></h4>
+
+```php
+protected function loadFromConfig( ConfigInterface $config ): void;
+```
+
+Loads services from a Config object.
+
 ## Di\DiInterface
 
 Interface
 
-Interface for Phalcon\Di
+Interface for Phalcon\Di\Di
+
+@extends ArrayAccess&lt;string, mixed>
 
 - `\ArrayAccess`
 - **`Phalcon\Di\DiInterface`**
@@ -665,6 +853,43 @@ Exceptions thrown in Phalcon\Di will use this class
 - [`Phalcon\Di\Exceptions\SetterInjectionRequiresInstance`](#diexceptionssetterinjectionrequiresinstance)
 - [`Phalcon\Di\Exceptions\SetterParametersMustBeArray`](#diexceptionssetterparametersmustbearray)
 - [`Phalcon\Di\Exceptions\UnknownServiceType`](#diexceptionsunknownservicetype)
+
+### Method Summary
+
+<ApiItem href="#diexception-servicecannotberesolved" visibility="public" name="serviceCannotBeResolved" returnType="Exception" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#diexception-servicenotfound" visibility="public" name="serviceNotFound" returnType="Exception" params={[{"type":"string","name":"name","default":null}]}>
+</ApiItem>
+<ApiItem href="#diexception-undefinedmethod" visibility="public" name="undefinedMethod" returnType="Exception" params={[{"type":"string","name":"method","default":null}]}>
+</ApiItem>
+<ApiItem href="#diexception-unknownserviceinparameter" visibility="public" name="unknownServiceInParameter" returnType="Exception" params={[{"type":"int","name":"position","default":null}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="diexception-servicecannotberesolved"><code>serviceCannotBeResolved()</code></h4>
+
+```php
+public static function serviceCannotBeResolved( string $name ): Exception;
+```
+
+<h4 id="diexception-servicenotfound"><code>serviceNotFound()</code></h4>
+
+```php
+public static function serviceNotFound( string $name ): Exception;
+```
+
+<h4 id="diexception-undefinedmethod"><code>undefinedMethod()</code></h4>
+
+```php
+public static function undefinedMethod( string $method ): Exception;
+```
+
+<h4 id="diexception-unknownserviceinparameter"><code>unknownServiceInParameter()</code></h4>
+
+```php
+public static function unknownServiceInParameter( int $position ): Exception;
+```
 
 ## Di\Exception\ServiceResolutionException
 
@@ -1150,15 +1375,13 @@ registers all the services provided by the framework. Thanks to this, the
 developer does not need to register each service individually providing a
 full stack framework
 
-@property Annotations        $annotations
-@property AnnotationsMemory  $annotationsMemory
+@property AnnotationsMemory  $annotations
 @property AssetsManager      $assets
 @property Crypt              $crypt
 @property Cookies            $cookies
 @property Dispatcher         $dispatcher
 @property Escaper            $escaper
 @property EventsManager      $eventsManager
-@property Factory            $modelsEventFactory
 @property Direct             $flash
 @property Session            $flashSession
 @property Filter             $filter
@@ -1171,7 +1394,6 @@ full stack framework
 @property Router             $router
 @property Security           $security
 @property Settings           $settings
-@property SerializerFactory  $storageSerializer
 @property TagFactory         $tag
 @property TransactionManager $transactionManager
 @property Url                $url
@@ -1181,7 +1403,7 @@ full stack framework
 - **`Phalcon\Di\FactoryDefault`**
 - [`Phalcon\Di\FactoryDefault\Cli`](#difactorydefaultcli)
 
-`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Assets\Manager` · `Phalcon\Db\Event\Factory` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\Response\Cookies` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Url` · `Phalcon\Queue\QueueFactory` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
+`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\Response\Cookies` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Url` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -1215,7 +1437,7 @@ This class is specially suitable for CLI applications
 - [`Phalcon\Di\FactoryDefault`](#difactorydefault)
 - **`Phalcon\Di\FactoryDefault\Cli`**
 
-`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Annotations` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Router` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Service` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\FilterFactory` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Queue\QueueFactory` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
+`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Router` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Service` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\FilterFactory` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -1301,7 +1523,7 @@ accessing a public property with the same name of a registered service
 - [`Phalcon\Mvc\View\Engine\AbstractEngine`](/6.0/api/phalcon_mvc/#mvcviewengineabstractengine)
 - [`Phalcon\Mvc\View\Simple`](/6.0/api/phalcon_mvc/#mvcviewsimple)
 
-`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterInterface` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Http\Request` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Http\Response\Cookies` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Session\Bag` · `Phalcon\Session\BagInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings` · `stdClass`
+`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\Exceptions\ContainerRequired` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterInterface` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Http\Request` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Http\Response\Cookies` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Session\Bag` · `Phalcon\Session\BagInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings` · `stdClass`
 
 ### Method Summary
 
@@ -1311,8 +1533,17 @@ Magic method __get
 <ApiItem href="#diinjectable-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Magic method __isset
 </ApiItem>
-<ApiItem href="#diinjectable-getdi" visibility="public" name="getDI" returnType="DiInterface|null" params={[]}>
+<ApiItem href="#diinjectable-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
 Returns the internal dependency injector
+</ApiItem>
+<ApiItem href="#diinjectable-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Sets the dependency injector
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="null">
+Dependency Injector
 </ApiItem>
 
 ### Methods
@@ -1336,10 +1567,18 @@ Magic method __isset
 <h4 id="diinjectable-getdi"><code>getDI()</code></h4>
 
 ```php
-public function getDI(): DiInterface|null;
+public function getDI(): DiInterface;
 ```
 
 Returns the internal dependency injector
+
+<h4 id="diinjectable-setdi"><code>setDI()</code></h4>
+
+```php
+public function setDI( DiInterface $container ): void;
+```
+
+Sets the dependency injector
 
 ## Di\InjectionAwareInterface
 
@@ -1392,14 +1631,9 @@ $service = new \Phalcon\Di\Service(
 $request = service->resolve();
 ```
 
-@property array $definition
-@property bool  $resolved
-@property bool  $shared
-@property mixed $sharedInstance
-
 - **`Phalcon\Di\Service`** - implements [`Phalcon\Di\ServiceInterface`](#diserviceinterface)
 
-`Closure` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder` · `Phalcon\Di\Traits\DiInstanceTrait`
+`Closure` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder`
 
 ### Method Summary
 
@@ -1543,6 +1777,8 @@ Interface
 Represents a service in the services container
 
 - **`Phalcon\Di\ServiceInterface`**
+
+`Phalcon\Contracts\Di\DiTypes`
 
 ### Method Summary
 
@@ -1692,11 +1928,13 @@ Registers a service provider.
 
 Class
 
+Phalcon\Di\Service\Builder
+
 This class builds instances based on complex definitions
 
 - **`Phalcon\Di\Service\Builder`**
 
-`Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Traits\DiExceptionsTrait` · `Phalcon\Di\Traits\DiInstanceTrait`
+`Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\ArgumentTypeRequired` · `Phalcon\Di\Exceptions\CallArgumentsMustBeArray` · `Phalcon\Di\Exceptions\MethodCallMustBeArray` · `Phalcon\Di\Exceptions\MethodNameRequired` · `Phalcon\Di\Exceptions\MissingClassNameParameter` · `Phalcon\Di\Exceptions\MissingParameterKey` · `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance` · `Phalcon\Di\Exceptions\PropertyMustBeArray` · `Phalcon\Di\Exceptions\PropertyNameRequired` · `Phalcon\Di\Exceptions\PropertyValueRequired` · `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance` · `Phalcon\Di\Exceptions\SetterParametersMustBeArray` · `Phalcon\Di\Exceptions\UnknownServiceType`
 
 ### Method Summary
 
@@ -1717,357 +1955,5 @@ array|null $parameters = null
 ```
 
 Builds a service using a complex service definition
-
-## Di\Traits\DiArrayAccessTrait
-
-Trait
-
-- **`Phalcon\Di\Traits\DiArrayAccessTrait`**
-
-`Phalcon\Di\Exception` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\ServiceInterface` · `ReturnTypeWillChange`
-
-[`Phalcon\Di\Di`](#didi)
-
-### Method Summary
-
-<ApiItem href="#ditraitsdiarrayaccesstrait-getshared" visibility="public" name="getShared" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array|null","name":"parameters","default":"null"}]}>
-Resolves a service, the resolved service is stored in the DI, subsequent
-</ApiItem>
-<ApiItem href="#ditraitsdiarrayaccesstrait-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Check whether the DI contains a service by a name
-</ApiItem>
-<ApiItem href="#ditraitsdiarrayaccesstrait-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"name","default":null}]}>
-Check if a service is registered using the array syntax
-</ApiItem>
-<ApiItem href="#ditraitsdiarrayaccesstrait-offsetget" visibility="public" name="offsetGet" returnType="" params={[{"type":"mixed","name":"name","default":null}]}>
-Allows to obtain a shared service using the array syntax
-</ApiItem>
-<ApiItem href="#ditraitsdiarrayaccesstrait-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
-Allows to register a shared service using the array syntax
-</ApiItem>
-<ApiItem href="#ditraitsdiarrayaccesstrait-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"name","default":null}]}>
-Removes a service from the services container using the array syntax
-</ApiItem>
-<ApiItem href="#ditraitsdiarrayaccesstrait-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
-Removes a service in the services container
-</ApiItem>
-<ApiItem href="#ditraitsdiarrayaccesstrait-set" visibility="public" name="set" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
-Registers a service in the services container
-</ApiItem>
-<ApiItem href="#ditraitsdiarrayaccesstrait-setshared" visibility="public" name="setShared" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
-Registers an "always shared" service in the services container
-</ApiItem>
-
-### Methods
-
-<h4 id="ditraitsdiarrayaccesstrait-getshared"><code>getShared()</code></h4>
-
-```php
-abstract public function getShared(
-string $name,
-array|null $parameters = null
-);
-```
-
-Resolves a service, the resolved service is stored in the DI, subsequent
-requests for this service will return the same instance
-
-<h4 id="ditraitsdiarrayaccesstrait-has"><code>has()</code></h4>
-
-```php
-abstract public function has( string $name ): bool;
-```
-
-Check whether the DI contains a service by a name
-
-<h4 id="ditraitsdiarrayaccesstrait-offsetexists"><code>offsetExists()</code></h4>
-
-```php
-public function offsetExists( mixed $name ): bool;
-```
-
-Check if a service is registered using the array syntax
-
-<h4 id="ditraitsdiarrayaccesstrait-offsetget"><code>offsetGet()</code></h4>
-
-```php
-public function offsetGet( mixed $name );
-```
-
-Allows to obtain a shared service using the array syntax
-
-```php
-var_dump($di["request"]);
-```
-
-<h4 id="ditraitsdiarrayaccesstrait-offsetset"><code>offsetSet()</code></h4>
-
-```php
-public function offsetSet(
-mixed $name,
-mixed $definition
-): void;
-```
-
-Allows to register a shared service using the array syntax
-
-```php
-$di["request"] = new \Phalcon\Http\Request();
-```
-
-<h4 id="ditraitsdiarrayaccesstrait-offsetunset"><code>offsetUnset()</code></h4>
-
-```php
-public function offsetUnset( mixed $name ): void;
-```
-
-Removes a service from the services container using the array syntax
-
-<h4 id="ditraitsdiarrayaccesstrait-remove"><code>remove()</code></h4>
-
-```php
-abstract public function remove( string $name ): void;
-```
-
-Removes a service in the services container
-It also removes any shared instance created for the service
-
-<h4 id="ditraitsdiarrayaccesstrait-set"><code>set()</code></h4>
-
-```php
-abstract public function set(
-string $name,
-mixed $definition,
-bool $shared = false
-): ServiceInterface;
-```
-
-Registers a service in the services container
-
-<h4 id="ditraitsdiarrayaccesstrait-setshared"><code>setShared()</code></h4>
-
-```php
-public function setShared(
-string $name,
-mixed $definition
-): ServiceInterface;
-```
-
-Registers an "always shared" service in the services container
-
-## Di\Traits\DiEventsTrait
-
-Trait
-
-Trait DiEventsTrait
-
-- **`Phalcon\Di\Traits\DiEventsTrait`**
-
-`Phalcon\Events\ManagerInterface`
-
-[`Phalcon\Di\Di`](#didi)
-
-## Di\Traits\DiExceptionsTrait
-
-Trait
-
-Trait DiExceptionsTrait
-
-@package Phalcon\Di\Traits
-
-- **`Phalcon\Di\Traits\DiExceptionsTrait`**
-
-`Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\MissingParameterKey`
-
-[`Phalcon\Di\Di`](#didi) · [`Phalcon\Di\Service\Builder`](#diservicebuilder)
-
-## Di\Traits\DiInstanceTrait
-
-Trait
-
-Trait DiInstanceTrait
-
-@package Phalcon\Di\Traits
-
-- **`Phalcon\Di\Traits\DiInstanceTrait`**
-
-[`Phalcon\Di\Di`](#didi) · [`Phalcon\Di\Service`](#diservice) · [`Phalcon\Di\Service\Builder`](#diservicebuilder)
-
-## Di\Traits\DiLoadTrait
-
-Trait
-
-Trait DiLoadTrait
-
-@package Phalcon\Di\Traits
-
-- **`Phalcon\Di\Traits\DiLoadTrait`**
-
-`Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface`
-
-[`Phalcon\Di\Di`](#didi)
-
-### Method Summary
-
-<ApiItem href="#ditraitsdiloadtrait-loadfromphp" visibility="public" name="loadFromPhp" returnType="void" params={[{"type":"string","name":"filePath","default":null}]}>
-Loads services from a php config file.
-</ApiItem>
-<ApiItem href="#ditraitsdiloadtrait-loadfromyaml" visibility="public" name="loadFromYaml" returnType="void" params={[{"type":"string","name":"filePath","default":null},{"type":"array|null","name":"callbacks","default":"null"}]}>
-Loads services from a yaml file.
-</ApiItem>
-<ApiItem href="#ditraitsdiloadtrait-loadfromconfig" visibility="protected" name="loadFromConfig" returnType="void" params={[{"type":"ConfigInterface","name":"config","default":null}]}>
-Loads services from a Config object.
-</ApiItem>
-
-### Methods
-
-<h4 id="ditraitsdiloadtrait-loadfromphp"><code>loadFromPhp()</code></h4>
-
-```php
-public function loadFromPhp( string $filePath ): void;
-```
-
-Loads services from a php config file.
-
-```php
-$di->loadFromPhp("path/services.php");
-```
-
-And the services can be specified in the file as:
-
-```php
-return [
- 'myComponent' => [
-     'className' => '\Acme\Components\MyComponent',
-     'shared' => true,
- ],
- 'group' => [
-     'className' => '\Acme\Group',
-     'arguments' => [
-         [
-             'type' => 'service',
-             'service' => 'myComponent',
-         ],
-     ],
- ],
- 'user' => [
-     'className' => '\Acme\User',
- ],
-];
-```
-
-@link https://docs.phalcon.io/en/latest/di
-
-<h4 id="ditraitsdiloadtrait-loadfromyaml"><code>loadFromYaml()</code></h4>
-
-```php
-public function loadFromYaml(
-string $filePath,
-array|null $callbacks = null
-): void;
-```
-
-Loads services from a yaml file.
-
-```php
-$di->loadFromYaml(
-"path/services.yaml",
-[
-    "!approot" => function ($value) {
-        return dirname(__DIR__) . $value;
-    }
-]
-);
-```
-
-And the services can be specified in the file as:
-
-```php
-myComponent:
-className: \Acme\Components\MyComponent
-shared: true
-
-group:
-className: \Acme\Group
-arguments:
-    - type: service
-      name: myComponent
-
-user:
-   className: \Acme\User
-```
-
-@link https://docs.phalcon.io/latest/di
-
-<h4 id="ditraitsdiloadtrait-loadfromconfig"><code>loadFromConfig()</code></h4>
-
-```php
-protected function loadFromConfig( ConfigInterface $config ): void;
-```
-
-Loads services from a Config object.
-
-## Di\Traits\InjectionAwareTrait
-
-Trait
-
-This abstract class offers common access to the DI in a class
-
-Class AbstractInjectionAware
-
-@package Phalcon\Di
-
-@property object $container
-
-- **`Phalcon\Di\Traits\InjectionAwareTrait`**
-
-`Phalcon\Di\DiInterface`
-
-[`Phalcon\Di\AbstractInjectionAware`](#diabstractinjectionaware) · [`Phalcon\Di\Injectable`](#diinjectable) · [`Phalcon\Mvc\Model\Manager`](/6.0/api/phalcon_mvc/#mvcmodelmanager) · [`Phalcon\Mvc\Model\Query`](/6.0/api/phalcon_mvc/#mvcmodelquery) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](/6.0/api/phalcon_mvc/#mvcviewenginevoltcompiler) · [`Phalcon\Session\Bag`](/6.0/api/phalcon_session/#sessionbag)
-
-### Method Summary
-
-<ApiItem href="#ditraitsinjectionawaretrait-getdi" visibility="public" name="getDI" returnType="DiInterface|null" params={[]}>
-Returns the internal dependency injector
-</ApiItem>
-<ApiItem href="#ditraitsinjectionawaretrait-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Sets the dependency injector
-</ApiItem>
-<ApiItem href="#ditraitsinjectionawaretrait-checkcontainer" visibility="protected" name="checkContainer" returnType="void" params={[{"type":"string","name":"exceptionClass","default":null},{"type":"string","name":"message","default":null},{"type":"int","name":"code","default":"0"}]}>
-</ApiItem>
-
-### Properties
-
-<ApiItem kind="property" visibility="protected" name="container" type="object|null" default="null">
-Dependency Injector
-</ApiItem>
-
-### Methods
-
-<h4 id="ditraitsinjectionawaretrait-getdi"><code>getDI()</code></h4>
-
-```php
-public function getDI(): DiInterface|null;
-```
-
-Returns the internal dependency injector
-
-<h4 id="ditraitsinjectionawaretrait-setdi"><code>setDI()</code></h4>
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the dependency injector
-
-<h4 id="ditraitsinjectionawaretrait-checkcontainer"><code>checkContainer()</code></h4>
-
-```php
-protected function checkContainer(
-string $exceptionClass,
-string $message,
-int $code = 0
-): void;
-```
 
 Source: https://docs.phalcon.io/6.0/api/phalcon_di/index.mdx

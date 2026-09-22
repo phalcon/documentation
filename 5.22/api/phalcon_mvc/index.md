@@ -17,8 +17,6 @@ All classes are prefixed with `Phalcon`
 
 Class
 
-Phalcon\Mvc\Application
-
 This component encapsulates all the complex operations behind instantiating
 every component needed and integrating it with the rest to allow the MVC
 pattern to operate as desired.
@@ -71,7 +69,7 @@ $application->main();
 
 ### Method Summary
 
-<ApiItem href="#mvcapplication-handle" visibility="public" name="handle" returnType="ResponseInterface|bool" params={[{"type":"string","name":"uri","default":null}]}>
+<ApiItem href="#mvcapplication-handle" visibility="public" name="handle" returnType="bool|ResponseInterface" params={[{"type":"string","name":"uri","default":null}]}>
 Handles a MVC request
 </ApiItem>
 <ApiItem href="#mvcapplication-sendcookiesonhandlerequest" visibility="public" name="sendCookiesOnHandleRequest" returnType="static" params={[{"type":"bool","name":"sendCookies","default":null}]}>
@@ -98,7 +96,7 @@ By default. The view is implicitly buffering all the output
 <h4 id="mvcapplication-handle"><code>handle()</code></h4>
 
 ```php
-public function handle( string $uri ): ResponseInterface|bool;
+public function handle( string $uri ): bool|ResponseInterface;
 ```
 
 Handles a MVC request
@@ -131,8 +129,6 @@ You can full disable the view component using this method
 ## Mvc\Application\Exception
 
 Class
-
-Phalcon\Mvc\Application\Exception
 
 Exceptions thrown in Phalcon\Mvc\Application class will use this class
 
@@ -221,8 +217,6 @@ public function __construct( string $path );
 ## Mvc\Controller
 
 Abstract
-
-Phalcon\Mvc\Controller
 
 Every application controller should extend this class that encapsulates all
 the controller functionality
@@ -324,8 +318,6 @@ Helper method to fire an event
 
 Interface
 
-Phalcon\Mvc\ControllerInterface
-
 Interface for controller handlers
 
 - **`Phalcon\Mvc\ControllerInterface`**
@@ -333,8 +325,6 @@ Interface for controller handlers
 ## Mvc\Controller\BindModelInterface
 
 Interface
-
-Phalcon\Mvc\Controller\BindModelInterface
 
 Interface for Phalcon\Mvc\Controller
 
@@ -586,8 +576,6 @@ Throws an internal exception
 
 Interface
 
-Phalcon\Mvc\DispatcherInterface
-
 Interface for Phalcon\Mvc\Dispatcher
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](/5.22/api/phalcon_contracts/#contractsdispatcherdispatcher)
@@ -599,8 +587,6 @@ Interface for Phalcon\Mvc\Dispatcher
 ## Mvc\Dispatcher\Exception
 
 Class
-
-Phalcon\Mvc\Dispatcher\Exception
 
 Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
@@ -636,8 +622,6 @@ public function __construct();
 ## Mvc\EntityInterface
 
 Interface
-
-Phalcon\Mvc\EntityInterface
 
 Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
 
@@ -677,9 +661,7 @@ Writes an attribute value by its name
 
 Class
 
-Phalcon\Mvc\Micro
-
-With Phalcon you can create "Micro-Framework like" applications. By doing
+With Phalcon, you can create "Micro-Framework like" applications. By doing
 this, you only need to write a minimal amount of code to create a PHP
 application. Micro applications are suitable to small applications, APIs and
 prototypes in a practical way.
@@ -1224,8 +1206,6 @@ executed
 
 Class
 
-Phalcon\Mvc\Micro\Collection
-
 Groups Micro-Mvc handlers as controllers
 
 ```php
@@ -1237,12 +1217,14 @@ $collection->setHandler(
 new PostsController()
 );
 
-$collection->get("/posts/edit/{id}", "edit");
+$collection->get('/posts/edit/{id}', 'edit');
 
 $app->mount($collection);
 ```
 
 - **`Phalcon\Mvc\Micro\Collection`** - implements [`Phalcon\Mvc\Micro\CollectionInterface`](#mvcmicrocollectioninterface)
+
+`Phalcon\Contracts\Mvc\MvcTypes`
 
 ### Method Summary
 
@@ -1406,10 +1388,10 @@ Maps a route to a handler via methods.
 
 ```php
 $collection->mapVia(
-"/test",
-"indexAction",
-["POST", "GET"],
-"test"
+'/test',
+'indexAction',
+['POST', 'GET'],
+'test'
 );
 ```
 
@@ -1506,11 +1488,11 @@ Internal function to add a handler to the group.
 
 Interface
 
-Phalcon\Mvc\Micro\CollectionInterface
-
 Interface for Phalcon\Mvc\Micro\Collection
 
 - **`Phalcon\Mvc\Micro\CollectionInterface`**
+
+`Phalcon\Contracts\Mvc\MvcTypes`
 
 ### Method Summary
 
@@ -1970,8 +1952,6 @@ public function __construct();
 
 Class
 
-Phalcon\Mvc\Micro\LazyLoader
-
 Lazy-Load of handlers for Mvc\Micro using auto-loading
 
 - **`Phalcon\Mvc\Micro\LazyLoader`**
@@ -2062,8 +2042,6 @@ Calls the middleware
 
 Abstract
 
-Phalcon\Mvc\Model
-
 Phalcon\Mvc\Model connects business objects and database tables to create a
 persistable domain model where logic and data are presented in one wrapping.
 It‘s an implementation of the object-relational mapping (ORM).
@@ -2119,7 +2097,7 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 - [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
 - **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\JsonSerializable`
 
-`JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Geometry\WkbParser` · `Phalcon\Db\RawValue` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\BehaviorInterface` · `Phalcon\Mvc\Model\Criteria` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Eager\PathTree` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject` · `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap` · `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey` · `Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter` · `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService` · `Phalcon\Mvc\Model\Exceptions\MethodNotFound` · `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired` · `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible` · `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh` · `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted` · `Phalcon\Mvc\Model\Exceptions\RelationNotDefined` · `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray` · `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled` · `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset` · `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled` · `Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\ValidationFailed` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionProperty`
+`JsonSerializable` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exceptions\InvalidWkb` · `Phalcon\Db\Geometry\WkbParser` · `Phalcon\Db\RawValue` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\BehaviorInterface` · `Phalcon\Mvc\Model\Criteria` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Eager\PathTree` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject` · `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap` · `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter` · `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService` · `Phalcon\Mvc\Model\Exceptions\MethodNotFound` · `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired` · `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible` · `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh` · `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted` · `Phalcon\Mvc\Model\Exceptions\RelationNotDefined` · `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray` · `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled` · `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset` · `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled` · `Phalcon\Mvc\Model\Hydration\CaseInsensitiveColumnMap` · `Phalcon\Mvc\Model\Hydration\CloneResult` · `Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate` · `Phalcon\Mvc\Model\Hydration\GetPrivateProperties` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Mvc\Model\Row` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\ValidationFailed` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -3604,9 +3582,15 @@ mixed $records
 Stores related records in the relation cache, so that a subsequent
 getRelated() or property access returns them without querying.
 
-This is the write side of the cache getRelated() already reads. It does
-not mark the record dirty: the value lands in `related`, never in
-`dirtyRelated`, so save() is unaffected.
+This is the write side of the cache getRelated() already reads. The value
+lands in `related`, never in `dirtyRelated`.
+
+That is not the same as leaving save() untouched. collectRelatedToSave()
+promotes a `related` entry into `dirtyRelated` when the entry is a single
+ModelInterface that is new or has changed, so passing such a record here
+does cascade on the next save(). Arrays, resultsets, and unchanged
+records carrying snapshot data are skipped - which is why eager loading,
+the caller this exists for, never triggers a cascade.
 
 <h4 id="mvcmodel-setsnapshotdata"><code>setSnapshotData()</code></h4>
 
@@ -4142,7 +4126,7 @@ public function initialize()
 <h4 id="mvcmodel-invokefinder"><code>invokeFinder()</code></h4>
 
 ```php
-protected final static function invokeFinder(
+final protected static function invokeFinder(
 string $method,
 array $arguments
 );
@@ -4381,7 +4365,7 @@ Interface for Phalcon\Mvc\Model
 
 - **`Phalcon\Mvc\ModelInterface`**
 
-`Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\TransactionInterface`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\TransactionInterface`
 
 ### Method Summary
 
@@ -4891,8 +4875,6 @@ Check whether validation process has generated any messages
 
 Abstract
 
-Phalcon\Mvc\Model\Behavior
-
 This is an optional base class for ORM behaviors
 
 - **`Phalcon\Mvc\Model\Behavior`** - implements [`Phalcon\Mvc\Model\BehaviorInterface`](#mvcmodelbehaviorinterface)
@@ -4977,8 +4959,6 @@ Checks whether the behavior must take action on certain event
 
 Interface
 
-Phalcon\Mvc\Model\BehaviorInterface
-
 Interface for Phalcon\Mvc\Model\Behavior
 
 - **`Phalcon\Mvc\Model\BehaviorInterface`**
@@ -5046,8 +5026,6 @@ public function __construct( string $option );
 
 Class
 
-Phalcon\Mvc\Model\Behavior\SoftDelete
-
 Instead of permanently delete a record it marks the record as deleted
 changing the value of a flag column
 
@@ -5078,8 +5056,6 @@ Listens for notifications from the models manager
 ## Mvc\Model\Behavior\Timestampable
 
 Class
-
-Phalcon\Mvc\Model\Behavior\Timestampable
 
 Allows to automatically update a model’s attribute saving the datetime when a
 record is created or updated
@@ -5112,13 +5088,11 @@ Listens for notifications from the models manager
 
 Class
 
-Phalcon\Mvc\Model\Binder
-
-This is an class for binding models into params for handler
+This is a class for binding models into params for handler
 
 - **`Phalcon\Mvc\Model\Binder`** - implements [`Phalcon\Mvc\Model\BinderInterface`](#mvcmodelbinderinterface)
 
-`Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\Controller\BindModelInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\Model\Binder\BindableInterface` · `Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable` · `Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn` · `Phalcon\Mvc\Model\Exceptions\MissingMethodName` · `Phalcon\Mvc\Model\Exceptions\MissingModelClassName` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType`
+`Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\Controller\BindModelInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Binder\BindableInterface` · `Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable` · `Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn` · `Phalcon\Mvc\Model\Exceptions\MissingMethodName` · `Phalcon\Mvc\Model\Exceptions\MissingModelClassName` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType`
 
 ### Method Summary
 
@@ -5155,7 +5129,7 @@ Get modified params for handler using reflection
 <ApiItem kind="property" visibility="protected" name="boundModels" type="array" default="[]">
 Array for storing active bound models
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="cache" type="AdapterInterface|null" default="">
+<ApiItem kind="property" visibility="protected" name="cache" type="AdapterInterface" default="">
 Cache object used for caching parameters for model binding
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="internalCache" type="array" default="[]">
@@ -5322,15 +5296,13 @@ Sets cache instance
 
 Interface
 
-Phalcon\Mvc\Model\Binder\BindableInterface
-
 Interface for bindable classes
 
 - **`Phalcon\Mvc\Model\Binder\BindableInterface`**
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelbinderbindableinterface-getmodelname" visibility="public" name="getModelName" returnType="string|array" params={[]}>
+<ApiItem href="#mvcmodelbinderbindableinterface-getmodelname" visibility="public" name="getModelName" returnType="array|string" params={[]}>
 Return the model name or models names and parameters keys associated with
 </ApiItem>
 
@@ -5339,7 +5311,7 @@ Return the model name or models names and parameters keys associated with
 <h4 id="mvcmodelbinderbindableinterface-getmodelname"><code>getModelName()</code></h4>
 
 ```php
-public function getModelName(): string|array;
+public function getModelName(): array|string;
 ```
 
 Return the model name or models names and parameters keys associated with
@@ -5367,7 +5339,7 @@ $invoices = Invoices::query()
 
 - **`Phalcon\Mvc\Model\Criteria`** - implements [`Phalcon\Mvc\Model\CriteriaInterface`](#mvcmodelcriteriainterface), [`Phalcon\Di\InjectionAwareInterface`](/5.22/api/phalcon_di/#diinjectionawareinterface)
 
-`Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidModelName` · `Phalcon\Mvc\Model\Query\BuilderInterface`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidModelName` · `Phalcon\Mvc\Model\Query\BuilderInterface`
 
 ### Method Summary
 
@@ -5410,7 +5382,7 @@ Adds the "for_update" parameter to the criteria
 <ApiItem href="#mvcmodelcriteria-frominput" visibility="public" name="fromInput" returnType="CriteriaInterface" params={[{"type":"DiInterface","name":"container","default":null},{"type":"string","name":"modelName","default":null},{"type":"array","name":"data","default":null},{"type":"string","name":"operator","default":"\"AND\""}]}>
 Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
 </ApiItem>
-<ApiItem href="#mvcmodelcriteria-getcolumns" visibility="public" name="getColumns" returnType="string|array|null" params={[]}>
+<ApiItem href="#mvcmodelcriteria-getcolumns" visibility="public" name="getColumns" returnType="array|string|null" params={[]}>
 Returns the columns to be queried
 </ApiItem>
 <ApiItem href="#mvcmodelcriteria-getconditions" visibility="public" name="getConditions" returnType="string|null" params={[]}>
@@ -5425,7 +5397,7 @@ Returns the group clause in the criteria
 <ApiItem href="#mvcmodelcriteria-gethaving" visibility="public" name="getHaving" returnType="" params={[]}>
 Returns the having clause in the criteria
 </ApiItem>
-<ApiItem href="#mvcmodelcriteria-getlimit" visibility="public" name="getLimit" returnType="int|array|null" params={[]}>
+<ApiItem href="#mvcmodelcriteria-getlimit" visibility="public" name="getLimit" returnType="array|int|null" params={[]}>
 Returns the limit parameter in the criteria, which will be
 </ApiItem>
 <ApiItem href="#mvcmodelcriteria-getmodelname" visibility="public" name="getModelName" returnType="string" params={[]}>
@@ -5700,7 +5672,7 @@ Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
 <h4 id="mvcmodelcriteria-getcolumns"><code>getColumns()</code></h4>
 
 ```php
-public function getColumns(): string|array|null;
+public function getColumns(): array|string|null;
 ```
 
 Returns the columns to be queried
@@ -5740,7 +5712,7 @@ Returns the having clause in the criteria
 <h4 id="mvcmodelcriteria-getlimit"><code>getLimit()</code></h4>
 
 ```php
-public function getLimit(): int|array|null;
+public function getLimit(): array|int|null;
 ```
 
 Returns the limit parameter in the criteria, which will be
@@ -6034,13 +6006,11 @@ Sets the conditions parameter in the criteria
 
 Interface
 
-Phalcon\Mvc\Model\CriteriaInterface
-
 Interface for Phalcon\Mvc\Model\Criteria
 
 - **`Phalcon\Mvc\Model\CriteriaInterface`**
 
-`Phalcon\Di\DiInterface`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\DiInterface`
 
 ### Method Summary
 
@@ -6071,7 +6041,7 @@ Executes a find using the parameters built with the criteria
 <ApiItem href="#mvcmodelcriteriainterface-forupdate" visibility="public" name="forUpdate" returnType="CriteriaInterface" params={[{"type":"bool","name":"forUpdate","default":"true"}]}>
 Sets the "for_update" parameter to the criteria
 </ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-getcolumns" visibility="public" name="getColumns" returnType="string|array|null" params={[]}>
+<ApiItem href="#mvcmodelcriteriainterface-getcolumns" visibility="public" name="getColumns" returnType="array|string|null" params={[]}>
 Returns the columns to be queried
 </ApiItem>
 <ApiItem href="#mvcmodelcriteriainterface-getconditions" visibility="public" name="getConditions" returnType="string|null" params={[]}>
@@ -6083,7 +6053,7 @@ Returns the group clause in the criteria
 <ApiItem href="#mvcmodelcriteriainterface-gethaving" visibility="public" name="getHaving" returnType="" params={[]}>
 Returns the having clause in the criteria
 </ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-getlimit" visibility="public" name="getLimit" returnType="int|array|null" params={[]}>
+<ApiItem href="#mvcmodelcriteriainterface-getlimit" visibility="public" name="getLimit" returnType="array|int|null" params={[]}>
 Returns the limit parameter in the criteria, which will be
 </ApiItem>
 <ApiItem href="#mvcmodelcriteriainterface-getmodelname" visibility="public" name="getModelName" returnType="string" params={[]}>
@@ -6233,7 +6203,7 @@ Sets the "for_update" parameter to the criteria
 <h4 id="mvcmodelcriteriainterface-getcolumns"><code>getColumns()</code></h4>
 
 ```php
-public function getColumns(): string|array|null;
+public function getColumns(): array|string|null;
 ```
 
 Returns the columns to be queried
@@ -6265,7 +6235,7 @@ Returns the having clause in the criteria
 <h4 id="mvcmodelcriteriainterface-getlimit"><code>getLimit()</code></h4>
 
 ```php
-public function getLimit(): int|array|null;
+public function getLimit(): array|int|null;
 ```
 
 Returns the limit parameter in the criteria, which will be
@@ -6506,7 +6476,7 @@ are hydrated.
 
 - **`Phalcon\Mvc\Model\Eager\Loader`**
 
-`Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded` · `Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn` · `Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\Resultset\Simple`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded` · `Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn` · `Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\Resultset\Simple`
 
 ### Method Summary
 
@@ -6716,7 +6686,7 @@ this tree, not the number of elements supplied.
 
 - **`Phalcon\Mvc\Model\Eager\PathTree`**
 
-`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\Model\Exceptions\InvalidEagerPath` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`
 
 ### Method Summary
 
@@ -8203,13 +8173,52 @@ mixed $key
 
 Attempts to find key case-insensitively
 
+## Mvc\Model\Hydration\CloneResult
+
+Class
+
+- **`Phalcon\Mvc\Model\Hydration\CloneResult`**
+
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`
+
+### Method Summary
+
+<ApiItem href="#mvcmodelhydrationcloneresult-cloneresult" visibility="public" name="cloneResult" returnType="ModelInterface" params={[{"type":"ModelInterface","name":"base","default":null},{"type":"array","name":"data","default":null},{"type":"int","name":"dirtyState","default":"0"}]}>
+Assigns values to a model from an array returning a new model
+</ApiItem>
+
+### Methods
+
+<h4 id="mvcmodelhydrationcloneresult-cloneresult"><code>cloneResult()</code></h4>
+
+```php
+public static function cloneResult(
+ModelInterface $base,
+array $data,
+int $dirtyState = 0
+): ModelInterface;
+```
+
+Assigns values to a model from an array returning a new model
+
+```php
+$invoice = Phalcon\Mvc\Model::cloneResult(
+new Invoices(),
+[
+    "type" => "mechanical",
+    "name" => "Test Invoice",
+    "year" => 1952,
+]
+);
+```
+
 ## Mvc\Model\Hydration\CloneResultMapHydrate
 
 Class
 
 - **`Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate`**
 
-`Phalcon\Mvc\Model` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Support\Settings`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -8232,11 +8241,42 @@ string $calledClass = "Phalcon\\Mvc\\Model"
 
 Returns an hydrated result based on the data and the column map
 
-## Mvc\Model\Manager
+## Mvc\Model\Hydration\GetPrivateProperties
 
 Class
 
-Phalcon\Mvc\Model\Manager
+- **`Phalcon\Mvc\Model\Hydration\GetPrivateProperties`**
+
+`ReflectionClass` · `ReflectionProperty`
+
+### Method Summary
+
+<ApiItem href="#mvcmodelhydrationgetprivateproperties-getprivateproperties" visibility="public" name="getPrivateProperties" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
+Returns the declared private properties of a class (including inherited
+</ApiItem>
+
+### Methods
+
+<h4 id="mvcmodelhydrationgetprivateproperties-getprivateproperties"><code>getPrivateProperties()</code></h4>
+
+```php
+public static function getPrivateProperties( string $className ): array;
+```
+
+Returns the declared private properties of a class (including inherited
+ones) as [property name => ReflectionProperty], cached per class.
+
+Hydration (cloneResult/cloneResultMap) cannot write private properties
+directly: the write from Model scope falls back to __set(), which
+invokes a possible setter - or throws for a non-public property
+without one. Writing through ReflectionProperty stores the raw
+database value instead.
+
+@see https://github.com/phalcon/cphalcon/issues/16454
+
+## Mvc\Model\Manager
+
+Class
 
 This components controls the initialization of models, keeping record of
 relations between the different models of the application.
@@ -8262,7 +8302,7 @@ $invoice = new Invoices($di);
 
 - **`Phalcon\Mvc\Model\Manager`** - implements [`Phalcon\Mvc\Model\ManagerInterface`](#mvcmodelmanagerinterface), [`Phalcon\Di\InjectionAwareInterface`](/5.22/api/phalcon_di/#diinjectionawareinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
 
-`Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidConnectionService` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad` · `Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch` · `Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString` · `Phalcon\Mvc\Model\Exceptions\UnknownRelationType` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionProperty`
+`Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Exception` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidConnectionService` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad` · `Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch` · `Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString` · `Phalcon\Mvc\Model\Exceptions\UnknownRelationType` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty`
 
 ### Method Summary
 
@@ -8377,7 +8417,7 @@ Returns the connection to read data related to a model
 <ApiItem href="#mvcmodelmanager-getreadconnectionservice" visibility="public" name="getReadConnectionService" returnType="string" params={[{"type":"ModelInterface","name":"model","default":null}]}>
 Returns the connection service name used to read data related to a model
 </ApiItem>
-<ApiItem href="#mvcmodelmanager-getrelationbyalias" visibility="public" name="getRelationByAlias" returnType="RelationInterface|bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"alias","default":null}]}>
+<ApiItem href="#mvcmodelmanager-getrelationbyalias" visibility="public" name="getRelationByAlias" returnType="bool|RelationInterface" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"alias","default":null}]}>
 Returns a relation by its alias
 </ApiItem>
 <ApiItem href="#mvcmodelmanager-getrelationrecords" visibility="public" name="getRelationRecords" returnType="" params={[{"type":"RelationInterface","name":"relation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
@@ -8987,7 +9027,7 @@ Returns the connection service name used to read data related to a model
 public function getRelationByAlias(
 string $modelName,
 string $alias
-): RelationInterface|bool;
+): bool|RelationInterface;
 ```
 
 Returns a relation by its alias
@@ -9317,8 +9357,6 @@ $invoices = new Invoices();
 echo $invoices->getSource(); // wp_co_invoices
 ```
 
-$param string $prefix
-
 <h4 id="mvcmodelmanager-setmodelschema"><code>setModelSchema()</code></h4>
 
 ```php
@@ -9412,13 +9450,11 @@ depending on the connection services.
 
 Interface
 
-Phalcon\Mvc\Model\ManagerInterface
-
 Interface for Phalcon\Mvc\Model\Manager
 
 - **`Phalcon\Mvc\Model\ManagerInterface`**
 
-`Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface`
 
 ### Method Summary
 
@@ -9464,7 +9500,7 @@ Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
 <ApiItem href="#mvcmodelmanagerinterface-gethasmany" visibility="public" name="getHasMany" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
 Gets hasMany relations defined on a model
 </ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-gethasmanyrecords" visibility="public" name="getHasManyRecords" returnType="ResultsetInterface|bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
+<ApiItem href="#mvcmodelmanagerinterface-gethasmanyrecords" visibility="public" name="getHasManyRecords" returnType="bool|ResultsetInterface" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
 Gets hasMany related records from a model
 </ApiItem>
 <ApiItem href="#mvcmodelmanagerinterface-gethasmanytomany" visibility="public" name="getHasManyToMany" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
@@ -9476,7 +9512,7 @@ Gets hasOne relations defined on a model
 <ApiItem href="#mvcmodelmanagerinterface-gethasoneandhasmany" visibility="public" name="getHasOneAndHasMany" returnType="RelationInterface[]" params={[{"type":"ModelInterface","name":"model","default":null}]}>
 Gets hasOne relations defined on a model
 </ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-gethasonerecords" visibility="public" name="getHasOneRecords" returnType="ModelInterface|bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
+<ApiItem href="#mvcmodelmanagerinterface-gethasonerecords" visibility="public" name="getHasOneRecords" returnType="bool|ModelInterface" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
 Gets hasOne related records from a model
 </ApiItem>
 <ApiItem href="#mvcmodelmanagerinterface-gethasonethrough" visibility="public" name="getHasOneThrough" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
@@ -9561,7 +9597,7 @@ Loads a model throwing an exception if it does not exist
 Dispatch an event to the listeners and behaviors
 </ApiItem>
 <ApiItem href="#mvcmodelmanagerinterface-notifyevent" visibility="public" name="notifyEvent" returnType="" params={[{"type":"string","name":"eventName","default":null},{"type":"ModelInterface","name":"model","default":null}]}>
-Receives events generated in the models and dispatches them to an events-manager if available
+Receives events generated in the models and dispatches them to an
 </ApiItem>
 <ApiItem href="#mvcmodelmanagerinterface-registerwrite" visibility="public" name="registerWrite" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null}]}>
 Marks the model's write connection service as written-to for the
@@ -9769,7 +9805,7 @@ string $modelRelation,
 ModelInterface $record,
 mixed $parameters = null,
 string|null $method = null
-): ResultsetInterface|bool;
+): bool|ResultsetInterface;
 ```
 
 Gets hasMany related records from a model
@@ -9807,7 +9843,7 @@ string $modelRelation,
 ModelInterface $record,
 mixed $parameters = null,
 string|null $method = null
-): ModelInterface|bool;
+): bool|ModelInterface;
 ```
 
 Gets hasOne related records from a model
@@ -10039,7 +10075,7 @@ Check whether a model property is declared as public.
 ```php
 $isPublic = $manager->isVisibleModelProperty(
 new Invoices(),
-"name"
+"inv_title"
 );
 ```
 
@@ -10085,8 +10121,9 @@ ModelInterface $model
 );
 ```
 
-Receives events generated in the models and dispatches them to an events-manager if available
-Notify the behaviors that are listening in the model
+Receives events generated in the models and dispatches them to an
+events-manager if available. Notify the behaviors that are listening
+in the model
 
 <h4 id="mvcmodelmanagerinterface-registerwrite"><code>registerWrite()</code></h4>
 
@@ -10206,8 +10243,6 @@ Sets if a model must use dynamic update instead of the all-field update
 
 Abstract
 
-Phalcon\Mvc\Model\MetaData
-
 Because Phalcon\Mvc\Model requires meta-data like field names, data types,
 primary keys, etc. This component collect them and store for further
 querying by Phalcon\Mvc\Model. Phalcon\Mvc\Model\MetaData can also use
@@ -10266,7 +10301,7 @@ is defined:
 - [`Phalcon\Mvc\Model\MetaData\Redis`](#mvcmodelmetadataredis)
 - [`Phalcon\Mvc\Model\MetaData\Stream`](#mvcmodelmetadatastream)
 
-`Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired` · `Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed` · `Phalcon\Mvc\Model\MetaData\Strategy\Introspection` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+`Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired` · `Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed` · `Phalcon\Mvc\Model\MetaData\Strategy\Introspection` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
@@ -10345,13 +10380,13 @@ Reads metadata from the adapter
 <ApiItem href="#mvcmodelmetadata-readcolumnmap" visibility="public" name="readColumnMap" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
 Reads the ordered/reversed column map for certain model
 </ApiItem>
-<ApiItem href="#mvcmodelmetadata-readcolumnmapindex" visibility="public" name="readColumnMapIndex" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
+<ApiItem href="#mvcmodelmetadata-readcolumnmapindex" visibility="public" name="readColumnMapIndex" returnType="array|bool|string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
 Reads column-map information for certain model using a MODEL_* constant
 </ApiItem>
 <ApiItem href="#mvcmodelmetadata-readmetadata" visibility="public" name="readMetaData" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
 Reads the complete meta-data for certain model
 </ApiItem>
-<ApiItem href="#mvcmodelmetadata-readmetadataindex" visibility="public" name="readMetaDataIndex" returnType="array|string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
+<ApiItem href="#mvcmodelmetadata-readmetadataindex" visibility="public" name="readMetaDataIndex" returnType="array|bool|string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
 Reads meta-data for certain model
 </ApiItem>
 <ApiItem href="#mvcmodelmetadata-reset" visibility="public" name="reset" returnType="void" params={[]}>
@@ -10367,7 +10402,7 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 Sets the DependencyInjector container
 </ApiItem>
 <ApiItem href="#mvcmodelmetadata-setemptystringattributes" visibility="public" name="setEmptyStringAttributes" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"attributes","default":null}]}>
-Set the attributes that allow empty string values
+Initialize old behavior for compatability
 </ApiItem>
 <ApiItem href="#mvcmodelmetadata-setstrategy" visibility="public" name="setStrategy" returnType="void" params={[{"type":"StrategyInterface","name":"strategy","default":null}]}>
 Set the meta-data extraction strategy
@@ -10631,7 +10666,7 @@ $metaData->getIdentityField(
 <h4 id="mvcmodelmetadata-getmetadatauniquekey"><code>getMetaDataUniqueKey()</code></h4>
 
 ```php
-public final function getMetaDataUniqueKey( ModelInterface $model ): string|null;
+final public function getMetaDataUniqueKey( ModelInterface $model ): string|null;
 ```
 
 Returns a MetaData Unique key for meta-data is created using className
@@ -10794,7 +10829,7 @@ $metaData->readColumnMap(
 final public function readColumnMapIndex(
 ModelInterface $model,
 int $index
-): array|null;
+): array|bool|string|null;
 ```
 
 Reads column-map information for certain model using a MODEL_* constant
@@ -10830,7 +10865,7 @@ $metaData->readMetaData(
 final public function readMetaDataIndex(
 ModelInterface $model,
 int $index
-): array|string|null;
+): array|bool|string|null;
 ```
 
 Reads meta-data for certain model
@@ -10912,6 +10947,8 @@ ModelInterface $model,
 array $attributes
 ): void;
 ```
+
+Initialize old behavior for compatability
 
 Set the attributes that allow empty string values
 
@@ -11012,7 +11049,7 @@ Interface for Phalcon\Mvc\Model\MetaData
 
 - **`Phalcon\Mvc\Model\MetaDataInterface`**
 
-`Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`
 
 ### Method Summary
 
@@ -11073,13 +11110,13 @@ Reads meta-data from the adapter
 <ApiItem href="#mvcmodelmetadatainterface-readcolumnmap" visibility="public" name="readColumnMap" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
 Reads the ordered/reversed column map for certain model
 </ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-readcolumnmapindex" visibility="public" name="readColumnMapIndex" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
+<ApiItem href="#mvcmodelmetadatainterface-readcolumnmapindex" visibility="public" name="readColumnMapIndex" returnType="array|bool|string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
 Reads column-map information for certain model using a MODEL_* constant
 </ApiItem>
 <ApiItem href="#mvcmodelmetadatainterface-readmetadata" visibility="public" name="readMetaData" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
 Reads meta-data for certain model
 </ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-readmetadataindex" visibility="public" name="readMetaDataIndex" returnType="array|string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
+<ApiItem href="#mvcmodelmetadatainterface-readmetadataindex" visibility="public" name="readMetaDataIndex" returnType="array|bool|string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
 Reads meta-data for certain model using a MODEL_* constant
 </ApiItem>
 <ApiItem href="#mvcmodelmetadatainterface-reset" visibility="public" name="reset" returnType="" params={[]}>
@@ -11267,7 +11304,7 @@ Reads the ordered/reversed column map for certain model
 public function readColumnMapIndex(
 ModelInterface $model,
 int $index
-): array|null;
+): array|bool|string|null;
 ```
 
 Reads column-map information for certain model using a MODEL_* constant
@@ -11286,7 +11323,7 @@ Reads meta-data for certain model
 public function readMetaDataIndex(
 ModelInterface $model,
 int $index
-): array|string|null;
+): array|bool|string|null;
 ```
 
 Reads meta-data for certain model using a MODEL_* constant
@@ -11387,7 +11424,7 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Apcu(
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
 - **`Phalcon\Mvc\Model\MetaData\Apcu`**
 
-`Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
+`Phalcon\Cache\AdapterFactory` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Mvc\Model\MetaData`
 
 ### Method Summary
 
@@ -11671,8 +11708,6 @@ string $className
 
 Class
 
-Phalcon\Mvc\Model\MetaData\Libmemcached
-
 Stores model meta-data in the Memcache.
 
 By default meta-data is stored for 48 hours (172800 seconds)
@@ -11680,7 +11715,7 @@ By default meta-data is stored for 48 hours (172800 seconds)
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
 - **`Phalcon\Mvc\Model\MetaData\Libmemcached`**
 
-`Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
+`Phalcon\Cache\AdapterFactory` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Mvc\Model\MetaData`
 
 ### Method Summary
 
@@ -11716,9 +11751,8 @@ Flush Memcache data and resets internal meta-data in order to regenerate it
 
 Class
 
-Phalcon\Mvc\Model\MetaData\Memory
-
-Stores model meta-data in memory. Data will be erased when the request finishes
+Stores model meta-data in memory. Data will be erased when the request
+finishes
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
 - **`Phalcon\Mvc\Model\MetaData\Memory`**
@@ -11782,7 +11816,7 @@ $metaData = new Redis(
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
 - **`Phalcon\Mvc\Model\MetaData\Redis`**
 
-`Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
+`Phalcon\Cache\AdapterFactory` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Mvc\Model\MetaData`
 
 ### Method Summary
 
@@ -11820,7 +11854,7 @@ Class
 
 - **`Phalcon\Mvc\Model\MetaData\Strategy\Annotations`** - implements [`Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`](#mvcmodelmetadatastrategystrategyinterface)
 
-`Phalcon\Db\Column` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass` · `Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Column` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass` · `Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`
 
 ### Method Summary
 
@@ -11904,7 +11938,7 @@ Interface
 
 - **`Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`**
 
-`Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface`
 
 ### Method Summary
 
@@ -11912,7 +11946,7 @@ Interface
 Read the model's column map, this can't be inferred
 </ApiItem>
 <ApiItem href="#mvcmodelmetadatastrategystrategyinterface-getmetadata" visibility="public" name="getMetaData" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"DiInterface","name":"container","default":null}]}>
-The meta-data is obtained by reading the column descriptions from the database information schema
+The meta-data is obtained by reading the column descriptions from the
 </ApiItem>
 
 ### Methods
@@ -11939,7 +11973,8 @@ DiInterface $container
 ): array;
 ```
 
-The meta-data is obtained by reading the column descriptions from the database information schema
+The meta-data is obtained by reading the column descriptions from the
+database information schema
 
 ## Mvc\Model\MetaData\Stream
 
@@ -11960,7 +11995,7 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Files(
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
 - **`Phalcon\Mvc\Model\MetaData\Stream`**
 
-`Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable` · `Phalcon\Support\Settings` · `Phalcon\Traits\Php\FileTrait`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable` · `Phalcon\Support\Settings` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
@@ -12012,8 +12047,6 @@ Writes the meta-data to files
 
 Class
 
-Phalcon\Mvc\Model\Query
-
 This class takes a PHQL intermediate representation and executes it.
 
 ```php
@@ -12063,7 +12096,7 @@ $resultWithOutEntries = $queryWithTransaction->execute();
 
 - **`Phalcon\Mvc\Model\Query`** - implements [`Phalcon\Mvc\Model\QueryInterface`](#mvcmodelqueryinterface), [`Phalcon\Di\InjectionAwareInterface`](/5.22/api/phalcon_di/#diinjectionawareinterface)
 
-`Phalcon\Cache\CacheInterface` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation` · `Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders` · `Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray` · `Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst` · `Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias` · `Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue` · `Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass` · `Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed` · `Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey` · `Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager` · `Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems` · `Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded` · `Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias` · `Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing` · `Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement` · `Phalcon\Mvc\Model\Query\Exceptions\UnsafeIdentifier` · `Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing` · `Phalcon\Mvc\Model\Query\Lang` · `Phalcon\Mvc\Model\Query\Status` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Complex` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Support\Settings`
+`Phalcon\Cache\CacheInterface` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation` · `Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders` · `Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray` · `Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst` · `Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias` · `Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue` · `Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass` · `Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed` · `Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey` · `Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager` · `Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems` · `Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded` · `Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias` · `Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing` · `Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement` · `Phalcon\Mvc\Model\Query\Exceptions\UnsafeIdentifier` · `Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing` · `Phalcon\Mvc\Model\Query\Lang` · `Phalcon\Mvc\Model\Query\Status` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Complex` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -12827,13 +12860,11 @@ would otherwise see the value frozen at first parse. See #17020.
 
 Interface
 
-Phalcon\Mvc\Model\QueryInterface
-
 Interface for Phalcon\Mvc\Model\Query
 
 - **`Phalcon\Mvc\Model\QueryInterface`**
 
-`Phalcon\Mvc\ModelInterface`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\ModelInterface`
 
 ### Method Summary
 
@@ -12862,7 +12893,7 @@ Returns the SQL to be generated by the internal PHQL (only works in SELECT state
 Check if the query is programmed to get only the first row in the resultset
 </ApiItem>
 <ApiItem href="#mvcmodelqueryinterface-parse" visibility="public" name="parse" returnType="array" params={[]}>
-Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang generating another
+Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang
 </ApiItem>
 <ApiItem href="#mvcmodelqueryinterface-setbindparams" visibility="public" name="setBindParams" returnType="QueryInterface" params={[{"type":"array","name":"bindParams","default":null},{"type":"bool","name":"merge","default":"false"}]}>
 Set default bind parameters
@@ -12955,8 +12986,9 @@ Check if the query is programmed to get only the first row in the resultset
 public function parse(): array;
 ```
 
-Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang generating another
-intermediate representation that could be executed by Phalcon\Mvc\Model\Query
+Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang
+generating another intermediate representation that could be executed
+by Phalcon\Mvc\Model\Query
 
 <h4 id="mvcmodelqueryinterface-setbindparams"><code>setBindParams()</code></h4>
 
@@ -13035,7 +13067,7 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 - **`Phalcon\Mvc\Model\Query\Builder`** - implements [`Phalcon\Mvc\Model\Query\BuilderInterface`](#mvcmodelquerybuilderinterface), [`Phalcon\Di\InjectionAwareInterface`](/5.22/api/phalcon_di/#diinjectionawareinterface)
 
-`Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable` · `Phalcon\Support\Settings`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -13102,7 +13134,7 @@ Return join parts of the query
 <ApiItem href="#mvcmodelquerybuilder-getlimit" visibility="public" name="getLimit" returnType="" params={[]}>
 Returns the current LIMIT clause
 </ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getmodels" visibility="public" name="getModels" returnType="string|array|null" params={[]}>
+<ApiItem href="#mvcmodelquerybuilder-getmodels" visibility="public" name="getModels" returnType="array|string|null" params={[]}>
 Returns the models involved in the query
 </ApiItem>
 <ApiItem href="#mvcmodelquerybuilder-getoffset" visibility="public" name="getOffset" returnType="int" params={[]}>
@@ -13208,9 +13240,9 @@ Appends a NOT IN condition
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="bindTypes" type="array" default="[]">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="columns" type="array|string|null" default="null">
+<ApiItem kind="property" visibility="protected" name="columns" type="mixed" default="null">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="conditions" type="array|string|null" default="null">
+<ApiItem kind="property" visibility="protected" name="conditions" type="mixed" default="null">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="">
 </ApiItem>
@@ -13551,7 +13583,7 @@ Returns the current LIMIT clause
 <h4 id="mvcmodelquerybuilder-getmodels"><code>getModels()</code></h4>
 
 ```php
-public function getModels(): string|array|null;
+public function getModels(): array|string|null;
 ```
 
 Returns the models involved in the query
@@ -14081,7 +14113,7 @@ Interface for Phalcon\Mvc\Model\Query\Builder
 
 - **`Phalcon\Mvc\Model\Query\BuilderInterface`**
 
-`Phalcon\Mvc\Model\QueryInterface`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\Model\QueryInterface`
 
 ### Method Summary
 
@@ -14133,7 +14165,7 @@ Return join parts of the query
 <ApiItem href="#mvcmodelquerybuilderinterface-getlimit" visibility="public" name="getLimit" returnType="" params={[]}>
 Returns the current LIMIT clause
 </ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getmodels" visibility="public" name="getModels" returnType="string|array|null" params={[]}>
+<ApiItem href="#mvcmodelquerybuilderinterface-getmodels" visibility="public" name="getModels" returnType="array|string|null" params={[]}>
 Returns the models involved in the query
 </ApiItem>
 <ApiItem href="#mvcmodelquerybuilderinterface-getoffset" visibility="public" name="getOffset" returnType="int" params={[]}>
@@ -14271,15 +14303,15 @@ $builder->columns("id, name");
 // Array, one column per element
 $builder->columns(
 [
-    "id",
-    "name",
+    "inv_id",
+    "inv_title",
 ]
 );
 
 // Array, named keys. The name of the key acts as an alias (`AS` clause)
 $builder->columns(
 [
-    "name",
+    "inv_title",
     "number" => "COUNT(*)",
 ]
 );
@@ -14402,7 +14434,7 @@ Returns the current LIMIT clause
 <h4 id="mvcmodelquerybuilderinterface-getmodels"><code>getModels()</code></h4>
 
 ```php
-public function getModels(): string|array|null;
+public function getModels(): array|string|null;
 ```
 
 Returns the models involved in the query
@@ -16014,7 +16046,11 @@ information and the related messages produced by the
 model which finally executes the operations when it fails
 
 ```php
-$phql = "UPDATE Invoices SET inv_title = :inv_title:, inv_status_flag = :inv_status_flag:, inv_total = :inv_total: WHERE inv_id = :inv_id:";
+$phql = "UPDATE Invoices
+ SET inv_title = :inv_title:,
+     inv_status_flag = :inv_status_flag:,
+     inv_total = :inv_total:
+ WHERE inv_id = :inv_id:";
 
 $status = $app->modelsManager->executeQuery(
 $phql,
@@ -16053,7 +16089,7 @@ Allows to check if the executed operation was successful
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="model" type="ModelInterface|null" default="">
+<ApiItem kind="property" visibility="protected" name="model" type="ModelInterface" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="success" type="bool" default="">
 </ApiItem>
@@ -16147,11 +16183,11 @@ Allows to check if the executed operation was successful
 
 Class
 
-Phalcon\Mvc\Model\Relation
-
 This class represents a relationship between two models
 
 - **`Phalcon\Mvc\Model\Relation`** - implements [`Phalcon\Mvc\Model\RelationInterface`](#mvcmodelrelationinterface)
+
+`Phalcon\Contracts\Mvc\MvcTypes`
 
 ### Method Summary
 
@@ -16387,11 +16423,11 @@ Sets the intermediate model data for has-*-through relations
 
 Interface
 
-Phalcon\Mvc\Model\RelationInterface
-
 Interface for Phalcon\Mvc\Model\Relation
 
 - **`Phalcon\Mvc\Model\RelationInterface`**
+
+`Phalcon\Contracts\Mvc\MvcTypes`
 
 ### Method Summary
 
@@ -16432,7 +16468,7 @@ Returns the relations type
 Check whether the relation act as a foreign key
 </ApiItem>
 <ApiItem href="#mvcmodelrelationinterface-isreusable" visibility="public" name="isReusable" returnType="bool" params={[]}>
-Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
+Check if records returned by getting belongs-to/has-many are implicitly
 </ApiItem>
 <ApiItem href="#mvcmodelrelationinterface-isthrough" visibility="public" name="isThrough" returnType="bool" params={[]}>
 Check whether the relation is a 'many-to-many' relation or not
@@ -16546,7 +16582,8 @@ Check whether the relation act as a foreign key
 public function isReusable(): bool;
 ```
 
-Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
+Check if records returned by getting belongs-to/has-many are implicitly
+cached during the current request
 
 <h4 id="mvcmodelrelationinterface-isthrough"><code>isThrough()</code></h4>
 
@@ -16572,8 +16609,6 @@ Sets the intermediate model data for has-*-through relations
 
 Interface
 
-Phalcon\Mvc\Model\ResultInterface
-
 All single objects passed as base objects to Resultsets must implement this interface
 
 - **`Phalcon\Mvc\Model\ResultInterface`**
@@ -16582,7 +16617,7 @@ All single objects passed as base objects to Resultsets must implement this inte
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelresultinterface-setdirtystate" visibility="public" name="setDirtyState" returnType="ModelInterface|bool" params={[{"type":"int","name":"dirtyState","default":null}]}>
+<ApiItem href="#mvcmodelresultinterface-setdirtystate" visibility="public" name="setDirtyState" returnType="bool|ModelInterface" params={[{"type":"int","name":"dirtyState","default":null}]}>
 Sets the object's state
 </ApiItem>
 
@@ -16591,7 +16626,7 @@ Sets the object's state
 <h4 id="mvcmodelresultinterface-setdirtystate"><code>setDirtyState()</code></h4>
 
 ```php
-public function setDirtyState( int $dirtyState ): ModelInterface|bool;
+public function setDirtyState( int $dirtyState ): bool|ModelInterface;
 ```
 
 Sets the object's state
@@ -16600,12 +16635,11 @@ Sets the object's state
 
 Abstract
 
-Phalcon\Mvc\Model\Resultset
-
-This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption
-Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized
-it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before
-serializing.
+This component allows to Phalcon\Mvc\Model returns large resultsets with
+the minimum memory consumption. Resultsets can be traversed using a standard
+foreach or a while statement. If a resultset is serialized it will dump all
+the rows into a big array. Then unserialize will retrieve the rows as they
+were before serializing.
 
 ```php
 
@@ -16639,7 +16673,7 @@ echo $invoice->inv_title, "\n";
 $invoices->next();
 }
 ```
-@template TKey
+@template TKey of int
 @template TValue
 @implements Iterator&lt;TKey, TValue>
 @implements ArrayAccess&lt;TKey, TValue>
@@ -17047,8 +17081,6 @@ are - on SQLite that answer costs a second statement.
 
 Interface
 
-Phalcon\Mvc\Model\ResultsetInterface
-
 Interface for Phalcon\Mvc\Model\Resultset
 
 - **`Phalcon\Mvc\Model\ResultsetInterface`**
@@ -17082,7 +17114,7 @@ Returns the error messages produced by a batch operation
 Returns the internal type of data retrieval that the resultset is using
 </ApiItem>
 <ApiItem href="#mvcmodelresultsetinterface-isfresh" visibility="public" name="isFresh" returnType="bool" params={[]}>
-Tell if the resultset if fresh or an old one cached
+Tell if the resultset is fresh or an old one cached
 </ApiItem>
 <ApiItem href="#mvcmodelresultsetinterface-sethydratemode" visibility="public" name="setHydrateMode" returnType="ResultsetInterface" params={[{"type":"int","name":"hydrateMode","default":null}]}>
 Sets the hydration mode in the resultset
@@ -17091,7 +17123,7 @@ Sets the hydration mode in the resultset
 Set if the resultset is fresh or an old one cached
 </ApiItem>
 <ApiItem href="#mvcmodelresultsetinterface-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns a complete resultset as an array, if the resultset has a big number of rows
+Returns a complete resultset as an array, if the resultset has a big
 </ApiItem>
 <ApiItem href="#mvcmodelresultsetinterface-update" visibility="public" name="update" returnType="bool" params={[{"type":"mixed","name":"data","default":null},{"type":"Closure|null","name":"conditionCallback","default":"null"}]}>
 Updates every record in the resultset
@@ -17179,7 +17211,7 @@ Returns the internal type of data retrieval that the resultset is using
 public function isFresh(): bool;
 ```
 
-Tell if the resultset if fresh or an old one cached
+Tell if the resultset is fresh or an old one cached
 
 <h4 id="mvcmodelresultsetinterface-sethydratemode"><code>setHydrateMode()</code></h4>
 
@@ -17203,8 +17235,8 @@ Set if the resultset is fresh or an old one cached
 public function toArray(): array;
 ```
 
-Returns a complete resultset as an array, if the resultset has a big number of rows
-it could consume more memory than currently it does.
+Returns a complete resultset as an array, if the resultset has a big
+number of rows it could consume more memory than currently it does.
 
 <h4 id="mvcmodelresultsetinterface-update"><code>update()</code></h4>
 
@@ -17221,8 +17253,6 @@ Updates every record in the resultset
 
 Class
 
-Phalcon\Mvc\Model\Resultset\Complex
-
 Complex resultsets may include complete objects and scalar values.
 This class builds every complex row as it is required
 
@@ -17232,7 +17262,7 @@ This class builds every complex row as it is required
 - [`Phalcon\Mvc\Model\Resultset`](#mvcmodelresultset)
 - **`Phalcon\Mvc\Model\Resultset\Complex`**
 
-`Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\CorruptColumnType` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings` · `stdClass`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\CorruptColumnType` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings` · `stdClass`
 
 ### Method Summary
 
@@ -17253,7 +17283,7 @@ Serializing a resultset will dump all related rows into a big array,
 Returns a complete resultset as an array, if the resultset has a big
 </ApiItem>
 <ApiItem href="#mvcmodelresultsetcomplex-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
-Unserializing a resultset will allow to only works on the rows present in the saved state
+Unserializing a resultset will allow to only works on the rows present
 </ApiItem>
 
 ### Properties
@@ -17261,7 +17291,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 <ApiItem kind="property" visibility="protected" name="columnTypes" type="array" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="disableHydration" type="bool" default="false">
-Unserialised result-set hydrated all rows already. unserialise() sets
+Unserialized result-set hydrated all rows already. unserialize() sets
 disableHydration to true
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="resultsetRowClass" type="string" default="&quot;&quot;">
@@ -17326,13 +17356,12 @@ number of rows it could consume more memory than currently it does.
 public function unserialize( mixed $data ): void;
 ```
 
-Unserializing a resultset will allow to only works on the rows present in the saved state
+Unserializing a resultset will allow to only works on the rows present
+in the saved state
 
 ## Mvc\Model\Resultset\Simple
 
 Class
-
-Phalcon\Mvc\Model\Resultset\Simple
 
 Simple resultsets only contains a complete objects
 This class builds every complete object as it is required
@@ -17343,7 +17372,7 @@ This class builds every complete object as it is required
 - [`Phalcon\Mvc\Model\Resultset`](#mvcmodelresultset)
 - **`Phalcon\Mvc\Model\Resultset\Simple`**
 
-`Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -17495,10 +17524,10 @@ Checks whether offset exists in the row. Returns true when the property
 Gets a record in a specific position of the row
 </ApiItem>
 <ApiItem href="#mvcmodelrow-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
-Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Rows cannot be changed. It has only been implemented to meet the
 </ApiItem>
 <ApiItem href="#mvcmodelrow-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"offset","default":null}]}>
-Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Rows cannot be changed. It has only been implemented to meet the
 </ApiItem>
 <ApiItem href="#mvcmodelrow-readattribute" visibility="public" name="readAttribute" returnType="" params={[{"type":"string","name":"attribute","default":null}]}>
 Reads an attribute value by its name
@@ -17550,7 +17579,8 @@ mixed $value
 ): void;
 ```
 
-Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Rows cannot be changed. It has only been implemented to meet the
+definition of the ArrayAccess interface
 
 <h4 id="mvcmodelrow-offsetunset"><code>offsetUnset()</code></h4>
 
@@ -17558,7 +17588,8 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 public function offsetUnset( mixed $offset ): void;
 ```
 
-Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+Rows cannot be changed. It has only been implemented to meet the
+definition of the ArrayAccess interface
 
 <h4 id="mvcmodelrow-readattribute"><code>readAttribute()</code></h4>
 
@@ -17650,7 +17681,7 @@ echo "Failed, reason: ", $e->getMessage();
 
 - **`Phalcon\Mvc\Model\Transaction`** - implements [`Phalcon\Mvc\Model\TransactionInterface`](#mvcmodeltransactioninterface)
 
-`Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\Transaction\Failed` · `Phalcon\Mvc\Model\Transaction\ManagerInterface`
+`Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\Transaction\Failed` · `Phalcon\Mvc\Model\Transaction\ManagerInterface`
 
 ### Method Summary
 
@@ -17980,8 +18011,6 @@ Enables throwing exception
 
 Class
 
-Phalcon\Mvc\Model\Transaction\Exception
-
 Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 
 - `\Exception`
@@ -18007,7 +18036,7 @@ This class will be thrown to exit a try/catch block for isolated transactions
 ### Method Summary
 
 <ApiItem href="#mvcmodeltransactionfailed-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":null},{"type":"ModelInterface|null","name":"record","default":"null"}]}>
-Phalcon\Mvc\Model\Transaction\Failed constructor
+Constructor
 </ApiItem>
 <ApiItem href="#mvcmodeltransactionfailed-getrecord" visibility="public" name="getRecord" returnType="ModelInterface|null" params={[]}>
 Returns validation record messages which stop the transaction
@@ -18032,7 +18061,7 @@ ModelInterface|null $record = null
 );
 ```
 
-Phalcon\Mvc\Model\Transaction\Failed constructor
+Constructor
 
 <h4 id="mvcmodeltransactionfailed-getrecord"><code>getRecord()</code></h4>
 
@@ -18158,7 +18187,7 @@ Removes transactions from the TransactionManager
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="">
+<ApiItem kind="property" visibility="protected" name="container" type="DiInterface" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="initialized" type="bool" default="false">
 </ApiItem>
@@ -18340,7 +18369,7 @@ Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
 Returns the database service used to isolate the transaction
 </ApiItem>
 <ApiItem href="#mvcmodeltransactionmanagerinterface-getrollbackpendent" visibility="public" name="getRollbackPendent" returnType="bool" params={[]}>
-Check if the transaction manager is registering a shutdown function to clean up pendent transactions
+Check if the transaction manager is registering a shutdown function to
 </ApiItem>
 <ApiItem href="#mvcmodeltransactionmanagerinterface-has" visibility="public" name="has" returnType="bool" params={[]}>
 Checks whether manager has an active transaction
@@ -18404,7 +18433,8 @@ Returns the database service used to isolate the transaction
 public function getRollbackPendent(): bool;
 ```
 
-Check if the transaction manager is registering a shutdown function to clean up pendent transactions
+Check if the transaction manager is registering a shutdown function to
+clean up pendent transactions
 
 <h4 id="mvcmodeltransactionmanagerinterface-has"><code>has()</code></h4>
 
@@ -18476,7 +18506,7 @@ Phalcon\Mvc\Model must be set up to have this behavior
 - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
 - **`Phalcon\Mvc\Model\ValidationFailed`**
 
-`Phalcon\Messages\Message` · `Phalcon\Mvc\ModelInterface`
+`Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 
 ### Method Summary
 
@@ -18567,8 +18597,6 @@ Registers services related to the module
 
 Class
 
-Phalcon\Mvc\Router
-
 Phalcon\Mvc\Router is the standard framework router. Routing is the
 process of taking a URI endpoint (that part of the URI which comes after the
 base URL) and decomposing it into parameters to determine which module,
@@ -18599,7 +18627,7 @@ echo $router->getControllerName();
 - **`Phalcon\Mvc\Router`** - implements [`Phalcon\Mvc\RouterInterface`](#mvcrouterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
 - [`Phalcon\Mvc\Router\Annotations`](#mvcrouterannotations)
 
-`Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInterface` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\RequestInterface` · `Phalcon\Mvc\Router\Exception` · `Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray` · `Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes` · `Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray` · `Phalcon\Mvc\Router\Exceptions\InvalidConfigSource` · `Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths` · `Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition` · `Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey` · `Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey` · `Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable` · `Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod` · `Phalcon\Mvc\Router\Exceptions\WrongPathsKey` · `Phalcon\Mvc\Router\Group` · `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\Route` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Traits\Php\FileTrait`
+`Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\RequestInterface` · `Phalcon\Mvc\Router\Exception` · `Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray` · `Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes` · `Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray` · `Phalcon\Mvc\Router\Exceptions\InvalidConfigSource` · `Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths` · `Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition` · `Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey` · `Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey` · `Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable` · `Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod` · `Phalcon\Mvc\Router\Exceptions\WrongPathsKey` · `Phalcon\Mvc\Router\Group` · `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\Route` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
@@ -18691,7 +18719,7 @@ Get rewrite info. This info is read from $_GET["_url"].
 <ApiItem href="#mvcrouter-getroutebyid" visibility="public" name="getRouteById" returnType="RouteInterface|bool" params={[{"type":"mixed","name":"routeId","default":null}]}>
 Returns a route object by its id
 </ApiItem>
-<ApiItem href="#mvcrouter-getroutebyname" visibility="public" name="getRouteByName" returnType="RouteInterface|bool" params={[{"type":"string","name":"name","default":null}]}>
+<ApiItem href="#mvcrouter-getroutebyname" visibility="public" name="getRouteByName" returnType="bool|RouteInterface" params={[{"type":"string","name":"name","default":null}]}>
 Returns a route object by its name
 </ApiItem>
 <ApiItem href="#mvcrouter-getroutes" visibility="public" name="getRoutes" returnType="RouteInterface[]" params={[]}>
@@ -18795,8 +18823,8 @@ Built in rebuildMethodIndex(); consumed by handle() in reverse.
 <ApiItem kind="property" visibility="protected" name="combinedRegexByMethod" type="array" default="[]">
 Combined PCRE pattern per method bucket (chunked list of strings).
 Each chunk uses (?|...) branch reset and (*:N) mark labels. Built
-only when the bucket meets gating: no hostname routes; standard
-pattern shape.
+only when the bucket has no hostname routes and all patterns are
+the standard `#^...$#u` shape.
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="combinedRegexDisabled" type="array" default="[]">
 Boolean per method bucket: true when the combined regex cannot be
@@ -18820,7 +18848,7 @@ candidatesByMethod[method]. One per chunk.
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="defaultParams" type="array" default="[]">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="">
+<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="hostnameByMethod" type="array" default="[]">
 Per-method buckets of routes with hostname constraints, grouped by
@@ -19232,7 +19260,7 @@ Returns a route object by its id
 <h4 id="mvcrouter-getroutebyname"><code>getRouteByName()</code></h4>
 
 ```php
-public function getRouteByName( string $name ): RouteInterface|bool;
+public function getRouteByName( string $name ): bool|RouteInterface;
 ```
 
 Returns a route object by its name
@@ -19295,16 +19323,16 @@ Loads routes from an array or Phalcon\Config\Config instance.
 
 ```php
 $router->loadFromConfig(
- [
-     'routes' => [
-         [
-             'method'  => 'get',
-             'pattern' => '/users',
-             'paths'   => 'Users::index',
-         ],
-     ],
- ]
- );
+[
+    'routes' => [
+        [
+            'method'  => 'get',
+            'pattern' => '/users',
+            'paths'   => 'Users::index',
+        ],
+    ],
+]
+);
 ```
 
 <h4 id="mvcrouter-mount"><code>mount()</code></h4>
@@ -19480,7 +19508,7 @@ Interface for Phalcon\Mvc\Router
 
 - **`Phalcon\Mvc\RouterInterface`**
 
-`Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterface`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterface`
 
 ### Method Summary
 
@@ -19940,6 +19968,9 @@ Changes the action method suffix
 <ApiItem href="#mvcrouterannotations-setcontrollersuffix" visibility="public" name="setControllerSuffix" returnType="self" params={[{"type":"string","name":"controllerSuffix","default":null}]}>
 Changes the controller class suffix
 </ApiItem>
+<ApiItem href="#mvcrouterannotations-resolveargument" visibility="protected" name="resolveArgument" returnType="mixed" params={[{"type":"Annotation","name":"annotation","default":null},{"type":"string","name":"name","default":null}]}>
+Returns the argument at position 0, or the named one when position 0
+</ApiItem>
 
 ### Properties
 
@@ -20077,11 +20108,25 @@ public function setControllerSuffix( string $controllerSuffix ): self;
 
 Changes the controller class suffix
 
+<h4 id="mvcrouterannotations-resolveargument"><code>resolveArgument()</code></h4>
+
+```php
+protected function resolveArgument(
+Annotation $annotation,
+string $name
+): mixed;
+```
+
+Returns the argument at position 0, or the named one when position 0
+is not there.
+
+A docblock puts the value at position 0. An attribute puts it at
+position 0 too, unless the developer writes the name as a named
+argument.
+
 ## Mvc\Router\Exception
 
 Class
-
-Phalcon\Mvc\Router\Exception
 
 Exceptions thrown in Phalcon\Mvc\Router will use this class
 
@@ -20523,6 +20568,8 @@ $router->mount($blog);
 
 - **`Phalcon\Mvc\Router\Group`** - implements [`Phalcon\Mvc\Router\GroupInterface`](#mvcroutergroupinterface)
 
+`Phalcon\Contracts\Mvc\MvcTypes`
+
 ### Method Summary
 
 <ApiItem href="#mvcroutergroup-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"paths","default":"null"}]}>
@@ -20887,6 +20934,8 @@ $router->mount($blog);
 
 - **`Phalcon\Mvc\Router\GroupInterface`**
 
+`Phalcon\Contracts\Mvc\MvcTypes`
+
 ### Method Summary
 
 <ApiItem href="#mvcroutergroupinterface-add" visibility="public" name="add" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"mixed","name":"httpMethods","default":"null"}]}>
@@ -21171,7 +21220,7 @@ This class represents every route added to the router
 
 - **`Phalcon\Mvc\Router\Route`** - implements [`Phalcon\Mvc\Router\RouteInterface`](#mvcrouterrouteinterface)
 
-`Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
 
 ### Method Summary
 
@@ -21609,6 +21658,8 @@ Interface for Phalcon\Mvc\Router\Route
 
 - **`Phalcon\Mvc\Router\RouteInterface`**
 
+`Phalcon\Contracts\Mvc\MvcTypes`
+
 ### Method Summary
 
 <ApiItem href="#mvcrouterrouteinterface-compilepattern" visibility="public" name="compilePattern" returnType="string" params={[{"type":"string","name":"pattern","default":null}]}>
@@ -21821,9 +21872,9 @@ use Phalcon\Mvc\Router\RouterFactory;
 
 $router = (new RouterFactory())->load(
 [
-    "defaultRoutes" : false,
-    "routes" : [
-        ["method" : "get", "pattern" : "/users", "paths" : "Users::index"]
+    'defaultRoutes' => false,
+    'routes' => [
+        ['method' => 'get', 'pattern' => '/users', 'paths' => 'Users::index']
     ]
 ]
 );
@@ -21884,7 +21935,7 @@ echo $url->get(
 - [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
 - **`Phalcon\Mvc\Url`** - implements [`Phalcon\Mvc\Url\UrlInterface`](#mvcurlurlinterface)
 
-`Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Mvc\Url\Exception` · `Phalcon\Mvc\Url\Exceptions\MissingRouteName` · `Phalcon\Mvc\Url\Exceptions\RouteNotFound` · `Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\ReduceSlashes`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Mvc\Url\Exception` · `Phalcon\Mvc\Url\Exceptions\MissingRouteName` · `Phalcon\Mvc\Url\Exceptions\RouteNotFound` · `Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\ReduceSlashes`
 
 ### Method Summary
 
@@ -21920,13 +21971,13 @@ Sets a prefix for all static URLs generated
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="basePath" type="null|string" default="null">
+<ApiItem kind="property" visibility="protected" name="basePath" type="string|null" default="null">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="baseUri" type="null|string" default="null">
+<ApiItem kind="property" visibility="protected" name="baseUri" type="string|null" default="null">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="router" type="RouterInterface|null" default="null">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="staticBaseUri" type="null|string" default="null">
+<ApiItem kind="property" visibility="protected" name="staticBaseUri" type="string|null" default="null">
 </ApiItem>
 
 ### Methods
@@ -22088,8 +22139,6 @@ $url->setStaticBaseUri("/invo/");
 
 Class
 
-Phalcon\Mvc\Url\Exception
-
 Exceptions thrown in Phalcon\Mvc\Url will use this class
 
 - `\Exception`
@@ -22184,7 +22233,7 @@ Generates a URL
 Returns a base path
 </ApiItem>
 <ApiItem href="#mvcurlurlinterface-getbaseuri" visibility="public" name="getBaseUri" returnType="string" params={[]}>
-Returns the prefix for all the generated urls. By default /
+Returns the prefix for all the generated urls. By default, /
 </ApiItem>
 <ApiItem href="#mvcurlurlinterface-path" visibility="public" name="path" returnType="string" params={[{"type":"string|null","name":"path","default":"null"}]}>
 Generates a local path
@@ -22226,7 +22275,7 @@ Returns a base path
 public function getBaseUri(): string;
 ```
 
-Returns the prefix for all the generated urls. By default /
+Returns the prefix for all the generated urls. By default, /
 
 <h4 id="mvcurlurlinterface-path"><code>path()</code></h4>
 
@@ -22283,7 +22332,7 @@ echo $view->getContent();
 - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
 - **`Phalcon\Mvc\View`** - implements [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
 
-`Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exception` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\InvalidViewsDirType` · `Phalcon\Mvc\View\Exceptions\ViewNotFound` · `Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable` · `Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+`Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\View\Engine\EngineInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exception` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\InvalidViewsDirType` · `Phalcon\Mvc\View\Exceptions\ViewNotFound` · `Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable` · `Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 
 ### Method Summary
 
@@ -22357,7 +22406,7 @@ Perform the automatic rendering returning the output as a string
 </ApiItem>
 <ApiItem href="#mvcview-getrenderlevel" visibility="public" name="getRenderLevel" returnType="int" params={[]}>
 </ApiItem>
-<ApiItem href="#mvcview-getviewsdir" visibility="public" name="getViewsDir" returnType="string|array" params={[]}>
+<ApiItem href="#mvcview-getviewsdir" visibility="public" name="getViewsDir" returnType="array|string" params={[]}>
 Gets views directory
 </ApiItem>
 <ApiItem href="#mvcview-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"view","default":null}]}>
@@ -22478,7 +22527,7 @@ Render Level: No render any view
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="engines" type="array|bool" default="false">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="">
+<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="layout" type="string|null" default="null">
 </ApiItem>
@@ -22751,7 +22800,7 @@ public function getRenderLevel(): int;
 <h4 id="mvcview-getviewsdir"><code>getViewsDir()</code></h4>
 
 ```php
-public function getViewsDir(): string|array;
+public function getViewsDir(): array|string;
 ```
 
 Gets views directory
@@ -23104,7 +23153,7 @@ Returns cached output from another view stage
 <ApiItem href="#mvcviewbaseinterface-getparamstoview" visibility="public" name="getParamsToView" returnType="array" params={[]}>
 Returns parameters to views
 </ApiItem>
-<ApiItem href="#mvcviewbaseinterface-getviewsdir" visibility="public" name="getViewsDir" returnType="string|array" params={[]}>
+<ApiItem href="#mvcviewbaseinterface-getviewsdir" visibility="public" name="getViewsDir" returnType="array|string" params={[]}>
 Gets views directory
 </ApiItem>
 <ApiItem href="#mvcviewbaseinterface-partial" visibility="public" name="partial" returnType="" params={[{"type":"string","name":"partialPath","default":null},{"type":"mixed","name":"params","default":"null"}]}>
@@ -23144,7 +23193,7 @@ Returns parameters to views
 <h4 id="mvcviewbaseinterface-getviewsdir"><code>getViewsDir()</code></h4>
 
 ```php
-public function getViewsDir(): string|array;
+public function getViewsDir(): array|string;
 ```
 
 Gets views directory
@@ -23228,7 +23277,7 @@ Finishes the render process by stopping the output buffering
 <ApiItem href="#mvcviewinterface-getactionname" visibility="public" name="getActionName" returnType="string" params={[]}>
 Gets the name of the action rendered
 </ApiItem>
-<ApiItem href="#mvcviewinterface-getactiverenderpath" visibility="public" name="getActiveRenderPath" returnType="string|array" params={[]}>
+<ApiItem href="#mvcviewinterface-getactiverenderpath" visibility="public" name="getActiveRenderPath" returnType="array|string" params={[]}>
 Returns the path of the view that is currently rendered
 </ApiItem>
 <ApiItem href="#mvcviewinterface-getbasepath" visibility="public" name="getBasePath" returnType="string" params={[]}>
@@ -23345,7 +23394,7 @@ Gets the name of the action rendered
 <h4 id="mvcviewinterface-getactiverenderpath"><code>getActiveRenderPath()</code></h4>
 
 ```php
-public function getActiveRenderPath(): string|array;
+public function getActiveRenderPath(): array|string;
 ```
 
 Returns the path of the view that is currently rendered
@@ -23732,7 +23781,7 @@ Designer friendly and fast template engine for PHP written in Zephir/C
 - [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
 - **`Phalcon\Mvc\View\Engine\Volt`** - implements [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
 
-`Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\View\Engine\Volt\Compiler` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired` · `Phalcon\Mvc\View\Exception` · `Phalcon\Traits\Php\InfoTrait`
+`Countable` · `Iterator` · `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\View\Engine\Volt\Compiler` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired` · `Phalcon\Mvc\View\Exception` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
@@ -23780,7 +23829,7 @@ Sorts an array
 
 <ApiItem kind="property" visibility="protected" name="compiler" type="Compiler" default="">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="">
+<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="macros" type="array" default="[]">
 </ApiItem>
@@ -23865,6 +23914,7 @@ public function preload( mixed $parameters ): string;
 ```
 
 Parses the preload element passed and sets the necessary link headers
+
 @todo find a better way to handle this
 
 <h4 id="mvcviewenginevolt-render"><code>render()</code></h4>
@@ -23931,7 +23981,7 @@ require $compiler->getCompiledTemplatePath();
 
 - **`Phalcon\Mvc\View\Engine\Volt\Compiler`** - implements [`Phalcon\Di\InjectionAwareInterface`](/5.22/api/phalcon_di/#diinjectionawareinterface)
 
-`Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable` · `Phalcon\Tag` · `Phalcon\Traits\Php\FileTrait`
+`Closure` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable` · `Phalcon\Tag` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
@@ -24336,7 +24386,6 @@ use Phalcon\Mvc\View\Engine\Volt\Compiler;
 $compiler = new Compiler();
 
 // {% set a = ['first': 1] %}
-
 $source = [
 "type" => 306,
 "assignments" => [
@@ -24651,7 +24700,7 @@ Class for exceptions thrown by Phalcon\Mvc\View
 - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`](#mvcviewenginevoltexceptionsunknownvoltstatement)
 - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`](#mvcviewenginevoltexceptionsvoltdirectorynotwritable)
 
-`Phalcon\Mvc\View\Exception`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\View\Exception`
 
 ### Method Summary
 
@@ -24744,7 +24793,7 @@ Class
 - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
 - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`**
 
-`Phalcon\Mvc\View\Engine\Volt\Exception`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
@@ -24939,7 +24988,7 @@ Class
 - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
 - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`**
 
-`Phalcon\Mvc\View\Engine\Volt\Exception`
+`Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
@@ -25297,8 +25346,6 @@ public function __construct();
 
 Class
 
-Phalcon\Mvc\View\Exception
-
 Class for exceptions thrown by Phalcon\Mvc\View
 
 - `\Exception`
@@ -25561,7 +25608,7 @@ Loads registered template engines, if none are registered it will use
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="engines" type="EngineInterface[]|false" default="false">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="">
+<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
 </ApiItem>

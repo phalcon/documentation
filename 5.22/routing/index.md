@@ -1756,6 +1756,97 @@ For annotations that add routes, the following parameters are supported:
 | `name`       | The name for the route                         | `@Route('/api/products', name='get-products')`                      |
 | `paths`      | Paths array for the route                      | `@Route('/invoices/view/{id}/{slug}', paths={module='backend'})`    |
 
+### PHP Attributes
+
+As of 5.22 the same routes can be written as PHP attributes. `Phalcon\Annotations\Router` holds one class for each annotation of the table above. The router reads the two forms in the same way and produces the same routes.
+
+The application selects the reader on the [annotations][annotations] service. The docblock reader stays the default, so this step is required:
+
+```php
+<?php
+
+use Phalcon\Annotations\AttributesReader;
+use Phalcon\Mvc\Router\Annotations;
+
+$container['router'] = function () use ($container) {
+$container
+    ->getShared('annotations')
+    ->setReader(new AttributesReader())
+;
+
+$router = new Annotations(false);
+
+$router->addResource('Invoices', '/admin/invoices');
+
+return $router;
+};
+```
+
+The controller of the example above, written with attributes:
+
+```php
+<?php
+
+use Phalcon\Annotations\Router\Get;
+use Phalcon\Annotations\Router\Route;
+use Phalcon\Annotations\Router\RoutePrefix;
+
+#[RoutePrefix('/admin/invoices')]
+class InvoicesController
+{
+#[Get('/')]
+public function indexAction()
+{
+
+}
+
+#[Get('/edit/{id:[0-9]+}', name: 'invoice-edit')]
+public function editAction($id)
+{
+
+}
+
+#[Route('/save', methods: ['POST', 'PUT'], name: 'invoice-save')]
+public function saveAction()
+{
+
+}
+
+#[Route(
+    '/delete/{id:[0-9]+}',
+    methods: 'DELETE',
+    converters: ['id' => 'MyConverters::checkId']
+)]
+public function deleteAction($id)
+{
+
+}
+}
+```
+
+The parameter names are the same as the docblock ones: `converters`, `methods`, `name` and `paths`. The route is the first argument, and `route:` names it when a named argument is preferred.
+
+The route attributes are repeatable, so one action can carry more than one:
+
+```php
+<?php
+
+use Phalcon\Annotations\Router\Get;
+use Phalcon\Annotations\Router\Post;
+
+class InvoicesController
+{
+#[Get('/search')]
+#[Post('/search')]
+public function searchAction()
+{
+
+}
+}
+```
+
+A class carries the docblock form or the attribute form. A reader reads one of the two, so a class that carries both gives its routes once, from the reader in use. For the naming rule that applies to an attribute outside the `Phalcon\Annotations` namespace, see the [annotations][annotations] page.
+
 If you are using modules in your application, it is better to use the `addModuleResource()` method:
 
 ```php

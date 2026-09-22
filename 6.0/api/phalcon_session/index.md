@@ -631,6 +631,7 @@ $user->name = "Kimbra Johnson";
 $user->age  = 22;
 ```
 
+@property DiInterface|null $container
 @property string           $name
 @property ManagerInterface $session;
 
@@ -639,7 +640,7 @@ $user->age  = 22;
 - [`Phalcon\Support\Collection`](/6.0/api/phalcon_support/#supportcollection)
 - **`Phalcon\Session\Bag`** - implements [`Phalcon\Session\BagInterface`](#sessionbaginterface), [`Phalcon\Di\InjectionAwareInterface`](/6.0/api/phalcon_di/#diinjectionawareinterface)
 
-`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Traits\InjectionAwareTrait` · `Phalcon\Support\Collection`
+`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Support\Collection`
 
 ### Method Summary
 
@@ -647,6 +648,9 @@ $user->age  = 22;
 </ApiItem>
 <ApiItem href="#sessionbag-clear" visibility="public" name="clear" returnType="void" params={[]}>
 Destroys the session bag
+</ApiItem>
+<ApiItem href="#sessionbag-getdi" visibility="public" name="getDI" returnType="DiInterface|null" params={[]}>
+Returns the DependencyInjector container
 </ApiItem>
 <ApiItem href="#sessionbag-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
 Initialize internal array
@@ -656,6 +660,9 @@ Removes a property from the internal bag
 </ApiItem>
 <ApiItem href="#sessionbag-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
 Sets a value in the session bag
+</ApiItem>
+<ApiItem href="#sessionbag-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+Sets the DependencyInjector container
 </ApiItem>
 
 ### Methods
@@ -676,6 +683,14 @@ public function clear(): void;
 ```
 
 Destroys the session bag
+
+<h4 id="sessionbag-getdi"><code>getDI()</code></h4>
+
+```php
+public function getDI(): DiInterface|null;
+```
+
+Returns the DependencyInjector container
 
 <h4 id="sessionbag-init"><code>init()</code></h4>
 
@@ -703,6 +718,14 @@ mixed $value
 ```
 
 Sets a value in the session bag
+
+<h4 id="sessionbag-setdi"><code>setDI()</code></h4>
+
+```php
+public function setDI( DiInterface $container ): void;
+```
+
+Sets the DependencyInjector container
 
 ## Session\BagInterface
 

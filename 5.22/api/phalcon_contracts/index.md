@@ -126,6 +126,8 @@ it, so callers can catch all ADR errors with a single type.
 - `\Throwable`
 - **`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`**
 
+`Throwable`
+
 ## Contracts\ADR\Handler
 
 Interface
@@ -484,6 +486,9 @@ in the order it tries them. The first that exists wins at match time.
 Namespace descent consults the filesystem, so the list depends on the
 action directory.
 
+The names are derived, not resolved: a candidate is what the convention
+would call the class, whether or not that class exists.
+
 <h4 id="contractsadrrouterrouter-classfor"><code>classFor()</code></h4>
 
 ```php
@@ -638,34 +643,34 @@ Adds a component to the ACL list
 Adds access to components
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-addinherit" visibility="public" name="addInherit" returnType="bool" params={[{"type":"string","name":"roleName","default":null},{"type":"mixed","name":"roleToInherits","default":null}]}>
-Do a role inherit from another existing role
+Add a role which inherits from an existing role
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-addrole" visibility="public" name="addRole" returnType="bool" params={[{"type":"mixed","name":"role","default":null},{"type":"mixed","name":"accessInherits","default":"null"}]}>
-Adds a role to the ACL list. Second parameter lets to inherit access data
+Adds a role to the ACL list. The second parameter lets to inherit access
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-allow" visibility="public" name="allow" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"access","default":null},{"type":"mixed","name":"func","default":"null"}]}>
-Allow access to a role on a component
+Allow access to a role on a component. You can use `*` as wildcard
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-deny" visibility="public" name="deny" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"access","default":null},{"type":"mixed","name":"func","default":"null"}]}>
-Deny access to a role on a component
+Deny access to a role on a component. You can use `*` as wildcard
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-dropcomponentaccess" visibility="public" name="dropComponentAccess" returnType="void" params={[{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"accessList","default":null}]}>
 Removes access from a component
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-getactiveaccess" visibility="public" name="getActiveAccess" returnType="null|string" params={[]}>
-Returns the access which the list is checking if some role can access it
+<ApiItem href="#contractsacladapteradapter-getactiveaccess" visibility="public" name="getActiveAccess" returnType="string|null" params={[]}>
+Returns the access which the list is checking if a role can access it
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-getactivecomponent" visibility="public" name="getActiveComponent" returnType="null|string" params={[]}>
+<ApiItem href="#contractsacladapteradapter-getactivecomponent" visibility="public" name="getActiveComponent" returnType="string|null" params={[]}>
 Returns the component which the list is checking if some role can access
 </ApiItem>
-<ApiItem href="#contractsacladapteradapter-getactiverole" visibility="public" name="getActiveRole" returnType="null|string" params={[]}>
+<ApiItem href="#contractsacladapteradapter-getactiverole" visibility="public" name="getActiveRole" returnType="string|null" params={[]}>
 Returns the role which the list is checking if it's allowed to certain
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-getcomponents" visibility="public" name="getComponents" returnType="ComponentInterface[]" params={[]}>
 Return an array with every component registered in the list
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-getdefaultaction" visibility="public" name="getDefaultAction" returnType="int" params={[]}>
-Returns the default ACL access level
+Returns the default action
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-getinheritedroles" visibility="public" name="getInheritedRoles" returnType="array" params={[{"type":"string","name":"roleName","default":"\"\""}]}>
 Returns the inherited roles for a passed role name. If no role name
@@ -680,16 +685,16 @@ Return an array with every role registered in the list
 Check whether a role is allowed to access an action from a component
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-iscomponent" visibility="public" name="isComponent" returnType="bool" params={[{"type":"string","name":"componentName","default":null}]}>
-Check whether component exist in the components list
+Check whether a component exists in the components list
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-isrole" visibility="public" name="isRole" returnType="bool" params={[{"type":"string","name":"roleName","default":null}]}>
 Check whether role exist in the roles list
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-setdefaultaction" visibility="public" name="setDefaultAction" returnType="void" params={[{"type":"int","name":"defaultAccess","default":null}]}>
-Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+Sets the default access level
 </ApiItem>
 <ApiItem href="#contractsacladapteradapter-setnoargumentsdefaultaction" visibility="public" name="setNoArgumentsDefaultAction" returnType="void" params={[{"type":"int","name":"defaultAccess","default":null}]}>
-Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or
 </ApiItem>
 
 ### Methods
@@ -705,8 +710,8 @@ mixed $accessList
 
 Adds a component to the ACL list
 
-Access names can be a particular action, by example
-search, update, delete, etc. or a list of them
+Access names can be a particular action, for instance `search`, `update`
+`delete` etc. or a list of them.
 
 <h4 id="contractsacladapteradapter-addcomponentaccess"><code>addComponentAccess()</code></h4>
 
@@ -728,7 +733,7 @@ mixed $roleToInherits
 ): bool;
 ```
 
-Do a role inherit from another existing role
+Add a role which inherits from an existing role
 
 <h4 id="contractsacladapteradapter-addrole"><code>addRole()</code></h4>
 
@@ -739,8 +744,8 @@ mixed $accessInherits = null
 ): bool;
 ```
 
-Adds a role to the ACL list. Second parameter lets to inherit access data
-from other existing role
+Adds a role to the ACL list. The second parameter lets to inherit access
+from an existing role
 
 <h4 id="contractsacladapteradapter-allow"><code>allow()</code></h4>
 
@@ -753,7 +758,7 @@ mixed $func = null
 ): void;
 ```
 
-Allow access to a role on a component
+Allow access to a role on a component. You can use `*` as wildcard
 
 <h4 id="contractsacladapteradapter-deny"><code>deny()</code></h4>
 
@@ -766,7 +771,7 @@ mixed $func = null
 ): void;
 ```
 
-Deny access to a role on a component
+Deny access to a role on a component. You can use `*` as wildcard
 
 <h4 id="contractsacladapteradapter-dropcomponentaccess"><code>dropComponentAccess()</code></h4>
 
@@ -782,15 +787,15 @@ Removes access from a component
 <h4 id="contractsacladapteradapter-getactiveaccess"><code>getActiveAccess()</code></h4>
 
 ```php
-public function getActiveAccess(): null|string;
+public function getActiveAccess(): string|null;
 ```
 
-Returns the access which the list is checking if some role can access it
+Returns the access which the list is checking if a role can access it
 
 <h4 id="contractsacladapteradapter-getactivecomponent"><code>getActiveComponent()</code></h4>
 
 ```php
-public function getActiveComponent(): null|string;
+public function getActiveComponent(): string|null;
 ```
 
 Returns the component which the list is checking if some role can access
@@ -799,7 +804,7 @@ it
 <h4 id="contractsacladapteradapter-getactiverole"><code>getActiveRole()</code></h4>
 
 ```php
-public function getActiveRole(): null|string;
+public function getActiveRole(): string|null;
 ```
 
 Returns the role which the list is checking if it's allowed to certain
@@ -819,7 +824,7 @@ Return an array with every component registered in the list
 public function getDefaultAction(): int;
 ```
 
-Returns the default ACL access level
+Returns the default action
 
 <h4 id="contractsacladapteradapter-getinheritedroles"><code>getInheritedRoles()</code></h4>
 
@@ -838,7 +843,7 @@ public function getNoArgumentsDefaultAction(): int;
 ```
 
 Returns the default ACL access level for no arguments provided in
-isAllowed action if there exists func for accessKey
+`isAllowed` action if a `function` (callable) exists for `accessKey`
 
 <h4 id="contractsacladapteradapter-getroles"><code>getRoles()</code></h4>
 
@@ -867,7 +872,7 @@ Check whether a role is allowed to access an action from a component
 public function isComponent( string $componentName ): bool;
 ```
 
-Check whether component exist in the components list
+Check whether a component exists in the components list
 
 <h4 id="contractsacladapteradapter-isrole"><code>isRole()</code></h4>
 
@@ -883,7 +888,8 @@ Check whether role exist in the roles list
 public function setDefaultAction( int $defaultAccess ): void;
 ```
 
-Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+Sets the default access level
+(Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
 
 <h4 id="contractsacladapteradapter-setnoargumentsdefaultaction"><code>setNoArgumentsDefaultAction()</code></h4>
 
@@ -891,9 +897,9 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 public function setNoArgumentsDefaultAction( int $defaultAccess ): void;
 ```
 
-Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
-for no arguments provided in isAllowed action if there exists func for
-accessKey
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or
+Phalcon\Acl\Enum::DENY) for no arguments provided in isAllowed action if
+there exists func for accessKey
 
 ## Contracts\Acl\Adapter\Persistable
 
@@ -1080,6 +1086,44 @@ public function getRoleName(): string;
 
 Returns role name
 
+## Contracts\Annotations\AnnotationsTypes
+
+Interface
+
+Central registry of the array shapes used across the Annotations namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `annotations_` because PHPStan resolves
+imported type names per file and has no namespacing for them: the prefix is
+what keeps generic names such as `arguments` or `options` from clashing with
+an alias imported from another namespace into the same file.
+
+The list is alphabetical, with one exception: an alias that another alias
+names must be defined before it. Psalm reads the aliases in file order and
+cannot resolve a forward reference; it reports the name as a missing class
+instead. PHPStan does not care about the order, so a forward reference is
+invisible until the stubs are analyzed. `annotations_expression` is hoisted
+for that reason.
+
+The node shapes below are what `ext/phalcon/annotations/parser.php.inc.h`
+builds: `phannot_ret_annotation()`, `phannot_ret_named_item()`,
+`phannot_ret_literal_zval()` and `phannot_ret_array()`.
+
+An expression is one of a literal node (`type` plus an optional string
+`value`), an array node (`type` plus optional `items`) or a nested
+annotation node, and `getExpression()` walks into `items` and into nested
+annotations. That makes the shape recursive, which neither PHPStan nor Psalm
+accepts, so the alias stays an untyped map, as `db_expression` does for the
+dialect intermediate. Each read narrows the value it needs.
+
+- **`Phalcon\Contracts\Annotations\AnnotationsTypes`**
+
+`Phalcon\Annotations\Annotation` · `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Reflection`
+
 ## Contracts\Application\ApplicationTypes
 
 Interface
@@ -1232,7 +1276,7 @@ reference to the auth manager.
 
 - **`Phalcon\Contracts\Auth\Access\Access`**
 
-`Phalcon\Contracts\Auth\Guard\Guard`
+`Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard`
 
 ### Method Summary
 
@@ -1327,7 +1371,7 @@ consumed only by validateCredentials().
 - **`Phalcon\Contracts\Auth\Adapter\Adapter`**
 - [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](#contractsauthadapterrememberadapter)
 
-`Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
+`Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
 
 ### Method Summary
 
@@ -1501,6 +1545,26 @@ public function getRememberToken( string $token ): RememberToken|null;
 Returns the remember token entry matching the given token value,
 or null if not found.
 
+## Contracts\Auth\AuthTypes
+
+Interface
+
+Central registry of the array shapes used across the Auth namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `auth_` because PHPStan resolves imported
+type names per file and has no namespacing for them: the prefix is what
+keeps generic names such as `adapter_config` from clashing with an alias
+imported from another namespace into the same file.
+
+- **`Phalcon\Contracts\Auth\AuthTypes`**
+
+`Phalcon\Contracts\Auth\Access\Access`
+
 ## Contracts\Auth\AuthUser
 
 Interface
@@ -1552,7 +1616,7 @@ Interface
 <ApiItem href="#contractsauthguardbasicauth-basic" visibility="public" name="basic" returnType="bool" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
 Authenticate against HTTP Basic credentials. Returns true on success.
 </ApiItem>
-<ApiItem href="#contractsauthguardbasicauth-oncebasic" visibility="public" name="onceBasic" returnType="false|AuthUser" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
+<ApiItem href="#contractsauthguardbasicauth-oncebasic" visibility="public" name="onceBasic" returnType="AuthUser|false" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
 Like basic() but does not persist; returns the resolved user on success
 </ApiItem>
 
@@ -1575,7 +1639,7 @@ Authenticate against HTTP Basic credentials. Returns true on success.
 public function onceBasic(
 string $field = "email",
 array $extraConditions = []
-): false|AuthUser;
+): AuthUser|false;
 ```
 
 Like basic() but does not persist; returns the resolved user on success
@@ -1587,7 +1651,7 @@ Interface
 
 - **`Phalcon\Contracts\Auth\Guard\Guard`**
 
-`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface`
+`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface`
 
 ### Method Summary
 
@@ -1727,7 +1791,7 @@ Implemented by guards backed by persistent state (sessions/cookies).
 
 - **`Phalcon\Contracts\Auth\Guard\GuardStateful`**
 
-`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser`
+`Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser`
 
 ### Method Summary
 
@@ -3070,6 +3134,16 @@ Interface
 
 `Throwable`
 
+## Contracts\DataMapper\DataMapperTypes
+
+Interface
+
+Central registry of the array shapes used across the DataMapper namespace.
+
+- **`Phalcon\Contracts\DataMapper\DataMapperTypes`**
+
+`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Stringable`
+
 ## Contracts\Db\Adapter\Adapter
 
 Interface
@@ -3083,14 +3157,23 @@ Canonical contract for Phalcon\Db adapters.
              - createMaterializedView()  : bool
              - dropCheck()               : bool
              - dropMaterializedView()    : bool
+             - executePrepared()         : PDOStatement
              - onConflictUpdate()        : string
+             - prepare()                 : PDOStatement
              - refreshMaterializedView() : bool
              - returning()               : string
+
+The PDO adapters carry the two statement members above and the framework
+calls them on the interface. They join the interface in the next major;
+until then the tags below record what they provide.
+
+@method PDOStatement executePrepared(PDOStatement $statement, db_bind_params $placeholders, db_bind_types $dataTypes)
+@method PDOStatement prepare(string $sqlStatement)
 
 - **`Phalcon\Contracts\Db\Adapter\Adapter`**
 - [`Phalcon\Db\Adapter\AdapterInterface`](/5.22/api/phalcon_db/#dbadapteradapterinterface)
 
-`Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface`
+`PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface`
 
 ### Method Summary
 
@@ -3238,7 +3321,7 @@ Returns if nested transactions should use savepoints
 <ApiItem href="#contractsdbadapteradapter-isundertransaction" visibility="public" name="isUnderTransaction" returnType="bool" params={[]}>
 Checks whether connection is under database transaction
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-lastinsertid" visibility="public" name="lastInsertId" returnType="string|bool" params={[{"type":"string|null","name":"name","default":"null"}]}>
+<ApiItem href="#contractsdbadapteradapter-lastinsertid" visibility="public" name="lastInsertId" returnType="bool|string" params={[{"type":"string|null","name":"name","default":"null"}]}>
 Returns insert id for the auto_increment column inserted in the last SQL
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-limit" visibility="public" name="limit" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"mixed","name":"number","default":null}]}>
@@ -3828,7 +3911,7 @@ Checks whether connection is under database transaction
 <h4 id="contractsdbadapteradapter-lastinsertid"><code>lastInsertId()</code></h4>
 
 ```php
-public function lastInsertId( string|null $name = null ): string|bool;
+public function lastInsertId( string|null $name = null ): bool|string;
 ```
 
 Returns insert id for the auto_increment column inserted in the last SQL
@@ -4082,11 +4165,23 @@ Canonical contract for Phalcon\Db\Column.
 @todo v7 - these will become required interface members. They are
            omitted from the v5 line to avoid breaking third-party
            implementors:
+             - getComment()              : string | null
              - getGenerationExpression() : string | null
              - isArray()                 : bool
              - isGenerated()             : bool
              - isGenerationStored()      : bool
              - isInvisible()             : bool
+
+The dialects call the members above on the interface. They join the
+interface in the next major; until then the tags below record what all
+implementations provide.
+
+@method string|null getComment()
+@method string|null getGenerationExpression()
+@method bool        isArray()
+@method bool        isGenerated()
+@method bool        isGenerationStored()
+@method bool        isInvisible()
 
 - **`Phalcon\Contracts\Db\Column`**
 - [`Phalcon\Db\ColumnInterface`](/5.22/api/phalcon_db/#dbcolumninterface)
@@ -4117,7 +4212,7 @@ Returns column type
 <ApiItem href="#contractsdbcolumn-gettypereference" visibility="public" name="getTypeReference" returnType="int" params={[]}>
 Returns column type reference
 </ApiItem>
-<ApiItem href="#contractsdbcolumn-gettypevalues" visibility="public" name="getTypeValues" returnType="array|string|int" params={[]}>
+<ApiItem href="#contractsdbcolumn-gettypevalues" visibility="public" name="getTypeValues" returnType="array|int|string" params={[]}>
 Returns column type values
 </ApiItem>
 <ApiItem href="#contractsdbcolumn-hasdefault" visibility="public" name="hasDefault" returnType="bool" params={[]}>
@@ -4127,13 +4222,13 @@ Check whether column has default value
 Auto-Increment
 </ApiItem>
 <ApiItem href="#contractsdbcolumn-isfirst" visibility="public" name="isFirst" returnType="bool" params={[]}>
-Check whether column have first position in table
+Check whether the column is the first in table
 </ApiItem>
 <ApiItem href="#contractsdbcolumn-isnotnull" visibility="public" name="isNotNull" returnType="bool" params={[]}>
 Not null
 </ApiItem>
 <ApiItem href="#contractsdbcolumn-isnumeric" visibility="public" name="isNumeric" returnType="bool" params={[]}>
-Check whether column have an numeric type
+Check whether column have a numeric type
 </ApiItem>
 <ApiItem href="#contractsdbcolumn-isprimary" visibility="public" name="isPrimary" returnType="bool" params={[]}>
 Column is part of the primary key?
@@ -4211,7 +4306,7 @@ Returns column type reference
 <h4 id="contractsdbcolumn-gettypevalues"><code>getTypeValues()</code></h4>
 
 ```php
-public function getTypeValues(): array|string|int;
+public function getTypeValues(): array|int|string;
 ```
 
 Returns column type values
@@ -4238,7 +4333,7 @@ Auto-Increment
 public function isFirst(): bool;
 ```
 
-Check whether column have first position in table
+Check whether the column is the first in table
 
 <h4 id="contractsdbcolumn-isnotnull"><code>isNotNull()</code></h4>
 
@@ -4254,7 +4349,7 @@ Not null
 public function isNumeric(): bool;
 ```
 
-Check whether column have an numeric type
+Check whether column have a numeric type
 
 <h4 id="contractsdbcolumn-isprimary"><code>isPrimary()</code></h4>
 
@@ -4272,6 +4367,41 @@ public function isUnsigned(): bool;
 
 Returns true if number column is unsigned
 
+## Contracts\Db\DbTypes
+
+Interface
+
+Central registry of the array shapes used across the Db namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `db_` because PHPStan resolves imported type
+names per file and has no namespacing for them: the prefix is what keeps
+generic names such as `row` or `options` from clashing with an alias
+imported from another namespace into the same file.
+
+The list is alphabetical, with one exception: an alias that another alias
+names must be defined before it. Psalm reads the aliases in file order and
+cannot resolve a forward reference; it reports the name as a missing class
+instead. PHPStan does not care about the order, so a forward reference is
+invisible until the cphalcon stubs are analyzed.
+
+The intermediate representation the dialects consume.
+
+`getSqlExpression()` dispatches on the `type` key and each branch reads
+only the keys its own node kind carries, so a single array shape cannot
+describe the tree. The alias therefore stays an untyped map, as
+`mvc_query_ir` does for the PHQL intermediate, and each read narrows the
+value it needs. A recursive alias is not an option either: PHPStan rejects
+one.
+
+- **`Phalcon\Contracts\Db\DbTypes`**
+
+`Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Profiler\Item` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
+
 ## Contracts\Db\Dialect
 
 Interface
@@ -4285,9 +4415,27 @@ Canonical contract for Phalcon\Db dialects.
              - createMaterializedView()  : string
              - dropCheck()               : string
              - dropMaterializedView()    : string
+             - escape()                  : string
+             - escapeSchema()            : string
+             - listViews()               : string
              - onConflictUpdate()        : string
              - refreshMaterializedView() : string
              - returning()               : string
+
+The adapters call the members above on the interface. They join the
+interface in the next major; until then the tags below record what all
+implementations provide.
+
+@method string addCheck(string $tableName, string $schemaName, \Phalcon\Db\CheckInterface $check)
+@method string createMaterializedView(string $view, db_view_definition $definition, string|null $schema = null)
+@method string dropCheck(string $tableName, string $schemaName, string $checkName)
+@method string dropMaterializedView(string $viewName, string|null $schemaName = null, bool $ifExists = true)
+@method string escape(string $input, string $escapeChar = '')
+@method string escapeSchema(string $input, string $escapeChar = '')
+@method string listViews(string|null $schemaName = null)
+@method string onConflictUpdate(string $sqlQuery, db_column_names $conflictColumns, db_column_names $updateColumns)
+@method string refreshMaterializedView(string $viewName, string|null $schemaName = null, bool $concurrent = false)
+@method string returning(string $sqlQuery, db_column_names $columns)
 
 - **`Phalcon\Contracts\Db\Dialect`**
 - [`Phalcon\Db\DialectInterface`](/5.22/api/phalcon_db/#dbdialectinterface)
@@ -4339,7 +4487,7 @@ Generates SQL to delete an index from a table
 Generates SQL to delete primary key from a table
 </ApiItem>
 <ApiItem href="#contractsdbdialect-droptable" visibility="public" name="dropTable" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"bool","name":"ifExists","default":"true"}]}>
-Generates SQL to drop a table
+Generates SQL to drop a table. Every bundled dialect widens
 </ApiItem>
 <ApiItem href="#contractsdbdialect-dropview" visibility="public" name="dropView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
 Generates SQL to drop a view
@@ -4597,7 +4745,9 @@ bool $ifExists = true
 ): string;
 ```
 
-Generates SQL to drop a table
+Generates SQL to drop a table. Every bundled dialect widens
+`schemaName` to `string|null` and defaults it to null; widening the
+contract itself is a next major change.
 
 <h4 id="contractsdbdialect-dropview"><code>dropView()</code></h4>
 
@@ -4854,6 +5004,15 @@ Canonical contract for Phalcon\Db\Index.
              - isConcurrent()  : bool
              - isInvisible()   : bool
 
+The dialects call the members above on the interface. They join the
+interface in the next major; until then the tags below record what all
+implementations provide.
+
+@method db_index_directions getDirections()
+@method string              getWhere()
+@method bool                isConcurrent()
+@method bool                isInvisible()
+
 - **`Phalcon\Contracts\Db\Index`**
 - [`Phalcon\Db\IndexInterface`](/5.22/api/phalcon_db/#dbindexinterface)
 
@@ -4899,7 +5058,7 @@ Gets the index type
 
 Interface
 
-Canonical contract for Phalcon\Db\Reference.
+Interface for Phalcon\Db\Reference
 
 - **`Phalcon\Contracts\Db\Reference`**
 - [`Phalcon\Db\ReferenceInterface`](/5.22/api/phalcon_db/#dbreferenceinterface)
@@ -5108,6 +5267,14 @@ public function setFetchMode( int $fetchMode ): bool;
 
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 
+## Contracts\Di\DiTypes
+
+Interface
+
+Central registry of the array shapes used across the Di namespace.
+
+- **`Phalcon\Contracts\Di\DiTypes`**
+
 ## Contracts\Dispatcher\Dispatcher
 
 Interface
@@ -5243,8 +5410,9 @@ mixed $filters = null
 
 Gets a param by its name or numeric index
 
-Note: This signature omits the `defaultValue` argument the implementation
-accepts; the two will be aligned in the next major version.
+Note: This signature omits the `$defaultValue` argument the
+implementation accepts; the two will be aligned in the next major
+version.
 
 <h4 id="contractsdispatcherdispatcher-getparameter"><code>getParameter()</code></h4>
 
@@ -5848,6 +6016,27 @@ int $blockSize
 ): int;
 ```
 
+## Contracts\Encryption\EncryptionTypes
+
+Interface
+
+Central registry of the array shapes used across the Encryption namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `encryption_` because PHPStan resolves
+imported type names per file and has no namespacing for them: the prefix is
+what keeps generic names such as `options` or `claims` from clashing with an
+alias imported from another namespace into the same file.
+
+The list is alphabetical, with one exception: an alias that another alias
+names must be defined before it.
+
+- **`Phalcon\Contracts\Encryption\EncryptionTypes`**
+
 ## Contracts\Encryption\Security\CryptoUtils
 
 Interface
@@ -6040,6 +6229,8 @@ Verify a passed source with a payload and passphrase
 Interface
 
 - **`Phalcon\Contracts\Encryption\Security\PasswordSecurity`**
+
+`Phalcon\Contracts\Encryption\EncryptionTypes`
 
 ### Method Summary
 
@@ -6365,6 +6556,14 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 Sets the events manager
 
+## Contracts\Events\EventsTypes
+
+Interface
+
+Central registry of the array shapes used across the Events namespace.
+
+- **`Phalcon\Contracts\Events\EventsTypes`**
+
 ## Contracts\Events\Manager
 
 Interface
@@ -6648,6 +6847,14 @@ public static function getSubscribedEvents(): array;
 
 Returns a map of event name => listener config. Called once per
 Manager::addSubscriber() / removeSubscriber() call.
+
+## Contracts\Factory\FactoryTypes
+
+Interface
+
+Central registry of the array shapes used across the Factory namespace.
+
+- **`Phalcon\Contracts\Factory\FactoryTypes`**
 
 ## Contracts\Filter\FilterTypes
 
@@ -7406,6 +7613,16 @@ Exceptional occurrences that are not errors.
 Example: Use of deprecated APIs, poor use of an API, undesirable things
 that are not necessarily wrong.
 
+## Contracts\Logger\LoggerTypes
+
+Interface
+
+Central registry of the array shapes used across the Logger namespace.
+
+- **`Phalcon\Contracts\Logger\LoggerTypes`**
+
+`DateTimeZone` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Item`
+
 ## Contracts\Messages\Messages
 
 Interface
@@ -7594,6 +7811,26 @@ public function getUniqueKey(): string;
 
 Returns a string that uniquely identifies this model instance for
 use as the key in the reusable records cache.
+
+## Contracts\Mvc\MvcTypes
+
+Interface
+
+Central registry of the array shapes used across the Mvc namespace.
+
+This is a type registry, not a contract. It declares no members and must
+not be implemented; it exists only so that every shape below has a single
+definition, imported where it is needed with a phpstan-import-type tag
+naming this interface as the source.
+
+Alias names are prefixed with `mvc_` because PHPStan resolves imported
+type names per file and has no namespacing for them: the prefix is what
+keeps generic names such as `model_find_parameters` from clashing with an
+alias imported from another namespace into the same file.
+
+- **`Phalcon\Contracts\Mvc\MvcTypes`**
+
+`Phalcon\Di\DiInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Router\RouteInterface`
 
 ## Contracts\Paginator\Adapter
 
@@ -8363,7 +8600,7 @@ ecosystem.
 
 ### Method Summary
 
-<ApiItem href="#contractsqueueprocessor-process" visibility="public" name="process" returnType="string|object" params={[{"type":"Message","name":"message","default":null},{"type":"Context","name":"context","default":null}]}>
+<ApiItem href="#contractsqueueprocessor-process" visibility="public" name="process" returnType="object|string" params={[{"type":"Message","name":"message","default":null},{"type":"Context","name":"context","default":null}]}>
 Processes the message and returns one of the ACK / REJECT / REQUEUE
 </ApiItem>
 
@@ -8384,7 +8621,7 @@ Processes the message and returns one of the ACK / REJECT / REQUEUE
 public function process(
 Message $message,
 Context $context
-): string|object;
+): object|string;
 ```
 
 Processes the message and returns one of the ACK / REJECT / REQUEUE

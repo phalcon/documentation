@@ -985,7 +985,7 @@ Gets best charset accepted by the browser/client from
 <ApiItem href="#httprequest-getbestlanguage" visibility="public" name="getBestLanguage" returnType="string" params={[]}>
 Gets the best language accepted by the browser/client from
 </ApiItem>
-<ApiItem href="#httprequest-getclientaddress" visibility="public" name="getClientAddress" returnType="string|bool" params={[{"type":"bool","name":"trustForwardedHeader","default":"false"}]}>
+<ApiItem href="#httprequest-getclientaddress" visibility="public" name="getClientAddress" returnType="bool|string" params={[{"type":"bool","name":"trustForwardedHeader","default":"false"}]}>
 Gets most possible client IP Address. This method searches in
 </ApiItem>
 <ApiItem href="#httprequest-getclientcharsets" visibility="public" name="getClientCharsets" returnType="array" params={[]}>
@@ -1027,7 +1027,7 @@ Gets host name used by the request.
 <ApiItem href="#httprequest-gethttpmethodparameteroverride" visibility="public" name="getHttpMethodParameterOverride" returnType="bool" params={[]}>
 Return the HTTP method parameter override flag
 </ApiItem>
-<ApiItem href="#httprequest-getjsonrawbody" visibility="public" name="getJsonRawBody" returnType="\stdClass|array|bool" params={[{"type":"bool","name":"associative","default":"false"}]}>
+<ApiItem href="#httprequest-getjsonrawbody" visibility="public" name="getJsonRawBody" returnType="array|bool|\stdClass" params={[{"type":"bool","name":"associative","default":"false"}]}>
 Gets decoded JSON HTTP raw request body
 </ApiItem>
 <ApiItem href="#httprequest-getlanguages" visibility="public" name="getLanguages" returnType="array" params={[]}>
@@ -1049,7 +1049,7 @@ Gets a variable from the $_POST superglobal applying filters if needed
 Gets the preferred ISO locale variant.
 </ApiItem>
 <ApiItem href="#httprequest-getput" visibility="public" name="getPut" returnType="mixed" params={[{"type":"string|null","name":"name","default":"null"},{"type":"mixed","name":"filters","default":"null"},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"bool","name":"notAllowEmpty","default":"false"},{"type":"bool","name":"noRecursive","default":"false"}]}>
-Gets a variable from the PUT request
+Gets a variable from put request
 </ApiItem>
 <ApiItem href="#httprequest-getquery" visibility="public" name="getQuery" returnType="mixed" params={[{"type":"string|null","name":"name","default":"null"},{"type":"mixed","name":"filters","default":"null"},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"bool","name":"notAllowEmpty","default":"false"},{"type":"bool","name":"noRecursive","default":"false"}]}>
 Gets variable from $_GET superglobal applying filters if needed.
@@ -1307,7 +1307,7 @@ _SERVER["HTTP_ACCEPT_LANGUAGE"]
 <h4 id="httprequest-getclientaddress"><code>getClientAddress()</code></h4>
 
 ```php
-public function getClientAddress( bool $trustForwardedHeader = false ): string|bool;
+public function getClientAddress( bool $trustForwardedHeader = false ): bool|string;
 ```
 
 Gets most possible client IP Address. This method searches in
@@ -1508,7 +1508,7 @@ Return the HTTP method parameter override flag
 <h4 id="httprequest-getjsonrawbody"><code>getJsonRawBody()</code></h4>
 
 ```php
-public function getJsonRawBody( bool $associative = false ): \stdClass|array|bool;
+public function getJsonRawBody( bool $associative = false ): array|bool|\stdClass;
 ```
 
 Gets decoded JSON HTTP raw request body
@@ -1620,13 +1620,13 @@ bool $noRecursive = false
 ): mixed;
 ```
 
-Gets a variable from the PUT request
+Gets a variable from put request
 
 ```php
-// Returns value from PUT stream without sanitizing
+// Returns value from $_PUT["user_email"] without sanitizing
 $userEmail = $request->getPut("user_email");
 
-// Returns value from PUT stream with sanitizing
+// Returns value from $_PUT["user_email"] with sanitizing
 $userEmail = $request->getPut("user_email", "email");
 ```
 
@@ -2118,7 +2118,7 @@ Return the best charset accepted by the browser/client from
 <ApiItem href="#httprequestinterface-getbestlanguage" visibility="public" name="getBestLanguage" returnType="string" params={[]}>
 Return the best language accepted by the browser/client from
 </ApiItem>
-<ApiItem href="#httprequestinterface-getclientaddress" visibility="public" name="getClientAddress" returnType="string|bool" params={[{"type":"bool","name":"trustForwardedHeader","default":"false"}]}>
+<ApiItem href="#httprequestinterface-getclientaddress" visibility="public" name="getClientAddress" returnType="bool|string" params={[{"type":"bool","name":"trustForwardedHeader","default":"false"}]}>
 Return the most possible client IPv4 Address. This method searches in
 </ApiItem>
 <ApiItem href="#httprequestinterface-getclientcharsets" visibility="public" name="getClientCharsets" returnType="array" params={[]}>
@@ -2326,7 +2326,7 @@ _SERVER["HTTP_ACCEPT_LANGUAGE"]
 <h4 id="httprequestinterface-getclientaddress"><code>getClientAddress()</code></h4>
 
 ```php
-public function getClientAddress( bool $trustForwardedHeader = false ): string|bool;
+public function getClientAddress( bool $trustForwardedHeader = false ): bool|string;
 ```
 
 Return the most possible client IPv4 Address. This method searches in
@@ -3593,7 +3593,7 @@ Prints out HTTP response to the client
 <ApiItem href="#httpresponse-sendcookies" visibility="public" name="sendCookies" returnType="ResponseInterface" params={[]}>
 Sends cookies to the client
 </ApiItem>
-<ApiItem href="#httpresponse-sendheaders" visibility="public" name="sendHeaders" returnType="ResponseInterface|bool" params={[]}>
+<ApiItem href="#httpresponse-sendheaders" visibility="public" name="sendHeaders" returnType="bool|ResponseInterface" params={[]}>
 Sends headers to the client
 </ApiItem>
 <ApiItem href="#httpresponse-setcache" visibility="public" name="setCache" returnType="ResponseInterface" params={[{"type":"int","name":"minutes","default":null}]}>
@@ -3827,7 +3827,7 @@ Sends cookies to the client
 <h4 id="httpresponse-sendheaders"><code>sendHeaders()</code></h4>
 
 ```php
-public function sendHeaders(): ResponseInterface|bool;
+public function sendHeaders(): bool|ResponseInterface;
 ```
 
 Sends headers to the client
@@ -4783,7 +4783,7 @@ This class is a bag to manage the response headers
 
 ### Method Summary
 
-<ApiItem href="#httpresponseheaders-get" visibility="public" name="get" returnType="string|bool|null" params={[{"type":"string","name":"name","default":null}]}>
+<ApiItem href="#httpresponseheaders-get" visibility="public" name="get" returnType="bool|string|null" params={[{"type":"string","name":"name","default":null}]}>
 Gets a header value from the internal bag
 </ApiItem>
 <ApiItem href="#httpresponseheaders-getiterator" visibility="public" name="getIterator" returnType="Traversable" params={[]}>
@@ -4825,7 +4825,7 @@ Returns the current headers as an array
 <h4 id="httpresponseheaders-get"><code>get()</code></h4>
 
 ```php
-public function get( string $name ): string|bool|null;
+public function get( string $name ): bool|string|null;
 ```
 
 Gets a header value from the internal bag

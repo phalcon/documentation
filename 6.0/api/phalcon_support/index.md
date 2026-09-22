@@ -2108,75 +2108,75 @@ Class
 
 ServiceLocator implementation for helpers
 
-@method string basename(string $uri, string $suffix = null)
-@method support_collection blacklist(support_collection $collection, support_collection $blackList)
-@method string camelize(string $text, string $delimiters = null, bool $lowerFirst = false)
-@method support_collection chunk(support_collection $collection, int $size, bool $preserveKeys = false)
-@method string concat(string $delimiter, string $first, string $second, string ...$arguments)
-@method int    countVowels(string $text)
-@method string decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8')
-@method string decode(string $data, bool $associative = false, int $depth = 512, int $options = 0)
-@method string decrement(string $text, string $separator = '_')
-@method string dirFromFile(string $file)
-@method string dirSeparator(string $directory)
-@method string dynamic(string $text, string $leftDel = "\{", string $rightDel = "\}", string $separator = "|")
-@method string encode($data, int $options = 0, int $depth = 512)
-@method bool   endsWith(string $haystack, string $needle, bool $ignoreCase = true)
-@method mixed  filter(support_collection $collection, callable|null $method)
-@method mixed  first(support_collection $collection, callable $method = null)
-@method string firstBetween(string $text, string $start, string $end)
-@method mixed  firstKey(support_collection $collection, callable $method = null)
-@method string friendly(string $text, string $separator = '-', bool $lowercase = true, $replace = null)
-@method support_collection flatten(support_collection $collection, bool $deep = false)
-@method mixed  get(support_collection $collection, $index, $defaultValue = null, string $cast = null)
-@method array&lt;array-key, list&lt;mixed>> group(support_collection $collection, $method)
-@method bool   has(support_collection $collection, $index)
-@method string humanize(string $text)
-@method bool   includes(string $haystack, string $needle)
-@method string increment(string $text, string $separator = '_')
-@method string interpolate(string $message, string[] $context=[], string $leftToken="%", string $rightToken="%")
-@method bool   isAnagram(string $first, string $second)
-@method bool   isBetween(int $value, int $start, int $end)
-@method bool   isLower(string $text, string $encoding = 'UTF-8')
-@method bool   isPalindrome(string $text)
-@method bool   isUnique(support_collection $collection)
-@method bool   isUpper(string $text, string $encoding = 'UTF-8')
-@method string kebabCase(string $text, string $delimiters = null)
-@method mixed  last(support_collection $collection, callable $method = null)
-@method mixed  lastKey(support_collection $collection, callable $method = null)
-@method int    len(string $text, string $encoding = 'UTF-8')
-@method string lower(string $text, string $encoding = 'UTF-8')
-@method support_collection order(support_collection $collection, $attribute, string $order = 'asc')
-@method string pascalCase(string $text, string $delimiters = null)
-@method support_collection pluck(support_collection $collection, string $element)
-@method string prefix(string $text, string $prefix)
-@method string random(int $type = 0, int $length = 8)
-@method string reduceSlashes(string $text)
-@method support_collection set(support_collection $collection, $value, $index = null)
-@method support_collection sliceLeft(support_collection $collection, int $elements = 1)
-@method support_collection sliceRight(support_collection $collection, int $elements = 1)
-@method string snakeCase(string $text, string $delimiters = null)
-@method support_collection split(support_collection $collection)
-@method bool   startsWith(string $haystack, string $needle, bool $ignoreCase = true)
-@method string suffix(string $text, string $suffix)
-@method object toObject(support_collection $collection)
-@method bool   validateAll(support_collection $collection, callable $method)
-@method bool   validateAny(support_collection $collection, callable $method)
-@method string ucwords(string $text, string $encoding = 'UTF-8')
-@method string uncamelize(string $text, string $delimiters = '_')
-@method string underscore(string $text)
-@method string upper(string $text, string $encoding = 'UTF-8')
-@method support_collection whitelist(support_collection $collection, support_collection $whiteList)
+@method string               basename(string $uri, string $suffix = null)
+@method support_collection   blacklist(support_collection $collection, support_collection $blackList)
+@method string               camelize(string $text, string $delimiters = null, bool $lowerFirst = false)
+@method support_collection   chunk(support_collection $collection, int $size, bool $preserveKeys = false)
+@method string               concat(string $delimiter, string $first, string $second, string ...$arguments)
+@method int                  countVowels(string $text)
+@method string               decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8')
+@method string               decode(string $data, bool $associative = false, int $depth = 512, int $options = 0)
+@method string               decrement(string $text, string $separator = '_')
+@method string               dirFromFile(string $file)
+@method string               dirSeparator(string $directory)
+@method string               dynamic(string $text, string $leftDel = "\{", string $rightDel = "\}", string $sep = "|")
+@method string               encode($data, int $options = 0, int $depth = 512)
+@method bool                 endsWith(string $haystack, string $needle, bool $ignoreCase = true)
+@method mixed                filter(support_collection $collection, callable|null $method)
+@method mixed                first(support_collection $collection, callable $method = null)
+@method string               firstBetween(string $text, string $start, string $end)
+@method mixed                firstKey(support_collection $collection, callable $method = null)
+@method string               friendly(string $text, string $separator = '-', bool $lowercase = true, $replace = null)
+@method mixed                get(support_collection $collection, $index, $defaultValue = null, string $cast = null)
+@method support_collection   flatten(support_collection $collection, bool $deep = false)
+@method support_group_return group(support_collection $collection, $method)
+@method bool                 has(support_collection $collection, $index)
+@method string               humanize(string $text)
+@method bool                 includes(string $haystack, string $needle)
+@method string               increment(string $text, string $separator = '_')
+@method string               interpolate(string $msg, string[] $context=[], string $leftTk="%", string $rightTk="%")
+@method bool                 isAnagram(string $first, string $second)
+@method bool                 isBetween(int $value, int $start, int $end)
+@method bool                 isLower(string $text, string $encoding = 'UTF-8')
+@method bool                 isPalindrome(string $text)
+@method bool                 isUnique(support_collection $collection)
+@method bool                 isUpper(string $text, string $encoding = 'UTF-8')
+@method string               kebabCase(string $text, string $delimiters = null)
+@method mixed                last(support_collection $collection, callable $method = null)
+@method mixed                lastKey(support_collection $collection, callable $method = null)
+@method int                  len(string $text, string $encoding = 'UTF-8')
+@method string               lower(string $text, string $encoding = 'UTF-8')
+@method support_collection   order(support_collection $collection, $attribute, string $order = 'asc')
+@method string               pascalCase(string $text, string $delimiters = null)
+@method support_collection   pluck(support_collection $collection, string $element)
+@method string               prefix(string $text, string $prefix)
+@method string               random(int $type = 0, int $length = 8)
+@method string               reduceSlashes(string $text)
+@method support_collection   set(support_collection $collection, $value, $index = null)
+@method support_collection   sliceLeft(support_collection $collection, int $elements = 1)
+@method support_collection   sliceRight(support_collection $collection, int $elements = 1)
+@method string               snakeCase(string $text, string $delimiters = null)
+@method support_collection   split(support_collection $collection)
+@method bool                 startsWith(string $haystack, string $needle, bool $ignoreCase = true)
+@method string               suffix(string $text, string $suffix)
+@method object               toObject(support_collection $collection)
+@method bool                 validateAll(support_collection $collection, callable $method)
+@method bool                 validateAny(support_collection $collection, callable $method)
+@method string               ucwords(string $text, string $encoding = 'UTF-8')
+@method string               uncamelize(string $text, string $delimiters = '_')
+@method string               underscore(string $text)
+@method string               upper(string $text, string $encoding = 'UTF-8')
+@method support_collection   whitelist(support_collection $collection, support_collection $whiteList)
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
 - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Support\HelperFactory`**
 
-`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper` · `Throwable`
+`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper`
 
 ### Method Summary
 
-<ApiItem href="#supporthelperfactory-__call" visibility="public" name="__call" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"arguments","default":null}]}>
+<ApiItem href="#supporthelperfactory-__call" visibility="public" name="__call" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"arguments","default":null}]}>
 </ApiItem>
 <ApiItem href="#supporthelperfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
 Constructor.
@@ -2197,7 +2197,7 @@ Returns the available adapters
 public function __call(
 string $name,
 array $arguments
-);
+): mixed;
 ```
 
 <h4 id="supporthelperfactory-__construct"><code>__construct()</code></h4>
@@ -2880,7 +2880,7 @@ JsonDecodeError
 
 ### Method Summary
 
-<ApiItem href="#supporthelperjsondecode-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"data","default":null},{"type":"bool","name":"associative","default":"false"},{"type":"int","name":"depth","default":"512"},{"type":"int","name":"options","default":"79"}]}>
+<ApiItem href="#supporthelperjsondecode-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"string","name":"data","default":null},{"type":"bool","name":"associative","default":"false"},{"type":"int","name":"depth","default":"512"},{"type":"int","name":"options","default":"79"}]}>
 </ApiItem>
 
 ### Methods
@@ -2893,7 +2893,7 @@ string $data,
 bool $associative = false,
 int $depth = 512,
 int $options = 79
-);
+): mixed;
 ```
 
 ## Support\Helper\Json\Encode
@@ -4260,7 +4260,8 @@ Returns the object in a JSON format
 
 The default string uses the following options for json_encode
 
-JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
+JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT,
+JSON_UNESCAPED_SLASHES, JSON_THROW_ON_ERROR
 
 <h4 id="supportregistry-unserialize"><code>unserialize()</code></h4>
 
@@ -4413,11 +4414,11 @@ Trait
 
 - **`Phalcon\Support\Traits\FilePathTrait`**
 
-[`Phalcon\Mvc\Model\MetaData\Stream`](/6.0/api/phalcon_mvc/#mvcmodelmetadatastream) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](/6.0/api/phalcon_mvc/#mvcviewenginevoltcompiler) · [`Phalcon\Storage\Adapter\Stream`](/6.0/api/phalcon_storage/#storageadapterstream)
+[`Phalcon\Annotations\Adapter\Stream`](/6.0/api/phalcon_annotations/#annotationsadapterstream) · [`Phalcon\Mvc\Model\MetaData\Stream`](/6.0/api/phalcon_mvc/#mvcmodelmetadatastream) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](/6.0/api/phalcon_mvc/#mvcviewenginevoltcompiler) · [`Phalcon\Storage\Adapter\Stream`](/6.0/api/phalcon_storage/#storageadapterstream)
 
 ### Method Summary
 
-<ApiItem href="#supporttraitsfilepathtrait-preparevirtualpath" visibility="public" name="prepareVirtualPath" returnType="string" params={[{"type":"string","name":"key","default":null},{"type":"string","name":"separator","default":"\"_\""}]}>
+<ApiItem href="#supporttraitsfilepathtrait-preparevirtualpath" visibility="public" name="prepareVirtualPath" returnType="string" params={[{"type":"mixed","name":"key","default":null},{"type":"string","name":"separator","default":"\"_\""}]}>
 </ApiItem>
 
 ### Methods
@@ -4426,7 +4427,7 @@ Trait
 
 ```php
 public function prepareVirtualPath(
-string $key,
+mixed $key,
 string $separator = "_"
 ): string;
 ```

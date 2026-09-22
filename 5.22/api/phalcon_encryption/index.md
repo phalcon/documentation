@@ -37,7 +37,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 - **`Phalcon\Encryption\Crypt`** - implements [`Phalcon\Encryption\Crypt\CryptInterface`](#encryptioncryptcryptinterface)
 
-`Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\Exception\DecryptionFailed` · `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey` · `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey` · `Phalcon\Encryption\Crypt\Exception\EncryptionFailed` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength` · `Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength` · `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize` · `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed` · `Phalcon\Encryption\Crypt\Exception\Mismatch` · `Phalcon\Encryption\Crypt\Exception\MissingAuthData` · `Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension` · `Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed` · `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm` · `Phalcon\Encryption\Crypt\PadFactory` · `Phalcon\Traits\Php\Base64Trait` · `Phalcon\Traits\Php\HashTrait` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\OpensslTrait`
+`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\Exception\DecryptionFailed` · `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey` · `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey` · `Phalcon\Encryption\Crypt\Exception\EncryptionFailed` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength` · `Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength` · `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize` · `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed` · `Phalcon\Encryption\Crypt\Exception\Mismatch` · `Phalcon\Encryption\Crypt\Exception\MissingAuthData` · `Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension` · `Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed` · `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm` · `Phalcon\Encryption\Crypt\PadFactory` · `Phalcon\Traits\Php\Base64Trait` · `Phalcon\Traits\Php\HashTrait` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\OpensslTrait` · `Throwable`
 
 ### Method Summary
 
@@ -494,7 +494,7 @@ Initialize available cipher algorithms.
 
 Interface
 
-Interface for Phalcon\Crypt
+Interface for Phalcon\Encryption\Crypt
 
 - [`Phalcon\Contracts\Encryption\Crypt\Crypt`](/5.22/api/phalcon_contracts/#contractsencryptioncryptcrypt)
 - **`Phalcon\Encryption\Crypt\CryptInterface`**
@@ -589,7 +589,7 @@ public function __construct();
 
 Class
 
-Exceptions thrown in Phalcon\Crypt use this class
+Exceptions thrown in Phalcon\Encryption\Crypt use this class
 
 - `\Exception`
 - **`Phalcon\Encryption\Crypt\Exception\Exception`**
@@ -695,7 +695,7 @@ public function __construct();
 
 Class
 
-Exceptions thrown in Phalcon\Crypt will use this class.
+Exceptions thrown in Phalcon\Encryption\Crypt will use this class.
 
 - `\Exception`
 - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
@@ -798,7 +798,7 @@ Factory for creating pad classes
 - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Encryption\Crypt\PadFactory`**
 
-`Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Padding\Ansi` · `Phalcon\Encryption\Crypt\Padding\Iso10126` · `Phalcon\Encryption\Crypt\Padding\IsoIek` · `Phalcon\Encryption\Crypt\Padding\Noop` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Encryption\Crypt\Padding\Pkcs7` · `Phalcon\Encryption\Crypt\Padding\Space` · `Phalcon\Encryption\Crypt\Padding\Zero` · `Phalcon\Factory\AbstractFactory`
+`Exception` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Padding\Ansi` · `Phalcon\Encryption\Crypt\Padding\Iso10126` · `Phalcon\Encryption\Crypt\Padding\IsoIek` · `Phalcon\Encryption\Crypt\Padding\Noop` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Encryption\Crypt\Padding\Pkcs7` · `Phalcon\Encryption\Crypt\Padding\Space` · `Phalcon\Encryption\Crypt\Padding\Zero` · `Phalcon\Factory\AbstractFactory`
 
 ### Method Summary
 
@@ -811,12 +811,9 @@ Create a new instance of the adapter
 <ApiItem href="#encryptioncryptpadfactory-padnumbertoservice" visibility="public" name="padNumberToService" returnType="string" params={[{"type":"int","name":"number","default":null}]}>
 Gets a Crypt pad constant and returns the unique service name for the
 </ApiItem>
-<ApiItem href="#encryptioncryptpadfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
+<ApiItem href="#encryptioncryptpadfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
 </ApiItem>
-
-### Properties
-
-<ApiItem kind="property" visibility="protected" name="exception" type="string" default="&quot;&quot;">
+<ApiItem href="#encryptioncryptpadfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
 </ApiItem>
 
 ### Methods
@@ -846,6 +843,12 @@ public function padNumberToService( int $number ): string;
 Gets a Crypt pad constant and returns the unique service name for the
 padding class
 
+<h4 id="encryptioncryptpadfactory-getexceptionclass"><code>getExceptionClass()</code></h4>
+
+```php
+protected function getExceptionClass(): string;
+```
+
 <h4 id="encryptioncryptpadfactory-getservices"><code>getServices()</code></h4>
 
 ```php
@@ -856,9 +859,7 @@ protected function getServices(): array;
 
 Class
 
-Class Ansi
-
-@package Phalcon\Encryption\Crypt\Padding
+Padding based on Ansi
 
 - **`Phalcon\Encryption\Crypt\Padding\Ansi`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
@@ -890,9 +891,7 @@ int $blockSize
 
 Class
 
-Class Iso10126
-
-@package Phalcon\Encryption\Crypt\Padding
+Padding based on ISO10126
 
 - **`Phalcon\Encryption\Crypt\Padding\Iso10126`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
@@ -924,9 +923,7 @@ int $blockSize
 
 Class
 
-Class IsoIek
-
-@package Phalcon\Encryption\Crypt\Padding
+Padding based on ISO-IEK
 
 - **`Phalcon\Encryption\Crypt\Padding\IsoIek`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
@@ -958,9 +955,7 @@ int $blockSize
 
 Class
 
-Class Noop
-
-@package Phalcon\Encryption\Crypt\Padding
+No padding adapter
 
 - **`Phalcon\Encryption\Crypt\Padding\Noop`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
@@ -1003,9 +998,7 @@ Interface for Phalcon\Encryption\Crypt\Padding
 
 Class
 
-Class Pkcs7
-
-@package Phalcon\Encryption\Crypt\Padding
+Padding based on Pkcs7
 
 - **`Phalcon\Encryption\Crypt\Padding\Pkcs7`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
@@ -1037,9 +1030,7 @@ int $blockSize
 
 Class
 
-Class Space
-
-@package Phalcon\Encryption\Crypt\Padding
+Padding based on spaces
 
 - **`Phalcon\Encryption\Crypt\Padding\Space`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
@@ -1071,9 +1062,7 @@ int $blockSize
 
 Class
 
-Class Zero
-
-@package Phalcon\Encryption\Crypt\Padding
+Padding based on Zeros
 
 - **`Phalcon\Encryption\Crypt\Padding\Zero`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
@@ -1125,7 +1114,7 @@ if ($this->security->checkHash($password, $user->password)) {
 - [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
 - **`Phalcon\Encryption\Security`** - implements [`Phalcon\Contracts\Encryption\Security\Security`](/5.22/api/phalcon_contracts/#contractsencryptionsecuritysecurity)
 
-`Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Php\HashTrait`
+`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Php\HashTrait` · `ValueError`
 
 ### Method Summary
 
@@ -1547,7 +1536,7 @@ JWT Builder
 
 - **`Phalcon\Encryption\Security\JWT\Builder`**
 
-`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Item` · `Phalcon\Encryption\Security\JWT\Token\Signature` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Php\Base64Trait`
+`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Item` · `Phalcon\Encryption\Security\JWT\Token\Signature` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Php\Base64Trait`
 
 ### Method Summary
 
@@ -2291,6 +2280,8 @@ Abstract helper class for Tokens
 - [`Phalcon\Encryption\Security\JWT\Token\Item`](#encryptionsecurityjwttokenitem)
 - [`Phalcon\Encryption\Security\JWT\Token\Signature`](#encryptionsecurityjwttokensignature)
 
+`Phalcon\Contracts\Encryption\EncryptionTypes`
+
 ### Method Summary
 
 <ApiItem href="#encryptionsecurityjwttokenabstractitem-getencoded" visibility="public" name="getEncoded" returnType="string" params={[]}>
@@ -2353,6 +2344,8 @@ Storage class for a Token Item
 - [`Phalcon\Encryption\Security\JWT\Token\AbstractItem`](#encryptionsecurityjwttokenabstractitem)
 - **`Phalcon\Encryption\Security\JWT\Token\Item`**
 
+`Phalcon\Contracts\Encryption\EncryptionTypes`
+
 ### Method Summary
 
 <ApiItem href="#encryptionsecurityjwttokenitem-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"payload","default":null},{"type":"string","name":"encoded","default":null}]}>
@@ -2411,7 +2404,7 @@ signature. It returns a token object populated with the decoded information.
 
 - **`Phalcon\Encryption\Security\JWT\Token\Parser`**
 
-`InvalidArgumentException` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader` · `Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString` · `Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\Base64Trait`
+`InvalidArgumentException` · `Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader` · `Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString` · `Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\Base64Trait`
 
 ### Method Summary
 
@@ -2490,7 +2483,7 @@ and payload. It also calculates and returns the token string.
 
 - **`Phalcon\Encryption\Security\JWT\Token\Token`**
 
-`Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Validator`
+`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Validator`
 
 ### Method Summary
 
@@ -2609,7 +2602,7 @@ Class Validator
 
 - **`Phalcon\Encryption\Security\JWT\Validator`**
 
-`DateTimeImmutable` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Time\Clock\ClockInterface`
+`DateTimeImmutable` · `Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Time\Clock\ClockInterface`
 
 ### Method Summary
 
@@ -2871,7 +2864,7 @@ This class partially borrows SecureRandom library from Ruby
 
 - **`Phalcon\Encryption\Security\Random`**
 
-`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`
+`Exception` · `Phalcon\Encryption\Security\Exceptions\InvalidRandomInput` · `Phalcon\Traits\Php\Base64Trait`
 
 ### Method Summary
 
@@ -2913,6 +2906,7 @@ public function base58( int $len = 16 ): string;
 
 Generates a random base58 string
 
+If $len is not specified, 16 is assumed. It may be larger in future.
 The result may contain alphanumeric characters except 0, O, I and l.
 
 It is similar to `Phalcon\Encryption\Security\Random::base64()` but has been
@@ -2925,7 +2919,6 @@ $random = new \Phalcon\Encryption\Security\Random();
 echo $random->base58(); // 4kUgL2pdQMSCQtjE
 ```
 
-@see    \Phalcon\Encryption\Security\Random:base64
 @link   https://en.wikipedia.org/wiki/Base58
 
 <h4 id="encryptionsecurityrandom-base62"><code>base62()</code></h4>
@@ -2935,6 +2928,8 @@ public function base62( int $len = 16 ): string;
 ```
 
 Generates a random base62 string
+
+If $len is not specified, 16 is assumed. It may be larger in future.
 
 It is similar to `Phalcon\Encryption\Security\Random::base58()` but has been
 modified to provide the largest value that can safely be used in URLs
@@ -2947,8 +2942,6 @@ $random = new \Phalcon\Encryption\Security\Random();
 echo $random->base62(); // z0RkwHfh8ErDM1xw
 ```
 
-@see    \Phalcon\Encryption\Security\Random:base58
-
 <h4 id="encryptionsecurityrandom-base64"><code>base64()</code></h4>
 
 ```php
@@ -2957,6 +2950,7 @@ public function base64( int $len = 16 ): string;
 
 Generates a random base64 string
 
+If $len is not specified, 16 is assumed. It may be larger in future.
 The length of the result string is usually greater of $len.
 Size formula: 4 * ($len / 3) rounded up to a multiple of 4.
 
@@ -2977,6 +2971,7 @@ bool $padding = false
 
 Generates a random URL-safe base64 string
 
+If $len is not specified, 16 is assumed. It may be larger in future.
 The length of the result string is usually greater of $len.
 
 By default, padding is not generated because "=" may be used as a URL
@@ -3058,8 +3053,11 @@ The version 4 UUID is purely random (except the version). It does not
 contain meaningful information such as MAC address, time, etc. See RFC
 4122 for details of UUID.
 
-Delegates to `Phalcon\Encryption\Security\Uuid::v4()`. For other UUID
-versions or object-based access use that class directly.
+This algorithm sets the version number (4 bits) as well as two reserved
+bits. All other bits (the remaining 122 bits) are set using a random or
+pseudorandom data source. Version 4 UUIDs have the form
+xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx where x is any hexadecimal digit and
+y is one of 8, 9, A, or B (e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479).
 
 ```php
 $random = new \Phalcon\Encryption\Security\Random();
@@ -3215,7 +3213,8 @@ Converts a 60-bit UUID timestamp (100-ns intervals since UUID epoch) to
 <ApiItem kind="constant" name="NIL" type="string" default="&quot;00000000-0000-0000-0000-000000000000&quot;">
 </ApiItem>
 <ApiItem kind="constant" name="TIME_OFFSET_INT" type="int" default="0x01B21DD213814000">
-100-nanosecond intervals between UUID epoch (1582-10-15) and Unix epoch (1970-01-01).
+100-nanosecond intervals between UUID epoch (1582-10-15)
+and Unix epoch (1970-01-01).
 </ApiItem>
 
 ### Properties

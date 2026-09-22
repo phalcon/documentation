@@ -24,7 +24,7 @@ This is the base class for Phalcon\Annotations adapters
 - [`Phalcon\Annotations\Adapter\Memory`](#annotationsadaptermemory)
 - [`Phalcon\Annotations\Adapter\Stream`](#annotationsadapterstream)
 
-`Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Reader` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection`
+`Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Reader` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes`
 
 ### Method Summary
 
@@ -186,7 +186,7 @@ This interface must be implemented by adapters in Phalcon\Annotations
 
 - **`Phalcon\Annotations\Adapter\AdapterInterface`**
 
-`Phalcon\Annotations\Collection` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection`
+`Phalcon\Annotations\Collection` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes`
 
 ### Method Summary
 
@@ -316,7 +316,7 @@ $annotations = new Apcu();
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
 - **`Phalcon\Annotations\Adapter\Apcu`**
 
-`Phalcon\Annotations\Reflection`
+`Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes`
 
 ### Method Summary
 
@@ -376,7 +376,7 @@ development/testing
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
 - **`Phalcon\Annotations\Adapter\Memory`**
 
-`Phalcon\Annotations\Reflection`
+`Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes`
 
 ### Method Summary
 
@@ -392,6 +392,7 @@ Writes parsed annotations to memory
 ### Properties
 
 <ApiItem kind="property" visibility="protected" name="data" type="mixed" default="">
+The property has no initializer, so it is null until the first write.
 </ApiItem>
 
 ### Methods
@@ -440,7 +441,7 @@ $annotations = new Stream(
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
 - **`Phalcon\Annotations\Adapter\Stream`**
 
-`Phalcon\Annotations\Exception` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `Phalcon\Traits\Php\FileTrait` · `RuntimeException`
+`Phalcon\Annotations\Exception` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Traits\Php\FileTrait` · `RuntimeException`
 
 ### Method Summary
 
@@ -496,7 +497,7 @@ Represents a single annotation in an annotations collection
 
 - **`Phalcon\Annotations\Annotation`**
 
-`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`
+`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression` · `Phalcon\Contracts\Annotations\AnnotationsTypes`
 
 ### Method Summary
 
@@ -515,7 +516,7 @@ Returns the expression arguments without resolving
 <ApiItem href="#annotationsannotation-getexpression" visibility="public" name="getExpression" returnType="mixed" params={[{"type":"array","name":"expr","default":null}]}>
 Resolves an annotation expression
 </ApiItem>
-<ApiItem href="#annotationsannotation-getname" visibility="public" name="getName" returnType="null|string" params={[]}>
+<ApiItem href="#annotationsannotation-getname" visibility="public" name="getName" returnType="string|null" params={[]}>
 Returns the annotation's name
 </ApiItem>
 <ApiItem href="#annotationsannotation-getnamedargument" visibility="public" name="getNamedArgument" returnType="mixed|null" params={[{"type":"string","name":"name","default":null}]}>
@@ -529,6 +530,19 @@ Returns an argument in a specific position
 </ApiItem>
 <ApiItem href="#annotationsannotation-numberarguments" visibility="public" name="numberArguments" returnType="int" params={[]}>
 Returns the number of arguments that the annotation has
+</ApiItem>
+
+### Constants
+
+<ApiItem kind="constant" name="T_RESOLVED" type="int" default="1000">
+Type of an expression node that holds a value that PHP resolved
+already. The attributes reader makes these nodes, because
+ReflectionAttribute::getArguments() gives the values and not a parse
+tree. The value goes to the caller without a change.
+
+The parser types stop at 309 (PHANNOT_T_ARBITRARY_TEXT). The value is
+1000 and not 310, so that a token added to the grammar later cannot
+make two case labels with one value in getExpression().
 </ApiItem>
 
 ### Properties
@@ -588,7 +602,7 @@ Resolves an annotation expression
 <h4 id="annotationsannotation-getname"><code>getName()</code></h4>
 
 ```php
-public function getName(): null|string;
+public function getName(): string|null;
 ```
 
 Returns the annotation's name
@@ -635,7 +649,7 @@ Factory to create annotations components
 - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Annotations\AnnotationsFactory`**
 
-`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
@@ -697,6 +711,97 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+## Annotations\AttributesReader
+
+Class
+
+Parses PHP attributes returning an array with the found annotations
+
+The array has the same shape as the one of Phalcon\Annotations\Reader, so
+the adapters, Reflection, Collection and Annotation do not know which
+reader made it.
+
+PHP resolves the value of an attribute argument, so there is no parse tree
+to walk. Each value goes in a node of the type Annotation::T_RESOLVED,
+which Annotation::getExpression() gives back without a change.
+
+- **`Phalcon\Annotations\AttributesReader`** - implements [`Phalcon\Annotations\ReaderInterface`](#annotationsreaderinterface)
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `ReflectionClass`
+
+### Method Summary
+
+<ApiItem href="#annotationsattributesreader-parse" visibility="public" name="parse" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
+Reads attributes from the class, its constants, properties and methods
+</ApiItem>
+<ApiItem href="#annotationsattributesreader-buildarguments" visibility="protected" name="buildArguments" returnType="array" params={[{"type":"array","name":"attributeArguments","default":null}]}>
+Makes the argument list of one attribute. PHP resolved the values
+</ApiItem>
+<ApiItem href="#annotationsattributesreader-buildnodes" visibility="protected" name="buildNodes" returnType="array" params={[{"type":"array","name":"attributes","default":null},{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null}]}>
+Makes the node list of one target from its attributes
+</ApiItem>
+<ApiItem href="#annotationsattributesreader-resolvename" visibility="protected" name="resolveName" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
+Gives the name that the collection matches on.
+</ApiItem>
+
+### Constants
+
+<ApiItem kind="constant" name="PHALCON_NAMESPACE" type="string" default="&quot;Phalcon\\Annotations\\&quot;">
+An attribute of this namespace gets the short name, so that `#[Column]`
+and `@Column` give the same name. Every other attribute keeps the full
+class name, so that an attribute of another library cannot take the
+place of a Phalcon one.
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsattributesreader-parse"><code>parse()</code></h4>
+
+```php
+public function parse( string $className ): array;
+```
+
+Reads attributes from the class, its constants, properties and methods
+
+<h4 id="annotationsattributesreader-buildarguments"><code>buildArguments()</code></h4>
+
+```php
+protected function buildArguments( array $attributeArguments ): array;
+```
+
+Makes the argument list of one attribute. PHP resolved the values
+already, so each one goes in a node that Annotation::getExpression()
+gives back without a change. An integer key is a positional argument
+and a string key is a named one.
+
+<h4 id="annotationsattributesreader-buildnodes"><code>buildNodes()</code></h4>
+
+```php
+protected function buildNodes(
+array $attributes,
+string $file,
+int $line
+): array;
+```
+
+Makes the node list of one target from its attributes
+
+<h4 id="annotationsattributesreader-resolvename"><code>resolveName()</code></h4>
+
+```php
+protected function resolveName( string $name ): string;
+```
+
+Gives the name that the collection matches on.
+
+An attribute of the Phalcon\Annotations namespace gets the short name,
+so that `#[Column]` and `@Column` give the same name. Every other
+attribute keeps the full class name, so that an attribute of another
+library cannot take the place of a Phalcon one.
+
+Extend this reader and override this method to give the same short
+name to the attributes of your own namespace.
+
 ## Annotations\Collection
 
 Class
@@ -717,9 +822,14 @@ var_dump($classAnnotations->has("Cacheable"));
 $annotation = $classAnnotations->get("Cacheable");
 ```
 
+The class cannot carry an `@implements Iterator<int, Annotation>` tag.
+`current()` returns `false` past the end of the collection, while Psalm's
+`Iterator` stub requires `TValue|null` there. Narrowing the iteration would
+mean changing that return to null, which is a v7 signature change.
+
 - **`Phalcon\Annotations\Collection`** - implements `\Iterator`, `\Countable`
 
-`Countable` · `Iterator` · `Phalcon\Annotations\Exceptions\AnnotationNotFound`
+`Countable` · `Iterator` · `Phalcon\Annotations\Exceptions\AnnotationNotFound` · `Phalcon\Contracts\Annotations\AnnotationsTypes`
 
 ### Method Summary
 
@@ -957,6 +1067,102 @@ Class
 public function __construct( string $type );
 ```
 
+## Annotations\Models\MetaData\Column
+
+Class
+
+Describes a model column. It is the attribute form of `@Column`.
+
+The parameter names are camelCase, because PSR-12 does not allow
+snake_case. The metadata strategy reads the two spellings. The default
+value is `defaultValue` and not `default`, because `default` is a Zephir
+keyword.
+
+- **`Phalcon\Annotations\Models\MetaData\Column`**
+
+### Method Summary
+
+<ApiItem href="#annotationsmodelsmetadatacolumn-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string|null","name":"column","default":"null"},{"type":"string","name":"type","default":"\"string\""},{"type":"int|null","name":"length","default":"null"},{"type":"bool","name":"nullable","default":"false"},{"type":"bool","name":"skipOnInsert","default":"false"},{"type":"bool","name":"skipOnUpdate","default":"false"},{"type":"bool","name":"allowEmptyString","default":"false"},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="public" name="allowEmptyString" type="bool" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="column" type="string|null" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="defaultValue" type="mixed" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="length" type="int|null" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="nullable" type="bool" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="skipOnInsert" type="bool" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="skipOnUpdate" type="bool" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="type" type="string" default="">
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsmodelsmetadatacolumn-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string|null $column = null,
+string $type = "string",
+int|null $length = null,
+bool $nullable = false,
+bool $skipOnInsert = false,
+bool $skipOnUpdate = false,
+bool $allowEmptyString = false,
+mixed $defaultValue = null
+);
+```
+
+## Annotations\Models\MetaData\Identity
+
+Class
+
+Marks a property as the identity column. It is the attribute form of `@Identity`.
+
+- **`Phalcon\Annotations\Models\MetaData\Identity`**
+
+## Annotations\Models\MetaData\Primary
+
+Class
+
+Marks a property as part of the primary key. It is the attribute form of `@Primary`.
+
+- **`Phalcon\Annotations\Models\MetaData\Primary`**
+
+## Annotations\Models\MetaData\Source
+
+Class
+
+Names the table of a model. No framework code reads it today.
+
+- **`Phalcon\Annotations\Models\MetaData\Source`**
+
+### Method Summary
+
+<ApiItem href="#annotationsmodelsmetadatasource-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"table","default":null}]}>
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="public" name="table" type="string" default="">
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsmodelsmetadatasource-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $table );
+```
+
 ## Annotations\Reader
 
 Class
@@ -965,7 +1171,7 @@ Parses docblocks returning an array with the found annotations
 
 - **`Phalcon\Annotations\Reader`** - implements [`Phalcon\Annotations\ReaderInterface`](#annotationsreaderinterface)
 
-`ReflectionClass`
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `ReflectionClass`
 
 ### Method Summary
 
@@ -1002,17 +1208,20 @@ Parses a raw doc block returning the annotations found
 
 Interface
 
-Parses docblocks returning an array with the found annotations
+Reads the annotations of a class and returns them as an array
+
+Phalcon\Annotations\Reader reads the docblocks and Phalcon\Annotations\AttributesReader
+reads the PHP attributes. The two give the same array shape, so the adapter
+and the classes after it do not know which reader made it.
 
 - **`Phalcon\Annotations\ReaderInterface`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes`
 
 ### Method Summary
 
 <ApiItem href="#annotationsreaderinterface-parse" visibility="public" name="parse" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-Reads annotations from the class docblocks, its constants, properties and methods
-</ApiItem>
-<ApiItem href="#annotationsreaderinterface-parsedocblock" visibility="public" name="parseDocBlock" returnType="array" params={[{"type":"string","name":"docBlock","default":null},{"type":"mixed","name":"file","default":"null"},{"type":"mixed","name":"line","default":"null"}]}>
-Parses a raw docblock returning the annotations found
+Reads annotations from the class, its constants, properties and methods
 </ApiItem>
 
 ### Methods
@@ -1023,19 +1232,7 @@ Parses a raw docblock returning the annotations found
 public function parse( string $className ): array;
 ```
 
-Reads annotations from the class docblocks, its constants, properties and methods
-
-<h4 id="annotationsreaderinterface-parsedocblock"><code>parseDocBlock()</code></h4>
-
-```php
-public static function parseDocBlock(
-string $docBlock,
-mixed $file = null,
-mixed $line = null
-): array;
-```
-
-Parses a raw docblock returning the annotations found
+Reads annotations from the class, its constants, properties and methods
 
 ## Annotations\Reflection
 
@@ -1059,6 +1256,8 @@ $classAnnotations = $reflection->getClassAnnotations();
 ```
 
 - **`Phalcon\Annotations\Reflection`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes`
 
 ### Method Summary
 
@@ -1141,5 +1340,391 @@ public function getReflectionData(): array;
 
 Returns the raw parsing intermediate definitions used to construct the
 reflection
+
+## Annotations\Router\Connect
+
+Class
+
+Marks a method as a CONNECT route. It is the attribute form of `@Connect`.
+
+- [`Phalcon\Annotations\Router\Route`](#annotationsrouterroute)
+- **`Phalcon\Annotations\Router\Connect`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Http\Message\RequestMethodInterface`
+
+### Method Summary
+
+<ApiItem href="#annotationsrouterconnect-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouterconnect-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
+
+## Annotations\Router\Delete
+
+Class
+
+Marks a method as a DELETE route. It is the attribute form of `@Delete`.
+
+- [`Phalcon\Annotations\Router\Route`](#annotationsrouterroute)
+- **`Phalcon\Annotations\Router\Delete`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Http\Message\RequestMethodInterface`
+
+### Method Summary
+
+<ApiItem href="#annotationsrouterdelete-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouterdelete-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
+
+## Annotations\Router\Get
+
+Class
+
+Marks a method as a GET route. It is the attribute form of `@Get`.
+
+- [`Phalcon\Annotations\Router\Route`](#annotationsrouterroute)
+- **`Phalcon\Annotations\Router\Get`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Http\Message\RequestMethodInterface`
+
+### Method Summary
+
+<ApiItem href="#annotationsrouterget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouterget-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
+
+## Annotations\Router\Head
+
+Class
+
+Marks a method as a HEAD route. It is the attribute form of `@Head`.
+
+- [`Phalcon\Annotations\Router\Route`](#annotationsrouterroute)
+- **`Phalcon\Annotations\Router\Head`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Http\Message\RequestMethodInterface`
+
+### Method Summary
+
+<ApiItem href="#annotationsrouterhead-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouterhead-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
+
+## Annotations\Router\Options
+
+Class
+
+Marks a method as a OPTIONS route. It is the attribute form of `@Options`.
+
+- [`Phalcon\Annotations\Router\Route`](#annotationsrouterroute)
+- **`Phalcon\Annotations\Router\Options`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Http\Message\RequestMethodInterface`
+
+### Method Summary
+
+<ApiItem href="#annotationsrouteroptions-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouteroptions-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
+
+## Annotations\Router\Patch
+
+Class
+
+Marks a method as a PATCH route. It is the attribute form of `@Patch`.
+
+- [`Phalcon\Annotations\Router\Route`](#annotationsrouterroute)
+- **`Phalcon\Annotations\Router\Patch`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Http\Message\RequestMethodInterface`
+
+### Method Summary
+
+<ApiItem href="#annotationsrouterpatch-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouterpatch-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
+
+## Annotations\Router\Post
+
+Class
+
+Marks a method as a POST route. It is the attribute form of `@Post`.
+
+- [`Phalcon\Annotations\Router\Route`](#annotationsrouterroute)
+- **`Phalcon\Annotations\Router\Post`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Http\Message\RequestMethodInterface`
+
+### Method Summary
+
+<ApiItem href="#annotationsrouterpost-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouterpost-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
+
+## Annotations\Router\Purge
+
+Class
+
+Marks a method as a PURGE route. It is the attribute form of `@Purge`.
+
+- [`Phalcon\Annotations\Router\Route`](#annotationsrouterroute)
+- **`Phalcon\Annotations\Router\Purge`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Http\Message\RequestMethodInterface`
+
+### Method Summary
+
+<ApiItem href="#annotationsrouterpurge-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouterpurge-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
+
+## Annotations\Router\Put
+
+Class
+
+Marks a method as a PUT route. It is the attribute form of `@Put`.
+
+- [`Phalcon\Annotations\Router\Route`](#annotationsrouterroute)
+- **`Phalcon\Annotations\Router\Put`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Http\Message\RequestMethodInterface`
+
+### Method Summary
+
+<ApiItem href="#annotationsrouterput-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouterput-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
+
+## Annotations\Router\Route
+
+Class
+
+Marks a method as a route. It is the attribute form of `@Route`.
+
+The annotations service never makes an instance of this class. It reads the
+arguments with ReflectionAttribute::getArguments(). The class gives the
+name, the targets and the signature that an IDE and a static analyzer read.
+
+- **`Phalcon\Annotations\Router\Route`**
+- [`Phalcon\Annotations\Router\Connect`](#annotationsrouterconnect)
+- [`Phalcon\Annotations\Router\Delete`](#annotationsrouterdelete)
+- [`Phalcon\Annotations\Router\Get`](#annotationsrouterget)
+- [`Phalcon\Annotations\Router\Head`](#annotationsrouterhead)
+- [`Phalcon\Annotations\Router\Options`](#annotationsrouteroptions)
+- [`Phalcon\Annotations\Router\Patch`](#annotationsrouterpatch)
+- [`Phalcon\Annotations\Router\Post`](#annotationsrouterpost)
+- [`Phalcon\Annotations\Router\Purge`](#annotationsrouterpurge)
+- [`Phalcon\Annotations\Router\Put`](#annotationsrouterput)
+- [`Phalcon\Annotations\Router\Trace`](#annotationsroutertrace)
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes`
+
+### Method Summary
+
+<ApiItem href="#annotationsrouterroute-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"mixed","name":"methods","default":"null"},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="public" name="beforeMatch" type="array|string|null" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="converters" type="array" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="methods" type="array|string|null" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="name" type="string|null" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="paths" type="array" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="public" name="route" type="string" default="">
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouterroute-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+mixed $methods = null,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
+
+## Annotations\Router\RoutePrefix
+
+Class
+
+Sets the prefix of every route of a controller. It is the attribute form of
+`@RoutePrefix`.
+
+- **`Phalcon\Annotations\Router\RoutePrefix`**
+
+### Method Summary
+
+<ApiItem href="#annotationsrouterrouteprefix-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"prefix","default":null}]}>
+</ApiItem>
+
+### Properties
+
+<ApiItem kind="property" visibility="public" name="prefix" type="string" default="">
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsrouterrouteprefix-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( string $prefix );
+```
+
+## Annotations\Router\Trace
+
+Class
+
+Marks a method as a TRACE route. It is the attribute form of `@Trace`.
+
+- [`Phalcon\Annotations\Router\Route`](#annotationsrouterroute)
+- **`Phalcon\Annotations\Router\Trace`**
+
+`Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Http\Message\RequestMethodInterface`
+
+### Method Summary
+
+<ApiItem href="#annotationsroutertrace-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
+</ApiItem>
+
+### Methods
+
+<h4 id="annotationsroutertrace-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+string $route,
+string|null $name = null,
+array $paths = [],
+array $converters = [],
+mixed $beforeMatch = null
+);
+```
 
 Source: https://docs.phalcon.io/5.22/api/phalcon_annotations/index.mdx

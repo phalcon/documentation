@@ -13,11 +13,13 @@ version: "6.0"
 All classes are prefixed with `Phalcon`
 :::
 
-## Db\AbstractDb
+## Db\Adapter\AbstractAdapter
 
 Abstract
 
-Phalcon\Db and its related classes provide a simple SQL database interface
+Base class for Phalcon\Db\Adapter adapters.
+
+This class and its related classes provide a simple SQL database interface
 for Phalcon Framework. The Phalcon\Db is the basic class you use to connect
 your PHP application to an RDBMS. There is a different adapter class for each
 brand of RDBMS.
@@ -59,36 +61,10 @@ echo $e->getMessage(), PHP_EOL;
 }
 ```
 
-- **`Phalcon\Db\AbstractDb`**
-
-`Phalcon\Support\Settings`
-
-### Method Summary
-
-<ApiItem href="#dbabstractdb-setup" visibility="public" name="setup" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
-Enables/disables options in the Database component
-</ApiItem>
-
-### Methods
-
-<h4 id="dbabstractdb-setup"><code>setup()</code></h4>
-
-```php
-public static function setup( array $options ): void;
-```
-
-Enables/disables options in the Database component
-
-## Db\Adapter\AbstractAdapter
-
-Abstract
-
-Base class for Phalcon\Db\Adapter adapters
-
 - **`Phalcon\Db\Adapter\AbstractAdapter`** - implements [`Phalcon\Db\Adapter\AdapterInterface`](#dbadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
 - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 
-`Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Settings` · `Stringable`
 
 ### Method Summary
 
@@ -96,7 +72,7 @@ Base class for Phalcon\Db\Adapter adapters
 Phalcon\Db\Adapter constructor
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-addcheck" visibility="public" name="addCheck" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"CheckInterface","name":"check","default":null}]}>
-Adds a CHECK constraint to a table.
+Adds a CHECK constraint to a table. MySQL 8.0.16+ and PostgreSQL
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-addcolumn" visibility="public" name="addColumn" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ColumnInterface","name":"column","default":null}]}>
 Adds a column to a table
@@ -111,7 +87,7 @@ Adds an index to a table
 Adds a primary key to a table
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-creatematerializedview" visibility="public" name="createMaterializedView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
-Creates a materialized view (PostgreSQL only).
+Creates a materialized view (PostgreSQL only - MySQL and SQLite
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-createsavepoint" visibility="public" name="createSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Creates a new savepoint
@@ -122,17 +98,17 @@ Creates a table
 <ApiItem href="#dbadapterabstractadapter-createview" visibility="public" name="createView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Creates a view
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"array|string","name":"tableName","default":null},{"type":"string|null","name":"whereCondition","default":"null"},{"type":"array","name":"placeholders","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+<ApiItem href="#dbadapterabstractadapter-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"mixed","name":"table","default":null},{"type":"string|null","name":"whereCondition","default":"null"},{"type":"array","name":"placeholders","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
 Deletes data from a table using custom RBDM SQL syntax
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-describeindexes" visibility="public" name="describeIndexes" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbadapterabstractadapter-describeindexes" visibility="public" name="describeIndexes" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Lists table indexes
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbadapterabstractadapter-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Lists table references
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-dropcheck" visibility="public" name="dropCheck" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"checkName","default":null}]}>
-Drops a CHECK constraint from a table.
+Drops a CHECK constraint from a table. SQLite throws.
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-dropcolumn" visibility="public" name="dropColumn" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"columnName","default":null}]}>
 Drops a column from a table
@@ -140,7 +116,7 @@ Drops a column from a table
 <ApiItem href="#dbadapterabstractadapter-dropforeignkey" visibility="public" name="dropForeignKey" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"referenceName","default":null}]}>
 Drops a foreign key from a table
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-dropindex" visibility="public" name="dropIndex" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"indexName","default":null}]}>
+<ApiItem href="#dbadapterabstractadapter-dropindex" visibility="public" name="dropIndex" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"mixed","name":"indexName","default":null}]}>
 Drop an index from a table
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-dropmaterializedview" visibility="public" name="dropMaterializedView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
@@ -155,16 +131,16 @@ Drops a table from a schema/database
 <ApiItem href="#dbadapterabstractadapter-dropview" visibility="public" name="dropView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
 Drops a view
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-escapeidentifier" visibility="public" name="escapeIdentifier" returnType="string" params={[{"type":"array|float|int|string","name":"identifier","default":null}]}>
+<ApiItem href="#dbadapterabstractadapter-escapeidentifier" visibility="public" name="escapeIdentifier" returnType="string" params={[{"type":"mixed","name":"identifier","default":null}]}>
 Escapes a column/table/schema name
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-fetchall" visibility="public" name="fetchAll" returnType="array" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"Enum::FETCH_ASSOC"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
 Dumps the complete result of a query into an array
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-fetchcolumn" visibility="public" name="fetchColumn" returnType="mixed" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"int|string","name":"column","default":"0"}]}>
+<ApiItem href="#dbadapterabstractadapter-fetchcolumn" visibility="public" name="fetchColumn" returnType="mixed" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"mixed","name":"column","default":"0"}]}>
 Returns the n'th field of first row in a SQL query result
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-fetchone" visibility="public" name="fetchOne" returnType="array|bool" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"Enum::FETCH_ASSOC"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
+<ApiItem href="#dbadapterabstractadapter-fetchone" visibility="public" name="fetchOne" returnType="array|bool" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"mixed","name":"fetchMode","default":"Enum::FETCH_ASSOC"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
 Returns the first row in a SQL query result
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-forupdate" visibility="public" name="forUpdate" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
@@ -173,7 +149,7 @@ Returns a SQL modified with a FOR UPDATE clause
 <ApiItem href="#dbadapterabstractadapter-getcolumndefinition" visibility="public" name="getColumnDefinition" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 Returns the SQL column definition from a column
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-getcolumnlist" visibility="public" name="getColumnList" returnType="string" params={[{"type":"array","name":"columnList","default":null}]}>
+<ApiItem href="#dbadapterabstractadapter-getcolumnlist" visibility="public" name="getColumnList" returnType="string" params={[{"type":"mixed","name":"columnList","default":null}]}>
 Gets a list of columns
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-getconnectionid" visibility="public" name="getConnectionId" returnType="int" params={[]}>
@@ -212,10 +188,10 @@ Active SQL variables in the object
 <ApiItem href="#dbadapterabstractadapter-gettype" visibility="public" name="getType" returnType="string" params={[]}>
 Type of database system the adapter is used for
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-insert" visibility="public" name="insert" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"values","default":null},{"type":"array|null","name":"fields","default":"null"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+<ApiItem href="#dbadapterabstractadapter-insert" visibility="public" name="insert" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"array","name":"values","default":null},{"type":"mixed","name":"fields","default":"null"},{"type":"mixed","name":"dataTypes","default":"null"}]}>
 Inserts data into a table using custom RDBMS SQL syntax
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-insertasdict" visibility="public" name="insertAsDict" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"data","default":null},{"type":"array","name":"dataTypes","default":"[]"}]}>
+<ApiItem href="#dbadapterabstractadapter-insertasdict" visibility="public" name="insertAsDict" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"mixed","name":"data","default":null},{"type":"mixed","name":"dataTypes","default":"null"}]}>
 Inserts data into a table using custom RBDM SQL syntax
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-isnestedtransactionswithsavepoints" visibility="public" name="isNestedTransactionsWithSavepoints" returnType="bool" params={[]}>
@@ -234,16 +210,16 @@ List all views on a database
 Modifies a table column based on a definition
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-onconflictupdate" visibility="public" name="onConflictUpdate" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"conflictColumns","default":null},{"type":"array","name":"updateColumns","default":null}]}>
-Appends an ON CONFLICT (...) DO UPDATE SET col = excluded.col upsert
+Appends an `ON CONFLICT (...) DO UPDATE SET col = excluded.col`
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-refreshmaterializedview" visibility="public" name="refreshMaterializedView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"concurrent","default":"false"}]}>
-Refreshes a materialized view (PostgreSQL only).
+Refreshes a materialized view (PostgreSQL only). Pass
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-releasesavepoint" visibility="public" name="releaseSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Releases given savepoint
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-returning" visibility="public" name="returning" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"columns","default":null}]}>
-Appends a RETURNING clause to an INSERT/UPDATE/DELETE statement.
+Appends a RETURNING clause to an INSERT/UPDATE/DELETE SQL statement
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-rollbacksavepoint" visibility="public" name="rollbackSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Rollbacks given savepoint
@@ -251,14 +227,14 @@ Rollbacks given savepoint
 <ApiItem href="#dbadapterabstractadapter-setdialect" visibility="public" name="setDialect" returnType="void" params={[{"type":"DialectInterface","name":"dialect","default":null}]}>
 Sets the dialect used to produce the SQL
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-setnestedtransactionswithsavepoints" visibility="public" name="setNestedTransactionsWithSavepoints" returnType="AdapterInterface" params={[{"type":"bool","name":"flag","default":null}]}>
+<ApiItem href="#dbadapterabstractadapter-setnestedtransactionswithsavepoints" visibility="public" name="setNestedTransactionsWithSavepoints" returnType="AdapterInterface" params={[{"type":"bool","name":"nestedTransactionsWithSavepoints","default":null}]}>
 Set if nested transactions should use savepoints
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-setup" visibility="public" name="setup" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
 Enables/disables options in the Database component.
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-sharedlock" visibility="public" name="sharedLock" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Returns a SQL modified with a shared-lock clause. The optional
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-supportsequences" visibility="public" name="supportSequences" returnType="bool" params={[]}>
 Check whether the database system requires a sequence to produce
@@ -272,10 +248,10 @@ Generates SQL checking for the existence of a schema.table
 <ApiItem href="#dbadapterabstractadapter-tableoptions" visibility="public" name="tableOptions" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Gets creation options from a table
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-update" visibility="public" name="update" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"fields","default":null},{"type":"array","name":"values","default":null},{"type":"array|string","name":"whereCondition","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+<ApiItem href="#dbadapterabstractadapter-update" visibility="public" name="update" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"mixed","name":"fields","default":null},{"type":"mixed","name":"values","default":null},{"type":"mixed","name":"whereCondition","default":"null"},{"type":"mixed","name":"dataTypes","default":"null"}]}>
 Updates data on a table using custom RBDM SQL syntax
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-updateasdict" visibility="public" name="updateAsDict" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"array","name":"data","default":null},{"type":"array|string","name":"whereCondition","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
+<ApiItem href="#dbadapterabstractadapter-updateasdict" visibility="public" name="updateAsDict" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"mixed","name":"data","default":null},{"type":"mixed","name":"whereCondition","default":"null"},{"type":"mixed","name":"dataTypes","default":"null"}]}>
 Updates data on a table using custom RBDM SQL syntax
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-useexplicitidvalue" visibility="public" name="useExplicitIdValue" returnType="bool" params={[]}>
@@ -296,7 +272,7 @@ Connection ID
 <ApiItem kind="property" visibility="protected" name="connectionId" type="int" default="">
 Active connection ID
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="descriptor" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="descriptor" type="db_descriptor" default="[]">
 Descriptor used to connect to a database
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="dialect" type="DialectInterface" default="">
@@ -308,13 +284,13 @@ Name of the dialect used
 <ApiItem kind="property" visibility="protected" name="realSqlStatement" type="string" default="&quot;&quot;">
 The real SQL statement - what was executed
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="sqlBindTypes" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="sqlBindTypes" type="db_bind_types" default="[]">
 Active SQL Bind Types
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="sqlStatement" type="string" default="">
 Active SQL Statement
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="sqlVariables" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="sqlVariables" type="db_bind_params" default="[]">
 Active SQL bound parameter variables
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="transactionLevel" type="int" default="0">
@@ -351,7 +327,8 @@ CheckInterface $check
 ): bool;
 ```
 
-Adds a CHECK constraint to a table.
+Adds a CHECK constraint to a table. MySQL 8.0.16+ and PostgreSQL
+issue `ALTER TABLE ... ADD CONSTRAINT ... CHECK (...)`; SQLite throws.
 
 <h4 id="dbadapterabstractadapter-addcolumn"><code>addColumn()</code></h4>
 
@@ -411,7 +388,8 @@ string|null $schemaName = null
 ): bool;
 ```
 
-Creates a materialized view (PostgreSQL only).
+Creates a materialized view (PostgreSQL only - MySQL and SQLite
+throw via the dialect).
 
 <h4 id="dbadapterabstractadapter-createsavepoint"><code>createSavepoint()</code></h4>
 
@@ -449,7 +427,7 @@ Creates a view
 
 ```php
 public function delete(
-array|string $tableName,
+mixed $table,
 string|null $whereCondition = null,
 array $placeholders = [],
 array $dataTypes = []
@@ -475,8 +453,8 @@ Warning! If $whereCondition is string it not escaped.
 
 ```php
 public function describeIndexes(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -499,8 +477,8 @@ override it.
 
 ```php
 public function describeReferences(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -531,7 +509,7 @@ string $checkName
 ): bool;
 ```
 
-Drops a CHECK constraint from a table.
+Drops a CHECK constraint from a table. SQLite throws.
 
 <h4 id="dbadapterabstractadapter-dropcolumn"><code>dropColumn()</code></h4>
 
@@ -563,7 +541,7 @@ Drops a foreign key from a table
 public function dropIndex(
 string $tableName,
 string $schemaName,
-string $indexName
+mixed $indexName
 ): bool;
 ```
 
@@ -619,7 +597,7 @@ Drops a view
 <h4 id="dbadapterabstractadapter-escapeidentifier"><code>escapeIdentifier()</code></h4>
 
 ```php
-public function escapeIdentifier( array|float|int|string $identifier ): string;
+public function escapeIdentifier( mixed $identifier ): string;
 ```
 
 Escapes a column/table/schema name
@@ -680,7 +658,7 @@ print_r($invoice);
 public function fetchColumn(
 string $sqlQuery,
 array $placeholders = [],
-int|string $column = 0
+mixed $column = 0
 ): mixed;
 ```
 
@@ -704,7 +682,7 @@ print_r($invoice);
 ```php
 public function fetchOne(
 string $sqlQuery,
-int $fetchMode = Enum::FETCH_ASSOC,
+mixed $fetchMode = Enum::FETCH_ASSOC,
 array $bindParams = [],
 array $bindTypes = []
 ): array|bool;
@@ -747,7 +725,7 @@ Returns the SQL column definition from a column
 <h4 id="dbadapterabstractadapter-getcolumnlist"><code>getColumnList()</code></h4>
 
 ```php
-public function getColumnList( array $columnList ): string;
+public function getColumnList( mixed $columnList ): string;
 ```
 
 Gets a list of columns
@@ -808,6 +786,8 @@ $success = $connection->insert(
 ]
 );
 ```
+
+@todo Return NULL if this is not supported by the adapter
 
 <h4 id="dbadapterabstractadapter-getdescriptor"><code>getDescriptor()</code></h4>
 
@@ -885,10 +865,10 @@ Type of database system the adapter is used for
 
 ```php
 public function insert(
-string $tableName,
+string $table,
 array $values,
-array|null $fields = null,
-array $dataTypes = []
+mixed $fields = null,
+mixed $dataTypes = null
 ): bool;
 ```
 
@@ -910,9 +890,9 @@ INSERT INTO `co_invoices` (`inv_title`, `inv_total`) VALUES ("Test Invoice", 100
 
 ```php
 public function insertAsDict(
-string $tableName,
-array $data,
-array $dataTypes = []
+string $table,
+mixed $data,
+mixed $dataTypes = null
 ): bool;
 ```
 
@@ -969,6 +949,8 @@ $connection->listTables("blog")
 );
 ```
 
+@todo optimize this
+
 <h4 id="dbadapterabstractadapter-listviews"><code>listViews()</code></h4>
 
 ```php
@@ -1006,8 +988,9 @@ array $updateColumns
 ): string;
 ```
 
-Appends an ON CONFLICT (...) DO UPDATE SET col = excluded.col upsert
-clause to the supplied INSERT statement.
+Appends an `ON CONFLICT (...) DO UPDATE SET col = excluded.col`
+upsert clause to the supplied INSERT statement. Supported by
+PostgreSQL and SQLite 3.24+; MySQL throws.
 
 <h4 id="dbadapterabstractadapter-refreshmaterializedview"><code>refreshMaterializedView()</code></h4>
 
@@ -1019,7 +1002,8 @@ bool $concurrent = false
 ): bool;
 ```
 
-Refreshes a materialized view (PostgreSQL only).
+Refreshes a materialized view (PostgreSQL only). Pass
+`concurrent = true` for non-blocking refresh.
 
 <h4 id="dbadapterabstractadapter-releasesavepoint"><code>releaseSavepoint()</code></h4>
 
@@ -1038,7 +1022,9 @@ array $columns
 ): string;
 ```
 
-Appends a RETURNING clause to an INSERT/UPDATE/DELETE statement.
+Appends a RETURNING clause to an INSERT/UPDATE/DELETE SQL statement
+and returns the modified SQL. Supported by PostgreSQL and SQLite 3.35+;
+MySQL throws (no RETURNING construct). Pass `["*"]` for `RETURNING *`.
 
 <h4 id="dbadapterabstractadapter-rollbacksavepoint"><code>rollbackSavepoint()</code></h4>
 
@@ -1059,7 +1045,7 @@ Sets the dialect used to produce the SQL
 <h4 id="dbadapterabstractadapter-setnestedtransactionswithsavepoints"><code>setNestedTransactionsWithSavepoints()</code></h4>
 
 ```php
-public function setNestedTransactionsWithSavepoints( bool $flag ): AdapterInterface;
+public function setNestedTransactionsWithSavepoints( bool $nestedTransactionsWithSavepoints ): AdapterInterface;
 ```
 
 Set if nested transactions should use savepoints
@@ -1089,7 +1075,9 @@ string $modifier = ""
 ): string;
 ```
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Returns a SQL modified with a shared-lock clause. The optional
+`modifier` is passed straight to the dialect (use
+`Dialect::LOCK_NOWAIT` / `Dialect::LOCK_SKIP_LOCKED` for PostgreSQL).
 
 <h4 id="dbadapterabstractadapter-supportsequences"><code>supportSequences()</code></h4>
 
@@ -1147,11 +1135,11 @@ $connection->tableOptions("co_invoices")
 
 ```php
 public function update(
-string $tableName,
-array $fields,
-array $values,
-array|string $whereCondition = [],
-array $dataTypes = []
+string $table,
+mixed $fields,
+mixed $values,
+mixed $whereCondition = null,
+mixed $dataTypes = null
 ): bool;
 ```
 
@@ -1193,10 +1181,10 @@ Warning! If $whereCondition is string, it is not escaped.
 
 ```php
 public function updateAsDict(
-string $tableName,
-array $data,
-array|string $whereCondition = [],
-array $dataTypes = []
+string $table,
+mixed $data,
+mixed $whereCondition = null,
+mixed $dataTypes = null
 ): bool;
 ```
 
@@ -1270,7 +1258,7 @@ Class
 - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Db\Adapter\PdoFactory`**
 
-`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Exception`
+`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Db\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Exception`
 
 ### Method Summary
 
@@ -1359,7 +1347,7 @@ $connection = new Mysql($config);
 - [`Phalcon\Db\Adapter\Pdo\Postgresql`](#dbadapterpdopostgresql)
 - [`Phalcon\Db\Adapter\Pdo\Sqlite`](#dbadapterpdosqlite)
 
-`PDO` · `PDOException` · `PDOStatement` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\Exception` · `Phalcon\Support\Settings` · `Throwable`
+`PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\Exception` · `Phalcon\Support\Settings` · `Throwable`
 
 ### Method Summary
 
@@ -1387,7 +1375,7 @@ Converts bound parameters such as :name: or ?1 into PDO bind params ?
 <ApiItem href="#dbadapterpdoabstractpdo-ensureconnection" visibility="public" name="ensureConnection" returnType="void" params={[]}>
 Ensures the connection is alive, reconnecting in place if it is not.
 </ApiItem>
-<ApiItem href="#dbadapterpdoabstractpdo-escapestring" visibility="public" name="escapeString" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
+<ApiItem href="#dbadapterpdoabstractpdo-escapestring" visibility="public" name="escapeString" returnType="string" params={[{"type":"string","name":"str","default":null}]}>
 Escapes a value to avoid SQL injections according to the active charset
 </ApiItem>
 <ApiItem href="#dbadapterpdoabstractpdo-execute" visibility="public" name="execute" returnType="bool" params={[{"type":"string","name":"sqlStatement","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
@@ -1402,7 +1390,7 @@ Returns whether transparent auto-reconnect is enabled.
 <ApiItem href="#dbadapterpdoabstractpdo-geterrorinfo" visibility="public" name="getErrorInfo" returnType="array" params={[]}>
 Return the error info, if any
 </ApiItem>
-<ApiItem href="#dbadapterpdoabstractpdo-getinternalhandler" visibility="public" name="getInternalHandler" returnType="PDO|null" params={[]}>
+<ApiItem href="#dbadapterpdoabstractpdo-getinternalhandler" visibility="public" name="getInternalHandler" returnType="mixed" params={[]}>
 Return internal PDO handler
 </ApiItem>
 <ApiItem href="#dbadapterpdoabstractpdo-gettransactionlevel" visibility="public" name="getTransactionLevel" returnType="int" params={[]}>
@@ -1566,7 +1554,7 @@ Ensures the connection is alive, reconnecting in place if it is not.
 <h4 id="dbadapterpdoabstractpdo-escapestring"><code>escapeString()</code></h4>
 
 ```php
-public function escapeString( string $input ): string;
+public function escapeString( string $str ): string;
 ```
 
 Escapes a value to avoid SQL injections according to the active charset
@@ -1655,7 +1643,7 @@ Return the error info, if any
 <h4 id="dbadapterpdoabstractpdo-getinternalhandler"><code>getInternalHandler()</code></h4>
 
 ```php
-public function getInternalHandler(): PDO|null;
+public function getInternalHandler(): mixed;
 ```
 
 Return internal PDO handler
@@ -1846,7 +1834,7 @@ $connection = new Mysql($config);
 - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 - **`Phalcon\Db\Adapter\Pdo\Mysql`**
 
-`PDO` · `PDOException` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`
+`PDO` · `PDOException` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect\Mysql` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`
 
 ### Method Summary
 
@@ -1854,14 +1842,15 @@ $connection = new Mysql($config);
 Adds a foreign key to a table
 </ApiItem>
 <ApiItem href="#dbadapterpdomysql-connect" visibility="public" name="connect" returnType="void" params={[{"type":"array","name":"descriptor","default":"[]"}]}>
+Constructor for Phalcon\Db\Adapter\Pdo
 </ApiItem>
-<ApiItem href="#dbadapterpdomysql-describecolumns" visibility="public" name="describeColumns" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbadapterpdomysql-describecolumns" visibility="public" name="describeColumns" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Returns an array of Phalcon\Db\Column objects describing a table
 </ApiItem>
-<ApiItem href="#dbadapterpdomysql-describeindexes" visibility="public" name="describeIndexes" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbadapterpdomysql-describeindexes" visibility="public" name="describeIndexes" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Lists table indexes
 </ApiItem>
-<ApiItem href="#dbadapterpdomysql-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbadapterpdomysql-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Lists table references
 </ApiItem>
 <ApiItem href="#dbadapterpdomysql-getdsndefaults" visibility="protected" name="getDsnDefaults" returnType="array" params={[]}>
@@ -1898,12 +1887,14 @@ Adds a foreign key to a table
 public function connect( array $descriptor = [] ): void;
 ```
 
+Constructor for Phalcon\Db\Adapter\Pdo
+
 <h4 id="dbadapterpdomysql-describecolumns"><code>describeColumns()</code></h4>
 
 ```php
 public function describeColumns(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -1919,8 +1910,8 @@ $connection->describeColumns("posts")
 
 ```php
 public function describeIndexes(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -1936,8 +1927,8 @@ $connection->describeIndexes("co_orders_x_products")
 
 ```php
 public function describeReferences(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -1990,12 +1981,11 @@ $connection = new Postgresql($config);
 - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 - **`Phalcon\Db\Adapter\Pdo\Postgresql`**
 
-`Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`
 
 ### Method Summary
 
 <ApiItem href="#dbadapterpdopostgresql-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"descriptor","default":null}]}>
-Constructor for Phalcon\Db\Adapter\Pdo\Postgresql
 </ApiItem>
 <ApiItem href="#dbadapterpdopostgresql-connect" visibility="public" name="connect" returnType="void" params={[{"type":"array","name":"descriptor","default":"[]"}]}>
 This method is automatically called in Phalcon\Db\Adapter\Pdo
@@ -2003,10 +1993,10 @@ This method is automatically called in Phalcon\Db\Adapter\Pdo
 <ApiItem href="#dbadapterpdopostgresql-createtable" visibility="public" name="createTable" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"array","name":"definition","default":null}]}>
 Creates a table
 </ApiItem>
-<ApiItem href="#dbadapterpdopostgresql-describecolumns" visibility="public" name="describeColumns" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbadapterpdopostgresql-describecolumns" visibility="public" name="describeColumns" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Returns an array of Phalcon\Db\Column objects describing a table
 </ApiItem>
-<ApiItem href="#dbadapterpdopostgresql-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbadapterpdopostgresql-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Lists table references
 </ApiItem>
 <ApiItem href="#dbadapterpdopostgresql-getdefaultidvalue" visibility="public" name="getDefaultIdValue" returnType="RawValue" params={[]}>
@@ -2043,8 +2033,6 @@ Recognizes a PostgreSQL connection-loss failure by SQLSTATE
 public function __construct( array $descriptor );
 ```
 
-Constructor for Phalcon\Db\Adapter\Pdo\Postgresql
-
 <h4 id="dbadapterpdopostgresql-connect"><code>connect()</code></h4>
 
 ```php
@@ -2070,8 +2058,8 @@ Creates a table
 
 ```php
 public function describeColumns(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -2087,8 +2075,8 @@ $connection->describeColumns("posts")
 
 ```php
 public function describeReferences(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -2194,7 +2182,7 @@ $connection = new Sqlite(
 - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 - **`Phalcon\Db\Adapter\Pdo\Sqlite`**
 
-`Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingSqliteDatabase` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect\Sqlite` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingSqliteDatabase` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
@@ -2204,13 +2192,13 @@ Constructor for Phalcon\Db\Adapter\Pdo\Sqlite
 <ApiItem href="#dbadapterpdosqlite-connect" visibility="public" name="connect" returnType="void" params={[{"type":"array","name":"descriptor","default":"[]"}]}>
 This method is automatically called in Phalcon\Db\Adapter\Pdo
 </ApiItem>
-<ApiItem href="#dbadapterpdosqlite-describecolumns" visibility="public" name="describeColumns" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbadapterpdosqlite-describecolumns" visibility="public" name="describeColumns" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Returns an array of Phalcon\Db\Column objects describing a table
 </ApiItem>
-<ApiItem href="#dbadapterpdosqlite-describeindexes" visibility="public" name="describeIndexes" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbadapterpdosqlite-describeindexes" visibility="public" name="describeIndexes" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Lists table indexes
 </ApiItem>
-<ApiItem href="#dbadapterpdosqlite-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbadapterpdosqlite-describereferences" visibility="public" name="describeReferences" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Lists table references
 </ApiItem>
 <ApiItem href="#dbadapterpdosqlite-getdefaultvalue" visibility="public" name="getDefaultValue" returnType="RawValue" params={[]}>
@@ -2256,8 +2244,8 @@ constructor. Call it when you need to restore a database connection.
 
 ```php
 public function describeColumns(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -2273,8 +2261,8 @@ $connection->describeColumns("posts")
 
 ```php
 public function describeIndexes(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -2290,8 +2278,8 @@ $connection->describeIndexes("co_orders_x_products")
 
 ```php
 public function describeReferences(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): array;
 ```
 
@@ -2377,7 +2365,7 @@ null,
 
 - **`Phalcon\Db\Check`** - implements [`Phalcon\Db\CheckInterface`](#dbcheckinterface)
 
-`Phalcon\Db\Exceptions\CheckExpressionRequired` · `Phalcon\Db\Exceptions\InvalidCheckExpression`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\CheckExpressionRequired` · `Phalcon\Db\Exceptions\InvalidCheckExpression`
 
 ### Method Summary
 
@@ -2471,7 +2459,7 @@ $connection->addColumn("co_invoices", null, $column);
 
 - **`Phalcon\Db\Column`** - implements [`Phalcon\Db\ColumnInterface`](#dbcolumninterface)
 
-`Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\Exceptions\ColumnTypeRejectsScale` · `Phalcon\Db\Exceptions\ColumnTypeRequired` · `Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict` · `Phalcon\Db\Exceptions\GeneratedDefaultConflict` · `Phalcon\Db\Exceptions\InvalidGenerationExpression`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\Exceptions\ColumnTypeRejectsScale` · `Phalcon\Db\Exceptions\ColumnTypeRequired` · `Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict` · `Phalcon\Db\Exceptions\GeneratedDefaultConflict` · `Phalcon\Db\Exceptions\InvalidGenerationExpression`
 
 ### Method Summary
 
@@ -2776,7 +2764,7 @@ Column data type
 <ApiItem kind="property" visibility="protected" name="typeReference" type="int" default="-1">
 Column data type reference
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="typeValues" type="array|int|string" default="[]">
+<ApiItem kind="property" visibility="protected" name="typeValues" type="array&lt;array-key, string&gt;|int|string" default="[]">
 Column data type values
 </ApiItem>
 
@@ -2995,7 +2983,7 @@ common methods to transform intermediate code into its RDBMS related syntax
 - [`Phalcon\Db\Dialect\Postgresql`](#dbdialectpostgresql)
 - [`Phalcon\Db\Dialect\Sqlite`](#dbdialectsqlite)
 
-`Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Db\Exceptions\UnsupportedOperator` · `Phalcon\Support\Settings`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Db\Exceptions\UnsupportedOperator` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -3026,7 +3014,7 @@ Returns registered functions
 <ApiItem href="#dbdialect-getsqlcolumn" visibility="public" name="getSqlColumn" returnType="string" params={[{"type":"array|string","name":"column","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve Column expressions
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpression" visibility="public" name="getSqlExpression" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpression" visibility="public" name="getSqlExpression" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Transforms an intermediate representation for an expression into a
 </ApiItem>
 <ApiItem href="#dbdialect-getsqltable" visibility="public" name="getSqlTable" returnType="string" params={[{"type":"array|string","name":"tableName","default":null},{"type":"string","name":"escapeChar","default":"\"\""}]}>
@@ -3167,15 +3155,15 @@ Prepares table for this RDBMS
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="customFunctions" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="customFunctions" type="db_custom_functions" default="[]">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="escapeChar" type="string" default="">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="guardedOperators" type="array" default="[...]">
+<ApiItem kind="property" visibility="protected" name="guardedOperators" type="list&lt;string&gt;" default="[...]">
 Dialect-specific operators that a concrete dialect must opt into via
 $supportedOperators; using one elsewhere throws.
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="supportedOperators" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="supportedOperators" type="list&lt;string&gt;" default="[]">
 Subset of $guardedOperators that this dialect emits. Overridden per
 dialect.
 </ApiItem>
@@ -3306,7 +3294,7 @@ Resolve Column expressions
 ```php
 public function getSqlExpression(
 array $expression,
-string $escapeChar = "",
+string|null $escapeChar = null,
 array $bindCounts = []
 ): string;
 ```
@@ -3488,6 +3476,8 @@ protected function checkColumnType( ColumnInterface $column ): int;
 
 Checks the column type and if not string it returns the type reference
 
+@todo this always returns the type beceuse type is never string
+
 <h4 id="dbdialect-checkcolumntypesql"><code>checkColumnTypeSql()</code></h4>
 
 ```php
@@ -3495,6 +3485,8 @@ protected function checkColumnTypeSql( ColumnInterface $column ): string;
 ```
 
 Checks the column type and returns the updated SQL statement
+
+@todo check this one also
 
 <h4 id="dbdialect-escapestringliteral"><code>escapeStringLiteral()</code></h4>
 
@@ -3841,7 +3833,7 @@ Generates database specific SQL for the MySQL RDBMS
 - [`Phalcon\Db\Dialect`](#dbdialect)
 - **`Phalcon\Db\Dialect\Mysql`**
 
-`Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
@@ -3866,13 +3858,13 @@ Generates SQL to create a table
 <ApiItem href="#dbdialectmysql-createview" visibility="public" name="createView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Generates SQL to create a view
 </ApiItem>
-<ApiItem href="#dbdialectmysql-describecolumns" visibility="public" name="describeColumns" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectmysql-describecolumns" visibility="public" name="describeColumns" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL describing a table
 </ApiItem>
-<ApiItem href="#dbdialectmysql-describeindexes" visibility="public" name="describeIndexes" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectmysql-describeindexes" visibility="public" name="describeIndexes" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL to query indexes on a table
 </ApiItem>
-<ApiItem href="#dbdialectmysql-describereferences" visibility="public" name="describeReferences" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectmysql-describereferences" visibility="public" name="describeReferences" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL to query foreign keys on a table
 </ApiItem>
 <ApiItem href="#dbdialectmysql-dropcheck" visibility="public" name="dropCheck" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"checkName","default":null}]}>
@@ -3923,7 +3915,7 @@ MySQL does not support the SQL-standard `ON CONFLICT (...) DO UPDATE`
 <ApiItem href="#dbdialectmysql-tableexists" visibility="public" name="tableExists" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Generates SQL checking for the existence of a schema.table
 </ApiItem>
-<ApiItem href="#dbdialectmysql-tableoptions" visibility="public" name="tableOptions" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectmysql-tableoptions" visibility="public" name="tableOptions" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates the SQL to describe the table creation options
 </ApiItem>
 <ApiItem href="#dbdialectmysql-truncatetable" visibility="public" name="truncateTable" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":"\"\""}]}>
@@ -3940,7 +3932,7 @@ Escape a string literal for a single quoted SQL string. MySQL treats the
 
 <ApiItem kind="property" visibility="protected" name="escapeChar" type="string" default="&quot;`&quot;">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="supportedOperators" type="array" default="[...]">
+<ApiItem kind="property" visibility="protected" name="supportedOperators" type="list&lt;string&gt;" default="[...]">
 </ApiItem>
 
 ### Methods
@@ -4034,8 +4026,8 @@ Generates SQL to create a view
 
 ```php
 public function describeColumns(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4051,8 +4043,8 @@ $dialect->describeColumns("posts")
 
 ```php
 public function describeIndexes(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4062,8 +4054,8 @@ Generates SQL to query indexes on a table
 
 ```php
 public function describeReferences(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4263,8 +4255,8 @@ echo $dialect->tableExists("posts");
 
 ```php
 public function tableOptions(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4311,7 +4303,7 @@ Generates database specific SQL for the PostgreSQL RDBMS
 - [`Phalcon\Db\Dialect`](#dbdialect)
 - **`Phalcon\Db\Dialect\Postgresql`**
 
-`Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
@@ -4339,13 +4331,13 @@ Generates SQL to create a table
 <ApiItem href="#dbdialectpostgresql-createview" visibility="public" name="createView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Generates SQL to create a view
 </ApiItem>
-<ApiItem href="#dbdialectpostgresql-describecolumns" visibility="public" name="describeColumns" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectpostgresql-describecolumns" visibility="public" name="describeColumns" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL describing a table
 </ApiItem>
-<ApiItem href="#dbdialectpostgresql-describeindexes" visibility="public" name="describeIndexes" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectpostgresql-describeindexes" visibility="public" name="describeIndexes" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL to query indexes on a table
 </ApiItem>
-<ApiItem href="#dbdialectpostgresql-describereferences" visibility="public" name="describeReferences" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectpostgresql-describereferences" visibility="public" name="describeReferences" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL to query foreign keys on a table
 </ApiItem>
 <ApiItem href="#dbdialectpostgresql-dropcheck" visibility="public" name="dropCheck" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"checkName","default":null}]}>
@@ -4402,7 +4394,7 @@ PostgreSQL supports the `RETURNING` clause.
 <ApiItem href="#dbdialectpostgresql-tableexists" visibility="public" name="tableExists" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Generates SQL checking for the existence of a schema.table
 </ApiItem>
-<ApiItem href="#dbdialectpostgresql-tableoptions" visibility="public" name="tableOptions" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectpostgresql-tableoptions" visibility="public" name="tableOptions" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates the SQL to describe the table creation options
 </ApiItem>
 <ApiItem href="#dbdialectpostgresql-truncatetable" visibility="public" name="truncateTable" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"\"\""}]}>
@@ -4420,7 +4412,7 @@ Generates SQL checking for the existence of a schema.view
 
 <ApiItem kind="property" visibility="protected" name="escapeChar" type="string" default="&quot;\&quot;&quot;">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="supportedOperators" type="array" default="[...]">
+<ApiItem kind="property" visibility="protected" name="supportedOperators" type="list&lt;string&gt;" default="[...]">
 </ApiItem>
 
 ### Methods
@@ -4525,8 +4517,8 @@ Generates SQL to create a view
 
 ```php
 public function describeColumns(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4542,8 +4534,8 @@ $dialect->describeColumns("posts")
 
 ```php
 public function describeIndexes(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4553,8 +4545,8 @@ Generates SQL to query indexes on a table
 
 ```php
 public function describeReferences(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4771,8 +4763,8 @@ echo $dialect->tableExists("posts");
 
 ```php
 public function tableOptions(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -4821,7 +4813,7 @@ Generates database specific SQL for the SQLite RDBMS
 - [`Phalcon\Db\Dialect`](#dbdialect)
 - **`Phalcon\Db\Dialect\Sqlite`**
 
-`Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
@@ -4846,16 +4838,16 @@ Generates SQL to create a table
 <ApiItem href="#dbdialectsqlite-createview" visibility="public" name="createView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Generates SQL to create a view
 </ApiItem>
-<ApiItem href="#dbdialectsqlite-describecolumns" visibility="public" name="describeColumns" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectsqlite-describecolumns" visibility="public" name="describeColumns" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL describing a table
 </ApiItem>
 <ApiItem href="#dbdialectsqlite-describeindex" visibility="public" name="describeIndex" returnType="string" params={[{"type":"string","name":"index","default":null}]}>
 Generates SQL to query indexes detail on a table
 </ApiItem>
-<ApiItem href="#dbdialectsqlite-describeindexes" visibility="public" name="describeIndexes" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectsqlite-describeindexes" visibility="public" name="describeIndexes" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL to query indexes on a table
 </ApiItem>
-<ApiItem href="#dbdialectsqlite-describereferences" visibility="public" name="describeReferences" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectsqlite-describereferences" visibility="public" name="describeReferences" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates SQL to query foreign keys on a table
 </ApiItem>
 <ApiItem href="#dbdialectsqlite-dropcheck" visibility="public" name="dropCheck" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"checkName","default":null}]}>
@@ -4912,7 +4904,7 @@ SQLite (3.35+) supports the `RETURNING` clause.
 <ApiItem href="#dbdialectsqlite-tableexists" visibility="public" name="tableExists" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
 Generates SQL checking for the existence of a schema.table
 </ApiItem>
-<ApiItem href="#dbdialectsqlite-tableoptions" visibility="public" name="tableOptions" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
+<ApiItem href="#dbdialectsqlite-tableoptions" visibility="public" name="tableOptions" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Generates the SQL to describe the table creation options
 </ApiItem>
 <ApiItem href="#dbdialectsqlite-truncatetable" visibility="public" name="truncateTable" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"\"\""}]}>
@@ -4926,7 +4918,7 @@ Generates SQL checking for the existence of a schema.view
 
 <ApiItem kind="property" visibility="protected" name="escapeChar" type="string" default="&quot;\&quot;&quot;">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="supportedOperators" type="array" default="[...]">
+<ApiItem kind="property" visibility="protected" name="supportedOperators" type="list&lt;string&gt;" default="[...]">
 </ApiItem>
 
 ### Methods
@@ -5019,8 +5011,8 @@ Generates SQL to create a view
 
 ```php
 public function describeColumns(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -5044,8 +5036,8 @@ Generates SQL to query indexes detail on a table
 
 ```php
 public function describeIndexes(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -5055,8 +5047,8 @@ Generates SQL to query indexes on a table
 
 ```php
 public function describeReferences(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -5281,8 +5273,8 @@ echo $dialect->tableExists("posts");
 
 ```php
 public function tableOptions(
-string $tableName,
-string|null $schemaName = null
+string $table,
+string|null $schema = null
 ): string;
 ```
 
@@ -5316,7 +5308,7 @@ Trait
 
 - **`Phalcon\Db\Dialect\Traits\TextTrait`**
 
-`Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Index` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Exception` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
 
 [`Phalcon\Db\Dialect\Mysql`](#dbdialectmysql) · [`Phalcon\Db\Dialect\Sqlite`](#dbdialectsqlite)
 
@@ -5326,35 +5318,35 @@ Trait
 </ApiItem>
 <ApiItem href="#dbdialecttraitstexttrait-altertabledrop" visibility="protected" name="alterTableDrop" returnType="string" params={[{"type":"string","name":"object","default":null},{"type":"string","name":"item","default":null},{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null}]}>
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkcolumncomment" visibility="protected" name="checkColumnComment" returnType="string" params={[{"type":"Column","name":"column","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkcolumncomment" visibility="protected" name="checkColumnComment" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkcolumnfirstafterpositions" visibility="protected" name="checkColumnFirstAfterPositions" returnType="string" params={[{"type":"Column","name":"column","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkcolumnfirstafterpositions" visibility="protected" name="checkColumnFirstAfterPositions" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkcolumnhasdefault" visibility="protected" name="checkColumnHasDefault" returnType="string" params={[{"type":"Column","name":"column","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkcolumnhasdefault" visibility="protected" name="checkColumnHasDefault" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkcolumnisautoincrement" visibility="protected" name="checkColumnIsAutoIncrement" returnType="string" params={[{"type":"Column","name":"column","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkcolumnisautoincrement" visibility="protected" name="checkColumnIsAutoIncrement" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkcolumnisgenerated" visibility="protected" name="checkColumnIsGenerated" returnType="string" params={[{"type":"Column","name":"column","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkcolumnisgenerated" visibility="protected" name="checkColumnIsGenerated" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 Emits the GENERATED ALWAYS AS (...) VIRTUAL|STORED clause. Wraps the
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkcolumnisinvisible" visibility="protected" name="checkColumnIsInvisible" returnType="string" params={[{"type":"Column","name":"column","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkcolumnisinvisible" visibility="protected" name="checkColumnIsInvisible" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 Emits the INVISIBLE keyword for MySQL 8.0.23+ invisible columns.
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkcolumnisnull" visibility="protected" name="checkColumnIsNull" returnType="string" params={[{"type":"Column","name":"column","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkcolumnisnull" visibility="protected" name="checkColumnIsNull" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkcolumnisprimary" visibility="protected" name="checkColumnIsPrimary" returnType="string" params={[{"type":"Column","name":"column","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkcolumnisprimary" visibility="protected" name="checkColumnIsPrimary" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkcolumnsizeandscale" visibility="protected" name="checkColumnSizeAndScale" returnType="string" params={[{"type":"Column","name":"column","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkcolumnsizeandscale" visibility="protected" name="checkColumnSizeAndScale" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 Checks if the size and/or scale are present and encloses those values
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkcolumnunsigned" visibility="protected" name="checkColumnUnsigned" returnType="string" params={[{"type":"Column","name":"column","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkcolumnunsigned" visibility="protected" name="checkColumnUnsigned" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 Checks if a column is unsigned or not and returns the relevant SQL syntax
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkreferenceconstraint" visibility="protected" name="checkReferenceConstraint" returnType="string" params={[{"type":"Reference","name":"reference","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkreferenceconstraint" visibility="protected" name="checkReferenceConstraint" returnType="string" params={[{"type":"ReferenceInterface","name":"reference","default":null}]}>
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkreferenceondelete" visibility="protected" name="checkReferenceOnDelete" returnType="string" params={[{"type":"Reference","name":"reference","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkreferenceondelete" visibility="protected" name="checkReferenceOnDelete" returnType="string" params={[{"type":"ReferenceInterface","name":"reference","default":null}]}>
 </ApiItem>
-<ApiItem href="#dbdialecttraitstexttrait-checkreferenceonupdate" visibility="protected" name="checkReferenceOnUpdate" returnType="string" params={[{"type":"Reference","name":"reference","default":null}]}>
+<ApiItem href="#dbdialecttraitstexttrait-checkreferenceonupdate" visibility="protected" name="checkReferenceOnUpdate" returnType="string" params={[{"type":"ReferenceInterface","name":"reference","default":null}]}>
 </ApiItem>
 <ApiItem href="#dbdialecttraitstexttrait-delimit" visibility="protected" name="delimit" returnType="string" params={[{"type":"string","name":"identifier","default":null},{"type":"string","name":"delimiter","default":"\"`\""}]}>
 </ApiItem>
@@ -5372,11 +5364,12 @@ Checks if a column is unsigned or not and returns the relevant SQL syntax
 Returns the list of CONSTRAINT ... CHECK (...) lines for createTable.
 </ApiItem>
 <ApiItem href="#dbdialecttraitstexttrait-gettablecolumns" visibility="protected" name="getTableColumns" returnType="array" params={[{"type":"array","name":"definition","default":null}]}>
+The caller rejects a definition without a column list, so the shape
 </ApiItem>
 <ApiItem href="#dbdialecttraitstexttrait-gettableindexes" visibility="protected" name="getTableIndexes" returnType="array" params={[{"type":"array","name":"definition","default":null}]}>
 </ApiItem>
 <ApiItem href="#dbdialecttraitstexttrait-gettableoptions" visibility="protected" name="getTableOptions" returnType="string" params={[{"type":"array","name":"definition","default":null}]}>
-Generates SQL to add the table creation options
+Generates SQL to add the table creation options. The caller emits the
 </ApiItem>
 <ApiItem href="#dbdialecttraitstexttrait-gettablereferences" visibility="protected" name="getTableReferences" returnType="array" params={[{"type":"array","name":"definition","default":null}]}>
 </ApiItem>
@@ -5408,31 +5401,31 @@ string $schemaName
 <h4 id="dbdialecttraitstexttrait-checkcolumncomment"><code>checkColumnComment()</code></h4>
 
 ```php
-protected function checkColumnComment( Column $column ): string;
+protected function checkColumnComment( ColumnInterface $column ): string;
 ```
 
 <h4 id="dbdialecttraitstexttrait-checkcolumnfirstafterpositions"><code>checkColumnFirstAfterPositions()</code></h4>
 
 ```php
-protected function checkColumnFirstAfterPositions( Column $column ): string;
+protected function checkColumnFirstAfterPositions( ColumnInterface $column ): string;
 ```
 
 <h4 id="dbdialecttraitstexttrait-checkcolumnhasdefault"><code>checkColumnHasDefault()</code></h4>
 
 ```php
-protected function checkColumnHasDefault( Column $column ): string;
+protected function checkColumnHasDefault( ColumnInterface $column ): string;
 ```
 
 <h4 id="dbdialecttraitstexttrait-checkcolumnisautoincrement"><code>checkColumnIsAutoIncrement()</code></h4>
 
 ```php
-protected function checkColumnIsAutoIncrement( Column $column ): string;
+protected function checkColumnIsAutoIncrement( ColumnInterface $column ): string;
 ```
 
 <h4 id="dbdialecttraitstexttrait-checkcolumnisgenerated"><code>checkColumnIsGenerated()</code></h4>
 
 ```php
-protected function checkColumnIsGenerated( Column $column ): string;
+protected function checkColumnIsGenerated( ColumnInterface $column ): string;
 ```
 
 Emits the GENERATED ALWAYS AS (...) VIRTUAL|STORED clause. Wraps the
@@ -5441,7 +5434,7 @@ shared dialect helper for trait users.
 <h4 id="dbdialecttraitstexttrait-checkcolumnisinvisible"><code>checkColumnIsInvisible()</code></h4>
 
 ```php
-protected function checkColumnIsInvisible( Column $column ): string;
+protected function checkColumnIsInvisible( ColumnInterface $column ): string;
 ```
 
 Emits the INVISIBLE keyword for MySQL 8.0.23+ invisible columns.
@@ -5450,19 +5443,19 @@ Other dialects override this trait helper to return an empty string.
 <h4 id="dbdialecttraitstexttrait-checkcolumnisnull"><code>checkColumnIsNull()</code></h4>
 
 ```php
-protected function checkColumnIsNull( Column $column ): string;
+protected function checkColumnIsNull( ColumnInterface $column ): string;
 ```
 
 <h4 id="dbdialecttraitstexttrait-checkcolumnisprimary"><code>checkColumnIsPrimary()</code></h4>
 
 ```php
-protected function checkColumnIsPrimary( Column $column ): string;
+protected function checkColumnIsPrimary( ColumnInterface $column ): string;
 ```
 
 <h4 id="dbdialecttraitstexttrait-checkcolumnsizeandscale"><code>checkColumnSizeAndScale()</code></h4>
 
 ```php
-protected function checkColumnSizeAndScale( Column $column ): string;
+protected function checkColumnSizeAndScale( ColumnInterface $column ): string;
 ```
 
 Checks if the size and/or scale are present and encloses those values
@@ -5471,7 +5464,7 @@ in parentheses if need be
 <h4 id="dbdialecttraitstexttrait-checkcolumnunsigned"><code>checkColumnUnsigned()</code></h4>
 
 ```php
-protected function checkColumnUnsigned( Column $column ): string;
+protected function checkColumnUnsigned( ColumnInterface $column ): string;
 ```
 
 Checks if a column is unsigned or not and returns the relevant SQL syntax
@@ -5479,19 +5472,19 @@ Checks if a column is unsigned or not and returns the relevant SQL syntax
 <h4 id="dbdialecttraitstexttrait-checkreferenceconstraint"><code>checkReferenceConstraint()</code></h4>
 
 ```php
-protected function checkReferenceConstraint( Reference $reference ): string;
+protected function checkReferenceConstraint( ReferenceInterface $reference ): string;
 ```
 
 <h4 id="dbdialecttraitstexttrait-checkreferenceondelete"><code>checkReferenceOnDelete()</code></h4>
 
 ```php
-protected function checkReferenceOnDelete( Reference $reference ): string;
+protected function checkReferenceOnDelete( ReferenceInterface $reference ): string;
 ```
 
 <h4 id="dbdialecttraitstexttrait-checkreferenceonupdate"><code>checkReferenceOnUpdate()</code></h4>
 
 ```php
-protected function checkReferenceOnUpdate( Reference $reference ): string;
+protected function checkReferenceOnUpdate( ReferenceInterface $reference ): string;
 ```
 
 <h4 id="dbdialecttraitstexttrait-delimit"><code>delimit()</code></h4>
@@ -5553,6 +5546,9 @@ helper.
 protected function getTableColumns( array $definition ): array;
 ```
 
+The caller rejects a definition without a column list, so the shape
+below is narrower than `db_table_definition`.
+
 <h4 id="dbdialecttraitstexttrait-gettableindexes"><code>getTableIndexes()</code></h4>
 
 ```php
@@ -5565,7 +5561,9 @@ protected function getTableIndexes( array $definition ): array;
 protected function getTableOptions( array $definition ): string;
 ```
 
-Generates SQL to add the table creation options
+Generates SQL to add the table creation options. The caller emits the
+clause only when the definition carries the options, so the shape
+below is narrower than `db_table_definition`.
 
 <h4 id="dbdialecttraitstexttrait-gettablereferences"><code>getTableReferences()</code></h4>
 
@@ -5630,369 +5628,6 @@ Constants for Phalcon\Db
 <ApiItem kind="constant" name="FETCH_UNIQUE" type="mixed" default="PDO::FETCH_UNIQUE">
 </ApiItem>
 
-## Db\Event\AbstractCancellableModelEvent
-
-Abstract
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- **`Phalcon\Db\Event\AbstractCancellableModelEvent`** - implements `\Psr\EventDispatcher\StoppableEventInterface`
-- [`Phalcon\Db\Event\AfterValidationEvent`](#dbeventaftervalidationevent)
-- [`Phalcon\Db\Event\AfterValidationOnCreateEvent`](#dbeventaftervalidationoncreateevent)
-- [`Phalcon\Db\Event\AfterValidationOnUpdateEvent`](#dbeventaftervalidationonupdateevent)
-- [`Phalcon\Db\Event\BeforeCreateEvent`](#dbeventbeforecreateevent)
-- [`Phalcon\Db\Event\BeforeDeleteEvent`](#dbeventbeforedeleteevent)
-- [`Phalcon\Db\Event\BeforeSaveEvent`](#dbeventbeforesaveevent)
-- [`Phalcon\Db\Event\BeforeUpdateEvent`](#dbeventbeforeupdateevent)
-- [`Phalcon\Db\Event\BeforeValidationEvent`](#dbeventbeforevalidationevent)
-- [`Phalcon\Db\Event\BeforeValidationOnCreateEvent`](#dbeventbeforevalidationoncreateevent)
-- [`Phalcon\Db\Event\BeforeValidationOnUpdateEvent`](#dbeventbeforevalidationonupdateevent)
-- [`Phalcon\Db\Event\ValidationEvent`](#dbeventvalidationevent)
-
-`Psr\EventDispatcher\StoppableEventInterface`
-
-### Method Summary
-
-<ApiItem href="#dbeventabstractcancellablemodelevent-cancel" visibility="public" name="cancel" returnType="void" params={[]}>
-</ApiItem>
-<ApiItem href="#dbeventabstractcancellablemodelevent-ispropagationstopped" visibility="public" name="isPropagationStopped" returnType="bool" params={[]}>
-</ApiItem>
-
-### Methods
-
-<h4 id="dbeventabstractcancellablemodelevent-cancel"><code>cancel()</code></h4>
-
-```php
-public function cancel(): void;
-```
-
-<h4 id="dbeventabstractcancellablemodelevent-ispropagationstopped"><code>isPropagationStopped()</code></h4>
-
-```php
-public function isPropagationStopped(): bool;
-```
-
-## Db\Event\AbstractModelEvent
-
-Abstract
-
-- **`Phalcon\Db\Event\AbstractModelEvent`** - implements [`Phalcon\Events\PsrEventInterface`](/6.0/api/phalcon_events/#eventspsreventinterface)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- [`Phalcon\Db\Event\AfterCreateEvent`](#dbeventaftercreateevent)
-- [`Phalcon\Db\Event\AfterDeleteEvent`](#dbeventafterdeleteevent)
-- [`Phalcon\Db\Event\AfterFetchEvent`](#dbeventafterfetchevent)
-- [`Phalcon\Db\Event\AfterSaveEvent`](#dbeventaftersaveevent)
-- [`Phalcon\Db\Event\AfterUpdateEvent`](#dbeventafterupdateevent)
-- [`Phalcon\Db\Event\NotDeletedEvent`](#dbeventnotdeletedevent)
-- [`Phalcon\Db\Event\NotSavedEvent`](#dbeventnotsavedevent)
-- [`Phalcon\Db\Event\OnValidationFailsEvent`](#dbeventonvalidationfailsevent)
-- [`Phalcon\Db\Event\PrepareSaveEvent`](#dbeventpreparesaveevent)
-
-`Phalcon\Events\PsrEventInterface` · `Phalcon\Mvc\Model`
-
-### Method Summary
-
-<ApiItem href="#dbeventabstractmodelevent-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Model","name":"model","default":null}]}>
-</ApiItem>
-
-### Properties
-
-<ApiItem kind="property" visibility="public" name="model" type="Model" default="">
-</ApiItem>
-
-### Methods
-
-<h4 id="dbeventabstractmodelevent-__construct"><code>__construct()</code></h4>
-
-```php
-public function __construct( Model $model );
-```
-
-## Db\Event\AfterCreateEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- **`Phalcon\Db\Event\AfterCreateEvent`**
-
-## Db\Event\AfterDeleteEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- **`Phalcon\Db\Event\AfterDeleteEvent`**
-
-## Db\Event\AfterFetchEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- **`Phalcon\Db\Event\AfterFetchEvent`**
-
-## Db\Event\AfterSaveEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- **`Phalcon\Db\Event\AfterSaveEvent`**
-
-## Db\Event\AfterUpdateEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- **`Phalcon\Db\Event\AfterUpdateEvent`**
-
-## Db\Event\AfterValidationEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\AfterValidationEvent`**
-
-## Db\Event\AfterValidationOnCreateEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\AfterValidationOnCreateEvent`**
-
-## Db\Event\AfterValidationOnUpdateEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\AfterValidationOnUpdateEvent`**
-
-## Db\Event\BeforeCreateEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\BeforeCreateEvent`**
-
-## Db\Event\BeforeDeleteEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\BeforeDeleteEvent`**
-
-## Db\Event\BeforeSaveEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\BeforeSaveEvent`**
-
-## Db\Event\BeforeUpdateEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\BeforeUpdateEvent`**
-
-## Db\Event\BeforeValidationEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\BeforeValidationEvent`**
-
-## Db\Event\BeforeValidationOnCreateEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\BeforeValidationOnCreateEvent`**
-
-## Db\Event\BeforeValidationOnUpdateEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\BeforeValidationOnUpdateEvent`**
-
-## Db\Event\Factory
-
-Class
-
-- **`Phalcon\Db\Event\Factory`**
-
-`Phalcon\Events\PsrEventInterface` · `Phalcon\Mvc\Model`
-
-### Method Summary
-
-<ApiItem href="#dbeventfactory-create" visibility="public" name="create" returnType="PsrEventInterface|null" params={[{"type":"string","name":"eventName","default":null},{"type":"Model","name":"model","default":null}]}>
-</ApiItem>
-
-### Methods
-
-<h4 id="dbeventfactory-create"><code>create()</code></h4>
-
-```php
-public function create(
-string $eventName,
-Model $model
-): PsrEventInterface|null;
-```
-
-## Db\Event\ModelEventNameEnum
-
-Class
-
-- **`Phalcon\Db\Event\ModelEventNameEnum`**
-
-### Method Summary
-
-<ApiItem href="#dbeventmodeleventnameenum-fromeventclass" visibility="public" name="fromEventClass" returnType="self" params={[{"type":"string","name":"eventClassName","default":null}]}>
-Get an enum case from event class name
-</ApiItem>
-<ApiItem href="#dbeventmodeleventnameenum-geteventclass" visibility="public" name="getEventClass" returnType="string" params={[{"type":"mixed","name":"eventName","default":null}]}>
-Get the event class associated with this event type
-</ApiItem>
-<ApiItem href="#dbeventmodeleventnameenum-tryfromeventclass" visibility="public" name="tryFromEventClass" returnType="self|null" params={[{"type":"string","name":"eventClassName","default":null}]}>
-</ApiItem>
-
-### Constants
-
-<ApiItem kind="constant" name="AFTER_CREATE" type="string" default="&quot;afterCreate&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_DELETE" type="string" default="&quot;afterDelete&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_FETCH" type="string" default="&quot;afterFetch&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_SAVE" type="string" default="&quot;afterSave&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_UPDATE" type="string" default="&quot;afterUpdate&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_VALIDATION" type="string" default="&quot;afterValidation&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_VALIDATION_ON_CREATE" type="string" default="&quot;afterValidationOnCreate&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_VALIDATION_ON_UPDATE" type="string" default="&quot;afterValidationOnUpdate&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_CREATE" type="string" default="&quot;beforeCreate&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_DELETE" type="string" default="&quot;beforeDelete&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_SAVE" type="string" default="&quot;beforeSave&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_UPDATE" type="string" default="&quot;beforeUpdate&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_VALIDATION" type="string" default="&quot;beforeValidation&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_VALIDATION_ON_CREATE" type="string" default="&quot;beforeValidationOnCreate&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_VALIDATION_ON_UPDATE" type="string" default="&quot;beforeValidationOnUpdate&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_DELETED" type="string" default="&quot;notDeleted&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_SAVED" type="string" default="&quot;notSaved&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="ON_VALIDATION_FAILS" type="string" default="&quot;onValidationFails&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PREPARE_SAVE" type="string" default="&quot;prepareSave&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="VALIDATION" type="string" default="&quot;validation&quot;">
-</ApiItem>
-
-### Methods
-
-<h4 id="dbeventmodeleventnameenum-fromeventclass"><code>fromEventClass()</code></h4>
-
-```php
-public static function fromEventClass( string $eventClassName ): self;
-```
-
-Get an enum case from event class name
-
-<h4 id="dbeventmodeleventnameenum-geteventclass"><code>getEventClass()</code></h4>
-
-```php
-public static function getEventClass( mixed $eventName ): string;
-```
-
-Get the event class associated with this event type
-
-<h4 id="dbeventmodeleventnameenum-tryfromeventclass"><code>tryFromEventClass()</code></h4>
-
-```php
-public static function tryFromEventClass( string $eventClassName ): self|null;
-```
-
-## Db\Event\NotDeletedEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- **`Phalcon\Db\Event\NotDeletedEvent`**
-
-## Db\Event\NotSavedEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- **`Phalcon\Db\Event\NotSavedEvent`**
-
-## Db\Event\OnValidationFailsEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- **`Phalcon\Db\Event\OnValidationFailsEvent`**
-
-## Db\Event\PrepareSaveEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- **`Phalcon\Db\Event\PrepareSaveEvent`**
-
-## Db\Event\UnknownEventTypeException
-
-Class
-
-- `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Event\UnknownEventTypeException`**
-
-`Phalcon\Db\Exception` · `Throwable`
-
-### Method Summary
-
-<ApiItem href="#dbeventunknowneventtypeexception-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":"\"\""},{"type":"int","name":"code","default":"0"},{"type":"Throwable|null","name":"previous","default":"null"}]}>
-</ApiItem>
-
-### Methods
-
-<h4 id="dbeventunknowneventtypeexception-__construct"><code>__construct()</code></h4>
-
-```php
-public function __construct(
-string $message = "",
-int $code = 0,
-Throwable|null $previous = null
-);
-```
-
-## Db\Event\ValidationEvent
-
-Class
-
-- [`Phalcon\Db\Event\AbstractModelEvent`](#dbeventabstractmodelevent)
-- [`Phalcon\Db\Event\AbstractCancellableModelEvent`](#dbeventabstractcancellablemodelevent)
-- **`Phalcon\Db\Event\ValidationEvent`**
-
 ## Db\Exception
 
 Class
@@ -6001,7 +5636,6 @@ Exceptions thrown in Phalcon\Db will use this class
 
 - `\Exception`
 - **`Phalcon\Db\Exception`**
-- [`Phalcon\Db\Event\UnknownEventTypeException`](#dbeventunknowneventtypeexception)
 - [`Phalcon\Db\Exceptions\CannotInsertWithoutData`](#dbexceptionscannotinsertwithoutdata)
 - [`Phalcon\Db\Exceptions\CannotPrepareStatement`](#dbexceptionscannotpreparestatement)
 - [`Phalcon\Db\Exceptions\CheckExpressionRequired`](#dbexceptionscheckexpressionrequired)
@@ -7331,7 +6965,7 @@ Class
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="geometries" type="GeometryInterface[]" default="">
+<ApiItem kind="property" visibility="protected" name="geometries" type="list&lt;GeometryInterface&gt;" default="">
 </ApiItem>
 
 ### Methods
@@ -7398,7 +7032,7 @@ Class
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="points" type="Point[]" default="">
+<ApiItem kind="property" visibility="protected" name="points" type="list&lt;Point&gt;" default="">
 </ApiItem>
 
 ### Methods
@@ -7458,7 +7092,7 @@ Class
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="lineStrings" type="LineString[]" default="">
+<ApiItem kind="property" visibility="protected" name="lineStrings" type="list&lt;LineString&gt;" default="">
 </ApiItem>
 
 ### Methods
@@ -7512,7 +7146,7 @@ Class
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="points" type="Point[]" default="">
+<ApiItem kind="property" visibility="protected" name="points" type="list&lt;Point&gt;" default="">
 </ApiItem>
 
 ### Methods
@@ -7566,7 +7200,7 @@ Class
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="polygons" type="Polygon[]" default="">
+<ApiItem kind="property" visibility="protected" name="polygons" type="list&lt;Polygon&gt;" default="">
 </ApiItem>
 
 ### Methods
@@ -7695,7 +7329,7 @@ Class
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="rings" type="Point[][]" default="">
+<ApiItem kind="property" visibility="protected" name="rings" type="list&lt;list&lt;Point&gt;&gt;" default="">
 </ApiItem>
 
 ### Methods
@@ -7897,7 +7531,7 @@ $hidden = new \Phalcon\Db\Index(
 
 - **`Phalcon\Db\Index`** - implements [`Phalcon\Db\IndexInterface`](#dbindexinterface)
 
-`Phalcon\Db\Exceptions\InvalidIndexColumns` · `Phalcon\Db\Exceptions\InvalidIndexDirections` · `Phalcon\Db\Exceptions\InvalidIndexWhere`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\InvalidIndexColumns` · `Phalcon\Db\Exceptions\InvalidIndexDirections` · `Phalcon\Db\Exceptions\InvalidIndexWhere`
 
 ### Method Summary
 
@@ -7928,7 +7562,7 @@ Whether the index is declared `INVISIBLE` (MySQL 8.0+).
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="columns" type="array" default="">
+<ApiItem kind="property" visibility="protected" name="columns" type="db_index_columns" default="">
 Index columns. Entries may be plain strings (column names) or
 `Phalcon\Db\RawValue` instances (functional/expression index entries).
 </ApiItem>
@@ -7937,7 +7571,7 @@ Whether to build the index without taking a strong lock that blocks
 writes - emits `CONCURRENTLY` between `INDEX` and the index name on
 PostgreSQL. MySQL and SQLite ignore the flag.
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="directions" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="directions" type="db_index_directions" default="[]">
 Per-column sort directions (`ASC` / `DESC`). Empty array means
 "emit no per-column direction" - preserves the legacy plain
 `(col1, col2)` rendering.
@@ -8099,7 +7733,7 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 - **`Phalcon\Db\Profiler`**
 
-`Phalcon\Db\Profiler\Item` · `Phalcon\Db\Traits\ElapsedTimeTrait`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Profiler\Item` · `Phalcon\Db\Traits\ElapsedTimeTrait`
 
 ### Method Summary
 
@@ -8136,7 +7770,7 @@ Stops the active profile
 <ApiItem kind="property" visibility="protected" name="activeProfile" type="Item|null" default="null">
 Active Item
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="allProfiles" type="Item[]" default="[]">
+<ApiItem kind="property" visibility="protected" name="allProfiles" type="db_profiler_items" default="[]">
 All the Items in the active profile
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="maxProfiles" type="int" default="0">
@@ -8236,7 +7870,7 @@ This class identifies each profile in a Phalcon\Db\Profiler
 
 - **`Phalcon\Db\Profiler\Item`**
 
-`Phalcon\Db\Traits\ElapsedTimeTrait`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Traits\ElapsedTimeTrait`
 
 ### Method Summary
 
@@ -8282,13 +7916,13 @@ Timestamp when the profile ended
 <ApiItem kind="property" visibility="protected" name="initialTime" type="float" default="">
 Timestamp when the profile started
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="sqlBindTypes" type="array" default="">
+<ApiItem kind="property" visibility="protected" name="sqlBindTypes" type="db_bind_types" default="">
 SQL bind types related to the profile
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="sqlStatement" type="string" default="">
 SQL statement related to the profile
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="sqlVariables" type="array" default="">
+<ApiItem kind="property" visibility="protected" name="sqlVariables" type="db_bind_params" default="">
 SQL variables related to the profile
 </ApiItem>
 
@@ -8472,7 +8106,7 @@ $reference = new \Phalcon\Db\Reference(
 
 - **`Phalcon\Db\Reference`** - implements [`Phalcon\Db\ReferenceInterface`](#dbreferenceinterface)
 
-`Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedColumnCountMismatch` · `Phalcon\Db\Exceptions\ReferencedColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedTableRequired`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedColumnCountMismatch` · `Phalcon\Db\Exceptions\ReferencedColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedTableRequired`
 
 ### Method Summary
 
@@ -8506,7 +8140,7 @@ Schema name
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="columns" type="array" default="">
+<ApiItem kind="property" visibility="protected" name="columns" type="db_column_names" default="">
 Local reference columns
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="name" type="string" default="">
@@ -8517,7 +8151,7 @@ ON DELETE
 <ApiItem kind="property" visibility="protected" name="onUpdate" type="string|null" default="null">
 ON UPDATE
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="referencedColumns" type="array" default="">
+<ApiItem kind="property" visibility="protected" name="referencedColumns" type="db_column_names" default="">
 Referenced Columns
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="referencedSchema" type="string|null" default="null">
@@ -8649,7 +8283,7 @@ print_r($invoice);
 
 - **`Phalcon\Db\Result\PdoResult`** - implements [`Phalcon\Db\ResultInterface`](#dbresultinterface)
 
-`PDOStatement` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\ResultInterface`
+`PDO` · `PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\ResultInterface`
 
 ### Method Summary
 

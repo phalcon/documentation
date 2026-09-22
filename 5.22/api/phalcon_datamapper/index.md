@@ -23,7 +23,7 @@ methods
 - [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](#datamapperpdoconnectionabstractconnection)
 - **`Phalcon\DataMapper\Pdo\Connection`**
 
-`Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 
 ### Method Summary
 
@@ -100,7 +100,7 @@ so connections that are built on demand also fire the DataMapper events.
 
 - **`Phalcon\DataMapper\Pdo\ConnectionLocator`** - implements [`Phalcon\DataMapper\Pdo\ConnectionLocatorInterface`](#datamapperpdoconnectionlocatorinterface), [`Phalcon\Contracts\Events\EventsAware`](/5.22/api/phalcon_contracts/#contractseventseventsaware)
 
-`Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 
 ### Method Summary
 
@@ -232,7 +232,7 @@ Locates PDO connections for default, read, and write databases.
 
 - **`Phalcon\DataMapper\Pdo\ConnectionLocatorInterface`**
 
-`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`
 
 ### Method Summary
 
@@ -331,7 +331,7 @@ implementations of the interface keep working.
 - [`Phalcon\DataMapper\Pdo\Connection`](#datamapperpdoconnection)
 - [`Phalcon\DataMapper\Pdo\Connection\Decorated`](#datamapperpdoconnectiondecorated)
 
-`BadMethodCallException` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Events` · `Phalcon\DataMapper\Pdo\Exception\OperationCancelled` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
+`BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Events` · `Phalcon\DataMapper\Pdo\Exception\OperationCancelled` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Throwable` · `stdClass`
 
 ### Method Summary
 
@@ -453,7 +453,7 @@ Sets the Profiler instance.
 Helper method to get data from PDO based on the method passed
 </ApiItem>
 <ApiItem href="#datamapperpdoconnectionabstractconnection-firebefore" visibility="protected" name="fireBefore" returnType="void" params={[{"type":"string","name":"eventName","default":null},{"type":"mixed","name":"data","default":"null"}]}>
-Fires a cancellable "before" event. A listener cancels by stopping the
+Fires a cancelable "before" event. A listener cancels by stopping the
 </ApiItem>
 <ApiItem href="#datamapperpdoconnectionabstractconnection-isconnectionerror" visibility="protected" name="isConnectionError" returnType="bool" params={[{"type":"\\Throwable","name":"exception","default":null}]}>
 Recognizes a lost ("gone away") connection. Detection is driver-agnostic:
@@ -468,7 +468,7 @@ Bind a value using the proper PDO::PARAM_* type.
 Whether to transparently reconnect and retry once when a statement fails
 because the connection was lost. Opt-in; off by default.
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="pdo" type="\PDO" default="">
+<ApiItem kind="property" visibility="protected" name="pdo" type="\PDO|null" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="profiler" type="ProfilerInterface" default="">
 </ApiItem>
@@ -645,6 +645,10 @@ Since PDO injects property values before invoking the constructor, any
 initializations for defaults that you potentially have in your object's
 constructor, will override the values that have been injected by
 `fetchObject`. The default object returned is `\stdClass`
+
+PDOStatement::fetchObject() returns false when there is no row. The
+interface declares `object`, so an empty `stdClass` is returned
+instead. The `object|false` return type lands in v7.
 
 <h4 id="datamapperpdoconnectionabstractconnection-fetchobjects"><code>fetchObjects()</code></h4>
 
@@ -897,9 +901,9 @@ mixed $data = null
 ): void;
 ```
 
-Fires a cancellable "before" event. A listener cancels by stopping the
+Fires a cancelable "before" event. A listener cancels by stopping the
 event and returning false; see Phalcon\DataMapper\Pdo\Events for the
-required idiom. The operation does not run when it is cancelled.
+required idiom. The operation does not run when it is canceled.
 
 <h4 id="datamapperpdoconnectionabstractconnection-isconnectionerror"><code>isConnectionError()</code></h4>
 
@@ -934,7 +938,7 @@ methods
 - [`Phalcon\DataMapper\Pdo\Connection\PdoInterface`](#datamapperpdoconnectionpdointerface)
 - **`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`**
 
-`Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 
 ### Method Summary
 
@@ -1092,6 +1096,9 @@ Since PDO injects property values before invoking the constructor, any
 initializations for defaults that you potentially have in your object's
 constructor, will override the values that have been injected by
 `fetchObject`. The default object returned is `\stdClass`
+
+An empty `stdClass` is returned when there is no row. The
+`object|false` return type lands in v7.
 
 <h4 id="datamapperpdoconnectionconnectioninterface-fetchobjects"><code>fetchObjects()</code></h4>
 
@@ -1257,6 +1264,8 @@ An interface to the native PDO object.
 - **`Phalcon\DataMapper\Pdo\Connection\PdoInterface`**
 - [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface)
 
+`Phalcon\Contracts\DataMapper\DataMapperTypes`
+
 ### Method Summary
 
 <ApiItem href="#datamapperpdoconnectionpdointerface-begintransaction" visibility="public" name="beginTransaction" returnType="bool" params={[]}>
@@ -1265,7 +1274,7 @@ Begins a transaction. If the profiler is enabled, the operation will
 <ApiItem href="#datamapperpdoconnectionpdointerface-commit" visibility="public" name="commit" returnType="bool" params={[]}>
 Commits the existing transaction. If the profiler is enabled, the
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-errorcode" visibility="public" name="errorCode" returnType="null|string" params={[]}>
+<ApiItem href="#datamapperpdoconnectionpdointerface-errorcode" visibility="public" name="errorCode" returnType="string|null" params={[]}>
 Gets the most recent error code.
 </ApiItem>
 <ApiItem href="#datamapperpdoconnectionpdointerface-errorinfo" visibility="public" name="errorInfo" returnType="array" params={[]}>
@@ -1286,10 +1295,10 @@ Is a transaction currently active? If the profiler is enabled, the
 <ApiItem href="#datamapperpdoconnectionpdointerface-lastinsertid" visibility="public" name="lastInsertId" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
 Returns the last inserted autoincrement sequence value. If the profiler
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-prepare" visibility="public" name="prepare" returnType="\PDOStatement|bool" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"options","default":"[]"}]}>
+<ApiItem href="#datamapperpdoconnectionpdointerface-prepare" visibility="public" name="prepare" returnType="bool|\PDOStatement" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"options","default":"[]"}]}>
 Prepares an SQL statement for execution.
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-query" visibility="public" name="query" returnType="\PDOStatement|bool" params={[{"type":"string","name":"statement","default":null}]}>
+<ApiItem href="#datamapperpdoconnectionpdointerface-query" visibility="public" name="query" returnType="bool|\PDOStatement" params={[{"type":"string","name":"statement","default":null}]}>
 Queries the database and returns a PDOStatement. If the profiler is
 </ApiItem>
 <ApiItem href="#datamapperpdoconnectionpdointerface-quote" visibility="public" name="quote" returnType="string" params={[{"type":"mixed","name":"value","default":null},{"type":"int","name":"type","default":"\\PDO::PARAM_STR"}]}>
@@ -1325,7 +1334,7 @@ operation will be recorded.
 <h4 id="datamapperpdoconnectionpdointerface-errorcode"><code>errorCode()</code></h4>
 
 ```php
-public function errorCode(): null|string;
+public function errorCode(): string|null;
 ```
 
 Gets the most recent error code.
@@ -1388,7 +1397,7 @@ is enabled, the operation will be recorded.
 public function prepare(
 string $statement,
 array $options = []
-): \PDOStatement|bool;
+): bool|\PDOStatement;
 ```
 
 Prepares an SQL statement for execution.
@@ -1396,7 +1405,7 @@ Prepares an SQL statement for execution.
 <h4 id="datamapperpdoconnectionpdointerface-query"><code>query()</code></h4>
 
 ```php
-public function query( string $statement ): \PDOStatement|bool;
+public function query( string $statement ): bool|\PDOStatement;
 ```
 
 Queries the database and returns a PDOStatement. If the profiler is
@@ -1442,7 +1451,7 @@ Class
 Lifecycle event names fired by the DataMapper connections through
 Phalcon\Events\Manager. One public constant per event.
 
-The `before*` events are cancellable. To cancel an operation, a listener
+The `before*` events are cancelable. To cancel an operation, a listener
 must stop the event and return false:
 
     $manager->attach(
@@ -1458,10 +1467,10 @@ Both parts are necessary. `stop()` alone abandons the queue but returns
 the listener's own value, which the connection cannot tell apart from
 "no listeners". `return false` alone is replaced by any later non-null
 return while the manager's stopOnFalse mode is off, which is the default.
-A cancelled operation throws
+A canceled operation throws
 Phalcon\DataMapper\Pdo\Exception\OperationCancelled.
 
-The `after*` events are not cancellable. The operation is complete when
+The `after*` events are not cancelable. The operation is complete when
 they fire.
 
 There are two groups of events. The operation events - perform, exec,
@@ -1571,7 +1580,7 @@ Base Exception class
 
 Class
 
-A listener cancelled a cancellable "before" event, so the operation did
+A listener canceled a cancelable "before" event, so the operation did
 not run. This is a deliberate cancellation, not a database failure. Catch
 this class to tell the two apart.
 
@@ -1644,7 +1653,7 @@ A memory-based logger.
 
 - **`Phalcon\DataMapper\Pdo\Profiler\MemoryLogger`** - implements [`Phalcon\Logger\LoggerInterface`](/5.22/api/phalcon_logger/#loggerloggerinterface)
 
-`Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Enum` · `Phalcon\Logger\LoggerInterface`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Enum` · `Phalcon\Logger\LoggerInterface`
 
 ### Method Summary
 
@@ -1833,7 +1842,7 @@ Sends query profiles to a logger.
 
 - **`Phalcon\DataMapper\Pdo\Profiler\Profiler`** - implements [`Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`](#datamapperpdoprofilerprofilerinterface)
 
-`Phalcon\DataMapper\Pdo\Exception\Exception` · `Phalcon\Logger\Enum` · `Phalcon\Logger\LoggerInterface` · `Phalcon\Support\Helper\Json\Encode`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Exception\Exception` · `Phalcon\Logger\Enum` · `Phalcon\Logger\LoggerInterface` · `Phalcon\Support\Helper\Json\Encode`
 
 ### Method Summary
 
@@ -1974,7 +1983,7 @@ Interface to send query profiles to a logger.
 
 - **`Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`**
 
-`Phalcon\Logger\LoggerInterface`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Logger\LoggerInterface`
 
 ### Method Summary
 
@@ -2094,6 +2103,8 @@ Class AbstractConditions
 - [`Phalcon\DataMapper\Query\Delete`](#datamapperquerydelete)
 - [`Phalcon\DataMapper\Query\Select`](#datamapperqueryselect)
 - [`Phalcon\DataMapper\Query\Update`](#datamapperqueryupdate)
+
+`Phalcon\Contracts\DataMapper\DataMapperTypes`
 
 ### Method Summary
 
@@ -2324,7 +2335,7 @@ Class AbstractQuery
 - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
 - [`Phalcon\DataMapper\Query\Insert`](#datamapperqueryinsert)
 
-`Phalcon\DataMapper\Pdo\Connection`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`
 
 ### Method Summary
 
@@ -2598,6 +2609,8 @@ Class Bind
 
 - **`Phalcon\DataMapper\Query\Bind`**
 
+`Phalcon\Contracts\DataMapper\DataMapperTypes`
+
 ### Method Summary
 
 <ApiItem href="#datamapperquerybind-bindinline" visibility="public" name="bindInline" returnType="string" params={[{"type":"mixed","name":"value","default":null},{"type":"int","name":"type","default":"-1"}]}>
@@ -2703,11 +2716,13 @@ Class
 
 Delete Query
 
+@property datamapper_write_store $store
+
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
 - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
 - **`Phalcon\DataMapper\Query\Delete`**
 
-`Phalcon\DataMapper\Pdo\Connection`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`
 
 ### Method Summary
 
@@ -2775,10 +2790,12 @@ Class
 
 Insert Query
 
+@property datamapper_write_store $store
+
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
 - **`Phalcon\DataMapper\Query\Insert`**
 
-`Phalcon\DataMapper\Pdo\Connection`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`
 
 ### Method Summary
 
@@ -2983,11 +3000,13 @@ Class
 
 Select Query
 
+@property datamapper_select_store $store
+
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
 - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
 - **`Phalcon\DataMapper\Query\Select`**
 
-`BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`
+`BadMethodCallException` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`
 
 ### Method Summary
 
@@ -3265,11 +3284,13 @@ Class
 
 Update Query
 
+@property datamapper_write_store $store
+
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
 - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
 - **`Phalcon\DataMapper\Query\Update`**
 
-`Phalcon\DataMapper\Pdo\Connection`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`
 
 ### Method Summary
 

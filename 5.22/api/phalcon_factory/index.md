@@ -23,7 +23,7 @@ Abstract
 - [`Phalcon\Logger\LoggerFactory`](/5.22/api/phalcon_logger/#loggerloggerfactory)
 - [`Phalcon\Queue\QueueFactory`](/5.22/api/phalcon_queue/#queuequeuefactory)
 
-`Phalcon\Config\ConfigInterface`
+`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Factory\FactoryTypes`
 
 ### Method Summary
 
@@ -96,7 +96,7 @@ Abstract
 - [`Phalcon\Translate\InterpolatorFactory`](/5.22/api/phalcon_translate/#translateinterpolatorfactory)
 - [`Phalcon\Translate\TranslateFactory`](/5.22/api/phalcon_translate/#translatetranslatefactory)
 
-`Phalcon\Config\ConfigInterface`
+`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Factory\FactoryTypes`
 
 ### Method Summary
 

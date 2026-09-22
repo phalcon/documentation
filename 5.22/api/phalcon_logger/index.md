@@ -34,7 +34,7 @@ files (see Phalcon\Config\Config object).
 - **`Phalcon\Logger\AbstractLogger`**
 - [`Phalcon\Logger\Logger`](#loggerlogger)
 
-`DateTimeZone` · `Exception` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Exceptions\AdapterNotFound` · `Phalcon\Logger\Exceptions\NoAdaptersConfigured` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
+`DateTimeZone` · `Exception` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Exceptions\AdapterNotFound` · `Phalcon\Logger\Exceptions\NoAdaptersConfigured` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
 
 ### Method Summary
 
@@ -289,7 +289,7 @@ Factory used to create adapters used for Logging
 - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
 - **`Phalcon\Logger\AdapterFactory`**
 
-`Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog` · `Throwable`
+`Exception` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog`
 
 ### Method Summary
 
@@ -352,7 +352,7 @@ Class AbstractAdapter
 - [`Phalcon\Logger\Adapter\Stream`](#loggeradapterstream)
 - [`Phalcon\Logger\Adapter\Syslog`](#loggeradaptersyslog)
 
-`Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Exceptions\SerializationFailed` · `Phalcon\Logger\Exceptions\TransactionAlreadyActive` · `Phalcon\Logger\Exceptions\TransactionNotActive` · `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Formatter\Line` · `Phalcon\Logger\Item`
+`Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Exceptions\SerializationFailed` · `Phalcon\Logger\Exceptions\TransactionAlreadyActive` · `Phalcon\Logger\Exceptions\TransactionNotActive` · `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Formatter\Line` · `Phalcon\Logger\Item`
 
 ### Method Summary
 
@@ -705,7 +705,7 @@ $logger->close();
 - [`Phalcon\Logger\Adapter\AbstractAdapter`](#loggeradapterabstractadapter)
 - **`Phalcon\Logger\Adapter\Stream`**
 
-`Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode` · `Phalcon\Logger\Exception` · `Phalcon\Logger\Item` · `Phalcon\Traits\Php\FileTrait`
+`Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode` · `Phalcon\Logger\Exception` · `Phalcon\Logger\Item` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
@@ -786,7 +786,7 @@ Class Syslog
 - [`Phalcon\Logger\Adapter\AbstractAdapter`](#loggeradapterabstractadapter)
 - **`Phalcon\Logger\Adapter\Syslog`**
 
-`Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger\Enum` · `Phalcon\Logger\Item`
+`Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger\Enum` · `Phalcon\Logger\Item`
 
 ### Method Summary
 
@@ -1058,7 +1058,7 @@ Class AbstractFormatter
 - [`Phalcon\Logger\Formatter\Json`](#loggerformatterjson)
 - [`Phalcon\Logger\Formatter\Line`](#loggerformatterline)
 
-`DateTimeImmutable` · `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+`DateTimeImmutable` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Stringable`
 
 ### Method Summary
 
@@ -1071,6 +1071,9 @@ Returns the date formatted for the logger.
 </ApiItem>
 <ApiItem href="#loggerformatterabstractformatter-getinterpolatedmessage" visibility="protected" name="getInterpolatedMessage" returnType="string" params={[{"type":"Item","name":"item","default":null},{"type":"string","name":"message","default":null}]}>
 Returns the interpolated message, replacing context placeholders.
+</ApiItem>
+<ApiItem href="#loggerformatterabstractformatter-stringifycontext" visibility="protected" name="stringifyContext" returnType="array" params={[{"type":"array","name":"context","default":null}]}>
+Reduces the log context to the string map interpolation requires.
 </ApiItem>
 
 ### Properties
@@ -1115,6 +1118,21 @@ string $message
 ```
 
 Returns the interpolated message, replacing context placeholders.
+
+<h4 id="loggerformatterabstractformatter-stringifycontext"><code>stringifyContext()</code></h4>
+
+```php
+protected function stringifyContext( array $context ): array;
+```
+
+Reduces the log context to the string map interpolation requires.
+
+Log context is PSR-3 shaped, so its values are arbitrary, while
+interpolation replaces a placeholder with a string. Anything that
+cannot be expressed as one - an array, an object without
+`__toString()` - substitutes as an empty string, so a placeholder is
+never left dangling and a non-stringable value can never abort the
+formatter mid-log.
 
 ## Logger\Formatter\FormatterInterface
 
@@ -1252,7 +1270,7 @@ Represents each item in a logging transaction
 
 - **`Phalcon\Logger\Item`**
 
-`DateTimeImmutable`
+`DateTimeImmutable` · `Phalcon\Contracts\Logger\LoggerTypes`
 
 ### Method Summary
 
@@ -1343,6 +1361,8 @@ from config files (see Phalcon\Config\Config object).
 
 - [`Phalcon\Logger\AbstractLogger`](#loggerabstractlogger)
 - **`Phalcon\Logger\Logger`** - implements [`Phalcon\Logger\LoggerInterface`](#loggerloggerinterface)
+
+`Phalcon\Contracts\Logger\LoggerTypes`
 
 ### Method Summary
 
@@ -1517,7 +1537,7 @@ Factory creating logger objects
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.22/api/phalcon_factory/#factoryabstractconfigfactory)
 - **`Phalcon\Logger\LoggerFactory`**
 
-`DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Throwable`
+`DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
@@ -1550,6 +1570,8 @@ public function load( mixed $config ): Logger;
 ```
 
 Factory to create an instance from a Config object
+
+The adapter list lives under `options`, not at the top level.
 
 <h4 id="loggerloggerfactory-newinstance"><code>newInstance()</code></h4>
 

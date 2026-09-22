@@ -24,7 +24,7 @@ dispatchers.
 ## Error protocol
 
 Subclasses (including third-party ones) MUST implement the two abstract
-error hooks \{@see throwDispatchException()\} and \{@see handleException()\}.
+error hooks throwDispatchException() and handleException().
 The dispatch loop calls them on every error/exception path; a subclass that
 omits them cannot be loaded.
 
@@ -35,16 +35,18 @@ channels. For any given point they run in this order:
 
 1. **Events-manager listener** - e.g. `dispatch:beforeExecuteRoute`. A
    listener returning `false` cancels; calling `forward()` re-enters the
-   loop; throwing routes through \{@see handleException()\}.
+   loop; throwing routes through handleException().
 2. **Duck-typed handler method** - e.g. a `beforeExecuteRoute()` method on
    the controller/task itself (presence is cached per class). Same
    `false` / `forward()` cancellation semantics as the event.
 3. **`dispatch:beforeCallAction` observer** - fired by
-   \{@see callActionMethod()\} with a `Phalcon\Support\Collection` carrying
+   callActionMethod() with a `Phalcon\Support\Collection` carrying
    the mutable keys `handler`, `action` and `params`. Listeners may rewrite
    those keys to change *what* gets invoked; the substituted callable is
    re-validated before the call. `dispatch:afterCallAction` receives the
    same Collection plus a `result` key.
+
+@todo fix the returnValue type in v7
 
 - `\stdClass`
 - [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)

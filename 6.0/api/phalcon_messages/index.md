@@ -402,7 +402,7 @@ Appends an array of messages to the collection
 Filters the message collection by field name
 </ApiItem>
 <ApiItem href="#messagesmessages-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
-Returns serialised message objects as array for json_encode. Calls
+Returns serialized message objects as array for json_encode. Calls
 </ApiItem>
 
 ### Methods
@@ -460,7 +460,7 @@ Filters the message collection by field name
 public function jsonSerialize(): array;
 ```
 
-Returns serialised message objects as array for json_encode. Calls
+Returns serialized message objects as array for json_encode. Calls
 jsonSerialize on each object if present
 
 ```php

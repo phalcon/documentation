@@ -2160,7 +2160,7 @@ Return a variable from the $_POST superglobal applying filters if needed.
 <ApiItem href="#httprequestinterface-getput" visibility="public" name="getPut" returnType="" params={[{"type":"string|null","name":"name","default":"null"},{"type":"mixed","name":"filters","default":"null"},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"bool","name":"notAllowEmpty","default":"false"},{"type":"bool","name":"noRecursive","default":"false"}]}>
 Return a variable from put request
 </ApiItem>
-<ApiItem href="#httprequestinterface-getquery" visibility="public" name="getQuery" returnType="" params={[{"type":"string|null","name":"name","default":"null"},{"type":"mixed","name":"filters","default":"null"},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"bool","name":"notAllowEmpty","default":"false"},{"type":"bool","name":"noRecursive","default":"false"}]}>
+<ApiItem href="#httprequestinterface-getquery" visibility="public" name="getQuery" returnType="mixed" params={[{"type":"string|null","name":"name","default":"null"},{"type":"mixed","name":"filters","default":"null"},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"bool","name":"notAllowEmpty","default":"false"},{"type":"bool","name":"noRecursive","default":"false"}]}>
 Return a variable from $_GET superglobal applying filters if needed.
 </ApiItem>
 <ApiItem href="#httprequestinterface-getrawbody" visibility="public" name="getRawBody" returnType="string" params={[]}>
@@ -2532,7 +2532,7 @@ mixed $filters = null,
 mixed $defaultValue = null,
 bool $notAllowEmpty = false,
 bool $noRecursive = false
-);
+): mixed;
 ```
 
 Return a variable from $_GET superglobal applying filters if needed.
@@ -4834,6 +4834,8 @@ public function get( string $name ): bool|string|null;
 ```
 
 Gets a header value from the internal bag
+
+@todo change the raw headers not to return null
 
 <h4 id="httpresponseheaders-getiterator"><code>getIterator()</code></h4>
 
