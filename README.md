@@ -97,6 +97,7 @@ The colors and the fonts come from `phalcon/css/tokens.css` in [phalcon/assets](
 
 - To change a color, change `tokens.css` in phalcon/assets. The docs get it on their next deploy.
 - To get the new files now, for a local preview or to commit them: `docker run --rm -v "$PWD":/docs phalcon-docs node scripts/update-tokens.mjs`.
+- The checks and the refresh are the shared design tools of phalcon/assets: `src/lib/design-checks.mjs` and `src/lib/design-refresh.mjs` are copies of `phalcon/tools/` there, and every deploy gets them again first. Change them in phalcon/assets, not here.
 - `src/styles/globals.css` maps the nimbus tokens (`--nb-*`) to the design tokens: `--ph-light-*` in the light theme, `--ph-dark-*` in the dark theme. Use a color through a token: `var(--nb-…)` or `var(--ph-…)`. `pnpm test` fails on a typed color (`#…`, `rgb(…)`, `oklch(…)` or a color of Tailwind's palette) in `src/`, except in `src/scripts/mermaid.ts` and `src/pages/og/_og-card-config.ts`.
 - Code blocks use the code theme (set in `astro.config.ts`): the rules of GitHub's dark theme with `--code-<role>` variables. `globals.css` gives them the syntax tokens of each theme.
 

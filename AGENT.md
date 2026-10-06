@@ -52,8 +52,8 @@ src/
 │   ├── site.mjs                # STABLE_VERSIONS, PRERELEASES, DEPRECATED, versionBanner, analytics
 │   ├── mkdocs-heading-ids.mjs  # the MkDocs heading ids
 │   ├── version-sidebar.mjs     # the rail of one version
-│   ├── tokens.mjs              # checks a design tokens file (tests, scripts/update-tokens.mjs)
-│   ├── code-theme.mjs          # checks a code theme file (tests, scripts/update-tokens.mjs)
+│   ├── design-checks.mjs       # copy of phalcon/tools/ in phalcon/assets: checks the design files (tests, scripts/update-tokens.mjs)
+│   ├── design-refresh.mjs      # copy of phalcon/tools/ in phalcon/assets: refreshes the design files (scripts/update-tokens.mjs)
 │   └── cn.ts                   # Tailwind className merger
 ├── styles/                     # globals.css, prose.css, api.css (port of the MkDocs API styles); tokens.css and code-theme.json are copies from phalcon/assets
 └── fanart.html                 # <head> comment, refreshed by the deploy workflow
@@ -125,7 +125,7 @@ To compile-check MDX without a full build, run `@mdx-js/mdx`'s `compile()` over 
 
 ## Deployment
 
-A push to `master` runs `.github/workflows/deploy-documents.yml`: install (which applies the patch) → `update-nfr` → refresh `src/styles/tokens.css` and `src/styles/code-theme.json` from `phalcon/assets` (`scripts/update-tokens.mjs`) → `test` → refresh `src/fanart.html` from `phalcon/assets` → `build` → publish `dist/` to the branch named by `DEPLOY_BRANCH` (`production`), which Cloudflare Pages serves → point the `/latest/` redirect rule at `STABLE_VERSION`. The `gh-pages` branch holds the last MkDocs deployment as the rollback: point the Pages production branch back at it.
+A push to `master` runs `.github/workflows/deploy-documents.yml`: install (which applies the patch) → `update-nfr` → get the shared design tools (`src/lib/design-checks.mjs`, `src/lib/design-refresh.mjs`) from `phalcon/assets` → refresh `src/styles/tokens.css` and `src/styles/code-theme.json` from `phalcon/assets` (`scripts/update-tokens.mjs`) → `test` → refresh `src/fanart.html` from `phalcon/assets` → `build` → publish `dist/` to the branch named by `DEPLOY_BRANCH` (`production`), which Cloudflare Pages serves → point the `/latest/` redirect rule at `STABLE_VERSION`. The `gh-pages` branch holds the last MkDocs deployment as the rollback: point the Pages production branch back at it.
 
 ## Don't
 
