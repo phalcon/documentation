@@ -91,6 +91,15 @@ docker run --rm -v "$PWD":/docs phalcon-docs-converter resources/nimbus/convert.
 
 A push to `master` builds the site and publishes `dist/` to the branch named by `DEPLOY_BRANCH` in the workflow (`production`), which Cloudflare Pages serves. The `gh-pages` branch holds the last MkDocs deployment as the rollback: to roll back, point the Cloudflare Pages production branch at `gh-pages`. The workflow also points the `/latest/` redirect rule at the stable version.
 
+### Colors and fonts
+
+The colors and the fonts come from `phalcon/css/tokens.css` in [phalcon/assets](https://github.com/phalcon/assets): the design tokens that every Phalcon site uses. The code theme comes from `phalcon/css/code-theme.json` there. `src/styles/tokens.css` and `src/styles/code-theme.json` are copies. Every deploy downloads the two files again before the tests and the build. When a download fails, or when a file is not correct (for example, a token that the docs use is missing or has no value, or the theme uses a code role that `globals.css` does not map), the deploy keeps that committed copy and shows a warning.
+
+- To change a color, change `tokens.css` in phalcon/assets. The docs get it on their next deploy.
+- To get the new files now, for a local preview or to commit them: `docker run --rm -v "$PWD":/docs phalcon-docs node scripts/update-tokens.mjs`.
+- `src/styles/globals.css` maps the nimbus tokens (`--nb-*`) to the design tokens: `--ph-light-*` in the light theme, `--ph-dark-*` in the dark theme. Use a color through a token: `var(--nb-…)` or `var(--ph-…)`. `pnpm test` fails on a typed color (`#…`, `rgb(…)`, `oklch(…)` or a color of Tailwind's palette) in `src/`, except in `src/scripts/mermaid.ts` and `src/pages/og/_og-card-config.ts`.
+- Code blocks use the code theme (set in `astro.config.ts`): the rules of GitHub's dark theme with `--code-<role>` variables. `globals.css` gives them the syntax tokens of each theme.
+
 ## Community
 * Follow us on [GitHub][3], [Facebook][4], [Twitter][5] or [Gab.ai][6]
 * Get Phalcon support on [Discord][7] and [Official Discussions][8]

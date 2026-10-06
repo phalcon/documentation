@@ -1,4 +1,5 @@
 import { writeFile } from "node:fs/promises";
+import type { AstroUserConfig } from "astro";
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import nimbus, { defineConfig as defineNimbusConfig } from "@cloudflare/nimbus-docs";
@@ -8,7 +9,11 @@ import { mermaidFence } from "./src/lib/mermaid-fence";
 import { slashlessHref } from "./src/lib/slashless-href.mjs";
 import { slashlessLinks } from "./src/lib/slashless-links";
 import { DEPRECATED, googleAnalytics, STABLE_VERSION } from "./src/lib/site.mjs";
+import codeTheme from "./src/styles/code-theme.json" with { type: "json" };
 import { redirects, sidebars, versions } from "./src/versions.generated.mjs";
+
+/** The type of a Shiki theme in the Astro config. A JSON import has wider types (a string, not "dark"). */
+type ShikiTheme = NonNullable<NonNullable<NonNullable<AstroUserConfig["markdown"]>["shikiConfig"]>["theme"]>;
 
 const nimbusConfig = defineNimbusConfig({
   site: "https://docs.phalcon.io",
@@ -97,6 +102,16 @@ export default defineConfig({
   // Astro 7's Vite 8 bundler).
   vite: {
     plugins: [tailwindcss()],
+  },
+  // Code blocks use the shared code theme in both modes: src/styles/code-theme.json,
+  // a copy of phalcon/css/code-theme.json in phalcon/assets. Its colors are
+  // --code-<role> variables, and src/styles/globals.css gives them the syntax
+  // tokens of each mode. With a theme of its own, nimbus does not set its two
+  // GitHub themes.
+  markdown: {
+    shikiConfig: {
+      theme: codeTheme as unknown as ShikiTheme,
+    },
   },
   // Hover-prefetch link targets so full-page navigations feel instant without
   // a client-side router.
