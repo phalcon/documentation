@@ -59,7 +59,7 @@ jobs:
         # and a silent fallback indistinguishable.
         run: |
           curl -fsSL -o src/fanart.html \
-            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html \
+            https://assets.phalcon.io/phalcon/fanart-fragment.html \
             || echo "Download failed, no fan art is rendered"
 
       - name: Get the sponsors
@@ -70,7 +70,7 @@ jobs:
         # months out of date.
         run: |
           curl -fsSL -o src/sponsors.json \
-            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/sponsors.json \
+            https://assets.phalcon.io/phalcon/sponsors.json \
             || echo "Download failed, no sponsors are rendered"
 
       - name: Build
