@@ -1,10 +1,10 @@
 /* ============================================================
    Release history page - the version tables and their legend.
 
-   The colour of a row says what the release is: green the latest,
+   The color of a row says what the release is: green the latest,
    yellow an older release that still gets fixes, blue a preview. A
-   superseded release has no colour. Each row also says its state in
-   words, because a colour alone is not sufficient. The legend shows
+   superseded release has no color. Each row also says its state in
+   words, because a color alone is not sufficient. The legend shows
    only the states that the tables use.
 
    The cell rules are here because prose.css styles the cells of a
@@ -13,21 +13,25 @@
    ============================================================ */
 
 /* The three hues are the design system's: success for the latest release,
-   warning for one that still gets fixes, slate for a preview. They are a
-   step stronger than the `--nb-*-muted` tints, because a whole row has to
-   read as coloured next to its uncoloured neighbours. */
+   warning for one that still gets fixes, slate for a preview. Each tint is
+   a mix of the hue and the page background, a step stronger than the
+   `--nb-*-muted` tints, because a whole row has to read as colored next to
+   its neighbors without color. A preview takes slate in both themes: the
+   dark info color is green-gray, and a preview must stay blue. Each
+   percentage gives the tint nearest to the one that the page had before
+   the tokens. */
 :root {
-    --release-latest: #dcefe3;
-    --release-maintained: #f5ecd4;
-    --release-preview: #e7edf3;
+    --release-latest: color-mix(in srgb, var(--nb-success) 13%, var(--nb-background));
+    --release-maintained: color-mix(in srgb, var(--nb-warning) 13%, var(--nb-background));
+    --release-preview: color-mix(in srgb, var(--ph-slate-900) 6%, var(--nb-background));
 }
 
-/* Muted for the dark theme: the same three hues, dark enough for the
-   text of the theme to stay readable on a coloured row. */
+/* The dark theme: the same three hues, dark enough for the text of the
+   theme to stay readable on a colored row. */
 [data-mode="dark"] {
-    --release-latest: #1e3326;
-    --release-maintained: #332d17;
-    --release-preview: #1a2836;
+    --release-latest: color-mix(in srgb, var(--nb-success) 19%, var(--nb-background));
+    --release-maintained: color-mix(in srgb, var(--nb-warning) 18%, var(--nb-background));
+    --release-preview: color-mix(in srgb, var(--ph-slate-900) 68%, var(--nb-background));
 }
 
 .docs-content .release-section {
@@ -82,7 +86,7 @@
 }
 
 /* `border-collapse: separate` keeps the cell backgrounds square, and a
-   coloured row would show past the rounded border of the table. */
+   colored row would show past the rounded border of the table. */
 .docs-content .release-table thead th:first-child {
     border-top-left-radius: 0.75rem;
 }
@@ -115,7 +119,7 @@
     font-weight: 600;
 }
 
-/* The badge gives the state as words. The colour of the row is thus not
+/* The badge gives the state as words. The color of the row is thus not
    the only signal. */
 .docs-content .release-badge {
     display: inline-block;
@@ -128,7 +132,7 @@
     white-space: nowrap;
 }
 
-/* The position of the reader. It is not one of the colours of the legend,
+/* The position of the reader. It is not one of the colors of the legend,
    because it tells the reader where they are, not what the release is. */
 .docs-content .release-badge-viewing {
     border-color: transparent;

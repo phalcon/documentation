@@ -344,7 +344,7 @@
 /* Code blocks — design surface: a tinted ground with a hairline, instead of
    the syntax theme's own background. */
 .docs-content pre.astro-code {
-  background: var(--ph-code-bg) !important;
+  background: var(--code-bg) !important;
   border: 1px solid var(--nb-border);
   border-radius: 6px;
 }

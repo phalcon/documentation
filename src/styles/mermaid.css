@@ -10,7 +10,7 @@ pre.mermaid:not([data-processed]) {
 	color: transparent;
 	background: color-mix(
 		in oklch,
-		var(--nb-muted, #f3f4f6) 100%,
+		var(--nb-muted) 100%,
 		transparent
 	);
 	border-radius: 0.375rem;
@@ -23,7 +23,7 @@ pre.mermaid:not([data-processed])::after {
 	background: linear-gradient(
 		90deg,
 		transparent,
-		color-mix(in oklch, var(--nb-card, #fff) 60%, transparent),
+		color-mix(in oklch, var(--nb-card) 60%, transparent),
 		transparent
 	);
 	transform: translateX(-100%);
@@ -164,7 +164,7 @@ pre.mermaid:not([data-processed])::after {
 }
 
 .mermaid-dialog[open]::backdrop {
-	background: rgba(0, 0, 0, 0.8);
+	background: color-mix(in srgb, var(--ph-night-950) 80%, transparent);
 	backdrop-filter: blur(4px);
 	animation: mermaid-backdrop-in 150ms ease-out;
 }
@@ -182,7 +182,7 @@ pre.mermaid:not([data-processed])::after {
 	max-height: 92vh;
 	overflow: auto;
 	border-radius: 10px;
-	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 24px 80px color-mix(in srgb, var(--ph-night-950) 40%, transparent);
 }
 
 /* The cloned container inside the dialog — give it a proper background */
@@ -213,10 +213,10 @@ pre.mermaid:not([data-processed])::after {
 	justify-content: center;
 	width: 36px;
 	height: 36px;
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	border: 1px solid color-mix(in srgb, var(--ph-white) 20%, transparent);
 	border-radius: 8px;
-	background: rgba(0, 0, 0, 0.5);
-	color: rgba(255, 255, 255, 0.7);
+	background: color-mix(in srgb, var(--ph-night-950) 50%, transparent);
+	color: color-mix(in srgb, var(--ph-white) 70%, transparent);
 	cursor: pointer;
 	transition:
 		background 0.15s ease,
@@ -224,8 +224,8 @@ pre.mermaid:not([data-processed])::after {
 }
 
 .mermaid-dialog-close:hover {
-	background: rgba(0, 0, 0, 0.7);
-	color: #ffffff;
+	background: color-mix(in srgb, var(--ph-night-950) 70%, transparent);
+	color: var(--ph-white);
 }
 
 /* The diagram itself */
@@ -245,10 +245,10 @@ pre.mermaid[data-error] {
 	line-height: 1.5;
 	padding: 1rem;
 	margin: 1rem 0;
-	border: 1px solid var(--nb-danger, #dc2626);
+	border: 1px solid var(--nb-danger);
 	border-radius: 0.5rem;
-	background: var(--nb-danger-muted, #fef2f2);
-	color: var(--nb-danger, #dc2626);
+	background: var(--nb-danger-muted);
+	color: var(--nb-danger);
 }
 
 /* Ensure SVG fills the width nicely */

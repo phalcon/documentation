@@ -25,10 +25,10 @@
     --api-abstract-fg: var(--nb-success);
     --api-class-bg: var(--nb-border);
     --api-class-fg: var(--nb-muted-foreground);
-    --api-current-bg: var(--ph-brand-muted);
+    --api-current-bg: var(--nb-primary-muted);
     --api-final-bg: var(--nb-danger-muted);
     --api-final-fg: var(--nb-danger);
-    --api-interface-bg: var(--ph-brand-muted);
+    --api-interface-bg: var(--nb-primary-muted);
     --api-interface-fg: var(--nb-primary-hover);
     --api-protected-bg: var(--nb-warning-muted);
     --api-protected-fg: var(--nb-warning);
@@ -268,37 +268,22 @@
     color: var(--api-protected-fg);
 }
 
-/* Signature token colors, close to the Shiki github themes */
+/* Signature token colors: the roles of the code theme (globals.css), for
+   both themes */
 .docs-content .api-list .sig .sf {
-    color: #8250df;
+    color: var(--code-function);
 }
 
 .docs-content .api-list .sig .st {
-    color: #0550ae;
+    color: var(--code-constant);
 }
 
 .docs-content .api-list .sig .sv {
-    color: #953800;
+    color: var(--code-parameter);
 }
 
 .docs-content .api-list .sig .sc {
-    color: #0550ae;
-}
-
-[data-mode="dark"] .docs-content .api-list .sig .sf {
-    color: #d2a8ff;
-}
-
-[data-mode="dark"] .docs-content .api-list .sig .st {
-    color: #79c0ff;
-}
-
-[data-mode="dark"] .docs-content .api-list .sig .sv {
-    color: #ffa657;
-}
-
-[data-mode="dark"] .docs-content .api-list .sig .sc {
-    color: #79c0ff;
+    color: var(--code-constant);
 }
 
 .docs-content .api-list .sig .sm {

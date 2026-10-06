@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./tokens.css";
 
 /* ============================================================
  * Nimbus Theme — THE file you edit to customize your site.
@@ -8,7 +9,8 @@
  *   2. `@theme` block exposes them to Tailwind so utilities like
  *      `bg-card`, `text-foreground`, `border-border` work
  *   3. Dark mode uses the `[data-mode="dark"]` attribute
- *   4. Colors are the Phalcon design system (hex), shared with phalcon.io
+ *   4. Colors and fonts are the Phalcon design tokens: src/styles/tokens.css,
+ *      a copy of phalcon/css/tokens.css in phalcon/assets (see README.md)
  *
  * Naming convention:
  *   - Surfaces paired with foregrounds: `card` / `card-foreground`
@@ -18,61 +20,71 @@
  *     `shadow-lg`, etc. as color names — they collide with built-ins)
  * ============================================================ */
 
-/* ---- Light mode (default) — Phalcon design system ---- */
+/* ---- Light mode (default) — the Phalcon design tokens ---- */
 :root {
 	color-scheme: light;
 
 	/* Surfaces (paired with foregrounds for contrast) */
-	--nb-background: #f7faf8;
-	--nb-foreground: #0f1a17;
+	--nb-background: var(--ph-light-bg);
+	--nb-foreground: var(--ph-light-text);
 
-	--nb-card: #ffffff;
+	--nb-card: var(--ph-light-surface);
 	--nb-card-foreground: var(--nb-foreground);
 
-	--nb-muted: #eef4f0;
-	--nb-muted-foreground: #4b6157;
+	--nb-muted: var(--ph-light-bg-alt);
+	--nb-muted-foreground: var(--ph-light-muted);
 
-	--nb-accent: #eef4f0;
+	--nb-accent: var(--ph-light-bg-alt);
 	--nb-accent-foreground: var(--nb-foreground);
 
-	/* Primary action / brand */
-	--nb-primary: #0f9e86;
-	--nb-primary-foreground: #f7faf8;
-	--nb-primary-hover: #0b7d6a;
+	/* Primary action / brand. `primary-muted` is the tint of the brand that
+	   api.css uses for the current item and the interfaces, as the status
+	   colors have their --nb-*-muted tints. */
+	--nb-primary: var(--ph-light-accent);
+	--nb-primary-foreground: var(--ph-light-accent-contrast);
+	--nb-primary-hover: var(--ph-light-accent-hover);
+	--nb-primary-muted: color-mix(in srgb, var(--ph-light-accent) 9%, var(--ph-light-bg));
 
 	/* Borders / focus */
-	--nb-border: #e4ede8;
-	--nb-border-strong: #d3e2d9;
-	--nb-selected: #d3e2d9;
-	--nb-ring: rgb(15 158 134 / 0.35);
+	--nb-border: var(--ph-light-border);
+	--nb-border-strong: var(--ph-light-border-strong);
+	--nb-selected: var(--ph-light-border-strong);
+	--nb-ring: var(--ph-light-ring);
 
 	/* Status colors — paired (saturated for text/border + muted for bg) */
-	--nb-info: #273646;
-	--nb-info-foreground: #273646;
-	--nb-info-muted: #eef1f4;
+	--nb-info: var(--ph-light-info);
+	--nb-info-foreground: var(--ph-light-info);
+	--nb-info-muted: var(--ph-light-info-bg);
 
-	--nb-success: #2f8f5b;
-	--nb-success-foreground: #2f8f5b;
-	--nb-success-muted: #eaf4ee;
+	--nb-success: var(--ph-light-success);
+	--nb-success-foreground: var(--ph-light-success);
+	--nb-success-muted: var(--ph-light-success-bg);
 
-	--nb-warning: #9a6b12;
-	--nb-warning-foreground: #9a6b12;
-	--nb-warning-muted: #f7f1e2;
+	--nb-warning: var(--ph-light-warning);
+	--nb-warning-foreground: var(--ph-light-warning);
+	--nb-warning-muted: var(--ph-light-warning-bg);
 
-	--nb-danger: #b23b3b;
-	--nb-danger-foreground: #b23b3b;
-	--nb-danger-muted: #f8ecec;
+	--nb-danger: var(--ph-light-danger);
+	--nb-danger-foreground: var(--ph-light-danger);
+	--nb-danger-muted: var(--ph-light-danger-bg);
 
-	/* Phalcon extras — used by prose.css, api.css and the mermaid theme.
-	   `brand-muted` is the tint of --nb-primary that the status colors have
-	   in --nb-*-muted; the brand itself ships no muted pair. */
-	--ph-slate: #273646;
-	--ph-adm-warning: #9a6b12;
-	--ph-adm-danger: #b23b3b;
-	--ph-adm-tip: #2f8f5b;
-	--ph-brand-muted: #e2f2ee;
-	--ph-code-bg: #eef3f0;
-	--ph-kicker: #5c7a6e;
+	/* Code: the code theme (src/styles/code-theme.json, astro.config.ts)
+	   colors each part of the code with a --code-<role> variable. The API
+	   signatures (api.css, ApiItem.astro) use the same roles. */
+	--code-bg: var(--ph-light-code-bg);
+	--code-changed: var(--ph-light-syntax-changed);
+	--code-comment: var(--ph-light-syntax-comment);
+	--code-constant: var(--ph-light-syntax-constant);
+	--code-deleted: var(--ph-light-syntax-deleted);
+	--code-function: var(--ph-light-syntax-function);
+	--code-inserted: var(--ph-light-syntax-inserted);
+	--code-keyword: var(--ph-light-syntax-keyword);
+	--code-link: var(--ph-light-syntax-link);
+	--code-parameter: var(--ph-light-syntax-parameter);
+	--code-punctuation: var(--ph-light-syntax-punctuation);
+	--code-string: var(--ph-light-syntax-string);
+	--code-string-expression: var(--ph-light-syntax-string-expression);
+	--code-text: var(--ph-light-syntax-text);
 
 	/* Layout — design: sidebar 264px / content 820px / toc 232px */
 	--nb-sidebar-width: 16.5rem;
@@ -81,10 +93,9 @@
 
 	/* Typography — Helvetica everywhere, matching phalcon.io: no webfonts,
 	   nothing to download. Code keeps the platform monospace stack. */
-	--nb-font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	--nb-font-sans: var(--ph-font-sans);
 	--nb-font-display: var(--nb-font-sans);
-	--nb-font-mono:
-		ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+	--nb-font-mono: var(--ph-font-mono);
 	--nb-h1-size: 2.375rem;
 	--nb-h1-weight: 700;
 	--nb-h1-tracking: -0.025em;
@@ -96,10 +107,14 @@
 	--nb-h3-tracking: -0.01em;
 	--nb-h4-weight: 600;
 
-	/* Shadows */
-	--nb-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.04);
-	--nb-shadow: 0 1px 3px oklch(0 0 0 / 0.06), 0 1px 2px oklch(0 0 0 / 0.04);
-	--nb-shadow-lg: 0 4px 12px oklch(0 0 0 / 0.08), 0 2px 4px oklch(0 0 0 / 0.04);
+	/* Shadows: the darkest token, at a low opacity */
+	--nb-shadow-sm: 0 1px 2px color-mix(in srgb, var(--ph-night-950) 4%, transparent);
+	--nb-shadow:
+		0 1px 3px color-mix(in srgb, var(--ph-night-950) 6%, transparent),
+		0 1px 2px color-mix(in srgb, var(--ph-night-950) 4%, transparent);
+	--nb-shadow-lg:
+		0 4px 12px color-mix(in srgb, var(--ph-night-950) 8%, transparent),
+		0 2px 4px color-mix(in srgb, var(--ph-night-950) 4%, transparent);
 }
 
 /* Wider content area on large displays (e.g. MacBook Pro 16″) */
@@ -109,59 +124,72 @@
 	}
 }
 
-/* ---- Dark mode ---- */
+/* ---- Dark mode — the night palette of phalcon.io and the blog ---- */
 [data-mode="dark"] {
 	color-scheme: dark;
 
-	--nb-background: #0a0c0f;
-	--nb-foreground: #e8ecef;
+	--nb-background: var(--ph-dark-bg);
+	--nb-foreground: var(--ph-dark-text);
 
-	--nb-card: #12161a;
+	--nb-card: var(--ph-dark-surface);
 	--nb-card-foreground: var(--nb-foreground);
 
-	--nb-muted: #171b20;
-	--nb-muted-foreground: #9ba5ad;
+	/* No dark tone role is a hover surface: surface-800 is the hover of the
+	   phalcon.io nav dropdown. */
+	--nb-muted: var(--ph-surface-800);
+	--nb-muted-foreground: var(--ph-dark-muted);
 
-	--nb-accent: #171b20;
+	--nb-accent: var(--ph-surface-800);
 	--nb-accent-foreground: var(--nb-foreground);
 
-	--nb-primary: #74ccb2;
-	--nb-primary-foreground: #06120e;
-	--nb-primary-hover: #57b49b;
+	--nb-primary: var(--ph-dark-accent);
+	--nb-primary-foreground: var(--ph-dark-accent-contrast);
+	--nb-primary-hover: var(--ph-dark-accent-hover);
+	--nb-primary-muted: color-mix(in srgb, var(--ph-dark-accent) 14%, transparent);
 
-	--nb-border: #191d22;
-	--nb-border-strong: #2c323a;
-	--nb-selected: #2c323a;
-	--nb-ring: rgb(116 204 178 / 0.4);
+	--nb-border: var(--ph-dark-border);
+	--nb-border-strong: var(--ph-dark-border-strong);
+	--nb-selected: var(--ph-dark-border-strong);
+	--nb-ring: var(--ph-dark-ring);
 
-	--nb-info: #8aa79a;
-	--nb-info-foreground: #8aa79a;
-	--nb-info-muted: rgb(39 54 70 / 0.35);
+	--nb-info: var(--ph-dark-info);
+	--nb-info-foreground: var(--ph-dark-info);
+	--nb-info-muted: var(--ph-dark-info-bg);
 
-	--nb-success: #8fc19a;
-	--nb-success-foreground: #8fc19a;
-	--nb-success-muted: rgb(143 193 154 / 0.12);
+	--nb-success: var(--ph-dark-success);
+	--nb-success-foreground: var(--ph-dark-success);
+	--nb-success-muted: var(--ph-dark-success-bg);
 
-	--nb-warning: #e2c37a;
-	--nb-warning-foreground: #e2c37a;
-	--nb-warning-muted: rgb(226 195 122 / 0.1);
+	--nb-warning: var(--ph-dark-warning);
+	--nb-warning-foreground: var(--ph-dark-warning);
+	--nb-warning-muted: var(--ph-dark-warning-bg);
 
-	--nb-danger: #e08f8f;
-	--nb-danger-foreground: #e08f8f;
-	--nb-danger-muted: rgb(224 143 143 / 0.1);
+	--nb-danger: var(--ph-dark-danger);
+	--nb-danger-foreground: var(--ph-dark-danger);
+	--nb-danger-muted: var(--ph-dark-danger-bg);
 
-	/* Phalcon extras */
-	--ph-slate: #273646;
-	--ph-adm-warning: #e2c37a;
-	--ph-adm-danger: #e08f8f;
-	--ph-adm-tip: #8fc19a;
-	--ph-brand-muted: rgb(116 204 178 / 0.14);
-	--ph-code-bg: #0d1013;
-	--ph-kicker: #8fa39b;
+	--code-bg: var(--ph-dark-code-bg);
+	--code-changed: var(--ph-dark-syntax-changed);
+	--code-comment: var(--ph-dark-syntax-comment);
+	--code-constant: var(--ph-dark-syntax-constant);
+	--code-deleted: var(--ph-dark-syntax-deleted);
+	--code-function: var(--ph-dark-syntax-function);
+	--code-inserted: var(--ph-dark-syntax-inserted);
+	--code-keyword: var(--ph-dark-syntax-keyword);
+	--code-link: var(--ph-dark-syntax-link);
+	--code-parameter: var(--ph-dark-syntax-parameter);
+	--code-punctuation: var(--ph-dark-syntax-punctuation);
+	--code-string: var(--ph-dark-syntax-string);
+	--code-string-expression: var(--ph-dark-syntax-string-expression);
+	--code-text: var(--ph-dark-syntax-text);
 
-	--nb-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.2);
-	--nb-shadow: 0 1px 3px oklch(0 0 0 / 0.3), 0 1px 2px oklch(0 0 0 / 0.2);
-	--nb-shadow-lg: 0 4px 12px oklch(0 0 0 / 0.4), 0 2px 4px oklch(0 0 0 / 0.2);
+	--nb-shadow-sm: 0 1px 2px color-mix(in srgb, var(--ph-night-950) 20%, transparent);
+	--nb-shadow:
+		0 1px 3px color-mix(in srgb, var(--ph-night-950) 30%, transparent),
+		0 1px 2px color-mix(in srgb, var(--ph-night-950) 20%, transparent);
+	--nb-shadow-lg:
+		0 4px 12px color-mix(in srgb, var(--ph-night-950) 40%, transparent),
+		0 2px 4px color-mix(in srgb, var(--ph-night-950) 20%, transparent);
 }
 
 /* ---- Tailwind theme mapping ----
@@ -205,6 +233,10 @@
 	--color-danger: var(--nb-danger);
 	--color-danger-foreground: var(--nb-danger-foreground);
 	--color-danger-muted: var(--nb-danger-muted);
+
+	/* Tailwind's own black and white (bg-black/40, text-white) */
+	--color-black: var(--ph-night-950);
+	--color-white: var(--ph-white);
 
 	--font-sans: var(--nb-font-sans);
 	--font-display: var(--nb-font-display);
@@ -294,7 +326,6 @@ pre.astro-code {
 	padding: 0.75rem 1rem;
 	border-radius: 0.5rem;
 	border: 1px solid var(--nb-border);
-	background-color: var(--nb-card);
 	overflow-x: auto;
 	font-family: var(--nb-font-mono);
 	font-size: 0.875rem;
@@ -302,14 +333,6 @@ pre.astro-code {
 }
 pre.astro-code > code {
 	background: transparent;
-}
-
-/* Classed Shiki tokens set --shiki-light/--shiki-dark once in _nimbus/shiki.css. */
-pre.astro-code span {
-	color: var(--shiki-light, inherit);
-}
-[data-mode="dark"] pre.astro-code span {
-	color: var(--shiki-dark, inherit);
 }
 
 /* Copy button injected by initCodeCopy. */
