@@ -7,16 +7,15 @@
  */
 import { Code as AstroCode } from "astro:components";
 import { defaultCodeTransformers } from "@cloudflare/nimbus-docs";
+import codeTheme from "../../../styles/code-theme.json" with { type: "json" };
 
 type Props = Parameters<typeof AstroCode>[0];
 const rawProps = Astro.props as Props;
-const usesNimbusDefaultThemes = !("theme" in rawProps) && !("themes" in rawProps);
-const themed = usesNimbusDefaultThemes
-  ? {
-      ...rawProps,
-      themes: { light: "github-light", dark: "github-dark" },
-      defaultColor: false,
-    }
+// A block without a theme of its own uses the code theme of the site, as the
+// Markdown code blocks do (astro.config.ts).
+const usesSiteTheme = !("theme" in rawProps) && !("themes" in rawProps);
+const themed = usesSiteTheme
+  ? { ...rawProps, theme: codeTheme as unknown as Props["theme"] }
   : rawProps;
 const userTransformers = themed.transformers ?? [];
 const props = {

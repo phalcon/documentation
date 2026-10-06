@@ -138,17 +138,12 @@ const Tag = href ? "a" : "div";
     white-space: pre-wrap;
   }
 
-  /* Token colours, close to the Shiki github themes. */
-  .api-fn { color: #8250df; }
-  .api-type-token { color: #0550ae; }
-  .api-var { color: #953800; }
-  .api-const { color: #0550ae; }
+  /* Token colors: the roles of the code theme (globals.css), for both themes. */
+  .api-fn { color: var(--code-function); }
+  .api-type-token { color: var(--code-constant); }
+  .api-var { color: var(--code-parameter); }
+  .api-const { color: var(--code-constant); }
   .api-muted { color: var(--api-fg-light); }
-
-  :global([data-mode="dark"]) .api-fn { color: #d2a8ff; }
-  :global([data-mode="dark"]) .api-type-token { color: #79c0ff; }
-  :global([data-mode="dark"]) .api-var { color: #ffa657; }
-  :global([data-mode="dark"]) .api-const { color: #79c0ff; }
 
   /* One parameter per line once there are two or more. Quill always emits a
      span per parameter, so the count is asked for here rather than there. */
