@@ -153,5 +153,13 @@ test("the deploy workflow gets the design tools first, and keeps the committed c
   assert.ok(step < workflow.indexOf("run: node scripts/update-tokens.mjs"), "the step must come before the design files");
   assert.match(workflow, /for file in design-checks\.mjs design-refresh\.mjs; do/);
   assert.match(workflow, /new="src\/lib\/\$\{file%\.mjs\}\.new\.mjs"/);
-  assert.match(workflow, /curl -fsSL --max-time 30 -o "\$new" "https:\/\/assets\.phalcon\.io\/phalcon\/tools\/\$file" && node --check "\$new"; then/);
+  assert.match(workflow, /curl -fsSL --max-time 30 -o "\$new" "https:\/\/assets\.phalcon\.io\/phalcon\/tools\/\$file" && node --check "\$new"/);
+});
+
+test("the deploy workflow keeps the committed design tools when a new file lacks one of their exports", () => {
+  // The site imports the functions by name: a new file with an export less would stop the refresh.
+  const workflow = readFileSync(new URL(".github/workflows/deploy-documents.yml", root), "utf8");
+
+  assert.match(workflow, /node --check "\$new" \\\n\s+&& node --input-type=module -e "\$EXPORTS" "\$new" "src\/lib\/\$file"; then/);
+  assert.match(workflow, /Object\.keys\(last\)\.every\(\(name\) => name in next\)/);
 });
