@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { test } from "node:test";
 
 import { definedTokens, missingTokens } from "../src/lib/design-checks.mjs";
+import { versions } from "../src/versions.generated.mjs";
 import { sourceFiles, usedBySite } from "./token-sources.mjs";
 
 const root = new URL("../", import.meta.url);
@@ -58,7 +59,7 @@ test("the source scan covers the stylesheets, components, layouts and pages, not
     assert.ok(files.includes(file), file);
   }
 
-  for (const file of ["src/pages/og/_og-card-config.ts", "src/scripts/mermaid.ts", "src/styles/tokens.css"]) {
+  for (const file of ["src/scripts/mermaid.ts", "src/styles/tokens.css"]) {
     assert.ok(!files.includes(file), file);
   }
 
@@ -162,4 +163,37 @@ test("the deploy workflow keeps the committed design tools when a new file lacks
 
   assert.match(workflow, /node --check "\$new" \\\n\s+&& node --input-type=module -e "\$EXPORTS" "\$new" "src\/lib\/\$file"; then/);
   assert.match(workflow, /Object\.keys\(last\)\.every\(\(name\) => name in next\)/);
+});
+
+test("every page points to the card of its page name, which scripts/render-og-cards.mjs renders", () => {
+  // One card for each page name, the same for every version (/og/<slug>.png). The template writes the routes.
+  const line = "const socialImage = entry.data.socialImage ?? `/og/${entry.id}.png`;";
+  const routes = readdirSync(new URL("src/pages/", root), { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && /^\d+\.\d+$/.test(entry.name))
+    .map((entry) => `src/pages/${entry.name}/[...slug].astro`);
+
+  assert.ok(readFileSync(new URL("resources/nimbus/templates/slug.astro.tpl", root), "utf8").includes(line));
+  assert.equal(routes.length, versions.length);
+  assert.deepEqual(routes.filter((route) => !readFileSync(new URL(route, root), "utf8").includes(line)), []);
+});
+
+test("the cards of the nimbus template are gone: their routes, their config, their font and their packages", () => {
+  for (const file of ["src/pages/og.png.ts", "src/pages/og/[...slug].ts", "src/pages/og/_og-card-config.ts", "public/fonts/Inter-Bold.ttf"]) {
+    assert.ok(!existsSync(new URL(file, root)), file);
+  }
+
+  const { dependencies = {}, devDependencies = {} } = JSON.parse(readFileSync(new URL("package.json", root), "utf8"));
+
+  assert.deepEqual(["astro-og-canvas", "canvaskit-wasm"].filter((name) => name in dependencies || name in devDependencies), []);
+});
+
+test("the deploy workflow renders the social cards after the build, and checks them before it publishes", () => {
+  const workflow = readFileSync(new URL(".github/workflows/deploy-documents.yml", root), "utf8");
+  const at = (text) => workflow.indexOf(text);
+
+  assert.match(workflow, /ghcr\.io\/puppeteer\/puppeteer:25\.12\.0 node scripts\/render-og-cards\.mjs\n/);
+  assert.match(workflow, /\n {8}run: node scripts\/check-og\.mjs\n/);
+  assert.ok(at("run: pnpm build") > 0 && at("run: pnpm build") < at("- name: Render the social cards"));
+  assert.ok(at("- name: Render the social cards") < at("- name: Check the social cards"));
+  assert.ok(at("- name: Check the social cards") < at("- name: Publish to the deploy branch"));
 });

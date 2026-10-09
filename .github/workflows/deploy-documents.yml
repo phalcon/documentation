@@ -101,6 +101,22 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Render the social cards
+        # dist/og.png and one card for each page name (dist/og/<slug>.png), in
+        # the layout of the social cards of phalcon/assets
+        # (scripts/render-og-cards.mjs, resources/og/card.html). The Puppeteer
+        # image is the engine of the assets cards; Chrome keeps its profile in
+        # node_modules/.cache/og.
+        run: >-
+          docker run --rm --shm-size=2g -u "$(id -u):$(id -g)"
+          -e HOME=/docs/node_modules/.cache/og -e TMPDIR=/docs/node_modules/.cache/og
+          -e PUPPETEER_CACHE_DIR=/home/pptruser/.cache/puppeteer
+          -v "$PWD:/docs" -w /docs ghcr.io/puppeteer/puppeteer:25.12.0 node scripts/render-og-cards.mjs
+
+      - name: Check the social cards
+        # Every og:image and twitter:image of every page is a file of dist/.
+        run: node scripts/check-og.mjs
+
       - name: Publish to the deploy branch
         # dist/_redirects (written by the cloudflare-redirects hook in
         # astro.config.ts) carries /latest -> the stable version, so the

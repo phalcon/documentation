@@ -46,7 +46,7 @@ src/
 │   ├── <version>/[...slug]/index.md.ts # GENERATED markdown twin, /<version>/<slug>/index.md
 │   ├── [...slug].astro, [...slug]/     # the empty primary collection
 │   ├── [section]/llms.txt.ts           # per-version agent index, /<version>/llms.txt
-│   ├── llms.txt.ts, llms-full.txt.ts, robots.txt.ts, og.png.ts, og/, 404.astro
+│   ├── llms.txt.ts, llms-full.txt.ts, robots.txt.ts, 404.astro
 ├── layouts/                    # BaseLayout (head, fan art, AgentDirective), DocsLayout
 ├── lib/
 │   ├── site.mjs                # STABLE_VERSIONS, PRERELEASES, DEPRECATED, versionBanner, analytics
@@ -60,7 +60,8 @@ src/
 
 public/assets/images/           # images, shared by all versions, referenced as /assets/images/...
 resources/nimbus/               # convert.py, its tests, templates, per-version overrides, parity.sh
-scripts/                        # new-version.sh, update-nfr.mjs, update-tokens.mjs (the design files), token-sources.mjs (the tokens that src/ uses)
+resources/og/card.html          # the layout of the social cards (the cards of phalcon/assets), see README.md
+scripts/                        # new-version.sh, update-nfr.mjs, update-tokens.mjs (the design files), token-sources.mjs (the tokens that src/ uses), og-cards.mjs, render-og-cards.mjs, check-og.mjs (the social cards)
 patches/                        # nimbus patch that allows the dot in `docs-5.20`
 ```
 

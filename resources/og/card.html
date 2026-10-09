@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+    A social card of the docs (1200 x 630, the og:image of the pages). The layout of
+    the social cards of phalcon/assets (scripts/social/template.html there).
+    scripts/render-og-cards.mjs fills the fields, puts in the design tokens
+    (src/styles/tokens.css) and the falcon (public/assets/images/falcon.svg), and
+    writes the PNG.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>{{tokens}}</style>
+<style>
+    html, body { margin: 0; }
+    .card {
+        background:
+            radial-gradient(circle at 78% 52%, color-mix(in srgb, var(--ph-brand-400) 16%, transparent) 0, transparent 40%),
+            var(--ph-night-950);
+        box-sizing: border-box;
+        color: var(--ph-mist-100);
+        font-family: var(--ph-font-sans);
+        height: 630px;
+        overflow: hidden;
+        padding: 68px 76px;
+        position: relative;
+        width: 1200px;
+    }
+    .kicker {
+        color: var(--ph-dark-kicker);
+        font-family: var(--ph-font-mono);
+        font-size: 19px;
+        font-weight: 600;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+    }
+    h1 {
+        font-size: 96px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1.05;
+        margin: 24px 0 0;
+        max-width: 600px;
+    }
+    h1 .name { display: block; }
+    h1 .tagline { color: var(--ph-dark-muted); display: block; font-size: 50px; letter-spacing: -0.03em; margin-top: 12px; }
+    h1 .tagline:empty { display: none; }
+    p { color: var(--ph-mist-300); font-size: 26px; line-height: 1.4; margin: 28px 0 0; max-width: 600px; }
+    .pills { display: flex; gap: 13px; margin-top: 30px; }
+    .pill {
+        border: 1px solid var(--ph-dark-border);
+        border-radius: 4px;
+        color: var(--ph-dark-accent);
+        font-family: var(--ph-font-mono);
+        font-size: 19px;
+        font-weight: 600;
+        padding: 9px 15px;
+    }
+    .pill + .pill { color: var(--ph-dark-muted); }
+    .address { bottom: 52px; color: var(--ph-dark-kicker); font-family: var(--ph-font-mono); font-size: 20px; left: 76px; position: absolute; }
+    .falcon { height: 440px; position: absolute; right: 56px; top: 82px; }
+</style>
+</head>
+<body>
+<div class="card">
+    <div class="kicker">{{kicker}}</div>
+    <h1><span class="name">{{name}}</span><span class="tagline">{{tagline}}</span></h1>
+    <p>{{text}}</p>
+    <div class="pills">{{pills}}</div>
+    <div class="address">{{address}}</div>
+    <img class="falcon" src="{{falcon}}" alt="">
+</div>
+<script>
+    // A long name gets smaller until it fits beside the falcon: on two lines, or on
+    // three lines at 56px and less (a long class name of the API). In a block:
+    // render-og-cards.mjs gives each card to the same page.
+    {
+        const name = document.querySelector('h1 .name');
+        const fits = (size) => name.scrollWidth <= 600 && name.offsetHeight <= Math.ceil(size * 1.05 * (size > 56 ? 2 : 3));
+
+        for (let size = 96; !fits(size) && size > 40; size -= 2) {
+            name.style.fontSize = `${size - 2}px`;
+        }
+    }
+</script>
+</body>
+</html>

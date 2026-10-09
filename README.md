@@ -89,7 +89,20 @@ docker run --rm -v "$PWD":/docs phalcon-docs-converter resources/nimbus/convert.
 
 ### Deployment
 
-A push to `master` builds the site and publishes `dist/` to the branch named by `DEPLOY_BRANCH` in the workflow (`production`), which Cloudflare Pages serves. The `gh-pages` branch holds the last MkDocs deployment as the rollback: to roll back, point the Cloudflare Pages production branch at `gh-pages`. The workflow also points the `/latest/` redirect rule at the stable version.
+A push to `master` builds the site and publishes `dist/` to the branch named by `DEPLOY_BRANCH` in the workflow (`production`), which Cloudflare Pages serves. The `gh-pages` branch holds the last MkDocs deployment as the rollback: to roll back, point the Cloudflare Pages production branch at `gh-pages`. The build writes `dist/_redirects` (the `cloudflare-redirects` hook in `astro.config.ts`): `/`, `/latest` and `/latest/*` lead to the first entry of `STABLE_VERSIONS`, so a deploy moves them with no Cloudflare rule and no secret. The workflow needs no secret other than the `GITHUB_TOKEN` of the run.
+
+### Social cards
+
+Every page has a social card (`og:image`, `twitter:image`): one card for each page name, the same for every version, at `/og/<slug>.png`, and the site card at `/og.png`. The layout is the one of the social cards of [phalcon/assets](https://github.com/phalcon/assets) (`resources/og/card.html`, on the design tokens and the falcon). The title of a card comes from the stable version, or from the newest version that has the page. After `pnpm build`, the deploy renders the cards into `dist/` with `scripts/render-og-cards.mjs` in the Puppeteer image, then `scripts/check-og.mjs` checks that the card of every page is a file of `dist/`. Locally, after a build:
+
+```bash
+docker run --rm --shm-size=2g -u "$(id -u):$(id -g)" -e HOME=/docs/node_modules/.cache/og \
+    -e TMPDIR=/docs/node_modules/.cache/og -e PUPPETEER_CACHE_DIR=/home/pptruser/.cache/puppeteer \
+    -v "$PWD":/docs -w /docs ghcr.io/puppeteer/puppeteer:25.12.0 node scripts/render-og-cards.mjs
+docker run --rm -v "$PWD":/docs phalcon-docs node scripts/check-og.mjs
+```
+
+A card keeps its address from build to build: a platform (Discord, X, LinkedIn) keeps a preview image by its address, so a new layout, a new title or a new token shows there only for the pages that it did not see before. To make the platforms fetch the new cards, add a version to the card address in `resources/nimbus/templates/slug.astro.tpl` (for example `/og/${entry.id}.png?v=2`) and run `convert.py --register`; the check accepts a query.
 
 ### Colors and fonts
 
@@ -98,7 +111,7 @@ The colors and the fonts come from `phalcon/css/tokens.css` in [phalcon/assets](
 - To change a color, change `tokens.css` in phalcon/assets. The docs get it on their next deploy.
 - To get the new files now, for a local preview or to commit them: `docker run --rm -v "$PWD":/docs phalcon-docs node scripts/update-tokens.mjs`.
 - The checks and the refresh are the shared design tools of phalcon/assets: `src/lib/design-checks.mjs` and `src/lib/design-refresh.mjs` are copies of `phalcon/tools/` there, and every deploy gets them again first. Change them in phalcon/assets, not here.
-- `src/styles/globals.css` maps the nimbus tokens (`--nb-*`) to the design tokens: `--ph-light-*` in the light theme, `--ph-dark-*` in the dark theme. Use a color through a token: `var(--nb-…)` or `var(--ph-…)`. `pnpm test` fails on a typed color (`#…`, `rgb(…)`, `oklch(…)` or a color of Tailwind's palette) in `src/`, except in `src/scripts/mermaid.ts` and `src/pages/og/_og-card-config.ts`.
+- `src/styles/globals.css` maps the nimbus tokens (`--nb-*`) to the design tokens: `--ph-light-*` in the light theme, `--ph-dark-*` in the dark theme. Use a color through a token: `var(--nb-…)` or `var(--ph-…)`. `pnpm test` fails on a typed color (`#…`, `rgb(…)`, `oklch(…)` or a color of Tailwind's palette) in `src/`, except in `src/scripts/mermaid.ts`.
 - Code blocks use the code theme (set in `astro.config.ts`): the rules of GitHub's dark theme with `--code-<role>` variables. `globals.css` gives them the syntax tokens of each theme.
 
 ## Community

@@ -9,7 +9,7 @@ import { usedTokens } from "../src/lib/design-checks.mjs";
 const root = new URL("../", import.meta.url);
 
 /** The files of src/ that are not sources: the tokens file, and the colors outside CSS (spec Decision 18). */
-const OUTSIDE = new Set(["src/pages/og/_og-card-config.ts", "src/scripts/mermaid.ts", "src/styles/tokens.css"]);
+const OUTSIDE = new Set(["src/scripts/mermaid.ts", "src/styles/tokens.css"]);
 
 /** The files that resources/nimbus/convert.py writes (AGENT.md). Their link anchors (#add) are not colors. */
 const GENERATED = /^src\/(?:content\.config\.ts|versions\.generated\.mjs|sidebar\/|redirects\/|pages\/\d+\.\d+\/)/;

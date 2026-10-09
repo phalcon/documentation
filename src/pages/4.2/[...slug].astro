@@ -45,7 +45,7 @@ const tocConfig = entry.data.tableOfContents;
 const toc = tocOn && tocConfig !== false ? getTOC(headings, tocConfig) : false;
 const markdownPath = `/${VERSION}/${entry.id}/index.md`;
 const markdownUrl = Astro.site ? new URL(markdownPath, Astro.site).href : markdownPath;
-const socialImage = entry.data.socialImage ?? `/og/${VERSION}/${entry.id}.png`;
+const socialImage = entry.data.socialImage ?? `/og/${entry.id}.png`;
 // A page of a non-stable version carries the version banner unless the
 // page sets its own (STABLE_VERSIONS and PRERELEASES in src/lib/site.mjs).
 const banner = entry.data.banner ?? versionBanner(VERSION) ?? undefined;
