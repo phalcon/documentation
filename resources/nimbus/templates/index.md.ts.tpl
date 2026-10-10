@@ -6,6 +6,7 @@ import {
   type IndexedEntry,
 } from "@cloudflare/nimbus-docs";
 import { config } from "virtual:nimbus/config";
+import { apiItemMarkdown } from "../../../lib/api-item-markdown.mjs";
 
 export const prerender = true;
 
@@ -36,7 +37,8 @@ export async function GET({ props }: { props: SlugProps }) {
       ? rawImage
       : config.socialImage;
 
-  const markdown = renderEntryAsMarkdown(entry);
+  // The rows of the API pages have a Markdown form of their own.
+  const markdown = renderEntryAsMarkdown(entry, { componentMap: { ApiItem: apiItemMarkdown } });
 
   const body = [
     "---",

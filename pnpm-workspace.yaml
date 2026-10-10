@@ -9,5 +9,3 @@ ignoredBuiltDependencies:
   # pnpm 10
   - esbuild
   - sharp
-patchedDependencies:
-  '@cloudflare/nimbus-docs@0.11.0': patches/@cloudflare__nimbus-docs@0.11.0.patch

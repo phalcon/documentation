@@ -62,7 +62,6 @@ public/assets/images/           # images, shared by all versions, referenced as 
 resources/nimbus/               # convert.py, its tests, templates, per-version overrides, parity.sh
 resources/og/card.html          # the layout of the social cards (the cards of phalcon/assets), see README.md
 scripts/                        # new-version.sh, update-nfr.mjs, update-tokens.mjs (the design files), token-sources.mjs (the tokens that src/ uses), og-cards.mjs, render-og-cards.mjs, check-og.mjs (the social cards)
-patches/                        # nimbus patch that allows the dot in `docs-5.20`
 ```
 
 **Do not edit a generated file.** `src/content.config.ts`, `src/versions.generated.mjs`, `src/sidebar/*`, `src/redirects/*` and `src/pages/<version>/*` are written by `resources/nimbus/convert.py`; the route files come from `resources/nimbus/templates/*.tpl`. Change the template or the converter, then run `convert.py --register` again:
@@ -110,7 +109,7 @@ Rules:
 | Convert a MkDocs version | `convert.py --version <v> --source <checkout>/docs --nav <checkout>/mkdocs.yml --skip-locale-redirects`, then `convert.py --register`. Every version is converted already; the converter stays for a branch still in MkDocs form. Replace a converted page by hand from `resources/nimbus/overrides/` (see its README). |
 | Compare with the old site | `resources/nimbus/parity.sh <version>` - URLs and heading ids of `dist/<version>` against `gh-pages/<version>`. |
 | Install a registry component | `pnpm exec nimbus-docs add <slug>`, then register it in `src/components.ts` if `.mdx` uses it. |
-| Upgrade nimbus | Re-check `patches/@cloudflare__nimbus-docs@<version>.patch` (it allows the dot in a collection key). `pnpm exec nimbus-docs outdated`, `diff <file>`, `add <slug> --overwrite`. |
+| Upgrade nimbus | Set the version in `package.json` and install. `pnpm exec nimbus-docs migrate --dry-run` lists the reviews since the version in `nimbus.json`. Do each one that applies, then `pnpm exec nimbus-docs migrate --yes`: the build stops until `nimbus.json` records the new version. Compare the build with the build before the upgrade, also the Markdown copies (`/<version>/<slug>/index.md`). `pnpm exec nimbus-docs outdated`, `diff <file>`, `add <slug> --overwrite` for the starter files and the registry components. |
 
 ## Verify before you claim
 
@@ -126,7 +125,7 @@ To compile-check MDX without a full build, run `@mdx-js/mdx`'s `compile()` over 
 
 ## Deployment
 
-A push to `master` runs `.github/workflows/deploy-documents.yml`: install (which applies the patch) → `update-nfr` → get the shared design tools (`src/lib/design-checks.mjs`, `src/lib/design-refresh.mjs`) from `phalcon/assets` → refresh `src/styles/tokens.css` and `src/styles/code-theme.json` from `phalcon/assets` (`scripts/update-tokens.mjs`) → `test` → refresh `src/fanart.html` from `phalcon/assets` → `build` → publish `dist/` to the branch named by `DEPLOY_BRANCH` (`production`), which Cloudflare Pages serves → point the `/latest/` redirect rule at `STABLE_VERSION`. The `gh-pages` branch holds the last MkDocs deployment as the rollback: point the Pages production branch back at it.
+A push to `master` runs `.github/workflows/deploy-documents.yml`: install → `update-nfr` → get the shared design tools (`src/lib/design-checks.mjs`, `src/lib/design-refresh.mjs`) from `phalcon/assets` → refresh `src/styles/tokens.css` and `src/styles/code-theme.json` from `phalcon/assets` (`scripts/update-tokens.mjs`) → `test` → refresh `src/fanart.html` from `phalcon/assets` → `build` → publish `dist/` to the branch named by `DEPLOY_BRANCH` (`production`), which Cloudflare Pages serves → point the `/latest/` redirect rule at `STABLE_VERSION`. The `gh-pages` branch holds the last MkDocs deployment as the rollback: point the Pages production branch back at it.
 
 ## Don't
 

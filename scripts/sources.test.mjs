@@ -177,6 +177,18 @@ test("every page points to the card of its page name, which scripts/render-og-ca
   assert.deepEqual(routes.filter((route) => !readFileSync(new URL(route, root), "utf8").includes(line)), []);
 });
 
+test("every Markdown version of a page writes the rows of the API pages with apiItemMarkdown", () => {
+  // nimbus drops a component that has no Markdown renderer. The template writes the routes.
+  const line = "const markdown = renderEntryAsMarkdown(entry, { componentMap: { ApiItem: apiItemMarkdown } });";
+  const routes = readdirSync(new URL("src/pages/", root), { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && /^\d+\.\d+$/.test(entry.name))
+    .map((entry) => `src/pages/${entry.name}/[...slug]/index.md.ts`);
+
+  assert.ok(readFileSync(new URL("resources/nimbus/templates/index.md.ts.tpl", root), "utf8").includes(line));
+  assert.equal(routes.length, versions.length);
+  assert.deepEqual(routes.filter((route) => !readFileSync(new URL(route, root), "utf8").includes(line)), []);
+});
+
 test("the cards of the nimbus template are gone: their routes, their config, their font and their packages", () => {
   for (const file of ["src/pages/og.png.ts", "src/pages/og/[...slug].ts", "src/pages/og/_og-card-config.ts", "public/fonts/Inter-Bold.ttf"]) {
     assert.ok(!existsSync(new URL(file, root)), file);

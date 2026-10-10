@@ -15,11 +15,11 @@
     "update-nfr": "node scripts/update-nfr.mjs"
   },
   "dependencies": {
-    "@cloudflare/nimbus-docs": "0.11.0",
+    "@cloudflare/nimbus-docs": "0.17.0",
     "@iconify-json/ph": "^1.2.0",
-    "astro": "~7.0.9",
+    "astro": "~7.3.8",
     "clsx": "^2.1.1",
-    "mermaid": "^11.17.2",
+    "mermaid": "^12.1.0",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {

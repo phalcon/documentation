@@ -13,8 +13,9 @@
 # takes about ten minutes (two builds). The baseline and the comparison go
 # to resources/nimbus/work/update/.
 #
-# @cloudflare/nimbus-docs is not updated: the patch in patches/ applies to
-# its exact version. See "Upgrade nimbus" in AGENT.md.
+# @cloudflare/nimbus-docs is not updated: a new version needs the reviews of
+# `nimbus-docs migrate`, and the build stops until nimbus.json records them.
+# See "Upgrade nimbus" in AGENT.md.
 
 set -e
 

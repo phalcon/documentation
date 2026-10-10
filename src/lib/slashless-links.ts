@@ -1,8 +1,6 @@
 // Nimbus hast plugin: drop the trailing slash from internal links in the
 // rendered body, so a page's own prose points at the same slashless URLs
-// the chrome does (`trailingSlash: "never"` in astro.config.ts, plus the
-// `toBrowserHref` patch in patches/ for the sidebar, breadcrumbs,
-// pagination and canonical).
+// the chrome does (`trailingSlash: "never"` in astro.config.ts).
 //
 // The content keeps its MkDocs-era `/5.20/logger/` hrefs — they come from
 // resources/nimbus/convert.py and are regenerated whenever a version is
